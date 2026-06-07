@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:radiation_without_protection",
+  "type": "DANGER",
+  "category": "HAZARDS",
+  "title": "Radiation Field Detected",
+  "message": "Radiation levels rising. Protective gear not detected.",
+  "details": "Equip hazmat gear, use RadAway, and limit exposure time.",
+  "actionLabel": "Review radiation",
+  "actionCardId": "echotutorialcore:radiation",
+  "cooldownTicks": 6000,
+  "guideModes": ["MINIMAL", "NORMAL", "ASSISTED"],
+  "priority": 90,
+  "dismissible": true,
+  "conditions": [
+    "active_hazard:echoashfallprotocol:radiation"
+  ]
+}

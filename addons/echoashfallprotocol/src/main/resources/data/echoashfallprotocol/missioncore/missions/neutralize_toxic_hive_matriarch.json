@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_toxic_hive_matriarch",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 9,
+  "title": "Defeat Toxic Hive Matriarch",
+  "briefing": "[ECHO-7] Guardian signal locked below Toxic Swamp. Scan for the visible Sporebound Sanctum entrance, descend into the buried node, read the room before it reads you, then neutralize Toxic Hive Matriarch.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:filter_cartridge_elite",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_industrial_juggernaut"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_toxic_hive_matriarch",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_toxic_hive_matriarch",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "9",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "77",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_toxic_hive_matriarch:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_toxic_hive_matriarch/toxic_hive_matriarch",
+      "type": "kill_entity",
+      "label": "Toxic Hive Matriarch",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:filter_cartridge_elite",
+      "target": "echoashfallprotocol:toxic_hive_matriarch",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:toxic_hive_matriarch"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:toxic_hive_matriarch",
+      "count": 1,
+      "label": "Toxic Hive Matriarch"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_toxic_hive_matriarch/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_elite",
+      "count": 1,
+      "label": "Filter Cartridge Elite",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_toxic_hive_matriarch/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_toxic_hive_matriarch/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 2,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_toxic_hive_matriarch/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Toxic Hive Matriarch neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

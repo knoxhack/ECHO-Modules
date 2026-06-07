@@ -1,0 +1,18 @@
+{
+  "id": "echotutorialcore:scanner_not_used",
+  "type": "SYSTEM_HELP",
+  "category": "SCANNER",
+  "title": "Scanner Not Used",
+  "message": "Scanner available but no recent scans detected.",
+  "details": "Use your scanner to find signal leads and points of interest.",
+  "actionLabel": "Review scanner prep",
+  "actionCardId": "echotutorialcore:scanner_route_prep",
+  "cooldownTicks": 48000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 55,
+  "dismissible": true,
+  "conditions": [
+    "missing_progress:echotutorialcore:used_scanner",
+    "time_since_progress_minutes:20"
+  ]
+}

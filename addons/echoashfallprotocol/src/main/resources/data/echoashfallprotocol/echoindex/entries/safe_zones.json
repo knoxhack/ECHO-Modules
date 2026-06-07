@@ -1,0 +1,21 @@
+{
+  "id": "echoashfallprotocol:safe_zones",
+  "category": "ashfall.survival",
+  "title": "Safe Zones",
+  "subtitle": "A route is only useful if you can return",
+  "summary": "Safe zones anchor Ashfall exploration. They provide return points, weather shelter, reward claim timing, and route planning context.",
+  "body": [
+    "Before chasing a POI marker, make sure the route has a known return point. Weather, hunger, and exposure all make retreat planning part of progression.",
+    "The starter shelter and early outposts should remain visually distinct from hazard and faction markers.",
+    "If a route sends the player into a hazard without a safe-zone fallback, treat it as a blocker for manual smoke."
+  ],
+  "links": {
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes"
+  },
+  "tags": [
+    "ashfall",
+    "safe_zone",
+    "routes"
+  ]
+}

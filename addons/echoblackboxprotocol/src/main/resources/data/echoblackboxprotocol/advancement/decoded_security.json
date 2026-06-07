@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_personal",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:security_memory_record"
+                             },
+                    "title":  "Security Log",
+                    "description":  "Decode a Security Blackbox memory.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "has_record":  {
+                                        "trigger":  "minecraft:inventory_changed",
+                                        "conditions":  {
+                                                           "items":  [
+                                                                         {
+                                                                             "items":  "echoblackboxprotocol:security_memory_record"
+                                                                         }
+                                                                     ]
+                                                       }
+                                    }
+                 },
+    "requirements":  [
+                         [
+                             "has_record"
+                         ]
+                     ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "echoashfallprotocol:plant_mutated_sapling",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 5,
+  "title": "Plant Mutated Sapling",
+  "briefing": "[ECHO-7] Renewable material source required. Plant the Mutated Sapling near shelter before the first route expands.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall Mutated Sapling placement mission as native MissionCore content.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:mutated_sapling",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:forage_wasteland_food"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "plant_mutated_sapling",
+    "nativeGameplayHook": "ashfall.first_route.plant_mutated_sapling",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "5",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "5",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:plant_mutated_sapling:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:plant_mutated_sapling/place_mutated_sapling",
+      "type": "place_block",
+      "label": "Plant a Mutated Sapling near shelter",
+      "detail": "Anchor a renewable material source before the pod route expands toward rain collection.",
+      "icon": "echoashfallprotocol:mutated_sapling",
+      "target": "echoashfallprotocol:mutated_sapling",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:mutated_sapling",
+      "count": 1,
+      "label": "Mutated Sapling"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:plant_mutated_sapling/reward_bone_meal",
+      "item": "minecraft:bone_meal",
+      "count": 4,
+      "label": "Bone Meal",
+      "detail": "Starter growth support for the first shelter grove."
+    },
+    {
+      "id": "echoashfallprotocol:plant_mutated_sapling/reward_fiber",
+      "item": "echoashfallprotocol:plant_fiber",
+      "count": 6,
+      "label": "Plant Fiber",
+      "detail": "Primitive crafting material for shelter expansion."
+    },
+    {
+      "id": "echoashfallprotocol:plant_mutated_sapling/reward_cauldron",
+      "item": "minecraft:cauldron",
+      "count": 1,
+      "label": "Cauldron",
+      "detail": "Core component for the Rain Collector route."
+    },
+    {
+      "id": "echoashfallprotocol:plant_mutated_sapling/reward_scrap_plastic",
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 8,
+      "label": "Scrap Plastic",
+      "detail": "Weatherproofing material for early water catchment."
+    }
+  ],
+  "completionText": "[ECHO-7] Growth anchor detected. Rain Collector parts released; claim the cauldron and scrap plastic before water reserves collapse."
+}

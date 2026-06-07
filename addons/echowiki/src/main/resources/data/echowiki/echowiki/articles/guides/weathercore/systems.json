@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/weathercore/systems",
+  "title": "WeatherCore: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the WeatherCore signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Weather profiles, radios, storm scanners, exposure notes, and hazard forecasts describe whether the problem is immediate, building, or regional.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch forecast direction, storm profile, exposure, route distance, shelter access, radio or scanner output, and whether weather stacks with local hazards.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A WeatherCore system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "weather",
+    "forecast",
+    "weathercore",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:lightning_rod",
+  "relatedArticles": [
+    "echowiki:guides/weathercore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1173
+}

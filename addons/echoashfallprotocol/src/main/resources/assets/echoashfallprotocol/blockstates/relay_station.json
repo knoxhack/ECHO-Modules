@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "active=false,repaired=false": { "model": "echoashfallprotocol:block/relay_station" },
+    "active=false,repaired=true":  { "model": "echoashfallprotocol:block/relay_station_repaired" },
+    "active=true,repaired=false":  { "model": "echoashfallprotocol:block/relay_station" },
+    "active=true,repaired=true":   { "model": "echoashfallprotocol:block/relay_station_active" }
+  }
+}

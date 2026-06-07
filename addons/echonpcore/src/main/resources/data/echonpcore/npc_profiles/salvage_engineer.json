@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:salvage_engineer",
+  "displayName": "Salvage Engineer",
+  "role": "Toolwright",
+  "faction": "echonpcore:technicians",
+  "visualProfile": "echonpcore:salvage_engineer",
+  "dialogue": "echonpcore:salvage_engineer",
+  "trades": "echonpcore:salvage_engineer_basic",
+  "services": "echonpcore:salvage_engineer_services",
+  "missions": [],
+  "ambientLines": [
+    "Broken tools are just unpaid lessons.",
+    "Bring me iron and I can keep you moving."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Salvage engineers repair held tools and identify useful route debris."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:toolsmith"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:reclaimer_farmer",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "You need food, water, or filter patches?",
+      "options": [
+        { "id": "food", "label": "What can grow out here?", "next": "food" },
+        { "id": "trade", "label": "Show me supplies.", "action": "open_trade" },
+        { "id": "service", "label": "Can you help me recover?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "I'm moving on.", "action": "close" }
+      ]
+    },
+    "food": {
+      "text": "Anything that survives ash, bad water, and hungry scavengers. Not much, but enough.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

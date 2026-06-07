@@ -1,0 +1,69 @@
+{
+  "name": "echoashfallprotocol:global",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/debris_field_small",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:global/debris_field_large",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/survivor_cache",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/radio_relay_small",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/abandoned_camp",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/road_wreck",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:global/road_checkpoint",
+        "processors": "echoashfallprotocol:global_poi_loot"
+      }
+    }
+  ]
+}

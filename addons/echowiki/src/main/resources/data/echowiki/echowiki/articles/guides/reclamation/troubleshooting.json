@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/reclamation/troubleshooting",
+  "title": "Reclamation: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Reclamation failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If crops feel slow, check light, water, soil state, and whether the crop is meant for that stage. If food is still scarce, shrink your route length until the farm catches up.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If crops underperform, reduce plot size and check light, water, soil state, seed type, storage access, and whether your route is consuming food faster than the farm can recover.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Recovery Anchor",
+      "body": "Use this to test the smallest fix before changing the whole route.",
+      "tone": "tip",
+      "item": "minecraft:wheat",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Wheat",
+      "subtitle": "Troubleshooting checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "reclamation",
+    "food",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:wheat",
+  "relatedArticles": [
+    "echowiki:guides/reclamation"
+  ],
+  "relatedItems": [
+    "minecraft:wheat",
+    "minecraft:farmland"
+  ],
+  "sortOrder": 1026
+}

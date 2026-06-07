@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:nexus_guardian",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:restore_directive"
+                             },
+                    "title":  "Restore Protocol",
+                    "description":  "Choose the Restore directive.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "directive":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:restore_directive"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "directive"
+                         ]
+                     ]
+}

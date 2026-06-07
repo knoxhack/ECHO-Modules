@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:plan_autobuilder_batch",
+  "display_name": "Plan Auto-Builder Batch",
+  "category": "construction",
+  "allowed_multiblocks": ["echomultiblockcore:auto_builder_yard"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "CLAMP"],
+  "duration_ticks": 220,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "animation_profile": "echomultiblockcore:builder_plan",
+  "effects": ["echomultiblockcore:refresh_build_assist_plan"],
+  "inputs": [
+    { "item": "echomultiblockcore:construction_planner", "count": 1 },
+    { "item": "echomultiblockcore:auto_builder_core", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:construction_planner", "count": 2 }
+  ],
+  "notes": ["Construction route recipe for large structure planning and build-assist surfaces."]
+}

@@ -1,0 +1,64 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.01,
+  "downfall": 0.05,
+  "effects": {
+    "fog_color": 3932254,
+    "sky_color": 1776411,
+    "water_color": 6043511,
+    "water_fog_color": 6043511,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:mycelium"
+      },
+      "probability": 0.02
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echonexusprotocol:corrupted_ferrite_pockets"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echonexusprotocol:dead_signal_leaf_patches",
+      "echonexusprotocol:lab_pipe_remnants",
+      "echonexusprotocol:static_fluid_pools",
+      "echonexusprotocol:nexus_crystal_clusters"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echonexusprotocol:static_crawler",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echonexusprotocol:nexus_husk",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.8
+}

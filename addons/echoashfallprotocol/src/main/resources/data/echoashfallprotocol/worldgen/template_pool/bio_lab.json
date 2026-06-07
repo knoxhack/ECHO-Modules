@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:bio_lab",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/bio_lab",
+        "processors": "echoashfallprotocol:toxic_swamp_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

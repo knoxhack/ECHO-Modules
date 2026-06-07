@@ -1,0 +1,31 @@
+{
+  "parent": "echoindustrialnexus:root",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:scrap_dynamo"
+    },
+    "title": {
+      "text": "Reclaim Power"
+    },
+    "description": {
+      "text": "Craft a Scrap Dynamo and begin dirty Thermal Flux production."
+    }
+  },
+  "criteria": {
+    "dynamo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:scrap_dynamo"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dynamo"
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:roaming_scavenger_basic",
+  "groups": [
+    {
+      "id": "scavenged",
+      "title": "Scavenged Goods",
+      "offers": [
+        {
+          "id": "emerald_for_filter",
+          "title": "Roadside Filter Patch",
+          "input": [
+            { "item": "minecraft:emerald", "count": 1 }
+          ],
+          "output": { "item": "minecraft:paper", "count": 3 },
+          "stock": 5,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

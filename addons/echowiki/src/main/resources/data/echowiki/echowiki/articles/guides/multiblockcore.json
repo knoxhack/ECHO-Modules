@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/multiblockcore",
+  "title": "MultiblockCore Manual",
+  "category": "Guide Books",
+  "summary": "Read blueprints, complete structures, install upgrades, and keep automation tasks understandable.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "MultiblockCore supports larger structures without making players memorize every block. Blueprints and progress data turn facility construction into a readable checklist.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Place one blueprint, gather its exact block family, and finish the base structure before worrying about upgrades or automation.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Discover a blueprint, place the structure, validate missing blocks, complete the multiblock, then install upgrades that match the job.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Definitions describe shape, progression entries describe unlocks, upgrade definitions alter behavior, and task recipes connect structures to automation goals.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Blockworks helps mark footprints, Logistics stages required blocks, PowerGrid feeds machines, and Index can expose structure or task references.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a structure will not validate, check orientation, block variants, controller position, required air spaces, and whether the blueprint belongs to the loaded addon set.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "multiblock",
+    "blueprint"
+  ],
+  "icon": "minecraft:structure_block",
+  "heroArt": "echowiki:textures/gui/guide_books/multiblockcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/multiblockcore/first_steps",
+    "echowiki:guides/multiblockcore/core_loop",
+    "echowiki:guides/multiblockcore/systems",
+    "echowiki:guides/multiblockcore/progression",
+    "echowiki:guides/multiblockcore/integrations",
+    "echowiki:guides/multiblockcore/troubleshooting"
+  ],
+  "sortOrder": 1090
+}

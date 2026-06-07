@@ -1,0 +1,111 @@
+{
+  "id": "echoashfallprotocol:route_power_cable",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 10,
+  "title": "Route Power Cable",
+  "briefing": "[ECHO-7] Power routing required. Place Power Cable near the generator and battery so machines can share the network.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for a placed Power Cable before the reinforced cable upgrade route opens.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:power_cable",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:charge_basic_battery"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "route_power_cable",
+    "nativeGameplayHook": "ashfall.first_route.route_power_cable",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.reinforced_power_cable.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "10",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "19",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:route_power_cable:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:route_power_cable/place_power_cable",
+      "type": "place_block",
+      "label": "Route Power Cable",
+      "detail": "Place one Power Cable near the generator and battery so workshop power can extend beyond direct adjacency.",
+      "icon": "echoashfallprotocol:power_cable",
+      "target": "echoashfallprotocol:power_cable",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:power_cable",
+        "required_blocks": "echoashfallprotocol:power_cable=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "minecraft:copper_ingot",
+      "count": 6,
+      "label": "Copper Ingots"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 1,
+      "label": "Redstone"
+    },
+    {
+      "block": "echoashfallprotocol:power_cable",
+      "count": 1,
+      "label": "Placed Power Cable"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:route_power_cable/reward_circuit_board",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board",
+      "detail": "Control board reserve for reinforced cable progression."
+    },
+    {
+      "id": "echoashfallprotocol:route_power_cable/reward_redstone",
+      "item": "minecraft:redstone",
+      "count": 4,
+      "label": "Redstone",
+      "detail": "Signal material for stronger cable routes."
+    }
+  ],
+  "completionText": "[ECHO-7] Cable route confirmed. Power can now extend beyond direct machine adjacency."
+}

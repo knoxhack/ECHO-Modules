@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:salvage_engineer",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Tools fail when people pretend maintenance is optional.",
+      "options": [
+        { "id": "salvage", "label": "What should I salvage?", "next": "salvage" },
+        { "id": "trade", "label": "Show me tool parts.", "action": "open_trade" },
+        { "id": "service", "label": "Repair my held item.", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "I'll check back.", "action": "close" }
+      ]
+    },
+    "salvage": {
+      "text": "Iron first. Copper if the grid matters. Leather if you like keeping fingers.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

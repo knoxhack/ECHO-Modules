@@ -1,0 +1,33 @@
+{
+  "id": "echoashfallprotocol:ashfall_toxic_front",
+  "type": "TOXIC_RAIN",
+  "displayName": "Ashfall Toxic Front",
+  "defaultSeverity": "MODERATE",
+  "scope": "ROUTE_BASED",
+  "durationTicks": 12000,
+  "warningTicks": 2400,
+  "weight": 40,
+  "cooldownTicks": 24000,
+  "description": "A readable first WeatherCore warning for Ashfall official profile.",
+  "effects": {
+    "visibilityMultiplier": 0.38,
+    "scannerRangeMultiplier": 0.55,
+    "filterDrainMultiplier": 1.35,
+    "toxicExposureMultiplier": 1.5,
+    "holomapReliabilityMultiplier": 0.65,
+    "mobAggressionMultiplier": 1.2,
+    "routeRiskModifier": 1.45
+  },
+  "recommendedGear": [
+    "echoweathercore:ash_filter_wrap",
+    "echoweathercore:toxic_rain_collector"
+  ],
+  "terminalWarning": "Toxic front approaching. Return to the pod route or use a marked shelter.",
+  "echoLines": [
+    "Toxic particulate rising across the swamp route.",
+    "Shelter marker recommended before the front peaks."
+  ],
+  "lensScanText": "Airborne particulate density rising; HoloMap marker recommended.",
+  "soundCoreAmbienceId": "echoashfallprotocol:event.ashfall_toxic_front",
+  "particleVisualProfileId": "echorendercore:hazard/ashfall_toxic_front"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/spellcore",
+  "title": "SpellCore Focus Manual",
+  "category": "Guide Books",
+  "summary": "Cast starter spells with focus discipline, core requirements, aether costs, and cooldown awareness.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "SpellCore owns active spellcasting, focuses, loadouts, cooldowns, and aether costs. The current slice makes Signal Focus casting playable with starter spells.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Craft a Signal Focus, carry an awakened spell core when required, cycle spells while sneaking, and cast only when the cooldown and aether cost make sense.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Choose a starter spell, confirm cost and cooldown, cast server-side, read the result, then wait or reposition before casting again.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Signal Focus, awakened spell cores, selected spell state, aether costs, cooldowns, starter spell definitions, and HUD mirrors keep casting readable.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "RitualCore can awaken spell cores, Arcane Index explains spell records, Grimoire adds warning context, and MissionCore can record casting objectives.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If casting fails, check selected spell, awakened core requirements, aether availability, cooldown, server authority, and optional RitualCore status.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "spellcore",
+    "arcana"
+  ],
+  "icon": "minecraft:blaze_rod",
+  "heroArt": "echowiki:textures/gui/guide_books/spellcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/spellcore/first_steps",
+    "echowiki:guides/spellcore/core_loop",
+    "echowiki:guides/spellcore/systems",
+    "echowiki:guides/spellcore/progression",
+    "echowiki:guides/spellcore/integrations",
+    "echowiki:guides/spellcore/troubleshooting"
+  ],
+  "sortOrder": 1290
+}

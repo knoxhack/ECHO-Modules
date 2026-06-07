@@ -1,0 +1,127 @@
+<page id="creator-dashboard" title="CreatorCore" styles="creator_dashboard">
+  <screen-shell>
+    <header title="{creatorcore.status.title}" subtitle="{creatorcore.status.subtitle}"/>
+
+    <row gap="8">
+      <status-chip status="ready" value="Creator Mode: {creatorcore.status.creatorMode}"/>
+      <status-chip status="warning" value="Writes: {creatorcore.status.writeMode}"/>
+      <status-chip status="warning" value="Exports: {creatorcore.status.exportMode}"/>
+      <status-chip status="warning" value="Codex: {creatorcore.status.codexBridge}"/>
+      <status-chip status="ready" value="Adapters: {creatorcore.status.adapters}"/>
+      <status-chip status="warning" value="Diagnostics: {creatorcore.status.diagnostics}"/>
+    </row>
+
+    <grid columns="230px 1fr 310px" gap="12">
+      <panel title="Adapters">
+        <list bind="creatorcore.adapters" item="adapter">
+          <list-row>
+            <column>
+              <title value="{adapter.name}"/>
+              <text value="{adapter.status}"/>
+              <text value="{adapter.capabilities}"/>
+            </column>
+            <status-chip value="{adapter.available}"/>
+          </list-row>
+          <empty-state title="No adapters" body="CreatorCore has no adapters registered."/>
+        </list>
+      </panel>
+
+      <column gap="12">
+        <section title="Definitions">
+          <list bind="creatorcore.definitions" item="definition">
+            <list-row>
+              <column>
+                <title value="{definition.title}"/>
+                <text value="{definition.id}"/>
+                <text value="{definition.type} / {definition.adapter} / {definition.pack}"/>
+              </column>
+              <status-chip value="{definition.status}"/>
+            </list-row>
+            <empty-state title="No definitions" body="Install or reload ScriptCore, MissionCore, Lens, or HoloMap to populate this view."/>
+          </list>
+        </section>
+
+        <section title="Mission Studio">
+          <text>Draft-only mission form foundation. Live MissionCore definitions stay read-only.</text>
+          <row gap="8">
+            <button action="creatorcore.create_mission_draft" variant="primary">Create Draft</button>
+            <button action="creatorcore.refresh" variant="ghost">Refresh</button>
+            <button action="creatorcore.open_vanilla" variant="ghost">Vanilla View</button>
+          </row>
+          <list bind="creatorcore.missionFields" item="field">
+            <list-row>
+              <column>
+                <title value="{field.label}"/>
+                <text value="{field.name} / {field.kind} / required={field.required}"/>
+                <text value="{field.placeholder}"/>
+              </column>
+            </list-row>
+            <empty-state title="No form schema" body="Mission Studio form fields are not registered."/>
+          </list>
+        </section>
+      </column>
+
+      <column gap="12">
+        <panel title="Definition Detail">
+          <title value="{creatorcore.selectedDetail.title|No definition selected}"/>
+          <text value="{creatorcore.selectedDetail.id|}"/>
+          <text value="{creatorcore.selectedDetail.description|Definition detail appears after adapters expose definitions.}"/>
+          <text value="Adapter: {creatorcore.selectedDetail.adapter|} / Pack: {creatorcore.selectedDetail.pack|}"/>
+          <text value="Raw fields: {creatorcore.selectedDetail.rawFields|0}"/>
+        </panel>
+
+        <panel title="Validation">
+          <stat-card label="Errors" value="{creatorcore.status.errors}" status="danger"/>
+          <stat-card label="Warnings" value="{creatorcore.status.warnings}" status="warning"/>
+          <text value="{creatorcore.status.writeLockReason}"/>
+          <text value="{creatorcore.status.exportLockReason}"/>
+          <list bind="creatorcore.diagnostics" item="diagnostic">
+            <list-row>
+              <column>
+                <title value="{diagnostic.severity}: {diagnostic.code}"/>
+                <text value="{diagnostic.message}"/>
+                <text value="{diagnostic.suggestion}"/>
+              </column>
+            </list-row>
+            <empty-state title="No diagnostics" body="Validation center has no current messages."/>
+          </list>
+        </panel>
+
+        <panel title="Previews">
+          <list bind="creatorcore.previews" item="preview">
+            <list-row>
+              <column>
+                <title value="{preview.title}"/>
+                <text value="{preview.type} / {preview.scope}"/>
+              </column>
+            </list-row>
+            <empty-state title="No previews" body="Runtime previews appear when MissionCore, Lens, or HoloMap expose data."/>
+          </list>
+        </panel>
+
+        <panel title="Codex Studio">
+          <text value="Bridge: {creatorcore.codex.bridgeMode} / Repo edits: {creatorcore.codex.repoEditMode}"/>
+          <text value="Status: {creatorcore.codex.ok} / Codex: {creatorcore.codex.codexAvailable} / Jobs: {creatorcore.codex.jobs}"/>
+          <text value="Auth: {creatorcore.codex.authRequired} / Sidecar edits: {creatorcore.codex.sidecarRepoEdits} / Template: {creatorcore.codex.commandTemplateConfigured}"/>
+          <text value="{creatorcore.codex.message|}"/>
+          <text value="{creatorcore.codex.codexError|}"/>
+          <row gap="8">
+            <button action="creatorcore.codex.refresh" variant="ghost">Refresh</button>
+          </row>
+          <title value="Latest {creatorcore.codex.job.id|No job}"/>
+          <text value="{creatorcore.codex.job.profile|} / {creatorcore.codex.job.state|} / validation={creatorcore.codex.job.validationStatus|}"/>
+          <text value="{creatorcore.codex.job.error|}"/>
+          <list bind="creatorcore.codex.job.changedFiles" item="file">
+            <list-row><text value="{file}"/></list-row>
+            <empty-state title="No changed files" body="Changed files appear after a Codex job edits the workspace."/>
+          </list>
+        </panel>
+
+        <panel title="Last Export">
+          <text value="{creatorcore.lastExport.message|No export has run yet.}"/>
+          <text value="{creatorcore.lastExport.targetPath|}"/>
+        </panel>
+      </column>
+    </grid>
+  </screen-shell>
+</page>

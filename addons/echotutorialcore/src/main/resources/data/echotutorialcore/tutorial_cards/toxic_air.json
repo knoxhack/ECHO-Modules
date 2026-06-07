@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:toxic_air",
+  "category": "HAZARDS",
+  "title": "Toxic Air",
+  "summary": "Toxic air damages health over time without protection.",
+  "body": [
+    "Toxic air is common in swamps, ruins, and industrial zones.",
+    "Gas masks and Atmospheric Scrubbers reduce exposure.",
+    "Bring filter cartridges before entering toxic regions."
+  ],
+  "steps": [
+    "Equip a gas mask or deploy a scrubber.",
+    "Ensure filters are installed and charged.",
+    "Monitor health while in the zone."
+  ],
+  "commonMistakes": [
+    "Entering without a filter.",
+    "Letting the scrubber run out of power."
+  ],
+  "related": [
+    "echotutorialcore:machine_troubleshooting",
+    "echotutorialcore:power_basics"
+  ],
+  "unlockTriggers": [
+    "entered_toxic_zone"
+  ],
+  "defaultUnlocked": false,
+  "priority": 85
+}

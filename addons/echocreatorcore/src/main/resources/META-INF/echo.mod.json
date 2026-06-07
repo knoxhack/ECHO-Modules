@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocreatorcore",
+  "name": "ECHO: CreatorCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "developer_tool",
+  "entrypoint": "com.knoxhack.echo.creatorcore.EchoCreatorCore",
+  "publisher": "KnoxHack",
+  "channel": "experimental",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echonpcore",
+    "echoscreencore",
+    "echoscriptcore",
+    "echosoundcore",
+    "echoterminal",
+    "echotextureforge",
+    "echothemecore",
+    "echotutorialcore",
+    "echoweathercore",
+    "echowiki",
+    "echoworldcore"
+  ],
+  "provides": [
+    "creator.adapters",
+    "creator.codex_studio",
+    "creator.dashboard",
+    "creator.drafts",
+    "creator.validation"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "dev_tools",
+    "creator"
+  ],
+  "permissions": [
+    "creator.dashboard",
+    "creator.drafts",
+    "creator.exports",
+    "creator.codex_bridge"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "data",
+        "packs",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.creatorcore.EchoCreatorCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "In-game creator/admin authoring suite. Draft writes, exports, Codex bridge use, and repo edits are locked behind config and permission gates."
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "ui_agent",
+      "docs_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

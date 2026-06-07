@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/powergrid/systems",
+  "title": "PowerGrid: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the PowerGrid signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Battery banks buffer spikes, substations organize lines, breakers protect failures, meters explain the current state, and diagnostic tools identify why a consumer is offline.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch fuel, generation rate, stored energy, cable tier, breaker state, consumer demand, and whether one overloaded line is hiding behind several symptoms.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A PowerGrid system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "System Anchor",
+      "body": "Use this reference to turn the system note into a concrete field check.",
+      "tone": "tip",
+      "item": "minecraft:redstone",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Redstone",
+      "subtitle": "Systems checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone",
+  "relatedArticles": [
+    "echowiki:guides/powergrid"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1123
+}

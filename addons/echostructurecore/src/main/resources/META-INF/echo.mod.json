@@ -1,0 +1,87 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echostructurecore",
+  "name": "ECHO: StructureCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "structure_core",
+  "entrypoint": "com.knoxhack.echo.structurecore.EchoStructureCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echosocialcore",
+    "echovalidationcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echolens",
+    "echoworldcore"
+  ],
+  "provides": [
+    "structures.discovery_references",
+    "structures.poi_metadata",
+    "structures.profiles"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "social.factions",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data",
+    "world.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "maps",
+        "structures",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Neutral structure, POI, danger rating, discovery state, and structure binding contract layer.",
+    "nativeEntrypoint": "com.knoxhack.echo.structurecore.EchoStructureCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/structurecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

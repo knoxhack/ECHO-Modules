@@ -1,0 +1,5 @@
+<grid class="index-recipe-flow" columns="1fr auto 1fr" gap="10" help="Recipe flow shows what goes in, what station handles it, and what comes out.">
+  <panel class="index-recipe-flow-panel" title="Inputs"><slot-outlet name="inputs"/></panel>
+  <panel class="index-recipe-flow-arrow"><title>&gt;</title></panel>
+  <panel class="index-recipe-flow-panel" title="Outputs"><slot-outlet name="outputs"/></panel>
+</grid>

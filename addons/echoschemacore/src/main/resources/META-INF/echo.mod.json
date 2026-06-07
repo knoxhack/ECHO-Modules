@@ -1,0 +1,66 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoschemacore",
+  "name": "ECHO: SchemaCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "platform",
+  "entrypoint": "com.knoxhack.echo.schemacore.EchoSchemaCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echocore",
+    "echoplatformcore"
+  ],
+  "optional": [],
+  "provides": [
+    "schema.registry"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "schema.registry"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.schemacore.EchoSchemaCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "platform_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

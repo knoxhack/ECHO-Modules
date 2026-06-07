@@ -1,0 +1,101 @@
+{
+  "manifest": "Agriculture Reclamation 1.3.1 release-critical texture refresh prompts",
+  "model": "GPT Image 2",
+  "style": "Minecraft-ready pixel art, readable at 16x16 and 32x32, ECHO Cyberglass accents, no text baked into textures",
+  "targets": [
+    {
+      "id": "seed_capsule",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/recovered_seed_capsule.png"
+      ],
+      "resolution": "32x32 transparent PNG",
+      "alpha": "transparent background, item silhouette only",
+      "prompt": "A recovered seed capsule for a ruined-world ecology mod, compact glass-and-brass vial with a green preserved seed core, small ECHO cyan diagnostic glints, Minecraft pixel-art item icon, transparent background, high contrast edges, no text."
+    },
+    {
+      "id": "contaminated_soil",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/contaminated_soil.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/contaminated_soil.png"
+      ],
+      "resolution": "16x16 tileable PNG",
+      "alpha": "opaque block texture",
+      "prompt": "Tileable Minecraft soil block texture, dark earth polluted with muted purple-green contamination veins and small ash flecks, organic but readable, not neon, seamless 16x16, opaque."
+    },
+    {
+      "id": "cleansed_soils",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/purified_soil.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/stabilized_soil.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/restored_soil.png"
+      ],
+      "resolution": "16x16 tileable PNG variants",
+      "alpha": "opaque block textures",
+      "prompt": "Three coordinated tileable Minecraft soil textures showing ecological recovery stages: purified brown soil with clean mineral specks, stabilized darker loam with subtle root threads, restored living soil with restrained green moss flecks; coherent palette, seamless 16x16, opaque."
+    },
+    {
+      "id": "hydroponic_tray",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/hydroponic_tray.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/hydroponic_tray.png"
+      ],
+      "resolution": "32x32 source, downsample-safe",
+      "alpha": "opaque block, transparent item if exported separately",
+      "prompt": "Minecraft mod hydroponic tray texture, shallow metal basin with blue water channel, nutrient gel reservoirs, tiny planted slots, ECHO cyan indicator lights, rugged survival tech rather than sterile lab, crisp pixel-art icon/block source."
+    },
+    {
+      "id": "greenhouse_controller",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/greenhouse_controller.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/greenhouse_controller.png"
+      ],
+      "resolution": "32x32 source, downsample-safe",
+      "alpha": "opaque block, transparent item if exported separately",
+      "prompt": "Minecraft greenhouse controller block face, rugged field terminal with glass safety display, small leaf waveform, cyan and green Cyberglass lights, metal frame with weather seals, readable front-panel pixel art, no letters."
+    },
+    {
+      "id": "pollinator_device",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/pollinator_drone_dock.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/entity/rendercore_echo_mobs/pollinator_drone.png"
+      ],
+      "resolution": "32x32 block/item and UV-atlas-safe drone source",
+      "alpha": "transparent item/entity where needed",
+      "prompt": "ECHO pollinator support device, compact charging dock with honey-gold pollen cells and cyan status strips plus matching small utility drone texture concept, agricultural tech with soft green highlights, Minecraft pixel-art readability, no text."
+    },
+    {
+      "id": "recovered_crops",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/*_crop_age_*.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/ash_wheat.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/clean_corn.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/filter_reed.png"
+      ],
+      "resolution": "16x16 crop stages and item icons",
+      "alpha": "transparent plant silhouettes",
+      "prompt": "Recovered post-collapse crop set for Minecraft: ash wheat, hardroot, glow beans, radleaf, mutant berries, cryo moss, clean corn, medicinal aloe, filter reed, nexus orchid, and signal fungus, each with distinct silhouette and growth stages, restrained sci-fi ecology palette, transparent background."
+    },
+    {
+      "id": "gene_stabilizer",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/block/gene_stabilizer.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/item/gene_stabilizer.png"
+      ],
+      "resolution": "32x32 source, downsample-safe",
+      "alpha": "opaque block, transparent item if exported separately",
+      "prompt": "Minecraft gene stabilizer machine block, compact bio-tech apparatus with sealed sample chamber, green helix-like indicator motif made from pixels not text, magenta contamination warning accent, dark metal and glass, ECHO cyan UI lights."
+    },
+    {
+      "id": "ui_icons",
+      "targetPaths": [
+        "src/main/resources/assets/echoagriculturereclamation/textures/gui/icons/seed.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/gui/icons/nutrient.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/gui/icons/restoration.png",
+        "src/main/resources/assets/echoagriculturereclamation/textures/gui/icons/greenhouse.png"
+      ],
+      "resolution": "16x16 transparent PNG icons",
+      "alpha": "transparent background, single icon silhouette",
+      "prompt": "Four Cyberglass UI icons for a Minecraft ecology restoration addon: seed profile, nutrient droplet, restoration leaf-ring, greenhouse shield. Simple 16x16 pixel icons, cyan/green/amber palette, transparent background, no letters."
+    }
+  ]
+}

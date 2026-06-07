@@ -1,0 +1,36 @@
+<page id="terminal-faction-atlas" title="Factions" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_archive_intel,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Factions / shared faction atlas"/>
+    <param name="inspectorTitle" value="Faction Detail"/>
+    <slot name="body">
+      <hero-card class="terminal-page-hero" status="ready">
+        <copy-block class="terminal-row-copy" title="Faction Atlas" subtitle="{terminal.factions.count} faction signal(s) are online. Standing, contracts, and contact state stay owned by their source services."/>
+        <row class="terminal-page-toolbar" gap="6">
+          <status-chip status="ready" value="{terminal.factions.count} factions"/>
+          <status-chip status="info" value="{terminal.factions.namespace|all}"/>
+        </row>
+      </hero-card>
+      <scroll class="intel-list" scroll-state="true" state-key="terminal.factions.list">
+        <list bind="terminal.factions.visible" item="faction" selected="{terminal.factions.selectedId}">
+          <list-row class="terminal-tall-row" action="terminal.factions.select_faction" action-value="{faction.id}" value="{faction.id}"
+                    tooltip="Inspect faction signal {faction.title}.">
+            <copy-block class="terminal-row-copy" title="{faction.title}" subtitle="{faction.route} / {faction.summary}"/>
+            <status-chip status="{faction.statusKey}" value="{faction.standing}"/>
+          </list-row>
+          <empty-state title="No faction signals" body="No faction signals are online."/>
+        </list>
+      </scroll>
+    </slot>
+    <slot name="inspector">
+      <copy-block class="terminal-row-copy" title="{terminal.factions.selected.title|No faction selected}" subtitle="{terminal.factions.selected.summary|Select a faction signal to inspect standing and contracts.}"/>
+      <stat-card label="Reputation" value="{terminal.factions.selected.reputation|0}" status="{terminal.factions.selected.statusKey|info}"/>
+      <section title="Namespaces">
+        <list bind="terminal.factions.namespaces" item="namespace" selected="{terminal.factions.namespace}">
+          <list-row class="terminal-compact-row" action="terminal.factions.filter_namespace" action-value="{namespace.id}" value="{namespace.id}">
+            <copy-block class="terminal-row-copy" title="{namespace.label}"/>
+          </list-row>
+        </list>
+      </section>
+    </slot>
+  </component>
+</page>

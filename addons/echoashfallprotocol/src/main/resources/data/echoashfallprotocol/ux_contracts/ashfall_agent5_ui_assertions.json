@@ -1,0 +1,315 @@
+{
+  "id": "echoashfallprotocol:ashfall_agent5_ui_assertions",
+  "schemaVersion": 1,
+  "contract": "echoashfallprotocol:ashfall_ux_contract_freeze",
+  "featureMatrix": "echoashfallprotocol:ashfall_feature_surface_matrix",
+  "phases": [
+    {
+      "id": "phase_1_validator_lock",
+      "title": "Validator Lock",
+      "exitArtifact": "reports/echo/agent5/ux-validator-pass.md",
+      "assertions": [
+        {
+          "id": "ux_validator_lock_green",
+          "label": "Focused UX validator remains green",
+          "description": "Agent 5 handoff must retain a green focused UX/assets/data validator with no warnings.",
+          "evidence": {
+            "reportFiles": [
+              "reports/echo/agent5/ux-validator-pass.md"
+            ],
+            "resourceFiles": [
+              "tools/validate_ashfall_ux_assets.py",
+              "docs/ashfall/UX_CONTRACT_FREEZE.md"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "phase_2_first_spawn",
+      "title": "First-Spawn UX",
+      "exitArtifact": "reports/echo/agent5/first-spawn-ux-assertions.md",
+      "assertions": [
+        {
+          "id": "first_spawn_welcome_and_starter_note",
+          "label": "Welcome screen and starter note",
+          "description": "Fresh-spawn UI assertions can verify welcome copy, starter kit feedback, emergency buffer copy, and the starter note name.",
+          "evidence": {
+            "missions": [
+              "echoashfallprotocol:craft_scrap_knife",
+              "echoashfallprotocol:drink_clean_water",
+              "echoashfallprotocol:secure_sleep_shelter",
+              "echoashfallprotocol:ashfall_first_month_routes"
+            ],
+            "terminalPages": [
+              "echoashfallprotocol:ashfall_first_month_routes"
+            ],
+            "indexEntries": [
+              "echoashfallprotocol:starter_power_water",
+              "echoashfallprotocol:first_month_routes"
+            ],
+            "wikiArticles": [
+              "echowiki:guides/ashfall/first_steps"
+            ],
+            "lensProfiles": [
+              "echoashfallprotocol:ashfall_first_month_scans"
+            ],
+            "holomapLayers": [
+              "echoashfallprotocol:first_month_field_intel"
+            ],
+            "langKeys": [
+              "screen.EchoAshfallProtocol.welcome.title",
+              "screen.EchoAshfallProtocol.welcome.first10.actions",
+              "screen.EchoAshfallProtocol.welcome.card.mask.body",
+              "screen.EchoAshfallProtocol.welcome.card.water.body",
+              "screen.EchoAshfallProtocol.welcome.card.shelter.body",
+              "screen.EchoAshfallProtocol.welcome.callout",
+              "message.EchoAshfallProtocol.starting.kit",
+              "message.EchoAshfallProtocol.starting.buffer",
+              "item.EchoAshfallProtocol.echo_starter_note.name"
+            ],
+            "items": [
+              "echoashfallprotocol:clean_water_bottle",
+              "echoashfallprotocol:scrap_knife"
+            ],
+            "reportFiles": [
+              "reports/echo/agent5/first-spawn-ux-assertions.md"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "phase_3_survival_machine",
+      "title": "Survival and Machine UX",
+      "exitArtifact": "reports/echo/agent5/machine-reward-ux-assertions.md",
+      "assertions": [
+        {
+          "id": "machine_power_status_surfaces",
+          "label": "Machine power and status surfaces",
+          "description": "Machine UI assertions can verify Energy Meter, machine status, Load Distributor, Factory Controller, and machine help surfaces.",
+          "evidence": {
+            "missions": [
+              "echoashfallprotocol:install_energy_meter",
+              "echoashfallprotocol:build_factory_controller",
+              "echoashfallprotocol:assemble_wasteland_field_kit",
+              "echoashfallprotocol:secure_emergency_water_loop"
+            ],
+            "terminalPages": [
+              "echoashfallprotocol:ashfall_machine_power_logistics"
+            ],
+            "indexEntries": [
+              "echoashfallprotocol:machine_power_logistics",
+              "echoashfallprotocol:starter_power_water"
+            ],
+            "wikiArticles": [
+              "echowiki:guides/ashfall/machine_power_logistics",
+              "echowiki:guides/ashfall/first_steps"
+            ],
+            "lensProfiles": [
+              "echoashfallprotocol:ashfall_major_route_scans"
+            ],
+            "holomapLayers": [
+              "echoashfallprotocol:first_major_route"
+            ],
+            "langKeys": [
+              "message.EchoAshfallProtocol.energy_meter.header",
+              "message.EchoAshfallProtocol.energy_meter.energy",
+              "message.EchoAshfallProtocol.energy_meter.transfer",
+              "message.EchoAshfallProtocol.energy_meter.demand",
+              "message.EchoAshfallProtocol.energy_meter.issue",
+              "screen.EchoAshfallProtocol.machine_status.power_link",
+              "screen.EchoAshfallProtocol.machine_status.fe_buffer",
+              "screen.EchoAshfallProtocol.machine_status.network",
+              "screen.EchoAshfallProtocol.machine_status.demand",
+              "screen.EchoAshfallProtocol.machine_status.stall_reason",
+              "message.EchoAshfallProtocol.load_distributor.mode",
+              "tooltip.EchoAshfallProtocol.factory_controller"
+            ],
+            "blocks": [
+              "echoashfallprotocol:energy_meter",
+              "echoashfallprotocol:factory_controller",
+              "echoashfallprotocol:load_distributor",
+              "echoashfallprotocol:water_purifier",
+              "echoashfallprotocol:field_med_bay"
+            ],
+            "reportFiles": [
+              "reports/echo/agent5/machine-reward-ux-assertions.md"
+            ],
+            "resourceFiles": [
+              "addons/echoterminal/src/main/resources/assets/echoterminal/eui/pages/terminal_reward_inbox.eui.xml",
+              "addons/echoterminal/src/main/java/com/knoxhack/echoterminal/client/screencore/TerminalScreenCoreDataProviders.java"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "phase_4_route_ux",
+      "title": "Route UX",
+      "exitArtifact": "reports/echo/agent5/route-ux-assertions.md",
+      "assertions": [
+        {
+          "id": "scanner_faction_drone_perk_route_surfaces",
+          "label": "Scanner, faction, drone, and perk route surfaces",
+          "description": "Route assertions can verify scanner UI copy, Lens/HoloMap links, faction pages, drone state missions, and perk route copy.",
+          "evidence": {
+            "missions": [
+              "echoashfallprotocol:first_faction_contact",
+              "echoashfallprotocol:complete_first_faction_task",
+              "echoashfallprotocol:repair_echo_drone",
+              "echoashfallprotocol:recover_drone_intel",
+              "echoashfallprotocol:first_perk"
+            ],
+            "terminalPages": [
+              "echoashfallprotocol:ashfall_scanner_faction_ops"
+            ],
+            "indexEntries": [
+              "echoashfallprotocol:scanner_faction_ops",
+              "echoashfallprotocol:faction_field_contacts",
+              "echoashfallprotocol:field_scanning"
+            ],
+            "wikiArticles": [
+              "echowiki:guides/ashfall/scanner_faction_ops"
+            ],
+            "lensProfiles": [
+              "echoashfallprotocol:ashfall_first_month_scans"
+            ],
+            "holomapLayers": [
+              "echoashfallprotocol:first_month_field_intel"
+            ],
+            "langKeys": [
+              "message.EchoAshfallProtocol.scanner.site_archived",
+              "message.EchoAshfallProtocol.scanner.no_signal",
+              "message.EchoAshfallProtocol.scanner.deep_scan_recorded",
+              "message.EchoAshfallProtocol.scanner.already_logged",
+              "tooltip.EchoAshfallProtocol.portable_signal_scanner.desc",
+              "tooltip.EchoAshfallProtocol.portable_signal_scanner.use",
+              "tooltip.EchoAshfallProtocol.relay_scanner_lens.desc"
+            ],
+            "items": [
+              "echoashfallprotocol:portable_signal_scanner",
+              "echoashfallprotocol:relay_scanner_lens",
+              "echoashfallprotocol:scout_drone_item"
+            ],
+            "reportFiles": [
+              "reports/echo/agent5/route-ux-assertions.md"
+            ]
+          }
+        },
+        {
+          "id": "midgame_hazard_med_bay_lab_vault_surfaces",
+          "label": "Hazard, mutation, med bay, lab, and vault surfaces",
+          "description": "Midgame route assertions can verify hazard readouts, mutation status, Field Med Bay recovery, lab pages, and vault markers.",
+          "evidence": {
+            "missions": [
+              "echoashfallprotocol:enter_bio_lab",
+              "echoashfallprotocol:scan_mutation_status",
+              "echoashfallprotocol:use_field_med_bay",
+              "echoashfallprotocol:clear_military_vault",
+              "echoashfallprotocol:recover_data_log"
+            ],
+            "terminalPages": [
+              "echoashfallprotocol:ashfall_midgame_hazard_lab_vault"
+            ],
+            "indexEntries": [
+              "echoashfallprotocol:midgame_hazard_lab_vault"
+            ],
+            "wikiArticles": [
+              "echowiki:guides/ashfall/midgame_hazard_lab_vault"
+            ],
+            "lensProfiles": [
+              "echoashfallprotocol:ashfall_midgame_scans"
+            ],
+            "holomapLayers": [
+              "echoashfallprotocol:ashfall_midgame_hazards"
+            ],
+            "langKeys": [
+              "tooltip.EchoAshfallProtocol.gas_mask.desc",
+              "tooltip.EchoAshfallProtocol.rad_away.desc",
+              "jei.EchoAshfallProtocol.midgame.field_med_bay",
+              "jei.EchoAshfallProtocol.midgame.scrubber",
+              "jei.EchoAshfallProtocol.midgame.cleanser",
+              "message.EchoAshfallProtocol.hazard.scrubber_safe"
+            ],
+            "blocks": [
+              "echoashfallprotocol:field_med_bay",
+              "echoashfallprotocol:atmospheric_scrubber",
+              "echoashfallprotocol:radiation_cleanser",
+              "echoashfallprotocol:research_lab"
+            ],
+            "reportFiles": [
+              "reports/echo/agent5/route-ux-assertions.md"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "phase_5_late_game_polish",
+      "title": "Late Game Polish",
+      "exitArtifact": "reports/echo/agent5/ux-assets-polish-evidence.md",
+      "assertions": [
+        {
+          "id": "late_game_nexus_prime_relay_endings",
+          "label": "Late-game Nexus, Prime relay, and ending surfaces",
+          "description": "Late-game assertions can verify boss intel, Nexus UI state, Prime relay pages, ending branch copy, Codex/Index links, and HoloMap state.",
+          "evidence": {
+            "missions": [
+              "echoashfallprotocol:scan_prime_relays",
+              "echoashfallprotocol:resolve_prime_relays",
+              "echoashfallprotocol:stabilize_nexus_grid",
+              "echoashfallprotocol:survive_core_countermeasure",
+              "echoashfallprotocol:reach_decision",
+              "echoashfallprotocol:neutralize_nexus_scar_avatar"
+            ],
+            "terminalPages": [
+              "echoashfallprotocol:ashfall_nexus_prime_relays"
+            ],
+            "indexEntries": [
+              "echoashfallprotocol:nexus_prime_relays"
+            ],
+            "wikiArticles": [
+              "echowiki:guides/ashfall/nexus_prime_relays"
+            ],
+            "lensProfiles": [
+              "echoashfallprotocol:ashfall_late_game_scans"
+            ],
+            "holomapLayers": [
+              "echoashfallprotocol:ashfall_late_game_state"
+            ],
+            "langKeys": [
+              "message.EchoAshfallProtocol.boss.spawned",
+              "message.EchoAshfallProtocol.nexus.restored",
+              "message.EchoAshfallProtocol.nexus.destroyed",
+              "message.EchoAshfallProtocol.nexus.controlled",
+              "message.echoashfallprotocol.prefall_archives.enter_restore",
+              "message.echoashfallprotocol.prefall_archives.enter_destroy",
+              "message.echoashfallprotocol.prefall_archives.enter_control",
+              "lore.EchoAshfallProtocol.choice_matters"
+            ],
+            "items": [
+              "echoashfallprotocol:nexus_crystal",
+              "echoashfallprotocol:relay_scanner_lens",
+              "echoashfallprotocol:nexus_capacitor"
+            ],
+            "blocks": [
+              "echoashfallprotocol:nexus_core",
+              "echoashfallprotocol:nexus_capacitor",
+              "echoashfallprotocol:relay_station"
+            ],
+            "reportFiles": [
+              "reports/echo/agent5/ux-assets-polish-evidence.md"
+            ],
+            "resourceFiles": [
+              "addons/echoterminal/src/main/resources/assets/echoterminal/textures/gui/mission_heroes/echoashfallprotocol/neutralize_nexus_scar_avatar.png",
+              "addons/echoterminal/src/main/resources/assets/echoterminal/textures/gui/mission_icons/echoashfallprotocol/neutralize_nexus_scar_avatar.png",
+              "addons/echoterminal/src/main/resources/assets/echoterminal/textures/gui/mission_heroes/echoashfallprotocol/reach_decision.png",
+              "addons/echoterminal/src/main/resources/assets/echoterminal/textures/gui/mission_icons/echoashfallprotocol/reach_decision.png"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

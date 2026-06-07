@@ -1,0 +1,80 @@
+<screen-shell class="wiki-shell wiki-app">
+  <row class="wiki-topbar" gap="10">
+    <row class="wiki-brand" gap="8">
+      <status-chip class="wiki-brand-mark" status="active" value="ECHO"/>
+      <column class="wiki-brand-copy">
+        <title value="{param.appTitle|ECHO Survival Codex}"/>
+        <text value="{param.appSubtitle|Field knowledge, discoveries, routes, hazards, and systems.}"/>
+      </column>
+    </row>
+    <status-chip class="wiki-mode-chip" status="ready" value="{wiki.dashboard.mode}"/>
+    <row class="wiki-top-stats" gap="7">
+      <stat-card label="Articles" value="{wiki.dashboard.visibleArticleCount}"/>
+      <stat-card label="Manuals" value="{wiki.dashboard.visibleGuideBookCount}"/>
+      <stat-card label="Regions" value="{wiki.dashboard.regionCount}"/>
+    </row>
+  </row>
+
+  <grid class="wiki-app-grid" columns="{param.columns|182px 1fr 268px}" gap="9" stack-below="840" compact-below="980">
+    <column class="wiki-rail" gap="8">
+      <scroll class="wiki-nav-scroll" scroll-state="true" state-key="wiki.nav">
+        <list class="wiki-nav-list" bind="wiki.nav.sections" item="nav">
+          <list-row class="wiki-nav-row" action="wiki.open_page" action-page="{nav.page}" value="{nav.page}" selected="{nav.selected}">
+            <status-chip class="wiki-nav-dot" status="{nav.selectedTone|info}" value=">"/>
+            <column class="wiki-nav-copy">
+              <title value="{nav.title}"/>
+              <text value="{nav.subtitle}"/>
+            </column>
+          </list-row>
+        </list>
+      </scroll>
+      <section class="wiki-core-link" title="CODEX LINK">
+        <title value="ONLINE"/>
+        <text value="{wiki.dashboard.articleCount} indexed article(s)"/>
+        <text value="{wiki.dashboard.dataArticleCount} datapack article(s)"/>
+        <text value="{wiki.settings.warnings} warning(s)"/>
+      </section>
+    </column>
+
+    <column class="wiki-workspace" gap="7">
+      <row class="wiki-page-head" gap="10">
+        <column class="wiki-page-title">
+          <title value="{param.contentTitle|Reference}"/>
+          <text value="{param.contentSubtitle|Browse records, manuals, and field notes.}"/>
+        </column>
+        <status-chip class="wiki-page-state" status="ready" value="ScreenCore"/>
+      </row>
+      <scroll class="wiki-main-scroll" scroll-state="true" state-key="{param.stateKey|wiki.main}">
+        <column class="wiki-main-column" gap="8">
+          <slot-outlet name="content">
+            <empty-state title="No Wiki Page" body="This Wiki page did not provide ScreenCore content."/>
+          </slot-outlet>
+        </column>
+      </scroll>
+    </column>
+
+    <column class="wiki-detail-pane" gap="8">
+      <row class="wiki-detail-head" gap="8">
+        <title value="{param.inspectorTitle|Inspector}"/>
+        <status-chip status="info" value="detail"/>
+      </row>
+      <scroll class="wiki-detail-pane-scroll" scroll-state="true" state-key="{param.inspectorStateKey|wiki.inspector}">
+        <column class="wiki-detail-column" gap="7">
+          <slot-outlet name="inspector">
+            <empty-state title="No Detail" body="Select a record to inspect it."/>
+          </slot-outlet>
+        </column>
+      </scroll>
+    </column>
+  </grid>
+
+  <row class="wiki-footer-strip" gap="10">
+    <status-chip class="wiki-keycap" status="info" value="SEARCH"/>
+    <text value="{wiki.dashboard.query}"/>
+    <status-chip class="wiki-keycap" status="info" value="A"/>
+    <text value="{wiki.dashboard.visibleArticleCount} visible"/>
+    <status-chip class="wiki-keycap" status="info" value="G"/>
+    <text value="{wiki.dashboard.visibleGuideBookCount} manuals"/>
+    <text value="Warnings: {wiki.settings.warnings}"/>
+  </row>
+</screen-shell>

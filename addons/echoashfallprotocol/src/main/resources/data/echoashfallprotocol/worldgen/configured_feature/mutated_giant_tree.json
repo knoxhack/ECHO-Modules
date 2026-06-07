@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "ignore_vines": true,
+    "force_dirt": true,
+    "minimum_size": {
+      "type": "minecraft:three_layers_feature_size",
+      "limit": 2,
+      "lower_size": 2,
+      "middle_size": 3,
+      "upper_size": 4
+    },
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "echoashfallprotocol:dead_wood_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "echoashfallprotocol:mutated_leaves_purple",
+        "Properties": {
+          "persistent": "true"
+        }
+      }
+    },
+    "trunk_placer": {
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 10,
+      "height_rand_a": 5,
+      "height_rand_b": 1
+    },
+    "foliage_placer": {
+      "type": "minecraft:dark_oak_foliage_placer",
+      "radius": 4,
+      "offset": 0,
+      "height": 4
+    },
+    "decorators": []
+  }
+}

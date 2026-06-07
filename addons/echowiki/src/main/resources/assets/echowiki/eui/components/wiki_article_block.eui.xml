@@ -1,0 +1,18 @@
+<list-row class="wiki-article-block wiki-article-block-{param.type|paragraph} wiki-tone-{param.tone|body}"
+          action="{param.action|noop}" action-value="{param.target|}" action-param-kind="{param.targetKind|}"
+          background-texture="{param.image|}" texture-alpha="72" height="{param.height|96}">
+  <column class="wiki-block-shell" gap="7">
+    <row class="wiki-block-head" gap="8">
+      <status-chip class="wiki-block-ordinal" status="{param.status|info}" value="{param.ordinal|00}"/>
+      <item-stack class="wiki-block-icon" item="{param.item|minecraft:paper}" count="{param.count|1}"/>
+      <column class="wiki-block-title-copy">
+        <title class="wiki-block-title" value="{param.titleOrLabel|Field Note}"/>
+        <row class="wiki-block-meta" gap="6">
+          <status-chip class="wiki-block-chip" status="{param.status|info}" value="{param.chip|text}"/>
+          <text class="wiki-block-subtitle" value="{param.subtitlePreview|}"/>
+        </row>
+      </column>
+    </row>
+    <text class="wiki-block-body" value="{param.body|}"/>
+  </column>
+</list-row>

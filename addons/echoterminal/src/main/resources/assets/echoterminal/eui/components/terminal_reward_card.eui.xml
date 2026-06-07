@@ -1,0 +1,3 @@
+<card action="{param.action|noop}" action-value="{param.value|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Reward}" subtitle="{param.summary|Reward detail.}"/>
+</card>

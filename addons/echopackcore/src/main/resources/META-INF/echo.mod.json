@@ -1,0 +1,74 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echopackcore",
+  "name": "ECHO: PackCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "packos",
+  "entrypoint": "com.knoxhack.echo.packcore.EchoPackCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "pack.profile",
+    "pack.repair"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "pack.read",
+    "repair.plan"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echo.packcore.EchoPackCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "PackCore emits repair plans only; it does not execute destructive repairs."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "packaging_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

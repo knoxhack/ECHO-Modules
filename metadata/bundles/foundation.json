@@ -1,0 +1,31 @@
+{
+  "id": "foundation",
+  "name": "Foundation Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "foundation"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Foundation",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "foundation"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

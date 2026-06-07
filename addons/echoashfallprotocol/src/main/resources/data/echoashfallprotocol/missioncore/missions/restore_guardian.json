@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:restore_guardian",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 3,
+  "title": "Defeat The Warden in Pre-Fall Archives",
+  "briefing": "[ECHO-7] A final guardian bars total integration. The Warden runs defender lockdowns and pulse phases; enter with medicine, top-tier weapons, and a Return Keystone.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:restore_enter_archives"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "restore_guardian",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.restore_guardian",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "96",
+    "requiredPath": "restore",
+    "routeRoleTag": "restore_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:restore_guardian:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "restore",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:restore_guardian/restore_guardian",
+      "type": "custom",
+      "label": "Defeat The Warden in Pre-Fall Archives",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:restore_guardian",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.restore_guardian"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:restore_guardian/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 8,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_guardian/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] The Warden falls. Return to the mission channel and confirm the Restore epilogue."
+}

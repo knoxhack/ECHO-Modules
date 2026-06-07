@@ -1,0 +1,19 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "CFC",
+                    "RUR",
+                    "CFC"
+                ],
+    "key":  {
+                "C":  "minecraft:copper_ingot",
+                "F":  "echoconvoyprotocol:fuel_cell",
+                "R":  "minecraft:redstone",
+                "U":  "echoconvoyprotocol:convoy_upgrade_chip"
+            },
+    "result":  {
+                   "id":  "echoconvoyprotocol:fuel_efficiency_upgrade",
+                   "count":  1
+               }
+}

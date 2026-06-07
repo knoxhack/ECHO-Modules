@@ -1,0 +1,87 @@
+{
+  "id": "echoashfallprotocol:find_nexus_core",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 0,
+  "title": "Locate the Nexus Core",
+  "briefing": "[ECHO-7] I see it. The Nexus Core. Stand near the unresolved Core structure and hold position; the grid is listening back.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_core",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_nexus_scar_avatar"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "find_nexus_core",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.find_nexus_core",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "86",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:find_nexus_core:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:find_nexus_core/nexus_core",
+      "type": "place_block",
+      "label": "Place Nexus Core",
+      "detail": "Place 1 Nexus Core for the Ashfall route.",
+      "icon": "echoashfallprotocol:nexus_core",
+      "target": "echoashfallprotocol:nexus_core",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:nexus_core"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:nexus_core",
+      "count": 1,
+      "label": "Nexus Core"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:find_nexus_core/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:find_nexus_core/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] We have arrived. The system is still running after years of Gridfall. It is waiting for a command, and commands have consequences."
+}

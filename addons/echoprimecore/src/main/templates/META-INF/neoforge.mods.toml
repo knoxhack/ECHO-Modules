@@ -1,0 +1,144 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Knoxhack"
+description='''Central survival spine and optional integration layer for the ECHO: Prime modpack.'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO services and the Prime integration API."
+versionRange="[1.1.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared packet registration and safe sync helpers used by Prime-facing systems."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Displays the Prime dashboard, route cards, current objective, warnings, and installed-module state."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Hosts the Prime Survival mission chain when MissionCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Shows Prime categories, locked recipe hints, source module badges, and progression requirements."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Registers Prime scan categories and starter loop scan metadata when Lens is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Displays Prime signal, ruin, vault, recovery, and route markers when HoloMap is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Shares Prime world signal, structure discovery, anomaly, and region stability metadata when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="Provides the ECHO: Prime ThemeCore visual preset."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindustrialnexus"
+type="optional"
+reason="Contributes the Prime industrial route, machine missions, scans, markers, and route cards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echopowergrid"
+type="optional"
+reason="Contributes the Prime PowerGrid route, power missions, scans, and dashboard status."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echologisticsnetwork"
+type="optional"
+reason="Contributes the Prime storage and logistics route, scans, markers, and terminal cards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echobasegrid"
+type="optional"
+reason="Contributes the Prime base route, base missions, dashboard, and map markers."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="optional"
+reason="Contributes Prime Arcana discovery, aether traces, and route readiness when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorelictech"
+type="optional"
+reason="Contributes relic route readiness, relic scan data, vault loot, and terminal warnings."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

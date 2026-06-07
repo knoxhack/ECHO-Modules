@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:destroy_epilogue",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 13,
+  "title": "Complete Destroy Epilogue",
+  "briefing": "[ECHO-7] The grid is dead. Turn in this terminal protocol and let the wasteland choose its own shape.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_annihilator",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_finale"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_epilogue",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_epilogue",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "13",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "106",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_epilogue:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_epilogue/destroy_epilogue",
+      "type": "custom",
+      "label": "Complete Destroy Epilogue",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_annihilator",
+      "target": "echoashfallprotocol:destroy_epilogue",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.destroy_epilogue"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_epilogue/reward_0",
+      "item": "echoashfallprotocol:nexus_annihilator",
+      "count": 1,
+      "label": "Nexus Annihilator",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_epilogue/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] No master signal remains. The world is harsh, free, and finally unowned."
+}

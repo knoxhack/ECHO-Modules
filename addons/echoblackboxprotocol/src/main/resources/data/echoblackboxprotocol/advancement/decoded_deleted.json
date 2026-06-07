@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:blackbox_decoder",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:deleted_memory_record"
+                             },
+                    "title":  "Deleted Log",
+                    "description":  "Decode a Deleted Blackbox memory.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  true
+                },
+    "criteria":  {
+                     "has_record":  {
+                                        "trigger":  "minecraft:inventory_changed",
+                                        "conditions":  {
+                                                           "items":  [
+                                                                         {
+                                                                             "items":  "echoblackboxprotocol:deleted_memory_record"
+                                                                         }
+                                                                     ]
+                                                       }
+                                    }
+                 },
+    "requirements":  [
+                         [
+                             "has_record"
+                         ]
+                     ]
+}

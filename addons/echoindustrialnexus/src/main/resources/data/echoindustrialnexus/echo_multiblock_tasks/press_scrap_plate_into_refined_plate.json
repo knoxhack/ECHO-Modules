@@ -1,0 +1,14 @@
+{
+  "id": "echoindustrialnexus:press_scrap_plate_into_refined_plate",
+  "display_name": "Press Scrap Plate Into Refined Plate",
+  "category": "pressing",
+  "allowed_multiblocks": ["echoindustrialnexus:plate_press"],
+  "required_workcell": "PRESSING",
+  "required_tools": ["GRIPPER"],
+  "duration_ticks": 160,
+  "heat_per_second": 1,
+  "animation": "place_item",
+  "consume_inputs_on_start": true,
+  "inputs": [{ "item": "echoindustrialnexus:scrap_plate", "count": 2, "label": "Scrap Plate" }],
+  "outputs": [{ "item": "echoindustrialnexus:refined_plate", "count": 1, "label": "Refined Plate" }]
+}

@@ -1,0 +1,44 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_command",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:bunker_monolith"
+                             },
+                    "title":  "Command Bunker Route",
+                    "description":  "Hold Vault proof and Command Logs for the Command Bunker.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "vault_proof":  {
+                                         "trigger":  "minecraft:inventory_changed",
+                                         "conditions":  {
+                                                            "items":  [
+                                                                          {
+                                                                              "items":  "echoblackboxprotocol:core_access_key_left"
+                                                                          }
+                                                                      ]
+                                                        }
+                                     },
+                     "command":  {
+                                     "trigger":  "minecraft:inventory_changed",
+                                     "conditions":  {
+                                                        "items":  [
+                                                                      {
+                                                                          "items":  "echoblackboxprotocol:command_memory_record"
+                                                                      }
+                                                                  ]
+                                                    }
+                                 }
+                 },
+    "requirements":  [
+                         [
+                             "vault_proof"
+                         ],
+                         [
+                             "command"
+                         ]
+                     ]
+}

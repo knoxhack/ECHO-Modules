@@ -1,0 +1,31 @@
+<page id="wiki_settings" title="Wiki Debug" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Debug"/>
+    <param name="inspectorTitle" value="Warnings"/>
+    <slot name="content">
+      <grid columns="1fr 1fr" gap="12">
+        <stat-card label="Articles" value="{wiki.settings.articleCount}"/>
+        <stat-card label="Collections" value="{wiki.settings.collectionCount}"/>
+        <stat-card label="Guide Books" value="{wiki.settings.visibleGuideBookCount}/{wiki.settings.guideBookCount}"/>
+        <stat-card label="Unavailable Manuals" value="{wiki.settings.unavailableGuideBookCount}"/>
+        <stat-card label="Guide Warnings" value="{wiki.settings.guideBookWarningCount}"/>
+        <stat-card label="Data Articles" value="{wiki.settings.dataArticleCount}"/>
+        <stat-card label="Warnings" value="{wiki.settings.warnings}"/>
+      </grid>
+      <panel title="Integrations">
+        <text value="Index: {wiki.settings.indexLoaded}"/>
+        <text value="Terminal: {wiki.settings.terminalLoaded}"/>
+        <text value="WorldCore: {wiki.settings.worldCoreLoaded}"/>
+        <text value="MissionCore: {wiki.settings.missionCoreLoaded}"/>
+      </panel>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.debug.warnings">
+        <list bind="wiki.debug.warnings" item="warning">
+          <list-row><text class="wiki-body-text" value="{warning.label}"/></list-row>
+          <empty-state title="No warnings" body="Wiki content loaded without warnings."/>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>

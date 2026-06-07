@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:lens_basics",
+  "category": "LENS",
+  "title": "Lens Basics",
+  "summary": "Inspect machines, blocks, and entities in the field.",
+  "body": [
+    "The ECHO Lens provides a readout of whatever you are looking at.",
+    "It shows power status, inventory contents, block names, and more.",
+    "Use it to diagnose broken or misconfigured machines."
+  ],
+  "steps": [
+    "Equip the Lens.",
+    "Look at a block or machine.",
+    "Read the overlay information."
+  ],
+  "commonMistakes": [
+    "Not checking machine status with the Lens.",
+    "Ignoring power readouts."
+  ],
+  "related": [
+    "echotutorialcore:deep_scan"
+  ],
+  "unlockTriggers": [
+    "used_lens"
+  ],
+  "defaultUnlocked": false,
+  "priority": 75
+}

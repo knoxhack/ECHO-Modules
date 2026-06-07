@@ -1,0 +1,29 @@
+﻿{
+    "display": {
+        "title": {
+            "translate": "advancement.galacticraft.moon_dungeon.title"
+        },
+        "description": {
+            "translate": "advancement.galacticraft.moon_dungeon.description"
+        },
+        "icon": {
+            "item": "echogalacticcore:basic_block_moon",
+            "data": 14
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria":{
+        "found_boss":{
+            "trigger":"echogalacticcore:boss_moon"
+        }
+    },
+    "requirements": [
+        [
+            "found_boss"
+        ]
+    ],
+    "parent": "echogalacticcore:galacticraft/moon"
+}

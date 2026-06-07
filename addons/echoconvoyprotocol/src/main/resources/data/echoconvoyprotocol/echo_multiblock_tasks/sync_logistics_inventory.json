@@ -1,0 +1,13 @@
+{
+  "id": "echoconvoyprotocol:sync_logistics_inventory",
+  "display_name": "Sync Logistics Inventory",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "DIAGNOSTIC",
+  "required_tools": ["SCANNER"],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 60,
+  "heat_per_second": 1,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:sync_logistics_inventory"],
+  "notes": ["Synchronizes depot cargo, fuel, active deliveries, and loadout readiness from Logistics snapshots."]
+}

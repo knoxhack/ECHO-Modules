@@ -1,0 +1,34 @@
+{
+    "variants":  {
+                     "broken=false,eggcolor=red":  {
+                                                       "model":  "echogalacticcore:slimeling_egg_red"
+                                                   },
+                     "broken=true,eggcolor=red":  {
+                                                      "model":  "echogalacticcore:slimeling_egg_red",
+                                                      "textures":  {
+                                                                       "particle":  "echogalacticcore:block/red_egg_1",
+                                                                       "texture":  "echogalacticcore:block/red_egg_1"
+                                                                   }
+                                                  },
+                     "broken=false,eggcolor=blue":  {
+                                                        "model":  "echogalacticcore:slimeling_egg_blue"
+                                                    },
+                     "broken=true,eggcolor=blue":  {
+                                                       "model":  "echogalacticcore:slimeling_egg_blue",
+                                                       "textures":  {
+                                                                        "particle":  "echogalacticcore:block/blue_egg_1",
+                                                                        "texture":  "echogalacticcore:block/blue_egg_1"
+                                                                    }
+                                                   },
+                     "broken=false,eggcolor=yellow":  {
+                                                          "model":  "echogalacticcore:slimeling_egg_yellow"
+                                                      },
+                     "broken=true,eggcolor=yellow":  {
+                                                         "model":  "echogalacticcore:slimeling_egg_yellow",
+                                                         "textures":  {
+                                                                          "particle":  "echogalacticcore:block/yellow_egg_1",
+                                                                          "texture":  "echogalacticcore:block/yellow_egg_1"
+                                                                      }
+                                                     }
+                 }
+}

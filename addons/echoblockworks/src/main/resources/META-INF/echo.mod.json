@@ -1,0 +1,80 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoblockworks",
+  "name": "ECHO Blockworks",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "content_pack",
+  "role": "content",
+  "entrypoint": "com.knoxhack.echo.blockworks.EchoBlockworks",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echoindex",
+    "echomissioncore",
+    "echorendercore"
+  ],
+  "provides": [
+    "blockworks.blocks",
+    "blockworks.builder_catalog",
+    "blockworks.palette_kits",
+    "blockworks.pattern_cutter",
+    "blockworks.worldgen"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "creator"
+  ],
+  "permissions": [
+    "content.blocks",
+    "content.recipes",
+    "content.worldgen"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echoblockworks.EchoBlockworksNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "recipes",
+        "structures",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "contractsOnly": false,
+    "notes": "Blockworks runtime content pack with optional Index, MissionCore, and RenderCore integrations detected from the active build and NeoForge metadata."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "asset_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

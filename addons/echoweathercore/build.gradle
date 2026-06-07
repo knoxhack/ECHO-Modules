@@ -1,0 +1,87 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+}
+
+base { archivesName = 'echoweathercore' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+    runs {
+        client { client(); systemProperty 'neoforge.enabledGameTestNamespaces', 'echoweathercore' }
+        server { server(); programArgument '--nogui'; systemProperty 'neoforge.enabledGameTestNamespaces', 'echoweathercore' }
+        gameTestServer { type = "gameTestServer"; systemProperty 'neoforge.enabledGameTestNamespaces', 'echoweathercore' }
+        data { clientData(); programArguments.addAll '--mod', 'echoweathercore', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath() }
+        configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
+    }
+    mods { "echoweathercore" { sourceSet(sourceSets.main) } }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+def optionalProject = { String path, String configuration ->
+    def candidate = rootProject.findProject(path)
+    if (candidate != null) {
+        dependencies.add(configuration, candidate)
+    }
+}
+
+dependencies {
+    implementation project(":echocore")
+    optionalProject(":echoadaptercore", "compileOnly")
+    optionalProject(":echonetcore", "compileOnly")
+    optionalProject(":echonetcore", "localRuntime")
+    optionalProject(":echoterminal", "compileOnly")
+    optionalProject(":echoterminal", "localRuntime")
+    optionalProject(":echomissioncore", "compileOnly")
+    optionalProject(":echomissioncore", "localRuntime")
+    optionalProject(":echoworldcore", "compileOnly")
+    optionalProject(":echoworldcore", "localRuntime")
+    optionalProject(":echolens", "compileOnly")
+    optionalProject(":echolens", "localRuntime")
+    optionalProject(":echoholomap", "compileOnly")
+    optionalProject(":echoholomap", "localRuntime")
+    optionalProject(":echopowergrid", "compileOnly")
+    optionalProject(":echopowergrid", "localRuntime")
+    optionalProject(":echorendercore", "compileOnly")
+    optionalProject(":echorendercore", "localRuntime")
+    optionalProject(":echothemecore", "compileOnly")
+    optionalProject(":echothemecore", "localRuntime")
+    optionalProject(":echoruntimeguard", "compileOnly")
+    optionalProject(":echoruntimeguard", "localRuntime")
+    optionalProject(":echosignalos", "compileOnly")
+    optionalProject(":echosignalos", "localRuntime")
+    optionalProject(":echostationfall", "compileOnly")
+    optionalProject(":echostationfall", "localRuntime")
+    optionalProject(":echoblackboxprotocol", "compileOnly")
+    optionalProject(":echoblackboxprotocol", "localRuntime")
+    optionalProject(":echonexusprotocol", "compileOnly")
+    optionalProject(":echonexusprotocol", "localRuntime")
+    optionalProject(":echoindustrialnexus", "compileOnly")
+    optionalProject(":echoindustrialnexus", "localRuntime")
+    optionalProject(":echologisticsnetwork", "compileOnly")
+    optionalProject(":echologisticsnetwork", "localRuntime")
+    optionalProject(":echoconvoyprotocol", "compileOnly")
+    optionalProject(":echoconvoyprotocol", "localRuntime")
+    optionalProject(":echoarmory", "compileOnly")
+    optionalProject(":echoarmory", "localRuntime")
+    optionalProject(":echoagriculturereclamation", "compileOnly")
+    optionalProject(":echoagriculturereclamation", "localRuntime")
+    optionalProject(":echosoundcore", "compileOnly")
+    optionalProject(":echosoundcore", "localRuntime")
+    optionalProject(":echotutorialcore", "compileOnly")
+    optionalProject(":echotutorialcore", "localRuntime")
+    optionalProject(":echorelictech", "compileOnly")
+    optionalProject(":echorelictech", "localRuntime")
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

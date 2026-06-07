@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:schematic_fragments",
+  "category": "RESEARCH",
+  "title": "Schematic Fragments",
+  "summary": "Broken knowledge still cuts doors open.",
+  "body": [
+    "Fragments are research fuel. They turn exploration into recipes, upgrades, and safer routes.",
+    "If you are holding fragments and still stuck, the answer may be in the Research interface."
+  ],
+  "steps": [
+    "Collect fragments from missions, salvage, and discoveries.",
+    "Spend them at the appropriate research station.",
+    "Recheck locked recipes after research."
+  ],
+  "commonMistakes": [
+    "Hoarding fragments while blocked.",
+    "Missing recipe unlock notifications."
+  ],
+  "related": [
+    "echotutorialcore:research_basics",
+    "echotutorialcore:recipe_unlocks"
+  ],
+  "unlockTriggers": [
+    "obtained_schematic_fragment",
+    "research_started"
+  ],
+  "defaultUnlocked": false,
+  "priority": 63
+}

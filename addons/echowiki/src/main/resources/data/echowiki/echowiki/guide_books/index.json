@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:index",
+  "moduleId": "echoindex",
+  "requiredModId": "echoindex",
+  "title": "Index Reference Manual",
+  "subtitle": "Items, recipes, machines, sources, and cross-addon records",
+  "summary": "Search records, compare entries, and pin the next useful answer.",
+  "icon": "minecraft:bookshelf",
+  "accent": "#FFFFD166",
+  "collectionId": "echowiki:guides/index",
+  "homeArticleId": "echowiki:guides/index",
+  "chapterArticleIds": [
+    "echowiki:guides/index",
+    "echowiki:guides/index/first_steps",
+    "echowiki:guides/index/core_loop",
+    "echowiki:guides/index/systems",
+    "echowiki:guides/index/progression",
+    "echowiki:guides/index/integrations",
+    "echowiki:guides/index/troubleshooting"
+  ],
+  "tags": [
+    "index",
+    "recipes",
+    "items",
+    "reference"
+  ],
+  "sortOrder": 210
+}

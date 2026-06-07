@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/scanner_array_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:orbital_launch_platform_blueprint"
+    },
+    "title": {
+      "text": "Prepare the Launch Platform"
+    },
+    "description": {
+      "text": "Prepare an Orbital Launch Platform blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:orbital_launch_platform_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

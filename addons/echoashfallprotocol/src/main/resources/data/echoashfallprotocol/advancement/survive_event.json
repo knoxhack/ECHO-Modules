@@ -1,0 +1,38 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:rad_away"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.survive_event.title",
+      "fallback": "Storm Shelter"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.survive_event.desc",
+      "fallback": "Prepare shelter and supplies for an environmental storm."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_storm_kit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:clean_water_bottle"
+          },
+          {
+            "items": "echoashfallprotocol:rad_away"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_storm_kit"]
+  ]
+}

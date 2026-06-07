@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:filters_for_survival",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:dense_alloy_ingot"
+    },
+    "title": {
+      "text": "Dense Alloy"
+    },
+    "description": {
+      "text": "Smelt industrial dust into Dense Alloy."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "dense_alloy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:dense_alloy_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dense_alloy"
+    ]
+  ]
+}

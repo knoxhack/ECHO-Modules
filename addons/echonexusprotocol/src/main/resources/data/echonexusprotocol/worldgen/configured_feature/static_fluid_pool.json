@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": { "type": "minecraft:simple_state_provider", "state": { "Name": "echonexusprotocol:static_fluid_block" } },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "echonexusprotocol:fragmented_soil",
+        "echonexusprotocol:data_cracked_stone",
+        "echonexusprotocol:glassed_dust",
+        "echonexusprotocol:signal_burned_grass",
+        "echonexusprotocol:blackbox_deepslate"
+      ]
+    },
+    "radius": { "type": "minecraft:uniform", "min_inclusive": 2, "max_inclusive": 4 },
+    "half_height": 1
+  }
+}

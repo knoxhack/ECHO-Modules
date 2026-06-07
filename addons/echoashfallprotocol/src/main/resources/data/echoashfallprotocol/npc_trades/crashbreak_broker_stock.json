@@ -1,0 +1,50 @@
+{
+  "id": "echoashfallprotocol:crashbreak_broker_stock",
+  "groups": [
+    {
+      "id": "brokered_salvage",
+      "title": "Brokered Salvage",
+      "offers": [
+        {
+          "id": "metal_for_bundle",
+          "title": "Compressed Scrap Bundle",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_metal", "count": 6 }
+          ],
+          "output": { "item": "echoashfallprotocol:scrap_iron_bundle", "count": 1 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "circuit_for_power_cell",
+          "title": "Recovered Power Cell",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_circuit", "count": 3 }
+          ],
+          "output": { "item": "echoashfallprotocol:power_cell", "count": 1 },
+          "stock": 3,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Crashbreak support standing required."
+        },
+        {
+          "id": "trusted_schematic",
+          "title": "Brokered Tech Schematic",
+          "input": [
+            { "item": "echoashfallprotocol:power_cell", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:rare_tech_schematic", "count": 1 },
+          "stock": 1,
+          "restockTime": 48000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted salvage standing required."
+        }
+      ]
+    }
+  ]
+}

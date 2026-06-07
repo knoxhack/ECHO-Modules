@@ -1,0 +1,79 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoaetherworks",
+  "name": "ECHO: AetherWorks",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echoaetherworks.EchoAetherWorks",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore"
+  ],
+  "optional": [
+    "echocursecore",
+    "echorelictech",
+    "echoritualcore",
+    "echospellcore"
+  ],
+  "provides": [
+    "arcana.aetherworks",
+    "arcana.aether_machines",
+    "arcana.aether_storage"
+  ],
+  "consumes": [
+    "arcana.aether",
+    "arcana.core",
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "creator_tools"
+  ],
+  "permissions": [
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "recipes",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoaetherworks.EchoAetherWorksNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "AetherWorks is an Arcana Division automation scaffold; optional spell, curse, relic, and ritual bridges remain optional."
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "content_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

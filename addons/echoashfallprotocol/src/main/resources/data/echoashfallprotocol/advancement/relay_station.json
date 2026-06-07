@@ -1,0 +1,36 @@
+{
+  "parent": "echoashfallprotocol:poi_explorer",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:relay_station"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.relay_station.title",
+      "fallback": "Network Restored"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.relay_station.desc",
+      "fallback": "Activate a Relay Station for fast travel."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "activated_relay": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echoashfallprotocol:relay_station"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["activated_relay"]
+  ]
+}

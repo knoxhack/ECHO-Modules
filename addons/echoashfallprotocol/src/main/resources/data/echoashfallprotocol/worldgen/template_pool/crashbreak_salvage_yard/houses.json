@@ -1,0 +1,60 @@
+{
+  "name": "echoashfallprotocol:crashbreak_salvage_yard/houses",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_small_house_1",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_small_house_2",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_medium_house_1",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_small_house_1",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_medium_house_1",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/crashbreak_salvage/warehouse",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

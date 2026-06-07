@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoblockworks:block/echo_blockworks_table"
+    },
+    "facing=east": {
+      "model": "echoblockworks:block/echo_blockworks_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoblockworks:block/echo_blockworks_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoblockworks:block/echo_blockworks_table",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoscreencore",
+  "name": "ECHO: ScreenCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "ui",
+  "entrypoint": "com.knoxhack.echoscreencore.EchoScreenCoreMod",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echonetcore",
+    "echorendercore",
+    "echothemecore"
+  ],
+  "provides": [
+    "screen.actions",
+    "screen.bindings",
+    "screen.components",
+    "screen.contracts",
+    "screen.layouts",
+    "screen.markup",
+    "screen.theme_bridge"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "input",
+        "themes",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoscreencore.EchoScreenCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Minecraft-native page markup, layout, component, style, binding, input, and accessibility framework. Client implementations remain isolated behind guarded client packages."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoscreencore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md",
+      "AGENTS.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

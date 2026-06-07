@@ -1,0 +1,50 @@
+{
+  "id": "echoashfallprotocol:radwarden_quartermaster_stock",
+  "groups": [
+    {
+      "id": "containment_stock",
+      "title": "Containment Stock",
+      "offers": [
+        {
+          "id": "scrap_for_filter",
+          "title": "Basic Filter Cartridge",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_plastic", "count": 4 }
+          ],
+          "output": { "item": "echoashfallprotocol:filter_cartridge_basic", "count": 1 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "circuit_for_radaway",
+          "title": "RadAway Ampoule",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_circuit", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:rad_away", "count": 1 },
+          "stock": 3,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Compact support standing required."
+        },
+        {
+          "id": "trusted_warmer_bundle",
+          "title": "Trusted Hand Warmer Bundle",
+          "input": [
+            { "item": "echoashfallprotocol:power_cell", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:hand_warmer", "count": 2 },
+          "stock": 2,
+          "restockTime": 36000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted Compact standing required."
+        }
+      ]
+    }
+  ]
+}

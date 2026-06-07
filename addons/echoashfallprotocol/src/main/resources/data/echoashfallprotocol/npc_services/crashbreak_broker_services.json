@@ -1,0 +1,38 @@
+{
+  "id": "echoashfallprotocol:crashbreak_broker_services",
+  "services": [
+    {
+      "id": "blackbox_hint",
+      "title": "Blackbox Hint",
+      "description": "Uploads salvage market notes and current route context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "request_workshop_credit",
+      "title": "Request Workshop Credit",
+      "description": "Asks Crashbreak Salvage to route workshop support your way.",
+      "cost": [],
+      "action": "faction_action",
+      "amount": 1,
+      "cooldown": 4800,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:crashbreak_salvage_service",
+      "disabledReason": "Crashbreak support standing required."
+    },
+    {
+      "id": "review_salvage_contract",
+      "title": "Review Salvage Contract",
+      "description": "Submits a salvage contract review to Broker Rook.",
+      "cost": [],
+      "action": "faction_action",
+      "amount": 1,
+      "cooldown": 4800,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:crashbreak_salvage_contract",
+      "disabledReason": "Crashbreak contract standing required."
+    }
+  ]
+}

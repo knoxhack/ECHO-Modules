@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/reclamation/core_loop",
+  "title": "Reclamation: Core Loop",
+  "category": "Guide Books",
+  "summary": "Stabilize soil, water, crops, storage, and routes one field at a time.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Recover seed stock, prepare soil, grow a reliable food baseline, then expand into utility crops or higher-risk farming inputs once power and water are stable.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each planting pass, check whether water, soil quality, crop choice, storage, and access paths match the settlement's next need.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop before the farm outgrows your ability to defend, irrigate, or harvest it. A smaller reliable plot beats a hungry sprawl.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "item",
+      "title": "Loop Anchor",
+      "body": "Treat this as a material checkpoint: if it helps the loop, bring it home before chasing bulk.",
+      "tone": "tip",
+      "item": "minecraft:wheat",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Wheat",
+      "subtitle": "Core Loop checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "reclamation",
+    "food",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:wheat",
+  "relatedArticles": [
+    "echowiki:guides/reclamation"
+  ],
+  "relatedItems": [
+    "minecraft:wheat",
+    "minecraft:farmland"
+  ],
+  "sortOrder": 1022
+}

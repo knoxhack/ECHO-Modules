@@ -1,0 +1,22 @@
+{
+    "variants":  {
+                     "facing=up":  {
+                                       "model":  "echogalacticcore:glowstone_torch_model"
+                                   },
+                     "facing=east":  {
+                                         "model":  "echogalacticcore:glowstone_torch_wall_model"
+                                     },
+                     "facing=south":  {
+                                          "model":  "echogalacticcore:glowstone_torch_wall_model",
+                                          "y":  90
+                                      },
+                     "facing=west":  {
+                                         "model":  "echogalacticcore:glowstone_torch_wall_model",
+                                         "y":  180
+                                     },
+                     "facing=north":  {
+                                          "model":  "echogalacticcore:glowstone_torch_wall_model",
+                                          "y":  270
+                                      }
+                 }
+}

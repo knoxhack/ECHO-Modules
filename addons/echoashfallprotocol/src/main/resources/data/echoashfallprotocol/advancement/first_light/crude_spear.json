@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "criteria": {
+    "craft_crude_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:crude_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Hostile lifeforms detected. Craft reach weapons for defense.",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:crude_spear"
+    },
+    "title": "First Line of Defense",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "requirements": [
+    [
+      "craft_crude_spear"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

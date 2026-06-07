@@ -1,0 +1,98 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoscriptcore",
+  "name": "ECHO: ScriptCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "developer_tool",
+  "entrypoint": "com.knoxhack.echo.scriptcore.EchoScriptCore",
+  "publisher": "Knoxhack",
+  "channel": "experimental",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echocreatorcore",
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echonetcore",
+    "echoscreencore",
+    "echosoundcore",
+    "echoterminal",
+    "echotutorialcore",
+    "echoweathercore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "scriptcore.actions",
+    "scriptcore.commands",
+    "scriptcore.conditions",
+    "scriptcore.definitions",
+    "scriptcore.examples",
+    "scriptcore.migrations",
+    "scriptcore.registry",
+    "scriptcore.runtime_state",
+    "scriptcore.ui_bridge",
+    "scriptcore.validation"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "creator_tools",
+    "story_packs"
+  ],
+  "permissions": [
+    "resources.data",
+    "server.commands",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "commands",
+        "missions",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "JSON-first campaign authoring framework for missions, lore, scans, map layers, weather events, tutorials, dialogue, endings, recipe unlocks, loot profiles, and condition/action flows. It does not execute arbitrary scripts or shell commands.",
+    "nativeEntrypoint": "com.knoxhack.echo.scriptcore.EchoScriptCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/scriptcore/**",
+      "src/main/resources/**",
+      "docs/**",
+      "examples/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

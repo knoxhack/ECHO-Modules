@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/logistics_depot_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:scanner_array_blueprint"
+    },
+    "title": {
+      "text": "Assemble the Scanner Array"
+    },
+    "description": {
+      "text": "Prepare a Scanner Array blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:scanner_array_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

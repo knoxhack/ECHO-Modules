@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:clear_military_vault",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 0,
+  "title": "Survey Military Vault",
+  "briefing": "[ECHO-7] Military vaults hold dense materials and severe threats. Scan a Radwarden or vault-class site before alloy hunting.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:scrap_wire",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:craft_mutagen_vial"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "clear_military_vault",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.clear_military_vault",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "0",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "59",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:clear_military_vault:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:clear_military_vault/clear_military_vault",
+      "type": "custom",
+      "label": "Survey Military Vault",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:scrap_wire",
+      "target": "echoashfallprotocol:clear_military_vault",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.clear_military_vault"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:clear_military_vault/reward_0",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 8,
+      "label": "Scrap Wire",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:clear_military_vault/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:clear_military_vault/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:clear_military_vault/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Military route identified. Bring armor, medicine, clean water, and filters only if the site flags toxic air."
+}

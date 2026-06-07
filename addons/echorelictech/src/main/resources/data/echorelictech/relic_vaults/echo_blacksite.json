@@ -1,0 +1,20 @@
+{
+  "id": "echorelictech:echo_blacksite",
+  "displayName": "ECHO Blacksite",
+  "tier": "NEXUS",
+  "minY": -60,
+  "maxY": -20,
+  "spawnWeight": 3,
+  "requiredBiomeTags": ["#minecraft:is_overworld"],
+  "excludedBiomes": [],
+  "lootTable": "echorelictech:relic_vault/nexus",
+  "materialLootTable": "echorelictech:relic_vault/materials",
+  "securityLevel": "EXTREME",
+  "markerText": "ECHO blacksite. Nexus contamination likely; containment advised.",
+  "progressionPhase": "relic_ops",
+  "notes": [
+    "Top-secret ECHO research facility.",
+    "Nexus contamination detected.",
+    "Entry not recommended without containment gear."
+  ]
+}

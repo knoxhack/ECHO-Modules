@@ -1,0 +1,35 @@
+{
+  "id": "echoashfallprotocol:ashfall_major_route_records",
+  "title": "Major Route Records",
+  "summary": "Tracks the selected first major POI route: First Relay Station. Future bio-lab, reactor, and data-center markers stay locked until this route is validated.",
+  "nextSteps": [
+    "Check the Relay Weather Window before leaving shelter.",
+    "Track the First Relay Station marker, not future locked markers.",
+    "Scan the relay console and power coupler with Lens.",
+    "Open the First Relay Station Index entry before repairing or looting.",
+    "Claim the relay cache only after the scan confirms the route state.",
+    "Return to Terminal to unlock the next route suggestion."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_major_route",
+  "panels": [
+    {
+      "id": "selected_route",
+      "title": "Selected Major Route",
+      "state": "first_relay_station",
+      "body": "First Relay Station is the active 1.7.6 route. It has structure, loot, scan, mission, Index, HoloMap, and PowerGrid support."
+    },
+    {
+      "id": "contract",
+      "title": "Optional Field Contract",
+      "state": "crashbreak_optional",
+      "body": "Crashbreak relay proof is optional and should not block the main route."
+    },
+    {
+      "id": "future_locks",
+      "title": "Future Route Locks",
+      "state": "bio_lab_reactor_data_center_locked",
+      "body": "Bio Lab, Reactor, and Data Center markers remain warnings until a later route pass proves counterplay and rewards."
+    }
+  ]
+}

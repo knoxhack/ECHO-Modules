@@ -1,0 +1,1 @@
+package com.knoxhack.echostationfall.world; import com.knoxhack.echostationfall.progression.StationSection; import java.util.List; public final class StationfallStationLayout { private StationfallStationLayout(){} public static List<StationSection> orderedSections(){return List.of(StationSection.values());} }

@@ -1,0 +1,947 @@
+{
+  "block/dead_soil": {
+    "cell": 0,
+    "x": 2,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/contaminated_soil": {
+    "cell": 1,
+    "x": 22,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/irradiated_soil": {
+    "cell": 2,
+    "x": 42,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/toxic_mud": {
+    "cell": 3,
+    "x": 62,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/purified_soil": {
+    "cell": 4,
+    "x": 82,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/stabilized_soil": {
+    "cell": 5,
+    "x": 102,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/restored_soil": {
+    "cell": 6,
+    "x": 122,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/hydroponic_tray": {
+    "cell": 7,
+    "x": 142,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/seed_vault_terminal": {
+    "cell": 8,
+    "x": 162,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/soil_purifier": {
+    "cell": 9,
+    "x": 182,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/gene_stabilizer": {
+    "cell": 10,
+    "x": 202,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/bio_reactor": {
+    "cell": 11,
+    "x": 222,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/greenhouse_controller": {
+    "cell": 12,
+    "x": 242,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/pollinator_drone_dock": {
+    "cell": 13,
+    "x": 262,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/spore_filter": {
+    "cell": 14,
+    "x": 282,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/compost_recycler": {
+    "cell": 15,
+    "x": 302,
+    "y": 2,
+    "w": 16,
+    "h": 16
+  },
+  "block/ecology_scanner": {
+    "cell": 16,
+    "x": 2,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/greenhouse_glass": {
+    "cell": 17,
+    "x": 22,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_0": {
+    "cell": 18,
+    "x": 42,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_1": {
+    "cell": 19,
+    "x": 62,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_2": {
+    "cell": 20,
+    "x": 82,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_3": {
+    "cell": 21,
+    "x": 102,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_4": {
+    "cell": 22,
+    "x": 122,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_5": {
+    "cell": 23,
+    "x": 142,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_6": {
+    "cell": 24,
+    "x": 162,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop_age_7": {
+    "cell": 25,
+    "x": 182,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/ash_wheat_crop": {
+    "cell": 26,
+    "x": 202,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_0": {
+    "cell": 27,
+    "x": 222,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_1": {
+    "cell": 28,
+    "x": 242,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_2": {
+    "cell": 29,
+    "x": 262,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_3": {
+    "cell": 30,
+    "x": 282,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_4": {
+    "cell": 31,
+    "x": 302,
+    "y": 22,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_5": {
+    "cell": 32,
+    "x": 2,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_6": {
+    "cell": 33,
+    "x": 22,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop_age_7": {
+    "cell": 34,
+    "x": 42,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/hardroot_crop": {
+    "cell": 35,
+    "x": 62,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_0": {
+    "cell": 36,
+    "x": 82,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_1": {
+    "cell": 37,
+    "x": 102,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_2": {
+    "cell": 38,
+    "x": 122,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_3": {
+    "cell": 39,
+    "x": 142,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_4": {
+    "cell": 40,
+    "x": 162,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_5": {
+    "cell": 41,
+    "x": 182,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_6": {
+    "cell": 42,
+    "x": 202,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop_age_7": {
+    "cell": 43,
+    "x": 222,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/glow_beans_crop": {
+    "cell": 44,
+    "x": 242,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_0": {
+    "cell": 45,
+    "x": 262,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_1": {
+    "cell": 46,
+    "x": 282,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_2": {
+    "cell": 47,
+    "x": 302,
+    "y": 42,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_3": {
+    "cell": 48,
+    "x": 2,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_4": {
+    "cell": 49,
+    "x": 22,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_5": {
+    "cell": 50,
+    "x": 42,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_6": {
+    "cell": 51,
+    "x": 62,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop_age_7": {
+    "cell": 52,
+    "x": 82,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/radleaf_crop": {
+    "cell": 53,
+    "x": 102,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_0": {
+    "cell": 54,
+    "x": 122,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_1": {
+    "cell": 55,
+    "x": 142,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_2": {
+    "cell": 56,
+    "x": 162,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_3": {
+    "cell": 57,
+    "x": 182,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_4": {
+    "cell": 58,
+    "x": 202,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_5": {
+    "cell": 59,
+    "x": 222,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_6": {
+    "cell": 60,
+    "x": 242,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop_age_7": {
+    "cell": 61,
+    "x": 262,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/mutant_berries_crop": {
+    "cell": 62,
+    "x": 282,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_0": {
+    "cell": 63,
+    "x": 302,
+    "y": 62,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_1": {
+    "cell": 64,
+    "x": 2,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_2": {
+    "cell": 65,
+    "x": 22,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_3": {
+    "cell": 66,
+    "x": 42,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_4": {
+    "cell": 67,
+    "x": 62,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_5": {
+    "cell": 68,
+    "x": 82,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_6": {
+    "cell": 69,
+    "x": 102,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop_age_7": {
+    "cell": 70,
+    "x": 122,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/cryo_moss_crop": {
+    "cell": 71,
+    "x": 142,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_0": {
+    "cell": 72,
+    "x": 162,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_1": {
+    "cell": 73,
+    "x": 182,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_2": {
+    "cell": 74,
+    "x": 202,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_3": {
+    "cell": 75,
+    "x": 222,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_4": {
+    "cell": 76,
+    "x": 242,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_5": {
+    "cell": 77,
+    "x": 262,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_6": {
+    "cell": 78,
+    "x": 282,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop_age_7": {
+    "cell": 79,
+    "x": 302,
+    "y": 82,
+    "w": 16,
+    "h": 16
+  },
+  "block/clean_corn_crop": {
+    "cell": 80,
+    "x": 2,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_0": {
+    "cell": 81,
+    "x": 22,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_1": {
+    "cell": 82,
+    "x": 42,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_2": {
+    "cell": 83,
+    "x": 62,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_3": {
+    "cell": 84,
+    "x": 82,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_4": {
+    "cell": 85,
+    "x": 102,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_5": {
+    "cell": 86,
+    "x": 122,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_6": {
+    "cell": 87,
+    "x": 142,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop_age_7": {
+    "cell": 88,
+    "x": 162,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/medicinal_aloe_crop": {
+    "cell": 89,
+    "x": 182,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_0": {
+    "cell": 90,
+    "x": 202,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_1": {
+    "cell": 91,
+    "x": 222,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_2": {
+    "cell": 92,
+    "x": 242,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_3": {
+    "cell": 93,
+    "x": 262,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_4": {
+    "cell": 94,
+    "x": 282,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_5": {
+    "cell": 95,
+    "x": 302,
+    "y": 102,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_6": {
+    "cell": 96,
+    "x": 2,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop_age_7": {
+    "cell": 97,
+    "x": 22,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/filter_reed_crop": {
+    "cell": 98,
+    "x": 42,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_0": {
+    "cell": 99,
+    "x": 62,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_1": {
+    "cell": 100,
+    "x": 82,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_2": {
+    "cell": 101,
+    "x": 102,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_3": {
+    "cell": 102,
+    "x": 122,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_4": {
+    "cell": 103,
+    "x": 142,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_5": {
+    "cell": 104,
+    "x": 162,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_6": {
+    "cell": 105,
+    "x": 182,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop_age_7": {
+    "cell": 106,
+    "x": 202,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/nexus_orchid_crop": {
+    "cell": 107,
+    "x": 222,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_0": {
+    "cell": 108,
+    "x": 242,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_1": {
+    "cell": 109,
+    "x": 262,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_2": {
+    "cell": 110,
+    "x": 282,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_3": {
+    "cell": 111,
+    "x": 302,
+    "y": 122,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_4": {
+    "cell": 112,
+    "x": 2,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_5": {
+    "cell": 113,
+    "x": 22,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_6": {
+    "cell": 114,
+    "x": 42,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop_age_7": {
+    "cell": 115,
+    "x": 62,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "block/signal_fungus_crop": {
+    "cell": 116,
+    "x": 82,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/recovered_seed_capsule": {
+    "cell": 117,
+    "x": 102,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/contaminated_seed": {
+    "cell": 118,
+    "x": 122,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/stabilized_seed": {
+    "cell": 119,
+    "x": 142,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/gene_sample": {
+    "cell": 120,
+    "x": 162,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/soil_nutrient_mix": {
+    "cell": 121,
+    "x": 182,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/purification_enzyme": {
+    "cell": 122,
+    "x": 202,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/bio_gel": {
+    "cell": 123,
+    "x": 222,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/ash_wheat": {
+    "cell": 124,
+    "x": 242,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/hardroot": {
+    "cell": 125,
+    "x": 262,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/glow_beans": {
+    "cell": 126,
+    "x": 282,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/radleaf": {
+    "cell": 127,
+    "x": 302,
+    "y": 142,
+    "w": 16,
+    "h": 16
+  },
+  "item/mutant_berries": {
+    "cell": 128,
+    "x": 2,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/cryo_moss": {
+    "cell": 129,
+    "x": 22,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/clean_corn": {
+    "cell": 130,
+    "x": 42,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/medicinal_aloe": {
+    "cell": 131,
+    "x": 62,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/filter_reed": {
+    "cell": 132,
+    "x": 82,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/nexus_orchid": {
+    "cell": 133,
+    "x": 102,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  },
+  "item/signal_fungus": {
+    "cell": 134,
+    "x": 122,
+    "y": 162,
+    "w": 16,
+    "h": 16
+  }
+}

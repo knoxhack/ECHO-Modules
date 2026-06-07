@@ -1,0 +1,4 @@
+<panel title="{param.title|Mission Detail}">
+  <copy-block class="terminal-row-copy" title="{param.summary|Select a mission to inspect requirements, rewards, and actions.}"/>
+  <progress-bar value="{param.progress|0}" max="100"/>
+</panel>

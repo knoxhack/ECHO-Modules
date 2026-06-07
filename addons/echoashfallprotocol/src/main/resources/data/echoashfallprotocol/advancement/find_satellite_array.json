@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:circuit_board"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_satellite_array.title",
+      "fallback": "Signal Lost"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_satellite_array.desc",
+      "fallback": "Discover a crashed Satellite Array."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_satellite_array": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:global"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_satellite_array"]
+  ]
+}

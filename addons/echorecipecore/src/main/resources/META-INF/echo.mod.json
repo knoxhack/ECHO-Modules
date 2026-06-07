@@ -1,0 +1,79 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echorecipecore",
+  "name": "ECHO: RecipeCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "recipe_core",
+  "entrypoint": "com.knoxhack.echo.recipecore.EchoRecipeCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "index.recipe_backend",
+    "recipes.backend",
+    "recipes.machine_views",
+    "recipes.search",
+    "recipes.usage_graph"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "recipes"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "First-party recipe backend contract layer for ECHO Index and machine recipe views. JEI remains optional and is not required by this platform path.",
+    "nativeEntrypoint": "com.knoxhack.echo.recipecore.EchoRecipeCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/recipecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

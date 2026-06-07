@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:data_fragment", "weight": 3 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:memory_shard", "weight": 1 }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:reality_dust", "weight": 1 },
+        { "type": "minecraft:empty", "weight": 3 }
+      ]
+    }
+  ],
+  "random_sequence": "echonexusprotocol:entities/data_wraith"
+}

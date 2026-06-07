@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:drop_pod/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:global/drop_pod",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

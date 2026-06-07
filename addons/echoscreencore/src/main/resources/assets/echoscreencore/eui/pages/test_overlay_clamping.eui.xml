@@ -1,0 +1,25 @@
+<page id="test-overlay-clamping" title="Overlay Clamping" styles="echoscreencore:advanced_mock,echoscreencore:dropdown_advanced">
+  <screen-shell>
+    <header title="Overlay Clamping" subtitle="Dropdowns and tooltips clamp or flip inside screen bounds"/>
+    <grid columns="1fr 1fr" gap="16">
+      <panel title="Top Left">
+        <button tooltip="This tooltip should stay on-screen." action="noop">Tooltip</button>
+        <select value="{filters.status}" searchable="true" max-visible-options="5">
+          <option value="active">Active</option>
+          <option value="ready">Ready</option>
+          <option value="locked">Locked</option>
+          <option value="done">Done</option>
+          <option value="all">All</option>
+        </select>
+      </panel>
+      <panel title="Bottom Right">
+        <spacer height="120"/>
+        <button tooltip="Near-edge tooltip clamps left and upward if needed." action="noop">Edge Tooltip</button>
+        <select value="{filters.status}" searchable="true" max-visible-options="8">
+          <option value="one">One</option><option value="two">Two</option><option value="three">Three</option><option value="four">Four</option>
+          <option value="five">Five</option><option value="six">Six</option><option value="seven">Seven</option><option value="eight">Eight</option>
+        </select>
+      </panel>
+    </grid>
+  </screen-shell>
+</page>

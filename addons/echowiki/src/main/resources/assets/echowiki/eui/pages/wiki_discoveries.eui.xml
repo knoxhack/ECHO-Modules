@@ -1,0 +1,46 @@
+<page id="wiki_discoveries" title="Discovery Intel" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Discoveries"/>
+    <param name="contentSubtitle" value="Spoiler-safe discovery states, hints, and revealed intel."/>
+    <param name="inspectorTitle" value="Visibility"/>
+    <param name="stateKey" value="wiki.discoveries.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="INTEL INDEX">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.discoveries">
+            <list class="wiki-browser-list" bind="wiki.discoveries.visible" item="discovery">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.select_discovery"/>
+                <param name="id" value="{discovery.id}"/>
+                <param name="title" value="{discovery.title}"/>
+                <param name="summary" value="{discovery.summary}"/>
+                <param name="status" value="{discovery.status}"/>
+                <param name="chip" value="{discovery.chip}"/>
+                <param name="meta" value="{discovery.meta}"/>
+                <param name="countLabel" value="{discovery.countLabel}"/>
+                <param name="selected" value="{discovery.selected}"/>
+              </component>
+              <empty-state title="No discoveries" body="No discovery providers have published visible entries."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="INTEL DOSSIER">
+          <row class="wiki-manual-inspector-title-row" gap="8">
+            <item-icon class="wiki-row-icon" item="{wiki.discoveries.selected.icon|minecraft:filled_map}"/>
+            <title class="wiki-detail-title" value="{wiki.discoveries.selected.title}"/>
+          </row>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.discoveries.selected.status}" value="{wiki.discoveries.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.discoveries.selected.category}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.discoveries.selected.countLabel}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.discoveries.selected.summary}"/>
+          <text class="wiki-muted-text" value="{wiki.discoveries.selected.id}"/>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <text class="wiki-inspector-copy" value="Locked discovery entries expose hints only. Revealed entries show full summaries from EchoCore."/>
+    </slot>
+  </component>
+</page>

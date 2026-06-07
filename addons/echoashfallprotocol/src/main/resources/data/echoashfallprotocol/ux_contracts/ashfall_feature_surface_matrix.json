@@ -1,0 +1,513 @@
+{
+  "id": "echoashfallprotocol:ashfall_feature_surface_matrix",
+  "schemaVersion": 1,
+  "contract": "echoashfallprotocol:ashfall_ux_contract_freeze",
+  "features": [
+    {
+      "id": "first_spawn",
+      "phase": "Phase 3",
+      "playerPromise": "The player understands water, shelter, tools, and Terminal handoff before leaving the pod.",
+      "requiredTerms": [
+        "water",
+        "shelter",
+        "first",
+        "route"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:craft_scrap_knife",
+          "echoashfallprotocol:drink_clean_water",
+          "echoashfallprotocol:secure_sleep_shelter",
+          "echoashfallprotocol:ashfall_first_month_routes"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_first_month_routes"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:starter_power_water",
+          "echoashfallprotocol:first_month_routes"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/first_steps"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_first_month_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_month_field_intel"
+        ],
+        "langKeys": [
+          "screen.EchoAshfallProtocol.welcome.first10.actions",
+          "screen.EchoAshfallProtocol.welcome.card.water.body",
+          "screen.EchoAshfallProtocol.welcome.card.shelter.body",
+          "screen.EchoAshfallProtocol.welcome.callout",
+          "message.EchoAshfallProtocol.starting.buffer",
+          "item.EchoAshfallProtocol.echo_starter_note.name"
+        ],
+        "items": [
+          "minecraft:paper",
+          "echoashfallprotocol:clean_water_bottle",
+          "echoashfallprotocol:scrap_knife"
+        ],
+        "blocks": []
+      }
+    },
+    {
+      "id": "early_water",
+      "phase": "Phase 4",
+      "playerPromise": "Water reads as dirty, filtered, clean, collected, purified, and reserved.",
+      "requiredTerms": [
+        "water",
+        "filter",
+        "clean",
+        "rain"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:drink_clean_water",
+          "echoashfallprotocol:build_rain_collector",
+          "echoashfallprotocol:secure_emergency_water_loop",
+          "echoashfallprotocol:build_water_purifier",
+          "echoashfallprotocol:stockpile_clean_water"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_first_month_routes",
+          "echoashfallprotocol:ashfall_machine_power_logistics"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:starter_power_water",
+          "echoashfallprotocol:weather_route_planning"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/first_steps",
+          "echowiki:guides/ashfall/progression"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_first_month_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_month_field_intel"
+        ],
+        "langKeys": [
+          "message.EchoAshfallProtocol.water.collect_dirty",
+          "message.EchoAshfallProtocol.water.filtered_consumed",
+          "message.EchoAshfallProtocol.water.clean_consumed",
+          "message.EchoAshfallProtocol.rain_collector.ready",
+          "message.EchoAshfallProtocol.rain_collector.blocked",
+          "tooltip.EchoAshfallProtocol.crude_filter.desc",
+          "tooltip.EchoAshfallProtocol.clean_water.desc"
+        ],
+        "items": [
+          "echoashfallprotocol:dirty_water_bottle",
+          "echoashfallprotocol:filtered_water_bottle",
+          "echoashfallprotocol:clean_water_bottle",
+          "echoashfallprotocol:crude_filter"
+        ],
+        "blocks": [
+          "echoashfallprotocol:rain_collector",
+          "echoashfallprotocol:water_purifier",
+          "echoashfallprotocol:filter_workbench"
+        ]
+      }
+    },
+    {
+      "id": "early_shelter",
+      "phase": "Phase 4",
+      "playerPromise": "Shelter is a readable return anchor with safe-route support.",
+      "requiredTerms": [
+        "shelter",
+        "return",
+        "route",
+        "safe"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:secure_sleep_shelter",
+          "echoashfallprotocol:secure_crash_outpost",
+          "echoashfallprotocol:base_stability_check"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_first_month_routes"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:safe_zones",
+          "echoashfallprotocol:first_month_routes"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/first_steps",
+          "echowiki:guides/ashfall/core_loop"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_first_month_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_month_field_intel"
+        ],
+        "langKeys": [
+          "screen.EchoAshfallProtocol.welcome.card.shelter.body",
+          "screen.EchoAshfallProtocol.welcome.status.pod",
+          "message.EchoAshfallProtocol.opening.shelter",
+          "message.EchoAshfallProtocol.opening.return_pod"
+        ],
+        "items": [
+          "minecraft:torch"
+        ],
+        "blocks": [
+          "echoashfallprotocol:emergency_bunk"
+        ]
+      }
+    },
+    {
+      "id": "primitive_tools",
+      "phase": "Phase 4",
+      "playerPromise": "Primitive tools and field kit explain their material cost and survival purpose.",
+      "requiredTerms": [
+        "tool",
+        "scrap",
+        "field",
+        "kit"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:craft_scrap_knife",
+          "echoashfallprotocol:assemble_wasteland_field_kit",
+          "echoashfallprotocol:find_schematic_fragment"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_first_month_routes"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:starter_power_water",
+          "echoashfallprotocol:first_month_routes"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/first_steps",
+          "echowiki:guides/ashfall/core_loop"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_first_month_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_month_field_intel"
+        ],
+        "langKeys": [
+          "screen.EchoAshfallProtocol.welcome.first10.actions",
+          "message.EchoAshfallProtocol.grace.start",
+          "tooltip.EchoAshfallProtocol.scrap_knife.desc",
+          "tooltip.EchoAshfallProtocol.scrap_knife.friction",
+          "tooltip.EchoAshfallProtocol.schematic_fragment.desc"
+        ],
+        "items": [
+          "echoashfallprotocol:scrap_knife",
+          "echoashfallprotocol:bandage",
+          "echoashfallprotocol:schematic_fragment"
+        ],
+        "blocks": []
+      }
+    },
+    {
+      "id": "starter_machines",
+      "phase": "Phase 4",
+      "playerPromise": "Rain collector, hand recycler, field kit, and schematics bridge into first production.",
+      "requiredTerms": [
+        "rain",
+        "recycler",
+        "schematic",
+        "casing"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:build_rain_collector",
+          "echoashfallprotocol:build_hand_recycler",
+          "echoashfallprotocol:assemble_wasteland_field_kit",
+          "echoashfallprotocol:first_schematic",
+          "echoashfallprotocol:make_machine_casing"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_first_month_routes",
+          "echoashfallprotocol:ashfall_machine_power_logistics"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:starter_power_water",
+          "echoashfallprotocol:machine_power_logistics"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/machine_power_logistics",
+          "echowiki:guides/ashfall/progression"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_major_route_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_major_route"
+        ],
+        "langKeys": [
+          "message.EchoAshfallProtocol.rain_collector.ready",
+          "message.EchoAshfallProtocol.rain_collector.filled",
+          "block.EchoAshfallProtocol.hand_recycler",
+          "item.EchoAshfallProtocol.machine_casing",
+          "tooltip.EchoAshfallProtocol.machine_casing.desc",
+          "tooltip.EchoAshfallProtocol.schematic_fragment.desc"
+        ],
+        "items": [
+          "echoashfallprotocol:schematic_fragment",
+          "echoashfallprotocol:machine_casing"
+        ],
+        "blocks": [
+          "echoashfallprotocol:rain_collector",
+          "echoashfallprotocol:hand_recycler"
+        ]
+      }
+    },
+    {
+      "id": "machine_power_logistics",
+      "phase": "Phase 5",
+      "playerPromise": "Machines, power, cables, batteries, and logistics blocks show purpose, state, recipe path, and payoff.",
+      "requiredTerms": [
+        "power",
+        "battery",
+        "cable",
+        "logistics"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:build_micro_generator",
+          "echoashfallprotocol:build_battery_bank",
+          "echoashfallprotocol:route_power_cable",
+          "echoashfallprotocol:install_item_pipe",
+          "echoashfallprotocol:build_factory_controller",
+          "echoashfallprotocol:build_nexus_capacitor"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_machine_power_logistics"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:machine_power_logistics"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/machine_power_logistics"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_major_route_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_major_route"
+        ],
+        "langKeys": [
+          "message.EchoAshfallProtocol.power.no_power",
+          "message.EchoAshfallProtocol.power.low_power",
+          "message.EchoAshfallProtocol.energy_meter.header",
+          "message.EchoAshfallProtocol.energy_meter.energy",
+          "message.EchoAshfallProtocol.energy_meter.transfer",
+          "message.EchoAshfallProtocol.energy_meter.demand",
+          "screen.EchoAshfallProtocol.machine_status.power_link",
+          "screen.EchoAshfallProtocol.machine_status.battery",
+          "screen.EchoAshfallProtocol.machine_status.network",
+          "jei.EchoAshfallProtocol.energy.cables",
+          "jei.EchoAshfallProtocol.energy.distributor",
+          "jei.EchoAshfallProtocol.energy.meter"
+        ],
+        "items": [
+          "echoashfallprotocol:basic_battery",
+          "echoashfallprotocol:energy_meter"
+        ],
+        "blocks": [
+          "echoashfallprotocol:micro_generator",
+          "echoashfallprotocol:battery_bank",
+          "echoashfallprotocol:power_cable",
+          "echoashfallprotocol:item_pipe",
+          "echoashfallprotocol:factory_controller"
+        ]
+      }
+    },
+    {
+      "id": "scanner_faction",
+      "phase": "Phase 6",
+      "playerPromise": "Scanning produces readable intel, faction contact, map context, drone pressure, cache loot, and rewards.",
+      "requiredTerms": [
+        "scanner",
+        "faction",
+        "drone",
+        "cache",
+        "reward"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:craft_portable_scanner",
+          "echoashfallprotocol:scan_first_poi",
+          "echoashfallprotocol:faction_signal_ping",
+          "echoashfallprotocol:repair_echo_drone",
+          "echoashfallprotocol:recover_drone_intel",
+          "echoashfallprotocol:loot_survivor_cache",
+          "echoashfallprotocol:complete_first_faction_task",
+          "echoashfallprotocol:crashbreak_relay_contract"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_scanner_faction_ops"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:scanner_faction_ops",
+          "echoashfallprotocol:field_scanning",
+          "echoashfallprotocol:faction_field_contacts",
+          "echoashfallprotocol:field_caches",
+          "echoashfallprotocol:field_contracts"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/scanner_faction_ops"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_first_month_scans",
+          "echoashfallprotocol:ashfall_major_route_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:first_month_field_intel",
+          "echoashfallprotocol:first_major_route"
+        ],
+        "langKeys": [
+          "tooltip.EchoAshfallProtocol.portable_signal_scanner.desc",
+          "tooltip.EchoAshfallProtocol.portable_signal_scanner.use",
+          "message.EchoAshfallProtocol.scanner.deep_scan_recorded",
+          "tooltip.EchoAshfallProtocol.scout_drone.desc",
+          "tooltip.EchoAshfallProtocol.relay_scanner_lens.desc",
+          "item.echoashfallprotocol.data_log_crashbreak_code",
+          "item.echoashfallprotocol.data_log_radwarden_charter"
+        ],
+        "items": [
+          "echoashfallprotocol:portable_signal_scanner",
+          "echoashfallprotocol:relay_scanner_lens",
+          "echoashfallprotocol:scout_drone_item",
+          "echoashfallprotocol:data_log_crashbreak_code",
+          "echoashfallprotocol:data_log_radwarden_charter"
+        ],
+        "blocks": [
+          "echoashfallprotocol:signal_scanner",
+          "echoashfallprotocol:echo_cache"
+        ]
+      }
+    },
+    {
+      "id": "midgame_survival_systems",
+      "phase": "Phase 7",
+      "playerPromise": "Hazards, mutation, med bay, lab/vaults, data logs, radiation, and atmosphere expose risk and recovery.",
+      "requiredTerms": [
+        "hazard",
+        "mutation",
+        "med bay",
+        "data-log",
+        "radiation",
+        "atmosphere"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:hazard_route_prep",
+          "echoashfallprotocol:enter_bio_lab",
+          "echoashfallprotocol:scan_mutation_status",
+          "echoashfallprotocol:use_field_med_bay",
+          "echoashfallprotocol:recover_data_log",
+          "echoashfallprotocol:clear_military_vault",
+          "echoashfallprotocol:scout_radiation_zone",
+          "echoashfallprotocol:build_atmospheric_scrubber"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_midgame_hazard_lab_vault"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:midgame_hazard_lab_vault",
+          "echoashfallprotocol:weather_route_planning",
+          "echoashfallprotocol:relay_hazard_prep"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+          "echowiki:guides/ashfall/systems"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_midgame_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:ashfall_midgame_hazards"
+        ],
+        "langKeys": [
+          "message.EchoAshfallProtocol.death_hint.radiation",
+          "message.EchoAshfallProtocol.death_hint.toxic_air",
+          "message.EchoAshfallProtocol.hazard.scrubber_safe",
+          "tooltip.EchoAshfallProtocol.radaway.desc",
+          "tooltip.EchoAshfallProtocol.data_log.desc",
+          "tooltip.EchoAshfallProtocol.mutagen.warning",
+          "jei.EchoAshfallProtocol.midgame.field_med_bay",
+          "jei.EchoAshfallProtocol.midgame.scrubber",
+          "jei.EchoAshfallProtocol.midgame.cleanser"
+        ],
+        "items": [
+          "echoashfallprotocol:field_med_bay",
+          "echoashfallprotocol:rad_away",
+          "echoashfallprotocol:stim_pack",
+          "echoashfallprotocol:data_log_survivor_alpha"
+        ],
+        "blocks": [
+          "echoashfallprotocol:field_med_bay",
+          "echoashfallprotocol:atmospheric_scrubber",
+          "echoashfallprotocol:radiation_cleanser",
+          "echoashfallprotocol:research_lab"
+        ]
+      }
+    },
+    {
+      "id": "late_game_resolution",
+      "phase": "Phase 8",
+      "playerPromise": "Bosses, Nexus state, Prime relays, branch choices, and endings present readable stakes.",
+      "requiredTerms": [
+        "boss",
+        "Nexus",
+        "Prime",
+        "Restore",
+        "Destroy",
+        "Control"
+      ],
+      "evidence": {
+        "missions": [
+          "echoashfallprotocol:scan_prime_relays",
+          "echoashfallprotocol:resolve_prime_relays",
+          "echoashfallprotocol:neutralize_nexus_scar_avatar",
+          "echoashfallprotocol:awaken_nexus_core",
+          "echoashfallprotocol:reach_decision",
+          "echoashfallprotocol:restore_finale",
+          "echoashfallprotocol:destroy_finale",
+          "echoashfallprotocol:control_finale"
+        ],
+        "terminalPages": [
+          "echoashfallprotocol:ashfall_nexus_prime_relays"
+        ],
+        "indexEntries": [
+          "echoashfallprotocol:nexus_prime_relays"
+        ],
+        "wikiArticles": [
+          "echowiki:guides/ashfall/nexus_prime_relays"
+        ],
+        "lensProfiles": [
+          "echoashfallprotocol:ashfall_late_game_scans"
+        ],
+        "holomapLayers": [
+          "echoashfallprotocol:ashfall_late_game_state"
+        ],
+        "langKeys": [
+          "message.EchoAshfallProtocol.boss.spawned",
+          "message.EchoAshfallProtocol.nexus.restored",
+          "message.EchoAshfallProtocol.nexus.destroyed",
+          "message.EchoAshfallProtocol.nexus.controlled",
+          "screen.EchoAshfallProtocol.welcome.modpack.pillar.nexus",
+          "lore.EchoAshfallProtocol.choice_matters",
+          "tooltip.EchoAshfallProtocol.nexus_crystal.desc"
+        ],
+        "items": [
+          "echoashfallprotocol:nexus_capacitor",
+          "echoashfallprotocol:nexus_core",
+          "echoashfallprotocol:nexus_crystal",
+          "echoashfallprotocol:relay_scanner_lens"
+        ],
+        "blocks": [
+          "echoashfallprotocol:nexus_capacitor"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/terminal",
+  "title": "Terminal Operations Manual",
+  "category": "Guide Books",
+  "summary": "Use Terminal tabs, records, recipes, rewards, and linked pages as a compact operations layer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Terminal is the in-world operations console. It brings tabs and records together so players can make decisions without leaving the survival flow.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Open the terminal, check available tabs, and learn which systems publish records or recipes into it. Keep one terminal near your main staging area.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Open the relevant tab, review records or rewards, follow links into Wiki or Index, act on the plan, then return to update the terminal state.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Tabs, navigation pages, recipe views, reward tiers, mission pages, and linked records define the player-facing console surface.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Wiki registers a Codex tab, Index can publish recipes, SignalOS can provide records, and TutorialCore can report terminal-opened progress.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a tab is absent, confirm the owning addon is loaded and reopen the terminal after resources reload.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "terminal",
+    "operations"
+  ],
+  "icon": "minecraft:redstone_torch",
+  "heroArt": "echowiki:textures/gui/guide_books/terminal_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/terminal/first_steps",
+    "echowiki:guides/terminal/core_loop",
+    "echowiki:guides/terminal/systems",
+    "echowiki:guides/terminal/progression",
+    "echowiki:guides/terminal/integrations",
+    "echowiki:guides/terminal/troubleshooting"
+  ],
+  "sortOrder": 1230
+}

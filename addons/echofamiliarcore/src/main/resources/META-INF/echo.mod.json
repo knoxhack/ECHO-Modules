@@ -1,0 +1,86 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echofamiliarcore",
+  "name": "ECHO: FamiliarCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "content_pack",
+  "role": "familiar_core",
+  "entrypoint": "com.knoxhack.echofamiliarcore.EchoFamiliarCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore"
+  ],
+  "optional": [
+    "echocursecore",
+    "echorelictech",
+    "echoritualcore",
+    "echospellcore"
+  ],
+  "provides": [
+    "familiar.bonds",
+    "familiar.commands",
+    "familiar.companions",
+    "familiar.registry",
+    "familiar.upgrades"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "player.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "player",
+        "commands"
+      ],
+      "runtimes": [
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echofamiliarcore.EchoFamiliarCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresMinecraft": false,
+    "contractsOnly": false,
+    "notes": "Provides the Arcana Division familiar binding, command, and upgrade scaffold while keeping ritual, spell, curse, and relic integrations optional."
+  },
+  "apiStability": "scaffold",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echofamiliarcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Crash Recovery Incidents",
+  "incidents": [
+    {
+      "id": "echoconvoyprotocol:wreckage_signal_blackout",
+      "stage": 2,
+      "displayText": "Crash-zone signal blackout severed the recovery link.",
+      "readinessThreshold": 74,
+      "fuelEffect": -8,
+      "integrityEffect": -10,
+      "cargoEffect": -1,
+      "delayTicks": 200,
+      "requiredResponseTask": "echoconvoyprotocol:resolve_field_incident",
+      "holomapMarkerHint": "failed_convoy_signal"
+    }
+  ]
+}

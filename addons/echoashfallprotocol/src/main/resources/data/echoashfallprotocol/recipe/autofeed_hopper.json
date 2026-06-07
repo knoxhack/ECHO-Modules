@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IHI",
+    "ICI",
+    "IWI"
+  ],
+  "key": {
+    "I": "echoashfallprotocol:scrap_metal",
+    "H": "minecraft:hopper",
+    "C": "echoashfallprotocol:circuit_board",
+    "W": "echoashfallprotocol:scrap_wire"
+  },
+  "result": {
+    "id": "echoashfallprotocol:autofeed_hopper",
+    "count": 1
+  }
+}

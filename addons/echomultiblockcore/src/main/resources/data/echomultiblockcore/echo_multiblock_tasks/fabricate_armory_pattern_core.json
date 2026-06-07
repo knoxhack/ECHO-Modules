@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:fabricate_armory_pattern_core",
+  "display_name": "Fabricate Armory Pattern Core",
+  "category": "fabrication",
+  "allowed_multiblocks": ["echomultiblockcore:armory_fabricator"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "CUTTER"],
+  "duration_ticks": 220,
+  "heat_per_second": 3,
+  "animation": "assemble",
+  "animation_profile": "echomultiblockcore:armory_fabricate",
+  "inputs": [
+    { "item": "echomultiblockcore:machine_casing", "count": 1 },
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:armory_pattern_core", "count": 1 }
+  ],
+  "notes": ["Fabricates a pattern core used by armory loadout and fabrication routes."]
+}

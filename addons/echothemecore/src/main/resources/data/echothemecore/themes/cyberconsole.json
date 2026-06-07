@@ -1,0 +1,247 @@
+{
+  "id": "echothemecore:cyberconsole",
+  "display_name": "CyberConsole",
+  "description": "Amber-green command console skin with phosphor buttons, terminal HUD chrome, and sharp operational panels.",
+  "colors": {
+    "primary": "#33FF33",
+    "secondary": "#1A801A",
+    "accent": "#FFD041",
+    "background": "#000A00",
+    "panel": "#003300CC",
+    "panel_alt": "#004400AA",
+    "glass": "#00110088",
+    "border": "#33FF33",
+    "border_soft": "#1A801A",
+    "text": "#C8FFC8",
+    "muted_text": "#6EC66E",
+    "success": "#66FF66",
+    "warning": "#FFFF00",
+    "error": "#FF3333",
+    "locked": "#1A401A",
+    "glow": "#33FF33",
+    "selection": "#FFD041"
+  },
+  "ui": {
+    "background_texture": "echothemecore:textures/gui/themes/cyberconsole/background.png",
+    "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_panel.png",
+    "panel_alt_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_panel_alt.png",
+    "button_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_button.png",
+    "button_hover_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_button_hover.png",
+    "tab_texture": "echothemecore:textures/gui/themes/cyberconsole/tab.png",
+    "tab_active_texture": "echothemecore:textures/gui/themes/cyberconsole/tab_active.png",
+    "mission_card_texture": "echothemecore:textures/gui/themes/cyberconsole/mission_card.png",
+    "mission_card_selected_texture": "echothemecore:textures/gui/themes/cyberconsole/mission_card_selected.png",
+    "status_chip_texture": "echothemecore:textures/gui/themes/cyberconsole/status_chip.png",
+    "progress_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/progress_bar.png",
+    "scrollbar_texture": "echothemecore:textures/gui/themes/cyberconsole/scrollbar.png",
+    "icon_pack": "echothemecore:textures/gui/themes/cyberconsole/icons/icon_theme.png",
+    "hologram_overlay": "echothemecore:textures/gui/themes/cyberconsole/hologram_overlay.png",
+    "energy_overlay": "echothemecore:textures/gui/themes/cyberconsole/energy_overlay.png",
+    "edge_glow": "echothemecore:textures/gui/themes/cyberconsole/edge_glow.png",
+    "particle_glints": "echothemecore:textures/gui/themes/cyberconsole/particle_glints.png",
+    "locked_overlay": "echothemecore:textures/gui/themes/cyberconsole/locked_overlay.png"
+  },
+  "render": {
+    "hologram_color": "#33FF33",
+    "hologram_secondary": "#1A801A",
+    "particle_primary": "#33FF33",
+    "particle_secondary": "#FFD041",
+    "emissive_primary": "#33FF33",
+    "emissive_secondary": "#1A801A",
+    "edge_glow_color": "#33FF33",
+    "warning_glow_color": "#FFFF00",
+    "success_glow_color": "#66FF66",
+    "error_glow_color": "#FF3333",
+    "distortion_color": "#1A801A",
+    "glow_intensity": 0.85,
+    "emissive_intensity": 0.9,
+    "hologram_opacity": 0.68,
+    "glass_opacity": 0.62,
+    "noise_strength": 0.05,
+    "distortion_strength": 0.0,
+    "edge_glow_strength": 0.75,
+    "hologram_pulse_strength": 0.45,
+    "energy_pattern_strength": 0.35,
+    "particle_intensity": 0.65,
+    "animation_intensity": 0.75,
+    "pulse_speed": 0.85,
+    "hologram_style": "CYBER_GLASS",
+    "particle_style": "SOFT_GLINTS",
+    "distortion_style": "NONE",
+    "overlay_style": "GLASS_GEOMETRIC",
+    "transition_style": "GLASS_FADE",
+    "hologram_reference": "echothemecore:textures/gui/themes/cyberconsole/rendercore/hologram_style_reference.png",
+    "particle_reference": "echothemecore:textures/gui/themes/cyberconsole/rendercore/particle_style_reference.png",
+    "distortion_overlay": "echothemecore:textures/gui/themes/cyberconsole/rendercore/distortion_overlay.png"
+  },
+  "sound": {
+    "ui_click": "echosoundcore:ui.terminal.select",
+    "ui_error": "echosoundcore:ui.terminal.error",
+    "ui_open": "echosoundcore:ui.terminal.open",
+    "ui_close": "echosoundcore:ui.terminal.close",
+    "theme_music": "echosoundcore:music.terminal.command_bed",
+    "stinger_confirm": "echosoundcore:stinger.objective.complete",
+    "stinger_warning": "echosoundcore:ui.terminal.warning"
+  },
+  "block_palette": {
+    "recommended_blocks": [
+      "minecraft:tinted_glass",
+      "minecraft:cyan_stained_glass",
+      "minecraft:magenta_stained_glass"
+    ],
+    "panel_blocks": [
+      "minecraft:blackstone",
+      "minecraft:deepslate_tiles"
+    ],
+    "glass_blocks": [
+      "minecraft:tinted_glass",
+      "minecraft:cyan_stained_glass"
+    ],
+    "light_blocks": [
+      "minecraft:sea_lantern",
+      "minecraft:end_rod"
+    ],
+    "accent_blocks": [
+      "minecraft:amethyst_block",
+      "minecraft:magenta_glazed_terracotta"
+    ]
+  },
+  "vanilla_ui": {
+    "background_texture": "echothemecore:textures/gui/themes/cyberconsole/background.png",
+    "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_panel.png",
+    "button_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_button.png",
+    "hotbar_texture": "echothemecore:textures/gui/themes/cyberconsole/status_chip.png",
+    "tooltip_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_tooltip_panel.png",
+    "toast_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_toast_accent.png",
+    "boss_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_boss_bar_accent.png",
+    "background_tint": "#000A0088",
+    "panel_tint": "#003300CC",
+    "tooltip_tint": "#001100DD",
+    "widget_accent": "#33FF33",
+    "hotbar_accent": "#FFD041",
+    "chat_accent": "#33FF33",
+    "overlay_opacity": 0.34,
+    "panel_opacity": 0.58,
+    "edge_glow_strength": 0.72,
+    "reduce_vanilla_brown": true
+  },
+  "module_assets": {
+    "terminal": {
+      "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_panel.png",
+      "tab_texture": "echothemecore:textures/gui/themes/cyberconsole/tab.png",
+      "tab_active_texture": "echothemecore:textures/gui/themes/cyberconsole/tab_active.png",
+      "mission_card_texture": "echothemecore:textures/gui/themes/cyberconsole/mission_card.png",
+      "status_chip_texture": "echothemecore:textures/gui/themes/cyberconsole/status_chip.png",
+      "button_texture": "echothemecore:textures/gui/themes/cyberconsole/glass_button.png",
+      "icon_texture": "echothemecore:textures/gui/themes/cyberconsole/icons/icon_terminal.png"
+    },
+    "index": {
+      "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/index_panel.png",
+      "panel_wide_texture": "echothemecore:textures/gui/themes/cyberconsole/index_panel_wide.png",
+      "panel_active_texture": "echothemecore:textures/gui/themes/cyberconsole/index_panel_active.png",
+      "button_texture": "echothemecore:textures/gui/themes/cyberconsole/index_button.png",
+      "button_hover_texture": "echothemecore:textures/gui/themes/cyberconsole/index_button_hover.png",
+      "card_texture": "echothemecore:textures/gui/themes/cyberconsole/index_card.png",
+      "card_selected_texture": "echothemecore:textures/gui/themes/cyberconsole/index_card_selected.png",
+      "status_chip_texture": "echothemecore:textures/gui/themes/cyberconsole/index_status_chip.png",
+      "progress_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/index_progress_bar.png",
+      "scrollbar_texture": "echothemecore:textures/gui/themes/cyberconsole/index_scrollbar.png",
+      "icon_texture": "echothemecore:textures/gui/themes/cyberconsole/icons/icon_index.png"
+    },
+    "holomap": {
+      "grid_texture": "echothemecore:textures/gui/themes/cyberconsole/holomap_grid.png",
+      "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/holomap_panel.png",
+      "route_texture": "echothemecore:textures/gui/themes/cyberconsole/route_line.png",
+      "marker_signal_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_signal.png",
+      "marker_hazard_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_hazard.png",
+      "marker_mission_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_mission.png",
+      "marker_nexus_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_nexus.png",
+      "marker_reclaimed_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_reclamation.png",
+      "danger_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_hazard.png",
+      "anomaly_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_nexus.png",
+      "reclaimed_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/marker_reclamation.png",
+      "selected_ring_texture": "echothemecore:textures/gui/themes/cyberconsole/selected_marker_ring.png"
+    },
+    "lens": {
+      "scan_ring_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_scan_ring.png",
+      "target_box_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_target_box.png",
+      "weak_point_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_weakpoint_marker.png",
+      "warning_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_warning_overlay.png",
+      "anomaly_reveal_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_anomaly_overlay.png",
+      "completion_pulse_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_progress_arc.png",
+      "progress_arc_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_progress_arc.png",
+      "noise_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/lens_noise_overlay.png"
+    },
+    "vanilla_ui": {
+      "container_frame_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_container_frame.png",
+      "inventory_frame_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_inventory_frame.png",
+      "creative_frame_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_inventory_frame.png",
+      "title_backplate_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_title_backplate.png",
+      "pause_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_pause_panel.png",
+      "selected_slot_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_hotbar_accent.png",
+      "tooltip_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_tooltip_panel.png",
+      "toast_accent_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_toast_accent.png",
+      "boss_bar_accent_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_boss_bar_accent.png",
+      "widget_outline_texture": "echothemecore:textures/gui/themes/cyberconsole/vanilla_widget_outline.png"
+    },
+    "rendercore": {
+      "glow_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/rendercore/glow_overlay_reference.png",
+      "distortion_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/rendercore/distortion_overlay.png",
+      "entity_highlight_texture": "echothemecore:textures/gui/themes/cyberconsole/rendercore/entity_highlight_reference.png",
+      "multiblock_energy_texture": "echothemecore:textures/gui/themes/cyberconsole/rendercore/multiblock_energy_lines.png"
+    },
+    "screen_core": {
+      "surface_base_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/surface_base.png",
+      "surface_raised_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/surface_raised.png",
+      "surface_floating_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/surface_floating.png",
+      "button_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/button.png",
+      "button_hover_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/button_hover.png",
+      "status_chip_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/status_chip.png",
+      "progress_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/progress_bar.png",
+      "focus_ring_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/focus_ring.png",
+      "corner_cuts_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/corner_cuts.png",
+      "edge_rails_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/edge_rails.png",
+      "panel_sheen_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/panel_sheen.png",
+      "micro_ticks_texture": "echothemecore:textures/gui/themes/cyberconsole/screencore/micro_ticks.png"
+    },
+    "loading": {
+      "background_texture": "echothemecore:textures/gui/themes/cyberconsole/loading/background.png",
+      "panel_texture": "echothemecore:textures/gui/themes/cyberconsole/loading/panel.png",
+      "progress_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/loading/progress_bar.png",
+      "spinner_texture": "echothemecore:textures/gui/themes/cyberconsole/loading/spinner.png",
+      "logo_mark_texture": "echothemecore:textures/gui/themes/cyberconsole/loading/logo_mark.png"
+    },
+    "menu": {
+      "main_backplate_texture": "echothemecore:textures/gui/themes/cyberconsole/menu/main_backplate.png",
+      "pause_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/menu/pause_panel.png",
+      "options_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/menu/options_panel.png",
+      "world_row_texture": "echothemecore:textures/gui/themes/cyberconsole/menu/world_row.png",
+      "mods_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/menu/mods_panel.png"
+    },
+    "hud": {
+      "hotbar_frame_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/hotbar_frame.png",
+      "selected_slot_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/selected_slot.png",
+      "crosshair_accent_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/crosshair_accent.png",
+      "boss_bar_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/boss_bar.png",
+      "chat_panel_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/chat_panel.png",
+      "notification_chip_texture": "echothemecore:textures/gui/themes/cyberconsole/hud/notification_chip.png"
+    },
+    "item_icon": {
+      "frame_texture": "echothemecore:textures/gui/themes/cyberconsole/item_icon/frame.png",
+      "rarity_ring_texture": "echothemecore:textures/gui/themes/cyberconsole/item_icon/rarity_ring.png",
+      "badge_texture": "echothemecore:textures/gui/themes/cyberconsole/item_icon/badge.png",
+      "lock_overlay_texture": "echothemecore:textures/gui/themes/cyberconsole/item_icon/lock_overlay.png",
+      "mission_marker_texture": "echothemecore:textures/gui/themes/cyberconsole/item_icon/mission_marker.png"
+    }
+  },
+  "metadata": {
+    "module_tags": "terminal,signalos,index,holomap,lens,screencore,rendercore,soundcore,blockworks,vanilla_ui,hud,loading,menu,item_icon",
+    "default": "false",
+    "family": "cyberconsole",
+    "public": "true",
+    "cycle_order": "20",
+    "icon": "echothemecore:textures/gui/themes/cyberconsole/icons/icon_theme.png",
+    "replacement_level": "hybrid",
+    "version": "1.3.0"
+  }
+}

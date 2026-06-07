@@ -1,0 +1,21 @@
+page {
+  padding: space(md);
+}
+
+.terminal-grid {
+  columns: 220px 1fr 280px;
+  gap: space(md);
+}
+
+.command-button {
+  height: 28px;
+}
+
+.alert-row {
+  min-height: 42px;
+}
+
+.status-grid {
+  columns: 1fr 1fr;
+  gap: space(sm);
+}

@@ -1,0 +1,55 @@
+package com.knoxhack.echo.bridgecore;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+final class BridgeContractGuards {
+    private BridgeContractGuards() {
+    }
+
+    static String requireText(String value, String label) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(label + " must not be blank");
+        }
+        return value.trim();
+    }
+
+    static String optionalText(String value) {
+        return value == null ? "" : value.trim();
+    }
+
+    static int nonNegative(int value, String label) {
+        if (value < 0) {
+            throw new IllegalArgumentException(label + " must be non-negative");
+        }
+        return value;
+    }
+
+    static long nonNegativeLong(long value, String label) {
+        if (value < 0L) {
+            throw new IllegalArgumentException(label + " must be non-negative");
+        }
+        return value;
+    }
+
+    static Duration positiveDuration(Duration value, String label) {
+        if (value == null || value.isZero() || value.isNegative()) {
+            throw new IllegalArgumentException(label + " must be positive");
+        }
+        return value;
+    }
+
+    static <T> List<T> immutableList(List<T> values) {
+        return values == null ? List.of() : List.copyOf(values);
+    }
+
+    static <T> Set<T> immutableSet(Set<T> values) {
+        return values == null ? Set.of() : Set.copyOf(values);
+    }
+
+    static <K, V> Map<K, V> immutableMap(Map<K, V> values) {
+        return values == null ? Map.of() : Map.copyOf(values);
+    }
+}

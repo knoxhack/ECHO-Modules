@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:build_research_lab",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:mutagen_vial"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.first_perk.title",
+      "fallback": "Enhanced Capabilities"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.first_perk.desc",
+      "fallback": "Unlock your first research perk."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "unlocked_perk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:mutagen_vial"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["unlocked_perk"]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:armor_tech",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "I patch plates, braces, and bad decisions. What needs work?",
+      "options": [
+        { "id": "armor", "label": "What holds up out there?", "next": "armor" },
+        { "id": "trade", "label": "Show me parts.", "action": "open_trade" },
+        { "id": "service", "label": "Can you fix this?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Not today.", "action": "close" }
+      ]
+    },
+    "armor": {
+      "text": "Layered scrap, leather straps, and anything that does not crack when the wind throws gravel at it.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

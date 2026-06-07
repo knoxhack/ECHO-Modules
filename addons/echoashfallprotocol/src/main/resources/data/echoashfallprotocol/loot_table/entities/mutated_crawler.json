@@ -1,0 +1,25 @@
+{
+  "type": "entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:string",
+          "functions": [{"function": "set_count", "count": {"min": 1, "max": 3}}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {"type": "item", "name": "echoashfallprotocol:contaminated_lapis", "weight": 25,
+          "functions": [{"function": "set_count", "count": {"min": 1, "max": 2}}]},
+        {"type": "item", "name": "echoashfallprotocol:mutagen_vial", "weight": 5},
+        {"type": "empty", "weight": 70}
+      ],
+      "conditions": [{"condition": "killed_by_player"}]
+    }
+  ]
+}

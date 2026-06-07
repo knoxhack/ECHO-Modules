@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echotutorialcore",
+  "name": "ECHO: TutorialCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "tutorial_core",
+  "entrypoint": "com.knoxhack.echotutorialcore.EchoTutorialCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echopowergrid",
+    "echosoundcore",
+    "echoterminal",
+    "echothemecore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "tutorial.cards",
+    "tutorial.flows",
+    "tutorial.hints",
+    "tutorial.onboarding",
+    "tutorial.tooltips"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "player.data",
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [
+    "metadata/assets/modules/echotutorialcore/icon.png",
+    "metadata/assets/modules/echotutorialcore/banner.png",
+    "metadata/assets/modules/echotutorialcore/module_card.png",
+    "metadata/assets/modules/echotutorialcore/showcase.png"
+  ],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "ui_screens",
+        "wiki"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Tutorial card, hint, flow, tooltip, onboarding, and replay contract layer with optional first-party integrations.",
+    "nativeEntrypoint": "com.knoxhack.echotutorialcore.EchoTutorialCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echotutorialcore/**",
+      "src/main/resources/**",
+      "README.md",
+      "SMOKE_TEST.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,138 @@
+{
+  "id": "echoashfallprotocol:base_stability_check",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 4,
+  "title": "Run Base Stability Check",
+  "briefing": "[ECHO-7] Before hazard prep, confirm the outpost can carry you home. Keep storage, water purification, medicine, and buffered power active near the pod.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall composite predicate: First Faction Contact completion can satisfy the check, otherwise confirm storage, purifier, battery, water, bandages, and an Energy Cell.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:energy_cell",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_thermal_burner"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "base_stability_check",
+    "nativeGameplayHook": "ashfall.first_route.base_stability_check",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.hazard_prep.bridge",
+    "alternateCompletionSignal": "echoashfallprotocol:first_faction_contact:completed",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "27",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:base_stability_check:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:base_stability_check/confirm_stable_outpost",
+      "type": "custom",
+      "label": "Confirm Stable Outpost",
+      "detail": "Confirm nearby storage, water purification, buffered power, clean water, bandages, and an Energy Cell.",
+      "icon": "echoashfallprotocol:energy_cell",
+      "target": "ashfall:stable_outpost",
+      "required": 1,
+      "criteria": {
+        "predicate": "base_stability_check",
+        "required_blocks": "minecraft:chest=1,echoashfallprotocol:water_purifier=1,echoashfallprotocol:battery_bank=1",
+        "required_items": "echoashfallprotocol:clean_water_bottle=3,echoashfallprotocol:bandage=2,echoashfallprotocol:energy_cell=1",
+        "alternate_completion": "echoashfallprotocol:first_faction_contact:completed",
+        "events": "ashfall.block_requirement,ashfall.inventory_predicate,ashfall.mission_completed",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris",
+        "native_objective_type": "composite_predicate"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "minecraft:chest",
+      "count": 1,
+      "label": "Storage Chest"
+    },
+    {
+      "block": "echoashfallprotocol:water_purifier",
+      "count": 1,
+      "label": "Water Purifier"
+    },
+    {
+      "block": "echoashfallprotocol:battery_bank",
+      "count": 1,
+      "label": "Battery Bank"
+    },
+    {
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 3,
+      "label": "Clean Water Bottles"
+    },
+    {
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandages"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:base_stability_check/reward_energy_cells",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cells",
+      "detail": "Buffered power for hazard preparation."
+    },
+    {
+      "id": "echoashfallprotocol:base_stability_check/reward_filtration_membrane",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "detail": "Filter reserve for route preparation."
+    },
+    {
+      "id": "echoashfallprotocol:base_stability_check/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 2,
+      "label": "Clean Water Bottles",
+      "detail": "Hydration reserve for the next route."
+    },
+    {
+      "id": "echoashfallprotocol:base_stability_check/reward_bandages",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandages",
+      "detail": "Medical reserve for hazard routes."
+    }
+  ],
+  "completionText": "[ECHO-7] Base stability confirmed. You now have a fallback point for expedition prep and longer routes."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "echoindustrialnexus:circuit_fabricator",
+  "display_name": "Circuit Fabricator",
+  "translation_key": "multiblock.echoindustrialnexus.circuit_fabricator",
+  "role": "PRODUCTION",
+  "category": "precision_electronics",
+  "size": [5, 2, 3],
+  "controller": "echoindustrialnexus:circuit_fabricator_controller",
+  "allowed_rotations": true,
+  "mirrorable": true,
+  "requires_foundation": false,
+  "layers": [
+    [
+      "FIDOF",
+      "D.CRF",
+      "FWSMF"
+    ],
+    [
+      "..D..",
+      "..W..",
+      "..L.."
+    ]
+  ],
+  "palette": {
+    "F": { "block": "echoindustrialnexus:reinforced_machine_casing" },
+    "I": { "block": "echoindustrialnexus:input_depot_crate", "component": true },
+    "O": { "block": "echoindustrialnexus:output_depot_crate", "component": true },
+    "D": { "block": "echoindustrialnexus:industrial_data_bus", "component": true },
+    "R": { "block": "echoindustrialnexus:robotic_arm_mount", "robotics": true },
+    "W": { "block": "echoindustrialnexus:industrial_workcell_frame", "component": true },
+    "S": { "block": "echoindustrialnexus:inspection_scanner_controller", "component": true },
+    "M": { "block": "echoindustrialnexus:machine_status_panel", "component": true },
+    "L": { "block": "echoindustrialnexus:warning_light", "component": true, "optional": true },
+    "C": { "block": "echoindustrialnexus:circuit_fabricator_controller", "controller": true },
+    ".": { "air": true }
+  },
+  "capabilities": [
+    "echo:robotics",
+    "echo:workcell",
+    "echo:item_input",
+    "echo:item_output",
+    "echo:power_input",
+    "echo:terminal_tab",
+    "echo:scanner_target",
+    "echo:map_marker"
+  ],
+  "workcells": [
+    {
+      "id": "echoindustrialnexus:circuit_fabricator/input",
+      "type": "INPUT",
+      "pos": [1, 0, 0],
+      "size": [1, 1, 1]
+    },
+    {
+      "id": "echoindustrialnexus:circuit_fabricator/precision_assembly",
+      "type": "ASSEMBLY",
+      "pos": [2, 1, 1],
+      "size": [1, 1, 1],
+      "required_tools": ["ASSEMBLER", "SCANNER"],
+      "allowed_tasks": ["echoindustrialnexus:assemble_precision_circuit"]
+    },
+    {
+      "id": "echoindustrialnexus:circuit_fabricator/inspection",
+      "type": "QUALITY_INSPECTION",
+      "pos": [2, 0, 2],
+      "size": [1, 1, 1],
+      "required_tools": ["SCANNER"]
+    },
+    {
+      "id": "echoindustrialnexus:circuit_fabricator/output",
+      "type": "OUTPUT",
+      "pos": [3, 0, 0],
+      "size": [1, 1, 1]
+    }
+  ],
+  "robotics": {
+    "min_arms": 1,
+    "required_tools": ["ASSEMBLER", "SCANNER"]
+  },
+  "integrity": {
+    "max": 100,
+    "damageable": true
+  },
+  "preview": {
+    "color": "66ff99"
+  }
+}

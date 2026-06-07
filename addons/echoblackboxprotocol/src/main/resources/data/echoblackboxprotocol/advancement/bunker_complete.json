@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:command_remnant",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:core_access_key_matrix"
+                             },
+                    "title":  "Bunker Command Extracted",
+                    "description":  "Recover the Core Access Key Matrix.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "matrix":  {
+                                    "trigger":  "minecraft:inventory_changed",
+                                    "conditions":  {
+                                                       "items":  [
+                                                                     {
+                                                                         "items":  "echoblackboxprotocol:core_access_key_matrix"
+                                                                     }
+                                                                 ]
+                                                   }
+                                }
+                 },
+    "requirements":  [
+                         [
+                             "matrix"
+                         ]
+                     ]
+}

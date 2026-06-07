@@ -1,0 +1,64 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+    runs {
+        client { client(); systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        server { server(); programArgument '--nogui'; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${project.mod_id}:*").toString()
+        }
+        data { clientData(); programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath() }
+        configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
+    }
+    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+def optionalProject = { String path, String configuration ->
+    def candidate = rootProject.findProject(path)
+    if (candidate != null) {
+        dependencies.add(configuration, candidate)
+    }
+}
+
+dependencies {
+    implementation project(":echocore")
+    compileOnly project(":echo-native-contracts")
+    implementation project(":echonetcore")
+    implementation project(":echoadaptercore")
+    optionalProject(":echoterminal", "compileOnly")
+    optionalProject(":echorendercore", "compileOnly")
+    optionalProject(":echoruntimeguard", "compileOnly")
+    optionalProject(":echolens", "compileOnly")
+    optionalProject(":echomultiblockcore", "compileOnly")
+    optionalProject(":echoindustrialnexus", "compileOnly")
+    optionalProject(":echoworldcore", "compileOnly")
+    compileOnly project(":echomachinecore")
+    localRuntime project(":echomachinecore")
+    localRuntime "org.jline:jline-reader:3.20.0"
+    localRuntime "org.jline:jline-terminal:3.20.0"
+}
+
+
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

@@ -1,0 +1,69 @@
+{
+  "id": "echowiki:guides/ashfall/scanner_faction_ops",
+  "title": "Ashfall: Scanner and Faction Ops",
+  "category": "Guide Books",
+  "summary": "Turn scanner rows, HoloMap markers, faction contact, drone warnings, and cache rewards into one clear field plan.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Scan Before Committing",
+      "body": "The scanner should name what you found, why it matters, what mission or marker it belongs to, and whether the route is safe now. Treat every scan as a planning note, not a command to sprint forward.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Portable Field Read",
+      "body": "Use the portable scanner from shelter first. Confirm the HoloMap marker, compare risk labels, then decide whether the route needs water, filters, armor, or a shorter return line.",
+      "tone": "body",
+      "item": "echoashfallprotocol:portable_signal_scanner",
+      "count": 1,
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:craft_portable_scanner",
+      "label": "Craft Portable Scanner",
+      "subtitle": "Scanner objective"
+    },
+    {
+      "type": "callout",
+      "title": "Faction Contact",
+      "body": "Crashbreak and Radwarden signals start as recognition and optional work. Read standing, reward reason, and route risk before treating a contact like a combat objective.",
+      "tone": "tip",
+      "icon": "echoashfallprotocol:data_log_crashbreak_code"
+    },
+    {
+      "type": "paragraph",
+      "title": "Cache Rewards",
+      "body": "A good cache tells you why the reward matters: survival buffer, repair part, scanner clue, faction proof, or late-game intel. If you cannot carry it safely, mark it and come back.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "scanner",
+    "factions",
+    "caches",
+    "guide_book_chapter"
+  ],
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:guides/ashfall/systems",
+    "echowiki:guides/ashfall/core_loop"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:portable_signal_scanner",
+    "echoashfallprotocol:relay_scanner_lens",
+    "echoashfallprotocol:data_log_crashbreak_code",
+    "echoashfallprotocol:data_log_radwarden_charter"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:scan_first_poi",
+    "echoashfallprotocol:faction_signal_ping",
+    "echoashfallprotocol:loot_survivor_cache"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:crash_zone_wasteland",
+    "echoashfallprotocol:ruined_cityscape"
+  ],
+  "sortOrder": 1018
+}

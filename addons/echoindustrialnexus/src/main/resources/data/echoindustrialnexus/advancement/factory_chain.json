@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:dense_alloy",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:copper_flux_duct"
+    },
+    "title": {
+      "text": "Factory Chain"
+    },
+    "description": {
+      "text": "Craft Copper Flux Ducts and connect the factory into a Thermal Flux network."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "ducts": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:copper_flux_duct"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ducts"
+    ]
+  ]
+}

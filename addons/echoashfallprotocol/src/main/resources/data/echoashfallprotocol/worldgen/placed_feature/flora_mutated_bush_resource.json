@@ -1,0 +1,42 @@
+{
+  "feature": "echoashfallprotocol:mutated_bush_patch",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:dirt",
+          "minecraft:grass_block",
+          "echoashfallprotocol:contaminated_soil",
+          "echoashfallprotocol:wasteland_dirt",
+          "echoashfallprotocol:toxic_wasteland_grass_block",
+          "echoashfallprotocol:mutated_wasteland_grass_block"
+        ],
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

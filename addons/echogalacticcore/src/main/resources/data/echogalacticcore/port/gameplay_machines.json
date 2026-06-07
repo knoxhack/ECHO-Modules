@@ -1,0 +1,43 @@
+{
+  "schema": "echogalacticcore.port.gameplay_machines.v1",
+  "source": "galacticraft_legacy_machine_runtime",
+  "machines": [
+    {
+      "id": "echogalacticcore:machine/oxygen_collector",
+      "legacySource": "micdoodle8.mods.galacticraft.core.tile.TileEntityOxygenCollector",
+      "block": "echogalacticcore:oxygen_collector",
+      "blockEntity": "echogalacticcore:oxygen_collector",
+      "capabilities": ["echogalacticcore:life_support", "echogalacticcore:galactic_energy"],
+      "saveData": "echogalacticcore:machine_state/oxygen_collector",
+      "state": ["energy", "oxygen_buffer", "leaf_scan", "progress", "redstone"]
+    },
+    {
+      "id": "echogalacticcore:machine/oxygen_sealer",
+      "legacySource": "micdoodle8.mods.galacticraft.core.tile.TileEntityOxygenSealer",
+      "block": "echogalacticcore:oxygen_sealer",
+      "blockEntity": "echogalacticcore:oxygen_sealer",
+      "capabilities": ["echogalacticcore:life_support", "echogalacticcore:galactic_energy"],
+      "saveData": "echogalacticcore:machine_state/oxygen_sealer",
+      "state": ["energy", "sealed_volume", "oxygen_cost", "leak_state", "redstone"]
+    },
+    {
+      "id": "echogalacticcore:machine/fuel_loader",
+      "legacySource": "micdoodle8.mods.galacticraft.core.tile.TileEntityFuelLoader",
+      "block": "echogalacticcore:fuel_loader",
+      "blockEntity": "echogalacticcore:fuel_loader",
+      "capabilities": ["echogalacticcore:galactic_energy", "echogalacticcore:rocket_flight"],
+      "saveData": "echogalacticcore:machine_state/fuel_loader",
+      "state": ["energy", "fuel_tank", "linked_pad", "transfer_rate", "redstone"]
+    },
+    {
+      "id": "echogalacticcore:machine/rocket_workbench",
+      "legacySource": "micdoodle8.mods.galacticraft.core.tile.TileEntityNasaWorkbench",
+      "block": "echogalacticcore:rocket_workbench",
+      "blockEntity": "echogalacticcore:rocket_workbench",
+      "capabilities": ["echogalacticcore:rocket_flight"],
+      "saveData": "echogalacticcore:machine_state/rocket_workbench",
+      "state": ["inventory", "schematic", "recipe_layout", "crafting_result"]
+    }
+  ],
+  "typedSurfaces": ["capabilities", "save_data", "screens", "resources"]
+}

@@ -1,0 +1,96 @@
+{
+  "name": "echoashfallprotocol:toxic_swamp",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/chemical_spill",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/broken_pipeline",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/abandoned_shed",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/toxic_pool_small",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/spore_research_hut",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/stilted_outpost",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/bio_facility",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/bio_lab",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/sludge_drain",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/toxic_swamp/pipe_pump_house",
+        "processors": "echoashfallprotocol:toxic_swamp_loot"
+      }
+    }
+  ]
+}

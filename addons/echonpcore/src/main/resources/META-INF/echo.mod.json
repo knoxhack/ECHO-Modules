@@ -1,0 +1,93 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echonpcore",
+  "name": "ECHO: NPCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "utility",
+  "entrypoint": "com.knoxhack.echo.npcore.EchoNpcCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echomissioncore",
+    "echorendercore",
+    "echoscreencore",
+    "echoterminal",
+    "echoworldcore"
+  ],
+  "provides": [
+    "npc.dialogue",
+    "npc.profiles",
+    "npc.screens",
+    "npc.services",
+    "npc.trades",
+    "npc.villager_replacement"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "missions",
+        "items",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "NPCore is the shared server-authoritative NPC runtime. ScreenCore, Terminal, DataCore, MissionCore, WorldCore, and RenderCore integrations remain optional.",
+    "nativeEntrypoint": "com.knoxhack.echo.npcore.EchoNpcCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/npcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

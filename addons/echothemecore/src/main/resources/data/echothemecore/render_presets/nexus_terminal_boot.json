@@ -1,0 +1,10 @@
+{
+  "id": "echothemecore:nexus_terminal_boot",
+  "theme": "echothemecore:nexus",
+  "type": "terminal_boot",
+  "effects": [
+    {"type": "phase_ripple", "duration_ticks": 34, "strength": "theme:distortion_strength"},
+    {"type": "hologram_sweep", "duration_ticks": 28, "strength": "theme:hologram_pulse_strength"},
+    {"type": "particle_burst", "particle_style": "theme:particle_style", "count": 28}
+  ]
+}

@@ -1,0 +1,67 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+base { archivesName = mod_id }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+repositories {
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter { includeGroupAndSubgroups('com.geckolib') }
+    }
+}
+
+neoForge {
+    version = project.neo_version
+    runs {
+        nexusClient { client(); systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        server { server(); programArgument '--nogui'; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        gameTestServer {
+            type = 'gameTestServer'
+            gameDirectory = project.file('run-gametest')
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${project.mod_id}:*").toString()
+        }
+        configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
+    }
+    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+dependencies {
+    implementation project(':echocore')
+    implementation project(':echoadaptercore')
+    compileOnly project(':echoterminal')
+    compileOnly project(':echorendercore')
+    compileOnly project(":echomachinecore")
+    localRuntime project(':echoterminal')
+    localRuntime project(':echorendercore')
+    localRuntime project(':echoorbitalremnants')
+    localRuntime project(":echomachinecore")
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

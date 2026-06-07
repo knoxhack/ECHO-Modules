@@ -1,0 +1,66 @@
+{
+  "id": "echorelictech:rift_lantern",
+  "tier": "prototype",
+  "category": "scanner",
+  "origin": "Rift-Hunting Field Lantern",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 1600,
+  "instabilityCost": 6,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "hostile_signal_attraction",
+    "false_guidance",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:guardian_lens",
+  "terminal": {
+    "summary": "Reveals hostile entities and rift-stained traces near the user.",
+    "warning": "The lantern can make hidden things aware that they have been seen."
+  },
+  "lens": {
+    "compact": "Unstable rift detection lantern.",
+    "deepScan": [
+      "Lens glass: rift-pitted.",
+      "Detection mode: hostile resonance plus trace glow.",
+      "ECHO warning: avoid prolonged sweeps near gates."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:guardian_alloy", "count": 1 },
+      { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:guardian_alloy", "count": 1 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 5,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:guardian_alloy", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 600,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "durationTicks": 600,
+    "radius": 16
+  }
+}

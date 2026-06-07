@@ -1,0 +1,142 @@
+{
+  "id": "echoashfallprotocol:build_micro_generator",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 4,
+  "title": "Build a Micro Generator",
+  "briefing": "[ECHO-7] Machines require power. Assemble a Micro Generator from one casing, wire, cell, circuit, and scrap beside your recycler.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall generator bridge that turns the first machine casing chain into powered infrastructure before water purification.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:micro_generator",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:make_machine_casing"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_micro_generator",
+    "nativeGameplayHook": "ashfall.first_route.build_micro_generator",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.water_purifier.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "13",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_micro_generator:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_micro_generator/place_micro_generator",
+      "type": "place_block",
+      "label": "Build a Micro Generator",
+      "detail": "Place one Micro Generator near the Hand Recycler using the casing, wire, cell, circuit, and scrap bridge.",
+      "icon": "echoashfallprotocol:micro_generator",
+      "target": "echoashfallprotocol:micro_generator",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:micro_generator",
+        "required_blocks": "echoashfallprotocol:micro_generator=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 3,
+      "label": "Scrap Wire"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 1,
+      "label": "Scrap Metal"
+    },
+    {
+      "block": "echoashfallprotocol:micro_generator",
+      "count": 1,
+      "label": "Placed Micro Generator"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_micro_generator/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "detail": "Spare power component for the purifier bridge."
+    },
+    {
+      "id": "echoashfallprotocol:build_micro_generator/reward_filtration_membrane",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "detail": "Key component for the Water Purifier route."
+    },
+    {
+      "id": "echoashfallprotocol:build_micro_generator/reward_scrap_plastic",
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 4,
+      "label": "Scrap Plastic",
+      "detail": "Purifier casing material."
+    },
+    {
+      "id": "echoashfallprotocol:build_micro_generator/reward_scrap_metal",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 6,
+      "label": "Scrap Metal",
+      "detail": "Recycler feedstock for additional casings."
+    },
+    {
+      "id": "echoashfallprotocol:build_micro_generator/reward_circuit_board",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board",
+      "detail": "Purifier control component."
+    }
+  ],
+  "completionText": "[ECHO-7] Power generation online. Purifier bridge released: membrane, plastic, circuit, and scrap for recycler casings."
+}

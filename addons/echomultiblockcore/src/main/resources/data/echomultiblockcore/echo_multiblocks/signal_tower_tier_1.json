@@ -1,0 +1,186 @@
+{
+    "id":  "echomultiblockcore:signal_tower_tier_1",
+    "display_name":  "Signal Tower Tier 1",
+    "translation_key":  "multiblock.echomultiblockcore.signal_tower_tier_1",
+    "role":  "INFRASTRUCTURE",
+    "category":  "signal",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:signal_tower_core",
+    "allowed_rotations":  true,
+    "mirrorable":  false,
+    "requires_foundation":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIROF",
+                       "F.S.F",
+                       "F...F",
+                       "FFFFF"
+                   ],
+                   [
+                       "..S..",
+                       ".S.S.",
+                       "S.C.S",
+                       ".S.S.",
+                       "..S.."
+                   ],
+                   [
+                       "..S..",
+                       "..S..",
+                       "SSSSS",
+                       "..S..",
+                       "..S.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:signal_tower_core",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:scanner_target",
+                         "echo:map_marker",
+                         "echo:terminal_tab",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  24,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:signal_tower_tier_1/signal_slot",
+                              "pos":  [
+                                          2,
+                                          1,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:signal_tower_tier_1/range_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:signal_tower_tier_1/scan_slot",
+                              "pos":  [
+                                          2,
+                                          0,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade",
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true
+                  },
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:signal_tower_tier_1/scan",
+                          "type":  "SCANNING",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER",
+                                                 "CALIBRATOR"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:tune_signal_beacon"
+                                            ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:signal_tower_tier_1/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:repair_structure_integrity"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "00d8ff"
+                },
+    "facility_stage":  "P4 SIGNAL CONTACT",
+    "facility_route":  "signal",
+    "primary_use":  "Establishes field signal coverage, map marker quality, and scanner/Lens uplink support.",
+    "integration_hints":  [
+                              "Lens deep scans gain controller diagnostics from this tower.",
+                              "HoloMap markers use this facility as the early signal anchor.",
+                              "Terminal surfaces recommend this as the first facility route step."
+                          ]
+}

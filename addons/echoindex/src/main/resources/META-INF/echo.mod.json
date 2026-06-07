@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoindex",
+  "name": "ECHO: Index",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "ui_pack",
+  "role": "index",
+  "entrypoint": "com.knoxhack.echoindex.EchoIndex",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echolens",
+    "echomissioncore",
+    "echoterminal",
+    "echothemecore",
+    "echowiki"
+  ],
+  "provides": [
+    "index.recipes",
+    "index.inventory_overlay",
+    "echoindex:inventory_overlay"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "index.recipes",
+    "index.inventory_overlay",
+    "ui.overlays",
+    "inventory.overlay",
+    "ui.screens"
+  ],
+  "assets": [
+    {
+      "id": "index_eui",
+      "kind": "ui",
+      "path": "assets/echoindex/eui",
+      "required": true
+    }
+  ],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "recipes",
+        "inventory",
+        "ui_overlays",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echoindex.EchoIndexNativeModule",
+    "nativeClasspath": [],
+    "notes": "ECHO Index remains the first-party recipe/index surface; JEI remains optional."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "ui_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

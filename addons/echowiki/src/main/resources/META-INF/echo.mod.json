@@ -1,0 +1,97 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echowiki",
+  "name": "ECHO: Wiki",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "ui/ux",
+  "entrypoint": "com.knoxhack.echowiki.EchoWiki",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echopowergrid",
+    "echorelictech",
+    "echoscreencore",
+    "echoterminal",
+    "echothemecore",
+    "echotutorialcore",
+    "echoweathercore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "wiki.articles",
+    "wiki.collections",
+    "wiki.guide_books",
+    "wiki.search",
+    "wiki.survival_codex"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "creator_tools",
+    "rpg"
+  ],
+  "permissions": [
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [
+    "metadata/assets/modules/echowiki/icon.png",
+    "metadata/assets/modules/echowiki/banner.png",
+    "metadata/assets/modules/echowiki/module_card.png",
+    "metadata/assets/modules/echowiki/showcase.png"
+  ],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "missions",
+        "ui_screens",
+        "wiki",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echowiki.EchoWikiNativeModule",
+    "nativeClasspath": [],
+    "notes": "In-game documentation, guide-book, article, collection, and survival codex content registry."
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echowiki/**",
+      "src/main/resources/**",
+      "README.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

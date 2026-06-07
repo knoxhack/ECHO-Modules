@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/grimoire/integrations",
+  "title": "Grimoire Archive: Integrations",
+  "category": "Guide Books",
+  "summary": "Connect Grimoire archives to Terminal, Index, Arcana Core, scans, and optional gameplay providers.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Terminal hosts Grimoire, Arcane Index supplies facts, Arcana Core supplies definitions, and optional providers supply live or generated archive rows.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Grimoire before forbidden actions, Index for exact layouts, Lens for field scans, and MissionCore for route progress.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If live bridge data is absent, static starter entries should still explain the system and name the missing source.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "grimoire",
+    "arcana",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:written_book",
+  "relatedArticles": [
+    "echowiki:guides/grimoire"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1275
+}

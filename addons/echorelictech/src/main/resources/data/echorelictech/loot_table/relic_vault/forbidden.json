@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": { "min": 1, "max": 2 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:echo_mirror" },
+        { "type": "minecraft:item", "name": "echorelictech:matter_stitcher" },
+        { "type": "minecraft:item", "name": "echorelictech:unidentified_relic" }
+      ]
+    },
+    {
+      "rolls": { "min": 1, "max": 3 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:quantum_lattice" },
+        { "type": "minecraft:item", "name": "echorelictech:forbidden_prototype_file" },
+        { "type": "minecraft:item", "name": "echorelictech:damaged_ai_core" }
+      ]
+    }
+  ]
+}

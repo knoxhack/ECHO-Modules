@@ -1,0 +1,64 @@
+.wiki-browser-list {
+  gap: 5px;
+}
+
+.wiki-detail-list {
+  gap: 6px;
+}
+
+.wiki-browser-scroll, .wiki-detail-scroll {
+  min-height: 320px;
+  overflow: scroll;
+}
+
+.wiki-inspector-scroll {
+  min-height: 120px;
+  overflow: scroll;
+}
+
+.wiki-inner-scroll {
+  min-height: 54px;
+  overflow: scroll;
+}
+
+.wiki-debug {
+  background: theme(overlay);
+  border-color: theme(warning);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+empty-state {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+list {
+  gap: 5px;
+}
+
+.wiki-compact-list {
+  gap: 4px;
+}
+
+.wiki-status-panel {
+  height: 96px;
+  min-height: 96px;
+}
+
+.wiki-meta-panel {
+  height: 112px;
+  min-height: 112px;
+}
+
+.wiki-collections-panel {
+  height: 238px;
+  min-height: 180px;
+}
+
+.wiki-chapter-panel {
+  height: 132px;
+  min-height: 112px;
+}

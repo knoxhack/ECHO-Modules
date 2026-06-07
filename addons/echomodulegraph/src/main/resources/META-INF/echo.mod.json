@@ -1,0 +1,83 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomodulegraph",
+  "name": "ECHO: ModuleGraph",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "module_graph",
+  "entrypoint": "com.knoxhack.echo.modulegraph.EchoModuleGraphCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echopackcore",
+    "echometadatacore"
+  ],
+  "optional": [],
+  "provides": [
+    "module.graph",
+    "module.scanner",
+    "feature.graph",
+    "dependency.resolver"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack",
+    "pack.profile",
+    "metadata.manifest"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "pack.read",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "ModuleGraph models topology and load plans; it is not a native loader and performs no launch actions.",
+    "nativeEntrypoint": "com.knoxhack.echo.modulegraph.EchoModuleGraphNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "diagnostics_agent",
+      "metadata_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

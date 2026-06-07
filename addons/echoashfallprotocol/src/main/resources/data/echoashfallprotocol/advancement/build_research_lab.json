@@ -1,0 +1,36 @@
+{
+  "parent": "echoashfallprotocol:first_faction_contact",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:circuit_board"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.build_research_lab.title",
+      "fallback": "Research Initiative"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.build_research_lab.desc",
+      "fallback": "Place a Research Lab to unlock advanced technology."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "placed_research_lab": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echoashfallprotocol:research_lab"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["placed_research_lab"]
+  ]
+}

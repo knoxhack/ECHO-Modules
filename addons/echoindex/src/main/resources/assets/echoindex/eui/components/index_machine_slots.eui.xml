@@ -1,0 +1,6 @@
+<row gap="8" class="index-machine-slots">
+  <status-chip status="info" value="{param.inputs|0} IN"/>
+  <status-chip status="ready" value="{param.outputs|0} OUT"/>
+  <status-chip status="{param.energyStatus|info}" value="{param.energy|NO ENERGY}"/>
+  <status-chip status="{param.fluidStatus|info}" value="{param.fluid|NO FLUID}"/>
+</row>

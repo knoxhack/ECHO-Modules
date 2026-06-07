@@ -1,0 +1,11 @@
+<page id="test-searchable-select" title="Searchable Select" styles="echoscreencore:advanced_mock,echoscreencore:dropdown_advanced">
+  <screen-shell>
+    <header title="Searchable Select" subtitle="Type while the select is open to filter options"/>
+    <panel class="filter-panel" title="Provider Options">
+      <select bind="filters.availableStatuses" item="status" value="{filters.status}" on-change="demo.set_filter" searchable="true" clearable="true" search-placeholder="Search statuses..." max-visible-options="5">
+        <option value="{status.id}" label="{status.label}" subtitle="Provider-backed option"/>
+      </select>
+      <text value="Selected: {filters.status|none}"/>
+    </panel>
+  </screen-shell>
+</page>

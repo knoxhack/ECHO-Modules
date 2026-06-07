@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_echo",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:echo_identity_fragment"
+                             },
+                    "title":  "False ECHO Silenced",
+                    "description":  "Defeat the corrupted ECHO-7 copy.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "identity":  {
+                                      "trigger":  "minecraft:inventory_changed",
+                                      "conditions":  {
+                                                         "items":  [
+                                                                       {
+                                                                           "items":  "echoblackboxprotocol:echo_identity_fragment"
+                                                                       }
+                                                                   ]
+                                                     }
+                                  }
+                 },
+    "requirements":  [
+                         [
+                             "identity"
+                         ]
+                     ]
+}

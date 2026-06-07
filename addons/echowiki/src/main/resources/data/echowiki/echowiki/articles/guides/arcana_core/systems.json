@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/arcana_core/systems",
+  "title": "Arcana Core Field: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the Arcana Core services that keep magic data consistent across addons.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Shared Services",
+      "body": "Arcana Core services own aether state, spell definitions, ritual records, curse records, relic lifecycle contracts, and optional provider interfaces.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Runtime Bridges",
+      "body": "Optional runtime bridges can report Veilbound pressure, scan counts, or field journal state while keeping the Echo-side code dedicated-server safe.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stable IDs",
+      "body": "Most Arcana failures start as ID drift. Keep module ids, route ids, archive ids, and provider ids aligned before adding more content.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcana_core",
+    "arcana",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "relatedArticles": [
+    "echowiki:guides/arcana_core"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1253
+}

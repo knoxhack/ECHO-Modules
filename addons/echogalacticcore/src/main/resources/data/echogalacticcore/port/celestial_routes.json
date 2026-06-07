@@ -1,0 +1,31 @@
+{
+  "schema": "echogalacticcore.celestial_routes.v1",
+  "source": "galacticraft_legacy_celestial_routes",
+  "routes": [
+    {
+      "id": "echogalacticcore:route/earth_orbit",
+      "legacySource": "WorldProviderOverworldOrbit",
+      "requiredVehicle": "tier_1_rocket"
+    },
+    {
+      "id": "echogalacticcore:route/moon",
+      "legacySource": "WorldProviderMoon",
+      "requiredVehicle": "tier_1_rocket"
+    },
+    {
+      "id": "echogalacticcore:route/mars",
+      "legacySource": "WorldProviderMars",
+      "requiredVehicle": "tier_2_rocket"
+    },
+    {
+      "id": "echogalacticcore:route/asteroids",
+      "legacySource": "WorldProviderAsteroids",
+      "requiredVehicle": "tier_3_rocket"
+    },
+    {
+      "id": "echogalacticcore:route/venus",
+      "legacySource": "WorldProviderVenus",
+      "requiredVehicle": "tier_3_rocket"
+    }
+  ]
+}

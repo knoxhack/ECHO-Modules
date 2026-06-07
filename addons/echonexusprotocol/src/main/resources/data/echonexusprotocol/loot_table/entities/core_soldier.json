@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echonexusprotocol:corrupted_ferrite",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "min": 1.0, "max": 2.0 } }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 2 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:signal_wire", "weight": 1 }
+      ]
+    }
+  ],
+  "random_sequence": "echonexusprotocol:entities/core_soldier"
+}

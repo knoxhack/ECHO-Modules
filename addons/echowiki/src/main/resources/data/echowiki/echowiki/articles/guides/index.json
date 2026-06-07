@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/index",
+  "title": "Index Reference Manual",
+  "category": "Guide Books",
+  "summary": "Use Index to search items, recipes, machines, source facts, relations, and addon records.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Index is the system reference. It is best used when the player asks what an item does, where a process comes from, or how a record relates to another system.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Search broad terms first, then filter by category. Use item and recipe links from Wiki rather than trying to remember every path.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Find an item or recipe, inspect its category, read linked entries, then follow source facts or relations until you have a route or crafting plan.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Categories, entries, recipe cards, relations, source facts, diagnostics, and machine layouts make the same information searchable from different angles.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Wiki guide books appear in Index when available. Other addons can add their machines, items, routes, and tutorial records as searchable references.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a record is missing, check that the owning addon is loaded and reopen Index after resources reload.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "index",
+    "reference"
+  ],
+  "icon": "minecraft:bookshelf",
+  "heroArt": "echowiki:textures/gui/guide_books/index_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/index/first_steps",
+    "echowiki:guides/index/core_loop",
+    "echowiki:guides/index/systems",
+    "echowiki:guides/index/progression",
+    "echowiki:guides/index/integrations",
+    "echowiki:guides/index/troubleshooting"
+  ],
+  "sortOrder": 1210
+}

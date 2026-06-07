@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:military_vault",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/military_vault",
+        "processors": "echoashfallprotocol:military_vault_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

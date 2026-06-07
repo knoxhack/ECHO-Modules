@@ -1,0 +1,104 @@
+{
+  "id": "echoashfallprotocol:restore_purge_corruption",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 1,
+  "title": "Defeat 20 Corrupted Mobs",
+  "briefing": "[ECHO-7] Corrupted entities threaten the restored grid. Eliminate 20 irradiated hostiles to purify the system.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:prefall_archives_key",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:restore_repair_nodes"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "restore_purge_corruption",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.restore_purge_corruption",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "1",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "94",
+    "requiredPath": "restore",
+    "routeRoleTag": "restore_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:restore_purge_corruption:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "restore",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:restore_purge_corruption/restore_purge_corruption",
+      "type": "custom",
+      "label": "Defeat 20 Corrupted Mobs",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:prefall_archives_key",
+      "target": "echoashfallprotocol:restore_purge_corruption",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.restore_purge_corruption"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:restore_purge_corruption/reward_0",
+      "item": "echoashfallprotocol:prefall_archives_key",
+      "count": 1,
+      "label": "Prefall Archives Key",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_purge_corruption/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:restore_purge_corruption/reward_1",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 3,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_purge_corruption/reward_1"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:restore_purge_corruption/reward_2",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_purge_corruption/reward_2"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] The corruption recedes. Order takes hold where chaos once reigned."
+}

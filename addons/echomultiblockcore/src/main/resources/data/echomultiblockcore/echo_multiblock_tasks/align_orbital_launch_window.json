@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:align_orbital_launch_window",
+  "display_name": "Align Orbital Launch Window",
+  "category": "launch",
+  "allowed_multiblocks": ["echomultiblockcore:orbital_launch_platform"],
+  "required_workcell": "LAUNCH",
+  "required_tools": ["CALIBRATOR", "STABILIZER"],
+  "duration_ticks": 320,
+  "heat_per_second": 3,
+  "animation": "calibrate",
+  "animation_profile": "echomultiblockcore:launch_alignment",
+  "effects": ["echoorbitalremnants:stage_launch_window"],
+  "inputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 },
+    { "item": "echomultiblockcore:launch_guidance_core", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:launch_guidance_core", "count": 2 }
+  ],
+  "notes": ["Orbital handoff readiness recipe that remains standalone-safe."]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/ritualcore",
+  "title": "RitualCore Altar Manual",
+  "category": "Guide Books",
+  "summary": "Build stable altar arrays, run diagnostics, and complete rituals without wasting catalysts.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "RitualCore owns the shared ritual gameplay slice. The first loop is a Basic Altar array with rune circles, offering pedestals, diagnostics, catalysts, and safe execution gates.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Build the altar array before spending rare ingredients. Empty-hand diagnostics should explain what is missing before any catalyst is consumed.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Prepare the array, place inputs, run diagnostics, ignite the ritual, read the result, and fix stability before attempting a riskier ritual.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "The Basic Altar, Offering Pedestal, Rune Circle, Stability Pylon, catalyst gates, structure validation, completion events, and failure events form the ritual safety layer.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "RelicTech stabilization, CurseCore cleansing, SpellCore awakening, HoloMap rift traces, Lens diagnostics, and MissionCore objectives all build on RitualCore events.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a ritual fails, trust the diagnostic first. Missing runes, wrong inputs, no active curse, or invalid relic state should fail before consuming catalysts.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ritualcore",
+    "arcana"
+  ],
+  "icon": "minecraft:lodestone",
+  "heroArt": "echowiki:textures/gui/guide_books/ritualcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/ritualcore/first_steps",
+    "echowiki:guides/ritualcore/core_loop",
+    "echowiki:guides/ritualcore/systems",
+    "echowiki:guides/ritualcore/progression",
+    "echowiki:guides/ritualcore/integrations",
+    "echowiki:guides/ritualcore/troubleshooting"
+  ],
+  "sortOrder": 1280
+}

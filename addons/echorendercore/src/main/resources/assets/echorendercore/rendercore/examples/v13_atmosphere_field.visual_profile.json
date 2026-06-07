@@ -1,0 +1,91 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_atmosphere_field.png",
+  "particle_profile": "echorendercore:v13_atmosphere_field",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V13 Atmosphere Field",
+    "tags": [
+      "v13",
+      "atmosphere",
+      "particles"
+    ]
+  },
+  "effect": {
+    "preset": "atmosphere",
+    "glow_intensity": 0.35,
+    "bloom_intensity": 0.25,
+    "advanced_enabled": false
+  },
+  "layers": [
+    {
+      "id": "field_aura",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_atmosphere_aura.png",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "field"
+      ],
+      "alpha": 0.45,
+      "effect": {
+        "preset": "atmosphere",
+        "pulse_speed": 0.18
+      }
+    }
+  ],
+  "anchors": {
+    "field": [
+      0,
+      1.1,
+      0
+    ]
+  },
+  "block_parts": {
+    "field": {
+      "directions": [
+        "up"
+      ]
+    }
+  },
+  "surface": {
+    "type": "weather",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Atmosphere Field",
+    "tags": [
+      "weather"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

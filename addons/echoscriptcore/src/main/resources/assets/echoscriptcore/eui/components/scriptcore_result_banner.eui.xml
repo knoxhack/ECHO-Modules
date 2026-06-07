@@ -1,0 +1,10 @@
+<card class="scriptcore-result-banner" status="{scriptcore.last.status|locked}">
+  <row gap="12">
+    <status-chip status="{scriptcore.last.status|locked}" value="{scriptcore.last.code|NO RESULT}"/>
+    <column>
+      <title value="{param.title|ScriptCore UI Result}"/>
+      <text value="{scriptcore.last.message|No ScriptCore UI action result yet.}"/>
+      <text value="mode={scriptcore.last.mode|} actions={scriptcore.last.actionCount|0} executed={scriptcore.last.executedActions|0}"/>
+    </column>
+  </row>
+</card>

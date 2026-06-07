@@ -1,0 +1,14 @@
+{
+  "required": false,
+  "package": "com.knoxhack.echothemecore.mixin.client",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "ThemeCoreButtonMixin",
+    "ThemeCoreContainerScreenMixin",
+    "ThemeCoreLoadingOverlayMixin",
+    "ThemeCoreScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

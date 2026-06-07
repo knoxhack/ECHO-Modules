@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " R ",
+    "SCS",
+    " R "
+  ],
+  "key": {
+    "R": "minecraft:redstone",
+    "S": "echonexusprotocol:signal_wire",
+    "C": "echonexusprotocol:nexus_shard"
+  },
+  "result": {
+    "id": "echonexusprotocol:protocol_seal",
+    "count": 4
+  }
+}

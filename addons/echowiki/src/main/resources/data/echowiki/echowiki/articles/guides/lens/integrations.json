@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/lens/integrations",
+  "title": "Lens: Integrations",
+  "category": "Guide Books",
+  "summary": "Send scan results into maps, records, terminals, tutorials, and route decisions.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Index and Wiki give scan results somewhere to link. TutorialCore can report Lens progress, and HoloMap can turn scan discoveries into route notes.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Lens with Wiki summaries, Index records, PowerGrid diagnostics, Reclamation crop checks, and WorldCore hazard preparation.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If scan sharing is unavailable, write down the finding or mark the place. The scan still has value when it changes what you do next.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "lens",
+    "scan",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:spyglass",
+  "relatedArticles": [
+    "echowiki:guides/lens"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1205
+}

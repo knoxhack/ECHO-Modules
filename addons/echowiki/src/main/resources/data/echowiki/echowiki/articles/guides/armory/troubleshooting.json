@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/armory/troubleshooting",
+  "title": "Armory: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Armory failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If gear underperforms, check energy, stance, module side effects, and whether the enemy or hazard is asking for a different answer.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If combat feels like a wall, stop upgrading randomly. Identify the damage source, repair neglected pieces, simplify the route, and tune the loadout for that one pressure.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Recovery Anchor",
+      "body": "Use this to test the smallest fix before changing the whole route.",
+      "tone": "tip",
+      "item": "minecraft:iron_sword",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Iron Sword",
+      "subtitle": "Troubleshooting checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_sword",
+  "relatedArticles": [
+    "echowiki:guides/armory"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1036
+}

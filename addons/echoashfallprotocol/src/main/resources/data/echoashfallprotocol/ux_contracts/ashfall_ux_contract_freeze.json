@@ -1,0 +1,178 @@
+{
+  "id": "echoashfallprotocol:ashfall_ux_contract_freeze",
+  "schemaVersion": 1,
+  "status": "frozen",
+  "minimumShippedUx": {
+    "visibleObjective": "Every shipped feature has a mission objective, HUD line, Terminal row, or scan/marker state that tells the player what to do next.",
+    "readableFeedback": "Completion, warning, reward, and blocked states use player-facing labels instead of internal event names.",
+    "playerFacingExplanation": "Each system has a short explanation in Terminal, Wiki, Codex/Index, Lens, HoloMap, or item/block tooltip where the player naturally meets it.",
+    "supportSurfaces": "Use HUD for immediate state, Terminal for route planning, Index/Codex/Wiki for explanations, Lens for local scanning, and HoloMap for spatial route context.",
+    "assetCompleteness": "Missions and systems ship with lang, icon/model/texture surfaces, valid recipes and loot where craftable/placeable, and Terminal mission art.",
+    "noDebugPlaceholders": "No player-facing text may present itself as raw telemetry, stub copy, unfinished authoring notes, or null output."
+  },
+  "surfaceLegend": {
+    "direct": "Required for the feature to feel shippable.",
+    "supporting": "Required when the installed addon/service is present or when the feature is route-facing.",
+    "notApplicable": "Not required for this feature because another surface is the natural player entry point."
+  },
+  "features": [
+    {
+      "id": "first_spawn",
+      "phase": "Phase 3",
+      "playerPromise": "The player understands the first ten minutes before leaving the pod.",
+      "visibleObjective": "Welcome screen, starter note, HUD/chat line, and first MissionCore objectives point to shelter, tool, water, and Terminal handoff.",
+      "readableFeedback": "Starting kit, emergency buffer, and Terminal/Wiki availability are explained with survival language.",
+      "playerFacingExplanation": "Welcome screen, starter item note, first-month Terminal page, first-steps Wiki article, Index starter entries, Lens profile, and HoloMap layer.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "direct",
+        "codexIndex": "direct",
+        "lens": "supporting",
+        "holomap": "supporting",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "early_water",
+      "phase": "Phase 4",
+      "playerPromise": "Water is readable as a loop: dirty, filter, boil, clean, reserve.",
+      "visibleObjective": "Clean-water, rain collector, and purifier missions expose exact carry/place requirements.",
+      "readableFeedback": "Water item names, mission completion text, and route prep copy explain why clean reserves matter.",
+      "playerFacingExplanation": "Water bottles, crude filter, rain collector, water purifier, Terminal route copy, Index starter entry, and Wiki first steps.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "direct",
+        "codexIndex": "direct",
+        "lens": "supporting",
+        "holomap": "supporting",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "early_shelter",
+      "phase": "Phase 4",
+      "playerPromise": "Shelter is treated as a route anchor, not a decorative suggestion.",
+      "visibleObjective": "Secure-shelter and base-stability objectives name shelter, light, return path, and storage expectations.",
+      "readableFeedback": "Welcome cards, starter note, and mission copy describe the pod or nearby ruins as a safe return marker.",
+      "playerFacingExplanation": "Welcome screen, starter note, first-steps Wiki article, HoloMap safe-route markers, and Terminal prep panels.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "direct",
+        "codexIndex": "direct",
+        "lens": "supporting",
+        "holomap": "direct",
+        "itemTooltips": "supporting"
+      }
+    },
+    {
+      "id": "primitive_tools",
+      "phase": "Phase 4",
+      "playerPromise": "The player can identify the first useful tool and why it matters.",
+      "visibleObjective": "Craft-scrap-knife and field-kit missions name the tool, materials, and survival purpose.",
+      "readableFeedback": "Tooltips and mission completion text explain the role of scrap tools without hidden recipe knowledge.",
+      "playerFacingExplanation": "Scrap knife tooltip, primitive-tool missions, starter note, and first-steps Wiki copy.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "direct",
+        "codexIndex": "supporting",
+        "lens": "notApplicable",
+        "holomap": "notApplicable",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "starter_machines",
+      "phase": "Phase 4",
+      "playerPromise": "Rain collector, hand recycler, field kit, and schematics read as the first production bridge.",
+      "visibleObjective": "Build and assemble missions expose place/obtain objectives with item icons.",
+      "readableFeedback": "Completion text and reward labels state what the machine or kit unlocks.",
+      "playerFacingExplanation": "Recipes, loot, item/block names, tooltips, mission art, Terminal panels, and Index entries.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "supporting",
+        "codexIndex": "direct",
+        "lens": "supporting",
+        "holomap": "supporting",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "machine_power_logistics",
+      "phase": "Phase 5",
+      "playerPromise": "Machines, power, cables, batteries, and logistics blocks show purpose, state, recipe path, and payoff.",
+      "visibleObjective": "Machine/power missions and native resource audit cover machine casing through Nexus capacitor.",
+      "readableFeedback": "HUD readouts, UI panels, mission completion text, and Terminal help name capacity, priority, and next upgrade.",
+      "playerFacingExplanation": "Block/item models and textures, recipes, loot tables, lang, Terminal help, Codex/Index entries, and machine UI panels.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "supporting",
+        "codexIndex": "direct",
+        "lens": "supporting",
+        "holomap": "notApplicable",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "scanner_faction",
+      "phase": "Phase 6",
+      "playerPromise": "Scanning produces readable intel, faction contact, map context, and rewards without looking like raw telemetry.",
+      "visibleObjective": "Scanner, faction signal, cache sweep, and route missions link Lens rows to HoloMap markers and Index entries.",
+      "readableFeedback": "Lens risk labels, HoloMap prep text, faction Terminal copy, cache loot labels, and reward presentation explain consequences.",
+      "playerFacingExplanation": "Scanner UI, Lens scan profiles, HoloMap POIs, faction Terminal pages, drone HUD, cache loot, and faction reward text.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "supporting",
+        "codexIndex": "direct",
+        "lens": "direct",
+        "holomap": "direct",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "midgame_survival_systems",
+      "phase": "Phase 7",
+      "playerPromise": "Hazards, mutation, med bay, lab/vaults, data logs, radiation, and atmosphere expose risk and recovery.",
+      "visibleObjective": "Midgame missions name scans, treatment, lab entry, vault clearance, and data-log recovery.",
+      "readableFeedback": "Hazard readouts, mutation display, med bay UI, and data-log text make status changes legible.",
+      "playerFacingExplanation": "Terminal lab/vault pages, Codex/Index documentation, Lens profiles, HoloMap hazard markers, radiation docs, and atmosphere docs.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "supporting",
+        "codexIndex": "direct",
+        "lens": "direct",
+        "holomap": "direct",
+        "itemTooltips": "direct"
+      }
+    },
+    {
+      "id": "late_game_resolution",
+      "phase": "Phase 8",
+      "playerPromise": "Bosses, Nexus state, Prime relays, branch choices, and endings have readable stakes and presentation.",
+      "visibleObjective": "Boss missions, Nexus missions, Prime relay scans, and ending branch missions expose branch-specific next steps.",
+      "readableFeedback": "Boss intel, Nexus UI, relay pages, ending branch presentation, and late-game HoloMap state communicate consequences.",
+      "playerFacingExplanation": "Terminal relay pages, Codex/Index entries, HoloMap state, Lens profiles, boss mission art, and ending text.",
+      "surfaces": {
+        "hud": "direct",
+        "terminal": "direct",
+        "wiki": "supporting",
+        "codexIndex": "direct",
+        "lens": "direct",
+        "holomap": "direct",
+        "itemTooltips": "supporting"
+      }
+    }
+  ],
+  "validation": {
+    "focusedAudit": "python tools/validate_ashfall_ux_assets.py --json",
+    "fullResourceAudit": "python tools/validate_resources.py --addon-set all",
+    "workspaceBuild": "gradlew.bat buildEchoWorkspace -PechoAddonSet=all"
+  }
+}

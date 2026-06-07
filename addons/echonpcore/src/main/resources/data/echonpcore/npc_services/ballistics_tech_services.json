@@ -1,0 +1,16 @@
+{
+  "id": "echonpcore:ballistics_tech_services",
+  "services": [
+    {
+      "id": "range_tune",
+      "title": "Tune Held Gear",
+      "description": "Repairs the held item slightly.",
+      "cost": [
+        { "item": "minecraft:string", "count": 2 }
+      ],
+      "action": "repair_held_item",
+      "amount": 8,
+      "cooldown": 1200
+    }
+  ]
+}

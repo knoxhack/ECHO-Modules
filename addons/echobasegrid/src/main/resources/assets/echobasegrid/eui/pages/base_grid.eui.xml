@@ -1,0 +1,102 @@
+<page id="base_grid" title="Base Grid" styles="echoterminal:terminal_base,echoterminal:terminal_shell,echoterminal:terminal_components,echoterminal:terminal_cyberglass_v2,base_grid">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <hero-card class="base-grid-hero">
+        <row class="base-grid-hero-top" gap="8">
+          <column class="base-grid-title-block">
+            <title value="{basegrid.summary.title}"/>
+            <text value="{basegrid.summary.dimension} / center {basegrid.summary.center}"/>
+          </column>
+          <status-chip status="{basegrid.summary.statusKey}" value="{basegrid.summary.selectedState}"/>
+          <status-chip status="info" value="Claims {basegrid.summary.claimBudget}"/>
+          <status-chip status="{basegrid.selected.releaseStatus}" value="{basegrid.selected.releaseLabel}"/>
+        </row>
+        <row class="base-grid-toolbar" gap="6">
+          <button action="basegrid.refresh" variant="ghost">Sync</button>
+          <button action="basegrid.claim_selected" variant="primary" disabled="{basegrid.selected.claimButtonDisabled}" disabled-reason="{basegrid.selected.claimDisabledReason}">{basegrid.selected.claimActionLabel}</button>
+          <button action="basegrid.unclaim_selected" variant="danger" disabled="{basegrid.selected.unclaimButtonDisabled}" disabled-reason="{basegrid.selected.unclaimDisabledReason}">{basegrid.selected.unclaimActionLabel}</button>
+          <text value="{basegrid.summary.status}"/>
+        </row>
+      </hero-card>
+
+      <grid class="base-grid-layout" columns="1fr 326px" gap="10" stack-below="860">
+        <panel class="base-grid-map-panel" title="Local Chunk Grid">
+          <row class="base-grid-map-meta" gap="6">
+            <status-chip status="ready" value="Owned"/>
+            <status-chip status="info" value="Open"/>
+            <status-chip status="warning" value="Trusted"/>
+            <status-chip status="danger" value="Occupied"/>
+            <text value="{basegrid.selected.coordinates}"/>
+          </row>
+          <scroll class="base-grid-map-scroll" scroll-state="true" state-key="basegrid.map">
+            <list class="base-grid-map" bind="basegrid.grid.cells" item="chunk" selected="{basegrid.selected.key}" key="{chunk.key}">
+              <list-row class="base-grid-cell" value="{chunk.key}" action="basegrid.select_chunk" action-value="{chunk.key}">
+                <column class="base-grid-cell-copy">
+                  <title value="{chunk.label}"/>
+                  <text value="{chunk.coordinates}"/>
+                  <status-chip status="{chunk.status}" value="{chunk.stateLabel}"/>
+                </column>
+              </list-row>
+              <empty-state title="No Grid Snapshot" body="Refresh to request Base Grid claim data from the server."/>
+            </list>
+          </scroll>
+        </panel>
+
+        <column class="base-grid-inspector" gap="10">
+          <panel title="Selected Claim">
+            <row class="base-grid-inspector-status" gap="6">
+              <status-chip status="{basegrid.selected.status}" value="{basegrid.selected.stateLabel}"/>
+              <status-chip status="{basegrid.selected.manageStatus}" value="{basegrid.selected.manageLabel}"/>
+              <status-chip status="{basegrid.selected.releaseStatus}" value="{basegrid.selected.releaseLabel}"/>
+            </row>
+            <title value="{basegrid.selected.coordinates}"/>
+            <text value="{basegrid.selected.summary}"/>
+            <text value="Owner: {basegrid.selected.ownerName}"/>
+            <text value="Members: {basegrid.selected.memberCount}"/>
+          </panel>
+
+          <panel title="Members">
+            <scroll class="base-grid-member-scroll" scroll-state="true" state-key="basegrid.members">
+              <list class="base-grid-member-list" bind="basegrid.members" item="member">
+                <list-row class="base-grid-member-row">
+                  <column>
+                    <title value="{member.name}"/>
+                    <text value="{member.roleLabel} / {member.permissions}"/>
+                    <status-chip status="{member.manageStatus}" value="{member.manageLabel}"/>
+                    <row gap="6">
+                      <button action="basegrid.set_role" action-value="{member.uuid}" action-param-role="MEMBER" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Member</button>
+                      <button action="basegrid.set_role" action-value="{member.uuid}" action-param-role="MANAGER" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Mgr</button>
+                    </row>
+                    <row gap="6">
+                      <button action="basegrid.toggle_permission" action-value="{member.uuid}" action-param-permission="BUILD" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Build</button>
+                      <button action="basegrid.toggle_permission" action-value="{member.uuid}" action-param-permission="INTERACT" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Use</button>
+                      <button action="basegrid.toggle_permission" action-value="{member.uuid}" action-param-permission="CONTAINERS" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Storage</button>
+                      <button action="basegrid.toggle_permission" action-value="{member.uuid}" action-param-permission="MANAGE" variant="ghost" disabled="{member.actionDisabled}" disabled-reason="{member.disabledReason}">Manage</button>
+                    </row>
+                  </column>
+                  <button action="basegrid.remove_member" action-value="{member.uuid}" variant="danger" disabled="{member.removeDisabled}" disabled-reason="{member.disabledReason}">Remove</button>
+                </list-row>
+                <empty-state title="{basegrid.selected.memberEmptyTitle}" body="{basegrid.selected.memberEmptyBody}"/>
+              </list>
+            </scroll>
+          </panel>
+
+          <panel title="Online Players">
+            <scroll class="base-grid-candidate-scroll" scroll-state="true" state-key="basegrid.candidates">
+              <list class="base-grid-candidate-list" bind="basegrid.candidates" item="candidate">
+                <list-row class="base-grid-candidate-row" action="basegrid.add_member" action-value="{candidate.uuid}" action-param-name="{candidate.name}" disabled="{candidate.addDisabled}" disabled-reason="{candidate.disabledReason}">
+                  <column>
+                    <title value="{candidate.name}"/>
+                    <text value="{candidate.summary}"/>
+                  </column>
+                  <status-chip status="{candidate.status}" value="{candidate.actionLabel}"/>
+                </list-row>
+                <empty-state title="{basegrid.selected.candidateEmptyTitle}" body="{basegrid.selected.candidateEmptyBody}"/>
+              </list>
+            </scroll>
+          </panel>
+        </column>
+      </grid>
+    </slot>
+  </component>
+</page>

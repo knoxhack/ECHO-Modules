@@ -1,0 +1,16 @@
+{
+  "id": "echonpcore:reclaimer_farmer_services",
+  "services": [
+    {
+      "id": "basic_food_help",
+      "title": "Share Field Rations",
+      "description": "Restores a little hunger if you bring wheat.",
+      "cost": [
+        { "item": "minecraft:wheat", "count": 2 }
+      ],
+      "action": "feed",
+      "amount": 4,
+      "cooldown": 1200
+    }
+  ]
+}

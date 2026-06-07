@@ -1,0 +1,50 @@
+{
+  "feature": "echoashfallprotocol:burnt_fern_patch",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:dirt",
+          "minecraft:grass_block",
+          "minecraft:sand",
+          "minecraft:gravel",
+          "minecraft:coarse_dirt",
+          "echoashfallprotocol:contaminated_soil",
+          "echoashfallprotocol:wasteland_dirt",
+          "echoashfallprotocol:wasteland_grass_block",
+          "echoashfallprotocol:ashen_wasteland_dirt",
+          "echoashfallprotocol:burnt_wasteland_soil",
+          "echoashfallprotocol:toxic_wasteland_grass_block",
+          "echoashfallprotocol:mutated_wasteland_grass_block",
+          "echoashfallprotocol:irradiated_crust",
+          "echoashfallprotocol:nexus_cracked_soil"
+        ],
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

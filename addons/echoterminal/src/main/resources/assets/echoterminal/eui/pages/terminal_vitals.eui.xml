@@ -1,0 +1,42 @@
+<page id="terminal-vitals" title="Vitals" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_system_pages,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Vitals / shared hazard telemetry"/>
+    <param name="inspectorTitle" value="Telemetry"/>
+    <slot name="body">
+      <hero-card class="terminal-page-hero" status="{terminal.vitals.statusKey|ready}">
+        <copy-block class="terminal-row-copy" title="Vitals" subtitle="{terminal.vitals.statusLine|Vitals nominal.}"/>
+        <row class="terminal-page-toolbar" gap="6">
+          <status-chip status="{terminal.vitals.statusKey|ready}" value="{terminal.vitals.status|NOMINAL}"/>
+          <button action="terminal.vitals.refresh" variant="ghost"
+                  tooltip="Refresh shared hazard telemetry.">Refresh</button>
+        </row>
+      </hero-card>
+      <section title="Vitals Telemetry">
+        <scroll class="system-list" scroll-state="true" state-key="terminal.vitals.telemetry">
+          <list bind="terminal.vitals.all" item="vital">
+            <list-row class="terminal-tall-row">
+              <copy-block class="terminal-row-copy" title="{vital.label}">
+                <stat-bar label="{vital.label}" value="{vital.value}" max="100"/>
+              </copy-block>
+              <status-chip status="{vital.status}" value="{vital.value}%"/>
+            </list-row>
+            <empty-state title="No telemetry" body="No shared hazard telemetry is available."/>
+          </list>
+        </scroll>
+      </section>
+    </slot>
+    <slot name="inspector">
+      <status-chip status="{terminal.vitals.statusKey|ready}" value="{terminal.vitals.status|NOMINAL}"/>
+      <copy-block class="terminal-row-copy" title="{terminal.vitals.statusLine|Vitals nominal.}"/>
+      <section title="Warnings">
+        <list bind="terminal.vitals.warnings" item="vital">
+          <list-row class="terminal-compact-row">
+            <copy-block class="terminal-row-copy" title="{vital.label}"/>
+            <status-chip status="{vital.status}" value="{vital.value}%"/>
+          </list-row>
+          <empty-state title="No warnings" body="Vitals are inside operational bounds."/>
+        </list>
+      </section>
+    </slot>
+  </component>
+</page>

@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:load_field_supply_crate",
+  "display_name": "Load Field Supply Crate",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "CARGO_INPUT",
+  "required_tools": ["CLAMP", "GRIPPER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:field_supply_crate", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 120,
+  "heat_per_second": 2,
+  "animation": "load",
+  "effects": ["echoconvoyprotocol:load_field_supply_crate"],
+  "notes": ["Transfers a prepared field crate into convoy cargo handling."]
+}

@@ -1,0 +1,26 @@
+<page id="index_favorites" title="ECHO Index Favorites" styles="index_cyberglass,index_components,index_items">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Favorites / Bookmarks"/>
+    <param name="inspectorTitle" value="Bookmark Tools"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar"/>
+      <grid columns="1fr 1fr" gap="12">
+        <panel title="Favorite Items">
+          <list bind="index.favorites.items" item="item"><component src="echoindex:index_item_row"><param name="id" value="{item.id}"/><param name="icon" value="{item.icon}"/><param name="title" value="{item.displayName}"/><param name="subtitle" value="{item.modName}"/><param name="badge" value="FAV"/></component><empty-state title="No favorite items" body="Use Favorite from item detail or item cards to save frequently checked items."/></list>
+        </panel>
+        <panel title="Bookmarked Recipes">
+          <list bind="index.favorites.recipes" item="recipe"><component src="echoindex:index_recipe_card"><param name="id" value="{recipe.id}"/><param name="icon" value="{recipe.icon}"/><param name="title" value="{recipe.title}"/><param name="summary" value="{recipe.inputSummary} &gt; {recipe.outputSummary}"/><param name="meta" value="{recipe.typeName}"/></component><empty-state title="No recipe bookmarks" body="Bookmark recipes from the recipe browser or recipe detail page."/></list>
+        </panel>
+      </grid>
+      <panel title="Bookmarked Machines">
+        <list bind="index.favorites.machines" item="machine"><component src="echoindex:index_machine_card"><param name="id" value="{machine.id}"/><param name="icon" value="{machine.icon}"/><param name="title" value="{machine.name}"/><param name="summary" value="{machine.recipeTypeSummary}"/><param name="meta" value="{machine.recipeCount} recipe(s)"/></component><empty-state title="No machine bookmarks" body="Bookmark machines from the machine browser or detail page."/></list>
+      </panel>
+    </slot>
+    <slot name="inspector">
+      <text class="index-dashboard-hint" value="Saved items, recipes, and machines are local shortcuts, not required progression."/>
+      <button action="index.open_page" action-page="echoindex:index_items" tooltip="Browse item records to save favorites.">Find Items</button>
+      <button action="index.open_page" action-page="echoindex:index_recipes" tooltip="Browse recipe cards to save bookmarks.">Find Recipes</button>
+      <button action="index.open_page" action-page="echoindex:index_machines" tooltip="Browse machine profiles to save bookmarks.">Find Machines</button>
+    </slot>
+  </component>
+</page>

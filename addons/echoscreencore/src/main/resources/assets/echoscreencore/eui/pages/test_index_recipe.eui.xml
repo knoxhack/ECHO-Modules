@@ -1,0 +1,46 @@
+<page id="test-index-recipe" title="Index Recipe Mock" styles="index_mock">
+  <screen-shell>
+    <header title="ECHO Index" subtitle="Recipes, uses, sources, and item rendering"/>
+    <column gap="12">
+      <panel class="search-placeholder"><text>Search: reinforced circuit</text></panel>
+      <hero-card>
+        <row gap="12">
+          <item-stack item="minecraft:comparator" count="1"/>
+          <column>
+            <title>Reinforced Signal Circuit</title>
+            <text>Recipe layout rehearsal for Index migration.</text>
+          </column>
+          <status-chip status="missing">MISSING PARTS</status-chip>
+        </row>
+      </hero-card>
+      <tabs selected="recipes">
+        <tab id="recipes" title="Recipes">
+          <grid class="recipe-grid" columns="1fr auto 1fr" gap="16">
+            <panel title="Ingredients">
+              <row gap="8">
+                <item-stack item="minecraft:iron_ingot" count="4"/>
+                <item-stack item="minecraft:redstone" count="6"/>
+                <item-stack item="minecraft:glass" count="2"/>
+              </row>
+              <text>Missing ingredients should stay readable and safely clipped.</text>
+            </panel>
+            <panel><title>&gt;</title></panel>
+            <panel title="Output">
+              <item-stack item="minecraft:comparator" count="1"/>
+              <text>Signal Circuit</text>
+            </panel>
+          </grid>
+        </tab>
+        <tab id="uses" title="Uses">
+          <panel title="Used In"><text>Terminal relay, antenna booster, and diagnostic console.</text></panel>
+        </tab>
+        <tab id="sources" title="Sources">
+          <card class="machine-card"><title>Recovered Tech Cache</title><text>Appears in low-orbit debris salvage.</text></card>
+        </tab>
+        <tab id="info" title="Info">
+          <text>Index tabs should switch without rebuilding the whole screen tree.</text>
+        </tab>
+      </tabs>
+    </column>
+  </screen-shell>
+</page>

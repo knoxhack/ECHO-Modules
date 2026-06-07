@@ -1,0 +1,29 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:oxygen_tank_med_full",
+                   "data":  1800
+               },
+    "pattern":  [
+                    "ZZ",
+                    "XX",
+                    "YY"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "echogalacticcore:canister",
+                          "data":  0
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "Z":  {
+                          "item":  "minecraft:wool",
+                          "data":  1
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

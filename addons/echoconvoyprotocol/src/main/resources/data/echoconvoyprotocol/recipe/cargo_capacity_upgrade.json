@@ -1,0 +1,18 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "ICI",
+                    "CUC",
+                    "ICI"
+                ],
+    "key":  {
+                "I":  "minecraft:iron_ingot",
+                "C":  "minecraft:chest",
+                "U":  "echoconvoyprotocol:convoy_upgrade_chip"
+            },
+    "result":  {
+                   "id":  "echoconvoyprotocol:cargo_capacity_upgrade",
+                   "count":  1
+               }
+}

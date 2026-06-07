@@ -1,0 +1,23 @@
+{
+  "id": "echoblockworks:blackbox_vault",
+  "display_name": "Blackbox Vault",
+  "description": "Dark archive alloy, locked panels, memory glass, secure frames, and orange warning light.",
+  "recommended_usage": "Blackbox archives, breached vaults, sealed data rooms, and high-security interiors.",
+  "theme": "blackbox",
+  "family_ids": [
+    "blackbox_vault",
+    "echo_circuit"
+  ],
+  "featured_blocks": [
+    "echoblockworks:blackbox_vault_vault_wall",
+    "echoblockworks:blackbox_vault_locked_panel",
+    "echoblockworks:blackbox_vault_archive_panel",
+    "echoblockworks:blackbox_vault_memory_glass"
+  ],
+  "accent_blocks": [
+    "echoblockworks:blackbox_vault_warning_light",
+    "echoblockworks:blackbox_vault_secure_frame",
+    "echoblockworks:echo_circuit_encrypted_circuit"
+  ],
+  "worldgen_site": "echoblockworks:blackbox_vault_breach"
+}

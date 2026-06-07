@@ -1,0 +1,33 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:basic_item",
+                   "data":  19
+               },
+    "pattern":  [
+                    " X ",
+                    "YUY",
+                    "ZWZ"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "U":  {
+                          "item":  "minecraft:repeater"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_iron"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_redstone"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

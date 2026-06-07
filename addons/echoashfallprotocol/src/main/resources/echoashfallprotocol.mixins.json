@@ -1,0 +1,12 @@
+{
+  "required": false,
+  "package": "com.knoxhack.echoashfallprotocol.mixin.client",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "EchoButtonMixin",
+    "EchoLoadingOverlayMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

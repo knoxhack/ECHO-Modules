@@ -1,0 +1,86 @@
+{
+  "id": "echoashfallprotocol:sporebound_medic",
+  "name": "Sporebound Medic",
+  "job_site": "echoashfallprotocol:bio_processing_station_poi",
+  "work_sound": "minecraft:entity.villager.work_cleric",
+  "trades": {
+    "novice": {
+      "max_trades": 16,
+      "max_uses": 12,
+      "trades": [
+        {
+          "input": { "item": "minecraft:rotten_flesh", "count": 32 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 4 },
+          "output": { "item": "minecraft:sugar", "count": 6 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 3 },
+          "output": { "item": "minecraft:glass_bottle", "count": 3 }
+        }
+      ]
+    },
+    "apprentice": {
+      "max_trades": 12,
+      "max_uses": 10,
+      "reputation_required": 50,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 6 },
+          "output": { "item": "minecraft:potion", "count": 1, "potion": "minecraft:healing" }
+        },
+        {
+          "input": { "item": "minecraft:nether_wart", "count": 12 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        }
+      ]
+    },
+    "journeyman": {
+      "max_trades": 8,
+      "max_uses": 8,
+      "reputation_required": 100,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 10 },
+          "output": { "item": "minecraft:potion", "count": 1, "potion": "minecraft:regeneration" }
+        },
+        {
+          "input": { "item": "echoashfallprotocol:mutated_tissue", "count": 6 },
+          "output": { "item": "minecraft:emerald", "count": 2 }
+        }
+      ]
+    },
+    "expert": {
+      "max_trades": 6,
+      "max_uses": 6,
+      "reputation_required": 200,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 18 },
+          "output": { "item": "minecraft:golden_apple" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 24 },
+          "output": { "item": "echoashfallprotocol:mutagen_vial" }
+        }
+      ]
+    },
+    "master": {
+      "max_trades": 4,
+      "max_uses": 4,
+      "reputation_required": 300,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 48 },
+          "output": { "item": "minecraft:enchanted_golden_apple" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 32 },
+          "output": { "item": "echoashfallprotocol:rad_away" }
+        }
+      ]
+    }
+  }
+}

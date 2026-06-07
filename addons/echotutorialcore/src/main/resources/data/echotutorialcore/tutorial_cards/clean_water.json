@@ -1,0 +1,32 @@
+{
+  "id": "echotutorialcore:clean_water",
+  "category": "WATER",
+  "title": "Clean Water",
+  "summary": "Clean water is required for safe expeditions.",
+  "body": [
+    "Dirty water can be used in emergencies, but it carries risk.",
+    "Use a Water Purifier to produce clean water.",
+    "Bring clean water before long routes or hazard zones."
+  ],
+  "steps": [
+    "Build or locate a Water Purifier.",
+    "Provide power.",
+    "Insert dirty or boiled water.",
+    "Collect clean water."
+  ],
+  "commonMistakes": [
+    "The purifier has no power.",
+    "The output slot is blocked.",
+    "The input item is not valid."
+  ],
+  "related": [
+    "echotutorialcore:power_basics",
+    "echotutorialcore:machine_troubleshooting"
+  ],
+  "unlockTriggers": [
+    "obtained_dirty_water",
+    "placed_water_purifier"
+  ],
+  "defaultUnlocked": false,
+  "priority": 80
+}

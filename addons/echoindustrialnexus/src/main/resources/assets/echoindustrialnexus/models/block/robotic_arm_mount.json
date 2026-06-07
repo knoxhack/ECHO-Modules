@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "metal": "echoindustrialnexus:block/machine_casing",
+    "accent": "echoindustrialnexus:block/thermal_coil_block",
+    "panel": "echoindustrialnexus:block/control_panel"
+  },
+  "elements": [
+    { "from": [2, 0, 2], "to": [14, 4, 14], "faces": { "down": { "texture": "#metal" }, "up": { "texture": "#panel" }, "north": { "texture": "#metal" }, "south": { "texture": "#metal" }, "west": { "texture": "#metal" }, "east": { "texture": "#metal" } } },
+    { "from": [7, 4, 7], "to": [9, 13, 9], "faces": { "down": { "texture": "#accent" }, "up": { "texture": "#accent" }, "north": { "texture": "#accent" }, "south": { "texture": "#accent" }, "west": { "texture": "#accent" }, "east": { "texture": "#accent" } } },
+    { "from": [5, 12, 5], "to": [11, 14, 11], "faces": { "down": { "texture": "#metal" }, "up": { "texture": "#panel" }, "north": { "texture": "#metal" }, "south": { "texture": "#metal" }, "west": { "texture": "#metal" }, "east": { "texture": "#metal" } } }
+  ]
+}

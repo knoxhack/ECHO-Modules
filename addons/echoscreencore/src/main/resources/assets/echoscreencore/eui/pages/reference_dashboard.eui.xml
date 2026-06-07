@@ -1,0 +1,19 @@
+<page id="reference-dashboard" title="Reference Dashboard" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Reference Dashboard" subtitle="Summary cards and actions that stack safely."/>
+    </slot>
+    <slot name="body">
+      <component src="echoscreencore:sc_dashboard_grid">
+        <param name="columns" value="1fr 1fr 1fr"/>
+        <param name="stackBelow" value="900"/>
+        <slot name="body">
+          <component src="echoscreencore:sc_feature_card" title="Layout" badge="LAY" status="ready" body="Use fr columns and stack-below for dashboards." page="echoscreencore:reference_three_column" action="screencore.open_page"/>
+          <component src="echoscreencore:sc_feature_card" title="Lists" badge="LST" status="active" body="Move dense rows into a single scroll owner." page="echoscreencore:reference_dense_list" action="screencore.open_page"/>
+          <component src="echoscreencore:sc_feature_card" title="Diagnostics" badge="DIA" status="warning" body="Broken layouts should produce fix guidance." page="echoscreencore:reference_bad_layouts" action="screencore.open_page"/>
+        </slot>
+      </component>
+    </slot>
+  </component>
+</page>
+

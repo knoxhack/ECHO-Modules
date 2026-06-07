@@ -1,0 +1,64 @@
+{
+  "id": "echoashfallprotocol:ashfall_machine_power_logistics",
+  "title": "Machine, Power, and Logistics Desk",
+  "summary": "Explains the production chain from hand recycling into powered machines, batteries, cables, item pipes, and factory routing.",
+  "nextSteps": [
+    "Build the Hand Recycler before scaling powered machines.",
+    "Place a Micro Generator and charge a Basic Battery before long routes.",
+    "Route cables only after a machine can describe its power need.",
+    "Use item pipes and factory controls after the first clean water and casing loops are stable.",
+    "Check machine rewards before overclocking; speed without storage creates shortages."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_machine_power",
+  "panels": [
+    {
+      "id": "starter_loop",
+      "title": "Starter Machine Loop",
+      "state": "hand_recycler_first",
+      "body": "Hand Recycler, Machine Casing, Micro Generator, and Water Purifier form the first repeatable survival production loop."
+    },
+    {
+      "id": "power_state",
+      "title": "Power State",
+      "state": "capacity_then_priority",
+      "body": "Read battery charge, cable tier, and machine demand before adding overclock or logistics blocks."
+    },
+    {
+      "id": "logistics_state",
+      "title": "Logistics State",
+      "state": "pipes_after_storage",
+      "body": "Item pipes, load distribution, and factory control should clarify movement and priority rather than hide missing inputs."
+    },
+    {
+      "id": "system_roster",
+      "title": "System Roster",
+      "state": "coverage_locked",
+      "body": "Rain Collector, Hand Recycler, Field Med Bay, Water Purifier, Filter Workbench, Micro Generator, Scrap Dynamo, Battery Bank, Power Cable, Reinforced Power Cable, High Voltage Power Cable, Item Pipe, Ore Grinder, Scrap Press, Thermal Burner, Thermal Array, Isotope Refiner, Atmospheric Scrubber, Radiation Cleanser, Research Lab, Factory Controller, and Nexus Capacitor must all surface readable state before they are treated as shipped."
+    }
+  ],
+  "relatedSystems": [
+    "echoashfallprotocol:rain_collector",
+    "echoashfallprotocol:hand_recycler",
+    "echoashfallprotocol:field_med_bay",
+    "echoashfallprotocol:water_purifier",
+    "echoashfallprotocol:filter_workbench",
+    "echoashfallprotocol:micro_generator",
+    "echoashfallprotocol:scrap_dynamo",
+    "echoashfallprotocol:battery_bank",
+    "echoashfallprotocol:power_cable",
+    "echoashfallprotocol:reinforced_power_cable",
+    "echoashfallprotocol:high_voltage_power_cable",
+    "echoashfallprotocol:item_pipe",
+    "echoashfallprotocol:ore_grinder",
+    "echoashfallprotocol:scrap_press",
+    "echoashfallprotocol:thermal_burner",
+    "echoashfallprotocol:thermal_array",
+    "echoashfallprotocol:isotope_refiner",
+    "echoashfallprotocol:atmospheric_scrubber",
+    "echoashfallprotocol:radiation_cleanser",
+    "echoashfallprotocol:research_lab",
+    "echoashfallprotocol:factory_controller",
+    "echoashfallprotocol:nexus_capacitor"
+  ]
+}

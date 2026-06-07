@@ -1,0 +1,4 @@
+<panel class="debug-panel" title="{param.title|Debug}">
+  <status-chip status="{param.status|info}" value="{param.statusLabel|INFO}"/>
+  <text value="{param.body|Enable /echoscreencore debug on for bounds, focus, overlays, and diagnostics.}"/>
+</panel>

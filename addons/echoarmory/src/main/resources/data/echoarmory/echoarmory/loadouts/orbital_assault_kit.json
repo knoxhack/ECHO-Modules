@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "title": "Orbital Assault Kit",
+  "order": 40,
+  "icon": "echoarmory:energy_rifle",
+  "weapon": "echoarmory:energy_rifle",
+  "armor": [
+    "echoarmory:thermal_chestplate",
+    "echoarmory:orbital_boots"
+  ],
+  "modules": [
+    "echoarmory:stability_rune",
+    "echoarmory:mobility_servo",
+    "echoarmory:thermal_regulator"
+  ],
+  "minTier": 3,
+  "requiredProtections": {
+    "cold": 40,
+    "heat": 40
+  },
+  "logisticsPreset": "echoarmory:orbital_assault_kit"
+}

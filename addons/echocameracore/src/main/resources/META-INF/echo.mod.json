@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocameracore",
+  "name": "ECHO: CameraCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "camera_core",
+  "entrypoint": "com.knoxhack.echo.cameracore.EchoCameraCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "camera.profiles",
+    "camera.safety",
+    "camera.screenshot_mode",
+    "camera.shake"
+  ],
+  "consumes": [
+    "assets.registry",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "rendering",
+        "input"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.cameracore.EchoCameraCoreNativeModule",
+    "nativeClasspath": [],
+    "contractsOnly": true,
+    "notes": "Neutral camera profile, shake, screenshot mode, and safety contracts; no direct client camera implementation."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

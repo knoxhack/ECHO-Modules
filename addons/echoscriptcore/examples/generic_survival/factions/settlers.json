@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "pack": "generic_survival",
+  "id": "generic_survival:settlers",
+  "type": "faction",
+  "display_name": "Settlers",
+  "starting_reputation": 0,
+  "ranks": [
+    { "name": "Stranger", "min": -100, "max": 9 },
+    { "name": "Neighbor", "min": 10, "max": 49 },
+    { "name": "Trusted", "min": 50 }
+  ]
+}

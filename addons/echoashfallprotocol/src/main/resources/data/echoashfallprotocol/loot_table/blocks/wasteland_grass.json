@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:wasteland_grass" }
+      ],
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:plant_fiber", "weight": 45 },
+        { "type": "minecraft:item", "name": "minecraft:stick", "weight": 12 },
+        { "type": "minecraft:empty", "weight": 43 }
+      ]
+    }
+  ]
+}

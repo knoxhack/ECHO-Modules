@@ -1,0 +1,131 @@
+[progression]
+	#Development override. When true, Nexus progression ignores the canonical Stationfall Blackbox handoff.
+	forceNexusUnlock = false
+	#Documentation preset label for pack/admin tuning. Valid labels: casual, standard, hardcore. Numeric values below remain authoritative.
+	balancePreset = "standard"
+
+[machines]
+	# Default: 16000
+	# Range: 1000 ~ 1000000
+	machineCapacity = 16000
+	# Default: 512
+	# Range: 1 ~ 100000
+	machineTransfer = 512
+	#Percent multiplier for Nexus processing recipe duration. Beta default keeps machines responsive without making charge free.
+	# Default: 90
+	# Range: 10 ~ 500
+	machineDurationPercent = 90
+	#Percent multiplier for machine Nexus Charge costs.
+	# Default: 90
+	# Range: 0 ~ 500
+	machineChargeCostPercent = 90
+	#Percent multiplier for machine Nexus Charge output.
+	# Default: 100
+	# Range: 0 ~ 500
+	machineChargeOutputPercent = 100
+	# Default: 4
+	# Range: 0 ~ 100
+	filterCorruptionReduction = 4
+	# Default: 2
+	# Range: 0 ~ 100
+	filterLeakPressure = 2
+	# Default: 6
+	# Range: 0 ~ 100
+	stabilizerFieldGain = 6
+	# Default: 4
+	# Range: 0 ~ 100
+	stabilizerCorruptionReduction = 4
+	#Extra percent multiplier applied to passive Corruption Reactor generation.
+	# Default: 100
+	# Range: 0 ~ 500
+	reactorOutputPercent = 100
+
+[field]
+	# Default: 80
+	# Range: 20 ~ 1200
+	fieldTickInterval = 80
+	chunkCorruptionTickEnabled = true
+	# Default: 1
+	# Range: 0 ~ 20
+	fieldDecayLowPressure = 1
+	# Default: 2
+	# Range: 0 ~ 20
+	fieldDecayHighPressure = 2
+	# Default: 40
+	# Range: 0 ~ 100
+	corruptionSpreadFieldThreshold = 40
+	# Default: 15
+	# Range: 0 ~ 100
+	corruptionSpreadPressureThreshold = 15
+	# Default: 4
+	# Range: 1 ~ 20
+	stormWindowMultiplier = 4
+	# Default: 20
+	# Range: 0 ~ 100
+	realityTearFieldThreshold = 20
+	#Fixed Terminal field-map display radius in chunks. Nexus sync stores a stable 5x5 grid for this release, so valid values are intentionally capped at 2.
+	# Default: 2
+	# Range: 1 ~ 2
+	fieldMapRadius = 2
+
+[seals]
+	# Default: 35
+	# Range: 10 ~ 1200
+	sealTickInterval = 35
+	# Default: 5
+	# Range: 1 ~ 16
+	sealRadius = 5
+	# Default: 96
+	# Range: 1 ~ 10000
+	sealRelayAmount = 96
+	# Default: 6
+	# Range: 1 ~ 100
+	sealDefenseDamage = 6
+	# Default: 5
+	# Range: 0 ~ 100
+	sealPurifyPressureReduction = 5
+	# Default: 6
+	# Range: 0 ~ 100
+	sealCollapseFieldLoss = 6
+
+[gear]
+	# Default: 2400
+	# Range: 0 ~ 72000
+	armorLockCooldown = 2400
+	# Default: 8
+	# Range: 0 ~ 100
+	armorLockFieldGain = 8
+	# Default: 8
+	# Range: 0 ~ 100
+	armorLockCorruptionReduction = 8
+	#Field recovery from the stronger collapsed-chunk purity charge.
+	# Default: 16
+	# Range: 0 ~ 100
+	stabilizedPurityFieldGain = 16
+	# Default: 32
+	# Range: 0 ~ 100
+	stabilizedPurityCorruptionReduction = 32
+	#Quarantine duration applied by Field Anchor recovery tool.
+	# Default: 2400
+	# Range: 0 ~ 72000
+	fieldAnchorTicks = 2400
+	# Default: 12
+	# Range: 0 ~ 100
+	fieldAnchorFieldGain = 12
+	# Default: 24
+	# Range: 0 ~ 100
+	fieldAnchorCorruptionReduction = 24
+
+[bosses]
+	# Default: 115
+	# Range: 10 ~ 1000
+	bossHealthPercent = 115
+	# Default: 105
+	# Range: 10 ~ 1000
+	bossDamagePercent = 105
+
+[dungeons]
+	#Loot intensity hint used by dungeon templates and tests. Datapacks can tune loot tables separately.
+	# Default: 110
+	# Range: 0 ~ 500
+	dungeonLootScalePercent = 110

@@ -1,0 +1,33 @@
+{
+  "id": "echonpcore:reclaimer_farmer_basic",
+  "groups": [
+    {
+      "id": "survival",
+      "title": "Survival Supplies",
+      "offers": [
+        {
+          "id": "charcoal_for_paper_filter",
+          "title": "Improvised Filter Patch",
+          "input": [
+            { "item": "minecraft:charcoal", "count": 4 }
+          ],
+          "output": { "item": "minecraft:paper", "count": 1 },
+          "stock": 3,
+          "restockTime": 24000,
+          "requiresMission": ""
+        },
+        {
+          "id": "wheat_for_bread",
+          "title": "Emergency Ration",
+          "input": [
+            { "item": "minecraft:wheat", "count": 3 }
+          ],
+          "output": { "item": "minecraft:bread", "count": 1 },
+          "stock": 8,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

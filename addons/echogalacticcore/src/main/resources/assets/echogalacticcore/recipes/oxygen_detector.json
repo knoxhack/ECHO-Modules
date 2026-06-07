@@ -1,0 +1,32 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:oxygen_detector"
+               },
+    "pattern":  [
+                    "WWW",
+                    "YVY",
+                    "ZUZ"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "U":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "V":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:air_vent"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_redstone"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,41 @@
+<page id="reference-bad-layouts" title="Reference Bad Layouts" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Bad Layout Fixes" subtitle="This page intentionally demonstrates diagnostics and corrected patterns."/>
+    </slot>
+    <slot name="body">
+      <scroll class="sc-page-scroll" scroll-state="true" state-key="reference.bad">
+        <grid columns="1fr 1fr 1fr" gap="12">
+          <section title="BAD LEFT" height="700px"/>
+          <section title="BAD MIDDLE" height="700px"/>
+          <section title="BAD RIGHT" height="700px"/>
+        </grid>
+        <scroll>
+          <section class="sc-panel" title="BAD NESTED SCROLL">
+            <scroll>
+              <list>
+                <list-row>
+                  <status-chip value="READY"/>
+                  <title value="This title intentionally has no row bounds"/>
+                  <button action="noop">Open</button>
+                </list-row>
+              </list>
+            </scroll>
+          </section>
+        </scroll>
+        <grid class="sc-three-column" columns="1fr 1fr 1fr" gap="8" stack-below="900">
+          <section class="sc-panel" title="GOOD LEFT">
+            <text class="sc-fix-note" value="Add stack-below to multi-column grids."/>
+          </section>
+          <section class="sc-panel" title="GOOD MIDDLE">
+            <text class="sc-fix-note" value="Move long content into a single scroll owner."/>
+          </section>
+          <section class="sc-panel" title="GOOD RIGHT">
+            <text class="sc-fix-note" value="Use sc-row-copy for row text."/>
+          </section>
+        </grid>
+      </scroll>
+    </slot>
+  </component>
+</page>
+

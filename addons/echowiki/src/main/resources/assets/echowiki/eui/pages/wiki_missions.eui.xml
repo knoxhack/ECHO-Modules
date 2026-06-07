@@ -1,0 +1,59 @@
+<page id="wiki_missions" title="Mission Reference" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Missions"/>
+    <param name="contentSubtitle" value="Chapter routes, mission progress, and objective briefings."/>
+    <param name="inspectorTitle" value="Mission Chapters"/>
+    <param name="stateKey" value="wiki.missions.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="MISSION INDEX">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.missions">
+            <list class="wiki-browser-list" bind="wiki.missions.visible" item="mission">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.select_mission"/>
+                <param name="id" value="{mission.id}"/>
+                <param name="title" value="{mission.title}"/>
+                <param name="summary" value="{mission.summary}"/>
+                <param name="status" value="{mission.status}"/>
+                <param name="chip" value="{mission.chip}"/>
+                <param name="meta" value="{mission.meta}"/>
+                <param name="countLabel" value="{mission.countLabel}"/>
+                <param name="selected" value="{mission.selected}"/>
+              </component>
+              <empty-state title="No missions" body="MissionCore has not registered mission definitions."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="MISSION BRIEFING">
+          <title class="wiki-detail-title" value="{wiki.missions.selected.title}"/>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.missions.selected.status}" value="{wiki.missions.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.missions.selected.progressLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.missions.selected.chapter}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.missions.selected.summary}"/>
+          <grid class="wiki-detail-stat-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Progress" value="{wiki.missions.selected.progressLabel}"/>
+            <stat-card label="Chapter" value="{wiki.missions.selected.chapter}"/>
+          </grid>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.missions.chapters">
+        <list class="wiki-compact-list" bind="wiki.missions.chapters" item="chapter">
+          <component src="echowiki:wiki_record_row">
+            <param name="id" value="{chapter.id}"/>
+            <param name="title" value="{chapter.title}"/>
+            <param name="summary" value="{chapter.summary}"/>
+            <param name="status" value="known"/>
+            <param name="chip" value="chapter"/>
+            <param name="meta" value="{chapter.id}"/>
+            <param name="countLabel" value="MissionCore"/>
+          </component>
+          <empty-state title="No chapters" body="MissionCore has not registered chapter definitions."/>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>

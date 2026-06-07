@@ -1,0 +1,30 @@
+{
+  "id": "echotutorialcore:first_hour_survival",
+  "category": "START_HERE",
+  "title": "First Hour Survival",
+  "summary": "Stabilize water, power, and direction before chasing the horizon.",
+  "body": [
+    "Your first hour is not about winning. It is about making the next hour possible.",
+    "Secure clean water, make a small power loop, then scan for a route worth taking."
+  ],
+  "steps": [
+    "Open the Terminal.",
+    "Find or produce clean water.",
+    "Power one useful machine.",
+    "Use Scanner, Lens, and HoloMap before leaving base range."
+  ],
+  "commonMistakes": [
+    "Walking into hazards with no filter.",
+    "Building machines before power storage."
+  ],
+  "related": [
+    "echotutorialcore:clean_water",
+    "echotutorialcore:power_basics",
+    "echotutorialcore:signal_leads"
+  ],
+  "unlockTriggers": [
+    "entered_world"
+  ],
+  "defaultUnlocked": true,
+  "priority": 98
+}

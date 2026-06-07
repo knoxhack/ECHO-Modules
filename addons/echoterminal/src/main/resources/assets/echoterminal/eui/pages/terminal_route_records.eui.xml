@@ -1,0 +1,29 @@
+<page id="terminal-route-records" title="Route Records" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_archive_intel,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Route Records / shared route records"/>
+    <param name="inspectorTitle" value="Route Detail"/>
+    <slot name="body">
+      <hero-card class="terminal-page-hero" status="ready">
+        <copy-block class="terminal-row-copy" title="Route Records" subtitle="{terminal.routeRecords.count} route record(s) are available from scanners, surveys, recovery sites, and chapter handoffs."/>
+        <row class="terminal-page-toolbar" gap="6">
+          <status-chip status="ready" value="{terminal.routeRecords.count} records"/>
+          <button action="terminal.filter_route_records" action-value="all" variant="ghost"
+                  tooltip="Show every shared route record.">All Records</button>
+        </row>
+      </hero-card>
+      <list class="intel-list" bind="terminal.routeRecords.all" item="route" selected="{terminal.routeRecords.selectedId}">
+        <list-row class="terminal-tall-row" action="terminal.select_route_record" action-value="{route.id}" value="{route.id}"
+                  tooltip="Inspect route record {route.title}.">
+          <copy-block class="terminal-row-copy" title="{route.title}" subtitle="{route.dimensionHint} / {route.category} / {route.summary}"/>
+          <status-chip status="{route.statusKey}" value="{route.status}"/>
+        </list-row>
+        <empty-state title="No route records" body="Scanner routes, recovery sites, surveys, and orbital paths appear here when chapters publish them."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <stat-card label="Routes" value="{terminal.routeRecords.count}" status="ready"/>
+      <copy-block class="terminal-row-copy" title="{terminal.routeRecords.selected.title|No route selected}" subtitle="{terminal.routeRecords.selected.summary|} {terminal.routeRecords.selected.dimensionHint|} {terminal.routeRecords.selected.category|}"/>
+      <status-chip status="{terminal.routeRecords.selected.statusKey|info}" value="{terminal.routeRecords.selected.status|SELECT}"/>
+    </slot>
+  </component>
+</page>

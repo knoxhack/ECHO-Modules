@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/wiki/core_loop",
+  "title": "Wiki: Core Loop",
+  "category": "Guide Books",
+  "summary": "Open the article, follow related links, then return to play with one clear answer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Search or filter, open an article, follow related records, and use guide books as stable module-specific entry points.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each article, decide whether it answered a block, item, route, mechanic, or troubleshooting question. If not, follow one related link and stop.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop reading when you have the next move. The best manual page gets you back into the world with fewer guesses.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "wiki",
+    "codex",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:written_book",
+  "relatedArticles": [
+    "echowiki:guides/wiki"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1222
+}

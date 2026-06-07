@@ -1,0 +1,83 @@
+{
+  "animations": {
+    "machine_idle": {
+      "loop": true,
+      "length": 3.0,
+      "transition_seconds": 0.2,
+      "tracks": [
+        {
+          "part": "screen",
+          "channel": "alpha",
+          "blend_mode": "replace",
+          "keyframes": [
+            { "time": 0.0, "value": 0.65 },
+            { "time": 1.5, "value": 1.0, "easing": "ease_in_out" },
+            { "time": 3.0, "value": 0.65, "easing": "ease_in_out" }
+          ]
+        }
+      ]
+    },
+    "machine_active": {
+      "loop": true,
+      "length": 1.25,
+      "transition_seconds": 0.15,
+      "tracks": [
+        {
+          "part": "core",
+          "channel": "scale_y",
+          "keyframes": [
+            { "time": 0.0, "value": 1.0 },
+            { "time": 0.62, "value": 1.08, "easing": "ease_out" },
+            { "time": 1.25, "value": 1.0, "easing": "ease_in" }
+          ]
+        }
+      ]
+    },
+    "machine_charge": {
+      "loop": true,
+      "length": 2.0,
+      "tracks": [
+        {
+          "part": "core",
+          "channel": "scale_x",
+          "keyframes": [
+            { "time": 0.0, "value": 0.9 },
+            { "time": 1.0, "value": 1.15, "easing": "ease_in_out" },
+            { "time": 2.0, "value": 0.9, "easing": "ease_in_out" }
+          ]
+        }
+      ]
+    },
+    "thermal_warning": {
+      "loop": true,
+      "length": 0.7,
+      "tracks": [
+        {
+          "part": "screen",
+          "channel": "alpha",
+          "keyframes": [
+            { "time": 0.0, "value": 1.0 },
+            { "time": 0.2, "value": 0.2, "easing": "step" },
+            { "time": 0.7, "value": 1.0, "easing": "step" }
+          ]
+        }
+      ]
+    },
+    "corrupt_flicker": {
+      "loop": true,
+      "length": 0.9,
+      "blend_mode": "additive",
+      "tracks": [
+        {
+          "part": "core",
+          "channel": "rotation_y",
+          "keyframes": [
+            { "time": 0.0, "value": -3.0 },
+            { "time": 0.45, "value": 3.0, "easing": "step" },
+            { "time": 0.9, "value": -3.0, "easing": "step" }
+          ]
+        }
+      ]
+    }
+  }
+}

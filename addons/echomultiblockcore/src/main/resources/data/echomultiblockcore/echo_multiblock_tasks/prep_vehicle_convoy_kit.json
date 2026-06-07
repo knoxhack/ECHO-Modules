@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:prep_vehicle_convoy_kit",
+  "display_name": "Prep Vehicle Convoy Kit",
+  "category": "repair",
+  "allowed_multiblocks": ["echomultiblockcore:vehicle_repair_gantry"],
+  "required_workcell": "REPAIR",
+  "required_tools": ["WELDER", "CLAMP"],
+  "duration_ticks": 260,
+  "heat_per_second": 3,
+  "animation": "repair",
+  "animation_profile": "echomultiblockcore:vehicle_overhaul",
+  "effects": ["echoconvoyprotocol:prepare_vehicle_repair"],
+  "inputs": [
+    { "item": "echomultiblockcore:vehicle_frame_kit", "count": 1 },
+    { "item": "echomultiblockcore:integrity_upgrade", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:vehicle_frame_kit", "count": 2 }
+  ],
+  "notes": ["Convoy-safe repair staging without a hard vehicle dependency."]
+}

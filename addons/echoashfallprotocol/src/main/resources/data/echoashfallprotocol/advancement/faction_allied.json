@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:faction_friendly",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:schematic_fragment_energy"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.faction_allied.title",
+      "fallback": "Trusted Ally"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.faction_allied.desc",
+      "fallback": "Reach Allied reputation (+100) with any faction."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "allied_reputation": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_energy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["allied_reputation"]
+  ]
+}

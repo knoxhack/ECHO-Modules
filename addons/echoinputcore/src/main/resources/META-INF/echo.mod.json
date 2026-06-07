@@ -1,0 +1,85 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoinputcore",
+  "name": "ECHO: InputCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "input_core",
+  "entrypoint": "com.knoxhack.echo.inputcore.EchoInputCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "input.contexts",
+    "input.controller_ready",
+    "input.keybind_registry",
+    "input.radial_menus"
+  ],
+  "consumes": [
+    "assets.registry",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echo.inputcore.EchoInputCoreNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "input",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresMinecraft": true,
+    "contractsOnly": true,
+    "notes": "Defines input context, keybind registry, radial menu, and controller-ready contracts without registering client key mappings directly."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/inputcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

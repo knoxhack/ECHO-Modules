@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": { "id": "echoashfallprotocol:power_node" },
+    "title": { "translate": "advancement.EchoAshfallProtocol.first_power_node.title" },
+    "description": { "translate": "advancement.EchoAshfallProtocol.first_power_node.desc" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "echoashfallprotocol:first_generator",
+  "criteria": {
+    "placed_power_node": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echoashfallprotocol:power_node"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [["placed_power_node"]]
+}

@@ -1,0 +1,35 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:solar",
+                   "data":  4
+               },
+    "pattern":  [
+                    "XYX",
+                    "XZX",
+                    "VWV"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "V":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  1
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_advanced"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:basic_item",
+                          "data":  1
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:steel_pole"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

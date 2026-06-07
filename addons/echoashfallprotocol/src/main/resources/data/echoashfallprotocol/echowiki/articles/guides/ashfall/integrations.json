@@ -1,0 +1,59 @@
+{
+  "id": "echowiki:guides/ashfall/integrations",
+  "title": "Ashfall: Integrations",
+  "category": "Guide Books",
+  "summary": "Use maps, scans, weather, power, logistics, and tutorials to make routes safer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Connected Systems",
+      "body": "Ashfall is easiest to read when each helper does one job. TutorialCore gives reminders, HoloMap keeps routes visible, Lens and Index explain finds, WeatherCore changes travel risk, PowerGrid stabilizes base work, and Logistics reduces repeated hauling.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Practical Pairings",
+      "body": "Map the return path before extending it. Scan unknown blocks before committing inventory space. Check weather and region context before leaving base. Repair enough power to make water and crafting less fragile.",
+      "tone": "tip",
+      "icon": "minecraft:map"
+    },
+    {
+      "type": "link",
+      "title": "Relay Repair",
+      "body": "The first relay route is where mapping, power, scanning, and mission guidance start to reinforce each other.",
+      "tone": "body",
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:first_relay_station_route",
+      "label": "First Relay Station",
+      "subtitle": "Integration-heavy route"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If a helper addon is absent, keep the same survival order by hand: water, food, shelter, route marks, salvage goal, hazard note, and return threshold.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:systems/survival_codex"
+  ],
+  "relatedItems": [
+    "minecraft:filled_map",
+    "echoashfallprotocol:portable_signal_scanner",
+    "echoashfallprotocol:relay_station"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:first_relay_station_route",
+    "echoashfallprotocol:hazard_route_prep"
+  ],
+  "sortOrder": 1015
+}

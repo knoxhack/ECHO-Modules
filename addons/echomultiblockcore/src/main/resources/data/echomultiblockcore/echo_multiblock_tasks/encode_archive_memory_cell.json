@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:encode_archive_memory_cell",
+  "display_name": "Encode Archive Memory Cell",
+  "category": "archive",
+  "allowed_multiblocks": ["echomultiblockcore:archive_data_chamber"],
+  "required_workcell": "ARCHIVE",
+  "required_tools": ["SCANNER", "STABILIZER"],
+  "duration_ticks": 220,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "animation_profile": "echomultiblockcore:archive_encode",
+  "inputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 },
+    { "item": "echomultiblockcore:data_bus", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:archive_memory_cell", "count": 1 }
+  ],
+  "notes": ["Stores facility telemetry into an archive memory cell."]
+}

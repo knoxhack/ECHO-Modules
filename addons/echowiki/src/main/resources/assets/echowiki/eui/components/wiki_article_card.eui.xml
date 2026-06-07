@@ -1,0 +1,10 @@
+<list-row class="wiki-article-card wiki-fast-card" action="wiki.open_article" action-value="{param.id|}" selected="{param.selected|false}">
+  <column class="wiki-row-copy">
+    <row class="wiki-guide-card-title-line" gap="6">
+      <item-icon class="wiki-row-icon" item="{param.icon|minecraft:book}"/>
+      <title class="wiki-row-title" value="{param.title|Article}"/>
+      <status-chip class="wiki-row-chip" status="{param.state|known}" value="{param.statusLabel|known}"/>
+    </row>
+    <text class="wiki-row-summary" value="{param.summary|}"/>
+  </column>
+</list-row>

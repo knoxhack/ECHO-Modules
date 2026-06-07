@@ -1,0 +1,11 @@
+{
+  "type": "echoblackboxprotocol:blackbox_vault",
+  "generator": {
+    "type": "echoblackboxprotocol:blackbox_dungeon",
+    "dungeon": "vault",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:the_void"
+    }
+  }
+}

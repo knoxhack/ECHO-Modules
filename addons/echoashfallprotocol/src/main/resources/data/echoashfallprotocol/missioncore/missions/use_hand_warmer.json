@@ -1,0 +1,86 @@
+{
+  "id": "echoashfallprotocol:use_hand_warmer",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 6,
+  "title": "Use Hand Warmer",
+  "briefing": "[ECHO-7] Test portable warmth before extended cold-route exposure. The thermal array remains your recharge anchor.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:hand_warmer",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_thermal_array"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "use_hand_warmer",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.use_hand_warmer",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "74",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:use_hand_warmer:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.item_used",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:use_hand_warmer/charge_used",
+      "type": "custom",
+      "label": "Use Hand Warmer",
+      "detail": "Use one Hand Warmer to recover warmth.",
+      "icon": "echoashfallprotocol:hand_warmer",
+      "target": "echoashfallprotocol:hand_warmer",
+      "required": 1,
+      "criteria": {
+        "event": "player.item_used",
+        "item": "echoashfallprotocol:hand_warmer"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 1,
+      "label": "Hand Warmer"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:use_hand_warmer/reward_0",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 1,
+      "label": "Emergency Ration",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:use_hand_warmer/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Portable warmth confirmed. Cold routes are still hostile; plan returns before the buffer drains."
+}

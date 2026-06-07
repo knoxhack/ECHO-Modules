@@ -1,0 +1,92 @@
+{
+  "id": "echoashfallprotocol:resolve_prime_relays",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 3,
+  "title": "Resolve 3 Prime Relays",
+  "briefing": "[ECHO-7] Resolve any three Prime Relays. Stabilize favors RESTORE readiness, sever favors DESTROY readiness, and override favors CONTROL readiness. The final choice remains free.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:filter_cartridge_elite",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:scan_prime_relays"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "resolve_prime_relays",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.resolve_prime_relays",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "89",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:resolve_prime_relays:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.prime_relay_resolved",
+      "ashfall.post_nexus_persisted"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:resolve_prime_relays/resolve_prime_relays",
+      "type": "establish_route",
+      "label": "Resolve 3 Prime Relays",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:filter_cartridge_elite",
+      "target": "echoashfallprotocol:resolve_prime_relays",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.resolve_prime_relays"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:resolve_prime_relays/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_elite",
+      "count": 1,
+      "label": "Filter Cartridge Elite",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:resolve_prime_relays/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:resolve_prime_relays/reward_1",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 3,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:resolve_prime_relays/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Prime Relay readiness established. The Core will resist, but it can be cornered."
+}

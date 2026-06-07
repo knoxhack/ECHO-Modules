@@ -1,0 +1,24 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:air_vent"
+               },
+    "ingredients":  [
+                        {
+                            "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                        },
+                        {
+                            "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                        },
+                        {
+                            "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                        },
+                        {
+                            "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                        }
+                    ],
+    "type":  "minecraft:crafting_shapeless",
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

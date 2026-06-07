@@ -1,0 +1,34 @@
+{
+  "id": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+  "title": "Hazard, Med Bay, Lab, and Vault Desk",
+  "summary": "Documents midgame risk states for toxic routes, radiation exposure, mutation treatment, med bay recovery, bio labs, reactor ruins, and military vaults.",
+  "nextSteps": [
+    "Read the hazard marker before crossing into a toxic or radiation route.",
+    "Check mutation status and med bay supplies before entering labs or vaults.",
+    "Recover data logs as route context, not as disposable loot text.",
+    "Use Lens and HoloMap together so lab and vault markers explain counterplay.",
+    "Return to base after severe exposure and treat the status before starting another route."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_midgame_hazards",
+  "panels": [
+    {
+      "id": "hazard_readout",
+      "title": "Hazard Readout",
+      "state": "risk_before_entry",
+      "body": "Toxicity, radiation, atmosphere, and weather copy should tell the player whether to enter, delay, or retreat."
+    },
+    {
+      "id": "medical_state",
+      "title": "Medical State",
+      "state": "treat_before_chain_routes",
+      "body": "Mutation status, bandages, RadAway, stim packs, and med bay UI describe recovery before the next expedition."
+    },
+    {
+      "id": "lab_vault_state",
+      "title": "Lab and Vault State",
+      "state": "scan_then_clear",
+      "body": "Bio labs, reactor ruins, and military vaults expose mission, scan, loot, and data-log context before combat or salvage."
+    }
+  ]
+}

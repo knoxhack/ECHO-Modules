@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/holomap",
+  "title": "HoloMap Navigation Manual",
+  "category": "Guide Books",
+  "summary": "Turn scanned terrain, markers, waypoints, overlays, and routes into better travel decisions.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "HoloMap is a planning surface. Its value is not the map image alone, but how markers, overlays, routes, and discovered tiles change what you choose to do next.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Open the map near base, mark storage and exits, and place only the waypoint types you will actually use. Too many marks can hide urgent ones.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Scan terrain, mark a route, add hazard or objective notes, travel, then prune or update the map after the run.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Terrain tiles, waypoints, marker states, overlays, and route records all contribute to the same navigation layer.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "WorldCore feeds region context, Convoy benefits from route clarity, Recovery marks return paths, and Lens or Wiki can explain what a marker represents.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If the map becomes noisy, delete stale markers, rename important waypoints, and separate danger marks from storage or mission marks.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "holomap",
+    "navigation"
+  ],
+  "icon": "minecraft:map",
+  "heroArt": "echowiki:textures/gui/guide_books/holomap_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/holomap/first_steps",
+    "echowiki:guides/holomap/core_loop",
+    "echowiki:guides/holomap/systems",
+    "echowiki:guides/holomap/progression",
+    "echowiki:guides/holomap/integrations",
+    "echowiki:guides/holomap/troubleshooting"
+  ],
+  "sortOrder": 1190
+}

@@ -1,0 +1,41 @@
+<page id="terminal-addons" title="Addon Chapters" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_components,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <grid class="terminal-dashboard-grid terminal-addon-layout" columns="1.55fr 0.75fr" gap="12" stack-below="920">
+        <section class="terminal-panel" title="INSTALLED ECHO MODULES">
+          <row class="terminal-filter-row" gap="8">
+            <status-chip status="ready" value="{terminal.addons.count} modules"/>
+            <button action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">Route Sources</button>
+            <button action="terminal.open_tab" action-value="echoterminal:data_core" variant="ghost">Diagnostics</button>
+          </row>
+          <scroll class="terminal-addon-list" scroll-state="true" state-key="terminal.addons.modules">
+            <list bind="terminal.addons.chapters" item="chapter" selected="{terminal.addons.selectedChapterId}">
+              <list-row class="terminal-module-card" action="terminal.select_addon" action-value="{chapter.id}" value="{chapter.id}" selected="{chapter.selected}">
+                <status-chip class="terminal-module-icon-chip" status="{chapter.statusKey}" value="{chapter.icon|E7}"/>
+                <copy-block class="terminal-row-copy" title="{chapter.title}" subtitle="{chapter.summary}"/>
+                <status-chip class="terminal-module-state-chip" status="{chapter.statusKey}" value="{chapter.statusLabel|ACTIVE}"/>
+              </list-row>
+              <empty-state title="No modules" body="Installed ECHO modules will appear here when their chapter metadata registers."/>
+            </list>
+          </scroll>
+        </section>
+
+        <section class="terminal-panel" title="MODULE DETAIL">
+          <status-chip status="{terminal.addons.selectedChapter.statusKey|ready}" value="{terminal.addons.selectedChapter.statusLabel|ACTIVE}"/>
+          <copy-block class="terminal-row-copy" title="{terminal.addons.selectedChapter.title|No Module Selected}" subtitle="{terminal.addons.selectedChapter.summary|Select a module card to inspect routes, records, and actions.}"/>
+          <section class="terminal-side-panel" title="KEY FEATURES">
+            <copy-block class="terminal-row-copy" title="{terminal.addons.selectedChapter.status|Module status unavailable.}" subtitle="Route publishing, archive records, support caches, and diagnostics are surfaced here when available."/>
+          </section>
+          <grid class="terminal-metric-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Routes" value="{terminal.addons.selectedChapter.routeCount|0}" status="active"/>
+            <stat-card label="Records" value="{terminal.addons.selectedChapter.recordCount|0}" status="ready"/>
+          </grid>
+          <button action="terminal.open_addon_route" action-value="{terminal.addons.selectedChapter.id}" variant="primary">Launch Hub</button>
+          <button action="terminal.open_addon_archives" action-value="{terminal.addons.selectedChapter.id}" variant="ghost">Open Hub</button>
+          <button action="terminal.open_addon_diagnostics" action-value="{terminal.addons.selectedChapter.id}" variant="ghost">Diagnostics</button>
+          <button action="terminal.open_addon_config" action-value="{terminal.addons.selectedChapter.id}" variant="ghost">Configure Module</button>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

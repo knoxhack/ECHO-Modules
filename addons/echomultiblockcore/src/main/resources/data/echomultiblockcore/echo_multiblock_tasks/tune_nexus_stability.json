@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:tune_nexus_stability",
+  "display_name": "Tune Nexus Stability",
+  "category": "nexus",
+  "allowed_multiblocks": ["echomultiblockcore:nexus_stabilizer"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["STABILIZER", "CALIBRATOR"],
+  "duration_ticks": 300,
+  "heat_per_second": 4,
+  "animation": "stabilize",
+  "animation_profile": "echomultiblockcore:nexus_stabilize",
+  "effects": ["echonexusprotocol:stage_field_stability"],
+  "inputs": [
+    { "item": "echomultiblockcore:nexus_field_coil", "count": 1 },
+    { "item": "echomultiblockcore:cooling_upgrade", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:nexus_field_coil", "count": 2 }
+  ],
+  "notes": ["Nexus Protocol support recipe with no required Nexus dependency."]
+}

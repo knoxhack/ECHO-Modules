@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:toxic_puddle"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_sewer_junction.title",
+      "fallback": "Down the Drain"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_sewer_junction.desc",
+      "fallback": "Discover a flooded Sewer Junction."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_sewer_junction": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:toxic_swamp"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_sewer_junction"]
+  ]
+}

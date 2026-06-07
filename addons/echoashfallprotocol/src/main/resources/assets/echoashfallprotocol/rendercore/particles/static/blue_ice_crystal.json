@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "frost_glints": {
+      "anchor": "crystal_top",
+      "particle": "echorendercore:soft_mote",
+      "states": ["ACTIVE"],
+      "rate": 0.032,
+      "burst_count": 1,
+      "velocity": [0.0, 0.01, 0.0],
+      "spread": [0.24, 0.08, 0.24],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": "#A7ECFF",
+        "scale": 0.44,
+        "lifetime": 24,
+        "alpha": 0.8,
+        "style": "frost_spark",
+        "fullbright": true,
+        "flicker": 0.18
+      }
+    },
+    "frost_breath": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": ["ACTIVE"],
+      "rate": 0.014,
+      "burst_count": 1,
+      "velocity": [0.0, 0.01, 0.0],
+      "spread": [0.28, 0.12, 0.28],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": "#8FDFFF",
+        "scale": 0.68,
+        "lifetime": 40,
+        "alpha": 0.36,
+        "style": "frost_breath",
+        "fullbright": true,
+        "flicker": 0.1
+      }
+    }
+  }
+}

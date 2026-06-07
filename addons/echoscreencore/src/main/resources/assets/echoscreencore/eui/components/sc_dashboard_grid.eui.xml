@@ -1,0 +1,6 @@
+<template>
+  <grid class="sc-dashboard-grid" columns="{param.columns|1fr 1fr 1fr}" gap="{param.gap|8}" stack-below="{param.stackBelow|900}">
+    <slot-outlet name="body"/>
+  </grid>
+</template>
+

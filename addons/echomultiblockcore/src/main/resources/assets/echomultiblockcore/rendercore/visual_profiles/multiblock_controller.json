@@ -1,0 +1,103 @@
+{
+  "schema_version": 12,
+  "base_texture": "echomultiblockcore:textures/block/multiblock_controller.png",
+  "particle_profile": "echomultiblockcore:multiblock_controller",
+  "default_state": "IDLE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.9,
+    "scanline_strength": 0.22,
+    "target_scope": "block"
+  },
+  "materials": {
+    "controller_screen": {
+      "color": "#FF66E8FF",
+      "alpha": 0.78,
+      "emissive": true,
+      "blend_mode": "additive"
+    }
+  },
+  "layers": [
+    {
+      "id": "controller_activity",
+      "kind": "glow",
+      "texture": "echomultiblockcore:textures/block/multiblock_controller.png",
+      "material": "controller_screen",
+      "states": [
+        "ACTIVE",
+        "SCANNING",
+        "DAMAGED"
+      ],
+      "parts": [
+        "screen"
+      ]
+    }
+  ],
+  "anchors": {
+    "core": {
+      "offset": [
+        0,
+        0.62,
+        0
+      ]
+    },
+    "screen": {
+      "offset": [
+        0,
+        0.68,
+        -0.52
+      ]
+    },
+    "anchor_grid": {
+      "offset": [
+        0,
+        1.05,
+        0
+      ]
+    }
+  },
+  "block_parts": {
+    "screen": {
+      "directions": [
+        "north"
+      ],
+      "ambient_occlusion": true
+    }
+  },
+  "surface": {
+    "type": "block_entity",
+    "owner_addon": "echomultiblockcore",
+    "display_name": "Multiblock Controller",
+    "tags": [
+      "block_entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "high",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

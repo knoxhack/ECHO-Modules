@@ -1,0 +1,122 @@
+.base-grid-hero {
+  min-height: 96px;
+  max-height: 112px;
+  padding: 8px;
+  gap: 6px;
+  background: #071622dd;
+  border-color: #5ce6ffaa;
+  border-width: 1px;
+  border-radius: radius(sm);
+}
+
+.base-grid-hero-top,
+.base-grid-toolbar,
+.base-grid-map-meta {
+  min-height: 32px;
+  gap: 8px;
+}
+
+.base-grid-title-block {
+  gap: 2px;
+  min-width: 220px;
+}
+
+.base-grid-layout {
+  gap: 10px;
+}
+
+.base-grid-map-panel {
+  min-height: 438px;
+  max-height: 520px;
+}
+
+.base-grid-map-scroll {
+  min-height: 350px;
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.base-grid-map {
+  gap: 2px;
+}
+
+.base-grid-cell {
+  height: 38px;
+  min-height: 38px;
+  max-height: 38px;
+  padding: 4px 6px;
+  background: #071724b8;
+  border-color: #2fb9cf44;
+  border-width: 1px;
+  border-radius: radius(sm);
+}
+
+.base-grid-cell[selected] {
+  background: #0e3144dd;
+  border-color: #8df5ffff;
+}
+
+.base-grid-cell-copy {
+  gap: 1px;
+}
+
+.base-grid-cell-copy title {
+  max-lines: 1;
+  wrap: false;
+  overflow: hidden;
+}
+
+.base-grid-cell-copy text {
+  max-lines: 1;
+  wrap: false;
+  overflow: hidden;
+}
+
+.base-grid-inspector {
+  gap: 10px;
+  min-width: 300px;
+}
+
+.base-grid-inspector-status {
+  min-height: 24px;
+  gap: 6px;
+}
+
+.base-grid-member-scroll {
+  min-height: 210px;
+  max-height: 260px;
+  overflow: scroll;
+}
+
+.base-grid-candidate-scroll {
+  min-height: 150px;
+  max-height: 210px;
+  overflow: scroll;
+}
+
+.base-grid-member-list,
+.base-grid-candidate-list {
+  gap: 6px;
+}
+
+.base-grid-member-row {
+  min-height: 112px;
+  max-height: 136px;
+  padding: 6px;
+  gap: 6px;
+}
+
+.base-grid-member-row button {
+  min-height: 24px;
+}
+
+.base-grid-candidate-row {
+  min-height: 48px;
+  max-height: 64px;
+  padding: 6px;
+}
+
+.base-grid-map-meta status-chip,
+.base-grid-toolbar status-chip {
+  min-height: 18px;
+}

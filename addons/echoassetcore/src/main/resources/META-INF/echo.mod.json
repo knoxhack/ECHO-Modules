@@ -1,0 +1,81 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoassetcore",
+  "name": "ECHO: AssetCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "asset_core",
+  "entrypoint": "com.knoxhack.echo.assetcore.EchoAssetCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "assets.registry",
+    "assets.validation",
+    "textureforge.prompts",
+    "textureforge.reports"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "ashfall",
+    "dev_tools",
+    "echo_prime"
+  ],
+  "permissions": [
+    "assets.read",
+    "diagnostics.write",
+    "textureforge.prompts"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echo.assetcore.EchoAssetCoreNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "data"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "AssetCore defines neutral asset ownership, missing asset, style profile, and TextureForge prompt/report contracts. It does not generate, download, render, or overwrite assets."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "asset_agent",
+      "metadata_agent",
+      "textureforge_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

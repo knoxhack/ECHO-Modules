@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:armor_tech_basic",
+  "groups": [
+    {
+      "id": "parts",
+      "title": "Armor Parts",
+      "offers": [
+        {
+          "id": "iron_for_leather",
+          "title": "Strap Kit",
+          "input": [
+            { "item": "minecraft:iron_nugget", "count": 6 }
+          ],
+          "output": { "item": "minecraft:leather", "count": 1 },
+          "stock": 6,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

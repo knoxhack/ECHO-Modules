@@ -1,0 +1,87 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="AI task, prompt bundle, safe command, and run report contracts for the ECHO ecosystem."
+description='''
+ECHO: AgentCore defines AI task, prompt bundle, project graph, protected file,
+safe command, diagnostic hint, and run report contracts for Codex, CyberDex,
+Command Center, Launcher, and future ECHO Native workflows.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides module identity, feature, side, trust, role, and permission contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoschemacore"
+type="required"
+reason="Provides AI task and prompt bundle schema document vocabulary."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostic vocabulary for AI task planning and run reports."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echometadatacore"
+type="required"
+reason="Provides optional ECHO AI metadata contracts consumed by agent summaries."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomodulegraph"
+type="required"
+reason="Provides module and feature graph context for AI project graphs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echohealthcore"
+type="required"
+reason="Provides optional runtime health report context for AI diagnostics."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

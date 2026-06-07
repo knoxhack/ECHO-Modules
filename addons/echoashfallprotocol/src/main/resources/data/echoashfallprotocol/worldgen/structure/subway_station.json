@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#echoashfallprotocol:has_structure/subway_station",
+  "step": "surface_structures",
+  "terrain_adaptation": "bury",
+  "start_pool": "echoashfallprotocol:subway_station/start",
+  "size": 1,
+  "max_depth_for_layout": 7,
+  "start_height": {
+    "type": "minecraft:uniform",
+    "min_inclusive": { "above_bottom": 15 },
+    "max_inclusive": { "above_bottom": 25 }
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "spawn_overrides": {},
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}

@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "id": "echologisticsnetwork:supply_tag"
+    },
+    "title": {
+      "text": "ECHO: Logistics Network"
+    },
+    "description": {
+      "text": "Start labeling supplies for courier-driven expedition loadouts."
+    },
+    "background": "minecraft:textures/block/copper_block.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "supply_tag": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:supply_tag"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "supply_tag"
+    ]
+  ]
+}

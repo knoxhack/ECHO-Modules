@@ -1,0 +1,107 @@
+{
+  "id": "echoashfallprotocol:recover_drone_intel",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 7,
+  "title": "Recover Drone Intel",
+  "briefing": "[ECHO-7] Recover one intel pulse with the repaired drone near an expedition route. Let the machine test the edge before you cross it.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:schematic_fragment",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:repair_echo_drone"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "recover_drone_intel",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.recover_drone_intel",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "7",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "42",
+    "deprecatedAliases": "upgrade_drone_support,set_drone_scout_mode,deploy_scout_drone",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:recover_drone_intel:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "ashfall.drone_state",
+      "ashfall.location_visited",
+      "missioncore.record_objective"
+    ]
+  },
+  "deprecatedAliases": [
+    "echoashfallprotocol:upgrade_drone_support",
+    "echoashfallprotocol:set_drone_scout_mode",
+    "echoashfallprotocol:deploy_scout_drone"
+  ],
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:recover_drone_intel/intel_recovered",
+      "type": "custom",
+      "label": "Drone Intel Recovered",
+      "detail": "Log special progress or a drone-state MissionCore hook for this Ashfall route step.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "target": "drone:intel_recovered",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "special",
+        "location": "drone:intel_recovered"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "special",
+      "locationId": "drone:intel_recovered",
+      "count": 1,
+      "label": "Drone Intel Recovered"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:recover_drone_intel/reward_0",
+      "item": "echoashfallprotocol:schematic_fragment",
+      "count": 1,
+      "label": "Schematic Fragment",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_drone_intel/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:recover_drone_intel/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_drone_intel/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Drone intel recovered. Recon before entry is the difference between a route and a trap."
+}

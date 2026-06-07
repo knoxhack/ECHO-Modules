@@ -1,0 +1,57 @@
+.index-filter-bar {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: space(sm);
+}
+
+.index-item-card, .index-recipe-card, .index-machine-card, .index-mod-card {
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+.index-item-card:hover, .index-recipe-card:hover, .index-machine-card:hover, .index-mod-card:hover {
+  border-color: theme(accent);
+}
+
+.index-debug {
+  background: theme(overlay);
+  border-color: theme(warning);
+  border-width: 1;
+}
+
+.index-filter-hint, .index-dashboard-hint, .index-setting-row {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+.index-detail-header {
+  align: center;
+}
+
+.index-detail-copy {
+  gap: 2px;
+  min-width: 0;
+}
+
+.index-detail-title {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-detail-subtitle, .index-detail-meta {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+button {
+  border-radius: radius(sm);
+}

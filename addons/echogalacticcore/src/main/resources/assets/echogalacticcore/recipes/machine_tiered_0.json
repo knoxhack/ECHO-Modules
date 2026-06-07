@@ -1,0 +1,25 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine_tiered",
+                   "data":  0
+               },
+    "pattern":  [
+                    "SSS",
+                    "BBB",
+                    "SSS"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "B":  {
+                          "item":  "echogalacticcore:battery",
+                          "data":  100
+                      },
+                "S":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

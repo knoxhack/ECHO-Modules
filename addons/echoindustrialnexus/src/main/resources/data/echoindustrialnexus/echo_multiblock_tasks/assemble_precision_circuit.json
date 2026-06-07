@@ -1,0 +1,21 @@
+{
+  "id": "echoindustrialnexus:assemble_precision_circuit",
+  "display_name": "Assemble Precision Circuit",
+  "category": "assembly",
+  "allowed_multiblocks": ["echoindustrialnexus:circuit_fabricator"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "SCANNER"],
+  "duration_ticks": 200,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "consume_inputs_on_start": true,
+  "capability_costs": [
+    { "capability": "echo:power_input", "amount": 120, "throughput": 24, "unit": "EP/t" }
+  ],
+  "inputs": [
+    { "item": "echoindustrialnexus:copper_wire", "count": 2, "label": "Copper Wire" },
+    { "item": "minecraft:redstone", "count": 2, "label": "Redstone" },
+    { "item": "minecraft:quartz", "count": 1, "label": "Quartz" }
+  ],
+  "outputs": [{ "item": "echoindustrialnexus:precision_circuit", "count": 1, "label": "Precision Circuit" }]
+}

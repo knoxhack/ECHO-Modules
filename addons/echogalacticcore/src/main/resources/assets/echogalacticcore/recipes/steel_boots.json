@@ -1,0 +1,19 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:steel_boots"
+               },
+    "pattern":  [
+                    "X X",
+                    "X X"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

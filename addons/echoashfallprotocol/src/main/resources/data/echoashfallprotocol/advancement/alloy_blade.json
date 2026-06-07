@@ -1,0 +1,19 @@
+{
+  "parent": "echoashfallprotocol:first_machine",
+  "display": {
+    "icon": {"id": "echoashfallprotocol:alloy_blade"},
+    "title": {"translate": "advancements.EchoAshfallProtocol.alloy_blade.title", "fallback": "Forged in Ruin"},
+    "description": {"translate": "advancements.EchoAshfallProtocol.alloy_blade.desc", "fallback": "Craft an Alloy Blade from dense post-war metal."},
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": "echoashfallprotocol:alloy_blade"}]}
+    }
+  },
+  "requirements": [["has_blade"]]
+}

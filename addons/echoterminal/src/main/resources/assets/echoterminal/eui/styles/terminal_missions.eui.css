@@ -1,0 +1,80 @@
+.mission-layout {
+  gap: 14px;
+}
+
+.mission-roadmap-card {
+  min-height: 300px;
+  padding: space(md);
+  gap: 10px;
+  background: #08182aae;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.mission-filter-row {
+  height: 32px;
+  min-height: 28px;
+  padding: 4px 8px;
+  gap: 8px;
+  background: #08182a78;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.mission-tree {
+  min-height: 278px;
+  overflow: scroll;
+}
+
+.mission-detail {
+  min-height: 300px;
+  gap: 10px;
+  padding: space(md);
+  background: #08182aae;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.mission-briefing-hero {
+  min-height: 150px;
+  padding: space(lg);
+  gap: 8px;
+  background: #10263cc4;
+  border-color: #5cf2ffaa;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.mission-row {
+  height: 56px;
+  min-height: 50px;
+  padding: space(sm);
+  gap: 8px;
+  background: #08182a86;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.mission-requirement-card {
+  min-height: 52px;
+  padding: space(sm);
+  gap: 8px;
+  background: #08182a86;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.mission-action-dock {
+  min-height: 70px;
+  padding: space(md);
+  gap: 8px;
+  background: #08182ac8;
+  border-color: #3fd8f455;
+  border-width: 1px;
+  border-radius: radius(lg);
+}

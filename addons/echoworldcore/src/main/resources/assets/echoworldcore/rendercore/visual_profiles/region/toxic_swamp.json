@@ -1,0 +1,65 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/block/lime_stained_glass.png",
+  "default_state": "OVERHEATED",
+  "transition_seconds": 0.4,
+  "materials": {
+    "toxic_mist": {
+      "color": "#FF8CFF6A",
+      "alpha": 0.48,
+      "emissive": true,
+      "blend_mode": "additive"
+    }
+  },
+  "layers": [
+    {
+      "id": "spore_haze",
+      "kind": "glow",
+      "texture": "minecraft:textures/block/lime_stained_glass.png",
+      "material": "toxic_mist",
+      "states": [
+        "ACTIVE",
+        "SCANNING",
+        "OVERHEATED"
+      ],
+      "alpha": 0.5,
+      "emissive": true
+    }
+  ],
+  "surface": {
+    "type": "weather",
+    "owner_addon": "echoworldcore",
+    "display_name": "Region Toxic Swamp",
+    "tags": [
+      "weather"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "particles_only",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

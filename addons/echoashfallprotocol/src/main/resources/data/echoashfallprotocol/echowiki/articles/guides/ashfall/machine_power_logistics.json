@@ -1,0 +1,83 @@
+{
+  "id": "echowiki:guides/ashfall/machine_power_logistics",
+  "title": "Ashfall: Machine, Power, and Logistics",
+  "category": "Guide Books",
+  "summary": "Read machine state, power demand, cable tier, and stalled logistics before scaling production.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Readable Production",
+      "body": "A machine loop is ready when the input, output, power state, buffer, and next repair are all visible without guessing. Start with the Hand Recycler, casing work, starter power, and water processing before building wider networks.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Starter Machine Loop",
+      "body": "The Hand Recycler turns scavenged junk into a controlled repair loop. Feed it deliberately, check what comes out, and use the result to unlock casing, cable, and purifier steps.",
+      "tone": "body",
+      "item": "echoashfallprotocol:hand_recycler",
+      "count": 1,
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:build_hand_recycler",
+      "label": "Build a Hand Recycler",
+      "subtitle": "First machine objective"
+    },
+    {
+      "type": "callout",
+      "title": "Power Before Scale",
+      "body": "If a machine feels broken, check generation, cable tier, battery charge, priority, and output space before replacing blocks. Most early failures are readable once the power chain is visible.",
+      "tone": "tip",
+      "icon": "echoashfallprotocol:battery_bank"
+    },
+    {
+      "type": "paragraph",
+      "title": "Logistics Rule",
+      "body": "Pipes and factory controls should explain what moved, what stalled, and what the next player action is. If the route is silent, add labels, meters, or a smaller buffer before expanding.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "machines",
+    "power",
+    "logistics",
+    "guide_book_chapter"
+  ],
+  "icon": "echoashfallprotocol:hand_recycler",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:guides/ashfall/progression",
+    "echowiki:guides/ashfall/systems"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:rain_collector",
+    "echoashfallprotocol:hand_recycler",
+    "echoashfallprotocol:field_med_bay",
+    "echoashfallprotocol:water_purifier",
+    "echoashfallprotocol:filter_workbench",
+    "echoashfallprotocol:micro_generator",
+    "echoashfallprotocol:scrap_dynamo",
+    "echoashfallprotocol:battery_bank",
+    "echoashfallprotocol:power_cable",
+    "echoashfallprotocol:reinforced_power_cable",
+    "echoashfallprotocol:high_voltage_power_cable",
+    "echoashfallprotocol:item_pipe",
+    "echoashfallprotocol:ore_grinder",
+    "echoashfallprotocol:scrap_press",
+    "echoashfallprotocol:thermal_burner",
+    "echoashfallprotocol:thermal_array",
+    "echoashfallprotocol:isotope_refiner",
+    "echoashfallprotocol:atmospheric_scrubber",
+    "echoashfallprotocol:radiation_cleanser",
+    "echoashfallprotocol:research_lab",
+    "echoashfallprotocol:factory_controller",
+    "echoashfallprotocol:nexus_capacitor"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:build_hand_recycler",
+    "echoashfallprotocol:build_micro_generator",
+    "echoashfallprotocol:build_water_purifier"
+  ],
+  "sortOrder": 1017
+}

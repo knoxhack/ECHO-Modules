@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:mutagen_vial"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_bio_lab.title",
+      "fallback": "Biohazard"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_bio_lab.desc",
+      "fallback": "Discover an abandoned Bio Laboratory."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_bio_lab": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:bio_lab"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_bio_lab"]
+  ]
+}

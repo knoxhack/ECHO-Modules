@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:signal_leads",
+  "category": "SCANNER",
+  "title": "Signal Leads",
+  "summary": "Find survivors, caches, and threats with your scanner.",
+  "body": [
+    "Signal leads appear as markers in the world when you use your scanner.",
+    "Leads can point to survivor caches, enemy camps, or environmental anomalies.",
+    "Follow leads to gain resources, intel, and mission progress."
+  ],
+  "steps": [
+    "Equip and use your scanner.",
+    "Follow the direction indicator.",
+    "Investigate the target location."
+  ],
+  "commonMistakes": [
+    "Ignoring scanner pings.",
+    "Going to a lead unprepared."
+  ],
+  "related": [
+    "echotutorialcore:scanner_route_prep"
+  ],
+  "unlockTriggers": [
+    "detected_first_signal"
+  ],
+  "defaultUnlocked": false,
+  "priority": 80
+}

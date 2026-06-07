@@ -1,0 +1,91 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomodpackcommandcenter",
+  "name": "Command Center by ECHO Labs",
+  "version": "1.0.0",
+  "type": "tooling",
+  "kind": "tooling",
+  "role": "command_center_tooling",
+  "entrypoint": "addons/echomodpackcommandcenter/src/server/index.ts",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [],
+  "optional": [
+    "echoagentcore",
+    "echobridgecore",
+    "echometadatacore",
+    "echomodulegraph",
+    "echoreportcore",
+    "echotextureforge"
+  ],
+  "provides": [
+    "command_center.catalog",
+    "command_center.reports",
+    "command_center.readiness",
+    "command_center.launcher_metadata",
+    "command_center.local_tooling"
+  ],
+  "consumes": [
+    "ai.task_queue",
+    "bridge.safe_actions",
+    "feature.graph",
+    "module.graph",
+    "reports.contracts",
+    "support_bundles.manifest"
+  ],
+  "gameModes": [
+    "dev_tools",
+    "creator_tools"
+  ],
+  "permissions": [
+    "command_center.local_loopback",
+    "diagnostics.read",
+    "reports.read",
+    "reports.write",
+    "workspace.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "data",
+        "diagnostics",
+        "packs",
+        "assets"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.commandcenter.EchoModpackCommandCenterNativeModule",
+    "nativeClasspath": [],
+    "standaloneEntrypoint": "addons/echomodpackcommandcenter/src/server/index.ts",
+    "requiresConfirmationForWriteActions": true,
+    "localOnly": true,
+    "runtimeStatus": "runtime-tooling-only",
+    "notes": "Command Center is a local Node/Vite developer tooling app. It participates in module discovery, readiness, launcher metadata, reports, and safe local actions, but it is not a Minecraft gameplay addon."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "diagnostics_agent",
+      "metadata_agent",
+      "packos_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

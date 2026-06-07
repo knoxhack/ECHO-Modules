@@ -1,0 +1,87 @@
+{
+  "id": "echoashfallprotocol:use_rad_away",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 4,
+  "title": "Use Rad Away",
+  "briefing": "[ECHO-7] Confirm RadAway works as a field recovery dose after radiation exposure. The cleanser is still the long-term answer.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_radiation_cleanser"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "use_rad_away",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.use_rad_away",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "72",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:use_rad_away:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.item_used",
+      "ashfall.treatment_applied",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:use_rad_away/dose_used",
+      "type": "custom",
+      "label": "Use RadAway",
+      "detail": "Use one RadAway dose after radiation exposure through the item-use or treatment-applied runtime path.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:rad_away",
+      "required": 1,
+      "criteria": {
+        "event": "player.item_used",
+        "item": "echoashfallprotocol:rad_away"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "RadAway"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:use_rad_away/reward_0",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:use_rad_away/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] RadAway response confirmed. Your field kit can buy time; it cannot replace shelter and filtration."
+}

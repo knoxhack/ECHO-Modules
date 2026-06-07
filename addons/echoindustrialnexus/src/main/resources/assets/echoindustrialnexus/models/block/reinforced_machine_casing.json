@@ -1,0 +1,110 @@
+{
+  "textures": {
+    "particle": "echoindustrialnexus:block/machine_casing",
+    "side": "echoindustrialnexus:block/machine_casing",
+    "front": "echoindustrialnexus:block/machine_casing",
+    "top": "echoindustrialnexus:block/machine_casing",
+    "bottom": "echoindustrialnexus:block/machine_casing",
+    "panel": "echoindustrialnexus:block/machine_casing",
+    "accent": "echoindustrialnexus:block/machine_casing",
+    "screen": "echoindustrialnexus:block/machine_casing"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#front"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        3,
+        -0.75
+      ],
+      "to": [
+        14,
+        13,
+        0.75
+      ],
+      "faces": {
+        "north": {
+          "texture": "#panel"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "from": [
+        4,
+        16,
+        4
+      ],
+      "to": [
+        12,
+        17.5,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#top"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#top"
+        }
+      }
+    }
+  ]
+}

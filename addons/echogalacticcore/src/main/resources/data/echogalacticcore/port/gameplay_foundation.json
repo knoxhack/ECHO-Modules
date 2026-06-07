@@ -1,0 +1,44 @@
+{
+  "schema": "echogalacticcore.port.gameplay_foundation.v1",
+  "source": "galacticraft_legacy_content_foundation",
+  "materials": [
+    {
+      "id": "echogalacticcore:compressed_steel",
+      "legacySource": "micdoodle8.mods.galacticraft.core.items.ItemBasic",
+      "usedBy": ["echogalacticcore:recipe/compressor/compressed_steel", "echogalacticcore:recipe/rocket_workbench/tier_1_rocket"]
+    },
+    {
+      "id": "echogalacticcore:compressed_aluminum",
+      "legacySource": "micdoodle8.mods.galacticraft.core.items.ItemBasic",
+      "usedBy": ["echogalacticcore:recipe/rocket_workbench/tier_1_rocket"]
+    },
+    {
+      "id": "echogalacticcore:compressed_tin",
+      "legacySource": "micdoodle8.mods.galacticraft.core.items.ItemBasic",
+      "usedBy": ["echogalacticcore:recipe/rocket_workbench/tier_1_rocket"]
+    },
+    {
+      "id": "echogalacticcore:basic_wafer",
+      "legacySource": "micdoodle8.mods.galacticraft.core.recipe.CircuitFabricatorRecipes",
+      "usedBy": ["echogalacticcore:recipe/circuit_fabricator/basic_wafer"]
+    },
+    {
+      "id": "echogalacticcore:advanced_wafer",
+      "legacySource": "micdoodle8.mods.galacticraft.core.recipe.CircuitFabricatorRecipes",
+      "usedBy": ["echogalacticcore:recipe/rocket_workbench/tier_1_rocket"]
+    }
+  ],
+  "blocks": [
+    {"id": "echogalacticcore:moon_turf", "legacySource": "micdoodle8.mods.galacticraft.core.blocks.BlockBasicMoon", "system": "moon_terrain"},
+    {"id": "echogalacticcore:moon_rock", "legacySource": "micdoodle8.mods.galacticraft.core.blocks.BlockBasicMoon", "system": "moon_terrain"},
+    {"id": "echogalacticcore:moon_dungeon_brick", "legacySource": "micdoodle8.mods.galacticraft.core.blocks.BlockDungeonBrick", "system": "dungeon"},
+    {"id": "echogalacticcore:launch_pad", "legacySource": "micdoodle8.mods.galacticraft.core.blocks.BlockLandingPad", "system": "rocket_launch"},
+    {"id": "echogalacticcore:rocket_workbench", "legacySource": "micdoodle8.mods.galacticraft.core.blocks.BlockMachine", "system": "schematic_crafting"}
+  ],
+  "recipes": [
+    {"id": "echogalacticcore:recipe/compressor/compressed_steel", "station": "compressor", "legacySource": "assets/galacticraftcore/recipes/compressed_steel.json"},
+    {"id": "echogalacticcore:recipe/circuit_fabricator/basic_wafer", "station": "circuit_fabricator", "legacySource": "micdoodle8.mods.galacticraft.core.recipe.CircuitFabricatorRecipes"},
+    {"id": "echogalacticcore:recipe/rocket_workbench/tier_1_rocket", "station": "rocket_workbench", "legacySource": "micdoodle8.mods.galacticraft.core.recipe.NasaWorkbenchRecipe"}
+  ],
+  "typedSurfaces": ["registry", "resources"]
+}

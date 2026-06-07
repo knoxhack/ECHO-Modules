@@ -1,0 +1,20 @@
+{
+  "id": "echorelictech:military_prototype_bunker",
+  "displayName": "Military Prototype Bunker",
+  "tier": "FORBIDDEN",
+  "minY": -40,
+  "maxY": -8,
+  "spawnWeight": 6,
+  "requiredBiomeTags": ["#minecraft:is_overworld"],
+  "excludedBiomes": [],
+  "lootTable": "echorelictech:relic_vault/forbidden",
+  "materialLootTable": "echorelictech:relic_vault/materials",
+  "securityLevel": "HIGH",
+  "markerText": "Military prototype bunker. Forbidden hardware signatures detected.",
+  "progressionPhase": "relic_ops",
+  "notes": [
+    "Decommissioned military testing facility.",
+    "Contains forbidden warfare prototypes.",
+    "Use extreme caution."
+  ]
+}

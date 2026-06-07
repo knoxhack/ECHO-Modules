@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/arcana_core/integrations",
+  "title": "Arcana Core Field: Integrations",
+  "category": "Guide Books",
+  "summary": "Connect Arcana Core to knowledge, mission, scan, and map surfaces without hard addon coupling.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Arcane Index, Grimoire, Lens, HoloMap, MissionCore, DataCore, NetCore, and Veilbound bridges all use Arcana Core as the shared vocabulary.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Index for searchable records, Grimoire for warning context, Lens for field inspection, and MissionCore for route objectives.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "When an optional bridge is absent, keep the base definition visible and let the consuming UI explain what extra addon would enrich it.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcana_core",
+    "arcana",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "relatedArticles": [
+    "echowiki:guides/arcana_core"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1255
+}

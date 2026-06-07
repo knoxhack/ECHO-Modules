@@ -1,0 +1,10 @@
+<dialog id="{param.id|info-dialog}" size="{param.size|md}">
+  <dialog-title value="{param.title|Information}"/>
+  <dialog-body>
+    <text value="{param.body|No additional information.}"/>
+    <slot-outlet name="body"/>
+  </dialog-body>
+  <dialog-actions>
+    <button action="screencore.close_modal" variant="primary" autofocus="true">OK</button>
+  </dialog-actions>
+</dialog>

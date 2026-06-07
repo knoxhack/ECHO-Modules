@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " B ",
+    "SCS",
+    " A "
+  ],
+  "key": {
+    "B": "echonexusprotocol:white_signal_bark",
+    "S": "echonexusprotocol:signal_wire",
+    "C": "echonexusprotocol:stable_nexus_core",
+    "A": "echonexusprotocol:stabilized_alloy"
+  },
+  "result": {
+    "id": "echonexusprotocol:nexus_field_stabilizer",
+    "count": 1
+  }
+}

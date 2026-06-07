@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:stage_supply_manifest",
+  "display_name": "Stage Supply Manifest",
+  "category": "logistics",
+  "allowed_multiblocks": ["echomultiblockcore:logistics_depot"],
+  "required_workcell": "OUTPUT",
+  "required_tools": ["GRIPPER", "CLAMP"],
+  "duration_ticks": 140,
+  "heat_per_second": 1,
+  "animation": "grab_item",
+  "animation_profile": "echomultiblockcore:logistics_sort",
+  "inputs": [
+    { "item": "echomultiblockcore:reinforced_frame", "count": 2 },
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:supply_manifest", "count": 1 }
+  ],
+  "notes": ["First logistics facility loop for staged material routing."]
+}

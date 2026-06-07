@@ -1,0 +1,130 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Shared audio identity, adaptive music, ambience, stingers, UI sounds, and generated-music pipeline support for the entire ECHO ecosystem."
+description='''
+ECHO: SoundCore provides the shared first-party audio framework for the ECHO/Ashfall ecosystem:
+- adaptive music and priority-based track selection
+- biome, faction, combat, and boss music
+- mission stingers and chapter themes
+- Terminal, Lens, HoloMap, SignalOS, and PowerGrid UI sounds
+- ambience layers for Nexus, Blackbox, Stationfall, and Orbital
+- data-driven music and ambience profiles
+- Suno AI music pipeline support
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides required packet layer for server-to-client SoundCore audio actions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Exposes terminal UI sounds and command bed music when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Provides mission stinger hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Reads region and hazard context for ambience when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Exposes lens scan sound helpers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Exposes holomap open/close/waypoint/route sounds when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+modId="echopowergrid"
+type="optional"
+reason="Exposes breaker/brownout/overload/power restored sounds when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="signalos"
+type="optional"
+reason="Exposes SignalOS UI sounds when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echostationfall"
+type="optional"
+reason="Provides Stationfall horror ambience when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoblackboxprotocol"
+type="optional"
+reason="Provides Blackbox memory ambience when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonexusprotocol"
+type="optional"
+reason="Provides Nexus ambience and music when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

@@ -1,0 +1,18 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "PIP",
+                    "IUI",
+                    "PIP"
+                ],
+    "key":  {
+                "P":  "echoconvoyprotocol:vehicle_armor_plate",
+                "I":  "minecraft:iron_ingot",
+                "U":  "echoconvoyprotocol:convoy_upgrade_chip"
+            },
+    "result":  {
+                   "id":  "echoconvoyprotocol:armor_upgrade",
+                   "count":  1
+               }
+}

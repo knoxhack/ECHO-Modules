@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echostationfall",
+  "name": "ECHO: Stationfall",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echostationfall.EchoStationfall",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoblackboxprotocol",
+    "echoholomap",
+    "echoindex",
+    "echosoundcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "stationfall.ambience",
+    "stationfall.logs",
+    "stationfall.routes",
+    "stationfall.story",
+    "stationfall.suits"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "worldgen",
+        "structures",
+        "missions",
+        "wiki"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echostationfall.EchoStationfallNativeModule",
+    "nativeClasspath": [],
+    "notes": "Stationfall is a recommended Ashfall beta story addon with optional Blackbox, HoloMap, Index, SoundCore, and Terminal integration paths."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echostationfall/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

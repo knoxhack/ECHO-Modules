@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:cursecore",
+  "moduleId": "echocursecore",
+  "requiredModId": "echocursecore",
+  "title": "CurseCore Field Manual",
+  "subtitle": "Echo Rot, curse diagnostics, cleansing targets, and consequence loops",
+  "summary": "Track curse state, read symptoms, and prepare cleansing routes before consequences stack.",
+  "icon": "minecraft:fermented_spider_eye",
+  "accent": "#FFB36BFF",
+  "collectionId": "echowiki:guides/cursecore",
+  "homeArticleId": "echowiki:guides/cursecore",
+  "chapterArticleIds": [
+    "echowiki:guides/cursecore",
+    "echowiki:guides/cursecore/first_steps",
+    "echowiki:guides/cursecore/core_loop",
+    "echowiki:guides/cursecore/systems",
+    "echowiki:guides/cursecore/progression",
+    "echowiki:guides/cursecore/integrations",
+    "echowiki:guides/cursecore/troubleshooting"
+  ],
+  "tags": [
+    "arcana",
+    "curse",
+    "echo_rot",
+    "cleansing"
+  ],
+  "sortOrder": 300
+}

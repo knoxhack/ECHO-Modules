@@ -1,0 +1,118 @@
+{
+  "id": "echoashfallprotocol:build_thermal_array",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 2,
+  "title": "Build a Thermal Array",
+  "briefing": "[ECHO-7] Dense alloy confirms midgame material access. Build a Thermal Array so extraction machines have a steadier FE source than the starter grid.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:thermal_array",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:find_dense_alloy"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_thermal_array",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_thermal_array",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "61",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_thermal_array:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_thermal_array/thermal_array",
+      "type": "place_block",
+      "label": "Thermal Array",
+      "detail": "Place 1 Thermal Array for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:thermal_array",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:thermal_array"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 3,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 2,
+      "label": "Dense Alloy Chunk"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "block": "echoashfallprotocol:thermal_array",
+      "count": 1,
+      "label": "Thermal Array"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_thermal_array/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_thermal_array/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_thermal_array/reward_1",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 6,
+      "label": "Scrap Wire",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_thermal_array/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Thermal Array online. Route it through storage and reinforced cable before adding extraction demand."
+}

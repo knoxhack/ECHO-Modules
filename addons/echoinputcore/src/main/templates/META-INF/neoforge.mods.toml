@@ -1,0 +1,78 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Shared keybind, input context, radial menu, shortcut, vehicle, combat, conflict, and controller-ready contracts for ECHO."
+description='''
+ECHO: InputCore defines neutral input and binding contracts without registering
+client key mappings or depending on ScreenCore, Terminal, Lens, HoloMap, or vehicles.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides shared platform ids, roles, and feature references."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoschemacore"
+type="required"
+reason="Provides schema ids for input profile documents."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostics for input conflicts and missing bindings."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocontentcore"
+type="required"
+reason="Provides content references for Terminal, Lens, HoloMap, vehicle, and combat bindings."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoassetcore"
+type="required"
+reason="Provides optional prompt icon and radial menu asset references."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

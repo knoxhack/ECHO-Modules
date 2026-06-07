@@ -1,0 +1,20 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "BCB",
+                    "RDR",
+                    "BMB"
+                ],
+    "key":  {
+                "B":  "echoblackboxprotocol:black_metal",
+                "C":  "minecraft:comparator",
+                "R":  "minecraft:redstone",
+                "D":  "echoblackboxprotocol:command_memory_record",
+                "M":  "echoblackboxprotocol:corrupted_ferrite"
+            },
+    "result":  {
+                   "id":  "echoblackboxprotocol:protocol_extractor",
+                   "count":  1
+               }
+}

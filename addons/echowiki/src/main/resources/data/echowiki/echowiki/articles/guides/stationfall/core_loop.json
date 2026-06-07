@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/stationfall/core_loop",
+  "title": "Stationfall: Core Loop",
+  "category": "Guide Books",
+  "summary": "Secure compartments, read station hazards, salvage, and retreat before systems fail.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Board, stabilize pressure or oxygen, gather one objective, watch panic, unlock access deliberately, and leave while reserves are still comfortable.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each compartment, check access, air, power, loot weight, and retreat path. Station runs collapse when one margin is ignored.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop at a sealed door, unstable system, or full pack. A mapped station can be revisited; a failed retreat cannot.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "stationfall",
+    "oxygen",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_door",
+  "relatedArticles": [
+    "echowiki:guides/stationfall"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1152
+}

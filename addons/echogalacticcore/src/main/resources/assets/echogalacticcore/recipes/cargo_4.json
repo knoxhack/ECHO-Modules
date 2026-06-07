@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:cargo",
+                   "data":  4
+               },
+    "pattern":  [
+                    "XXX",
+                    "YZY",
+                    "XWX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "item":  "minecraft:hopper"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "Z":  {
+                          "item":  "minecraft:chest"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

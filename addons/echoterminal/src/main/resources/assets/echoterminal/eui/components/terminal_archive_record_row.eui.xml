@@ -1,0 +1,4 @@
+<list-row action="terminal.archives.select_record" action-value="{param.id|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Archive Record}" subtitle="{param.summary|Archive summary.}"/>
+  <status-chip status="{param.status|info}" value="{param.status|OPEN}"/>
+</list-row>

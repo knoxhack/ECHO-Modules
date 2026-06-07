@@ -1,0 +1,23 @@
+{
+  "id": "echonpcore:settlement_survivor_services",
+  "services": [
+    {
+      "id": "settlement_intel",
+      "title": "Local Warning",
+      "description": "Shares local settlement context and records the contact.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1800
+    },
+    {
+      "id": "record_contact",
+      "title": "Record Contact",
+      "description": "Adds this settlement contact to Terminal contact providers.",
+      "cost": [],
+      "action": "discover_contact",
+      "amount": 1,
+      "cooldown": 600
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_security",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:vault_monolith"
+                             },
+                    "title":  "Vault Route",
+                    "description":  "Hold Personal and Security proof for the Blackbox Vault.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "personal":  {
+                                      "trigger":  "minecraft:inventory_changed",
+                                      "conditions":  {
+                                                         "items":  [
+                                                                       {
+                                                                           "items":  "echoblackboxprotocol:personal_memory_record"
+                                                                       }
+                                                                   ]
+                                                     }
+                                  },
+                     "security":  {
+                                      "trigger":  "minecraft:inventory_changed",
+                                      "conditions":  {
+                                                         "items":  [
+                                                                       {
+                                                                           "items":  "echoblackboxprotocol:security_memory_record"
+                                                                       }
+                                                                   ]
+                                                     }
+                                  }
+                 },
+    "requirements":  [
+                         [
+                             "personal"
+                         ],
+                         [
+                             "security"
+                         ]
+                     ]
+}

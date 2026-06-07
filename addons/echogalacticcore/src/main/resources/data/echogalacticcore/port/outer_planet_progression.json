@@ -1,0 +1,37 @@
+{
+  "schema": "echogalacticcore.port.outer_planet_progression.v1",
+  "source": "galacticraft_legacy_planet_progression",
+  "routes": [
+    {
+      "id": "echogalacticcore:route/mars",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars",
+      "requiredVehicle": "tier_2_rocket",
+      "requiredUnlocks": ["echogalacticcore:route/moon", "echogalacticcore:schematic/tier_2_rocket"],
+      "primarySystems": ["thin_atmosphere", "mars_dungeon", "desh_materials"],
+      "packosMilestones": ["moon_tier_1_complete", "tier_2_rocket_crafted", "mars_route_unlocked"]
+    },
+    {
+      "id": "echogalacticcore:route/asteroids",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.asteroids.dimension.WorldProviderAsteroids",
+      "requiredVehicle": "tier_3_rocket",
+      "requiredUnlocks": ["echogalacticcore:route/mars", "echogalacticcore:schematic/tier_3_rocket"],
+      "primarySystems": ["micro_gravity", "asteroid_ore_fields", "titanium_materials"],
+      "packosMilestones": ["mars_tier_2_complete", "tier_3_rocket_crafted", "asteroids_route_unlocked"]
+    },
+    {
+      "id": "echogalacticcore:route/venus",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.venus.dimension.WorldProviderVenus",
+      "requiredVehicle": "tier_3_rocket",
+      "requiredUnlocks": ["echogalacticcore:route/mars", "echogalacticcore:schematic/tier_3_rocket"],
+      "primarySystems": ["hot_dense_atmosphere", "acid_rain", "venus_dungeon", "solar_materials"],
+      "packosMilestones": ["mars_tier_2_complete", "thermal_padding_checked", "venus_route_unlocked"]
+    }
+  ],
+  "echoIntegrations": {
+    "echoholomap": "route readiness and destination constraints",
+    "echolens": "planet hazard and material scan signals",
+    "echoindex": "planet guide entries and schematic prerequisites",
+    "echoashfallprotocol": "optional milestone mirror for planet progression"
+  },
+  "typedSurfaces": ["resources", "worldgen", "registry", "screens", "capabilities"]
+}

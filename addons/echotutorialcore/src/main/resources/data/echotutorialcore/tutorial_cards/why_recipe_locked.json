@@ -1,0 +1,26 @@
+{
+  "id": "echotutorialcore:why_recipe_locked",
+  "category": "TROUBLESHOOTING",
+  "title": "Why Is This Recipe Locked?",
+  "summary": "Recipes can be gated by research, missions, or item discovery.",
+  "body": [
+    "If a recipe is locked, TutorialCore can show the exact requirements.",
+    "Common gates: Research level, Mission completion, Faction reputation, Item discovery.",
+    "Progress through the relevant system to unlock the recipe."
+  ],
+  "steps": [
+    "Hover over or attempt to craft the locked item.",
+    "Read the lock explanation.",
+    "Fulfill the listed requirements."
+  ],
+  "commonMistakes": [
+    "Trying to craft before prerequisites are met.",
+    "Not checking the Terminal for mission requirements."
+  ],
+  "related": [
+    "echotutorialcore:research_basics"
+  ],
+  "unlockTriggers": [],
+  "defaultUnlocked": true,
+  "priority": 60
+}

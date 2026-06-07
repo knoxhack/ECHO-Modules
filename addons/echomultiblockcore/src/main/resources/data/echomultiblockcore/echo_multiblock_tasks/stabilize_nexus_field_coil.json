@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:stabilize_nexus_field_coil",
+  "display_name": "Stabilize Nexus Field Coil",
+  "category": "nexus",
+  "allowed_multiblocks": ["echomultiblockcore:nexus_stabilizer"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["STABILIZER", "CALIBRATOR"],
+  "duration_ticks": 260,
+  "heat_per_second": 3,
+  "animation": "stabilize",
+  "animation_profile": "echomultiblockcore:nexus_stabilize",
+  "inputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 },
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 },
+    { "item": "echomultiblockcore:calibrated_bus_module", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:nexus_field_coil", "count": 1 }
+  ],
+  "notes": ["Produces a stabilized nexus field coil for high-energy containment and signal relay."]
+}

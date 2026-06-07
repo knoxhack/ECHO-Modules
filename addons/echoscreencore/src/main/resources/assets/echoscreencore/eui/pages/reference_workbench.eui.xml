@@ -1,0 +1,40 @@
+<page id="reference-workbench" title="ScreenCore Workbench" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_workbench">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header"
+                 title="ScreenCore Workbench"
+                 subtitle="Use /echoscreencore workbench for the live renderer preview."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-workbench-grid" columns="0.8fr 1.2fr" gap="8" stack-below="760">
+        <section class="sc-workbench-sidebar" title="REFERENCE PAGES">
+          <scroll class="sc-scroll-region" scroll-state="true" state-key="reference.workbench.pages">
+            <list bind="screencore.reference.referencePages" item="page">
+              <list-row class="sc-list-row" action="screencore.reference.open_reference" action-value="{page.id}" value="{page.id}">
+                <status-chip class="sc-row-badge" status="{page.status}" value="{page.badge}"/>
+                <column class="sc-row-copy">
+                  <title value="{page.title}"/>
+                  <text value="{page.summary}"/>
+                </column>
+              </list-row>
+              <empty-state title="No Pages" body="No reference pages are registered."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="sc-workbench-preview" title="LIVE PREVIEW COMMANDS">
+          <title>Real Renderer Preview</title>
+          <text class="sc-readable-body" value="/echoscreencore workbench opens the Java workbench that embeds the selected page with EchoEmbeddedSurface."/>
+          <text class="sc-readable-body" value="/echoscreencore inspect page echoscreencore:reference_list_detail 360 240 prints viewport diagnostics with fix hints."/>
+          <text class="sc-readable-body" value="/echoscreencore validate references checks all reference pages across required viewport sizes."/>
+          <component src="echoscreencore:sc_action_strip">
+            <slot name="actions">
+              <button action="screencore.open_page" action-page="echoscreencore:reference_feature_hub" variant="primary">Feature Hub</button>
+              <button action="screencore.open_page" action-page="echoscreencore:reference_bad_layouts" variant="ghost">Bad Layouts</button>
+            </slot>
+          </component>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

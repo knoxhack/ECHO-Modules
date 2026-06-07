@@ -1,0 +1,122 @@
+<page id="terminal-mission-browser" title="Survival Route" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_missions,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <row class="terminal-filter-row terminal-route-summary-row" gap="6" compact-below="920" dense-below="760">
+        <status-chip status="active" value="{terminal.missionBrowser.activeCompactLabel|Active}"/>
+        <status-chip status="ready" value="{terminal.missionBrowser.readyCompactLabel|Ready}"/>
+        <status-chip status="locked" value="{terminal.missionBrowser.lockedCompactLabel|Locked}"/>
+        <status-chip status="done" value="{terminal.missionBrowser.doneCompactLabel|Done}"/>
+        <button class="terminal-route-focus-button" action="terminal.focus_active_mission" variant="primary">Active</button>
+      </row>
+
+      <grid class="terminal-dashboard-grid terminal-route-layout" columns="0.72fr 0.88fr 1.1fr" gap="10" stack-below="920" compact-below="1080" dense-below="760">
+        <section class="terminal-panel terminal-route-panel terminal-route-phases-panel" title="ROUTE PHASES">
+          <row class="terminal-chip-row terminal-route-chip-row" gap="6">
+            <status-chip status="active" value="{terminal.missionBrowser.routeProgressLabel|Progress 0%}"/>
+            <status-chip status="{terminal.missionBrowser.selectedMission.status|active}" value="{terminal.missionBrowser.selectedMission.statusCompactLabel|READY}"/>
+            <status-chip status="info" value="{terminal.missionBrowser.selectedMission.typeLabel|MAIN}"/>
+          </row>
+          <section class="terminal-map-surface terminal-phase-lane" title="PHASE LANE">
+            <scroll class="terminal-roadmap-scroll terminal-phase-lane-list" scroll-state="true" state-key="terminal.missions.roadmap">
+              <list bind="terminal.missionBrowser.roadmapRows" item="row" selected="{terminal.missionBrowser.selectedMissionId}">
+                <list-row class="{row.class} terminal-phase-row terminal-route-phase-row" action="terminal.select_mission" action-value="{row.targetMissionId}" value="{row.targetMissionId}" selected="{row.selected}">
+                  <status-chip class="terminal-route-index-chip" status="{row.status}" value="{row.indexLabel}"/>
+                  <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{row.title}" subtitle="{row.subtitle}">
+                    <progress-bar class="mission-progress-line terminal-route-row-progress" value="{row.progressPercent}" max="100"/>
+                  </copy-block>
+                  <status-chip class="terminal-route-state-chip" status="{row.nextStatus}" value="{row.nextStatusLabel}"/>
+                </list-row>
+              </list>
+            </scroll>
+          </section>
+          <section class="terminal-selected-phase-card" title="SELECTED PHASE">
+            <copy-block class="terminal-route-detail-copy" title="{terminal.missionBrowser.selectedPhase.title|Podfall}" subtitle="{terminal.missionBrowser.selectedPhase.detail|Phase route context is ready.}"/>
+            <row class="terminal-chip-row" gap="6">
+              <status-chip status="{terminal.missionBrowser.selectedPhase.status|active}" value="{terminal.missionBrowser.selectedPhase.statusCompactLabel|0/0}"/>
+              <status-chip status="{terminal.missionBrowser.selectedPhase.nextStatus|ready}" value="{terminal.missionBrowser.selectedPhase.nextStatusLabel|READY}"/>
+            </row>
+          </section>
+          <section class="terminal-action-strip terminal-route-legend" title="STATES">
+            <status-chip status="ready" value="READY"/>
+            <status-chip status="warning" value="CLAIM"/>
+            <status-chip status="done" value="DONE"/>
+            <status-chip status="locked" value="LOCKED"/>
+          </section>
+        </section>
+
+        <section class="terminal-panel terminal-route-panel terminal-route-missions-panel" title="MISSIONS">
+          <scroll class="terminal-mission-list" scroll-state="true" state-key="terminal.missions">
+            <list bind="terminal.missionBrowser.visibleMissions" item="mission" selected="{terminal.missionBrowser.selectedMissionId}">
+              <list-row class="terminal-mission-row terminal-route-mission-row" action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}" selected="{mission.selected}">
+                <status-chip class="terminal-route-index-chip" status="{mission.status}" value="{mission.displayOrderLabel|01}"/>
+                <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{mission.title}" subtitle="{mission.sourceLine}">
+                  <progress-bar class="mission-progress-line terminal-route-row-progress" value="{mission.progressPercent}" max="100"/>
+                </copy-block>
+                <status-chip class="terminal-route-state-chip" status="{mission.status}" value="{mission.statusCompactLabel}"/>
+              </list-row>
+              <empty-state title="No missions" body="No route objectives are available for this phase."/>
+            </list>
+          </scroll>
+        </section>
+
+        <scroll class="terminal-route-panel terminal-route-briefing-panel terminal-route-briefing-scroll" scroll-state="true" state-key="terminal.missions.briefing">
+          <column class="terminal-route-briefing-stack" gap="6">
+            <section class="terminal-mission-detail terminal-route-briefing-card" title="MISSION BRIEFING">
+            <row class="terminal-chip-row terminal-route-chip-row" gap="6">
+              <status-chip status="{terminal.missionBrowser.selectedMission.status|active}" value="{terminal.missionBrowser.selectedMission.statusCompactLabel|READY}"/>
+              <status-chip status="info" value="{terminal.missionBrowser.selectedMission.typeLabel|MAIN}"/>
+              <status-chip status="{terminal.missionBrowser.selectedMission.rewardState|info}" value="{terminal.missionBrowser.selectedMission.rewardCompactLabel|RWD 0}"/>
+            </row>
+            <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card terminal-route-info-card" title="MISSION INFO">
+              <copy-block class="terminal-route-detail-copy terminal-route-info-copy" title="{terminal.missionBrowser.selectedMission.briefingTitle|Mission Detail}" subtitle="{terminal.missionBrowser.selectedMission.briefingBody|No briefing packet is available for this objective.}"/>
+              <copy-block class="terminal-route-detail-copy terminal-route-guidance-copy" title="{terminal.missionBrowser.selectedMission.guidanceTitle|Next step}" subtitle="{terminal.missionBrowser.selectedMission.guidanceBody|Track this objective to pin it on the Command Deck.}"/>
+            </section>
+            <progress-bar class="terminal-selected-mission-progress terminal-route-detail-progress" value="{terminal.missionBrowser.selectedMission.progressPercent|0}" max="100"/>
+            <column class="terminal-mission-detail-content" gap="6">
+              <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card" title="REQUIREMENTS">
+                <list bind="terminal.missionBrowser.selectedMission.requirements" item="requirement">
+                  <list-row class="terminal-compact-row terminal-mission-check-row terminal-route-detail-row">
+                    <item-icon class="terminal-route-item-icon" item="{requirement.iconItemId}" count="{requirement.iconCount|1}"/>
+                    <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{requirement.title}" subtitle="{requirement.detail}"/>
+                    <status-chip class="terminal-route-state-chip" status="{requirement.status}" value="{requirement.statusLabel}"/>
+                  </list-row>
+                  <empty-state title="No requirements" body="No checklist is exposed."/>
+                </list>
+              </section>
+
+              <section class="terminal-side-panel terminal-mission-check-panel terminal-mission-reward-panel terminal-route-detail-card" title="REWARDS">
+                <list bind="terminal.missionBrowser.selectedMission.rewardRows" item="reward">
+                  <list-row class="terminal-compact-row terminal-mission-check-row terminal-mission-reward-row terminal-route-detail-row">
+                    <item-icon class="terminal-route-item-icon" item="{reward.iconItemId}" count="{reward.iconCount|1}"/>
+                    <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{reward.title}" subtitle="{reward.detail}"/>
+                    <status-chip class="terminal-route-index-chip" status="info" value="{reward.countLabel}"/>
+                  </list-row>
+                  <empty-state title="No rewards" body="No reward manifest."/>
+                </list>
+              </section>
+            </column>
+
+            <grid class="terminal-mission-action-strip" columns="1fr 1fr 1fr 1fr 1fr" gap="5">
+              <button class="terminal-route-action-button" action="terminal.track_mission" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-clear="{terminal.missionBrowser.selectedMission.trackClear|false}" disabled="{terminal.missionBrowser.selectedMission.trackDisabled|false}" disabled-reason="{terminal.missionBrowser.selectedMission.trackDisabledReason|Select a route mission first.}" variant="primary">{terminal.missionBrowser.selectedMission.trackLabel|Track}</button>
+              <button class="terminal-route-action-button" action="terminal.perform_mission_action" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.completeActionId}" disabled="{terminal.missionBrowser.selectedMission.completeCommandDisabled|true}" disabled-reason="{terminal.missionBrowser.selectedMission.completeCommandDisabledReason|Complete is not available yet.}" variant="ghost">Complete</button>
+              <button class="terminal-route-action-button terminal-route-claim-button" action="terminal.perform_mission_action" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.claimActionId}" disabled="{terminal.missionBrowser.selectedMission.claimCommandDisabled|true}" disabled-reason="{terminal.missionBrowser.selectedMission.claimCommandDisabledReason|No reward cache is available.}" variant="ghost">Claim Rewards</button>
+              <button class="terminal-route-action-button" action="terminal.activate_selected_mission" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.primaryActionId}" disabled="{terminal.missionBrowser.selectedMission.primaryCommandDisabled|false}" disabled-reason="{terminal.missionBrowser.selectedMission.primaryCommandDisabledReason|No mission command is available.}" variant="ghost">{terminal.missionBrowser.selectedMission.primaryCommandLabel|Next}</button>
+              <button class="terminal-route-action-button" action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">Map</button>
+            </grid>
+            </section>
+
+            <section class="terminal-side-panel terminal-route-sideops-card" title="SIDE OPERATIONS">
+              <list bind="terminal.missionBrowser.selectedMission.sideCards" item="side">
+                <list-row class="terminal-compact-row terminal-mission-check-row terminal-route-detail-row" action="terminal.select_mission" action-value="{side.id}" value="{side.id}">
+                  <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{side.title}" subtitle="{side.summary|Optional route operation.}"/>
+                  <status-chip class="terminal-route-state-chip" status="{side.status}" value="{side.statusCompactLabel}"/>
+                </list-row>
+                <empty-state title="No side ops" body="No optional intel attached."/>
+              </list>
+            </section>
+          </column>
+        </scroll>
+      </grid>
+    </slot>
+  </component>
+</page>

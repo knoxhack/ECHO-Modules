@@ -1,0 +1,144 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Knoxhack"
+description='''Shared ECHO world-region, marker, hazard, discovery, and world event framework.'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO APIs, WorldCore no-op fallbacks, context snapshots, diagnostics, and service registries."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, safe sends, sync, and action rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Surfaces world region and hazard data inside the Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Receives Ashfall-specific world regions, hazards, and markers at runtime."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Receives orbital-specific world regions and markers at runtime."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoconvoyprotocol"
+type="optional"
+reason="Receives convoy route world regions and markers at runtime."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonexusprotocol"
+type="optional"
+reason="Receives Nexus anomaly world regions and markers at runtime."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Enables render profile overrides for world region discovery UI."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Consumes WorldCore map providers for shared marker, region, and hazard overlays when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Reads WorldCore context snapshots for scan and inspection overlays when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echodatacore"
+type="optional"
+reason="Consumes WorldCore runtime events into persistent player and world telemetry when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Consumes WorldCore runtime events for region, marker, scan, and hazard objectives when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosoundcore"
+type="optional"
+reason="Receives WorldCore region and hazard context for ambience and music selection when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echotutorialcore"
+type="optional"
+reason="Uses WorldCore hazard context for contextual player guidance when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoruntimeguard"
+type="optional"
+reason="Can surface WorldCore diagnostics, scan cadence, marker counts, and validation warnings when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

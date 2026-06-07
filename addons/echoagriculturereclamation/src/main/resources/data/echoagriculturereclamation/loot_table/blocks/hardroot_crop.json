@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoagriculturereclamation:hardroot"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "echoagriculturereclamation:hardroot_crop",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "echoashfallprotocol:hazard_route_prep",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "title": "Optional: Prep a Hazard Route",
+  "optional": true,
+  "briefing": "A hazard marker is useful only if you treat it as a warning. Confirm the risk, prepare countermeasures, and mark a retreat route before entering.",
+  "prerequisites": [
+    "echoashfallprotocol:ashfall_first_month_routes"
+  ],
+  "objectives": [
+    {
+      "id": "scan_hazard_marker",
+      "type": "scan_block",
+      "label": "Scan the hazard warning",
+      "detail": "Identify whether the threat is toxicity, radiation, storm exposure, or another local hazard.",
+      "icon": "echoashfallprotocol:gas_mask",
+      "criteria": {
+        "native_objective_type": "lens_scan"
+      }
+    },
+    {
+      "id": "read_hazard_entry",
+      "type": "custom",
+      "label": "Read route prep guidance",
+      "detail": "Use Weather Route Planning before moving into the danger zone.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "criteria": {
+        "native_objective_type": "index_entry"
+      }
+    },
+    {
+      "id": "pack_counterplay",
+      "type": "obtain_item",
+      "label": "Pack counterplay supplies",
+      "detail": "Carry filters, clean water, food, and a safe return marker before entering.",
+      "icon": "echoashfallprotocol:filter_cartridge_basic",
+      "criteria": {
+        "native_objective_type": "inventory_check"
+      }
+    },
+    {
+      "id": "mark_retreat",
+      "type": "discover_structure",
+      "label": "Mark a retreat path",
+      "detail": "Track the hazard marker but keep a known safe zone selected for retreat.",
+      "icon": "echoashfallprotocol:return_beacon",
+      "criteria": {
+        "native_objective_type": "holomap_marker"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "documentation",
+      "id": "echoashfallprotocol:hazard_prep_checklist",
+      "label": "Hazard prep checklist",
+      "detail": "Hazard prep checklist appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Hazard route prepared. Enter only when the weather, supplies, and retreat marker all agree.",
+  "phase": "first_month",
+  "phaseTitle": "First-Month Routes",
+  "phaseOrder": 3,
+  "order": 3,
+  "fieldGuide": "Optional hazard prep mission that treats danger markers as planning tools: identify the threat, read the counterplay, pack supplies, and mark retreat before entry.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:gas_mask",
+  "kind": "side",
+  "guidanceLinks": {
+    "indexEntry": "echoashfallprotocol:weather_route_planning",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "wikiArticle": "echowiki:guides/ashfall/core_loop"
+  }
+}

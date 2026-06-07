@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:first_hazard_prep",
+  "title": "First Hazard Preparation",
+  "category": "HAZARDS",
+  "steps": [
+    {
+      "id": "craft_filter",
+      "type": "craft_item",
+      "target": "echoashfallprotocol:filter_cartridge",
+      "text": "Craft a Filter Cartridge."
+    },
+    {
+      "id": "enter_toxic_zone",
+      "type": "custom",
+      "target": "echotutorialcore:entered_toxic_zone",
+      "text": "Enter a toxic zone with protection."
+    },
+    {
+      "id": "survive",
+      "type": "custom",
+      "target": "echotutorialcore:survived_hazard",
+      "text": "Survive and return safely."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:toxic_air"
+  ],
+  "defaultUnlocked": false
+}

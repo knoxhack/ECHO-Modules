@@ -1,0 +1,31 @@
+<page id="test-actions" title="Action Test" styles="dynamic_mock">
+  <screen-shell>
+    <header title="Action Arguments" subtitle="action-value, action-page, action-param-* and repeated row actions"/>
+    <grid class="action-grid" columns="1fr 1fr 1fr" gap="16">
+      <card>
+        <title>Open Page</title>
+        <text>Built-in page navigation reads action-page.</text>
+        <button action="screencore.open_page" action-page="echoscreencore:test_dynamic_lists" variant="primary">Dynamic Lists</button>
+      </card>
+      <card>
+        <title>Action Value</title>
+        <text>Registered actions receive actionValue and params.</text>
+        <button action="demo.echo" action-value="manual-button" action-param-type="manual">Send Value</button>
+      </card>
+      <card>
+        <title>Safe Unknown</title>
+        <text>Unknown actions warn through diagnostics and do nothing.</text>
+        <button action="demo.missing_action" variant="ghost">Missing Action</button>
+      </card>
+    </grid>
+    <section title="Repeated Row Actions">
+      <repeat source="missions.demo" item="mission">
+        <list-row action="terminal.select_mission" action-value="{mission.id}" action-param-type="mission">
+          <title value="{mission.title}"/>
+          <text value="action-value={mission.id}, type=mission"/>
+          <status-chip status="{mission.status}" value="{mission.statusLabel}"/>
+        </list-row>
+      </repeat>
+    </section>
+  </screen-shell>
+</page>

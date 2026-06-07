@@ -1,0 +1,89 @@
+{
+  "id": "echoashfallprotocol:first_schematic",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 10,
+  "title": "Unlock Your First Schematic",
+  "briefing": "[ECHO-7] Ancient technology does not awaken cleanly. Process one Schematic Fragment at the Research Lab and recover the first lost procedure.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall ResearchData predicate: at least one schematic category unlocked after Research Lab processing.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:schematic_fragment",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_research_lab"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "first_schematic",
+    "nativeGameplayHook": "ashfall.first_route.first_schematic",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.factory_controller.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "10",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "33",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:first_schematic:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:first_schematic/unlock_first_schematic",
+      "type": "unlock_research",
+      "label": "Unlock First Schematic",
+      "detail": "Process one Schematic Fragment at the Research Lab and unlock the first schematic category.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "target": "ashfall:schematic_unlocked",
+      "required": 1,
+      "criteria": {
+        "predicate": "research_unlocked_schematics_at_least",
+        "unlocked_schematics_at_least": "1",
+        "events": "ashfall.research_updated,ashfall.schematic_unlocked",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris",
+        "native_objective_type": "research_predicate"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "research": "unlocked_schematics",
+      "count": 1,
+      "label": "Unlocked Schematic Category"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:first_schematic/reward_scrap_circuit",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 6,
+      "label": "Scrap Circuits",
+      "detail": "Research-grade circuit stock for factory-controller progression."
+    }
+  ],
+  "completionText": "[ECHO-7] Schematic knowledge integrated. Tier 2 recipes are now available for crafting."
+}

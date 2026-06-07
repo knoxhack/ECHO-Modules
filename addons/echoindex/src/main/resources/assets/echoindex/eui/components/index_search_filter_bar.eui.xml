@@ -1,0 +1,23 @@
+<column gap="8" class="index-filter-bar">
+  <row gap="8" stack-below="sm">
+    <search-box state-key="index-search" value="{index.search.query}" placeholder="Search items, recipes, machines, or @modid..." on-change="index.search_changed" debounce-ms="180" clearable="true" help="Search supports plain names and quick filters like @minecraft, type:recipe, or type:machine."/>
+    <button action="index.clear_search" variant="ghost" tooltip="Clear only the search text. Filters remain active.">Clear Search</button>
+  </row>
+  <row gap="8" stack-below="sm">
+    <select id="mod-filter" bind="index.filters.mods" item="mod" value="{index.filters.mod}" on-change="index.filter_changed" action-param-filter="mod" clearable="true" help="Limit results to one mod namespace.">
+      <option value="{mod.id}" label="{mod.label}"/>
+    </select>
+    <select id="category-filter" bind="{param.categorySource|index.filters.categories}" item="category" value="{param.categoryValue|index.filters.category}" on-change="index.filter_changed" action-param-filter="{param.categoryFilter|category}" clearable="true" help="Choose a category, recipe type, or machine filter for this page.">
+      <option value="{category.id}" label="{category.label}"/>
+    </select>
+    <select id="sort-filter" bind="index.filters.sortOptions" item="sort" value="{index.filters.sort}" on-change="index.sort_changed" help="Change result ordering without changing the selected record.">
+      <option value="{sort.id}" label="{sort.label}"/>
+    </select>
+  </row>
+  <text class="index-filter-hint" value="{index.filters.summary.hint}"/>
+  <row gap="6">
+    <repeat source="index.filters.active" item="chip">
+      <status-chip status="info" value="{chip.label}" help="{chip.subtitle}"/>
+    </repeat>
+  </row>
+</column>

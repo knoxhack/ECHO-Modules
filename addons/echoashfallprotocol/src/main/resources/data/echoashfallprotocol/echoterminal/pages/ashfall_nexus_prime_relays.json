@@ -1,0 +1,34 @@
+{
+  "id": "echoashfallprotocol:ashfall_nexus_prime_relays",
+  "title": "Nexus and Prime Relay Desk",
+  "summary": "Presents late-game boss intel, Prime relay resolution, Nexus UI state, branch choice, and ending consequences as player-readable route state.",
+  "nextSteps": [
+    "Scan Prime relays before choosing a branch.",
+    "Read boss intel and countermeasure notes before entering a finale route.",
+    "Use the Nexus UI state to confirm whether Restore, Destroy, or Control is active.",
+    "Resolve relay pages before presenting ending branches.",
+    "Check the late-game HoloMap state after each branch milestone."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_late_game",
+  "panels": [
+    {
+      "id": "prime_relay_state",
+      "title": "Prime Relay State",
+      "state": "scan_then_resolve",
+      "body": "Prime relays should show scan status, route risk, branch pressure, and the next required objective."
+    },
+    {
+      "id": "boss_intel",
+      "title": "Boss Intel",
+      "state": "counterplay_visible",
+      "body": "Boss entries must name the threat, countermeasure, reward, and branch consequence before the fight."
+    },
+    {
+      "id": "ending_branch",
+      "title": "Ending Branch",
+      "state": "consequence_locked",
+      "body": "Restore, Destroy, and Control endings should present what changes in the world, HoloMap, and Codex after commitment."
+    }
+  ]
+}

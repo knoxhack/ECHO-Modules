@@ -1,0 +1,45 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:orion_drive"
+               },
+    "pattern":  [
+                    "ABC",
+                    "DOE",
+                    "FGH"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "A":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_diamond"
+                      },
+                "B":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_lapis"
+                      },
+                "C":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_gold"
+                      },
+                "D":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_redstone"
+                      },
+                "E":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_coal"
+                      },
+                "F":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_cheese"
+                      },
+                "G":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_desh"
+                      },
+                "H":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ore_ilmenite"
+                      },
+                "O":  {
+                          "item":  "echogalacticcore:item_basic_asteroids",
+                          "data":  8
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

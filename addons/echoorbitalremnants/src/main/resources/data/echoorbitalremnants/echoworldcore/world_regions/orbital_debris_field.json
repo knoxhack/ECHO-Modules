@@ -1,0 +1,13 @@
+{
+  "id": "echoorbitalremnants:orbital_debris_field",
+  "type": "orbital_debris_field",
+  "displayName": "Orbital Debris Field",
+  "summary": "Station ECHO wreckage, docking debris, and broken orbital relay fields.",
+  "structureIds": ["echoorbitalremnants:low_earth_orbit", "echoorbitalremnants:ground_recovery_site"],
+  "hazardIds": ["echoworldcore:hazard/orbital_exposure", "echoworldcore:hazard/salvage_debris"],
+  "discoveryId": "echoorbitalremnants:orbital_debris_field",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/orbital_debris_field",
+  "audioProfileId": "echoworldcore:ambience/orbital_debris_field",
+  "sortOrder": 70
+}

@@ -1,0 +1,60 @@
+{
+  "name": "echoashfallprotocol:cryogenic_ruins",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/frozen_vehicle",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/ice_covered_ruin",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/broken_tank",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/frozen_cache",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/frozen_comms_tower",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/cryogenic_ruins/cryo_tank_field",
+        "processors": "echoashfallprotocol:cryogenic_ruins_loot"
+      }
+    }
+  ]
+}

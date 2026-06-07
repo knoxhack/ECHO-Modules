@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:circuit_board"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_data_center.title",
+      "fallback": "Digital Archaeologist"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_data_center.desc",
+      "fallback": "Discover a derelict Data Center."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_data_center": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:data_center_ruin"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_data_center"]
+  ]
+}

@@ -1,0 +1,78 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Shared power network, storage, transfer, and diagnostics contracts for the ECHO ecosystem."
+description='''
+ECHO: PowerCore defines neutral power network, storage, transfer, instability,
+weather/Nexus reference, Lens diagnostics, and Terminal status contracts for ECHO.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides module, pack, feature, role, and platform id contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoschemacore"
+type="required"
+reason="Provides schema ids for power profile documents."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostics for power profile validation."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocontentcore"
+type="required"
+reason="Provides content references for optional weather, Lens, Terminal, and Nexus bindings."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoassetcore"
+type="required"
+reason="Provides optional asset references for power diagrams and UI icons."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

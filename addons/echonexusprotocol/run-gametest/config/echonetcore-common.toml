@@ -1,0 +1,19 @@
+[network]
+	#Logs accepted ECHO packets. Keep disabled outside debugging.
+	debugPacketLogging = false
+	#Logs dropped or rate-limited ECHO packets.
+	logDroppedPackets = false
+	#Allows registered debug/dev packet handlers to run for permissioned operators.
+	enableDebugPackets = false
+	#Default spam guard for serverbound gameplay action packets.
+	# Default: 10
+	# Range: 0 ~ 200
+	defaultActionRateLimitTicks = 10
+	#Shared terminal action spam guard. Terminal keeps its existing per-action throttle.
+	# Default: 4
+	# Range: 0 ~ 200
+	terminalActionRateLimitTicks = 4
+	#Spam guard for debug/dev packets.
+	# Default: 20
+	# Range: 0 ~ 400
+	debugActionRateLimitTicks = 20

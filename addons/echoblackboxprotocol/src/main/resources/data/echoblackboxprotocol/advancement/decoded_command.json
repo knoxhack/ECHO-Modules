@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:vault_complete",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:command_memory_record"
+                             },
+                    "title":  "Command Log",
+                    "description":  "Decode a Command Blackbox memory.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "has_record":  {
+                                        "trigger":  "minecraft:inventory_changed",
+                                        "conditions":  {
+                                                           "items":  [
+                                                                         {
+                                                                             "items":  "echoblackboxprotocol:command_memory_record"
+                                                                         }
+                                                                     ]
+                                                       }
+                                    }
+                 },
+    "requirements":  [
+                         [
+                             "has_record"
+                         ]
+                     ]
+}

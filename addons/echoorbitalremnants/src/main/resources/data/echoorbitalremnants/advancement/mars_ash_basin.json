@@ -1,0 +1,31 @@
+{
+  "parent": "echoorbitalremnants:lunar_signal",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:mars_transfer_window"
+    },
+    "title": {
+      "text": "Mars Ash Basin"
+    },
+    "description": {
+      "text": "Follow a failed outward escape route through lunar Helium-3 telemetry."
+    }
+  },
+  "criteria": {
+    "mars_window": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:mars_transfer_window"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mars_window"
+    ]
+  ]
+}

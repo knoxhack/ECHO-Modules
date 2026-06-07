@@ -1,0 +1,275 @@
+screen-shell,
+app-shell,
+.cyberglass-shell,
+.theme-picker-shell {
+  surface: glass;
+  surface-depth: floating;
+  corner-treatment: bevel;
+  background: theme(background);
+  border-color: theme(borderStrong);
+  border-width: 1px;
+  border-radius: radius(md);
+  accent-color: theme(accent);
+  background-texture: theme-texture(screencore.surface.floating);
+  texture-alpha: 58;
+  background-texture-2: theme-texture(screencore.edge_rails);
+  texture-alpha-2: 148;
+  texture-inset-2: 1px;
+  background-texture-3: theme-texture(screencore.micro_ticks);
+  texture-alpha-3: 24;
+  shadow-strength: 28;
+  glow-strength: 11;
+  inner-highlight: true;
+  padding: space(sm);
+  gap: space(sm);
+}
+
+panel,
+section,
+card,
+hero-card,
+dialog,
+modal,
+empty-state,
+app-header,
+app-content,
+app-footer,
+detail-panel,
+inspector-panel,
+.cyberglass-panel,
+.cyberglass-card,
+.theme-picker-card,
+.cyberglass-dialog,
+.cyberglass-empty-state {
+  surface: glass;
+  surface-depth: raised;
+  corner-treatment: bevel;
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+  border-radius: radius(md);
+  accent-color: theme(accent);
+  background-texture: theme-texture(screencore.surface.raised);
+  texture-alpha: 66;
+  background-texture-2: theme-texture(screencore.panel_sheen);
+  texture-alpha-2: 30;
+  background-texture-3: theme-texture(screencore.corner_cuts);
+  texture-alpha-3: 62;
+  texture-inset-3: 1px;
+  shadow-strength: 14;
+  glow-strength: 4;
+  inner-highlight: true;
+}
+
+hero-card,
+.cyberglass-floating,
+.cyberglass-panel-shell {
+  surface-depth: floating;
+  background: theme(card);
+  border-color: theme(borderStrong);
+  background-texture: theme-texture(screencore.surface.floating);
+  background-texture-2: theme-texture(screencore.edge_rails);
+  texture-alpha: 72;
+  texture-alpha-2: 136;
+  texture-inset-2: 1px;
+  glow-strength: 9;
+}
+
+row,
+column {
+  gap: space(sm);
+}
+
+button,
+input-text,
+search-box,
+select,
+dropdown,
+list-row,
+nav-item,
+holomap-mode-button,
+.cyberglass-button,
+.cyberglass-input,
+.cyberglass-list-row {
+  surface: glass;
+  surface-depth: base;
+  corner-treatment: bevel;
+  background: theme(buttonBg);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+  border-radius: radius(md);
+  accent-color: theme(accent);
+  background-texture: theme-texture(screencore.button);
+  texture-alpha: 78;
+  texture-fit: nine-slice;
+  texture-region: 0.078 0.398 0.922 0.716;
+  background-texture-2: theme-texture(screencore.micro_ticks);
+  texture-alpha-2: 12;
+  shadow-strength: 5;
+  glow-strength: 2;
+  inner-highlight: true;
+  color: theme(textPrimary);
+}
+
+button {
+  height: 26px;
+  min-height: 24px;
+  padding: 4px 9px;
+}
+
+button:hover,
+button[hovered],
+button:focused,
+button[focused],
+input-text:focused,
+input-text[focused],
+select:focused,
+select[focused],
+list-row:hover,
+list-row[hovered],
+list-row:focused,
+list-row[focused],
+nav-item[hovered],
+nav-item[focused],
+holomap-mode-button[hovered],
+holomap-mode-button[focused],
+list-row[selected],
+list-row[selected="true"],
+list-row[active],
+list-row[active="true"] {
+  background: theme(cardHover);
+  border-color: theme(accent);
+  background-texture: theme-texture(screencore.button.hover);
+  texture-alpha: 96;
+  texture-region: 0.073 0.388 0.907 0.718;
+  background-texture-2: theme-texture(screencore.focus_ring);
+  texture-alpha-2: 96;
+  texture-inset-2: 1px;
+  glow-strength: 10;
+}
+
+button[variant="primary"] {
+  background: theme(accentDim);
+  border-color: theme(accent);
+  color: theme(textPrimary);
+  background-texture: theme-texture(screencore.button.hover);
+  texture-region: 0.073 0.388 0.907 0.718;
+  texture-alpha: 104;
+  glow-strength: 12;
+}
+
+button[variant="ghost"] {
+  background: transparent;
+  border-color: theme(borderMuted);
+  color: theme(textSecondary);
+  texture-alpha: 34;
+  shadow-strength: 2;
+  glow-strength: 0;
+}
+
+button[disabled],
+button[disabled="true"],
+list-row[disabled],
+list-row[disabled="true"],
+input-text[disabled],
+input-text[disabled="true"],
+holomap-mode-button[disabled] {
+  background: theme(disabled);
+  border-color: theme(disabled);
+  color: theme(textMuted);
+  texture-alpha: 22;
+  texture-alpha-2: 0;
+  glow-strength: 0;
+}
+
+status-chip,
+.cyberglass-chip {
+  surface: glass;
+  surface-depth: base;
+  corner-treatment: bevel;
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+  border-radius: radius(md);
+  accent-color: theme(accent);
+  background-texture: theme-texture(screencore.status_chip);
+  texture-alpha: 78;
+  height: 20px;
+  min-height: 18px;
+  padding: 2px 6px;
+  color: theme(textPrimary);
+  shadow-strength: 3;
+  glow-strength: 2;
+  inner-highlight: true;
+}
+
+status-chip[status="ready"],
+status-chip[status="success"],
+status-chip[status="done"] {
+  background: theme(success);
+  border-color: theme(success);
+  accent-color: theme(success);
+}
+
+status-chip[status="warning"],
+status-chip[status="optional"] {
+  background: theme(warning);
+  border-color: theme(warning);
+  accent-color: theme(warning);
+}
+
+status-chip[status="danger"],
+status-chip[status="critical"],
+status-chip[status="missing"] {
+  background: theme(danger);
+  border-color: theme(danger);
+  accent-color: theme(danger);
+}
+
+progress-bar,
+stat-bar,
+.cyberglass-progress {
+  surface: glass;
+  height: 8px;
+  min-height: 6px;
+  background: theme(panel);
+  track-color: theme(borderMuted);
+  fill-color: theme(accent);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+  border-radius: radius(sm);
+  background-texture: theme-texture(screencore.progress_bar);
+  texture-alpha: 82;
+  glow-strength: 3;
+}
+
+.cyberglass-action-row,
+.cyberglass-status-row,
+.theme-picker-header,
+.theme-picker-tags,
+.theme-picker-swatches,
+.theme-picker-asset-row {
+  gap: space(sm);
+}
+
+.theme-picker-card[selected="true"] {
+  border-color: theme(accent);
+  background-texture-2: theme-texture(screencore.focus_ring);
+  texture-alpha-2: 86;
+  glow-strength: 12;
+}
+
+.theme-picker-preview {
+  surface: glass;
+  border-color: theme(borderMuted);
+  border-width: 1px;
+  border-radius: radius(md);
+  background: theme(card);
+}
+
+.cyberglass-focus-ring {
+  background-texture: theme-texture(screencore.focus_ring);
+  texture-alpha: 112;
+  border-color: theme(accent);
+  glow-strength: 15;
+}

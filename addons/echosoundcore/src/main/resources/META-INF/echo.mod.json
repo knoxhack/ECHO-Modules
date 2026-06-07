@@ -1,0 +1,100 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echosoundcore",
+  "name": "ECHO: SoundCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "sound_core",
+  "entrypoint": "com.knoxhack.echosoundcore.EchoSoundCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoarmory",
+    "echoblackboxprotocol",
+    "echoconvoyprotocol",
+    "echoholomap",
+    "echoindustrialnexus",
+    "echolens",
+    "echologisticsnetwork",
+    "echomissioncore",
+    "echonexusprotocol",
+    "echopowergrid",
+    "echorendercore",
+    "echoruntimeguard",
+    "signalos",
+    "echostationfall",
+    "echoterminal",
+    "echothemecore",
+    "echoweathercore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "sound.adaptive_music",
+    "sound.ambience",
+    "sound.audio_profiles",
+    "sound.diagnostics",
+    "sound.network_actions",
+    "sound.service",
+    "sound.stingers",
+    "sound.ui_cues"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "network.payloads",
+    "resources.data",
+    "server.commands"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "networking",
+        "sounds"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echosoundcore.EchoSoundCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Shared first-party audio framework for adaptive music, ambience, stingers, UI cues, audio profiles, and NetCore-backed server-to-client audio actions. Optional pack integrations remain guarded."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echosoundcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

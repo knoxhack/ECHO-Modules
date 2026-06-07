@@ -1,0 +1,10 @@
+<dialog id="{param.id|error-dialog}" size="{param.size|md}" close-on-outside="false">
+  <dialog-title value="{param.title|ScreenCore Error}"/>
+  <dialog-body>
+    <text value="{param.body|An error was reported by ScreenCore diagnostics.}"/>
+    <slot-outlet name="body"/>
+  </dialog-body>
+  <dialog-actions>
+    <button action="screencore.close_modal" variant="danger" autofocus="true">Close</button>
+  </dialog-actions>
+</dialog>

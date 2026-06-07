@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:crashbreak_scout",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Scout Jax flips a scanner lens between gloved fingers. \"Routes are alive. Listen long enough and the rubble tells you where it wants to fall.\"",
+      "options": [
+        { "id": "trade", "label": "Check route pack.", "action": "open_trade" },
+        { "id": "services", "label": "Request map refresh.", "action": "open_services" },
+        { "id": "intel", "label": "Open salvage route intel.", "action": "open_intel" },
+        { "id": "record", "label": "Record scout frequency.", "action": "discover_contact" },
+        { "id": "close", "label": "Break contact.", "action": "close" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/block/green_stained_glass.png",
+  "default_state": "ACTIVE",
+  "transition_seconds": 0.2,
+  "materials": {
+    "route_line": {
+      "color": "#FF92F7A6",
+      "alpha": 0.5,
+      "emissive": true,
+      "blend_mode": "additive"
+    }
+  },
+  "layers": [
+    {
+      "id": "convoy_corridor",
+      "kind": "glow",
+      "texture": "minecraft:textures/block/green_stained_glass.png",
+      "material": "route_line",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "SCANNING"
+      ],
+      "alpha": 0.5,
+      "emissive": true
+    }
+  ],
+  "surface": {
+    "type": "weather",
+    "owner_addon": "echoworldcore",
+    "display_name": "Region Convoy Route",
+    "tags": [
+      "weather"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "particles_only",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

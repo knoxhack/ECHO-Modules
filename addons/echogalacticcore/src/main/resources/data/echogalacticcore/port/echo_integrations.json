@@ -1,0 +1,30 @@
+{
+  "schema": "echogalacticcore.echo_integrations.v1",
+  "source": "echo_platform_typed_integration_manifest",
+  "optional": [
+    {
+      "module": "echopackcore",
+      "surface": "PackOS module profile and dependency diagnostics"
+    },
+    {
+      "module": "echoindex",
+      "surface": "Index entries for planets, machines, oxygen, rockets, schematics, fuels, mobs, and dungeons"
+    },
+    {
+      "module": "echolens",
+      "surface": "Lens scans for oxygen, pressure, thermal risk, gravity, radiation, machine state, and rocket readiness"
+    },
+    {
+      "module": "echoholomap",
+      "surface": "HoloMap celestial routes and launch planning"
+    },
+    {
+      "module": "echoscreencore",
+      "surface": "Launch checklist, machine screens, rocket inventory, and celestial selection"
+    },
+    {
+      "module": "echoashfallprotocol",
+      "surface": "Optional Ashfall milestone mirroring"
+    }
+  ]
+}

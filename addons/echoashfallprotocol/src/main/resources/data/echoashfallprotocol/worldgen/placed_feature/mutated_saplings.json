@@ -1,0 +1,21 @@
+{
+  "feature": "echoashfallprotocol:mutated_sapling_patch",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:surface_relative_threshold_filter",
+      "heightmap": "MOTION_BLOCKING",
+      "min_inclusive": -64,
+      "max_inclusive": 320
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

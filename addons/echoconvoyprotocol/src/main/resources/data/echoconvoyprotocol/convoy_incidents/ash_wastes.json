@@ -1,0 +1,17 @@
+{
+  "title": "Ash Wastes Incidents",
+  "incidents": [
+    {
+      "id": "echoconvoyprotocol:ash_storm_whiteout",
+      "stage": 1,
+      "displayText": "Ash storm whiteout cut route visibility and burned extra fuel.",
+      "readinessThreshold": 70,
+      "fuelEffect": -12,
+      "integrityEffect": -3,
+      "cargoEffect": 0,
+      "delayTicks": 160,
+      "requiredResponseTask": "echoconvoyprotocol:resolve_field_incident",
+      "holomapMarkerHint": "high_risk_delivery"
+    }
+  ]
+}

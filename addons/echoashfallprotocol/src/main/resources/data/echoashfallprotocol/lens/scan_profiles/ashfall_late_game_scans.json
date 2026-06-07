@@ -1,0 +1,50 @@
+{
+  "id": "echoashfallprotocol:ashfall_late_game_scans",
+  "title": "Ashfall Late-Game Nexus Scans",
+  "rows": [
+    {
+      "target": "prime_relay_grid",
+      "category": "prime_relay",
+      "text": "Prime relay grid detected. Resolve relay state before choosing Restore, Destroy, or Control.",
+      "riskLabel": "late-game signal",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "mission": "echoashfallprotocol:scan_prime_relays",
+      "holomapMarker": "echoashfallprotocol:prime_relay_grid",
+      "routeLink": "echoashfallprotocol:prime_relays",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "nexus_core_signal",
+      "category": "nexus",
+      "text": "Nexus Core state is unstable. Open the Terminal relay desk and review branch consequences before touching the core.",
+      "riskLabel": "branch pressure",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "mission": "echoashfallprotocol:awaken_nexus_core",
+      "holomapMarker": "echoashfallprotocol:nexus_core_signal",
+      "routeLink": "echoashfallprotocol:nexus_core",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "nexus_scar_avatar_intel",
+      "category": "boss_intel",
+      "text": "Boss intel unlocked. Confirm counterplay, route supplies, and branch reward context before entering the arena.",
+      "riskLabel": "boss route",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "mission": "echoashfallprotocol:neutralize_nexus_scar_avatar",
+      "holomapMarker": "echoashfallprotocol:nexus_scar_avatar_intel",
+      "routeLink": "echoashfallprotocol:nexus_scar",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "ending_branch_decision",
+      "category": "ending_branch",
+      "text": "Branch decision is ready. The next choice should update Terminal, Codex/Index, and HoloMap ending state.",
+      "riskLabel": "permanent consequence",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "mission": "echoashfallprotocol:reach_decision",
+      "holomapMarker": "echoashfallprotocol:ending_branch_decision",
+      "routeLink": "echoashfallprotocol:nexus_decision",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    }
+  ]
+}

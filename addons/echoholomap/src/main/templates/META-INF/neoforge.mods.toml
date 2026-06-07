@@ -1,0 +1,104 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Knoxhack"
+description='''Terminal-integrated HoloMap command display for ECHO regions, routes, hazards, missions, scans, and addon map markers.'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO services, the source-compatible Core map provider contract, config registry, and optional index/theme/sound service facades."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, safe sends, sync, and action rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoruntimeguard"
+type="optional"
+reason="Records HoloMap snapshot, tile, waypoint, and marker refresh sync sizes when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Adds HoloMap terminal pages, map controls, and waypoint actions when Terminal is present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Uses RenderCore screen chrome and visual profiles for HoloMap surfaces when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="Uses ScreenCore for the fullscreen HoloMap app shell, focus, inputs, filters, and accessibility while keeping the custom map renderer."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Registers HoloMap discovery and waypoint side-op missions when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="Allows HoloMap UI colors to prefer ThemeCore theme provider values when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosoundcore"
+type="optional"
+reason="Allows HoloMap UI sounds for open, close, waypoint, hazard overlay, and route sync events when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Allows HoloMap authoring, terrain discovery, waypoints, routes, overlays, and marker-state guidance to appear in the ECHO Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

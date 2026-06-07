@@ -1,0 +1,69 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": { "text": "Pre-Gridfall Seed Vault Manifest", "color": "green" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:oak_sapling", "weight": 12 },
+        { "type": "minecraft:item", "name": "minecraft:birch_sapling", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:spruce_sapling", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:jungle_sapling", "weight": 4 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutated_sapling", "weight": 6 },
+        { "type": "minecraft:item", "name": "minecraft:wheat_seeds", "weight": 14 },
+        { "type": "minecraft:item", "name": "minecraft:beetroot_seeds", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:pumpkin_seeds", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:melon_seeds", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:sugar_cane", "weight": 6 },
+        { "type": "minecraft:item", "name": "minecraft:cactus", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:bamboo", "weight": 4 },
+        { "type": "minecraft:item", "name": "minecraft:cocoa_beans", "weight": 4 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:dandelion", "weight": 12 },
+        { "type": "minecraft:item", "name": "minecraft:poppy", "weight": 12 },
+        { "type": "minecraft:item", "name": "minecraft:blue_orchid", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:allium", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:cornflower", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:oxeye_daisy", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:sunflower", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:lilac", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:brown_mushroom", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:red_mushroom", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:moss_block", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:azalea", "weight": 4 },
+        { "type": "minecraft:item", "name": "minecraft:flowering_azalea", "weight": 3 },
+        { "type": "minecraft:item", "name": "minecraft:honeycomb", "weight": 3 },
+        { "type": "minecraft:item", "name": "minecraft:honey_bottle", "weight": 2 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:random_chance", "chance": 0.75 }
+      ]
+    }
+  ]
+}

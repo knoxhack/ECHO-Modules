@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:control_signal_expansion",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 14,
+  "title": "Place 3 Signal Beacons",
+  "briefing": "[ECHO-7] Your reach must extend. Place 3 Signal Scanner or Relay Station blocks as beacons in the Overworld.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:reach_decision"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "control_signal_expansion",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.control_signal_expansion",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "14",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "107",
+    "requiredPath": "control",
+    "routeRoleTag": "control_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:control_signal_expansion:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "control",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:control_signal_expansion/control_signal_expansion",
+      "type": "custom",
+      "label": "Place 3 Signal Beacons",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:control_signal_expansion",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.control_signal_expansion"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:control_signal_expansion/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_signal_expansion/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:control_signal_expansion/reward_1",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 8,
+      "label": "Circuit Board",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_signal_expansion/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] The network spreads. Your voice carries farther with each booster deployed."
+}

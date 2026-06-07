@@ -1,0 +1,114 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+neoForge {
+    version = neo_version
+
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+        gameTestServer {
+            type = 'gameTestServer'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${mod_id}:*").toString()
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources').absolutePath, '--existing', file('src/main/resources').absolutePath
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+if (rootProject.findProject(':echomachinecore') == null) {
+    sourceSets.main.java.exclude 'com/knoxhack/echolens/integration/MachineCoreLensIntegration.java'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    def compileOnlyIfIncluded = { projectPath ->
+        def optionalProject = rootProject.findProject(projectPath)
+        if (optionalProject != null) {
+            compileOnly optionalProject
+        }
+    }
+    implementation project(':echocore')
+    implementation project(':echonetcore')
+    compileOnly project(':echo-native-contracts')
+    compileOnlyIfIncluded(':echomachinecore')
+    compileOnly project(':echoadaptercore')
+    compileOnly project(':echoruntimeguard')
+    compileOnly project(':echorendercore')
+    if (providers.gradleProperty('echoLensLoadOptionalAddons').map { it.toBoolean() }.orElse(false).get()) {
+        localRuntime project(':echoterminal')
+        localRuntime project(':echoindex')
+        localRuntime project(':echorendercore')
+    }
+    localRuntime "org.jline:jline-reader:3.20.0"
+    localRuntime "org.jline:jline-terminal:3.20.0"
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

@@ -1,0 +1,24 @@
+﻿{
+  "result": {
+    "item": "echogalacticcore:beam_reflector"
+  },
+  "pattern": [
+    " Y ",
+    "ZX ",
+    "XXX"
+  ],
+  "type": "echogalacticcore:replacable",
+  "key": {
+    "X": {
+      "type": "echogalacticcore:advanced_metal",
+      "metal": "titanium_plate"
+    },
+    "Y": {
+      "item": "echogalacticcore:item_basic_asteroids",
+      "data": 8
+    },
+    "Z": {
+      "item": "minecraft:lever"
+    }
+  }
+}

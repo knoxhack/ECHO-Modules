@@ -1,0 +1,29 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:distributor"
+               },
+    "pattern":  [
+                    "WXW",
+                    "YZY",
+                    "WXW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "X":  {
+                          "item":  "echogalacticcore:air_fan"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:air_vent"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:mars_ash_basin",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:martian_pressure_valve"
+    },
+    "title": {
+      "text": "Mars Survey Complete"
+    },
+    "description": {
+      "text": "Repair and log three Mars pressure outposts."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

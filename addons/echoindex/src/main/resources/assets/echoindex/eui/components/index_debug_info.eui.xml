@@ -1,0 +1,9 @@
+<panel class="index-debug" title="Debug">
+  <text value="Cache: {index.debug.stats.cacheBuildTimeMs} ms"/>
+  <text value="Refreshes: {index.debug.stats.providerRefreshCount}"/>
+  <text value="{index.debug.stats.lastReload}"/>
+  <list bind="index.debug.warnings" item="warning">
+    <list-row><text value="{warning}"/></list-row>
+    <empty-state title="No provider warnings" body="Index cache is clean."/>
+  </list>
+</panel>

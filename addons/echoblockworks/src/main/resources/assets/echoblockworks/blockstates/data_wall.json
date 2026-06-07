@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoblockworks:block/data_wall"
+    },
+    "facing=east": {
+      "model": "echoblockworks:block/data_wall",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoblockworks:block/data_wall",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoblockworks:block/data_wall",
+      "y": 270
+    }
+  }
+}

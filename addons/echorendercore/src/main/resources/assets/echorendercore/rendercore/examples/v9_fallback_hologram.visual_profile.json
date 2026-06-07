@@ -1,0 +1,70 @@
+{
+  "schema_version": 9,
+  "base_texture": "examplemod:textures/block/v9_hologram_display.png",
+  "default_state": "SCANNING",
+  "effect": {
+    "preset": "hologram",
+    "glow_intensity": 1.1,
+    "pulse_speed": 1.1,
+    "pulse_min_alpha": 0.65,
+    "pulse_max_alpha": 0.95,
+    "scanline_strength": 0.3,
+    "advanced_enabled": false,
+    "target_scope": "profile"
+  },
+  "preview": {
+    "title": "V9 Fallback Hologram",
+    "notes": "Uses V9 metadata while intentionally staying on the stable emissive/scanline path."
+  },
+  "materials": {
+    "terminal_hud": {
+      "color": "#FF44DBFF",
+      "alpha": 0.78,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "terminal_hud",
+        "glow_intensity": 1.0,
+        "pulse_speed": 1.7,
+        "pulse_min_alpha": 0.58,
+        "pulse_max_alpha": 0.88,
+        "scanline_strength": 0.45
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "terminal_grid",
+      "kind": "overlay",
+      "texture": "examplemod:textures/block/v9_hologram_grid.png",
+      "material": "terminal_hud",
+      "states": ["ONLINE", "SCANNING", "ACTIVE"]
+    },
+    {
+      "id": "magenta_readout",
+      "kind": "glow",
+      "texture": "examplemod:textures/block/v9_hologram_readout.png",
+      "color": "#FFFF49FC",
+      "alpha": 0.7,
+      "emissive": true,
+      "states": ["SCANNING", "ACTIVE"],
+      "effect": {
+        "preset": "terminal_hud",
+        "glow_intensity": 1.25,
+        "pulse_speed": 2.1,
+        "pulse_min_alpha": 0.48,
+        "pulse_max_alpha": 0.86,
+        "scanline_strength": 0.5,
+        "depth_bias": 2.0
+      }
+    }
+  ],
+  "anchors": {
+    "display": { "offset": [0.5, 0.65, 0.5] }
+  },
+  "block_parts": {
+    "screen": { "directions": ["north"], "ambient_occlusion": false }
+  }
+}

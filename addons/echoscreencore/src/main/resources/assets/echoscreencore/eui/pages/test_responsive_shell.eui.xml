@@ -1,0 +1,27 @@
+<page id="test-responsive-shell" title="Responsive Shell" styles="echoscreencore:advanced_mock,echoscreencore:responsive_mock">
+  <app-shell>
+    <app-header title="Responsive App Shell" subtitle="Resize GUI width to exercise hide, stack, compact, and sidebar collapse rules"/>
+    <grid columns="230px 1fr 280px" gap="16" stack-below="md">
+      <app-sidebar title="Rail" sidebar-collapse-below="lg" compact-below="lg">
+        <nav-list dense-below="sm">
+          <nav-item selected="true"><title>Home</title><text>Full label collapses with sidebar rules.</text></nav-item>
+          <nav-item><title>Data</title><text>Provider screens later plug in here.</text></nav-item>
+        </nav-list>
+      </app-sidebar>
+      <app-content title="Content">
+        <hero-card compact-below="md">
+          <title>Active Responsive Hooks</title>
+          <text>hide-below hides, stack-below stacks, compact-below reduces gaps, and collapse-below trims children.</text>
+        </hero-card>
+        <row gap="12" stack-below="sm">
+          <card><title>Wide</title><text>Row on wide screens.</text></card>
+          <card hide-below="sm"><title>Hidden Small</title><text>This card hides below sm.</text></card>
+        </row>
+      </app-content>
+      <inspector-panel title="Inspector" detail-collapse-below="lg">
+        <status-chip status="ready">READY</status-chip>
+        <text>Debug overlay shows the active breakpoint.</text>
+      </inspector-panel>
+    </grid>
+  </app-shell>
+</page>

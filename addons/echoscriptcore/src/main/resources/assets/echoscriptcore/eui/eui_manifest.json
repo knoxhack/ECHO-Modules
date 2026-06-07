@@ -1,0 +1,16 @@
+{
+  "pages": [
+    {
+      "id": "echoscriptcore:scriptcore_ui_bridge_demo",
+      "title": "ScriptCore UI Bridge",
+      "styles": ["echoscreencore:base", "echoscreencore:components"],
+      "description": "ScreenCore execute, preview, typed params, confirmation, and result bindings"
+    }
+  ],
+  "components": [
+    "echoscriptcore:scriptcore_execute_button",
+    "echoscriptcore:scriptcore_preview_button",
+    "echoscriptcore:scriptcore_result_banner",
+    "echoscriptcore:scriptcore_confirm_execute_dialog"
+  ]
+}

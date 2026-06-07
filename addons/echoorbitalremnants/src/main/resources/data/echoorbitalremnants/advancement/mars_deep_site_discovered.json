@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:mars_ash_basin",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:martian_pressure_valve"
+    },
+    "title": {
+      "text": "Deep Mars Site"
+    },
+    "description": {
+      "text": "Log a deep Mars outpost, pressure line, or silica flat."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

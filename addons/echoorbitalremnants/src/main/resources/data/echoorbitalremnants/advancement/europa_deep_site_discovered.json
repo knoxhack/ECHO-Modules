@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:europa_cryo_ocean",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:europa_thermal_probe"
+    },
+    "title": {
+      "text": "Deep Europa Site"
+    },
+    "description": {
+      "text": "Log a deep Europa vent lab, crystal pocket, or cable bridge."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

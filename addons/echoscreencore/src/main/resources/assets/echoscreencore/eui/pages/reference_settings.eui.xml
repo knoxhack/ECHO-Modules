@@ -1,0 +1,25 @@
+<page id="reference-settings" title="Reference Settings" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Settings Pattern" subtitle="Compact controls with predictable row height."/>
+    </slot>
+    <slot name="body">
+      <section class="sc-panel" title="ACCESSIBILITY SETTINGS">
+        <toggle label="Large text preview" checked="{toggles.highContrastDemo}" on-change="demo.toggle"/>
+        <checkbox label="Reduced clutter compatible" checked="true"/>
+        <select value="{filters.status}" on-change="demo.set_filter">
+          <option value="active" label="Active"/>
+          <option value="ready" label="Ready"/>
+          <option value="done" label="Done"/>
+        </select>
+        <component src="echoscreencore:sc_action_strip">
+          <slot name="actions">
+            <button action="settings.reset_accessibility" variant="primary">Reset</button>
+            <button action="screencore.open_page" action-page="echoscreencore:reference_accessibility" variant="ghost">Accessibility</button>
+          </slot>
+        </component>
+      </section>
+    </slot>
+  </component>
+</page>
+

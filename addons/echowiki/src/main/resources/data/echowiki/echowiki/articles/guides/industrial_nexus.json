@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/industrial_nexus",
+  "title": "Industrial Nexus Manual",
+  "category": "Guide Books",
+  "summary": "Scale processing chains while watching heat, coolant, power, inputs, and diagnostic feedback.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Industrial Nexus turns raw survival into production. It asks you to think in chains: inputs, machines, heat, coolant, output storage, and diagnostic tools.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Build one small processing chain completely before making a factory. Confirm power, input rate, output room, and a way to respond when it stalls.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Gather materials, process them through machines, use byproducts, upgrade bottlenecks, and keep diagnostics nearby so failure is visible.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Thermal tools, factory diagnostics, flux meters, coolant packs, and recipe cards all help identify whether a problem is heat, power, recipe lock, or inventory flow.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "PowerGrid supplies stable energy, Logistics moves inputs and outputs, Index explains recipes, and MultiblockCore can host larger facility goals.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If production stops, check input, output, recipe, heat, power, and machine state in that order. Most factory problems are one missing constraint, not everything broken at once.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "industrial",
+    "factory"
+  ],
+  "icon": "minecraft:blast_furnace",
+  "heroArt": "echowiki:textures/gui/guide_books/industrial_nexus_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/industrial_nexus/first_steps",
+    "echowiki:guides/industrial_nexus/core_loop",
+    "echowiki:guides/industrial_nexus/systems",
+    "echowiki:guides/industrial_nexus/progression",
+    "echowiki:guides/industrial_nexus/integrations",
+    "echowiki:guides/industrial_nexus/troubleshooting"
+  ],
+  "sortOrder": 1070
+}

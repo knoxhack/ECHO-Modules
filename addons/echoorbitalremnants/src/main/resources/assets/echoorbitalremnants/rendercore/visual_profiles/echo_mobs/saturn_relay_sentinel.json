@@ -1,0 +1,241 @@
+{
+  "schema_version": 11,
+  "base_texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel.png",
+  "glow_texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_glow.png",
+  "damaged_overlay_texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_damage_overlay.png",
+  "corrupted_overlay_texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_corrupted_overlay.png",
+  "active_overlay_texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_active_overlay.png",
+  "animation_profile": "echoorbitalremnants:echo_mobs/saturn_relay_sentinel",
+  "particle_profile": "echoorbitalremnants:echo_mobs/saturn_relay_sentinel",
+  "default_state": "ONLINE",
+  "transition_seconds": 0.18,
+  "effect": {
+    "preset": "hologram",
+    "glow_intensity": 0.75,
+    "pulse_speed": 1.8,
+    "pulse_min_alpha": 0.55,
+    "pulse_max_alpha": 1.0,
+    "flicker_intensity": 0.05,
+    "scanline_strength": 0.22,
+    "target_scope": "entity"
+  },
+  "materials": {
+    "echo_emissive": {
+      "color": "#5EEBFF",
+      "alpha": 0.92,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 0.75,
+        "pulse_speed": 1.8,
+        "pulse_min_alpha": 0.55,
+        "pulse_max_alpha": 1.0,
+        "flicker_intensity": 0.05,
+        "scanline_strength": 0.22,
+        "target_scope": "entity"
+      }
+    },
+    "damage_heat": {
+      "color": "#FFFF7A28",
+      "alpha": 0.75,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "neon",
+        "glow_intensity": 0.8,
+        "pulse_speed": 3.0,
+        "pulse_min_alpha": 0.45,
+        "pulse_max_alpha": 0.9,
+        "target_scope": "entity"
+      }
+    },
+    "corruption": {
+      "color": "#FFB45CFF",
+      "alpha": 0.72,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 0.75,
+        "scanline_strength": 0.35,
+        "pulse_speed": 2.2,
+        "target_scope": "entity"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "core_glow",
+      "kind": "glow",
+      "texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_glow.png",
+      "material": "echo_emissive",
+      "states": [
+        "ONLINE",
+        "IDLE",
+        "ACTIVE",
+        "WORKING",
+        "SCANNING",
+        "CHARGING",
+        "COMPLETE"
+      ]
+    },
+    {
+      "id": "active_motion_overlay",
+      "kind": "overlay",
+      "texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_active_overlay.png",
+      "material": "echo_emissive",
+      "states": [
+        "ACTIVE",
+        "WORKING",
+        "SCANNING",
+        "CHARGING"
+      ]
+    },
+    {
+      "id": "damage_heat_overlay",
+      "kind": "overlay",
+      "texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_damage_overlay.png",
+      "material": "damage_heat",
+      "states": [
+        "DAMAGED",
+        "OVERHEATED",
+        "FAILED"
+      ]
+    },
+    {
+      "id": "corruption_overlay",
+      "kind": "overlay",
+      "texture": "echoorbitalremnants:textures/entity/rendercore_echo_mobs/saturn_relay_sentinel_corrupted_overlay.png",
+      "material": "corruption",
+      "states": [
+        "CORRUPTED"
+      ]
+    }
+  ],
+  "state_animations": {
+    "IDLE": "idle",
+    "ONLINE": "idle",
+    "ACTIVE": "active",
+    "WORKING": "active",
+    "SCANNING": "scan",
+    "CHARGING": "charge",
+    "DAMAGED": "damaged",
+    "CORRUPTED": "corrupt",
+    "OVERHEATED": "damaged",
+    "FAILED": "damaged"
+  },
+  "anchors": {
+    "core": {
+      "part": "top_core",
+      "offset": [
+        0.0,
+        0.9,
+        0.0
+      ]
+    },
+    "eyes": {
+      "part": "scanner",
+      "offset": [
+        0.0,
+        1.35,
+        -0.35
+      ]
+    },
+    "mouth": {
+      "part": "front_scanner_bar",
+      "offset": [
+        0.0,
+        1.1800000000000002,
+        -0.48
+      ]
+    },
+    "chest": {
+      "part": "chassis",
+      "offset": [
+        0.0,
+        0.85,
+        -0.12
+      ]
+    },
+    "left_hand": {
+      "part": "front_left_propeller",
+      "offset": [
+        -0.42,
+        0.68,
+        -0.12
+      ]
+    },
+    "right_hand": {
+      "part": "front_right_propeller",
+      "offset": [
+        0.42,
+        0.68,
+        -0.12
+      ]
+    },
+    "back": {
+      "part": "propeller_arms",
+      "offset": [
+        0.0,
+        0.96,
+        0.42
+      ]
+    },
+    "trail": {
+      "part": "rear_left_propeller",
+      "offset": [
+        0.0,
+        0.18,
+        0.55
+      ]
+    },
+    "feet": {
+      "part": "chassis",
+      "offset": [
+        0.0,
+        0.06,
+        0.0
+      ]
+    },
+    "ground": {
+      "part": "chassis",
+      "offset": [
+        0.0,
+        0.035,
+        0.0
+      ]
+    },
+    "exhaust": {
+      "part": "rear_right_propeller",
+      "offset": [
+        0.0,
+        0.8,
+        0.65
+      ]
+    },
+    "scanner": {
+      "part": "scanner",
+      "offset": [
+        0.0,
+        1.15,
+        -0.45
+      ]
+    }
+  },
+  "preview": {
+    "title": "saturn_relay_sentinel RenderCore mob visual",
+    "notes": "saturn relay sentinel; ring antennae, gold panels, blue relay core",
+    "artifact": "docs/echo_mob_rendercore/entity_sheets/echoorbitalremnants/saturn_relay_sentinel.png",
+    "screenshot": {
+      "enabled": false,
+      "reason": "Per-entity production board is preserved; in-game screenshot pass is manual."
+    }
+  }
+}

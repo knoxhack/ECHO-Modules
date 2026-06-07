@@ -1,0 +1,81 @@
+{
+  "id": "echowiki:guides/ashfall",
+  "title": "Ashfall Field Manual",
+  "category": "Guide Books",
+  "summary": "Stabilize water, shelter, route awareness, and salvage before deeper pushes.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Field Rule",
+      "body": "Ashfall rewards short, deliberate loops. Scan the area, name the objective, mark a return line, take only what supports the next upgrade, and get home before thirst, weather, or inventory pressure makes the decision for you.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Safe Win",
+      "body": "A strong opening ends with drinkable water, a sheltered stash point, one marked route, light, and a small stock of salvage you can sort without standing in a hazard.",
+      "tone": "tip",
+      "icon": "minecraft:water_bucket"
+    },
+    {
+      "type": "paragraph",
+      "title": "Route Rhythm",
+      "body": "Run the same loop until it feels boring, then widen it. Each expansion should add one useful thing: cleaner water, better filtration, safer travel, a scanner read, a power repair, or a confirmed waypoint.",
+      "tone": "body"
+    },
+    {
+      "type": "link",
+      "title": "First Month Routes",
+      "body": "Use the early route mission when you need a clear next objective without jumping straight into late-game pressure.",
+      "tone": "body",
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:ashfall_first_month_routes",
+      "label": "First Month Routes",
+      "subtitle": "Starter route objective"
+    },
+    {
+      "type": "callout",
+      "title": "Do Not Force A Bad Path",
+      "body": "If the same route kills you twice, stop repeating it. Prepare for the hazard, shorten the trip, or approach from a cleaner landmark.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival"
+  ],
+  "icon": "minecraft:compass",
+  "heroArt": "echoashfallprotocol:textures/gui/wiki/ashfall_banner.png",
+  "relatedArticles": [
+    "echowiki:survival/first_hour",
+    "echowiki:systems/survival_codex",
+    "echowiki:guides/ashfall/first_steps",
+    "echowiki:guides/ashfall/core_loop",
+    "echowiki:guides/ashfall/systems",
+    "echowiki:guides/ashfall/progression",
+    "echowiki:guides/ashfall/machine_power_logistics",
+    "echowiki:guides/ashfall/scanner_faction_ops",
+    "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "echowiki:guides/ashfall/nexus_prime_relays",
+    "echowiki:guides/ashfall/integrations",
+    "echowiki:guides/ashfall/troubleshooting"
+  ],
+  "relatedItems": [
+    "minecraft:water_bucket",
+    "minecraft:compass",
+    "echoashfallprotocol:clean_water_bottle",
+    "echoashfallprotocol:crude_filter",
+    "echoashfallprotocol:portable_signal_scanner"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:ashfall_first_month_routes",
+    "echoashfallprotocol:first_relay_station_route"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:crash_zone_wasteland",
+    "echoashfallprotocol:ruined_cityscape"
+  ],
+  "sortOrder": 1010
+}

@@ -1,0 +1,88 @@
+{
+  "id": "echoashfallprotocol:warm_up_after_exposure",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 14,
+  "title": "Warm Up After Exposure",
+  "briefing": "[ECHO-7] Do not let cold stack quietly. Use a Hand Warmer after cryogenic exposure and confirm body temperature recovery.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "survival",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:thermal_liner",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:recover_cryo_sample"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "warm_up_after_exposure",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.warm_up_after_exposure",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "14",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "82",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:warm_up_after_exposure:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:warm_up_after_exposure/warmed_up",
+      "type": "custom",
+      "label": "Warmed Up",
+      "detail": "Log special progress for this Ashfall route step.",
+      "icon": "echoashfallprotocol:thermal_liner",
+      "target": "cold:warmed_up",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "special",
+        "location": "cold:warmed_up"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "special",
+      "locationId": "cold:warmed_up",
+      "count": 1,
+      "label": "Warmed Up"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:warm_up_after_exposure/reward_0",
+      "item": "echoashfallprotocol:thermal_liner",
+      "count": 1,
+      "label": "Thermal Liner",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:warm_up_after_exposure/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Temperature recovery logged. Retreat-and-warm is the cryogenic equivalent of RadAway."
+}

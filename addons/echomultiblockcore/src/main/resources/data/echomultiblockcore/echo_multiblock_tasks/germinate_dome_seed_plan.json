@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:germinate_dome_seed_plan",
+  "display_name": "Germinate Dome Seed Plan",
+  "category": "reclamation",
+  "allowed_multiblocks": ["echomultiblockcore:agriculture_dome"],
+  "required_workcell": "RECLAMATION",
+  "required_tools": ["INJECTOR", "DRILL"],
+  "duration_ticks": 280,
+  "heat_per_second": 2,
+  "animation": "inject",
+  "animation_profile": "echomultiblockcore:reclamation_growth",
+  "effects": ["echoagriculturereclamation:stage_growth_matrix"],
+  "inputs": [
+    { "item": "echomultiblockcore:reclamation_growth_matrix", "count": 1 },
+    { "item": "echomultiblockcore:supply_manifest", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:reclamation_growth_matrix", "count": 2 }
+  ],
+  "notes": ["Agriculture Reclamation handoff recipe that keeps MultiblockCore standalone."]
+}

@@ -1,0 +1,27 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:buggymat",
+                   "data":  1
+               },
+    "pattern":  [
+                    "  Y",
+                    " ZY",
+                    "XXX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_iron"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,111 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echoindustrialnexus"
+version="1.0.0"
+displayName="ECHO: Industrial Nexus"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the industrial automation chapter for the ECHO public release stack."
+description='''
+The world ended. Industry did not.
+
+ECHO: Industrial Nexus turns Ashfall survival into infrastructure through Thermal Flux,
+rusted machines, salvage processing, automated filters, industrial recovery blocks,
+and Nexus-safe factory components surfaced through ECHO Core and ECHO Terminal.
+'''
+
+[[dependencies.echoindustrialnexus]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, sync, action validation, and rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echomultiblockcore"
+type="required"
+reason="Provides shared ECHO multiblock validation, robotics, blueprints, diagnostics, task queues, and facility runtime APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echoterminal"
+type="optional"
+reason="Allows Industrial Nexus records, missions, route placement, and Factory Command dashboards to appear inside the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echolens"
+type="optional"
+reason="Enables server-verified Industrial controller, robotic arm, crate, machine, duct, pipe, and workcell Deep Scan diagnostics."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echoholomap"
+type="optional"
+reason="Displays Industrial factory facilities through the shared ECHO multiblock marker pipeline."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore visual profiles, particles, and state-driven machine render helpers."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Industrial Nexus expands Ashfall survival with automated filters, scrubbers, and salvage chains."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echonexusprotocol"
+type="optional"
+reason="Enables hybrid flux and Nexus-safe machine progression when Nexus Protocol is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoindustrialnexus]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Provides industrial preparation routes for orbital launch components."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

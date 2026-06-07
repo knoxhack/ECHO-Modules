@@ -1,0 +1,13 @@
+{
+  "id": "echonexusprotocol:anomaly_zone",
+  "type": "anomaly_zone",
+  "displayName": "Anomaly Zone",
+  "summary": "Nexus Protocol anomaly fields, scar relays, and unstable memory-space positions.",
+  "structureIds": ["echonexusprotocol:nexus_core_chamber", "echonexusprotocol:abandoned_nexus_field_station"],
+  "hazardIds": ["echoworldcore:hazard/nexus_anomaly"],
+  "discoveryId": "echonexusprotocol:anomaly_zone",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/anomaly_zone",
+  "audioProfileId": "echoworldcore:ambience/anomaly_zone",
+  "sortOrder": 100
+}

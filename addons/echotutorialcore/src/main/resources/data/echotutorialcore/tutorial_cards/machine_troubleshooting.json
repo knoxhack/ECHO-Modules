@@ -1,0 +1,30 @@
+{
+  "id": "echotutorialcore:machine_troubleshooting",
+  "category": "MACHINES",
+  "title": "Machine Troubleshooting",
+  "summary": "Why is your machine not working?",
+  "body": [
+    "Machines need three things: power, valid input, and clear output.",
+    "Use the Lens to inspect status.",
+    "Check cables, filters, and blockages."
+  ],
+  "steps": [
+    "Check power with the Lens.",
+    "Verify input items are correct.",
+    "Clear the output slot or adjacent storage."
+  ],
+  "commonMistakes": [
+    "Wrong input item.",
+    "Output is blocked by a full chest.",
+    "Machine is unpowered."
+  ],
+  "related": [
+    "echotutorialcore:power_basics",
+    "echotutorialcore:clean_water"
+  ],
+  "unlockTriggers": [
+    "placed_first_machine"
+  ],
+  "defaultUnlocked": false,
+  "priority": 75
+}

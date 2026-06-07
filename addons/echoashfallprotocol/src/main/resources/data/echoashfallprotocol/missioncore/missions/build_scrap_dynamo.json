@@ -1,0 +1,116 @@
+{
+  "id": "echoashfallprotocol:build_scrap_dynamo",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 8,
+  "title": "Build a Scrap Dynamo",
+  "briefing": "[ECHO-7] Your first generator is unstable. Build a Scrap Dynamo to turn salvage into a steadier midgame FE source.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall power-expansion bridge that upgrades the early workshop from one Micro Generator to steadier salvage-powered output.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:scrap_dynamo",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_battery_bank"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_scrap_dynamo",
+    "nativeGameplayHook": "ashfall.first_route.build_scrap_dynamo",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.basic_battery.charge_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "8",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "17",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_scrap_dynamo:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_scrap_dynamo/place_scrap_dynamo",
+      "type": "place_block",
+      "label": "Build a Scrap Dynamo",
+      "detail": "Place one Scrap Dynamo after the Battery Bank is online to stabilize workshop power.",
+      "icon": "echoashfallprotocol:scrap_dynamo",
+      "target": "echoashfallprotocol:scrap_dynamo",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:scrap_dynamo",
+        "required_blocks": "echoashfallprotocol:scrap_dynamo=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 4,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "block": "echoashfallprotocol:scrap_dynamo",
+      "count": 1,
+      "label": "Placed Scrap Dynamo"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_scrap_dynamo/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "detail": "Portable power reserve for the battery charging bridge."
+    },
+    {
+      "id": "echoashfallprotocol:build_scrap_dynamo/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Wiring reserve for charger and cable work."
+    }
+  ],
+  "completionText": "[ECHO-7] Scrap Dynamo online. It burns scrap and fuel into steadier workshop power."
+}

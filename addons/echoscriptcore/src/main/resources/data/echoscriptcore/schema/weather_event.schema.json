@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "weather_event",
+  "required": ["schema_version", "id", "type", "duration_ticks"],
+  "fields": ["pack", "title", "warning_seconds", "effects", "terminal_warning", "sound_stinger", "unlock_conditions", "metadata"]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "echonpcore:field_medic_services",
+  "services": [
+    {
+      "id": "medic_heal",
+      "title": "Field Treatment",
+      "description": "Restores health for bread.",
+      "cost": [
+        { "item": "minecraft:bread", "count": 1 }
+      ],
+      "action": "heal",
+      "amount": 6,
+      "cooldown": 1200
+    }
+  ]
+}

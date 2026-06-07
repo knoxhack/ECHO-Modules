@@ -1,0 +1,67 @@
+{
+  "id": "echoashfallprotocol:faction_signal_ping",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "title": "Optional: Read the Faction Signal",
+  "optional": true,
+  "briefing": "Faction signals can become contacts later. For now, scan signs, read the dossier, and avoid turning a first contact into a fight.",
+  "prerequisites": [
+    "echoashfallprotocol:ashfall_first_month_routes"
+  ],
+  "objectives": [
+    {
+      "id": "scan_faction_sign",
+      "type": "scan_block",
+      "label": "Scan a faction sign or route board",
+      "detail": "Crashbreak and Radwarden markers should identify the contact type and risk.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "lens_scan"
+      }
+    },
+    {
+      "id": "read_faction_dossier",
+      "type": "custom",
+      "label": "Read the faction field dossier",
+      "detail": "Check whether the route expects observation, trade, or avoidance.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "criteria": {
+        "native_objective_type": "index_entry"
+      }
+    },
+    {
+      "id": "mark_contact",
+      "type": "discover_structure",
+      "label": "Mark the contact route",
+      "detail": "Use the HoloMap marker for later, then leave before the area escalates.",
+      "icon": "echoashfallprotocol:relay_scanner_lens",
+      "criteria": {
+        "native_objective_type": "holomap_marker"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "reputation_note",
+      "id": "echoashfallprotocol:first_contact_note",
+      "label": "Faction contact note",
+      "detail": "Faction contact note appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Faction signal logged. You have a contact lead without committing to a faction route yet.",
+  "phase": "first_month",
+  "phaseTitle": "First-Month Routes",
+  "phaseOrder": 3,
+  "order": 2,
+  "fieldGuide": "Optional faction signal scan that teaches players to read contact posture before treating a camp marker as combat content.",
+  "category": "faction",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "side",
+  "guidanceLinks": {
+    "indexEntry": "echoashfallprotocol:faction_field_contacts",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "wikiArticle": "echowiki:guides/ashfall/core_loop"
+  }
+}

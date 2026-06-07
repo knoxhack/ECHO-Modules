@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:logistics_depot",
+    "facility":  "echomultiblockcore:logistics_depot",
+    "tier":  3,
+    "prerequisites":  [
+                          "echomultiblockcore:industrial_assembly_line"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:stage_supply_manifest",
+                             "echomultiblockcore:coordinate_convoy_loadout"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:supply_manifest"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/logistics_depot",
+    "title":  "Logistics Depot",
+    "guide":  "Stage supply manifests so connected facilities can request routed materials instead of loose parts."
+}

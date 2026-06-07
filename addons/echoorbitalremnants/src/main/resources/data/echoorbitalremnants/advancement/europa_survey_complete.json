@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:europa_cryo_ocean",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:europa_thermal_probe"
+    },
+    "title": {
+      "text": "Europa Survey Complete"
+    },
+    "description": {
+      "text": "Deploy probes at three Europa vent labs."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

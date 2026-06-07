@@ -1,0 +1,50 @@
+{
+  "title": "Open the Northern Route",
+  "summary": "Scout the broken highway corridor and prove the Convoy Beacon chain is usable.",
+  "order": 0,
+  "requiredVehicle": "scrap_bike",
+  "minFuel": 20,
+  "logisticsNetworkId": "global",
+  "logisticsLoadoutId": "echoconvoyprotocol:field_supply_convoy",
+  "autoRequestCargo": false,
+  "holomapMarker": {
+    "icon": "convoy_route",
+    "color": "00d8ff",
+    "layer": "echoconvoyprotocol:convoy_routes"
+  },
+  "requiredCargo": [],
+  "rewards": [
+    {"item": "echoconvoyprotocol:fuel_canister", "count": 1},
+    {"item": "echoconvoyprotocol:convoy_repair_kit", "count": 1}
+  ],
+  "threatLevel": 1,
+  "threat": {
+    "label": "Wandering Road Pack",
+    "entity": "minecraft:zombie",
+    "minCount": 1,
+    "maxCount": 2,
+    "chanceOneIn": 15,
+    "cooldownTicks": 1400,
+    "vehicleDamage": 1,
+    "spawnRadius": 8.0,
+    "warning": "%threat% converging on %route%. Keep moving."
+  },
+  "checkpointFactionId": "echoashfallprotocol:radwarden_compact",
+  "minReputation": 0,
+  "checkpoint": {
+    "label": "Survivor Road Check",
+    "warning": "%checkpoint% blocked: Radwarden reputation %reputation%/%required%.",
+    "clearedMessage": "%checkpoint% clears %route%."
+  },
+  "destinationHint": "Northern ruined highway",
+  "requiredSignalMarkers": 1,
+  "minDistanceFromStart": 24,
+  "legs": [
+    {
+      "id": "destination",
+      "title": "Northern Signal",
+      "minDistanceFromStart": 24,
+      "roadsideStructure": "echoconvoyprotocol:roadside/signal_marker"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "structures": [
+    {
+      "structure": "echoashfallprotocol:radwarden_outpost",
+      "weight": 3
+    },
+    {
+      "structure": "echoashfallprotocol:crashbreak_salvage_yard",
+      "weight": 3
+    },
+    {
+      "structure": "echoashfallprotocol:sporebound_sanctum",
+      "weight": 2
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 888889,
+    "spacing": 52,
+    "separation": 20,
+    "spread_type": "triangular"
+  }
+}

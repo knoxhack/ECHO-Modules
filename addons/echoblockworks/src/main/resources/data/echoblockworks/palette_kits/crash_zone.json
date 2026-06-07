@@ -1,0 +1,25 @@
+{
+  "id": "echoblockworks:crash_zone",
+  "display_name": "Crash Zone",
+  "description": "Scorched concrete, exposed rebar, damaged hull, sparks, vents, and debris.",
+  "recommended_usage": "Impact scars, wreck interiors, drop zones, and damaged landing paths.",
+  "theme": "ruined",
+  "family_ids": [
+    "charred_concrete",
+    "rusted_metal",
+    "orbital_hull"
+  ],
+  "featured_blocks": [
+    "echoblockworks:charred_concrete_scorched",
+    "echoblockworks:charred_concrete_rebar",
+    "echoblockworks:rusted_metal_cracked",
+    "echoblockworks:orbital_hull_damaged_hull"
+  ],
+  "accent_blocks": [
+    "echoblockworks:sparking_cable_panel",
+    "echoblockworks:steam_vent",
+    "echoblockworks:rubble_pile",
+    "echoblockworks:scattered_debris"
+  ],
+  "worldgen_site": "echoblockworks:crash_zone_fragment"
+}

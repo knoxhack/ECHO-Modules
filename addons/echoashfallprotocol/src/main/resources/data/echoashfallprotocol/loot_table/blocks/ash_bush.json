@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:ash_bush" }
+      ],
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:plant_fiber", "weight": 35 },
+        { "type": "minecraft:item", "name": "minecraft:stick", "weight": 20 },
+        { "type": "minecraft:empty", "weight": 45 }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": { "type": "minecraft:uniform", "min": 1.0, "max": 2.0 }
+        }
+      ]
+    }
+  ]
+}

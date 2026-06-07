@@ -1,0 +1,22 @@
+<page id="reference-dense-list" title="Reference Dense List" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Dense List" subtitle="Provider rows, empty state, and one scroll owner."/>
+    </slot>
+    <slot name="body">
+      <scroll class="sc-scroll-region" scroll-state="true" state-key="reference.dense.records">
+        <list bind="screencore.reference.records" item="record" selected="{screencore.reference.selectedRecordId}">
+          <list-row class="sc-list-row" action="screencore.reference.select_record" action-value="{record.id}" value="{record.id}">
+            <status-chip class="sc-row-badge" status="{record.status}" value="{record.badge}"/>
+            <column class="sc-row-copy">
+              <title value="{record.title}"/>
+              <text value="{record.summary}"/>
+            </column>
+          </list-row>
+          <empty-state title="No Records" body="No records are available."/>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>
+

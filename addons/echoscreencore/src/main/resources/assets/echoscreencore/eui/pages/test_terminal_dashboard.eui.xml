@@ -1,0 +1,58 @@
+<page id="test-terminal-dashboard" title="Terminal Mock" styles="terminal_mock">
+  <screen-shell>
+    <header title="ECHO Terminal" subtitle="ScreenCore migration rehearsal"/>
+    <grid class="terminal-grid" columns="220px 1fr 280px" gap="16">
+      <panel title="Navigation">
+        <column class="nav-stack">
+          <button action="open_page:echoscreencore:test_terminal_dashboard" variant="primary">Dashboard</button>
+          <button action="open_page:echoscreencore:test_mission_browser">Missions</button>
+          <button action="open_page:echoscreencore:test_index_recipe">Index</button>
+          <button action="open_page:echoscreencore:test_guide_article">Guide</button>
+          <button action="close" variant="ghost">Close</button>
+        </column>
+      </panel>
+      <column gap="16">
+        <hero-card status="warning">
+          <title>Next Step: Restore Water Supply</title>
+          <text>Find a clean water source, inspect filtration hardware, and route it through a stable terminal command path.</text>
+          <row gap="8">
+            <status-chip status="active">ACTIVE</status-chip>
+            <button class="command-button" action="noop" variant="primary">Open Mission</button>
+          </row>
+        </hero-card>
+        <section title="Survival Status">
+          <grid class="status-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Water" value="{player.water}%" status="warning"/>
+            <stat-card label="Shelter" value="Stable" status="ready"/>
+            <stat-card label="Signal" value="Weak" status="warning"/>
+            <stat-card label="Power" value="82%" status="ready"/>
+          </grid>
+        </section>
+        <panel title="Recent Alerts">
+          <list>
+            <list-row class="alert-row" action="noop">
+              <column>
+                <title>Weather front approaching</title>
+                <text>Visibility expected to drop near the eastern ridge.</text>
+              </column>
+              <status-chip status="warning">WARN</status-chip>
+            </list-row>
+            <list-row class="alert-row" action="noop">
+              <column>
+                <title>Recovered cache indexed</title>
+                <text>Three salvage entries are ready for review.</text>
+              </column>
+              <status-chip status="ready">READY</status-chip>
+            </list-row>
+          </list>
+        </panel>
+      </column>
+      <panel title="System Status">
+        <status-chip status="{system.status}">READY</status-chip>
+        <stat-bar label="Layout" value="{metrics.layout}" max="100"/>
+        <stat-bar label="Readability" value="{metrics.readability}" max="100"/>
+        <button action="debug_toggle" variant="ghost">Toggle Debug</button>
+      </panel>
+    </grid>
+  </screen-shell>
+</page>

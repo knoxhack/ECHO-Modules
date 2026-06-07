@@ -1,0 +1,55 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the Station ECHO horror chapter for the ECHO public release stack."
+description='''
+ECHO: Stationfall follows the post-Nexus signal back into Station ECHO.
+Restore power, manage panic pressure, recover crew logs, route through station sections,
+and surface the station state through ECHO Core and the modular ECHO Terminal.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="${neo_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, route, diagnostic, archive, and station state APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Enhances Stationfall with the post-orbital handoff; Stationfall also supports standalone boarding through its own access path."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Mirrors Stationfall route state, route placement, logs, and actions into the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

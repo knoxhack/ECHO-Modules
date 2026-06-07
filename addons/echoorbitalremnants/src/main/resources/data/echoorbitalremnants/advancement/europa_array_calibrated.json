@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:mars_habitats_pressurized",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:europa_probe_array"
+    },
+    "title": {
+      "text": "Europa Array Calibrated"
+    },
+    "description": {
+      "text": "Calibrate three Europa Thermal Arrays."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

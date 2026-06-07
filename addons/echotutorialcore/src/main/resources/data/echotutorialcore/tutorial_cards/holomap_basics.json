@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:holomap_basics",
+  "category": "HOLOMAP",
+  "title": "HoloMap Basics",
+  "summary": "Review routes, markers, and terrain before you move.",
+  "body": [
+    "The ECHO HoloMap shows your current position, discovered routes, and key markers.",
+    "Use it to plan expeditions and avoid hazards.",
+    "Routes update as you discover new signal leads and mission waypoints."
+  ],
+  "steps": [
+    "Open the HoloMap.",
+    "Review active routes and markers.",
+    "Plan your path before leaving shelter."
+  ],
+  "commonMistakes": [
+    "Traveling blind without checking the map.",
+    "Missing route updates after signal discoveries."
+  ],
+  "related": [
+    "echotutorialcore:markers_and_routes"
+  ],
+  "unlockTriggers": [
+    "opened_holomap"
+  ],
+  "defaultUnlocked": false,
+  "priority": 75
+}

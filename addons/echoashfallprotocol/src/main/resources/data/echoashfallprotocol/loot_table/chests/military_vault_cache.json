@@ -1,0 +1,83 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 3
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:energy_cell", "weight": 18 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:machine_casing", "weight": 16 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_advanced", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:dense_alloy_chunk", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:power_node", "weight": 4 }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_helmet", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_chestplate", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_leggings", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_boots", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_blade", "weight": 6 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:alloy_hammer", "weight": 4 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.50
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_weapons", "weight": 15 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_armor", "weight": 15 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_machines", "weight": 20 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_medical", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_energy", "weight": 18 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.35
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 20, "functions": [{ "function": "minecraft:set_count", "count": { "min": 5, "max": 15 }}] },
+        { "type": "minecraft:item", "name": "minecraft:lapis_lazuli", "weight": 15, "functions": [{ "function": "minecraft:set_count", "count": { "min": 3, "max": 8 }}] },
+        { "type": "minecraft:item", "name": "minecraft:gold_ingot", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 5 }}] },
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 18, "functions": [{ "function": "minecraft:set_count", "count": { "min": 5, "max": 10 }}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_biome_bosses", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_gridfall_day", "weight": 6 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.35
+        }
+      ]
+    }
+  ]
+}

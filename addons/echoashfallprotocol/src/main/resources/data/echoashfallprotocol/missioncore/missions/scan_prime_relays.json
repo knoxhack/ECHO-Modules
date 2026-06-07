@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:scan_prime_relays",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 2,
+  "title": "Scan 6 Prime Relays",
+  "briefing": "[ECHO-7] Six Prime Relay signatures are buried in the old network: Reactor, Cryo, Bio, Transit, Industrial, and Scar. Run the relay scan before choosing which three to resolve.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "exploration",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:energy_cell",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:awaken_nexus_core"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "scan_prime_relays",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.scan_prime_relays",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "88",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:scan_prime_relays:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.nexus_state"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:scan_prime_relays/scan_prime_relays",
+      "type": "scan_block",
+      "label": "Scan 6 Prime Relays",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:energy_cell",
+      "target": "echoashfallprotocol:scan_prime_relays",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.scan_prime_relays"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:scan_prime_relays/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scan_prime_relays/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:scan_prime_relays/reward_1",
+      "item": "echoashfallprotocol:schematic_fragment_energy",
+      "count": 1,
+      "label": "Schematic Fragment Energy",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scan_prime_relays/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Relay map indexed. Each site can be stabilized, severed, or overridden before the final choice."
+}

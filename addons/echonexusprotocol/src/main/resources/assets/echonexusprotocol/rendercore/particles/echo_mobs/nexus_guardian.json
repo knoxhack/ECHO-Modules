@@ -1,0 +1,397 @@
+{
+  "emitters": {
+    "damaged_smoke": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "DAMAGED",
+        "OVERHEATED",
+        "FAILED"
+      ],
+      "rate": 0.079,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.08,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.03,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.06,
+        0.12
+      ],
+      "requires_damaged": true,
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.624,
+          0.639,
+          0.627
+        ],
+        "scale": 0.95,
+        "lifetime": 42,
+        "alpha": 0.34,
+        "drag": 0.9,
+        "fade": true,
+        "style": "ash_smoke",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.004,
+        "stretch": 1.2,
+        "flicker": 0.0
+      }
+    },
+    "nexus_rift_ribbons": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "ACTIVE",
+        "SCANNING",
+        "CHARGING",
+        "CORRUPTED"
+      ],
+      "rate": 0.081,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.014,
+        0.0
+      ],
+      "spread": [
+        0.16,
+        0.14,
+        0.16
+      ],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.302,
+          0.922,
+          1.0
+        ],
+        "scale": 1.05,
+        "lifetime": 44,
+        "alpha": 0.48,
+        "drag": 0.9,
+        "fade": true,
+        "style": "rift_ribbon",
+        "fullbright": true,
+        "gravity": -0.004,
+        "spin": 0.012,
+        "stretch": 1.45,
+        "flicker": 0.16
+      }
+    },
+    "nexus_pixel_shards": {
+      "anchor": "back",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "ACTIVE",
+        "SCANNING",
+        "CHARGING",
+        "CORRUPTED"
+      ],
+      "rate": 0.077,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.014,
+        0.0
+      ],
+      "spread": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.706,
+          0.361,
+          1.0
+        ],
+        "scale": 0.46,
+        "lifetime": 26,
+        "alpha": 0.74,
+        "drag": 0.94,
+        "fade": true,
+        "style": "rift_pixel",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.018,
+        "stretch": 1.0,
+        "flicker": 0.3
+      }
+    },
+    "nexus_glyph_motes": {
+      "anchor": "left_hand",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "CHARGING",
+        "CORRUPTED",
+        "ACTIVE"
+      ],
+      "rate": 0.06,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.01,
+        0.0
+      ],
+      "spread": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.302,
+          0.922,
+          1.0
+        ],
+        "scale": 0.5,
+        "lifetime": 26,
+        "alpha": 0.74,
+        "drag": 0.94,
+        "fade": true,
+        "style": "nexus_glyph",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.022,
+        "stretch": 1.0,
+        "flicker": 0.24
+      }
+    },
+    "nexus_portal_accent": {
+      "anchor": "core",
+      "particle": "minecraft:portal",
+      "states": [
+        "ACTIVE",
+        "SCANNING",
+        "CHARGING",
+        "CORRUPTED"
+      ],
+      "rate": 0.045,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.012,
+        0.0
+      ],
+      "spread": [
+        0.18,
+        0.16,
+        0.18
+      ]
+    },
+    "boss_core_glint": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "ACTIVE",
+        "CHARGING",
+        "OVERHEATED",
+        "CORRUPTED"
+      ],
+      "rate": 0.05,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.018,
+        0.0
+      ],
+      "spread": [
+        0.06,
+        0.05,
+        0.05
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.706,
+          0.361,
+          1.0
+        ],
+        "scale": 0.52,
+        "lifetime": 24,
+        "alpha": 0.78,
+        "drag": 0.94,
+        "fade": true,
+        "style": "core_glint",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.02,
+        "stretch": 1.0,
+        "flicker": 0.25
+      }
+    },
+    "boss_hand_energy": {
+      "anchor": "right_hand",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "ACTIVE",
+        "CHARGING",
+        "OVERHEATED",
+        "CORRUPTED"
+      ],
+      "rate": 0.058,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.016,
+        0.0
+      ],
+      "spread": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.302,
+          0.922,
+          1.0
+        ],
+        "scale": 0.48,
+        "lifetime": 26,
+        "alpha": 0.74,
+        "drag": 0.94,
+        "fade": true,
+        "style": "rift_pixel",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.018,
+        "stretch": 1.0,
+        "flicker": 0.25
+      }
+    },
+    "boss_ground_presence": {
+      "anchor": "ground",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "ACTIVE",
+        "CHARGING",
+        "DAMAGED",
+        "CORRUPTED"
+      ],
+      "rate": 0.07,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.01,
+        0.0
+      ],
+      "spread": [
+        0.16,
+        0.05,
+        0.16
+      ],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.302,
+          0.922,
+          1.0
+        ],
+        "scale": 1.02,
+        "lifetime": 44,
+        "alpha": 0.48,
+        "drag": 0.9,
+        "fade": true,
+        "style": "rift_ribbon",
+        "fullbright": true,
+        "gravity": -0.004,
+        "spin": 0.005,
+        "stretch": 1.45,
+        "flicker": 0.0
+      }
+    },
+    "boss_back_wisp": {
+      "anchor": "back",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "ACTIVE",
+        "DAMAGED",
+        "CORRUPTED"
+      ],
+      "rate": 0.07,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.014,
+        0.0
+      ],
+      "spread": [
+        0.16,
+        0.14,
+        0.16
+      ],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.302,
+          0.922,
+          1.0
+        ],
+        "scale": 1.02,
+        "lifetime": 44,
+        "alpha": 0.48,
+        "drag": 0.9,
+        "fade": true,
+        "style": "rift_ribbon",
+        "fullbright": true,
+        "gravity": -0.004,
+        "spin": 0.006,
+        "stretch": 1.3,
+        "flicker": 0.0
+      }
+    }
+  }
+}

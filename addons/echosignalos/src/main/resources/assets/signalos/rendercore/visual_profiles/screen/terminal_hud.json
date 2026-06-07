@@ -1,0 +1,60 @@
+{
+  "schema_version": 12,
+  "base_texture": "signalos:textures/item/terminal.png",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.76,
+    "pulse_speed": 0.52,
+    "bloom_tint": "#FF3FE8FF",
+    "target_scope": "profile"
+  },
+  "anchors": {
+    "screen": {
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "signalos",
+    "display_name": "Screen Terminal Hud",
+    "tags": [
+      "screen"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "terminal",
+    "label": "SIGNALOS TERMINAL",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": true
+  }
+}

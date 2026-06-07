@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "cyan_orbit_sparks": {
+      "anchor": "orbit",
+      "particle": "minecraft:dust",
+      "states": ["ONLINE", "ACTIVE", "SCANNING"],
+      "rate": 0.35,
+      "burst_count": 2,
+      "offset": [0.0, 0.0, 0.0],
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.45, 0.06, 0.45],
+      "options": {
+        "type": "dust",
+        "color": "#FF33DFFF",
+        "scale": 0.8
+      }
+    },
+    "magenta_field_motes": {
+      "anchor": "atmosphere",
+      "particle": "minecraft:dust",
+      "states": ["ACTIVE", "WORKING"],
+      "rate": 0.18,
+      "burst_count": 3,
+      "velocity": [0.0, 0.02, 0.0],
+      "spread": [0.7, 0.35, 0.7],
+      "options": {
+        "type": "dust",
+        "color": "#FFFF3DFF",
+        "scale": 1.1
+      }
+    },
+    "atmosphere_haze": {
+      "anchor": "atmosphere",
+      "particle": "minecraft:end_rod",
+      "states": ["SCANNING", "CHARGING"],
+      "rate": 0.08,
+      "burst_count": 1,
+      "velocity": [0.0, 0.015, 0.0],
+      "spread": [0.35, 0.12, 0.35]
+    }
+  }
+}

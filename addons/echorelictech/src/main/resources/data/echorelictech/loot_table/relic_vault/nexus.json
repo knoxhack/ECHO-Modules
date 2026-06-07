@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": { "min": 1, "max": 2 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:unidentified_relic" },
+        { "type": "minecraft:item", "name": "echorelictech:nexus_stained_capacitor" },
+        { "type": "minecraft:item", "name": "echorelictech:damaged_ai_core" }
+      ]
+    },
+    {
+      "rolls": { "min": 2, "max": 4 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:nexus_warning_packet" },
+        { "type": "minecraft:item", "name": "echorelictech:blackbox_relic_record" },
+        { "type": "minecraft:item", "name": "echorelictech:relic_shard", "functions": [{ "function": "minecraft:set_count", "count": { "min": 4, "max": 8 } }] }
+      ]
+    }
+  ]
+}

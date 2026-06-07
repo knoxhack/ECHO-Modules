@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:refuel_convoy",
+  "display_name": "Refuel Convoy",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "FUEL_INJECTION",
+  "required_tools": ["INJECTOR"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:fuel_cell", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 160,
+  "heat_per_second": 2,
+  "animation": "inject",
+  "effects": ["echoconvoyprotocol:refuel_convoy"],
+  "notes": ["Feeds a fuel cell through a convoy fuel injection workcell."]
+}

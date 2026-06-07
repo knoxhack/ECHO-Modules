@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:welcome_to_ashfall",
+  "category": "START_HERE",
+  "title": "Welcome to Ashfall",
+  "summary": "You survived the crash. Now survive the world.",
+  "body": [
+    "Ashfall is a ruined-Earth expedition survival RPG.",
+    "Use the ECHO Terminal to track missions, vitals, and intel.",
+    "Follow signal leads, build shelter, and stay alive."
+  ],
+  "steps": [
+    "Open the ECHO Terminal.",
+    "Review your current mission.",
+    "Gather basic resources and find water."
+  ],
+  "commonMistakes": [
+    "Ignoring the Terminal.",
+    "Drinking dirty water without purifying it."
+  ],
+  "related": [
+    "echotutorialcore:echo_terminal_basics",
+    "echotutorialcore:first_hour_survival"
+  ],
+  "unlockTriggers": [
+    "entered_world"
+  ],
+  "defaultUnlocked": true,
+  "priority": 100
+}

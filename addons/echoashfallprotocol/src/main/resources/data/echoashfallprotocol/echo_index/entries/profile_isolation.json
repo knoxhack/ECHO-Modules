@@ -1,0 +1,20 @@
+{
+  "id": "echoashfallprotocol:profile_isolation",
+  "category": "echoashfallprotocol:starter",
+  "title": "Profile Isolation",
+  "subtitle": "Ashfall content stays in Ashfall surfaces",
+  "summary": "Ashfall-specific strings, route ids, factions, hazards, and chapter hooks belong in the official profile or echoashfallprotocol namespace.",
+  "body": "Reusable ECHO modules stay standalone. The official Ashfall profile may select shared modules and provide Ashfall-specific starter data, but generic templates must not require echoashfallprotocol or ship Ashfall-only story text.",
+  "links": {
+    "mission": "echoashfallprotocol:ashfall_showcase_flow",
+    "terminalPage": "echoashfallprotocol:ashfall_showcase_dashboard",
+    "wikiArticle": "echowiki:guides/ashfall/integrations",
+    "lensProfile": "echoashfallprotocol:ashfall_showcase_scans",
+    "holomapLayer": "echoashfallprotocol:showcase_flow"
+  },
+  "tags": [
+    "ashfall",
+    "isolation",
+    "profile"
+  ]
+}

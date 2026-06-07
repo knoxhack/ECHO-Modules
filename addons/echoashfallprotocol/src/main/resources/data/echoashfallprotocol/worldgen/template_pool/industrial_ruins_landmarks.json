@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:industrial_ruins_landmarks",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/industrial_factory_shell",
+        "processors": "echoashfallprotocol:industrial_ruins_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

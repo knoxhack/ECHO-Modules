@@ -1,0 +1,43 @@
+{
+  "parent": "echologisticsnetwork:network_online",
+  "display": {
+    "icon": {
+      "id": "echologisticsnetwork:remote_request_tablet"
+    },
+    "title": {
+      "text": "Dispatch Ready"
+    },
+    "description": {
+      "text": "Prepare a Remote Request Tablet or Logistics Terminal to scan and dispatch expedition loadouts."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "remote_request_tablet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:remote_request_tablet"
+          }
+        ]
+      }
+    },
+    "logistics_terminal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:logistics_terminal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "remote_request_tablet",
+      "logistics_terminal"
+    ]
+  ]
+}

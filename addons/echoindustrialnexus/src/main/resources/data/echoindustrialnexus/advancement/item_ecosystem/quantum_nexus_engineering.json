@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:item_ecosystem/reactor_ai_systems",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:industrial_nexus_heart"
+    },
+    "title": {
+      "text": "Quantum Nexus Engineering"
+    },
+    "description": {
+      "text": "Assemble reality-scale technology for the Industrial Nexus endgame."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "quantum_nexus_engineering": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:industrial_nexus_heart"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "quantum_nexus_engineering"
+    ]
+  ]
+}

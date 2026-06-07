@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/scanner_array",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:scanner_matrix"
+    },
+    "title": {
+      "text": "Resolve the Scan Matrix"
+    },
+    "description": {
+      "text": "Complete the Scanner Array featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:scanner_matrix"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

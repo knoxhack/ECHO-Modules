@@ -1,0 +1,11 @@
+<panel class="wiki-search-panel">
+  <row class="wiki-search-control-row" gap="8">
+    <search-box id="wiki-search" value="{wiki.search.query}" placeholder="Search Codex..." on-change="wiki.set_search" clearable="true" debounce-ms="120"/>
+    <button action="wiki.clear_filters" variant="ghost" tooltip="Clear search and category filters.">Clear</button>
+  </row>
+  <row gap="6" class="wiki-filter-row">
+    <repeat source="wiki.filters.categories" item="category">
+      <button class="wiki-filter-chip" action="wiki.set_category" action-value="{category.value}" selected="{category.selected}" value="{category.label}"/>
+    </repeat>
+  </row>
+</panel>

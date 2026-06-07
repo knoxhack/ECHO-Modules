@@ -1,0 +1,64 @@
+<page id="terminal-data-core" title="System Diagnostics" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_system_pages,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <grid class="terminal-dashboard-grid terminal-system-overview-grid" columns="1fr 1fr 1fr 1fr" gap="10" stack-below="900">
+        <section class="terminal-panel" title="SYSTEM OVERVIEW">
+          <stat-card label="Overall Status" value="{terminal.dataCore.serviceState|ONLINE}" status="{terminal.dataCore.statusKey|ready}"/>
+          <stat-card label="Core Integrity" value="{terminal.shell.status.hullPercent|78}%" status="ready"/>
+          <stat-card label="Interface Latency" value="32 ms" status="ready"/>
+          <stat-card label="Sync Status" value="Synced" status="ready"/>
+        </section>
+        <section class="terminal-panel" title="PERFORMANCE MONITOR">
+          <stat-card label="CPU Load" value="34%" status="active"/>
+          <stat-card label="Memory" value="6.2 / 16 GB" status="info"/>
+          <stat-card label="Network I/O" value="128 MB/s" status="ready"/>
+          <stat-card label="Disk I/O" value="92 MB/s" status="ready"/>
+        </section>
+        <section class="terminal-panel" title="NETWORK & SYNC">
+          <stat-card label="Core Network" value="Online" status="ready"/>
+          <stat-card label="Echo Core Link" value="Online" status="ready"/>
+          <stat-card label="Route Sync" value="Synced" status="ready"/>
+          <stat-card label="Dirty Owners" value="{terminal.dataCore.dirtyOwners|0}" status="{terminal.dataCore.dirtyStatusKey|ready}"/>
+        </section>
+        <section class="terminal-panel" title="ROUTE RECORDS">
+          <stat-card label="Registered" value="{terminal.dataCore.registeredKeys|0}" status="ready"/>
+          <stat-card label="Synced" value="{terminal.dataCore.syncedKeys|0}" status="ready"/>
+          <stat-card label="Metadata" value="{terminal.dataCore.metadataOwners|0}" status="ready"/>
+          <button action="terminal.open_tab" action-value="echoterminal:route_records" variant="ghost">View Records</button>
+        </section>
+      </grid>
+
+      <grid class="terminal-dashboard-grid terminal-system-detail-grid" columns="1.5fr 0.8fr 0.8fr" gap="10" stack-below="940">
+        <section class="terminal-panel" title="INSTALLED MODULES">
+          <scroll class="terminal-system-list" scroll-state="true" state-key="terminal.system.modules">
+            <list bind="terminal.navigation.activeTabs" item="tab">
+              <list-row class="terminal-action-row" action="terminal.open_tab" action-value="{tab.id}" value="{tab.id}">
+                <status-chip class="terminal-system-badge-chip" status="{tab.navStatus|ready}" value="{tab.navBadge|OK}"/>
+                <copy-block class="terminal-row-copy" title="{tab.shortTitle}" subtitle="{tab.navSubtitle}"/>
+                <status-chip class="terminal-system-state-chip" status="{tab.rendererStatus|ready}" value="{tab.rendererLabel|READY}"/>
+              </list-row>
+            </list>
+          </scroll>
+        </section>
+        <section class="terminal-panel terminal-danger-panel" title="WARNINGS">
+          <scroll class="terminal-system-list" scroll-state="true" state-key="terminal.system.warnings">
+            <list bind="terminal.overview.commandRows" item="warning">
+              <list-row class="terminal-action-row" action="terminal.open_tab" action-value="{warning.tabId}" value="{warning.tabId}">
+                <copy-block class="terminal-row-copy" title="{warning.title}" subtitle="{warning.summary}"/>
+                <status-chip class="terminal-system-warning-chip" status="{warning.statusKey}" value="{warning.badge}"/>
+              </list-row>
+            </list>
+          </scroll>
+        </section>
+        <section class="terminal-panel" title="STORAGE & SESSION">
+          <stat-card label="Local Storage" value="36%" status="ready"/>
+          <stat-card label="Cache" value="27%" status="ready"/>
+          <stat-card label="Revision" value="{terminal.dataCore.revision|0}" status="info"/>
+          <stat-card label="Session" value="{terminal.shell.status.sessionUptime|03:44:27}" status="ready"/>
+          <button action="terminal.dataCore.refresh" variant="primary">Run Diagnostics</button>
+          <button action="terminal.dataCore.toggle_raw_debug" variant="ghost">Toggle Raw Debug</button>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

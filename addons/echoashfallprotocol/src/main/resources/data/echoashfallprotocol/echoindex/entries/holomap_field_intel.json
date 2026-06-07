@@ -1,0 +1,21 @@
+{
+  "id": "echoashfallprotocol:holomap_field_intel",
+  "category": "ashfall.field_guide",
+  "title": "HoloMap Field Intel",
+  "subtitle": "Markers should tell you risk, route status, and preparation",
+  "summary": "Ashfall HoloMap markers are not collectibles. They are route decisions with risk labels, prep notes, and discovery states.",
+  "body": [
+    "Track one first-month marker at a time. Survivor Cache Signal is a safe resupply lead; toxic and reactor markers are warnings until counterplay exists.",
+    "Use filters to separate safe zones, POI signals, field caches, hazards, and faction markers.",
+    "If a marker lacks a name, icon, risk label, or route reason, treat it as incomplete content and report it in smoke notes."
+  ],
+  "links": {
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes"
+  },
+  "tags": [
+    "ashfall",
+    "holomap",
+    "field_intel"
+  ]
+}

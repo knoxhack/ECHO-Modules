@@ -1,0 +1,60 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/item/spyglass.png",
+  "default_state": "SCANNING",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.78,
+    "pulse_speed": 0.42,
+    "bloom_tint": "#FF8EEBFF",
+    "target_scope": "profile"
+  },
+  "anchors": {
+    "screen": {
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "hud_overlay",
+    "owner_addon": "echolens",
+    "display_name": "Screen Lens Overlay",
+    "tags": [
+      "hud_overlay"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "minimal_screen",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "hologram",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": false
+  }
+}

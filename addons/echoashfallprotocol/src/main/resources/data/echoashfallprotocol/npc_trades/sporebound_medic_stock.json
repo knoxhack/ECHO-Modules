@@ -1,0 +1,51 @@
+{
+  "id": "echoashfallprotocol:sporebound_medic_stock",
+  "groups": [
+    {
+      "id": "antitoxin_pack",
+      "title": "Antitoxin Pack",
+      "offers": [
+        {
+          "id": "tissue_for_bandages",
+          "title": "Sterile Bandage Pair",
+          "input": [
+            { "item": "echoashfallprotocol:mutated_tissue", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:bandage", "count": 2 },
+          "stock": 5,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "mutagen_for_stim",
+          "title": "Field Stim Pack",
+          "input": [
+            { "item": "echoashfallprotocol:mutagen_vial", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:stim_pack", "count": 1 },
+          "stock": 2,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Sanctum medical standing required."
+        },
+        {
+          "id": "trusted_stim_bundle",
+          "title": "Trusted Stim Bundle",
+          "input": [
+            { "item": "echoashfallprotocol:power_cell", "count": 1 },
+            { "item": "echoashfallprotocol:mutated_tissue", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:stim_pack", "count": 2 },
+          "stock": 1,
+          "restockTime": 36000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted Sanctum standing required."
+        }
+      ]
+    }
+  ]
+}

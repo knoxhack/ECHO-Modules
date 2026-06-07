@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/grimoire/systems",
+  "title": "Grimoire Archive: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read archive states, bridge records, forbidden pages, and Terminal presentation rules.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Archive States",
+      "body": "Entries can be visible, locked, active, bridge-generated, scanned, or forbidden. Each state changes how much certainty the player should have.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Bridge Records",
+      "body": "Generated Veilbound, relic, ritual, spell, and curse records let the archive explain optional systems without directly owning them.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Forbidden Pages",
+      "body": "Forbidden entries should warn before they tempt. If a page only says power is cool, it is not doing Grimoire work.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "grimoire",
+    "arcana",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:written_book",
+  "relatedArticles": [
+    "echowiki:guides/grimoire"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1273
+}

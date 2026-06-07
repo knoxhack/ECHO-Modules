@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocinematiccore",
+  "name": "ECHO: CinematicCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "cinematic_core",
+  "entrypoint": "com.knoxhack.echo.cinematiccore.EchoCinematicCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "cinematic.pacing",
+    "cinematic.screenshot_mode",
+    "cinematic.sequences",
+    "cinematic.triggers"
+  ],
+  "consumes": [
+    "assets.registry",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "rendering",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.cinematiccore.EchoCinematicCoreNativeModule",
+    "nativeClasspath": [],
+    "contractsOnly": true,
+    "notes": "Neutral cinematic sequence, trigger, screenshot, and pacing contracts; no direct renderer or camera mutation."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

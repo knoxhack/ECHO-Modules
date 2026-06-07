@@ -1,0 +1,39 @@
+{
+  "schema": "echogalacticcore.port.dungeon_reward_progression.v1",
+  "source": "galacticraft_legacy_dungeon_rewards",
+  "rewardTracks": [
+    {
+      "dungeon": "echogalacticcore:dungeon/moon_dungeon_tier_1",
+      "boss": "echogalacticcore:boss/evolved_skeleton_boss",
+      "key": "tier_1_key",
+      "loot": "echogalacticcore:loot/moon_dungeon_tier_1",
+      "schematicRewards": ["echogalacticcore:schematic/moon_buggy", "echogalacticcore:schematic/tier_2_rocket"],
+      "unlocks": ["echogalacticcore:route/mars"],
+      "legacyLoot": "assets/galacticraftcore/loot_tables/chests/moon_dungeon.json"
+    },
+    {
+      "dungeon": "echogalacticcore:dungeon/mars_dungeon_tier_2",
+      "boss": "echogalacticcore:boss/evolved_creeper_boss",
+      "key": "tier_2_key",
+      "loot": "echogalacticcore:loot/mars_dungeon_tier_2",
+      "schematicRewards": ["echogalacticcore:schematic/cargo_rocket", "echogalacticcore:schematic/tier_3_rocket"],
+      "unlocks": ["echogalacticcore:route/asteroids", "echogalacticcore:route/venus"],
+      "legacyLoot": "assets/galacticraftplanets/loot_tables/chests/mars_dungeon.json"
+    },
+    {
+      "dungeon": "echogalacticcore:dungeon/venus_dungeon_tier_3",
+      "boss": "echogalacticcore:boss/spider_queen",
+      "key": "tier_3_key",
+      "loot": "echogalacticcore:loot/venus_dungeon_tier_3",
+      "schematicRewards": ["echogalacticcore:schematic/astro_miner"],
+      "unlocks": ["echogalacticcore:route/asteroids"],
+      "legacyLoot": "assets/galacticraftplanets/loot_tables/chests/venus_dungeon.json"
+    }
+  ],
+  "replacementPolicy": {
+    "legacyTreasureChestState": "replace TileEntityTreasureChest NBT coupling with ASDK save-data receipts",
+    "legacyPacketSync": "replace PacketSimple dungeon unlock sync with typed network/resource receipts",
+    "legacyInventoryMutation": "replace direct player inventory reward mutation with attachment-backed reward claims"
+  },
+  "typedSurfaces": ["worldgen", "registry", "resources", "save_data", "network", "attachments"]
+}

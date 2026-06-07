@@ -1,0 +1,83 @@
+<page id="npc-interaction" title="ECHO NPC" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,npc_interaction" escape-action="npcore.close">
+  <app-shell class="npcore-shell">
+    <app-header class="npcore-header" title="{npcore.contact.displayName}" subtitle="{npcore.contact.subtitle}" height="62px"/>
+
+    <grid class="npcore-layout" columns="300px 1fr 280px" gap="12" stack-below="900" compact-below="980" dense-below="900">
+      <inspector-panel class="npcore-contact" title="CONTACT DOSSIER">
+        <row class="npcore-contact-signal" gap="8">
+          <status-chip class="npcore-signal-chip" status="{npcore.contact.signalVariant}" value="{npcore.contact.signalLabel}"/>
+          <copy-block class="npcore-signal-copy npcore-copy-compact" title="{npcore.contact.callsign}" subtitle="{npcore.contact.profileLabel}"/>
+        </row>
+        <image class="npcore-portrait" texture="{npcore.contact.portraitTexture}" fit="contain"/>
+        <image class="npcore-frame" texture="{npcore.contact.frameTexture}" fit="contain"/>
+        <row class="npcore-badge-row" gap="10">
+          <image class="npcore-badge" texture="{npcore.contact.badgeTexture}" fit="contain"/>
+          <copy-block class="npcore-contact-copy npcore-copy-block" title="{npcore.contact.displayName}" subtitle="{npcore.contact.roleLine}"/>
+        </row>
+        <stat-bar class="npcore-meter" label="Relationship" value="{npcore.contact.relationshipValue}" max="100" status="{npcore.contact.relationshipVariant}"/>
+        <stat-bar class="npcore-meter" label="Bridge Sync" value="{npcore.status.bridgeValue}" max="100" status="{npcore.status.bridgeVariant}"/>
+        <column class="npcore-dossier-lines" gap="5">
+          <copy-block class="npcore-dossier-copy npcore-copy-compact" title="Faction" subtitle="{npcore.contact.factionLabel}"/>
+          <copy-block class="npcore-dossier-copy npcore-copy-compact" title="Profile" subtitle="{npcore.contact.profileLabel}"/>
+          <copy-block class="npcore-dossier-copy npcore-copy-compact" title="Theme" subtitle="{npcore.contact.themeLabel}"/>
+        </column>
+      </inspector-panel>
+
+      <column class="npcore-main" gap="10">
+        <panel class="npcore-active-panel" title="{npcore.active.title}">
+          <row class="npcore-active-heading" gap="10">
+            <status-chip class="npcore-active-chip" status="{npcore.active.status}" value="{npcore.active.statusLabel}"/>
+            <copy-block class="npcore-active-copy npcore-copy-block npcore-copy-wrap" title="{npcore.active.subtitle}" subtitle="{npcore.active.body}"/>
+          </row>
+          <scroll class="npcore-row-scroll" state-key="npcore.active.rows" scroll-state="true">
+            <list class="npcore-action-list" bind="npcore.active.rows" item="row">
+              <list-row class="npcore-action-row" action="{row.action}" action-value="{row.value}" disabled="{row.disabled}" disabled-reason="{row.disabledReason}" help="{row.tooltip}">
+                <status-chip class="npcore-action-chip" status="{row.status}" value="{row.statusLabel}"/>
+                <copy-block class="npcore-action-copy npcore-row-copy" title="{row.title}" subtitle="{row.meta} / {row.detail}"/>
+              </list-row>
+              <empty-state title="{npcore.active.emptyTitle}" body="{npcore.active.emptyBody}"/>
+            </list>
+          </scroll>
+        </panel>
+      </column>
+
+      <column class="npcore-rail" gap="10">
+        <panel class="npcore-tab-panel" title="CHANNEL RAIL">
+          <list class="npcore-tab-list" bind="npcore.tabs" item="tab" selected="{npcore.activeTab}">
+            <list-row class="npcore-tab-row" action="npcore.tab" action-value="{tab.id}" value="{tab.id}" selected="{tab.selected}" help="{tab.tooltip}">
+              <status-chip class="npcore-channel-chip" status="{tab.variant}" value="{tab.chip}"/>
+              <copy-block class="npcore-tab-copy npcore-copy-compact" title="{tab.label}" subtitle="{tab.countLabel}"/>
+            </list-row>
+            <empty-state title="No channels" body="NPCore channel rail is unavailable."/>
+          </list>
+        </panel>
+
+        <panel class="npcore-status-panel" title="LINK STATUS">
+          <row class="npcore-status-head" gap="8">
+            <status-chip class="npcore-link-chip" status="{npcore.status.level}" value="{npcore.status.label}"/>
+            <copy-block class="npcore-status-copy npcore-copy-compact" title="Server Link" subtitle="{npcore.status.text}"/>
+          </row>
+          <scroll class="npcore-bridge-scroll" state-key="npcore.bridges" scroll-state="true">
+            <list class="npcore-bridge-list" bind="npcore.bridges" item="bridge">
+              <list-row class="npcore-bridge-row" help="{bridge.tooltip}">
+                <status-chip class="npcore-bridge-chip" status="{bridge.status}" value="{bridge.label}"/>
+                <copy-block class="npcore-bridge-copy npcore-copy-compact" title="{bridge.name}" subtitle="{bridge.tooltip}"/>
+              </list-row>
+              <empty-state title="No bridges" body="Optional bridge diagnostics are unavailable."/>
+            </list>
+          </scroll>
+        </panel>
+      </column>
+    </grid>
+
+    <app-footer class="npcore-footer" height="38px">
+      <row class="npcore-footer-row" gap="10">
+        <status-chip class="npcore-footer-chip" status="{npcore.status.level}" value="NPCORE"/>
+        <copy-block class="npcore-footer-copy npcore-copy-compact" title="{npcore.status.footer}" subtitle="{npcore.contact.callsign}"/>
+        <spacer width="20px"/>
+        <button action="npcore.refresh" variant="ghost" width="104px">Refresh</button>
+        <button action="npcore.close" variant="ghost" width="88px">Close</button>
+      </row>
+    </app-footer>
+  </app-shell>
+</page>

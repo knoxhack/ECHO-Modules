@@ -1,0 +1,21 @@
+{
+  "id": "echoashfallprotocol:route_records",
+  "category": "ashfall.terminal",
+  "title": "Route Records",
+  "subtitle": "Terminal memory for what the field taught you",
+  "summary": "Route Records connect Lens discoveries, HoloMap markers, mission state, and the next useful What Now prompt.",
+  "body": [
+    "After each route, return to shelter and check Terminal Route Records. This is where the next route should become clearer.",
+    "A route record should include the signal source, marker, risk label, reward reason, and whether the route is safe, optional, or future.",
+    "If a route record displays null text or a broken entry, capture it in smoke notes."
+  ],
+  "links": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "mission": "echoashfallprotocol:ashfall_first_month_routes"
+  },
+  "tags": [
+    "ashfall",
+    "terminal",
+    "routes"
+  ]
+}

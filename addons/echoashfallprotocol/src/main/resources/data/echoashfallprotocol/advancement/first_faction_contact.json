@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:schematic_fragment_weapons"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.first_faction_contact.title",
+      "fallback": "First Contact"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.first_faction_contact.desc",
+      "fallback": "Discover your first faction hub."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "discovered_faction_hub": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_weapons"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["discovered_faction_hub"]
+  ]
+}

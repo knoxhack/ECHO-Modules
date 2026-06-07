@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:awaken_nexus_core",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 1,
+  "title": "Awaken the Nexus Core",
+  "briefing": "[ECHO-7] The Core is not a door. It is a sleeping command system. Wake it from range and let the instability meter start before we touch the relay network.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:find_nexus_core"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "awaken_nexus_core",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.awaken_nexus_core",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "87",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:awaken_nexus_core:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.nexus_state"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:awaken_nexus_core/awaken_nexus_core",
+      "type": "custom",
+      "label": "Awaken the Nexus Core",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:awaken_nexus_core",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.awaken_nexus_core"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:awaken_nexus_core/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:awaken_nexus_core/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:awaken_nexus_core/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:awaken_nexus_core/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Core wake confirmed. Instability is now a live endgame pressure source."
+}

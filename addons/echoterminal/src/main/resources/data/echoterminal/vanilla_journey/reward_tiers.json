@@ -1,0 +1,63 @@
+{
+  "tiers": {
+    "root": {
+      "label": "Guide",
+      "claimable": false,
+      "rewards": []
+    },
+    "task": {
+      "label": "Task Cache",
+      "claimable": true,
+      "rewards": [
+        {
+          "item": "minecraft:bread",
+          "count": 4
+        },
+        {
+          "item": "minecraft:torch",
+          "count": 12
+        },
+        {
+          "item": "minecraft:experience_bottle",
+          "count": 2
+        }
+      ]
+    },
+    "goal": {
+      "label": "Goal Cache",
+      "claimable": true,
+      "rewards": [
+        {
+          "item": "minecraft:iron_ingot",
+          "count": 6
+        },
+        {
+          "item": "minecraft:emerald",
+          "count": 3
+        },
+        {
+          "item": "minecraft:experience_bottle",
+          "count": 8
+        }
+      ]
+    },
+    "challenge": {
+      "label": "Challenge Cache",
+      "claimable": true,
+      "rewards": [
+        {
+          "item": "minecraft:diamond",
+          "count": 1
+        },
+        {
+          "item": "minecraft:golden_apple",
+          "count": 2
+        },
+        {
+          "item": "minecraft:experience_bottle",
+          "count": 16
+        }
+      ]
+    }
+  }
+}

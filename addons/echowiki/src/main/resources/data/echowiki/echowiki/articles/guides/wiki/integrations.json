@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/wiki/integrations",
+  "title": "Wiki: Integrations",
+  "category": "Guide Books",
+  "summary": "Link manuals with terminal tabs, index records, tutorial progress, and optional styling.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Optional visual styling, Terminal links, Index records, and TutorialCore progress make the Codex more useful when those addons are loaded.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Wiki with ScreenCore pages, optional RenderCore styling, Index links, Terminal tabs, and TutorialCore progress hooks without requiring those addons.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If an integration is absent, the article should still stand on its own with a clear summary, notes, and related links.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "wiki",
+    "codex",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:written_book",
+  "relatedArticles": [
+    "echowiki:guides/wiki"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1225
+}

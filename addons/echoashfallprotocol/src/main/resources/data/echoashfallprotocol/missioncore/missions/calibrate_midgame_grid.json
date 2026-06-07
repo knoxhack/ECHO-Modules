@@ -1,0 +1,174 @@
+{
+  "id": "echoashfallprotocol:calibrate_midgame_grid",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 8,
+  "title": "Calibrate Midgame Grid",
+  "briefing": "[ECHO-7] Final check before guardian routes: Thermal Array, buffered storage, reinforced cable, Energy Meter, and Factory Controller must all be present near the workshop.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:thermal_array",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:stockpile_route_supplies"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "calibrate_midgame_grid",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.calibrate_midgame_grid",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "8",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "67",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:calibrate_midgame_grid:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/thermal_array",
+      "type": "place_block",
+      "label": "Thermal Array",
+      "detail": "Place 1 Thermal Array for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:thermal_array",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:thermal_array"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/factory_controller",
+      "type": "place_block",
+      "label": "Factory Controller",
+      "detail": "Place 1 Factory Controller for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:factory_controller",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:factory_controller"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/energy_meter",
+      "type": "place_block",
+      "label": "Energy Meter",
+      "detail": "Place 1 Energy Meter for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:energy_meter",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:energy_meter"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/reinforced_power_cable",
+      "type": "place_block",
+      "label": "Reinforced Power Cable",
+      "detail": "Place 1 Reinforced Power Cable for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:reinforced_power_cable",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:reinforced_power_cable"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/battery_bank",
+      "type": "place_block",
+      "label": "Battery Bank / Nexus Capacitor",
+      "detail": "Place 1 Battery Bank for the Ashfall route.",
+      "icon": "echoashfallprotocol:thermal_array",
+      "target": "echoashfallprotocol:battery_bank",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:battery_bank"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:thermal_array",
+      "count": 1,
+      "label": "Thermal Array"
+    },
+    {
+      "block": "echoashfallprotocol:factory_controller",
+      "count": 1,
+      "label": "Factory Controller"
+    },
+    {
+      "block": "echoashfallprotocol:energy_meter",
+      "count": 1,
+      "label": "Energy Meter"
+    },
+    {
+      "block": "echoashfallprotocol:reinforced_power_cable",
+      "count": 1,
+      "label": "Reinforced Power Cable"
+    },
+    {
+      "block": "echoashfallprotocol:battery_bank",
+      "count": 1,
+      "label": "Battery Bank / Nexus Capacitor"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/reward_0",
+      "item": "echoashfallprotocol:high_voltage_power_cable",
+      "count": 4,
+      "label": "High Voltage Power Cable",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:calibrate_midgame_grid/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:calibrate_midgame_grid/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:calibrate_midgame_grid/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Midgame grid calibrated. Guardian-route infrastructure is now stable enough for stationary scans and buried-node operations."
+}

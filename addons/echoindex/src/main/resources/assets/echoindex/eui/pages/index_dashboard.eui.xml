@@ -1,0 +1,50 @@
+<page id="index_dashboard" title="ECHO Index Dashboard" styles="index_cyberglass,index_components">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Overview"/>
+    <param name="inspectorTitle" value="Status"/>
+    <slot name="content">
+      <hero-card>
+        <title value="{index.dashboard.title}"/>
+        <text value="{index.dashboard.subtitle}"/>
+        <text class="index-dashboard-hint" value="{index.dashboard.browseHint}"/>
+        <row gap="10">
+          <command-card action="index.open_page" action-page="echoindex:index_items" help="Browse items grouped by mod and category."><title>Items</title><text value="{index.dashboard.visibleItemCount} visible / {index.dashboard.itemCount} indexed"/></command-card>
+          <command-card action="index.open_page" action-page="echoindex:index_recipes" help="Browse recipes, machine processes, and provider source cards."><title>Recipes</title><text value="{index.dashboard.visibleRecipeCount} visible / {index.dashboard.recipeCount} indexed"/></command-card>
+          <command-card action="index.open_page" action-page="echoindex:index_machines" help="Browse workstations and process providers."><title>Machines</title><text value="{index.dashboard.visibleMachineCount} visible / {index.dashboard.machineCount} indexed"/></command-card>
+        </row>
+      </hero-card>
+      <component src="echoindex:index_search_filter_bar"/>
+      <grid columns="1fr 1fr" gap="12">
+        <panel title="Recently Viewed">
+          <text class="index-dashboard-hint" value="{index.dashboard.historyHint}"/>
+          <list bind="index.history.recent" item="recent">
+            <list-row action="index.open_related_item" action-value="{recent.id}" help="Open this recent Index record.">
+              <row gap="8"><item-icon item="{recent.icon}"/><column class="index-item-copy"><title class="index-item-title" value="{recent.label}"/><text class="index-item-subtitle" value="{recent.kind} / {recent.id}"/></column></row>
+            </list-row>
+            <empty-state title="No history yet" body="Open an item, recipe, or machine to seed your local Index history."/>
+          </list>
+        </panel>
+        <panel title="Favorites">
+          <text class="index-dashboard-hint" value="{index.dashboard.favoritesHint}"/>
+          <list bind="index.favorites.items" item="favorite">
+            <component src="echoindex:index_item_row">
+              <param name="id" value="{favorite.id}"/>
+              <param name="icon" value="{favorite.icon}"/>
+              <param name="title" value="{favorite.displayName}"/>
+              <param name="subtitle" value="{favorite.modName}"/>
+              <param name="badge" value="FAV"/>
+            </component>
+            <empty-state title="No saved items" body="Favorite items or bookmark recipes and machines to build a quick-access list."/>
+          </list>
+        </panel>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <stat-card label="Items" value="{index.dashboard.itemCount}"/>
+      <stat-card label="Recipes" value="{index.dashboard.recipeCount}"/>
+      <stat-card label="Machines" value="{index.dashboard.machineCount}"/>
+      <text class="index-dashboard-hint" value="{index.dashboard.providerStatus}"/>
+      <text class="index-dashboard-hint" value="{index.dashboard.providerHealthHint}"/>
+    </slot>
+  </component>
+</page>

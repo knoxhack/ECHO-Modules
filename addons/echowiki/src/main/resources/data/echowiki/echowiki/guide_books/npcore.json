@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:npcore",
+  "moduleId": "echonpcore",
+  "requiredModId": "echonpcore",
+  "title": "NPCore Field Manual",
+  "subtitle": "Profiles, dialogue, trades, services, and replacement contacts",
+  "summary": "Read NPC contacts, dialogue, trades, services, and fallback screens.",
+  "icon": "minecraft:villager_spawn_egg",
+  "accent": "#FF66E8FF",
+  "collectionId": "echowiki:guides/npcore",
+  "homeArticleId": "echowiki:guides/npcore",
+  "chapterArticleIds": [
+    "echowiki:guides/npcore",
+    "echowiki:guides/npcore/first_steps",
+    "echowiki:guides/npcore/core_loop",
+    "echowiki:guides/npcore/systems",
+    "echowiki:guides/npcore/progression",
+    "echowiki:guides/npcore/integrations",
+    "echowiki:guides/npcore/troubleshooting"
+  ],
+  "tags": [
+    "npc",
+    "dialogue",
+    "trades",
+    "services"
+  ],
+  "sortOrder": 95
+}

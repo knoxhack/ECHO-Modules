@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/industrial_assembly_line",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:reinforced_machine_frame"
+    },
+    "title": {
+      "text": "Forge the Machine Frame"
+    },
+    "description": {
+      "text": "Complete the Assembly Line featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:reinforced_machine_frame"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

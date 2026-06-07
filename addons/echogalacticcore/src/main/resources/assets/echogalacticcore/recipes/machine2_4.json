@@ -1,0 +1,37 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine2",
+                   "data":  4
+               },
+    "pattern":  [
+                    "WXW",
+                    "UYU",
+                    "VZV"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "U":  {
+                          "item":  "minecraft:stone_button"
+                      },
+                "V":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_aluminum"
+                      },
+                "X":  {
+                          "item":  "minecraft:lever"
+                      },
+                "Y":  {
+                          "item":  "minecraft:furnace"
+                      },
+                "Z":  {
+                          "item":  "minecraft:redstone_torch"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "story",
+  "name": "Story Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore",
+    "echoterminal",
+    "echoindex",
+    "echomissioncore",
+    "signalos",
+    "echosoundcore",
+    "echoholomap"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [
+    "echoterminal",
+    "echoindex",
+    "echomissioncore",
+    "signalos",
+    "echosoundcore",
+    "echoholomap"
+  ],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "story"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Story",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "story"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

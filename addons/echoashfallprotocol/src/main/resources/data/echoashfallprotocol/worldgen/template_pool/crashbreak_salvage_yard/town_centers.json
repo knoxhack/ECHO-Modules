@@ -1,0 +1,24 @@
+{
+  "name": "echoashfallprotocol:crashbreak_salvage_yard/town_centers",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/town_centers/plains_fountain_01",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/crashbreak_salvage/market_plaza",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

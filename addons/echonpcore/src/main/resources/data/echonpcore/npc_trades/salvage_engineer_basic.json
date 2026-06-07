@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:salvage_engineer_basic",
+  "groups": [
+    {
+      "id": "tools",
+      "title": "Tool Parts",
+      "offers": [
+        {
+          "id": "stick_for_nuggets",
+          "title": "Fasteners",
+          "input": [
+            { "item": "minecraft:stick", "count": 4 }
+          ],
+          "output": { "item": "minecraft:iron_nugget", "count": 2 },
+          "stock": 8,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

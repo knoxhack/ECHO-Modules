@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "nexus_glyph_glints": {
+      "anchor": "crystal_top",
+      "particle": "echorendercore:soft_mote",
+      "states": ["ACTIVE"],
+      "rate": 0.038,
+      "burst_count": 1,
+      "velocity": [0.0, 0.014, 0.0],
+      "spread": [0.26, 0.08, 0.26],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": "#55F2FF",
+        "scale": 0.48,
+        "lifetime": 24,
+        "alpha": 0.86,
+        "style": "nexus_glyph",
+        "fullbright": true,
+        "flicker": 0.24
+      }
+    },
+    "nexus_stream": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": ["ACTIVE"],
+      "rate": 0.016,
+      "burst_count": 1,
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.3, 0.12, 0.3],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": "#A665FF",
+        "scale": 0.72,
+        "lifetime": 40,
+        "alpha": 0.44,
+        "style": "nexus_stream",
+        "fullbright": true,
+        "flicker": 0.16
+      }
+    }
+  }
+}

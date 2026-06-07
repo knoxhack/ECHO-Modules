@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:slime_ball", "weight": 18, "functions": [{"function": "minecraft:set_count", "count": {"min": 1, "max": 4}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:toxic_puddle", "weight": 15, "functions": [{"function": "minecraft:set_count", "count": {"min": 2, "max": 5}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:dirty_water_bottle", "weight": 18, "functions": [{"function": "minecraft:set_count", "count": {"min": 1, "max": 3}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutagen_vial", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_basic", "weight": 20 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:slime_ball", "weight": 15, "functions": [{"function": "minecraft:set_count", "count": {"min": 2, "max": 6}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_metal", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:iron_shard", "weight": 16, "functions": [{"function": "minecraft:set_count", "count": {"min": 1, "max": 4}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:coal_dust", "weight": 12, "functions": [{"function": "minecraft:set_count", "count": {"min": 1, "max": 3}}] }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 20, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] },
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:clay_ball", "weight": 18, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 6 }}] },
+        { "type": "minecraft:item", "name": "minecraft:mud", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 3 }}] },
+        { "type": "minecraft:item", "name": "minecraft:vine", "weight": 10, "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 3 }}] },
+        { "type": "minecraft:item", "name": "minecraft:lily_pad", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:moss_block", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:brown_mushroom", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:red_mushroom", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:mangrove_propagule", "weight": 4 },
+        { "type": "minecraft:item", "name": "minecraft:mangrove_roots", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:muddy_mangrove_roots", "weight": 5 }
+      ]
+    }
+  ]
+}

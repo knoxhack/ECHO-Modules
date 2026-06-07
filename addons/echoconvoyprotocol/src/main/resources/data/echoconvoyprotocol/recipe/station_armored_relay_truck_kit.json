@@ -1,0 +1,15 @@
+{
+  "type": "echoconvoyprotocol:convoy_station_processing",
+  "station": "vehicle_workbench",
+  "ingredients": [
+    {"ingredient": "echoconvoyprotocol:vehicle_frame"},
+    {"ingredient": "echoconvoyprotocol:armored_tire", "count": 4},
+    {"ingredient": "echoconvoyprotocol:engine_core"},
+    {"ingredient": "echoconvoyprotocol:radiation_shielding_plate"},
+    {"ingredient": "echoconvoyprotocol:battery_cell"}
+  ],
+  "result": "echoconvoyprotocol:armored_relay_truck_kit",
+  "duration": 300,
+  "energyCost": 55,
+  "count": 1
+}

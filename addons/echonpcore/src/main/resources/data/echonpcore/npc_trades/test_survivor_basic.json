@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:test_survivor_basic",
+  "groups": [
+    {
+      "id": "survival",
+      "title": "Survival Supplies",
+      "offers": [
+        {
+          "id": "charcoal_for_filter_patch",
+          "title": "Filter Patch",
+          "input": [
+            { "item": "minecraft:charcoal", "count": 4 }
+          ],
+          "output": { "item": "minecraft:paper", "count": 1 },
+          "stock": 3,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

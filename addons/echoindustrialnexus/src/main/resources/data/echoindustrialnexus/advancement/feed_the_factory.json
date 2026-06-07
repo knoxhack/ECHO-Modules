@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:factory_chain",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:substrate_grinder"
+    },
+    "title": {
+      "text": "Feed the Factory"
+    },
+    "description": {
+      "text": "Build a Substrate Grinder and turn wasteland ground into industrial feedstock."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "substrate_grinder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:substrate_grinder"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "substrate_grinder"
+    ]
+  ]
+}

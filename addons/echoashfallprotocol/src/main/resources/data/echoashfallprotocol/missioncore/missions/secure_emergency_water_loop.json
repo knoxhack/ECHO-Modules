@@ -1,0 +1,125 @@
+{
+  "id": "echoashfallprotocol:secure_emergency_water_loop",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 3,
+  "title": "Prove Emergency Water Loop",
+  "briefing": "[ECHO-7] Starter water will run dry. Collect unsafe water, then emergency-filter one bottle with ash and a Basic Filter so the pod route has a manual fallback before machines exist.",
+  "fieldGuide": "Mirrors the canonical NeoForge Ashfall phase-0 water loop that replaces the older dirty-water and filter-water alias missions.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:dirty_water_bottle",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:drink_clean_water"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "secure_emergency_water_loop",
+    "nativeGameplayHook": "ashfall.first_route.secure_emergency_water_loop",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "replacesDeprecatedNeoForgeMissions": "get_dirty_water,emergency_filter_water",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "3",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "3",
+    "deprecatedAliases": "get_dirty_water,emergency_filter_water",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:secure_emergency_water_loop:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.location_visited"
+    ]
+  },
+  "deprecatedAliases": [
+    "echoashfallprotocol:get_dirty_water",
+    "echoashfallprotocol:emergency_filter_water"
+  ],
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:secure_emergency_water_loop/dirty_water_collected",
+      "type": "enter_region",
+      "label": "Collect Dirty Water",
+      "detail": "Fill a glass bottle from water or a hazardous puddle and log the dirty-water special marker.",
+      "icon": "echoashfallprotocol:dirty_water_bottle",
+      "target": "water:dirty_collected",
+      "required": 1,
+      "criteria": {
+        "location_type": "special",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:secure_emergency_water_loop/emergency_filtration_proven",
+      "type": "enter_region",
+      "label": "Emergency-filter Clean Water",
+      "detail": "Craft Clean Water from Dirty Water, Ash, and a Basic Filter to prove the manual fallback loop.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "water:emergency_filtered",
+      "required": 1,
+      "criteria": {
+        "location_type": "special",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "special",
+      "locationId": "water:dirty_collected",
+      "count": 1,
+      "label": "Dirty Water Collected"
+    },
+    {
+      "locationType": "special",
+      "locationId": "water:emergency_filtered",
+      "count": 1,
+      "label": "Emergency Filtration Proven"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:secure_emergency_water_loop/reward_ash",
+      "item": "echoashfallprotocol:ash",
+      "count": 8,
+      "label": "Ash",
+      "detail": "Emergency purification ingredient."
+    },
+    {
+      "id": "echoashfallprotocol:secure_emergency_water_loop/reward_bottles",
+      "item": "minecraft:glass_bottle",
+      "count": 2,
+      "label": "Glass Bottles",
+      "detail": "Containers for repeat water collection."
+    },
+    {
+      "id": "echoashfallprotocol:secure_emergency_water_loop/reward_filter",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 1,
+      "label": "Basic Filter Cartridge",
+      "detail": "Manual filtration buffer before powered purification."
+    }
+  ],
+  "completionText": "[ECHO-7] Emergency water loop proven. It is slow and filter-hungry, but it keeps you alive long enough to build powered purification."
+}

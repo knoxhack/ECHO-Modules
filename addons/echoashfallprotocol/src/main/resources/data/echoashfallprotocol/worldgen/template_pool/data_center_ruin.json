@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:data_center_ruin",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/data_center_ruin",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

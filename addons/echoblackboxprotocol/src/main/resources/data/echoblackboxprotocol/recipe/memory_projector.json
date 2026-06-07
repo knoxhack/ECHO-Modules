@@ -1,0 +1,19 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "SGS",
+                    "RER",
+                    "SGS"
+                ],
+    "key":  {
+                "S":  "echoblackboxprotocol:signal_glass",
+                "G":  "minecraft:glowstone_dust",
+                "R":  "minecraft:redstone",
+                "E":  "echoblackboxprotocol:echo_memory_record"
+            },
+    "result":  {
+                   "id":  "echoblackboxprotocol:memory_projector",
+                   "count":  1
+               }
+}

@@ -1,0 +1,96 @@
+{
+  "name": "echoashfallprotocol:ruined_plains",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/nomad_camp",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/windmill_ruin",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/impact_crater",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/supply_drop",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/scavenger_camp",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/relay_tower",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/trader_post",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/abandoned_homestead",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_plains/settlement_ruins",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/walled_encampment",
+        "processors": "echoashfallprotocol:ruined_plains_loot"
+      }
+    }
+  ]
+}

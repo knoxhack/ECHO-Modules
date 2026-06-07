@@ -1,0 +1,111 @@
+{
+  "id": "echoashfallprotocol:build_hand_recycler",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 2,
+  "title": "Build a Hand Recycler",
+  "briefing": "[ECHO-7] Raw salvage is inefficient. Use the authenticated casing, 4 Scrap Metal, and 4 Scrap Wire to build a Hand Recycler at your crash outpost.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall machine-infrastructure bridge that turns the schematic-authenticated casing into the first placed machine block.",
+  "category": "crafting",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:hand_recycler",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:find_schematic_fragment"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_hand_recycler",
+    "nativeGameplayHook": "ashfall.first_route.build_hand_recycler",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.hand_recycler.online",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "11",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_hand_recycler:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_hand_recycler/place_hand_recycler",
+      "type": "place_block",
+      "label": "Build a Hand Recycler",
+      "detail": "Place one Hand Recycler at the crash outpost using the authenticated casing plus early scrap.",
+      "icon": "echoashfallprotocol:hand_recycler",
+      "target": "echoashfallprotocol:hand_recycler",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:hand_recycler",
+        "required_blocks": "echoashfallprotocol:hand_recycler=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 4,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire"
+    },
+    {
+      "block": "echoashfallprotocol:hand_recycler",
+      "count": 1,
+      "label": "Placed Hand Recycler"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_hand_recycler/reward_scrap_metal",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 12,
+      "label": "Scrap Metal",
+      "detail": "Starter salvage for the first recycler loop."
+    },
+    {
+      "id": "echoashfallprotocol:build_hand_recycler/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 6,
+      "label": "Scrap Wire",
+      "detail": "Starter wiring for early machine infrastructure."
+    }
+  ],
+  "completionText": "[ECHO-7] Recycling unit online. Starter battery reserve issued; use it to turn scrap into the first casing."
+}

@@ -1,0 +1,95 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.05,
+  "downfall": 0.8,
+  "effects": {
+    "fog_color": 12179946,
+    "foliage_color": 12641258,
+    "grass_color": 14085876,
+    "sky_color": 9287896,
+    "water_color": 5941192,
+    "water_fog_color": 3304582,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:snowflake"
+      },
+      "probability": 0.02
+    },
+    "ambient_loop_sound": "minecraft:ambient.basalt_deltas.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_chance": 0.006
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:cryogenic_ruins_rubble_scatter",
+      "echoashfallprotocol:cryogenic_fractured_stone_scatter",
+      "echoashfallprotocol:cryogenic_ruins_concrete_chunk_scatter",
+      "echoashfallprotocol:cryogenic_ruins_concrete_rubble_piles",
+      "echoashfallprotocol:cryogenic_ruins_bone_scatter",
+      "echoashfallprotocol:cryogenic_ruins_scattered_bones_dense",
+      "echoashfallprotocol:cryogenic_ruins_fallout_dust_patches",
+      "echoashfallprotocol:cryogenic_ruins_contaminated_soil_patches",
+      "echoashfallprotocol:cryogenic_ruins_deep_ash_surface",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:salvage_concrete_pile",
+      "echoashfallprotocol:crystal_energy_deposit",
+      "echoashfallprotocol:cryogenic_ruins_permafrost"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:cryogenic_ruins_dead_trees_snapped",
+      "echoashfallprotocol:cryogenic_ruins_dead_trees_stumps",
+      "echoashfallprotocol:cryogenic_ruins_ash_bushes",
+      "echoashfallprotocol:cryogenic_ruins_burnt_ferns",
+      "echoashfallprotocol:burnt_grass_patches",
+      "echoashfallprotocol:cryogenic_ruins_blue_ice_crystals",
+      "echoashfallprotocol:cryogenic_ruins_frozen_conduits",
+      "echoashfallprotocol:cryogenic_ruins_dead_trees_fallen",
+      "echoashfallprotocol:cryogenic_ruins_dead_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "minecraft:polar_bear",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:stray",
+        "weight": 28,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:wild_dog",
+        "weight": 9,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": -0.8
+}

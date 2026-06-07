@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocombatcore",
+  "name": "ECHO: CombatCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "combat_core",
+  "entrypoint": "com.knoxhack.echo.combatcore.EchoCombatCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "combat.armor_profiles",
+    "combat.damage",
+    "combat.telemetry",
+    "combat.weapon_traits"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "items",
+        "player"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.combatcore.EchoCombatCoreNativeModule",
+    "nativeClasspath": [],
+    "contractsOnly": true,
+    "notes": "Neutral damage, armor, weapon trait, telemetry, hit feedback, shield, enemy-scaling, and boss phase contracts."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

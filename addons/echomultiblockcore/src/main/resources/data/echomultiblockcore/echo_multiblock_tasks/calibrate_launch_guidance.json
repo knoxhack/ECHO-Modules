@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:calibrate_launch_guidance",
+  "display_name": "Calibrate Launch Guidance Core",
+  "category": "launch",
+  "allowed_multiblocks": ["echomultiblockcore:orbital_launch_platform"],
+  "required_workcell": "LAUNCH",
+  "required_tools": ["CALIBRATOR", "STABILIZER"],
+  "duration_ticks": 260,
+  "heat_per_second": 3,
+  "animation": "calibrate",
+  "animation_profile": "echomultiblockcore:launch_guidance",
+  "inputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 },
+    { "item": "echomultiblockcore:power_bus", "count": 1 },
+    { "item": "echomultiblockcore:calibrated_bus_module", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:launch_guidance_core", "count": 1 }
+  ],
+  "notes": ["Prepares orbital launch guidance without requiring Orbital Remnants."]
+}

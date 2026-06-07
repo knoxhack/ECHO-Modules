@@ -1,0 +1,104 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.1,
+  "downfall": 0.1,
+  "effects": {
+    "fog_color": 9069905,
+    "foliage_color": 7031596,
+    "grass_color": 5916210,
+    "sky_color": 6179390,
+    "water_color": 4075560,
+    "water_fog_color": 2761759,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.05
+    },
+    "ambient_loop_sound": "minecraft:ambient.basalt_deltas.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_chance": 0.015
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:crash_zone_wasteland_bone_scatter",
+      "echoashfallprotocol:crash_zone_wasteland_fallout_dust_patches",
+      "echoashfallprotocol:crash_zone_wasteland_contaminated_soil_patches",
+      "echoashfallprotocol:crash_zone_wasteland_deep_ash_patch",
+      "echoashfallprotocol:crash_zone_wasteland_deep_ash_surface",
+      "echoashfallprotocol:crash_slag_scatter",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:salvage_rusty_metal_patch",
+      "echoashfallprotocol:crash_zone_scorched_ash",
+      "echoashfallprotocol:crash_zone_twisted_metal",
+      "echoashfallprotocol:crash_zone_wasteland_rubble_scatter",
+      "echoashfallprotocol:crash_zone_wasteland_rusted_metal_debris_scatter",
+      "echoashfallprotocol:crash_zone_wasteland_scattered_bones_dense",
+      "echoashfallprotocol:crash_zone_wasteland_ash_layer_patches"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:crash_zone_wasteland_charred_trees",
+      "echoashfallprotocol:crash_zone_wasteland_charred_trees_bare",
+      "echoashfallprotocol:crash_zone_wasteland_dead_trees_snapped",
+      "echoashfallprotocol:crash_zone_wasteland_dead_trees_stumps",
+      "echoashfallprotocol:crash_zone_wasteland_ash_bushes",
+      "echoashfallprotocol:crash_zone_wasteland_burnt_ferns",
+      "echoashfallprotocol:crash_zone_cable_bundles",
+      "echoashfallprotocol:crash_zone_wasteland_dry_grass_patches",
+      "echoashfallprotocol:crash_zone_wasteland_grass_patches",
+      "echoashfallprotocol:crash_zone_wasteland_charred_trees_split",
+      "echoashfallprotocol:crash_zone_wasteland_dead_trees_fallen",
+      "echoashfallprotocol:crash_zone_wasteland_dead_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:rad_zombie",
+        "weight": 21,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:scavenger_bandit",
+        "weight": 12,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:echo_drone",
+        "weight": 9,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:ash_wraith",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.9
+}

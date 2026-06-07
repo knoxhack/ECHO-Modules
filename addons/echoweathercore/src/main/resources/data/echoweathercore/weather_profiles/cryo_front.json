@@ -1,0 +1,26 @@
+{
+  "id": "echoweathercore:cryo_front",
+  "displayName": "Cryo Front",
+  "type": "CRYO_FRONT",
+  "defaultSeverity": "MODERATE",
+  "scope": "REGIONAL",
+  "durationTicks": 9000,
+  "warningTicks": 2400,
+  "weight": 20,
+  "cooldownTicks": 20000,
+  "effects": {
+    "coldExposureMultiplier": 1.50,
+    "batteryEfficiencyMultiplier": 0.80,
+    "machineHeatMultiplier": 0.60,
+    "droneScoutReliability": 0.75,
+    "routeRiskModifier": 1.20
+  },
+  "recommendedGear": [
+    "echoweathercore:cryo_heat_cell"
+  ],
+  "terminalWarning": "Cryo front approaching. Cold exposure risk.",
+  "echoLines": [
+    "Actuator temperature dropping. Warmth required.",
+    "Battery efficiency reduced by ambient cold."
+  ]
+}

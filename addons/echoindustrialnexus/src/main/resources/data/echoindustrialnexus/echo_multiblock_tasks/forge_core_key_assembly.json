@@ -1,0 +1,26 @@
+{
+  "id": "echoindustrialnexus:forge_core_key_assembly",
+  "display_name": "Forge Core Key Assembly",
+  "category": "unstable_processing",
+  "allowed_multiblocks": ["echoindustrialnexus:nexus_furnace_array"],
+  "required_workcell": "MATRIX_PROCESSING",
+  "required_tools": ["INJECTOR", "SCANNER"],
+  "duration_ticks": 480,
+  "heat_per_second": 4,
+  "animation": "inject",
+  "consume_inputs_on_start": true,
+  "effects": ["echoindustrialnexus:nexus_array_pressure"],
+  "capability_costs": [
+    { "capability": "echo:power_input", "amount": 960, "throughput": 128, "unit": "EP/t" }
+  ],
+  "inputs": [
+    { "item": "echoindustrialnexus:hybrid_thermal_core", "count": 1, "label": "Hybrid Thermal Core" },
+    { "item": "echoindustrialnexus:recipe_matrix_shard", "count": 1, "label": "Recipe Matrix Shard" },
+    { "item": "echoindustrialnexus:stabilized_alloy_plate", "count": 4, "label": "Stabilized Alloy Plate" },
+    { "item": "echoindustrialnexus:field_relay", "count": 2, "label": "Field Relay" }
+  ],
+  "outputs": [
+    { "item": "echoindustrialnexus:core_key_assembly", "count": 1, "label": "Core Key Assembly" },
+    { "item": "echoindustrialnexus:protocol_extractor_coil", "count": 1, "label": "Protocol Extractor Coil" }
+  ]
+}

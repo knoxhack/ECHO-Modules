@@ -1,0 +1,108 @@
+{
+  "id": "echoashfallprotocol:secure_sleep_shelter",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 8,
+  "title": "Secure Sleep Shelter",
+  "briefing": "[ECHO-7] Night movement is optional if shelter exists. Carry or place the bunk and keep it near your crash outpost.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall sleep-shelter mission as native MissionCore data with Emergency Bunk, vanilla bed, or slept-marker confirmation.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:emergency_bunk",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:stockpile_rations"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "secure_sleep_shelter",
+    "nativeGameplayHook": "ashfall.first_route.secure_sleep_shelter",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "8",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "8",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:secure_sleep_shelter:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/confirm_sleep_shelter",
+      "type": "custom",
+      "label": "Confirm sleep shelter",
+      "detail": "Carry or place an Emergency Bunk, keep a bed near shelter, or confirm the shelter slept marker.",
+      "icon": "echoashfallprotocol:emergency_bunk",
+      "target": "ashfall:sleep_shelter",
+      "required": 1,
+      "criteria": {
+        "predicate": "shelter_any",
+        "accepted_targets": "echoashfallprotocol:emergency_bunk,minecraft:bed,shelter:slept",
+        "events": "player.block_placed,player.sleep,ashfall.special_marker",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/reward_torches",
+      "item": "minecraft:torch",
+      "count": 12,
+      "label": "Torches",
+      "detail": "Light for keeping shelter movement optional."
+    },
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/reward_rations",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 2,
+      "label": "Emergency Rations",
+      "detail": "Food buffer for field-kit crafting."
+    },
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/reward_bones",
+      "item": "echoashfallprotocol:animal_bone",
+      "count": 2,
+      "label": "Animal Bone",
+      "detail": "Material for the non-metal field kit."
+    },
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/reward_hide",
+      "item": "echoashfallprotocol:animal_hide",
+      "count": 4,
+      "label": "Animal Hide",
+      "detail": "Material for the non-metal field kit."
+    },
+    {
+      "id": "echoashfallprotocol:secure_sleep_shelter/reward_sticks",
+      "item": "minecraft:stick",
+      "count": 3,
+      "label": "Sticks",
+      "detail": "Handle stock for early bone tools."
+    }
+  ],
+  "completionText": "[ECHO-7] Rest point confirmed. Organic tool materials released; build a field kit before scouting so scrap can stay reserved for machines."
+}

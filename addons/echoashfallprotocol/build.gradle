@@ -1,0 +1,174 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+if (rootProject.findProject(':echomachinecore') == null) {
+    sourceSets.main.java.exclude 'com/knoxhack/echoashfallprotocol/integration/AshfallMachineCoreAdapter.java'
+    sourceSets.main.java.exclude 'com/knoxhack/echoashfallprotocol/integration/AshfallMachineCoreRuntimeProvider.java'
+    sourceSets.main.java.exclude 'com/knoxhack/echoashfallprotocol/test/AshfallMachineCoreGameTests.java'
+}
+
+repositories {
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter { includeGroupAndSubgroups('com.geckolib') }
+    }
+}
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+
+    runs {
+        ashfallClient {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${project.mod_id}:*").toString()
+        }
+        data {
+            clientData()
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    compileOnly project(':echo-native-contracts')
+    compileOnly project(':echo-native-loader')
+    implementation project(':echocore')
+    implementation project(':echonetcore')
+    implementation project(':echoblockworks')
+    if (rootProject.findProject(':echoterminal') != null) {
+        implementation project(':echoterminal')
+    }
+
+    def compileOnlyIfIncluded = { projectPath ->
+        def optionalProject = rootProject.findProject(projectPath)
+        if (optionalProject != null) {
+            compileOnly optionalProject
+        }
+    }
+    def localRuntimeIfIncluded = { projectPath ->
+        def optionalProject = rootProject.findProject(projectPath)
+        if (optionalProject != null) {
+            localRuntime optionalProject
+        }
+    }
+
+    compileOnlyIfIncluded(':echoadaptercore')
+    compileOnlyIfIncluded(':echoterminal')
+    compileOnlyIfIncluded(':echolens')
+    compileOnlyIfIncluded(':echorendercore')
+    compileOnlyIfIncluded(':echopresencelink')
+    compileOnlyIfIncluded(':echomachinecore')
+
+    [
+            ':echoadaptercore',
+            ':echoterminal',
+            ':echomissioncore',
+            ':echodatacore',
+            ':echoplatformcore',
+            ':echolens',
+            ':echoruntimeguard',
+            ':echosignalos',
+            ':echorendercore',
+            ':echothemecore',
+            ':echoscreencore',
+            ':echoholomap',
+            ':echoworldcore',
+            ':echopresencelink',
+            ':echonpcore',
+            ':echoindex',
+            ':echowiki',
+            ':echomachinecore',
+    ].each { localRuntimeIfIncluded(it) }
+
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    localRuntime "org.jline:jline-reader:3.20.0"
+    localRuntime "org.jline:jline-terminal:3.20.0"
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+}

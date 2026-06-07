@@ -1,0 +1,24 @@
+{
+  "name": "echoashfallprotocol:nexus_scar",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/radiation_zone/reactor_ruin",
+        "processors": "echoashfallprotocol:radiation_zone_loot",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:reactor_ruin",
+        "processors": "echoashfallprotocol:radiation_zone_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

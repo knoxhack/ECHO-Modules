@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_nexus_scar_avatar",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 17,
+  "title": "Defeat Nexus Scar Avatar",
+  "briefing": "[ECHO-7] Guardian signal locked below Nexus Scar. Scan for the visible Reactor Ruin entrance, descend into the buried node, read the room before it reads you, then neutralize Nexus Scar Avatar.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_cryogenic_overseer"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_nexus_scar_avatar",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_nexus_scar_avatar",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "17",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "85",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_nexus_scar_avatar:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_nexus_scar_avatar/nexus_scar_avatar",
+      "type": "kill_entity",
+      "label": "Nexus Scar Avatar",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:nexus_scar_avatar",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:nexus_scar_avatar"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:nexus_scar_avatar",
+      "count": 1,
+      "label": "Nexus Scar Avatar"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_nexus_scar_avatar/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_nexus_scar_avatar/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_nexus_scar_avatar/reward_1",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_nexus_scar_avatar/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Nexus Scar Avatar neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

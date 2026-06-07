@@ -1,0 +1,30 @@
+{
+  "id": "echoweathercore:ash_storm",
+  "displayName": "Ash Storm",
+  "type": "ASH_STORM",
+  "defaultSeverity": "MODERATE",
+  "scope": "REGIONAL",
+  "durationTicks": 12000,
+  "warningTicks": 2400,
+  "weight": 40,
+  "cooldownTicks": 24000,
+  "effects": {
+    "visibilityMultiplier": 0.45,
+    "scannerRangeMultiplier": 0.60,
+    "filterDrainMultiplier": 1.15,
+    "solarPowerMultiplier": 0.25,
+    "droneScoutReliability": 0.50,
+    "holomapReliabilityMultiplier": 0.75,
+    "mobSightMultiplier": 0.60,
+    "routeRiskModifier": 1.30
+  },
+  "recommendedGear": [
+    "echoweathercore:ash_filter_wrap",
+    "echoweathercore:storm_beacon"
+  ],
+  "terminalWarning": "Ash front detected. Visibility loss expected.",
+  "echoLines": [
+    "Ash density rising. Visual navigation unreliable.",
+    "Scanner range degraded by airborne particulate."
+  ]
+}

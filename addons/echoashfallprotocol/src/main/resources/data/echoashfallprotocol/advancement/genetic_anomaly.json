@@ -1,0 +1,37 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:mutagen_vial"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.genetic_anomaly.title",
+      "fallback": "Genetic Anomaly"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.genetic_anomaly.desc",
+      "fallback": "Inject unstable mutagenic compounds."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_mutagen": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:mutagen_vial"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mutagen"
+    ]
+  ]
+}

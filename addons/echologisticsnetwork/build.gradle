@@ -1,0 +1,57 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+}
+
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+    runs {
+        logisticsClient { client(); systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        server { server(); programArgument '--nogui'; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${project.mod_id}:*").toString()
+        }
+        data { clientData(); programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath() }
+        configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
+    }
+    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+dependencies {
+    implementation project(":echocore")
+    implementation project(":echoadaptercore")
+
+    compileOnly project(":echo-native-contracts")
+    compileOnly project(":echomachinecore")
+    compileOnly project(":echoterminal")
+    compileOnly project(":echoindustrialnexus")
+    compileOnly project(":echorendercore")
+    localRuntime project(":echomachinecore")
+    localRuntime project(":echoterminal")
+    localRuntime project(":echomultiblockcore")
+    localRuntime project(":echoindustrialnexus")
+    localRuntime project(":echorendercore")
+    localRuntime project(":echonexusprotocol")
+    localRuntime project(":echoorbitalremnants")
+    localRuntime project(":echostationfall")
+    localRuntime project(":echoblackboxprotocol")
+    localRuntime "org.jline:jline-reader:3.20.0"
+    localRuntime "org.jline:jline-terminal:3.20.0"
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

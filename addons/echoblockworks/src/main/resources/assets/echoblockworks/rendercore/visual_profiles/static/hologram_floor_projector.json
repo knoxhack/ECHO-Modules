@@ -1,0 +1,65 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoblockworks:textures/block/hologram_floor_projector.png",
+  "particle_profile": "echoblockworks:static/hologram_floor_projector",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "hologram",
+    "glow_intensity": 1,
+    "pulse_speed": 0.8,
+    "scanline_strength": 0.18,
+    "target_scope": "block"
+  },
+  "anchors": {
+    "core": {
+      "offset": [
+        0,
+        0.12,
+        0
+      ]
+    },
+    "hologram": {
+      "offset": [
+        0,
+        0.75,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echoblockworks",
+    "display_name": "Static Hologram Floor Projector",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "hologram",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

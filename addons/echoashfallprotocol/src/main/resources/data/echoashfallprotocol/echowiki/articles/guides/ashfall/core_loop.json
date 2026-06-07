@@ -1,0 +1,61 @@
+{
+  "id": "echowiki:guides/ashfall/core_loop",
+  "title": "Ashfall: Core Loop",
+  "category": "Guide Books",
+  "summary": "Turn short salvage routes into water, tools, power, and safer movement.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Leave base with one target, collect only what serves it, and return while you still have margin. Sort the haul, craft the next upgrade, write down what changed, and repeat the route until the danger is understood.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each run, ask what improved: water, food, power, map knowledge, scanner reads, storage, or a safer return line. If none improved, the next objective is too vague.",
+      "tone": "tip",
+      "icon": "minecraft:compass"
+    },
+    {
+      "type": "item",
+      "title": "Salvage That Matters",
+      "body": "Scrap metal, wire, circuits, filters, and energy parts are route progress. Random bulk is only useful after you can carry it home safely.",
+      "tone": "body",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Scrap Metal",
+      "subtitle": "Core repair material"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop before thirst, darkness, weather, or inventory pressure chooses for you. A boring return with sorted supplies is better than a heroic loss with full pockets.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall"
+  ],
+  "relatedItems": [
+    "minecraft:compass",
+    "echoashfallprotocol:scrap_metal",
+    "echoashfallprotocol:scrap_wire",
+    "echoashfallprotocol:scrap_circuit"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:survivor_cache_sweep",
+    "echoashfallprotocol:ashfall_first_month_routes"
+  ],
+  "sortOrder": 1012
+}

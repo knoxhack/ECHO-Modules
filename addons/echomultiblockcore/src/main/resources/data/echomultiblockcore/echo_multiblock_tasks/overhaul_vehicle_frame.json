@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:overhaul_vehicle_frame",
+  "display_name": "Overhaul Vehicle Frame",
+  "category": "repair",
+  "allowed_multiblocks": ["echomultiblockcore:vehicle_repair_gantry"],
+  "required_workcell": "REPAIR",
+  "required_tools": ["WELDER", "CLAMP"],
+  "duration_ticks": 220,
+  "heat_per_second": 3,
+  "animation": "repair",
+  "animation_profile": "echomultiblockcore:vehicle_gantry",
+  "inputs": [
+    { "item": "echomultiblockcore:machine_casing", "count": 1 },
+    { "item": "echomultiblockcore:calibrated_bus_module", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:vehicle_frame_kit", "count": 1 }
+  ],
+  "notes": ["Repairs and stages a transport frame kit."]
+}

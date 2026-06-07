@@ -1,0 +1,107 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 18 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:stim_pack", "weight": 16 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutagen_vial", "weight": 14 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:bandage", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_basic", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_advanced", "weight": 6 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:wild_berry", "weight": 8 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:clean_water_bottle", "weight": 15 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:wild_berry", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:emergency_ration", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 8 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_medical", "weight": 20 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filtration_membrane", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutagen_vial", "weight": 6 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.35
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:lapis_lazuli", "weight": 18, "functions": [{ "function": "minecraft:set_count", "count": { "min": 3, "max": 6 }}] },
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] },
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 10, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_sporebound_adaptation", "weight": 14 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_biome_bosses", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_research_protocol", "weight": 6 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.40
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutated_sapling", "weight": 25 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutagen_vial", "weight": 10 },
+        { "type": "minecraft:empty", "weight": 65 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:random_chance", "chance": 0.24 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:toxic_moss", "weight": 14 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:nuclear_fungus", "weight": 12 },
+        { "type": "minecraft:item", "name": "minecraft:brown_mushroom", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:red_mushroom", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:green_dye", "weight": 6 },
+        { "type": "minecraft:item", "name": "minecraft:moss_block", "weight": 5 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:random_chance", "chance": 0.32 }
+      ]
+    }
+  ]
+}

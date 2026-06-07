@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:research_basics",
+  "category": "RESEARCH",
+  "title": "Research Basics",
+  "summary": "Unlock recipes, tech, and blueprints with schematic fragments.",
+  "body": [
+    "Schematic fragments are recovered from ruins and guardians.",
+    "Use a Research Lab to convert fragments into unlocked recipes.",
+    "Some recipes are gated behind mission progress as well."
+  ],
+  "steps": [
+    "Collect schematic fragments.",
+    "Build or use a Research Lab.",
+    "Process fragments to unlock recipes."
+  ],
+  "commonMistakes": [
+    "Hoarding fragments without researching them.",
+    "Not checking recipe prerequisites."
+  ],
+  "related": [
+    "echotutorialcore:schematic_fragments",
+    "echotutorialcore:recipe_unlocks"
+  ],
+  "unlockTriggers": [
+    "unlocked_research"
+  ],
+  "defaultUnlocked": false,
+  "priority": 70
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoritualcore",
+  "name": "ECHO: RitualCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echoritualcore.EchoRitualCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore"
+  ],
+  "optional": [
+    "echoarcaneindex",
+    "echogrimoire",
+    "echoholomap",
+    "echolens",
+    "echomissioncore",
+    "echorelictech",
+    "echoterminal"
+  ],
+  "provides": [
+    "ritual.altar",
+    "ritual.diagnostics",
+    "ritual.events",
+    "ritual.integrations",
+    "ritual.pedestals",
+    "ritual.structure_validation"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "story_packs"
+  ],
+  "permissions": [
+    "resources.data",
+    "ui.screens",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "recipes",
+        "structures",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoritualcore.EchoRitualCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Reusable ritual definitions, altar runtime behavior, pedestal inputs, ritual diagnostics, and optional Arcana Division knowledge-surface bridges. JEI is not required."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoritualcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

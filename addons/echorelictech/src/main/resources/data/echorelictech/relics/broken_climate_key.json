@@ -1,0 +1,57 @@
+{
+  "id": "echorelictech:broken_climate_key",
+  "tier": "prototype",
+  "category": "world",
+  "origin": "Broken Climate Control Key",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 6000,
+  "instabilityCost": 16,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "climate_backfire",
+    "world_hazard_spike",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:generic_relic",
+  "terminal": {
+    "summary": "Forces or suppresses storm state through damaged climate authority.",
+    "warning": "Climate commands can backfire in hazardous regions."
+  },
+  "lens": {
+    "compact": "Broken weather authority key.",
+    "deepScan": [
+      "Authority chain: partial.",
+      "WeatherCore hooks: optional.",
+      "ECHO warning: never use inside a sealed vault."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:broken_climate_key_fragment", "count": 2 },
+      { "item": "echorelictech:old_world_patent_fragment", "count": 1 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:broken_climate_key_fragment", "count": 2 },
+        { "item": "echorelictech:old_world_patent_fragment", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 2400,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+      ]
+    }
+  },
+  "activation": {
+    "durationTicks": 2400
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:survey_reactor_ruin",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 2,
+  "title": "Survey Reactor Ruin",
+  "briefing": "[ECHO-7] Reactor ruins are radiation lessons with teeth. Scan a reactor or relay-class hot site and plan a short entry, retreat, and cleanup loop.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:recover_data_log"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "survey_reactor_ruin",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.survey_reactor_ruin",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "2",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "48",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:survey_reactor_ruin:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:survey_reactor_ruin/survey_reactor_ruin",
+      "type": "custom",
+      "label": "Survey Reactor Ruin",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:survey_reactor_ruin",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.survey_reactor_ruin"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:survey_reactor_ruin/reward_0",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:survey_reactor_ruin/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:survey_reactor_ruin/reward_1",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Board",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:survey_reactor_ruin/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Reactor route logged. Carry RadAway, use scrubber pockets where possible, and retreat before severe exposure sustains."
+}

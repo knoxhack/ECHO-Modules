@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoarmory:block/construct_dock"
+    },
+    "facing=east": {
+      "model": "echoarmory:block/construct_dock",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoarmory:block/construct_dock",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoarmory:block/construct_dock",
+      "y": 270
+    }
+  }
+}

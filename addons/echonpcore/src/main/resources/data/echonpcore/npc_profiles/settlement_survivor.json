@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:settlement_survivor",
+  "displayName": "Settlement Survivor",
+  "role": "Local Contact",
+  "faction": "echonpcore:survivors",
+  "visualProfile": "echonpcore:settlement_survivor",
+  "dialogue": "echonpcore:settlement_survivor",
+  "trades": "echonpcore:settlement_survivor_basic",
+  "services": "echonpcore:settlement_survivor_services",
+  "missions": [],
+  "ambientLines": [
+    "Road's quiet. That worries me.",
+    "Ask around before you leave the wall."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 7,
+    "returnRadius": 20,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Settlement survivors provide local warnings and basic trade context."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:none"
+  }
+}

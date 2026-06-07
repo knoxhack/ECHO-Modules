@@ -1,0 +1,31 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine",
+                   "data":  0
+               },
+    "pattern":  [
+                    "WWW",
+                    "XZX",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_copper"
+                      },
+                "X":  {
+                          "item":  "minecraft:iron_ingot"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "Z":  {
+                          "item":  "minecraft:furnace"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

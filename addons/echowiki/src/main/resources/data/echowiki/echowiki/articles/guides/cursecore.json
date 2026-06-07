@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/cursecore",
+  "title": "CurseCore Field Manual",
+  "category": "Guide Books",
+  "summary": "Track curse state, read symptoms, and prepare cleansing routes before consequences stack.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "CurseCore owns curses, corruption, symptoms, cleansing, contracts, and consequence-driven power. The current slice gives RitualCore real player curse targets.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Use Echo Rot samples and diagnostic slips carefully. A curse is a state to read before it becomes a problem to survive.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Gain or detect a curse, read its stage and symptoms, prepare a cleansing route, reduce or cleanse it, then verify the player data changed.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Echo Rot, Glass Veins, player curse data, timed symptoms, diagnostic items, cleansing hooks, and event ids form the live curse layer.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "RitualCore cleanses minor curses, Arcane Index explains curse pages, Grimoire adds warning context, Lens scans curse state, and MissionCore records curse objectives.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If cleansing fails, check that the player actually has an active minor curse and that RitualCore did not consume ingredients before all gates passed.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "heroArt": "echowiki:textures/gui/guide_books/cursecore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/cursecore/first_steps",
+    "echowiki:guides/cursecore/core_loop",
+    "echowiki:guides/cursecore/systems",
+    "echowiki:guides/cursecore/progression",
+    "echowiki:guides/cursecore/integrations",
+    "echowiki:guides/cursecore/troubleshooting"
+  ],
+  "sortOrder": 1300
+}

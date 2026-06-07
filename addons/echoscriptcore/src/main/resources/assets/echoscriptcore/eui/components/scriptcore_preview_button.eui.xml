@@ -1,0 +1,7 @@
+<button action="scriptcore.preview"
+        action-value="{param.definition|}"
+        action-param-slot="{param.slot|actions}"
+        variant="{param.variant|ghost}"
+        tooltip="{param.tooltip|Validate the trusted ScriptCore action without mutating state.}">
+  {param.label|Preview}
+</button>

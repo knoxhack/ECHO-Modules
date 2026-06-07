@@ -1,0 +1,68 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Terminal-based mystic archive for ECHO: Arcana Division."
+description='''
+ECHO: Grimoire adds Terminal archive entries and progression shell content for Arcana Division lore,
+forbidden pages, and cross-addon magic research. It complements Arcane Index and ARCANA Field Journal.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and mission contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides shared Arcana registries and bridge hooks used by Grimoire entries."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="required"
+reason="Grimoire is the Terminal-based Arcana archive surface."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcaneindex"
+type="optional"
+reason="Adds related-page links between Grimoire lore and Arcane Index reference pages."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Links ARCANA Field Journal and Veilbound progression summaries when present."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"

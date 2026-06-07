@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:build_atmospheric_scrubber",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 10,
+  "title": "Build Atmospheric Scrubber",
+  "briefing": "[ECHO-7] Portable medicine is not a habitat. Build an Atmospheric Scrubber to create a recovery pocket for expeditions.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:atmospheric_scrubber",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:scout_radiation_zone"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_atmospheric_scrubber",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_atmospheric_scrubber",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "10",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "56",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_atmospheric_scrubber:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "ashfall.scrubber_used"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_atmospheric_scrubber/atmospheric_scrubber",
+      "type": "place_block",
+      "label": "Place Atmospheric Scrubber",
+      "detail": "Place 1 Atmospheric Scrubber for the Ashfall route; powered use also reports the live scrubber contract.",
+      "icon": "echoashfallprotocol:atmospheric_scrubber",
+      "target": "echoashfallprotocol:atmospheric_scrubber",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:atmospheric_scrubber"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 2,
+      "label": "Filter Cartridge Advanced"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 3,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "block": "echoashfallprotocol:atmospheric_scrubber",
+      "count": 1,
+      "label": "Atmospheric Scrubber"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_atmospheric_scrubber/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_atmospheric_scrubber/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_atmospheric_scrubber/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_atmospheric_scrubber/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Scrubber online. It suppresses toxic air, stops filter drain, and speeds radiation decay inside its field."
+}

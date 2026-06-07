@@ -1,0 +1,84 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echopowercore",
+  "name": "ECHO: PowerCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "power_contracts",
+  "entrypoint": "com.knoxhack.echo.powercore.EchoPowerCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "power.diagnostics",
+    "power.networks",
+    "power.storage",
+    "power.transfer"
+  ],
+  "consumes": [
+    "assets.registry",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "PowerCore is the shared addon-neutral power contract layer. It does not own concrete generators, block entities, menus, runtime energy transfer, or PowerGrid gameplay content.",
+    "nativeEntrypoint": "com.knoxhack.echo.powercore.EchoPowerCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/powercore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

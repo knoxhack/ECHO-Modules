@@ -1,0 +1,56 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:charred_wood_log",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_first_light", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_substrate_extraction", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_echo_creation", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_survivor_alpha", "weight": 6 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.65
+        }
+      ]
+    }
+  ]
+}

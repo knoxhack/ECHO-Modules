@@ -1,0 +1,46 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoaddonapi",
+  "name": "ECHO Add-on API",
+  "version": "0.1.0",
+  "type": "api",
+  "kind": "public_api",
+  "role": "sdk_spine",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "side": "common",
+  "requires": [],
+  "optional": [],
+  "provides": [
+    "echo.sdk.public_api"
+  ],
+  "consumes": [],
+  "gameModes": [],
+  "permissions": [
+    "echo.api.public"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "recipes",
+        "commands",
+        "diagnostics",
+        "data",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "dev.echo.api.addon.EchoAddonApiNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "experimental"
+}

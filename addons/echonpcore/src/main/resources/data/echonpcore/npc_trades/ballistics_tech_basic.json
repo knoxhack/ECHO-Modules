@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:ballistics_tech_basic",
+  "groups": [
+    {
+      "id": "range",
+      "title": "Range Parts",
+      "offers": [
+        {
+          "id": "copper_for_string",
+          "title": "Tension Cord",
+          "input": [
+            { "item": "minecraft:copper_ingot", "count": 1 }
+          ],
+          "output": { "item": "minecraft:string", "count": 3 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

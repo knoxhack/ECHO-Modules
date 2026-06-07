@@ -1,0 +1,56 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Runtime health and observability contracts for the ECHO ecosystem."
+description='''
+ECHO: HealthCore defines local-first runtime health, metric, budget,
+degraded-feature, crash-context, support-bundle, and health-report contracts
+for ECHO modules, RuntimeGuard, Launcher, Command Center, AI tooling, and
+future ECHO Native workflows.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides module identity, feature, side, trust, and role contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostics vocabulary for health warnings and report issues."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

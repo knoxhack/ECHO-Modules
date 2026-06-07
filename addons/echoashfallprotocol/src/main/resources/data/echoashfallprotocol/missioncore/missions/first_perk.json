@@ -1,0 +1,79 @@
+{
+  "id": "echoashfallprotocol:first_perk",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 9,
+  "title": "Unlock Your First Perk",
+  "briefing": "[ECHO-7] Personal enhancement available. Unlock your first research perk; survival is becoming a controlled modification problem.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:mutagen_vial",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:faction_reputation"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "first_perk",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.first_perk",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "9",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "44",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:first_perk:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:first_perk/first_perk",
+      "type": "custom",
+      "label": "Unlock Your First Perk",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:mutagen_vial",
+      "target": "echoashfallprotocol:first_perk",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.first_perk"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:first_perk/reward_0",
+      "item": "echoashfallprotocol:mutagen_vial",
+      "count": 1,
+      "label": "Mutagen Vial",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:first_perk/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Perk acquired. Your abilities have been permanently enhanced through research."
+}

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 5
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_metal", "weight": 25, "functions": [{"function": "minecraft:set_count", "count": {"min": 3, "max": 8}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:coal_dust", "weight": 20, "functions": [{"function": "minecraft:set_count", "count": {"min": 4, "max": 10}}] },
+        { "type": "minecraft:item", "name": "minecraft:rail", "weight": 18, "functions": [{"function": "minecraft:set_count", "count": {"min": 6, "max": 16}}] },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_knife", "weight": 15 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:machine_casing", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:energy_cell", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:minecart", "weight": 10, "functions": [{"function": "minecraft:set_count", "count": {"min": 1, "max": 2}}] }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 22, "functions": [{ "function": "minecraft:set_count", "count": { "min": 3, "max": 8 }}] },
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 15, "functions": [{ "function": "minecraft:set_count", "count": { "min": 4, "max": 8 }}] }
+      ]
+    }
+  ]
+}

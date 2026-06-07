@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/auto_builder_yard",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:construction_planner"
+    },
+    "title": {
+      "text": "Stage a Construction Planner"
+    },
+    "description": {
+      "text": "Complete the Auto Builder Yard featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:construction_planner"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echovalidationcore",
+  "name": "ECHO: ValidationCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "platform",
+  "entrypoint": "com.knoxhack.echo.validationcore.EchoValidationCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore"
+  ],
+  "optional": [],
+  "provides": [
+    "validation.pack"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "diagnostics.write",
+    "validation.pack"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.validationcore.EchoValidationCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "diagnostics_agent",
+      "platform_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

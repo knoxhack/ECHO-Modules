@@ -1,0 +1,133 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="ScriptCore by ECHO Labs: JSON-first campaign authoring for standalone modpack creators and ECHO addon stacks."
+description='''
+ScriptCore by ECHO Labs is a JSON-first modpack campaign authoring framework for missions, lore, scans, maps, weather events, factions, world states, tutorials, dialogue, endings, recipe unlocks, loot profiles, and generic condition/action flows.
+'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO service facades, diagnostics, command registry, and standalone-safe optional service fallbacks."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Allows ScriptCore mission definitions and mission actions to bridge into ECHO MissionCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Allows ScriptCore archive entries, status cards, and mission surfaces to appear in Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="optional"
+reason="Allows trusted ScreenCore UI action intents to reach ScriptCore's server-authoritative executor through the shared NetCore packet bridge."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="Allows ScreenCore pages to invoke trusted, preloaded ScriptCore JSON actions through the scriptcore.execute UI action."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Allows ScriptCore lens_scan definitions to register scan types or scan context when Lens is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Allows ScriptCore HoloMap layers and markers to be provided through the shared map provider contract."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoweathercore"
+type="optional"
+reason="Allows ScriptCore weather_event definitions and weather actions to bridge to WeatherCore when a runtime hook exists."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echotutorialcore"
+type="optional"
+reason="Allows ScriptCore tutorial_hint definitions and tutorial actions to bridge to TutorialCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosoundcore"
+type="optional"
+reason="Allows ScriptCore play_sound actions to route through SoundCore when installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Allows ScriptCore archive and recipe unlock content to publish into ECHO Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echodatacore"
+type="optional"
+reason="Reserves durable world-state, faction, and custom metric storage through DataCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Allows ScriptCore region, POI, and world-state conditions to resolve richer world context when WorldCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

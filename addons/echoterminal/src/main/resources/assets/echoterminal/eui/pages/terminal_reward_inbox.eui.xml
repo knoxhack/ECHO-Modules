@@ -1,0 +1,64 @@
+<page id="terminal-reward-inbox" title="Reward Inbox" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_components,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <row class="terminal-filter-row" gap="8">
+        <button action="terminal.rewardInbox.refresh" variant="ghost">Refresh</button>
+        <status-chip status="{terminal.rewardInbox.statusKey|ready}" value="{terminal.rewardInbox.statusLabel|CLEAR}"/>
+        <status-chip status="info" value="{terminal.rewardInbox.pending|0} pending"/>
+      </row>
+      <grid class="terminal-dashboard-grid terminal-reward-layout" columns="0.85fr 0.8fr 1fr" gap="10" stack-below="940">
+        <section class="terminal-panel" title="INCOMING REWARDS">
+          <scroll class="terminal-reward-list" scroll-state="true" state-key="terminal.rewards.incoming">
+            <list bind="terminal.rewardInbox.incomingRewards" item="reward">
+              <list-row class="terminal-reward-row" action="terminal.rewardInbox.claim_reward" action-value="{reward.id}" value="{reward.id}" disabled="{reward.disabled|false}" disabled-reason="{reward.disabledReason|No claimable reward payload is available.}">
+                <status-chip class="terminal-reward-badge-chip" status="{reward.statusKey}" value="{reward.badge}"/>
+                <copy-block class="terminal-row-copy" title="{reward.title}" subtitle="{reward.summary}"/>
+                <status-chip class="terminal-reward-state-chip" status="{reward.statusKey}" value="{reward.statusLabel}"/>
+              </list-row>
+            </list>
+          </scroll>
+        </section>
+        <section class="terminal-panel" title="AVAILABLE CACHES">
+          <scroll class="terminal-reward-list-small" scroll-state="true" state-key="terminal.rewards.crates">
+            <list bind="terminal.rewardInbox.crates" item="crate">
+              <list-row class="terminal-reward-row" action="terminal.rewardInbox.claim_reward" action-value="{crate.id}" value="{crate.id}" disabled="{crate.disabled|false}" disabled-reason="{crate.disabledReason|No reward crate is available.}">
+                <copy-block class="terminal-row-copy" title="{crate.title}" subtitle="{crate.summary}"/>
+                <status-chip class="terminal-reward-state-chip terminal-reward-state-chip-wide" status="{crate.statusKey}" value="{crate.statusLabel}"/>
+              </list-row>
+            </list>
+          </scroll>
+          <section class="terminal-side-panel" title="CLAIMABLE SUMMARY">
+            <scroll class="terminal-reward-summary-scroll" scroll-state="true" state-key="terminal.rewards.claimables">
+              <list bind="terminal.rewardInbox.claimables" item="claim">
+                <list-row class="terminal-compact-row terminal-reward-summary-row">
+                  <copy-block class="terminal-row-copy" title="{claim.title}"/>
+                  <status-chip class="terminal-reward-count-chip" status="ready" value="{claim.value}"/>
+                </list-row>
+              </list>
+            </scroll>
+          </section>
+        </section>
+        <section class="terminal-panel" title="REWARD DETAILS">
+          <copy-block class="terminal-row-copy" title="{terminal.rewardInbox.selected.title|Terminal Reward Cache}" subtitle="{terminal.rewardInbox.summary|No terminal rewards are waiting.}"/>
+          <section class="terminal-side-panel" title="CONTENTS">
+            <scroll class="terminal-reward-content-scroll" scroll-state="true" state-key="terminal.rewards.contents">
+              <list bind="terminal.rewardInbox.claimables" item="claim">
+                <list-row class="terminal-compact-row terminal-reward-content-row">
+                  <copy-block class="terminal-row-copy" title="{claim.title}" subtitle="{claim.value}"/>
+                </list-row>
+              </list>
+            </scroll>
+          </section>
+          <section class="terminal-side-panel" title="CLAIM CONDITIONS">
+            <copy-block class="terminal-row-copy" title="Mission completed" subtitle="Extraction successful / No disqualifiers"/>
+          </section>
+          <row class="terminal-action-strip" gap="8">
+            <button class="terminal-reward-action-button" action="terminal.rewardInbox.claim_all" variant="primary" disabled="{terminal.rewardInbox.claimDisabled|true}" disabled-reason="No reward cache is queued yet.">Claim</button>
+            <button class="terminal-reward-action-button" action="terminal.rewardInbox.defer" action-value="{terminal.rewardInbox.selected.id|}" variant="ghost" disabled="{terminal.rewardInbox.selected.disabled|false}" disabled-reason="{terminal.rewardInbox.selected.disabledReason|Select a live reward cache first.}">Defer</button>
+            <button class="terminal-reward-action-button" action="terminal.rewardInbox.mark_viewed" action-value="{terminal.rewardInbox.selected.id|}" variant="ghost" disabled="{terminal.rewardInbox.selected.disabled|false}" disabled-reason="{terminal.rewardInbox.selected.disabledReason|Select a live reward cache first.}">Mark Viewed</button>
+          </row>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

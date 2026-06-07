@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:auto_builder_yard",
+    "facility":  "echomultiblockcore:auto_builder_yard",
+    "tier":  9,
+    "prerequisites":  [
+                          "echomultiblockcore:logistics_depot"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:stage_construction_planner",
+                             "echomultiblockcore:plan_autobuilder_batch"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:construction_planner"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/auto_builder_yard",
+    "title":  "Auto Builder Yard",
+    "guide":  "Stage construction planners and use auto-builder support to accelerate later facility builds."
+}

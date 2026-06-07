@@ -1,0 +1,652 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = mod_group_id
+version = mod_version
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            exclude 'micdoodle8/**'
+        }
+        resources {
+            exclude 'mcmod.info'
+            exclude 'pack.mcmeta'
+            exclude 'META-INF/accesstransformer*.cfg'
+            exclude 'assets/galacticraftcore/**'
+            exclude 'assets/galacticraftplanets/**'
+        }
+    }
+}
+
+dependencies {
+    api project(':echo-native-contracts')
+    api project(':echoaddonapi')
+    api project(':echoadaptercore')
+
+    testImplementation project(':echo-native-testkit')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar') {
+    from('LICENSE')
+    from('CREDITS.md')
+}
+
+tasks.register('verifyIdentityLegal') {
+    group = 'verification'
+    description = 'Verifies GalacticCore release-facing identity, attribution, and no-impersonation copy.'
+    def publicCopyFiles = files(
+            'README.md',
+            'CREDITS.md',
+            'src/main/resources/META-INF/echo.mod.json',
+            'src/main/resources/assets/echogalacticcore/lang/en_us.json',
+            '../../packs/galacticcore/echo.pack.json'
+    )
+    def licenseFile = file('LICENSE')
+    def creditsFile = file('CREDITS.md')
+    def descriptorFile = file('src/main/resources/META-INF/echo.mod.json')
+    def packProfileFile = file('../../packs/galacticcore/echo.pack.json')
+    inputs.files(publicCopyFiles)
+    inputs.file(licenseFile)
+    inputs.file(creditsFile)
+    inputs.file(descriptorFile)
+    inputs.file(packProfileFile)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        def honestLabel = 'Unofficial ECHO Platform port/fork of Galacticraft Legacy'
+        def forbiddenPhrases = [
+                'Official Galacticraft',
+                'Galacticraft 6',
+                'Galacticraft for ECHO',
+                'The new Galacticraft',
+                'Made by TeamGalacticraft'
+        ]
+        publicCopyFiles.files.each { copy ->
+            if (!copy.isFile()) {
+                violations << "${copy}: required public copy file is missing"
+                return
+            }
+            def text = copy.getText('UTF-8')
+            forbiddenPhrases.each { phrase ->
+                if (text.toLowerCase(java.util.Locale.ROOT).contains(phrase.toLowerCase(java.util.Locale.ROOT))) {
+                    violations << "${copy}: forbidden branding phrase '${phrase}'"
+                }
+            }
+        }
+        def license = licenseFile.getText('UTF-8')
+        [
+                'MIT License',
+                'Original Galacticraft Legacy code copyright TeamGalacticraft.',
+                'Portions of this project are derived from Galacticraft Legacy.'
+        ].each { required ->
+            if (!license.contains(required)) {
+                violations << "${licenseFile}: missing required attribution '${required}'"
+            }
+        }
+        def credits = creditsFile.getText('UTF-8')
+        [
+                'ECHO: GalacticCore is an ECHO Platform port/fork derived from Galacticraft Legacy by TeamGalacticraft.',
+                'Original project:',
+                'Galacticraft Legacy by TeamGalacticraft',
+                'Original license:',
+                'MIT License',
+                'KnoxHack / ECHO Labs'
+        ].each { required ->
+            if (!credits.contains(required)) {
+                violations << "${creditsFile}: missing required credit '${required}'"
+            }
+        }
+        def descriptor = slurper.parse(descriptorFile)
+        if (descriptor.id != 'echogalacticcore') {
+            violations << "${descriptorFile}: id must be echogalacticcore"
+        }
+        if (descriptor.official != false) {
+            violations << "${descriptorFile}: official must be false"
+        }
+        if (descriptor.entrypoint != 'com.knoxhack.echogalacticcore.EchoGalacticCoreNativeModule') {
+            violations << "${descriptorFile}: native entrypoint mismatch"
+        }
+        if (descriptor.requires?.contains('echo-native-loader')) {
+            violations << "${descriptorFile}: addon descriptor must not require echo-native-loader"
+        }
+        if (!descriptor.access?.notes?.contains(honestLabel)) {
+            violations << "${descriptorFile}: access notes must include honest label"
+        }
+        def pack = slurper.parse(packProfileFile)
+        if (pack.rootModule != 'echogalacticcore') {
+            violations << "${packProfileFile}: rootModule must be echogalacticcore"
+        }
+        if (pack.strictOfficialOnly != false) {
+            violations << "${packProfileFile}: strictOfficialOnly must be false for community fork profile"
+        }
+        if (pack.legal?.label != honestLabel) {
+            violations << "${packProfileFile}: legal.label must be '${honestLabel}'"
+        }
+        if (pack.legal?.license != 'MIT') {
+            violations << "${packProfileFile}: legal.license must be MIT"
+        }
+        if (!pack.legal?.attribution?.contains('Derived from Galacticraft Legacy by TeamGalacticraft')) {
+            violations << "${packProfileFile}: legal attribution must credit Galacticraft Legacy by TeamGalacticraft"
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Identity/legal verification violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyJarLegalArtifacts') {
+    group = 'verification'
+    description = 'Verifies packaged GalacticCore jars contain MIT license and credits.'
+    dependsOn tasks.named('jar')
+    def jarTask = tasks.named('jar')
+    inputs.file(jarTask.flatMap { it.archiveFile })
+
+    doLast {
+        def jarFile = jarTask.get().archiveFile.get().asFile
+        def entries = zipTree(jarFile).matching {
+            include 'LICENSE'
+            include 'CREDITS.md'
+        }.files.collect { it.name } as Set
+        def violations = []
+        if (!entries.contains('LICENSE')) {
+            violations << "${jarFile}: missing LICENSE"
+        }
+        if (!entries.contains('CREDITS.md')) {
+            violations << "${jarFile}: missing CREDITS.md"
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Jar legal artifact violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyNativeBoundary') {
+    group = 'verification'
+    description = 'Verifies GalacticCore production sources stay ASDK-native and loader/NeoForge independent.'
+    def nativeSources = fileTree('src/main/java/com/knoxhack/echogalacticcore') {
+        include '**/*.java'
+    }
+    inputs.files(nativeSources)
+
+    doLast {
+        def forbidden = [
+                'echo-native-loader',
+                'dev.echo.nativeplatform.loader',
+                'net.neoforged',
+                'net.minecraftforge',
+                'cpw.mods',
+                'activateNative(Map'
+        ]
+        def violations = []
+        inputs.files.files.each { source ->
+            def text = source.getText('UTF-8')
+            forbidden.each { needle ->
+                if (text.contains(needle)) {
+                    violations << "${source}: ${needle}"
+                }
+            }
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Native boundary violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyRecipeMigration') {
+    group = 'verification'
+    description = 'Verifies migrated GalacticCore recipes no longer depend on Forge recipe or ore-dict JSON types.'
+    def recipeFiles = fileTree('src/main/resources/assets/echogalacticcore/recipes') {
+        include '**/*.json'
+    }
+    def recipeFactoryManifest = file('src/main/resources/data/echogalacticcore/port/recipe_factory_migration.json')
+    inputs.files(recipeFiles)
+    inputs.file(recipeFactoryManifest)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        inputs.files.files.each { recipe ->
+            def text = recipe.getText('UTF-8')
+            if (text.contains('forge:')) {
+                violations << "${recipe}: legacy Forge recipe namespace remains"
+            }
+            if (text.contains('micdoodle8.')) {
+                violations << "${recipe}: legacy Galacticraft recipe factory class reference remains"
+            }
+            if (recipe.name.startsWith('_')) {
+                violations << "${recipe}: metadata files do not belong in runtime recipe assets"
+            }
+        }
+        if (!recipeFactoryManifest.isFile()) {
+            violations << "${recipeFactoryManifest}: missing recipe factory migration manifest"
+        } else {
+            def manifest = slurper.parse(recipeFactoryManifest)
+            if (manifest.schema != 'echogalacticcore.port.recipe_factory_migration.v1') {
+                violations << "${recipeFactoryManifest}: unexpected schema"
+            }
+            if (manifest.source != 'galacticraft_legacy_recipe_factories') {
+                violations << "${recipeFactoryManifest}: missing legacy recipe factory source marker"
+            }
+            if (!(manifest.replacements instanceof List) || manifest.replacements.size() < 3) {
+                violations << "${recipeFactoryManifest}: must describe recipe factory, ingredient, and condition replacements"
+            }
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Legacy Forge recipe markers remain:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyBlockstateMigration') {
+    group = 'verification'
+    description = 'Verifies migrated GalacticCore blockstates no longer depend on Forge blockstate markers or helper models.'
+    def blockstateFiles = fileTree('src/main/resources/assets/echogalacticcore/blockstates') {
+        include '**/*.json'
+    }
+    inputs.files(blockstateFiles)
+
+    doLast {
+        def violations = []
+        inputs.files.files.each { blockstate ->
+            def text = blockstate.getText('UTF-8')
+            if (text.contains('"forge_marker"') || text.contains('forge:') || text.trim() == '{}') {
+                violations << blockstate
+            }
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Legacy Forge blockstate markers remain:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyLootSoundMigration') {
+    group = 'verification'
+    description = 'Verifies migrated GalacticCore loot tables and sound metadata use ECHO/native ids.'
+    def lootFiles = fileTree('src/main/resources/assets/echogalacticcore/loot_tables') {
+        include '**/*.json'
+    }
+    def soundsFile = file('src/main/resources/assets/echogalacticcore/sounds.json')
+    inputs.files(lootFiles)
+    inputs.file(soundsFile)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        def visit
+        visit = { Object value, File file, String pointer ->
+            if (value instanceof Map) {
+                value.each { key, child ->
+                    if ((key == 'type' || key == 'condition')
+                            && child instanceof String
+                            && !child.startsWith('minecraft:')
+                            && !child.startsWith('echogalacticcore:')) {
+                        violations << "${file}:${pointer}/${key}=${child}"
+                    }
+                    if (key == 'function' && child instanceof String) {
+                        if (!child.startsWith('minecraft:') && !child.startsWith('echogalacticcore:')) {
+                            violations << "${file}:${pointer}/${key}=${child}"
+                        }
+                        if (child == 'minecraft:set_data') {
+                            violations << "${file}:${pointer}/${key}=minecraft:set_data"
+                        }
+                    }
+                    if (key == 'name' && child instanceof String && child.startsWith('minecraft:record_')) {
+                        violations << "${file}:${pointer}/${key}=${child}"
+                    }
+                    visit(child, file, "${pointer}/${key}")
+                }
+            } else if (value instanceof List) {
+                value.eachWithIndex { child, index -> visit(child, file, "${pointer}/${index}") }
+            }
+        }
+        lootFiles.files.each { loot ->
+            def json = slurper.parse(loot)
+            if (!(json.pools instanceof List)) {
+                violations << "${loot}:pools must be an array"
+            }
+            visit(json, loot, '')
+        }
+        def sounds = slurper.parse(soundsFile)
+        sounds.each { key, value ->
+            if (key.startsWith('galacticraft.')) {
+                violations << "${soundsFile}: legacy sound event key ${key}"
+            }
+            if (!(value.sounds instanceof List)) {
+                violations << "${soundsFile}: ${key}.sounds must be an array"
+            }
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Legacy loot/sound migration violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyLanguageMigration') {
+    group = 'verification'
+    description = 'Verifies migrated GalacticCore language assets are JSON-only ECHO resources.'
+    def langDir = file('src/main/resources/assets/echogalacticcore/lang')
+    def langJsonFiles = fileTree(langDir) {
+        include '**/*.json'
+    }
+    def legacyLangFiles = fileTree(langDir) {
+        include '**/*.lang'
+    }
+    def manifest = file('src/main/resources/data/echogalacticcore/port/language_migration.json')
+    inputs.files(langJsonFiles)
+    inputs.files(legacyLangFiles)
+    inputs.file(manifest)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        if (!legacyLangFiles.files.isEmpty()) {
+            violations.addAll(legacyLangFiles.files.collect { "${it}: legacy .lang file remains" })
+        }
+        if (langJsonFiles.files.size() < 25) {
+            violations << "${langDir}: expected migrated JSON language files for the legacy locale set"
+        }
+        langJsonFiles.files.each { lang ->
+            def json = slurper.parse(lang)
+            if (!(json instanceof Map) || json.isEmpty()) {
+                violations << "${lang}: language JSON must be a non-empty object"
+            }
+        }
+        def migration = slurper.parse(manifest)
+        if (migration.source != 'galacticraft_legacy_lang_assets') {
+            violations << "${manifest}: missing Galacticraft Legacy language asset source marker"
+        }
+        if (migration.convertedLocaleCount != langJsonFiles.files.size()) {
+            violations << "${manifest}: convertedLocaleCount must match JSON locale file count"
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Legacy language migration violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyModelTextureMigration') {
+    group = 'verification'
+    description = 'Verifies migrated GalacticCore model and texture assets use native singular texture roots.'
+    def assetsRoot = file('src/main/resources/assets/echogalacticcore')
+    def textResourceFiles = fileTree(assetsRoot) {
+        include '**/*.json'
+        include '**/*.mcmeta'
+        include '**/*.mtl'
+        include '**/*.obj'
+        include '**/*.txt'
+    }
+    def jsonResourceFiles = fileTree(assetsRoot) {
+        include '**/*.json'
+    }
+    def materialFiles = fileTree(assetsRoot) {
+        include '**/*.mtl'
+    }
+    def blockTextures = file('src/main/resources/assets/echogalacticcore/textures/block')
+    def itemTextures = file('src/main/resources/assets/echogalacticcore/textures/item')
+    def legacyBlockTextures = file('src/main/resources/assets/echogalacticcore/textures/blocks')
+    def legacyItemTextures = file('src/main/resources/assets/echogalacticcore/textures/items')
+    def manifest = file('src/main/resources/data/echogalacticcore/port/model_texture_migration.json')
+    inputs.files(textResourceFiles)
+    inputs.files(jsonResourceFiles)
+    inputs.files(materialFiles)
+    inputs.dir(blockTextures)
+    inputs.dir(itemTextures)
+    inputs.file(manifest)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        if (legacyBlockTextures.exists()) {
+            violations << "${legacyBlockTextures}: legacy plural block texture directory remains"
+        }
+        if (legacyItemTextures.exists()) {
+            violations << "${legacyItemTextures}: legacy plural item texture directory remains"
+        }
+        if (!blockTextures.isDirectory() || !itemTextures.isDirectory()) {
+            violations << "native block/item texture directories must exist"
+        }
+        textResourceFiles.files.each { resource ->
+            def text = resource.getText('UTF-8')
+            [
+                    'echogalacticcore:blocks/',
+                    'echogalacticcore:items/',
+                    'minecraft:blocks/',
+                    'minecraft:items/',
+                    'textures/blocks',
+                    'textures/items'
+            ].each { legacy ->
+                if (text.contains(legacy)) {
+                    violations << "${resource}: legacy texture reference ${legacy}"
+                }
+            }
+        }
+        def validateTextureId = { File resource, String textureId ->
+            def matcher = textureId =~ /^echogalacticcore:(block|item)\/([A-Za-z0-9_.\/-]+)$/
+            if (matcher.matches()) {
+                def root = matcher[0][1] == 'block' ? blockTextures : itemTextures
+                def texture = new File(root, "${matcher[0][2]}.png")
+                if (!texture.isFile()) {
+                    violations << "${resource}: missing migrated texture ${textureId} -> ${texture}"
+                }
+            }
+        }
+        def visitJson
+        visitJson = { Object value, File resource ->
+            if (value instanceof Map) {
+                value.each { key, child ->
+                    if (key == 'textures' && child instanceof Map) {
+                        child.values().findAll { it instanceof String }.each { validateTextureId(resource, it) }
+                    }
+                    visitJson(child, resource)
+                }
+            } else if (value instanceof List) {
+                value.each { child -> visitJson(child, resource) }
+            }
+        }
+        jsonResourceFiles.files.each { resource ->
+            visitJson(slurper.parse(resource), resource)
+        }
+        materialFiles.files.each { resource ->
+            resource.eachLine('UTF-8') { line ->
+                def matcher = line =~ /^\s*map_Kd\s+(echogalacticcore:(block|item)\/[A-Za-z0-9_.\/-]+)\s*$/
+                if (matcher.matches()) {
+                    validateTextureId(resource, matcher[0][1])
+                }
+            }
+        }
+        def migration = slurper.parse(manifest)
+        if (migration.source != 'galacticraft_legacy_model_texture_assets') {
+            violations << "${manifest}: missing Galacticraft Legacy model/texture source marker"
+        }
+        if (migration.blockTextureFileCount != fileTree(blockTextures) { include '**/*.png' }.files.size()) {
+            violations << "${manifest}: blockTextureFileCount must match migrated PNG count"
+        }
+        if (migration.itemTextureFileCount != fileTree(itemTextures) { include '**/*.png' }.files.size()) {
+            violations << "${manifest}: itemTextureFileCount must match migrated PNG count"
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Legacy model/texture migration violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyGameplayManifestCoverage') {
+    group = 'verification'
+    description = 'Verifies GalacticCore gameplay, route, dungeon, and ECHO integration parity manifests are complete and registered as typed resources.'
+    def specs = [
+            [path: 'data/echogalacticcore/port/gameplay_foundation.json', schema: 'echogalacticcore.port.gameplay_foundation.v1', source: 'galacticraft_legacy_content_foundation', roots: ['materials', 'blocks', 'recipes'], required: ['compressed_steel', 'moon_rock', 'rocket_workbench', 'tier_1_rocket']],
+            [path: 'data/echogalacticcore/port/gameplay_machines.json', schema: 'echogalacticcore.port.gameplay_machines.v1', source: 'galacticraft_legacy_machine_runtime', roots: ['machines'], required: ['oxygen_collector', 'oxygen_sealer', 'fuel_loader', 'rocket_workbench']],
+            [path: 'data/echogalacticcore/port/life_support_contracts.json', schema: 'echogalacticcore.port.life_support_contracts.v1', source: 'galacticraft_legacy_life_support', roots: ['attachments', 'capabilities', 'gearSlots', 'events'], required: ['player_oxygen_state', 'oxygen_mask', 'breathability_checked']],
+            [path: 'data/echogalacticcore/port/energy_bridge.json', schema: 'echogalacticcore.port.energy_bridge.v1', source: 'galacticraft_legacy_energy_interfaces', roots: ['legacyInterfaces', 'producers', 'consumers', 'networkContracts'], required: ['IEnergyHandlerGC', 'echoadaptercore.energy_bridge', 'galactic_energy']],
+            [path: 'data/echogalacticcore/port/player_gear.json', schema: 'echogalacticcore.port.player_gear.v1', source: 'galacticraft_legacy_player_stats', roots: ['attachments', 'gearSlots', 'hud'], required: ['GCPlayerStats', 'inventoryHacks', 'oxygen_tanks']],
+            [path: 'data/echogalacticcore/port/rocket_progression.json', schema: 'echogalacticcore.port.rocket_progression.v1', source: 'galacticraft_legacy_rocket_progression', roots: ['vehicles', 'routeTiers', 'packets', 'screens', 'events'], required: ['tier_1_rocket', 'route/moon', 'route/mars', 'echoholomap']],
+            [path: 'data/echogalacticcore/port/celestial_routes.json', schema: 'echogalacticcore.celestial_routes.v1', source: 'galacticraft_legacy_celestial_routes', roots: ['routes'], required: ['route/earth_orbit', 'route/moon', 'route/mars', 'route/asteroids', 'route/venus']],
+            [path: 'data/echogalacticcore/port/celestial_environments.json', schema: 'echogalacticcore.port.celestial_environments.v1', source: 'galacticraft_legacy_world_providers', roots: ['environments'], required: ['WorldProviderMoon', 'WorldProviderMars', 'WorldProviderVenus', 'echoashfallprotocol']],
+            [path: 'data/echogalacticcore/port/outer_planet_progression.json', schema: 'echogalacticcore.port.outer_planet_progression.v1', source: 'galacticraft_legacy_planet_progression', roots: ['routes'], required: ['route/mars', 'route/asteroids', 'route/venus', 'tier_3_rocket']],
+            [path: 'data/echogalacticcore/port/dungeon_reward_progression.json', schema: 'echogalacticcore.port.dungeon_reward_progression.v1', source: 'galacticraft_legacy_dungeon_rewards', roots: ['rewardTracks', 'replacementPolicy'], required: ['evolved_skeleton_boss', 'evolved_creeper_boss', 'spider_queen', 'legacyInventoryMutation']],
+            [path: 'data/echogalacticcore/port/dungeon_boss_parity.json', schema: 'echogalacticcore.port.dungeon_boss_parity.v1', source: 'galacticraft_legacy_mit_port', roots: ['dungeons', 'bosses', 'loot'], required: ['moon_dungeon_tier_1', 'mars_dungeon_tier_2', 'venus_dungeon_tier_3']],
+            [path: 'data/echogalacticcore/port/echo_integrations.json', schema: 'echogalacticcore.echo_integrations.v1', source: 'echo_platform_typed_integration_manifest', roots: ['optional'], required: ['echopackcore', 'echoindex', 'echolens', 'echoholomap', 'echoscreencore', 'echoashfallprotocol']]
+    ]
+    def manifestFiles = files(specs.collect { "src/main/resources/${it.path}" })
+    def registrar = file('src/main/java/com/knoxhack/echogalacticcore/content/GalacticCoreGameplayManifests.java')
+    inputs.files(manifestFiles)
+    inputs.file(registrar)
+
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def violations = []
+        def registrarText = registrar.getText('UTF-8')
+        def validTypedSurfaces = [
+                'registry',
+                'lifecycle',
+                'events',
+                'commands',
+                'config',
+                'network',
+                'resources',
+                'capabilities',
+                'attachments',
+                'worldgen',
+                'render',
+                'screens',
+                'save_data'
+        ] as Set
+        def collectStrings
+        collectStrings = { Object value, List<String> sink ->
+            if (value instanceof Map) {
+                value.each { key, child ->
+                    if (key instanceof String) {
+                        sink << key
+                    }
+                    collectStrings(child, sink)
+                }
+            } else if (value instanceof List) {
+                value.each { child -> collectStrings(child, sink) }
+            } else if (value instanceof String) {
+                sink << value
+            }
+        }
+        specs.each { spec ->
+            def manifest = file("src/main/resources/${spec.path}")
+            if (!manifest.isFile()) {
+                violations << "${manifest}: missing gameplay parity manifest"
+                return
+            }
+            def json = slurper.parse(manifest)
+            if (json.schema != spec.schema) {
+                violations << "${manifest}: schema must be ${spec.schema}"
+            }
+            if (json.source != spec.source) {
+                violations << "${manifest}: source must be ${spec.source}"
+            }
+            spec.roots.each { root ->
+                def value = json[root]
+                if (value == null || value instanceof List && value.isEmpty() || value instanceof Map && value.isEmpty()) {
+                    violations << "${manifest}: ${root} must be present and non-empty"
+                }
+            }
+            if (!registrarText.contains(spec.path)) {
+                violations << "${registrar}: ${spec.path} must be registered through EchoNativeResourceService"
+            }
+            def strings = []
+            collectStrings(json, strings)
+            spec.required.each { required ->
+                if (!strings.any { it.contains(required) }) {
+                    violations << "${manifest}: missing required parity marker ${required}"
+                }
+            }
+            if (json.typedSurfaces instanceof List) {
+                json.typedSurfaces.each { surface ->
+                    if (!validTypedSurfaces.contains(surface)) {
+                        violations << "${manifest}: typed surface ${surface} is not an ASDK service surface"
+                    }
+                }
+            }
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("Gameplay manifest coverage violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.register('verifyGalacticCorePackProfile') {
+    group = 'verification'
+    description = 'Verifies the GalacticCore product profile keeps optional integrations out of the forced release classpath.'
+    def packProfile = rootProject.file('packs/galacticcore/echo.pack.json')
+    inputs.file(packProfile)
+    doLast {
+        def profile = new groovy.json.JsonSlurper().parse(packProfile)
+        def requiredModules = profile.requiredModules instanceof List ? profile.requiredModules : []
+        def recommendedModules = profile.recommendedModules instanceof List ? profile.recommendedModules : []
+        def optionalModules = profile.optionalModules instanceof List ? profile.optionalModules : []
+        def optionalFeatures = profile.optionalFeatures instanceof List ? profile.optionalFeatures : []
+        def forcedModules = requiredModules + recommendedModules
+        def violations = []
+        if (profile.id != 'galacticcore') {
+            violations << "${packProfile}: id must be galacticcore"
+        }
+        if (profile.rootModule != 'echogalacticcore') {
+            violations << "${packProfile}: rootModule must be echogalacticcore"
+        }
+        if (profile.strictOfficialOnly != false) {
+            violations << "${packProfile}: strictOfficialOnly must remain false for this unofficial port/fork"
+        }
+        if (forcedModules.contains('echoashfallprotocol')) {
+            violations << "${packProfile}: echoashfallprotocol must stay optional, not required/recommended"
+        }
+        if (!optionalModules.contains('echoashfallprotocol')) {
+            violations << "${packProfile}: optionalModules must include echoashfallprotocol"
+        }
+        if (!optionalFeatures.contains('ashfall.protocol')) {
+            violations << "${packProfile}: optionalFeatures must include ashfall.protocol"
+        }
+        if (!violations.isEmpty()) {
+            throw new GradleException("GalacticCore pack profile violations:\n - ${violations.join('\n - ')}")
+        }
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('verifyIdentityLegal')
+    dependsOn tasks.named('verifyJarLegalArtifacts')
+    dependsOn tasks.named('verifyNativeBoundary')
+    dependsOn tasks.named('verifyRecipeMigration')
+    dependsOn tasks.named('verifyBlockstateMigration')
+    dependsOn tasks.named('verifyLootSoundMigration')
+    dependsOn tasks.named('verifyLanguageMigration')
+    dependsOn tasks.named('verifyModelTextureMigration')
+    dependsOn tasks.named('verifyGameplayManifestCoverage')
+    dependsOn tasks.named('verifyGalacticCorePackProfile')
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+}

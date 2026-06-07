@@ -1,0 +1,110 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.02,
+  "downfall": 0.1,
+  "effects": {
+    "fog_color": 5401894,
+    "foliage_color": 7841330,
+    "grass_color": 10337596,
+    "sky_color": 4344603,
+    "water_color": 2907404,
+    "water_fog_color": 1783560,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:warped_spore"
+      },
+      "probability": 0.025
+    },
+    "ambient_loop_sound": "minecraft:ambient.crimson_forest.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.crimson_forest.additions",
+      "tick_chance": 0.011
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:radiation_zone_rubble_scatter",
+      "echoashfallprotocol:irradiated_shale_scatter",
+      "echoashfallprotocol:radiation_zone_radiation_zones",
+      "echoashfallprotocol:radiation_zone_radiation_hotspot",
+      "echoashfallprotocol:radiation_zone_bone_scatter",
+      "echoashfallprotocol:radiation_zone_scattered_bones_dense",
+      "echoashfallprotocol:radiation_zone_fallout_dust_patches",
+      "echoashfallprotocol:radiation_zone_contaminated_soil_patches",
+      "echoashfallprotocol:radiation_zone_deep_ash_patch",
+      "echoashfallprotocol:radiation_zone_ash_layer_patches",
+      "echoashfallprotocol:radiation_zone_toxic_puddle_patches",
+      "echoashfallprotocol:crystal_radiation_cluster",
+      "echoashfallprotocol:crystal_energy_deposit",
+      "echoashfallprotocol:flora_mutated_bush_resource",
+      "echoashfallprotocol:radiation_zone_radioactive_sludge",
+      "echoashfallprotocol:radiation_zone_twisted_metal",
+      "echoashfallprotocol:bio_lab_leaks"
+    ],
+    [],
+    [
+      "echoashfallprotocol:radiation_zone_nexus_core"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:radiation_zone_mutated_red_trees",
+      "echoashfallprotocol:radiation_zone_mutated_giant_trees",
+      "echoashfallprotocol:radiation_zone_irradiated_cactus",
+      "echoashfallprotocol:radiation_zone_nuclear_fungus",
+      "echoashfallprotocol:radiation_zone_nuclear_fungus_clusters",
+      "echoashfallprotocol:radiation_zone_rusty_wheat",
+      "echoashfallprotocol:radiation_zone_mutated_bush_clusters",
+      "echoashfallprotocol:radiation_zone_burnt_ferns",
+      "echoashfallprotocol:radiation_zone_nuclear_grass",
+      "echoashfallprotocol:radiation_zone_uranium_crystals",
+      "echoashfallprotocol:radiation_zone_mutated_gray_trees",
+      "echoashfallprotocol:radiation_zone_mutated_purple_trees",
+      "echoashfallprotocol:radiation_zone_mutated_twisted_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:rad_zombie",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:irradiated_wolf",
+        "weight": 14,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:echo_drone",
+        "weight": 9,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:glowing_ghoul",
+        "weight": 21,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 1.5
+}

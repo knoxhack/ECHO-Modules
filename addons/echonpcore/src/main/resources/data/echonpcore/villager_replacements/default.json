@@ -1,0 +1,17 @@
+{
+  "id": "echonpcore:default",
+  "replace": {
+    "minecraft:farmer": "echonpcore:reclaimer_farmer",
+    "minecraft:librarian": "echonpcore:data_archivist",
+    "minecraft:cleric": "echonpcore:field_medic",
+    "minecraft:armorer": "echonpcore:armor_tech",
+    "minecraft:weaponsmith": "echonpcore:ballistics_tech",
+    "minecraft:toolsmith": "echonpcore:salvage_engineer",
+    "minecraft:cartographer": "echonpcore:signal_analyst",
+    "minecraft:none": "echonpcore:settlement_survivor",
+    "minecraft:nitwit": "echonpcore:settlement_survivor"
+  },
+  "entityTypes": {
+    "minecraft:wandering_trader": "echonpcore:roaming_scavenger"
+  }
+}

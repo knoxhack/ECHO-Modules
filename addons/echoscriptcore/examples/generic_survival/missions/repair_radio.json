@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "pack": "generic_survival",
+  "id": "generic_survival:repair_radio",
+  "type": "mission",
+  "title": "Repair the Radio",
+  "route": "survival",
+  "phase": "first_contact",
+  "role": "main",
+  "briefing": "Restore a broken radio with basic salvage.",
+  "objectives": [
+    { "id": "iron", "type": "collect_item", "title": "Collect iron ingots", "item": "minecraft:iron_ingot", "count": 4 },
+    { "id": "redstone", "type": "collect_item", "title": "Collect redstone dust", "item": "minecraft:redstone", "count": 2 }
+  ],
+  "on_complete": [
+    { "type": "unlock_archive_entry", "entry": "generic_survival:first_signal" },
+    { "type": "add_holomap_marker", "marker": "generic_survival:shelter_marker" },
+    { "type": "set_world_state", "state": "generic_survival:radio_restored" }
+  ]
+}

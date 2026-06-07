@@ -1,0 +1,102 @@
+{
+  "id": "echoashfallprotocol:deploy_stationary_scanner",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 0,
+  "title": "Deploy a Stationary Signal Scanner",
+  "briefing": "[ECHO-7] The world is vast and broken. Deploy a Stationary Signal Scanner to listen for hidden ruins, Power Nodes, and guardian entrances your portable scan may miss.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:signal_scanner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:calibrate_midgame_grid"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "deploy_stationary_scanner",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.deploy_stationary_scanner",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "68",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:deploy_stationary_scanner:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:deploy_stationary_scanner/signal_scanner",
+      "type": "place_block",
+      "label": "Place Signal Scanner",
+      "detail": "Place 1 Signal Scanner for the Ashfall route.",
+      "icon": "echoashfallprotocol:signal_scanner",
+      "target": "echoashfallprotocol:signal_scanner",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:signal_scanner"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 4,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell"
+    },
+    {
+      "block": "echoashfallprotocol:signal_scanner",
+      "count": 1,
+      "label": "Signal Scanner"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:deploy_stationary_scanner/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:deploy_stationary_scanner/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Stationary scanner online. Low-frequency signatures marked. The base now listens while you move."
+}

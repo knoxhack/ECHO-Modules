@@ -1,0 +1,68 @@
+{
+  "id": "echowiki:guides/ashfall/systems",
+  "title": "Ashfall: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read Ashfall signals, route states, hazards, and helper systems without guesswork.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "WorldCore regions explain why an area feels unsafe. Missions tell you which pressure to solve next. Wiki and Index explain what you found. HoloMap, Lens, PowerGrid, and Logistics make the same survival loop easier to read and repeat.",
+      "tone": "body"
+    },
+    {
+      "type": "link",
+      "title": "Region Context",
+      "body": "If the route suddenly feels unfair, check whether you moved into a harsher Ashfall region or crossed a landmark edge.",
+      "tone": "body",
+      "targetKind": "region",
+      "target": "echoashfallprotocol:crash_zone_wasteland",
+      "label": "Crash Zone Wasteland",
+      "subtitle": "Opening region reference"
+    },
+    {
+      "type": "item",
+      "title": "Scanner Reads",
+      "body": "A portable scanner is not just flavor. It turns unknown blocks, caches, route objects, and hazards into choices you can plan around.",
+      "tone": "body",
+      "item": "echoashfallprotocol:portable_signal_scanner",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Portable Signal Scanner",
+      "subtitle": "Field reading tool"
+    },
+    {
+      "type": "callout",
+      "title": "Keep It Legible",
+      "body": "An Ashfall system is working when another player can look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:systems/survival_codex"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:portable_signal_scanner",
+    "echoashfallprotocol:signal_scanner",
+    "echoashfallprotocol:relay_scanner_lens"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:hazard_route_prep"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:crash_zone_wasteland",
+    "echoashfallprotocol:radiation_zone",
+    "echoashfallprotocol:toxic_swamp"
+  ],
+  "sortOrder": 1013
+}

@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:root",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:orbital_remnant_badge"
+    },
+    "title": {
+      "text": "Outpost Charter Complete"
+    },
+    "description": {
+      "text": "Complete a Tier I faction outpost charter."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

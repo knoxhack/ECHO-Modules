@@ -1,0 +1,156 @@
+{
+    "variants":  {
+                     "inventory":  {
+
+                                   },
+                     "north":  {
+                                   "true":  {
+                                                "submodel":  {
+                                                                 "north":  {
+                                                                               "textures":  {
+                                                                                                "wall":  "echogalacticcore:block/deco_block_side",
+                                                                                                "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                                                "wall_top":  "echogalacticcore:block/deco_block"
+                                                                                            },
+                                                                               "model":  "echogalacticcore:wall_side",
+                                                                               "uvlock":  true
+                                                                           }
+                                                             }
+                                            },
+                                   "false":  {
+
+                                             }
+                               },
+                     "east":  {
+                                  "true":  {
+                                               "submodel":  {
+                                                                "east":  {
+                                                                             "textures":  {
+                                                                                              "wall":  "echogalacticcore:block/deco_block_side",
+                                                                                              "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                                              "wall_top":  "echogalacticcore:block/deco_block"
+                                                                                          },
+                                                                             "model":  "echogalacticcore:wall_side",
+                                                                             "uvlock":  true,
+                                                                             "y":  90
+                                                                         }
+                                                            }
+                                           },
+                                  "false":  {
+
+                                            }
+                              },
+                     "south":  {
+                                   "true":  {
+                                                "submodel":  {
+                                                                 "south":  {
+                                                                               "textures":  {
+                                                                                                "wall":  "echogalacticcore:block/deco_block_side",
+                                                                                                "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                                                "wall_top":  "echogalacticcore:block/deco_block"
+                                                                                            },
+                                                                               "model":  "echogalacticcore:wall_side",
+                                                                               "uvlock":  true,
+                                                                               "y":  180
+                                                                           }
+                                                             }
+                                            },
+                                   "false":  {
+
+                                             }
+                               },
+                     "west":  {
+                                  "true":  {
+                                               "submodel":  {
+                                                                "west":  {
+                                                                             "textures":  {
+                                                                                              "wall":  "echogalacticcore:block/deco_block_side",
+                                                                                              "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                                              "wall_top":  "echogalacticcore:block/deco_block"
+                                                                                          },
+                                                                             "model":  "echogalacticcore:wall_side",
+                                                                             "uvlock":  true,
+                                                                             "y":  270
+                                                                         }
+                                                            }
+                                           },
+                                  "false":  {
+
+                                            }
+                              },
+                     "up":  {
+                                "true":  {
+                                             "submodel":  {
+                                                              "up":  {
+                                                                         "textures":  {
+                                                                                          "wall":  "echogalacticcore:block/deco_block_side",
+                                                                                          "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                                          "wall_top":  "echogalacticcore:block/deco_block"
+                                                                                      },
+                                                                         "model":  "echogalacticcore:wall_post",
+                                                                         "uvlock":  true
+                                                                     }
+                                                          }
+                                         },
+                                "false":  {
+
+                                          }
+                            },
+                     "variant":  {
+                                     "tin_1_wall":  {
+                                                        "textures":  {
+                                                                         "wall":  "echogalacticcore:block/deco_block_side",
+                                                                         "wall_bot":  "echogalacticcore:block/deco_block_up",
+                                                                         "wall_top":  "echogalacticcore:block/deco_block"
+                                                                     },
+                                                        "model":  "echogalacticcore:wall_post",
+                                                        "uvlock":  true
+                                                    },
+                                     "tin_2_wall":  {
+                                                        "textures":  {
+                                                                         "wall":  "echogalacticcore:block/deco_block",
+                                                                         "wall_bot":  "echogalacticcore:block/deco_block",
+                                                                         "wall_top":  "echogalacticcore:block/deco_block"
+                                                                     },
+                                                        "model":  "echogalacticcore:wall_post",
+                                                        "uvlock":  true
+                                                    },
+                                     "moon_stone_wall":  {
+                                                             "textures":  {
+                                                                              "wall":  "echogalacticcore:block/bottom",
+                                                                              "wall_bot":  "echogalacticcore:block/bottom",
+                                                                              "wall_top":  "echogalacticcore:block/bottom"
+                                                                          },
+                                                             "model":  "echogalacticcore:wall_post",
+                                                             "uvlock":  true
+                                                         },
+                                     "moon_dungeon_brick_wall":  {
+                                                                     "textures":  {
+                                                                                      "wall":  "echogalacticcore:block/brick",
+                                                                                      "wall_bot":  "echogalacticcore:block/brick",
+                                                                                      "wall_top":  "echogalacticcore:block/brick"
+                                                                                  },
+                                                                     "model":  "echogalacticcore:wall_post",
+                                                                     "uvlock":  true
+                                                                 },
+                                     "mars_cobblestone_wall":  {
+                                                                   "textures":  {
+                                                                                    "wall":  "echogalacticcore:block/cobblestone",
+                                                                                    "wall_bot":  "echogalacticcore:block/cobblestone",
+                                                                                    "wall_top":  "echogalacticcore:block/cobblestone"
+                                                                                },
+                                                                   "model":  "echogalacticcore:wall_post",
+                                                                   "uvlock":  true
+                                                               },
+                                     "mars_dungeon_brick_wall":  {
+                                                                     "textures":  {
+                                                                                      "wall":  "echogalacticcore:block/brick",
+                                                                                      "wall_bot":  "echogalacticcore:block/brick",
+                                                                                      "wall_top":  "echogalacticcore:block/brick"
+                                                                                  },
+                                                                     "model":  "echogalacticcore:wall_post",
+                                                                     "uvlock":  true
+                                                                 }
+                                 }
+                 }
+}

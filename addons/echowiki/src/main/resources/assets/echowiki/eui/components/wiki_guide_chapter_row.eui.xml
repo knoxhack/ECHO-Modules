@@ -1,0 +1,13 @@
+<list-row class="wiki-guide-chapter-row" action="{param.action|noop}" action-value="{param.id|}">
+  <row class="wiki-guide-chapter-layout" gap="8">
+    <status-chip class="wiki-chapter-ordinal-chip" status="{param.status|known}" value="{param.ordinalBadge|01}"/>
+    <column class="wiki-guide-chapter-copy">
+      <title class="wiki-guide-chapter-title" value="{param.title|Chapter}"/>
+      <row class="wiki-guide-chapter-meta-line" gap="6">
+        <text class="wiki-guide-chapter-role" value="{param.roleBadge|Chapter}"/>
+        <text class="wiki-row-meta-text" value="{param.countLabel|}"/>
+      </row>
+      <text class="wiki-guide-chapter-summary" value="{param.summaryPreview|}"/>
+    </column>
+  </row>
+</list-row>

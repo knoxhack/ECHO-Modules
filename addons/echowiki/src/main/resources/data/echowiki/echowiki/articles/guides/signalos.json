@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/signalos",
+  "title": "SignalOS Operator Manual",
+  "category": "Guide Books",
+  "summary": "Use drives, records, archives, racks, and apps as portable progression and information surfaces.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "SignalOS turns data into an object you can hold, install, archive, and route through terminals. Drives are not junk if they carry records or boot behavior.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Read drive labels, preserve unknown records, and install drives only where the terminal or rack expects them. Keep a clean backup when possible.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Recover drives, inspect records, install or archive them, use apps for context, and let discovered data point to the next route or system.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Drive templates, records, apps, archives, chapters, and missions can all add useful player-facing information, so check recovered drives before discarding them.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Terminal hosts SignalOS surfaces, Wiki can summarize records, Index can expose data objects, and styled screens can make records easier to read when present.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a drive appears empty, check its label, whether it has records, and whether the target block supports that drive role.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "signalos",
+    "drives"
+  ],
+  "icon": "minecraft:disc_fragment_5",
+  "heroArt": "echowiki:textures/gui/guide_books/signalos_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/signalos/first_steps",
+    "echowiki:guides/signalos/core_loop",
+    "echowiki:guides/signalos/systems",
+    "echowiki:guides/signalos/progression",
+    "echowiki:guides/signalos/integrations",
+    "echowiki:guides/signalos/troubleshooting"
+  ],
+  "sortOrder": 1160
+}

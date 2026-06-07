@@ -1,0 +1,42 @@
+{
+  "name": "echoashfallprotocol:sporebound_sanctum/terminators",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_01",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_02",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_03",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_04",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    }
+  ]
+}

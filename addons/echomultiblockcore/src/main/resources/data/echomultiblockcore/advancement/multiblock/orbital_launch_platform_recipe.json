@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/orbital_launch_platform",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:launch_guidance_core"
+    },
+    "title": {
+      "text": "Calibrate Launch Guidance"
+    },
+    "description": {
+      "text": "Complete the Orbital Launch Platform featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:launch_guidance_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

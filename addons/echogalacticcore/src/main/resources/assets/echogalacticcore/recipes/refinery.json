@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:refinery"
+               },
+    "pattern":  [
+                    " Z ",
+                    "WZW",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/stone"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "item":  "minecraft:furnace"
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:canister",
+                          "data":  1
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

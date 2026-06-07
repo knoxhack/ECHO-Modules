@@ -1,0 +1,86 @@
+{
+  "id": "echoindustrialnexus:nexus_furnace_array",
+  "display_name": "Nexus Furnace Array",
+  "translation_key": "multiblock.echoindustrialnexus.nexus_furnace_array",
+  "role": "NEXUS",
+  "category": "unstable_processing",
+  "size": [3, 2, 3],
+  "controller": "echoindustrialnexus:nexus_furnace_array_controller",
+  "allowed_rotations": true,
+  "mirrorable": true,
+  "requires_foundation": false,
+  "layers": [
+    [
+      "FRF",
+      "NCI",
+      "FOF"
+    ],
+    [
+      ".P.",
+      ".W.",
+      ".L."
+    ]
+  ],
+  "palette": {
+    "F": { "block": "echoindustrialnexus:reinforced_machine_casing" },
+    "R": { "block": "echoindustrialnexus:robotic_arm_mount", "robotics": true },
+    "N": { "block": "echoindustrialnexus:nexus_thermal_injector", "component": true },
+    "I": { "block": "echoindustrialnexus:input_depot_crate", "component": true },
+    "O": { "block": "echoindustrialnexus:output_depot_crate", "component": true },
+    "P": { "block": "echoindustrialnexus:industrial_power_bus", "component": true },
+    "W": { "block": "echoindustrialnexus:industrial_workcell_frame", "component": true },
+    "L": { "block": "echoindustrialnexus:warning_light", "component": true, "optional": true },
+    "C": { "block": "echoindustrialnexus:nexus_furnace_array_controller", "controller": true },
+    ".": { "air": true }
+  },
+  "capabilities": [
+    "echo:robotics",
+    "echo:workcell",
+    "echo:item_input",
+    "echo:item_output",
+    "echo:power_input",
+    "echo:scanner_target",
+    "echo:map_marker"
+  ],
+  "optional_tags": [
+    "echonexusprotocol:nexus_materials"
+  ],
+  "workcells": [
+    {
+      "id": "echoindustrialnexus:nexus_furnace/input",
+      "type": "INPUT",
+      "pos": [2, 0, 1],
+      "size": [1, 1, 1]
+    },
+    {
+      "id": "echoindustrialnexus:nexus_furnace/processing",
+      "type": "MATRIX_PROCESSING",
+      "pos": [1, 1, 1],
+      "size": [1, 1, 1],
+      "required_tools": ["INJECTOR", "SCANNER"],
+      "allowed_tasks": [
+        "echoindustrialnexus:stabilize_hybrid_thermal_core",
+        "echoindustrialnexus:forge_core_key_assembly"
+      ]
+    },
+    {
+      "id": "echoindustrialnexus:nexus_furnace/output",
+      "type": "OUTPUT",
+      "pos": [1, 0, 2],
+      "size": [1, 1, 1]
+    }
+  ],
+  "robotics": {
+    "min_arms": 1,
+    "required_tools": ["INJECTOR", "SCANNER"]
+  },
+  "integrity": {
+    "max": 100,
+    "damageable": true,
+    "damaged_threshold": 80,
+    "offline_threshold": 40
+  },
+  "preview": {
+    "color": "a020f0"
+  }
+}

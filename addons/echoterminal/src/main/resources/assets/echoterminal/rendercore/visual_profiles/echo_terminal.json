@@ -1,0 +1,142 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoterminal:textures/block/echo_terminal.png",
+  "particle_profile": "echoterminal:echo_terminal",
+  "default_state": "ONLINE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.95,
+    "bloom_tint": "#FF66E8FF",
+    "pulse_speed": 0.18,
+    "pulse_min_alpha": 0.9,
+    "pulse_max_alpha": 1,
+    "target_scope": "block"
+  },
+  "materials": {
+    "terminal_screen": {
+      "color": "#FF66E8FF",
+      "alpha": 0.82,
+      "emissive": true,
+      "blend_mode": "additive"
+    },
+    "reward_beacon": {
+      "color": "#FFFF86D7",
+      "alpha": 0.9,
+      "emissive": true,
+      "blend_mode": "additive",
+      "effect": {
+        "preset": "neon",
+        "pulse_speed": 1.1,
+        "target_scope": "block"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "terminal_screen",
+      "kind": "glow",
+      "texture": "echoterminal:textures/block/echo_terminal_screen.png",
+      "material": "terminal_screen",
+      "parts": [
+        "screen"
+      ]
+    },
+    {
+      "id": "reward_beacon",
+      "kind": "glow",
+      "texture": "echoterminal:textures/block/echo_terminal_beacon.png",
+      "material": "reward_beacon",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "beacon"
+      ]
+    }
+  ],
+  "anchors": {
+    "core": {
+      "offset": [
+        0,
+        0.55,
+        0
+      ]
+    },
+    "screen": {
+      "offset": [
+        0,
+        0.62,
+        -0.52
+      ]
+    },
+    "beacon": {
+      "offset": [
+        0,
+        1.05,
+        0
+      ]
+    },
+    "vent": {
+      "offset": [
+        0.45,
+        0.35,
+        0
+      ]
+    }
+  },
+  "block_parts": {
+    "screen": {
+      "directions": [
+        "north"
+      ],
+      "ambient_occlusion": true
+    },
+    "beacon": {
+      "directions": [
+        "up"
+      ]
+    },
+    "vent": {
+      "directions": [
+        "east",
+        "west"
+      ]
+    }
+  },
+  "surface": {
+    "type": "block_entity",
+    "owner_addon": "echoterminal",
+    "display_name": "Echo Terminal",
+    "tags": [
+      "block_entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "terminal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": true
+  }
+}

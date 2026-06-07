@@ -1,0 +1,189 @@
+{
+    "id":  "echomultiblockcore:agriculture_dome",
+    "display_name":  "Agriculture Dome",
+    "translation_key":  "multiblock.echomultiblockcore.agriculture_dome",
+    "role":  "AGRICULTURE",
+    "category":  "reclamation",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIIOF",
+                       "FDCDF",
+                       "FOROF",
+                       "FFFFF"
+                   ],
+                   [
+                       "F.P.F",
+                       ".R.R.",
+                       "P.C.P",
+                       ".R.R.",
+                       "F.A.F"
+                   ],
+                   [
+                       "SSSSS",
+                       "S...S",
+                       "S.P.S",
+                       "S...S",
+                       "SSSSS"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:hazard_suppression",
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:terminal_tab",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  32,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  24,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:item_output",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:agriculture_dome/reclamation_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade",
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:agriculture_dome/growth_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:agriculture_dome/hazard_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:agriculture_dome/reclamation",
+                          "type":  "RECLAMATION",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "INJECTOR",
+                                                 "DRILL"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:cultivate_reclamation_matrix"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "8af6b6"
+                },
+    "facility_stage":  "P5 BIOHAZARD ADAPTATION",
+    "facility_route":  "reclamation",
+    "primary_use":  "Cultivates reclamation growth matrices for Agriculture Reclamation support.",
+    "integration_hints":  [
+                              "Agriculture Reclamation can use output items and effects while remaining optional.",
+                              "Capability diagnostics should name data, power, and robotic bottlenecks.",
+                              "Reclamation Growth Matrix is the neutral handoff item."
+                          ]
+}

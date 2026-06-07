@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/convoy",
+  "title": "Convoy Route Manual",
+  "category": "Guide Books",
+  "summary": "Plan route, cargo, incidents, supplies, and exits before distance compounds mistakes.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Convoy play is about route discipline. You are not just moving from point A to point B; you are carrying risk, supplies, incidents, and recovery plans along the road.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Choose a destination, stage fuel or food, identify a fallback shelter, and mark the route before loading valuable cargo.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Scout, stage, travel, respond to incidents, unload, and update the route with what you learned. The best convoy path gets safer each time.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Route definitions and incident profiles describe what can happen on the way. Treat incidents as planning data, not surprise punishment.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "HoloMap marks routes, Logistics prepares cargo, WorldCore explains region risk, and Recovery softens the cost of a failed return.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If convoys keep failing, shorten the run, reduce cargo value, pre-place supplies, and solve the worst hazard before increasing distance.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "convoy",
+    "routes"
+  ],
+  "icon": "minecraft:minecart",
+  "heroArt": "echowiki:textures/gui/guide_books/convoy_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/convoy/first_steps",
+    "echowiki:guides/convoy/core_loop",
+    "echowiki:guides/convoy/systems",
+    "echowiki:guides/convoy/progression",
+    "echowiki:guides/convoy/integrations",
+    "echowiki:guides/convoy/troubleshooting"
+  ],
+  "sortOrder": 1060
+}

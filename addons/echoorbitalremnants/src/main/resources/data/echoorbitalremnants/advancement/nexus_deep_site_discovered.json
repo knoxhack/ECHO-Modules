@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:echo_zero_resolved",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:nexus_anchor"
+    },
+    "title": {
+      "text": "Deep Nexus Site"
+    },
+    "description": {
+      "text": "Log a deep Nexus island, bridge, or growth cluster after ECHO-0."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

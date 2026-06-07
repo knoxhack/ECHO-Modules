@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "rad_glints": {
+      "anchor": "crystal_top",
+      "particle": "echorendercore:soft_mote",
+      "states": ["ACTIVE"],
+      "rate": 0.04,
+      "burst_count": 1,
+      "velocity": [0.0, 0.014, 0.0],
+      "spread": [0.26, 0.08, 0.26],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": "#B8FF32",
+        "scale": 0.48,
+        "lifetime": 24,
+        "alpha": 0.84,
+        "style": "toxic_fleck",
+        "fullbright": true,
+        "flicker": 0.3
+      }
+    },
+    "rad_aura": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": ["ACTIVE"],
+      "rate": 0.018,
+      "burst_count": 1,
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.3, 0.12, 0.3],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": "#86FF57",
+        "scale": 0.7,
+        "lifetime": 38,
+        "alpha": 0.4,
+        "style": "toxic_smoke",
+        "fullbright": true,
+        "flicker": 0.16
+      }
+    }
+  }
+}

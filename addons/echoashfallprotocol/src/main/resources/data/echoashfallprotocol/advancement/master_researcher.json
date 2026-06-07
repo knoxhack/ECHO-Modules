@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:first_perk",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:power_node"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.master_researcher.title",
+      "fallback": "Master Researcher"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.master_researcher.desc",
+      "fallback": "Unlock 10 research perks."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "unlocked_perks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:power_node"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["unlocked_perks"]
+  ]
+}

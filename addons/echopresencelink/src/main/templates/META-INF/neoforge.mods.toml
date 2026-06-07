@@ -1,0 +1,61 @@
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="KnoxHack"
+description='''Client-side activity presence for the ECHO/Ashfall ecosystem, publishing privacy-safe field telemetry to Discord Rich Presence.'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Lets Presence Link describe active ECHO Terminal screens and mission review context when installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="signalos"
+type="optional"
+reason="Publishes Presence Link diagnostics to SignalOS when installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Provides Ashfall-specific mission, hazard, faction, guardian, and Nexus Rich Presence context when installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocommunitybridge"
+type="optional"
+reason="May contribute public Discord invite metadata for Rich Presence buttons without reusing bot tokens or relay code."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

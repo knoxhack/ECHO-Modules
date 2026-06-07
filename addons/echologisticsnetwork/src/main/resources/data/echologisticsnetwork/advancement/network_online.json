@@ -1,0 +1,43 @@
+{
+  "parent": "echologisticsnetwork:supply_crate",
+  "display": {
+    "icon": {
+      "id": "echologisticsnetwork:drone_delivery_dock"
+    },
+    "title": {
+      "text": "Network Online"
+    },
+    "description": {
+      "text": "Build a Drone Delivery Dock or Loadout Locker to make supplies requestable."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "drone_delivery_dock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:drone_delivery_dock"
+          }
+        ]
+      }
+    },
+    "loadout_locker": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:loadout_locker"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "drone_delivery_dock",
+      "loadout_locker"
+    ]
+  ]
+}

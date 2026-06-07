@@ -1,0 +1,11 @@
+<page id="fullscreen-holomap" title="ECHO HoloMap" styles="echothemecore:cyberglass_kit,holomap_fullscreen">
+  <app-shell class="holomap-fullscreen-shell">
+    <app-content class="holomap-fullscreen-content">
+      <holomap-canvas id="holomap-canvas"
+                      class="holomap-fullscreen-canvas"
+                      height="100%"
+                      min-height="240px"
+                      tooltip="Drag to pan, wheel to zoom, arrow keys to nudge, C center, R sync, I index."/>
+    </app-content>
+  </app-shell>
+</page>

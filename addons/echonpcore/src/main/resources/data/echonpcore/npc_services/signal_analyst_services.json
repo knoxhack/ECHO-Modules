@@ -1,0 +1,33 @@
+{
+  "id": "echonpcore:signal_analyst_services",
+  "services": [
+    {
+      "id": "route_hint",
+      "title": "Route Intel",
+      "description": "Provides local route intel from world context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 2400
+    },
+    {
+      "id": "refresh_map",
+      "title": "Refresh Route Map",
+      "description": "Requests HoloMap marker providers to refresh visible route/contact layers.",
+      "cost": [],
+      "action": "map_refresh",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "reveal_signal_marker",
+      "title": "Reveal Signal Marker",
+      "description": "Reveals this contact's signal marker through the shared map provider when available.",
+      "cost": [],
+      "action": "reveal_marker",
+      "amount": 1,
+      "cooldown": 2400,
+      "target": "echonpcore:signal_analyst_marker"
+    }
+  ]
+}

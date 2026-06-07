@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/cursecore/progression",
+  "title": "CurseCore Field: Progression",
+  "category": "Guide Books",
+  "summary": "Move from live minor curses into deeper consequence systems only after cleansing is dependable.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Minor Curses",
+      "body": "Start with Echo Rot and Glass Veins so players learn readable symptoms and low-risk cleansing.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Cleansing Route",
+      "body": "Use RitualCore Curse Cleansing I as the middle safety layer. It should fail clearly when no active curse exists.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Future Depth",
+      "body": "Rift Hunger, Soul Static, Phantom Burn, Blood Debt, Void Mark, contracts, and curse HUD polish belong after the first loop is stable.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Upgrade Check",
+      "body": "Do not raise the risk until the current upgrade tier works without emergency improvising.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "relatedArticles": [
+    "echowiki:guides/cursecore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1304
+}

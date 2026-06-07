@@ -1,0 +1,10 @@
+<list-row class="wiki-guide-shelf-row wiki-fast-card" action="wiki.open_guide_book" action-value="{param.id|}" selected="{param.selected|false}">
+  <column class="wiki-guide-shelf-copy">
+    <title class="wiki-guide-shelf-title" value="{param.title|Guide Book}"/>
+    <row class="wiki-guide-shelf-meta" gap="6">
+      <text class="wiki-row-meta-text" value="{param.moduleBadge|Manual}"/>
+      <text class="wiki-row-meta-text" value="{param.chapterBadge|0 chapters}"/>
+    </row>
+    <text class="wiki-guide-shelf-summary" value="{param.summaryPreview|}"/>
+  </column>
+</list-row>

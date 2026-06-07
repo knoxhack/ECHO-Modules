@@ -1,0 +1,77 @@
+<screen-shell class="terminal-shell terminal-app">
+  <row class="terminal-topbar" gap="10">
+    <row class="terminal-brand" gap="8">
+      <status-chip class="terminal-mark" status="active" value="E7"/>
+      <copy-block class="terminal-brand-copy terminal-shell-copy-block" title="ECHO-7 ASHFALL TERMINAL" subtitle="{terminal.shell.status.routeBreadcrumb|Route 01 > Ashfall C45 > Podfall}"/>
+    </row>
+    <status-chip class="terminal-alert" status="{terminal.shell.status.vitalsStatusKey|warning}" value="{terminal.shell.status.vitalsLabel|VITALS WARNING}"/>
+    <row class="terminal-vitals" gap="8" hide-below="860">
+      <section class="terminal-vital-meter" title="HULL">
+        <row gap="5">
+          <text value="{terminal.shell.status.hullPercent|78}%"/>
+          <progress-bar class="terminal-mini-meter" value="{terminal.shell.status.hullPercent|78}" max="100"/>
+        </row>
+      </section>
+      <section class="terminal-vital-meter" title="POWER">
+        <row gap="5">
+          <text value="{terminal.shell.status.powerPercent|63}%"/>
+          <progress-bar class="terminal-mini-meter" value="{terminal.shell.status.powerPercent|63}" max="100"/>
+        </row>
+      </section>
+      <section class="terminal-vital-meter" title="OXYGEN">
+        <row gap="5">
+          <text value="{terminal.shell.status.oxygenPercent|42}%"/>
+          <progress-bar class="terminal-mini-meter" value="{terminal.shell.status.oxygenPercent|42}" max="100"/>
+        </row>
+      </section>
+    </row>
+  </row>
+
+  <grid class="terminal-app-grid" columns="182px 1fr" gap="9" stack-below="900" compact-below="980" dense-below="900">
+    <column class="terminal-rail" gap="8" hide-below="900">
+      <scroll class="terminal-section-scroll" scroll-state="true" state-key="terminal.sections">
+        <list class="terminal-section-list" bind="terminal.navigation.sections" item="section">
+          <list-row id="{section.id}" value="{section.id}" active="{section.active}" action="terminal.open_tab"
+                    action-value="{section.defaultTabId}" class="terminal-section-row">
+            <status-chip class="terminal-section-icon" status="{section.status|ready}" value="{section.icon|> }"/>
+            <copy-block class="terminal-row-copy terminal-section-copy" title="{section.compactLabel|Command}" subtitle="{section.navSubtitle|Terminal section}"/>
+            <status-chip class="terminal-section-count" status="info" value="{section.count|0}"/>
+          </list-row>
+        </list>
+      </scroll>
+
+      <section class="terminal-core-link" title="ECHO CORE LINK" hide-below="900">
+        <copy-block class="terminal-shell-copy-block" title="ONLINE" subtitle="Terminal {terminal.shell.status.terminalId|ECHO-7A-13} / Uptime {terminal.shell.status.sessionUptime|03:44:27}"/>
+      </section>
+    </column>
+
+    <column class="terminal-workspace" gap="8">
+      <row class="terminal-page-head" gap="10">
+        <copy-block class="terminal-page-title terminal-shell-copy-block" title="{terminal.activeTab.shortTitle|Command Deck}" subtitle="{terminal.activeTab.summary|Issue commands, manage systems, stay alive.}"/>
+        <status-chip class="terminal-page-state" status="{terminal.activeTab.rendererStatus|ready}" value="{terminal.shell.status.rendererBuildLabel|ScreenCore dev}"/>
+      </row>
+
+      <scroll class="terminal-main-scroll">
+        <column class="terminal-main-column" gap="10">
+          <slot-outlet name="body">
+            <empty-state title="No Terminal Page" body="This Terminal page did not provide ScreenCore content."/>
+          </slot-outlet>
+        </column>
+      </scroll>
+    </column>
+  </grid>
+
+  <row class="terminal-footer-strip" gap="10" hide-below="900">
+    <status-chip class="terminal-keycap" status="info" value="ESC"/>
+    <text value="BACK"/>
+    <status-chip class="terminal-keycap" status="info" value="ARROWS"/>
+    <text value="NAVIGATE"/>
+    <status-chip class="terminal-keycap" status="info" value="ENTER"/>
+    <text value="SELECT"/>
+    <status-chip class="terminal-keycap" status="info" value="C"/>
+    <text value="COMMAND MENU"/>
+    <status-chip class="terminal-keycap" status="info" value="WHEEL"/>
+    <text value="ZOOM / SCROLL"/>
+    <text value="{terminal.activeTab.shortTitle|Command Deck}"/>
+  </row>
+</screen-shell>

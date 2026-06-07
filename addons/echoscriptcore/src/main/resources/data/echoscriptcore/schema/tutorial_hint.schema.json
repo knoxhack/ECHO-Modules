@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "tutorial_hint",
+  "required": ["schema_version", "id", "type", "message"],
+  "fields": ["pack", "title", "trigger_conditions", "priority", "once", "terminal_card", "metadata"]
+}

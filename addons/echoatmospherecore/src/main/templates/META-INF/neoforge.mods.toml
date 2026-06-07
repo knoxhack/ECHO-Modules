@@ -1,0 +1,78 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Shared atmosphere, fog, sky, ambience, haze, storm visibility, render, and sound hook contracts for ECHO."
+description='''
+ECHO: AtmosphereCore defines neutral atmosphere profile contracts without
+client rendering, sound playback, shader code, or concrete weather runtime.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides shared platform ids, roles, and feature references."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoschemacore"
+type="required"
+reason="Provides schema ids for atmosphere profile documents."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostics for atmosphere validation."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocontentcore"
+type="required"
+reason="Provides content references for biome, weather, render, sound, and particle bindings."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoassetcore"
+type="required"
+reason="Provides optional fog, sky, particle, and ambience asset references."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

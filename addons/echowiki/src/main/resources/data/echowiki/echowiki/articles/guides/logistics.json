@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/logistics",
+  "title": "Logistics Network Manual",
+  "category": "Guide Books",
+  "summary": "Use supply tags, loadouts, manifests, and remote requests to make storage serve the route.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Logistics is the difference between owning materials and being able to use them. Its tools label supplies, bind routes, request loadouts, and reveal what the network can actually provide.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Create a simple storage area, label categories, and bind one useful loadout before expanding. A first-aid route kit is often more valuable than a huge unsorted warehouse.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Tag storage, define loadouts, bind route manifests, scan readiness, and use remote requests when the network can fulfill the kit.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Supply Tags classify stock, Loadout Cards name expected kits, Route Manifests bind networks, and Remote Request Tablets scan or dispatch from a target block.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "PowerGrid keeps request blocks alive, Index and Wiki document items, Convoy benefits from staged cargo, and TutorialCore can explain missing network pieces.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a request fails, check the bound target, network id, loadout id, stock rows, and whether the target block is still loaded and powered.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "logistics",
+    "storage"
+  ],
+  "icon": "minecraft:chest",
+  "heroArt": "echowiki:textures/gui/guide_books/logistics_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/logistics/first_steps",
+    "echowiki:guides/logistics/core_loop",
+    "echowiki:guides/logistics/systems",
+    "echowiki:guides/logistics/progression",
+    "echowiki:guides/logistics/integrations",
+    "echowiki:guides/logistics/troubleshooting"
+  ],
+  "sortOrder": 1080
+}

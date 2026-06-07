@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:radwarden_quartermaster",
+  "name": "Radwarden Quartermaster",
+  "job_site": "echoashfallprotocol:supply_crate_poi",
+  "work_sound": "minecraft:entity.villager.work_cartographer",
+  "trades": {
+    "novice": {
+      "max_trades": 16,
+      "max_uses": 12,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 2 },
+          "output": { "item": "minecraft:bread", "count": 6 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 4 },
+          "output": { "item": "minecraft:torch", "count": 16 }
+        },
+        {
+          "input": { "item": "minecraft:coal", "count": 16 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        }
+      ]
+    },
+    "apprentice": {
+      "max_trades": 12,
+      "max_uses": 10,
+      "reputation_required": 50,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 8 },
+          "output": { "item": "minecraft:cooked_beef", "count": 8 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 6 },
+          "output": { "item": "minecraft:arrow", "count": 24 }
+        }
+      ]
+    },
+    "journeyman": {
+      "max_trades": 8,
+      "max_uses": 8,
+      "reputation_required": 100,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 10 },
+          "output": { "item": "minecraft:potion", "count": 1, "potion": "minecraft:healing" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 12 },
+          "output": { "item": "echoashfallprotocol:emergency_ration" }
+        }
+      ]
+    },
+    "expert": {
+      "max_trades": 6,
+      "max_uses": 6,
+      "reputation_required": 200,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 16 },
+          "output": { "item": "echoashfallprotocol:bandage" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 20 },
+          "output": { "item": "echoashfallprotocol:stim_pack" }
+        }
+      ]
+    },
+    "master": {
+      "max_trades": 4,
+      "max_uses": 4,
+      "reputation_required": 300,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 40 },
+          "output": { "item": "echoashfallprotocol:hazmat_chestplate" }
+        }
+      ]
+    }
+  }
+}

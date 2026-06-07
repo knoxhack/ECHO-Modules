@@ -1,0 +1,277 @@
+{
+    "id":  "echomultiblockcore:industrial_assembly_line",
+    "display_name":  "Industrial Assembly Line",
+    "translation_key":  "multiblock.echomultiblockcore.industrial_assembly_line",
+    "role":  "PRODUCTION",
+    "category":  "assembly",
+    "size":  [
+                 5,
+                 2,
+                 3
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FIPOF",
+                       "F.C.F",
+                       "FDRDA"
+                   ],
+                   [
+                       "..P..",
+                       "..D..",
+                       "..F.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:terminal_tab",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:auto_builder"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  200,
+                                        "throughput":  64,
+                                        "unit":  "FE/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  32,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  64,
+                                        "throughput":  16,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:item_output",
+                                        "amount":  64,
+                                        "throughput":  16,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:industrial_assembly_line/speed_slot",
+                              "pos":  [
+                                          2,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade",
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:industrial_assembly_line/precision_slot",
+                              "pos":  [
+                                          3,
+                                          0,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:industrial_assembly_line/integrity_slot",
+                              "pos":  [
+                                          2,
+                                          0,
+                                          0
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:assembly_line/input",
+                          "type":  "INPUT",
+                          "pos":  [
+                                      1,
+                                      0,
+                                      0
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:assembly_line/assembly",
+                          "type":  "ASSEMBLY",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER",
+                                                 "ASSEMBLER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:assemble_reinforced_machine_frame",
+                                                "echomultiblockcore:fabricate_signal_circuit",
+                                                "echomultiblockcore:assemble_machine_casing"
+                                            ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:assembly_line/welding",
+                          "type":  "WELDING",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:weld_power_bus"
+                                            ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:assembly_line/scanning",
+                          "type":  "SCANNING",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER",
+                                                 "CALIBRATOR"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:calibrate_data_bus"
+                                            ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:assembly_line/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:repair_structure_integrity"
+                                            ]
+                      },
+                      {
+                          "id":  "echomultiblockcore:assembly_line/output",
+                          "type":  "OUTPUT",
+                          "pos":  [
+                                      3,
+                                      0,
+                                      0
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "WELDER",
+                                            "ASSEMBLER"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true
+                  },
+    "preview":  {
+                    "color":  "66ff99"
+                },
+    "facility_stage":  "P6 DEEP EXTRACTION",
+    "facility_route":  "industrial",
+    "primary_use":  "Runs the general production, robotics, upgrade tutorial, repair, and machine-frame automation loop.",
+    "integration_hints":  [
+                              "Industrial Nexus can consume this controller through MultiblockCore recipes.",
+                              "RuntimeGuard diagnostics should watch validation and queue churn here.",
+                              "This remains the canonical compatibility target for industrial_assembly_line_demo."
+                          ]
+}

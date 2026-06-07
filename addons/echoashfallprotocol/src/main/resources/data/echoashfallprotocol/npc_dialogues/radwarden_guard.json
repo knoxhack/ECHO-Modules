@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:radwarden_guard",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Warden Hale keeps one eye on the horizon. \"Markers drift, ash lies, and anything quiet for too long needs checking twice.\"",
+      "options": [
+        { "id": "trade", "label": "Inspect perimeter kit.", "action": "open_trade" },
+        { "id": "services", "label": "Request perimeter intel.", "action": "open_services" },
+        { "id": "intel", "label": "Open containment dossier.", "action": "open_intel" },
+        { "id": "record", "label": "Log Hale as a contact.", "action": "discover_contact" },
+        { "id": "close", "label": "Stand down.", "action": "close" }
+      ]
+    }
+  }
+}

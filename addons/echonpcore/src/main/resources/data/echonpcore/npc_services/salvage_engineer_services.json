@@ -1,0 +1,16 @@
+{
+  "id": "echonpcore:salvage_engineer_services",
+  "services": [
+    {
+      "id": "field_repair",
+      "title": "Field Repair",
+      "description": "Repairs the held item slightly.",
+      "cost": [
+        { "item": "minecraft:iron_nugget", "count": 3 }
+      ],
+      "action": "repair_held_item",
+      "amount": 10,
+      "cooldown": 1200
+    }
+  ]
+}

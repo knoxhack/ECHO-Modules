@@ -1,0 +1,50 @@
+{
+  "id": "echoashfallprotocol:sporebound_elder_stock",
+  "groups": [
+    {
+      "id": "scar_readings",
+      "title": "Scar Readings",
+      "offers": [
+        {
+          "id": "tissue_for_mutagen",
+          "title": "Controlled Mutagen Vial",
+          "input": [
+            { "item": "echoashfallprotocol:mutated_tissue", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:mutagen_vial", "count": 1 },
+          "stock": 2,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "mutagen_for_radaway",
+          "title": "Stabilized RadAway",
+          "input": [
+            { "item": "echoashfallprotocol:mutagen_vial", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:rad_away", "count": 1 },
+          "stock": 2,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Sanctum support standing required."
+        },
+        {
+          "id": "trusted_filter_brew",
+          "title": "Trusted Filter Brew",
+          "input": [
+            { "item": "echoashfallprotocol:mutagen_vial", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:filter_cartridge_advanced", "count": 1 },
+          "stock": 1,
+          "restockTime": 48000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted Sanctum standing required."
+        }
+      ]
+    }
+  ]
+}

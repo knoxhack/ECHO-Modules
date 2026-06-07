@@ -1,0 +1,19 @@
+{
+  "parent": "echoashfallprotocol:nexus_core_found",
+  "display": {
+    "icon": {"id": "echoashfallprotocol:nexus_crystal"},
+    "title": {"translate": "advancements.EchoAshfallProtocol.nexus_crystal_obtained.title", "fallback": "Crystallized Energy"},
+    "description": {"translate": "advancements.EchoAshfallProtocol.nexus_crystal_obtained.desc", "fallback": "Obtain a Nexus Crystal — condensed power from the Core."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "has_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": "echoashfallprotocol:nexus_crystal"}]}
+    }
+  },
+  "requirements": [["has_crystal"]]
+}

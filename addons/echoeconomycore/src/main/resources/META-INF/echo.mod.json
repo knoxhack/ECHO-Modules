@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoeconomycore",
+  "name": "ECHO: EconomyCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "economy_core",
+  "entrypoint": "com.knoxhack.echo.economycore.EchoEconomyCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echosocialcore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "economy.barter",
+    "economy.currencies",
+    "economy.faction_shops",
+    "economy.trade_validation"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "items"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "contractsOnly": true,
+    "notes": "Neutral economy, currency, barter, faction shop, reward value, pricing, and trade validation contracts.",
+    "nativeEntrypoint": "com.knoxhack.echo.economycore.EchoEconomyCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

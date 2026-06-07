@@ -1,0 +1,19 @@
+{
+  "id": "echomultiblockcore:repair_structure_integrity",
+  "display_name": "Repair Structure Integrity",
+  "category": "repair",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line", "echomultiblockcore:signal_tower_tier_1"],
+  "required_workcell": "REPAIR",
+  "required_tools": ["WELDER"],
+  "duration_ticks": 180,
+  "heat_per_second": 2,
+  "animation": "repair",
+  "integrity_repair": 20,
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echomultiblockcore:reinforced_frame", "count": 1, "label": "Reinforced Frame" },
+    { "item": "echomultiblockcore:signal_circuit", "count": 1, "label": "Signal Circuit" }
+  ],
+  "outputs": [],
+  "notes": ["Restores controller integrity instead of producing an item."]
+}

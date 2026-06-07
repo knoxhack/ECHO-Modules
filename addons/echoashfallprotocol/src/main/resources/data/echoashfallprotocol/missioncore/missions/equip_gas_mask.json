@@ -1,0 +1,99 @@
+{
+  "id": "echoashfallprotocol:equip_gas_mask",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 5,
+  "title": "Equip Gas Mask + Turn In",
+  "briefing": "[ECHO-7] First hazard route unlocked. Equip your Gas Mask before entering toxic pockets, then return this protocol.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall equipment predicate for a Gas Mask item equipped in the head slot.",
+  "category": "survival",
+  "difficulty": "trivial",
+  "icon": "echoashfallprotocol:gas_mask",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:base_stability_check"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "equip_gas_mask",
+    "nativeGameplayHook": "ashfall.first_route.equip_gas_mask",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.filter_reserve.bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "28",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:equip_gas_mask:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:equip_gas_mask/equip_head_slot",
+      "type": "custom",
+      "label": "Equip Gas Mask",
+      "detail": "Equip the Gas Mask in the head slot before entering toxic hazard pockets.",
+      "icon": "echoashfallprotocol:gas_mask",
+      "target": "echoashfallprotocol:gas_mask",
+      "required": 1,
+      "criteria": {
+        "predicate": "equipment_slot",
+        "slot": "head",
+        "item": "echoashfallprotocol:gas_mask",
+        "required_equipment": "head=echoashfallprotocol:gas_mask",
+        "events": "player.equipment_changed,ashfall.equipment_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris",
+        "native_objective_type": "equipment_predicate"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "equipment": "head",
+      "item": "echoashfallprotocol:gas_mask",
+      "count": 1,
+      "label": "Gas Mask Equipped"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:equip_gas_mask/reward_basic_filter",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 1,
+      "label": "Basic Filter Cartridge",
+      "detail": "Initial cartridge reserve for toxic-zone prep."
+    },
+    {
+      "id": "echoashfallprotocol:equip_gas_mask/reward_bandages",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandages",
+      "detail": "Medical reserve before entering marked hazard pockets."
+    }
+  ],
+  "completionText": "[ECHO-7] Respiratory seal confirmed. Filters drain only inside toxic hazard zones."
+}

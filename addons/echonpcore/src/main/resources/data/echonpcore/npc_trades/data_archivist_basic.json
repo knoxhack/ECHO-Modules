@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:data_archivist_basic",
+  "groups": [
+    {
+      "id": "archive",
+      "title": "Archive Stock",
+      "offers": [
+        {
+          "id": "paper_for_map",
+          "title": "Recovered Route Notes",
+          "input": [
+            { "item": "minecraft:paper", "count": 3 }
+          ],
+          "output": { "item": "minecraft:map", "count": 1 },
+          "stock": 2,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

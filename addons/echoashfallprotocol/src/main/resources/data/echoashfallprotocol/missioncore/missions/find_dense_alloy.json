@@ -1,0 +1,99 @@
+{
+  "id": "echoashfallprotocol:find_dense_alloy",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 1,
+  "title": "Find Dense Alloy",
+  "briefing": "[ECHO-7] Advanced machinery requires Dense Alloy. Use your Portable Signal Scanner to locate Military Vaults, or deploy a Deep Core Miner to acquire this essential material.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:dense_alloy_chunk",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:clear_military_vault"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "find_dense_alloy",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.find_dense_alloy",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "60",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:find_dense_alloy:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:find_dense_alloy/dense_alloy_chunk",
+      "type": "deliver_item",
+      "label": "Deliver Dense Alloy Chunk",
+      "detail": "Confirm 1 Dense Alloy Chunk for this route step.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:dense_alloy_chunk",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:dense_alloy_chunk",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 1,
+      "label": "Dense Alloy Chunk"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:find_dense_alloy/reward_0",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 2,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:find_dense_alloy/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:find_dense_alloy/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:find_dense_alloy/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Dense Alloy acquired. This high-grade material unlocks steadier midgame power, extraction, and alloy-route preparation."
+}

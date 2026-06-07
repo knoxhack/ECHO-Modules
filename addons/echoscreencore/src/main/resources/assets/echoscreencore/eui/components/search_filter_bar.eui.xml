@@ -1,0 +1,6 @@
+<row class="search-filter-bar" gap="10" stack-below="sm">
+  <search-box state-key="{param.searchKey|search}" value="{param.searchValue|}" placeholder="{param.placeholder|Search...}" on-change="{param.searchAction|noop}" debounce-ms="{param.debounce|150}" clearable="true"/>
+  <select state-key="{param.filterKey|filter}" value="{param.filterValue|}" on-change="{param.filterAction|noop}" clearable="true">
+    <slot-outlet name="options"/>
+  </select>
+</row>

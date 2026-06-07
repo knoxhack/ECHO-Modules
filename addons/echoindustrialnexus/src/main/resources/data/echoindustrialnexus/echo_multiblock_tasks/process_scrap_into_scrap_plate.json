@@ -1,0 +1,14 @@
+{
+  "id": "echoindustrialnexus:process_scrap_into_scrap_plate",
+  "display_name": "Process Scrap Into Scrap Plate",
+  "category": "cutting",
+  "allowed_multiblocks": ["echoindustrialnexus:scrap_processor"],
+  "required_workcell": "CUTTING",
+  "required_tools": ["CUTTER"],
+  "duration_ticks": 120,
+  "heat_per_second": 1,
+  "animation": "cut",
+  "consume_inputs_on_start": true,
+  "inputs": [{ "item": "echoindustrialnexus:scrap_metal", "count": 1, "label": "Scrap Metal" }],
+  "outputs": [{ "item": "echoindustrialnexus:scrap_plate", "count": 1, "label": "Scrap Plate" }]
+}

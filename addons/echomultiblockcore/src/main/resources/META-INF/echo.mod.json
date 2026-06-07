@@ -1,0 +1,97 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomultiblockcore",
+  "name": "ECHO: MultiblockCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "tech",
+  "entrypoint": "com.knoxhack.echomultiblockcore.EchoMultiblockCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echopowergrid",
+    "echorendercore",
+    "echoruntimeguard",
+    "echoterminal",
+    "echothemecore"
+  ],
+  "provides": [
+    "multiblock.automation",
+    "multiblock.build_assist",
+    "multiblock.definitions",
+    "multiblock.facility_runtime",
+    "multiblock.progression",
+    "multiblock.validation"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "structures",
+        "recipes",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresMinecraft": false,
+    "contractsOnly": false,
+    "notes": "Provides the MultiblockCore facility runtime, definition loader, validation engine, automation queue, build assist, progression, and optional reflective integrations.",
+    "nativeEntrypoint": "com.knoxhack.echomultiblockcore.EchoMultiblockCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echomultiblockcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "AUDIT.md",
+      "SMOKE_TEST.md"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

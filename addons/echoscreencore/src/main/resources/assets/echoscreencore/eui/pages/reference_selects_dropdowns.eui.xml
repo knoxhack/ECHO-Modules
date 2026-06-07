@@ -1,0 +1,25 @@
+<page id="reference-selects-dropdowns" title="Reference Selects Dropdowns" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Selects And Dropdowns" subtitle="Static options and action menu patterns."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-list-detail" columns="1fr 1fr" gap="8" stack-below="760">
+        <section class="sc-panel" title="SELECT">
+          <select bind="filters.availableStatuses" item="status" value="{filters.status}" searchable="true" clearable="true" on-change="demo.set_filter">
+            <option value="{status.id}" label="{status.label}"/>
+          </select>
+          <text class="sc-readable-body" value="Use provider-backed options when addons own the available choices."/>
+        </section>
+        <section class="sc-panel" title="DROPDOWN MENU">
+          <dropdown-menu placeholder="Reference Actions">
+            <menu-section label="Open"/>
+            <dropdown-item value="hub" label="Feature Hub" action="screencore.open_page" action-value="echoscreencore:reference_feature_hub"/>
+            <dropdown-item value="bad" label="Bad Layout Fixes" action="screencore.open_page" action-value="echoscreencore:reference_bad_layouts"/>
+          </dropdown-menu>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

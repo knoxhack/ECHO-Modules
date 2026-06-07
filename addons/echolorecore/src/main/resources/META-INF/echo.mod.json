@@ -1,0 +1,84 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echolorecore",
+  "name": "ECHO: LoreCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "lore_core",
+  "entrypoint": "com.knoxhack.echo.lorecore.EchoLoreCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "lore.audio_logs",
+    "lore.blackbox_entries",
+    "lore.entries",
+    "lore.environmental_storytelling"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "wiki"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.lorecore.EchoLoreCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresMinecraft": false,
+    "contractsOnly": true,
+    "notes": "Defines neutral lore entries, audio logs, blackbox entries, and environmental storytelling contracts."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/lorecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

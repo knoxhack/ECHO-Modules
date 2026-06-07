@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echonexusprotocol:reality_dust",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "min": 3.0, "max": 7.0 } }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echonexusprotocol:stabilized_alloy",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "min": 1.0, "max": 2.0 } }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:stable_nexus_core", "weight": 1 },
+        { "type": "minecraft:empty", "weight": 3 }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:field_anchor", "weight": 1 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:stabilized_purity_charge", "weight": 2 },
+        { "type": "minecraft:empty", "weight": 2 }
+      ]
+    }
+  ],
+  "random_sequence": "echonexusprotocol:entities/nexus_guardian"
+}

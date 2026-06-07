@@ -1,0 +1,25 @@
+<page id="reference-modal-overlay" title="Reference Modal Overlay" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Modals And Overlays" subtitle="Tooltip, dialog, and close actions."/>
+    </slot>
+    <slot name="body">
+      <section class="sc-panel" title="OVERLAY CONTROLS">
+        <tooltip text="Tooltips should stay short and explain the nearby control.">
+          <button action="noop" variant="ghost">Hover Tooltip</button>
+        </tooltip>
+        <button action="screencore.open_modal" action-target="reference-confirm" variant="primary">Open Dialog</button>
+        <dialog id="reference-confirm" title="Reference Dialog" size="md" close-on-escape="true" close-on-outside="true">
+          <dialog-title>Reference Dialog</dialog-title>
+          <dialog-body>
+            <text class="sc-readable-body" value="Dialogs use a body and action row. Escape closes the topmost overlay first."/>
+          </dialog-body>
+          <dialog-actions>
+            <button action="screencore.close_modal" variant="primary">Close</button>
+          </dialog-actions>
+        </dialog>
+      </section>
+    </slot>
+  </component>
+</page>
+

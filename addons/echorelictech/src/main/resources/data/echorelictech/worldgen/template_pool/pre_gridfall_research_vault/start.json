@@ -1,0 +1,16 @@
+{
+  "name": "echorelictech:pre_gridfall_research_vault/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echorelictech:pre_gridfall_research_vault/start",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

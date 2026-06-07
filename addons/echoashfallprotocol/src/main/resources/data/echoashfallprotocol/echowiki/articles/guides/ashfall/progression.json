@@ -1,0 +1,64 @@
+{
+  "id": "echowiki:guides/ashfall/progression",
+  "title": "Ashfall: Progression",
+  "category": "Guide Books",
+  "summary": "Upgrade in stable steps without skipping the safety layer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Widen The Safe Loop",
+      "body": "Progression is not distance first. It is reliability first: filtration, storage, route marks, basic power, hazard counters, and enough carrying capacity to bring the upgrade materials home.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Filtration Tier",
+      "body": "Filters and purification are the first range upgrade. Better water lets you turn one nervous trip into two calm trips.",
+      "tone": "body",
+      "item": "echoashfallprotocol:filter_workbench",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Filter Workbench",
+      "subtitle": "Water progression station"
+    },
+    {
+      "type": "item",
+      "title": "Power Tier",
+      "body": "Once water is stable, power decides whether base work stays manual or becomes infrastructure. Repair the smallest useful network before chasing bigger stations.",
+      "tone": "body",
+      "item": "echoashfallprotocol:scrap_dynamo",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Scrap Dynamo",
+      "subtitle": "Starter power source"
+    },
+    {
+      "type": "callout",
+      "title": "Do Not Skip The Middle",
+      "body": "The middle step can feel boring because it is the safety layer: markers, meters, storage, backups, and known exits. Build that layer before raising the risk.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:filter_workbench",
+    "echoashfallprotocol:water_purifier",
+    "echoashfallprotocol:scrap_dynamo",
+    "echoashfallprotocol:power_node"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:first_relay_station_route"
+  ],
+  "sortOrder": 1014
+}

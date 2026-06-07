@@ -1,0 +1,71 @@
+{
+    "variants":  {
+                     "type":  {
+                                  "solar":  {
+                                                "model":  "echogalacticcore:block_multi_model"
+                                            },
+                                  "ss_base":  {
+                                                  "model":  "echogalacticcore:block_multi_model"
+                                              },
+                                  "rocket_pad":  {
+                                                     "model":  "echogalacticcore:landing_pad_model"
+                                                 },
+                                  "nasa_workbench":  {
+                                                         "model":  "echogalacticcore:block_multi_model"
+                                                     },
+                                  "solar_panel":  {
+                                                      "model":  "echogalacticcore:block_multi_model"
+                                                  },
+                                  "buggy_pad":  {
+                                                    "model":  "echogalacticcore:buggy_pad_model"
+                                                },
+                                  "miner_base":  {
+                                                     "model":  "echogalacticcore:block_multi_model"
+                                                 },
+                                  "dish_large":  {
+                                                     "model":  "echogalacticcore:block_multi_model"
+                                                 },
+                                  "laser_turret":  {
+                                                       "model":  "echogalacticcore:block_multi_model"
+                                                   },
+                                  "cryo_chamber":  {
+                                                       "model":  "echogalacticcore:cryo_1"
+                                                   }
+                              },
+                     "rendertype":  {
+                                        "0":  {
+
+                                              },
+                                        "1":  {
+                                                  "model":  "echogalacticcore:cryo_1",
+                                                  "y":  90
+                                              },
+                                        "2":  {
+                                                  "model":  "echogalacticcore:cryo_1",
+                                                  "y":  180
+                                              },
+                                        "3":  {
+                                                  "model":  "echogalacticcore:cryo_1",
+                                                  "y":  270
+                                              },
+                                        "4":  {
+                                                  "model":  "echogalacticcore:cryo_2"
+                                              },
+                                        "5":  {
+                                                  "model":  "echogalacticcore:cryo_2",
+                                                  "y":  90
+                                              },
+                                        "6":  {
+                                                  "model":  "echogalacticcore:cryo_2",
+                                                  "y":  180
+                                              },
+                                        "7":  {
+                                                  "model":  "echogalacticcore:cryo_2",
+                                                  "y":  270
+                                              }
+                                    },
+                     "inventory":  {
+                                       "model":  "echogalacticcore:block_multi_model"
+                                   }
+                 }
+}

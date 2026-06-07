@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "ending",
+  "required": ["schema_version", "id", "type", "title", "conditions"],
+  "fields": ["pack", "description", "priority", "actions", "terminal_summary", "metadata"]
+}

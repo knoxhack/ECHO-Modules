@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "criteria": {
+    "craft_bone_knife": {
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:bone_knife"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Metal reserves exhausted. Improvise with organic materials.",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:bone_knife"
+    },
+    "title": "Primitive Survival",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "requirements": [
+    [
+      "craft_bone_knife"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

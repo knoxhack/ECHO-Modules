@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:multiblock_controller"
+    },
+    "title": {
+      "text": "ECHO: MultiblockCore"
+    },
+    "description": {
+      "text": "Blueprint-driven facilities, robotics, automation, and progression."
+    },
+    "background": "minecraft:textures/block/deepslate_tiles.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "controller": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:multiblock_controller"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "controller"
+    ]
+  ]
+}

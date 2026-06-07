@@ -1,0 +1,145 @@
+{
+  "id": "echoashfallprotocol:first_relay_station_route",
+  "chapterId": "echoashfallprotocol:ashfall_major_routes",
+  "phase": "major_route_0",
+  "phaseTitle": "First Major Route",
+  "phaseOrder": 2,
+  "order": 0,
+  "title": "Secure the First Relay Station",
+  "briefing": "The relay route is your first major POI push. It is real, useful, and exposed: check weather, scan the relay console, repair the coupler, claim the cache, and return before chasing locked routes.",
+  "prerequisites": [
+    "echoashfallprotocol:craft_portable_scanner"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "first_relay_station_route",
+    "nativeGameplayHook": "ashfall.major_route.first_relay_station",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminal_route_prerequisites": "echoashfallprotocol:craft_portable_scanner",
+    "terminal_source": "adaptercore.native_command",
+    "routeRoleTag": "major_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_major_route_records",
+    "indexEntry": "echoashfallprotocol:first_relay_station",
+    "holomapLayer": "echoashfallprotocol:first_major_route",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "powerGridRepair": "echoashfallprotocol:ashfall_relay_station_repair",
+    "wikiArticle": "echowiki:guides/ashfall/integrations"
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/open_major_route_records",
+      "type": "custom",
+      "label": "Open Major Route Records",
+      "detail": "Confirm First Relay Station is the selected route and future markers are locked.",
+      "target": "echoashfallprotocol:ashfall_major_route_records",
+      "criteria": {
+        "event": "ashfall.terminal_page",
+        "surface": "echoterminal:route_records"
+      },
+      "icon": "echoashfallprotocol:portable_signal_scanner"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/check_weather_window",
+      "type": "custom",
+      "label": "Check the relay weather window",
+      "detail": "Delay the route during active toxic fronts unless you have filters, clean water, and a marked exit.",
+      "target": "echoashfallprotocol:relay_weather_window",
+      "criteria": {
+        "event": "ashfall.hazard_check",
+        "hazard": "echoashfallprotocol:ashfall_toxic_front"
+      },
+      "icon": "echoashfallprotocol:gas_mask"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/track_relay_marker",
+      "type": "custom",
+      "label": "Track the First Relay Station marker",
+      "detail": "Use the first major route HoloMap layer and ignore locked future routes.",
+      "target": "echoashfallprotocol:first_relay_station",
+      "criteria": {
+        "event": "holomap.marker_selected",
+        "layer": "echoashfallprotocol:first_major_route"
+      },
+      "icon": "echoashfallprotocol:relay_scanner_lens"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/scan_relay_console",
+      "type": "custom",
+      "label": "Scan the relay console",
+      "detail": "Confirm this is the relay station POI and open its Index guide.",
+      "target": "echoashfallprotocol:relay_station_console",
+      "criteria": {
+        "event": "player.scanner_used",
+        "profile": "echoashfallprotocol:ashfall_major_route_scans",
+        "indexEntry": "echoashfallprotocol:first_relay_station"
+      },
+      "icon": "echoashfallprotocol:portable_signal_scanner"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/repair_power_coupler",
+      "type": "custom",
+      "label": "Repair or document the relay power coupler",
+      "detail": "Use relay repair guidance; if repair is blocked, document missing input/status text.",
+      "target": "echoashfallprotocol:ashfall_relay_station_repair",
+      "criteria": {
+        "event": "powergrid.repair",
+        "repairPath": "echoashfallprotocol:ashfall_relay_station_repair"
+      },
+      "icon": "echoashfallprotocol:power_cell"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/claim_relay_cache",
+      "type": "custom",
+      "label": "Claim the relay cache",
+      "detail": "The cache should support power, scanner, and next-route prep without skipping late systems.",
+      "target": "echoashfallprotocol:relay_cache_lockbox",
+      "criteria": {
+        "event": "player.terminal_opened",
+        "lootTable": "echoashfallprotocol:chests/relay_station_cache"
+      },
+      "icon": "echoashfallprotocol:scrap_circuit"
+    },
+    {
+      "id": "echoashfallprotocol:first_relay_station_route/return_and_update_terminal",
+      "type": "custom",
+      "label": "Return and update Terminal",
+      "detail": "Return to shelter and confirm What Now points to the next safe route state.",
+      "target": "echoashfallprotocol:first_relay_station_route/returned",
+      "criteria": {
+        "event": "terminal.route_record",
+        "terminalPage": "echoashfallprotocol:ashfall_major_route_records"
+      },
+      "icon": "echoashfallprotocol:return_beacon"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "loot_table",
+      "id": "echoashfallprotocol:chests/relay_station_cache",
+      "label": "Relay cache supplies",
+      "detail": "Relay cache supplies appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    },
+    {
+      "type": "documentation",
+      "id": "echoashfallprotocol:relay_station_rewards",
+      "label": "Relay reward guide unlocked",
+      "detail": "Relay reward guide unlocked appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    },
+    {
+      "type": "route_unlock",
+      "id": "echoashfallprotocol:crashbreak_relay_contract",
+      "label": "Optional Crashbreak relay proof available",
+      "detail": "Optional Crashbreak relay proof available appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Relay route secured. You now have a tested major-route pattern: prep, scan, repair, cache, return, then choose the next route intentionally.",
+  "fieldGuide": "First major POI route contract: check weather, track the relay marker, scan the console, repair or document the coupler, claim the cache, and return before opening future route locks.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:relay_scanner_lens",
+  "kind": "main"
+}

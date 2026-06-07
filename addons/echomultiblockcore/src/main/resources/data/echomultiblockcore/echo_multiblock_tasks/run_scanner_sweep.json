@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:run_scanner_sweep",
+  "display_name": "Run Scanner Sweep",
+  "category": "scanner",
+  "allowed_multiblocks": ["echomultiblockcore:scanner_array"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["SCANNER", "CALIBRATOR"],
+  "duration_ticks": 180,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "animation_profile": "echomultiblockcore:scanner_sweep",
+  "inputs": [
+    { "item": "echomultiblockcore:supply_manifest", "count": 1 },
+    { "item": "echomultiblockcore:signal_conduit", "count": 2 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 }
+  ],
+  "notes": ["Produces a scan matrix used by advanced facilities."]
+}

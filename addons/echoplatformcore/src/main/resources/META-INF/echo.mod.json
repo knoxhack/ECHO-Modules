@@ -1,0 +1,65 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoplatformcore",
+  "name": "ECHO: PlatformCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "platform",
+  "entrypoint": "com.knoxhack.echo.platformcore.EchoPlatformCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echocore"
+  ],
+  "optional": [],
+  "provides": [
+    "platform.contracts"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "platform.contracts"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.platformcore.EchoPlatformCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "platform_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

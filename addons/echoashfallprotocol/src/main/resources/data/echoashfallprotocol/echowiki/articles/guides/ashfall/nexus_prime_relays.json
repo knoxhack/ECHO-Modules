@@ -1,0 +1,69 @@
+{
+  "id": "echowiki:guides/ashfall/nexus_prime_relays",
+  "title": "Ashfall: Nexus and Prime Relays",
+  "category": "Guide Books",
+  "summary": "Read Prime relay scans, boss intel, Nexus state, and ending branch consequences before the final commitment.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Relay State",
+      "body": "Prime relay pages should show scan status, route risk, branch pressure, and the next required objective. Do not enter the Nexus chain until the map and Terminal agree on the same state.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Nexus Preparation",
+      "body": "A Nexus capacitor is a commitment signal. Make sure boss intel, relay status, power reserves, and route exits are visible before using it to push the ending state forward.",
+      "tone": "body",
+      "item": "echoashfallprotocol:nexus_capacitor",
+      "count": 1,
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:build_nexus_capacitor",
+      "label": "Build Nexus Capacitor",
+      "subtitle": "Late-game infrastructure"
+    },
+    {
+      "type": "callout",
+      "title": "Branch Consequences",
+      "body": "Restore, Destroy, and Control should each explain what changes next in Terminal, Index, and HoloMap state. If the consequence is unclear, pause and read the branch page before choosing.",
+      "tone": "warning",
+      "icon": "echoashfallprotocol:nexus_core"
+    },
+    {
+      "type": "paragraph",
+      "title": "Boss Intel",
+      "body": "Boss objectives should name the arena risk, countermeasure, and reward before the fight. Late-game tension is fair only when the player can see what is at stake.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "nexus",
+    "prime_relays",
+    "boss_intel",
+    "ending",
+    "guide_book_chapter"
+  ],
+  "icon": "echoashfallprotocol:nexus_capacitor",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:guides/ashfall/progression",
+    "echowiki:guides/ashfall/midgame_hazard_lab_vault"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:nexus_capacitor",
+    "echoashfallprotocol:nexus_core",
+    "echoashfallprotocol:relay_scanner_lens"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:scan_prime_relays",
+    "echoashfallprotocol:build_nexus_capacitor",
+    "echoashfallprotocol:neutralize_nexus_scar_avatar",
+    "echoashfallprotocol:reach_decision"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:nexus_scar"
+  ],
+  "sortOrder": 1020
+}

@@ -1,0 +1,13 @@
+<template>
+  <app-shell class="sc-app-shell">
+    <slot-outlet name="header">
+      <component src="echoscreencore:sc_page_header"
+                 title="{param.title|ScreenCore Reference}"
+                 subtitle="{param.subtitle|Use real ScreenCore resources and validate at required viewport sizes.}"/>
+    </slot-outlet>
+    <app-content class="sc-page-body">
+      <slot-outlet name="body"/>
+    </app-content>
+  </app-shell>
+</template>
+

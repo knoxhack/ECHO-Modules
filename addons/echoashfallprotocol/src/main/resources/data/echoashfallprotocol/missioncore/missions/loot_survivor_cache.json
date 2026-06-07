@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:loot_survivor_cache",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 3,
+  "title": "Loot Survivor Cache",
+  "briefing": "[ECHO-7] Survivor caches teach the old emergency rhythm: water, food, medicine, and notes. Locate one cache or recover a survivor data log.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:clean_water_bottle",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:scan_first_poi"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "loot_survivor_cache",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.loot_survivor_cache",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "3",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "38",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:loot_survivor_cache:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "player.terminal_opened",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:loot_survivor_cache/loot_survivor_cache",
+      "type": "custom",
+      "label": "Loot Survivor Cache",
+      "detail": "Progress is recorded by the Ashfall runtime predicate, cache-open event, or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:loot_survivor_cache",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.loot_survivor_cache"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:loot_survivor_cache/reward_0",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:loot_survivor_cache/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:loot_survivor_cache/reward_1",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:loot_survivor_cache/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Cache route logged. Small shelters are safer supply stops than open-field wandering."
+}

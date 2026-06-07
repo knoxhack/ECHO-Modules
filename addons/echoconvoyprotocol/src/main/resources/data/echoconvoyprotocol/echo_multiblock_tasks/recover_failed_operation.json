@@ -1,0 +1,19 @@
+{
+  "id": "echoconvoyprotocol:recover_failed_operation",
+  "display_name": "Recover Failed Operation",
+  "category": "echoconvoyprotocol:field_operations",
+  "required_workcell": "RECOVERY",
+  "required_tools": ["SCANNER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:emergency_beacon", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echoconvoyprotocol:repair_kit", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 240,
+  "heat_per_second": 2,
+  "animation": "recover",
+  "effects": ["echoconvoyprotocol:recover_failed_operation"],
+  "notes": ["Clears a failed or recalled field operation and restores recovery state."]
+}

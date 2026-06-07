@@ -1,0 +1,14 @@
+{
+  "title": "Repair Gantry Kit",
+  "order": 120,
+  "icon": "echoconvoyprotocol:repair_kit",
+  "deliveryTicks": 200,
+  "requirements": [
+    { "item": "echoconvoyprotocol:repair_kit", "count": 1 },
+    { "item": "echoconvoyprotocol:vehicle_armor_plate", "count": 2 },
+    { "item": "echoconvoyprotocol:reinforced_axle", "count": 1 }
+  ],
+  "targetBlockTypes": [
+    "echoconvoyprotocol:cargo_input_crate"
+  ]
+}

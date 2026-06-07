@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:repair_echo_drone",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 6,
+  "title": "Restore Drone Recon Support",
+  "briefing": "[ECHO-7] Recon support required. Repair the linked ECHO drone to 25 percent integrity before longer routes start eating supplies blind.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:circuit_board",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:complete_first_faction_task"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "repair_echo_drone",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.repair_echo_drone",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "41",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:repair_echo_drone:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "ashfall.drone_state",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:repair_echo_drone/repair_echo_drone",
+      "type": "custom",
+      "label": "Restore Drone Recon Support",
+      "detail": "Progress is recorded by the Ashfall runtime predicate, drone-state event, or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:circuit_board",
+      "target": "echoashfallprotocol:repair_echo_drone",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.repair_echo_drone"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:repair_echo_drone/reward_0",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:repair_echo_drone/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:repair_echo_drone/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:repair_echo_drone/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Drone mobility confirmed. It can now support safer scouting patterns without turning every POI into a face-check."
+}

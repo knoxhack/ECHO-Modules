@@ -1,0 +1,158 @@
+{
+    "id":  "echoconvoyprotocol:convoy_recovery_beacon",
+    "display_name":  "Convoy Recovery Beacon",
+    "translation_key":  "multiblock.echoconvoyprotocol.convoy_recovery_beacon",
+    "role":  "SURVIVAL",
+    "category":  "recovery",
+    "size":  [
+                 5,
+                 2,
+                 3
+             ],
+    "controller":  "echoconvoyprotocol:convoy_recovery_beacon_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FICOF",
+                       "RPEDF",
+                       "FTWTF"
+                   ],
+                   [
+                       ".H.H.",
+                       "..T..",
+                       "....."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echoconvoyprotocol:valid_depot_frames"
+                          },
+                    "I":  {
+                              "block":  "echoconvoyprotocol:cargo_input_crate",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echoconvoyprotocol:convoy_recovery_beacon_controller",
+                              "controller":  true
+                          },
+                    "O":  {
+                              "block":  "echoconvoyprotocol:cargo_output_crate",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "P":  {
+                              "block":  "echoconvoyprotocol:depot_power_bus",
+                              "component":  true
+                          },
+                    "E":  {
+                              "block":  "echoconvoyprotocol:emergency_recovery_station",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echoconvoyprotocol:depot_data_bus",
+                              "component":  true
+                          },
+                    "T":  {
+                              "block":  "echoconvoyprotocol:route_uplink_antenna",
+                              "component":  true
+                          },
+                    "W":  {
+                              "block":  "echoconvoyprotocol:convoy_warning_light",
+                              "component":  true
+                          },
+                    "H":  {
+                              "block":  "echoconvoyprotocol:heavy_garage_frame",
+                              "component":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:scanner_target",
+                         "echo:recovery",
+                         "echo:map_marker"
+                     ],
+    "workcells":  [
+                      {
+                          "id":  "echoconvoyprotocol:convoy_recovery_beacon/recovery",
+                          "type":  "RECOVERY",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:recover_damaged_convoy"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:convoy_recovery_beacon/diagnostic",
+                          "type":  "DIAGNOSTIC",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:convoy_recovery_beacon/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      1,
+                                      0,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "SCANNER",
+                                            "WELDER"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true,
+                      "damaged_threshold":  70,
+                      "offline_threshold":  25
+                  },
+    "preview":  {
+                    "color":  "ff5533"
+                }
+}

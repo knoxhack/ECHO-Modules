@@ -1,0 +1,35 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:geothermal_generator"
+               },
+    "pattern":  [
+                    "XVX",
+                    "WGW",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "V":  {
+                          "item":  "echogalacticcore:atmospheric_valve"
+                      },
+                "W":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "G":  {
+                          "item":  "echogalacticcore:machine",
+                          "data":  0
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_bronze"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:basic_item_venus",
+                          "data":  1
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

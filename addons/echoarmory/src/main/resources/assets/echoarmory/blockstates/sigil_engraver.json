@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoarmory:block/sigil_engraver"
+    },
+    "facing=east": {
+      "model": "echoarmory:block/sigil_engraver",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoarmory:block/sigil_engraver",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoarmory:block/sigil_engraver",
+      "y": 270
+    }
+  }
+}

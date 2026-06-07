@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/spellcore/troubleshooting",
+  "title": "SpellCore Focus: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose failed casts by checking focus state, aether cost, cooldown, and awakened core rules.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "A failed cast usually means no selected spell, missing awakened core, insufficient aether, active cooldown, or a client-only path trying to do server work.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Focus",
+      "body": "Cycle to a known starter spell, wait for cooldown, confirm the core requirement, and test in a safe space.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change spell selection, core state, or aether supply one at a time. Otherwise every failed cast looks the same.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "spellcore",
+    "arcana",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:blaze_rod",
+  "relatedArticles": [
+    "echowiki:guides/spellcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1296
+}

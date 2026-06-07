@@ -1,0 +1,31 @@
+<page id="index_settings" title="ECHO Index Settings" styles="index_cyberglass,index_components">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Settings / Filters"/>
+    <param name="inspectorTitle" value="Debug"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar"/>
+      <grid columns="1fr 1fr" gap="12">
+        <panel title="User Settings">
+          <text class="index-dashboard-hint" value="{index.settings.uiHint}"/>
+          <text class="index-setting-row" value="ScreenCore UI: {index.settings.useScreenCore}"/>
+          <text class="index-setting-row" value="Group by mod: {index.settings.groupByMod}"/>
+          <text class="index-setting-row" value="Compact grid: {index.settings.compactGrid}"/>
+          <text class="index-setting-row" value="Remember last page: {index.settings.rememberLastPage}"/>
+          <text class="index-setting-row" value="Show locked items: {index.settings.showLockedItems}"/>
+          <text class="index-setting-row" value="{index.filters.summary.label}"/>
+          <button action="index.reset_filters" tooltip="Clear active mod/category/machine/sort filters and return to default browsing.">Reset Filters</button>
+        </panel>
+        <panel title="Provider Stats">
+          <text class="index-dashboard-hint" value="{index.settings.providerHint}"/>
+          <text class="index-setting-row" value="Items: {index.debug.stats.itemCount}"/>
+          <text class="index-setting-row" value="Recipes: {index.debug.stats.recipeCount}"/>
+          <text class="index-setting-row" value="Machines: {index.debug.stats.machineCount}"/>
+          <text class="index-setting-row" value="Cache Build: {index.debug.stats.cacheBuildTimeMs} ms"/>
+        </panel>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <component src="echoindex:index_debug_info"/>
+    </slot>
+  </component>
+</page>

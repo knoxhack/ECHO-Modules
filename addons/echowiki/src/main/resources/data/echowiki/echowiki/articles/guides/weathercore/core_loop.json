@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/weathercore/core_loop",
+  "title": "WeatherCore: Core Loop",
+  "category": "Guide Books",
+  "summary": "Check the forecast, plan exposure, travel in windows, and shelter early.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Check forecast, choose equipment, time the route, react to warnings, and update base layouts if weather repeatedly punishes the same area.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each weather window, note which gear, route, shelter, or timing choice mattered. Bring that lesson into the next forecast.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop before the sky closes your route. Good weather planning feels boring because the dangerous part never gets a vote.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "weather",
+    "forecast",
+    "weathercore",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:lightning_rod",
+  "relatedArticles": [
+    "echowiki:guides/weathercore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1172
+}

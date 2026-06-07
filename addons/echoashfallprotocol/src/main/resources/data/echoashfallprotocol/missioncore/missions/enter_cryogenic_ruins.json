@@ -1,0 +1,98 @@
+{
+  "id": "echoashfallprotocol:enter_cryogenic_ruins",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 12,
+  "title": "Enter Cryogenic Ruins",
+  "briefing": "[ECHO-7] Cryogenic sites are temperature hazards first, loot sites second. Enter or scan Cryogenic Ruins before challenging the overseer.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:hand_warmer",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_radiation_behemoth"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "enter_cryogenic_ruins",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.enter_cryogenic_ruins",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "12",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "80",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:enter_cryogenic_ruins:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.location_visited"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:enter_cryogenic_ruins/cryogenic_ruins",
+      "type": "enter_region",
+      "label": "Cryogenic Ruins",
+      "detail": "Log biome progress for this Ashfall route step.",
+      "icon": "echoashfallprotocol:hand_warmer",
+      "target": "cryogenic_ruins",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "biome",
+        "location": "cryogenic_ruins"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "biome",
+      "locationId": "cryogenic_ruins",
+      "count": 1,
+      "label": "Cryogenic Ruins"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:enter_cryogenic_ruins/reward_0",
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 2,
+      "label": "Hand Warmer",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:enter_cryogenic_ruins/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:enter_cryogenic_ruins/reward_1",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 2,
+      "label": "Emergency Ration",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:enter_cryogenic_ruins/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Cryogenic route archived. Warmth is now mission equipment."
+}

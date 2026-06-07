@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:field_medic",
+  "displayName": "Field Medic",
+  "role": "Triage Specialist",
+  "faction": "echonpcore:medics",
+  "visualProfile": "echonpcore:field_medic",
+  "dialogue": "echonpcore:field_medic",
+  "trades": "echonpcore:field_medic_basic",
+  "services": "echonpcore:field_medic_services",
+  "missions": [],
+  "ambientLines": [
+    "Hold still. Breathe slower.",
+    "Clean bandages are worth more than bravado."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 5,
+    "returnRadius": 16,
+    "ambientCooldown": 2000,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Medics flag nearby hazards and keep treatment services on cooldown."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:cleric"
+  }
+}

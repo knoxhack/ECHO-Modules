@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/orbital_remnants",
+  "title": "Orbital Remnants Manual",
+  "category": "Guide Books",
+  "summary": "Prepare suits, oxygen, shuttle routes, and salvage plans before entering offworld pressure.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Orbital Remnants shifts survival upward: pressure, oxygen, shuttle access, faction pledges, suit modules, and route commitment all matter.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Check oxygen reserves, suit integrity, return route, and emergency supplies before boarding anything that can strand you away from base.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Prepare suit systems, travel to the remnant, salvage a focused target, manage pressure or oxygen loss, return, and convert orbital parts into better gear.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Suit modules, sealant patches, oxygen cells, emergency rockets, shuttle items, and route vessels describe what kind of trip you are ready to survive.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Stationfall shares pressure logic, Recovery helps after failed routes, HoloMap and Terminal track destinations, and Armory improves away-team readiness.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If orbital routes fail, do not add more objectives. Add more oxygen, repair capability, navigation clarity, and a shorter extraction plan.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "orbital",
+    "suit"
+  ],
+  "icon": "minecraft:spyglass",
+  "heroArt": "echowiki:textures/gui/guide_books/orbital_remnants_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/orbital_remnants/first_steps",
+    "echowiki:guides/orbital_remnants/core_loop",
+    "echowiki:guides/orbital_remnants/systems",
+    "echowiki:guides/orbital_remnants/progression",
+    "echowiki:guides/orbital_remnants/integrations",
+    "echowiki:guides/orbital_remnants/troubleshooting"
+  ],
+  "sortOrder": 1110
+}

@@ -1,0 +1,49 @@
+{
+  "pages": [
+    {"id": "echoindex:index_dashboard", "title": "Index Dashboard", "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
+    {"id": "echoindex:index_items", "title": "Item Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_items"]},
+    {"id": "echoindex:index_recipes", "title": "Recipe Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_recipes"]},
+    {"id": "echoindex:index_usages", "title": "Usage Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_recipes"]},
+    {"id": "echoindex:index_machines", "title": "Machine Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_machines"]},
+    {"id": "echoindex:index_mods", "title": "Mod Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_items"]},
+    {"id": "echoindex:index_favorites", "title": "Favorites and Bookmarks", "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
+    {"id": "echoindex:index_history", "title": "History", "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
+    {"id": "echoindex:index_item_detail", "title": "Item Detail", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_items"]},
+    {"id": "echoindex:index_recipe_detail", "title": "Recipe Detail", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_recipes"]},
+    {"id": "echoindex:index_machine_detail", "title": "Machine Detail", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_machines"]},
+    {"id": "echoindex:index_settings", "title": "Settings and Filters", "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
+    {"id": "echoindex:test_index_dashboard", "title": "Test Index Dashboard", "debugOnly": true},
+    {"id": "echoindex:test_index_item_grid", "title": "Test Index Item Grid", "debugOnly": true},
+    {"id": "echoindex:test_index_mod_sections", "title": "Test Index Mod Sections", "debugOnly": true},
+    {"id": "echoindex:test_index_recipe_cards", "title": "Test Index Recipe Cards", "debugOnly": true},
+    {"id": "echoindex:test_index_machine_cards", "title": "Test Index Machine Cards", "debugOnly": true},
+    {"id": "echoindex:test_index_search_filters", "title": "Test Index Search Filters", "debugOnly": true},
+    {"id": "echoindex:test_index_dialogs_tooltips", "title": "Test Index Dialogs Tooltips", "debugOnly": true},
+    {"id": "echoindex:test_index_empty_states", "title": "Test Index Empty States", "debugOnly": true}
+  ],
+  "components": [
+    "echoindex:index_shell",
+    "echoindex:index_nav_item",
+    "echoindex:index_search_filter_bar",
+    "echoindex:index_item_card",
+    "echoindex:index_item_row",
+    "echoindex:index_mod_section",
+    "echoindex:index_recipe_card",
+    "echoindex:index_recipe_flow",
+    "echoindex:index_machine_card",
+    "echoindex:index_machine_slots",
+    "echoindex:index_detail_panel",
+    "echoindex:index_empty_state",
+    "echoindex:index_filter_chip",
+    "echoindex:index_bookmark_button",
+    "echoindex:index_debug_info",
+    "echoindex:index_confirm_dialog"
+  ],
+  "styles": [
+    "echoindex:index_cyberglass",
+    "echoindex:index_items",
+    "echoindex:index_recipes",
+    "echoindex:index_machines",
+    "echoindex:index_components"
+  ]
+}

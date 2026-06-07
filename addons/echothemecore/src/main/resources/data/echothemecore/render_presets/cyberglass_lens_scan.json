@@ -1,0 +1,10 @@
+{
+  "id": "echothemecore:cyberglass_lens_scan",
+  "theme": "echothemecore:cyberglass",
+  "type": "lens_scan",
+  "effects": [
+    {"type": "hologram_sweep", "duration_ticks": 18, "strength": "theme:hologram_pulse_strength"},
+    {"type": "glow_pulse", "duration_ticks": 28, "strength": "theme:glow_intensity"},
+    {"type": "particle_glint", "duration_ticks": 22, "count": 16}
+  ]
+}

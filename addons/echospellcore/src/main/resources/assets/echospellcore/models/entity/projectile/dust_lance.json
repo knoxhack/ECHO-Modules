@@ -1,0 +1,67 @@
+{
+  "credit": "ECHO SpellCore bespoke baked projectile model",
+  "texture_size": [32, 32],
+  "textures": {
+    "particle": "echospellcore:entity/projectile/dust_lance",
+    "sprite": "echospellcore:entity/projectile/dust_lance"
+  },
+  "elements": [
+    {
+      "name": "ash_lance_body",
+      "from": [1, 7.25, 7.25],
+      "to": [15, 8.75, 8.75],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"},
+        "up": {"texture": "#sprite"},
+        "down": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "rib_front",
+      "from": [10, 5.5, 7.5],
+      "to": [12, 10.5, 8.5],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "rib_rear",
+      "from": [4, 6, 7.5],
+      "to": [5, 10, 8.5],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "chipped_tip",
+      "from": [12.25, 7, 7.5],
+      "to": [15.5, 9, 8.5],
+      "rotation": {"angle": -22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "ash_counter_fin",
+      "from": [2.5, 5.75, 7.75],
+      "to": [5.75, 6.5, 8.25],
+      "rotation": {"angle": 22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"}
+      }
+    }
+  ]
+}

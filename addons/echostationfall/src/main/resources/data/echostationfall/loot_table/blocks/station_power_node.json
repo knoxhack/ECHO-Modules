@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echostationfall:station_power_node"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "echostationfall:blocks/station_power_node"
+}

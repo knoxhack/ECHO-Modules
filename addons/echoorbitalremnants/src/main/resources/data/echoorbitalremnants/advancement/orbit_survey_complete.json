@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:station_echo",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:orbit_survey_data"
+    },
+    "title": {
+      "text": "Orbit Survey Complete"
+    },
+    "description": {
+      "text": "Map three orbital relay wrecks for the ECHO-7 survey network."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

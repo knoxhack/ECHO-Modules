@@ -1,0 +1,60 @@
+<page id="wiki_hazards" title="World Hazards" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Hazards"/>
+    <param name="contentSubtitle" value="Severity, ticking behavior, active warnings, and counters."/>
+    <param name="inspectorTitle" value="Active Hazards"/>
+    <param name="stateKey" value="wiki.hazards.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="HAZARD INDEX">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.hazards">
+            <list class="wiki-browser-list" bind="wiki.hazards.visible" item="hazard">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.select_hazard"/>
+                <param name="id" value="{hazard.id}"/>
+                <param name="title" value="{hazard.title}"/>
+                <param name="summary" value="{hazard.summary}"/>
+                <param name="status" value="{hazard.status}"/>
+                <param name="chip" value="{hazard.chip}"/>
+                <param name="meta" value="{hazard.meta}"/>
+                <param name="countLabel" value="{hazard.countLabel}"/>
+                <param name="selected" value="{hazard.selected}"/>
+              </component>
+              <empty-state title="No hazards" body="WorldCore has not registered hazard definitions."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="HAZARD DOSSIER">
+          <title class="wiki-detail-title" value="{wiki.hazards.selected.title}"/>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.hazards.selected.status}" value="{wiki.hazards.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="warning" value="severity {wiki.hazards.selected.severityLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.hazards.selected.ticking}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.hazards.selected.summary}"/>
+          <grid class="wiki-detail-stat-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Severity" value="{wiki.hazards.selected.severityLabel}"/>
+            <stat-card label="Behavior" value="{wiki.hazards.selected.ticking}"/>
+          </grid>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.hazards.active">
+        <list class="wiki-compact-list" bind="wiki.hazards.active" item="hazard">
+          <component src="echowiki:wiki_record_row">
+            <param name="action" value="wiki.select_hazard"/>
+            <param name="id" value="{hazard.id}"/>
+            <param name="title" value="{hazard.title}"/>
+            <param name="summary" value="{hazard.summary}"/>
+            <param name="status" value="{hazard.status}"/>
+            <param name="chip" value="{hazard.chip}"/>
+            <param name="meta" value="{hazard.meta}"/>
+            <param name="countLabel" value="{hazard.countLabel}"/>
+          </component>
+          <empty-state title="Clear" body="No active hazard telemetry is currently exposed."/>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>

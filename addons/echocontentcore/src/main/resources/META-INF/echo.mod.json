@@ -1,0 +1,79 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocontentcore",
+  "name": "ECHO: ContentCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "content_core",
+  "entrypoint": "com.knoxhack.echo.contentcore.EchoContentCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "content.availability",
+    "content.gates",
+    "content.ownership",
+    "content.references"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival",
+    "dev_tools"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echo.contentcore.EchoContentCoreNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "data",
+        "entities",
+        "items",
+        "loot",
+        "recipes",
+        "structures"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "contractsOnly": true,
+    "notes": "Shared content ownership, availability, gate, source, and cross-module reference contracts."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

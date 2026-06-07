@@ -1,0 +1,14 @@
+{
+  "emitters": {
+    "orbit_sparks": {
+      "anchor": "spark",
+      "particle": "minecraft:dust",
+      "states": ["ACTIVE"],
+      "rate": 0.08,
+      "burst_count": 2,
+      "offset": [0.0, 0.0, 0.0],
+      "spread": [0.35, 0.05, 0.35],
+      "options": { "type": "minecraft:dust", "color": "#FFFF45F6", "scale": 0.6 }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<page id="reference-inputs" title="Reference Inputs" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Inputs And Search" subtitle="State keys, on-change, and submit actions."/>
+    </slot>
+    <slot name="body">
+      <section class="sc-panel" title="FILTERS">
+        <search-box state-key="reference.search" placeholder="Search reference rows..." value="{filters.search}" on-change="terminal.set_search" on-enter="terminal.apply_search" clearable="true"/>
+        <input state-key="reference.callsign" placeholder="Callsign" required="true" min-length="3" max-length="16"/>
+        <text class="sc-readable-body" value="ScreenCore owns input widgets; filtering belongs to data providers or registered actions."/>
+      </section>
+    </slot>
+  </component>
+</page>
+

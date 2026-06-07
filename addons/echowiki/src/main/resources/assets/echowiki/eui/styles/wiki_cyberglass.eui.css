@@ -1,0 +1,347 @@
+.wiki-shell {
+  background: theme(background);
+  padding: 8px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.wiki-shell-grid {
+  gap: 10px;
+}
+
+app-header {
+  background: theme(terminalBackground);
+  border-color: theme(borderStrong);
+  border-width: 1;
+  min-height: 32px;
+  height: 32px;
+  padding: 5px 8px;
+}
+
+app-sidebar, app-content, inspector-panel, app-footer {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+app-sidebar, app-content, inspector-panel {
+  padding: 8px;
+  gap: 6px;
+}
+
+app-footer {
+  height: 24px;
+  min-height: 24px;
+  padding: 4px 8px;
+  gap: 8px;
+  background: #05111BCC;
+}
+
+hero-card, .wiki-article-hero {
+  background: theme(overlay);
+  border-color: theme(accent);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 8px;
+  min-height: 92px;
+}
+
+hero-card {
+  height: 112px;
+}
+
+.wiki-article-hero {
+  height: 118px;
+}
+
+panel {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 8px;
+  gap: 6px;
+}
+
+title {
+  color: theme(accent);
+  line-height: 11px;
+}
+
+text {
+  color: theme(textSecondary);
+  line-height: 10px;
+}
+
+scroll {
+  overflow: scroll;
+  background: transparent;
+  border-color: transparent;
+  border-width: 0;
+}
+
+status-chip {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+.wiki-muted-text {
+  color: theme(textMuted);
+}
+
+screen-shell.wiki-shell,
+.wiki-shell {
+  background: #01070DF8;
+  border-color: #00EAFFB8;
+  border-width: 1px;
+  border-radius: 8px;
+  padding: 6px;
+  gap: 7px;
+  overflow: hidden;
+}
+
+.wiki-topbar,
+.wiki-rail,
+.wiki-page-head,
+.wiki-detail-pane,
+.wiki-footer-strip,
+.wiki-core-link,
+.wiki-toc-panel,
+.wiki-side-summary {
+  background: #020D16D8;
+  border-color: #49EAFF35;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.wiki-topbar {
+  height: 52px;
+  min-height: 52px;
+  padding: 6px 9px;
+}
+
+.wiki-brand {
+  width: 346px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.wiki-brand-mark {
+  width: 48px;
+  height: 30px;
+  min-height: 30px;
+}
+
+.wiki-brand-copy {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-brand-copy title {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 11px;
+}
+
+.wiki-brand-copy text {
+  height: 20px;
+  min-height: 18px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: #9CB9C8FF;
+}
+
+.wiki-mode-chip {
+  width: 104px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.wiki-top-stats {
+  background: transparent;
+  border-color: transparent;
+}
+
+.wiki-top-stats stat-card {
+  width: 84px;
+  height: 34px;
+  min-height: 34px;
+  padding: 4px 6px;
+}
+
+.wiki-app-grid {
+  gap: 9px;
+}
+
+.wiki-rail {
+  padding: 7px;
+  gap: 8px;
+}
+
+.wiki-nav-scroll {
+  height: 286px;
+  min-height: 220px;
+  overflow: scroll;
+}
+
+.wiki-nav-list {
+  gap: 5px;
+}
+
+.wiki-nav-row {
+  height: 42px;
+  min-height: 42px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #04131ECA;
+  border-color: #3FEAFF2B;
+}
+
+.wiki-nav-dot {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.wiki-nav-copy {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-nav-copy title {
+  height: 11px;
+  min-height: 11px;
+  max-lines: 1;
+  line-height: 11px;
+}
+
+.wiki-nav-copy text {
+  height: 10px;
+  min-height: 10px;
+  max-lines: 1;
+  color: #8FAABBFF;
+  line-height: 10px;
+}
+
+.wiki-core-link {
+  height: 120px;
+  min-height: 120px;
+  padding: 8px;
+  gap: 4px;
+}
+
+.wiki-core-link title {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 11px;
+}
+
+.wiki-core-link text {
+  height: 11px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-workspace {
+  gap: 7px;
+}
+
+.wiki-page-head {
+  height: 42px;
+  min-height: 42px;
+  padding: 5px 7px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.wiki-page-title {
+  min-width: 0;
+  gap: 3px;
+}
+
+.wiki-page-title title {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 11px;
+  color: #F4FDFFFF;
+}
+
+.wiki-page-title text {
+  height: 11px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+  color: #99B5C5FF;
+}
+
+.wiki-page-state {
+  width: 92px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.wiki-main-scroll {
+  min-height: 420px;
+  overflow: scroll;
+}
+
+.wiki-main-column {
+  min-height: 420px;
+  gap: 8px;
+}
+
+.wiki-detail-pane {
+  padding: 7px;
+  gap: 7px;
+}
+
+.wiki-detail-head {
+  height: 24px;
+  min-height: 24px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.wiki-detail-head title {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 11px;
+}
+
+.wiki-detail-pane-scroll {
+  min-height: 394px;
+  overflow: scroll;
+}
+
+.wiki-detail-column {
+  gap: 7px;
+}
+
+.wiki-footer-strip {
+  height: 28px;
+  min-height: 28px;
+  padding: 4px 8px;
+  gap: 7px;
+  background: #020A12E4;
+}
+
+.wiki-footer-strip text {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-keycap {
+  width: 54px;
+  height: 18px;
+  min-height: 18px;
+}

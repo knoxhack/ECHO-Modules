@@ -1,0 +1,14 @@
+<page id="test-large-dynamic-list" title="Large Dynamic List" styles="echoscreencore:advanced_mock,echoscreencore:page_state_mock">
+  <screen-shell>
+    <header title="Large Dynamic List" subtitle="250 provider-backed rows inside a scroll panel"/>
+    <scroll state-key="large.list" scroll-state="true">
+      <list bind="missions.large" item="mission" selected="{selectedMission.id}" key="{mission.id}" empty-text="No rows found">
+        <list-row class="large-list-row" action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}">
+          <title value="{mission.title}"/>
+          <text value="{mission.summary}"/>
+          <status-chip status="{mission.status}" value="{mission.statusLabel}"/>
+        </list-row>
+      </list>
+    </scroll>
+  </screen-shell>
+</page>

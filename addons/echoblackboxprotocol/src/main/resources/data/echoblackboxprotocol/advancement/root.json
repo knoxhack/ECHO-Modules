@@ -1,0 +1,85 @@
+{
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:personal_blackbox_fragment"
+                             },
+                    "title":  "ECHO: Blackbox Protocol",
+                    "description":  "Recover a hostile Blackbox Fragment.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "personal_fragment":  {
+                                               "trigger":  "minecraft:inventory_changed",
+                                               "conditions":  {
+                                                                  "items":  [
+                                                                                {
+                                                                                    "items":  "echoblackboxprotocol:personal_blackbox_fragment"
+                                                                                }
+                                                                            ]
+                                                              }
+                                           },
+                     "echo_fragment":  {
+                                           "trigger":  "minecraft:inventory_changed",
+                                           "conditions":  {
+                                                              "items":  [
+                                                                            {
+                                                                                "items":  "echoblackboxprotocol:echo_blackbox_fragment"
+                                                                            }
+                                                                        ]
+                                                          }
+                                       },
+                     "security_fragment":  {
+                                               "trigger":  "minecraft:inventory_changed",
+                                               "conditions":  {
+                                                                  "items":  [
+                                                                                {
+                                                                                    "items":  "echoblackboxprotocol:security_blackbox_fragment"
+                                                                                }
+                                                                            ]
+                                                              }
+                                           },
+                     "command_fragment":  {
+                                              "trigger":  "minecraft:inventory_changed",
+                                              "conditions":  {
+                                                                 "items":  [
+                                                                               {
+                                                                                   "items":  "echoblackboxprotocol:command_blackbox_fragment"
+                                                                               }
+                                                                           ]
+                                                             }
+                                          },
+                     "core_fragment":  {
+                                           "trigger":  "minecraft:inventory_changed",
+                                           "conditions":  {
+                                                              "items":  [
+                                                                            {
+                                                                                "items":  "echoblackboxprotocol:core_blackbox_fragment"
+                                                                            }
+                                                                        ]
+                                                          }
+                                       },
+                     "deleted_fragment":  {
+                                              "trigger":  "minecraft:inventory_changed",
+                                              "conditions":  {
+                                                                 "items":  [
+                                                                               {
+                                                                                   "items":  "echoblackboxprotocol:deleted_blackbox_fragment"
+                                                                               }
+                                                                           ]
+                                                             }
+                                          }
+                 },
+    "requirements":  [
+                         [
+                             "personal_fragment",
+                             "echo_fragment",
+                             "security_fragment",
+                             "command_fragment",
+                             "core_fragment",
+                             "deleted_fragment"
+                         ]
+                     ]
+}

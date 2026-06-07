@@ -1,0 +1,15 @@
+{
+  "id": "echoashfallprotocol:crash_zone_wasteland",
+  "type": "crash_zone",
+  "displayName": "Crash Zone Wasteland",
+  "summary": "Impact-scattered wreckage fields and Ashfall crash debris.",
+  "biomeIds": ["echoashfallprotocol:crash_zone_wasteland"],
+  "biomeTags": ["echoashfallprotocol:common_wasteland_biomes", "echoashfallprotocol:has_structure/crash_zone_wasteland"],
+  "structureIds": ["echoashfallprotocol:crash_zone_wasteland", "echoashfallprotocol:crash_zone_landmarks", "echoashfallprotocol:drop_pod"],
+  "hazardIds": ["echoworldcore:hazard/salvage_debris"],
+  "discoveryId": "echoashfallprotocol:crash_zone_wasteland",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/crash_zone_wasteland",
+  "audioProfileId": "echoworldcore:ambience/crash_zone_wasteland",
+  "sortOrder": 10
+}

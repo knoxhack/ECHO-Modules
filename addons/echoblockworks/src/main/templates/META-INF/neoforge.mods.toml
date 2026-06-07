@@ -1,0 +1,61 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the first-party decorative block library for the ECHO/Ashfall ecosystem."
+description='''
+ECHO Blockworks provides first-party decorative, structural, and themed blocks for
+Ashfall ruins, Terminal rooms, orbital interiors, Nexus chambers, Blackbox vaults,
+convoy depots, and reclamation greenhouses.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Allows Blockworks families to appear inside ECHO Index browsing."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore V16 particle-only static block visual surfaces."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Registers Blockworks discovery and collection side-op missions when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

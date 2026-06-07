@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:station_echo",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:signal_relay"
+    },
+    "title": {
+      "text": "Deep Orbit Site"
+    },
+    "description": {
+      "text": "Log a deep orbital wreck beyond the arrival deck."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

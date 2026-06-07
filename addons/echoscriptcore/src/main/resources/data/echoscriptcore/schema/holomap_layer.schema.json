@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "holomap_layer",
+  "required": ["schema_version", "id", "type", "title"],
+  "fields": ["pack", "locked_by_default", "unlock_conditions", "markers", "metadata"]
+}

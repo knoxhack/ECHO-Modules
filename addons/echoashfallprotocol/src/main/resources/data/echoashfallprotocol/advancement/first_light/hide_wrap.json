@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:first_light/bone_knife",
+  "criteria": {
+    "craft_hide_wrap": {
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:hide_wrap"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Assemble breathing protection from animal hide.",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:hide_wrap"
+    },
+    "title": "Wilderness Preparedness",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "requirements": [
+    [
+      "craft_hide_wrap"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

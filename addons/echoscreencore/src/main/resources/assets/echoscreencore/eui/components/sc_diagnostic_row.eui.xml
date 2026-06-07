@@ -1,0 +1,10 @@
+<template>
+  <list-row class="sc-diagnostic-row" action="{param.action|noop}" action-page="{param.page|}">
+    <status-chip class="sc-row-badge" status="warning" value="{param.code|WARN}"/>
+    <column class="sc-row-copy">
+      <title value="{param.title|Diagnostic}"/>
+      <text value="{param.fix|Open the workbench for the fix.}"/>
+    </column>
+  </list-row>
+</template>
+

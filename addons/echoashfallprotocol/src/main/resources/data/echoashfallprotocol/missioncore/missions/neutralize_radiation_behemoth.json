@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_radiation_behemoth",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 11,
+  "title": "Defeat Radiation Behemoth",
+  "briefing": "[ECHO-7] Guardian signal locked below Radiation Zone. Scan for the visible Reactor Ruin entrance, descend into the buried node, read the room before it reads you, then neutralize Radiation Behemoth.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_crash_zone_colossus"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_radiation_behemoth",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_radiation_behemoth",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "11",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "79",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_radiation_behemoth:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_radiation_behemoth/radiation_behemoth",
+      "type": "kill_entity",
+      "label": "Radiation Behemoth",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:radiation_behemoth",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:radiation_behemoth"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:radiation_behemoth",
+      "count": 1,
+      "label": "Radiation Behemoth"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_radiation_behemoth/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 1,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_radiation_behemoth/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_radiation_behemoth/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 2,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_radiation_behemoth/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Radiation Behemoth neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

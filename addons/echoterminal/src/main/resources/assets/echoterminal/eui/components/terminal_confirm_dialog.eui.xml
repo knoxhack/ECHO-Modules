@@ -1,0 +1,9 @@
+<dialog id="{param.id|terminal-confirm}">
+  <dialog-body>
+    <copy-block class="terminal-row-copy" title="{param.title|Confirm}" subtitle="{param.body|Confirm this Terminal action.}"/>
+  </dialog-body>
+  <dialog-actions>
+    <button action="screencore.close_modal">Cancel</button>
+    <button action="{param.action|noop}" action-value="{param.value|}" variant="primary">Confirm</button>
+  </dialog-actions>
+</dialog>

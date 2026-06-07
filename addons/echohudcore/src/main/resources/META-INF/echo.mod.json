@@ -1,0 +1,87 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echohudcore",
+  "name": "ECHO: HUDCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "hud_core",
+  "entrypoint": "com.knoxhack.echo.hudcore.EchoHudCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "hud.compass_indicators",
+    "hud.hazard_meters",
+    "hud.mission_tracker",
+    "hud.safe_area",
+    "hud.widgets"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "ui.screens",
+    "hud.widgets"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.hudcore.EchoHudCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresMinecraft": true,
+    "contractsOnly": false,
+    "notes": "Defines HUD widget, tracker, compass, hazard, and safe-area contracts and authorizes Native Loader-owned live HUD routes."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/hudcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,411 @@
+{
+    "variants":  {
+                     "rot":  {
+                                 "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                 "0":  {
+
+                                       },
+                                 "y":  {
+                                           "transform":  {
+                                                             "rotation":  {
+                                                                              "y":  90
+                                                                          }
+                                                         }
+                                       },
+                                 "yy":  {
+                                            "transform":  {
+                                                              "rotation":  {
+                                                                               "y":  180
+                                                                           }
+                                                          }
+                                        },
+                                 "yyy":  {
+                                             "transform":  {
+                                                               "rotation":  {
+                                                                                "y":  270
+                                                                            }
+                                                           }
+                                         },
+                                 "u":  {
+                                           "transform":  {
+                                                             "rotation":  {
+                                                                              "x":  90
+                                                                          }
+                                                         }
+                                       },
+                                 "uy":  {
+                                            "transform":  {
+                                                              "rotation":  [
+                                                                               {
+                                                                                   "z":  90
+                                                                               },
+                                                                               {
+                                                                                   "y":  90
+                                                                               }
+                                                                           ]
+                                                          }
+                                        },
+                                 "uyy":  {
+                                             "transform":  {
+                                                               "rotation":  [
+                                                                                {
+                                                                                    "x":  270
+                                                                                },
+                                                                                {
+                                                                                    "y":  180
+                                                                                }
+                                                                            ]
+                                                           }
+                                         },
+                                 "uyyy":  {
+                                              "transform":  {
+                                                                "rotation":  [
+                                                                                 {
+                                                                                     "z":  270
+                                                                                 },
+                                                                                 {
+                                                                                     "y":  270
+                                                                                 }
+                                                                             ]
+                                                            }
+                                          },
+                                 "d":  {
+                                           "transform":  {
+                                                             "rotation":  {
+                                                                              "x":  270
+                                                                          }
+                                                         }
+                                       },
+                                 "dy":  {
+                                            "transform":  {
+                                                              "rotation":  [
+                                                                               {
+                                                                                   "z":  270
+                                                                               },
+                                                                               {
+                                                                                   "y":  90
+                                                                               }
+                                                                           ]
+                                                          }
+                                        },
+                                 "dyy":  {
+                                             "transform":  {
+                                                               "rotation":  [
+                                                                                {
+                                                                                    "x":  90
+                                                                                },
+                                                                                {
+                                                                                    "y":  180
+                                                                                }
+                                                                            ]
+                                                           }
+                                         },
+                                 "dyyy":  {
+                                              "transform":  {
+                                                                "rotation":  [
+                                                                                 {
+                                                                                     "z":  90
+                                                                                 },
+                                                                                 {
+                                                                                     "y":  270
+                                                                                 }
+                                                                             ]
+                                                            }
+                                          },
+                                 "uu":  {
+                                            "transform":  {
+                                                              "rotation":  {
+                                                                               "x":  180
+                                                                           }
+                                                          }
+                                        },
+                                 "uuy":  {
+                                             "transform":  {
+                                                               "rotation":  [
+                                                                                {
+                                                                                    "z":  180
+                                                                                },
+                                                                                {
+                                                                                    "y":  90
+                                                                                }
+                                                                            ]
+                                                           }
+                                         },
+                                 "uuyy":  {
+                                              "transform":  {
+                                                                "rotation":  [
+                                                                                 {
+                                                                                     "x":  180
+                                                                                 },
+                                                                                 {
+                                                                                     "y":  180
+                                                                                 }
+                                                                             ]
+                                                            }
+                                          },
+                                 "uuyyy":  {
+                                               "transform":  {
+                                                                 "rotation":  [
+                                                                                  {
+                                                                                      "z":  180
+                                                                                  },
+                                                                                  {
+                                                                                      "y":  270
+                                                                                  }
+                                                                              ]
+                                                             }
+                                           }
+                             },
+                     "modeltype":  {
+                                       "standard":  {
+                                                        "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                        "custom":  {
+                                                                       "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                       "Solid":  "echogalacticcore:space_glass_vanilla#none",
+                                                                       "Translucent":  "echogalacticcore:space_glass_vanilla#ns_g"
+                                                                   }
+                                                    },
+                                       "standards1":  {
+                                                          "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                          "custom":  {
+                                                                         "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                         "Solid":  "echogalacticcore:space_glass_vanilla#ns_s1_s",
+                                                                         "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s1_g"
+                                                                     }
+                                                      },
+                                       "standards1b":  {
+                                                           "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                           "custom":  {
+                                                                          "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                          "Solid":  "echogalacticcore:space_glass_vanilla#ns_s1b_s",
+                                                                          "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s1b_g"
+                                                                      }
+                                                       },
+                                       "standards1bb":  {
+                                                            "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                            "custom":  {
+                                                                           "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                           "Solid":  "echogalacticcore:space_glass_vanilla#ns_s1bb_s",
+                                                                           "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s1bb_g"
+                                                                       }
+                                                        },
+                                       "standards2":  {
+                                                          "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                          "custom":  {
+                                                                         "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                         "Solid":  "echogalacticcore:space_glass_vanilla#ns_s2_s",
+                                                                         "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s2_g"
+                                                                     }
+                                                      },
+                                       "standards2a":  {
+                                                           "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                           "custom":  {
+                                                                          "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                          "Solid":  "echogalacticcore:space_glass_vanilla#ns_s2a_s",
+                                                                          "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s2a_g"
+                                                                      }
+                                                       },
+                                       "standards2b":  {
+                                                           "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                           "custom":  {
+                                                                          "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                          "Solid":  "echogalacticcore:space_glass_vanilla#ns_s2b_s",
+                                                                          "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s2b_g"
+                                                                      }
+                                                       },
+                                       "standards3":  {
+                                                          "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                          "custom":  {
+                                                                         "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                         "Solid":  "echogalacticcore:space_glass_vanilla#ns_s3_s",
+                                                                         "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s3_g"
+                                                                     }
+                                                      },
+                                       "standards4":  {
+                                                          "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                          "custom":  {
+                                                                         "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                         "Solid":  "echogalacticcore:space_glass_vanilla#ns_s4_s",
+                                                                         "Translucent":  "echogalacticcore:space_glass_vanilla#ns_s4_g"
+                                                                     }
+                                                      },
+                                       "corner":  {
+                                                      "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                      "custom":  {
+                                                                     "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                     "Solid":  "echogalacticcore:space_glass_vanilla#none",
+                                                                     "Translucent":  "echogalacticcore:space_glass_vanilla#ne_g"
+                                                                 }
+                                                  },
+                                       "joint":  {
+                                                     "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                     "custom":  {
+                                                                    "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                    "Solid":  "echogalacticcore:space_glass_vanilla#none",
+                                                                    "Translucent":  "echogalacticcore:space_glass_vanilla#nse_g"
+                                                                }
+                                                 },
+                                       "joinx":  {
+                                                     "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                     "custom":  {
+                                                                    "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                    "Solid":  "echogalacticcore:space_glass_vanilla#none",
+                                                                    "Translucent":  "echogalacticcore:space_glass_vanilla#nsew_g"
+                                                                }
+                                                 },
+                                       "corner_s":  {
+                                                        "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                        "custom":  {
+                                                                       "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                       "Solid":  "echogalacticcore:space_glass_vanilla#ne_s1_s",
+                                                                       "Translucent":  "echogalacticcore:space_glass_vanilla#ne_s1_g"
+                                                                   }
+                                                    },
+                                       "corner_s2":  {
+                                                         "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                         "custom":  {
+                                                                        "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                        "Solid":  "echogalacticcore:space_glass_vanilla#ne_s2_s",
+                                                                        "Translucent":  "echogalacticcore:space_glass_vanilla#ne_s2_g"
+                                                                    }
+                                                     },
+                                       "joint_s":  {
+                                                       "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                       "custom":  {
+                                                                      "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                      "Solid":  "echogalacticcore:space_glass_vanilla#nse_s1_s",
+                                                                      "Translucent":  "echogalacticcore:space_glass_vanilla#nse_s1_g"
+                                                                  }
+                                                   },
+                                       "joint_s2":  {
+                                                        "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                        "custom":  {
+                                                                       "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                       "Solid":  "echogalacticcore:space_glass_vanilla#nse_s2_s",
+                                                                       "Translucent":  "echogalacticcore:space_glass_vanilla#nse_s2_g"
+                                                                   }
+                                                    },
+                                       "joinx_s":  {
+                                                       "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                       "custom":  {
+                                                                      "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                      "Solid":  "echogalacticcore:space_glass_vanilla#nsew_s1_s",
+                                                                      "Translucent":  "echogalacticcore:space_glass_vanilla#nsew_s1_g"
+                                                                  }
+                                                   },
+                                       "joinx_s2":  {
+                                                        "model":  "echogalacticcore:block/native_multi_layer/space_glass_vanilla",
+                                                        "custom":  {
+                                                                       "base":  "echogalacticcore:space_glass_vanilla#base",
+                                                                       "Solid":  "echogalacticcore:space_glass_vanilla#nsew_s2_s",
+                                                                       "Translucent":  "echogalacticcore:space_glass_vanilla#nsew_s2_g"
+                                                                   }
+                                                    }
+                                   },
+                     "base":  {
+                                  "model":  "minecraft:cube_all",
+                                  "textures":  {
+                                                   "all":  "blocks/glass"
+                                               }
+                              },
+                     "none":  {
+                                  "model":  "echogalacticcore:dummy"
+                              },
+                     "ns_g":  {
+                                  "model":  "echogalacticcore:glass/glass_ns"
+                              },
+                     "ns_s1_s":  {
+                                     "model":  "echogalacticcore:glass/base_ns_s1"
+                                 },
+                     "ns_s1_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ns_s1"
+                                 },
+                     "ns_s1b_s":  {
+                                      "model":  "echogalacticcore:glass/base_ns_s1b"
+                                  },
+                     "ns_s1b_g":  {
+                                      "model":  "echogalacticcore:glass/glass_ns_s1b"
+                                  },
+                     "ns_s1bb_s":  {
+                                       "model":  "echogalacticcore:glass/base_ns_s1bb"
+                                   },
+                     "ns_s1bb_g":  {
+                                       "model":  "echogalacticcore:glass/glass_ns_s1bb"
+                                   },
+                     "ns_s2_s":  {
+                                     "model":  "echogalacticcore:glass/base_ns_s2"
+                                 },
+                     "ns_s2_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ns_s2"
+                                 },
+                     "ns_s2a_s":  {
+                                      "model":  "echogalacticcore:glass/base_ns_s2a"
+                                  },
+                     "ns_s2a_g":  {
+                                      "model":  "echogalacticcore:glass/glass_ns_s2a"
+                                  },
+                     "ns_s2b_s":  {
+                                      "model":  "echogalacticcore:glass/base_ns_s2b"
+                                  },
+                     "ns_s2b_g":  {
+                                      "model":  "echogalacticcore:glass/glass_ns_s2b"
+                                  },
+                     "ns_s3_s":  {
+                                     "model":  "echogalacticcore:glass/base_ns_s3"
+                                 },
+                     "ns_s3_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ns_s3"
+                                 },
+                     "ns_s4_s":  {
+                                     "model":  "echogalacticcore:glass/base_ns_s4"
+                                 },
+                     "ns_s4_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ns_s4"
+                                 },
+                     "ne_g":  {
+                                  "model":  "echogalacticcore:glass/glass_ne"
+                              },
+                     "ne_s1_s":  {
+                                     "model":  "echogalacticcore:glass/base_ne_s1"
+                                 },
+                     "ne_s1_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ne_s1"
+                                 },
+                     "ne_s2_s":  {
+                                     "model":  "echogalacticcore:glass/base_ne_s2"
+                                 },
+                     "ne_s2_g":  {
+                                     "model":  "echogalacticcore:glass/glass_ne_s2"
+                                 },
+                     "nse_g":  {
+                                   "model":  "echogalacticcore:glass/glass_nse"
+                               },
+                     "nse_s1_s":  {
+                                      "model":  "echogalacticcore:glass/base_nse_s1"
+                                  },
+                     "nse_s1_g":  {
+                                      "model":  "echogalacticcore:glass/glass_nse_s1"
+                                  },
+                     "nse_s2_s":  {
+                                      "model":  "echogalacticcore:glass/base_nse_s2"
+                                  },
+                     "nse_s2_g":  {
+                                      "model":  "echogalacticcore:glass/glass_nse_s2"
+                                  },
+                     "nsew_g":  {
+                                    "model":  "echogalacticcore:glass/glass_nsew"
+                                },
+                     "nsew_s1_s":  {
+                                       "model":  "echogalacticcore:glass/base_nsew_s1"
+                                   },
+                     "nsew_s1_g":  {
+                                       "model":  "echogalacticcore:glass/glass_nsew_s1"
+                                   },
+                     "nsew_s2_s":  {
+                                       "model":  "echogalacticcore:glass/base_nsew_s2"
+                                   },
+                     "nsew_s2_g":  {
+                                       "model":  "echogalacticcore:glass/glass_nsew_s2"
+                                   }
+                 }
+}

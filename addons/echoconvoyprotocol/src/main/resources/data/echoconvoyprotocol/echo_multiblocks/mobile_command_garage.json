@@ -1,0 +1,220 @@
+{
+    "id":  "echoconvoyprotocol:mobile_command_garage",
+    "display_name":  "Mobile Command Garage",
+    "translation_key":  "multiblock.echoconvoyprotocol.mobile_command_garage",
+    "role":  "COMMAND",
+    "category":  "mobile_operations",
+    "size":  [
+                 5,
+                 2,
+                 3
+             ],
+    "controller":  "echoconvoyprotocol:mobile_command_garage_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FICOF",
+                       "RPSDF",
+                       "FAKUF"
+                   ],
+                   [
+                       "HHHHH",
+                       ".M.M.",
+                       "HGVGH"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echoconvoyprotocol:valid_depot_frames"
+                          },
+                    "I":  {
+                              "block":  "echoconvoyprotocol:cargo_input_crate",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echoconvoyprotocol:mobile_command_garage_controller",
+                              "controller":  true
+                          },
+                    "O":  {
+                              "block":  "echoconvoyprotocol:cargo_output_crate",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "P":  {
+                              "block":  "echoconvoyprotocol:depot_power_bus",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echoconvoyprotocol:vehicle_service_pad",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echoconvoyprotocol:depot_data_bus",
+                              "component":  true
+                          },
+                    "A":  {
+                              "block":  "echoconvoyprotocol:dispatch_terminal_block",
+                              "component":  true
+                          },
+                    "K":  {
+                              "block":  "echoconvoyprotocol:cargo_loader_arm_mount",
+                              "component":  true
+                          },
+                    "U":  {
+                              "block":  "echoconvoyprotocol:depot_item_bus",
+                              "component":  true
+                          },
+                    "H":  {
+                              "block":  "echoconvoyprotocol:heavy_garage_frame",
+                              "component":  true
+                          },
+                    "M":  {
+                              "block":  "echoconvoyprotocol:mobile_operations_console",
+                              "component":  true
+                          },
+                    "G":  {
+                              "block":  "echoconvoyprotocol:garage_door_frame",
+                              "component":  true
+                          },
+                    "V":  {
+                              "block":  "echoconvoyprotocol:vehicle_clamp_block",
+                              "component":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:scanner_target",
+                         "echo:convoy_dispatch",
+                         "echo:repair",
+                         "echo:cargo_loading",
+                         "echo:map_marker"
+                     ],
+    "workcells":  [
+                      {
+                          "id":  "echoconvoyprotocol:mobile_command_garage/vehicle_dock",
+                          "type":  "VEHICLE_DOCK",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:mobile_command_garage/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:repair_convoy_vehicle"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:mobile_command_garage/cargo_loader",
+                          "type":  "CARGO_LOADER",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "CLAMP",
+                                                 "GRIPPER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:load_field_supply_crate"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:mobile_command_garage/dispatch",
+                          "type":  "ROUTE_DISPATCH",
+                          "pos":  [
+                                      1,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:dispatch_convoy_to_route"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:mobile_command_garage/upgrade",
+                          "type":  "UPGRADE_INSTALL",
+                          "pos":  [
+                                      3,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER",
+                                                 "GRIPPER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:install_armor_plating"
+                                            ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "CLAMP",
+                                            "GRIPPER",
+                                            "WELDER",
+                                            "SCANNER"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true,
+                      "damaged_threshold":  70,
+                      "offline_threshold":  25
+                  },
+    "preview":  {
+                    "color":  "7dd3fc"
+                }
+}

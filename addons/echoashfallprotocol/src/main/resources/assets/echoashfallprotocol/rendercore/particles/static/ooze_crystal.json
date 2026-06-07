@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "toxic_glints": {
+      "anchor": "crystal_top",
+      "particle": "echorendercore:soft_mote",
+      "states": ["ACTIVE"],
+      "rate": 0.035,
+      "burst_count": 1,
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.24, 0.08, 0.24],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": "#9CFF5A",
+        "scale": 0.42,
+        "lifetime": 22,
+        "alpha": 0.78,
+        "style": "toxic_fleck",
+        "fullbright": true,
+        "flicker": 0.25
+      }
+    },
+    "ooze_aura": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": ["ACTIVE"],
+      "rate": 0.015,
+      "burst_count": 1,
+      "velocity": [0.0, 0.01, 0.0],
+      "spread": [0.3, 0.12, 0.3],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": "#77D96A",
+        "scale": 0.65,
+        "lifetime": 36,
+        "alpha": 0.38,
+        "style": "toxic_smoke",
+        "fullbright": true,
+        "flicker": 0.12
+      }
+    }
+  }
+}

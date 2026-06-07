@@ -1,0 +1,44 @@
+<page id="scriptcore-ui-bridge-demo" title="ScriptCore UI Bridge" styles="echoscreencore:base,echoscreencore:components">
+  <screen-shell>
+    <header title="ScriptCore UI Bridge" subtitle="Trusted execute and preview actions for ScreenCore pages"/>
+    <grid columns="1fr 1fr" gap="16">
+      <card>
+        <title>Basic Controls</title>
+        <text>These controls target a loaded ScriptCore definition id. Preview validates without mutating state.</text>
+        <row gap="8">
+          <component src="echoscriptcore:scriptcore_preview_button"
+                     definition="{state.scriptcoreDefinition|generic_survival:repair_radio}"
+                     slot="{state.scriptcoreSlot|on_complete}"/>
+          <component src="echoscriptcore:scriptcore_execute_button"
+                     definition="{state.scriptcoreDefinition|generic_survival:repair_radio}"
+                     slot="{state.scriptcoreSlot|on_complete}"/>
+          <button action="screencore.open_modal" action-target="scriptcore-confirm-execute" variant="danger">Confirm</button>
+        </row>
+      </card>
+      <card>
+        <title>Typed Params</title>
+        <text>Definitions declare allowed params in metadata.screencore_ui.params. The server rejects undeclared or malformed values.</text>
+        <input state-key="scriptcoreChoice" value="{state.scriptcoreChoice|radio_call_answered}" max-length="40"/>
+        <row gap="8">
+          <button action="scriptcore.preview"
+                  action-value="{state.scriptcoreParamDefinition|generic_survival:radio_choice}"
+                  action-param-slot="{state.scriptcoreParamSlot|actions}"
+                  action-param-param-choice_id="{state.scriptcoreChoice|radio_call_answered}">
+            Preview Param
+          </button>
+          <button action="scriptcore.execute"
+                  action-value="{state.scriptcoreParamDefinition|generic_survival:radio_choice}"
+                  action-param-slot="{state.scriptcoreParamSlot|actions}"
+                  action-param-param-choice_id="{state.scriptcoreChoice|radio_call_answered}"
+                  variant="primary">
+            Execute Param
+          </button>
+        </row>
+      </card>
+    </grid>
+    <component src="echoscriptcore:scriptcore_result_banner"/>
+    <component src="echoscriptcore:scriptcore_confirm_execute_dialog"
+               definition="{state.scriptcoreDefinition|generic_survival:repair_radio}"
+               slot="{state.scriptcoreSlot|on_complete}"/>
+  </screen-shell>
+</page>

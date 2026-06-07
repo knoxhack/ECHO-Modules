@@ -1,0 +1,20 @@
+{
+  "emitters": {
+    "working_sparks": {
+      "anchor": "tool",
+      "particle": "minecraft:electric_spark",
+      "states": ["WORKING", "ACTIVE"],
+      "rate": 0.06,
+      "burst_count": 1,
+      "spread": [0.12, 0.06, 0.12]
+    },
+    "cooling_smoke": {
+      "anchor": "joint",
+      "particle": "minecraft:smoke",
+      "state": "OVERHEATED",
+      "rate": 0.08,
+      "velocity": [0.0, 0.025, 0.0],
+      "spread": [0.1, 0.04, 0.1]
+    }
+  }
+}

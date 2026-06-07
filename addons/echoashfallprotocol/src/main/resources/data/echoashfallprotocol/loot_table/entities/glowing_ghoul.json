@@ -1,0 +1,36 @@
+{
+  "type": "entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "echoashfallprotocol:contaminated_iron",
+          "functions": [{"function": "set_count", "count": {"min": 1, "max": 2}}]
+        }
+      ],
+      "conditions": [{"condition": "killed_by_player"}]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {"type": "item", "name": "echoashfallprotocol:ash", "weight": 60,
+          "functions": [{"function": "set_count", "count": {"min": 1, "max": 3}}]},
+        {"type": "item", "name": "echoashfallprotocol:energy_cell", "weight": 10},
+        {"type": "item", "name": "echoashfallprotocol:crystal_dust", "weight": 15},
+        {"type": "empty", "weight": 15}
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {"type": "item", "name": "echoashfallprotocol:rad_away"}
+      ],
+      "conditions": [
+        {"condition": "killed_by_player"},
+        {"condition": "random_chance", "chance": 0.03}
+      ]
+    }
+  ]
+}

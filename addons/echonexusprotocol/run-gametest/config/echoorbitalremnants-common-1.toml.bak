@@ -1,0 +1,77 @@
+#Keeps orbital survival tense but recoverable.
+adventureLeanDefaults = true
+#Release v1 tuning preset. ADVENTURE keeps hazards readable; HARD makes orbit less forgiving.
+#Allowed Values: CASUAL, ADVENTURE, HARD
+difficultyPreset = "ADVENTURE"
+
+[survival]
+	#Ticks between oxygen loss while exposed to vacuum.
+	# Default: 40
+	# Range: 10 ~ 400
+	oxygenDrainTicks = 40
+	#Ticks between radiation increases in orbital or Nexus exposure.
+	# Default: 80
+	# Range: 20 ~ 800
+	radiationGainTicks = 80
+	#Ticks between suffocation/pressure damage after oxygen or suit pressure fails.
+	# Default: 80
+	# Range: 20 ~ 400
+	vacuumDamageTicks = 80
+
+[balance]
+	#Public beta route pacing percentage for route hazard oxygen, pressure, and radiation drain.
+	# Default: 75
+	# Range: 25 ~ 250
+	hazardDrainMultiplier = 75
+	#Balance tuning multiplier for route arrival cache survival support items.
+	# Default: 2
+	# Range: 1 ~ 5
+	arrivalCacheSupportMultiplier = 2
+	#Percent chance that a dense route feature, including Saturn/Titan beta sites, spawns an ambient threat when checked.
+	# Default: 50
+	# Range: 0 ~ 100
+	deepSiteThreatChance = 50
+
+[launch]
+	#Overworld altitude treated as low orbit by the current orbital progression loop.
+	# Default: 296
+	# Range: 256 ~ 319
+	orbitalAltitude = 296
+	#If true, the emergency rocket requires launch platform, suit, fuel, oxygen, and navigation parts.
+	requireFullLaunchReadiness = true
+
+[events]
+	#Average ticks between ambient orbital event warnings; tuned for public beta route pacing.
+	# Default: 3000
+	# Range: 200 ~ 24000
+	orbitalEventFrequency = 3000
+	#If true, dense route features may spawn ambient orbital threats.
+	featureThreatsEnabled = true
+
+[worldgen]
+	#Controls repeatable deep-site density in route dimensions. Higher values place sites more often.
+	# Default: 3
+	# Range: 1 ~ 5
+	routeFeatureDensity = 3
+	#If true, generated deep route sites include fixed survival caches.
+	deepSiteCachesEnabled = true
+
+[machines]
+	#Public beta base processing duration in ticks for orbital machines. Recipes may override this.
+	# Default: 140
+	# Range: 20 ~ 2400
+	baseDuration = 140
+	#Public beta ticks between one point of passive machine system charge regeneration.
+	# Default: 16
+	# Range: 1 ~ 400
+	chargeRegenTicks = 16
+	#Maximum internal system charge stored by one machine.
+	# Default: 100
+	# Range: 10 ~ 1000
+	maxCharge = 100
+
+[progression]
+	#Controls whether later route unlock flags are enforced by ECHO Terminal progression.
+	dimensionUnlocksEnabled = true
+	#If true, Orbit, Moon, Mars, Europa, Saturn, and Titan require route objective chains before the next route opens.
+	midGameObjectivesEnabled = true

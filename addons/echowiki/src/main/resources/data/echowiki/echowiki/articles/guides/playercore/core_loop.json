@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/playercore/core_loop",
+  "title": "PlayerCore: Core Loop",
+  "category": "Guide Books",
+  "summary": "Use travel commands as a repeatable route plan, not a substitute for awareness.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "The Loop",
+      "body": "Set or choose a safe anchor, move out, finish the task, return with home, back, spawn, TPA, or warp, then check whether a cooldown changed your next option.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Safe Destination First",
+      "body": "Teleport checks protect against bad arrivals. If the destination is unsafe, fix the location or choose a different route instead of repeating the same command.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Know The Cost",
+      "body": "The cost is usually time, permission, cooldown, or risk. Good travel habits keep one command in reserve for recovery.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "playercore",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/playercore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1098
+}

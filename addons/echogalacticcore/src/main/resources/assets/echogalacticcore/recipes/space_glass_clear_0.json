@@ -1,0 +1,25 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:space_glass_clear",
+                   "data":  0,
+                   "count":  5
+               },
+    "pattern":  [
+                    "YXY",
+                    "XXX",
+                    "YXY"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "minecraft:glass"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_aluminum"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

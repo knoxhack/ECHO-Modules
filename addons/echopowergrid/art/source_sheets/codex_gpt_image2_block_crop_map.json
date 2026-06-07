@@ -1,0 +1,434 @@
+[
+  {
+    "id": "echopowergrid:creative_power_sink",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 0,
+    "sheet_crop": [
+      0,
+      0,
+      314,
+      314
+    ],
+    "cell_crop": [
+      43,
+      45,
+      310,
+      312
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/creative_power_sink.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:creative_power_source",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 1,
+    "sheet_crop": [
+      314,
+      0,
+      627,
+      314
+    ],
+    "cell_crop": [
+      30,
+      43,
+      300,
+      313
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/creative_power_source.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:emergency_breaker",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 2,
+    "sheet_crop": [
+      627,
+      0,
+      940,
+      314
+    ],
+    "cell_crop": [
+      20,
+      44,
+      289,
+      313
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/emergency_breaker.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:hand_crank_generator",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 3,
+    "sheet_crop": [
+      940,
+      0,
+      1254,
+      314
+    ],
+    "cell_crop": [
+      8,
+      45,
+      277,
+      314
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/hand_crank_generator.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:industrial_cable",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 4,
+    "sheet_crop": [
+      0,
+      314,
+      314,
+      627
+    ],
+    "cell_crop": [
+      52,
+      34,
+      302,
+      284
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/industrial_cable.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:industrial_cable_connection",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 5,
+    "sheet_crop": [
+      314,
+      314,
+      627,
+      627
+    ],
+    "cell_crop": [
+      48,
+      47,
+      281,
+      280
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/industrial_cable_connection.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:industrial_cable_core",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 6,
+    "sheet_crop": [
+      627,
+      314,
+      940,
+      627
+    ],
+    "cell_crop": [
+      12,
+      47,
+      278,
+      313
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/industrial_cable_core.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:low_voltage_cable",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 7,
+    "sheet_crop": [
+      940,
+      314,
+      1254,
+      627
+    ],
+    "cell_crop": [
+      0,
+      0,
+      281,
+      281
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/low_voltage_cable.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:low_voltage_cable_connection",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 8,
+    "sheet_crop": [
+      0,
+      627,
+      314,
+      940
+    ],
+    "cell_crop": [
+      26,
+      25,
+      314,
+      313
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/low_voltage_cable_connection.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:low_voltage_cable_core",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 9,
+    "sheet_crop": [
+      314,
+      627,
+      627,
+      940
+    ],
+    "cell_crop": [
+      45,
+      22,
+      278,
+      255
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/low_voltage_cable_core.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:outpost_substation",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 10,
+    "sheet_crop": [
+      627,
+      627,
+      940,
+      940
+    ],
+    "cell_crop": [
+      18,
+      0,
+      293,
+      275
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/outpost_substation.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:power_meter",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 11,
+    "sheet_crop": [
+      940,
+      627,
+      1254,
+      940
+    ],
+    "cell_crop": [
+      21,
+      22,
+      260,
+      261
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/power_meter.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:scrap_burner_generator",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 12,
+    "sheet_crop": [
+      0,
+      940,
+      314,
+      1254
+    ],
+    "cell_crop": [
+      45,
+      0,
+      298,
+      253
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/scrap_burner_generator.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:small_battery_bank",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 13,
+    "sheet_crop": [
+      314,
+      940,
+      627,
+      1254
+    ],
+    "cell_crop": [
+      33,
+      0,
+      286,
+      253
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/small_battery_bank.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:solar_panel",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 14,
+    "sheet_crop": [
+      627,
+      940,
+      940,
+      1254
+    ],
+    "cell_crop": [
+      21,
+      3,
+      271,
+      253
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/solar_panel.png",
+    "size": [
+      32,
+      32
+    ]
+  },
+  {
+    "id": "echopowergrid:test_power_consumer",
+    "source_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_chroma.png",
+    "transparent_sheet": "addons/echopowergrid/art/source_sheets/codex_gpt_image2_powergrid_blocks_transparent.png",
+    "grid": [
+      4,
+      4
+    ],
+    "cell": 15,
+    "sheet_crop": [
+      940,
+      940,
+      1254,
+      1254
+    ],
+    "cell_crop": [
+      12,
+      0,
+      267,
+      255
+    ],
+    "output": "addons/echopowergrid/src/main/resources/assets/echopowergrid/textures/block/test_power_consumer.png",
+    "size": [
+      32,
+      32
+    ]
+  }
+]

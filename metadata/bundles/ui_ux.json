@@ -1,0 +1,42 @@
+{
+  "id": "ui_ux",
+  "name": "Ui Ux Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore",
+    "echothemecore",
+    "echoindex",
+    "echoterminal",
+    "echoholomap",
+    "echolens"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [
+    "echothemecore",
+    "echoindex",
+    "echoterminal",
+    "echoholomap",
+    "echolens"
+  ],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "ui ux"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Ui Ux",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "ui ux"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

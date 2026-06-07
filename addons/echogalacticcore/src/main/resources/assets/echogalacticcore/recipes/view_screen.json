@@ -1,0 +1,26 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:view_screen"
+               },
+    "pattern":  [
+                    "XYX",
+                    "YGY",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "G":  {
+                          "item":  "minecraft:glass"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/holomap/integrations",
+  "title": "HoloMap: Integrations",
+  "category": "Guide Books",
+  "summary": "Turn scans, records, weather, missions, and terminal links into useful map layers.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "WorldCore feeds region context, Convoy benefits from route clarity, Recovery marks return paths, and Lens or Wiki can explain what a marker represents.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use HoloMap with WorldCore regions, PowerGrid infrastructure, Convoy routes, Recovery markers, and Terminal records for a shared operations picture.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If a linked data source is absent, keep marker names plain and player-readable: hazard, loot, base, route, grave, power, or objective.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "holomap",
+    "navigation",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:map",
+  "relatedArticles": [
+    "echowiki:guides/holomap"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1195
+}

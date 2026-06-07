@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:dirty_water_reliance",
+  "type": "WARNING",
+  "category": "WATER",
+  "title": "Dirty Water Reliance",
+  "message": "Hydration trend declining. Clean water production recommended.",
+  "details": "Dirty water carries health risks. Build a Water Purifier for a safe supply.",
+  "actionLabel": "Review clean water",
+  "actionCardId": "echotutorialcore:clean_water",
+  "cooldownTicks": 24000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 75,
+  "dismissible": true,
+  "conditions": [
+    "mistake:echotutorialcore:dirty_water_reliance"
+  ]
+}

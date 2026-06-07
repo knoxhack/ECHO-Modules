@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:ruined_city_landmarks",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/collapsed_tower_large",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

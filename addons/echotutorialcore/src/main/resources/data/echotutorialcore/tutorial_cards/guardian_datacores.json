@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:guardian_datacores",
+  "category": "NEXUS",
+  "title": "Guardian Datacores",
+  "summary": "Recovered from biome guardians. Turn them in to progress the Nexus route.",
+  "body": [
+    "Guardian Datacores contain critical intel about the Gridfall and Earth contact.",
+    "Turn them in through the Terminal to advance the Nexus route.",
+    "Each datacore unlocks new choices and deeper story layers."
+  ],
+  "steps": [
+    "Locate a biome guardian.",
+    "Defeat or bypass it.",
+    "Recover the datacore and return to the Terminal."
+  ],
+  "commonMistakes": [
+    "Carrying a datacore for too long without turning it in.",
+    "Attempting a guardian unprepared."
+  ],
+  "related": [
+    "echotutorialcore:nexus_warning"
+  ],
+  "unlockTriggers": [
+    "recovered_guardian_datacore"
+  ],
+  "defaultUnlocked": false,
+  "priority": 80
+}

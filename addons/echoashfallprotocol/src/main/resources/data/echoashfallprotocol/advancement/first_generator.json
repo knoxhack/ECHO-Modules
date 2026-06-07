@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:micro_generator"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.first_generator.title",
+      "fallback": "Powered Up"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.first_generator.desc",
+      "fallback": "Place your first Micro Generator."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "place_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:micro_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["place_generator"]
+  ]
+}

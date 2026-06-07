@@ -1,0 +1,28 @@
+{
+  "schema": "echogalacticcore.port.player_gear.v1",
+  "source": "galacticraft_legacy_player_stats",
+  "legacyState": "micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats",
+  "attachments": [
+    "echogalacticcore:player_oxygen_state",
+    "echogalacticcore:player_thermal_state",
+    "echogalacticcore:space_station_state"
+  ],
+  "gearSlots": [
+    {"slot": "mask", "item": "echogalacticcore:oxygen_mask", "capability": "echogalacticcore:life_support"},
+    {"slot": "gear", "item": "echogalacticcore:oxygen_gear", "capability": "echogalacticcore:life_support"},
+    {"slot": "left_tank", "item": "echogalacticcore:light_oxygen_tank", "capability": "echogalacticcore:life_support"},
+    {"slot": "right_tank", "item": "echogalacticcore:light_oxygen_tank", "capability": "echogalacticcore:life_support"},
+    {"slot": "parachute", "item": "echogalacticcore:parachute", "capability": "echogalacticcore:rocket_flight"},
+    {"slot": "thermal_padding", "capability": "echogalacticcore:thermal_state"}
+  ],
+  "hud": [
+    "echogalacticcore:hud/oxygen_tanks"
+  ],
+  "clientSurfaces": [
+    "echogalacticcore:keybind/open_celestial_selection"
+  ],
+  "migrationPolicy": {
+    "inventoryHacks": "replace with ASDK attachments and item capabilities",
+    "sync": "replace legacy PacketSimple player stat sync with typed attachment/network receipts"
+  }
+}

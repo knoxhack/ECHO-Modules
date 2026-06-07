@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:memory_shard", "weight": 3 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:data_fragment", "weight": 2 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:blackbox_fragment", "weight": 1 }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:nexus_shard", "weight": 1 },
+        { "type": "minecraft:empty", "weight": 2 }
+      ]
+    }
+  ],
+  "random_sequence": "echonexusprotocol:entities/archive_seeker"
+}

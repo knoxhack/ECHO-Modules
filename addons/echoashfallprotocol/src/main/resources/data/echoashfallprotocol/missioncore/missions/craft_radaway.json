@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:craft_radaway",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 5,
+  "title": "Craft RadAway",
+  "briefing": "[ECHO-7] Severe radiation takes sustained exposure, but cleanup must be ready first. Synthesize RadAway before entering hot zones.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "crafting",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_radiation_cleanser"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_radaway",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.craft_radaway",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "51",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_radaway:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_radaway/rad_away",
+      "type": "obtain_item",
+      "label": "Obtain Rad Away",
+      "detail": "Confirm 1 Rad Away for this route step.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:rad_away",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:rad_away"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_radaway/reward_0",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_radaway/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:craft_radaway/reward_1",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_radaway/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] RadAway verified. It is emergency cleanup after retreat, not permission to live inside fallout."
+}

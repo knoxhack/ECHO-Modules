@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:core_chamber_unlock",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:guardian_core"
+                             },
+                    "title":  "Nexus Guardian Defeated",
+                    "description":  "Defeat the final protector of the Core.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "guardian_core":  {
+                                           "trigger":  "minecraft:inventory_changed",
+                                           "conditions":  {
+                                                              "items":  [
+                                                                            {
+                                                                                "items":  "echoblackboxprotocol:guardian_core"
+                                                                            }
+                                                                        ]
+                                                          }
+                                       }
+                 },
+    "requirements":  [
+                         [
+                             "guardian_core"
+                         ]
+                     ]
+}

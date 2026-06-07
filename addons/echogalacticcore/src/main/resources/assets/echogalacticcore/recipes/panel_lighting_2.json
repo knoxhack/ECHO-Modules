@@ -1,0 +1,27 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:panel_lighting",
+                   "data":  2
+               },
+    "pattern":  [
+                    "X X",
+                    "XYX",
+                    "XZX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "minecraft:glass_pane"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:glowstone_torch"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

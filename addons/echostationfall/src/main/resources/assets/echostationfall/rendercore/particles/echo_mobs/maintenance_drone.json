@@ -1,0 +1,256 @@
+{
+  "emitters": {
+    "damaged_smoke": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "DAMAGED",
+        "OVERHEATED",
+        "FAILED"
+      ],
+      "rate": 0.052,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.08,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.03,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.06,
+        0.12
+      ],
+      "requires_damaged": true,
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.624,
+          0.639,
+          0.627
+        ],
+        "scale": 0.95,
+        "lifetime": 42,
+        "alpha": 0.34,
+        "drag": 0.9,
+        "fade": true,
+        "style": "ash_smoke",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.004,
+        "stretch": 1.2,
+        "flicker": 0.0
+      }
+    },
+    "scanner_static_specks": {
+      "anchor": "scanner",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "SCANNING",
+        "CHARGING",
+        "CORRUPTED"
+      ],
+      "rate": 0.07,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.012,
+        -0.004
+      ],
+      "spread": [
+        0.06,
+        0.05,
+        0.05
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.369,
+          0.922,
+          1.0
+        ],
+        "scale": 0.44,
+        "lifetime": 22,
+        "alpha": 0.78,
+        "drag": 0.94,
+        "fade": true,
+        "style": "scan_speck",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.015,
+        "stretch": 1.0,
+        "flicker": 0.3
+      }
+    },
+    "scanner_electric_tick": {
+      "anchor": "scanner",
+      "particle": "minecraft:electric_spark",
+      "states": [
+        "SCANNING",
+        "CHARGING",
+        "CORRUPTED"
+      ],
+      "rate": 0.037,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.012,
+        0.0
+      ],
+      "spread": [
+        0.14,
+        0.12,
+        0.14
+      ]
+    },
+    "cyan_core_glint": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "SCANNING"
+      ],
+      "rate": 0.05,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.006,
+        0.0
+      ],
+      "spread": [
+        0.06,
+        0.05,
+        0.05
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.369,
+          0.922,
+          1.0
+        ],
+        "scale": 0.44,
+        "lifetime": 22,
+        "alpha": 0.78,
+        "drag": 0.94,
+        "fade": true,
+        "style": "core_glint",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.015,
+        "stretch": 1.0,
+        "flicker": 0.18
+      }
+    },
+    "drone_scan_ping": {
+      "anchor": "scanner",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "SCANNING",
+        "ACTIVE",
+        "CHARGING"
+      ],
+      "rate": 0.07,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.012,
+        -0.006
+      ],
+      "spread": [
+        0.06,
+        0.05,
+        0.05
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.369,
+          0.922,
+          1.0
+        ],
+        "scale": 0.44,
+        "lifetime": 22,
+        "alpha": 0.78,
+        "drag": 0.94,
+        "fade": true,
+        "style": "scan_speck",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.015,
+        "stretch": 1.0,
+        "flicker": 0.3
+      }
+    },
+    "micro_exhaust": {
+      "anchor": "exhaust",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "ACTIVE",
+        "WORKING",
+        "OVERHEATED"
+      ],
+      "rate": 0.052,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.018,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.12,
+        0.12
+      ],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          1.0,
+          0.604,
+          0.184
+        ],
+        "scale": 0.84,
+        "lifetime": 34,
+        "alpha": 0.34,
+        "drag": 0.9,
+        "fade": true,
+        "style": "exhaust_plume",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.01,
+        "stretch": 1.2,
+        "flicker": 0.0
+      }
+    }
+  }
+}

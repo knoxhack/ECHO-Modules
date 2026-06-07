@@ -1,0 +1,68 @@
+{
+  "id": "echoashfallprotocol:reach_decision",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 6,
+  "title": "Reach the Final Decision Point",
+  "briefing": "[ECHO-7] Warfront complete. Open NEXUS, choose RESTORE, DESTROY, or CONTROL, then confirm. This choice is permanent.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "minecraft:compass",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:survive_core_countermeasure"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "reach_decision",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.reach_decision",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "92",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:reach_decision:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.ending_choice",
+      "ashfall.nexus_state"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:reach_decision/reach_decision",
+      "type": "custom",
+      "label": "Reach the Final Decision Point",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "minecraft:compass",
+      "target": "echoashfallprotocol:reach_decision",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.reach_decision"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Connection... severed. History will remember this day. Whatever you chose, the world is changed."
+}

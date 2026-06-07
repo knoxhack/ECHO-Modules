@@ -1,0 +1,77 @@
+<page id="wiki_guide_books" title="Guide Books" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists,wiki_fast">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Guide Books"/>
+    <param name="contentSubtitle" value="Physical manuals, module chapters, and curated chapter routes."/>
+    <param name="inspectorTitle" value="Manual Meta"/>
+    <param name="stateKey" value="wiki.guideBooks.page"/>
+    <slot name="content">
+      <component src="echowiki:wiki_search_filter_bar"/>
+      <grid class="wiki-reference-layout" columns="1fr 0.86fr" gap="9" stack-below="860">
+        <section class="wiki-reference-list-panel" title="MANUAL LIBRARY">
+          <row class="wiki-page-controls" gap="8">
+            <text value="{wiki.guideBooks.pageLabel}"/>
+            <button action="wiki.previous_guide_book_page" variant="secondary"
+                    disabled="{wiki.guideBooks.previousPageDisabled|true}">Prev</button>
+            <button action="wiki.next_guide_book_page" variant="secondary"
+                    disabled="{wiki.guideBooks.nextPageDisabled|true}">Next</button>
+          </row>
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.guideBooks">
+            <list class="wiki-browser-list" bind="wiki.guideBooks.visible" item="guide">
+              <component src="echowiki:wiki_guide_book_card">
+                <param name="id" value="{guide.id}"/>
+                <param name="icon" value="{guide.icon}"/>
+                <param name="heroArt" value="{guide.heroArt}"/>
+                <param name="title" value="{guide.title}"/>
+                <param name="subtitlePreview" value="{guide.subtitlePreview}"/>
+                <param name="summaryPreview" value="{guide.summaryPreview}"/>
+                <param name="status" value="{guide.status}"/>
+                <param name="statusLabel" value="{guide.statusLabel}"/>
+                <param name="moduleBadge" value="{guide.moduleBadge}"/>
+                <param name="chapterBadge" value="{guide.chapterBadge}"/>
+                <param name="selected" value="{guide.selected}"/>
+              </component>
+              <empty-state class="wiki-manual-empty-state" title="{wiki.guideBooks.emptyTitle}" body="{wiki.guideBooks.emptyBody}"/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="SELECTED MANUAL">
+          <image class="wiki-manual-preview" src="{wiki.guideBook.selected.heroArt|echowiki:textures/gui/guide_books/wiki_banner.png}" width="240" height="84" source-width="512" source-height="160" fit="cover"/>
+          <row class="wiki-manual-inspector-title-row" gap="8">
+            <item-icon class="wiki-row-icon" item="{wiki.guideBook.selected.icon|minecraft:written_book}"/>
+            <title class="wiki-detail-title" value="{wiki.guideBook.selected.title}"/>
+          </row>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.guideBook.selected.status}" value="{wiki.guideBook.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.guideBook.selected.moduleBadge}"/>
+            <status-chip class="wiki-detail-chip" status="known" value="{wiki.guideBook.selected.chapterBadge}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.guideBook.selected.summary}"/>
+          <button action="wiki.open_guide_book" action-value="{wiki.guideBook.selected.id}" variant="primary"
+                  disabled="{wiki.guideBook.selected.openDisabled|true}">{wiki.guideBook.selected.openLabel|Open}</button>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <section class="wiki-meta-panel" title="MANUAL META">
+        <text value="Module: {wiki.guideBook.selected.moduleLabel}"/>
+        <text value="Availability: {wiki.guideBook.selected.availabilityLabel}"/>
+        <text value="{wiki.guideBook.selected.chapterCountLabel}"/>
+        <text value="{wiki.guideBook.selected.tagsLabel}"/>
+      </section>
+      <section class="wiki-side-summary" title="QUICK LINKS">
+        <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.guideBook.related.preview">
+          <list bind="wiki.guideBook.related" item="related">
+            <component src="echowiki:wiki_related_row">
+              <param name="kind" value="{related.kind}"/>
+              <param name="id" value="{related.id}"/>
+              <param name="label" value="{related.label}"/>
+              <param name="subtitlePreview" value="{related.subtitlePreview}"/>
+              <param name="status" value="{related.status}"/>
+            </component>
+            <empty-state class="wiki-manual-related-empty-state" title="No links" body="This manual has no related articles."/>
+          </list>
+        </scroll>
+      </section>
+    </slot>
+  </component>
+</page>

@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:signal_scanner",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:portable_signal_scanner"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.poi_explorer.title",
+      "fallback": "Urban Explorer"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.poi_explorer.desc",
+      "fallback": "Discover 5 unique Points of Interest."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "discovered_pois": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:portable_signal_scanner"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["discovered_pois"]
+  ]
+}

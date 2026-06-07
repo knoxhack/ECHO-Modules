@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:destroy_guardian",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 10,
+  "title": "Defeat The Warden in Pre-Fall Archives",
+  "briefing": "[ECHO-7] Even chaos has its guardians. The Warden runs defender lockdowns and pulse phases; enter with medicine, top-tier weapons, and a Return Keystone.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_enter_archives"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_guardian",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_guardian",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "10",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "103",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_guardian:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_guardian/destroy_guardian",
+      "type": "custom",
+      "label": "Defeat The Warden in Pre-Fall Archives",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:destroy_guardian",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.destroy_guardian"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_guardian/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 8,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_guardian/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] The last chain is broken. Return to the mission channel and confirm the Destroy epilogue."
+}

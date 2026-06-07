@@ -1,0 +1,24 @@
+{
+  "id": "echoweathercore:orbital_debris_shower",
+  "displayName": "Orbital Debris Shower",
+  "type": "ORBITAL_DEBRIS_SHOWER",
+  "defaultSeverity": "MODERATE",
+  "scope": "LOCAL",
+  "durationTicks": 4000,
+  "warningTicks": 4800,
+  "weight": 8,
+  "cooldownTicks": 60000,
+  "effects": {
+    "visibilityMultiplier": 0.80,
+    "scannerReliabilityMultiplier": 0.90,
+    "routeRiskModifier": 1.35
+  },
+  "recommendedGear": [
+    "echoweathercore:debris_tracker"
+  ],
+  "terminalWarning": "Orbital debris prediction confirmed. Impact corridor active.",
+  "echoLines": [
+    "Debris trajectory intersects route. Shelter probability increasing.",
+    "Salvage opportunity after impact."
+  ]
+}

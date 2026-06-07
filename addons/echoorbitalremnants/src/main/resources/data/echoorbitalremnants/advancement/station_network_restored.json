@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:station_echo",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:station_power_matrix"
+    },
+    "title": {
+      "text": "Station Network Restored"
+    },
+    "description": {
+      "text": "Repair three Station Relay Nodes in Low Earth Orbit."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "echoashfallprotocol:subway_station/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/subway_station",
+        "processors": "echoashfallprotocol:subway_station_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

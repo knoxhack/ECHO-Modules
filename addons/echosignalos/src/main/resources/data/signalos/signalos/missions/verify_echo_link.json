@@ -1,0 +1,16 @@
+{
+  "chapter": "signalos:signalos",
+  "title": "Verify Echo Link",
+  "description": "Open Echo Link and Diagnostics to confirm SignalOS is reading optional ECHO Core services without taking over ECHO Terminal.",
+  "objectives": [
+    "Open the Echo Link app",
+    "Inspect module, route, discovery, profile, faction, or hazard records when present",
+    "Open Diagnostics and verify provider health"
+  ],
+  "order": 50,
+  "icon": "minecraft:recovery_compass",
+  "rewardClaim": true,
+  "displayRewards": [
+    { "item": "minecraft:torch", "count": 16, "label": "Field signal markers" }
+  ]
+}

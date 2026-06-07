@@ -1,0 +1,69 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoterminal:textures/gui/icons/terminal/brand_echo.png",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.8,
+    "pulse_speed": 0.48,
+    "pulse_min_alpha": 0.74,
+    "pulse_max_alpha": 1,
+    "bloom_tint": "#FF66E8FF",
+    "target_scope": "profile"
+  },
+  "anchors": {
+    "screen": {
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "header": {
+      "offset": [
+        0,
+        0.9,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "echoterminal",
+    "display_name": "Screen Terminal Hud",
+    "tags": [
+      "screen"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "terminal",
+    "label": "ECHO TERMINAL",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": true
+  }
+}

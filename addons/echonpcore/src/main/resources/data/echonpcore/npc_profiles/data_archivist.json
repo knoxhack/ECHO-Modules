@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:data_archivist",
+  "displayName": "Data Archivist",
+  "role": "Archive Keeper",
+  "faction": "echonpcore:archivists",
+  "visualProfile": "echonpcore:data_archivist",
+  "dialogue": "echonpcore:data_archivist",
+  "trades": "echonpcore:data_archivist_basic",
+  "services": "echonpcore:data_archivist_services",
+  "missions": [],
+  "ambientLines": [
+    "Most maps lie after a storm.",
+    "Old books still remember stable routes."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 4,
+    "returnRadius": 14,
+    "ambientCooldown": 2600,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Archivists cross-check old records against current WorldCore field context."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:librarian"
+  }
+}

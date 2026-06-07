@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "label": "Diagnostics Drive",
+  "records": [
+    {
+      "id": "signalos:drive/diagnostics_boot",
+      "title": "Diagnostics Boot",
+      "type": "diagnostic",
+      "source": "SignalOS Drive Template",
+      "body": "Run Diagnostics after every rack change. Provider warnings should be investigated before trusting copied records.",
+      "order": 0,
+      "metadata": {
+        "signalos.path": "/diagnostics/diagnostics_boot.txt",
+        "signalos.mime": "text/plain"
+      }
+    },
+    {
+      "id": "signalos:drive/provider_policy",
+      "title": "Provider Policy",
+      "type": "guide",
+      "source": "SignalOS Drive Template",
+      "body": "SignalOS reads optional providers defensively and keeps ownership with the source addon.",
+      "order": 10,
+      "metadata": {
+        "signalos.path": "/diagnostics/provider_policy.txt",
+        "signalos.mime": "text/plain"
+      }
+    }
+  ]
+}

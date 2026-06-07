@@ -1,0 +1,96 @@
+{
+  "id": "echoashfallprotocol:fix_mask_filter",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 6,
+  "title": "Secure Filter Cartridge + Turn In",
+  "briefing": "[ECHO-7] Filter reserve check. Secure 1 spare Basic Filter Cartridge before your first toxic-zone expedition, then return this protocol.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall inventory predicate for one Basic Filter Cartridge after Gas Mask equipment is verified.",
+  "category": "survival",
+  "difficulty": "trivial",
+  "icon": "echoashfallprotocol:filter_cartridge_basic",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:equip_gas_mask"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "fix_mask_filter",
+    "nativeGameplayHook": "ashfall.first_route.fix_mask_filter",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.filter_workbench.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "6",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "29",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:fix_mask_filter:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:fix_mask_filter/confirm_basic_filter",
+      "type": "obtain_item",
+      "label": "Secure Basic Filter Cartridge",
+      "detail": "Carry one Basic Filter Cartridge as a reserve before the first toxic-zone expedition.",
+      "icon": "echoashfallprotocol:filter_cartridge_basic",
+      "target": "echoashfallprotocol:filter_cartridge_basic",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_contains",
+        "item": "echoashfallprotocol:filter_cartridge_basic",
+        "required_items": "echoashfallprotocol:filter_cartridge_basic=1",
+        "events": "player.inventory_changed,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 1,
+      "label": "Basic Filter Cartridge"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:fix_mask_filter/reward_basic_filter",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 1,
+      "label": "Basic Filter Cartridge",
+      "detail": "Spare cartridge for the next hazard prep step."
+    },
+    {
+      "id": "echoashfallprotocol:fix_mask_filter/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Hydration reserve for a short toxic-zone route."
+    }
+  ],
+  "completionText": "[ECHO-7] Spare filter logged. Cartridges drain only when a mask is filtering toxic air."
+}

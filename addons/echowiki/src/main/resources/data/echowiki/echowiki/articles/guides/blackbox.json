@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/blackbox",
+  "title": "Blackbox Protocol Manual",
+  "category": "Guide Books",
+  "summary": "Handle fragments and directives carefully; Blackbox progress is consequence, not just loot.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Blackbox content is meant to feel like recovered intent. Treat fragments and directives as signals with consequences, not generic collectibles.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Read records before acting on them. Store unusual fragments, compare names in Wiki or Terminal, and avoid using directive items until you understand the route cost.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Find a fragment, identify its context, follow the smallest safe lead, and reassess. The best Blackbox progress is deliberate and logged.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Fragments, ending directives, and signal records can point at different outcomes. A quiet item may matter later, so do not discard named evidence casually.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "SignalOS, Terminal, Wiki, and TutorialCore are the natural support surfaces. Index can expose records when the owning systems publish them.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a lead feels blocked, inspect the item, check related Wiki entries, and confirm required optional modules are loaded before assuming the route is broken.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "blackbox",
+    "signals"
+  ],
+  "icon": "minecraft:ender_eye",
+  "heroArt": "echowiki:textures/gui/guide_books/blackbox_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/blackbox/first_steps",
+    "echowiki:guides/blackbox/core_loop",
+    "echowiki:guides/blackbox/systems",
+    "echowiki:guides/blackbox/progression",
+    "echowiki:guides/blackbox/integrations",
+    "echowiki:guides/blackbox/troubleshooting"
+  ],
+  "sortOrder": 1040
+}

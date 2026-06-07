@@ -1,0 +1,81 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echosocialcore",
+  "name": "ECHO: SocialCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "social_core",
+  "entrypoint": "com.knoxhack.echo.socialcore.EchoSocialCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "social.dialogue_trees",
+    "social.factions",
+    "social.npc_profiles",
+    "social.reputation",
+    "social.villager_replacement_plan"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "entities"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.socialcore.EchoSocialCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Neutral faction, reputation, dialogue tree, NPC profile, AI profile, binding, and villager replacement plan contract layer for ECHO modules and future native reports."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/socialcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

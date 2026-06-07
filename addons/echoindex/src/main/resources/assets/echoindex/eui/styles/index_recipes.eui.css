@@ -1,0 +1,81 @@
+.index-recipe-flow {
+  gap: space(md);
+  detail-collapse-below: 520px;
+}
+
+.index-recipe-card {
+  border-width: 1;
+  border-radius: radius(sm);
+  min-height: 56px;
+  padding: space(sm);
+}
+
+.index-recipe-card-row, .index-recipe-detail-hero, .index-detail-header {
+  align: center;
+}
+
+.index-recipe-card-copy, .index-detail-copy {
+  gap: 2px;
+  min-width: 0;
+}
+
+.index-recipe-title, .index-detail-title {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-recipe-summary, .index-recipe-meta, .index-detail-subtitle, .index-detail-meta, .index-recipe-meta-line, .index-recipe-helper, .index-recipe-note {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-recipe-meta, .index-detail-meta, .index-recipe-meta-line, .index-recipe-helper {
+  color: theme(textMuted);
+}
+
+.index-recipe-card-pin {
+  min-width: 56px;
+}
+
+.index-recipe-flow-panel {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: space(sm);
+  gap: space(xs);
+}
+
+.index-recipe-flow-arrow {
+  align: center;
+  justify: center;
+  min-width: 28px;
+  color: theme(accent);
+}
+
+.index-recipe-slot-card {
+  border-width: 1;
+  border-radius: radius(sm);
+  min-height: 42px;
+  padding: space(xs);
+}
+
+.index-recipe-slot-label {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-recipe-actions {
+  wrap: true;
+  gap: space(xs);
+}
+
+.index-recipe-debug {
+  color: theme(warning);
+  wrap: true;
+  max-lines: 3;
+  line-height: 10px;
+}

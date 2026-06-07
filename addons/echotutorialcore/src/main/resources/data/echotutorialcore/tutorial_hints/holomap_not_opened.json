@@ -1,0 +1,18 @@
+{
+  "id": "echotutorialcore:holomap_not_opened",
+  "type": "SYSTEM_HELP",
+  "category": "HOLOMAP",
+  "title": "HoloMap Not Opened",
+  "message": "Route data available but HoloMap has not been reviewed.",
+  "details": "Open the HoloMap to plan routes and avoid hazards.",
+  "actionLabel": "Review HoloMap",
+  "actionCardId": "echotutorialcore:holomap_basics",
+  "cooldownTicks": 48000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 55,
+  "dismissible": true,
+  "conditions": [
+    "progress:echotutorialcore:used_scanner",
+    "missing_progress:echotutorialcore:opened_holomap"
+  ]
+}

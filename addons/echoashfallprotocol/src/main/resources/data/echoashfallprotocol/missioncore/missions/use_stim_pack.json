@@ -1,0 +1,86 @@
+{
+  "id": "echoashfallprotocol:use_stim_pack",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 5,
+  "title": "Use Stim Pack",
+  "briefing": "[ECHO-7] Verify emergency healing with a Stim Pack after the Field Med Bay has established a baseline.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:stim_pack",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:use_field_med_bay"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "use_stim_pack",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.use_stim_pack",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "73",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:use_stim_pack:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.item_used",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:use_stim_pack/dose_used",
+      "type": "custom",
+      "label": "Use Stim Pack",
+      "detail": "Use one Stim Pack during field recovery.",
+      "icon": "echoashfallprotocol:stim_pack",
+      "target": "echoashfallprotocol:stim_pack",
+      "required": 1,
+      "criteria": {
+        "event": "player.item_used",
+        "item": "echoashfallprotocol:stim_pack"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:stim_pack",
+      "count": 1,
+      "label": "Stim Pack"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:use_stim_pack/reward_0",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:use_stim_pack/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Stim response confirmed. Keep this for injuries that happen too far from the bay."
+}

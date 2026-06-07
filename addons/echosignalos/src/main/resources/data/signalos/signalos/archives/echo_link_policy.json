@@ -1,0 +1,12 @@
+{
+  "chapter": "signalos:signalos",
+  "title": "Echo Link Policy",
+  "group": "SignalOS",
+  "status": "OPEN",
+  "order": 30,
+  "lines": [
+    "SignalOS reads ECHO Core services defensively. It does not hardcode optional chapter content and does not replace ECHO Terminal.",
+    "When providers are present, Echo Link surfaces module, profile, hazard, route, discovery, faction, theme, and sound status records.",
+    "When providers are absent, SignalOS stays functional with fallback records and diagnostics."
+  ]
+}

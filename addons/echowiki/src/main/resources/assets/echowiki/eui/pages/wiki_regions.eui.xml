@@ -1,0 +1,58 @@
+<page id="wiki_regions" title="World Regions" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="World Regions"/>
+    <param name="contentSubtitle" value="WorldCore areas, active context, and hazard routing."/>
+    <param name="inspectorTitle" value="World Context"/>
+    <param name="stateKey" value="wiki.regions.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="REGION INDEX">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.regions">
+            <list class="wiki-browser-list" bind="wiki.regions.visible" item="region">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.select_region"/>
+                <param name="id" value="{region.id}"/>
+                <param name="title" value="{region.title}"/>
+                <param name="summary" value="{region.summary}"/>
+                <param name="status" value="{region.status}"/>
+                <param name="chip" value="{region.chip}"/>
+                <param name="meta" value="{region.meta}"/>
+                <param name="countLabel" value="{region.countLabel}"/>
+                <param name="selected" value="{region.selected}"/>
+              </component>
+              <empty-state title="No regions" body="WorldCore has not registered region definitions."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="REGION DOSSIER">
+          <title class="wiki-detail-title" value="{wiki.regions.selected.title}"/>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.regions.selected.status}" value="{wiki.regions.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.regions.selected.typeLabel}"/>
+            <status-chip class="wiki-detail-chip" status="warning" value="{wiki.regions.selected.hazardCountLabel}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.regions.selected.summary}"/>
+          <grid class="wiki-detail-stat-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Type" value="{wiki.regions.selected.typeLabel}"/>
+            <stat-card label="Hazards" value="{wiki.regions.selected.hazardCountLabel}"/>
+          </grid>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.regions.context">
+        <list class="wiki-compact-list" bind="wiki.dashboard.worldContext" item="record">
+          <component src="echowiki:wiki_record_row">
+            <param name="id" value="{record.id}"/>
+            <param name="title" value="{record.title}"/>
+            <param name="summary" value="{record.summary}"/>
+            <param name="status" value="{record.status}"/>
+            <param name="chip" value="{record.chip}"/>
+            <param name="meta" value="{record.meta}"/>
+            <param name="countLabel" value="{record.countLabel}"/>
+          </component>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>

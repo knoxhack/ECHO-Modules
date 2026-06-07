@@ -1,0 +1,11 @@
+<detail-panel title="{param.title|Detail}">
+  <row class="index-detail-header" gap="10">
+    <item-stack item="{param.icon|minecraft:book}"/>
+    <column class="index-detail-copy">
+      <title class="index-detail-title" value="{param.title|Detail}"/>
+      <text class="index-detail-subtitle" value="{param.subtitle|Select an Index row.}"/>
+      <text class="index-detail-meta" value="{param.meta|}"/>
+    </column>
+  </row>
+  <slot-outlet name="body"/>
+</detail-panel>

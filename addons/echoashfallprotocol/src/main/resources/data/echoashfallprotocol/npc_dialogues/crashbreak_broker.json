@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:crashbreak_broker",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Broker Rook taps a cracked ledger with a metal stylus. \"Every wreck has three prices: parts, risk, and who gets there first.\"",
+      "options": [
+        { "id": "trade", "label": "Open brokered salvage.", "action": "open_trade" },
+        { "id": "services", "label": "Review workshop support.", "action": "open_services" },
+        { "id": "intel", "label": "Open route ledger.", "action": "open_intel" },
+        { "id": "record", "label": "Record Rook's channel.", "action": "discover_contact" },
+        { "id": "close", "label": "Close deal window.", "action": "close" }
+      ]
+    }
+  }
+}

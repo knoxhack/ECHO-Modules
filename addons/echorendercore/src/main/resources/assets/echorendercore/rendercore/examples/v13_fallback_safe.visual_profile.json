@@ -1,0 +1,91 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_fallback_safe.png",
+  "default_state": "ONLINE",
+  "preview": {
+    "title": "V13 Fallback-Safe Overlay",
+    "tags": [
+      "v13",
+      "fallback",
+      "stable"
+    ]
+  },
+  "effect": {
+    "preset": "none"
+  },
+  "layers": [
+    {
+      "id": "stable_status",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_stable_status.png",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "WORKING"
+      ],
+      "parts": [
+        "status"
+      ],
+      "alpha": 0.65,
+      "emissive": true,
+      "effect": {
+        "preset": "neon",
+        "advanced_enabled": false,
+        "pulse_speed": 0.5
+      }
+    }
+  ],
+  "anchors": {
+    "status": [
+      0,
+      0.6,
+      -0.5
+    ]
+  },
+  "block_parts": {
+    "status": {
+      "directions": [
+        "north"
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Fallback-Safe Overlay",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

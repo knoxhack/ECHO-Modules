@@ -1,0 +1,42 @@
+{
+  "name": "echoconvoyprotocol:route/northern_route_corridor",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoconvoyprotocol:roadside/routes/northern_route_destination",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoconvoyprotocol:roadside/repair_pullout",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoconvoyprotocol:roadside/fuel_cache",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoconvoyprotocol:roadside/wreck_ambush",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

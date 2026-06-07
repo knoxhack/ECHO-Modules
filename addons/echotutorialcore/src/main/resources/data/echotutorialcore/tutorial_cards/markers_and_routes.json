@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:markers_and_routes",
+  "category": "HOLOMAP",
+  "title": "Markers and Routes",
+  "summary": "A marker is a promise. A route is the argument against dying there.",
+  "body": [
+    "HoloMap markers show leads, hazards, missions, and discovered route points.",
+    "Routes are not safety. They are a chance to prepare before distance becomes a problem."
+  ],
+  "steps": [
+    "Open HoloMap after scanning.",
+    "Review hazard markers near the route.",
+    "Pack filters, water, and recovery supplies."
+  ],
+  "commonMistakes": [
+    "Following a marker without reading nearby hazards.",
+    "Leaving with no return path."
+  ],
+  "related": [
+    "echotutorialcore:holomap_basics",
+    "echotutorialcore:scanner_route_prep"
+  ],
+  "unlockTriggers": [
+    "opened_holomap",
+    "reviewed_route"
+  ],
+  "defaultUnlocked": false,
+  "priority": 70
+}

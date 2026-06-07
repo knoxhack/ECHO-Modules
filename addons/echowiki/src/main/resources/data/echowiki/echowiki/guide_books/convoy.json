@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:convoy",
+  "moduleId": "echoconvoyprotocol",
+  "requiredModId": "echoconvoyprotocol",
+  "title": "Convoy Route Manual",
+  "subtitle": "Routes, incidents, staging, and field logistics",
+  "summary": "Plan cargo routes, fuel stops, repairs, and recoverable travel.",
+  "icon": "minecraft:minecart",
+  "accent": "#FFFFD166",
+  "collectionId": "echowiki:guides/convoy",
+  "homeArticleId": "echowiki:guides/convoy",
+  "chapterArticleIds": [
+    "echowiki:guides/convoy",
+    "echowiki:guides/convoy/first_steps",
+    "echowiki:guides/convoy/core_loop",
+    "echowiki:guides/convoy/systems",
+    "echowiki:guides/convoy/progression",
+    "echowiki:guides/convoy/integrations",
+    "echowiki:guides/convoy/troubleshooting"
+  ],
+  "tags": [
+    "convoy",
+    "routes",
+    "incidents",
+    "logistics"
+  ],
+  "sortOrder": 60
+}

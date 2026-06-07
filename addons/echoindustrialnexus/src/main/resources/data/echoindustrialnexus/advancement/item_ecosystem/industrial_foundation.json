@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:root",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:nano_carbon_alloy_ingot"
+    },
+    "title": {
+      "text": "Industrial Foundation"
+    },
+    "description": {
+      "text": "Recover clean advanced materials from the old factory stack."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "industrial_foundation": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:nano_carbon_alloy_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "industrial_foundation"
+    ]
+  ]
+}

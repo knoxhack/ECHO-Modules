@@ -1,0 +1,44 @@
+{
+    "parent":  "echoblackboxprotocol:false_echo",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:labyrinth_monolith"
+                             },
+                    "title":  "Memory Labyrinth Route",
+                    "description":  "Hold ECHO memory proof and the False ECHO identity fragment.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "echo":  {
+                                  "trigger":  "minecraft:inventory_changed",
+                                  "conditions":  {
+                                                     "items":  [
+                                                                   {
+                                                                       "items":  "echoblackboxprotocol:echo_memory_record"
+                                                                   }
+                                                               ]
+                                                 }
+                              },
+                     "identity":  {
+                                      "trigger":  "minecraft:inventory_changed",
+                                      "conditions":  {
+                                                         "items":  [
+                                                                       {
+                                                                           "items":  "echoblackboxprotocol:echo_identity_fragment"
+                                                                       }
+                                                                   ]
+                                                     }
+                                  }
+                 },
+    "requirements":  [
+                         [
+                             "echo"
+                         ],
+                         [
+                             "identity"
+                         ]
+                     ]
+}

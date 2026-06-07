@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:no_power",
+  "type": "POWER_HELP",
+  "category": "MACHINES",
+  "title": "Machine Offline",
+  "message": "No EP input detected. Connect a generator, battery, or cable.",
+  "details": "Machines require power to function. Use the Lens to inspect power status.",
+  "actionLabel": "Open power basics",
+  "actionCardId": "echotutorialcore:power_basics",
+  "cooldownTicks": 6000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 70,
+  "dismissible": true,
+  "conditions": [
+    "power_alert:brownout"
+  ]
+}

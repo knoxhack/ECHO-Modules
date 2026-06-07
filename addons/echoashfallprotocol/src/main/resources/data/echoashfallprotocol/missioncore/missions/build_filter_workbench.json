@@ -1,0 +1,109 @@
+{
+  "id": "echoashfallprotocol:build_filter_workbench",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 7,
+  "title": "Build a Filter Workbench",
+  "briefing": "[ECHO-7] Basic filters are route supplies, not a daily oxygen tax. Build a Filter Workbench before pushing into marked toxic zones.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for one placed Filter Workbench after the Basic Filter Cartridge reserve is verified.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:filter_workbench",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:fix_mask_filter"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_filter_workbench",
+    "nativeGameplayHook": "ashfall.first_route.build_filter_workbench",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.advanced_filter.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "7",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "30",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_filter_workbench:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_filter_workbench/place_filter_workbench",
+      "type": "place_block",
+      "label": "Build a Filter Workbench",
+      "detail": "Place one Filter Workbench to make toxic-zone supplies planned instead of lucky finds.",
+      "icon": "echoashfallprotocol:filter_workbench",
+      "target": "echoashfallprotocol:filter_workbench",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:filter_workbench",
+        "required_blocks": "echoashfallprotocol:filter_workbench=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 3,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 2,
+      "label": "Filtration Membranes"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 3,
+      "label": "Scrap Wire"
+    },
+    {
+      "block": "echoashfallprotocol:filter_workbench",
+      "count": 1,
+      "label": "Placed Filter Workbench"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_filter_workbench/reward_basic_filters",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 2,
+      "label": "Basic Filter Cartridges",
+      "detail": "Initial planned supply for short toxic-zone routes."
+    }
+  ],
+  "completionText": "[ECHO-7] Filter Workbench online. Toxic-zone supplies are now planned instead of lucky finds."
+}

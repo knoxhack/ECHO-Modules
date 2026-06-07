@@ -1,0 +1,13 @@
+{
+  "id": "echoashfallprotocol:radwarden_outpost",
+  "type": "secure_outpost",
+  "displayName": "Secure Outpost",
+  "summary": "Faction or recovery foothold with stabilized field infrastructure.",
+  "structureIds": ["echoashfallprotocol:radwarden_outpost", "echoashfallprotocol:crashbreak_salvage_yard", "echoashfallprotocol:scavenger_camp"],
+  "hazardIds": ["echoworldcore:hazard/secure_zone"],
+  "discoveryId": "echoashfallprotocol:radwarden_outpost",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/radwarden_outpost",
+  "audioProfileId": "echoworldcore:ambience/radwarden_outpost",
+  "sortOrder": 90
+}

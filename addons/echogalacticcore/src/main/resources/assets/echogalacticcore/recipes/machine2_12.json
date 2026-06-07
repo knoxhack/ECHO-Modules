@@ -1,0 +1,35 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine2",
+                   "data":  12
+               },
+    "pattern":  [
+                    "WCW",
+                    "VAV",
+                    "WBW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "A":  {
+                          "item":  "minecraft:anvil",
+                          "data":  0
+                      },
+                "B":  {
+                          "item":  "minecraft:furnace"
+                      },
+                "C":  {
+                          "item":  "minecraft:shears"
+                      },
+                "V":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

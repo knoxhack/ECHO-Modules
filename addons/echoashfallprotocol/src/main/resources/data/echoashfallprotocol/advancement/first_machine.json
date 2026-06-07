@@ -1,0 +1,55 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:hand_recycler"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.first_machine.title",
+      "fallback": "Scrap to Useful"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.first_machine.desc",
+      "fallback": "Craft your first machine."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_recycler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:hand_recycler"
+          }
+        ]
+      }
+    },
+    "craft_burner": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:thermal_burner"
+          }
+        ]
+      }
+    },
+    "craft_purifier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:water_purifier"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["craft_recycler", "craft_burner", "craft_purifier"]
+  ]
+}

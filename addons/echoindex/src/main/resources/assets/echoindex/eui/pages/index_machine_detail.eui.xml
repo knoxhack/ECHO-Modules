@@ -1,0 +1,25 @@
+<page id="index_machine_detail" title="ECHO Index Machine Detail" styles="index_cyberglass,index_components,index_machines">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Machine Detail"/>
+    <param name="inspectorTitle" value="Machine Actions"/>
+    <slot name="content">
+      <hero-card>
+        <row class="index-detail-header" gap="12"><item-stack item="{index.machine.selected.icon|minecraft:crafting_table}"/><column class="index-detail-copy"><title class="index-detail-title" value="{index.machine.selected.name|Select a Machine}"/><text class="index-detail-subtitle" value="{index.machine.selected.modName|Choose a machine from the browser to inspect supported recipes.}"/><text class="index-machine-description" value="{index.machine.selected.description|}"/></column></row>
+      </hero-card>
+      <component src="echoindex:index_machine_slots">
+        <param name="inputs" value="{index.machine.selected.inputSlots|0}"/>
+        <param name="outputs" value="{index.machine.selected.outputSlots|0}"/>
+      </component>
+      <panel title="Recipe Types">
+        <repeat source="index.machine.recipeTypes" item="type"><status-chip status="info" value="{type.label}"/></repeat>
+      </panel>
+      <panel title="Example Recipes">
+        <list bind="index.machine.recipes" item="recipe"><component src="echoindex:index_recipe_card"><param name="id" value="{recipe.id}"/><param name="icon" value="{recipe.icon}"/><param name="title" value="{recipe.title}"/><param name="summary" value="{recipe.inputSummary} &gt; {recipe.outputSummary}"/><param name="meta" value="{recipe.typeName}"/></component><empty-state title="No machine recipes" body="No recipes are associated with this machine under the current provider snapshot."/></list>
+      </panel>
+    </slot>
+    <slot name="inspector">
+      <button action="index.open_machine_recipes" action-value="{index.machine.selected.id}" tooltip="Open the recipe browser filtered to this machine.">View Recipes</button>
+      <button action="index.add_bookmark" action-value="{index.machine.selected.id}" action-param-kind="machine" tooltip="Bookmark this machine for quick access from Favorites.">Bookmark</button>
+    </slot>
+  </component>
+</page>

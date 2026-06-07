@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/arcane_index/troubleshooting",
+  "title": "Arcane Index Reference: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Fix missing or stale Arcane Index pages by checking providers, discovery gates, and ids.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "Missing pages usually mean a provider did not register, a discovery gate is hiding the entry, or the id changed between systems.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Refresh The Clue",
+      "body": "Search with the exact item id or route id, then check nearby category pages if the direct page is not visible.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Repair provider registration before rewriting content. A good provider with one page is easier to trust than a large copied catalog.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcane_index",
+    "arcana",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:enchanted_book",
+  "relatedArticles": [
+    "echowiki:guides/arcane_index"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1266
+}

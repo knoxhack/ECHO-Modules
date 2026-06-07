@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/industrial_assembly_line_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:armory_fabricator_blueprint"
+    },
+    "title": {
+      "text": "Frame the Armory Fabricator"
+    },
+    "description": {
+      "text": "Prepare an Armory Fabricator blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:armory_fabricator_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "echoashfallprotocol:craft_mutagen_vial",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 12,
+  "title": "Craft Mutagen Vial",
+  "briefing": "[ECHO-7] Craft or recover a Mutagen Vial only after tissue handling and cleanup are stable.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "crafting",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:mutagen_vial",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:collect_mutated_tissue"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_mutagen_vial",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.craft_mutagen_vial",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "12",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "58",
+    "deprecatedAliases": "acquire_mutagen",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_mutagen_vial:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "deprecatedAliases": [
+    "echoashfallprotocol:acquire_mutagen"
+  ],
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_mutagen_vial/mutagen_vial",
+      "type": "deliver_item",
+      "label": "Deliver Mutagen Vial",
+      "detail": "Confirm 1 Mutagen Vial for this route step.",
+      "icon": "echoashfallprotocol:mutagen_vial",
+      "target": "echoashfallprotocol:mutagen_vial",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:mutagen_vial",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:mutagen_vial",
+      "count": 1,
+      "label": "Mutagen Vial"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_mutagen_vial/reward_0",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_mutagen_vial/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:craft_mutagen_vial/reward_1",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_mutagen_vial/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Mutagen catalyst verified. Biology route is stable enough to move pressure back to deep extraction."
+}

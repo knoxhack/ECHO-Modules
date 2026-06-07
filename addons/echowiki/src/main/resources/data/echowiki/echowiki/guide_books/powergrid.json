@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:powergrid",
+  "moduleId": "echopowergrid",
+  "requiredModId": "echopowergrid",
+  "title": "PowerGrid Field Manual",
+  "subtitle": "Generation, storage, cables, substations, and diagnostics",
+  "summary": "Build stable grids with buffers, meters, breakers, and labels.",
+  "icon": "minecraft:redstone",
+  "accent": "#FFFF4D6D",
+  "collectionId": "echowiki:guides/powergrid",
+  "homeArticleId": "echowiki:guides/powergrid",
+  "chapterArticleIds": [
+    "echowiki:guides/powergrid",
+    "echowiki:guides/powergrid/first_steps",
+    "echowiki:guides/powergrid/core_loop",
+    "echowiki:guides/powergrid/systems",
+    "echowiki:guides/powergrid/progression",
+    "echowiki:guides/powergrid/integrations",
+    "echowiki:guides/powergrid/troubleshooting"
+  ],
+  "tags": [
+    "power",
+    "grid",
+    "machines",
+    "diagnostics"
+  ],
+  "sortOrder": 120
+}

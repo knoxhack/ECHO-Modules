@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://echo/rendercore/particle_profile.schema.json",
+  "title": "ECHO RenderCore Particle Profile",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "emitters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "anchor": { "type": "string" },
+          "particle": { "type": "string" },
+          "state": { "type": "string" },
+          "states": { "type": "array", "items": { "type": "string" } },
+          "rate": { "type": "number", "minimum": 0 },
+          "burst_count": { "type": "integer", "minimum": 0 },
+          "burstCount": { "type": "integer", "minimum": 0 },
+          "offset": { "$ref": "#/$defs/vector3" },
+          "velocity": { "$ref": "#/$defs/vector3" },
+          "spread": { "$ref": "#/$defs/vector3" },
+          "lifetime": { "type": "integer", "minimum": 0 },
+          "color": {
+            "oneOf": [
+              { "type": "string" },
+              { "$ref": "#/$defs/colorArray" }
+            ]
+          },
+          "scale": { "type": "number", "minimum": 0 },
+          "requires_moving": { "type": "boolean" },
+          "requiresMoving": { "type": "boolean" },
+          "moving": { "type": "boolean" },
+          "requires_damaged": { "type": "boolean" },
+          "requiresDamaged": { "type": "boolean" },
+          "damaged": { "type": "boolean" },
+          "min_progress": { "type": "number" },
+          "minProgress": { "type": "number" },
+          "max_progress": { "type": "number" },
+          "maxProgress": { "type": "number" },
+          "option_type": { "type": "string" },
+          "options": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "type": { "type": "string" },
+              "color": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "$ref": "#/$defs/colorArray" }
+                ]
+              },
+              "from_color": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "$ref": "#/$defs/colorArray" }
+                ]
+              },
+              "fromColor": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "$ref": "#/$defs/colorArray" }
+                ]
+              },
+              "to_color": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "$ref": "#/$defs/colorArray" }
+                ]
+              },
+              "toColor": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "$ref": "#/$defs/colorArray" }
+                ]
+              },
+              "scale": { "type": "number", "minimum": 0 },
+              "lifetime": { "type": "integer", "minimum": 0 },
+              "alpha": { "type": "number", "minimum": 0, "maximum": 1 },
+              "drag": { "type": "number", "minimum": 0, "maximum": 1 },
+              "fade": { "type": "boolean" },
+              "style": {
+                "type": "string",
+                "enum": [
+                  "soft_mote",
+                  "toxic_fleck",
+                  "frost_spark",
+                  "ash_fleck",
+                  "ember",
+                  "scan_speck",
+                  "rift_pixel",
+                  "nexus_glyph",
+                  "core_glint",
+                  "soft_wisp",
+                  "toxic_smoke",
+                  "frost_breath",
+                  "ash_smoke",
+                  "exhaust_plume",
+                  "ground_haze",
+                  "rift_ribbon",
+                  "nexus_stream"
+                ]
+              },
+              "fullbright": { "type": "boolean" },
+              "gravity": { "type": "number" },
+              "spin": { "type": "number" },
+              "stretch": { "type": "number", "minimum": 0 },
+              "flicker": { "type": "number", "minimum": 0, "maximum": 1 },
+              "item": { "type": "string" },
+              "block": { "type": "string" },
+              "block_state": { "type": "string" },
+              "blockState": { "type": "string" },
+              "target": { "$ref": "#/$defs/vector3" },
+              "duration": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "colorArray": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 4,
+      "items": { "type": "number" }
+    }
+  }
+}

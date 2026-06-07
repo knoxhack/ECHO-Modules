@@ -1,0 +1,12 @@
+{
+  "chapter": "signalos:signalos",
+  "title": "Drive Protocol",
+  "group": "SignalOS",
+  "status": "OPEN",
+  "order": 20,
+  "lines": [
+    "Data drives are portable record carriers. Player-facing rack actions cap each drive at 64 records.",
+    "Templates are datapack-defined drive snapshots. Applying one merges records into the selected drive without changing registry IDs.",
+    "Copy actions only accept records visible to the server-owned network snapshot."
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "echoashfallprotocol:install_item_pipe",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 2,
+  "title": "Install Item Pipe",
+  "briefing": "[ECHO-7] Manual transfer wastes daylight. Install an Item Pipe to begin moving outputs between nearby machines.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for one placed Item Pipe after the Overclock Module is verified.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:item_pipe",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:overclock_machine"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "install_item_pipe",
+    "nativeGameplayHook": "ashfall.first_route.install_item_pipe",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.thermal_burner.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "2",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "25",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:install_item_pipe:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:install_item_pipe/place_item_pipe",
+      "type": "place_block",
+      "label": "Install Item Pipe",
+      "detail": "Place one Item Pipe near machine faces or storage to reduce manual transfer.",
+      "icon": "echoashfallprotocol:item_pipe",
+      "target": "echoashfallprotocol:item_pipe",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:item_pipe",
+        "required_blocks": "echoashfallprotocol:item_pipe=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 6,
+      "label": "Iron Ingots"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "block": "echoashfallprotocol:item_pipe",
+      "count": 1,
+      "label": "Placed Item Pipe"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:install_item_pipe/reward_machine_casing",
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing",
+      "detail": "Casing reserve for thermal hardware."
+    },
+    {
+      "id": "echoashfallprotocol:install_item_pipe/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "detail": "Portable reserve for the next powered machine."
+    }
+  ],
+  "completionText": "[ECHO-7] Item routing confirmed. Keep pipes near machine faces and storage to reduce manual hauling."
+}

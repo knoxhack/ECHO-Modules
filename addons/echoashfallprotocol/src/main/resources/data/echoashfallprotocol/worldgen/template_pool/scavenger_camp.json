@@ -1,0 +1,33 @@
+{
+  "name": "echoashfallprotocol:scavenger_camp",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/scavenger_camp",
+        "processors": "echoashfallprotocol:scavenger_camp_randomization"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/nomad_camp",
+        "processors": "echoashfallprotocol:scavenger_camp_randomization"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_plains/supply_drop",
+        "processors": "echoashfallprotocol:scavenger_camp_randomization"
+      }
+    }
+  ]
+}

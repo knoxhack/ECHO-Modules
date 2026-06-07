@@ -1,0 +1,82 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echonotificationcore",
+  "name": "ECHO: NotificationCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "notification_core",
+  "entrypoint": "com.knoxhack.echo.notificationcore.EchoNotificationCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "notifications.mission_updates",
+    "notifications.system_alerts",
+    "notifications.toasts",
+    "notifications.tutorial_hints"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "NotificationCore publishes addon-neutral notification feature contracts backed by platform, schema, validation, and content references.",
+    "nativeEntrypoint": "com.knoxhack.echo.notificationcore.EchoNotificationCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/notificationcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

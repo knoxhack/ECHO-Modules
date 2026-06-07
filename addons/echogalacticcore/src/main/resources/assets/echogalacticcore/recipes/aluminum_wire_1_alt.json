@@ -1,0 +1,29 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:aluminum_wire",
+                   "data":  1
+               },
+    "pattern":  [
+                    "Z",
+                    "Y",
+                    "X"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "minecraft:wool",
+                          "data":  32767
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_aluminum"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

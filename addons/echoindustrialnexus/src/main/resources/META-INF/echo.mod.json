@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoindustrialnexus",
+  "name": "ECHO: Industrial Nexus",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "tech",
+  "entrypoint": "com.knoxhack.echoindustrialnexus.EchoIndustrialNexus",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echologisticsnetwork",
+    "echomultiblockcore",
+    "echopowergrid",
+    "echoterminal"
+  ],
+  "provides": [
+    "industrial.factories",
+    "industrial.machines",
+    "industrial.multiblocks",
+    "industrial.salvage",
+    "industrial.thermal_flux"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival"
+  ],
+  "permissions": [
+    "network.payloads",
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "recipes",
+        "structures"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Industrial Nexus is a recommended Ashfall beta tech addon for machines, factories, Thermal Flux, salvage, and multiblock integrations.",
+    "nativeEntrypoint": "com.knoxhack.echoindustrialnexus.EchoIndustrialNexusNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoindustrialnexus/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

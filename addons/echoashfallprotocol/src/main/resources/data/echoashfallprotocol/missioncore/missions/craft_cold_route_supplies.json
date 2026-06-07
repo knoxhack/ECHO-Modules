@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:craft_cold_route_supplies",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 15,
+  "title": "Prepare Cold Supplies",
+  "briefing": "[ECHO-7] Assemble cold-route supplies: Thermal Liner and Hand Warmers before engaging cryogenic command entities.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "survival",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:thermal_liner",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:warm_up_after_exposure"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_cold_route_supplies",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.craft_cold_route_supplies",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "15",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "83",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_cold_route_supplies:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_cold_route_supplies/thermal_liner",
+      "type": "deliver_item",
+      "label": "Deliver Thermal Liner",
+      "detail": "Confirm 1 Thermal Liner for this route step.",
+      "icon": "echoashfallprotocol:thermal_liner",
+      "target": "echoashfallprotocol:thermal_liner",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:thermal_liner",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:craft_cold_route_supplies/hand_warmer",
+      "type": "deliver_item",
+      "label": "Deliver Hand Warmer",
+      "detail": "Confirm 1 Hand Warmer for this route step.",
+      "icon": "echoashfallprotocol:thermal_liner",
+      "target": "echoashfallprotocol:hand_warmer",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:hand_warmer",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:thermal_liner",
+      "count": 1,
+      "label": "Thermal Liner"
+    },
+    {
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 1,
+      "label": "Hand Warmer"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_cold_route_supplies/reward_0",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 2,
+      "label": "Clean Water Bottle",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_cold_route_supplies/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:craft_cold_route_supplies/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:craft_cold_route_supplies/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Cold-route kit confirmed. You may proceed without becoming part of the facility."
+}

@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:oxygen_concentrator"
+               },
+    "pattern":  [
+                    "ZWZ",
+                    "WYW",
+                    "ZXZ"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "X":  {
+                          "item":  "echogalacticcore:air_vent"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:canister",
+                          "data":  0
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,177 @@
+{
+    "id":  "echomultiblockcore:scanner_array",
+    "display_name":  "Scanner Array",
+    "translation_key":  "multiblock.echomultiblockcore.scanner_array",
+    "role":  "RESEARCH",
+    "category":  "scanner",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "SFFFS",
+                       "FIIOF",
+                       "SDCDF",
+                       "FOROF",
+                       "SFFFS"
+                   ],
+                   [
+                       "..S..",
+                       ".R.R.",
+                       "P.C.P",
+                       ".R.R.",
+                       "..A.."
+                   ],
+                   [
+                       "SSSSS",
+                       "S...S",
+                       "S.S.S",
+                       "S...S",
+                       "SSSSS"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:scanner_target",
+                         "echo:map_marker",
+                         "echo:terminal_tab",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  140,
+                                        "throughput":  40,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  32,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:scanner_array/scan_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade",
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:scanner_array/data_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:scanner_array/range_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:scanner_array/scan",
+                          "type":  "SCANNING",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER",
+                                                 "CALIBRATOR"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:run_scanner_sweep"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "66e8ff"
+                },
+    "facility_stage":  "P4 SIGNAL CONTACT",
+    "facility_route":  "recon",
+    "primary_use":  "Turns staged supplies into survey matrices for Lens, HoloMap, and route planning.",
+    "integration_hints":  [
+                              "Lens deep scan should report missing cells and capability bottlenecks.",
+                              "HoloMap should use marker tier and warning counts from snapshots.",
+                              "Scanner Matrix output feeds later archive, launch, and nexus routes."
+                          ]
+}

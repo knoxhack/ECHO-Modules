@@ -1,0 +1,19 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "echogalacticcore:block/machine",
+        "down": "echogalacticcore:block/machine",
+        "up": "echogalacticcore:block/machine",
+        "north": "echogalacticcore:block/machine_painter",
+        "east": "echogalacticcore:block/machine",
+        "south": "echogalacticcore:block/machine",
+        "west": "echogalacticcore:block/machine"
+    },
+    "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    }
+}

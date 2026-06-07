@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoeventcore",
+  "name": "ECHO: EventCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "event_core",
+  "entrypoint": "com.knoxhack.echo.eventcore.EchoEventCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echopackcore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "event.scheduler",
+    "event.validation",
+    "event.world_events"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "pack.profile",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "packs",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "contractsOnly": true,
+    "notes": "Neutral schedulable world event, trigger, phase, state, and validation contracts.",
+    "nativeEntrypoint": "com.knoxhack.echo.eventcore.EchoEventCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

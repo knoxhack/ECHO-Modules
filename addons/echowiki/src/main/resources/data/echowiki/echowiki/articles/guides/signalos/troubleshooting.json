@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/signalos/troubleshooting",
+  "title": "SignalOS: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common SignalOS failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If a drive appears empty, check its label, whether it has records, and whether the target block supports that drive role.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If a drive appears empty, check its label, record list, expected host, install location, and whether the owning addon is present.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "signalos",
+    "drives",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:disc_fragment_5",
+  "relatedArticles": [
+    "echowiki:guides/signalos"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1166
+}

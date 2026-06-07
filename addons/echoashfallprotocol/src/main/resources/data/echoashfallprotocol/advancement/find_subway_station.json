@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "minecraft:rail"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_subway_station.title",
+      "fallback": "Underground Explorer"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_subway_station.desc",
+      "fallback": "Discover an abandoned Subway Station."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_subway_station": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:subway_station"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_subway_station"]
+  ]
+}

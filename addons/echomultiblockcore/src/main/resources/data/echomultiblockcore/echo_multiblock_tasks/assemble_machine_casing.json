@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:assemble_machine_casing",
+  "display_name": "Assemble Machine Casing",
+  "category": "assembly",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "WELDER"],
+  "duration_ticks": 220,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echomultiblockcore:reinforced_frame", "count": 2, "label": "Reinforced Frame" },
+    { "item": "echomultiblockcore:power_bus", "count": 1, "label": "Power Bus" },
+    { "item": "echomultiblockcore:data_bus", "count": 1, "label": "Data Bus" }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:machine_casing", "count": 1, "label": "Machine Casing" }
+  ]
+}

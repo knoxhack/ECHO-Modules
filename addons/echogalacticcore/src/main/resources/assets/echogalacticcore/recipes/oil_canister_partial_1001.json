@@ -1,0 +1,31 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:oil_canister_partial",
+                   "data":  1001
+               },
+    "pattern":  [
+                    "WXW",
+                    "WYW",
+                    "WZW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "item":  "minecraft:glass"
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:canister",
+                          "data":  0
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

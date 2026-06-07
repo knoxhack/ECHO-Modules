@@ -1,0 +1,13 @@
+{
+  "chapter": "signalos:signalos",
+  "title": "Field Interface",
+  "group": "SignalOS",
+  "status": "OPEN",
+  "order": 0,
+  "lines": [
+    "ECHO-7: SignalOS is a computer OS, not the campaign terminal. Use it for local machines, rack storage, notes, and portable field records.",
+    "The shell exposes apps for Files, Notes, Logs, Network Monitor, Settings, Data Vault, Echo Link, Missions, Archives, Rewards, and Diagnostics.",
+    "Mission completion, claimed rewards, archive read state, notes, preferences, network records, and pending reward counts are server-owned and synced to the client.",
+    "Pack content can arrive through Java APIs, datapack JSON, or the soft KubeJS bridge."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/holomap/systems",
+  "title": "HoloMap: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the HoloMap signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Terrain tiles, waypoints, marker states, overlays, and route records all contribute to the same navigation layer.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch marker names, overlay meaning, waypoint distance, terrain readability, route windows, and whether old marks are now lying to you.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A HoloMap system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "holomap",
+    "navigation",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:map",
+  "relatedArticles": [
+    "echowiki:guides/holomap"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1193
+}

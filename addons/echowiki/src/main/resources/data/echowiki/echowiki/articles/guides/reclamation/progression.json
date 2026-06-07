@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/reclamation/progression",
+  "title": "Reclamation: Progression",
+  "category": "Guide Books",
+  "summary": "Upgrade Reclamation in stable steps without skipping the safety layer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Upgrade Path",
+      "body": "Move from emergency food into reliable crops, then into utility plants and staging supplies. Expand only when water, soil, storage, and route demand all support the next plot.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Do Not Skip The Middle",
+      "body": "The middle step is usually boring because it is the safety layer: storage, markers, meters, counters, backups, or notes. Build that layer before raising the risk.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Ready For More",
+      "body": "You are ready to push Reclamation further when the current loop feels repeatable, the failure signs are familiar, and the next upgrade has a clear purpose.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "item",
+      "title": "Upgrade Anchor",
+      "body": "Use this as the upgrade checkpoint before raising route risk.",
+      "tone": "tip",
+      "item": "minecraft:wheat",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Wheat",
+      "subtitle": "Progression checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "reclamation",
+    "food",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:wheat",
+  "relatedArticles": [
+    "echowiki:guides/reclamation"
+  ],
+  "relatedItems": [
+    "minecraft:wheat",
+    "minecraft:farmland"
+  ],
+  "sortOrder": 1024
+}

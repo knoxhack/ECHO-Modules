@@ -1,0 +1,65 @@
+<page id="wiki_guide_book_detail" title="Guide Book Detail" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="{wiki.guideBook.selected.title}"/>
+    <param name="inspectorTitle" value="Manual Links"/>
+    <slot name="content">
+      <panel class="wiki-manual-hero">
+        <image class="wiki-manual-banner" src="{wiki.guideBook.selected.heroArt|echowiki:textures/gui/guide_books/wiki_banner.png}" width="512" height="120" source-width="512" source-height="160" fit="cover"/>
+        <row class="wiki-manual-hero-meta" gap="10">
+          <item-icon class="wiki-row-icon" item="{wiki.guideBook.selected.icon|minecraft:written_book}"/>
+          <column class="wiki-manual-hero-copy">
+            <title class="wiki-detail-title" value="{wiki.guideBook.selected.title}"/>
+            <text class="wiki-manual-subtitle" value="{wiki.guideBook.selected.subtitlePreview}"/>
+            <row class="wiki-manual-chip-row" gap="6">
+              <status-chip class="wiki-detail-chip" status="{wiki.guideBook.selected.status}" value="{wiki.guideBook.selected.statusLabel}"/>
+              <status-chip class="wiki-detail-chip" status="info" value="{wiki.guideBook.selected.moduleBadge}"/>
+              <status-chip class="wiki-detail-chip" status="known" value="{wiki.guideBook.selected.chapterBadge}"/>
+            </row>
+            <text class="wiki-manual-summary" value="{wiki.guideBook.selected.summaryPreview}"/>
+          </column>
+        </row>
+      </panel>
+      <scroll class="wiki-detail-scroll" scroll-state="true" state-key="wiki.guideBook.chapters">
+        <list class="wiki-detail-list" bind="wiki.guideBook.chapters" item="chapter">
+          <component src="echowiki:wiki_guide_chapter_row">
+            <param name="id" value="{chapter.id}"/>
+            <param name="title" value="{chapter.title}"/>
+            <param name="summary" value="{chapter.summary}"/>
+            <param name="status" value="{chapter.status}"/>
+            <param name="ordinalLabel" value="{chapter.ordinalLabel}"/>
+            <param name="ordinalBadge" value="{chapter.ordinalBadge}"/>
+            <param name="roleLabel" value="{chapter.roleLabel}"/>
+            <param name="roleBadge" value="{chapter.roleBadge}"/>
+            <param name="meta" value="{chapter.meta}"/>
+            <param name="countLabel" value="{chapter.countLabel}"/>
+            <param name="summaryPreview" value="{chapter.summaryPreview}"/>
+            <param name="action" value="{chapter.action}"/>
+          </component>
+          <empty-state class="wiki-manual-empty-state" title="No chapters" body="{wiki.guideBook.selected.title} has no chapter articles loaded."/>
+        </list>
+      </scroll>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.guideBook.related">
+        <list bind="wiki.guideBook.related" item="related">
+          <component src="echowiki:wiki_related_row">
+            <param name="kind" value="{related.kind}"/>
+            <param name="id" value="{related.id}"/>
+            <param name="label" value="{related.label}"/>
+            <param name="subtitle" value="{related.subtitle}"/>
+            <param name="subtitlePreview" value="{related.subtitlePreview}"/>
+            <param name="status" value="{related.status}"/>
+            <param name="disabled" value="{related.disabled|false}"/>
+            <param name="disabledReason" value="{related.disabledReason}"/>
+          </component>
+          <empty-state class="wiki-manual-related-empty-state" title="No links" body="This manual has no related articles."/>
+        </list>
+      </scroll>
+      <panel class="wiki-meta-panel" title="Manual Meta">
+        <text value="Module: {wiki.guideBook.selected.moduleLabel}"/>
+        <text value="Availability: {wiki.guideBook.selected.availabilityLabel}"/>
+        <text value="Collection: {wiki.guideBook.selected.collectionId}"/>
+      </panel>
+    </slot>
+  </component>
+</page>

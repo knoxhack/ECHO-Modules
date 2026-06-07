@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/cursecore/systems",
+  "title": "CurseCore Field: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read curse definitions, player data, symptoms, cleansing events, and consequence hooks.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Curse Records",
+      "body": "Arcana Core definitions describe category, stage count, severity, visibility, discovery condition, symptoms, effects, cleansing methods, and contracts.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Live State",
+      "body": "CurseCore persists player curse state and ticks server-side effects so rituals and scans can target something real.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Consequence Rules",
+      "body": "Contracts, embraced curses, cursed mobs, area curses, and permanent decisions are future depth; the current slice focuses on safe live targets.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "relatedArticles": [
+    "echowiki:guides/cursecore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1303
+}

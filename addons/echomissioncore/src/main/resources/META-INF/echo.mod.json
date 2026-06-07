@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomissioncore",
+  "name": "ECHO: MissionCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "mission",
+  "entrypoint": "com.knoxhack.echomissioncore.EchoMissionCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoindex",
+    "echoterminal",
+    "echotutorialcore"
+  ],
+  "provides": [
+    "missions.objectives",
+    "missions.routes"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "missions.objectives",
+    "missions.routes"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "networking",
+        "saves"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echomissioncore.EchoMissionCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "content_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,38 @@
+{
+  "id": "echoashfallprotocol:sporebound_elder_services",
+  "services": [
+    {
+      "id": "scar_reading",
+      "title": "Scar Reading",
+      "description": "Uploads a scar-route reading and current biological hazard notes.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "review_spore_contract",
+      "title": "Review Spore Contract",
+      "description": "Submits a controlled sample contract review to the Sanctum.",
+      "cost": [],
+      "action": "faction_action",
+      "amount": 1,
+      "cooldown": 4800,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:sporebound_sanctum_contract",
+      "disabledReason": "Sanctum support standing required."
+    },
+    {
+      "id": "reveal_scar_marker",
+      "title": "Reveal Scar Marker",
+      "description": "Pins Myra's scar-route reading as a field marker.",
+      "cost": [],
+      "action": "reveal_marker",
+      "amount": 1,
+      "cooldown": 2400,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:sporebound_scar_contact",
+      "disabledReason": "Sanctum support standing required."
+    }
+  ]
+}

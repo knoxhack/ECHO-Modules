@@ -1,0 +1,33 @@
+{
+  "name": "echoashfallprotocol:crashbreak_salvage_yard/terminators",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_01",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_02",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_03",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    }
+  ]
+}

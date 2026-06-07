@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoblockworks:block/flickering_warning_light"
+    },
+    "facing=east": {
+      "model": "echoblockworks:block/flickering_warning_light",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoblockworks:block/flickering_warning_light",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoblockworks:block/flickering_warning_light",
+      "y": 270
+    }
+  }
+}

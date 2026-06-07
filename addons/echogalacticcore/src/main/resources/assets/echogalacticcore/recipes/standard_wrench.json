@@ -1,0 +1,23 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:standard_wrench"
+               },
+    "pattern":  [
+                    "  Y",
+                    " X ",
+                    "X  "
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_bronze"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

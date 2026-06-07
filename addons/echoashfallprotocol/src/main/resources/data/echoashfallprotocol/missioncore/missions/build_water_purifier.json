@@ -1,0 +1,130 @@
+{
+  "id": "echoashfallprotocol:build_water_purifier",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 5,
+  "title": "Build a Water Purifier",
+  "briefing": "[ECHO-7] Dehydration is imminent. Build a Water Purifier near your generator: scrap plastic, a membrane, three machine casings, and a circuit board.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall purifier bridge that turns powered infrastructure into a clean-water production loop.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:water_purifier",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_micro_generator"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_water_purifier",
+    "nativeGameplayHook": "ashfall.first_route.build_water_purifier",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.clean_water_reserves_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "14",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_water_purifier:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_water_purifier/place_water_purifier",
+      "type": "place_block",
+      "label": "Build a Water Purifier",
+      "detail": "Place one Water Purifier near powered infrastructure to start the clean-water loop.",
+      "icon": "echoashfallprotocol:water_purifier",
+      "target": "echoashfallprotocol:water_purifier",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:water_purifier",
+        "required_blocks": "echoashfallprotocol:water_purifier=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 2,
+      "label": "Scrap Plastic"
+    },
+    {
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 3,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "block": "echoashfallprotocol:water_purifier",
+      "count": 1,
+      "label": "Placed Water Purifier"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_water_purifier/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Starter wiring for the next power buffer."
+    },
+    {
+      "id": "echoashfallprotocol:build_water_purifier/reward_filter_cartridges",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 2,
+      "label": "Basic Filter Cartridges",
+      "detail": "Immediate filtration supplies for the purifier loop."
+    },
+    {
+      "id": "echoashfallprotocol:build_water_purifier/reward_dirty_water",
+      "item": "echoashfallprotocol:dirty_water_bottle",
+      "count": 2,
+      "label": "Dirty Water Bottles",
+      "detail": "Samples to prove the purifier loop."
+    },
+    {
+      "id": "echoashfallprotocol:build_water_purifier/reward_glass_bottles",
+      "item": "minecraft:glass_bottle",
+      "count": 2,
+      "label": "Glass Bottles",
+      "detail": "Containers for clean-water reserves."
+    }
+  ],
+  "completionText": "[ECHO-7] Clean water supply secured. Starter filters and dirty samples released so the loop can prove itself immediately."
+}

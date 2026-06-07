@@ -1,0 +1,11 @@
+{
+  "type": "echoblackboxprotocol:memory_labyrinth",
+  "generator": {
+    "type": "echoblackboxprotocol:blackbox_dungeon",
+    "dungeon": "labyrinth",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:the_void"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<page id="index_items" title="ECHO Index Items" styles="index_cyberglass,index_components,index_items">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Item Browser"/>
+    <param name="inspectorTitle" value="Item Detail"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar"/>
+      <list bind="index.items.groupedByMod" item="section">
+        <panel class="index-mod-section" title="{section.name}">
+          <row class="index-mod-section-header" gap="8">
+            <item-icon item="{section.icon}"/>
+            <column class="index-item-copy"><title class="index-item-title" value="{section.name}"/><text class="index-item-subtitle" value="{section.summary}"/></column>
+            <button action="index.toggle_mod_section" action-value="{section.id}" tooltip="{section.collapseHint}">{section.collapseLabel}</button>
+          </row>
+          <list bind="section.items" item="item" selected="{index.items.selected.id}">
+            <component src="echoindex:index_item_row" value="{item.id}">
+              <param name="id" value="{item.id}"/>
+              <param name="icon" value="{item.icon}"/>
+              <param name="title" value="{item.displayName}"/>
+              <param name="subtitle" value="{item.modName} / {item.category}"/>
+              <param name="badge" value="{item.recipeCount}R {item.usageCount}U"/>
+            </component>
+            <empty-state title="Section collapsed" body="Expand this mod section to show its indexed items."/>
+          </list>
+        </panel>
+        <empty-state title="No items found" body="No indexed items match these filters. Clear search, reset filters, or check provider diagnostics if content is missing."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <component src="echoindex:index_detail_panel">
+        <param name="title" value="{index.items.selected.displayName|Select an Item}"/>
+        <param name="icon" value="{index.items.selected.icon|minecraft:book}"/>
+        <param name="subtitle" value="{index.items.selected.modName|No item selected}"/>
+        <param name="meta" value="{index.items.selected.registryId|}"/>
+        <slot name="body">
+          <text class="index-item-meta" value="Category: {index.items.selected.category|Unknown}"/>
+          <text class="index-item-meta" value="Stack: {index.items.selected.stackSize|0} / Rarity: {index.items.selected.rarity|Unknown}"/>
+          <text class="index-item-meta" value="Recipes: {index.items.selected.recipeCount|0} / Usages: {index.items.selected.usageCount|0}"/>
+          <row class="index-item-actions" gap="8">
+            <button action="index.open_recipes_for_item" action-value="{index.items.selected.id}" tooltip="Show recipes that produce this item.">Recipes</button>
+            <button action="index.open_usages_for_item" action-value="{index.items.selected.id}" tooltip="Show recipes that consume this item.">Usages</button>
+            <button action="index.toggle_favorite" action-value="{index.items.selected.id}" action-param-kind="item" tooltip="Toggle this item in Favorites.">Favorite</button>
+          </row>
+          <button action="index.copy_item_id" action-value="{index.items.selected.id}" variant="ghost" tooltip="Copy the selected item registry ID.">Copy ID</button>
+        </slot>
+      </component>
+    </slot>
+  </component>
+</page>

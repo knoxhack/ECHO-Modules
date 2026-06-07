@@ -1,0 +1,60 @@
+<page id="terminal-scriptcore-browser" title="ScriptCore" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_system_pages,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Anchor Pod Outpost"/>
+    <param name="routeLabel" value="ScriptCore"/>
+    <slot name="body">
+      <grid class="mission-command-layout" columns="0.9fr 1.1fr" gap="12" stack-below="820">
+        <panel title="SCRIPTCORE // REGISTRY" class="scriptcore-command-pane">
+          <hero-card class="scriptcore-hero-pane" status="{terminal.scriptCore.statusKey|locked}">
+            <copy-block class="terminal-row-copy" title="ScriptCore Content Bus" subtitle="{terminal.scriptCore.summary|ScriptCore is not loaded.}"/>
+            <row gap="6">
+              <status-chip status="{terminal.scriptCore.statusKey|locked}" value="{terminal.scriptCore.definitionCount|0} defs"/>
+              <status-chip status="{terminal.scriptCore.bridgeStatus|locked}" value="{terminal.scriptCore.bridgeLabel|SCRIPTCORE OFFLINE}"/>
+              <status-chip status="{terminal.scriptCore.previewStatus|locked}" value="{terminal.scriptCore.previewLabel|PREVIEW OFFLINE}"/>
+              <status-chip status="{terminal.scriptCore.configStatus|locked}" value="{terminal.scriptCore.configLabel|OPT-IN EXEC OFF}"/>
+            </row>
+          </hero-card>
+          <section title="LATEST BRIDGE RESULT">
+            <list-row class="scriptcore-result-row">
+              <copy-block class="terminal-row-copy" title="{scriptcore.last.code|NO_RESULT}" subtitle="{scriptcore.last.message|No ScriptCore UI bridge result has been received yet.}"/>
+              <status-chip class="scriptcore-state-chip" status="{scriptcore.last.status|locked}" value="{scriptcore.last.mode|IDLE}"/>
+            </list-row>
+          </section>
+          <section title="EXECUTABLE SLOTS">
+            <list bind="terminal.scriptCore.executableSlots" item="definition">
+              <list-row class="scriptcore-execute-row">
+                <copy-block class="terminal-row-copy" title="{definition.title}" subtitle="{definition.slotLabel} / {definition.id} / {definition.actionCount} action(s)"/>
+                <status-chip class="scriptcore-state-chip" status="{definition.status}" value="{definition.statusLabel}"/>
+                <button action="scriptcore.preview" action-value="{definition.id}" action-param-slot="{definition.slot|actions}" variant="ghost" disabled="{definition.previewDisabled|true}" disabled-reason="{definition.previewReason|Preview unavailable.}">PREVIEW</button>
+                <button action="scriptcore.execute" action-value="{definition.id}" action-param-slot="{definition.slot|actions}" variant="primary" disabled="{definition.executeDisabled|true}" disabled-reason="{definition.executeReason|Execution unavailable.}">EXECUTE</button>
+              </list-row>
+              <empty-state title="No executable slots" body="No preloaded ScriptCore definitions expose a trusted executable slot."/>
+            </list>
+          </section>
+        </panel>
+        <panel title="SCRIPTCORE // DEFINITIONS + DIAGNOSTICS" class="scriptcore-command-pane">
+          <section title="DEFINITIONS">
+            <scroll class="mission-tree" scroll-state="true" state-key="terminal.scriptcore.definitions">
+              <list bind="terminal.scriptCore.definitions" item="definition">
+                <list-row class="scriptcore-definition-row">
+                  <copy-block class="terminal-row-copy" title="{definition.title}" subtitle="{definition.type} / {definition.id}"/>
+                  <status-chip class="scriptcore-state-chip" status="{definition.status}" value="{definition.statusLabel}"/>
+                </list-row>
+                <empty-state title="No definitions" body="ScriptCore has not loaded any JSON definitions."/>
+              </list>
+            </scroll>
+          </section>
+          <section title="DIAGNOSTICS">
+            <list bind="terminal.scriptCore.diagnostics" item="diagnostic">
+              <list-row class="scriptcore-definition-row">
+                <copy-block class="terminal-row-copy" title="{diagnostic.code}" subtitle="{diagnostic.message}"/>
+                <status-chip class="scriptcore-state-chip" status="{diagnostic.status}" value="{diagnostic.severity}"/>
+              </list-row>
+              <empty-state title="No diagnostics" body="ScriptCore reports no current diagnostics."/>
+            </list>
+          </section>
+        </panel>
+      </grid>
+    </slot>
+  </component>
+</page>

@@ -1,0 +1,18 @@
+{
+  "id": "echoindustrialnexus:weld_reinforced_machine_frame",
+  "display_name": "Weld Reinforced Machine Frame",
+  "category": "assembly",
+  "allowed_multiblocks": ["echoindustrialnexus:industrial_assembly_line"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["WELDER", "ASSEMBLER"],
+  "duration_ticks": 240,
+  "heat_per_second": 3,
+  "animation": "weld",
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echoindustrialnexus:refined_plate", "count": 4, "label": "Refined Plate" },
+    { "item": "echoindustrialnexus:servo_motor", "count": 1, "label": "Servo Motor" },
+    { "item": "echoindustrialnexus:industrial_circuit", "count": 1, "label": "Industrial Circuit" }
+  ],
+  "outputs": [{ "item": "echoindustrialnexus:reinforced_machine_frame", "count": 1, "label": "Reinforced Machine Frame" }]
+}

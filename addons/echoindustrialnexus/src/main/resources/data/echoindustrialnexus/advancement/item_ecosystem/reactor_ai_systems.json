@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:item_ecosystem/modular_automation",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:reactor_power_cell"
+    },
+    "title": {
+      "text": "Reactor AI Systems"
+    },
+    "description": {
+      "text": "Combine reactor safety hardware with autonomous control components."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "reactor_ai_systems": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:reactor_power_cell"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reactor_ai_systems"
+    ]
+  ]
+}

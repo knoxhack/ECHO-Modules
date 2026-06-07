@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "id": "echorecovery:recovery_compass"
+    },
+    "title": {
+      "translate": "advancements.echorecovery.recover_grave.title",
+      "fallback": "Grave Robber"
+    },
+    "description": {
+      "translate": "advancements.echorecovery.recover_grave.desc",
+      "fallback": "Recover your belongings from a grave."
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "echorecovery:root",
+  "criteria": {
+    "used_grave": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "echorecovery:grave"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "used_grave"
+    ]
+  ]
+}

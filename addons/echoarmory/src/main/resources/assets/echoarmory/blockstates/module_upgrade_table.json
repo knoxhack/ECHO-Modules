@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoarmory:block/module_upgrade_table"
+    },
+    "facing=east": {
+      "model": "echoarmory:block/module_upgrade_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoarmory:block/module_upgrade_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoarmory:block/module_upgrade_table",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Northern Freight Recovery",
+  "summary": "Use a Cargo Crawler to move heavy freight through a damaged roadside corridor.",
+  "order": 20,
+  "requiredVehicle": "cargo_crawler",
+  "minFuel": 100,
+  "logisticsNetworkId": "global",
+  "logisticsLoadoutId": "echoconvoyprotocol:fuel_cell_resupply",
+  "autoRequestCargo": false,
+  "holomapMarker": {
+    "icon": "high_risk_delivery",
+    "color": "ff9d00",
+    "layer": "echoconvoyprotocol:convoy_routes"
+  },
+  "requiredCargo": [
+    {"item": "minecraft:iron_block", "count": 2}
+  ],
+  "rewards": [
+    {"item": "echoconvoyprotocol:radiation_shielding_plate", "count": 2},
+    {"item": "echoconvoyprotocol:fuel_canister", "count": 2}
+  ],
+  "threatLevel": 4,
+  "threat": {
+    "label": "Freight Road Hit",
+    "entity": "minecraft:husk",
+    "minCount": 3,
+    "maxCount": 5,
+    "chanceOneIn": 7,
+    "cooldownTicks": 1000,
+    "vehicleDamage": 4,
+    "spawnRadius": 11.0,
+    "warning": "%threat% closing on %route%. Keep the crawler rolling."
+  },
+  "checkpointFactionId": "echoashfallprotocol:crashbreak_salvage",
+  "minReputation": 0,
+  "checkpoint": {
+    "label": "Freight Checkpoint",
+    "warning": "%checkpoint% blocked: Crashbreak reputation %reputation%/%required%.",
+    "clearedMessage": "%checkpoint% verifies the manifest."
+  },
+  "destinationHint": "Freight bypass corridor",
+  "requiredSignalMarkers": 2,
+  "minDistanceFromStart": 64,
+  "legs": [
+    {
+      "id": "freight_checkpoint",
+      "title": "Freight Checkpoint",
+      "minDistanceFromStart": 32,
+      "requiresCheckpoint": true,
+      "roadsideStructure": "echoconvoyprotocol:roadside/cargo_checkpoint"
+    },
+    {
+      "id": "destination",
+      "title": "Freight Recovery Signal",
+      "minDistanceFromStart": 64,
+      "roadsideStructure": "echoconvoyprotocol:roadside/signal_marker"
+    }
+  ]
+}

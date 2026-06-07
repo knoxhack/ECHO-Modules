@@ -1,0 +1,106 @@
+{
+  "schema_version": 12,
+  "base_texture": "signalos:textures/block/terminal.png",
+  "particle_profile": "signalos:terminal",
+  "default_state": "ONLINE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.9,
+    "bloom_tint": "#FF58F6C9",
+    "pulse_speed": 0.16,
+    "pulse_min_alpha": 0.88,
+    "pulse_max_alpha": 1,
+    "target_scope": "block"
+  },
+  "materials": {
+    "screen": {
+      "color": "#FF58F6C9",
+      "alpha": 0.8,
+      "emissive": true,
+      "blend_mode": "additive"
+    }
+  },
+  "layers": [
+    {
+      "id": "terminal_screen",
+      "kind": "glow",
+      "texture": "signalos:textures/block/terminal_screen.png",
+      "material": "screen",
+      "parts": [
+        "screen"
+      ]
+    }
+  ],
+  "anchors": {
+    "core": {
+      "offset": [
+        0,
+        0.55,
+        0
+      ]
+    },
+    "screen": {
+      "offset": [
+        0,
+        0.62,
+        -0.52
+      ]
+    },
+    "beacon": {
+      "offset": [
+        0,
+        1.05,
+        0
+      ]
+    }
+  },
+  "block_parts": {
+    "screen": {
+      "directions": [
+        "north"
+      ],
+      "ambient_occlusion": true
+    },
+    "beacon": {
+      "directions": [
+        "up"
+      ]
+    }
+  },
+  "surface": {
+    "type": "block_entity",
+    "owner_addon": "signalos",
+    "display_name": "Terminal",
+    "tags": [
+      "block_entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "terminal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": true
+  }
+}

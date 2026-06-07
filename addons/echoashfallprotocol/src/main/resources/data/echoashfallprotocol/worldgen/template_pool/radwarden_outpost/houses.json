@@ -1,0 +1,87 @@
+{
+  "name": "echoashfallprotocol:radwarden_outpost/houses",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/barracks",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/armory",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/guard_post",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/supply_depot",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_small_house_1",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_small_house_2",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/houses/plains_medium_house_1",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/desert/houses/desert_small_house_1",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/desert/houses/desert_medium_house_1",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    }
+  ]
+}

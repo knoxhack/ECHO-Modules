@@ -1,0 +1,40 @@
+<page id="index_usages" title="ECHO Index Usages" styles="index_cyberglass,index_components,index_recipes">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Usage Browser"/>
+    <param name="inspectorTitle" value="Selected Item"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar">
+        <param name="categorySource" value="index.filters.recipeTypes"/>
+        <param name="categoryValue" value="{index.filters.recipeType}"/>
+        <param name="categoryFilter" value="recipeType"/>
+      </component>
+      <hero-card>
+        <row class="index-detail-header" gap="10"><item-stack item="{index.usage.selected.icon|minecraft:book}"/><column class="index-detail-copy"><title class="index-detail-title" value="{index.usage.selected.displayName|Select an Item}"/><text class="index-detail-subtitle" value="{index.usage.selected.registryId|Open the item browser and choose an item to inspect its recipe usages.}"/></column></row>
+      </hero-card>
+      <row gap="6"><repeat source="index.usage.categories" item="category"><status-chip status="info" value="{category.label}"/></repeat></row>
+      <list bind="index.usages.visible" item="usage">
+        <component src="echoindex:index_recipe_card">
+          <param name="id" value="{usage.id}"/>
+          <param name="icon" value="{usage.icon}"/>
+          <param name="title" value="{usage.title}"/>
+          <param name="summary" value="{usage.inputSummary} &gt; {usage.outputSummary}"/>
+          <param name="meta" value="{usage.typeName} / {usage.machineName}"/>
+        </component>
+        <empty-state title="No usages found" body="Choose another item, clear recipe filters, or check provider diagnostics if expected usages are missing."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <component src="echoindex:index_detail_panel">
+        <param name="title" value="{index.usage.selected.displayName|No Item}"/>
+        <param name="icon" value="{index.usage.selected.icon|minecraft:book}"/>
+        <param name="subtitle" value="{index.usage.selected.modName|}"/>
+        <param name="meta" value="{index.usage.selected.usageCount|0} usage(s)"/>
+        <slot name="body">
+          <text class="index-recipe-helper" value="Usages show where the selected item appears as an input. Recipes for Output shows ways to create it."/>
+          <button action="index.open_page" action-page="echoindex:index_items" tooltip="Return to the item browser and choose a different item.">Choose Item</button>
+          <button action="index.open_recipes_for_item" action-value="{index.usage.selected.id}" tooltip="Show recipes that produce the selected item.">Recipes For Output</button>
+        </slot>
+      </component>
+    </slot>
+  </component>
+</page>

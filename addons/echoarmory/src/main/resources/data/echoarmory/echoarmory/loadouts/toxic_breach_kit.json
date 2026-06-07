@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "title": "Toxic Breach Kit",
+  "order": 0,
+  "icon": "echoarmory:gas_mask_filter",
+  "weapon": "echoarmory:alloy_sword",
+  "armor": [
+    "echoarmory:thermal_chestplate"
+  ],
+  "modules": [
+    "echoarmory:gas_mask_filter"
+  ],
+  "minTier": 1,
+  "requiredProtections": {
+    "toxic": 55
+  },
+  "logisticsPreset": "echoarmory:toxic_breach_kit"
+}

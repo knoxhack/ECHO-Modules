@@ -1,0 +1,87 @@
+{
+  "id": "echoashfallprotocol:bind_return_keystone",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 9,
+  "title": "Bind Return Keystone",
+  "briefing": "[ECHO-7] Bind the Return Keystone to the beacon so extraction fallback can be carried into hostile route space.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:return_keystone",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:place_return_beacon"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "bind_return_keystone",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.bind_return_keystone",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "9",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "77",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:bind_return_keystone:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.item_used",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:bind_return_keystone/keystone_bound",
+      "type": "custom",
+      "label": "Bind Return Keystone",
+      "detail": "Bind the Return Keystone to the active beacon signal.",
+      "icon": "echoashfallprotocol:return_keystone",
+      "target": "echoashfallprotocol:return_keystone",
+      "required": 1,
+      "criteria": {
+        "event": "player.item_used",
+        "item": "echoashfallprotocol:return_keystone",
+        "linked_block": "echoashfallprotocol:return_beacon"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:return_keystone",
+      "count": 1,
+      "label": "Return Keystone"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:bind_return_keystone/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:bind_return_keystone/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Keystone binding confirmed. Extraction fallback is now portable."
+}

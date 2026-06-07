@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/tutorialcore/integrations",
+  "title": "TutorialCore: Integrations",
+  "category": "Guide Books",
+  "summary": "Let tutorials react to manuals, missions, records, scans, and real player milestones.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Wiki guide books report progress when opened. Terminal, HoloMap, Lens, PowerGrid, WorldCore, and MissionCore all publish player actions that can guide help.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use TutorialCore with Wiki guide opens, Terminal notices, HoloMap use, Lens scans, PowerGrid alerts, WorldCore hazards, and route-specific player actions.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If a hook is absent, the card should still teach the next action in plain terms. Good tutorial text survives without automation.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "tutorialcore",
+    "help",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:book",
+  "relatedArticles": [
+    "echowiki:guides/tutorialcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1245
+}

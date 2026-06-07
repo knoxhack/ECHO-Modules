@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": { "min": 3.0, "max": 5.0 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:stable_nexus_core", "weight": 2 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:reality_dust", "weight": 5 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:field_anchor", "weight": 2 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:stabilized_purity_charge", "weight": 3 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:collapse_charge", "weight": 1 }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "echonexusprotocol:stabilized_purity_charge", "weight": 3 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:field_anchor", "weight": 2 },
+        { "type": "minecraft:item", "name": "echonexusprotocol:clean_resonance_battery", "weight": 1 }
+      ]
+    }
+  ],
+  "random_sequence": "echonexusprotocol:chests/core_chamber_final_prep"
+}

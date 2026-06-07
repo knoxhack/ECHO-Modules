@@ -1,0 +1,37 @@
+{
+    "variants":  {
+                     "inventory":  {
+                                       "model":  "echogalacticcore:cargo_loader_model"
+                                   },
+                     "facing=north,type=cargo_loader":  {
+                                                            "model":  "echogalacticcore:cargo_loader_model"
+                                                        },
+                     "facing=east,type=cargo_loader":  {
+                                                           "model":  "echogalacticcore:cargo_loader_model",
+                                                           "y":  90
+                                                       },
+                     "facing=west,type=cargo_loader":  {
+                                                           "model":  "echogalacticcore:cargo_loader_model",
+                                                           "y":  270
+                                                       },
+                     "facing=south,type=cargo_loader":  {
+                                                            "model":  "echogalacticcore:cargo_loader_model",
+                                                            "y":  180
+                                                        },
+                     "facing=north,type=cargo_unloader":  {
+                                                              "model":  "echogalacticcore:cargo_unloader_model"
+                                                          },
+                     "facing=east,type=cargo_unloader":  {
+                                                             "model":  "echogalacticcore:cargo_unloader_model",
+                                                             "y":  90
+                                                         },
+                     "facing=west,type=cargo_unloader":  {
+                                                             "model":  "echogalacticcore:cargo_unloader_model",
+                                                             "y":  270
+                                                         },
+                     "facing=south,type=cargo_unloader":  {
+                                                              "model":  "echogalacticcore:cargo_unloader_model",
+                                                              "y":  180
+                                                          }
+                 }
+}

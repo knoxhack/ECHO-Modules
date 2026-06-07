@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:unload_salvage_return",
+  "display_name": "Unload Salvage Return",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "CARGO_OUTPUT",
+  "required_tools": ["CLAMP", "GRIPPER"],
+  "outputs": [
+    { "item": "echoconvoyprotocol:vehicle_armor_plate", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 160,
+  "heat_per_second": 2,
+  "animation": "unload",
+  "effects": ["echoconvoyprotocol:unload_salvage_return"],
+  "notes": ["Unloads a convoy salvage return into the output crate."]
+}

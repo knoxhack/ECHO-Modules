@@ -1,0 +1,17 @@
+<page id="test-dialog-sizes" title="Dialog Sizes" styles="echoscreencore:advanced_mock,echoscreencore:focus_states">
+  <screen-shell>
+    <header title="Dialog Sizes" subtitle="sm, md, lg, xl, and fullscreen dialog bounds clamp to viewport"/>
+    <row gap="12" stack-below="sm">
+      <button action="screencore.open_modal" action-target="dialog-sm">SM</button>
+      <button action="screencore.open_modal" action-target="dialog-md">MD</button>
+      <button action="screencore.open_modal" action-target="dialog-lg">LG</button>
+      <button action="screencore.open_modal" action-target="dialog-xl">XL</button>
+      <button action="screencore.open_modal" action-target="dialog-full">Full</button>
+    </row>
+    <dialog id="dialog-sm" size="sm"><dialog-title>Small</dialog-title><dialog-actions><button action="screencore.close_modal" autofocus="true">Close</button></dialog-actions></dialog>
+    <dialog id="dialog-md" size="md"><dialog-title>Medium</dialog-title><dialog-actions><button action="screencore.close_modal" autofocus="true">Close</button></dialog-actions></dialog>
+    <dialog id="dialog-lg" size="lg"><dialog-title>Large</dialog-title><dialog-actions><button action="screencore.close_modal" autofocus="true">Close</button></dialog-actions></dialog>
+    <dialog id="dialog-xl" size="xl"><dialog-title>Extra Large</dialog-title><dialog-actions><button action="screencore.close_modal" autofocus="true">Close</button></dialog-actions></dialog>
+    <dialog id="dialog-full" size="fullscreen"><dialog-title>Fullscreen</dialog-title><dialog-actions><button action="screencore.close_modal" autofocus="true">Close</button></dialog-actions></dialog>
+  </screen-shell>
+</page>

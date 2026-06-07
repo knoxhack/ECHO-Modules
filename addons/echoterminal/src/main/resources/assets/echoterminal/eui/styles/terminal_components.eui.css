@@ -1,0 +1,116 @@
+.terminal-command-card {
+  min-height: 96px;
+  padding: space(md);
+  background: #10263ca8;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.terminal-page-hero {
+  min-height: 140px;
+  padding: space(lg);
+  gap: 10px;
+  background: #10263cc4;
+  border-color: #5cf2ffaa;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.terminal-page-toolbar {
+  min-height: 34px;
+  padding: space(xs);
+  gap: 8px;
+  background: #08182a86;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.terminal-detail-stack {
+  gap: 10px;
+}
+
+.terminal-detail-body {
+  min-height: 96px;
+}
+
+.terminal-command-hero {
+  min-height: 104px;
+  padding: space(md);
+  gap: 8px;
+  background: #10263cc4;
+  border-color: #5cf2ffaa;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.terminal-hero-image {
+  height: 108px;
+  min-height: 96px;
+  background: #08182ab8;
+  border-color: #3fd8f455;
+  border-width: 1px;
+  border-radius: radius(lg);
+}
+
+.terminal-hero-actions {
+  height: 32px;
+  min-height: 30px;
+  gap: 8px;
+}
+
+.terminal-command-metrics {
+  height: 64px;
+  min-height: 58px;
+  gap: 8px;
+}
+
+.terminal-priority-section,
+.terminal-feed-section,
+.terminal-blocker-section {
+  min-height: 132px;
+  gap: 10px;
+}
+
+.terminal-priority-row,
+.terminal-signal-row {
+  height: 54px;
+  min-height: 48px;
+  padding: space(sm);
+  gap: 8px;
+  background: #08182a80;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.terminal-two-column {
+  gap: 12px;
+}
+
+.terminal-metric-card {
+  min-height: 60px;
+  background: #08182a8e;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.terminal-filter-chip {
+  height: 22px;
+  min-height: 20px;
+  background: #08182a78;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(sm);
+}
+
+.terminal-search-bar {
+  height: 32px;
+  min-height: 30px;
+  background: #08182a99;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}

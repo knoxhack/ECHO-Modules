@@ -1,0 +1,23 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:sensor_lens"
+               },
+    "pattern":  [
+                    "ZXZ",
+                    "XYX",
+                    "ZXZ"
+                ],
+    "type":  "echogalacticcore:replacable",
+    "key":  {
+                "X":  {
+                          "item":  "minecraft:glass_pane"
+                      },
+                "Y":  {
+                          "type":  "echogalacticcore:advanced_metal",
+                          "metal":  "meteoric_iron_plate"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_redstone"
+                      }
+            }
+}

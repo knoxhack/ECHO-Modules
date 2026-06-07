@@ -1,0 +1,16 @@
+{
+  "schema": "echo.ai.v1",
+  "module": "echoaddonapi",
+  "owner": "sdk_platform",
+  "summary": "Pure Java public API contracts for developer-facing ECHO add-ons.",
+  "safeEditZones": [
+    "addons/echoaddonapi/src/main/java/dev/echo/api",
+    "addons/echoaddonapi/src/main/resources/META-INF"
+  ],
+  "protectedFiles": [],
+  "recommendedAgentLanes": [
+    "architect_agent",
+    "test_agent",
+    "release_agent"
+  ]
+}

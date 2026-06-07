@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:gas_mask"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.gas_mask_equipped.title",
+      "fallback": "Safety First"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.gas_mask_equipped.desc",
+      "fallback": "Equip a Gas Mask for toxic-air hazard pockets."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "equip_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:gas_mask"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["equip_mask"]
+  ]
+}

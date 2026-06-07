@@ -1,0 +1,180 @@
+{
+  "schema_version": 12,
+  "base_texture": "examplemod:textures/block/v11_creator_core.png",
+  "particle_profile": "examplemod:v8_neon_cube",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 1.65,
+    "bloom_intensity": 0.85,
+    "pulse_speed": 1.1,
+    "pulse_min_alpha": 0.68,
+    "pulse_max_alpha": 1,
+    "advanced_enabled": true,
+    "bloom_radius": 2.2,
+    "bloom_threshold": 0.62,
+    "bloom_passes": 2,
+    "screen_blend": 0.3,
+    "target_scope": "block",
+    "bloom_mask_mode": "emissive",
+    "bloom_tint": "#FF36E8FF",
+    "bloom_mask_alpha": 0.72,
+    "bloom_channel": "creator_core",
+    "bloom_downscale": 2,
+    "advanced_priority": 70
+  },
+  "preview": {
+    "title": "V11 Creator Workbench Core",
+    "notes": "V11-era creator Workbench profile normalized to the V12 runtime contract with optional screenshot fallback."
+  },
+  "materials": {
+    "cyan_hologram": {
+      "color": "#FF36E8FF",
+      "alpha": 0.86,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 1.25,
+        "bloom_intensity": 0.45,
+        "scanline_strength": 0,
+        "advanced_enabled": true,
+        "bloom_mask_mode": "layer_alpha",
+        "bloom_channel": "hud",
+        "advanced_priority": 25
+      }
+    },
+    "magenta_ring": {
+      "color": "#FFFF45F6",
+      "alpha": 0.78,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "energy_field",
+        "glow_intensity": 1.45,
+        "bloom_intensity": 0.6,
+        "flicker_intensity": 0.05,
+        "advanced_enabled": true,
+        "bloom_mask_mode": "emissive",
+        "bloom_channel": "orbit",
+        "advanced_priority": 40
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "creator_hologram",
+      "kind": "glow",
+      "texture": "examplemod:textures/block/v11_creator_hologram.png",
+      "material": "cyan_hologram",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "SCANNING"
+      ],
+      "parts": [
+        "screen"
+      ]
+    },
+    {
+      "id": "creator_orbit_ring",
+      "kind": "overlay",
+      "texture": "examplemod:textures/block/v11_creator_orbit.png",
+      "material": "magenta_ring",
+      "states": [
+        "ACTIVE"
+      ],
+      "effect": {
+        "preset": "terminal_hud",
+        "glow_intensity": 1.2,
+        "bloom_intensity": 0.55,
+        "pulse_speed": 2.2,
+        "scanline_strength": 0,
+        "advanced_enabled": true,
+        "bloom_mask_mode": "solid",
+        "bloom_tint": "#FFFF62FF",
+        "bloom_mask_alpha": 0.64,
+        "bloom_channel": "terminal",
+        "bloom_downscale": 1,
+        "advanced_priority": 85
+      }
+    }
+  ],
+  "anchors": {
+    "core": {
+      "offset": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "screen": {
+      "offset": [
+        0.5,
+        0.7,
+        0.5
+      ]
+    },
+    "orbit": {
+      "offset": [
+        0.5,
+        0.95,
+        0.5
+      ]
+    }
+  },
+  "block_parts": {
+    "screen": {
+      "directions": [
+        "north"
+      ],
+      "ambient_occlusion": false,
+      "tint_indices": [
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echorendercore",
+    "display_name": "V11 Creator Workbench Core",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

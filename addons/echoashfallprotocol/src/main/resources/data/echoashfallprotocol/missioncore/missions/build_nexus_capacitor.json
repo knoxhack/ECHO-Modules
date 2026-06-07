@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:build_nexus_capacitor",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 4,
+  "title": "Build a Nexus Capacitor",
+  "briefing": "[ECHO-7] Late grid routes need deep storage. Build a Nexus Capacitor so high-voltage cable runs and guardian-route machines can survive demand spikes.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:nexus_capacitor",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_scout_drone"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_nexus_capacitor",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_nexus_capacitor",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "72",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_nexus_capacitor:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "ashfall.nexus_capacitor_state"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_nexus_capacitor/nexus_capacitor",
+      "type": "place_block",
+      "label": "Nexus Capacitor",
+      "detail": "Place 1 Nexus Capacitor for the Ashfall route; status-panel use also reports the live capacitor contract.",
+      "icon": "echoashfallprotocol:nexus_capacitor",
+      "target": "echoashfallprotocol:nexus_capacitor",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:nexus_capacitor"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:battery_bank",
+      "count": 1,
+      "label": "Battery Bank"
+    },
+    {
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal"
+    },
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell"
+    },
+    {
+      "block": "echoashfallprotocol:nexus_capacitor",
+      "count": 1,
+      "label": "Nexus Capacitor"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_nexus_capacitor/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 1,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_nexus_capacitor/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_nexus_capacitor/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_nexus_capacitor/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Nexus Capacitor linked. Your grid can now carry late-game machine demand without collapsing at every surge."
+}

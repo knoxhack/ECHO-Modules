@@ -1,0 +1,84 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echotextureforge",
+  "name": "ECHO: TextureForge",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "asset_tooling",
+  "entrypoint": "com.knoxhack.echotextureforge.EchoTextureForgeMod",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echomodpackcommandcenter",
+    "echorendercore",
+    "echoscreencore",
+    "echothemecore"
+  ],
+  "provides": [
+    "asset.textureforge"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "creator_tools"
+  ],
+  "permissions": [
+    "assets.read",
+    "reports.write"
+  ],
+  "assets": [
+    "metadata/assets/modules/echotextureforge/icon.png",
+    "metadata/assets/modules/echotextureforge/banner.png",
+    "metadata/assets/modules/echotextureforge/module_card.png",
+    "metadata/assets/modules/echotextureforge/showcase.png"
+  ],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echotextureforge.EchoTextureForgeNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "data",
+        "diagnostics",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "echo_native",
+        "echo_runtime_standalone"
+      ],
+      "rendererTarget": "opengl"
+    },
+    "notes": "Texture audit, prompt manifest, review, import/export, and visual readiness tooling. Does not download or apply remote assets without explicit future workflow support."
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echotextureforge/**",
+      "src/main/resources/**",
+      "README.md",
+      "TEXTUREFORGE_USAGE.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,80 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Neutral faction, dialogue, NPC profile, and villager replacement plan contracts for the ECHO ecosystem."
+description='''
+ECHO: SocialCore defines neutral faction, reputation, dialogue tree, NPC
+profile, AI profile, binding, and villager replacement plan contracts for
+NPCore, MissionCore, ProgressionCore, PackOS, validators, AI tooling, and
+future ECHO Native reports.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoplatformcore"
+type="required"
+reason="Provides module, feature, pack, game mode, side, and role contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoschemacore"
+type="required"
+reason="Provides schema ids and document kinds for data-driven social sources."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovalidationcore"
+type="required"
+reason="Provides diagnostic vocabulary for social graph and NPC profile issues."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocontentcore"
+type="required"
+reason="Provides neutral content ids, references, availability, and gates for social links."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoprogressioncore"
+type="required"
+reason="Provides neutral progression and objective ids for dialogue and faction gates."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

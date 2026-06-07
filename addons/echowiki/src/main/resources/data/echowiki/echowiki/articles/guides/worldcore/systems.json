@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/worldcore/systems",
+  "title": "WorldCore: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the WorldCore signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Regions, hazards, active snapshots, and discovery progress all shape what the player sees and when. Treat each warning as a preparation clue.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch region names, hazard snapshots, active conditions, biome or structure context, discovery progress, and whether a warning is preparation advice.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A WorldCore system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "worldcore",
+    "hazards",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:filled_map",
+  "relatedArticles": [
+    "echowiki:guides/worldcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1183
+}

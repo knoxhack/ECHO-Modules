@@ -1,0 +1,40 @@
+<page id="cyberglass-kit-preview" title="Cyberglass Kit Preview" styles="echothemecore:cyberglass_kit">
+  <screen-shell class="cyberglass-shell">
+    <row gap="10">
+      <column>
+        <title value="Cyberglass ScreenCore Kit"/>
+        <text value="ThemeCore shared surfaces and controls"/>
+      </column>
+      <status-chip status="ready" value="READY"/>
+    </row>
+    <grid columns="1fr 1fr" gap="10" stack-below="720">
+      <panel title="Panel Shell">
+        <text value="Raised glass panel with ThemeCore texture tokens."/>
+        <row class="cyberglass-status-row">
+          <status-chip status="info" value="INFO"/>
+          <status-chip status="success" value="SYNCED"/>
+          <status-chip status="warning" value="CHECK"/>
+        </row>
+      </panel>
+      <card class="cyberglass-card">
+        <title value="Action Controls"/>
+        <text value="Buttons, list rows, and inputs share the same kit tokens."/>
+        <row class="cyberglass-action-row">
+          <button variant="ghost">Cancel</button>
+          <button variant="primary">Confirm</button>
+        </row>
+        <input-text value="Cyberglass input"/>
+      </card>
+      <section title="Rows">
+        <list>
+          <list-row selected="true"><title value="Selected row"/></list-row>
+          <list-row><title value="Default row"/></list-row>
+        </list>
+      </section>
+      <section title="Progress">
+        <progress-bar value="68" max="100"/>
+        <empty-state class="cyberglass-empty-state" title="Empty state" body="Shared template-ready shell."/>
+      </section>
+    </grid>
+  </screen-shell>
+</page>

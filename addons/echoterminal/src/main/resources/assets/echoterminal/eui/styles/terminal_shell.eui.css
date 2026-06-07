@@ -1,0 +1,109 @@
+.terminal-shell {
+  padding: 10px;
+  gap: 9px;
+  background: #01050bff;
+  overflow: hidden;
+}
+
+.terminal-header {
+  height: 54px;
+  min-height: 50px;
+  padding: 9px 12px;
+  background: #08182aa8;
+  border-color: #3fd8f455;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.terminal-shell-grid {
+  gap: 10px;
+}
+
+.terminal-nav-panel {
+  padding: 9px;
+  gap: 8px;
+  background: #08182aae;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.terminal-nav-summary {
+  height: 28px;
+  min-height: 24px;
+  gap: 6px;
+}
+
+.terminal-nav-scroll {
+  min-height: 248px;
+  overflow: scroll;
+}
+
+.terminal-nav-row {
+  height: 40px;
+  min-height: 38px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #08182a70;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+.terminal-main-scroll {
+  min-height: 420px;
+  overflow: scroll;
+}
+
+.terminal-main-column {
+  gap: 9px;
+}
+
+.terminal-status-strip {
+  height: 30px;
+  min-height: 28px;
+  padding: 4px 8px;
+  gap: 7px;
+  background: #08182a8e;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.terminal-active-summary {
+  min-height: 54px;
+  padding: space(md);
+  gap: 6px;
+  background: #10263c9f;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(md);
+}
+
+.terminal-inspector-panel {
+  padding: space(md);
+  gap: 10px;
+  background: #08182aae;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: radius(lg);
+  min-height: 300px;
+}
+
+.terminal-signal-row {
+  height: 48px;
+  min-height: 44px;
+  padding: space(sm);
+  gap: 8px;
+}
+
+.terminal-footer-strip {
+  height: 30px;
+  min-height: 28px;
+  padding: 4px 10px;
+  gap: 6px;
+  background: #08182a9a;
+  border-color: #3fd8f426;
+  border-width: 1px;
+  border-radius: 4px;
+}

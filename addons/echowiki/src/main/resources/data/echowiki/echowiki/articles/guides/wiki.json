@@ -1,0 +1,64 @@
+{
+  "id": "echowiki:guides/wiki",
+  "title": "Wiki Codex Manual",
+  "category": "Guide Books",
+  "summary": "Navigate articles, collections, guide books, related links, filters, and optional addon records.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Wiki is the player-facing Codex. It blends authored articles with live world and addon records so available modules can appear when they are loaded.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Use the Overview for status, Articles for written guidance, Guide Books for physical manuals, and dynamic pages for regions, hazards, machines, missions, and factions.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Search or filter, open an article, follow related records, and use guide books as stable module-specific entry points.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Articles and collections provide written guidance. Guide books are physical manuals. Related links can bridge into Index when the needed addon is present.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Optional visual styling, Terminal links, Index records, and TutorialCore progress make the Codex more useful when those addons are loaded.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a manual or article is missing, check load warnings on the debug page and verify the optional addon required by that guide book is loaded.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "wiki",
+    "codex"
+  ],
+  "icon": "minecraft:written_book",
+  "heroArt": "echowiki:textures/gui/guide_books/wiki_banner.png",
+  "relatedArticles": [
+    "echowiki:systems/survival_codex",
+    "echowiki:guides/wiki/first_steps",
+    "echowiki:guides/wiki/core_loop",
+    "echowiki:guides/wiki/systems",
+    "echowiki:guides/wiki/progression",
+    "echowiki:guides/wiki/integrations",
+    "echowiki:guides/wiki/troubleshooting"
+  ],
+  "sortOrder": 1220
+}

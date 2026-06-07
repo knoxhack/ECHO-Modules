@@ -1,0 +1,22 @@
+{
+    "variants":  {
+                     "facing=up":  {
+                                       "model":  "echogalacticcore:unlit_torch_lit_model"
+                                   },
+                     "facing=east":  {
+                                         "model":  "echogalacticcore:unlit_torch_lit_wall_model"
+                                     },
+                     "facing=south":  {
+                                          "model":  "echogalacticcore:unlit_torch_lit_wall_model",
+                                          "y":  90
+                                      },
+                     "facing=west":  {
+                                         "model":  "echogalacticcore:unlit_torch_lit_wall_model",
+                                         "y":  180
+                                     },
+                     "facing=north":  {
+                                          "model":  "echogalacticcore:unlit_torch_lit_wall_model",
+                                          "y":  270
+                                      }
+                 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "echonpcore:data_archivist_services",
+  "services": [
+    {
+      "id": "archive_hint",
+      "title": "Local Archive Hint",
+      "description": "Cross-checks old route notes against the current region context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 2400
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+panel,
+card,
+section,
+hero-card {
+  padding: space(md);
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  gap: space(sm);
+}
+
+panel {
+  background: theme(panel);
+}
+
+hero-card {
+  padding: space(lg);
+  border-radius: radius(md);
+  gap: space(md);
+}
+
+card[status="ready"],
+status-chip[status="ready"] {
+  border-color: theme(success);
+}
+
+hero-card[status="warning"],
+card[status="warning"],
+status-chip[status="warning"] {
+  border-color: theme(warning);
+}
+
+card[status="danger"],
+status-chip[status="danger"] {
+  border-color: theme(danger);
+}
+
+button {
+  height: 32px;
+  padding: 8px 14px;
+  background: theme(buttonBg);
+  border-color: theme(accentMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  color: theme(textPrimary);
+}
+
+button[variant="primary"] {
+  background: theme(accentDim);
+  border-color: theme(accent);
+  color: theme(textPrimary);
+}
+
+button[variant="ghost"] {
+  background: transparent;
+  border-color: theme(borderMuted);
+  color: theme(textSecondary);
+}
+
+button[variant="danger"] {
+  background: theme(danger);
+  border-color: theme(danger);
+  color: theme(textPrimary);
+}
+
+button[disabled],
+button[variant="disabled"] {
+  background: theme(disabled);
+  border-color: theme(disabled);
+  color: theme(textMuted);
+}
+
+status-chip {
+  height: 18px;
+  padding: 3px 8px;
+  background: transparent;
+  border-color: theme(borderStrong);
+  border-width: 1;
+  color: theme(textPrimary);
+}
+
+progress-bar,
+stat-bar {
+  height: 28px;
+  gap: 6px;
+}
+
+empty-state {
+  padding: space(md);
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+scroll {
+  overflow: scroll;
+}
+
+icon,
+item-icon,
+item-stack {
+  width: 20px;
+  height: 20px;
+  color: theme(accent);
+}
+
+image {
+  height: 72px;
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+list {
+  gap: space(xs);
+}
+
+list-row {
+  layout: row;
+  min-height: 48px;
+  padding: space(sm);
+  gap: space(sm);
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+list-row[selected],
+list-row[active="true"],
+card[selected] {
+  background: theme(cardSelected);
+  border-color: theme(accent);
+}
+
+tabs {
+  min-height: 160px;
+  padding: space(sm);
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  gap: space(sm);
+}
+
+.nav-stack {
+  gap: space(xs);
+}
+
+.dense {
+  gap: space(xs);
+}
+
+.callout {
+  border-color: theme(warning);
+  background: theme(overlay);
+}
+
+.success {
+  border-color: theme(success);
+}
+
+.danger {
+  border-color: theme(danger);
+}
+
+input,
+search-box {
+  height: 30px;
+  padding: 6px 10px;
+  background: theme(buttonBg);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  color: theme(textPrimary);
+}
+
+toggle,
+checkbox {
+  height: 24px;
+  color: theme(textSecondary);
+}
+
+toggle[checked],
+checkbox[checked] {
+  border-color: theme(success);
+}
+
+repeat {
+  gap: space(sm);
+}

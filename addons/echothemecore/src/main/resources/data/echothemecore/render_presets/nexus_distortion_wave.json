@@ -1,0 +1,9 @@
+{
+  "id": "echothemecore:nexus_distortion_wave",
+  "theme": "echothemecore:nexus",
+  "type": "distortion_wave",
+  "effects": [
+    {"type": "phase_ripple", "duration_ticks": 48, "strength": "theme:distortion_strength"},
+    {"type": "hologram_pulse", "duration_ticks": 32, "strength": "theme:hologram_pulse_strength"}
+  ]
+}

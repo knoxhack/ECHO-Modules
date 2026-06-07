@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/spellcore/core_loop",
+  "title": "SpellCore Focus: Core Loop",
+  "category": "Guide Books",
+  "summary": "Select, pay, cast, read feedback, and wait for cooldown before the next spell.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Select",
+      "body": "Sneak-cycle starter spells until the HUD or focus state shows the spell you intend to use.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Cast",
+      "body": "Confirm aether cost and cooldown, then cast server-authoritatively so the result is consistent in multiplayer.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Recover",
+      "body": "Wait out cooldown, reposition, or switch tools. Spamming a focus is usually a resource problem disguised as impatience.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "spellcore",
+    "arcana",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:blaze_rod",
+  "relatedArticles": [
+    "echowiki:guides/spellcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1292
+}

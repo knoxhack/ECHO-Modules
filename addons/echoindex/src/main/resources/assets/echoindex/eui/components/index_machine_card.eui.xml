@@ -1,0 +1,11 @@
+<list-row class="index-machine-card" action="index.select_machine" action-value="{param.id|}" selected="{param.selected|}" active="{param.active|}" help="{param.help|Select this machine to preview supported recipe types and actions.}">
+  <row class="index-machine-card-row" gap="8">
+    <item-stack item="{param.icon|minecraft:crafting_table}"/>
+    <column class="index-machine-copy">
+      <title class="index-machine-title" value="{param.title|Machine}"/>
+      <text class="index-machine-summary" value="{param.summary|Supported recipes}"/>
+      <text class="index-machine-meta" value="{param.meta|Machine}"/>
+    </column>
+    <button class="index-machine-open" action="index.open_machine_detail" action-value="{param.id|}" tooltip="Open the full machine profile.">Open Detail</button>
+  </row>
+</list-row>

@@ -1,0 +1,21 @@
+<page id="reference-accessibility" title="Reference Accessibility" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Accessibility Modes" subtitle="Design for large text, high contrast, reduced clutter, and density."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-dashboard-grid" columns="1fr 1fr 1fr" gap="8" stack-below="900">
+        <section class="sc-panel" title="LARGE TEXT">
+          <text class="sc-readable-body" value="Rows and controls should keep readable bounds when font tokens scale."/>
+        </section>
+        <section class="sc-panel" title="HIGH CONTRAST">
+          <text class="sc-readable-body" value="Borders and text color strengthen automatically in high contrast mode."/>
+        </section>
+        <section class="sc-panel" title="DENSITY">
+          <text class="sc-readable-body" value="Compact density should reduce gaps without collapsing text."/>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

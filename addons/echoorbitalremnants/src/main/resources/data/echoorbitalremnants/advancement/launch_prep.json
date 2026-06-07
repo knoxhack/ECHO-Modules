@@ -1,0 +1,31 @@
+{
+  "parent": "echoorbitalremnants:root",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:emergency_rocket"
+    },
+    "title": {
+      "text": "Launch Prep"
+    },
+    "description": {
+      "text": "Restore broken launch infrastructure and build an Emergency Rocket."
+    }
+  },
+  "criteria": {
+    "rocket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:emergency_rocket"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rocket"
+    ]
+  ]
+}

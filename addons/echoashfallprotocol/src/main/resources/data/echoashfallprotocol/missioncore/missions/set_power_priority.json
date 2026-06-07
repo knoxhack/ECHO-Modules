@@ -1,0 +1,135 @@
+{
+  "id": "echoashfallprotocol:set_power_priority",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 13,
+  "title": "Set Power Priority",
+  "briefing": "[ECHO-7] Brownouts are survivable if water and medical systems stay powered. Place a Load Distributor and set it to Survival First.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall predicate requiring a nearby Load Distributor and the power:priority_set special marker recorded when the distributor priority is changed.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:load_distributor",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:install_energy_meter"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "set_power_priority",
+    "nativeGameplayHook": "ashfall.first_route.set_power_priority",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.scrap_press.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "13",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "22",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:set_power_priority:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:set_power_priority/place_load_distributor",
+      "type": "place_block",
+      "label": "Place Load Distributor",
+      "detail": "Place one Load Distributor on the workshop power route.",
+      "icon": "echoashfallprotocol:load_distributor",
+      "target": "echoashfallprotocol:load_distributor",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:load_distributor",
+        "required_blocks": "echoashfallprotocol:load_distributor=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:set_power_priority/set_survival_first",
+      "type": "custom",
+      "label": "Set Survival First",
+      "detail": "Use the Load Distributor until it records the Survival First priority marker.",
+      "icon": "echoashfallprotocol:load_distributor",
+      "target": "power:priority_set",
+      "required": 1,
+      "criteria": {
+        "predicate": "special_marker",
+        "marker": "power:priority_set",
+        "events": "player.use_block,ashfall.special_marker",
+        "block": "echoashfallprotocol:load_distributor",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:battery_bank",
+      "count": 1,
+      "label": "Battery Bank"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire"
+    },
+    {
+      "block": "echoashfallprotocol:load_distributor",
+      "count": 1,
+      "label": "Placed Load Distributor"
+    },
+    {
+      "marker": "power:priority_set",
+      "count": 1,
+      "label": "Survival First Priority Set"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:set_power_priority/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "detail": "Power reserve for the first powered machine chain."
+    },
+    {
+      "id": "echoashfallprotocol:set_power_priority/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Wiring reserve for the Scrap Press bridge."
+    }
+  ],
+  "completionText": "[ECHO-7] Priority routing available. Low-priority machines will yield reserve power when the grid is low."
+}

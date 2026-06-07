@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "title": "Fracture Guardian Kit",
+  "order": 20,
+  "icon": "echoarmory:veil_sabre",
+  "weapon": "echoarmory:veil_sabre",
+  "armor": [
+    "echoarmory:veil_resistant_helm",
+    "echoarmory:construct_harness"
+  ],
+  "modules": [
+    "echoarmory:veil_shield",
+    "echoarmory:void_core"
+  ],
+  "minTier": 3,
+  "requiredProtections": {
+    "fracture": 60
+  },
+  "logisticsPreset": "echoarmory:fracture_guardian_kit"
+}

@@ -1,0 +1,73 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echoorbitalremnants/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echoorbitalremnants"
+authors="KnoxHack"
+credits="Built as an ECHO addon chapter for post-Nexus space survival."
+description='''
+Earth made its choice below. Orbit still calls it quarantine.
+
+ECHO: Orbital Remnants is a modular ECHO route-survival chapter. With Ashfall
+installed, Earth calibration waits for a Nexus choice; standalone Orbital uses a
+recovered ECHO-7 handoff. Follow the broken fall path through launch prep,
+pressure-suit hazards, Station ECHO debris, Saturn and Titan route repairs,
+surveys, faction contracts, hostile remnants, and ECHO-0 quarantine resolution.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, safe sends, and action rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Allows Orbital records, actions, and explicit route placement to appear inside the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore visual profiles, particles, and orbital event render helpers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Enables Nexus-choice gating and intel mirroring through ECHO Core services when Ashfall is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

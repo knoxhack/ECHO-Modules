@@ -1,0 +1,77 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoholomap",
+  "name": "ECHO: HoloMap",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "ui_pack",
+  "role": "map",
+  "entrypoint": "com.knoxhack.echoholomap.EchoHoloMap",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echolens",
+    "echomissioncore",
+    "echoterminal",
+    "echothemecore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "holomap.layers"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "holomap.layers",
+    "ui.screens"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "maps",
+        "networking",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echoholomap.EchoHoloMapNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "ui_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

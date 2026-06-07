@@ -1,0 +1,61 @@
+{
+  "id": "echowiki:guides/ashfall/first_steps",
+  "title": "Ashfall: First Steps",
+  "category": "Guide Books",
+  "summary": "Set up clean water, shelter, and the first safe return route before widening the search.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Start Small",
+      "body": "Do not chase a distant signal on an empty stomach with dirty water in your pack. Secure a shelter marker, light, food, a water plan, and one return path you can recognize under pressure.",
+      "tone": "tip",
+      "icon": "minecraft:torch"
+    },
+    {
+      "type": "item",
+      "title": "Water Before Salvage",
+      "body": "Dirty water buys time, filtered water buys range, and clean water buys mistakes. Keep the route short until your water source is repeatable.",
+      "tone": "body",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Clean Water Bottle",
+      "subtitle": "Opening survival priority"
+    },
+    {
+      "type": "paragraph",
+      "title": "Shelter Marker",
+      "body": "Pick a visible base point and return there after each small win. A marked shelter turns scattered finds into progress because tools, filters, and scrap stop being stranded in random chests.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "First Clean Win",
+      "body": "The first good Ashfall day is modest: drinkable water, a lit shelter, a dump chest, basic food, and enough notes to repeat one route without panic.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "first_steps",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:survival/first_hour"
+  ],
+  "relatedItems": [
+    "minecraft:water_bucket",
+    "minecraft:torch",
+    "echoashfallprotocol:dirty_water_bottle",
+    "echoashfallprotocol:clean_water_bottle",
+    "echoashfallprotocol:crude_filter"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:crash_zone_wasteland"
+  ],
+  "sortOrder": 1011
+}

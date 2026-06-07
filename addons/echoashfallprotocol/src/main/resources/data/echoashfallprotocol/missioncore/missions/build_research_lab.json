@@ -1,0 +1,105 @@
+{
+  "id": "echoashfallprotocol:build_research_lab",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 9,
+  "title": "Build a Research Lab",
+  "briefing": "[ECHO-7] Research infrastructure required. Construct a Research Lab to translate schematic fragments into usable survival doctrine.",
+  "fieldGuide": "Mirrors the Ashfall route override that unlocks Research Lab construction after the Advanced Filter Cartridge path, with a NeoForge block-near-player check for one placed Research Lab.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:research_lab",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:craft_advanced_filter"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_research_lab",
+    "nativeGameplayHook": "ashfall.first_route.build_research_lab",
+    "neoForgeRouteOverridePrerequisite": "true",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.research.first_schematic.bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "9",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "32",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_research_lab:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_research_lab/place_research_lab",
+      "type": "place_block",
+      "label": "Build a Research Lab",
+      "detail": "Place one Research Lab near the outpost to process schematic fragments and unlock research progression.",
+      "icon": "echoashfallprotocol:research_lab",
+      "target": "echoashfallprotocol:research_lab",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:research_lab",
+        "required_blocks": "echoashfallprotocol:research_lab=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 16,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 4,
+      "label": "Circuit Boards"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 2,
+      "label": "Machine Casings"
+    },
+    {
+      "block": "echoashfallprotocol:research_lab",
+      "count": 1,
+      "label": "Placed Research Lab"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_research_lab/reward_schematic_fragment",
+      "item": "echoashfallprotocol:schematic_fragment",
+      "count": 1,
+      "label": "Schematic Fragment",
+      "detail": "Seed material for the first schematic unlock."
+    }
+  ],
+  "completionText": "[ECHO-7] Research Lab operational. You can now spend research points to unlock perks and process schematic fragments."
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocommunitybridge",
+  "name": "ECHO: Community Bridge",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "service",
+  "role": "utility",
+  "entrypoint": "com.knoxhack.echocommunitybridge.EchoCommunityBridge",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "signalos"
+  ],
+  "provides": [
+    "community.discord_relay",
+    "community.server_events",
+    "community.server_status",
+    "launcher.server_status_bridge"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "official_server"
+  ],
+  "permissions": [
+    "server.status.read",
+    "server.status.publish",
+    "discord.relay"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "networking",
+        "diagnostics",
+        "data"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echocommunitybridge.EchoCommunityBridgeNativeModule",
+    "nativeClasspath": [],
+    "requiresOperatorConfiguration": true,
+    "notes": "Official server status endpoint, launcher status bridge, and optional Discord REST relay. Secrets must stay in config or environment and out of reports."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

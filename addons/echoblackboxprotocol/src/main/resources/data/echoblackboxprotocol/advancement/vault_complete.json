@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:vault_unlock",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:core_access_key_left"
+                             },
+                    "title":  "Blackbox Vault Sealed",
+                    "description":  "Recover the left Core Access Key segment.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "left_key":  {
+                                      "trigger":  "minecraft:inventory_changed",
+                                      "conditions":  {
+                                                         "items":  [
+                                                                       {
+                                                                           "items":  "echoblackboxprotocol:core_access_key_left"
+                                                                       }
+                                                                   ]
+                                                     }
+                                  }
+                 },
+    "requirements":  [
+                         [
+                             "left_key"
+                         ]
+                     ]
+}

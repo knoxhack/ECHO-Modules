@@ -1,0 +1,28 @@
+<page id="test-tooltips-modals" title="Tooltips and Modals" styles="echoscreencore:advanced_mock">
+  <screen-shell>
+    <header title="Tooltips and Dialogs" subtitle="Layered UI without browser behavior"/>
+    <grid columns="1fr 1fr" gap="16">
+      <panel title="Tooltips">
+        <button action="noop" variant="primary" tooltip="Tooltips render on hover or keyboard focus.">Hover Me</button>
+        <tooltip text="This chip uses a tooltip wrapper component.">
+          <status-chip status="locked">LOCKED</status-chip>
+        </tooltip>
+        <text>Tooltips clamp to screen edges and never block clicks.</text>
+      </panel>
+      <panel title="Modal Dialog">
+        <text>Open a ScreenCore dialog for confirmation-style flows.</text>
+        <button action="screencore.open_modal" action-target="confirm-reset" variant="danger">Open Dialog</button>
+      </panel>
+    </grid>
+    <dialog id="confirm-reset" title="Reset Accessibility">
+      <dialog-title>Reset Accessibility</dialog-title>
+      <dialog-body>
+        <text>Restore ScreenCore accessibility settings to defaults for this client session?</text>
+      </dialog-body>
+      <dialog-actions gap="12">
+        <button action="screencore.close_modal" variant="ghost">Cancel</button>
+        <button action="settings.reset_accessibility" variant="danger">Reset</button>
+      </dialog-actions>
+    </dialog>
+  </screen-shell>
+</page>

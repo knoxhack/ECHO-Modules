@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/multiblockcore/core_loop",
+  "title": "MultiblockCore: Core Loop",
+  "category": "Guide Books",
+  "summary": "Read the blueprint, place the structure, validate it, then upgrade deliberately.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Discover a blueprint, place the structure, validate missing blocks, complete the multiblock, then install upgrades that match the job.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each validation pass, check the exact missing block, orientation, controller, input, output, or upgrade slot before rebuilding.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop when the structure is stable and documented. Future you will thank a clear footprint more than a rushed upgrade.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "multiblock",
+    "blueprint",
+    "multiblockcore",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:structure_block",
+  "relatedArticles": [
+    "echowiki:guides/multiblockcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1092
+}

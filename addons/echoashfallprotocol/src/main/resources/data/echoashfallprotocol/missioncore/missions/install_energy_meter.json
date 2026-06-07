@@ -1,0 +1,104 @@
+{
+  "id": "echoashfallprotocol:install_energy_meter",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 12,
+  "title": "Install Energy Meter",
+  "briefing": "[ECHO-7] Guesswork wastes fuel. Install an Energy Meter on the cable route and read the network report.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for an Energy Meter after reinforced cable routing is confirmed.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:energy_meter",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:upgrade_power_cable"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "install_energy_meter",
+    "nativeGameplayHook": "ashfall.first_route.install_energy_meter",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.load_distributor.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "12",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "21",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:install_energy_meter:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:install_energy_meter/place_energy_meter",
+      "type": "place_block",
+      "label": "Install Energy Meter",
+      "detail": "Place one Energy Meter on the cable route so the workshop can report storage, demand, bottlenecks, and brownout state.",
+      "icon": "echoashfallprotocol:energy_meter",
+      "target": "echoashfallprotocol:energy_meter",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:energy_meter",
+        "required_blocks": "echoashfallprotocol:energy_meter=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "item": "minecraft:glass_pane",
+      "count": 1,
+      "label": "Glass Pane"
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 1,
+      "label": "Redstone"
+    },
+    {
+      "block": "echoashfallprotocol:energy_meter",
+      "count": 1,
+      "label": "Placed Energy Meter"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:install_energy_meter/reward_circuit_board",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board",
+      "detail": "Control board reserve for priority-routing hardware."
+    }
+  ],
+  "completionText": "[ECHO-7] Diagnostics online. Watch stored FE, demand, and the weakest cable bottleneck before adding machines."
+}

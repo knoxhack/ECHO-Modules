@@ -1,0 +1,113 @@
+{
+  "id": "echoashfallprotocol:build_workshop",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 5,
+  "title": "Build a Workshop",
+  "briefing": "[ECHO-7] Advanced crafting requires specialized facilities. Deploy a Workshop near your grid hardware to support guardian-route gear.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:workshop_block",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_nexus_capacitor"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_workshop",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_workshop",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "73",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_workshop:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_workshop/workshop_block",
+      "type": "place_block",
+      "label": "Place Workshop Block",
+      "detail": "Place 1 Workshop Block for the Ashfall route.",
+      "icon": "echoashfallprotocol:workshop_block",
+      "target": "echoashfallprotocol:workshop_block",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:workshop_block"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 2,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 8,
+      "label": "Scrap Plastic"
+    },
+    {
+      "block": "echoashfallprotocol:workshop_block",
+      "count": 1,
+      "label": "Workshop Block"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_workshop/reward_0",
+      "item": "echoashfallprotocol:schematic_fragment_weapons",
+      "count": 1,
+      "label": "Schematic Fragment Weapons",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_workshop/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_workshop/reward_1",
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 8,
+      "label": "Scrap Plastic",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_workshop/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Workshop online. Use it to prepare stronger weapons, armor, and upgrade paths before guardian sites."
+}

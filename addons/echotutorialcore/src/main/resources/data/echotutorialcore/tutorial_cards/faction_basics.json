@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:faction_basics",
+  "category": "FACTIONS",
+  "title": "Faction Basics",
+  "summary": "Survivors have organized into factions. Choose alliances carefully.",
+  "body": [
+    "Factions control territory, trade, and information.",
+    "Your reputation with each faction changes based on actions.",
+    "Use the Faction Atlas in the Terminal to track standings."
+  ],
+  "steps": [
+    "Open the Faction Atlas in the Terminal.",
+    "Review faction summaries and territories.",
+    "Complete missions to raise or lower reputation."
+  ],
+  "commonMistakes": [
+    "Ignoring faction reputation.",
+    "Accidentally attacking allies."
+  ],
+  "related": [
+    "echotutorialcore:radwarden_compact",
+    "echotutorialcore:crashbreak_salvage"
+  ],
+  "unlockTriggers": [
+    "met_radwarden"
+  ],
+  "defaultUnlocked": false,
+  "priority": 70
+}

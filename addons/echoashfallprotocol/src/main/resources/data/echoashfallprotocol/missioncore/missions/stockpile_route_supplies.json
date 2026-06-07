@@ -1,0 +1,179 @@
+{
+  "id": "echoashfallprotocol:stockpile_route_supplies",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 7,
+  "title": "Stockpile Route Supplies",
+  "briefing": "[ECHO-7] Guardian entrances are one-way mistakes without reserves. Stockpile water, food, medicine, RadAway, filtration, and portable FE before the grid route opens.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "survival",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:clean_water_bottle",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:equip_alloy_kit"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "stockpile_route_supplies",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.stockpile_route_supplies",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "7",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "66",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:stockpile_route_supplies:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/clean_water_bottle",
+      "type": "deliver_item",
+      "label": "Deliver Clean Water Bottle",
+      "detail": "Confirm 3 Clean Water Bottle for this route step.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:clean_water_bottle",
+      "required": 3,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:clean_water_bottle",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/emergency_ration",
+      "type": "deliver_item",
+      "label": "Deliver Emergency Ration",
+      "detail": "Confirm 3 Emergency Ration for this route step.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:emergency_ration",
+      "required": 3,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:emergency_ration",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/bandage",
+      "type": "deliver_item",
+      "label": "Deliver Bandage",
+      "detail": "Confirm 3 Bandage for this route step.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:bandage",
+      "required": 3,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:bandage",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/rad_away",
+      "type": "deliver_item",
+      "label": "Deliver Rad Away",
+      "detail": "Confirm 2 Rad Away for this route step.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:rad_away",
+      "required": 2,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:rad_away",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/filter_cartridge_advanced",
+      "type": "deliver_item",
+      "label": "Deliver Filter Cartridge Advanced",
+      "detail": "Confirm 1 Filter Cartridge Advanced for this route step.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:filter_cartridge_advanced",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:filter_cartridge_advanced",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 3,
+      "label": "Clean Water Bottle"
+    },
+    {
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 3,
+      "label": "Emergency Ration"
+    },
+    {
+      "item": "echoashfallprotocol:bandage",
+      "count": 3,
+      "label": "Bandage"
+    },
+    {
+      "item": "echoashfallprotocol:rad_away",
+      "count": 2,
+      "label": "Rad Away"
+    },
+    {
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/reward_0",
+      "item": "echoashfallprotocol:schematic_fragment_machines",
+      "count": 1,
+      "label": "Schematic Fragment Machines",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:stockpile_route_supplies/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_route_supplies/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:stockpile_route_supplies/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Route supplies confirmed. Scan first, enter prepared, retreat before reserves collapse."
+}

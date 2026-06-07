@@ -1,0 +1,41 @@
+{
+  "parent": "echoashfallprotocol:first_machine",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:hand_recycler"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.max_upgrade.title",
+      "fallback": "Efficiency Expert"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.max_upgrade.desc",
+      "fallback": "Upgrade the Hand Recycler to maximum level."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_recycler_and_materials": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:hand_recycler"
+          },
+          {
+            "items": "echoashfallprotocol:scrap_metal",
+            "count": {
+              "min": 16
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_recycler_and_materials"]
+  ]
+}

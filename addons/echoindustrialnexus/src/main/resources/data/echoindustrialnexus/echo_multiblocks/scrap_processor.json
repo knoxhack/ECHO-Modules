@@ -1,0 +1,76 @@
+{
+  "id": "echoindustrialnexus:scrap_processor",
+  "display_name": "Scrap Processor",
+  "translation_key": "multiblock.echoindustrialnexus.scrap_processor",
+  "role": "PRODUCTION",
+  "category": "material_recovery",
+  "size": [3, 2, 3],
+  "controller": "echoindustrialnexus:scrap_processor_controller",
+  "allowed_rotations": true,
+  "mirrorable": true,
+  "requires_foundation": false,
+  "layers": [
+    [
+      "FIF",
+      "PCO",
+      "FRF"
+    ],
+    [
+      ".W.",
+      ".F.",
+      ".L."
+    ]
+  ],
+  "palette": {
+    "F": { "block": "echoindustrialnexus:reinforced_machine_casing" },
+    "I": { "block": "echoindustrialnexus:input_depot_crate", "component": true },
+    "P": { "block": "echoindustrialnexus:industrial_power_bus", "component": true },
+    "O": { "block": "echoindustrialnexus:output_depot_crate", "component": true },
+    "R": { "block": "echoindustrialnexus:robotic_arm_mount", "robotics": true },
+    "W": { "block": "echoindustrialnexus:industrial_workcell_frame", "component": true },
+    "L": { "block": "echoindustrialnexus:warning_light", "component": true, "optional": true },
+    "C": { "block": "echoindustrialnexus:scrap_processor_controller", "controller": true },
+    ".": { "air": true }
+  },
+  "capabilities": [
+    "echo:robotics",
+    "echo:workcell",
+    "echo:item_input",
+    "echo:item_output",
+    "echo:scanner_target",
+    "echo:map_marker"
+  ],
+  "workcells": [
+    {
+      "id": "echoindustrialnexus:scrap_processor/input",
+      "type": "INPUT",
+      "pos": [1, 0, 0],
+      "size": [1, 1, 1]
+    },
+    {
+      "id": "echoindustrialnexus:scrap_processor/cutting",
+      "type": "CUTTING",
+      "pos": [1, 1, 0],
+      "size": [1, 1, 1],
+      "required_tools": ["CUTTER"],
+      "allowed_tasks": ["echoindustrialnexus:process_scrap_into_scrap_plate"]
+    },
+    {
+      "id": "echoindustrialnexus:scrap_processor/output",
+      "type": "OUTPUT",
+      "pos": [2, 0, 1],
+      "size": [1, 1, 1]
+    }
+  ],
+  "robotics": {
+    "min_arms": 1,
+    "required_tools": ["CUTTER"]
+  },
+  "integrity": {
+    "max": 100,
+    "damageable": true
+  },
+  "preview": {
+    "color": "ff8a1c"
+  }
+}

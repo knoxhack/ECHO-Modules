@@ -1,0 +1,13 @@
+{
+  "emitters": {
+    "field_motes": {
+      "anchor": "field",
+      "particle": "minecraft:dust",
+      "states": ["ACTIVE"],
+      "rate": 0.05,
+      "spread": [0.6, 0.35, 0.6],
+      "velocity": [0.0, 0.01, 0.0],
+      "options": { "type": "minecraft:dust", "color": "#FF66E8FF", "scale": 0.45 }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "id": "echoashfallprotocol:stockpile_rations",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 7,
+  "title": "Confirm Ration Buffer",
+  "briefing": "[ECHO-7] Do not scout hungry. Keep 4 Emergency Rations or 12 Wild Berries at shelter before the next push.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall ration stockpile mission while preserving the counted Emergency Ration or Wild Berry predicate.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:emergency_ration",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_rain_collector"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "stockpile_rations",
+    "nativeGameplayHook": "ashfall.first_route.stockpile_rations",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "7",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "7",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:stockpile_rations:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:stockpile_rations/confirm_ration_buffer",
+      "type": "custom",
+      "label": "Confirm a ration buffer",
+      "detail": "Keep 4 Emergency Rations or 12 Wild Berries at shelter before the next route push.",
+      "icon": "echoashfallprotocol:emergency_ration",
+      "target": "ashfall:ration_buffer",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_any_count",
+        "accepted_item_counts": "echoashfallprotocol:emergency_ration=4,echoashfallprotocol:wild_berry=12",
+        "event": "ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:stockpile_rations/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Hydration buffer for the next shelter check."
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_rations/reward_bandage",
+      "item": "echoashfallprotocol:bandage",
+      "count": 1,
+      "label": "Bandage",
+      "detail": "Small recovery margin before night travel."
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_rations/reward_emergency_bunk",
+      "item": "echoashfallprotocol:emergency_bunk",
+      "count": 1,
+      "label": "Emergency Bunk",
+      "detail": "Shelter anchor for the next first-night mission."
+    }
+  ],
+  "completionText": "[ECHO-7] Food buffer established. Emergency bunk released; keep it at shelter so night travel stays optional."
+}

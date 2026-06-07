@@ -1,0 +1,23 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:rocket_fins"
+               },
+    "pattern":  [
+                    " Y ",
+                    "XYX",
+                    "X X"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "echogalacticcore:heavy_plating"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

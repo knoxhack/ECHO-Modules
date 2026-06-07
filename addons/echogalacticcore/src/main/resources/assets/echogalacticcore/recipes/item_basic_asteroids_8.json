@@ -1,0 +1,27 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:item_basic_asteroids",
+                   "data":  8
+               },
+    "pattern":  [
+                    "XYX",
+                    "YZY",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "minecraft:redstone"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_iron"
+                      },
+                "Z":  {
+                          "item":  "minecraft:glass_pane"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:first_power_loop",
+  "title": "First Power Loop",
+  "category": "POWER",
+  "steps": [
+    {
+      "id": "place_micro_generator",
+      "type": "place_block",
+      "target": "echoashfallprotocol:micro_generator",
+      "text": "Place a Micro Generator."
+    },
+    {
+      "id": "place_battery_bank",
+      "type": "place_block",
+      "target": "echoashfallprotocol:battery_bank",
+      "text": "Place a Battery Bank."
+    },
+    {
+      "id": "power_machine",
+      "type": "custom",
+      "target": "echotutorialcore:powered_first_machine",
+      "text": "Power a machine."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:power_basics"
+  ],
+  "defaultUnlocked": false
+}

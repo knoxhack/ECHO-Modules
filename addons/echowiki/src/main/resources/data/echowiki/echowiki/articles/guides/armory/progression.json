@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/armory/progression",
+  "title": "Armory: Progression",
+  "category": "Guide Books",
+  "summary": "Upgrade Armory in stable steps without skipping the safety layer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Upgrade Path",
+      "body": "Progress by matching gear to repeated problems: safer armor for damage spikes, utility modules for special routes, and backup tools when a fight interrupts salvage.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Do Not Skip The Middle",
+      "body": "The middle step is usually boring because it is the safety layer: storage, markers, meters, counters, backups, or notes. Build that layer before raising the risk.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Ready For More",
+      "body": "You are ready to push Armory further when the current loop feels repeatable, the failure signs are familiar, and the next upgrade has a clear purpose.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "item",
+      "title": "Upgrade Anchor",
+      "body": "Use this as the upgrade checkpoint before raising route risk.",
+      "tone": "tip",
+      "item": "minecraft:iron_sword",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Iron Sword",
+      "subtitle": "Progression checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_sword",
+  "relatedArticles": [
+    "echowiki:guides/armory"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1034
+}

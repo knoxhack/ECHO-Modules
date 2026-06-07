@@ -1,0 +1,23 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:glowstone_torch",
+                   "count":  4
+               },
+    "pattern":  [
+                    "Y",
+                    "X"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/stick_wood"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_glowstone"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

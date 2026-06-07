@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoarcaneindex",
+  "name": "ECHO: Arcane Index",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "ui_pack",
+  "role": "arcane_index",
+  "entrypoint": "com.knoxhack.echoarcaneindex.EchoArcaneIndex",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore",
+    "echoindex"
+  ],
+  "optional": [
+    "echomissioncore"
+  ],
+  "provides": [
+    "arcana.index",
+    "arcana.knowledge",
+    "arcana.reference"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core",
+    "index.recipes"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "creator_tools"
+  ],
+  "permissions": [
+    "index.recipes",
+    "ui.screens"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "recipes",
+        "wiki",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoarcaneindex.EchoArcaneIndexNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Arcane Index extends ECHO: Index with Arcana Division knowledge pages. JEI and external Arcana Veil integrations remain optional and are not canonical ECHO module requirements."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "ui_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

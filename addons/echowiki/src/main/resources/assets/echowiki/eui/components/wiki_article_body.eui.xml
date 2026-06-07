@@ -1,0 +1,9 @@
+<component src="echowiki:wiki_article_block">
+  <param name="type" value="{param.type|paragraph}"/>
+  <param name="titleOrLabel" value="{param.title|Section}"/>
+  <param name="body" value="{param.body|}"/>
+  <param name="tone" value="{param.tone|body}"/>
+  <param name="status" value="{param.status|info}"/>
+  <param name="chip" value="{param.chip|text}"/>
+  <param name="ordinal" value="{param.ordinal|--}"/>
+</component>

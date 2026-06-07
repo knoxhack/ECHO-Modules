@@ -1,0 +1,31 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:platform",
+                   "data":  0,
+                   "count":  4
+               },
+    "pattern":  [
+                    "PAP",
+                    "BXB",
+                    "PAP"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "A":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_glowstone"
+                      },
+                "B":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "P":  {
+                          "item":  "minecraft:piston"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

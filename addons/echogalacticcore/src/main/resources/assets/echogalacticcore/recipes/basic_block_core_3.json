@@ -1,0 +1,25 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:basic_block_core",
+                   "data":  3,
+                   "count":  4
+               },
+    "pattern":  [
+                    "XX ",
+                    "XXY",
+                    "   "
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/stone"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

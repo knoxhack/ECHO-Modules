@@ -1,0 +1,20 @@
+<page id="test-responsive-split-view" title="Responsive Split View" styles="echoscreencore:advanced_mock,echoscreencore:responsive_mock">
+  <screen-shell>
+    <header title="Responsive Split View" subtitle="Detail panel moves into a stacked layout below md"/>
+    <split-view columns="1fr 320px" stack-below="md" gap="16">
+      <scroll>
+        <list bind="missions.demo" item="mission" selected="{selectedMission.id}">
+          <list-row action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}">
+            <title value="{mission.title}"/>
+            <text value="{mission.summary}"/>
+          </list-row>
+        </list>
+      </scroll>
+      <detail-panel title="Details" detail-collapse-below="md">
+        <title value="{selectedMission.title|Select a mission}"/>
+        <text>On narrow screens this panel stacks below the list.</text>
+        <status-chip status="{system.status}">READY</status-chip>
+      </detail-panel>
+    </split-view>
+  </screen-shell>
+</page>

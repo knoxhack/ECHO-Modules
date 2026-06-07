@@ -1,0 +1,24 @@
+select,
+dropdown,
+dropdown-menu {
+  height: 32px;
+  padding: 7px 10px;
+  background: theme(buttonBg);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  color: theme(textPrimary);
+}
+
+option,
+dropdown-item {
+  min-height: 24px;
+}
+
+select:open,
+dropdown:open {
+  border-color: theme(accent);
+}
+
+.filter-panel {
+  gap: space(sm);
+}

@@ -1,0 +1,11 @@
+{
+  "id": "echoashfallprotocol:ashfall_showcase_next_step",
+  "message": "Open the Ashfall Showcase Flow entry, scan the pod route, pin the first field objective, then return to Terminal before the weather warning peaks.",
+  "priority": 60,
+  "conditions": [
+    "terminal_unused_minutes:5",
+    "holomap_unused_minutes:5"
+  ],
+  "relatedMission": "echoashfallprotocol:ashfall_showcase_flow",
+  "relatedIndexEntry": "echoashfallprotocol:showcase_flow"
+}

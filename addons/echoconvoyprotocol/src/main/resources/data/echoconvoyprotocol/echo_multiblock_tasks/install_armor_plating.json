@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:install_armor_plating",
+  "display_name": "Install Armor Plating",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "UPGRADE_INSTALL",
+  "required_tools": ["WELDER", "GRIPPER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:vehicle_armor_plate", "count": 4 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 240,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "effects": ["echoconvoyprotocol:install_armor_plating"],
+  "notes": ["Fits passive armor plating through a convoy upgrade workcell."]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "echoashfallprotocol:ashfall_first_month_routes",
+  "title": "First-Month Route Desk",
+  "summary": "Tracks early Ashfall routes from safe caches into faction signals, hazard warnings, and relay work without sending the player into late-game danger.",
+  "nextSteps": [
+    "Confirm the Survivor Cache Signal before leaving shelter.",
+    "Scan the route target, then open the linked Index field guide entry.",
+    "Track one HoloMap marker at a time and note its risk label.",
+    "Complete optional faction or hazard prep side-ops only when supplied.",
+    "Return to base after each route to claim rewards and update What Now."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_first_month",
+  "panels": [
+    {
+      "id": "active_route",
+      "title": "Active Route",
+      "state": "scanner-led",
+      "body": "Use Lens to confirm a signal before following the HoloMap marker."
+    },
+    {
+      "id": "prep_check",
+      "title": "Prep Check",
+      "state": "required-for-hazards",
+      "body": "Water, filters, return markers, and weather status matter more than distance."
+    },
+    {
+      "id": "field_intel",
+      "title": "Field Intel",
+      "state": "linked",
+      "body": "Lens scans unlock Index context and update first-month HoloMap markers."
+    }
+  ]
+}

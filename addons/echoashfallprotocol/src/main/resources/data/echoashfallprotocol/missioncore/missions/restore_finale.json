@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:restore_finale",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 5,
+  "title": "Defeat Corruption Bloom",
+  "briefing": "[ECHO-7] The Corruption Bloom is feeding on restored relay flow. Defeat the path finale, then seal the Restore epilogue.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_helmet",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:restore_world_lattice"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "restore_finale",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.restore_finale",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "98",
+    "requiredPath": "restore",
+    "routeRoleTag": "restore_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:restore_finale:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "restore",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:restore_finale/restore_finale",
+      "type": "custom",
+      "label": "Defeat Corruption Bloom",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_helmet",
+      "target": "echoashfallprotocol:restore_finale",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.restore_finale"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:restore_finale/reward_0",
+      "item": "echoashfallprotocol:nexus_helmet",
+      "count": 1,
+      "label": "Nexus Helmet",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_finale/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Corruption Bloom collapsed. The Restore epilogue can now be sealed."
+}

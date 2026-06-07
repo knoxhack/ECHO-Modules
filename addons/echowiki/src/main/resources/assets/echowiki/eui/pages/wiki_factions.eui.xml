@@ -1,0 +1,48 @@
+<page id="wiki_factions" title="Faction Atlas" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Factions"/>
+    <param name="contentSubtitle" value="Standing, routes, landmark factions, and preparation notes."/>
+    <param name="inspectorTitle" value="Faction Fields"/>
+    <param name="stateKey" value="wiki.factions.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="FACTION INDEX">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.factions">
+            <list class="wiki-browser-list" bind="wiki.factions.visible" item="faction">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.select_faction"/>
+                <param name="id" value="{faction.id}"/>
+                <param name="title" value="{faction.title}"/>
+                <param name="summary" value="{faction.summary}"/>
+                <param name="status" value="{faction.status}"/>
+                <param name="chip" value="{faction.chip}"/>
+                <param name="meta" value="{faction.meta}"/>
+                <param name="countLabel" value="{faction.countLabel}"/>
+                <param name="selected" value="{faction.selected}"/>
+              </component>
+              <empty-state title="No factions" body="EchoCore has no faction definitions registered."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="FACTION DOSSIER">
+          <title class="wiki-detail-title" value="{wiki.factions.selected.title}"/>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.factions.selected.status}" value="{wiki.factions.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.factions.selected.route}"/>
+            <status-chip class="wiki-detail-chip" status="warning" value="{wiki.factions.selected.hazard}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.factions.selected.summary}"/>
+          <section class="wiki-side-summary" title="PREP">
+            <text class="wiki-reader-text" value="{wiki.factions.selected.prepHint}"/>
+          </section>
+          <text class="wiki-muted-text" value="{wiki.factions.selected.serviceSummary}"/>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <text value="Route: {wiki.factions.selected.route}"/>
+      <text value="Hazard: {wiki.factions.selected.hazard}"/>
+      <text value="Prep: {wiki.factions.selected.prepHint}"/>
+    </slot>
+  </component>
+</page>

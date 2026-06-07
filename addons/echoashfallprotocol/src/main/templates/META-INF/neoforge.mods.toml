@@ -1,0 +1,120 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Main Ashfall survival protocol and shared route content for the ECHO mod family."
+description='''
+ECHO: Ashfall Protocol is the main wasteland survival chapter for ECHO.
+It provides the Ashfall biome loop, missions, POIs, factions, guardians,
+Nexus progression, and cross-addon survival foundations.
+'''
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO player data, faction, route, terminal, and discovery APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, sync, action validation, and rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Enables Ashfall mission, route, faction, and discovery surfaces inside the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echopresencelink"
+type="optional"
+reason="Publishes privacy-safe Ashfall mission, hazard, guardian, and Nexus context through ECHO Presence Link when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Shows companion drone field-assistant diagnostics when scanning the drone with ECHO Lens."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoblockworks"
+type="required"
+reason="Provides the first-party decorative hull, terminal, lighting, and debris blocks used by the starter drop pod template."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Surfaces Ashfall recipes, machines, and lore entries in the ECHO Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echowiki"
+type="optional"
+reason="Surfaces the Ashfall Field Manual through Wiki guide-book starter delivery and optional survival loot when Wiki is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonpcore"
+type="optional"
+reason="Enables Ashfall faction contacts to use NPCore profiles, trades, services, and holo dossier screens."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Registers Ashfall world regions and hazards into WorldCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore static crystal particles and Ashfall mob visual profiles when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

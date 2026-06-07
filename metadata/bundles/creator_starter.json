@@ -1,0 +1,40 @@
+{
+  "id": "creator_starter",
+  "name": "Creator Starter Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore",
+    "echothemecore",
+    "echoindex",
+    "echomissioncore",
+    "echotutorialcore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [
+    "echothemecore",
+    "echoindex",
+    "echomissioncore",
+    "echotutorialcore"
+  ],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "creator starter"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Creator Starter",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "creator starter"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

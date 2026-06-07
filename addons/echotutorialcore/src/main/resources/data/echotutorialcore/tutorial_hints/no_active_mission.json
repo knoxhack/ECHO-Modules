@@ -1,0 +1,18 @@
+{
+  "id": "echotutorialcore:no_active_mission",
+  "type": "MISSION_HELP",
+  "category": "TERMINAL",
+  "title": "No Active Mission",
+  "message": "No active directive selected. Open Terminal > Mission Browser.",
+  "details": "Selecting a mission focuses your goals and unlocks waypoints.",
+  "actionLabel": "Open mission browser",
+  "actionCardId": "echotutorialcore:mission_browser",
+  "cooldownTicks": 36000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 60,
+  "dismissible": true,
+  "conditions": [
+    "mission_state:none",
+    "terminal_unused_minutes:15"
+  ]
+}

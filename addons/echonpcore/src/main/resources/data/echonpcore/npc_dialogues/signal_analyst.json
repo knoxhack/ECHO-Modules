@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:signal_analyst",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Signal drift is up. Stay between hard cover when the static rises.",
+      "options": [
+        { "id": "routes", "label": "Any route advice?", "next": "routes" },
+        { "id": "trade", "label": "Show map stock.", "action": "open_trade" },
+        { "id": "service", "label": "Upload local intel.", "action": "open_services" },
+        { "id": "intel", "label": "Open intel panel.", "action": "open_intel" },
+        { "id": "exit", "label": "Signal clear.", "action": "close" }
+      ]
+    },
+    "routes": {
+      "text": "Follow ridge lines when visibility drops. Roads collect trouble and bad water.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

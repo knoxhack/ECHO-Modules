@@ -1,0 +1,6 @@
+<template>
+  <section class="sc-panel" title="{param.title|EMPTY}">
+    <empty-state title="{param.emptyTitle|Nothing Here}" body="{param.emptyBody|No data is available.}"/>
+  </section>
+</template>
+

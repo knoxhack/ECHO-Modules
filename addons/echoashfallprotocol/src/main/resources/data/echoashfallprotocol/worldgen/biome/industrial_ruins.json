@@ -1,0 +1,114 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.05,
+  "downfall": 0.4,
+  "effects": {
+    "fog_color": 5920076,
+    "foliage_color": 5199420,
+    "grass_color": 4475959,
+    "sky_color": 4276540,
+    "water_color": 3883322,
+    "water_fog_color": 2632488,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.025
+    },
+    "ambient_loop_sound": "minecraft:ambient.basalt_deltas.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_chance": 0.01
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:industrial_ruins_rubble_scatter",
+      "echoashfallprotocol:industrial_aggregate_scatter",
+      "echoashfallprotocol:industrial_ruins_concrete_chunk_scatter",
+      "echoashfallprotocol:industrial_ruins_concrete_rubble_piles",
+      "echoashfallprotocol:industrial_ruins_metal_debris_scatter",
+      "echoashfallprotocol:industrial_ruins_rusted_metal_debris",
+      "echoashfallprotocol:industrial_ruins_rusted_metal_debris_scatter",
+      "echoashfallprotocol:industrial_ruins_bone_scatter",
+      "echoashfallprotocol:industrial_ruins_scattered_bones_dense",
+      "echoashfallprotocol:industrial_ruins_industrial_debris_field",
+      "echoashfallprotocol:industrial_ruins_deep_metal_veins",
+      "echoashfallprotocol:industrial_ruins_fallout_dust_patches",
+      "echoashfallprotocol:industrial_ruins_contaminated_soil_patches",
+      "echoashfallprotocol:toxic_waste_barrels",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:salvage_rusty_metal_patch",
+      "echoashfallprotocol:salvage_concrete_pile",
+      "echoashfallprotocol:industrial_ruins_twisted_metal",
+      "echoashfallprotocol:industrial_ruins_cracked_asphalt_patches",
+      "echoashfallprotocol:bio_lab_leaks"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:industrial_ruins_dead_trees_stumps",
+      "echoashfallprotocol:industrial_ruins_charred_trees",
+      "echoashfallprotocol:industrial_ruins_ash_bushes",
+      "echoashfallprotocol:industrial_ruins_burnt_ferns",
+      "echoashfallprotocol:burnt_grass_patches",
+      "echoashfallprotocol:industrial_ruins_oil_stained_concrete_patches",
+      "echoashfallprotocol:industrial_ruins_corroded_pipes",
+      "echoashfallprotocol:industrial_ruins_cable_bundles",
+      "echoashfallprotocol:industrial_ruins_dry_grass_patches",
+      "echoashfallprotocol:industrial_ruins_dead_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:rad_zombie",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:scavenger_bandit",
+        "weight": 19,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:echo_drone",
+        "weight": 9,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:rust_walker",
+        "weight": 14,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:steam_wraith",
+        "weight": 12,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.6
+}

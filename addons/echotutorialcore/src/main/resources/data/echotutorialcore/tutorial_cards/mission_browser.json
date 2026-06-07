@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:mission_browser",
+  "category": "TERMINAL",
+  "title": "Mission Browser",
+  "summary": "Directives keep the noise in order.",
+  "body": [
+    "The Mission Browser shows active directives, reward state, and route pressure.",
+    "TutorialCore mirrors early guidance here when MissionCore is installed, but it does not own Ashfall progression."
+  ],
+  "steps": [
+    "Open the Terminal.",
+    "Check the active mission.",
+    "Claim completed rewards before starting a longer route."
+  ],
+  "commonMistakes": [
+    "Leaving rewards unclaimed.",
+    "Assuming no mission means no next step."
+  ],
+  "related": [
+    "echotutorialcore:reward_inbox",
+    "echotutorialcore:what_now"
+  ],
+  "unlockTriggers": [
+    "opened_terminal",
+    "checked_missions"
+  ],
+  "defaultUnlocked": true,
+  "priority": 80
+}

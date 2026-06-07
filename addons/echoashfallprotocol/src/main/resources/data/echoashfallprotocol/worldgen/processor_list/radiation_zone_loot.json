@@ -1,0 +1,57 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:capped",
+      "limit": {
+        "type": "constant",
+        "value": 512
+      },
+      "delegate": {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "location_predicate": {
+              "predicate_type": "minecraft:always_true"
+            },
+            "input_predicate": {
+              "predicate_type": "minecraft:block_match",
+              "block": "echoashfallprotocol:structure_cache"
+            },
+            "output_state": {
+              "Name": "echoashfallprotocol:structure_cache"
+            },
+            "block_entity_modifier": {
+              "type": "minecraft:append_loot",
+              "loot_table": "echoashfallprotocol:chests/reactor_ruin_cache"
+            }
+          },
+          {
+            "location_predicate": {
+              "predicate_type": "minecraft:always_true"
+            },
+            "input_predicate": {
+              "predicate_type": "minecraft:block_match",
+              "block": "echoashfallprotocol:structure_cache"
+            },
+            "output_state": {
+              "Name": "echoashfallprotocol:structure_cache"
+            },
+            "block_entity_modifier": {
+              "type": "minecraft:append_loot",
+              "loot_table": "echoashfallprotocol:chests/reactor_ruin_cache"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "processor_type": "minecraft:block_rot",
+      "integrity": 0.8
+    },
+    {
+      "processor_type": "minecraft:gravity",
+      "heightmap": "WORLD_SURFACE_WG",
+      "offset": 0
+    }
+  ]
+}

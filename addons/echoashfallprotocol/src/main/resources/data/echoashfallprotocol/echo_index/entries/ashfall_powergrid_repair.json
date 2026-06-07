@@ -1,0 +1,20 @@
+{
+  "id": "echoashfallprotocol:ashfall_powergrid_repair",
+  "category": "echoashfallprotocol:starter",
+  "title": "Drop Pod Power Repair",
+  "subtitle": "PowerGrid bridge for the official profile",
+  "summary": "The first PowerGrid repair is framed as a small pod-grid stabilization step, not a full factory reset.",
+  "body": "Scan the damaged pod bus, route a safe low-load repair, and use Terminal diagnostics before expanding. This keeps 1.5.x Tech content useful inside Ashfall without changing generic PowerGrid defaults.",
+  "links": {
+    "mission": "echoashfallprotocol:ashfall_showcase_flow",
+    "terminalPage": "echoashfallprotocol:ashfall_showcase_dashboard",
+    "wikiArticle": "echowiki:guides/ashfall/integrations",
+    "lensProfile": "echoashfallprotocol:ashfall_showcase_scans",
+    "holomapLayer": "echoashfallprotocol:showcase_flow"
+  },
+  "tags": [
+    "ashfall",
+    "powergrid",
+    "repair"
+  ]
+}

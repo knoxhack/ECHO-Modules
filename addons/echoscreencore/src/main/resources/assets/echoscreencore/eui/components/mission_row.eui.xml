@@ -1,0 +1,7 @@
+<list-row action="{param.action|noop}" action-value="{param.value|}" selected="{param.selected|false}" tooltip="{param.tooltip|}">
+  <column gap="3">
+    <title value="{param.title|Untitled}"/>
+    <text value="{param.summary|No summary available.}"/>
+  </column>
+  <status-chip status="{param.status|info}" value="{param.statusLabel|INFO}"/>
+</list-row>

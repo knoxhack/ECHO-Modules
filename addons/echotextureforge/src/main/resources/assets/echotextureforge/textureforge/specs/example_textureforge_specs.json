@@ -1,0 +1,32 @@
+{
+  "styleFamily": "ECHO_CYBERGLASS",
+  "defaultResolution": "32x32",
+  "assets": [
+    {
+      "id": "textureforge_audit_icon",
+      "kind": "ui",
+      "textureType": "icon",
+      "outputPath": "textures/gui/textureforge_audit_icon.png",
+      "promptPriority": 50,
+      "sheetGroup": "ui",
+      "status": "missing",
+      "notes": "Small clean cyan audit icon for TextureForge reports and prompt exports",
+      "colorPaletteHints": [
+        "clean cyan",
+        "dark glass"
+      ],
+      "silhouetteNotes": "single compact checklist or forge-tool silhouette",
+      "minecraftReadabilityNotes": "must remain readable as a tiny dev-tool icon",
+      "mustHave": [
+        "clear tool or checklist silhouette",
+        "cyan ECHO signal accent",
+        "readable at 32x32"
+      ],
+      "avoid": [
+        "no text",
+        "no UI frame",
+        "no photorealism"
+      ]
+    }
+  ]
+}

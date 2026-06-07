@@ -1,0 +1,73 @@
+{
+  "id": "echorelictech:gravity_clamp",
+  "tier": "prototype",
+  "category": "utility",
+  "origin": "Pre-Gridfall Load-Bearing Prototype",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 1800,
+  "instabilityCost": 8,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "malfunction",
+    "item_damage",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:generic_relic",
+  "terminal": {
+    "summary": "Pushes or pulls nearby entities through directed gravity bias.",
+    "warning": "Mass bias may rebound if fired in crowded spaces."
+  },
+  "lens": {
+    "compact": "Damaged gravity clamp.",
+    "deepScan": [
+      "Drive core: partial lock.",
+      "Mass vector polarity: reversible.",
+      "ECHO warning: do not point at structural supports."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 3 },
+      { "item": "echorelictech:old_world_actuator", "count": 2 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 3 },
+        { "item": "echorelictech:old_world_actuator", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 5,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 600,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 4,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+      ]
+    }
+  },
+  "activation": {
+    "radius": 8
+  }
+}

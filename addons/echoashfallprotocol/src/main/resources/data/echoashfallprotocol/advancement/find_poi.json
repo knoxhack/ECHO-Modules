@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:circuit_board"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_poi.title",
+      "fallback": "Urban Explorer"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_poi.desc",
+      "fallback": "Discover your first Data Center ruin."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_data_center": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:circuit_board"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["found_data_center"]
+  ]
+}

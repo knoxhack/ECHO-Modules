@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:enter_bio_lab",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 0,
+  "title": "Enter Bio Lab",
+  "briefing": "[ECHO-7] Bio labs explain the living half of the wasteland. Scan or enter a Bio Lab-class site with medicine and toxic-zone filtration ready.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:poi_explorer"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "enter_bio_lab",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.enter_bio_lab",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "46",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:enter_bio_lab:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:enter_bio_lab/enter_bio_lab",
+      "type": "custom",
+      "label": "Enter Bio Lab",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:enter_bio_lab",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.enter_bio_lab"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:enter_bio_lab/reward_0",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:enter_bio_lab/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:enter_bio_lab/reward_1",
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:enter_bio_lab/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Bio hazard site archived. Expect medicine, tissue samples, toxic pockets, and unstable lifeforms."
+}

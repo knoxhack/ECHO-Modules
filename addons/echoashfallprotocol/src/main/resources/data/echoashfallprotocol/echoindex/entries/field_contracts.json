@@ -1,0 +1,23 @@
+{
+  "id": "echoashfallprotocol:field_contracts",
+  "category": "ashfall.factions",
+  "title": "Field Contracts",
+  "subtitle": "Optional work that supports routes without becoming a faction overhaul",
+  "summary": "Early field contracts should be small, optional, readable, and useful. They should not block the main Ashfall route.",
+  "body": [
+    "The Crashbreak relay proof contract asks for route confirmation, not combat.",
+    "Good contract rewards help the next route: power cells, scrap, scanner supplies, route notes, or reputation notes.",
+    "Contract standing and reward text must name the faction posture, the expected hand-in, and the exact support granted before the player accepts the work."
+  ],
+  "links": {
+    "mission": "echoashfallprotocol:crashbreak_relay_contract",
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "holomapMarker": "echoashfallprotocol:crashbreak_relay_contract",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans"
+  },
+  "tags": [
+    "ashfall",
+    "factions",
+    "contracts"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:stage_construction_planner",
+  "display_name": "Stage Construction Planner",
+  "category": "construction",
+  "allowed_multiblocks": ["echomultiblockcore:auto_builder_yard"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "CLAMP"],
+  "duration_ticks": 200,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "animation_profile": "echomultiblockcore:construction_plan",
+  "inputs": [
+    { "item": "echomultiblockcore:auto_builder_core", "count": 1 },
+    { "item": "echomultiblockcore:supply_manifest", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:construction_planner", "count": 1 }
+  ],
+  "notes": ["Packages auto-builder planning data for construction projects."]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/nexus",
+  "title": "Nexus Protocol Manual",
+  "category": "Guide Books",
+  "summary": "Scan anomalies, control escalation, and treat access systems as risks with counters.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Nexus systems are built around dangerous opportunity. A key, scanner, or anomaly can move progression forward, but it can also punish careless activation.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Carry a scanner, clear your exit route, and read every tooltip before using a suspicious Nexus object. Never test a new anomaly while overburdened.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Locate signal activity, scan the source, identify the required counter, interact only when prepared, and record the result in Wiki or Terminal.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Core access keys, scanners, visors, utility items, and anomaly states can all signal different threat levels.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "WorldCore can mark dangerous regions, TutorialCore can surface warnings, HoloMap marks return paths, and Armory or RelicTech may provide counters.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If Nexus progress feels unfair, slow down. Scan again, remove valuable cargo, repair gear, and treat the next interaction as a test with a clean exit.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "nexus",
+    "anomaly"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "heroArt": "echowiki:textures/gui/guide_books/nexus_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/nexus/first_steps",
+    "echowiki:guides/nexus/core_loop",
+    "echowiki:guides/nexus/systems",
+    "echowiki:guides/nexus/progression",
+    "echowiki:guides/nexus/integrations",
+    "echowiki:guides/nexus/troubleshooting"
+  ],
+  "sortOrder": 1100
+}

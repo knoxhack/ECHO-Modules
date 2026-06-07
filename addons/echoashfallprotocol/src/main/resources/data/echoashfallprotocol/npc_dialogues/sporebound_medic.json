@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:sporebound_medic",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Medic Sable sorts sealed vials by glow and smell. \"If your veins buzz, say so before the fever starts answering for you.\"",
+      "options": [
+        { "id": "trade", "label": "Open antitoxin pack.", "action": "open_trade" },
+        { "id": "services", "label": "Request field treatment.", "action": "open_services" },
+        { "id": "intel", "label": "Review spore warnings.", "action": "open_intel" },
+        { "id": "record", "label": "Record Sable's clinic.", "action": "discover_contact" },
+        { "id": "close", "label": "Close medical channel.", "action": "close" }
+      ]
+    }
+  }
+}

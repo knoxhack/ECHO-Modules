@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/industrial_assembly_line_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:vehicle_repair_gantry_blueprint"
+    },
+    "title": {
+      "text": "Rig the Repair Gantry"
+    },
+    "description": {
+      "text": "Prepare a Vehicle Repair Gantry blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:vehicle_repair_gantry_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

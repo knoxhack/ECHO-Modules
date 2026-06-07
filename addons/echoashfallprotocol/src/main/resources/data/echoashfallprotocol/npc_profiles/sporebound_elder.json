@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:sporebound_elder",
+  "displayName": "Elder Myra",
+  "role": "Scar Reader",
+  "faction": "echoashfallprotocol:sporebound_sanctum",
+  "visualProfile": "echoashfallprotocol:sporebound_elder",
+  "dialogue": "echoashfallprotocol:sporebound_elder",
+  "trades": "echoashfallprotocol:sporebound_elder_stock",
+  "services": "echoashfallprotocol:sporebound_elder_services",
+  "missions": [],
+  "ambientLines": [
+    "Do not insult the scar by calling it random.",
+    "The bloom remembers heat, fear, and footsteps."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 20,
+    "ambientCooldown": 2600,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Elder Myra interprets Nexus scars, spore movement, and routes that behave like living memory."
+  }
+}

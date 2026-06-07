@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:signal_analyst",
+  "displayName": "Signal Analyst",
+  "role": "Route Cartographer",
+  "faction": "echonpcore:archivists",
+  "visualProfile": "echonpcore:signal_analyst",
+  "dialogue": "echonpcore:signal_analyst",
+  "trades": "echonpcore:signal_analyst_basic",
+  "services": "echonpcore:signal_analyst_services",
+  "missions": [],
+  "ambientLines": [
+    "The grid whispers before it fails.",
+    "A clean bearing beats a fast walk."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 5,
+    "returnRadius": 18,
+    "ambientCooldown": 2400,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Signal analysts sync route intel with Terminal contacts and map layers."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:cartographer"
+  }
+}

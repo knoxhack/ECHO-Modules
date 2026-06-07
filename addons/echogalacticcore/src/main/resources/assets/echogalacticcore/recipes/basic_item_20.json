@@ -1,0 +1,33 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:basic_item",
+                   "data":  20
+               },
+    "pattern":  [
+                    "WVW",
+                    "YXY",
+                    "YZY"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "V":  {
+                          "item":  "echogalacticcore:air_vent"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_redstone"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_bronze"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

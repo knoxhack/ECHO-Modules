@@ -1,0 +1,46 @@
+.index-machine-card {
+  border-color: theme(info);
+  border-width: 1;
+  border-radius: radius(sm);
+  min-height: 58px;
+  padding: space(sm);
+}
+
+.index-machine-slots {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: space(sm);
+}
+
+.index-machine-card-row {
+  align: center;
+}
+
+.index-machine-copy {
+  gap: 2px;
+  min-width: 0;
+}
+
+.index-machine-title {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-machine-summary, .index-machine-meta, .index-machine-description {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+.index-machine-actions {
+  wrap: true;
+  gap: space(xs);
+}
+
+.index-machine-open {
+  min-width: 82px;
+}

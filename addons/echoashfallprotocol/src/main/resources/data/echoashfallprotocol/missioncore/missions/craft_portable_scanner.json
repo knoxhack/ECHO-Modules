@@ -1,0 +1,95 @@
+{
+  "id": "echoashfallprotocol:craft_portable_scanner",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 0,
+  "title": "Craft a Portable Signal Scanner",
+  "briefing": "[ECHO-7] POI detection capability required. Craft a Portable Signal Scanner so each route reports its site, hazard, prep kit, and likely supplies before you commit.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall pickup predicate for the Portable Signal Scanner and records its shaped recipe ingredients for native validation.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_factory_controller"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_portable_scanner",
+    "nativeGameplayHook": "ashfall.first_route.craft_portable_scanner",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "explorationProgressionBridge": "ashfall.poi.first_ruin_signature.bridge",
+    "recipeDataPath": "data/echoashfallprotocol/recipe/portable_signal_scanner.json",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_on_pickup",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "35",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_portable_scanner:completed",
+    "terminalAction": "auto_complete_on_pickup",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_portable_scanner/obtain_portable_signal_scanner",
+      "type": "obtain_item",
+      "label": "Obtain Portable Signal Scanner",
+      "detail": "Craft or recover one Portable Signal Scanner so scanner-led POI routes can unlock.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "target": "echoashfallprotocol:portable_signal_scanner",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "craft_event": "player.craft_item",
+        "predicate_event": "ashfall.inventory_predicate",
+        "item": "echoashfallprotocol:portable_signal_scanner",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:portable_signal_scanner",
+      "count": 1,
+      "label": "Portable Signal Scanner"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_portable_scanner/reward_circuit_boards",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "id": "echoashfallprotocol:craft_portable_scanner/reward_scrap_circuits",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuits"
+    }
+  ],
+  "completionText": "[ECHO-7] Portable scanner acquired. Use it to turn unknown ruins into readable expedition routes."
+}

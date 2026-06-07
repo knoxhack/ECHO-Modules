@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/arcana_core",
+  "title": "Arcana Core Field Manual",
+  "category": "Guide Books",
+  "summary": "Understand Aether Signal, shared Arcana records, and safe cross-addon foundations.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Arcana Core is the shared foundation for the magic branch. It names Aether Signal, resonance, curses, relics, rituals, spells, and the provider contracts other Arcana addons build on.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Start by treating magic as signal science. Read Aether Signal state, keep contamination visible, and let each optional addon register data through Arcana Core instead of hardcoding another addon.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Discover an arcane signal, record the definition, expose it through Index or Grimoire, then let gameplay addons act on the same spell, ritual, curse, or relic record.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Aether services, definition registries, runtime bridge providers, and MissionCore hooks keep the Arcana Division coherent while still allowing optional addons to stay optional.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Arcane Index reads Arcana records, Grimoire explains them, Lens and HoloMap can inspect field context, and Veilbound bridges can report live pressure through optional providers.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a magic record is missing, check whether the provider addon loaded, whether the Arcana Core service was registered, and whether the consuming surface is using the shared identifier.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcana_core",
+    "arcana"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "heroArt": "echowiki:textures/gui/guide_books/arcana_core_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/arcana_core/first_steps",
+    "echowiki:guides/arcana_core/core_loop",
+    "echowiki:guides/arcana_core/systems",
+    "echowiki:guides/arcana_core/progression",
+    "echowiki:guides/arcana_core/integrations",
+    "echowiki:guides/arcana_core/troubleshooting"
+  ],
+  "sortOrder": 1250
+}

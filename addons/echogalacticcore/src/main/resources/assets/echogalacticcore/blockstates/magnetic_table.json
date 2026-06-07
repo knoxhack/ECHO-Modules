@@ -1,0 +1,33 @@
+{
+    "variants":  {
+                     "inventory":  {
+                                       "model":  "echogalacticcore:magnetic_table_model"
+                                   },
+                     "facing=down":  {
+                                         "model":  "echogalacticcore:magnetic_table_model",
+                                         "x":  180
+                                     },
+                     "facing=up":  {
+                                       "model":  "echogalacticcore:magnetic_table_model"
+                                   },
+                     "facing=north":  {
+                                          "model":  "echogalacticcore:magnetic_table_model",
+                                          "x":  90
+                                      },
+                     "facing=south":  {
+                                          "model":  "echogalacticcore:magnetic_table_model",
+                                          "x":  90,
+                                          "y":  180
+                                      },
+                     "facing=west":  {
+                                         "model":  "echogalacticcore:magnetic_table_model",
+                                         "x":  90,
+                                         "y":  270
+                                     },
+                     "facing=east":  {
+                                         "model":  "echogalacticcore:magnetic_table_model",
+                                         "x":  90,
+                                         "y":  90
+                                     }
+                 }
+}

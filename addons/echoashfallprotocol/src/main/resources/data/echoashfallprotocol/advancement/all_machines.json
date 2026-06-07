@@ -1,0 +1,68 @@
+{
+  "parent": "echoashfallprotocol:first_machine",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:battery_bank"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.all_machines.title",
+      "fallback": "Master Engineer"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.all_machines.desc",
+      "fallback": "Craft all basic machines: Recycler, Burner, Purifier, and Generator."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_recycler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:hand_recycler"
+          }
+        ]
+      }
+    },
+    "has_burner": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:thermal_burner"
+          }
+        ]
+      }
+    },
+    "has_purifier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:water_purifier"
+          }
+        ]
+      }
+    },
+    "has_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:micro_generator"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_recycler"],
+    ["has_burner"],
+    ["has_purifier"],
+    ["has_generator"]
+  ]
+}

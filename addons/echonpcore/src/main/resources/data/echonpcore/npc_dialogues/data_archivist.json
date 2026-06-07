@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:data_archivist",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Records survived where people did not. Ask carefully.",
+      "options": [
+        { "id": "archives", "label": "What do the records say?", "next": "archives" },
+        { "id": "trade", "label": "Show archive supplies.", "action": "open_trade" },
+        { "id": "service", "label": "Any local intel?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Close the file.", "action": "close" }
+      ]
+    },
+    "archives": {
+      "text": "Roads, relay towers, and old shelter ledgers. Most are incomplete, but incomplete beats blind.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

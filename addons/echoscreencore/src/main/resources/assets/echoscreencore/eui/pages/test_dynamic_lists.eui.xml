@@ -1,0 +1,46 @@
+<page id="test-dynamic-lists" title="Dynamic List Test" styles="dynamic_mock">
+  <screen-shell>
+    <header title="Dynamic Lists" subtitle="Provider-backed list rows, item context, selected state, and empty states"/>
+    <grid class="dynamic-grid" columns="320px 1fr" gap="16">
+      <panel title="Bound Mission List">
+        <list bind="missions.demo" item="mission" selected="{selectedMission.id}">
+          <list-row id="{mission.id}" value="{mission.id}" action="terminal.select_mission" action-value="{mission.id}">
+            <column>
+              <title value="{mission.title|Untitled Mission}"/>
+              <text value="{mission.summary|No summary available.}"/>
+              <text class="row-value" value="Row #{mission.index} / id {mission.id}"/>
+            </column>
+            <status-chip status="{mission.status}" value="{mission.statusLabel|INFO}"/>
+          </list-row>
+          <empty-state title="No missions" body="The provider returned an empty mission list."/>
+        </list>
+      </panel>
+      <column gap="16">
+        <hero-card>
+          <title value="Selected: {selectedMission.id|none}"/>
+          <text>Rows compare their value/id/action-value against the parent selected binding and receive selected=true when they match.</text>
+          <button action="screencore.reload_page" variant="ghost">Reload Page</button>
+        </hero-card>
+        <section title="Generic Repeat">
+          <repeat source="recipes.visible" item="recipe">
+            <card action="demo.echo" action-value="{recipe.id}">
+              <row gap="10">
+                <item-icon item="{recipe.item}"/>
+                <column>
+                  <title value="{recipe.title}"/>
+                  <text value="{recipe.summary}"/>
+                </column>
+              </row>
+            </card>
+          </repeat>
+        </section>
+        <panel class="empty-demo" title="Empty State">
+          <list bind="missions.empty" item="mission">
+            <list-row><title value="{mission.title}"/></list-row>
+            <empty-state title="Empty provider" body="This empty-state child is rendered because the list source is empty."/>
+          </list>
+        </panel>
+      </column>
+    </grid>
+  </screen-shell>
+</page>

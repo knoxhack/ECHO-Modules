@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": { "min": 1, "max": 2 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:phase_anchor" },
+        { "type": "minecraft:item", "name": "echorelictech:null_battery" },
+        { "type": "minecraft:item", "name": "echorelictech:guardian_lens" },
+        { "type": "minecraft:item", "name": "echorelictech:unidentified_relic" }
+      ]
+    },
+    {
+      "rolls": { "min": 1, "max": 2 },
+      "entries": [
+        { "type": "minecraft:item", "name": "echorelictech:relic_shard", "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 6 } }] },
+        { "type": "minecraft:item", "name": "echorelictech:old_world_actuator" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+<template>
+  <section class="sc-detail-panel" title="{param.title|DETAIL}">
+    <slot-outlet name="body"/>
+  </section>
+</template>
+

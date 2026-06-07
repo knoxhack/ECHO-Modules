@@ -1,0 +1,11 @@
+<panel class="index-mod-section" title="{param.title|Mod}">
+  <row class="index-mod-section-header" gap="8">
+    <item-icon item="{param.icon|minecraft:book}"/>
+    <column class="index-item-copy">
+      <title class="index-item-title" value="{param.title|Mod}"/>
+      <text class="index-item-subtitle" value="{param.meta|0 items}"/>
+    </column>
+    <button action="index.toggle_mod_section" action-value="{param.id|}" tooltip="{param.tooltip|Collapse or expand this mod section.}">{param.label|Toggle}</button>
+  </row>
+  <slot-outlet name="items"/>
+</panel>

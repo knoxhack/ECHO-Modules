@@ -1,0 +1,4 @@
+<card class="action-card" action="{param.action|noop}" action-page="{param.page|}" tooltip="{param.tooltip|}">
+  <title value="{param.title|Untitled Action}"/>
+  <text value="{param.body|No description provided.}"/>
+</card>

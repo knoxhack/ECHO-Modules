@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/tutorialcore",
+  "title": "TutorialCore Guide Manual",
+  "category": "Guide Books",
+  "summary": "Understand cards, hints, triggers, progress marks, recommendations, and mistake coaching.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "TutorialCore is the adaptive help layer. It listens for progress, triggers, and mistakes, then surfaces cards or hints without forcing every player into a fixed lesson path.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Read new cards when they unlock, but treat them as route coaching rather than chores. Useful help often appears after a concrete action or mistake.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Perform actions, earn progress marks, unlock cards, follow hints, and use recommendations to pick the next useful objective when the route feels unclear.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Cards, hints, flows, tooltips, triggers, guide mode, and mistake coaching work together so help appears close to the thing the player just did.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Wiki guide books report progress when opened. Terminal, HoloMap, Lens, PowerGrid, WorldCore, and MissionCore all publish player actions that can guide help.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If help feels quiet, check that TutorialCore is loaded and that the expected addon is present for the action you are trying.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "tutorialcore",
+    "help"
+  ],
+  "icon": "minecraft:book",
+  "heroArt": "echowiki:textures/gui/guide_books/tutorialcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/tutorialcore/first_steps",
+    "echowiki:guides/tutorialcore/core_loop",
+    "echowiki:guides/tutorialcore/systems",
+    "echowiki:guides/tutorialcore/progression",
+    "echowiki:guides/tutorialcore/integrations",
+    "echowiki:guides/tutorialcore/troubleshooting"
+  ],
+  "sortOrder": 1240
+}

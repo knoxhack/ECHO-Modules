@@ -1,0 +1,51 @@
+{
+  "name": "echoashfallprotocol:radwarden_outpost/terminators",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/wall_section",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/wall_corner",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_01",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_02",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/terminators/terminator_03",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    }
+  ]
+}

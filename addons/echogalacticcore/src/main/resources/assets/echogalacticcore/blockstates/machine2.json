@@ -1,0 +1,191 @@
+{
+    "variants":  {
+                     "inventory":  {
+                                       "textures":  {
+                                                        "particle":  "echogalacticcore:block/machine",
+                                                        "front":  "echogalacticcore:block/electric_compressor",
+                                                        "rear":  "echogalacticcore:block/machine_side",
+                                                        "side":  "echogalacticcore:block/machine_side",
+                                                        "el_in":  "echogalacticcore:block/machine_input",
+                                                        "el_out":  "echogalacticcore:block/machine_side",
+                                                        "top":  "echogalacticcore:block/machine",
+                                                        "base":  "echogalacticcore:block/machine"
+                                                    },
+                                       "model":  "echogalacticcore:electric_compressor_model"
+                                   },
+                     "facing":  {
+                                    "north":  {
+
+                                              },
+                                    "east":  {
+                                                 "textures":  {
+                                                                  "particle":  "echogalacticcore:block/machine",
+                                                                  "front":  "echogalacticcore:block/electric_compressor",
+                                                                  "rear":  "echogalacticcore:block/machine_side",
+                                                                  "side":  "echogalacticcore:block/machine_side",
+                                                                  "el_in":  "echogalacticcore:block/machine_input",
+                                                                  "el_out":  "echogalacticcore:block/machine_side",
+                                                                  "top":  "echogalacticcore:block/machine",
+                                                                  "base":  "echogalacticcore:block/machine"
+                                                              },
+                                                 "y":  90
+                                             },
+                                    "west":  {
+                                                 "textures":  {
+                                                                  "particle":  "echogalacticcore:block/machine",
+                                                                  "front":  "echogalacticcore:block/electric_compressor",
+                                                                  "rear":  "echogalacticcore:block/machine_side",
+                                                                  "side":  "echogalacticcore:block/machine_side",
+                                                                  "el_in":  "echogalacticcore:block/machine_input",
+                                                                  "el_out":  "echogalacticcore:block/machine_side",
+                                                                  "top":  "echogalacticcore:block/machine",
+                                                                  "base":  "echogalacticcore:block/machine"
+                                                              },
+                                                 "y":  270
+                                             },
+                                    "south":  {
+                                                  "textures":  {
+                                                                   "particle":  "echogalacticcore:block/machine",
+                                                                   "front":  "echogalacticcore:block/electric_compressor",
+                                                                   "rear":  "echogalacticcore:block/machine_side",
+                                                                   "side":  "echogalacticcore:block/machine_side",
+                                                                   "el_in":  "echogalacticcore:block/machine_input",
+                                                                   "el_out":  "echogalacticcore:block/machine_side",
+                                                                   "top":  "echogalacticcore:block/machine",
+                                                                   "base":  "echogalacticcore:block/machine"
+                                                               },
+                                                  "y":  180
+                                              }
+                                },
+                     "msm":  {
+                                 "lr":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_lr"
+                                        },
+                                 "lb":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_lb"
+                                        },
+                                 "rl":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_rl"
+                                        },
+                                 "rb":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_rb"
+                                        },
+                                 "bl":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_bl"
+                                        },
+                                 "br":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_compressor",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_br"
+                                        }
+                             },
+                     "type":  {
+                                  "electric_compressor":  {
+                                                              "textures":  {
+                                                                               "particle":  "echogalacticcore:block/machine",
+                                                                               "front":  "echogalacticcore:block/electric_compressor",
+                                                                               "rear":  "echogalacticcore:block/machine_side",
+                                                                               "side":  "echogalacticcore:block/machine_side",
+                                                                               "el_in":  "echogalacticcore:block/machine_input",
+                                                                               "el_out":  "echogalacticcore:block/machine_side",
+                                                                               "top":  "echogalacticcore:block/machine",
+                                                                               "base":  "echogalacticcore:block/machine"
+                                                                           }
+                                                          },
+                                  "circuit_fabricator":  {
+                                                             "textures":  {
+                                                                              "particle":  "echogalacticcore:block/machine",
+                                                                              "front":  "echogalacticcore:block/circuit_fabricator",
+                                                                              "rear":  "echogalacticcore:block/machine_side",
+                                                                              "side":  "echogalacticcore:block/machine_side",
+                                                                              "el_in":  "echogalacticcore:block/machine_input",
+                                                                              "el_out":  "echogalacticcore:block/machine_side",
+                                                                              "top":  "echogalacticcore:block/machine",
+                                                                              "base":  "echogalacticcore:block/machine"
+                                                                          }
+                                                         },
+                                  "oxygen_storage":  {
+                                                         "textures":  {
+                                                                          "particle":  "echogalacticcore:block/machine",
+                                                                          "front":  "echogalacticcore:block/oxygen_storage_module_full",
+                                                                          "rear":  "echogalacticcore:block/oxygen_storage_module_full",
+                                                                          "side":  "echogalacticcore:block/machine_side",
+                                                                          "el_in":  "echogalacticcore:block/machine_oxygen_input",
+                                                                          "el_out":  "echogalacticcore:block/machine_oxygen_output",
+                                                                          "top":  "echogalacticcore:block/machine",
+                                                                          "base":  "echogalacticcore:block/machine"
+                                                                      }
+                                                     },
+                                  "deconstructor":  {
+                                                        "textures":  {
+                                                                         "particle":  "echogalacticcore:block/machine",
+                                                                         "front":  "echogalacticcore:block/deconstructor",
+                                                                         "rear":  "echogalacticcore:block/machine_side",
+                                                                         "side":  "echogalacticcore:block/machine_side",
+                                                                         "el_in":  "echogalacticcore:block/machine_input",
+                                                                         "el_out":  "echogalacticcore:block/machine_side",
+                                                                         "top":  "echogalacticcore:block/machine",
+                                                                         "base":  "echogalacticcore:block/machine"
+                                                                     }
+                                                    }
+                              }
+                 }
+}

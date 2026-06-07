@@ -1,0 +1,15 @@
+{
+  "id": "echothemecore:cyberglass_terminal_boot",
+  "theme": "echothemecore:cyberglass",
+  "type": "terminal_boot",
+  "colors": {
+    "primary": "theme:primary",
+    "secondary": "theme:secondary",
+    "glow": "theme:glow"
+  },
+  "effects": [
+    {"type": "hologram_sweep", "duration_ticks": 24, "strength": "theme:hologram_pulse_strength"},
+    {"type": "energy_edge_pulse", "duration_ticks": 40, "strength": "theme:edge_glow_strength"},
+    {"type": "particle_burst", "particle_style": "theme:particle_style", "count": 24}
+  ]
+}

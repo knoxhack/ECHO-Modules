@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "pack": "generic_survival",
+  "id": "generic_survival:radio_choice",
+  "type": "generic",
+  "title": "Radio Choice UI Action",
+  "metadata": {
+    "screencore_ui": {
+      "params": [
+        { "id": "choice_id", "type": "string", "required": true, "pattern": "[a-z0-9_]+" }
+      ]
+    }
+  },
+  "actions": [
+    { "type": "set_branch_marker", "value": "{param.choice_id}" }
+  ]
+}

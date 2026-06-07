@@ -1,0 +1,56 @@
+.index-mod-section {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: space(sm);
+  gap: space(xs);
+}
+
+list-row {
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+list-row:selected {
+  background: theme(cardSelected);
+  border-color: theme(accent);
+}
+
+.index-item-row, .index-item-card, .index-mod-card {
+  min-height: 52px;
+  padding: space(sm);
+  border-radius: radius(sm);
+}
+
+.index-item-row-inner, .index-mod-section-header {
+  align: center;
+}
+
+.index-item-copy {
+  gap: 2px;
+  min-width: 0;
+}
+
+.index-item-title {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+}
+
+.index-item-subtitle, .index-item-meta {
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+.index-item-actions {
+  wrap: true;
+  gap: space(xs);
+}
+
+.index-item-favorite {
+  min-width: 56px;
+}

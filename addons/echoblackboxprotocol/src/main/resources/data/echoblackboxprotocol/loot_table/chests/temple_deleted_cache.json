@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:deleted_blackbox_fragment"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:core_access_key_right"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:corrupted_ferrite",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:static_fluid",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:deleted_memory_record",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 8
+        }
+      ]
+    }
+  ]
+}

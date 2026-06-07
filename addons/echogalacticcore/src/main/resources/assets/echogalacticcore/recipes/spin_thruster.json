@@ -1,0 +1,31 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:spin_thruster"
+               },
+    "pattern":  [
+                    "   ",
+                    "YWZ",
+                    "PXP"
+                ],
+    "type":  "echogalacticcore:replacable",
+    "key":  {
+                "P":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_advanced"
+                      },
+                "X":  {
+                          "type":  "echogalacticcore:advanced_metal",
+                          "metal":  "meteoric_iron_ingot"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:fuel_canister_partial",
+                          "data":  1
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:engine",
+                          "data":  0
+                      }
+            }
+}

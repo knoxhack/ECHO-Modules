@@ -1,0 +1,15 @@
+{
+  "title": "Recovery Beacon Kit",
+  "order": 130,
+  "icon": "echoconvoyprotocol:emergency_beacon",
+  "deliveryTicks": 220,
+  "requirements": [
+    { "item": "echoconvoyprotocol:emergency_beacon", "count": 1 },
+    { "item": "echoconvoyprotocol:repair_kit", "count": 1 },
+    { "item": "echoconvoyprotocol:fuel_cell", "count": 1 }
+  ],
+  "targetBlockTypes": [
+    "echoconvoyprotocol:cargo_input_crate",
+    "echoconvoyprotocol:fuel_input_tank"
+  ]
+}

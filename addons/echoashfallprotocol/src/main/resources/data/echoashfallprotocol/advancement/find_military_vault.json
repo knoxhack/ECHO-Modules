@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:rusted_metal_sheet"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_military_vault.title",
+      "fallback": "Armory Breach"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_military_vault.desc",
+      "fallback": "Discover a sealed Military Vault."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_military_vault": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:military_vault"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_military_vault"]
+  ]
+}

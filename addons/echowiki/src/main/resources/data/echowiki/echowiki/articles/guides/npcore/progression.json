@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/npcore/progression",
+  "title": "NPCore: Progression",
+  "category": "Guide Books",
+  "summary": "Understand how contacts change as missions, stock, services, and persistence come online.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Early Contacts",
+      "body": "Early NPCs are best used for orientation, simple trades, and safe services. Learn their role before depending on rare stock or mission-gated offers.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Mission Pressure",
+      "body": "When MissionCore is present, a trade can require a mission state. Locked offers are usually telling you to advance the route, not spam the contact.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Persistent Value",
+      "body": "With DataCore, stock, cooldowns, and conversion records can persist instead of living only in memory. That makes repeated visits more predictable on long-running servers.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Upgrade Check",
+      "body": "Do not raise the risk until the current upgrade tier works without emergency improvising.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1099
+}

@@ -1,0 +1,88 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Knoxhack / ECHO Labs"
+description='''Shared ECHO NPC runtime for data-driven NPCs, custom textures, dialogue, trades, services, and vanilla villager replacement.'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO APIs, model helpers, UI primitives, diagnostics patterns, and service conventions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, safe sends, sync, and action rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echodatacore"
+type="optional"
+reason="Persists NPCore trade stock, service cooldowns, and villager conversion records when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="Allows NPCore to open the ScreenCore-backed NPC interaction page when the adapter is enabled and available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Enables server-authoritative NPC trade requiresMission checks when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Future bridge for settlement association, region-aware contacts, and discovered NPC context."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Future bridge for richer NPC model and layered visual profile rendering."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Allows NPCore to expose profile, replacement, and ScreenCore diagnostics through Terminal addon info."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

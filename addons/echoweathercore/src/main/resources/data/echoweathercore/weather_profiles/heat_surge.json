@@ -1,0 +1,25 @@
+{
+  "id": "echoweathercore:heat_surge",
+  "displayName": "Heat Surge",
+  "type": "HEAT_SURGE",
+  "defaultSeverity": "MODERATE",
+  "scope": "REGIONAL",
+  "durationTicks": 8000,
+  "warningTicks": 1800,
+  "weight": 20,
+  "cooldownTicks": 20000,
+  "effects": {
+    "hydrationDrainMultiplier": 1.40,
+    "machineHeatMultiplier": 1.35,
+    "powerGridInstabilityMultiplier": 1.10,
+    "routeRiskModifier": 1.15
+  },
+  "recommendedGear": [
+    "echoweathercore:cryo_heat_cell"
+  ],
+  "terminalWarning": "Heat surge warning. Hydration drain increased.",
+  "echoLines": [
+    "Ambient heat exceeding safe thresholds. Shade advised.",
+    "Machine cooling systems working harder."
+  ]
+}

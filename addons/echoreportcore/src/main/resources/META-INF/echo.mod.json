@@ -1,0 +1,95 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoreportcore",
+  "name": "ECHO: ReportCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "report_core",
+  "entrypoint": "com.knoxhack.echo.reportcore.EchoReportCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echocore",
+    "echoplatformcore",
+    "echoadaptercore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echopackcore",
+    "echomodulegraph",
+    "echohealthcore",
+    "echoagentcore",
+    "echoassetcore"
+  ],
+  "optional": [],
+  "provides": [
+    "reports.contracts",
+    "commandcenter.reports",
+    "launcher.status",
+    "support_bundles.manifest",
+    "release.readiness"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "adapter.neoforge",
+    "schema.registry",
+    "validation.pack",
+    "pack.profile",
+    "pack.repair",
+    "module.graph",
+    "feature.graph",
+    "runtime.health",
+    "ai.task_queue"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "reports.read",
+    "reports.write",
+    "diagnostics.write",
+    "pack.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "localOnly": true,
+    "notes": "ReportCore writes deterministic local reports and support bundle manifests; it does not execute repairs or launch Minecraft.",
+    "nativeEntrypoint": "com.knoxhack.echo.reportcore.EchoReportCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "diagnostics_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

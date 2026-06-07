@@ -1,0 +1,22 @@
+{
+    "variants":  {
+                     "facing=east":  {
+                                         "model":  "echogalacticcore:solar_array_controller"
+                                     },
+                     "facing=west":  {
+                                         "model":  "echogalacticcore:solar_array_controller",
+                                         "y":  180,
+                                         "uvlock":  true
+                                     },
+                     "facing=south":  {
+                                          "model":  "echogalacticcore:solar_array_controller",
+                                          "y":  90,
+                                          "uvlock":  true
+                                      },
+                     "facing=north":  {
+                                          "model":  "echogalacticcore:solar_array_controller",
+                                          "y":  270,
+                                          "uvlock":  true
+                                      }
+                 }
+}

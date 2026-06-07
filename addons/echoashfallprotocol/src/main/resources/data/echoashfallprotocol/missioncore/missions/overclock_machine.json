@@ -1,0 +1,96 @@
+{
+  "id": "echoashfallprotocol:overclock_machine",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 1,
+  "title": "Craft Overclock Module",
+  "briefing": "[ECHO-7] Speed has a cost. Craft an Overclock Module before pushing machine throughput beyond starter-grid limits.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall inventory predicate requiring one Machine Upgrade Overclock module after the Scrap Press is online.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:machine_upgrade_overclock",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_scrap_press"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "overclock_machine",
+    "nativeGameplayHook": "ashfall.first_route.overclock_machine",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.logistics.item_pipe.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "1",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "24",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:overclock_machine:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:overclock_machine/obtain_overclock_module",
+      "type": "obtain_item",
+      "label": "Craft Overclock Module",
+      "detail": "Carry one Overclock Module before pushing powered machine throughput.",
+      "icon": "echoashfallprotocol:machine_upgrade_overclock",
+      "target": "echoashfallprotocol:machine_upgrade_overclock",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_contains",
+        "item": "echoashfallprotocol:machine_upgrade_overclock",
+        "required_items": "echoashfallprotocol:machine_upgrade_overclock=1",
+        "events": "player.inventory_changed,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_upgrade_overclock",
+      "count": 1,
+      "label": "Overclock Module"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:overclock_machine/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cells",
+      "detail": "Power reserve for faster machine cycles."
+    },
+    {
+      "id": "echoashfallprotocol:overclock_machine/reward_redstone",
+      "item": "minecraft:redstone",
+      "count": 4,
+      "label": "Redstone",
+      "detail": "Signal material for logistics routing."
+    }
+  ],
+  "completionText": "[ECHO-7] Overclock module verified. Expect faster cycles and higher FE demand."
+}

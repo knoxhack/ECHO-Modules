@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/vehicle_repair_gantry",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:vehicle_frame_kit"
+    },
+    "title": {
+      "text": "Overhaul a Vehicle Frame"
+    },
+    "description": {
+      "text": "Complete the Vehicle Repair Gantry featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:vehicle_frame_kit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+<page id="test-hot-reload" title="Hot Reload" styles="echoscreencore:advanced_mock">
+  <screen-shell>
+    <header title="ScreenCore Hot Reload" subtitle="Cache clearing for faster EUI iteration"/>
+    <hero-card>
+      <title>Edit, Reload, Reopen</title>
+      <text>Change advanced_mock.eui.css or this page, then run /echoscreencore reload to clear page, style, and component template caches.</text>
+      <row gap="12">
+        <button action="screencore.reload_page" variant="primary">Reload Current Page</button>
+        <button action="screencore.open_page" action-page="echoscreencore:test_components_templates">Open Templates</button>
+      </row>
+    </hero-card>
+    <panel title="Visual Reload Target">
+      <card class="reload-swatch">
+        <text>Edit the reload-swatch style in advanced_mock.eui.css and reload resources.</text>
+      </card>
+      <text>Command coverage: list pages, list styles, list components, reload, reload styles, reload page.</text>
+    </panel>
+  </screen-shell>
+</page>

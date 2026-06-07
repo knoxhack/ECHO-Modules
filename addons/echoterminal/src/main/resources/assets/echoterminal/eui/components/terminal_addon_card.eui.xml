@@ -1,0 +1,4 @@
+<card action="terminal.open_addon_link" action-value="{param.id|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Addon}" subtitle="{param.summary|No addon summary.}"/>
+  <status-chip status="{param.status|ready}" value="{param.badge|ROUTE}"/>
+</card>

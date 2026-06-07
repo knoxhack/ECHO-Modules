@@ -1,0 +1,68 @@
+{
+  "id": "echoashfallprotocol:survivor_cache_sweep",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "title": "Optional: Sweep a Survivor Cache",
+  "optional": true,
+  "briefing": "A survivor cache is the safest way to turn scanner work into supplies. Confirm the marker, recover the cache, and log what it points toward next.",
+  "prerequisites": [
+    "echoashfallprotocol:ashfall_first_month_routes"
+  ],
+  "objectives": [
+    {
+      "id": "scan_cache",
+      "type": "scan_block",
+      "label": "Scan the cache casing",
+      "detail": "Confirm it is a survivor cache and not a hazard lure.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "lens_scan"
+      }
+    },
+    {
+      "id": "recover_supplies",
+      "type": "discover_structure",
+      "label": "Recover useful supplies",
+      "detail": "Take food, filters, repair parts, or map notes if present.",
+      "icon": "echoashfallprotocol:echo_cache",
+      "criteria": {
+        "native_objective_type": "loot_container"
+      }
+    },
+    {
+      "id": "log_cache_route",
+      "type": "establish_route",
+      "label": "Log the cache route",
+      "detail": "Return to Terminal Route Records so What Now can suggest a sensible next step.",
+      "icon": "echoashfallprotocol:return_beacon",
+      "criteria": {
+        "native_objective_type": "terminal_route_record"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "items",
+      "id": "echoashfallprotocol:survivor_cache_supplies",
+      "label": "Food, filters, and small repair parts",
+      "detail": "Food, filters, and small repair parts appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Cache swept. The route is now a known safe resupply point instead of another unknown signal.",
+  "phase": "first_month",
+  "phaseTitle": "First-Month Routes",
+  "phaseOrder": 3,
+  "order": 1,
+  "fieldGuide": "Optional survivor cache sweep that turns a scanned low-risk marker into supplies, route records, and a concrete next-step update.",
+  "category": "exploration",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:echo_cache",
+  "kind": "side",
+  "guidanceLinks": {
+    "indexEntry": "echoashfallprotocol:field_caches",
+    "holomapMarker": "echoashfallprotocol:survivor_cache_signal",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "wikiArticle": "echowiki:guides/ashfall/core_loop",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  }
+}

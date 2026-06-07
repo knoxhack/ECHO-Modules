@@ -1,0 +1,185 @@
+{
+    "id":  "echomultiblockcore:armory_fabricator",
+    "display_name":  "Armory Fabricator",
+    "translation_key":  "multiblock.echomultiblockcore.armory_fabricator",
+    "role":  "COMBAT",
+    "category":  "fabrication",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIIOF",
+                       "FDCDF",
+                       "FOROF",
+                       "FFFFF"
+                   ],
+                   [
+                       "R.F.R",
+                       "FP.PF",
+                       "F.C.F",
+                       "FP.PF",
+                       "A.F.A"
+                   ],
+                   [
+                       "FFFFF",
+                       "F.R.F",
+                       "F.P.F",
+                       "F.R.F",
+                       "FFFFF"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:robotics",
+                         "echo:data"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  150,
+                                        "throughput":  48,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  24,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  48,
+                                        "throughput":  12,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:item_output",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:armory_fabricator/precision_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade",
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:armory_fabricator/power_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:armory_fabricator/security_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:armory_fabricator/fabricate",
+                          "type":  "ASSEMBLY",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "ASSEMBLER",
+                                                 "CUTTER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:fabricate_armory_pattern_core"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "ff8fa3"
+                },
+    "facility_stage":  "P7 GRID RESTORATION",
+    "facility_route":  "armory",
+    "primary_use":  "Fabricates armory pattern cores for modular equipment and defensive readiness.",
+    "integration_hints":  [
+                              "Armory should use recipe/effect contracts for unlocks.",
+                              "Terminal Recipe Index can show required tools and outputs from synced metadata.",
+                              "Armory Pattern Core is the neutral handoff item."
+                          ]
+}

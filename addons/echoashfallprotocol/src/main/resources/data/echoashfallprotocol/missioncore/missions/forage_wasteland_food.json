@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:forage_wasteland_food",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 4,
+  "title": "Confirm Food Buffer",
+  "briefing": "[ECHO-7] Confirm a food buffer before leaving the crash outpost. Starter rations qualify; wild berries extend the margin.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall food-buffer mission as native MissionCore content while preserving the Wild Berry or Emergency Ration completion predicate.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:emergency_ration",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:secure_emergency_water_loop"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "forage_wasteland_food",
+    "nativeGameplayHook": "ashfall.first_route.forage_wasteland_food",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "4",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:forage_wasteland_food:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:forage_wasteland_food/confirm_food_buffer",
+      "type": "custom",
+      "label": "Confirm a food buffer",
+      "detail": "Carry Wild Berries or an Emergency Ration before pushing beyond the pod route.",
+      "icon": "echoashfallprotocol:emergency_ration",
+      "target": "ashfall:food_buffer",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_any",
+        "accepted_items": "echoashfallprotocol:wild_berry,echoashfallprotocol:emergency_ration",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:forage_wasteland_food/reward_fiber",
+      "item": "echoashfallprotocol:plant_fiber",
+      "count": 6,
+      "label": "Plant Fiber",
+      "detail": "Primitive crafting material for shelter and tools."
+    },
+    {
+      "id": "echoashfallprotocol:forage_wasteland_food/reward_berries",
+      "item": "echoashfallprotocol:wild_berry",
+      "count": 4,
+      "label": "Wild Berries",
+      "detail": "Short-term food reserve for the first expedition."
+    },
+    {
+      "id": "echoashfallprotocol:forage_wasteland_food/reward_sapling",
+      "item": "echoashfallprotocol:mutated_sapling",
+      "count": 1,
+      "label": "Mutated Sapling",
+      "detail": "Renewable material source for the pod shelter route."
+    }
+  ],
+  "completionText": "[ECHO-7] Food buffer logged. Mutated sapling recovered from the supply scan; plant it near the pod before expanding the route."
+}

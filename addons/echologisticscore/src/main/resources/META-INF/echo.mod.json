@@ -1,0 +1,86 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echologisticscore",
+  "name": "ECHO: LogisticsCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "logistics_core",
+  "entrypoint": "com.knoxhack.echo.logisticscore.EchoLogisticsCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "logistics.convoy_bindings",
+    "logistics.deliveries",
+    "logistics.routing",
+    "logistics.storage"
+  ],
+  "consumes": [
+    "assets.registry",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "items",
+        "networking"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresMinecraft": false,
+    "contractsOnly": true,
+    "notes": "Defines neutral item, fluid, signal, storage, route, delivery, and convoy logistics contracts for ECHO.",
+    "nativeEntrypoint": "com.knoxhack.echo.logisticscore.EchoLogisticsCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/logisticscore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

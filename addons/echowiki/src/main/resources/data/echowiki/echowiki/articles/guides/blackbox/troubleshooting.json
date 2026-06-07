@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/blackbox/troubleshooting",
+  "title": "Blackbox: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Blackbox failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If a lead feels blocked, inspect the item, check related Wiki entries, and confirm required optional modules are loaded before assuming the route is broken.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If the route becomes confusing, stop consuming clues. Sort fragments by name, revisit the last record, and choose the smallest action that can confirm meaning.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "blackbox",
+    "signals",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:ender_eye",
+  "relatedArticles": [
+    "echowiki:guides/blackbox"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1046
+}

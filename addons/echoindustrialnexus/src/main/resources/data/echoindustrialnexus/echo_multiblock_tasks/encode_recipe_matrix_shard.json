@@ -1,0 +1,21 @@
+{
+  "id": "echoindustrialnexus:encode_recipe_matrix_shard",
+  "display_name": "Encode Recipe Matrix Shard",
+  "category": "matrix_processing",
+  "allowed_multiblocks": ["echoindustrialnexus:recipe_matrix_core"],
+  "required_workcell": "MATRIX_PROCESSING",
+  "required_tools": ["SCANNER", "INJECTOR"],
+  "duration_ticks": 320,
+  "heat_per_second": 2,
+  "animation": "inject",
+  "consume_inputs_on_start": true,
+  "capability_costs": [
+    { "capability": "echo:power_input", "amount": 240, "throughput": 40, "unit": "EP/t" }
+  ],
+  "inputs": [
+    { "item": "echoindustrialnexus:precision_circuit", "count": 1, "label": "Precision Circuit" },
+    { "item": "echoindustrialnexus:data_processor", "count": 1, "label": "Data Processor" },
+    { "item": "minecraft:redstone", "count": 4, "label": "Redstone" }
+  ],
+  "outputs": [{ "item": "echoindustrialnexus:recipe_matrix_shard", "count": 1, "label": "Recipe Matrix Shard" }]
+}

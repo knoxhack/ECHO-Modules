@@ -1,0 +1,87 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echovehiclecore",
+  "name": "ECHO: VehicleCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "vehicle_core",
+  "entrypoint": "com.knoxhack.echo.vehiclecore.EchoVehicleCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [
+    "echocameracore",
+    "echoinputcore",
+    "echorendercore",
+    "echosoundcore"
+  ],
+  "provides": [
+    "vehicle.fuel",
+    "vehicle.hooks",
+    "vehicle.profiles",
+    "vehicle.storage"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data",
+    "world.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "items",
+        "player",
+        "input"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Neutral vehicle profile, fuel, storage, mount, mobility, damage-state, role, and integration hook contract layer.",
+    "nativeEntrypoint": "com.knoxhack.echo.vehiclecore.EchoVehicleCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/vehiclecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

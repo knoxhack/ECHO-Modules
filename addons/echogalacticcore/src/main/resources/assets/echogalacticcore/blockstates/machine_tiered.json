@@ -1,0 +1,394 @@
+{
+    "variants":  {
+                     "inventory":  {
+                                       "textures":  {
+                                                        "particle":  "echogalacticcore:block/machine",
+                                                        "front":  "echogalacticcore:block/electric_furnace",
+                                                        "rear":  "echogalacticcore:block/machine_side",
+                                                        "side":  "echogalacticcore:block/machine_side",
+                                                        "el_in":  "echogalacticcore:block/machine_input",
+                                                        "el_out":  "echogalacticcore:block/machine_side",
+                                                        "top":  "echogalacticcore:block/machine",
+                                                        "base":  "echogalacticcore:block/machine"
+                                                    },
+                                       "model":  "echogalacticcore:electric_furnace_model"
+                                   },
+                     "facing":  {
+                                    "north":  {
+
+                                              },
+                                    "east":  {
+                                                 "textures":  {
+                                                                  "particle":  "echogalacticcore:block/machine",
+                                                                  "front":  "echogalacticcore:block/electric_furnace",
+                                                                  "rear":  "echogalacticcore:block/machine_side",
+                                                                  "side":  "echogalacticcore:block/machine_side",
+                                                                  "el_in":  "echogalacticcore:block/machine_input",
+                                                                  "el_out":  "echogalacticcore:block/machine_side",
+                                                                  "top":  "echogalacticcore:block/machine",
+                                                                  "base":  "echogalacticcore:block/machine"
+                                                              },
+                                                 "y":  90
+                                             },
+                                    "west":  {
+                                                 "textures":  {
+                                                                  "particle":  "echogalacticcore:block/machine",
+                                                                  "front":  "echogalacticcore:block/electric_furnace",
+                                                                  "rear":  "echogalacticcore:block/machine_side",
+                                                                  "side":  "echogalacticcore:block/machine_side",
+                                                                  "el_in":  "echogalacticcore:block/machine_input",
+                                                                  "el_out":  "echogalacticcore:block/machine_side",
+                                                                  "top":  "echogalacticcore:block/machine",
+                                                                  "base":  "echogalacticcore:block/machine"
+                                                              },
+                                                 "y":  270
+                                             },
+                                    "south":  {
+                                                  "textures":  {
+                                                                   "particle":  "echogalacticcore:block/machine",
+                                                                   "front":  "echogalacticcore:block/electric_furnace",
+                                                                   "rear":  "echogalacticcore:block/machine_side",
+                                                                   "side":  "echogalacticcore:block/machine_side",
+                                                                   "el_in":  "echogalacticcore:block/machine_input",
+                                                                   "el_out":  "echogalacticcore:block/machine_side",
+                                                                   "top":  "echogalacticcore:block/machine",
+                                                                   "base":  "echogalacticcore:block/machine"
+                                                               },
+                                                  "y":  180
+                                              }
+                                },
+                     "msm":  {
+                                 "lr":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_lr"
+                                        },
+                                 "lb":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_lb"
+                                        },
+                                 "rl":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_rl"
+                                        },
+                                 "rb":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_rb"
+                                        },
+                                 "bl":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_bl"
+                                        },
+                                 "br":  {
+                                            "textures":  {
+                                                             "particle":  "echogalacticcore:block/machine",
+                                                             "front":  "echogalacticcore:block/electric_furnace",
+                                                             "rear":  "echogalacticcore:block/machine_side",
+                                                             "side":  "echogalacticcore:block/machine_side",
+                                                             "el_in":  "echogalacticcore:block/machine_input",
+                                                             "el_out":  "echogalacticcore:block/machine_side",
+                                                             "top":  "echogalacticcore:block/machine",
+                                                             "base":  "echogalacticcore:block/machine"
+                                                         },
+                                            "model":  "echogalacticcore:machine_tiered_br"
+                                        }
+                             },
+                     "type":  {
+                                  "electric_furnace":  {
+                                                           "textures":  {
+                                                                            "particle":  "echogalacticcore:block/machine",
+                                                                            "front":  "echogalacticcore:block/electric_furnace",
+                                                                            "rear":  "echogalacticcore:block/machine_side",
+                                                                            "side":  "echogalacticcore:block/machine_side",
+                                                                            "el_in":  "echogalacticcore:block/machine_input",
+                                                                            "el_out":  "echogalacticcore:block/machine_side",
+                                                                            "top":  "echogalacticcore:block/machine",
+                                                                            "base":  "echogalacticcore:block/machine"
+                                                                        }
+                                                       },
+                                  "arc_furnace":  {
+                                                      "textures":  {
+                                                                       "particle":  "echogalacticcore:block/advanced/machine",
+                                                                       "front":  "echogalacticcore:block/advanced/electric_furnace",
+                                                                       "rear":  "echogalacticcore:block/advanced/machine_side",
+                                                                       "side":  "echogalacticcore:block/advanced/machine_side",
+                                                                       "el_in":  "echogalacticcore:block/advanced/machine_input",
+                                                                       "el_out":  "echogalacticcore:block/advanced/machine_side",
+                                                                       "top":  "echogalacticcore:block/advanced/machine",
+                                                                       "base":  "echogalacticcore:block/advanced/machine"
+                                                                   }
+                                                  },
+                                  "energy_storage":  {
+                                                         "textures":  {
+                                                                          "particle":  "echogalacticcore:block/machine",
+                                                                          "front":  "echogalacticcore:block/energy_storage_module_0",
+                                                                          "rear":  "echogalacticcore:block/energy_storage_module_0",
+                                                                          "side":  "echogalacticcore:block/machine",
+                                                                          "el_in":  "echogalacticcore:block/machine_input",
+                                                                          "el_out":  "echogalacticcore:block/machine_output",
+                                                                          "top":  "echogalacticcore:block/machine",
+                                                                          "base":  "echogalacticcore:block/machine"
+                                                                      }
+                                                     },
+                                  "cluster_storage":  {
+                                                          "textures":  {
+                                                                           "particle":  "echogalacticcore:block/advanced/machine",
+                                                                           "front":  "echogalacticcore:block/advanced/energy_storage_module_0",
+                                                                           "rear":  "echogalacticcore:block/advanced/energy_storage_module_0",
+                                                                           "side":  "echogalacticcore:block/advanced/machine",
+                                                                           "el_in":  "echogalacticcore:block/advanced/machine_input",
+                                                                           "el_out":  "echogalacticcore:block/advanced/machine_output",
+                                                                           "top":  "echogalacticcore:block/advanced/machine",
+                                                                           "base":  "echogalacticcore:block/advanced/machine"
+                                                                       }
+                                                      }
+                              },
+                     "fill_value":  {
+                                        "0":  {
+
+                                              },
+                                        "1":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_1",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_1"
+                                                               }
+                                              },
+                                        "2":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_2",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_2"
+                                                               }
+                                              },
+                                        "3":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_3",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_3"
+                                                               }
+                                              },
+                                        "4":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_4",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_4"
+                                                               }
+                                              },
+                                        "5":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_5",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_5"
+                                                               }
+                                              },
+                                        "6":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_6",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_6"
+                                                               }
+                                              },
+                                        "7":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_7",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_7"
+                                                               }
+                                              },
+                                        "8":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_8",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_8"
+                                                               }
+                                              },
+                                        "9":  {
+                                                  "textures":  {
+                                                                   "front":  "echogalacticcore:block/energy_storage_module_9",
+                                                                   "rear":  "echogalacticcore:block/energy_storage_module_9"
+                                                               }
+                                              },
+                                        "10":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_10",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_10"
+                                                                }
+                                               },
+                                        "11":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_11",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_11"
+                                                                }
+                                               },
+                                        "12":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_12",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_12"
+                                                                }
+                                               },
+                                        "13":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_13",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_13"
+                                                                }
+                                               },
+                                        "14":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_14",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_14"
+                                                                }
+                                               },
+                                        "15":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_15",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_15"
+                                                                }
+                                               },
+                                        "16":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/energy_storage_module_16",
+                                                                    "rear":  "echogalacticcore:block/energy_storage_module_16"
+                                                                }
+                                               },
+                                        "17":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_0",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_0"
+                                                                }
+                                               },
+                                        "18":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_1",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_1"
+                                                                }
+                                               },
+                                        "19":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_2",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_2"
+                                                                }
+                                               },
+                                        "20":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_3",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_3"
+                                                                }
+                                               },
+                                        "21":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_4",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_4"
+                                                                }
+                                               },
+                                        "22":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_5",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_5"
+                                                                }
+                                               },
+                                        "23":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_6",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_6"
+                                                                }
+                                               },
+                                        "24":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_7",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_7"
+                                                                }
+                                               },
+                                        "25":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_8",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_8"
+                                                                }
+                                               },
+                                        "26":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_9",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_9"
+                                                                }
+                                               },
+                                        "27":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_10",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_10"
+                                                                }
+                                               },
+                                        "28":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_11",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_11"
+                                                                }
+                                               },
+                                        "29":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_12",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_12"
+                                                                }
+                                               },
+                                        "30":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_13",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_13"
+                                                                }
+                                               },
+                                        "31":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_14",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_14"
+                                                                }
+                                               },
+                                        "32":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_15",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_15"
+                                                                }
+                                               },
+                                        "33":  {
+                                                   "textures":  {
+                                                                    "front":  "echogalacticcore:block/advanced/energy_storage_module_16",
+                                                                    "rear":  "echogalacticcore:block/advanced/energy_storage_module_16"
+                                                                }
+                                               }
+                                    }
+                 }
+}

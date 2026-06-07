@@ -1,0 +1,57 @@
+<page id="signalnet" title="SignalNet" styles="signalos:signalnet">
+  <screen-shell>
+    <header title="SignalNet" subtitle="{net.status}"/>
+    <row class="signalnet-controls">
+      <input placeholder="echo.home/path"
+             value="{net.address}"
+             on-change="signalos.signalnet.address"
+             on-enter="signalos.signalnet.navigate"
+             max-length="96"
+             tooltip="Type a SignalNet address and press Enter to navigate."/>
+      <search-box placeholder="Search SignalNet..."
+                  value="{net.query}"
+                  on-change="signalos.signalnet.search"
+                  max-length="60"
+                  clearable="true"
+                  tooltip="Filter available SignalNet pages by title, address, or source."/>
+    </row>
+    <grid columns="168px 1fr" gap="8" stack-below="sm">
+      <panel class="signalnet-list">
+        <row>
+          <title value="Results"/>
+          <status-chip value="{net.count}"/>
+        </row>
+        <list bind="net.results" item="page" selected="{net.selected.address}">
+          <list-row action="signalos.signalnet.select" action-value="{page.address}" value="{page.address}"
+                    tooltip="Open {page.title|this SignalNet page}.">
+            <column>
+              <title value="{page.title|Untitled}"/>
+              <text value="{page.address|-}"/>
+            </column>
+          </list-row>
+          <empty-state title="No SignalNet Pages" body="No curated pages match this tier or search. Clear the search or insert a data drive with more records."/>
+        </list>
+      </panel>
+      <panel class="signalnet-detail">
+        <title value="{net.selected.title|No Page Selected}"/>
+        <status-chip value="{net.selected.address|-}"/>
+        <text value="{net.selected.body|Select a SignalNet result to read it.}"/>
+        <title value="Links"/>
+        <repeat source="net.links" item="link">
+          <list-row action="signalos.signalnet.select" action-value="{link.address}"
+                    tooltip="Follow link to {link.address}.">
+            <column>
+              <text value="{link.label}"/>
+              <text value="{link.address}"/>
+            </column>
+          </list-row>
+        </repeat>
+        <row>
+          <button action="signalos.signalnet.bookmark" tooltip="Save a bookmark record to the active writable drive.">Bookmark</button>
+          <button action="signalos.signalnet.save" tooltip="Save the selected page body to the active writable drive.">Save</button>
+          <status-chip value="{net.drive}"/>
+        </row>
+      </panel>
+    </grid>
+  </screen-shell>
+</page>

@@ -1,0 +1,69 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="ScreenCore-powered ECHO chunk claiming and base protection."
+description='''
+ECHO: Base Grid provides ScreenCore Terminal chunk claiming, member permissions, and server-side base protection.
+'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, config, and service conventions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides guarded serverbound action and clientbound sync packet registration for claim actions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="required"
+reason="Renders the Base Grid management GUI through ScreenCore EUI pages, data providers, and actions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Adds the Base Grid ScreenCore page as an ECHO Terminal navigation tab when Terminal is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Adds known-terrain Base Grid claim overlays and claim/unclaim chunk actions to HoloMap when installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

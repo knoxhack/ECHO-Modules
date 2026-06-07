@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "SBS",
+    "GCG",
+    "SBS"
+  ],
+  "key": {
+    "S": "echonexusprotocol:signal_wire",
+    "B": "echonexusprotocol:blackbox_fragment",
+    "G": "minecraft:glass_pane",
+    "C": "echonexusprotocol:nexus_shard"
+  },
+  "result": {
+    "id": "echonexusprotocol:memory_decoder",
+    "count": 1
+  }
+}

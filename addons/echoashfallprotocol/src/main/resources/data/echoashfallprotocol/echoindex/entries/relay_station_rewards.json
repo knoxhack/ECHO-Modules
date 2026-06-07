@@ -1,0 +1,22 @@
+{
+  "id": "echoashfallprotocol:relay_station_rewards",
+  "category": "ashfall.exploration",
+  "title": "Relay Station Rewards",
+  "subtitle": "Useful, not progression-skipping",
+  "summary": "Relay rewards should support power, scanning, repair, and next-route preparation without bypassing later systems.",
+  "body": [
+    "The relay cache loot table already contains power cells, circuit boards, scrap wire, energy cells, reinforced cable, scanner chance, filter chance, schematic chance, and relay logs.",
+    "This is strong enough to feel like a major route but should not replace later research, faction, or reactor rewards.",
+    "Manual smoke should confirm the cache is not empty, not duplicated, and not handing out late-game quantities too early."
+  ],
+  "links": {
+    "mission": "echoashfallprotocol:first_relay_station_route",
+    "holomapMarker": "echoashfallprotocol:relay_cache_lockbox",
+    "lootTable": "echoashfallprotocol:chests/relay_station_cache"
+  },
+  "tags": [
+    "ashfall",
+    "cache",
+    "rewards"
+  ]
+}

@@ -1,0 +1,68 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Official ECHO magic knowledge layer for the Arcana Division."
+description='''
+ECHO: Arcane Index adds Arcana Division categories, pages, relations, and discovery-state
+contracts to ECHO: Index. JEI remains optional compatibility, not the source of truth.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the shared Index content provider contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides shared Arcana registries and Aether Signal definitions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="required"
+reason="ECHO: Arcane Index extends the official ECHO: Index knowledge browser."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Adds Veilbound Studies pages when ARCANA: Veilbound Studies is installed."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="jei"
+type="optional"
+reason="JEI may show fallback recipe views, but Arcane Index remains the official magic knowledge system."
+versionRange="[29.5.0.26,)"
+ordering="NONE"
+side="BOTH"

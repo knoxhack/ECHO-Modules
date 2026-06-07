@@ -1,0 +1,90 @@
+{
+  "targets": {
+    "rendercore_main_copy": {},
+    "rendercore_bloom_swap": {},
+    "rendercore_bloom_blur": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/blit",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": false
+        }
+      ],
+      "output": "rendercore_main_copy"
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "echorendercore:bloom_mask",
+          "bilinear": true
+        }
+      ],
+      "output": "rendercore_bloom_swap",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [1.0, 0.0]
+          },
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 1.35
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "rendercore_bloom_swap",
+          "bilinear": true
+        }
+      ],
+      "output": "rendercore_bloom_blur",
+      "uniforms": {
+        "BlurConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [0.0, 1.0]
+          },
+          {
+            "name": "Radius",
+            "type": "float",
+            "value": 1.35
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "echorendercore:post/bloom_composite",
+      "inputs": [
+        {
+          "sampler_name": "Main",
+          "target": "rendercore_main_copy",
+          "bilinear": false
+        },
+        {
+          "sampler_name": "Bloom",
+          "target": "rendercore_bloom_blur",
+          "bilinear": true
+        }
+      ],
+      "output": "minecraft:main"
+    }
+  ]
+}

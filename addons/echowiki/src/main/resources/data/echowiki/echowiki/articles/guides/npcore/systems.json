@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/npcore/systems",
+  "title": "NPCore: Important Systems",
+  "category": "Guide Books",
+  "summary": "Recognize the profile, visual, dialogue, trade, service, faction, and replacement systems behind contacts.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Profile Chain",
+      "body": "An NPC profile points to its visual profile, dialogue tree, trade set, service set, faction, ambient lines, and interaction range.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Action Surfaces",
+      "body": "Dialogue moves the conversation, trades exchange items with stock rules, and services spend a cost for a configured result or cooldown.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Replacement Contacts",
+      "body": "Villager replacement data can map vanilla professions or wandering traders to ECHO profiles. In play, this turns ordinary village roles into authored contacts.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1098
+}

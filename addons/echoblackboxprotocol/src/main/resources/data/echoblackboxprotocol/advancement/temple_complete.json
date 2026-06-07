@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:nexus_core_access_key",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:nexus_core_access_key"
+                             },
+                    "title":  "Temple Lock Opened",
+                    "description":  "Complete the Core Access Temple key ritual.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "nexus_key":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:nexus_core_access_key"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "nexus_key"
+                         ]
+                     ]
+}

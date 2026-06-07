@@ -1,0 +1,23 @@
+{
+  "id": "echonpcore:roaming_scavenger_services",
+  "services": [
+    {
+      "id": "road_hint",
+      "title": "Road Rumor",
+      "description": "Provides a trader route hint and syncs local world context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 2400
+    },
+    {
+      "id": "refresh_map",
+      "title": "Refresh Local Map",
+      "description": "Asks map providers to rebuild nearby NPC contact markers.",
+      "cost": [],
+      "action": "map_refresh",
+      "amount": 1,
+      "cooldown": 1200
+    }
+  ]
+}

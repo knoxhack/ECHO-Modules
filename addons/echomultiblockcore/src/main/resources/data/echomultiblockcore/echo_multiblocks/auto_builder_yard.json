@@ -1,0 +1,178 @@
+{
+    "id":  "echomultiblockcore:auto_builder_yard",
+    "display_name":  "Auto Builder Yard",
+    "translation_key":  "multiblock.echomultiblockcore.auto_builder_yard",
+    "role":  "INFRASTRUCTURE",
+    "category":  "construction",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIIOF",
+                       "FDCDF",
+                       "FOROF",
+                       "FFFFF"
+                   ],
+                   [
+                       "A...A",
+                       "FR.RF",
+                       "P.C.P",
+                       "FR.RF",
+                       "A...A"
+                   ],
+                   [
+                       "FFFFF",
+                       "F.P.F",
+                       "F.R.F",
+                       "F.P.F",
+                       "FFFFF"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:auto_builder",
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:terminal_tab",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:auto_builder",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "builder"
+                                    },
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  32,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  64,
+                                        "throughput":  16,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:auto_builder_yard/reach_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:auto_builder_yard/speed_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade",
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:auto_builder_yard/inventory_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:auto_builder_yard/construction",
+                          "type":  "ASSEMBLY",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "ASSEMBLER",
+                                                 "CLAMP"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:stage_construction_planner"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "66ff99"
+                },
+    "facility_stage":  "P7 GRID RESTORATION",
+    "facility_route":  "construction",
+    "primary_use":  "Coordinates advanced blueprint construction and exact-material auto-builder assistance.",
+    "integration_hints":  [
+                              "Auto Builder refuses wrong, occupied, unloaded, or protected cells without item loss.",
+                              "Build assist previews must remain client-only and server-authoritative.",
+                              "Construction Planner is the neutral handoff item."
+                          ]
+}

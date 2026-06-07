@@ -1,0 +1,14 @@
+.recipe-grid {
+  columns: 1fr auto 1fr;
+  gap: space(md);
+}
+
+.search-placeholder {
+  min-height: 30px;
+  color: theme(textMuted);
+  background: theme(overlay);
+}
+
+.machine-card {
+  border-color: theme(info);
+}

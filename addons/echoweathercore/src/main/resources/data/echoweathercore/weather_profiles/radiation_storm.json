@@ -1,0 +1,27 @@
+{
+  "id": "echoweathercore:radiation_storm",
+  "displayName": "Radiation Storm",
+  "type": "RADIATION_STORM",
+  "defaultSeverity": "SEVERE",
+  "scope": "REGIONAL",
+  "durationTicks": 8000,
+  "warningTicks": 3000,
+  "weight": 20,
+  "cooldownTicks": 36000,
+  "effects": {
+    "radiationExposureMultiplier": 1.80,
+    "scannerReliabilityMultiplier": 0.65,
+    "holomapReliabilityMultiplier": 0.80,
+    "powerGridInstabilityMultiplier": 1.20,
+    "mobAggressionMultiplier": 1.15,
+    "routeRiskModifier": 1.60
+  },
+  "recommendedGear": [
+    "echoweathercore:faraday_coil"
+  ],
+  "terminalWarning": "Radiation storm incoming. Seek shielded shelter.",
+  "echoLines": [
+    "Radiation spike confirmed. Do not linger.",
+    "Scanner false positives likely during storm peak."
+  ]
+}

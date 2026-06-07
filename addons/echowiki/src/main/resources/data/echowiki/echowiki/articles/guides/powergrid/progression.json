@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/powergrid/progression",
+  "title": "PowerGrid: Progression",
+  "category": "Guide Books",
+  "summary": "Upgrade PowerGrid in stable steps without skipping the safety layer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Upgrade Path",
+      "body": "Progress by strengthening the weakest segment before adding load. Upgrade generation, storage, distribution, protection, and diagnostics in the order failures appear.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Do Not Skip The Middle",
+      "body": "The middle step is usually boring because it is the safety layer: storage, markers, meters, counters, backups, or notes. Build that layer before raising the risk.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Ready For More",
+      "body": "You are ready to push PowerGrid further when the current loop feels repeatable, the failure signs are familiar, and the next upgrade has a clear purpose.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "item",
+      "title": "Upgrade Anchor",
+      "body": "Use this as the upgrade checkpoint before raising route risk.",
+      "tone": "tip",
+      "item": "minecraft:redstone",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Redstone",
+      "subtitle": "Progression checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy",
+    "progression",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone",
+  "relatedArticles": [
+    "echowiki:guides/powergrid"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1124
+}

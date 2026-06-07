@@ -1,0 +1,50 @@
+{
+  "id": "echoashfallprotocol:ashfall_midgame_scans",
+  "title": "Ashfall Midgame Hazard Scans",
+  "rows": [
+    {
+      "target": "bio_lab_toxic_entry",
+      "category": "lab",
+      "text": "Bio lab entry is contaminated. Scan the threshold, confirm filters and clean water, then read the lab route entry before committing.",
+      "riskLabel": "toxic lab",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "mission": "echoashfallprotocol:enter_bio_lab",
+      "holomapMarker": "echoashfallprotocol:bio_lab_toxic_entry",
+      "routeLink": "echoashfallprotocol:bio_lab",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "reactor_warning_marker",
+      "category": "hazard",
+      "text": "Radiation route detected. Limit exposure, carry RadAway, and return to the med bay anchor before chaining objectives.",
+      "riskLabel": "radiation",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "mission": "echoashfallprotocol:survey_reactor_ruin",
+      "holomapMarker": "echoashfallprotocol:reactor_radiation_route",
+      "routeLink": "echoashfallprotocol:reactor_ruin",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "field_med_bay_console",
+      "category": "medical",
+      "text": "Med bay can convert route damage into recovery. Check mutation status, treatment supplies, and next-route readiness here.",
+      "riskLabel": "safe recovery",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "mission": "echoashfallprotocol:use_field_med_bay",
+      "holomapMarker": "echoashfallprotocol:field_med_bay_anchor",
+      "routeLink": "echoashfallprotocol:field_med_bay",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "military_vault_seal",
+      "category": "vault",
+      "text": "Vault breach will mix combat, loot, and data-log recovery. Read the route entry and confirm medical stock before opening.",
+      "riskLabel": "armed vault",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "mission": "echoashfallprotocol:clear_military_vault",
+      "holomapMarker": "echoashfallprotocol:military_vault_warning",
+      "routeLink": "echoashfallprotocol:military_vault",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    }
+  ]
+}

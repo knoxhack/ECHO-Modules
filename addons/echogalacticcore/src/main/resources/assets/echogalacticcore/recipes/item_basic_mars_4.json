@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:item_basic_mars",
+                   "data":  4
+               },
+    "pattern":  [
+                    "XWX",
+                    "XYX",
+                    " Z "
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "item":  "minecraft:diamond"
+                      },
+                "X":  {
+                          "item":  "minecraft:leather"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/slimeball"
+                      },
+                "Z":  {
+                          "item":  "minecraft:chest"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

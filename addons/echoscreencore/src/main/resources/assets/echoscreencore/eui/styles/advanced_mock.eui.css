@@ -1,0 +1,105 @@
+app-shell {
+  padding: space(lg);
+  gap: space(md);
+  background: theme(terminalBackground);
+}
+
+app-header,
+app-footer {
+  min-height: 42px;
+  padding: space(md);
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+app-sidebar,
+app-content,
+detail-panel,
+inspector-panel {
+  padding: space(md);
+  gap: space(sm);
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+nav-list {
+  gap: space(xs);
+}
+
+nav-item {
+  min-height: 36px;
+  padding: space(sm);
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+nav-item[selected],
+nav-item[active="true"] {
+  background: theme(cardSelected);
+  border-color: theme(accent);
+}
+
+command-card,
+.action-card {
+  padding: space(md);
+  gap: space(sm);
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+command-card[variant="primary"],
+.action-card[variant="primary"] {
+  border-color: theme(accent);
+}
+
+select,
+dropdown {
+  height: 30px;
+  padding: 6px 10px;
+  background: theme(buttonBg);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  color: theme(textPrimary);
+}
+
+select[disabled],
+dropdown[disabled] {
+  background: theme(disabled);
+  border-color: theme(disabled);
+  color: theme(textMuted);
+}
+
+dialog,
+modal {
+  width: 420px;
+  height: 210px;
+  padding: space(lg);
+  gap: space(sm);
+  background: theme(panel);
+  border-color: theme(borderStrong);
+  border-width: 1;
+}
+
+tooltip {
+  padding: space(xs);
+}
+
+.status-chip-row {
+  height: 22px;
+  align: center;
+}
+
+.two-column-shell {
+  gap: space(md);
+}
+
+.reload-swatch {
+  height: 44px;
+  background: theme(accentDim);
+  border-color: theme(accent);
+  border-width: 1;
+}

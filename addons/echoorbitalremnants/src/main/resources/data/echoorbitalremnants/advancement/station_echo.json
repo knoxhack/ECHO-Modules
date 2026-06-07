@@ -1,0 +1,31 @@
+{
+  "parent": "echoorbitalremnants:launch_prep",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:station_life_support_core"
+    },
+    "title": {
+      "text": "Station ECHO"
+    },
+    "description": {
+      "text": "Recover Station ECHO systems and the first truth about the fallen pod."
+    }
+  },
+  "criteria": {
+    "life_support": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:station_life_support_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "life_support"
+    ]
+  ]
+}

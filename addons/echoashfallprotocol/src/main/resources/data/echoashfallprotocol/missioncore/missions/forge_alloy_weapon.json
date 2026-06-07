@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:forge_alloy_weapon",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 5,
+  "title": "Forge an Alloy Weapon",
+  "briefing": "[ECHO-7] Guardian routes will not respect primitive tools. Forge an Alloy Blade or Alloy Hammer before entering buried control nodes.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:machine_upgrade_speed",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_isotope_refiner"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "forge_alloy_weapon",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.forge_alloy_weapon",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "64",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:forge_alloy_weapon:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:forge_alloy_weapon/forge_alloy_weapon",
+      "type": "custom",
+      "label": "Forge an Alloy Weapon",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:machine_upgrade_speed",
+      "target": "echoashfallprotocol:forge_alloy_weapon",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.forge_alloy_weapon"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:forge_alloy_weapon/reward_0",
+      "item": "echoashfallprotocol:machine_upgrade_speed",
+      "count": 1,
+      "label": "Machine Upgrade Speed",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:forge_alloy_weapon/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:forge_alloy_weapon/reward_1",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:forge_alloy_weapon/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Alloy weapon verified. Your route can now survive midgame defenders instead of merely disturbing them."
+}

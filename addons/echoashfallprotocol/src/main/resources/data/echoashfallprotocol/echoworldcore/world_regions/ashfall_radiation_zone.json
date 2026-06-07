@@ -1,0 +1,15 @@
+{
+  "id": "echoashfallprotocol:radiation_zone",
+  "type": "radiation_zone",
+  "displayName": "Radiation Zone",
+  "summary": "Fallout-heavy terrain around reactor ruins and exposed radiation pockets.",
+  "biomeIds": ["echoashfallprotocol:radiation_zone"],
+  "biomeTags": ["echoashfallprotocol:radiation_biomes", "echoashfallprotocol:hazardous_wasteland_biomes", "echoashfallprotocol:has_structure/radiation_zone"],
+  "structureIds": ["echoashfallprotocol:radiation_zone", "echoashfallprotocol:radiation_zone_landmarks", "echoashfallprotocol:reactor_ruin"],
+  "hazardIds": ["echoworldcore:hazard/radiation"],
+  "discoveryId": "echoashfallprotocol:radiation_zone",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/radiation_zone",
+  "audioProfileId": "echoworldcore:ambience/radiation_zone",
+  "sortOrder": 40
+}

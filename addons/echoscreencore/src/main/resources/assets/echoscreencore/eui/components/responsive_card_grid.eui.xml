@@ -1,0 +1,3 @@
+<grid class="responsive-card-grid" columns="{param.columns|1fr 1fr 1fr}" gap="{param.gap|12}" stack-below="{param.stackBelow|md}" dense-below="{param.denseBelow|sm}">
+  <slot-outlet name="cards"/>
+</grid>

@@ -1,0 +1,14 @@
+{
+  "title": "Field Supply Convoy",
+  "order": 100,
+  "icon": "echoconvoyprotocol:field_supply_crate",
+  "deliveryTicks": 180,
+  "requirements": [
+    { "item": "echoconvoyprotocol:field_supply_crate", "count": 1 },
+    { "item": "echoconvoyprotocol:fuel_cell", "count": 1 }
+  ],
+  "targetBlockTypes": [
+    "echoconvoyprotocol:cargo_input_crate",
+    "echoconvoyprotocol:fuel_input_tank"
+  ]
+}

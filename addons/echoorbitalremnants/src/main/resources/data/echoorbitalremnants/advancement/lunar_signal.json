@@ -1,0 +1,31 @@
+{
+  "parent": "echoorbitalremnants:station_echo",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:orbital_shuttle"
+    },
+    "title": {
+      "text": "Lunar Signal"
+    },
+    "description": {
+      "text": "Follow station memory toward the Nexus-scarred Moon."
+    }
+  },
+  "criteria": {
+    "shuttle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:orbital_shuttle"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shuttle"
+    ]
+  ]
+}

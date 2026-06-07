@@ -1,0 +1,96 @@
+{
+  "schema": {
+    "id": "echo.ai",
+    "version": "1",
+    "kind": "echo_ai_metadata"
+  },
+  "module": "echoterminal",
+  "summary": "In-game ECHO runtime terminal surface for missions, diagnostics, system tabs, and pack-aware operator workflows.",
+  "owners": [
+    {
+      "name": "KnoxHack",
+      "role": "platform owner",
+      "areas": [
+        "terminal UI",
+        "diagnostics",
+        "pack-aware runtime surfaces"
+      ]
+    }
+  ],
+  "importantPackages": [
+    "com.knoxhack.echo.terminal",
+    "com.knoxhack.echo.terminal.client",
+    "com.knoxhack.echo.terminal.integration"
+  ],
+  "mainClasses": [
+    "EchoTerminal",
+    "TerminalScreen",
+    "TerminalTabRegistry"
+  ],
+  "commonTasks": [
+    {
+      "id": "polish_terminal_surface",
+      "label": "Polish terminal surface",
+      "summary": "Improve density, selected state, and detail panes while preserving server safety.",
+      "suggestedLanes": [
+        "ui_agent",
+        "diagnostics_agent"
+      ],
+      "acceptanceHints": [
+        "build_passes",
+        "docs_updated",
+        "server_client_safe"
+      ]
+    }
+  ],
+  "doNotEdit": [
+    "generated resources",
+    "user save data"
+  ],
+  "protectedFiles": [
+    {
+      "pathPattern": "src/main/resources/data/**/terminal_user_state/**",
+      "reason": "Potential player or pack-authored state.",
+      "requiresHumanReview": true
+    }
+  ],
+  "safeEditZones": [
+    "src/main/java/**",
+    "src/main/resources/assets/echoterminal/**",
+    "docs/**"
+  ],
+  "requiresHumanReview": false,
+  "testCommands": [
+    ".\\gradlew :echoterminal:compileJava -PechoAddonSet=beta"
+  ],
+  "buildCommands": [
+    ".\\gradlew build -PechoAddonSet=beta"
+  ],
+  "recommendedAgentLanes": [
+    "ui_agent",
+    "diagnostics_agent"
+  ],
+  "knownScreens": [
+    "terminal_main",
+    "terminal_system_tab",
+    "terminal_mission_browser"
+  ],
+  "knownRegistries": [
+    "terminal.tabs",
+    "terminal.commands"
+  ],
+  "commonDiagnostics": [
+    {
+      "code": "ECHO-METADATA-MISSING-OPTIONAL-INTEGRATION",
+      "severity": "NOTICE",
+      "category": "module_dependency",
+      "summary": "An optional integration is unavailable.",
+      "usualFix": "Run in degraded mode unless the pack profile requires that feature."
+    }
+  ],
+  "promptHints": [
+    "Keep terminal client UI isolated from common/server contracts.",
+    "Prefer feature checks over direct hard dependencies on mission, theme, or pack modules.",
+    "Do not authorize arbitrary shell commands through terminal metadata."
+  ]
+}

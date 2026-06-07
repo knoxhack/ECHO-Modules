@@ -1,0 +1,31 @@
+<page id="test-inputs" title="Input Test" styles="dynamic_mock">
+  <screen-shell>
+    <header title="Inputs And Toggles" subtitle="Bound search value, on-change actions, on-enter actions, and checkbox state"/>
+    <grid columns="1fr 1fr" gap="16">
+      <panel title="Search Pattern">
+        <search-box id="mission-search"
+                    placeholder="Search missions..."
+                    value="{filters.search}"
+                    on-change="terminal.set_search"
+                    on-enter="terminal.apply_search"
+                    max-length="48"/>
+        <text value="Current search: {filters.search|empty}"/>
+        <list bind="missions.demo" item="mission" selected="{selectedMission.id}">
+          <list-row action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}">
+            <title value="{mission.title}"/>
+            <text value="{mission.summary}"/>
+          </list-row>
+        </list>
+      </panel>
+      <panel title="Toggles">
+        <toggle label="High contrast demo toggle"
+                checked="{toggles.highContrastDemo}"
+                on-change="demo.toggle"/>
+        <checkbox label="Filter completed entries"
+                  checked="false"
+                  on-change="demo.echo"/>
+        <text value="Toggle value: {toggles.highContrastDemo|false}"/>
+      </panel>
+    </grid>
+  </screen-shell>
+</page>

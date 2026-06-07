@@ -1,0 +1,5 @@
+<row class="cyberglass-action-row {param.class|}" gap="{param.gap|8}">
+  <button action="{param.secondaryAction|screencore.close_modal}" action-value="{param.secondaryValue|}" variant="ghost">{param.secondaryLabel|Cancel}</button>
+  <button action="{param.primaryAction|noop}" action-value="{param.primaryValue|}" variant="primary" autofocus="{param.autofocus|true}">{param.primaryLabel|Confirm}</button>
+  <slot-outlet name="extra"/>
+</row>

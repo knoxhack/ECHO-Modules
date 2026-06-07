@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:hazard_survival",
+  "category": "echoindex:hazards",
+  "title": "Hazard Survival",
+  "subtitle": "Threats And Counters",
+  "summary": "Hazard records connect toxic air, radiation, weather, hydration, filters, armor, and recovery supplies to concrete item lookups.",
+  "body": "World and chapter addons should publish hazard context through entries and source facts. Players should be able to search both the danger and the countermeasure.",
+  "icon": "minecraft:shield",
+  "tags": ["hazard", "radiation", "air", "water", "filter"],
+  "related": ["echoindex:source_facts", "echoindex:recovery_resources"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 0
+}

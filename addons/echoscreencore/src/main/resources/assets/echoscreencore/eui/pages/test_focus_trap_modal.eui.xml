@@ -1,0 +1,16 @@
+<page id="test-focus-trap-modal" title="Focus Trap Modal" styles="echoscreencore:advanced_mock,echoscreencore:focus_states">
+  <screen-shell>
+    <header title="Modal Focus Trap" subtitle="Open the dialog, then Tab through the modal buttons"/>
+    <button action="screencore.open_modal" action-target="focus-trap-demo" autofocus="true" variant="primary">Open Focus Trap Dialog</button>
+    <button action="noop">Background Button</button>
+    <dialog id="focus-trap-demo" size="md" close-on-outside="false">
+      <dialog-title>Focus Trap Demo</dialog-title>
+      <dialog-body><text>Tab stays inside this dialog until Escape or Close.</text></dialog-body>
+      <dialog-actions>
+        <button action="noop" autofocus="true">First</button>
+        <button action="noop">Second</button>
+        <button action="screencore.close_modal" variant="primary">Close</button>
+      </dialog-actions>
+    </dialog>
+  </screen-shell>
+</page>

@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:sporebound_elder",
+  "name": "Sporebound Elder",
+  "job_site": "echoashfallprotocol:spore_garden_poi",
+  "work_sound": "minecraft:entity.villager.work_librarian",
+  "trades": {
+    "novice": {
+      "max_trades": 16,
+      "max_uses": 12,
+      "trades": [
+        {
+          "input": { "item": "minecraft:wheat_seeds", "count": 24 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 2 },
+          "output": { "item": "minecraft:wheat", "count": 6 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 3 },
+          "output": { "item": "minecraft:bone_meal", "count": 8 }
+        }
+      ]
+    },
+    "apprentice": {
+      "max_trades": 12,
+      "max_uses": 10,
+      "reputation_required": 50,
+      "trades": [
+        {
+          "input": { "item": "minecraft:pumpkin", "count": 8 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:melon", "count": 8 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 8 },
+          "output": { "item": "echoashfallprotocol:mutated_sapling" }
+        }
+      ]
+    },
+    "journeyman": {
+      "max_trades": 8,
+      "max_uses": 8,
+      "reputation_required": 100,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 10 },
+          "output": { "item": "minecraft:clock" }
+        },
+        {
+          "input": { "item": "echoashfallprotocol:toxic_moss", "count": 8 },
+          "output": { "item": "minecraft:emerald", "count": 3 }
+        }
+      ]
+    },
+    "expert": {
+      "max_trades": 6,
+      "max_uses": 6,
+      "reputation_required": 200,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 20 },
+          "output": { "item": "echoashfallprotocol:mutagen_vial" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 16 },
+          "output": { "item": "minecraft:suspicious_stew" }
+        }
+      ]
+    },
+    "master": {
+      "max_trades": 4,
+      "max_uses": 4,
+      "reputation_required": 300,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 40 },
+          "output": { "item": "echoashfallprotocol:hide_wrap" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 28 },
+          "output": { "item": "echoashfallprotocol:rare_tech_schematic" }
+        }
+      ]
+    }
+  }
+}

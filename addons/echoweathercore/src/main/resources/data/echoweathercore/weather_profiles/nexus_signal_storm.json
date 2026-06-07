@@ -1,0 +1,28 @@
+{
+  "id": "echoweathercore:nexus_signal_storm",
+  "displayName": "Nexus Signal Storm",
+  "type": "NEXUS_SIGNAL_STORM",
+  "defaultSeverity": "SEVERE",
+  "scope": "REGIONAL",
+  "durationTicks": 6000,
+  "warningTicks": 3600,
+  "weight": 10,
+  "cooldownTicks": 48000,
+  "effects": {
+    "scannerReliabilityMultiplier": 0.40,
+    "holomapReliabilityMultiplier": 0.50,
+    "droneScoutReliability": 0.30,
+    "droneRecallRisk": 1.40,
+    "powerGridInstabilityMultiplier": 1.30,
+    "routeRiskModifier": 1.50
+  },
+  "recommendedGear": [
+    "echoweathercore:signal_anchor",
+    "echoweathercore:signal_stabilizer"
+  ],
+  "terminalWarning": "Nexus signal storm detected. Navigation data cannot be trusted.",
+  "echoLines": [
+    "If I contradict myself during this storm, ignore the second instruction.",
+    "Reality distortion increasing. Trust analog systems."
+  ]
+}

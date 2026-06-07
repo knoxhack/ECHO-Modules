@@ -1,0 +1,10 @@
+<dialog id="{param.id|index-confirm}" size="{param.size|md}" close-on-outside="true">
+  <dialog-title value="{param.title|Confirm Index Action}"/>
+  <dialog-body>
+    <text value="{param.body|Confirm this Index operation?}"/>
+  </dialog-body>
+  <dialog-actions gap="10">
+    <button action="screencore.close_modal" variant="ghost">Cancel</button>
+    <button action="{param.confirmAction|noop}" action-value="{param.confirmValue|}" variant="{param.variant|danger}">{param.confirmLabel|Confirm}</button>
+  </dialog-actions>
+</dialog>

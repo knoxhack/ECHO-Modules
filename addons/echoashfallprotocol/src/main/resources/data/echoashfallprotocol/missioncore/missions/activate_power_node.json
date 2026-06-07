@@ -1,0 +1,99 @@
+{
+  "id": "echoashfallprotocol:activate_power_node",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 1,
+  "title": "Place a Power Node",
+  "briefing": "[ECHO-7] Build and place a Power Node to rejoin the damaged grid. Treat this as your first controlled grid anchor, not the final Core lock.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:power_node",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:deploy_stationary_scanner"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "activate_power_node",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.activate_power_node",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "69",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:activate_power_node:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "player.machine_powered"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:activate_power_node/power_node",
+      "type": "place_block",
+      "label": "Place Power Node",
+      "detail": "Place 1 Power Node for the Ashfall route; live node activation also reports the route contract.",
+      "icon": "echoashfallprotocol:power_node",
+      "target": "echoashfallprotocol:power_node",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:power_node"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:power_node",
+      "count": 1,
+      "label": "Power Node"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:activate_power_node/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:activate_power_node/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:activate_power_node/reward_1",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:activate_power_node/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Grid node placed. The route is responding; now connect outposts before the guardian sweep."
+}

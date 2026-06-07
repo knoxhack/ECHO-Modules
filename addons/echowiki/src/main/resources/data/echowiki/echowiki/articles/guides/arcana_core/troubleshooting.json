@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/arcana_core/troubleshooting",
+  "title": "Arcana Core Field: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose missing Arcana records by checking providers, ids, and optional loading boundaries.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If a record vanishes, first check the provider registration and required mod id. A missing optional addon should hide enrichment, not crash the base route.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Shrink The Test",
+      "body": "Test a single definition in Arcana Core before testing every consuming surface. One stable record is easier to debug than a full route.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Fix ids, then provider registration, then UI links. Changing all three at once can make a bad bridge look like bad content.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcana_core",
+    "arcana",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "relatedArticles": [
+    "echowiki:guides/arcana_core"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1256
+}

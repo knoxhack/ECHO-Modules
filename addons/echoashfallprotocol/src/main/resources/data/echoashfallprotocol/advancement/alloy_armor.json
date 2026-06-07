@@ -1,0 +1,19 @@
+{
+  "parent": "echoashfallprotocol:alloy_blade",
+  "display": {
+    "icon": {"id": "echoashfallprotocol:alloy_chestplate"},
+    "title": {"translate": "advancements.EchoAshfallProtocol.alloy_armor.title", "fallback": "Steel Skin"},
+    "description": {"translate": "advancements.EchoAshfallProtocol.alloy_armor.desc", "fallback": "Equip a full set of Alloy Armor."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_helmet":     {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "echoashfallprotocol:alloy_helmet"}]}},
+    "has_chestplate": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "echoashfallprotocol:alloy_chestplate"}]}},
+    "has_leggings":   {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "echoashfallprotocol:alloy_leggings"}]}},
+    "has_boots":      {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"items": "echoashfallprotocol:alloy_boots"}]}}
+  },
+  "requirements": [["has_helmet"], ["has_chestplate"], ["has_leggings"], ["has_boots"]]
+}

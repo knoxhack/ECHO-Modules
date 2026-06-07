@@ -1,0 +1,558 @@
+{
+  "music.menu.ashfall": {
+    "sounds": [{ "name": "echosoundcore:music/menu/menu_ashfall_theme", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.menu"
+  },
+  "music.menu.nexus": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.menu"
+  },
+  "music.menu.orbital": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.menu"
+  },
+  "music.menu.blackbox": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.menu"
+  },
+  "music.gameplay.safe_base": {
+    "sounds": [{ "name": "echosoundcore:music/gameplay/gameplay_safe_base_01", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.gameplay"
+  },
+  "music.gameplay.exploration": {
+    "sounds": [{ "name": "echosoundcore:music/gameplay/gameplay_exploration_01", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.gameplay"
+  },
+  "music.gameplay.night": {
+    "sounds": [{ "name": "echosoundcore:music/gameplay/gameplay_night_01", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.gameplay"
+  },
+  "music.gameplay.underground": {
+    "sounds": [{ "name": "echosoundcore:music/gameplay/gameplay_underground_01", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.gameplay"
+  },
+  "music.biome.wasteland": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.crash_zone": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.toxic_swamp": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.radiation_zone": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.cryogenic_ruins": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.ruined_city": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.industrial_ruins": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.biome.nexus_scar": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.biome"
+  },
+  "music.faction.radwarden.ambient": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.faction.crashbreak.ambient": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.faction.sporebound.ambient": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.faction.radwarden.combat": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.faction.crashbreak.combat": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.faction.sporebound.combat": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.faction"
+  },
+  "music.combat.light": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.combat"
+  },
+  "music.combat.heavy": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.combat"
+  },
+  "music.combat.nexus": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.combat"
+  },
+  "music.combat.faction_raid": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.combat"
+  },
+  "music.combat.siege": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.combat"
+  },
+  "music.boss.warden": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.wasteland": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.toxic": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.radiation": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.cryo": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.industrial": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.city": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.guardian.nexus": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.corruption_bloom": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.severance_engine": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.mirror_command": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.boss.station_mother": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.boss"
+  },
+  "music.chapter.ashfall_protocol": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.orbital_remnants": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.agriculture_reclamation": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.stationfall": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.nexus_protocol": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.industrial_nexus": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.logistics_network": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.convoy_protocol": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.armory": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.chapter.blackbox_protocol": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.chapter"
+  },
+  "music.terminal.command_bed": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.terminal"
+  },
+  "music.terminal.nexus_corrupted": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.terminal"
+  },
+  "music.nexus.core_ambience": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.nexus"
+  },
+  "music.nexus.choice_room": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.nexus"
+  },
+  "music.nexus.siege": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.nexus"
+  },
+  "music.blackbox.memory_fragment": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.blackbox"
+  },
+  "music.blackbox.false_signal": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.blackbox"
+  },
+  "music.blackbox.truth_engine": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.music.blackbox"
+  },
+  "stinger.mission.accept": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.mission_accept"
+  },
+  "stinger.mission.update": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.mission_update"
+  },
+  "stinger.objective.complete": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.objective_complete"
+  },
+  "stinger.mission.complete": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.mission_complete"
+  },
+  "stinger.signal.detected": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.signal_detected"
+  },
+  "stinger.guardian.located": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.guardian_located"
+  },
+  "stinger.nexus.state_changed": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.nexus_state_changed"
+  },
+  "stinger.chapter.unlocked": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.chapter_unlocked"
+  },
+  "stinger.reward.available": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.reward_available"
+  },
+  "stinger.faction.radwarden.rep_up": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.faction_radwarden_rep_up"
+  },
+  "stinger.faction.crashbreak.rep_up": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.faction_crashbreak_rep_up"
+  },
+  "stinger.faction.sporebound.rep_up": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.stinger.faction_sporebound_rep_up"
+  },
+  "ui.terminal.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.open"
+  },
+  "ui.terminal.close": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.close"
+  },
+  "ui.terminal.tab": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.tab"
+  },
+  "ui.terminal.select": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.select"
+  },
+  "ui.terminal.error": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.error"
+  },
+  "ui.terminal.reward_claim": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.reward_claim"
+  },
+  "ui.terminal.new_intel": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.new_intel"
+  },
+  "ui.terminal.warning": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.warning"
+  },
+  "ui.terminal.corrupt_tick": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.terminal.corrupt_tick"
+  },
+  "ui.lens.scan.compact": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.scan_compact"
+  },
+  "ui.lens.scan.expanded": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.scan_expanded"
+  },
+  "ui.lens.deep_scan.start": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.deep_scan_start"
+  },
+  "ui.lens.deep_scan.loop": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.deep_scan_loop"
+  },
+  "ui.lens.deep_scan.complete": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.deep_scan_complete"
+  },
+  "ui.lens.scan.invalid": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.scan_invalid"
+  },
+  "ui.lens.hazard.detected": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.hazard_detected"
+  },
+  "ui.lens.machine.diagnostics": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.lens.machine_diagnostics"
+  },
+  "ui.holomap.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.open"
+  },
+  "ui.holomap.close": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.close"
+  },
+  "ui.holomap.waypoint.place": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.waypoint_place"
+  },
+  "ui.holomap.waypoint.remove": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.waypoint_remove"
+  },
+  "ui.holomap.overlay.hazard": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.overlay_hazard"
+  },
+  "ui.holomap.route.calculated": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.route_calculated"
+  },
+  "ui.holomap.unknown": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.holomap.unknown"
+  },
+  "ui.signaloos.boot": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.boot"
+  },
+  "ui.signaloos.login": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.login"
+  },
+  "ui.signaloos.file.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.file_open"
+  },
+  "ui.signaloos.file.save": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.file_save"
+  },
+  "ui.signaloos.network.ping": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.network_ping"
+  },
+  "ui.signaloos.drive.insert": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.drive_insert"
+  },
+  "ui.signaloos.drive.remove": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.drive_remove"
+  },
+  "ui.signaloos.vault.unlock": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.vault_unlock"
+  },
+  "ui.signaloos.app.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.app_open"
+  },
+  "ui.signaloos.app.close": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signaloos.app_close"
+  },
+  "ui.signalos.boot": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.boot"
+  },
+  "ui.signalos.login": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.login"
+  },
+  "ui.signalos.file.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.file_open"
+  },
+  "ui.signalos.file.save": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.file_save"
+  },
+  "ui.signalos.network.ping": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.network_ping"
+  },
+  "ui.signalos.drive.insert": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.drive_insert"
+  },
+  "ui.signalos.drive.remove": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.drive_remove"
+  },
+  "ui.signalos.vault.unlock": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.vault_unlock"
+  },
+  "ui.signalos.app.open": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.app_open"
+  },
+  "ui.signalos.app.close": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.ui.signalos.app_close"
+  },
+  "powergrid.generator.hand_crank": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.generator_hand_crank"
+  },
+  "powergrid.generator.scrap_burner": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.generator_scrap_burner"
+  },
+  "powergrid.battery.hum": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.battery_hum"
+  },
+  "powergrid.cable.low_voltage": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.cable_low_voltage"
+  },
+  "powergrid.substation.loop": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.substation_loop"
+  },
+  "powergrid.breaker.trip": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.breaker_trip"
+  },
+  "powergrid.brownout": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.brownout"
+  },
+  "powergrid.overload.warning": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.overload_warning"
+  },
+  "powergrid.overload.failure": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.overload_failure"
+  },
+  "powergrid.power_restored": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.powergrid.power_restored"
+  },
+  "drone.boot": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.boot"
+  },
+  "drone.follow": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.follow"
+  },
+  "drone.scout_ping": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.scout_ping"
+  },
+  "drone.target_mark": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.target_mark"
+  },
+  "drone.low_power": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.low_power"
+  },
+  "drone.damaged": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.damaged"
+  },
+  "drone.repaired": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.repaired"
+  },
+  "drone.mode_switch": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.mode_switch"
+  },
+  "drone.combat_suppression": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.combat_suppression"
+  },
+  "drone.return": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder" }],
+    "subtitle": "subtitles.echosoundcore.drone.return"
+  },
+  "nexus.ambience.low_hum": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.ambience_low_hum"
+  },
+  "nexus.ambience.glitch_pulse": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.ambience_glitch_pulse"
+  },
+  "nexus.ambience.memory_whisper": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.ambience_memory_whisper"
+  },
+  "nexus.ambience.reality_tear": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.ambience_reality_tear"
+  },
+  "nexus.core.heartbeat": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.core_heartbeat"
+  },
+  "nexus.choice_room": {
+    "sounds": [{ "name": "echosoundcore:fallback/silent_placeholder", "stream": true }],
+    "subtitle": "subtitles.echosoundcore.nexus.choice_room"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:fabricate_signal_circuit",
+  "display_name": "Fabricate Signal Circuit",
+  "category": "assembly",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "SCANNER"],
+  "duration_ticks": 160,
+  "heat_per_second": 1,
+  "animation": "assemble",
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echomultiblockcore:signal_conduit", "count": 1, "label": "Signal Conduit" },
+    { "item": "minecraft:redstone", "count": 2, "label": "Redstone" },
+    { "item": "minecraft:copper_ingot", "count": 1, "label": "Copper Ingot" }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:signal_circuit", "count": 1, "label": "Signal Circuit" }
+  ]
+}

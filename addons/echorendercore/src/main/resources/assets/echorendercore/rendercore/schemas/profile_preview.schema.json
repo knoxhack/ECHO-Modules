@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://echo/rendercore/profile_preview.schema.json",
+  "title": "ECHO RenderCore Profile Preview Artifact",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "profile": { "type": "string" },
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "base_texture": { "type": "string" },
+    "animation_profile": { "type": "string" },
+    "particle_profile": { "type": "string" },
+    "suggested_artifact": { "type": "string" },
+    "screenshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "available": { "type": "boolean" },
+        "provider": { "type": "string" },
+        "skipped_reason": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "layers": { "type": "integer", "minimum": 0 },
+        "masked_layers": { "type": "integer", "minimum": 0 },
+        "animation_clips": { "type": "integer", "minimum": 0 },
+        "animation_tracks": { "type": "integer", "minimum": 0 },
+        "emitters": { "type": "integer", "minimum": 0 },
+        "anchors": { "type": "integer", "minimum": 0 },
+        "block_part_aliases": { "type": "integer", "minimum": 0 },
+        "active_effects": { "type": "integer", "minimum": 0 },
+        "effect_cost": { "type": "integer", "minimum": 0 },
+        "bloom_cost": { "type": "integer", "minimum": 0 },
+        "advanced_effect_passes": { "type": "integer", "minimum": 0 },
+        "effect_target_scope": { "type": "string" },
+        "estimated_mask_submissions": { "type": "integer", "minimum": 0 },
+        "estimated_bloom_channels": { "type": "integer", "minimum": 0 },
+        "estimated_bloom_downscale": { "type": "integer", "enum": [1, 2, 4] },
+        "estimated_priority_skips": { "type": "integer", "minimum": 0 },
+        "advanced_fx_mode": { "type": "string" },
+        "isolated_fx_available": { "type": "boolean" },
+        "fullscreen_fallback_available": { "type": "boolean" },
+        "advanced_fx_available": { "type": "boolean" },
+        "advanced_fx_status": { "type": "string" }
+      }
+    },
+    "effect": { "type": "object", "additionalProperties": true },
+    "layers": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "materials": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": true } },
+    "includes": { "type": "array", "items": { "type": "string" } },
+    "anchors": { "type": "array", "items": { "type": "string" } },
+    "block_parts": { "type": "array", "items": { "type": "string" } },
+    "animations": { "type": "object", "additionalProperties": true },
+    "particles": { "type": "object", "additionalProperties": true },
+    "diagnostics": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,53 @@
+<page id="wiki_guide_book_reader" title="Guide Book Reader" styles="wiki_components,wiki_lists,wiki_fast">
+  <column class="wiki-fast-reader" gap="8">
+    <row class="wiki-fast-reader-top" gap="8">
+      <button action="wiki.open_page" action-page="echowiki:wiki_guide_books" variant="secondary">Library</button>
+      <column class="wiki-fast-reader-title">
+        <title value="{wiki.guideBook.selected.title}"/>
+        <text value="{wiki.guideBook.selected.subtitlePreview}"/>
+      </column>
+      <status-chip class="wiki-fast-reader-chip" status="{wiki.guideBook.selected.status}" value="{wiki.guideBook.selected.chapterBadge}"/>
+    </row>
+
+    <image class="wiki-fast-reader-banner" src="{wiki.guideBook.selected.heroArt|echowiki:textures/gui/guide_books/wiki_banner.png}" width="512" height="88" source-width="512" source-height="160" fit="cover"/>
+
+    <row class="wiki-fast-reader-meta" gap="6">
+      <item-icon class="wiki-row-icon" item="{wiki.guideBook.selected.icon|minecraft:written_book}"/>
+      <text value="{wiki.guideBook.selected.moduleBadge}"/>
+      <text value="{wiki.guideBook.selected.availabilityLabel}"/>
+      <text value="{wiki.guideBook.selected.chapterCountLabel}"/>
+    </row>
+
+    <text class="wiki-fast-reader-summary" value="{wiki.guideBook.selected.summaryPreview}"/>
+
+    <scroll class="wiki-fast-reader-scroll" scroll-state="true" state-key="wiki.guideBook.reader.chapters">
+      <list class="wiki-fast-list" bind="wiki.guideBook.chapters" item="chapter">
+        <component src="echowiki:wiki_guide_chapter_row">
+          <param name="id" value="{chapter.id}"/>
+          <param name="title" value="{chapter.title}"/>
+          <param name="summaryPreview" value="{chapter.summaryPreview}"/>
+          <param name="status" value="{chapter.status}"/>
+          <param name="ordinalBadge" value="{chapter.ordinalBadge}"/>
+          <param name="roleBadge" value="{chapter.roleBadge}"/>
+          <param name="countLabel" value="{chapter.countLabel}"/>
+          <param name="action" value="{chapter.action}"/>
+        </component>
+        <empty-state class="wiki-manual-empty-state" title="No chapters" body="{wiki.guideBook.selected.title} has no chapter articles loaded."/>
+      </list>
+    </scroll>
+
+    <panel class="wiki-fast-related-panel" title="Related">
+      <list class="wiki-fast-related-list" bind="wiki.guideBook.related" item="related">
+        <component src="echowiki:wiki_related_row">
+          <param name="kind" value="{related.kind}"/>
+          <param name="id" value="{related.id}"/>
+          <param name="label" value="{related.label}"/>
+          <param name="subtitlePreview" value="{related.subtitlePreview}"/>
+          <param name="status" value="{related.status}"/>
+          <param name="disabled" value="{related.disabled|false}"/>
+        </component>
+        <empty-state class="wiki-manual-related-empty-state" title="No links" body="This manual has no related articles."/>
+      </list>
+    </panel>
+  </column>
+</page>

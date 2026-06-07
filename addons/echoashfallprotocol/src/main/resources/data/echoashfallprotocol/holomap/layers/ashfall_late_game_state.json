@@ -1,0 +1,79 @@
+{
+  "id": "echoashfallprotocol:ashfall_late_game_state",
+  "name": "Late-Game Nexus State",
+  "description": "Prime relay, boss intel, branch decision, and ending-state markers for late Ashfall route planning.",
+  "visibleByDefault": false,
+  "markerStyle": "ashfall_late_game",
+  "filters": [
+    "prime_relay",
+    "boss_intel",
+    "nexus",
+    "ending_branch"
+  ],
+  "markers": [
+    {
+      "id": "echoashfallprotocol:prime_relay_grid",
+      "label": "Prime Relay Grid",
+      "kind": "prime_relay",
+      "description": "Prime relay scan state that should be resolved before the final branch presentation.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_relay",
+      "riskLabel": "late-game signal",
+      "routeStatus": "scan-then-resolve",
+      "routeLink": "echoashfallprotocol:prime_relays",
+      "missionId": "echoashfallprotocol:scan_prime_relays",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+      "prep": "Resolve relay pages before committing to a Nexus branch.",
+      "discoveryState": "nexus_campaign",
+      "filter": "prime_relay"
+    },
+    {
+      "id": "echoashfallprotocol:nexus_core_signal",
+      "label": "Nexus Core Signal",
+      "kind": "nexus",
+      "description": "Nexus UI state and route pressure for awakening, stabilizing, or severing the core.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_data_ruin",
+      "riskLabel": "branch pressure",
+      "routeStatus": "commitment-near",
+      "routeLink": "echoashfallprotocol:nexus_core",
+      "missionId": "echoashfallprotocol:awaken_nexus_core",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+      "prep": "Read branch consequences and boss intel before interacting with the core.",
+      "discoveryState": "core_revealed",
+      "filter": "nexus"
+    },
+    {
+      "id": "echoashfallprotocol:nexus_scar_avatar_intel",
+      "label": "Nexus Scar Avatar Intel",
+      "kind": "boss_intel",
+      "description": "Boss-intel marker that names counterplay, route risk, and branch reward context.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_hazard_radiation",
+      "riskLabel": "boss route",
+      "routeStatus": "counterplay-required",
+      "routeLink": "echoashfallprotocol:nexus_scar",
+      "missionId": "echoashfallprotocol:neutralize_nexus_scar_avatar",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+      "prep": "Confirm boss intel, med supplies, and selected branch before entry.",
+      "discoveryState": "boss_intel_unlocked",
+      "filter": "boss_intel"
+    },
+    {
+      "id": "echoashfallprotocol:ending_branch_decision",
+      "label": "Ending Branch Decision",
+      "kind": "ending_branch",
+      "description": "Restore, Destroy, or Control branch presentation after Prime relay resolution.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_route_marker",
+      "riskLabel": "permanent consequence",
+      "routeStatus": "choose-branch",
+      "routeLink": "echoashfallprotocol:nexus_decision",
+      "missionId": "echoashfallprotocol:reach_decision",
+      "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+      "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+      "prep": "Review Terminal ending branch copy before commitment.",
+      "discoveryState": "relays_resolved",
+      "filter": "ending_branch"
+    }
+  ]
+}

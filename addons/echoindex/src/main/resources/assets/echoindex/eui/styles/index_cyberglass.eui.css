@@ -1,0 +1,133 @@
+.index-shell {
+  background: theme(background);
+}
+
+.index-shell-grid {
+  gap: space(md);
+}
+
+app-header {
+  background: theme(terminalBackground);
+  border-color: theme(borderStrong);
+  border-width: 1;
+}
+
+app-sidebar, app-content, inspector-panel, app-footer {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+hero-card {
+  background: theme(overlay);
+  border-color: theme(accent);
+  border-width: 1;
+}
+
+title {
+  color: theme(accent);
+}
+
+text {
+  color: theme(textSecondary);
+}
+
+/* Phase 20 first-party Index polish. These classes stay ScreenCore-only and do
+   not depend on JEI or concrete content packs. */
+.index-shell,
+app-sidebar,
+app-content,
+inspector-panel,
+app-footer,
+.index-mod-section,
+.index-recipe-card,
+.index-machine-card,
+.index-item-card {
+  surface: glass;
+  corner-treatment: bevel;
+  border-radius: 4px;
+  background: #04111bdc;
+  border-color: #45eaff44;
+  background-texture: theme-texture(screencore.surface.raised);
+  texture-alpha: 10;
+  background-texture-2: theme-texture(screencore.panel_sheen);
+  texture-alpha-2: 5;
+}
+
+app-header {
+  background: #020911f2;
+  border-color: #55eaff88;
+  border-radius: 4px;
+}
+
+.index-mod-section-header {
+  height: 42px;
+  min-height: 42px;
+  padding: 6px 8px;
+  border-color: #2feaff4a;
+}
+
+.index-recipe-card {
+  height: 60px;
+  min-height: 58px;
+  padding: 6px 8px;
+}
+
+.index-recipe-card[selected="true"],
+.index-recipe-card[active="true"],
+.index-machine-card[selected="true"],
+.index-item-card[selected="true"] {
+  background: #063323e8;
+  border-color: #72ff9eff;
+  accent-color: #58ff9aff;
+  background-texture-2: theme-texture(screencore.focus_ring);
+}
+
+.index-recipe-card-pin,
+.index-bookmark-button,
+button[action="index.add_bookmark"] {
+  width: 58px;
+  min-width: 56px;
+  height: 26px;
+  min-height: 26px;
+  padding: 3px 6px;
+  background: #07304ad6;
+  border-color: #36eaff88;
+}
+
+.index-machine-slots {
+  height: 28px;
+  min-height: 28px;
+  padding: 3px 4px;
+  gap: 5px;
+  background: #020b13c8;
+  border-color: #2eeaff36;
+}
+
+.index-recipe-title,
+.index-detail-title {
+  color: #f3fdffff;
+  line-height: 12px;
+  max-lines: 1;
+}
+
+.index-recipe-summary,
+.index-recipe-meta,
+.index-detail-subtitle,
+.index-detail-meta {
+  color: #b0ccd7ff;
+  line-height: 10px;
+  max-lines: 1;
+}
+
+.index-unlock-ready {
+  border-color: #5bff96aa;
+  accent-color: #53ff93ff;
+}
+
+.index-unlock-locked {
+  background: #07131d9c;
+  border-color: #526c7a66;
+  color: #8aa4b0cc;
+}

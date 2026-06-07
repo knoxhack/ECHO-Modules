@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/weathercore",
+  "title": "WeatherCore Manual",
+  "category": "Guide Books",
+  "summary": "Read forecasts, scanners, radios, and storm profiles before routes turn hostile.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "WeatherCore makes the sky part of planning. Storms and forecasts can change when a route is safe, when a base is exposed, and when to delay a run.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Craft or find a weather radio or scanner, read the current profile, and avoid starting long trips under worsening conditions.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Check forecast, choose equipment, time the route, react to warnings, and update base layouts if weather repeatedly punishes the same area.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Weather profiles, radios, storm scanners, exposure notes, and hazard forecasts describe whether the problem is immediate, building, or regional.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "WorldCore regions can combine with weather pressure, HoloMap helps choose alternates, TutorialCore can coach hazard mistakes, and Recovery can help after a bad forecast call.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If weather feels random, start logging forecasts before routes. If a base is constantly exposed, change the base or route instead of fighting every storm manually.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "weather",
+    "forecast"
+  ],
+  "icon": "minecraft:lightning_rod",
+  "heroArt": "echowiki:textures/gui/guide_books/weathercore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/weathercore/first_steps",
+    "echowiki:guides/weathercore/core_loop",
+    "echowiki:guides/weathercore/systems",
+    "echowiki:guides/weathercore/progression",
+    "echowiki:guides/weathercore/integrations",
+    "echowiki:guides/weathercore/troubleshooting"
+  ],
+  "sortOrder": 1170
+}

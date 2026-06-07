@@ -1,0 +1,96 @@
+{
+  "name": "echoashfallprotocol:ruined_cityscape",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/collapsed_building_small",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/collapsed_building_tall",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/street_barricade",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/parking_ruin",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/data_center_ruin",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/server_farm",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/subway_station",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/bunker_complex",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/military_vault",
+        "processors": "echoashfallprotocol:military_vault_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/ruined_cityscape/subway_stairwell",
+        "processors": "echoashfallprotocol:ruined_cityscape_loot"
+      }
+    }
+  ]
+}

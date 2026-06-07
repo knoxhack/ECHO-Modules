@@ -1,0 +1,30 @@
+{
+  "id": "echotutorialcore:scanner_route_prep",
+  "category": "SCANNER",
+  "title": "Scanner Route Prep",
+  "summary": "Scan first. Move second. Regret less.",
+  "body": [
+    "Scanner leads point toward signal, salvage, danger, or all three wearing one coat.",
+    "Use HoloMap after scanning so distance, hazards, and exits are visible before you leave."
+  ],
+  "steps": [
+    "Use the scanner near your staging point.",
+    "Open HoloMap and compare route markers.",
+    "Bring filters, water, and spare power."
+  ],
+  "commonMistakes": [
+    "Scanning once and sprinting blind.",
+    "Ignoring cold, toxic, or radiation overlays."
+  ],
+  "related": [
+    "echotutorialcore:signal_leads",
+    "echotutorialcore:markers_and_routes",
+    "echotutorialcore:toxic_air"
+  ],
+  "unlockTriggers": [
+    "used_scanner",
+    "detected_first_signal"
+  ],
+  "defaultUnlocked": false,
+  "priority": 74
+}

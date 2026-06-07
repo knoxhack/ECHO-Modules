@@ -1,0 +1,33 @@
+{
+  "id": "echoashfallprotocol:crashbreak_scout_services",
+  "services": [
+    {
+      "id": "route_hint",
+      "title": "Route Hint",
+      "description": "Uploads fresh scout notes from nearby salvage lanes.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "refresh_salvage_map",
+      "title": "Refresh Salvage Map",
+      "description": "Requests an immediate map provider refresh for known salvage markers.",
+      "cost": [],
+      "action": "map_refresh",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "reveal_salvage_marker",
+      "title": "Reveal Route Marker",
+      "description": "Pins Jax's current scout route as a field marker.",
+      "cost": [],
+      "action": "reveal_marker",
+      "amount": 1,
+      "cooldown": 2400,
+      "target": "echoashfallprotocol:crashbreak_route_contact"
+    }
+  ]
+}

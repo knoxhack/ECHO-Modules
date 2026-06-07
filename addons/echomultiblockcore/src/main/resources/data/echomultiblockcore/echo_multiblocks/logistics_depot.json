@@ -1,0 +1,187 @@
+{
+    "id":  "echomultiblockcore:logistics_depot",
+    "display_name":  "Logistics Depot",
+    "translation_key":  "multiblock.echomultiblockcore.logistics_depot",
+    "role":  "LOGISTICS",
+    "category":  "logistics",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIIOF",
+                       "FDCDF",
+                       "FOROF",
+                       "FFFFF"
+                   ],
+                   [
+                       ".PPP.",
+                       ".R.R.",
+                       "P.C.P",
+                       ".R.R.",
+                       ".AAA."
+                   ],
+                   [
+                       "..D..",
+                       ".D.D.",
+                       "DDDDD",
+                       ".D.D.",
+                       "..D.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:convoy_dispatch",
+                         "echo:terminal_tab",
+                         "echo:map_marker",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  32,
+                                        "unit":  "FE/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  24,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:item_output",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:logistics_depot/routing_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:logistics_depot/storage_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:logistics_depot/reach_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade",
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:logistics_depot/output",
+                          "type":  "OUTPUT",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "GRIPPER",
+                                                 "CLAMP"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:stage_supply_manifest"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "8af6b6"
+                },
+    "facility_stage":  "P5 BIOHAZARD ADAPTATION",
+    "facility_route":  "logistics",
+    "primary_use":  "Stages supply manifests, crate routing, and Convoy/Logistics handoff material loops.",
+    "integration_hints":  [
+                              "Convoy Protocol effects should attach through automation effects.",
+                              "Logistics Network should use provider APIs instead of direct crate save access.",
+                              "Terminal can surface blocked depot queues as operator work."
+                          ]
+}

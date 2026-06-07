@@ -1,0 +1,31 @@
+{
+  "parent": "echoindustrialnexus:grind_the_wasteland",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:gas_mask_filter"
+    },
+    "title": {
+      "text": "Filters for Survival"
+    },
+    "description": {
+      "text": "Automate the first Gas Mask Filter through a Filter Press."
+    }
+  },
+  "criteria": {
+    "filter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:gas_mask_filter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "filter"
+    ]
+  ]
+}

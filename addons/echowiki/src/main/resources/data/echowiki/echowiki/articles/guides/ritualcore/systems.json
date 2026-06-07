@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/ritualcore/systems",
+  "title": "RitualCore Altar: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read altar blocks, pedestal inputs, stability checks, events, and bridge rituals.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Altar Array",
+      "body": "Basic Altar, Rune Circle, Offering Pedestal, Stability Pylon, Moon Dial, Weather Anchor, and Corrupted Altar define the ritual vocabulary.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Execution Gates",
+      "body": "Structure validation, safe item checks, pedestal consumption, catalyst consumption, and ritual events keep bad attempts from eating resources.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Bridge Rituals",
+      "body": "Relic Stabilization, Curse Cleansing I, Spell Core Awakening, and Rift Crack Reveal depend on optional systems but should fail clearly when a target is absent.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ritualcore",
+    "arcana",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:lodestone",
+  "relatedArticles": [
+    "echowiki:guides/ritualcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1283
+}

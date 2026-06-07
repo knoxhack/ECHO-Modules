@@ -1,0 +1,89 @@
+{
+  "id": "echoashfallprotocol:ashfall_first_month_routes",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "title": "Open the First Route Desk",
+  "briefing": "Your first week kept you alive. The next step is controlled exploration: scan a nearby lead, read the field guide, track one route marker, and return before the weather turns.",
+  "objectives": [
+    {
+      "id": "review_route_desk",
+      "type": "custom",
+      "label": "Open the First-Month Route Desk",
+      "detail": "Use Terminal What Now or Route Records to review the active route desk.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "terminal_page"
+      }
+    },
+    {
+      "id": "scan_cache_signal",
+      "type": "scan_block",
+      "label": "Scan the survivor cache signal",
+      "detail": "Use Lens on the nearest cache signal or scanner-led salvage marker.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "lens_scan"
+      }
+    },
+    {
+      "id": "read_field_guide",
+      "type": "custom",
+      "label": "Read the field guide",
+      "detail": "Open First-Month Routes or Field Caches in the Index before committing to the route.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "criteria": {
+        "native_objective_type": "index_entry"
+      }
+    },
+    {
+      "id": "track_marker",
+      "type": "discover_structure",
+      "label": "Track one field marker",
+      "detail": "Track Survivor Cache Signal or Ruined Plains Route from the HoloMap field intel layer.",
+      "icon": "echoashfallprotocol:relay_scanner_lens",
+      "criteria": {
+        "native_objective_type": "holomap_marker"
+      }
+    },
+    {
+      "id": "return_to_base",
+      "type": "custom",
+      "label": "Return and update What Now",
+      "detail": "After the route, return to shelter and check Terminal for the next safe step.",
+      "icon": "echoashfallprotocol:return_beacon",
+      "criteria": {
+        "native_objective_type": "return"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "documentation",
+      "id": "echoashfallprotocol:route_records",
+      "label": "Route Records field guide unlocked",
+      "detail": "Route Records field guide unlocked appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    },
+    {
+      "type": "supply_cache",
+      "id": "echoashfallprotocol:first_month_route_cache",
+      "label": "Small route prep cache",
+      "detail": "Small route prep cache appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Route desk online. Your next safe expansion should come from a scanned signal, a readable risk label, and a planned return path.",
+  "phase": "first_month",
+  "phaseTitle": "First-Month Routes",
+  "phaseOrder": 3,
+  "order": 0,
+  "fieldGuide": "First-month route desk that teaches scan, read, track, return before the player widens exploration beyond the pod-safe loop.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "main",
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:first_month_routes",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "wikiArticle": "echowiki:guides/ashfall/core_loop"
+  }
+}

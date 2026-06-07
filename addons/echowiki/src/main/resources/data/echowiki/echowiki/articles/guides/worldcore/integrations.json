@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/worldcore/integrations",
+  "title": "WorldCore: Integrations",
+  "category": "Guide Books",
+  "summary": "Use region and hazard data to inform maps, weather, routes, missions, and recovery plans.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Ashfall uses WorldCore heavily, WeatherCore can add pressure, HoloMap can show context, and Index or Wiki can link the same region to items and missions.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Ashfall routes, WeatherCore pressure, HoloMap overlays, Wiki articles, and Index records together so world context becomes actionable.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If helper layers are missing, use landmarks, biome changes, and hazard behavior as your field guide. The world still shows its rules.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "worldcore",
+    "hazards",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:filled_map",
+  "relatedArticles": [
+    "echowiki:guides/worldcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1185
+}

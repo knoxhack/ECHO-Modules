@@ -1,0 +1,33 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:clean_water_bottle"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.clean_water.title",
+      "fallback": "Hydration Station"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.clean_water.desc",
+      "fallback": "Drink clean water to stabilize your hydration reserve."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "drink_clean_water": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "echoashfallprotocol:clean_water_bottle"
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["drink_clean_water"]
+  ]
+}

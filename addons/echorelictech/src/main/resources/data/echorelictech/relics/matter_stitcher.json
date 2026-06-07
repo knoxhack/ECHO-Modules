@@ -1,0 +1,76 @@
+{
+  "id": "echorelictech:matter_stitcher",
+  "tier": "forbidden",
+  "category": "survival",
+  "origin": "Pre-Gridfall Medical Prototype",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 3600,
+  "instabilityCost": 8,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "player_debuff",
+    "malfunction",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:matter_stitcher",
+  "terminal": {
+    "summary": "Repairs armor or heals biological matter.",
+    "warning": "Matter reconstruction carries trace residue."
+  },
+  "lens": {
+    "compact": "Damaged survival repair tool.",
+    "deepScan": [
+      "Medical protocol: emergency field use.",
+      "Side effect profile: non-trivial.",
+      "ECHO warning: do not use on undamaged tissue."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 3 },
+      { "item": "echorelictech:memory_filament", "count": 2 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 3 },
+        { "item": "echorelictech:memory_filament", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 8,
+      "materials": [
+        { "item": "echorelictech:memory_filament", "count": 2 },
+        { "item": "echorelictech:nexus_stained_capacitor", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 2 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 1200,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 6,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+        { "item": "echorelictech:memory_filament", "count": 1 }
+      ]
+    }
+  },
+  "activation": {
+    "healAmount": 4,
+    "armorRepairAmount": 20
+  }
+}

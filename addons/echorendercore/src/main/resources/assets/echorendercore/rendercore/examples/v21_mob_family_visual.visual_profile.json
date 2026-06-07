@@ -1,0 +1,10 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "mob_family", "owner_addon": "echorendercore", "display_name": "V21 Mob Family Visual", "tags": ["mob_family"], "integration_mode": "optional" },
+  "fallback": { "mode": "vanilla_renderer", "expectation": "generated mob fallback renderer remains available", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "normal", "advanced_fx": "auto" },
+  "qa": { "required": true, "evidence": ["screenshot", "world_surface"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/entity/rendercore_echo_mobs/v21_mob_family.png",
+  "default_state": "ONLINE",
+  "effect": { "preset": "neon", "glow_intensity": 0.42, "bloom_tint": "#FFFF86D7" }
+}

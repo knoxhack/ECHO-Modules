@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/signal_tower_tier_1",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:signal_circuit"
+    },
+    "title": {
+      "text": "Tune the Beacon"
+    },
+    "description": {
+      "text": "Complete the Signal Tower featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:signal_circuit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine_tiered",
+                   "data":  8
+               },
+    "pattern":  [
+                    "BSB",
+                    "SWS",
+                    "BSB"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "B":  {
+                          "item":  "echogalacticcore:machine_tiered",
+                          "data":  0
+                      },
+                "S":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_advanced"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

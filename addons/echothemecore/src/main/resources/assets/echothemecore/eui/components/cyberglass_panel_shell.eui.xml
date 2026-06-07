@@ -1,0 +1,5 @@
+<panel class="cyberglass-panel-shell {param.class|}" title="{param.title|Panel}">
+  <slot-outlet name="body">
+    <text value="{param.body|}"/>
+  </slot-outlet>
+</panel>

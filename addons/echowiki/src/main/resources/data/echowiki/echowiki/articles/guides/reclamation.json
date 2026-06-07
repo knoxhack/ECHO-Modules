@@ -1,0 +1,67 @@
+{
+  "id": "echowiki:guides/reclamation",
+  "title": "Reclamation Grower's Manual",
+  "category": "Guide Books",
+  "summary": "Turn unstable routes into food, seed, and soil systems that can support longer expeditions.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Reclamation is the supply-side answer to survival pressure. It rewards building food and seed loops near safe staging areas instead of depending on random scavenging forever.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Start with the seeds and soil treatments you can sustain. Keep early plots small, lit, and close to storage so crop failures do not become expedition failures.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Recover seed stock, prepare soil, grow a reliable food baseline, then expand into utility crops or higher-risk farming inputs once power and water are stable.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Watch crop profile tooltips, seed variants, hydration needs, and reclamation utility items. A small repeatable farm beats a large half-powered one.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Logistics can restock food and seed kits. TutorialCore can explain missed basics. Wiki and Index keep crop and ingredient references close to the field work.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If crops feel slow, check light, water, soil state, and whether the crop is meant for that stage. If food is still scarce, shrink your route length until the farm catches up.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "reclamation",
+    "food"
+  ],
+  "icon": "minecraft:wheat",
+  "heroArt": "echowiki:textures/gui/guide_books/reclamation_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/reclamation/first_steps",
+    "echowiki:guides/reclamation/core_loop",
+    "echowiki:guides/reclamation/systems",
+    "echowiki:guides/reclamation/progression",
+    "echowiki:guides/reclamation/integrations",
+    "echowiki:guides/reclamation/troubleshooting"
+  ],
+  "relatedItems": [
+    "minecraft:wheat",
+    "minecraft:farmland"
+  ],
+  "sortOrder": 1020
+}

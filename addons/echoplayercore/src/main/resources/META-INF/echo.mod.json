@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoplayercore",
+  "name": "ECHO: PlayerCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "utility",
+  "entrypoint": "com.knoxhack.echoplayercore.EchoPlayerCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoholomap",
+    "echorendercore",
+    "echoruntimeguard",
+    "echoterminal",
+    "echoworldcore"
+  ],
+  "provides": [
+    "player.back",
+    "player.cooldowns",
+    "player.homes",
+    "player.random_teleport",
+    "player.spawn",
+    "player.tpa",
+    "player.warps"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "player.data",
+    "server.commands",
+    "world.teleport"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "networking",
+        "player",
+        "saves",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "PlayerCore owns player utility travel contracts such as homes, back, spawn, random teleport, TPA, warps, and cooldowns. DataCore, HoloMap, RenderCore, RuntimeGuard, Terminal, and WorldCore integrations remain optional.",
+    "nativeEntrypoint": "com.knoxhack.echoplayercore.EchoPlayerCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoplayercore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

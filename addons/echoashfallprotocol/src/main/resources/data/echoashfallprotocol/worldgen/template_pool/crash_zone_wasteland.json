@@ -1,0 +1,123 @@
+{
+  "name": "echoashfallprotocol:crash_zone_wasteland",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/scrap_pile_small",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/scrap_pile_medium",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/wreckage_cluster",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/ash_covered_ruin",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/wreckage_command_post",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/crashbreak_hut",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/crash_site_large",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/crashbreak_worksite",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/ship_breaking_yard",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/containment_facility_ruin",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/radiation_field",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/burned_convoy",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/crash_zone_wasteland/cargo_lift_wreck",
+        "processors": "echoashfallprotocol:crash_zone_loot"
+      }
+    }
+  ]
+}

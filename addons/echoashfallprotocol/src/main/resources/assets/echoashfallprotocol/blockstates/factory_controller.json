@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "active=false,error=false": { "model": "echoashfallprotocol:block/factory_controller" },
+    "active=false,error=true": { "model": "echoashfallprotocol:block/factory_controller_error" },
+    "active=true,error=false": { "model": "echoashfallprotocol:block/factory_controller_active" },
+    "active=true,error=true": { "model": "echoashfallprotocol:block/factory_controller_error" }
+  }
+}

@@ -1,0 +1,9 @@
+<list-row class="wiki-related-row" action="wiki.open_related" action-value="{param.id|}" action-param-kind="{param.kind|article}" disabled="{param.disabled|false}">
+  <row class="wiki-related-layout" gap="8">
+    <status-chip class="wiki-row-chip" status="{param.status|ready}" value="{param.kindLabel|link}"/>
+    <column class="wiki-row-copy">
+      <title class="wiki-row-title" value="{param.label|Related}"/>
+      <text class="wiki-row-summary" value="{param.subtitlePreview|}"/>
+    </column>
+  </row>
+</list-row>

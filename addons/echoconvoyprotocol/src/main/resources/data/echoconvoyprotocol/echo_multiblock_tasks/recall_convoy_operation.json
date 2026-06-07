@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:recall_convoy_operation",
+  "display_name": "Recall Convoy Operation",
+  "category": "echoconvoyprotocol:field_operations",
+  "required_workcell": "ROUTE_DISPATCH",
+  "required_tools": ["SCANNER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:convoy_route_chip", "count": 1 }
+  ],
+  "consume_inputs_on_start": false,
+  "duration_ticks": 120,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:recall_convoy_operation"],
+  "notes": ["Recalls an active convoy operation and marks it for recovery."]
+}

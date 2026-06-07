@@ -1,0 +1,10 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "static_block", "owner_addon": "echorendercore", "display_name": "V21 Fallback Safe Profile", "tags": ["static_block", "fallback_safe"], "integration_mode": "optional" },
+  "fallback": { "mode": "stable", "expectation": "no advanced path is required for the authored look", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "low", "advanced_fx": "deny" },
+  "qa": { "required": true, "evidence": ["screenshot", "world_surface"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/block/v21_fallback_safe.png",
+  "default_state": "ONLINE",
+  "effect": { "preset": "none", "glow_intensity": 0.0 }
+}

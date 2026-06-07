@@ -1,0 +1,303 @@
+{
+  "featureHub": "echoscreencore:reference_feature_hub",
+  "workbench": "echoscreencore:reference_workbench",
+  "pages": [
+    {
+      "id": "echoscreencore:test_components_templates",
+      "title": "Component Templates",
+      "styles": ["echoscreencore:base", "echoscreencore:components", "echoscreencore:advanced_mock"],
+      "description": "Reusable include and component parameter validation page"
+    },
+    {
+      "id": "echoscreencore:test_dropdowns",
+      "title": "Dropdowns",
+      "styles": ["echoscreencore:base", "echoscreencore:components", "echoscreencore:advanced_mock"],
+      "description": "Static and provider-backed select controls"
+    },
+    {
+      "id": "echoscreencore:test_tooltips_modals",
+      "title": "Tooltips and Modals",
+      "styles": ["echoscreencore:base", "echoscreencore:components", "echoscreencore:advanced_mock"],
+      "description": "Tooltip and dialog overlay test page"
+    },
+    {
+      "id": "echoscreencore:test_app_shell",
+      "title": "App Shell",
+      "styles": ["echoscreencore:base", "echoscreencore:components", "echoscreencore:advanced_mock"],
+      "description": "Generic app navigation and inspector pattern"
+    },
+    {
+      "id": "echoscreencore:test_hot_reload",
+      "title": "Hot Reload",
+      "styles": ["echoscreencore:base", "echoscreencore:components", "echoscreencore:advanced_mock"],
+      "description": "Developer reload workflow test page"
+    },
+    {
+      "id": "echoscreencore:test_responsive_shell",
+      "title": "Responsive Shell",
+      "category": "1.0.4",
+      "description": "Responsive app shell behavior",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_responsive_split_view",
+      "title": "Responsive Split View",
+      "category": "1.0.4",
+      "description": "Responsive split/list/detail layout",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_responsive_cards",
+      "title": "Responsive Cards",
+      "category": "1.0.4",
+      "description": "Responsive card grid behavior",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_keyboard_navigation",
+      "title": "Keyboard Navigation",
+      "category": "1.0.4",
+      "description": "Tab, arrows, activation, and scroll keys",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_focus_trap_modal",
+      "title": "Focus Trap Modal",
+      "category": "1.0.4",
+      "description": "Modal focus trap and return focus behavior",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_searchable_select",
+      "title": "Searchable Select",
+      "category": "1.0.4",
+      "description": "Searchable provider-backed select",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_multi_select",
+      "title": "Multi Select",
+      "category": "1.0.4",
+      "description": "Multi-select with selected values",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_dropdown_menu",
+      "title": "Dropdown Menu",
+      "category": "1.0.4",
+      "description": "Dropdown menu item patterns",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_search_inputs",
+      "title": "Search Inputs",
+      "category": "1.0.4",
+      "description": "Search box debounce and page state",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_dialog_sizes",
+      "title": "Dialog Sizes",
+      "category": "1.0.4",
+      "description": "Dialog sizing variants",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_overlay_clamping",
+      "title": "Overlay Clamping",
+      "category": "1.0.4",
+      "description": "Tooltip and dropdown edge clamping",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_large_dynamic_list",
+      "title": "Large Dynamic List",
+      "category": "1.0.4",
+      "description": "Large provider-backed list",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_page_state",
+      "title": "Page State",
+      "category": "1.0.4",
+      "description": "Session page state persistence",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:test_binding_diagnostics",
+      "title": "Binding Diagnostics",
+      "category": "1.0.4",
+      "description": "Binding fallbacks and debug placeholders",
+      "debugOnly": true
+    },
+    {
+      "id": "echoscreencore:reference_feature_hub",
+      "title": "Reference: Feature Hub",
+      "category": "Reference",
+      "description": "Central ScreenCore feature wiki with links to real reference pages.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["hub", "navigation", "actions", "diagnostics"],
+      "diagnosticsCovered": ["unknown_reference_page"]
+    },
+    {
+      "id": "echoscreencore:reference_workbench",
+      "title": "Reference: Workbench",
+      "category": "Reference",
+      "description": "Explains live workbench commands and viewport validation.",
+      "defaultStyle": "echoscreencore:screencore_workbench",
+      "debugOnly": true,
+      "features": ["workbench", "inspect", "viewport"],
+      "diagnosticsCovered": ["reference_page_failed_contract"]
+    },
+    {
+      "id": "echoscreencore:reference_dashboard",
+      "title": "Reference: Dashboard",
+      "category": "Reference",
+      "description": "Safe dashboard cards with responsive stacking.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["grid", "card", "actions", "responsive"],
+      "diagnosticsCovered": ["grid_missing_stack_below"]
+    },
+    {
+      "id": "echoscreencore:reference_list_detail",
+      "title": "Reference: List Detail",
+      "category": "Reference",
+      "description": "Safe list/detail layout with one scroll owner and bounded detail panel.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["list", "scroll", "selection", "detail"],
+      "diagnosticsCovered": ["row_overflow", "unbounded_row_text"]
+    },
+    {
+      "id": "echoscreencore:reference_three_column",
+      "title": "Reference: Three Column",
+      "category": "Reference",
+      "description": "Responsive three-column application shell pattern.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["grid", "stack-below", "responsive"],
+      "diagnosticsCovered": ["grid_missing_stack_below"]
+    },
+    {
+      "id": "echoscreencore:reference_dense_list",
+      "title": "Reference: Dense List",
+      "category": "Reference",
+      "description": "Shows repeated rows, empty state, selection, and one scroll owner.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["list", "repeat", "scroll", "empty-state", "selection"],
+      "diagnosticsCovered": ["missing_list_empty_state", "nested_scroll_region"]
+    },
+    {
+      "id": "echoscreencore:reference_settings",
+      "title": "Reference: Settings",
+      "category": "Reference",
+      "description": "Compact settings controls and action strip.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["toggle", "checkbox", "select", "actions"],
+      "diagnosticsCovered": ["large_fixed_height"]
+    },
+    {
+      "id": "echoscreencore:reference_inputs",
+      "title": "Reference: Inputs",
+      "category": "Reference",
+      "description": "Search box, input validation, and state keys.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["input", "search", "state"],
+      "diagnosticsCovered": ["text_overflow_without_scroll"]
+    },
+    {
+      "id": "echoscreencore:reference_selects_dropdowns",
+      "title": "Reference: Selects And Dropdowns",
+      "category": "Reference",
+      "description": "Static and provider-backed option surfaces.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["select", "dropdown", "menu"],
+      "diagnosticsCovered": ["missing_list_empty_state"]
+    },
+    {
+      "id": "echoscreencore:reference_modal_overlay",
+      "title": "Reference: Modal Overlay",
+      "category": "Reference",
+      "description": "Tooltips, dialogs, and modal close actions.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["tooltip", "dialog", "modal", "overlay"],
+      "diagnosticsCovered": ["modal_missing"]
+    },
+    {
+      "id": "echoscreencore:reference_accessibility",
+      "title": "Reference: Accessibility",
+      "category": "Reference",
+      "description": "Large text, high contrast, reduced clutter, and density notes.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["accessibility", "density", "contrast"],
+      "diagnosticsCovered": ["text_below_readable_size"]
+    },
+    {
+      "id": "echoscreencore:reference_bad_layouts",
+      "title": "Reference: Bad Layout Fixes",
+      "category": "Reference",
+      "description": "Intentional diagnostics paired with corrected patterns.",
+      "defaultStyle": "echoscreencore:screencore_app_kit",
+      "debugOnly": true,
+      "features": ["diagnostics", "bad-to-good", "layout-contract"],
+      "diagnosticsCovered": ["grid_missing_stack_below", "large_fixed_height", "nested_scroll_region", "missing_list_empty_state", "unbounded_row_text"]
+    }
+  ],
+  "referencePages": [
+    "echoscreencore:reference_feature_hub",
+    "echoscreencore:reference_workbench",
+    "echoscreencore:reference_dashboard",
+    "echoscreencore:reference_list_detail",
+    "echoscreencore:reference_three_column",
+    "echoscreencore:reference_dense_list",
+    "echoscreencore:reference_settings",
+    "echoscreencore:reference_inputs",
+    "echoscreencore:reference_selects_dropdowns",
+    "echoscreencore:reference_modal_overlay",
+    "echoscreencore:reference_accessibility",
+    "echoscreencore:reference_bad_layouts"
+  ],
+  "starterComponents": [
+    "echoscreencore:sc_app_shell",
+    "echoscreencore:sc_page_header",
+    "echoscreencore:sc_dashboard_grid",
+    "echoscreencore:sc_list_detail_shell",
+    "echoscreencore:sc_dense_list",
+    "echoscreencore:sc_detail_panel",
+    "echoscreencore:sc_action_strip",
+    "echoscreencore:sc_empty_panel",
+    "echoscreencore:sc_feature_card",
+    "echoscreencore:sc_diagnostic_row"
+  ],
+  "components": [
+    "echoscreencore:action_card",
+    "echoscreencore:status_chip_row",
+    "echoscreencore:two_column_shell",
+    "echoscreencore:mission_row",
+    "echoscreencore:confirm_dialog",
+    "echoscreencore:info_dialog",
+    "echoscreencore:error_dialog",
+    "echoscreencore:search_filter_bar",
+    "echoscreencore:responsive_card_grid",
+    "echoscreencore:empty_state",
+    "echoscreencore:debug_panel",
+    "echoscreencore:sc_app_shell",
+    "echoscreencore:sc_page_header",
+    "echoscreencore:sc_dashboard_grid",
+    "echoscreencore:sc_list_detail_shell",
+    "echoscreencore:sc_dense_list",
+    "echoscreencore:sc_detail_panel",
+    "echoscreencore:sc_action_strip",
+    "echoscreencore:sc_empty_panel",
+    "echoscreencore:sc_feature_card",
+    "echoscreencore:sc_diagnostic_row"
+  ]
+}

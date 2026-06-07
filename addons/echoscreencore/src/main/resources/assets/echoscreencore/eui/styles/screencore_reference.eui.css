@@ -1,0 +1,40 @@
+.sc-feature-grid {
+  columns: 0.7fr 1fr 1.1fr;
+  gap: 8px;
+}
+
+.sc-workbench-grid {
+  columns: 0.8fr 1.2fr;
+  gap: 8px;
+}
+
+.sc-hero-reference {
+  min-height: 92px;
+  padding: 10px;
+  gap: 6px;
+  border-width: 1px;
+  border-color: theme(accent);
+  background: theme(cardSelected);
+}
+
+.sc-bad-panel {
+  height: 700px;
+  padding: 8px;
+  border-width: 1px;
+  border-color: theme(warning);
+  background: theme(panel);
+}
+
+.sc-bad-row {
+  height: 32px;
+  padding: 4px;
+  gap: 6px;
+}
+
+.sc-fix-note {
+  wrap: true;
+  max-lines: 4;
+  overflow: hidden;
+  color: theme(textSecondary);
+}
+

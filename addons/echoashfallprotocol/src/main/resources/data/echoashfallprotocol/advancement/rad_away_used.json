@@ -1,0 +1,33 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:rad_away"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.rad_away_used.title",
+      "fallback": "Rad Flush"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.rad_away_used.desc",
+      "fallback": "Use RadAway to reduce radiation levels."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_rad_away": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "echoashfallprotocol:rad_away"
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["use_rad_away"]
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/powergrid/core_loop",
+  "title": "PowerGrid: Core Loop",
+  "category": "Guide Books",
+  "summary": "Generate, buffer, distribute, meter, and isolate power before adding new load.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Generate power, buffer it, distribute it through appropriate cables, monitor demand, isolate overloads, and upgrade the weakest segment before adding new load.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each expansion, read the meters and breakers. If demand spikes or voltage sags, strengthen that segment before plugging in another machine.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop when storage, breakers, and labels all match the current load. A quiet grid is easier to expand than a mystery cable bundle.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "item",
+      "title": "Loop Anchor",
+      "body": "Treat this as a material checkpoint: if it helps the loop, bring it home before chasing bulk.",
+      "tone": "tip",
+      "item": "minecraft:redstone",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Redstone",
+      "subtitle": "Core Loop checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone",
+  "relatedArticles": [
+    "echowiki:guides/powergrid"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1122
+}

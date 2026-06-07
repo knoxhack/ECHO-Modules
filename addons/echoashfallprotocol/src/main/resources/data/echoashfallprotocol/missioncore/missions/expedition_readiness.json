@@ -1,0 +1,144 @@
+{
+  "id": "echoashfallprotocol:expedition_readiness",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 1,
+  "title": "Pack Expedition Supplies",
+  "briefing": "[ECHO-7] Scanner range does not replace preparation. Pack clean water, field medicine, and the Portable Signal Scanner before the first serious route. Spare filters are optional unless the route is toxic.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:craft_portable_scanner"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "expedition_readiness",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.expedition_readiness",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "36",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:expedition_readiness:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:expedition_readiness/portable_signal_scanner",
+      "type": "obtain_item",
+      "label": "Obtain Portable Signal Scanner",
+      "detail": "Confirm 1 Portable Signal Scanner for this route step.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "target": "echoashfallprotocol:portable_signal_scanner",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:portable_signal_scanner"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:expedition_readiness/clean_water_bottle",
+      "type": "obtain_item",
+      "label": "Obtain Clean Water Bottle",
+      "detail": "Confirm 2 Clean Water Bottle for this route step.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "target": "echoashfallprotocol:clean_water_bottle",
+      "required": 2,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:clean_water_bottle"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:expedition_readiness/bandage",
+      "type": "obtain_item",
+      "label": "Obtain Bandage",
+      "detail": "Confirm 2 Bandage for this route step.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "target": "echoashfallprotocol:bandage",
+      "required": 2,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:bandage"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:portable_signal_scanner",
+      "count": 1,
+      "label": "Portable Signal Scanner"
+    },
+    {
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 2,
+      "label": "Clean Water Bottle"
+    },
+    {
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:expedition_readiness/reward_0",
+      "item": "minecraft:map",
+      "count": 1,
+      "label": "Map",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:expedition_readiness/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:expedition_readiness/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:expedition_readiness/reward_1"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:expedition_readiness/reward_2",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 2,
+      "label": "Emergency Ration",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:expedition_readiness/reward_2"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Expedition kit confirmed. Scan first, carry a retreat buffer, and enter only one hazard layer at a time."
+}

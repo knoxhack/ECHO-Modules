@@ -1,0 +1,64 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/block/light_gray_stained_glass.png",
+  "default_state": "SCANNING",
+  "transition_seconds": 0.3,
+  "materials": {
+    "dust_grid": {
+      "color": "#FFB6C0C8",
+      "alpha": 0.42,
+      "emissive": false,
+      "blend_mode": "replace"
+    }
+  },
+  "layers": [
+    {
+      "id": "collapsed_grid",
+      "kind": "overlay",
+      "texture": "minecraft:textures/block/light_gray_stained_glass.png",
+      "material": "dust_grid",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "SCANNING"
+      ],
+      "alpha": 0.4
+    }
+  ],
+  "surface": {
+    "type": "weather",
+    "owner_addon": "echoworldcore",
+    "display_name": "Region Ruined Cityscape",
+    "tags": [
+      "weather"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "particles_only",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

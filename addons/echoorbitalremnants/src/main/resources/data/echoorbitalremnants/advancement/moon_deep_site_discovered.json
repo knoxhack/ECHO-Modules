@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:lunar_signal",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:survey_marker"
+    },
+    "title": {
+      "text": "Deep Lunar Site"
+    },
+    "description": {
+      "text": "Log a deep lunar cairn, seam, or impact pocket."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

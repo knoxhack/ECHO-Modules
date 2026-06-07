@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/blackbox/systems",
+  "title": "Blackbox: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the Blackbox signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Fragments, ending directives, and signal records can point at different outcomes. A quiet item may matter later, so do not discard named evidence casually.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch names, fragment groups, directive wording, signal sources, route changes, and any record that sounds like it is asking you to commit.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A Blackbox system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "blackbox",
+    "signals",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:ender_eye",
+  "relatedArticles": [
+    "echowiki:guides/blackbox"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1043
+}

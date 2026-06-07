@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:field_medic",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "You are still standing. That gives us options.",
+      "options": [
+        { "id": "triage", "label": "How bad is it?", "next": "triage" },
+        { "id": "trade", "label": "Medical supplies?", "action": "open_trade" },
+        { "id": "service", "label": "I need treatment.", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Later.", "action": "close" }
+      ]
+    },
+    "triage": {
+      "text": "Filter cough, ash rash, dehydration. If you ignore the first two, the third decides for you.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

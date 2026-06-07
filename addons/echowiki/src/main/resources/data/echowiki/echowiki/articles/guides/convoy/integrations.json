@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/convoy/integrations",
+  "title": "Convoy: Integrations",
+  "category": "Guide Books",
+  "summary": "Plan hauls with route maps, weather checks, fuel support, storage, and recovery kits.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "HoloMap marks routes, Logistics prepares cargo, WorldCore explains region risk, and Recovery softens the cost of a failed return.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use HoloMap for waypoints, Logistics for cargo kits, Recovery for failed-route planning, and Terminal records for route intent and rewards.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "Without route overlays or logistics support, keep convoy runs short, label cargo by destination, and place repair supplies at both ends.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "convoy",
+    "routes",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:minecart",
+  "relatedArticles": [
+    "echowiki:guides/convoy"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1065
+}

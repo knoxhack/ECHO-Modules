@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/signalos/integrations",
+  "title": "SignalOS: Integrations",
+  "category": "Guide Books",
+  "summary": "Connect drives and records to terminals, missions, index search, maps, and tutorial prompts.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Terminal hosts SignalOS surfaces, Wiki can summarize records, Index can expose data objects, and styled screens can make records easier to read when present.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Terminal as the host surface, Wiki for summaries, Index for data objects, and ScreenCore styling when present for clearer records.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "Without linked apps, keep drives named, records sorted, and important coordinates or warnings copied into your route notes.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "signalos",
+    "drives",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:disc_fragment_5",
+  "relatedArticles": [
+    "echowiki:guides/signalos"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1165
+}

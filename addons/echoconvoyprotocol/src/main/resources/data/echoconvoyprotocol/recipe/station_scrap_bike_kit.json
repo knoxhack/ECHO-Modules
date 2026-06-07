@@ -1,0 +1,13 @@
+{
+  "type": "echoconvoyprotocol:convoy_station_processing",
+  "station": "vehicle_workbench",
+  "ingredients": [
+    {"ingredient": "echoconvoyprotocol:vehicle_frame"},
+    {"ingredient": "echoconvoyprotocol:scrap_tire", "count": 2},
+    {"ingredient": "echoconvoyprotocol:fuel_canister"}
+  ],
+  "result": "echoconvoyprotocol:scrap_bike_kit",
+  "duration": 160,
+  "energyCost": 20,
+  "count": 1
+}

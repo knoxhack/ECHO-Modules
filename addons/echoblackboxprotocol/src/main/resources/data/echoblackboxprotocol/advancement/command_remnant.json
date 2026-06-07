@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:bunker_unlock",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:command_key"
+                             },
+                    "title":  "Command Remnant Broken",
+                    "description":  "Defeat the Command Remnant and recover the Command Key.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "command_key":  {
+                                         "trigger":  "minecraft:inventory_changed",
+                                         "conditions":  {
+                                                            "items":  [
+                                                                          {
+                                                                              "items":  "echoblackboxprotocol:command_key"
+                                                                          }
+                                                                      ]
+                                                        }
+                                     }
+                 },
+    "requirements":  [
+                         [
+                             "command_key"
+                         ]
+                     ]
+}

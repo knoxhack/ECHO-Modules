@@ -1,0 +1,95 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoprimecore",
+  "name": "ECHO: Prime Core",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "pack_root",
+  "entrypoint": "com.knoxhack.echoprimecore.EchoPrimeCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echoterminal",
+    "echothemecore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "prime.content",
+    "prime.integrations",
+    "prime.missions",
+    "prime.onboarding",
+    "prime.routes",
+    "prime.survival",
+    "prime.world_signals"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "prime_survival"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data",
+    "server.commands",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "worldgen",
+        "data",
+        "commands"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoprimecore.EchoPrimeCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Prime Core is the current root module for the planned ECHO Prime pack profile. Terminal, MissionCore, Index, Lens, HoloMap, WorldCore, and ThemeCore integrations remain optional compile/runtime surfaces."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoprimecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

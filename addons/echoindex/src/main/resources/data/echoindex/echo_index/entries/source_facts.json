@@ -1,0 +1,15 @@
+{
+  "id": "echoindex:source_facts",
+  "category": "echoindex:sources",
+  "title": "Source Facts",
+  "subtitle": "Non-Recipe Acquisition Cards",
+  "summary": "Source facts explain where items come from when the answer is a cache, route, mission, trader, structure, research record, or machine process instead of a normal recipe.",
+  "body": "EchoIndex loads source facts from data/<namespace>/echo_index/source_facts/ and from addon IIndexSourceProvider implementations. It also scans loot tables and worldgen definitions to create safe fallback source cards.",
+  "icon": "minecraft:spyglass",
+  "tags": ["source", "loot", "cache", "route", "provider"],
+  "linked_items": ["minecraft:paper"],
+  "related": ["echoindex:inventory_overlay"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 0
+}

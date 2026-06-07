@@ -1,0 +1,209 @@
+{
+  "id": "echoashfallprotocol:ashfall_agent5_host_smoke_ui_bridge",
+  "schemaVersion": 1,
+  "assertionManifest": "echoashfallprotocol:ashfall_agent5_ui_assertions",
+  "contractReport": "reports/echo/ashfall-native-host-smoke-contract.json",
+  "coverageReport": "reports/echo/ashfall-native-host-smoke-coverage.json",
+  "executionPlan": "reports/echo/ashfall-native-host-smoke-execution-plan.json",
+  "runEvidence": "reports/echo/ashfall-native-host-smoke-run-evidence.json",
+  "gate": "open_until_live_host_smoke_evidence_lands",
+  "scenarios": [
+    {
+      "id": "first_spawn_new_player_host_mutation",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_first_spawn_new_player_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "first_spawn_welcome_and_starter_note"
+      ],
+      "surfaceFamilies": [
+        "welcome_screen",
+        "starter_note",
+        "hud",
+        "terminal",
+        "recovery",
+        "holomap",
+        "lens",
+        "index"
+      ],
+      "requiredLiveEvidence": [
+        "fresh join host run with starter inventory, drop pod, respawn binding, advancement, welcome packet, HUD, Terminal, Recovery, HoloMap, Lens, and Index assertions",
+        "QuestData save and relog snapshot after the first join"
+      ]
+    },
+    {
+      "id": "first_spawn_returning_player_repair",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_first_spawn_returning_player_repair_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "first_spawn_welcome_and_starter_note"
+      ],
+      "surfaceFamilies": [
+        "starter_note",
+        "terminal",
+        "recovery",
+        "holomap",
+        "quest_save"
+      ],
+      "requiredLiveEvidence": [
+        "damaged save host run proving pod repair, respawn repair, Terminal remote reissue, Recovery/HoloMap marker repair, and cache dedupe",
+        "QuestData compatibility snapshot after repair and relog"
+      ]
+    },
+    {
+      "id": "first_relay_route_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_first_relay_route_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "scanner_faction_drone_perk_route_surfaces",
+        "machine_power_status_surfaces"
+      ],
+      "surfaceFamilies": [
+        "terminal",
+        "holomap",
+        "lens",
+        "power_grid",
+        "loot_cache",
+        "quest_save"
+      ],
+      "requiredLiveEvidence": [
+        "first relay route completed through Terminal, HoloMap, Lens, PowerGrid repair, cache open, and route record surfaces in one host run",
+        "QuestData objective, mission completion, and relog snapshot"
+      ]
+    },
+    {
+      "id": "phase3_route_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_phase3_route_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "scanner_faction_drone_perk_route_surfaces"
+      ],
+      "surfaceFamilies": [
+        "scanner",
+        "faction",
+        "drone",
+        "perk",
+        "reward_inbox",
+        "quest_save"
+      ],
+      "requiredLiveEvidence": [
+        "canonical Phase 3 route completed through live readiness, POI scan, survivor cache, faction task, drone repair, drone intel, reputation, and first perk actions",
+        "QuestData, faction, drone, perk, reward inbox, and relog snapshots"
+      ]
+    },
+    {
+      "id": "midgame_route_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_midgame_route_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "midgame_hazard_med_bay_lab_vault_surfaces",
+        "machine_power_status_surfaces"
+      ],
+      "surfaceFamilies": [
+        "hazard_hud",
+        "mutation_status",
+        "field_med_bay",
+        "lab",
+        "vault",
+        "machine_screen",
+        "reward_inbox"
+      ],
+      "requiredLiveEvidence": [
+        "midgame route completed through bio lab, data log, reactor ruin, med bay, cleanser, RadAway, mutation, scrubber, dense alloy, thermal/geology, and grid actions",
+        "SurvivalData, MutationData, machine block entity, QuestData, reward inbox, and relog snapshots"
+      ]
+    },
+    {
+      "id": "late_game_nexus_endings_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_late_game_nexus_endings_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "late_game_nexus_prime_relay_endings"
+      ],
+      "surfaceFamilies": [
+        "boss_intel",
+        "nexus_ui",
+        "prime_relay",
+        "ending_branch",
+        "terminal",
+        "holomap",
+        "codex_index"
+      ],
+      "requiredLiveEvidence": [
+        "late-game route suite proving power nodes, relay stations, eight bosses, cryogenic ruins, Nexus core, Prime relays, final decision, and all three endings through host actions",
+        "QuestData, NexusCampaignData, NexusWorldData, PostNexusData, boss/event logs, ending copy, and relog snapshots"
+      ]
+    },
+    {
+      "id": "route_reward_delivery_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_route_reward_delivery_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "machine_power_status_surfaces",
+        "scanner_faction_drone_perk_route_surfaces",
+        "midgame_hazard_med_bay_lab_vault_surfaces",
+        "late_game_nexus_prime_relay_endings"
+      ],
+      "surfaceFamilies": [
+        "reward_inbox",
+        "inventory_diff",
+        "quest_save",
+        "terminal"
+      ],
+      "requiredLiveEvidence": [
+        "route rewards claimed from first relay, Phase 3, midgame, late-game, Nexus, and ending route-completed states",
+        "pending rewards, claimed rewards, inventory diffs, Terminal reward inbox, and relog snapshots for each route segment"
+      ]
+    },
+    {
+      "id": "machine_meter_screen_host_smoke",
+      "contractStatus": "AdapterCore queued",
+      "coverageStatus": "Partial host GameTest coverage",
+      "hostEvidenceStatus": "complete_host_smoke_passed",
+      "completeHostSmokeTestId": "ashfall_machine_meter_screen_host_smoke",
+      "completeHostSmokeStatus": "passed_in_wildcard_host_run",
+      "canCloseReleaseGate": false,
+      "uxAssertionIds": [
+        "machine_power_status_surfaces"
+      ],
+      "surfaceFamilies": [
+        "energy_meter",
+        "machine_screen",
+        "factory_controller",
+        "machine_status",
+        "block_entity_save"
+      ],
+      "requiredLiveEvidence": [
+        "Energy Meter and machine screens opened against a live powered base with storage, demand, bottleneck, brownout, transfer, powered, unpowered, jammed, worn, backpressured, and output-ready assertions",
+        "factory controller summary, machine toggles, chunk unload, relog, and block entity snapshots"
+      ]
+    }
+  ]
+}

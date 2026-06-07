@@ -1,0 +1,71 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echohealthcore",
+  "name": "ECHO: HealthCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "health",
+  "entrypoint": "com.knoxhack.echo.healthcore.EchoHealthCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "runtime.health"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "runtime.health",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echo.healthcore.EchoHealthCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "diagnostics_agent",
+      "platform_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

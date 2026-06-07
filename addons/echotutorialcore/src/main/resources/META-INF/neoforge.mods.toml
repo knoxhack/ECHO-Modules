@@ -1,0 +1,141 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echotutorialcore"
+version="1.0.0"
+displayName="ECHO: TutorialCore"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the shared onboarding, guided tutorials, contextual hints, first-time popups, mistake detection, Terminal tutorial cards, beginner guide mode, and codex-style help for the entire ECHO/Ashfall ecosystem."
+description='''
+Make Ashfall deep, but not confusing.
+
+ECHO TutorialCore provides diegetic guidance through the ECHO-7 persona, Terminal Guide cards, contextual field hints, mistake detection, requirement explanations, and tutorial flows. It is designed to be immersive, non-spammy, and ignorable by experts while remaining invaluable to newcomers.
+'''
+
+[[dependencies.echotutorialcore]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echoterminal"
+type="optional"
+reason="Integrates Guide cards and What Now recommendations into the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echomissioncore"
+type="optional"
+reason="Registers tutorial missions and flows through MissionCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echoindex"
+type="optional"
+reason="Publishes TutorialCore Guide cards into the shared ECHO Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echothemecore"
+type="optional"
+reason="Resolves TutorialCore Guide UI colors through shared ThemeCore tokens when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echoworldcore"
+type="optional"
+reason="Reads hazard and region context for contextual hints when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echopowergrid"
+type="optional"
+reason="Receives power events and shows PowerGrid tutorial hints when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echolens"
+type="optional"
+reason="Provides Lens assist rows for machine troubleshooting when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echoholomap"
+type="optional"
+reason="Provides route prep warnings and map contextual help when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echosoundcore"
+type="optional"
+reason="Plays subtle tutorial notification sounds and guide card stingers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echodatacore"
+type="optional"
+reason="Uses DataCore for persistent tutorial progress if available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echonetcore"
+type="required"
+reason="Provides shared packet registration and tutorial sync sends."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echoruntimeguard"
+type="optional"
+reason="Respects tick budgets and profiling hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echotutorialcore]]
+modId="echorendercore"
+type="optional"
+reason="Allows shared visual QA and future render-profile diagnostics without requiring RenderCore."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

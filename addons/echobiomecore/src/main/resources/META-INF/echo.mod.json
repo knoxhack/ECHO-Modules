@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echobiomecore",
+  "name": "ECHO: BiomeCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "biome_core",
+  "entrypoint": "com.knoxhack.echo.biomecore.EchoBiomeCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "biome.ambience",
+    "biome.hazards",
+    "biome.holomap_layers",
+    "biome.profiles"
+  ],
+  "consumes": [
+    "assets.registry",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "data",
+        "maps",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.biomecore.EchoBiomeCoreNativeModule",
+    "nativeClasspath": [],
+    "contractsOnly": true,
+    "notes": "Neutral biome profile, ambience, hazard, and HoloMap layer contracts; no worldgen, rendering, or weather implementation."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

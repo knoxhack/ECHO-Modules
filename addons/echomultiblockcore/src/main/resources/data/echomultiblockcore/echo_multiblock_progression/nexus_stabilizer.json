@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:nexus_stabilizer",
+    "facility":  "echomultiblockcore:nexus_stabilizer",
+    "tier":  7,
+    "prerequisites":  [
+                          "echomultiblockcore:scanner_array"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:stabilize_nexus_field_coil",
+                             "echomultiblockcore:tune_nexus_stability"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:nexus_field_coil"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/nexus_stabilizer",
+    "title":  "Nexus Stabilizer",
+    "guide":  "Stabilize nexus field coils without requiring Nexus Protocol as a hard dependency."
+}

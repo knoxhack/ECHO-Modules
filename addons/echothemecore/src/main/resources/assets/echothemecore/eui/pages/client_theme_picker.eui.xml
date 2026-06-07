@@ -1,0 +1,59 @@
+<page id="client-theme-picker" title="Theme Picker" styles="echothemecore:universal_theme_kit">
+  <screen-shell class="theme-picker-shell">
+    <row class="theme-picker-header" gap="10">
+      <column>
+        <title value="ThemeCore"/>
+        <text value="Client-local universal theme picker"/>
+      </column>
+      <status-chip status="ready" value="LOCAL"/>
+      <status-chip status="success" value="{themeCore.activeName|CyberGlass}"/>
+    </row>
+    <grid columns="1fr 1fr 1fr" gap="10" stack-below="860">
+      <repeat source="themeCore.publicThemes" item="theme" key="{theme.id}">
+        <card class="theme-picker-card" status="{theme.selectedStatus}" action="echothemecore.set_client_theme" action-value="{theme.id}" selected="{theme.selected}">
+          <row gap="10">
+            <image texture="{theme.icon}" width="46" height="46" fit="contain"/>
+            <column>
+              <title value="{theme.displayName}"/>
+              <text value="{theme.description}"/>
+            </column>
+          </row>
+          <row class="theme-picker-tags" gap="6">
+            <status-chip status="info" value="{theme.family}"/>
+            <status-chip status="{theme.selectedStatus}" value="{theme.replacementLevel}"/>
+            <status-chip status="warning" value="#{theme.cycleOrder}"/>
+          </row>
+          <image class="theme-picker-preview" texture="{theme.loadingBackground}" width="260" height="84" fit="cover"/>
+          <row class="theme-picker-asset-row" gap="6">
+            <image texture="{theme.menuBackplate}" width="58" height="28" fit="cover"/>
+            <image texture="{theme.hudAccent}" width="58" height="28" fit="contain"/>
+            <image texture="{theme.itemFrame}" width="28" height="28" fit="contain"/>
+            <image texture="{theme.buttonTexture}" width="58" height="28" fit="cover"/>
+          </row>
+          <row class="theme-picker-swatches" gap="6">
+            <status-chip status="info" value="{theme.primary}"/>
+            <status-chip status="success" value="{theme.secondary}"/>
+            <status-chip status="warning" value="{theme.accent}"/>
+          </row>
+          <progress-bar value="{theme.previewProgress}" max="100"/>
+          <row class="cyberglass-action-row">
+            <button action="echothemecore.set_client_theme" action-value="{theme.id}" variant="primary">{theme.buttonLabel}</button>
+          </row>
+        </card>
+        <empty-state title="No public themes" body="No ThemeCore themes are marked public."/>
+      </repeat>
+      <section title="Cycle">
+        <row class="cyberglass-action-row">
+          <button action="echothemecore.cycle_client_theme" action-value="previous" variant="ghost">Previous</button>
+          <button action="echothemecore.cycle_client_theme" action-value="next" variant="primary">Next</button>
+          <button action="echothemecore.reset_client_theme" variant="ghost">Reset</button>
+        </row>
+        <row class="cyberglass-status-row">
+          <status-chip status="info" value="HUD"/>
+          <status-chip status="success" value="MENU"/>
+          <status-chip status="warning" value="ITEMS"/>
+        </row>
+      </section>
+    </grid>
+  </screen-shell>
+</page>

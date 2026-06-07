@@ -1,0 +1,114 @@
+{
+  "id": "echoashfallprotocol:ashfall_showcase_flow",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "title": "Ashfall Showcase Opening",
+  "briefing": "Use the first Ashfall session to touch the ECHO stack in a readable order while keeping the profile isolated from generic templates.",
+  "objectives": [
+    {
+      "id": "open_terminal",
+      "type": "custom",
+      "label": "Open Terminal",
+      "detail": "Read the Ashfall dashboard and confirm the next-step summary.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "read_index",
+      "type": "custom",
+      "label": "Read the first Index archive",
+      "detail": "Open the Showcase Flow and Profile Isolation entries.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "scan_wreckage",
+      "type": "custom",
+      "label": "Scan pod wreckage with Lens",
+      "detail": "Use the Ashfall showcase scan row to reveal the first marker and mission hint.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "track_marker",
+      "type": "custom",
+      "label": "Track the first HoloMap marker",
+      "detail": "Pin the field objective before leaving the pod route.",
+      "icon": "echoashfallprotocol:relay_scanner_lens",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "survive_weather",
+      "type": "custom",
+      "label": "React to the first WeatherCore warning",
+      "detail": "Use the toxic-front warning as a tutorial beat rather than a punishment spike.",
+      "icon": "echoashfallprotocol:gas_mask",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "recover_relic",
+      "type": "custom",
+      "label": "Recover a relic field note",
+      "detail": "Bridge RelicTech, Index, Lens, and SoundCore with a small discovery.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "repair_power",
+      "type": "custom",
+      "label": "Repair the pod power spine",
+      "detail": "Use the PowerGrid repair note before larger factory systems appear.",
+      "icon": "echoashfallprotocol:basic_battery",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    },
+    {
+      "id": "upgrade_gear",
+      "type": "custom",
+      "label": "Install a first Armory upgrade",
+      "detail": "Introduce gear readiness before faction/story pressure rises.",
+      "icon": "echoashfallprotocol:scrap_knife",
+      "criteria": {
+        "native_objective_type": "creator_action"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "documentation",
+      "id": "echoashfallprotocol:showcase_bridge_docs",
+      "label": "Unlock Ashfall showcase bridge notes.",
+      "detail": "Unlock Ashfall showcase bridge notes. appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "phase": "showcase",
+  "phaseTitle": "Showcase Opening",
+  "phaseOrder": 0,
+  "order": 0,
+  "fieldGuide": "Internal showcase route that proves Terminal, Index, Lens, HoloMap, WeatherCore, RelicTech, PowerGrid, and Armory guidance all produce readable player-facing decisions.",
+  "category": "tutorial",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "side",
+  "completionText": "Ashfall showcase stack touched in order. Terminal, Index, Lens, HoloMap, weather, relic, power, and gear guidance all have a readable first-session handoff.",
+  "guidanceLinks": {
+    "indexEntry": "echoashfallprotocol:showcase_flow",
+    "holomapMarker": "echoashfallprotocol:first_field_objective",
+    "lensProfile": "echoashfallprotocol:ashfall_showcase_scans",
+    "terminalPage": "echoashfallprotocol:ashfall_showcase_dashboard",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "holomapLayer": "echoashfallprotocol:showcase_flow"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoarmory",
+  "name": "ECHO: Armory",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "combat",
+  "entrypoint": "com.knoxhack.echoarmory.EchoArmory",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoindex",
+    "echologisticsnetwork",
+    "echopowergrid",
+    "echoterminal",
+    "echothemecore"
+  ],
+  "provides": [
+    "armory.bench",
+    "armory.gear",
+    "armory.loadouts",
+    "armory.repair",
+    "armory.upgrades"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "items",
+        "recipes",
+        "player"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoarmory.EchoArmoryNativeModule",
+    "nativeClasspath": [],
+    "notes": "Armory is an optional Ashfall beta runtime addon for gear, loadouts, repair, and upgrade flows. Logistics, PowerGrid, Terminal, ThemeCore, and Index links remain optional."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoarmory/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

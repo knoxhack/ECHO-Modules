@@ -1,0 +1,96 @@
+{
+  "id": "echoashfallprotocol:stockpile_clean_water",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 6,
+  "title": "Stockpile 3 Clean Water",
+  "briefing": "[ECHO-7] A purifier is hardware. Survival requires reserves. Stockpile 3 Clean Water Bottles before expanding the base.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall reserve check that proves the purifier loop is producing enough clean water before battery-bank expansion.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:clean_water_bottle",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_water_purifier"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "stockpile_clean_water",
+    "nativeGameplayHook": "ashfall.first_route.stockpile_clean_water",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.battery_bank.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "15",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:stockpile_clean_water:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:stockpile_clean_water/confirm_clean_water_reserve",
+      "type": "custom",
+      "label": "Stockpile 3 Clean Water",
+      "detail": "Carry or stage three Clean Water Bottles before expanding the powered base.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:clean_water_bottle",
+      "required": 3,
+      "criteria": {
+        "predicate": "inventory_count_at_least",
+        "item": "echoashfallprotocol:clean_water_bottle",
+        "count": 3,
+        "events": "player.inventory_changed,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 3,
+      "label": "Clean Water Bottles"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:stockpile_clean_water/reward_ash",
+      "item": "echoashfallprotocol:ash",
+      "count": 6,
+      "label": "Ash",
+      "detail": "Local processing material for early base expansion."
+    },
+    {
+      "id": "echoashfallprotocol:stockpile_clean_water/reward_bandage",
+      "item": "echoashfallprotocol:bandage",
+      "count": 1,
+      "label": "Bandage",
+      "detail": "Medical reserve for the next infrastructure push."
+    }
+  ],
+  "completionText": "[ECHO-7] Hydration buffer established. Carry one bottle and keep the rest near the purifier."
+}

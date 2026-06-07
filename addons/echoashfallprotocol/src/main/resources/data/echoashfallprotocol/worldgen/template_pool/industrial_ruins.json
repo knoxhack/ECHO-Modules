@@ -1,0 +1,69 @@
+{
+  "name": "echoashfallprotocol:industrial_ruins",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/conveyor_ruin",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/storage_yard",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/crane_wreck",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/pipe_cluster",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/industrial_factory",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/rail_signal_yard",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/industrial_ruins/factory_pipe_gate",
+        "processors": "echoashfallprotocol:industrial_ruins_loot"
+      }
+    }
+  ]
+}

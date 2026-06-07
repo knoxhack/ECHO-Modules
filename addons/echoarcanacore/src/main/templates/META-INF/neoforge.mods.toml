@@ -1,0 +1,76 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Shared arcane operating-system layer for ECHO: Arcana Division."
+description='''
+ECHO: Arcana Core provides the Aether Signal APIs, arcane registries, progression hooks,
+and optional bridge contracts used by the Arcana Division and ARCANA: Veilbound Studies.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, service, Index, map, archive, and mission contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="optional"
+reason="Syncs Arcana player, relic, curse, spell, and discovery state when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echodatacore"
+type="optional"
+reason="Mirrors Arcana player, discovery, curse, and Veilbound bridge flags when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Surfaces Arcana diagnostics and Grimoire links in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoindex"
+type="optional"
+reason="Allows Arcana Core records to appear in ECHO: Index and ECHO: Arcane Index."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Accepts Veilbound resonance, fracture, research, ritual, pressure, landmark, and boss-gate bridge providers."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"

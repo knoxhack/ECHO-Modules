@@ -1,0 +1,177 @@
+{
+    "id":  "echomultiblockcore:archive_data_chamber",
+    "display_name":  "Archive Data Chamber",
+    "translation_key":  "multiblock.echomultiblockcore.archive_data_chamber",
+    "role":  "ARCHIVE",
+    "category":  "archive",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "DFFFD",
+                       "FIIOF",
+                       "DDCDD",
+                       "FOROF",
+                       "DFFFD"
+                   ],
+                   [
+                       ".S.S.",
+                       "DR.RD",
+                       "P.C.P",
+                       "DR.RD",
+                       ".A.A."
+                   ],
+                   [
+                       "DDDDD",
+                       "D...D",
+                       "D.D.D",
+                       "D...D",
+                       "DDDDD"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:terminal_tab",
+                         "echo:research_station",
+                         "echo:map_marker",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  180,
+                                        "throughput":  48,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  32,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:archive_data_chamber/data_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade",
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:archive_data_chamber/integrity_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:archive_data_chamber/security_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:archive_data_chamber/archive",
+                          "type":  "ARCHIVE",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER",
+                                                 "STABILIZER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:encode_archive_memory_cell"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "9fe8ff"
+                },
+    "facility_stage":  "P8 NEXUS DECISION",
+    "facility_route":  "archive",
+    "primary_use":  "Encodes archive memory cells for Blackbox/DataCore-style record processing.",
+    "integration_hints":  [
+                              "DataCore integrations should mirror summary snapshots only.",
+                              "Blackbox content should attach effects to recipes instead of replacing registry state.",
+                              "Archive Memory Cell is the neutral handoff item."
+                          ]
+}

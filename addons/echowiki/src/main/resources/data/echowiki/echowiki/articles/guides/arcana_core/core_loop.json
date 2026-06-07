@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/arcana_core/core_loop",
+  "title": "Arcana Core Field: Core Loop",
+  "category": "Guide Books",
+  "summary": "Turn arcane discoveries into shared records that other addons can safely consume.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Discover",
+      "body": "Find or create an arcane signal, then record the relevant definition with stable ids, tags, and player-facing context.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Publish",
+      "body": "Expose the record through registered providers so Index, Grimoire, Lens, HoloMap, and MissionCore can decide what to show.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Act",
+      "body": "Let gameplay modules consume the shared record for rituals, spells, curses, relic behavior, and route progress without creating hard dependencies.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcana_core",
+    "arcana",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:amethyst_shard",
+  "relatedArticles": [
+    "echowiki:guides/arcana_core"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1252
+}

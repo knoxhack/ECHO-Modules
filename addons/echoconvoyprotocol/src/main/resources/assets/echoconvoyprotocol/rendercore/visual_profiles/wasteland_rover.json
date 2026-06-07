@@ -1,0 +1,211 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover.png",
+  "glow_texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_glow.png",
+  "damaged_overlay_texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_damage_overlay.png",
+  "corrupted_overlay_texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_corrupted_overlay.png",
+  "active_overlay_texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_active_overlay.png",
+  "animation_profile": "echoconvoyprotocol:echo_mobs/wasteland_rover",
+  "particle_profile": "echoconvoyprotocol:echo_mobs/wasteland_rover",
+  "default_state": "ONLINE",
+  "transition_seconds": 0.18,
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 0.75,
+    "pulse_speed": 1.8,
+    "pulse_min_alpha": 0.55,
+    "pulse_max_alpha": 1,
+    "flicker_intensity": 0.05,
+    "scanline_strength": 0,
+    "target_scope": "entity"
+  },
+  "materials": {
+    "echo_emissive": {
+      "color": "#FF9A2F",
+      "alpha": 0.92,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "neon",
+        "glow_intensity": 0.75,
+        "pulse_speed": 1.8,
+        "pulse_min_alpha": 0.55,
+        "pulse_max_alpha": 1,
+        "flicker_intensity": 0.05,
+        "scanline_strength": 0,
+        "target_scope": "entity"
+      }
+    },
+    "damage_heat": {
+      "color": "#FFFF7A28",
+      "alpha": 0.75,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "neon",
+        "glow_intensity": 0.8,
+        "pulse_speed": 3,
+        "pulse_min_alpha": 0.45,
+        "pulse_max_alpha": 0.9,
+        "target_scope": "entity"
+      }
+    },
+    "corruption": {
+      "color": "#FFB45CFF",
+      "alpha": 0.72,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 0.75,
+        "scanline_strength": 0.35,
+        "pulse_speed": 2.2,
+        "target_scope": "entity"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "core_glow",
+      "kind": "glow",
+      "texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_glow.png",
+      "material": "echo_emissive",
+      "states": [
+        "ONLINE",
+        "IDLE",
+        "ACTIVE",
+        "WORKING",
+        "SCANNING",
+        "CHARGING",
+        "COMPLETE"
+      ]
+    },
+    {
+      "id": "active_motion_overlay",
+      "kind": "overlay",
+      "texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_active_overlay.png",
+      "material": "echo_emissive",
+      "states": [
+        "ACTIVE",
+        "WORKING",
+        "SCANNING",
+        "CHARGING"
+      ]
+    },
+    {
+      "id": "damage_heat_overlay",
+      "kind": "overlay",
+      "texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_damage_overlay.png",
+      "material": "damage_heat",
+      "states": [
+        "DAMAGED",
+        "OVERHEATED",
+        "FAILED"
+      ]
+    },
+    {
+      "id": "corruption_overlay",
+      "kind": "overlay",
+      "texture": "echoconvoyprotocol:textures/entity/rendercore_echo_mobs/wasteland_rover_corrupted_overlay.png",
+      "material": "corruption",
+      "states": [
+        "CORRUPTED"
+      ]
+    }
+  ],
+  "state_animations": {
+    "IDLE": "idle",
+    "ONLINE": "idle",
+    "ACTIVE": "active",
+    "WORKING": "active",
+    "SCANNING": "scan",
+    "CHARGING": "charge",
+    "DAMAGED": "damaged",
+    "CORRUPTED": "corrupt",
+    "OVERHEATED": "damaged",
+    "FAILED": "damaged"
+  },
+  "anchors": {
+    "core": [
+      0,
+      0.8,
+      0
+    ],
+    "eyes": [
+      0,
+      1.25,
+      -0.35
+    ],
+    "trail": [
+      0,
+      0.18,
+      0.55
+    ],
+    "ground": [
+      0,
+      0.04,
+      0
+    ],
+    "exhaust": [
+      0,
+      0.55,
+      0.65
+    ],
+    "scanner": [
+      0,
+      1.05,
+      -0.45
+    ]
+  },
+  "preview": {
+    "title": "wasteland_rover RenderCore mob visual",
+    "notes": "wasteland rover vehicle; scanner mast, four wheels, cyan headlights",
+    "artifact": "art_sources/echoconvoyprotocol/convoy_vehicle_visual_repair_atlas_sheet.png",
+    "screenshot": {
+      "enabled": false,
+      "reason": "Convoy repair atlas is the deterministic source; final in-game screenshots are manual."
+    }
+  },
+  "surface": {
+    "type": "entity",
+    "owner_addon": "echoconvoyprotocol",
+    "display_name": "Wasteland Rover",
+    "tags": [
+      "entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "vanilla_renderer",
+    "expectation": "vanilla or generated fallback renderer remains available",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "high",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine2",
+                   "data":  0
+               },
+    "pattern":  [
+                    "WXW",
+                    "WYW",
+                    "VZV"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "V":  {
+                          "item":  "echogalacticcore:aluminum_wire",
+                          "data":  0
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "Y":  {
+                          "item":  "echogalacticcore:machine",
+                          "data":  12
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_advanced"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

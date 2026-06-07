@@ -1,0 +1,78 @@
+{
+  "schema_version": 7,
+  "base_texture": "examplemod:textures/entity/complex_vehicle.png",
+  "animation_profile": "examplemod:complex_vehicle",
+  "particle_profile": "examplemod:complex_vehicle",
+  "default_state": "ONLINE",
+  "transition_seconds": 0.16,
+  "includes": [
+    {
+      "profile": "examplemod:complex_vehicle_base",
+      "states": ["ONLINE", "ACTIVE", "WORKING", "DAMAGED"],
+      "variants": ["field", "armored"]
+    }
+  ],
+  "preview": {
+    "title": "Complex Vehicle",
+    "artifact": "assets/examplemod/rendercore/previews/complex_vehicle.preview.json",
+    "screenshot": {
+      "enabled": false,
+      "provider": "creator_tool"
+    }
+  },
+  "materials": {
+    "headlight_beam": {
+      "color": "#FF66E8FF",
+      "alpha": 0.92,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "light_override": 15728880,
+      "outline_color": "#FF66E8FF",
+      "sort_order": -1,
+      "render_priority": 2
+    },
+    "damage_heat": {
+      "color": "#FFFF7A28",
+      "alpha": 0.8,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "emissive",
+      "render_pass": "translucent",
+      "overlay_override": 0,
+      "render_priority": 4
+    }
+  },
+  "layers": [
+    {
+      "id": "headlights",
+      "kind": "glow",
+      "texture": "examplemod:textures/entity/complex_vehicle_glow.png",
+      "material": "headlight_beam",
+      "states": ["ONLINE", "ACTIVE", "WORKING"],
+      "parts": ["headlight_left", "headlight_right"]
+    },
+    {
+      "id": "damage_heat",
+      "kind": "overlay",
+      "texture": "examplemod:textures/entity/complex_vehicle_damage.png",
+      "material": "damage_heat",
+      "states": ["DAMAGED", "OVERHEATED", "FAILED"],
+      "parts": ["engine_core", "exhaust_left", "exhaust_right"],
+      "depth_write": false,
+      "sort_order": 3,
+      "render_priority": 1
+    }
+  ],
+  "state_animations": {
+    "ONLINE": "idle_scanner",
+    "ACTIVE": "drive_loop",
+    "DAMAGED": "damage_flicker"
+  },
+  "anchors": {
+    "exhaust_left": { "part": "exhaust_left", "offset": [-0.8, 0.5, 1.2] },
+    "exhaust_right": { "part": "exhaust_right", "offset": [0.8, 0.5, 1.2] },
+    "scanner_lens": { "part": "scanner", "offset": [0.0, 1.7, -0.2] }
+  }
+}

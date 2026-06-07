@@ -1,0 +1,95 @@
+<page id="terminal-overview" title="Command Deck" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_components,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <grid class="terminal-dashboard-grid terminal-command-overview-grid" columns="2.1fr 1fr" gap="10" stack-below="900">
+        <column class="terminal-command-left-stack" gap="10">
+          <grid class="terminal-dashboard-grid terminal-command-primary-grid" columns="1.2fr 0.9fr" gap="10" stack-below="900">
+            <hero-card class="terminal-active-mission" status="{terminal.overview.bestNextAction.statusKey|active}">
+              <copy-block class="terminal-hero-copy terminal-row-copy" title="{terminal.overview.bestNextAction.title|Open Survival Route}" subtitle="{terminal.overview.bestNextAction.summary|Review route objectives and mission handoff.}"/>
+              <row class="terminal-home-route-chip-row" gap="6">
+                <status-chip status="{terminal.overview.bestNextAction.statusKey|active}" value="{terminal.overview.bestNextAction.statusCompactLabel|READY}"/>
+                <status-chip status="info" value="{terminal.overview.bestNextAction.routeProgressLabel|Route 0%}"/>
+                <status-chip status="{terminal.overview.bestNextAction.rewardState|info}" value="{terminal.overview.bestNextAction.rewardCompactLabel|RWD 0}"/>
+                <status-chip status="{terminal.overview.bestNextAction.threatStatusKey|warning}" value="{terminal.overview.bestNextAction.threat|HIGH}"/>
+              </row>
+              <progress-bar value="{terminal.overview.bestNextAction.progressPercent|67}" max="100"/>
+              <button action="terminal.open_mission" action-value="{terminal.overview.bestNextAction.missionId}" variant="primary">{terminal.overview.bestNextAction.actionLabel|Open Survival Route}</button>
+            </hero-card>
+
+            <section class="terminal-panel" title="WHAT NOW">
+              <scroll class="terminal-command-list">
+                <list bind="terminal.overview.commandRows" item="card">
+                  <list-row class="terminal-what-now-row terminal-command-row" action="terminal.open_mission" action-value="{card.actionValue}" value="{card.actionValue}">
+                    <status-chip class="terminal-command-badge-chip" status="{card.statusKey}" value="{card.badge}"/>
+                    <copy-block class="terminal-row-copy" title="{card.title}" subtitle="{card.summary}"/>
+                  </list-row>
+                  <empty-state title="No priority commands" body="No actionable route, reward, or diagnostic rows are pending."/>
+                </list>
+              </scroll>
+              <button action="terminal.open_tab" action-value="echoterminal:main_survival_route" variant="primary">Open Survival Route</button>
+            </section>
+          </grid>
+
+          <grid class="terminal-dashboard-grid terminal-command-secondary-grid" columns="1fr 1fr" gap="10" stack-below="900">
+            <section class="terminal-panel" title="RECENT INTEL FEED">
+              <scroll class="terminal-feed-list terminal-command-feed-list">
+                <list bind="terminal.overview.recentIntel" item="signal">
+                  <list-row class="terminal-action-row terminal-command-row" action="terminal.open_tab" action-value="{signal.tabId}" value="{signal.title}">
+                    <status-chip class="terminal-command-badge-chip" status="{signal.statusKey}" value="{signal.compactStatusLabel}"/>
+                    <copy-block class="terminal-row-copy" title="{signal.title}" subtitle="{signal.summary}"/>
+                  </list-row>
+                </list>
+              </scroll>
+              <button action="terminal.open_tab" action-value="echoterminal:archives" variant="ghost">View All Intel</button>
+            </section>
+
+            <section class="terminal-panel" title="AVAILABLE SIDE OPS">
+              <scroll class="terminal-feed-list terminal-command-feed-list">
+                <list bind="terminal.overview.sideOps" item="card">
+                  <list-row class="terminal-action-row terminal-command-row" action="terminal.open_mission" action-value="{card.missionId}" value="{card.missionId}">
+                    <copy-block class="terminal-row-copy" title="{card.title}" subtitle="{card.summary}"/>
+                    <status-chip class="terminal-command-state-chip" status="{card.statusKey}" value="{card.compactStatusLabel}"/>
+                  </list-row>
+                  <empty-state title="No side ops" body="No optional route records are currently attached."/>
+                </list>
+              </scroll>
+              <button action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">View Operations</button>
+            </section>
+          </grid>
+        </column>
+
+        <section class="terminal-panel terminal-route-status-panel" title="ROUTE STATUS">
+          <scroll class="terminal-route-status-scroll" scroll-state="true" state-key="terminal.overview.routeStatus">
+            <column class="terminal-route-status-content">
+              <copy-block class="terminal-row-copy terminal-route-status-copy" title="{terminal.overview.routeStatus.routeLine|Route 01 > Ashfall C45 > Podfall}"/>
+              <progress-bar value="{terminal.overview.routeStatus.progressPercent|63}" max="100"/>
+              <grid class="terminal-metric-grid" columns="1fr 1fr 1fr 1fr" gap="6">
+                <stat-card label="Distance" value="{terminal.overview.routeStatus.distance|2.6 km}" status="info"/>
+                <stat-card label="Travel" value="{terminal.overview.routeStatus.travel|00:37}" status="info"/>
+                <stat-card label="Conditions" value="{terminal.overview.routeStatus.conditions|HAZARDOUS}" status="{terminal.overview.routeStatus.conditionsStatusKey|warning}"/>
+                <stat-card label="Visibility" value="{terminal.overview.routeStatus.visibility|POOR}" status="{terminal.overview.routeStatus.visibilityStatusKey|warning}"/>
+              </grid>
+              <section class="terminal-danger-panel" title="HAZARD WARNINGS">
+                <list class="terminal-route-status-hazard-list" bind="terminal.overview.hazardWarnings" item="signal">
+                  <list-row class="terminal-compact-row" action="terminal.open_tab" action-value="{signal.tabId}" value="{signal.title}">
+                    <copy-block class="terminal-row-copy" title="{signal.title}" subtitle="{signal.summary|Hazard warning.}"/>
+                    <status-chip class="terminal-command-state-chip" status="{signal.statusKey}" value="{signal.badge}"/>
+                  </list-row>
+                </list>
+              </section>
+            </column>
+          </scroll>
+          <button action="terminal.open_hazard_map" variant="ghost">View Hazard Map</button>
+        </section>
+      </grid>
+
+      <row class="terminal-action-strip" gap="10">
+        <button action="terminal.open_tab" action-value="echoterminal:main_survival_route" variant="primary">Survival Route</button>
+        <button action="terminal.ping_scan" variant="ghost">Ping Scan</button>
+        <button action="terminal.deploy_probe" variant="ghost">Deploy Probe</button>
+        <button action="terminal.open_tab" action-value="echoterminal:reward_inbox" variant="ghost">Reward Inbox</button>
+        <button action="terminal.open_tab" action-value="echoterminal:settings" variant="ghost">Configure Terminal</button>
+      </row>
+    </slot>
+  </component>
+</page>

@@ -1,0 +1,787 @@
+.wiki-filter-bar, .wiki-search-panel {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 6px;
+  gap: 5px;
+  height: 70px;
+  min-height: 70px;
+}
+
+.wiki-search-control-row {
+  height: 28px;
+  min-height: 28px;
+}
+
+.wiki-filter-row {
+  height: 24px;
+  min-height: 24px;
+}
+
+.wiki-panel-toolbar {
+  height: 24px;
+  min-height: 24px;
+}
+
+.wiki-article-card, .wiki-guide-book-card, .wiki-guide-shelf-row, .wiki-guide-chapter-row, .wiki-related-row, .wiki-record-row, list-row {
+  background: theme(card);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 6px;
+}
+
+.wiki-article-card {
+  height: 46px;
+  min-height: 46px;
+}
+
+.wiki-record-row {
+  height: 58px;
+  min-height: 58px;
+}
+
+.wiki-guide-book-card {
+  height: 66px;
+  min-height: 66px;
+}
+
+.wiki-guide-chapter-row {
+  height: 86px;
+  min-height: 86px;
+}
+
+.wiki-guide-shelf-row {
+  height: 44px;
+  min-height: 44px;
+}
+
+.wiki-related-row {
+  height: 60px;
+  min-height: 60px;
+}
+
+nav-item {
+  height: 30px;
+  min-height: 30px;
+  padding: 5px 8px;
+  background: #071523DD;
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+nav-item[selected] {
+  background: #0B2B3FCC;
+  border-color: theme(accent);
+}
+
+list-row[selected], .wiki-article-card[selected], .wiki-guide-book-card[selected], .wiki-guide-shelf-row[selected], .wiki-record-row[selected] {
+  background: #0B2B3FCC;
+  border-color: theme(accent);
+}
+
+.wiki-guide-book-card[selected], .wiki-guide-shelf-row[selected] {
+  background: #0E3348DD;
+  border-color: theme(accent);
+  border-width: 2;
+}
+
+.wiki-manual-hero {
+  background: theme(panel);
+  border-color: theme(border);
+  border-width: 1;
+  border-radius: radius(sm);
+  height: 248px;
+  min-height: 248px;
+  padding: 10px;
+  gap: 8px;
+}
+
+.wiki-guide-book-thumb {
+  width: 104px;
+  height: 70px;
+  min-height: 70px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+.wiki-guide-card-layout {
+  height: 54px;
+  min-height: 54px;
+}
+
+.wiki-guide-card-copy {
+  min-width: 0;
+  gap: 3px;
+}
+
+.wiki-guide-card-title-line {
+  height: 20px;
+  min-height: 20px;
+  min-width: 0;
+}
+
+.wiki-guide-card-title {
+  height: 20px;
+  min-height: 10px;
+  wrap: true;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-guide-status-chip {
+  width: 92px;
+  height: 20px;
+  min-height: 20px;
+  padding: 2px 6px;
+}
+
+.wiki-guide-card-meta-line {
+  height: 14px;
+  min-height: 14px;
+  min-width: 0;
+}
+
+.wiki-guide-card-subtitle {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-guide-card-summary {
+  height: 20px;
+  min-height: 16px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-guide-shelf-layout {
+  height: 32px;
+  min-height: 32px;
+}
+
+.wiki-guide-shelf-thumb {
+  width: 58px;
+  height: 34px;
+  min-height: 34px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+.wiki-guide-shelf-copy {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-guide-shelf-title {
+  height: 10px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-guide-shelf-meta {
+  height: 12px;
+  min-height: 12px;
+  min-width: 0;
+}
+
+.wiki-guide-shelf-summary {
+  height: 12px;
+  min-height: 10px;
+  wrap: true;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-row-icon {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.wiki-row-chip {
+  width: 104px;
+  height: 20px;
+  min-height: 18px;
+  padding: 2px 6px;
+}
+
+.wiki-related-layout {
+  height: 48px;
+  min-height: 48px;
+}
+
+.wiki-row-copy {
+  min-width: 0;
+  gap: 4px;
+}
+
+.wiki-row-title {
+  height: 20px;
+  min-height: 10px;
+  wrap: true;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-row-meta-line {
+  height: 14px;
+  min-height: 14px;
+  gap: 6px;
+}
+
+.wiki-row-meta-text {
+  min-width: 0;
+  height: 10px;
+  min-height: 10px;
+  max-lines: 1;
+  color: theme(textMuted);
+  line-height: 10px;
+}
+
+.wiki-row-summary {
+  height: 12px;
+  min-height: 10px;
+  wrap: true;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-detail-title {
+  height: 22px;
+  min-height: 11px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 11px;
+}
+
+.wiki-detail-copy, .wiki-inspector-copy {
+  height: 30px;
+  min-height: 20px;
+  wrap: true;
+  max-lines: 3;
+  line-height: 10px;
+}
+
+.wiki-body-text {
+  height: 40px;
+  min-height: 30px;
+  wrap: true;
+  max-lines: 4;
+  line-height: 10px;
+}
+
+.wiki-detail-chip {
+  width: 132px;
+  height: 20px;
+  min-height: 18px;
+}
+
+.wiki-manual-inspector-panel {
+  height: 248px;
+  min-height: 248px;
+  padding: 8px;
+  gap: 6px;
+}
+
+.wiki-manual-inspector-title-row {
+  height: 24px;
+  min-height: 24px;
+}
+
+.wiki-manual-inspector-meta-line {
+  height: 22px;
+  min-height: 22px;
+  min-width: 0;
+}
+
+.wiki-manual-inspector-subtitle {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-manual-inspector-summary {
+  height: 32px;
+  min-height: 28px;
+  wrap: true;
+  max-lines: 3;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-manual-banner {
+  height: 120px;
+  min-height: 120px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+.wiki-manual-preview {
+  height: 74px;
+  min-height: 74px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+.wiki-manual-hero-meta {
+  height: 92px;
+  min-height: 92px;
+}
+
+.wiki-manual-hero-copy {
+  min-width: 0;
+  gap: 4px;
+}
+
+.wiki-manual-chip-row {
+  height: 22px;
+  min-height: 22px;
+  min-width: 0;
+}
+
+.wiki-manual-subtitle {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-manual-summary {
+  height: 24px;
+  min-height: 20px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-guide-chapter-layout {
+  height: 72px;
+  min-height: 72px;
+}
+
+.wiki-chapter-ordinal-chip {
+  width: 48px;
+  height: 24px;
+  min-height: 24px;
+  padding: 3px 6px;
+}
+
+.wiki-guide-chapter-copy {
+  min-width: 0;
+  gap: 4px;
+}
+
+.wiki-guide-chapter-title {
+  min-width: 0;
+  height: 22px;
+  min-height: 12px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 11px;
+}
+
+.wiki-guide-chapter-meta-line {
+  height: 14px;
+  min-height: 14px;
+  min-width: 0;
+}
+
+.wiki-guide-chapter-role {
+  width: 96px;
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  color: theme(textAccent);
+  line-height: 10px;
+}
+
+.wiki-guide-chapter-summary {
+  height: 24px;
+  min-height: 20px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 10px;
+  color: theme(textSecondary);
+}
+
+.wiki-meta-panel text {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-manual-shelf-panel {
+  min-height: 176px;
+  padding: 8px;
+}
+
+.wiki-manual-empty-state {
+  min-height: 82px;
+  padding: 10px;
+  gap: 5px;
+}
+
+.wiki-manual-related-empty-state, .wiki-manual-shelf-empty-state {
+  min-height: 56px;
+  padding: 8px;
+  gap: 4px;
+}
+
+.wiki-article-section {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  height: 74px;
+  min-height: 64px;
+  padding: 8px;
+}
+
+.wiki-locked-panel {
+  background: theme(overlay);
+  border-color: theme(warning);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 8px;
+}
+
+button, nav-item, command-card, stat-card {
+  border-radius: radius(sm);
+}
+
+button {
+  height: 28px;
+  min-height: 28px;
+  padding: 6px 10px;
+}
+
+input, dropdown {
+  background: theme(overlay);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+search-box, input {
+  height: 28px;
+  min-height: 28px;
+  padding: 5px 8px;
+}
+
+.wiki-filter-chip {
+  height: 24px;
+  min-height: 24px;
+  padding: 4px 8px;
+  background: #071523DD;
+}
+
+.wiki-filter-chip[selected] {
+  background: #0B2B3FCC;
+  border-color: theme(accent);
+}
+
+.wiki-compact-chip {
+  height: 18px;
+  min-height: 18px;
+}
+
+.wiki-footer-row {
+  height: 14px;
+  min-height: 14px;
+  gap: 24px;
+}
+
+.wiki-dashboard-hero,
+.wiki-page-hero {
+  min-height: 142px;
+  padding: 8px;
+  gap: 7px;
+}
+
+.wiki-article-hero {
+  height: 192px;
+  min-height: 178px;
+}
+
+.wiki-article-hero-image {
+  height: 96px;
+  min-height: 90px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+}
+
+.wiki-article-hero-row {
+  height: 68px;
+  min-height: 64px;
+}
+
+.wiki-article-hero-icon {
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+}
+
+.wiki-article-hero-copy {
+  min-width: 0;
+  gap: 4px;
+}
+
+.wiki-page-title-large {
+  height: 18px;
+  min-height: 18px;
+  max-lines: 1;
+  line-height: 12px;
+}
+
+.wiki-page-lede,
+.wiki-reader-text {
+  wrap: true;
+  line-height: 11px;
+  color: theme(textSecondary);
+}
+
+.wiki-page-lede {
+  height: 24px;
+  min-height: 22px;
+  max-lines: 2;
+}
+
+.wiki-chip-line {
+  height: 20px;
+  min-height: 20px;
+  min-width: 0;
+}
+
+.wiki-article-layout {
+  min-height: 420px;
+}
+
+.wiki-toc-panel {
+  padding: 8px;
+  gap: 6px;
+}
+
+.wiki-toc-scroll {
+  height: 390px;
+  min-height: 220px;
+  overflow: scroll;
+}
+
+.wiki-toc-row {
+  height: 38px;
+  min-height: 38px;
+  padding: 4px 5px;
+  gap: 5px;
+}
+
+.wiki-toc-ordinal {
+  width: 32px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.wiki-toc-copy {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-toc-copy title,
+.wiki-toc-copy text {
+  max-lines: 1;
+}
+
+.wiki-article-reader {
+  min-height: 420px;
+  gap: 8px;
+}
+
+.wiki-article-lede-panel {
+  min-height: 72px;
+  padding: 8px;
+  gap: 5px;
+}
+
+.wiki-article-block-list {
+  gap: 8px;
+}
+
+.wiki-article-block {
+  min-height: 78px;
+  padding: 8px;
+  gap: 7px;
+  background: #03131FCA;
+  border-color: #4DEAFF35;
+  border-width: 1px;
+}
+
+.wiki-article-block-callout,
+.wiki-tone-tip {
+  background: #062819D8;
+  border-color: #5BFF9678;
+}
+
+.wiki-tone-warning {
+  background: #2C1D08D8;
+  border-color: #FFB73488;
+}
+
+.wiki-tone-danger {
+  background: #2B0C13D8;
+  border-color: #FF4F6888;
+}
+
+.wiki-tone-spoiler,
+.wiki-tone-locked {
+  background: #111820D0;
+  border-color: #75869078;
+}
+
+.wiki-block-shell {
+  min-width: 0;
+  gap: 7px;
+}
+
+.wiki-block-head {
+  height: 28px;
+  min-height: 28px;
+  gap: 8px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.wiki-block-ordinal {
+  width: 38px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.wiki-block-icon {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.wiki-block-title-copy {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-block-title {
+  height: 12px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-block-meta {
+  height: 16px;
+  min-height: 16px;
+  min-width: 0;
+}
+
+.wiki-block-chip {
+  width: 58px;
+  height: 16px;
+  min-height: 16px;
+  padding: 1px 4px;
+}
+
+.wiki-block-subtitle {
+  height: 10px;
+  min-height: 10px;
+  max-lines: 1;
+  color: theme(textMuted);
+}
+
+.wiki-block-body {
+  wrap: true;
+  line-height: 11px;
+  color: theme(textSecondary);
+}
+
+.wiki-article-card-layout {
+  min-height: 34px;
+}
+
+.wiki-article-card-thumb {
+  width: 72px;
+  height: 48px;
+  min-height: 48px;
+  border-radius: radius(sm);
+  border-color: theme(borderMuted);
+  border-width: 1px;
+}
+
+.wiki-detail-stat-grid {
+  min-height: 62px;
+  gap: 8px;
+}
+
+.wiki-side-summary {
+  min-height: 210px;
+  padding: 8px;
+  gap: 6px;
+}
+
+.wiki-reference-layout {
+  min-height: 430px;
+}
+
+.wiki-reference-list-panel,
+.wiki-reference-detail-panel {
+  padding: 8px;
+  gap: 7px;
+}
+
+.wiki-reference-scroll {
+  height: 356px;
+  min-height: 280px;
+  overflow: scroll;
+}
+
+.wiki-reference-detail-panel {
+  min-height: 390px;
+}
+
+.wiki-page-controls {
+  height: 26px;
+  min-height: 26px;
+  background: #071523CC;
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 4px 6px;
+}
+
+.wiki-page-controls text {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+.wiki-page-controls button {
+  width: 54px;
+  height: 20px;
+  min-height: 20px;
+  padding: 2px 6px;
+}

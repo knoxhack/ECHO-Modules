@@ -1,0 +1,177 @@
+{
+    "id":  "echoconvoyprotocol:vehicle_repair_gantry",
+    "display_name":  "Vehicle Repair Gantry",
+    "translation_key":  "multiblock.echoconvoyprotocol.vehicle_repair_gantry",
+    "role":  "PRODUCTION",
+    "category":  "vehicle_service",
+    "size":  [
+                 5,
+                 2,
+                 3
+             ],
+    "controller":  "echoconvoyprotocol:vehicle_repair_gantry_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FICOF",
+                       "RPSDF",
+                       "FWVWF"
+                   ],
+                   [
+                       "W.M.W",
+                       "..H..",
+                       "W.H.W"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echoconvoyprotocol:valid_depot_frames"
+                          },
+                    "I":  {
+                              "block":  "echoconvoyprotocol:cargo_input_crate",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echoconvoyprotocol:vehicle_repair_gantry_controller",
+                              "controller":  true
+                          },
+                    "O":  {
+                              "block":  "echoconvoyprotocol:cargo_output_crate",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "P":  {
+                              "block":  "echoconvoyprotocol:depot_power_bus",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echoconvoyprotocol:vehicle_service_pad",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echoconvoyprotocol:depot_data_bus",
+                              "component":  true
+                          },
+                    "W":  {
+                              "block":  "echoconvoyprotocol:repair_bay_wall",
+                              "component":  true
+                          },
+                    "V":  {
+                              "block":  "echoconvoyprotocol:vehicle_clamp_block",
+                              "component":  true
+                          },
+                    "M":  {
+                              "block":  "echoconvoyprotocol:repair_arm_mount",
+                              "component":  true
+                          },
+                    "H":  {
+                              "block":  "echoconvoyprotocol:heavy_garage_frame",
+                              "component":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:scanner_target",
+                         "echo:repair",
+                         "echo:convoy_service"
+                     ],
+    "workcells":  [
+                      {
+                          "id":  "echoconvoyprotocol:vehicle_repair_gantry/vehicle_dock",
+                          "type":  "VEHICLE_DOCK",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:vehicle_repair_gantry/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      0
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:repair_convoy_vehicle"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:vehicle_repair_gantry/upgrade",
+                          "type":  "UPGRADE_INSTALL",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER",
+                                                 "GRIPPER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:install_armor_plating"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:vehicle_repair_gantry/output",
+                          "type":  "OUTPUT",
+                          "pos":  [
+                                      3,
+                                      0,
+                                      0
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "WELDER",
+                                            "GRIPPER"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true,
+                      "damaged_threshold":  70,
+                      "offline_threshold":  25
+                  },
+    "preview":  {
+                    "color":  "ff8a00"
+                }
+}

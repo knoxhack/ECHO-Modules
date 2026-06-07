@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:control_epilogue",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 20,
+  "title": "Complete Control Epilogue",
+  "briefing": "[ECHO-7] The guardian has fallen. Turn in this terminal protocol and bind the wasteland network to your signal.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_blade",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:control_finale"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "control_epilogue",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.control_epilogue",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "20",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "113",
+    "requiredPath": "control",
+    "routeRoleTag": "control_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:control_epilogue:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "control",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:control_epilogue/control_epilogue",
+      "type": "custom",
+      "label": "Complete Control Epilogue",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_blade",
+      "target": "echoashfallprotocol:control_epilogue",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.control_epilogue"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:control_epilogue/reward_0",
+      "item": "echoashfallprotocol:nexus_blade",
+      "count": 1,
+      "label": "Nexus Blade",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_epilogue/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Every beacon answers. The wasteland has a new Core, and it knows your name."
+}

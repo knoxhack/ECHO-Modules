@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/reclamation/integrations",
+  "title": "Reclamation: Integrations",
+  "category": "Guide Books",
+  "summary": "Plan farms around weather, water, storage, power, maps, and settlement needs.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Logistics can restock food and seed kits. TutorialCore can explain missed basics. Wiki and Index keep crop and ingredient references close to the field work.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Tie farms to Logistics restocks, TutorialCore hints, Wiki crop notes, and Index ingredient records so food production becomes part of planning instead of a chore.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If support addons are absent, keep fields close, irrigated, lit, and labeled. Manual harvest plans beat sprawling farms with no route back.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Integration Anchor",
+      "body": "Use this reference when the related system is present; the manual path still works without it.",
+      "tone": "tip",
+      "item": "minecraft:wheat",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Wheat",
+      "subtitle": "Integrations checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "reclamation",
+    "food",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:wheat",
+  "relatedArticles": [
+    "echowiki:guides/reclamation"
+  ],
+  "relatedItems": [
+    "minecraft:wheat",
+    "minecraft:farmland"
+  ],
+  "sortOrder": 1025
+}

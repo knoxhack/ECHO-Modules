@@ -1,0 +1,16 @@
+{
+  "id": "echonpcore:armor_tech_services",
+  "services": [
+    {
+      "id": "patch_held",
+      "title": "Patch Held Item",
+      "description": "Repairs the held item slightly.",
+      "cost": [
+        { "item": "minecraft:iron_nugget", "count": 4 }
+      ],
+      "action": "repair_held_item",
+      "amount": 12,
+      "cooldown": 1200
+    }
+  ]
+}

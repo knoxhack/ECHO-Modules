@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:control_finale",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 19,
+  "title": "Defeat Mirror Command",
+  "briefing": "[ECHO-7] Mirror Command is reflecting your signal back through every relay. Defeat the path finale, then seal the Control epilogue.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_blade",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:control_command_lattice"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "control_finale",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.control_finale",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "19",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "112",
+    "requiredPath": "control",
+    "routeRoleTag": "control_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:control_finale:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "control",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:control_finale/control_finale",
+      "type": "custom",
+      "label": "Defeat Mirror Command",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_blade",
+      "target": "echoashfallprotocol:control_finale",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.control_finale"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:control_finale/reward_0",
+      "item": "echoashfallprotocol:nexus_blade",
+      "count": 1,
+      "label": "Nexus Blade",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_finale/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Mirror Command bound. The Control epilogue can now be sealed."
+}

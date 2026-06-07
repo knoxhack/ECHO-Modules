@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+    runs {
+        agricultureClient { client(); systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        server { server(); programArgument '--nogui'; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        gameTestServer { type = "gameTestServer"; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id }
+        data { clientData(); programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath() }
+        configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
+    }
+    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+def optionalProject = { String path, String configuration ->
+    def candidate = rootProject.findProject(path)
+    if (candidate != null) {
+        dependencies.add(configuration, candidate)
+    }
+}
+dependencies {
+    implementation project(":echocore")
+    implementation project(":echoadaptercore")
+    compileOnly project(":echo-native-contracts")
+    optionalProject(":echoterminal", "compileOnly")
+    optionalProject(":echoterminal", "localRuntime")
+    optionalProject(":echorendercore", "compileOnly")
+    optionalProject(":echorendercore", "localRuntime")
+    optionalProject(":echolens", "compileOnly")
+    optionalProject(":echolens", "localRuntime")
+    optionalProject(":echotutorialcore", "compileOnly")
+    optionalProject(":echotutorialcore", "localRuntime")
+    optionalProject(":echologisticsnetwork", "compileOnly")
+    optionalProject(":echologisticsnetwork", "localRuntime")
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

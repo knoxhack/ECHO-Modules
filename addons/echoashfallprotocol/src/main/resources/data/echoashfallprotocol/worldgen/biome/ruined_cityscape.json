@@ -1,0 +1,106 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.08,
+  "downfall": 0.5,
+  "effects": {
+    "fog_color": 8484975,
+    "foliage_color": 5202762,
+    "grass_color": 5858635,
+    "sky_color": 6775903,
+    "water_color": 3950914,
+    "water_fog_color": 2765615,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.02
+    },
+    "ambient_loop_sound": "minecraft:ambient.nether_wastes.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_chance": 0.008
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:ruined_cityscape_rubble_scatter",
+      "echoashfallprotocol:industrial_aggregate_scatter",
+      "echoashfallprotocol:ruined_cityscape_concrete_chunk_scatter",
+      "echoashfallprotocol:ruined_cityscape_concrete_rubble_piles",
+      "echoashfallprotocol:ruined_cityscape_metal_debris_scatter",
+      "echoashfallprotocol:ruined_cityscape_rusted_metal_debris",
+      "echoashfallprotocol:ruined_cityscape_rusted_metal_debris_scatter",
+      "echoashfallprotocol:ruined_cityscape_bone_scatter",
+      "echoashfallprotocol:ruined_cityscape_deep_debris_veins",
+      "echoashfallprotocol:ruined_cityscape_fallout_dust_patches",
+      "echoashfallprotocol:ruined_cityscape_contaminated_soil_patches",
+      "echoashfallprotocol:ruined_cityscape_deep_ash_patch",
+      "echoashfallprotocol:toxic_waste_barrels",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:salvage_rusty_metal_patch",
+      "echoashfallprotocol:salvage_concrete_pile",
+      "echoashfallprotocol:ruined_cityscape_rebar",
+      "echoashfallprotocol:ruined_cityscape_shattered_glass",
+      "echoashfallprotocol:ruined_cityscape_cracked_asphalt_patches"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:ruined_cityscape_dead_trees_stumps",
+      "echoashfallprotocol:ruined_cityscape_charred_trees",
+      "echoashfallprotocol:ruined_cityscape_ash_bushes",
+      "echoashfallprotocol:ruined_cityscape_burnt_ferns",
+      "echoashfallprotocol:burnt_grass_patches",
+      "echoashfallprotocol:ruined_cityscape_oil_stained_concrete_patches",
+      "echoashfallprotocol:ruined_cityscape_cable_bundles",
+      "echoashfallprotocol:ruined_cityscape_dry_grass_patches",
+      "echoashfallprotocol:ruined_cityscape_dead_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:rad_zombie",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:scavenger_bandit",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:echo_drone",
+        "weight": 14,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:city_stalker",
+        "weight": 19,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.6
+}

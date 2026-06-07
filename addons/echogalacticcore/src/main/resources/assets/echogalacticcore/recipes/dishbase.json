@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:dishbase"
+               },
+    "pattern":  [
+                    "XFX",
+                    " X ",
+                    "WYW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "F":  {
+                          "item":  "echogalacticcore:basic_item",
+                          "data":  19
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_advanced"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/block_iron"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

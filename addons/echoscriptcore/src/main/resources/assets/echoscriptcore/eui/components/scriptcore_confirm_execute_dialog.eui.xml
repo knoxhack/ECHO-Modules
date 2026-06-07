@@ -1,0 +1,17 @@
+<dialog id="{param.id|scriptcore-confirm-execute}" size="{param.size|md}" close-on-outside="{param.closeOnOutside|false}">
+  <dialog-title value="{param.title|Confirm ScriptCore Action}"/>
+  <dialog-body>
+    <text value="{param.body|Run this trusted preloaded ScriptCore action on the server?}"/>
+    <slot-outlet name="body"/>
+  </dialog-body>
+  <dialog-actions gap="12">
+    <button action="screencore.close_modal" variant="ghost">Cancel</button>
+    <button action="scriptcore.execute"
+            action-value="{param.definition|}"
+            action-param-slot="{param.slot|actions}"
+            variant="{param.variant|danger}"
+            autofocus="true">
+      {param.confirmLabel|Execute}
+    </button>
+  </dialog-actions>
+</dialog>

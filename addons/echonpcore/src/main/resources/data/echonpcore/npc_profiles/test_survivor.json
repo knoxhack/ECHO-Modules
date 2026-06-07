@@ -1,0 +1,30 @@
+{
+  "id": "echonpcore:test_survivor",
+  "displayName": "Test Survivor",
+  "role": "Field Survivor",
+  "faction": "echonpcore:survivors",
+  "visualProfile": "echonpcore:test_survivor",
+  "dialogue": "echonpcore:test_survivor",
+  "trades": "echonpcore:test_survivor_basic",
+  "services": "echonpcore:test_survivor_services",
+  "missions": [],
+  "ambientLines": [
+    "Storm's getting worse.",
+    "Check your filter before heading east."
+  ],
+  "interactionRange": 5.0,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2000,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Test survivor exposes the full NPCore smoke-test loop."
+  }
+}

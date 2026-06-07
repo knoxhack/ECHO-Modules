@@ -1,0 +1,56 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echologisticsnetwork"
+version="1.0.0"
+displayName="ECHO: Logistics Network"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the supply operations chapter for the ECHO public release stack."
+description='''
+Your base becomes a real supply operation.
+
+ECHO: Logistics Network adds labelled storage networks, expedition loadouts,
+physical courier drone delivery, auto-restocking, remote reward relays, and
+faction depots surfaced through ECHO Core and ECHO Terminal. Its 0.4 API also
+keeps Industrial factory input depots stocked through data-driven loadouts.
+'''
+
+[[dependencies.echologisticsnetwork]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echologisticsnetwork]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echologisticsnetwork]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, route, diagnostic, reward, and faction APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echologisticsnetwork]]
+modId="echoterminal"
+type="optional"
+reason="Adds the SYSTEM > Logistics command surface and terminal action routing."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echologisticsnetwork]]
+modId="echomissioncore"
+type="optional"
+reason="Registers logistics delivery and supply side-op missions when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

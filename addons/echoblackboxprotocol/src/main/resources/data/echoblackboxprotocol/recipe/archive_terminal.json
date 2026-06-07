@@ -1,0 +1,19 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "BGB",
+                    "SCS",
+                    "BGB"
+                ],
+    "key":  {
+                "B":  "echoblackboxprotocol:black_metal",
+                "G":  "minecraft:glass_pane",
+                "S":  "echoblackboxprotocol:security_memory_record",
+                "C":  "minecraft:comparator"
+            },
+    "result":  {
+                   "id":  "echoblackboxprotocol:archive_terminal",
+                   "count":  1
+               }
+}

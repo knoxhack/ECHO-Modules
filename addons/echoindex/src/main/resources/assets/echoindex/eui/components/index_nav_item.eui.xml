@@ -1,0 +1,4 @@
+<nav-item action="index.open_page" action-page="{param.page|echoindex:index_dashboard}" selected="{param.selected|false}">
+  <title value="{param.title|Index}"/>
+  <text value="{param.subtitle|Open Index page}"/>
+</nav-item>

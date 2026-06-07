@@ -1,0 +1,193 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_complete_vision.png",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V13 Complete Vision Core",
+    "tags": [
+      "v13",
+      "showcase",
+      "neon",
+      "creator"
+    ]
+  },
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 1,
+    "bloom_intensity": 0.85,
+    "pulse_speed": 0.75,
+    "hue_shift_speed": 0.12,
+    "advanced_enabled": true,
+    "bloom_radius": 3,
+    "bloom_threshold": 0.45,
+    "bloom_passes": 3,
+    "target_scope": "global",
+    "bloom_mask_mode": "emissive",
+    "bloom_tint": "#FF66E8FF",
+    "bloom_mask_alpha": 0.8,
+    "bloom_channel": "showcase",
+    "bloom_downscale": 2,
+    "advanced_priority": 50
+  },
+  "materials": {
+    "cyan_core": {
+      "color": "#FF36E8FF",
+      "alpha": 0.9,
+      "emissive": true,
+      "blend_mode": "additive",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "scanline_strength": 0,
+        "pulse_min_alpha": 0.55,
+        "pulse_max_alpha": 1,
+        "bloom_channel": "hologram"
+      }
+    },
+    "magenta_ring": {
+      "color": "#FFFF45F6",
+      "alpha": 0.8,
+      "emissive": true,
+      "blend_mode": "additive",
+      "render_pass": "translucent",
+      "effect": {
+        "preset": "energy_field",
+        "pulse_speed": 1.2,
+        "bloom_channel": "particles"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "cube_core",
+      "kind": "glow",
+      "texture": "echorendercore:textures/block/v13_cube_core.png",
+      "material": "cyan_core",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "core"
+      ],
+      "effect": {
+        "preset": "neon",
+        "bloom_mask_mode": "emissive",
+        "advanced_priority": 80
+      }
+    },
+    {
+      "id": "terminal_scanlines",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_terminal_hud.png",
+      "material": "cyan_core",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "screen"
+      ],
+      "effect": {
+        "preset": "terminal_hud",
+        "scanline_strength": 0,
+        "bloom_mask_mode": "layer_alpha"
+      }
+    },
+    {
+      "id": "orbit_ring",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_orbit_ring.png",
+      "material": "magenta_ring",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "ring"
+      ],
+      "effect": {
+        "preset": "energy_field",
+        "bloom_channel": "orbit",
+        "advanced_priority": 40
+      }
+    }
+  ],
+  "anchors": {
+    "core": [
+      0,
+      0.5,
+      0
+    ],
+    "screen": [
+      0,
+      0.75,
+      -0.5
+    ],
+    "ring": [
+      0,
+      0.55,
+      0
+    ],
+    "atmosphere": [
+      0,
+      1.25,
+      0
+    ]
+  },
+  "block_parts": {
+    "core": {
+      "indices": [
+        0
+      ]
+    },
+    "screen": {
+      "directions": [
+        "north"
+      ]
+    },
+    "ring": {
+      "indices": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Complete Vision Core",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "high",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echorelictech",
+  "name": "ECHO: RelicTech",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echorelictech.EchoRelicTech",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echoarcanacore",
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echonexusprotocol",
+    "echopowergrid",
+    "echosoundcore",
+    "echoterminal",
+    "echoworldcore"
+  ],
+  "provides": [
+    "relictech.analysis",
+    "relictech.containment",
+    "relictech.instability",
+    "relictech.relics",
+    "relictech.research",
+    "relictech.vaults"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "player.data",
+    "resources.data",
+    "server.commands",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "items",
+        "missions",
+        "structures",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echorelictech.EchoRelicTechNativeModule",
+    "nativeClasspath": [],
+    "notes": "Experimental relic recovery, analysis, containment, instability, vault, and research content with optional Arcana, Terminal, Lens, HoloMap, PowerGrid, World, Sound, Mission, Nexus, Data, and Index integrations."
+  },
+  "apiStability": "experimental",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echorelictech/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

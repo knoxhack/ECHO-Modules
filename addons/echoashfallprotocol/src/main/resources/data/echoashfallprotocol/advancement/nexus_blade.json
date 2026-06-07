@@ -1,0 +1,19 @@
+{
+  "parent": "echoashfallprotocol:nexus_crystal_obtained",
+  "display": {
+    "icon": {"id": "echoashfallprotocol:nexus_blade"},
+    "title": {"translate": "advancements.EchoAshfallProtocol.nexus_blade.title", "fallback": "Void's Edge"},
+    "description": {"translate": "advancements.EchoAshfallProtocol.nexus_blade.desc", "fallback": "Forge the Nexus Blade — a weapon of pure irradiated energy."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "has_nexus_blade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": "echoashfallprotocol:nexus_blade"}]}
+    }
+  },
+  "requirements": [["has_nexus_blade"]]
+}

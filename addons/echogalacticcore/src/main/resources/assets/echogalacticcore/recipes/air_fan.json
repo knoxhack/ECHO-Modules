@@ -1,0 +1,26 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:air_fan"
+               },
+    "pattern":  [
+                    "Z Z",
+                    " Y ",
+                    "ZXZ"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dust_redstone"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,109 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Live curse persistence bridge for ECHO: Arcana Division."
+description='''
+ECHO: CurseCore adds persistent player curses, starter Echo Rot/Glass Veins
+records, an Echo Rot sample, Lens/Terminal/Mission hooks, and a RitualCore
+cleansing bridge. JEI is not required; Index and Grimoire explain the rules.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, mission, Index, and optional integration contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides shared CurseDefinition records and Arcana provider contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoritualcore"
+type="optional"
+reason="Allows Curse Cleansing I to reduce live player curse stages when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echospellcore"
+type="optional"
+reason="Allows spell backlash and corrupted casting to apply starter curses."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Surfaces active curses in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Publishes the arcana_cursecore route and curse gained/cleansed objectives when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Adds Lens rows for active curse diagnostics."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcaneindex"
+type="optional"
+reason="Adds official curse pages through Arcane Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echogrimoire"
+type="optional"
+reason="Adds curse archive entries through the ECHO Grimoire when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Allows future fracture-pressure curse risk to bridge without replacing ARCANA systems."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"

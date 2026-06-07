@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "echorecovery:grave_key"
+    },
+    "title": {
+      "translate": "advancements.echorecovery.root.title",
+      "fallback": "ECHO: Recovery"
+    },
+    "description": {
+      "translate": "advancements.echorecovery.root.desc",
+      "fallback": "Death is not the end."
+    },
+    "background": "minecraft:textures/block/deepslate_bricks.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_grave_key": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echorecovery:grave_key"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_grave_key"
+    ]
+  ]
+}

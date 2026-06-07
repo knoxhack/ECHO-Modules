@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/archive_data_chamber_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:agriculture_dome_blueprint"
+    },
+    "title": {
+      "text": "Raise the Agriculture Dome"
+    },
+    "description": {
+      "text": "Prepare an Agriculture Dome blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:agriculture_dome_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

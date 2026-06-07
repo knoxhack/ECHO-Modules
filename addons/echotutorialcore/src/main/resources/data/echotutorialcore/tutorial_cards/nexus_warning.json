@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:nexus_warning",
+  "category": "NEXUS",
+  "title": "Nexus Warning",
+  "summary": "The Nexus is volatile. Choose your path carefully.",
+  "body": [
+    "The Nexus route presents major choices: Restore, Destroy, Control, or Merge.",
+    "Each choice affects faction standing, world state, and available technology.",
+    "This cannot be undone without starting a new expedition."
+  ],
+  "steps": [
+    "Collect Guardian Datacores.",
+    "Review Nexus options in the Terminal.",
+    "Make an informed choice."
+  ],
+  "commonMistakes": [
+    "Rushing the choice without understanding consequences.",
+    "Ignoring faction impacts."
+  ],
+  "related": [
+    "echotutorialcore:guardian_datacores"
+  ],
+  "unlockTriggers": [
+    "reached_nexus_route"
+  ],
+  "defaultUnlocked": false,
+  "priority": 85
+}

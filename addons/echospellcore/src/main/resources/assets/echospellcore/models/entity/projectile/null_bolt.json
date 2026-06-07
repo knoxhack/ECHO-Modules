@@ -1,0 +1,58 @@
+{
+  "credit": "ECHO SpellCore bespoke baked projectile model",
+  "texture_size": [32, 32],
+  "textures": {
+    "particle": "echospellcore:entity/projectile/null_bolt",
+    "sprite": "echospellcore:entity/projectile/null_bolt"
+  },
+  "elements": [
+    {
+      "name": "void_core",
+      "from": [6.25, 6.25, 6.25],
+      "to": [9.75, 9.75, 9.75],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"},
+        "up": {"texture": "#sprite"},
+        "down": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "event_horizon",
+      "from": [3, 7.5, 7.5],
+      "to": [13, 8.5, 8.5],
+      "rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "inner_horizon",
+      "from": [4.5, 7.6, 7.65],
+      "to": [11.5, 8.4, 8.35],
+      "rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "void_spine",
+      "from": [7.4, 3.25, 7.7],
+      "to": [8.6, 12.75, 8.3],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "up": {"texture": "#sprite"},
+        "down": {"texture": "#sprite"}
+      }
+    }
+  ]
+}

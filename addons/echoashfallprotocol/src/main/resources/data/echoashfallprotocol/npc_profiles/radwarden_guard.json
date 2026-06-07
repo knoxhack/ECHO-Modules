@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:radwarden_guard",
+  "displayName": "Warden Hale",
+  "role": "Perimeter Warden",
+  "faction": "echoashfallprotocol:radwarden_compact",
+  "visualProfile": "echoashfallprotocol:radwarden_guard",
+  "dialogue": "echoashfallprotocol:radwarden_guard",
+  "trades": "echoashfallprotocol:radwarden_guard_stock",
+  "services": "echoashfallprotocol:radwarden_guard_services",
+  "missions": [],
+  "ambientLines": [
+    "The line holds if people stop treating warning flags as decoration.",
+    "Watch the quiet sectors. Hot zones do not always hiss."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 8,
+    "returnRadius": 22,
+    "ambientCooldown": 2400,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Warden Hale marks perimeter risk, containment routes, and scanner-ready guard posts."
+  }
+}

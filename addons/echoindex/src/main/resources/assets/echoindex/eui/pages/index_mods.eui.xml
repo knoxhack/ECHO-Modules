@@ -1,0 +1,20 @@
+<page id="index_mods" title="ECHO Index Mods" styles="index_cyberglass,index_components,index_items">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Mod Browser"/>
+    <param name="inspectorTitle" value="Mod Filter"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar"/>
+      <list bind="index.mods.visible" item="mod">
+        <list-row class="index-mod-card" action="index.select_mod" action-value="{mod.id}" help="Select this mod as the active Index filter.">
+          <row gap="10"><item-stack item="{mod.icon}"/><column class="index-item-copy"><title class="index-item-title" value="{mod.name}"/><text class="index-item-subtitle" value="{mod.itemCount} item(s), {mod.recipeCount} recipe(s), {mod.machineCount} machine(s)"/></column><status-chip status="info" value="{mod.shortLabel}"/></row>
+        </list-row>
+        <empty-state title="No mods found" body="No indexed mods are visible under the current filters."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <text class="index-dashboard-hint" value="Selected mod: {index.dashboard.selectedMod}"/>
+      <button action="index.open_page" action-page="echoindex:index_items" tooltip="Browse items using the selected mod filter.">Browse Items</button>
+      <button action="index.reset_filters" variant="ghost" tooltip="Clear active filters and show all indexed mods.">Reset Filters</button>
+    </slot>
+  </component>
+</page>

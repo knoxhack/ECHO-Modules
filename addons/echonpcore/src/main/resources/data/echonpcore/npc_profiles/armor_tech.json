@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:armor_tech",
+  "displayName": "Armor Tech",
+  "role": "Plating Specialist",
+  "faction": "echonpcore:technicians",
+  "visualProfile": "echonpcore:armor_tech",
+  "dialogue": "echonpcore:armor_tech",
+  "trades": "echonpcore:armor_tech_basic",
+  "services": "echonpcore:armor_tech_services",
+  "missions": [],
+  "ambientLines": [
+    "If it rattles, it fails.",
+    "Scrap can be armor if you respect the edges."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Armor techs can stabilize damaged plating and identify useful scrap."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:armorer"
+  }
+}

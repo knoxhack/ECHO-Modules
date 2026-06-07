@@ -1,0 +1,178 @@
+{
+    "id":  "echomultiblockcore:orbital_launch_platform",
+    "display_name":  "Orbital Launch Platform",
+    "translation_key":  "multiblock.echomultiblockcore.orbital_launch_platform",
+    "role":  "ORBITAL",
+    "category":  "launch",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "SSSSS",
+                       "SIIOS",
+                       "SDCDS",
+                       "SOROS",
+                       "SSSSS"
+                   ],
+                   [
+                       "F.P.F",
+                       ".R.R.",
+                       "P.C.P",
+                       ".R.R.",
+                       "F.A.F"
+                   ],
+                   [
+                       "..S..",
+                       ".SPS.",
+                       "SSSSS",
+                       ".SPS.",
+                       "..S.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:orbital_launch",
+                         "echo:map_marker",
+                         "echo:terminal_tab",
+                         "echo:hazard_suppression",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  180,
+                                        "throughput":  56,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  160,
+                                        "throughput":  48,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:orbital_launch_platform/guidance_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade",
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:orbital_launch_platform/stability_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:orbital_launch_platform/data_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:orbital_launch_platform/launch",
+                          "type":  "LAUNCH",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "CALIBRATOR",
+                                                 "STABILIZER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:calibrate_launch_guidance"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "d8e2ff"
+                },
+    "facility_stage":  "P9 AFTERMATH PROTOCOL",
+    "facility_route":  "orbital",
+    "primary_use":  "Calibrates launch guidance and prepares the Orbital Remnants handoff route.",
+    "integration_hints":  [
+                              "Orbital Remnants should read launch readiness through provider snapshots.",
+                              "HoloMap markers should label launch facilities with route context.",
+                              "Launch Guidance Core remains the standalone-safe output."
+                          ]
+}

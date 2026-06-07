@@ -1,0 +1,36 @@
+{
+  "parent": "echoashfallprotocol:build_research_lab",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:workshop_block"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.workshop_master.title",
+      "fallback": "Workshop Master"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.workshop_master.desc",
+      "fallback": "Place a Workshop block to create a production area."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "placed_workshop": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echoashfallprotocol:workshop_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["placed_workshop"]
+  ]
+}

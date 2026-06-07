@@ -1,0 +1,27 @@
+{
+  "parent": "echoashfallprotocol:nexus_crystal_obtained",
+  "criteria": {
+    "attuned_to_nexus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:nexus_crystal"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "description": "Make a choice at the Nexus Core",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:nexus_core"
+    },
+    "title": "The Fate of the Grid",
+    "frame": "challenge"
+  },
+  "requirements": [
+    ["attuned_to_nexus"]
+  ]
+}

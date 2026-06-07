@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:scanner_array",
+    "facility":  "echomultiblockcore:scanner_array",
+    "tier":  4,
+    "prerequisites":  [
+                          "echomultiblockcore:logistics_depot"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:run_scanner_sweep",
+                             "echomultiblockcore:triangulate_route_matrix"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:scanner_matrix"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/scanner_array",
+    "title":  "Scanner Array",
+    "guide":  "Convert routed supplies into scanner matrices for archive, launch, and nexus facilities."
+}

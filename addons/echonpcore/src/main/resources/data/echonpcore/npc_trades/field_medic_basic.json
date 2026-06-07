@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:field_medic_basic",
+  "groups": [
+    {
+      "id": "medical",
+      "title": "Medical Supplies",
+      "offers": [
+        {
+          "id": "bread_for_bandage",
+          "title": "Clean Bandage",
+          "input": [
+            { "item": "minecraft:bread", "count": 1 }
+          ],
+          "output": { "item": "minecraft:string", "count": 2 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

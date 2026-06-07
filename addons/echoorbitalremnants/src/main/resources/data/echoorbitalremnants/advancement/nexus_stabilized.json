@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:echo_zero_resolved",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:stabilized_echo_core"
+    },
+    "title": {
+      "text": "Nexus Stabilized"
+    },
+    "description": {
+      "text": "Stabilize three Nexus anchors after ECHO-0."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

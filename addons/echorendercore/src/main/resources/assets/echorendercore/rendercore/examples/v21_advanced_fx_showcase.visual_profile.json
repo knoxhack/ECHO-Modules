@@ -1,0 +1,10 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "block_entity", "owner_addon": "echorendercore", "display_name": "V21 Advanced FX Showcase", "tags": ["block_entity", "advanced_fx"], "integration_mode": "optional" },
+  "fallback": { "mode": "stable", "expectation": "stable emissive fallback remains readable when advanced FX is unavailable", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "showcase", "max_mask_submissions": 32, "advanced_fx": "allow" },
+  "qa": { "required": true, "evidence": ["screenshot", "advanced_fx", "world_surface"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/block/v21_advanced_fx_showcase.png",
+  "default_state": "ACTIVE",
+  "effect": { "preset": "energy_field", "glow_intensity": 1.0, "bloom_intensity": 0.6, "advanced_enabled": true, "bloom_radius": 2.0, "bloom_passes": 2, "screen_blend": 0.2, "bloom_tint": "#FF66E8FF", "bloom_mask_mode": "emissive" }
+}

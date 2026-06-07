@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/terminal/integrations",
+  "title": "Terminal: Integrations",
+  "category": "Guide Books",
+  "summary": "Bring records, guide pages, rewards, missions, and operations tabs into one console.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Wiki registers a Codex tab, Index can publish recipes, SignalOS can provide records, and TutorialCore can report terminal-opened progress.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Terminal with Wiki guide links, Index recipes, SignalOS records, MissionCore objectives, TutorialCore notices, and addon-specific operation tabs.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If a tab is missing, use the manual or source addon directly. Terminal should collect useful surfaces, not hide them.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "terminal",
+    "operations",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone_torch",
+  "relatedArticles": [
+    "echowiki:guides/terminal"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1235
+}

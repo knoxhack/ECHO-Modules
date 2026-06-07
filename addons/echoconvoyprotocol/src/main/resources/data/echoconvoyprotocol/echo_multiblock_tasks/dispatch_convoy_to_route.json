@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:dispatch_convoy_to_route",
+  "display_name": "Dispatch Convoy To Route",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "ROUTE_DISPATCH",
+  "required_tools": ["SCANNER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:dispatch_contract", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 100,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:dispatch_convoy_to_route"],
+  "notes": ["Dispatches a prepared convoy contract through a route tower."]
+}

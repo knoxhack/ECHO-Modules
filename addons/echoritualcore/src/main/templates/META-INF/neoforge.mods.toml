@@ -1,0 +1,109 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Shared ritual engineering engine for ECHO: Arcana Division."
+description='''
+ECHO: RitualCore adds shared ritual centers, ritual circuit components, and safe
+ritual hooks for Arcana Division systems. JEI is not required; Index and Grimoire
+remain the official knowledge surfaces.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, mission, Index, and optional integration contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides shared RitualDefinition records and Arcana provider contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorelictech"
+type="optional"
+reason="Allows Relic Stabilization and Curse Cleansing rituals to consume RelicTech lifecycle and risk data."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Surfaces RitualCore diagnostics in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Publishes the arcana_ritualcore route and ritual completion objectives when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Adds Lens diagnostics for altar structure status, pedestal inputs, and ritual block roles."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Displays RitualCore ritual sites and Rift Crack Reveal traces through ECHO HoloMap."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcaneindex"
+type="optional"
+reason="Adds official ritual reference pages through Arcane Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echogrimoire"
+type="optional"
+reason="Adds ritual archive entries through the ECHO Grimoire when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Keeps ARCANA: Veilbound Studies rituals bridgeable without replacing Veilbound ownership."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"

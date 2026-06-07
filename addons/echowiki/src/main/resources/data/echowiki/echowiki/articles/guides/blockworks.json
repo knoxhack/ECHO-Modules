@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/blockworks",
+  "title": "Blockworks Builder Manual",
+  "category": "Guide Books",
+  "summary": "Use patterns and material families to make bases, roads, and ruins readable under survival pressure.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Blockworks is the practical building layer: palettes, pattern cutters, ruin blocks, and site kits that make the world easier to read and repair.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Start by standardizing floors, walls, power lanes, and route markers. Consistent materials make hazard exits and storage zones obvious under stress.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Collect or craft a material family, cut useful patterns, mark route infrastructure, and reinforce the places where expeditions begin and end.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Pattern cutters, family blocks, and worldgen site references let you build with the same visual language that ruined locations use.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "HoloMap routes, PowerGrid cabling, Logistics storage, and MultiblockCore footprints all benefit from visible lanes and repeated markers.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a base becomes confusing, reduce the palette. Use one floor color for movement, one wall language for safety, and one marked service lane for machines.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "blockworks",
+    "building"
+  ],
+  "icon": "minecraft:bricks",
+  "heroArt": "echowiki:textures/gui/guide_books/blockworks_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/blockworks/first_steps",
+    "echowiki:guides/blockworks/core_loop",
+    "echowiki:guides/blockworks/systems",
+    "echowiki:guides/blockworks/progression",
+    "echowiki:guides/blockworks/integrations",
+    "echowiki:guides/blockworks/troubleshooting"
+  ],
+  "sortOrder": 1050
+}

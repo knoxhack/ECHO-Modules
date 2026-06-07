@@ -1,0 +1,104 @@
+{
+  "id": "echoashfallprotocol:build_thermal_burner",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 3,
+  "title": "Build a Thermal Burner",
+  "briefing": "[ECHO-7] Higher temperatures are needed for processing. Construct a Thermal Burner to finish the first outpost machine line.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for one placed Thermal Burner after Item Pipe routing is installed.",
+  "category": "crafting",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:thermal_burner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:install_item_pipe"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_thermal_burner",
+    "nativeGameplayHook": "ashfall.first_route.build_thermal_burner",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.base_stability_check.bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "26",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_thermal_burner:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_thermal_burner/place_thermal_burner",
+      "type": "place_block",
+      "label": "Build a Thermal Burner",
+      "detail": "Place one Thermal Burner to complete the first outpost machine line.",
+      "icon": "echoashfallprotocol:thermal_burner",
+      "target": "echoashfallprotocol:thermal_burner",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:thermal_burner",
+        "required_blocks": "echoashfallprotocol:thermal_burner=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 6,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:ash",
+      "count": 4,
+      "label": "Ash"
+    },
+    {
+      "block": "echoashfallprotocol:thermal_burner",
+      "count": 1,
+      "label": "Placed Thermal Burner"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_thermal_burner/reward_filtration_membrane",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "detail": "Reserve membrane for the base-stability and hazard-prep route."
+    }
+  ],
+  "completionText": "[ECHO-7] Burner operational. First base online: storage, power, water, and heat are now established."
+}

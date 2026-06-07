@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/stationfall",
+  "title": "Stationfall Manual",
+  "category": "Guide Books",
+  "summary": "Board stations with oxygen, pressure repair, panic control, and a clean exit route.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Stationfall compresses survival into enclosed spaces. Oxygen, pressure, signal panic, access, and return routes matter more than raw loot speed.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Carry oxygen, a seal kit, a panic counter if available, food, and a clearly marked exit before treating the station as a salvage site.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Board, stabilize pressure or oxygen, gather one objective, watch panic, unlock access deliberately, and leave while reserves are still comfortable.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Access cards, pressure seal kits, oxygen packs, AI override chips, panic dampeners, and station route services all shape how long you can stay.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Orbital Remnants shares away-route logic, Recovery helps after a failed boarding, Terminal can track station records, and TutorialCore can warn about oxygen mistakes.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If station runs collapse, lower your objective count. Add oxygen and repair margin, mark exits, and leave earlier than instinct says.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "stationfall",
+    "oxygen"
+  ],
+  "icon": "minecraft:iron_door",
+  "heroArt": "echowiki:textures/gui/guide_books/stationfall_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/stationfall/first_steps",
+    "echowiki:guides/stationfall/core_loop",
+    "echowiki:guides/stationfall/systems",
+    "echowiki:guides/stationfall/progression",
+    "echowiki:guides/stationfall/integrations",
+    "echowiki:guides/stationfall/troubleshooting"
+  ],
+  "sortOrder": 1150
+}

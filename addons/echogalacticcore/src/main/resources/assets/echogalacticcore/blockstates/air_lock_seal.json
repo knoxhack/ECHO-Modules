@@ -1,0 +1,23 @@
+{
+    "variants":  {
+                     "connection=x":  {
+                                          "model":  "echogalacticcore:air_lock_seal_model",
+                                          "textures":  {
+                                                           "all":  "echogalacticcore:block/air_lock_seal"
+                                                       }
+                                      },
+                     "connection=z":  {
+                                          "model":  "echogalacticcore:air_lock_seal_model",
+                                          "y":  90,
+                                          "textures":  {
+                                                           "all":  "echogalacticcore:block/air_lock_seal"
+                                                       }
+                                      },
+                     "connection=flat":  {
+                                             "model":  "echogalacticcore:air_lock_seal_flat_model",
+                                             "textures":  {
+                                                              "all":  "echogalacticcore:block/air_lock_seal"
+                                                          }
+                                         }
+                 }
+}

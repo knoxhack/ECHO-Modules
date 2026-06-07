@@ -1,0 +1,90 @@
+{
+  "schema_version": 12,
+  "base_texture": "echomultiblockcore:textures/block/robotic_arm.png",
+  "particle_profile": "echomultiblockcore:robotic_arm",
+  "default_state": "IDLE",
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 0.7,
+    "pulse_speed": 0.8,
+    "target_scope": "block"
+  },
+  "anchors": {
+    "base": {
+      "offset": [
+        0,
+        0.2,
+        0
+      ]
+    },
+    "joint": {
+      "offset": [
+        0,
+        0.72,
+        0
+      ]
+    },
+    "tool": {
+      "offset": [
+        0,
+        0.92,
+        -0.34
+      ]
+    },
+    "core": {
+      "offset": [
+        0,
+        0.55,
+        0
+      ]
+    }
+  },
+  "block_parts": {
+    "arm": {
+      "directions": [
+        "north",
+        "south",
+        "east",
+        "west",
+        "up"
+      ],
+      "ambient_occlusion": true
+    }
+  },
+  "surface": {
+    "type": "block_entity",
+    "owner_addon": "echomultiblockcore",
+    "display_name": "Robotic Arm",
+    "tags": [
+      "block_entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

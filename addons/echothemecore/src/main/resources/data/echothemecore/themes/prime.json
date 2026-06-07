@@ -1,0 +1,132 @@
+{
+  "id": "echothemecore:prime",
+  "display_name": "Prime",
+  "description": "Stable ECHO: Prime survival interface with grounded slate panels, field teal signal lines, amber objectives, and readable overworld-first contrast.",
+  "colors": {
+    "primary": "#2BE8C8",
+    "secondary": "#78A7C8",
+    "accent": "#FFD166",
+    "background": "#08100F",
+    "panel": "#10211FCC",
+    "panel_alt": "#1E2C35CC",
+    "glass": "#2A3D4288",
+    "border": "#2BE8C8",
+    "border_soft": "#395A63",
+    "text": "#EAF7EF",
+    "muted_text": "#93A7A2",
+    "success": "#65E68E",
+    "warning": "#FFD166",
+    "error": "#FF6B6B",
+    "locked": "#334347",
+    "glow": "#2BE8C8",
+    "selection": "#FFD166"
+  },
+  "render": {
+    "hologram_color": "#2BE8C8",
+    "hologram_secondary": "#78A7C8",
+    "particle_primary": "#FFD166",
+    "particle_secondary": "#65E68E",
+    "emissive_primary": "#2BE8C8",
+    "emissive_secondary": "#FFD166",
+    "edge_glow_color": "#2BE8C8",
+    "warning_glow_color": "#FFD166",
+    "success_glow_color": "#65E68E",
+    "error_glow_color": "#FF6B6B",
+    "glow_intensity": 0.88,
+    "emissive_intensity": 0.92,
+    "hologram_opacity": 0.7,
+    "glass_opacity": 0.58,
+    "noise_strength": 0.02,
+    "distortion_strength": 0.0,
+    "edge_glow_strength": 0.72,
+    "hologram_pulse_strength": 0.38,
+    "energy_pattern_strength": 0.32,
+    "particle_intensity": 0.5,
+    "animation_intensity": 0.62,
+    "pulse_speed": 0.58,
+    "hologram_style": "CLEAN_GRID",
+    "particle_style": "SOFT_GLINTS",
+    "distortion_style": "NONE",
+    "overlay_style": "PRIME_FIELD_CONSOLE",
+    "transition_style": "FADE"
+  },
+  "sound": {
+    "ui_click": "minecraft:block.note_block.hat",
+    "ui_error": "minecraft:block.note_block.bass",
+    "ui_open": "minecraft:block.beacon.activate",
+    "ui_close": "minecraft:block.beacon.deactivate",
+    "stinger_confirm": "minecraft:block.amethyst_block.chime",
+    "stinger_warning": "minecraft:block.note_block.bell"
+  },
+  "block_palette": {
+    "recommended_blocks": [
+      "minecraft:copper_block",
+      "minecraft:deepslate_tiles",
+      "minecraft:weathered_copper"
+    ],
+    "panel_blocks": [
+      "minecraft:polished_deepslate",
+      "minecraft:cut_copper"
+    ],
+    "glass_blocks": [
+      "minecraft:tinted_glass",
+      "minecraft:cyan_stained_glass"
+    ],
+    "light_blocks": [
+      "minecraft:sea_lantern",
+      "minecraft:lantern"
+    ],
+    "accent_blocks": [
+      "minecraft:amethyst_block",
+      "minecraft:copper_block"
+    ]
+  },
+  "vanilla_ui": {
+    "background_tint": "#08100F88",
+    "panel_tint": "#10211FCC",
+    "tooltip_tint": "#1E2C35DD",
+    "widget_accent": "#2BE8C8",
+    "hotbar_accent": "#FFD166",
+    "chat_accent": "#65E68E",
+    "overlay_opacity": 0.32,
+    "panel_opacity": 0.58,
+    "edge_glow_strength": 0.72,
+    "reduce_vanilla_brown": true
+  },
+  "metadata": {
+    "module_tags": "terminal,signalos,index,holomap,lens,screencore,rendercore,soundcore,blockworks,vanilla_ui,hud,loading,menu,item_icon,prime",
+    "default": "false",
+    "family": "prime",
+    "public": "true",
+    "cycle_order": "10",
+    "icon": "echothemecore:textures/gui/themes/cyberglass/icons/icon_theme.png",
+    "replacement_level": "full",
+    "tokens.pack_theme": "prime_survival",
+    "tokens.density": "standard",
+    "tokens.standalone_fallback": "true",
+    "tokens.safe_area_margin": "12",
+    "tokens.panel_radius": "4",
+    "tokens.card_radius": "4",
+    "tokens.button_radius": "4",
+    "tokens.min_button_height": "30",
+    "tokens.min_list_row_height": "44",
+    "tokens.min_text_contrast": "4.5",
+    "tokens.animation.enter_ms": "130",
+    "tokens.animation.exit_ms": "100",
+    "tokens.animation.transition_ms": "180",
+    "tokens.animation.pulse_speed": "0.58",
+    "tokens.rarity.common": "#93A7A2",
+    "tokens.rarity.uncommon": "#65E68E",
+    "tokens.rarity.rare": "#2BE8C8",
+    "tokens.rarity.epic": "#78A7C8",
+    "tokens.rarity.legendary": "#FFD166",
+    "tokens.rarity.relic": "#FFD166",
+    "tokens.status.info": "#2BE8C8",
+    "tokens.status.active": "#FFD166",
+    "tokens.status.ready": "#65E68E",
+    "tokens.status.warning": "#FFD166",
+    "tokens.status.danger": "#FF6B6B",
+    "tokens.status.locked": "#334347",
+    "version": "1.0.0"
+  }
+}

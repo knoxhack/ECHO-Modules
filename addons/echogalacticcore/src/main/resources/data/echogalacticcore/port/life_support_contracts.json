@@ -1,0 +1,28 @@
+{
+  "schema": "echogalacticcore.port.life_support_contracts.v1",
+  "source": "galacticraft_legacy_life_support",
+  "attachments": [
+    "echogalacticcore:player_oxygen_state",
+    "echogalacticcore:player_thermal_state"
+  ],
+  "capabilities": [
+    "echogalacticcore:life_support",
+    "echogalacticcore:thermal_state"
+  ],
+  "gearSlots": [
+    {"id": "oxygen_mask", "item": "echogalacticcore:oxygen_mask", "legacySlot": "mask"},
+    {"id": "oxygen_gear", "item": "echogalacticcore:oxygen_gear", "legacySlot": "gear"},
+    {"id": "oxygen_tank_left", "item": "echogalacticcore:light_oxygen_tank", "legacySlot": "left_tank"},
+    {"id": "oxygen_tank_right", "item": "echogalacticcore:light_oxygen_tank", "legacySlot": "right_tank"},
+    {"id": "parachute", "item": "echogalacticcore:parachute", "legacySlot": "parachute"}
+  ],
+  "events": [
+    "echogalacticcore:event/player_tick_life_support"
+  ],
+  "packosMilestones": [
+    "oxygen_storage_attached",
+    "breathability_checked",
+    "thermal_padding_checked",
+    "hud_overlay_ready"
+  ]
+}

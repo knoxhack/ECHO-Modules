@@ -1,0 +1,114 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Knoxhack"
+description='''
+Shared ECHO knowledge archive, item browser, recipe browser, usage browser, inventory overlay, and Terminal codex layer.
+'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration, safe sends, sync, and action rate limiting."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore V18 screen chrome, visual profiles, preview overlays, and index entry previews when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="Allows ThemeCore CyberGlass and other installed themes to skin Index panels, cards, controls, scrollbars, and icons."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Adds Index catalog and recipe lookup surfaces inside Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="Enables the ScreenCore-powered ECHO Index database UI, provider-backed controls, dialogs, tooltips, and hot-reloadable EUI pages when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Registers Index-related side-op missions when MissionCore is present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Allows Lens inspection shortcuts to deep-link into Index recipes, uses, source cards, and archive context."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Allows HoloMap route and marker providers to publish source facts that Index can display."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Allows WorldCore region, hazard, structure, and world source providers to publish Index source facts."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echotutorialcore"
+type="optional"
+reason="Allows TutorialCore guide records to appear as Index tutorial entries and read-state hooks."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

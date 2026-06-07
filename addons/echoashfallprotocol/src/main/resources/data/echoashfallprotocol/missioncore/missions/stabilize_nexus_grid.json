@@ -1,0 +1,81 @@
+{
+  "id": "echoashfallprotocol:stabilize_nexus_grid",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 4,
+  "title": "Stabilize the Nexus Grid",
+  "briefing": "[ECHO-7] The relay network is reacting. Stabilize five Power Nodes near the Nexus Core before provoking the countermeasure.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "tech",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:energy_cell",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:resolve_prime_relays"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "stabilize_nexus_grid",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.stabilize_nexus_grid",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "90",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:stabilize_nexus_grid:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "player.machine_powered",
+      "ashfall.nexus_state"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:stabilize_nexus_grid/stabilize_nexus_grid",
+      "type": "custom",
+      "label": "Stabilize the Nexus Grid",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:energy_cell",
+      "target": "echoashfallprotocol:stabilize_nexus_grid",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.stabilize_nexus_grid"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:stabilize_nexus_grid/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:stabilize_nexus_grid/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Grid lock achieved. The Core can be forced into a countermeasure window."
+}

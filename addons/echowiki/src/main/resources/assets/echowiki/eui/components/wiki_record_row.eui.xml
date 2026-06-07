@@ -1,0 +1,13 @@
+<list-row class="wiki-record-row" action="{param.action|noop}" action-value="{param.id|}" action-param-kind="{param.kind|}" selected="{param.selected|false}">
+  <row gap="8">
+    <status-chip class="wiki-row-chip" status="{param.status|known}" value="{param.chip|known}"/>
+    <column class="wiki-row-copy">
+      <title class="wiki-row-title" value="{param.title|Record}"/>
+      <row class="wiki-row-meta-line" gap="6">
+        <text class="wiki-row-meta-text" value="{param.meta|}"/>
+        <text class="wiki-row-meta-text" value="{param.countLabel|}"/>
+      </row>
+      <text class="wiki-row-summary" value="{param.summary|}"/>
+    </column>
+  </row>
+</list-row>

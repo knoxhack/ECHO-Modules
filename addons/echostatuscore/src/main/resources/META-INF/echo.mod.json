@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echostatuscore",
+  "name": "ECHO: StatusCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "status_core",
+  "entrypoint": "com.knoxhack.echo.statuscore.EchoStatusCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "status.effects",
+    "status.exposure",
+    "status.resistance"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Neutral status, hazard, exposure, and resistance contract layer for radiation, toxicity, hypothermia, heat stress, infection, mutation, signal corruption, arcane curse, fatigue, bleeding, shock, dehydration, contamination, and Nexus exposure.",
+    "nativeEntrypoint": "com.knoxhack.echo.statuscore.EchoStatusCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/statuscore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:recover_data_log",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 1,
+  "title": "Recover Data Log",
+  "briefing": "[ECHO-7] The old world left warnings behind. Recover any Data Log and archive it before entering harder ruins.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:scrap_circuit",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:enter_bio_lab"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "recover_data_log",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.recover_data_log",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "1",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "47",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:recover_data_log:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:recover_data_log/recover_data_log",
+      "type": "custom",
+      "label": "Recover Data Log",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:scrap_circuit",
+      "target": "echoashfallprotocol:recover_data_log",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.recover_data_log"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:recover_data_log/reward_0",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 3,
+      "label": "Scrap Circuit",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_data_log/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:recover_data_log/reward_1",
+      "item": "echoashfallprotocol:schematic_fragment",
+      "count": 1,
+      "label": "Schematic Fragment",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_data_log/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Log decrypted. Context is survival equipment when the terrain is lying to you."
+}

@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "echoashfallprotocol:block/scattered_bones",
+    "bone": "echoashfallprotocol:block/scattered_bones"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 3],
+      "to": [8, 2, 5],
+      "faces": {
+        "down": { "texture": "#bone" },
+        "up": { "texture": "#bone" },
+        "north": { "texture": "#bone" },
+        "south": { "texture": "#bone" },
+        "west": { "texture": "#bone" },
+        "east": { "texture": "#bone" }
+      }
+    },
+    {
+      "from": [9, 0, 9],
+      "to": [14, 2, 11],
+      "faces": {
+        "down": { "texture": "#bone" },
+        "up": { "texture": "#bone" },
+        "north": { "texture": "#bone" },
+        "south": { "texture": "#bone" },
+        "west": { "texture": "#bone" },
+        "east": { "texture": "#bone" }
+      }
+    },
+    {
+      "from": [5, 0, 11],
+      "to": [7, 2, 14],
+      "faces": {
+        "down": { "texture": "#bone" },
+        "up": { "texture": "#bone" },
+        "north": { "texture": "#bone" },
+        "south": { "texture": "#bone" },
+        "west": { "texture": "#bone" },
+        "east": { "texture": "#bone" }
+      }
+    }
+  ]
+}

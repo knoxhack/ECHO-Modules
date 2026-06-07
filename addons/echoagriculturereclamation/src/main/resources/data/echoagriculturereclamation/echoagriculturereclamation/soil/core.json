@@ -1,0 +1,60 @@
+{
+  "soil": {
+    "dead": {
+      "growthChance": 8,
+      "restorationGain": 0,
+      "safe": false,
+      "supportedCategories": ["emergency", "restoration"],
+      "stabilizedSupportedCategories": ["non_nexus"],
+      "stabilizedSupportMinStability": 80
+    },
+    "contaminated": {
+      "growthChance": 14,
+      "restorationGain": 0,
+      "safe": false,
+      "supportedCategories": ["emergency", "mutated", "restoration", "industrial"],
+      "stabilizedSupportedCategories": ["non_nexus"],
+      "stabilizedSupportMinStability": 80
+    },
+    "irradiated": {
+      "growthChance": 10,
+      "restorationGain": 0,
+      "safe": false,
+      "supportedCategories": ["mutated", "nexus_touched"],
+      "stabilizedSupportedCategories": ["non_nexus"],
+      "stabilizedSupportMinStability": 80
+    },
+    "toxic_mud": {
+      "growthChance": 12,
+      "restorationGain": 0,
+      "safe": false,
+      "supportedCategories": ["mutated", "industrial"],
+      "stabilizedSupportedCategories": [],
+      "stabilizedSupportMinStability": 80
+    },
+    "purified": {
+      "growthChance": 28,
+      "restorationGain": 1,
+      "safe": true,
+      "supportedCategories": ["all"],
+      "stabilizedSupportedCategories": ["all"],
+      "stabilizedSupportMinStability": 0
+    },
+    "stabilized": {
+      "growthChance": 42,
+      "restorationGain": 2,
+      "safe": true,
+      "supportedCategories": ["all"],
+      "stabilizedSupportedCategories": ["all"],
+      "stabilizedSupportMinStability": 0
+    },
+    "restored": {
+      "growthChance": 55,
+      "restorationGain": 4,
+      "safe": true,
+      "supportedCategories": ["all"],
+      "stabilizedSupportedCategories": ["all"],
+      "stabilizedSupportMinStability": 0
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "echorelictech:pre_gridfall_research_vault",
+  "displayName": "Pre-Gridfall Research Vault",
+  "tier": "PROTOTYPE",
+  "minY": -24,
+  "maxY": 16,
+  "spawnWeight": 10,
+  "requiredBiomeTags": ["#minecraft:is_overworld"],
+  "excludedBiomes": [],
+  "lootTable": "echorelictech:relic_vault/prototype",
+  "materialLootTable": "echorelictech:relic_vault/materials",
+  "securityLevel": "MEDIUM",
+  "markerText": "Prototype vault signal. Analyzer hardware likely intact.",
+  "progressionPhase": "relic_ops",
+  "notes": [
+    "Old-world research facility buried during Gridfall.",
+    "Contains damaged prototypes and diagnostic equipment.",
+    "ECHO-7 WARNING: structural integrity compromised."
+  ]
+}

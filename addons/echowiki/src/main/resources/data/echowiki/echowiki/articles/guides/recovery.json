@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/recovery",
+  "title": "Recovery Manual",
+  "category": "Guide Books",
+  "summary": "Recover graves with a plan, a compass, spare gear, and the humility to make the second run safer.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Recovery systems reduce the cost of death without removing the need for planning. A recovery route is still an expedition, not a sprint back into the same hazard.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Keep a spare kit at base: food, blocks, weapon, light, and a recovery compass if available. Do not retrieve valuables while naked and unprepared.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Identify the grave, choose the safest route, carry a minimal recovery kit, retrieve inventory, and leave before converting recovery into another loss.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Grave snapshots, compass target data, dimension behavior, expiration rules, and contamination notes can all change the best retrieval plan.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "WorldCore explains hazard context, HoloMap marks the path, WeatherCore can delay unsafe returns, and Logistics can stage spare kits.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If the compass seems unclear, check dimension, target status, expiration, and whether multiple graves share similar ids. Travel slower on the recovery run than on the failed one.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "recovery",
+    "grave"
+  ],
+  "icon": "minecraft:recovery_compass",
+  "heroArt": "echowiki:textures/gui/guide_books/recovery_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/recovery/first_steps",
+    "echowiki:guides/recovery/core_loop",
+    "echowiki:guides/recovery/systems",
+    "echowiki:guides/recovery/progression",
+    "echowiki:guides/recovery/integrations",
+    "echowiki:guides/recovery/troubleshooting"
+  ],
+  "sortOrder": 1130
+}

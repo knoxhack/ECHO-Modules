@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:reward_inbox",
+  "category": "TERMINAL",
+  "title": "Reward Inbox",
+  "summary": "Claim rewards from completed missions and events.",
+  "body": [
+    "The Reward Inbox holds items, schematics, and reputation gains from missions.",
+    "Unclaimed rewards can expire or block future mission unlocks.",
+    "Check the inbox regularly after completing objectives."
+  ],
+  "steps": [
+    "Open the Terminal.",
+    "Go to Reward Inbox.",
+    "Claim all available rewards."
+  ],
+  "commonMistakes": [
+    "Ignoring unclaimed rewards.",
+    "Letting rewards expire."
+  ],
+  "related": [
+    "echotutorialcore:mission_browser"
+  ],
+  "unlockTriggers": [
+    "claimed_first_reward"
+  ],
+  "defaultUnlocked": false,
+  "priority": 70
+}

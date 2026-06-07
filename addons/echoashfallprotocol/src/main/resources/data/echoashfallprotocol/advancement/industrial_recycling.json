@@ -1,0 +1,37 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:hand_recycler"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.industrial_recycling.title",
+      "fallback": "Industrial Recycling"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.industrial_recycling.desc",
+      "fallback": "Construct a Hand Recycler to process raw scrap."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_recycler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:hand_recycler"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_recycler"
+    ]
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_smooth"
+          },
+          "output_state": {
+            "Name": "echoblockworks:rusted_metal_panel"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:rusted_metal_panel"
+          },
+          "output_state": {
+            "Name": "echoblockworks:rusted_metal_dark_plate"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_smooth"
+          },
+          "output_state": {
+            "Name": "echoblockworks:rusted_metal_panel"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:dead_wood_log"
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:acid_mud"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:wasteland_grass_block"
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:toxic_moss"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:wasteland_dirt"
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:contaminated_soil"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_raw"
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:toxic_moss"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_brick"
+          },
+          "output_state": {
+            "Name": "echoblockworks:ashstone_debris"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:reclamation_glass_framed_glass"
+          },
+          "output_state": {
+            "Name": "echoblockworks:hanging_wire"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:orbital_hull_white_hull"
+          },
+          "output_state": {
+            "Name": "echoblockworks:reclamation_glass_hydroponic_panel"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:structure_cache",
+            "probability": 0.35
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:bio_processing_station"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:bio_processing_station",
+            "probability": 0.6
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:spore_garden"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:contaminant_condenser",
+            "probability": 0.5
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:toxic_puddle"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:block_rot",
+      "integrity": 0.78
+    },
+    {
+      "processor_type": "minecraft:gravity",
+      "heightmap": "WORLD_SURFACE_WG",
+      "offset": 0
+    }
+  ]
+}

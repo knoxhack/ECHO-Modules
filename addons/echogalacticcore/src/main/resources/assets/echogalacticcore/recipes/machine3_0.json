@@ -1,0 +1,45 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine3",
+                   "data":  0
+               },
+    "pattern":  [
+                    "ABC",
+                    "DEF",
+                    "GHI"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "A":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_red"
+                      },
+                "B":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_magenta"
+                      },
+                "C":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_blue"
+                      },
+                "D":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_orange"
+                      },
+                "E":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "F":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_cyan"
+                      },
+                "G":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_yellow"
+                      },
+                "H":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_lime"
+                      },
+                "I":  {
+                          "tag":  "echogalacticcore:legacy_oredict/dye_green"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

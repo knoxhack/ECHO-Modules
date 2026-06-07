@@ -1,0 +1,15 @@
+{
+  "id": "echoashfallprotocol:nexus_scar",
+  "type": "nexus_scar",
+  "displayName": "Nexus Scar",
+  "summary": "Corrupted rift terrain where Ashfall and Nexus field logic overlap.",
+  "biomeIds": ["echoashfallprotocol:nexus_scar"],
+  "biomeTags": ["echoashfallprotocol:nexus_anomaly_biomes", "echoashfallprotocol:has_structure/nexus_scar"],
+  "structureIds": ["echoashfallprotocol:nexus_scar", "echoashfallprotocol:nexus_scar_landmarks"],
+  "hazardIds": ["echoworldcore:hazard/nexus_anomaly", "echoworldcore:hazard/radiation"],
+  "discoveryId": "echoashfallprotocol:nexus_scar",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/nexus_scar",
+  "audioProfileId": "echoworldcore:ambience/nexus_scar",
+  "sortOrder": 60
+}

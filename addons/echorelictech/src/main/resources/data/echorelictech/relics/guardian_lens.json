@@ -1,0 +1,71 @@
+{
+  "id": "echorelictech:guardian_lens",
+  "tier": "prototype",
+  "category": "scanner",
+  "origin": "Guardian Interface Prototype",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 1200,
+  "instabilityCost": 5,
+  "nullChargeCost": 0,
+  "riskTypes": [
+    "false_guidance",
+    "hostile_signal_attraction",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:guardian_lens",
+  "terminal": {
+    "summary": "Performs deep scans for relic traces and vault signatures.",
+    "warning": "False signals possible at high instability."
+  },
+  "lens": {
+    "compact": "Damaged guardian scanner.",
+    "deepScan": [
+      "Optical feed: degraded.",
+      "Trace sensitivity: 64 blocks.",
+      "ECHO warning: verify all positive reads."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 2 },
+      { "item": "echorelictech:guardian_alloy", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 2 },
+        { "item": "echorelictech:guardian_alloy", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 4,
+      "materials": [
+        { "item": "echorelictech:guardian_alloy", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 600,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 1 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 3,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+      ]
+    }
+  },
+  "activation": {
+    "radius": 64
+  }
+}

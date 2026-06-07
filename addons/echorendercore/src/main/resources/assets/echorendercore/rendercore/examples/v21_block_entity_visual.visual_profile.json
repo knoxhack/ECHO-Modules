@@ -1,0 +1,12 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "block_entity", "owner_addon": "echorendercore", "display_name": "V21 Block Entity Visual", "tags": ["block_entity"], "integration_mode": "optional" },
+  "fallback": { "mode": "stable", "expectation": "stable block entity render path remains readable", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "normal", "advanced_fx": "auto" },
+  "qa": { "required": true, "evidence": ["screenshot", "world_surface"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/block/v21_machine.png",
+  "default_state": "ACTIVE",
+  "layers": [
+    { "id": "status_glass", "kind": "glow", "texture": "echorendercore:textures/block/v21_machine_glow.png", "states": ["ACTIVE"], "effect": { "preset": "energy_field", "glow_intensity": 0.7, "bloom_tint": "#FF52FFCB" } }
+  ]
+}

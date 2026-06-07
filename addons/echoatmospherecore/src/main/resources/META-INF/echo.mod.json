@@ -1,0 +1,83 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoatmospherecore",
+  "name": "ECHO: AtmosphereCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "atmosphere_core",
+  "entrypoint": "com.knoxhack.echo.atmospherecore.EchoAtmosphereCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "atmosphere.fog",
+    "atmosphere.hooks",
+    "atmosphere.profiles",
+    "atmosphere.sky"
+  ],
+  "consumes": [
+    "assets.registry",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "ashfall",
+    "dev_tools",
+    "echo_prime"
+  ],
+  "permissions": [
+    "assets.read",
+    "diagnostics.write",
+    "world.atmosphere"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "data",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.atmospherecore.EchoAtmosphereCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "AtmosphereCore models fog, sky tint, ambient particles, storm visibility, and hook references only. It has no renderer, sound runtime, shader, or concrete weather implementation."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

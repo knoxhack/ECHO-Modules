@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:filter_cartridge_basic"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.first_filter.title",
+      "fallback": "First Breath"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.first_filter.desc",
+      "fallback": "Secure your first filter cartridge for toxic-zone expeditions."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_filter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:filter_cartridge_basic"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_filter"]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:nexus_guardian",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:control_directive"
+                             },
+                    "title":  "Control Protocol",
+                    "description":  "Choose the Control directive.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "directive":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:control_directive"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "directive"
+                         ]
+                     ]
+}

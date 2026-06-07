@@ -1,0 +1,24 @@
+{
+  "id": "echoblockworks:convoy_depot",
+  "display_name": "Convoy Depot",
+  "description": "Road plates, warning stripes, frames, rusted pipe walls, beacons, and wall pipes.",
+  "recommended_usage": "Convoy depots, roadside pullouts, repair pads, checkpoints, and loading bays.",
+  "theme": "convoy",
+  "family_ids": [
+    "charred_concrete",
+    "reinforced_metal",
+    "rusted_metal"
+  ],
+  "featured_blocks": [
+    "echoblockworks:charred_concrete_road_plate",
+    "echoblockworks:charred_concrete_warning_stripe",
+    "echoblockworks:reinforced_metal_frame",
+    "echoblockworks:rusted_metal_pipe_wall"
+  ],
+  "accent_blocks": [
+    "echoblockworks:warning_beacon",
+    "echoblockworks:wall_pipe",
+    "echoblockworks:signal_dish_decorative"
+  ],
+  "worldgen_site": "echoblockworks:convoy_depot_pullout"
+}

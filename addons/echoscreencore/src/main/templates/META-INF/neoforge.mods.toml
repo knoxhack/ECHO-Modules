@@ -1,0 +1,53 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Minecraft-native screen structure, layout, component, binding, and accessibility layer for ECHO addons."
+description='''
+ECHO: ScreenCore provides a Minecraft-native XML/CSS-like frontend framework for ECHO screens, bridging ThemeCore tokens and RenderCore drawing helpers without webviews or scripts.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO module services, addon discovery, and common contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="Allows ScreenCore pages to resolve active ECHO theme colors and UI design tokens."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Allows ScreenCore components to use shared RenderCore low-level screen chrome and drawing helpers."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

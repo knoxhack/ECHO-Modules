@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_crash_zone_colossus",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 10,
+  "title": "Defeat Crash Zone Colossus",
+  "briefing": "[ECHO-7] Guardian signal locked below Crash Zone Wasteland. Scan for the visible Military Vault entrance, descend into the buried node, read the room before it reads you, then neutralize Crash Zone Colossus.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:schematic_fragment_armor",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_toxic_hive_matriarch"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_crash_zone_colossus",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_crash_zone_colossus",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "10",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "78",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_crash_zone_colossus:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_crash_zone_colossus/crash_zone_colossus",
+      "type": "kill_entity",
+      "label": "Crash Zone Colossus",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:schematic_fragment_armor",
+      "target": "echoashfallprotocol:crash_zone_colossus",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:crash_zone_colossus"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:crash_zone_colossus",
+      "count": 1,
+      "label": "Crash Zone Colossus"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_crash_zone_colossus/reward_0",
+      "item": "echoashfallprotocol:schematic_fragment_armor",
+      "count": 1,
+      "label": "Schematic Fragment Armor",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_crash_zone_colossus/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_crash_zone_colossus/reward_1",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_crash_zone_colossus/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Crash Zone Colossus neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

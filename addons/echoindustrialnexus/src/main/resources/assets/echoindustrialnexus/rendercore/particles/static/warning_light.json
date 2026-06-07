@@ -1,0 +1,16 @@
+{
+  "emitters": {
+    "warning_glow": {
+      "anchor": "light",
+      "particle": "minecraft:dust",
+      "rate": 0.05,
+      "burst_count": 1,
+      "spread": [0.12, 0.06, 0.12],
+      "options": {
+        "type": "minecraft:dust",
+        "color": [1.0, 0.48, 0.16],
+        "scale": 0.55
+      }
+    }
+  }
+}

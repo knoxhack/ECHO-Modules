@@ -1,0 +1,69 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the Blackbox finale chapter for the ECHO public release stack."
+description='''
+Every disaster left a recording. The Blackbox remembers the truth, and the truth is hostile.
+
+ECHO: Blackbox Protocol is a late-game final chapter addon for ECHO. Decode typed Blackbox Fragments, open monolith routes, survive archive dungeons, defeat memory bosses, assemble the Nexus Core Access Key, and mirror outcome directives through ECHO Core and ECHO Terminal.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, route, diagnostic, hazard, archive, and milestone APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Mirrors Blackbox missions, route placement, archive entries, and actions into the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Allows the final Orbital network seal to gate Blackbox when the orbital chapter is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echostationfall"
+type="optional"
+reason="Future saga handoff for recovered station blackboxes."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonexusprotocol"
+type="optional"
+reason="Future saga handoff for completed Nexus protocol state."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

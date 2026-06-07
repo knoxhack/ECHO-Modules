@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:orbital_launch_platform",
+    "facility":  "echomultiblockcore:orbital_launch_platform",
+    "tier":  6,
+    "prerequisites":  [
+                          "echomultiblockcore:scanner_array"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:calibrate_launch_guidance",
+                             "echomultiblockcore:align_orbital_launch_window"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:launch_guidance_core"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/orbital_launch_platform",
+    "title":  "Orbital Launch Platform",
+    "guide":  "Calibrate launch guidance cores using Stabilizer and Calibrator tools to prepare orbital dispatch payloads."
+}

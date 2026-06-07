@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:control_command_lattice",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 18,
+  "title": "Bind Command Lattice",
+  "briefing": "[ECHO-7] The Warden was midpoint, not closure. Bind the relay network into a command lattice from the terminal operation channel.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "tech",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:control_guardian"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "control_command_lattice",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.control_command_lattice",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "18",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "111",
+    "requiredPath": "control",
+    "routeRoleTag": "control_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:control_command_lattice:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "control",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:control_command_lattice/control_command_lattice",
+      "type": "custom",
+      "label": "Bind Command Lattice",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:control_command_lattice",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.control_command_lattice"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:control_command_lattice/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 4,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_command_lattice/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:control_command_lattice/reward_1",
+      "item": "echoashfallprotocol:schematic_fragment_energy",
+      "count": 2,
+      "label": "Schematic Fragment Energy",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_command_lattice/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Command lattice bound. Mirror Command is exposed."
+}

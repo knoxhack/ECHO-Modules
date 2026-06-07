@@ -1,0 +1,46 @@
+{
+  "feature": "echoashfallprotocol:salvage_concrete_pile",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:dirt",
+          "minecraft:grass_block",
+          "minecraft:sand",
+          "minecraft:gravel",
+          "minecraft:coarse_dirt",
+          "minecraft:cobblestone",
+          "echoashfallprotocol:contaminated_soil",
+          "echoashfallprotocol:concrete_rubble",
+          "echoashfallprotocol:wasteland_dirt",
+          "echoashfallprotocol:debris_block"
+        ],
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

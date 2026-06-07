@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/ritualcore/troubleshooting",
+  "title": "RitualCore Altar: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Fix ritual failures by checking structure, inputs, target state, and consumption gates.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "Most ritual failures are invalid array, missing pedestal input, wrong catalyst, missing active curse, or a relic state that cannot be stabilized.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Shrink The Attempt",
+      "body": "Run diagnostics, remove optional targets, and test Aether Calibration. If calibration works, the problem is probably the bridge target.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one block, input, or target state before retrying. Randomly moving the whole altar can erase the useful clue.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ritualcore",
+    "arcana",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:lodestone",
+  "relatedArticles": [
+    "echowiki:guides/ritualcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1286
+}

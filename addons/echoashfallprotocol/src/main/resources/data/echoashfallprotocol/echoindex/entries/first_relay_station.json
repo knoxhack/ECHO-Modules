@@ -1,0 +1,26 @@
+{
+  "id": "echoashfallprotocol:first_relay_station",
+  "category": "ashfall.major_routes",
+  "title": "First Relay Station",
+  "subtitle": "The first major POI route after first-month survival",
+  "summary": "The relay station is the selected 1.7.6 major route. It connects route records, Lens scans, HoloMap markers, PowerGrid repair, cache rewards, and optional Crashbreak field work.",
+  "body": [
+    "The relay route is intentionally smaller than a bio lab or reactor ruin. It should teach the major-route pattern without jumping into late-game danger.",
+    "Before leaving, check weather, bring food and clean water, carry repair parts, and set a return marker.",
+    "At the POI, scan the relay console and power coupler. Repair if possible, then claim the relay cache and return to Terminal.",
+    "If repair input, status text, or route records are unclear, record it as a 1.7.6 smoke issue."
+  ],
+  "links": {
+    "mission": "echoashfallprotocol:first_relay_station_route",
+    "terminalPage": "echoashfallprotocol:ashfall_major_route_records",
+    "holomapLayer": "echoashfallprotocol:first_major_route",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "powerGridRepair": "echoashfallprotocol:ashfall_relay_station_repair"
+  },
+  "tags": [
+    "ashfall",
+    "major_route",
+    "relay",
+    "powergrid"
+  ]
+}

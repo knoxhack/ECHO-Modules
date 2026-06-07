@@ -1,0 +1,25 @@
+{
+    "parent": "block/cube_all",
+    "elements": [
+        {   "from": [ 0, 4, 0 ],
+            "to": [ 16, 12.5, 16 ],
+            "faces": {
+                "down":  { "texture": "#down", "cullface": "down" },
+                "up":    { "texture": "#up", "cullface": "up" },
+                "north": { "texture": "#north", "cullface": "north" },
+                "south": { "texture": "#south", "cullface": "south" },
+                "west":  { "texture": "#west", "cullface": "west" },
+                "east":  { "texture": "#east", "cullface": "east" }
+            }
+        }
+    ],
+    "textures": {
+        "particle": "echogalacticcore:block/solar_controller_top",
+        "down": "echogalacticcore:block/solar_controller_top",
+        "up": "echogalacticcore:block/solar_controller_top",
+        "north": "echogalacticcore:block/solar_controller_side",
+        "east": "echogalacticcore:block/solar_controller_output",
+        "south": "echogalacticcore:block/solar_controller_side",
+        "west": "echogalacticcore:block/solar_controller_side"
+    }
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "echogalacticcore.port.celestial_environments.v1",
+  "source": "galacticraft_legacy_world_providers",
+  "environments": [
+    {
+      "id": "echogalacticcore:earth_orbit",
+      "route": "echogalacticcore:route/earth_orbit",
+      "legacySource": "micdoodle8.mods.galacticraft.core.dimension.WorldProviderOverworldOrbit",
+      "gravity": "zero_g",
+      "atmosphere": "vacuum",
+      "thermalRisk": "cold",
+      "lensSignals": ["oxygen", "pressure", "gravity"]
+    },
+    {
+      "id": "echogalacticcore:moon",
+      "route": "echogalacticcore:route/moon",
+      "legacySource": "micdoodle8.mods.galacticraft.core.dimension.WorldProviderMoon",
+      "gravity": "low_g",
+      "atmosphere": "vacuum",
+      "thermalRisk": "cold",
+      "dungeon": "echogalacticcore:dungeon/moon_dungeon_tier_1",
+      "lensSignals": ["oxygen", "pressure", "gravity", "dungeon"]
+    },
+    {
+      "id": "echogalacticcore:mars",
+      "route": "echogalacticcore:route/mars",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars",
+      "gravity": "low_g",
+      "atmosphere": "thin_co2",
+      "thermalRisk": "cold",
+      "dungeon": "echogalacticcore:dungeon/mars_dungeon_tier_2",
+      "lensSignals": ["oxygen", "pressure", "gravity", "dungeon", "thermal"]
+    },
+    {
+      "id": "echogalacticcore:asteroids",
+      "route": "echogalacticcore:route/asteroids",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.asteroids.dimension.WorldProviderAsteroids",
+      "gravity": "micro_g",
+      "atmosphere": "vacuum",
+      "thermalRisk": "cold",
+      "lensSignals": ["oxygen", "pressure", "gravity", "ore_density"]
+    },
+    {
+      "id": "echogalacticcore:venus",
+      "route": "echogalacticcore:route/venus",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.venus.dimension.WorldProviderVenus",
+      "gravity": "standard_g",
+      "atmosphere": "hot_dense_acidic",
+      "thermalRisk": "extreme_heat",
+      "dungeon": "echogalacticcore:dungeon/venus_dungeon_tier_3",
+      "lensSignals": ["oxygen", "pressure", "gravity", "dungeon", "thermal", "acid_rain"]
+    }
+  ],
+  "echoIntegrations": {
+    "echoholomap": "routes and destination readiness",
+    "echolens": "environment scan signals",
+    "echoashfallprotocol": "optional milestone mirroring for planet progression"
+  },
+  "typedSurfaces": ["worldgen", "resources", "capabilities", "screens"]
+}

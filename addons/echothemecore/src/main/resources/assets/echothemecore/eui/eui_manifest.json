@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "id": "echothemecore:cyberglass_kit_preview",
+      "title": "Cyberglass Kit Preview",
+      "styles": ["echothemecore:cyberglass_kit"],
+      "description": "Inspection page for the shared ThemeCore ScreenCore kit",
+      "debugOnly": true
+    },
+    {
+      "id": "echothemecore:client_theme_picker",
+      "title": "Theme Picker",
+      "styles": ["echothemecore:universal_theme_kit"],
+      "description": "Client-local ThemeCore public theme picker",
+      "debugOnly": false
+    }
+  ],
+  "components": [
+    "echothemecore:cyberglass_panel_shell",
+    "echothemecore:cyberglass_action_button_row",
+    "echothemecore:cyberglass_status_chip_row",
+    "echothemecore:cyberglass_confirm_dialog",
+    "echothemecore:cyberglass_empty_state"
+  ]
+}

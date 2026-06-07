@@ -1,0 +1,104 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.12,
+  "downfall": 0.35,
+  "effects": {
+    "fog_color": 10653304,
+    "foliage_color": 6844234,
+    "grass_color": 7301454,
+    "sky_color": 9338221,
+    "water_color": 6185291,
+    "water_fog_color": 4276789,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.02
+    },
+    "ambient_loop_sound": "minecraft:ambient.basalt_deltas.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_chance": 0.008
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:ruined_plains_bone_scatter",
+      "echoashfallprotocol:ruined_plains_fallout_dust_patches",
+      "echoashfallprotocol:ruined_plains_contaminated_soil_patches",
+      "echoashfallprotocol:ruined_plains_deep_ash_patch",
+      "echoashfallprotocol:ruined_plains_deep_ash_surface",
+      "echoashfallprotocol:wasteland_trace_rubble_scatter",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:salvage_rusty_metal_patch",
+      "echoashfallprotocol:wasteland_cracked_earth",
+      "echoashfallprotocol:dirty_water_pockets",
+      "echoashfallprotocol:wasteland_ash_stone",
+      "echoashfallprotocol:wasteland_scrap_ore",
+      "echoashfallprotocol:ruined_plains_rubble_scatter",
+      "echoashfallprotocol:ruined_plains_metal_debris_scatter",
+      "echoashfallprotocol:ruined_plains_concrete_chunk_scatter",
+      "echoashfallprotocol:ruined_plains_concrete_rubble_piles"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:ruined_plains_dead_trees_fallen",
+      "echoashfallprotocol:ruined_plains_ash_bushes",
+      "echoashfallprotocol:ruined_plains_burnt_ferns",
+      "echoashfallprotocol:ruined_plains_dry_grass_patches",
+      "echoashfallprotocol:rusty_wheat",
+      "echoashfallprotocol:wasteland_thorn_scrub",
+      "echoashfallprotocol:ruined_plains_charred_trees",
+      "echoashfallprotocol:ruined_plains_dead_trees_snapped",
+      "echoashfallprotocol:ruined_plains_dead_trees"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "echoashfallprotocol:crash_survivor",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:wild_dog",
+        "weight": 21,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:feral_human",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:scavenger_bandit",
+        "weight": 7,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.72
+}

@@ -1,0 +1,3 @@
+<page id="test_index_item_grid" title="Test Index Item Grid" styles="index_cyberglass,index_components,index_items">
+  <screen-shell><header title="Index Item Grid" subtitle="Provider-backed item rows with focus, badges, and no-result copy"/><list bind="index.items.visible" item="item" selected="{index.items.selected.id}"><component src="echoindex:index_item_row" value="{item.id}"><param name="id" value="{item.id}"/><param name="icon" value="{item.icon}"/><param name="title" value="{item.displayName}"/><param name="subtitle" value="{item.modName} / {item.category}"/><param name="badge" value="{item.recipeCount}R {item.usageCount}U"/></component><empty-state title="No item rows" body="Provider returned no item rows for this debug page."/></list></screen-shell>
+</page>

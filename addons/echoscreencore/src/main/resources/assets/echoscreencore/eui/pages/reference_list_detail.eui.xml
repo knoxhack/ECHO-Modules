@@ -1,0 +1,42 @@
+<page id="reference-list-detail" title="Reference List Detail" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header"
+                 title="Field Records"
+                 subtitle="Select a record and inspect its state."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-list-detail" columns="0.85fr 1.15fr" gap="8" stack-below="760">
+        <scroll class="sc-scroll-region" scroll-state="true" state-key="reference.records">
+          <list bind="screencore.reference.records" item="record" selected="{screencore.reference.selectedRecordId}">
+            <list-row class="sc-list-row"
+                      action="screencore.reference.select_record"
+                      action-value="{record.id}"
+                      value="{record.id}">
+              <status-chip class="sc-row-badge" status="{record.status}" value="{record.badge}"/>
+              <column class="sc-row-copy">
+                <title value="{record.title}"/>
+                <text value="{record.summary}"/>
+              </column>
+            </list-row>
+            <empty-state title="No Records" body="No records are available."/>
+          </list>
+        </scroll>
+        <section class="sc-panel" title="DETAIL">
+          <status-chip status="{screencore.reference.selectedRecord.status|info}"
+                       value="{screencore.reference.selectedRecord.badge|INFO}"/>
+          <title value="{screencore.reference.selectedRecord.title|No record selected}"/>
+          <text class="sc-readable-body"
+                value="{screencore.reference.selectedRecord.body|Choose a record from the list.}"/>
+          <component src="echoscreencore:sc_action_strip">
+            <slot name="actions">
+              <button action="screencore.reference.open_selected" variant="primary">Open</button>
+              <button action="noop" variant="ghost">Mark Read</button>
+            </slot>
+          </component>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

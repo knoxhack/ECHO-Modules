@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/playercore/systems",
+  "title": "PlayerCore: Important Systems",
+  "category": "Guide Books",
+  "summary": "Recognize homes, back locations, spawn, random teleport, TPA, warps, cooldowns, and safety checks.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Travel Anchors",
+      "body": "Homes are personal anchors. Spawn is a shared fallback. Warps are server-managed anchors. Back and death locations are recovery tools.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Social Travel",
+      "body": "TPA depends on another player accepting the route. Use it when coordination is safer than wandering or random teleporting.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Safety Rules",
+      "body": "Random teleport and normal teleports can check dimensions, blocks, height ranges, lava, water, powder snow, cactus, and server-defined hazards.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "playercore",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/playercore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1099
+}

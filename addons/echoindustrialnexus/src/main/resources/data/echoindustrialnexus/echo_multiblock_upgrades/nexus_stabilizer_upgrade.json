@@ -1,0 +1,17 @@
+{
+  "id": "echoindustrialnexus:nexus_stabilizer_upgrade",
+  "display_name": "Nexus Stabilizer Upgrade",
+  "category": "industrial_cooling",
+  "item": "echoindustrialnexus:nexus_stabilizer_upgrade",
+  "allowed_multiblocks": [
+    "echoindustrialnexus:recipe_matrix_core",
+    "echoindustrialnexus:nexus_furnace_array"
+  ],
+  "modifiers": [
+    { "type": "heat_reduction", "value": 3.0 },
+    { "type": "capability_bonus", "value": 64.0 }
+  ],
+  "notes": [
+    "Reduces Nexus-thermal heat pressure on late factory tasks."
+  ]
+}

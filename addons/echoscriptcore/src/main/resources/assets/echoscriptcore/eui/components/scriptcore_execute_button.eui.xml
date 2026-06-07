@@ -1,0 +1,7 @@
+<button action="scriptcore.execute"
+        action-value="{param.definition|}"
+        action-param-slot="{param.slot|actions}"
+        variant="{param.variant|primary}"
+        tooltip="{param.tooltip|Execute a trusted preloaded ScriptCore action definition.}">
+  {param.label|Execute}
+</button>

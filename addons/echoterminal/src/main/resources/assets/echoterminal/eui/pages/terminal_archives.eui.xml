@@ -1,0 +1,46 @@
+<page id="terminal-archives" title="Field Archive" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_archive_intel,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <row class="terminal-filter-row" gap="8">
+        <input-text class="terminal-search-bar" value="" placeholder="Search archive..." on-change="terminal.archives.filter_group"/>
+        <button action="terminal.archives.filter_state" action-value="all" variant="primary">All</button>
+        <button action="terminal.archives.filter_state" action-value="open" variant="ghost">Signals</button>
+        <button action="terminal.archives.filter_state" action-value="locked" variant="ghost">Locked</button>
+        <status-chip status="ready" value="{terminal.archives.count} results"/>
+      </row>
+      <grid class="terminal-dashboard-grid terminal-archive-layout" columns="0.7fr 1.1fr 0.75fr" gap="10" stack-below="940">
+        <section class="terminal-panel" title="RECORDS">
+          <scroll class="terminal-mission-list" scroll-state="true" state-key="terminal.archives">
+            <list bind="terminal.archives.visibleRecords" item="record" selected="{terminal.archives.selectedRecordId}">
+              <list-row class="terminal-record-row" action="terminal.archives.select_record" action-value="{record.id}" value="{record.id}">
+                <status-chip class="terminal-archive-state-chip" status="{record.statusKey}" value="{record.status}"/>
+                <copy-block class="terminal-row-copy" title="{record.title}" subtitle="{record.group}"/>
+              </list-row>
+              <empty-state title="No records" body="No shared archive records are available."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="terminal-panel" title="RECORD DETAIL">
+          <copy-block class="terminal-row-copy" title="{terminal.archives.selectedRecord.title|No record selected}" subtitle="{terminal.archives.selectedRecord.group|}"/>
+          <section class="terminal-map-surface" title="ARCHIVE PREVIEW">
+            <copy-block class="terminal-row-copy" title="{terminal.archives.selectedRecord.body|Select a record to read its recovered field notes.}"/>
+          </section>
+          <row class="terminal-action-strip" gap="8">
+            <button action="terminal.archives.mark_read" action-value="{terminal.archives.selectedRecord.id}" variant="primary" disabled="{terminal.archives.selectedRecord.markDisabled|true}" disabled-reason="{terminal.archives.selectedRecord.markDisabledReason|Select an unread archive record first.}">Flag Read</button>
+            <button action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">View Map</button>
+            <button action="terminal.open_tab" action-value="echoterminal:route_records" variant="ghost">Related Routes</button>
+          </row>
+        </section>
+        <section class="terminal-panel" title="METADATA">
+          <stat-card label="Records" value="{terminal.archives.count}" status="ready"/>
+          <stat-card label="State" value="{terminal.archives.state|all}" status="info"/>
+          <stat-card label="Group" value="{terminal.archives.group|all}" status="info"/>
+          <section class="terminal-side-panel" title="RELATED">
+            <button action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">Related Missions</button>
+            <button action="terminal.open_tab" action-value="echoterminal:discovery_grid" variant="ghost">Linked POIs</button>
+          </section>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

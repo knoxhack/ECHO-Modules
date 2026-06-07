@@ -1,0 +1,27 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:buggymat",
+                   "data":  2
+               },
+    "pattern":  [
+                    "XXX",
+                    "YZY",
+                    "XXX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_iron"
+                      },
+                "Z":  {
+                          "item":  "minecraft:chest"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/armory/systems",
+  "title": "Armory: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the Armory signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Energy capacity, instability, installed modules, and cosmetic trim can all live on the item stack. Read the tooltip before assuming a tool is ready.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch durability, module roles, tier expectations, repair cost, ammo or charge pressure, and whether each slot helps the route you are actually taking.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A Armory system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "System Anchor",
+      "body": "Use this reference to turn the system note into a concrete field check.",
+      "tone": "tip",
+      "item": "minecraft:iron_sword",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Iron Sword",
+      "subtitle": "Systems checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_sword",
+  "relatedArticles": [
+    "echowiki:guides/armory"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1033
+}

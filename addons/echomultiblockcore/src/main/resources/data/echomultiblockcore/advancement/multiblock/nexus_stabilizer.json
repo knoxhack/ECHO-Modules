@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/scanner_array_recipe",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:nexus_stabilizer_blueprint"
+    },
+    "title": {
+      "text": "Anchor the Nexus Stabilizer"
+    },
+    "description": {
+      "text": "Prepare a Nexus Stabilizer blueprint."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "blueprint": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:nexus_stabilizer_blueprint"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blueprint"
+    ]
+  ]
+}

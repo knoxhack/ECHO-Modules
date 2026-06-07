@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "dialogue",
+  "required": ["schema_version", "id", "type", "speaker", "lines"],
+  "fields": ["pack", "title", "choices", "conditions", "actions", "metadata"]
+}

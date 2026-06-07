@@ -1,0 +1,99 @@
+{
+  "id": "echoashfallprotocol:collect_mutated_tissue",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 11,
+  "title": "Collect Mutated Tissue",
+  "briefing": "[ECHO-7] Mutation research needs a sample. Recover Mutated Tissue from biological threats, faction tasks, or bio-sites.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:mutated_tissue",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_atmospheric_scrubber"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "collect_mutated_tissue",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.collect_mutated_tissue",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "11",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "57",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:collect_mutated_tissue:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:collect_mutated_tissue/mutated_tissue",
+      "type": "deliver_item",
+      "label": "Deliver Mutated Tissue",
+      "detail": "Confirm 1 Mutated Tissue for this route step.",
+      "icon": "echoashfallprotocol:mutated_tissue",
+      "target": "echoashfallprotocol:mutated_tissue",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:mutated_tissue",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:mutated_tissue",
+      "count": 1,
+      "label": "Mutated Tissue"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:collect_mutated_tissue/reward_0",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:collect_mutated_tissue/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:collect_mutated_tissue/reward_1",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:collect_mutated_tissue/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Tissue sample sealed. Keep it contained until the med systems are ready."
+}

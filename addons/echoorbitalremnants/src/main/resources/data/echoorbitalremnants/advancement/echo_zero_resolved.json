@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:deep_space_protocol",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:nexus_drive_core"
+    },
+    "title": {
+      "text": "ECHO-0 Resolved"
+    },
+    "description": {
+      "text": "Break ECHO-0's quarantine and open Nexus anchor stabilization."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "resolved": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "resolved"
+    ]
+  ]
+}

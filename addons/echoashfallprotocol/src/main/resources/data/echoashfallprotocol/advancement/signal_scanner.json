@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:first_faction_contact",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:scrap_circuit"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.signal_scanner.title",
+      "fallback": "Signal Surveillance"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.signal_scanner.desc",
+      "fallback": "Obtain a Signal Scanner to detect Points of Interest."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_signal_scanner": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:scrap_circuit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_signal_scanner"]
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/block/glass.png",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V18 Cyberglass Screen",
+    "tags": [
+      "v18",
+      "screen",
+      "cyberglass"
+    ]
+  },
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.62,
+    "pulse_speed": 0.28,
+    "pulse_min_alpha": 0.82,
+    "pulse_max_alpha": 1,
+    "bloom_tint": "#FF66E8FF",
+    "target_scope": "profile"
+  },
+  "anchors": {
+    "screen": {
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "echorendercore",
+    "display_name": "V18 Cyberglass Screen",
+    "tags": [
+      "screen"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "V18 CYBERGLASS SCREEN",
+    "backdrop": true,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": false
+  }
+}

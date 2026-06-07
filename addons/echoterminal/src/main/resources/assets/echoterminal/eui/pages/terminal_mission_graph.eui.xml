@@ -1,0 +1,70 @@
+<page id="terminal-mission-graph" title="HoloMap" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_missions,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <grid class="terminal-dashboard-grid terminal-map-layout" columns="0.72fr 1.7fr 0.82fr" gap="10" stack-below="960">
+        <section class="terminal-panel" title="MAP LAYERS">
+          <scroll class="terminal-provider-list terminal-map-provider-list" scroll-state="true" state-key="terminal.map.providers">
+            <list bind="terminal.missionGraph.providers" item="provider" selected="{terminal.missionGraph.selectedProviderId}">
+              <list-row class="terminal-action-row terminal-map-provider-row" action="terminal.select_mission_provider" action-value="{provider.id}" value="{provider.id}" selected="{provider.selected}">
+                <status-chip class="terminal-provider-count-chip" status="{provider.statusKey}" value="{provider.active|0}"/>
+                <copy-block class="terminal-row-copy" title="{provider.title}" subtitle="{provider.statusLine}"/>
+              </list-row>
+              <empty-state title="No route layers" body="No mission providers are publishing route layers."/>
+            </list>
+          </scroll>
+          <section class="terminal-side-panel" title="FILTERS">
+            <button action="terminal.open_tab" action-value="echoterminal:route_records" variant="ghost">Route Records</button>
+            <button action="terminal.open_tab" action-value="echoterminal:discovery_grid" variant="ghost">Discovery Grid</button>
+            <button action="terminal.open_tab" action-value="echoterminal:faction_atlas" variant="ghost">Faction Atlas</button>
+          </section>
+        </section>
+
+        <section class="terminal-map-surface" title="TACTICAL HOLOMAP">
+          <row class="terminal-filter-row" gap="8">
+            <stat-card label="Sector" value="Ashfall C45" status="info"/>
+            <stat-card label="Scan Mode" value="Active" status="ready"/>
+            <stat-card label="Signal" value="78%" status="ready"/>
+            <stat-card label="Routes" value="{terminal.missionGraph.count}" status="active"/>
+          </row>
+          <grid class="terminal-map-node-grid" columns="1fr 1fr 1fr" gap="12">
+            <section class="terminal-map-node" title="ECHO-7">
+              <copy-block class="terminal-row-copy" title="Current position"/>
+              <status-chip status="active" value="ONLINE"/>
+            </section>
+            <section class="terminal-map-node" title="{terminal.missionGraph.selectedProvider.title|RelicTech Outpost}">
+              <copy-block class="terminal-row-copy" title="{terminal.missionGraph.selectedProvider.summary|Selected route provider.}"/>
+              <status-chip status="{terminal.missionGraph.selectedProvider.statusKey|ready}" value="{terminal.missionGraph.selectedProvider.badge|ROUTE}"/>
+            </section>
+            <section class="terminal-map-node terminal-danger-panel" title="HAZARD ZONE">
+              <copy-block class="terminal-row-copy" title="High radiation"/>
+              <status-chip status="warning" value="AVOID"/>
+            </section>
+            <section class="terminal-map-node" title="RELAY R-14">
+              <copy-block class="terminal-row-copy" title="Signal bridge"/>
+              <status-chip status="ready" value="SYNCED"/>
+            </section>
+            <section class="terminal-map-node terminal-danger-panel" title="CRASH SITE">
+              <copy-block class="terminal-row-copy" title="Telemetry source"/>
+              <status-chip status="danger" value="SEVERE"/>
+            </section>
+            <section class="terminal-map-node" title="ASHFALL STRAY">
+              <copy-block class="terminal-row-copy" title="Neutral route contact"/>
+              <status-chip status="info" value="NEUTRAL"/>
+            </section>
+          </grid>
+        </section>
+
+        <section class="terminal-panel" title="SELECTED MARKER">
+          <copy-block class="terminal-row-copy" title="{terminal.missionGraph.selectedProvider.title|Route Layer}" subtitle="{terminal.missionGraph.selectedProvider.summary|Select a route layer to inspect.}"/>
+          <stat-card label="Active" value="{terminal.missionGraph.selectedProvider.active|0}" status="active"/>
+          <stat-card label="Complete" value="{terminal.missionGraph.selectedProvider.complete|0}" status="ready"/>
+          <stat-card label="Locked" value="{terminal.missionGraph.selectedProvider.locked|0}" status="locked"/>
+          <button action="terminal.open_provider_route" action-value="{terminal.missionGraph.selectedProvider.id}" variant="primary"
+                  disabled="{terminal.missionGraph.selectedProvider.routeUnavailable|false}" disabled-reason="{terminal.missionGraph.selectedProvider.routeUnavailableReason|This route layer has no route page.}">{terminal.missionGraph.selectedProvider.routeLabel|Open Route}</button>
+          <button action="terminal.open_provider_diagnostics" action-value="{terminal.missionGraph.selectedProvider.id}" variant="ghost"
+                  disabled="{terminal.missionGraph.selectedProvider.diagnosticsUnavailable|false}" disabled-reason="{terminal.missionGraph.selectedProvider.diagnosticsUnavailableReason|No diagnostics are published for this provider.}">View Diagnostics</button>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

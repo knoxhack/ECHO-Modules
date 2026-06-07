@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:lunar_signal",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:lunar_core_sample"
+    },
+    "title": {
+      "text": "Lunar Survey Complete"
+    },
+    "description": {
+      "text": "Log three lunar survey cairns and stabilize Helium-3 route telemetry."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

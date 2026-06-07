@@ -1,0 +1,82 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoriftworlds",
+  "name": "ECHO: RiftWorlds",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echoriftworlds.EchoRiftWorlds",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore"
+  ],
+  "optional": [
+    "echocursecore",
+    "echoholomap",
+    "echolens",
+    "echoritualcore"
+  ],
+  "provides": [
+    "riftworlds.arcana_provider",
+    "riftworlds.dimensional_hazards",
+    "riftworlds.pocket_rifts",
+    "riftworlds.rift_cracks",
+    "riftworlds.ruins"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "story_packs"
+  ],
+  "permissions": [
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "worldgen",
+        "structures",
+        "missions"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoriftworlds.EchoRiftWorldsNativeModule",
+    "nativeClasspath": [],
+    "notes": "Arcana Division rift, portal, pocket-world, ruin, and dimensional hazard scaffold. Optional HoloMap, Lens, RitualCore, and CurseCore integrations must degrade safely."
+  },
+  "apiStability": "scaffold",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echoriftworlds/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

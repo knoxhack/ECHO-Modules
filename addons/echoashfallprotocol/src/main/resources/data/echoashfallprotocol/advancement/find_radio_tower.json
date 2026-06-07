@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "minecraft:lightning_rod"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_radio_tower.title",
+      "fallback": "Static on the Airwaves"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_radio_tower.desc",
+      "fallback": "Discover a derelict Radio Tower."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_radio_tower": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:global"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_radio_tower"]
+  ]
+}

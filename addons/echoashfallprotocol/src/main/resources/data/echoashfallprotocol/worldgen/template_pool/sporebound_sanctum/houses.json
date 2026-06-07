@@ -1,0 +1,69 @@
+{
+  "name": "echoashfallprotocol:sporebound_sanctum/houses",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_small_house_1",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_small_house_2",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_medium_house_1",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_shepherds_house_1",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_small_house_3",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/houses/taiga_medium_house_2",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/sporebound_sanctum/processing_hut",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

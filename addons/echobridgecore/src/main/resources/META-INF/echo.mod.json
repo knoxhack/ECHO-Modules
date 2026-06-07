@@ -1,0 +1,88 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echobridgecore",
+  "name": "ECHO: BridgeCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "bridge_core",
+  "entrypoint": "com.knoxhack.echo.bridgecore.EchoBridgeCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "dev",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echovalidationcore",
+    "echohealthcore",
+    "echoagentcore"
+  ],
+  "optional": [
+    "echomodpackcommandcenter",
+    "echocodexcore"
+  ],
+  "provides": [
+    "bridge.codex",
+    "bridge.cyberdex",
+    "bridge.streaming_logs",
+    "bridge.safe_actions",
+    "bridge.confirmations",
+    "bridge.heartbeat"
+  ],
+  "consumes": [
+    "platform.contracts",
+    "runtime.health",
+    "ai.prompt_bundle"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "bridge.local_loopback",
+    "bridge.codex_session_control",
+    "diagnostics.read",
+    "reports.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "diagnostics",
+        "data",
+        "networking"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.bridgecore.EchoBridgeCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "localOnly": true,
+    "notes": "BridgeCore models local Codex/CyberDex automation contracts only. It does not execute commands, launch Minecraft, upload telemetry, or grant remote authority."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "architect_agent",
+      "diagnostics_agent",
+      "test_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "archive_entry",
+  "required": ["schema_version", "id", "type", "title", "content"],
+  "fields": ["pack", "category", "subtitle", "content", "unlock_conditions", "related_missions", "related_scans", "related_pois", "importance", "metadata"]
+}

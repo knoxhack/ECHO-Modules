@@ -1,0 +1,75 @@
+{
+  "id": "echoashfallprotocol:ashfall_major_route_scans",
+  "title": "Ashfall Major Route Scans",
+  "rows": [
+    {
+      "target": "relay_station_console",
+      "category": "major_poi",
+      "text": "Relay console found. This is the first major route target: scan it, open the relay guide, and repair only after weather and supplies are stable.",
+      "riskLabel": "medium route risk",
+      "indexEntry": "echoashfallprotocol:first_relay_station",
+      "mission": "echoashfallprotocol:first_relay_station_route",
+      "holomapMarker": "echoashfallprotocol:first_relay_station",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "relay_power_coupler",
+      "category": "powergrid",
+      "text": "Power coupler is damaged but recoverable. Expect scrap wire, circuit boards, and energy cells to matter more than brute-force salvage.",
+      "riskLabel": "repairable",
+      "indexEntry": "echoashfallprotocol:first_relay_station",
+      "mission": "echoashfallprotocol:first_relay_station_route",
+      "holomapMarker": "echoashfallprotocol:first_relay_station",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "powerGridRepair": "echoashfallprotocol:ashfall_relay_station_repair",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "relay_cache_lockbox",
+      "category": "reward_cache",
+      "text": "Relay lockbox contains route-support supplies. Claim after the console scan; it should help the next route without skipping late research.",
+      "riskLabel": "secured salvage",
+      "indexEntry": "echoashfallprotocol:relay_station_rewards",
+      "mission": "echoashfallprotocol:first_relay_station_route",
+      "holomapMarker": "echoashfallprotocol:relay_cache_lockbox",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "lootTable": "echoashfallprotocol:chests/relay_station_cache",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "crashbreak_contract_board",
+      "category": "faction_contract",
+      "text": "Crashbreak wants proof that the relay route is safe enough for salvage crews. This is optional field work, not a faction commitment.",
+      "riskLabel": "optional contract",
+      "indexEntry": "echoashfallprotocol:field_contracts",
+      "mission": "echoashfallprotocol:crashbreak_relay_contract",
+      "holomapMarker": "echoashfallprotocol:crashbreak_relay_contract",
+      "routeLink": "echoashfallprotocol:crashbreak_salvage_yard",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "relay_weather_vane",
+      "category": "hazard",
+      "text": "The relay route is exposed. If a toxic front is active, delay the route or carry filters, clean water, food, and a marked exit.",
+      "riskLabel": "weather-dependent",
+      "indexEntry": "echoashfallprotocol:relay_hazard_prep",
+      "mission": "echoashfallprotocol:first_relay_station_route",
+      "holomapMarker": "echoashfallprotocol:relay_weather_window",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    },
+    {
+      "target": "relic_signal_fragment",
+      "category": "relic",
+      "text": "Weak relic interference is caught in relay static. Archive it for later research; do not let it distract from repairing the route.",
+      "riskLabel": "low interference",
+      "indexEntry": "echoashfallprotocol:first_relay_station",
+      "mission": "echoashfallprotocol:first_relay_station_route",
+      "holomapMarker": "echoashfallprotocol:first_relay_station",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "relicDiscovery": "echoashfallprotocol:ashfall_relay_signal_fragment",
+      "tutorialHint": "echoashfallprotocol:first_major_route_hint"
+    }
+  ]
+}

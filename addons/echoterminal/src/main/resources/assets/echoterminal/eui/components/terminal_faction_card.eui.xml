@@ -1,0 +1,4 @@
+<card action="terminal.factions.select_faction" action-value="{param.id|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Faction}" subtitle="{param.summary|Faction summary.}"/>
+  <status-chip status="{param.standing|info}" value="{param.standing|UNKNOWN}"/>
+</card>

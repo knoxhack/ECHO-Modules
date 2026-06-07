@@ -1,0 +1,10 @@
+{
+  "id": "echothemecore:cyberglass_holomap_grid",
+  "theme": "echothemecore:cyberglass",
+  "type": "holomap_grid",
+  "effects": [
+    {"type": "hologram_pulse", "duration_ticks": 32, "strength": "theme:hologram_pulse_strength"},
+    {"type": "energy_line", "duration_ticks": 50, "color": "theme:primary"},
+    {"type": "marker_pulse", "duration_ticks": 28, "color": "theme:selection"}
+  ]
+}

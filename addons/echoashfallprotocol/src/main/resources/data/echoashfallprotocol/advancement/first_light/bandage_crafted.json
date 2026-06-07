@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:first_light/bone_knife",
+  "criteria": {
+    "craft_bandage": {
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:bandage"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Craft emergency wound dressings from plant fiber.",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:bandage"
+    },
+    "title": "Field Medicine",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "requirements": [
+    [
+      "craft_bandage"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

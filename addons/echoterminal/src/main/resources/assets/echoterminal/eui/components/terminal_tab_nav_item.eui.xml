@@ -1,0 +1,3 @@
+<list-row action="terminal.open_tab" action-value="{param.tabId|}" value="{param.tabId|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Terminal Page}" subtitle="{param.summary|Fallback renderer available.}"/>
+</list-row>

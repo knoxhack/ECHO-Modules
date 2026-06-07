@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_cryogenic_overseer",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 16,
+  "title": "Defeat Cryogenic Overseer",
+  "briefing": "[ECHO-7] Guardian signal locked below Cryogenic Ruins. Scan for the visible Cryogenic Ruins entrance, descend into the buried node, read the room before it reads you, then neutralize Cryogenic Overseer.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:thermal_liner",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:craft_cold_route_supplies"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_cryogenic_overseer",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_cryogenic_overseer",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "16",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "84",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_cryogenic_overseer:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_cryogenic_overseer/cryogenic_overseer",
+      "type": "kill_entity",
+      "label": "Cryogenic Overseer",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:thermal_liner",
+      "target": "echoashfallprotocol:cryogenic_overseer",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:cryogenic_overseer"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:cryogenic_overseer",
+      "count": 1,
+      "label": "Cryogenic Overseer"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_cryogenic_overseer/reward_0",
+      "item": "echoashfallprotocol:thermal_liner",
+      "count": 1,
+      "label": "Thermal Liner",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_cryogenic_overseer/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_cryogenic_overseer/reward_1",
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 4,
+      "label": "Hand Warmer",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_cryogenic_overseer/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Cryogenic Overseer neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

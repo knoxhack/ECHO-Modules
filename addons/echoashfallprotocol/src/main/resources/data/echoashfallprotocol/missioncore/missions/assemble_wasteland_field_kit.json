@@ -1,0 +1,139 @@
+{
+  "id": "echoashfallprotocol:assemble_wasteland_field_kit",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 0,
+  "title": "Assemble Wasteland Field Kit",
+  "briefing": "[ECHO-7] Stop spending recovered metal on every emergency. Assemble a Bone Knife, Crude Spear, and Hide Wrap so scrap stays in the machine chain.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall field-kit bridge while replacing the deprecated Bone Knife, Crude Spear, and Hide Wrap mission aliases with one explicit three-tool objective.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:bone_knife",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:secure_sleep_shelter"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "assemble_wasteland_field_kit",
+    "nativeGameplayHook": "ashfall.first_route.assemble_wasteland_field_kit",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "replacesDeprecatedNeoForgeMissions": "craft_bone_knife,craft_crude_spear,craft_hide_wrap",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "9",
+    "deprecatedAliases": "craft_bone_knife,craft_crude_spear,craft_hide_wrap",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:assemble_wasteland_field_kit:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "deprecatedAliases": [
+    "echoashfallprotocol:craft_bone_knife",
+    "echoashfallprotocol:craft_crude_spear",
+    "echoashfallprotocol:craft_hide_wrap"
+  ],
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/confirm_field_kit",
+      "type": "custom",
+      "label": "Confirm Bone Knife, Crude Spear, and Hide Wrap",
+      "detail": "Carry all three non-metal survival tools before the route moves into machine salvage.",
+      "icon": "echoashfallprotocol:bone_knife",
+      "target": "ashfall:wasteland_field_kit",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_all",
+        "required_items": "echoashfallprotocol:bone_knife,echoashfallprotocol:crude_spear,echoashfallprotocol:hide_wrap",
+        "events": "player.inventory_changed,player.craft_item,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:bone_knife",
+      "count": 1,
+      "label": "Bone Knife"
+    },
+    {
+      "item": "echoashfallprotocol:crude_spear",
+      "count": 1,
+      "label": "Crude Spear"
+    },
+    {
+      "item": "echoashfallprotocol:hide_wrap",
+      "count": 1,
+      "label": "Hide Wrap"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_rope",
+      "item": "echoashfallprotocol:fiber_rope",
+      "count": 4,
+      "label": "Fiber Rope",
+      "detail": "Primitive utility material for the next route stretch."
+    },
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_bandages",
+      "item": "echoashfallprotocol:bandage",
+      "count": 3,
+      "label": "Bandages",
+      "detail": "Recovery buffer for first scouting."
+    },
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Hydration buffer before machine salvage starts."
+    },
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_stim",
+      "item": "echoashfallprotocol:stim_pack",
+      "count": 1,
+      "label": "Stim Pack",
+      "detail": "Emergency recovery for the first field push."
+    },
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_filter",
+      "item": "echoashfallprotocol:filter_cartridge_basic",
+      "count": 1,
+      "label": "Basic Filter Cartridge",
+      "detail": "Filter reserve before toxic route planning."
+    },
+    {
+      "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_schematic",
+      "item": "echoashfallprotocol:schematic_fragment",
+      "count": 1,
+      "label": "Schematic Fragment",
+      "detail": "Bridge into the first machine salvage mission."
+    }
+  ],
+  "completionText": "[ECHO-7] Field kit confirmed. Bone handles close work, the spear keeps distance, and hide buys breathing margin; fabrication can claim the metal now."
+}

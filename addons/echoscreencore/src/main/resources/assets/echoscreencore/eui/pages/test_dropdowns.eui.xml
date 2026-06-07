@@ -1,0 +1,33 @@
+<page id="test-dropdowns" title="Dropdowns" styles="echoscreencore:advanced_mock">
+  <screen-shell>
+    <header title="Dropdown and Select" subtitle="Static and provider-backed options"/>
+    <grid columns="1fr 1fr" gap="16">
+      <panel title="Static Select">
+        <label>Status Filter</label>
+        <select id="static-status-filter" value="{filters.status}" on-change="demo.set_filter" tooltip="Static options update filters.status.">
+          <option value="active">Active</option>
+          <option value="ready">Ready</option>
+          <option value="locked">Locked</option>
+          <option value="done">Done</option>
+          <option value="all">All</option>
+        </select>
+        <text value="Current value: {filters.status|none}"/>
+      </panel>
+      <panel title="Dynamic Select">
+        <label>Provider Options</label>
+        <select id="dynamic-status-filter" bind="filters.availableStatuses" item="status" value="{filters.status}" on-change="demo.set_filter">
+          <option value="{status.id}" label="{status.label}"/>
+        </select>
+        <text>Options are expanded through the same repeat pipeline used by dynamic lists.</text>
+      </panel>
+    </grid>
+    <panel title="Safe States">
+      <row gap="12">
+        <select disabled="true" placeholder="Disabled select">
+          <option value="disabled">Disabled</option>
+        </select>
+        <select placeholder="Empty select"/>
+      </row>
+    </panel>
+  </screen-shell>
+</page>

@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:wiki",
+  "moduleId": "echowiki",
+  "requiredModId": "echowiki",
+  "title": "Wiki Codex Manual",
+  "subtitle": "Articles, collections, guide books, filters, and related records",
+  "summary": "Navigate articles, collections, physical manuals, and related links.",
+  "icon": "minecraft:written_book",
+  "accent": "#FF66E8FF",
+  "collectionId": "echowiki:guides/wiki",
+  "homeArticleId": "echowiki:guides/wiki",
+  "chapterArticleIds": [
+    "echowiki:guides/wiki",
+    "echowiki:guides/wiki/first_steps",
+    "echowiki:guides/wiki/core_loop",
+    "echowiki:guides/wiki/systems",
+    "echowiki:guides/wiki/progression",
+    "echowiki:guides/wiki/integrations",
+    "echowiki:guides/wiki/troubleshooting"
+  ],
+  "tags": [
+    "wiki",
+    "codex",
+    "manual",
+    "reference"
+  ],
+  "sortOrder": 220
+}

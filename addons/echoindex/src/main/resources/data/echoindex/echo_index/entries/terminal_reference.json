@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:terminal_reference",
+  "category": "echoindex:diagnostics",
+  "title": "Terminal Reference",
+  "subtitle": "Intel Surface Integration",
+  "summary": "When ECHO Terminal is present, Index exposes archive and recipe lookup surfaces under the shared Terminal navigation model.",
+  "body": "Terminal remains the presentation shell. EchoIndex supplies searchable archive entries, recipe views, source cards, bookmarks, pins, and diagnostics without reaching into another addon save state.",
+  "icon": "minecraft:comparator",
+  "tags": ["terminal", "intel", "archive", "integration"],
+  "related": ["echoindex:index_overview", "echoindex:source_facts"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 20
+}

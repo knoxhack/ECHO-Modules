@@ -1,0 +1,118 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Active spellcasting slice for ECHO: Arcana Division."
+description='''
+ECHO: SpellCore adds Signal Focus casting, Spell Deck loadouts, starter
+Signal/Aether/Ash spells, synchronized projectiles, modifier slots, Aether
+Signal costs, cooldowns, HUD diagnostics, and Index/Grimoire/Mission hooks.
+JEI is not required; Index and Grimoire remain official knowledge.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, mission, Index, and optional integration contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides Aether Signal and shared SpellDefinition provider contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides serverbound loadout actions for the Spell Deck screen."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoritualcore"
+type="optional"
+reason="Allows SpellCore to require and explain RitualCore's awakened_spell_core unlock item when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocursecore"
+type="optional"
+reason="Allows spell backlash and starter curse targets to bridge into CurseCore when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Surfaces SpellCore focus status in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Publishes the arcana_spellcore route and spell-cast objectives when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Adds Lens rows for players carrying a Signal Focus."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcaneindex"
+type="optional"
+reason="Adds official spell pages through Arcane Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echogrimoire"
+type="optional"
+reason="Adds spell archive entries through the ECHO Grimoire when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="arcanaveil"
+type="optional"
+reason="Allows future Veilbound research to unlock SpellCore paths without replacing ARCANA ownership."
+versionRange="[0.2.0,)"
+ordering="NONE"
+side="BOTH"

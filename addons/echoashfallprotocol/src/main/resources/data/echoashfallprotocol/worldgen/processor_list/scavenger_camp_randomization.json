@@ -1,0 +1,35 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:structure_cache",
+            "probability": 0.7
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:structure_cache"
+          },
+          "block_entity_modifier": {
+            "type": "minecraft:append_loot",
+            "loot_table": "echoashfallprotocol:chests/scavenger_camp_cache"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:block_rot",
+      "integrity": 0.85
+    },
+    {
+      "processor_type": "minecraft:gravity",
+      "heightmap": "WORLD_SURFACE_WG",
+      "offset": 1
+    }
+  ]
+}

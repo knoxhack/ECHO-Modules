@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/relictech",
+  "title": "RelicTech Manual",
+  "category": "Guide Books",
+  "summary": "Use relics with respect for charge, cooldowns, identification, failure, and instability.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "RelicTech gives powerful tools with strange limits. A relic is safest when identified, charged, understood, and used for a clear purpose.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Inspect relic data, confirm charge or cooldown, and test new behavior near base. Do not discover a failure mode while trapped in a hazard route.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Find relics, identify them, charge or stabilize them, use them for targeted advantages, and repair or cool them down before the next major route.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Phase anchors, matter stitchers, guardian lenses, echo mirrors, null batteries, and analyzer behavior all reflect the same rule: power has a state.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Index can expose relic entries, Wiki can keep safe-use notes, TutorialCore can explain mistakes, and Nexus routes may reward careful relic preparation.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a relic fails, read cooldown, charge, identity, and instability before trying again. Repeated failure usually means missing preparation, not random cruelty.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "relictech",
+    "relics"
+  ],
+  "icon": "minecraft:echo_shard",
+  "heroArt": "echowiki:textures/gui/guide_books/relictech_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/relictech/first_steps",
+    "echowiki:guides/relictech/core_loop",
+    "echowiki:guides/relictech/systems",
+    "echowiki:guides/relictech/progression",
+    "echowiki:guides/relictech/integrations",
+    "echowiki:guides/relictech/troubleshooting"
+  ],
+  "sortOrder": 1140
+}

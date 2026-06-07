@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/logistics/integrations",
+  "title": "Logistics: Integrations",
+  "category": "Guide Books",
+  "summary": "Tie item movement to power budgets, machines, maps, storage, and terminal work orders.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "PowerGrid keeps request blocks alive, Index and Wiki document items, Convoy benefits from staged cargo, and TutorialCore can explain missing network pieces.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Feed Convoy staging, Reclamation food loops, PowerGrid maintenance kits, and Terminal operations with the same readable supply language.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "Without linked machines or terminal views, keep routes simple: one source, one destination, one filter goal, and a visible overflow chest.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "logistics",
+    "storage",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:chest",
+  "relatedArticles": [
+    "echowiki:guides/logistics"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1085
+}

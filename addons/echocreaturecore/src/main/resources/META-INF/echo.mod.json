@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocreaturecore",
+  "name": "ECHO: CreatureCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "creature_core",
+  "entrypoint": "com.knoxhack.echo.creaturecore.EchoCreatureCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echosocialcore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "creature.ai_profiles",
+    "creature.archetypes",
+    "creature.scan_metadata"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.creaturecore.EchoCreatureCoreNativeModule",
+    "nativeClasspath": [],
+    "contractsOnly": true,
+    "notes": "Neutral creature archetype, AI profile, spawn tag, role, scan metadata, particle anchor, and loot hook contracts."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

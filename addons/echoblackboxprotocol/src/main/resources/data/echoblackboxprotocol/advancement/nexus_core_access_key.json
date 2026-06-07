@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:temple_unlock",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:nexus_core_access_key"
+                             },
+                    "title":  "Core Access Key Assembled",
+                    "description":  "Assemble the Nexus Core Access Key at the Core Key Assembler.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "nexus_key":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:nexus_core_access_key"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "nexus_key"
+                         ]
+                     ]
+}

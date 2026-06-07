@@ -1,0 +1,69 @@
+{
+  "name": "echoashfallprotocol:crashbreak_salvage_yard/streets",
+  "fallback": "echoashfallprotocol:crashbreak_salvage_yard/terminators",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/straight_01",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/straight_02",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/corner_01",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/corner_02",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/crossroad_01",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/crossroad_02",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/plains/streets/crossroad_03",
+        "processors": "echoashfallprotocol:crashbreak_salvage_yard_theme"
+      }
+    }
+  ]
+}

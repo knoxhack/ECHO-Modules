@@ -1,0 +1,30 @@
+<page id="index_recipe_detail" title="ECHO Index Recipe Detail" styles="index_cyberglass,index_components,index_recipes">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Recipe Detail"/>
+    <param name="inspectorTitle" value="Recipe Actions"/>
+    <slot name="content">
+      <hero-card>
+        <row class="index-recipe-detail-hero" gap="12"><item-stack item="{index.recipe.selected.icon|minecraft:crafting_table}"/><column class="index-detail-copy"><title class="index-detail-title" value="{index.recipe.selected.title|Select a Recipe}"/><text class="index-detail-subtitle" value="{index.recipe.selected.typeName|Choose a recipe from the browser to see its inputs and outputs.}"/><text class="index-detail-meta" value="{index.recipe.selected.id|}"/></column><status-chip status="info" value="{index.recipe.selected.layoutType|GENERIC}"/></row>
+      </hero-card>
+      <text class="index-recipe-helper" value="Inputs and outputs are clickable when they resolve to indexed items. Text-only outputs are kept as labeled source facts."/>
+      <component src="echoindex:index_recipe_flow">
+        <slot name="inputs">
+          <repeat source="index.recipe.inputs" item="input"><list-row class="index-recipe-slot-card" action="index.open_input_usage" action-value="{input.id}" help="Open usages for this input when it is an indexed item."><row gap="8"><item-stack item="{input.icon}" count="{input.count}" tooltip="{input.label}"/><column><label value="Input"/><text class="index-recipe-slot-label" value="{input.label}"/></column></row></list-row></repeat>
+        </slot>
+        <slot name="outputs">
+          <repeat source="index.recipe.outputs" item="output"><list-row class="index-recipe-slot-card" action="index.open_output_recipe" action-value="{output.id}" help="Open recipes for this output when it is an indexed item."><row gap="8"><item-stack item="{output.icon}" count="{output.count}" tooltip="{output.label}"/><column><label value="Output"/><text class="index-recipe-slot-label" value="{output.label}"/></column></row></list-row></repeat>
+        </slot>
+      </component>
+      <panel title="Notes">
+        <list bind="index.recipe.selected.notes" item="note"><list-row><text class="index-recipe-note" value="{note}"/></list-row><empty-state title="No extra notes" body="This recipe has no additional requirements, warnings, or byproduct notes."/></list>
+      </panel>
+    </slot>
+    <slot name="inspector">
+      <text class="index-recipe-meta-line" value="Machine: {index.recipe.machine.name|Generic recipe layout}"/>
+      <text class="index-recipe-meta-line" value="Time: {index.recipe.selected.processingTime|0} ticks"/>
+      <text class="index-recipe-debug" value="{index.recipe.selected.debugInfo|}"/>
+      <button action="index.add_bookmark" action-value="{index.recipe.selected.id}" action-param-kind="recipe" tooltip="Bookmark this recipe for quick access from Favorites.">Bookmark Recipe</button>
+      <button action="index.copy_recipe_id" action-value="{index.recipe.selected.id}" variant="ghost" tooltip="Copy the full recipe identifier.">Copy Recipe ID</button>
+    </slot>
+  </component>
+</page>

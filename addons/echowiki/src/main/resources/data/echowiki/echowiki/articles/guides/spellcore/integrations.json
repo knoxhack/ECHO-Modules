@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/spellcore/integrations",
+  "title": "SpellCore Focus: Integrations",
+  "category": "Guide Books",
+  "summary": "Connect SpellCore to RitualCore, Arcane Index, Grimoire, MissionCore, and future curse rules.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "RitualCore can awaken spell cores, Arcane Index publishes spell pages, Grimoire explains risks, and MissionCore records starter casts.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Index for spell facts, Grimoire for warning context, RitualCore for awakened cores, and Lens or HoloMap when future spells affect field state.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If optional RitualCore is absent, keep the focus loop readable and report which requirement changed in the loaded addon set.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "spellcore",
+    "arcana",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:blaze_rod",
+  "relatedArticles": [
+    "echowiki:guides/spellcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1295
+}

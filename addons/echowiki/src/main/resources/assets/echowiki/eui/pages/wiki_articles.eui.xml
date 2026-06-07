@@ -1,0 +1,86 @@
+<page id="wiki_articles" title="Wiki Articles" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists,wiki_fast">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Articles"/>
+    <param name="contentSubtitle" value="Search guide pages, field notes, systems, and datapack records."/>
+    <param name="inspectorTitle" value="Collections"/>
+    <param name="stateKey" value="wiki.articles.page"/>
+    <slot name="content">
+      <component src="echowiki:wiki_search_filter_bar"/>
+      <grid class="wiki-reference-layout" columns="0.95fr 1.05fr" gap="9" stack-below="860">
+        <section class="wiki-reference-list-panel" title="ARTICLE INDEX">
+          <row class="wiki-page-controls" gap="8">
+            <text value="{wiki.articles.pageLabel}"/>
+            <button action="wiki.previous_article_page" variant="secondary"
+                    disabled="{wiki.articles.previousPageDisabled|true}">Prev</button>
+            <button action="wiki.next_article_page" variant="secondary"
+                    disabled="{wiki.articles.nextPageDisabled|true}">Next</button>
+          </row>
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.articles">
+            <list class="wiki-browser-list" bind="wiki.articles.visible" item="article">
+              <component src="echowiki:wiki_article_card">
+                <param name="id" value="{article.id}"/>
+                <param name="icon" value="{article.icon}"/>
+                <param name="heroArt" value="{article.heroArtFallback}"/>
+                <param name="title" value="{article.title}"/>
+                <param name="category" value="{article.category}"/>
+                <param name="summary" value="{article.summaryPreview}"/>
+                <param name="state" value="{article.state}"/>
+                <param name="statusLabel" value="{article.statusLabel}"/>
+                <param name="tags" value="{article.tagsLabel}"/>
+                <param name="selected" value="{article.selected}"/>
+              </component>
+              <empty-state title="No articles" body="No Codex articles match the current filters."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="SELECTED ARTICLE">
+          <image class="wiki-manual-preview" src="{wiki.article.selected.heroArtFallback|echowiki:textures/gui/guide_books/wiki_banner.png}" width="240" height="84" source-width="512" source-height="160" fit="cover"/>
+          <row class="wiki-manual-inspector-title-row" gap="8">
+            <item-icon class="wiki-row-icon" item="{wiki.article.selected.icon|minecraft:book}"/>
+            <title class="wiki-detail-title" value="{wiki.article.selected.title}"/>
+          </row>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="{wiki.article.selected.state}" value="{wiki.article.selected.statusLabel}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.article.selected.category}"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.article.selected.countLabel}"/>
+          </row>
+          <text class="wiki-reader-text" value="{wiki.article.selected.summary}"/>
+          <text class="wiki-muted-text" value="{wiki.article.selected.tagsLabel}"/>
+          <button action="wiki.open_article" action-value="{wiki.article.selected.id}" variant="primary"
+                  disabled="{wiki.article.selected.openDisabled|true}">Open Article</button>
+          <section class="wiki-side-summary" title="RELATED">
+            <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.article.related.preview">
+              <list class="wiki-compact-list" bind="wiki.article.related" item="related">
+                <component src="echowiki:wiki_related_row">
+                  <param name="kind" value="{related.kind}"/>
+                  <param name="id" value="{related.id}"/>
+                  <param name="label" value="{related.label}"/>
+                  <param name="subtitlePreview" value="{related.subtitlePreview}"/>
+                  <param name="status" value="{related.status}"/>
+                </component>
+                <empty-state title="No links" body="This article has no related records."/>
+              </list>
+            </scroll>
+          </section>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.article.collections">
+        <list class="wiki-compact-list" bind="wiki.dashboard.collections" item="collection">
+          <component src="echowiki:wiki_record_row">
+            <param name="id" value="{collection.id}"/>
+            <param name="title" value="{collection.title}"/>
+            <param name="summary" value="{collection.summary}"/>
+            <param name="status" value="known"/>
+            <param name="chip" value="{collection.chip}"/>
+            <param name="meta" value="{collection.category}"/>
+            <param name="countLabel" value="{collection.countLabel}"/>
+          </component>
+          <empty-state title="No collections" body="No Codex collections are loaded."/>
+        </list>
+      </scroll>
+      <text value="Load warnings: {wiki.settings.warnings}"/>
+    </slot>
+  </component>
+</page>

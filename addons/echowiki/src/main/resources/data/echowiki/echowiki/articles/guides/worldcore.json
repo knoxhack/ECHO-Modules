@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/worldcore",
+  "title": "WorldCore Atlas Manual",
+  "category": "Guide Books",
+  "summary": "Use regions and hazards as readable route intelligence instead of invisible background rules.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "WorldCore publishes region and hazard context so the world can explain itself. The same route can become safer when you know what pressure is active.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Open the Wiki regions and hazards pages, identify your current context, and carry equipment that answers the active hazard instead of generic supplies.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Enter region, read hazards, prepare counters, complete a focused objective, and update your map or base notes before pushing further.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Regions, hazards, active snapshots, and discovery progress all shape what the player sees and when. Treat each warning as a preparation clue.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Ashfall uses WorldCore heavily, WeatherCore can add pressure, HoloMap can show context, and Index or Wiki can link the same region to items and missions.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a hazard feels invisible, check whether WorldCore is loaded, whether this route has region data, and whether the current biome or structure matches the hazard rules.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "worldcore",
+    "hazards"
+  ],
+  "icon": "minecraft:filled_map",
+  "heroArt": "echowiki:textures/gui/guide_books/worldcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/worldcore/first_steps",
+    "echowiki:guides/worldcore/core_loop",
+    "echowiki:guides/worldcore/systems",
+    "echowiki:guides/worldcore/progression",
+    "echowiki:guides/worldcore/integrations",
+    "echowiki:guides/worldcore/troubleshooting"
+  ],
+  "sortOrder": 1180
+}

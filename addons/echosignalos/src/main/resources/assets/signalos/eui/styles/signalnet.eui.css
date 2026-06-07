@@ -1,0 +1,48 @@
+screen-shell {
+  padding: space(sm);
+  background: theme(background);
+}
+
+panel {
+  padding: space(sm);
+  background: theme(panel);
+  border-color: theme(borderMuted);
+}
+
+.signalnet-controls {
+  gap: space(xs);
+  margin-bottom: space(xs);
+}
+
+input {
+  width: 46%;
+}
+
+search-box {
+  width: 54%;
+}
+
+title {
+  color: theme(text);
+}
+
+text {
+  color: theme(textMuted);
+}
+
+list-row {
+  padding: space(xs);
+  margin-bottom: 3px;
+  background: theme(card);
+  border-color: theme(borderMuted);
+}
+
+list-row[selected] {
+  border-color: theme(accent);
+}
+
+button {
+  background: theme(card);
+  border-color: theme(accent);
+  color: theme(accent);
+}

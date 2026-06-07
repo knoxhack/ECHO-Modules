@@ -1,0 +1,65 @@
+<page id="terminal-recipe-index" title="Recipe Index" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_recipe_index,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <row class="terminal-filter-row" gap="8">
+        <input-text class="terminal-search-bar" value="{terminal.recipeIndex.query|}" placeholder="Search items, recipes, components..." on-change="terminal.recipeIndex.search_changed" clearable="true"/>
+        <button class="terminal-search-clear-button" action="terminal.recipeIndex.clear_search" variant="ghost">Clear</button>
+        <status-chip class="terminal-visible-count-chip" status="ready" value="{terminal.recipeIndex.visibleCount} visible"/>
+      </row>
+      <row class="terminal-filter-row" gap="8">
+        <list class="terminal-category-list" bind="terminal.recipeIndex.categories" item="category">
+          <list-row class="terminal-page-tab" action="terminal.recipeIndex.toggle_category" action-value="{category.id}" value="{category.id}" selected="{category.selected|false}">
+            <copy-block class="terminal-row-copy terminal-recipe-category-copy" title="{category.compactTitle}"/>
+          </list-row>
+        </list>
+      </row>
+      <grid class="terminal-dashboard-grid terminal-recipe-layout" columns="0.72fr 1.25fr 0.7fr" gap="10" stack-below="940">
+        <section class="terminal-panel" title="ITEMS">
+          <scroll class="terminal-mission-list terminal-recipe-list" scroll-state="true" state-key="terminal.recipes">
+            <list bind="terminal.recipeIndex.recipes" item="recipe" selected="{terminal.recipeIndex.selectedRecipeId}">
+              <list-row class="terminal-recipe-row" action="terminal.recipeIndex.select_recipe" action-value="{recipe.id}" value="{recipe.id}">
+                <status-chip class="terminal-recipe-category-chip" status="{recipe.status}" value="{recipe.categoryTitle}"/>
+                <copy-block class="terminal-row-copy" title="{recipe.title}" subtitle="{recipe.summary}"/>
+              </list-row>
+              <empty-state title="No recipes" body="No provider-backed recipe rows are visible."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="terminal-panel" title="{terminal.recipeIndex.selectedRecipe.title|Recipe Detail}">
+          <row class="terminal-chip-row" gap="8">
+            <status-chip status="{terminal.recipeIndex.selectedRecipe.status|ready}" value="{terminal.recipeIndex.selectedRecipe.categoryTitle|RECIPE}"/>
+            <status-chip status="info" value="{terminal.recipeIndex.selectedRecipe.process|Instant}"/>
+          </row>
+          <grid class="terminal-dashboard-grid" columns="1fr 1fr 1fr 1fr" gap="8">
+            <section class="terminal-card" title="INPUTS">
+              <copy-block class="terminal-row-copy" title="{terminal.recipeIndex.selectedRecipe.inputSummary|No inputs listed.}"/>
+            </section>
+            <section class="terminal-card" title="CATALYST">
+              <copy-block class="terminal-row-copy" title="{terminal.recipeIndex.selectedRecipe.catalystSummary|Optional catalyst not required.}"/>
+            </section>
+            <section class="terminal-card" title="MACHINE">
+              <copy-block class="terminal-row-copy" title="{terminal.recipeIndex.selectedRecipe.machineLabel|Any station}"/>
+            </section>
+            <section class="terminal-card" title="OUTPUT">
+              <copy-block class="terminal-row-copy" title="{terminal.recipeIndex.selectedRecipe.outputSummary|No output listed.}"/>
+            </section>
+          </grid>
+          <section class="terminal-side-panel" title="NOTES">
+            <copy-block class="terminal-row-copy" title="{terminal.recipeIndex.selectedRecipe.noteSummary|Provider notes appear here.}"/>
+          </section>
+          <row class="terminal-action-strip" gap="8">
+            <button action="terminal.recipeIndex.set_mode" action-value="uses" variant="ghost">View Uses</button>
+            <button action="terminal.recipeIndex.set_mode" action-value="sources" variant="ghost">Sources</button>
+            <button action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">Related Missions</button>
+          </row>
+        </section>
+        <section class="terminal-panel" title="PROVIDER DETAILS">
+          <stat-card label="Providers" value="{terminal.recipeIndex.providerCount}" status="ready"/>
+          <stat-card label="Recipes" value="{terminal.recipeIndex.recipeCount}" status="ready"/>
+          <stat-card label="Mode" value="{terminal.recipeIndex.modeLabel|RECIPES}" status="active"/>
+          <button action="terminal.open_tab" action-value="echoterminal:data_core" variant="ghost">Provider Diagnostics</button>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>

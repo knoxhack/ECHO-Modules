@@ -1,0 +1,86 @@
+{
+  "id": "echoashfallprotocol:install_thermal_liner",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 7,
+  "title": "Install Thermal Liner",
+  "briefing": "[ECHO-7] Fit a Thermal Liner into the expedition kit so cold recovery is not limited to disposable heat.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:thermal_liner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:use_hand_warmer"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "install_thermal_liner",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.install_thermal_liner",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "7",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "75",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:install_thermal_liner:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:install_thermal_liner/liner_installed",
+      "type": "custom",
+      "label": "Install Thermal Liner",
+      "detail": "Confirm the Thermal Liner is fitted to the expedition kit.",
+      "icon": "echoashfallprotocol:thermal_liner",
+      "target": "echoashfallprotocol:thermal_liner",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.kit_configured",
+        "item": "echoashfallprotocol:thermal_liner"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:thermal_liner",
+      "count": 1,
+      "label": "Thermal Liner"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:install_thermal_liner/reward_0",
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 1,
+      "label": "Hand Warmer",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:install_thermal_liner/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Thermal liner fitted. Your route margin just got less fragile."
+}

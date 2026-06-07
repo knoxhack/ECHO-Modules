@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:blackbox_decoder",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:personal_memory_record"
+                             },
+                    "title":  "Personal Log",
+                    "description":  "Decode a Personal Blackbox memory.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "has_record":  {
+                                        "trigger":  "minecraft:inventory_changed",
+                                        "conditions":  {
+                                                           "items":  [
+                                                                         {
+                                                                             "items":  "echoblackboxprotocol:personal_memory_record"
+                                                                         }
+                                                                     ]
+                                                       }
+                                    }
+                 },
+    "requirements":  [
+                         [
+                             "has_record"
+                         ]
+                     ]
+}

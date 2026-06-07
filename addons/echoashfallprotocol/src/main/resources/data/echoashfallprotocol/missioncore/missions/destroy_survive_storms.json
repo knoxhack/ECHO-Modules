@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:destroy_survive_storms",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 8,
+  "title": "Survive a Severe Storm",
+  "briefing": "[ECHO-7] The storms grow wild without the Core's moderation. Survive a radiation storm, ash storm, Nexus surge, or thunder event from cover, then recover.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "survival",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:prefall_archives_key",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_scorched_earth"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_survive_storms",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_survive_storms",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "8",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "101",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_survive_storms:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_survive_storms/destroy_survive_storms",
+      "type": "survive_time",
+      "label": "Survive a Severe Storm",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:prefall_archives_key",
+      "target": "echoashfallprotocol:destroy_survive_storms",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.destroy_survive_storms"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_survive_storms/reward_0",
+      "item": "echoashfallprotocol:prefall_archives_key",
+      "count": 1,
+      "label": "Prefall Archives Key",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_survive_storms/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:destroy_survive_storms/reward_1",
+      "item": "echoashfallprotocol:mutagen_vial",
+      "count": 2,
+      "label": "Mutagen Vial",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_survive_storms/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Storm survival logged. Cover held, route recovered, Archives key released."
+}

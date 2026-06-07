@@ -1,0 +1,522 @@
+{
+  "module": "echogalacticcore",
+  "source": "galacticraft_legacy_loot_sound_data",
+  "convertedLootTableCount": 4,
+  "soundEventRenames": [
+    {
+      "from": "galacticraft.music_space",
+      "to": "music.space"
+    }
+  ],
+  "lootTables": [
+    {
+      "file": "crashed_probe.json",
+      "changed": true,
+      "changes": [
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        }
+      ]
+    },
+    {
+      "file": "dungeon_tier_1.json",
+      "changed": true,
+      "changes": [
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "set_count",
+          "to": "minecraft:set_count"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "function",
+          "from": "golden_apple_data_1",
+          "to": "minecraft:enchanted_golden_apple_item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "name",
+          "from": "minecraft:record_blocks",
+          "to": "minecraft:music_disc_blocks"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "name",
+          "from": "minecraft:record_far",
+          "to": "minecraft:music_disc_far"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_randomly",
+          "to": "minecraft:enchant_randomly"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_randomly",
+          "to": "minecraft:enchant_randomly"
+        }
+      ]
+    },
+    {
+      "file": "dungeon_tier_2.json",
+      "changed": true,
+      "changes": [
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_with_levels",
+          "to": "minecraft:enchant_with_levels"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_with_levels",
+          "to": "minecraft:enchant_with_levels"
+        }
+      ]
+    },
+    {
+      "file": "dungeon_tier_3.json",
+      "changed": true,
+      "changes": [
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "minecraft:set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "function",
+          "from": "golden_apple_data_1",
+          "to": "minecraft:enchanted_golden_apple_item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "set_data",
+          "to": "echogalacticcore:set_legacy_data"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_with_levels",
+          "to": "minecraft:enchant_with_levels"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_with_levels",
+          "to": "minecraft:enchant_with_levels"
+        },
+        {
+          "field": "type",
+          "from": "item",
+          "to": "minecraft:item"
+        },
+        {
+          "field": "function",
+          "from": "enchant_with_levels",
+          "to": "minecraft:enchant_with_levels"
+        }
+      ]
+    }
+  ],
+  "modernMusicDiscMappings": {
+    "minecraft:record_blocks": "minecraft:music_disc_blocks",
+    "minecraft:record_far": "minecraft:music_disc_far",
+    "minecraft:record_mall": "minecraft:music_disc_mall",
+    "minecraft:record_mellohi": "minecraft:music_disc_mellohi",
+    "minecraft:record_chirp": "minecraft:music_disc_chirp",
+    "minecraft:record_wait": "minecraft:music_disc_wait",
+    "minecraft:record_ward": "minecraft:music_disc_ward"
+  },
+  "legacyDataFunctionReplacement": "echogalacticcore:set_legacy_data"
+}

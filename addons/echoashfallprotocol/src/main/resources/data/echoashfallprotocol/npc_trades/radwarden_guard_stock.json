@@ -1,0 +1,51 @@
+{
+  "id": "echoashfallprotocol:radwarden_guard_stock",
+  "groups": [
+    {
+      "id": "perimeter_kit",
+      "title": "Perimeter Kit",
+      "offers": [
+        {
+          "id": "metal_for_warmers",
+          "title": "Cold Watch Hand Warmer",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_metal", "count": 4 }
+          ],
+          "output": { "item": "echoashfallprotocol:hand_warmer", "count": 1 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "wire_for_scanner_lens",
+          "title": "Relay Scanner Lens",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_wire", "count": 3 }
+          ],
+          "output": { "item": "echoashfallprotocol:relay_scanner_lens", "count": 1 },
+          "stock": 2,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Perimeter support standing required."
+        },
+        {
+          "id": "trusted_advanced_filter",
+          "title": "Advanced Filter Refit",
+          "input": [
+            { "item": "echoashfallprotocol:filter_cartridge_basic", "count": 1 },
+            { "item": "echoashfallprotocol:energy_cell", "count": 1 }
+          ],
+          "output": { "item": "echoashfallprotocol:filter_cartridge_advanced", "count": 1 },
+          "stock": 1,
+          "restockTime": 48000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted Compact standing required."
+        }
+      ]
+    }
+  ]
+}

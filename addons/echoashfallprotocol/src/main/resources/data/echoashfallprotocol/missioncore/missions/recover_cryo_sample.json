@@ -1,0 +1,99 @@
+{
+  "id": "echoashfallprotocol:recover_cryo_sample",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 13,
+  "title": "Recover Cryo Sample",
+  "briefing": "[ECHO-7] Recover a cryogenic substrate sample before deeper entry. Fractured cryo stone holds preserved tech traces.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:cryogenic_fractured_stone",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:enter_cryogenic_ruins"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "recover_cryo_sample",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.recover_cryo_sample",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "13",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "81",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:recover_cryo_sample:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:recover_cryo_sample/cryogenic_fractured_stone",
+      "type": "deliver_item",
+      "label": "Deliver Cryogenic Fractured Stone",
+      "detail": "Confirm 1 Cryogenic Fractured Stone for this route step.",
+      "icon": "echoashfallprotocol:cryogenic_fractured_stone",
+      "target": "echoashfallprotocol:cryogenic_fractured_stone",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:cryogenic_fractured_stone",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:cryogenic_fractured_stone",
+      "count": 1,
+      "label": "Cryogenic Fractured Stone"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:recover_cryo_sample/reward_0",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_cryo_sample/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:recover_cryo_sample/reward_1",
+      "item": "echoashfallprotocol:hand_warmer",
+      "count": 2,
+      "label": "Hand Warmer",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:recover_cryo_sample/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Cryo sample sealed. Expect brittle materials and cold-shock failures in this route."
+}

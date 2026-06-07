@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/armory/integrations",
+  "title": "Armory: Integrations",
+  "category": "Guide Books",
+  "summary": "Stage loadouts with maps, records, storage, power, and recovery support.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Index can describe gear records, Logistics can stage loadouts, PowerGrid can support charging loops, and TutorialCore can point out readiness gaps.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use WorldCore and WeatherCore to predict route pressure, Recovery to plan post-loss returns, and Index or Wiki to compare gear roles before upgrading.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "Without those helpers, keep a written loadout plan: weapon role, shield state, repair stock, food, route, and recovery kit.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Integration Anchor",
+      "body": "Use this reference when the related system is present; the manual path still works without it.",
+      "tone": "tip",
+      "item": "minecraft:iron_sword",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Iron Sword",
+      "subtitle": "Integrations checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_sword",
+  "relatedArticles": [
+    "echowiki:guides/armory"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1035
+}

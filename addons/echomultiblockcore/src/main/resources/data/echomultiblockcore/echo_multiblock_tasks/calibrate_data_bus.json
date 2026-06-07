@@ -1,0 +1,19 @@
+{
+  "id": "echomultiblockcore:calibrate_data_bus",
+  "display_name": "Calibrate Data Bus",
+  "category": "calibration",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["SCANNER", "CALIBRATOR"],
+  "duration_ticks": 180,
+  "heat_per_second": 1,
+  "animation": "scan",
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echomultiblockcore:data_bus", "count": 1, "label": "Data Bus" },
+    { "item": "echomultiblockcore:signal_circuit", "count": 1, "label": "Signal Circuit" }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:calibrated_bus_module", "count": 1, "label": "Calibrated Bus Module" }
+  ]
+}

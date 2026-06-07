@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:first_terminal_flow",
+  "title": "First Terminal Session",
+  "category": "TERMINAL",
+  "steps": [
+    {
+      "id": "open_terminal",
+      "type": "custom",
+      "target": "echotutorialcore:opened_terminal",
+      "text": "Open the ECHO Terminal."
+    },
+    {
+      "id": "open_guide",
+      "type": "custom",
+      "target": "echotutorialcore:opened_guide",
+      "text": "Browse the Guide tab."
+    },
+    {
+      "id": "check_missions",
+      "type": "custom",
+      "target": "echotutorialcore:checked_missions",
+      "text": "Review the Mission Browser."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:echo_terminal_basics"
+  ],
+  "defaultUnlocked": true
+}

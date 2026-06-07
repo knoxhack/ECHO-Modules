@@ -1,0 +1,46 @@
+page {
+  padding: space(md);
+  background: theme(background);
+  layout: column;
+  gap: space(sm);
+}
+
+screen-shell {
+  padding: space(md);
+  background: theme(terminalBackground);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  gap: space(md);
+  layout: column;
+}
+
+header,
+panel,
+section,
+card {
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  padding: space(sm);
+}
+
+title {
+  color: theme(textPrimary);
+  wrap: true;
+}
+
+text {
+  color: theme(textSecondary);
+  wrap: true;
+}
+
+list-row {
+  background: theme(row);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  padding: space(sm);
+}
+
+button {
+  min-width: 82px;
+}

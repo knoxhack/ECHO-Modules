@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:radwarden_quartermaster",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Quartermaster Voss checks the seal on a filter canister before looking up. \"Containment stock is rationed, but a prepared survivor is less work than a rescue.\"",
+      "options": [
+        { "id": "trade", "label": "Open containment stock.", "action": "open_trade" },
+        { "id": "services", "label": "Request decon support.", "action": "open_services" },
+        { "id": "intel", "label": "Review supply intel.", "action": "open_intel" },
+        { "id": "record", "label": "Record this quartermaster.", "action": "discover_contact" },
+        { "id": "close", "label": "Close channel.", "action": "close" }
+      ]
+    }
+  }
+}

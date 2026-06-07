@@ -1,0 +1,76 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoencountercore",
+  "name": "ECHO: EncounterCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "encounter_core",
+  "entrypoint": "com.knoxhack.echo.encountercore.EchoEncounterCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "encounter.boss_gates",
+    "encounter.definitions",
+    "encounter.faction_patrols"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "prime_survival",
+    "arcana_survival"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "missions",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "contractsOnly": true,
+    "notes": "Neutral random, scripted, POI, patrol, ambush, rescue, boss-gate, participant, reward, and constraint contracts.",
+    "nativeEntrypoint": "com.knoxhack.echo.encountercore.EchoEncounterCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

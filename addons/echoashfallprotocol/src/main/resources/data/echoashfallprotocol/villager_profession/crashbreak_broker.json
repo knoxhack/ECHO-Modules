@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:crashbreak_broker",
+  "name": "Crashbreak Broker",
+  "job_site": "echoashfallprotocol:trade_counter_poi",
+  "work_sound": "minecraft:entity.villager.work_librarian",
+  "trades": {
+    "novice": {
+      "max_trades": 16,
+      "max_uses": 12,
+      "trades": [
+        {
+          "input": { "item": "minecraft:rotten_flesh", "count": 8 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 3 },
+          "output": { "item": "minecraft:paper", "count": 12 }
+        },
+        {
+          "input": { "item": "minecraft:string", "count": 16 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        }
+      ]
+    },
+    "apprentice": {
+      "max_trades": 12,
+      "max_uses": 10,
+      "reputation_required": 50,
+      "trades": [
+        {
+          "input": { "item": "echoashfallprotocol:scrap_metal", "count": 12 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 8 },
+          "output": { "item": "echoashfallprotocol:return_beacon" }
+        }
+      ]
+    },
+    "journeyman": {
+      "max_trades": 8,
+      "max_uses": 8,
+      "reputation_required": 100,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 15 },
+          "output": { "item": "minecraft:compass" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 18 },
+          "output": { "item": "minecraft:name_tag" }
+        },
+        {
+          "input": { "item": "echoashfallprotocol:dense_alloy_chunk", "count": 4 },
+          "output": { "item": "minecraft:emerald", "count": 3 }
+        }
+      ]
+    },
+    "expert": {
+      "max_trades": 6,
+      "max_uses": 6,
+      "reputation_required": 200,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 24 },
+          "output": { "item": "minecraft:saddle" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 30 },
+          "output": { "item": "echoashfallprotocol:portable_signal_scanner" }
+        }
+      ]
+    },
+    "master": {
+      "max_trades": 4,
+      "max_uses": 4,
+      "reputation_required": 300,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 48 },
+          "output": { "item": "echoashfallprotocol:alloy_hammer" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 32 },
+          "output": { "item": "minecraft:diamond_horse_armor" }
+        }
+      ]
+    }
+  }
+}

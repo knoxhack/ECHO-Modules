@@ -1,0 +1,13 @@
+<page id="test-responsive-cards" title="Responsive Cards" styles="echoscreencore:advanced_mock,echoscreencore:responsive_mock">
+  <screen-shell>
+    <header title="Responsive Cards" subtitle="Reusable card grid stacks below md and densifies below sm"/>
+    <component src="echoscreencore:responsive_card_grid">
+      <param name="stackBelow" value="md"/>
+      <slot name="cards">
+        <command-card compact-below="md"><title>Search</title><text>Compact padding below md.</text></command-card>
+        <command-card dense-below="sm"><title>Filters</title><text>Dense spacing below sm.</text></command-card>
+        <command-card hide-below="xs"><title>Inspector</title><text>Hidden below xs.</text></command-card>
+      </slot>
+    </component>
+  </screen-shell>
+</page>

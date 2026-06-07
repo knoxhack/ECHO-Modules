@@ -1,0 +1,91 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_hologram_display.png",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V13 Hologram Display",
+    "tags": [
+      "v13",
+      "hologram"
+    ]
+  },
+  "effect": {
+    "preset": "hologram",
+    "scanline_strength": 0,
+    "pulse_min_alpha": 0.45,
+    "pulse_max_alpha": 1
+  },
+  "layers": [
+    {
+      "id": "holo_volume",
+      "kind": "glow",
+      "texture": "echorendercore:textures/block/v13_hologram_volume.png",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "hologram"
+      ],
+      "alpha": 0.72,
+      "emissive": true,
+      "effect": {
+        "preset": "hologram",
+        "bloom_mask_mode": "layer_alpha",
+        "bloom_channel": "hologram"
+      }
+    }
+  ],
+  "anchors": {
+    "hologram": [
+      0,
+      0.9,
+      0
+    ]
+  },
+  "block_parts": {
+    "hologram": {
+      "directions": [
+        "up"
+      ]
+    }
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Hologram Display",
+    "tags": [
+      "screen"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "hologram",
+    "label": "V13 HOLOGRAM DISPLAY",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": false
+  }
+}

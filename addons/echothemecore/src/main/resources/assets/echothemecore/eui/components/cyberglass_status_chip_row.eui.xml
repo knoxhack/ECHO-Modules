@@ -1,0 +1,5 @@
+<row class="cyberglass-status-row {param.class|}" gap="{param.gap|8}">
+  <label value="{param.label|Status}"/>
+  <status-chip status="{param.status|info}" value="{param.value|INFO}"/>
+  <slot-outlet name="extra"/>
+</row>

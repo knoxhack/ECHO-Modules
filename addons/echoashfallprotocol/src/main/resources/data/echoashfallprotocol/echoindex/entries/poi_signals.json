@@ -1,0 +1,21 @@
+{
+  "id": "echoashfallprotocol:poi_signals",
+  "category": "ashfall.field_guide",
+  "title": "POI Signals",
+  "subtitle": "Routes are leads, not guarantees",
+  "summary": "POI signals point toward salvage, caches, faction edges, or future hazards. Each signal needs a reason to visit and a reason to wait.",
+  "body": [
+    "Early POIs should provide survival supplies, route records, repair material, or scanner intel.",
+    "Late first-month POIs such as data centers and reactor ruins should stay marked as future or hazard routes until prep is complete.",
+    "If a POI is referenced but not implemented, it should stay locked, hidden, or clearly labeled as future."
+  ],
+  "links": {
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "mission": "echoashfallprotocol:ashfall_first_month_routes"
+  },
+  "tags": [
+    "ashfall",
+    "poi",
+    "routes"
+  ]
+}

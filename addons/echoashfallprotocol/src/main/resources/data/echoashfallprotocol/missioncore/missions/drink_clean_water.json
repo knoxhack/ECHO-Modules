@@ -1,0 +1,86 @@
+{
+  "id": "echoashfallprotocol:drink_clean_water",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 2,
+  "title": "Confirm Clean Water",
+  "briefing": "[ECHO-7] Hydration buffer required. Drink or carry Clean Water before extending beyond the pod; ECHO needs proof that the starter supply can still keep you upright.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall phase-0 hydration-buffer mission as native MissionCore content.",
+  "category": "survival",
+  "difficulty": "trivial",
+  "icon": "echoashfallprotocol:clean_water_bottle",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:craft_scrap_knife"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "drink_clean_water",
+    "nativeGameplayHook": "ashfall.first_route.drink_clean_water",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "2",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:drink_clean_water:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:drink_clean_water/confirm_clean_water",
+      "type": "obtain_item",
+      "label": "Carry a Clean Water Bottle",
+      "detail": "Keep drinkable water available before scouting beyond the pod route.",
+      "icon": "echoashfallprotocol:clean_water_bottle",
+      "target": "echoashfallprotocol:clean_water_bottle",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris",
+        "consume_marker": "water:clean_consumed",
+        "consume_event_records_target": "echoashfallprotocol:clean_water_bottle"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:drink_clean_water/reward_bottles",
+      "item": "minecraft:glass_bottle",
+      "count": 2,
+      "label": "Glass Bottles",
+      "detail": "Containers for the first emergency water loop."
+    },
+    {
+      "id": "echoashfallprotocol:drink_clean_water/reward_ration",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 1,
+      "label": "Emergency Ration",
+      "detail": "Food buffer while the water route is stabilized."
+    }
+  ],
+  "completionText": "[ECHO-7] Clean water confirmed. Starter supply buys time; it does not solve the water problem."
+}

@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/terminal/troubleshooting",
+  "title": "Terminal: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Terminal failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If a tab is absent, confirm the owning addon is loaded and reopen the terminal after resources reload.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If a tab is absent or stale, confirm the addon is loaded, reopen the terminal, check debug status, and verify the feature publishes a terminal surface.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "terminal",
+    "operations",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone_torch",
+  "relatedArticles": [
+    "echowiki:guides/terminal"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1236
+}

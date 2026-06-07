@@ -1,0 +1,98 @@
+{
+  "id": "echoashfallprotocol:craft_scrap_knife",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 1,
+  "title": "Craft Scrap Knife",
+  "briefing": "[ECHO-7] The Scrap Knife is a salvage tool first. Cut wire, open loose wreckage, and recover scrap near the pod before machine metal becomes scarce.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall phase-0 Scrap Knife mission as native MissionCore content.",
+  "category": "crafting",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:scrap_knife",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:secure_crash_outpost"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_scrap_knife",
+    "nativeGameplayHook": "ashfall.first_route.craft_scrap_knife",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "1",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_scrap_knife:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_scrap_knife/obtain_scrap_knife",
+      "type": "obtain_item",
+      "label": "Obtain a Scrap Knife",
+      "detail": "Craft or recover the first salvage knife so wreckage work can begin.",
+      "icon": "echoashfallprotocol:scrap_knife",
+      "target": "echoashfallprotocol:scrap_knife",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_knife",
+      "count": 1,
+      "label": "Scrap Knife"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_scrap_knife/reward_scrap",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 12,
+      "label": "Scrap Metal",
+      "detail": "Material buffer for the first machine and repair loop."
+    },
+    {
+      "id": "echoashfallprotocol:craft_scrap_knife/reward_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Starter wiring for early powered survival blocks."
+    },
+    {
+      "id": "echoashfallprotocol:craft_scrap_knife/reward_rations",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 2,
+      "label": "Emergency Rations",
+      "detail": "Food buffer before the first route push."
+    }
+  ],
+  "completionText": "[ECHO-7] Scrap Knife logged as salvage gear. Keep it for wreckage work; the travel kit can use bone and hide while metal feeds machines."
+}

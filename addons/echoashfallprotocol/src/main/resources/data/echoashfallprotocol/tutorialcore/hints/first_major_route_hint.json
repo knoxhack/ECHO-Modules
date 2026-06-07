@@ -1,0 +1,11 @@
+{
+  "id": "echoashfallprotocol:first_major_route_hint",
+  "message": "For the first major route, follow the relay: check weather, track one marker, scan the console, read the guide, then claim the cache and return.",
+  "priority": 5,
+  "conditions": [
+    "profile:ashfall",
+    "after:echoashfallprotocol:ashfall_first_month_routes"
+  ],
+  "relatedMission": "echoashfallprotocol:first_relay_station_route",
+  "relatedIndexEntry": "echoashfallprotocol:first_relay_station"
+}

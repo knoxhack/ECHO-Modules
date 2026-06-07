@@ -1,0 +1,10 @@
+{
+  "id": "echothemecore:nexus_holomap_grid",
+  "theme": "echothemecore:nexus",
+  "type": "holomap_grid",
+  "effects": [
+    {"type": "phase_ripple", "duration_ticks": 42, "strength": "theme:distortion_strength"},
+    {"type": "marker_pulse", "duration_ticks": 30, "color": "theme:selection"},
+    {"type": "energy_line", "duration_ticks": 54, "color": "theme:primary"}
+  ]
+}

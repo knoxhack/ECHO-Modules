@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/powergrid/first_steps",
+  "title": "PowerGrid: First Steps",
+  "category": "Guide Books",
+  "summary": "Set up the first safe PowerGrid loop before widening the route.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Start Small",
+      "body": "Start with one generator, one storage block, one consumer, and a meter. Confirm power flow before adding machines or long cable runs.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "First Clean Win",
+      "body": "The first stable grid is tiny: generator, storage, one consumer, a meter, and proof that power flows before long cables or machines are added.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Before You Expand",
+      "body": "Name the goal, the exit, and the resource or signal that proves PowerGrid is helping. If any of those are vague, keep the next run shorter.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "First Checkpoint",
+      "body": "Use this as the first concrete checkpoint before the route gets wider.",
+      "tone": "tip",
+      "item": "minecraft:redstone",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Redstone",
+      "subtitle": "First Steps checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy",
+    "first_steps",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone",
+  "relatedArticles": [
+    "echowiki:guides/powergrid"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1121
+}

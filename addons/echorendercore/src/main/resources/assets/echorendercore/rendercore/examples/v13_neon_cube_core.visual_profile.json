@@ -1,0 +1,117 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_neon_cube_core.png",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V13 Neon Cube Core",
+    "tags": [
+      "v13",
+      "neon",
+      "cube"
+    ]
+  },
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 1,
+    "bloom_intensity": 0.75,
+    "advanced_enabled": true,
+    "bloom_mask_mode": "emissive",
+    "bloom_channel": "cube_core",
+    "advanced_priority": 80
+  },
+  "materials": {
+    "cyan": {
+      "color": "#FF36E8FF",
+      "alpha": 0.9,
+      "emissive": true,
+      "blend_mode": "additive",
+      "render_pass": "emissive"
+    },
+    "magenta": {
+      "color": "#FFFF45F6",
+      "alpha": 0.85,
+      "emissive": true,
+      "blend_mode": "additive",
+      "render_pass": "translucent"
+    }
+  },
+  "layers": [
+    {
+      "id": "core_cyan",
+      "kind": "glow",
+      "texture": "echorendercore:textures/block/v13_cube_cyan.png",
+      "material": "cyan",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "core"
+      ]
+    },
+    {
+      "id": "core_magenta",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_cube_magenta.png",
+      "material": "magenta",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "core"
+      ]
+    }
+  ],
+  "anchors": {
+    "core": [
+      0,
+      0.5,
+      0
+    ]
+  },
+  "block_parts": {
+    "core": {
+      "indices": [
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Neon Cube Core",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

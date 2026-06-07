@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/agriculture_dome",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:reclamation_growth_matrix"
+    },
+    "title": {
+      "text": "Cultivate the Matrix"
+    },
+    "description": {
+      "text": "Complete the Agriculture Dome featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:reclamation_growth_matrix"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

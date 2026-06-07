@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:cryogenic_cold",
+  "category": "HAZARDS",
+  "title": "Cryogenic Cold",
+  "summary": "Extreme cold drains warmth and slows movement.",
+  "body": [
+    "Cryogenic zones are found in polar and high-altitude ruins.",
+    "Thermal insulation and heat packs are required.",
+    "Without protection, you will freeze rapidly."
+  ],
+  "steps": [
+    "Wear thermal-rated armor or insulation.",
+    "Carry heat packs or warming fuel.",
+    "Find shelter immediately if hypothermia sets in."
+  ],
+  "commonMistakes": [
+    "Exploring cold zones with basic gear.",
+    "Ignoring the shivering warning signs."
+  ],
+  "related": [
+    "echotutorialcore:toxic_air"
+  ],
+  "unlockTriggers": [
+    "entered_cold_zone"
+  ],
+  "defaultUnlocked": false,
+  "priority": 85
+}

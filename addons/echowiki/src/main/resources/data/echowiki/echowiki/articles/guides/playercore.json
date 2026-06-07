@@ -1,0 +1,57 @@
+{
+  "id": "echowiki:guides/playercore",
+  "title": "PlayerCore Travel Manual",
+  "category": "Guide Books",
+  "summary": "Use homes, back routes, spawn, random teleport, TPA, and warps without losing track of server rules.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "PlayerCore provides server-friendly travel and recovery commands. Its value is not speed alone: it gives players predictable routes back to bases, spawn, safe random locations, and shared warp points.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Safe Habit",
+      "body": "Set a home before leaving shelter, confirm the command message, and keep a normal route back until you trust the server's cooldowns and dimension rules.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "What Matters In Play",
+      "body": "Homes, back locations, random teleport, TPA, spawn, and warps all depend on permissions, cooldowns, and safety checks. Treat failed teleports as useful warnings.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Server Fit",
+      "body": "Admins can tune limits, allowed dimensions, unsafe blocks, warp permissions, and message style. Ask for the server's rules before relying on cross-dimension travel.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a command fails, check whether the feature is enabled, the destination is safe, the cooldown is active, or the server blocks that dimension.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "playercore",
+    "travel"
+  ],
+  "icon": "minecraft:compass",
+  "heroArt": "echowiki:textures/gui/guide_books/playercore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/playercore/first_steps",
+    "echowiki:guides/playercore/core_loop",
+    "echowiki:guides/playercore/systems",
+    "echowiki:guides/playercore/progression",
+    "echowiki:guides/playercore/integrations",
+    "echowiki:guides/playercore/troubleshooting"
+  ],
+  "sortOrder": 1096
+}

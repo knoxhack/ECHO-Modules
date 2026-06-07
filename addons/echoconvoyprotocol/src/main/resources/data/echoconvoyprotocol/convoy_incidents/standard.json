@@ -1,0 +1,17 @@
+{
+  "title": "Standard Convoy Incidents",
+  "incidents": [
+    {
+      "id": "echoconvoyprotocol:standard_signal_drop",
+      "stage": 2,
+      "displayText": "Signal drift forced the convoy to halt for diagnostic alignment.",
+      "readinessThreshold": 62,
+      "fuelEffect": -5,
+      "integrityEffect": -4,
+      "cargoEffect": 0,
+      "delayTicks": 120,
+      "requiredResponseTask": "echoconvoyprotocol:resolve_field_incident",
+      "holomapMarkerHint": "field_incident"
+    }
+  ]
+}

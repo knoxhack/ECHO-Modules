@@ -1,0 +1,95 @@
+{
+  "id": "echoindustrialnexus:recipe_matrix_core",
+  "display_name": "Recipe Matrix Core",
+  "translation_key": "multiblock.echoindustrialnexus.recipe_matrix_core",
+  "role": "COMMAND",
+  "category": "factory_command",
+  "size": [3, 3, 3],
+  "controller": "echoindustrialnexus:recipe_matrix_core",
+  "allowed_rotations": true,
+  "mirrorable": true,
+  "requires_foundation": false,
+  "layers": [
+    [
+      "FIF",
+      "PCD",
+      "FOF"
+    ],
+    [
+      "FTF",
+      "RMS",
+      "FTF"
+    ],
+    [
+      ".D.",
+      ".W.",
+      ".L."
+    ]
+  ],
+  "palette": {
+    "F": { "block": "echoindustrialnexus:reinforced_machine_casing" },
+    "I": { "block": "echoindustrialnexus:input_depot_crate", "component": true },
+    "P": { "block": "echoindustrialnexus:industrial_power_bus", "component": true },
+    "D": { "block": "echoindustrialnexus:industrial_data_bus", "component": true },
+    "O": { "block": "echoindustrialnexus:output_depot_crate", "component": true },
+    "T": { "block": "echoindustrialnexus:coolant_tank", "component": true },
+    "R": { "block": "echoindustrialnexus:robotic_arm_mount", "robotics": true },
+    "M": { "block": "echoindustrialnexus:machine_status_panel", "component": true },
+    "S": { "block": "echoindustrialnexus:inspection_scanner_controller", "component": true },
+    "W": { "block": "echoindustrialnexus:industrial_workcell_frame", "component": true },
+    "L": { "block": "echoindustrialnexus:warning_light", "component": true, "optional": true },
+    "C": { "block": "echoindustrialnexus:recipe_matrix_core", "controller": true },
+    ".": { "air": true }
+  },
+  "capabilities": [
+    "echo:robotics",
+    "echo:workcell",
+    "echo:item_input",
+    "echo:item_output",
+    "echo:power_input",
+    "echo:terminal_tab",
+    "echo:scanner_target",
+    "echo:map_marker"
+  ],
+  "workcells": [
+    {
+      "id": "echoindustrialnexus:recipe_matrix/data_processing",
+      "type": "DIAGNOSTIC",
+      "pos": [1, 0, 1],
+      "size": [1, 1, 1]
+    },
+    {
+      "id": "echoindustrialnexus:recipe_matrix/cooling",
+      "type": "COOLING",
+      "pos": [1, 1, 0],
+      "size": [1, 1, 1]
+    },
+    {
+      "id": "echoindustrialnexus:recipe_matrix/matrix_processing",
+      "type": "MATRIX_PROCESSING",
+      "pos": [1, 1, 1],
+      "size": [1, 1, 1],
+      "required_tools": ["SCANNER", "INJECTOR"],
+      "allowed_tasks": ["echoindustrialnexus:encode_recipe_matrix_shard"]
+    },
+    {
+      "id": "echoindustrialnexus:recipe_matrix/output",
+      "type": "OUTPUT",
+      "pos": [1, 0, 2],
+      "size": [1, 1, 1]
+    }
+  ],
+  "robotics": {
+    "min_arms": 1,
+    "required_tools": ["SCANNER", "INJECTOR"]
+  },
+  "integrity": {
+    "max": 100,
+    "damageable": true,
+    "damaged_threshold": 75,
+    "offline_threshold": 35
+  },
+  "preview": {
+    "color": "b46cff"
+  }
+}

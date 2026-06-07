@@ -1,0 +1,80 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echobasegrid",
+  "name": "ECHO: Base Grid",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "base_grid",
+  "entrypoint": "com.knoxhack.echobasegrid.EchoBaseGrid",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "echoscreencore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoterminal"
+  ],
+  "provides": [
+    "basegrid.claims",
+    "basegrid.commands",
+    "basegrid.permissions",
+    "basegrid.screens"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "creator_tools",
+    "server_smp"
+  ],
+  "permissions": [
+    "commands.register",
+    "network.sync",
+    "ui.screens",
+    "world.claims"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "commands",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Base Grid is standalone-first chunk claiming and base protection. HoloMap and Terminal integrations remain optional.",
+    "nativeEntrypoint": "com.knoxhack.echobasegrid.EchoBaseGridNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "ui_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "echoashfallprotocol:sporebound_elder",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Elder Myra's mask blooms with pale sensor light. \"The scar remembers footsteps. Some paths forgive. Some paths feed.\"",
+      "options": [
+        { "id": "trade", "label": "Review scar readings.", "action": "open_trade" },
+        { "id": "services", "label": "Ask for a reading.", "action": "open_services" },
+        { "id": "intel", "label": "Open sporebound dossier.", "action": "open_intel" },
+        { "id": "record", "label": "Record Elder Myra.", "action": "discover_contact" },
+        { "id": "close", "label": "Leave the circle.", "action": "close" }
+      ]
+    }
+  }
+}

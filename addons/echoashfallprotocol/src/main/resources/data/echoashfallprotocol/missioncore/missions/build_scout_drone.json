@@ -1,0 +1,100 @@
+{
+  "id": "echoashfallprotocol:build_scout_drone",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 3,
+  "title": "Build a Scout Drone",
+  "briefing": "[ECHO-7] Grid work needs remote eyes before guardian contact. Assemble a Scout Drone and keep it ready for node routes.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:scout_drone_item",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:activate_relay_station"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_scout_drone",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_scout_drone",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "71",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_scout_drone:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate",
+      "ashfall.scout_drone_route"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_scout_drone/scout_drone_item",
+      "type": "deliver_item",
+      "label": "Deliver Scout Drone Item",
+      "detail": "Confirm 1 Scout Drone Item for this route step; live scout deployment also reports the route contract.",
+      "icon": "echoashfallprotocol:scout_drone_item",
+      "target": "echoashfallprotocol:scout_drone_item",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:scout_drone_item",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scout_drone_item",
+      "count": 1,
+      "label": "Scout Drone Item"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_scout_drone/reward_0",
+      "item": "echoashfallprotocol:power_node",
+      "count": 1,
+      "label": "Power Node",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_scout_drone/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_scout_drone/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_scout_drone/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Drone uplink stable. Use it to scout salvage, node sites, and guardian arenas before entering."
+}

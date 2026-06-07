@@ -1,0 +1,102 @@
+{
+  "id": "echoashfallprotocol:find_schematic_fragment",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 1,
+  "title": "Authenticate Schematic Fragment",
+  "briefing": "[ECHO-7] Authenticate the Schematic Fragment issued through the field kit bridge, or recover one from surface ruins and survivor exchanges.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall schematic-fragment bridge that unlocks the first machine casing path before Hand Recycler fabrication.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:schematic_fragment",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:assemble_wasteland_field_kit"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "find_schematic_fragment",
+    "nativeGameplayHook": "ashfall.first_route.find_schematic_fragment",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.hand_recycler.casing_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "1",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "10",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:find_schematic_fragment:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:find_schematic_fragment/authenticate_schematic_fragment",
+      "type": "obtain_item",
+      "label": "Authenticate Schematic Fragment",
+      "detail": "Carry the schematic fragment issued by the field-kit bridge or recovered from early ruins.",
+      "icon": "echoashfallprotocol:schematic_fragment",
+      "target": "echoashfallprotocol:schematic_fragment",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_contains",
+        "item": "echoashfallprotocol:schematic_fragment",
+        "events": "player.inventory_changed,player.terminal_opened,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:schematic_fragment",
+      "count": 1,
+      "label": "Schematic Fragment"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:find_schematic_fragment/reward_machine_casing",
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing",
+      "detail": "First casing bridge for Hand Recycler fabrication."
+    },
+    {
+      "id": "echoashfallprotocol:find_schematic_fragment/reward_rations",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 4,
+      "label": "Emergency Rations",
+      "detail": "Route buffer while machine progression comes online."
+    },
+    {
+      "id": "echoashfallprotocol:find_schematic_fragment/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Hydration buffer before the first machine push."
+    }
+  ],
+  "completionText": "[ECHO-7] Fragment authenticated. Hand Recycler fabrication procedures restored; casing bridge released for the first machine loop."
+}

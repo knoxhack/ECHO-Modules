@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/industrial_nexus/systems",
+  "title": "Industrial Nexus: Important Systems",
+  "category": "Guide Books",
+  "summary": "Read the Industrial Nexus signals, states, and failure clues that matter in play.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "What To Watch",
+      "body": "Thermal tools, factory diagnostics, flux meters, coolant packs, and recipe cards all help identify whether a problem is heat, power, recipe lock, or inventory flow.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Player Signals",
+      "body": "Watch machine state, recipe inputs, output space, heat or coolant pressure, power draw, throughput, and the one segment that limits the whole line.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep It Legible",
+      "body": "A Industrial Nexus system is working when another player could look at the state, understand the next action, and avoid the obvious failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "State Check",
+      "body": "Use the system note to read the current state, then choose one action that answers it.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "industrial",
+    "factory",
+    "industrial_nexus",
+    "systems",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:blast_furnace",
+  "relatedArticles": [
+    "echowiki:guides/industrial_nexus"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1073
+}

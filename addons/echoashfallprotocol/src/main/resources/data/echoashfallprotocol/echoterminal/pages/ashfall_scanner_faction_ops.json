@@ -1,0 +1,34 @@
+{
+  "id": "echoashfallprotocol:ashfall_scanner_faction_ops",
+  "title": "Scanner and Faction Ops",
+  "summary": "Turns Lens scan results, HoloMap POIs, faction contact rules, drone readouts, and cache rewards into a readable field workflow.",
+  "nextSteps": [
+    "Scan from shelter before committing to a route.",
+    "Open the linked Index entry when Lens reports a faction or cache signal.",
+    "Treat faction markers as contact leads unless a mission says otherwise.",
+    "Claim cache loot only after the scan and HoloMap marker agree on the route state.",
+    "Use drone HUD warnings as route pressure, not as raw debug telemetry."
+  ],
+  "theme": "ashfall",
+  "styleTokenSet": "ashfall_scanner_faction",
+  "panels": [
+    {
+      "id": "scanner_read",
+      "title": "Scanner Read",
+      "state": "lens_to_index",
+      "body": "Lens rows must name the risk, linked mission, Index entry, and HoloMap marker so a signal becomes a decision."
+    },
+    {
+      "id": "faction_contact",
+      "title": "Faction Contact",
+      "state": "observe_first",
+      "body": "Crashbreak and Radwarden contacts start as observation, standing, and optional contract work."
+    },
+    {
+      "id": "cache_reward",
+      "title": "Cache Reward",
+      "state": "claim_after_scan",
+      "body": "Cache rewards should present supplies, route notes, and reputation context before the player claims them."
+    }
+  ]
+}

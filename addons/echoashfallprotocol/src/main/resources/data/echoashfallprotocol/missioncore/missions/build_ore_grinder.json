@@ -1,0 +1,140 @@
+{
+  "id": "echoashfallprotocol:build_ore_grinder",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 3,
+  "title": "Build a Substrate Grinder",
+  "briefing": "[ECHO-7] Surface scrap is insufficient. Deploy a Substrate Grinder beside the upgraded power route to extract traces from biome substrate.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:ore_grinder",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_thermal_array"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_ore_grinder",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_ore_grinder",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "62",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_ore_grinder:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_ore_grinder/ore_grinder",
+      "type": "place_block",
+      "label": "Substrate Grinder",
+      "detail": "Place 1 Ore Grinder for the Ashfall route.",
+      "icon": "echoashfallprotocol:ore_grinder",
+      "target": "echoashfallprotocol:ore_grinder",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:ore_grinder"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 4,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 2,
+      "label": "Dense Alloy Chunk"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 2,
+      "label": "Scrap Wire"
+    },
+    {
+      "block": "echoashfallprotocol:ore_grinder",
+      "count": 1,
+      "label": "Substrate Grinder"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_ore_grinder/reward_0",
+      "item": "echoashfallprotocol:coal_dust",
+      "count": 8,
+      "label": "Coal Dust",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_ore_grinder/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_ore_grinder/reward_1",
+      "item": "echoashfallprotocol:iron_shard",
+      "count": 4,
+      "label": "Iron Shard",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_ore_grinder/reward_1"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_ore_grinder/reward_2",
+      "item": "echoashfallprotocol:copper_shard",
+      "count": 4,
+      "label": "Copper Shard",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_ore_grinder/reward_2"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_ore_grinder/reward_3",
+      "item": "echoashfallprotocol:crystal_dust",
+      "count": 1,
+      "label": "Crystal Dust",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_ore_grinder/reward_3"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Grinding mechanisms enabled. Trace shards can now be processed for high-tier alloys."
+}

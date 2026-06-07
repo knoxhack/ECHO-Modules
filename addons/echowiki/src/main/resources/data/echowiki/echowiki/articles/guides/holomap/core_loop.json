@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/holomap/core_loop",
+  "title": "HoloMap: Core Loop",
+  "category": "Guide Books",
+  "summary": "Scan terrain, mark decisions, travel the route, then clean up the map.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Scan terrain, mark a route, add hazard or objective notes, travel, then prune or update the map after the run.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each trip, remove stale markers, rename useful ones, and flag the route that actually worked. A crowded map becomes another hazard.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Stop mapping when the next marker would be guesswork. Travel, verify, and then update the layer with facts.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "holomap",
+    "navigation",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:map",
+  "relatedArticles": [
+    "echowiki:guides/holomap"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1192
+}

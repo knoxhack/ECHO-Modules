@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ECHO Recovery Grave Type",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "display_name": { "type": "string" },
+    "texture": { "type": "string" },
+    "sounds": {
+      "type": "object",
+      "properties": {
+        "created": { "type": "string" },
+        "opened": { "type": "string" },
+        "recovered": { "type": "string" }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "explosion_proof": { "type": "boolean" },
+        "fireproof": { "type": "boolean" },
+        "wither_proof": { "type": "boolean" }
+      }
+    }
+  },
+  "required": ["id", "display_name"]
+}

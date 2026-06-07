@@ -1,0 +1,87 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echogrimoire",
+  "name": "ECHO: Grimoire",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "content_pack",
+  "role": "grimoire",
+  "entrypoint": "com.knoxhack.echogrimoire.EchoGrimoire",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore",
+    "echoterminal"
+  ],
+  "optional": [
+    "echoarcaneindex",
+    "echoindex",
+    "echomissioncore"
+  ],
+  "provides": [
+    "grimoire.archive",
+    "grimoire.lore",
+    "grimoire.progression_records",
+    "grimoire.terminal"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core",
+    "terminal.surface"
+  ],
+  "gameModes": [
+    "arcana_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "player.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "wiki",
+        "ui_screens",
+        "data"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echogrimoire.EchoGrimoireNativeModule",
+    "nativeClasspath": [],
+    "requiresMinecraft": false,
+    "contractsOnly": false,
+    "notes": "Provides the Arcana Grimoire archive and Terminal chapter integration. External Arcana Veil compatibility remains intentionally outside the canonical module contract."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echogrimoire/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

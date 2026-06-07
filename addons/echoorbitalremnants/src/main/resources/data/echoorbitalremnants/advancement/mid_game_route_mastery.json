@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:europa_array_calibrated",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:thermal_stabilizer"
+    },
+    "title": {
+      "text": "Mid-Game Route Mastery"
+    },
+    "description": {
+      "text": "Restore Orbit, Moon, Mars, and Europa objective chains before confronting ECHO-0."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

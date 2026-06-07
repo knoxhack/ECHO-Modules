@@ -1,0 +1,111 @@
+{
+  "id": "echoashfallprotocol:build_scrap_press",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 0,
+  "title": "Build a Scrap Press",
+  "briefing": "[ECHO-7] Loose scrap is inefficient. Build a powered Scrap Press to compress base materials and prepare machine-scale storage.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for one placed Scrap Press after power priority routing is available.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:scrap_press",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:set_power_priority"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_scrap_press",
+    "nativeGameplayHook": "ashfall.first_route.build_scrap_press",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.overclock_module.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "0",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "23",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_scrap_press:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_scrap_press/place_scrap_press",
+      "type": "place_block",
+      "label": "Build a Scrap Press",
+      "detail": "Place one powered Scrap Press to begin workshop-scale material compression.",
+      "icon": "echoashfallprotocol:scrap_press",
+      "target": "echoashfallprotocol:scrap_press",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:scrap_press",
+        "required_blocks": "echoashfallprotocol:scrap_press=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 7,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 2,
+      "label": "Scrap Plastic"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "block": "echoashfallprotocol:scrap_press",
+      "count": 1,
+      "label": "Placed Scrap Press"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_scrap_press/reward_scrap_metal",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 8,
+      "label": "Scrap Metal",
+      "detail": "Input stock for early press recipes."
+    },
+    {
+      "id": "echoashfallprotocol:build_scrap_press/reward_scrap_plastic",
+      "item": "echoashfallprotocol:scrap_plastic",
+      "count": 4,
+      "label": "Scrap Plastic",
+      "detail": "Material reserve for machine-scale crafting."
+    }
+  ],
+  "completionText": "[ECHO-7] Scrap Press online. Feed it scrap metal when powered to compact stockpiles and support higher processing."
+}

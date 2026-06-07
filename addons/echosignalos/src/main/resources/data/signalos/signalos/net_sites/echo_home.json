@@ -1,0 +1,57 @@
+{
+  "address": "echo.home",
+  "title": "ECHO Home",
+  "summary": "Recovered operator landing page for the local SignalNet.",
+  "requiredTier": 0,
+  "order": 0,
+  "tags": ["home", "status", "signalos"],
+  "pages": [
+    {
+      "path": "/",
+      "title": "ECHO Home",
+      "lines": [
+        "SignalNet is a curated local network for terminals, workstations, racks, and relays.",
+        "The first public mirrors carry operator status, field bulletins, and links into local archives."
+      ],
+      "links": [
+        {
+          "label": "Network Status",
+          "address": "echo.home/status"
+        },
+        {
+          "label": "Operator Board",
+          "address": "echo.home/board"
+        }
+      ]
+    },
+    {
+      "path": "/status",
+      "title": "Network Status",
+      "lines": [
+        "Public SignalNet access is online.",
+        "Workstation and rack-backed networks unlock higher-trust mirrors when addons publish them."
+      ],
+      "links": [
+        {
+          "label": "Home",
+          "address": "echo.home"
+        }
+      ]
+    },
+    {
+      "path": "/board",
+      "title": "Operator Board",
+      "requiredTier": 0,
+      "lines": [
+        "Bookmark pages to an active V2 Data Drive before heading back into the field.",
+        "Saved pages appear as drive files and can be copied through rack workflows."
+      ],
+      "links": [
+        {
+          "label": "Network Status",
+          "address": "echo.home/status"
+        }
+      ]
+    }
+  ]
+}

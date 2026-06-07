@@ -1,0 +1,10 @@
+<list-row class="index-item-row" action="index.select_item" action-value="{param.id|}" selected="{param.selected|}" active="{param.active|}" help="{param.help|Select this item to preview recipes, usages, tags, and registry details.}">
+  <row class="index-item-row-inner" gap="8">
+    <item-icon item="{param.icon|minecraft:barrier}"/>
+    <column class="index-item-copy">
+      <title class="index-item-title" value="{param.title|Unknown Item}"/>
+      <text class="index-item-subtitle" value="{param.subtitle|No item data}"/>
+    </column>
+    <status-chip status="{param.status|info}" value="{param.badge|ITEM}"/>
+  </row>
+</list-row>

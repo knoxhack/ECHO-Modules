@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:radwarden_quartermaster",
+  "displayName": "Quartermaster Voss",
+  "role": "Containment Quartermaster",
+  "faction": "echoashfallprotocol:radwarden_compact",
+  "visualProfile": "echoashfallprotocol:radwarden_quartermaster",
+  "dialogue": "echoashfallprotocol:radwarden_quartermaster",
+  "trades": "echoashfallprotocol:radwarden_quartermaster_stock",
+  "services": "echoashfallprotocol:radwarden_quartermaster_services",
+  "missions": [],
+  "ambientLines": [
+    "Filters dry, caps sealed, scanner charged. Then you leave.",
+    "If the wind tastes metallic, you are already late."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Quartermaster Voss tracks containment stock, decon warnings, and safe-route supply needs."
+  }
+}

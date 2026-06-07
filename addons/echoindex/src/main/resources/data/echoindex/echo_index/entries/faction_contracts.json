@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:faction_contracts",
+  "category": "echoindex:factions",
+  "title": "Faction Contracts",
+  "subtitle": "Standing, Traders, And Rewards",
+  "summary": "Faction records should connect contracts, standing, trader offers, rewards, and route consequences to searchable source context.",
+  "body": "Index does not own faction state. It provides a shared reference surface so faction systems can explain where supplies come from and which relationships affect access.",
+  "icon": "minecraft:emerald",
+  "tags": ["faction", "contract", "trader", "reward"],
+  "related": ["echoindex:source_facts", "echoindex:holomap_routes"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 0
+}

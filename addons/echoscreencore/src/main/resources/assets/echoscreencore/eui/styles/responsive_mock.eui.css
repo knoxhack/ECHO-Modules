@@ -1,0 +1,40 @@
+.is-compact,
+card[compact],
+panel[compact] {
+  gap: space(xs);
+  padding: space(sm);
+}
+
+.is-dense,
+list[dense] {
+  gap: 2px;
+}
+
+.is-stacked,
+split-view[stacked] {
+  layout: column;
+}
+
+.is-collapsed,
+app-sidebar[collapsed] {
+  width: 48px;
+}
+
+.responsive-card-grid {
+  gap: space(md);
+}
+
+split-view {
+  layout: grid;
+  columns: 1fr 320px;
+  gap: space(md);
+}
+
+app-sidebar {
+  width: 230px;
+}
+
+detail-panel,
+inspector-panel {
+  min-height: 120px;
+}

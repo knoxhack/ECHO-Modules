@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:factory_chain",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:industrial_scrubber"
+    },
+    "title": {
+      "text": "Clean Air Bubble"
+    },
+    "description": {
+      "text": "Build an Industrial Scrubber and start turning survival into infrastructure."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "scrubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:industrial_scrubber"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scrubber"
+    ]
+  ]
+}

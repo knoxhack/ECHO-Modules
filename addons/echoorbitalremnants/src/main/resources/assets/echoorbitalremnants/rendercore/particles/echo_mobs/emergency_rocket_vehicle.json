@@ -1,0 +1,214 @@
+{
+  "emitters": {
+    "damaged_smoke": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "DAMAGED",
+        "OVERHEATED",
+        "FAILED"
+      ],
+      "rate": 0.061,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.08,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.03,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.06,
+        0.12
+      ],
+      "requires_damaged": true,
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.624,
+          0.639,
+          0.627
+        ],
+        "scale": 0.95,
+        "lifetime": 42,
+        "alpha": 0.34,
+        "drag": 0.9,
+        "fade": true,
+        "style": "ash_smoke",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.004,
+        "stretch": 1.2,
+        "flicker": 0.0
+      }
+    },
+    "vacuum_frost_leak": {
+      "anchor": "back",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "IDLE",
+        "ACTIVE",
+        "DAMAGED",
+        "FAILED"
+      ],
+      "rate": 0.06,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.018,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.1,
+        0.1
+      ],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          0.867,
+          0.922,
+          1.0
+        ],
+        "scale": 0.92,
+        "lifetime": 40,
+        "alpha": 0.38,
+        "drag": 0.9,
+        "fade": true,
+        "style": "frost_breath",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.01,
+        "stretch": 1.2,
+        "flicker": 0.0
+      }
+    },
+    "vacuum_static_specks": {
+      "anchor": "scanner",
+      "particle": "echorendercore:soft_mote",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "SCANNING",
+        "DAMAGED"
+      ],
+      "rate": 0.07,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.006,
+        0.0
+      ],
+      "spread": [
+        0.06,
+        0.05,
+        0.05
+      ],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": [
+          0.463,
+          0.91,
+          1.0
+        ],
+        "scale": 0.44,
+        "lifetime": 22,
+        "alpha": 0.78,
+        "drag": 0.94,
+        "fade": true,
+        "style": "scan_speck",
+        "fullbright": true,
+        "gravity": 0.0,
+        "spin": 0.015,
+        "stretch": 1.0,
+        "flicker": 0.0
+      }
+    },
+    "engine_plume": {
+      "anchor": "exhaust",
+      "particle": "echorendercore:soft_wisp",
+      "states": [
+        "ACTIVE",
+        "WORKING",
+        "CHARGING"
+      ],
+      "rate": 0.06,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.026,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.12,
+        0.12
+      ],
+      "requires_moving": true,
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": [
+          1.0,
+          0.878,
+          0.635
+        ],
+        "scale": 1.05,
+        "lifetime": 38,
+        "alpha": 0.34,
+        "drag": 0.9,
+        "fade": true,
+        "style": "exhaust_plume",
+        "fullbright": false,
+        "gravity": -0.004,
+        "spin": 0.01,
+        "stretch": 1.35,
+        "flicker": 0.0
+      }
+    },
+    "ignition_sparks": {
+      "anchor": "exhaust",
+      "particle": "minecraft:flame",
+      "states": [
+        "ACTIVE",
+        "CHARGING",
+        "OVERHEATED"
+      ],
+      "rate": 0.038,
+      "burst_count": 1,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.018,
+        0.0
+      ],
+      "spread": [
+        0.12,
+        0.08,
+        0.12
+      ]
+    }
+  }
+}

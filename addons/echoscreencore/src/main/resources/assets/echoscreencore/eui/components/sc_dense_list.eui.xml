@@ -1,0 +1,9 @@
+<template>
+  <scroll class="sc-scroll-region" scroll-state="true" state-key="{param.stateKey|reference.list}">
+    <list bind="{param.bind|screencore.reference.records}" item="{param.item|record}" selected="{param.selected|}">
+      <slot-outlet name="rows"/>
+      <empty-state title="{param.emptyTitle|No Rows}" body="{param.emptyBody|No rows are available.}"/>
+    </list>
+  </scroll>
+</template>
+

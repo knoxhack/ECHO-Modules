@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:sporebound_medic",
+  "displayName": "Medic Sable",
+  "role": "Antitoxin Brewer",
+  "faction": "echoashfallprotocol:sporebound_sanctum",
+  "visualProfile": "echoashfallprotocol:sporebound_medic",
+  "dialogue": "echoashfallprotocol:sporebound_medic",
+  "trades": "echoashfallprotocol:sporebound_medic_stock",
+  "services": "echoashfallprotocol:sporebound_medic_services",
+  "missions": [],
+  "ambientLines": [
+    "Show me the bite before you show me the brave face.",
+    "If it glows purple, do not breathe near it twice."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Medic Sable handles antitoxin triage, spore exposure warnings, and field medical support."
+  }
+}

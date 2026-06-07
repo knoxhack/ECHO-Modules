@@ -1,0 +1,34 @@
+<page id="terminal-fallback" title="Module Dossier" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_components,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <slot name="body">
+      <grid class="terminal-dashboard-grid terminal-dossier-layout" columns="1.25fr 0.75fr" gap="12" stack-below="900">
+        <hero-card class="terminal-dossier-hero" status="{terminal.fallback.stateStatus|ready}">
+          <status-chip class="terminal-dossier-state-chip" status="{terminal.fallback.stateStatus|ready}" value="{terminal.fallback.stateLabel|Dossier}"/>
+          <copy-block class="terminal-row-copy" title="{terminal.fallback.title|Terminal Module}" subtitle="{terminal.fallback.summary|Module data is available through shared Terminal services.}"/>
+          <grid class="terminal-metric-grid" columns="1fr 1fr 1fr 1fr" gap="8">
+            <stat-card label="Section" value="{terminal.fallback.section|Terminal}" status="ready"/>
+            <stat-card label="Routes" value="{terminal.fallback.routeCount|0}" status="active"/>
+            <stat-card label="Diagnostics" value="{terminal.fallback.diagnosticCount|0}" status="info"/>
+            <stat-card label="Rewards" value="{terminal.fallback.pendingRewards|0}" status="info"/>
+          </grid>
+        </hero-card>
+        <section class="terminal-panel" title="MODULE SUMMARY">
+          <copy-block class="terminal-row-copy" title="{terminal.fallback.shortTitle|Module}" subtitle="{terminal.fallback.subtitle|ScreenCore dossier}"/>
+          <copy-block class="terminal-row-copy" title="{terminal.fallback.reason|Module status unavailable.}"/>
+          <button action="terminal.open_tab" action-value="echoterminal:overview" variant="primary">Return To Command Deck</button>
+          <button action="terminal.open_tab" action-value="echoterminal:data_core" variant="ghost">Module Diagnostics</button>
+        </section>
+      </grid>
+      <section title="TACTICAL LINKS" class="terminal-dossier-actions">
+        <scroll class="terminal-dossier-action-scroll" scroll-state="true" state-key="terminal.dossier.actions">
+          <list bind="terminal.fallback.actions" item="action">
+            <list-row class="terminal-dossier-action-row" action="terminal.open_tab" action-value="{action.tabId}" value="{action.tabId}">
+              <status-chip class="terminal-dossier-badge-chip" status="{action.statusKey}" value="{action.badge}"/>
+              <copy-block class="terminal-row-copy" title="{action.title}" subtitle="{action.summary}"/>
+            </list-row>
+          </list>
+        </scroll>
+      </section>
+    </slot>
+  </component>
+</page>

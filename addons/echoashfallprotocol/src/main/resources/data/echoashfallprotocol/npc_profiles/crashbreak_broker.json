@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:crashbreak_broker",
+  "displayName": "Broker Rook",
+  "role": "Route Broker",
+  "faction": "echoashfallprotocol:crashbreak_salvage",
+  "visualProfile": "echoashfallprotocol:crashbreak_broker",
+  "dialogue": "echoashfallprotocol:crashbreak_broker",
+  "trades": "echoashfallprotocol:crashbreak_broker_stock",
+  "services": "echoashfallprotocol:crashbreak_broker_services",
+  "missions": [],
+  "ambientLines": [
+    "Every wreck has a witness. Most are bolted down.",
+    "Pay for the map, not the rumor."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 7,
+    "returnRadius": 22,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Broker Rook brokers salvage contracts, route records, and workshop-priority stock."
+  }
+}

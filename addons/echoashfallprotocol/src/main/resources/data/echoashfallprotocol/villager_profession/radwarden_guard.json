@@ -1,0 +1,78 @@
+{
+  "id": "echoashfallprotocol:radwarden_guard",
+  "name": "Radwarden Guard",
+  "job_site": "echoashfallprotocol:weapon_rack_poi",
+  "work_sound": "minecraft:entity.villager.work_weaponsmith",
+  "trades": {
+    "novice": {
+      "max_trades": 16,
+      "max_uses": 12,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 8 },
+          "output": { "item": "minecraft:iron_sword" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 6 },
+          "output": { "item": "minecraft:shield" }
+        },
+        {
+          "input": { "item": "minecraft:iron_ingot", "count": 4 },
+          "output": { "item": "minecraft:emerald", "count": 1 }
+        }
+      ]
+    },
+    "apprentice": {
+      "max_trades": 12,
+      "max_uses": 10,
+      "reputation_required": 50,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 12 },
+          "output": { "item": "minecraft:diamond_sword" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 15 },
+          "output": { "item": "minecraft:crossbow" }
+        }
+      ]
+    },
+    "journeyman": {
+      "max_trades": 8,
+      "max_uses": 8,
+      "reputation_required": 100,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 20 },
+          "output": { "item": "echoashfallprotocol:scrap_knife" }
+        },
+        {
+          "input": { "item": "minecraft:emerald", "count": 25 },
+          "output": { "item": "echoashfallprotocol:alloy_blade" }
+        }
+      ]
+    },
+    "expert": {
+      "max_trades": 6,
+      "max_uses": 6,
+      "reputation_required": 200,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 32 },
+          "output": { "item": "echoashfallprotocol:hazmat_helmet" }
+        }
+      ]
+    },
+    "master": {
+      "max_trades": 4,
+      "max_uses": 4,
+      "reputation_required": 300,
+      "trades": [
+        {
+          "input": { "item": "minecraft:emerald", "count": 64 },
+          "output": { "item": "echoashfallprotocol:nexus_annihilator" }
+        }
+      ]
+    }
+  }
+}

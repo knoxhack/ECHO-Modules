@@ -1,0 +1,33 @@
+{
+  "schema": "echogalacticcore.port.energy_bridge.v1",
+  "source": "galacticraft_legacy_energy_interfaces",
+  "legacyInterfaces": [
+    "micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC",
+    "micdoodle8.mods.galacticraft.api.power.IElectricityNetwork",
+    "micdoodle8.mods.galacticraft.api.power.IEnergyStorageGC"
+  ],
+  "nativeCapability": "echogalacticcore:galactic_energy",
+  "echoBridge": "echoadaptercore.energy_bridge",
+  "unitPolicy": {
+    "legacyUnit": "gJ",
+    "nativeUnit": "echo_power",
+    "conversion": "1 legacy gJ tick budget maps to one deterministic ECHO power budget unit until final tuning.",
+    "lossModel": "classic_galacticraft_loss"
+  },
+  "producers": [
+    {"id": "coal_generator", "legacySource": "TileEntityCoalGenerator", "state": ["fuel_time", "energy_buffer", "output_side"]},
+    {"id": "solar_panel", "legacySource": "TileEntitySolar", "state": ["sun_visible", "weather_factor", "energy_buffer"]},
+    {"id": "geothermal_generator", "legacySource": "TileEntityGeothermalGenerator", "state": ["heat", "lava_contact", "energy_buffer"]}
+  ],
+  "consumers": [
+    "echogalacticcore:machine/oxygen_collector",
+    "echogalacticcore:machine/oxygen_sealer",
+    "echogalacticcore:machine/fuel_loader",
+    "echogalacticcore:machine/rocket_workbench"
+  ],
+  "networkContracts": [
+    {"id": "aluminum_wire", "legacySource": "BlockAluminumWire", "transfer": "low_voltage"},
+    {"id": "heavy_aluminum_wire", "legacySource": "BlockAluminumWire", "transfer": "high_voltage"}
+  ],
+  "typedSurfaces": ["capabilities", "save_data", "network", "resources"]
+}

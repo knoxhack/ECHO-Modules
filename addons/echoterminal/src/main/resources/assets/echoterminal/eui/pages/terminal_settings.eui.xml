@@ -1,0 +1,64 @@
+<page id="terminal-settings" title="Interface Settings" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_system_pages,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Interface Settings / client-only options"/>
+    <param name="inspectorTitle" value="ScreenCore"/>
+    <slot name="body">
+      <hero-card class="terminal-page-hero" status="{terminal.settings.screenCoreStatusKey|ready}">
+        <copy-block class="terminal-row-copy" title="Interface Settings" subtitle="Tune the local Terminal renderer, readability, mission notices, and debug visibility. Gameplay state is not changed here."/>
+        <row class="terminal-page-toolbar" gap="6">
+          <status-chip status="{terminal.settings.screenCoreStatusKey|ready}" value="{terminal.settings.screenCoreLabel|SCREENCORE}"/>
+          <button action="terminal.settings.reset_defaults" variant="ghost"
+                  tooltip="Restore the Terminal presentation defaults.">Reset</button>
+        </row>
+      </hero-card>
+      <section title="Current Values">
+        <list class="settings-list" bind="terminal.settings.options" item="setting">
+          <list-row class="terminal-compact-row">
+            <copy-block class="terminal-row-copy" title="{setting.label}" subtitle="{setting.value}"/>
+          </list-row>
+        </list>
+      </section>
+      <section title="ScreenCore Shell">
+        <row gap="6">
+          <button action="terminal.settings.toggle_screencore_debug">Debug</button>
+          <button action="terminal.settings.toggle_screencore_experimental">ScreenCore Shell</button>
+          <button action="terminal.settings.toggle_debug_visibility">Raw Debug</button>
+          <button action="terminal.settings.toggle_mission_hud_notices">HUD Notices</button>
+        </row>
+      </section>
+      <section title="Readability">
+        <row gap="6">
+          <button action="terminal.settings.set_density" action-value="COMPACT">Compact</button>
+          <button action="terminal.settings.set_density" action-value="BALANCED">Balanced</button>
+          <button action="terminal.settings.set_density" action-value="COMFORTABLE">Comfortable</button>
+        </row>
+        <row gap="6">
+          <button action="terminal.settings.set_zoom" action-value="90">90%</button>
+          <button action="terminal.settings.set_zoom" action-value="100">100%</button>
+          <button action="terminal.settings.set_zoom" action-value="110">110%</button>
+        </row>
+        <row gap="6">
+          <button action="terminal.settings.toggle_readability_option" action-value="large_text">Large Text</button>
+          <button action="terminal.settings.toggle_readability_option" action-value="high_contrast">Contrast</button>
+          <button action="terminal.settings.toggle_readability_option" action-value="reduced_clutter">Less Clutter</button>
+        </row>
+      </section>
+      <section title="Layout">
+        <row gap="6">
+          <button action="terminal.settings.set_navigation_style" action-value="APP_HUB">App Hub</button>
+          <button action="terminal.settings.set_navigation_style" action-value="SIDEBAR_HUB">Sidebar</button>
+          <button action="terminal.settings.set_navigation_style" action-value="COMPACT_TOP">Compact</button>
+        </row>
+        <row gap="6">
+          <button action="terminal.settings.toggle_visual_treatment" action-value="balanced">Balanced</button>
+          <button action="terminal.settings.toggle_visual_treatment" action-value="minimal">Minimal</button>
+          <button action="terminal.settings.toggle_visual_treatment" action-value="reduced_motion">Reduced Motion</button>
+        </row>
+      </section>
+    </slot>
+    <slot name="inspector">
+      <copy-block class="terminal-row-copy" title="ScreenCore {terminal.settings.useScreenCore}" subtitle="Shell {terminal.settings.experimentalTabs} / Debug {terminal.settings.debug} / HUD {terminal.settings.missionHudNotifications}"/>
+      <copy-block class="terminal-row-copy" title="Settings persist through the existing TerminalClientOptions store."/>
+    </slot>
+  </component>
+</page>

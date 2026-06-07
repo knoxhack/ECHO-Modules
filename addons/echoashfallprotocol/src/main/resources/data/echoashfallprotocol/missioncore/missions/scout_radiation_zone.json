@@ -1,0 +1,103 @@
+{
+  "id": "echoashfallprotocol:scout_radiation_zone",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 9,
+  "title": "Scout Radiation Zone",
+  "briefing": "[ECHO-7] Conduct a controlled radiation-zone scout. Carry RadAway, enter briefly, then return before exposure becomes severe.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:stabilize_mutation_effects"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "scout_radiation_zone",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.scout_radiation_zone",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "9",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "55",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:scout_radiation_zone:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.location_visited"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:scout_radiation_zone/radiation_zone",
+      "type": "enter_region",
+      "label": "Radiation Zone",
+      "detail": "Log biome progress for this Ashfall route step.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "radiation_zone",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "biome",
+        "location": "radiation_zone"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away"
+    },
+    {
+      "locationType": "biome",
+      "locationId": "radiation_zone",
+      "count": 1,
+      "label": "Radiation Zone"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:scout_radiation_zone/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scout_radiation_zone/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:scout_radiation_zone/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scout_radiation_zone/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Radiation-zone exposure profile recorded. Mutation rolls require sustained severe exposure; still, do not linger without shielding, scrubbers, and cleanup equipment."
+}

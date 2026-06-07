@@ -1,0 +1,79 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoarcanacore",
+  "name": "ECHO: Arcana Core",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "foundation",
+  "entrypoint": "com.knoxhack.echoarcanacore.EchoArcanaCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echonetcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "arcana.core",
+    "arcana.aether",
+    "arcana.providers"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "creator_tools",
+    "story_packs"
+  ],
+  "permissions": [
+    "resources.data",
+    "player.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "items",
+        "player"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoarcanacore.EchoArcanaCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Arcana Core owns shared provider and Aether Signal contracts; optional bridges stay optional."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "content_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

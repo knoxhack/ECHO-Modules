@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:scrap_metal"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.root.title",
+      "fallback": "ECHO: ASHFALL PROTOCOL"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.root.desc",
+      "fallback": "Scavenge materials to survive."
+    },
+    "background": "minecraft:textures/block/stone.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_scrap": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:scrap_metal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_scrap"
+    ]
+  ]
+}

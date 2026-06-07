@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "label": "Field Drive",
+  "records": [
+    {
+      "id": "signalos:drive/field_boot",
+      "title": "Field Boot",
+      "type": "record",
+      "source": "SignalOS Drive Template",
+      "body": "Portable data drives can carry records into a server rack-backed SignalOS network.",
+      "order": 0,
+      "metadata": {
+        "signalos.path": "/records/field_boot.txt",
+        "signalos.mime": "text/plain"
+      }
+    }
+  ]
+}

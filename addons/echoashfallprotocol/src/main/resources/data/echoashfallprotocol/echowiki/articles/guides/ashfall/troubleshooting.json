@@ -1,0 +1,61 @@
+{
+  "id": "echowiki:guides/ashfall/troubleshooting",
+  "title": "Ashfall: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Ashfall failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Name The Failure",
+      "body": "When Ashfall feels unfair, name the thing that ended the route: thirst, hunger, darkness, hazard damage, full inventory, missing map marks, broken power, or no exit.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Shrink The Route",
+      "body": "Return to a known loop and test one fix. A shorter route with a clear result teaches more than another long trip that fails in three different ways.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Recovery Kit",
+      "body": "Carry the smallest kit that answers your last failure: water for thirst, food for time, light for navigation, filters for range, and scanner reads for unknown hazards.",
+      "tone": "body",
+      "item": "echoashfallprotocol:filtered_water_bottle",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Filtered Water Bottle",
+      "subtitle": "Route recovery supply"
+    },
+    {
+      "type": "callout",
+      "title": "One Fix At A Time",
+      "body": "Changing three things at once can hide the part that mattered. Change one variable, run a smaller test, then decide whether the loop is safer.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "survival",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:survival/first_hour"
+  ],
+  "relatedItems": [
+    "minecraft:torch",
+    "minecraft:bread",
+    "echoashfallprotocol:filtered_water_bottle",
+    "echoashfallprotocol:portable_signal_scanner"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:hazard_route_prep"
+  ],
+  "sortOrder": 1016
+}

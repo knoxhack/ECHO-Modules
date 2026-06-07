@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:helium_extractor_online",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:pressure_regulator"
+    },
+    "title": {
+      "text": "Mars Habitats Pressurized"
+    },
+    "description": {
+      "text": "Repair three buried Mars pressure consoles."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

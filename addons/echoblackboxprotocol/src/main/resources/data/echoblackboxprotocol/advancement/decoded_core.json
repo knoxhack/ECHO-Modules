@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:bunker_complete",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:core_memory_record"
+                             },
+                    "title":  "Core Log",
+                    "description":  "Decode a Nexus Core memory.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "has_record":  {
+                                        "trigger":  "minecraft:inventory_changed",
+                                        "conditions":  {
+                                                           "items":  [
+                                                                         {
+                                                                             "items":  "echoblackboxprotocol:core_memory_record"
+                                                                         }
+                                                                     ]
+                                                       }
+                                    }
+                 },
+    "requirements":  [
+                         [
+                             "has_record"
+                         ]
+                     ]
+}

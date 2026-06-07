@@ -1,0 +1,109 @@
+{
+  "id": "echoashfallprotocol:make_machine_casing",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 3,
+  "title": "Make a Machine Casing",
+  "briefing": "[ECHO-7] All machines require casings. Use crafted or recycled casings, then claim the generator bridge components.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall machine-casing bridge that confirms casing production before releasing the first Micro Generator component bundle.",
+  "category": "crafting",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:machine_casing",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_hand_recycler"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "make_machine_casing",
+    "nativeGameplayHook": "ashfall.first_route.make_machine_casing",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.micro_generator.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "3",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "12",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:make_machine_casing:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:make_machine_casing/confirm_machine_casing",
+      "type": "obtain_item",
+      "label": "Make a Machine Casing",
+      "detail": "Carry one Machine Casing from crafting or Hand Recycler salvage output.",
+      "icon": "echoashfallprotocol:machine_casing",
+      "target": "echoashfallprotocol:machine_casing",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_contains",
+        "item": "echoashfallprotocol:machine_casing",
+        "events": "player.inventory_changed,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:make_machine_casing/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 6,
+      "label": "Scrap Wire",
+      "detail": "Starter wiring for generator assembly."
+    },
+    {
+      "id": "echoashfallprotocol:make_machine_casing/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "detail": "Generator energy buffer component."
+    },
+    {
+      "id": "echoashfallprotocol:make_machine_casing/reward_circuit_board",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board",
+      "detail": "Generator control component."
+    },
+    {
+      "id": "echoashfallprotocol:make_machine_casing/reward_machine_casing",
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing",
+      "detail": "Spare casing so the generator path does not consume the only verified casing."
+    }
+  ],
+  "completionText": "[ECHO-7] First casing complete. Generator bridge released: cell, circuit, wire, and one spare casing."
+}

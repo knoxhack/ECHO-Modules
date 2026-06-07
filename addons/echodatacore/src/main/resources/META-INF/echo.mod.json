@@ -1,0 +1,68 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echodatacore",
+  "name": "ECHO: DataCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "platform",
+  "entrypoint": "com.knoxhack.echodatacore.EchoDataCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [],
+  "provides": [
+    "echo.data"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "data.persistence"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "saves"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "nativeEntrypoint": "com.knoxhack.echodatacore.EchoDataCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "stable",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "platform_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

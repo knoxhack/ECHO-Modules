@@ -1,0 +1,64 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoblockworks:textures/block/steam_vent.png",
+  "particle_profile": "echoblockworks:static/steam_vent",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "atmosphere",
+    "glow_intensity": 0.35,
+    "pulse_speed": 0.45,
+    "target_scope": "block"
+  },
+  "anchors": {
+    "vent": {
+      "offset": [
+        0,
+        0.65,
+        0
+      ]
+    },
+    "core": {
+      "offset": [
+        0,
+        0.5,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echoblockworks",
+    "display_name": "Static Steam Vent",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/cursecore/first_steps",
+  "title": "CurseCore Field: First Steps",
+  "category": "Guide Books",
+  "summary": "Learn Echo Rot and diagnostics before treating curses as ordinary potion effects.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Read The Symptom",
+      "body": "Start with Echo Rot as a live test curse. Watch stage, timer, and feedback instead of guessing from damage alone.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Use Diagnostics",
+      "body": "Curse diagnostic slips and Lens scans should help identify whether a curse is active, minor, reduced, or cleansed.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "First Clean Win",
+      "body": "A clean first CurseCore win is applying Echo Rot, seeing state persist, and cleansing a minor curse without losing ritual ingredients on failure.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Ready Check",
+      "body": "Before moving on, confirm the first setup step is repeatable and safe enough to do again.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana",
+    "first_steps",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "relatedArticles": [
+    "echowiki:guides/cursecore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1301
+}

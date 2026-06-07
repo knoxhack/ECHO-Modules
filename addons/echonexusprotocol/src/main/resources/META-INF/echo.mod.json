@@ -1,0 +1,96 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echonexusprotocol",
+  "name": "ECHO: Nexus Protocol",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echonexusprotocol.EchoNexusProtocol",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echoorbitalremnants",
+    "echorendercore",
+    "echosoundcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "nexus.content",
+    "nexus.endings",
+    "nexus.field_telemetry",
+    "nexus.machines",
+    "nexus.progression",
+    "nexus.reality_field"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "missions",
+        "worldgen",
+        "data",
+        "blocks"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echonexusprotocol.EchoNexusProtocolNativeModule",
+    "nativeClasspath": [],
+    "notes": "Nexus Protocol is a standalone story addon with optional Terminal, RenderCore, Orbital Remnants, HoloMap, Index, Lens, MissionCore, SoundCore, and JEI integration paths. JEI remains optional and is not represented as a required ECHO module."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echonexusprotocol/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

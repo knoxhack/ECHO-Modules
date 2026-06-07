@@ -1,0 +1,67 @@
+{
+  "id": "echowiki:guides/armory",
+  "title": "Armory Readiness Manual",
+  "category": "Guide Books",
+  "summary": "Build combat kits around route pressure, modules, stance, and survival margin.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Armory is not just bigger numbers. It is a readiness system: gear tier, modules, energy state, stance, loadout, and instability all decide whether a fight is controlled or expensive.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Pick one weapon path and one armor role before spreading upgrades everywhere. Carry a kit that answers the current hazard instead of every imagined fight.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Salvage parts, craft gear, test stance behavior, install modules, then use feedback from failed routes to refine the loadout rather than blindly climbing tiers.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Energy capacity, instability, installed modules, and cosmetic trim can all live on the item stack. Read the tooltip before assuming a tool is ready.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Index can describe gear records, Logistics can stage loadouts, PowerGrid can support charging loops, and TutorialCore can point out readiness gaps.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If gear underperforms, check energy, stance, module side effects, and whether the enemy or hazard is asking for a different answer.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat"
+  ],
+  "icon": "minecraft:iron_sword",
+  "heroArt": "echowiki:textures/gui/guide_books/armory_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/armory/first_steps",
+    "echowiki:guides/armory/core_loop",
+    "echowiki:guides/armory/systems",
+    "echowiki:guides/armory/progression",
+    "echowiki:guides/armory/integrations",
+    "echowiki:guides/armory/troubleshooting"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1030
+}

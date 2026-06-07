@@ -1,0 +1,15 @@
+<page id="test-binding-diagnostics" title="Binding Diagnostics" styles="echoscreencore:advanced_mock">
+  <screen-shell>
+    <header title="Binding Diagnostics" subtitle="Enable /echoscreencore debug bindings on to show unresolved placeholders"/>
+    <panel title="Fallbacks">
+      <text value="{missing.provider.path|Fallback text renders safely}"/>
+      <text value="{mission.rewards.primary.title|No Reward}"/>
+      <status-chip status="{missing.status|warning}" value="{missing.statusLabel|MISSING}"/>
+    </panel>
+    <component src="echoscreencore:debug_panel">
+      <param name="status" value="warning"/>
+      <param name="statusLabel" value="WARN"/>
+      <param name="body" value="Missing bindings warn once per page rebuild instead of spamming every frame."/>
+    </component>
+  </screen-shell>
+</page>

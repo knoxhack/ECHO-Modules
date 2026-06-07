@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:item_ecosystem/industrial_foundation",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:automation_bus_module"
+    },
+    "title": {
+      "text": "Modular Automation"
+    },
+    "description": {
+      "text": "Build the control modules that let factories route work intelligently."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "modular_automation": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:automation_bus_module"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "modular_automation"
+    ]
+  ]
+}

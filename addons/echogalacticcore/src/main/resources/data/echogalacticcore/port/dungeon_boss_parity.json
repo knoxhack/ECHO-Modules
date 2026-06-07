@@ -1,0 +1,66 @@
+{
+  "schema": "echogalacticcore.port.dungeon_boss_parity.v1",
+  "module": "echogalacticcore",
+  "source": "galacticraft_legacy_mit_port",
+  "description": "ASDK-native foundation manifest for Galacticraft Legacy dungeon, boss, and dungeon loot parity.",
+  "dungeons": [
+    {
+      "id": "echogalacticcore:dungeon/moon_dungeon_tier_1",
+      "celestialBody": "moon",
+      "treasureTier": "tier_1",
+      "legacySource": "micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonConfigurationMoon"
+    },
+    {
+      "id": "echogalacticcore:dungeon/mars_dungeon_tier_2",
+      "celestialBody": "mars",
+      "treasureTier": "tier_2",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.mars.world.gen.dungeon.DungeonConfigurationMars"
+    },
+    {
+      "id": "echogalacticcore:dungeon/venus_dungeon_tier_3",
+      "celestialBody": "venus",
+      "treasureTier": "tier_3",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.venus.world.gen.dungeon.DungeonConfigurationVenus"
+    }
+  ],
+  "bosses": [
+    {
+      "id": "echogalacticcore:boss/evolved_skeleton_boss",
+      "celestialBody": "moon",
+      "unlockKey": "tier_1_key",
+      "legacySource": "micdoodle8.mods.galacticraft.core.entities.EntitySkeletonBoss"
+    },
+    {
+      "id": "echogalacticcore:boss/evolved_creeper_boss",
+      "celestialBody": "mars",
+      "unlockKey": "tier_2_key",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.mars.entities.EntityCreeperBoss"
+    },
+    {
+      "id": "echogalacticcore:boss/spider_queen",
+      "celestialBody": "venus",
+      "unlockKey": "tier_3_key",
+      "legacySource": "micdoodle8.mods.galacticraft.planets.venus.entities.EntitySpiderQueen"
+    }
+  ],
+  "loot": [
+    {
+      "id": "echogalacticcore:loot/moon_dungeon_tier_1",
+      "celestialBody": "moon",
+      "requiredKey": "tier_1_key",
+      "legacySource": "assets/galacticraftcore/loot_tables/chests/moon_dungeon.json"
+    },
+    {
+      "id": "echogalacticcore:loot/mars_dungeon_tier_2",
+      "celestialBody": "mars",
+      "requiredKey": "tier_2_key",
+      "legacySource": "assets/galacticraftplanets/loot_tables/chests/mars_dungeon.json"
+    },
+    {
+      "id": "echogalacticcore:loot/venus_dungeon_tier_3",
+      "celestialBody": "venus",
+      "requiredKey": "tier_3_key",
+      "legacySource": "assets/galacticraftplanets/loot_tables/chests/venus_dungeon.json"
+    }
+  ]
+}

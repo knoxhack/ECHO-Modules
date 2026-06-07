@@ -1,0 +1,47 @@
+<page id="test-components-templates" title="Templates" styles="echoscreencore:advanced_mock">
+  <screen-shell>
+    <header title="ScreenCore Templates" subtitle="Reusable XML components with params and slots"/>
+    <component src="echoscreencore:two_column_shell">
+      <param name="sidebarTitle" value="Template Navigation"/>
+      <slot name="sidebar">
+        <component src="echoscreencore:action_card">
+          <param name="title" value="Dashboard"/>
+          <param name="body" value="Open the original test dashboard."/>
+          <param name="action" value="screencore.open_page"/>
+          <param name="page" value="echoscreencore:test_dashboard"/>
+        </component>
+        <include src="echoscreencore:status_chip_row" label="Template Cache" status="ready" value="READY"/>
+      </slot>
+      <slot name="body">
+        <hero-card>
+          <title>Component Templates</title>
+          <text>Templates live under assets namespace eui components and expand once when the page tree is rebuilt.</text>
+          <row gap="12">
+            <component src="echoscreencore:action_card">
+              <param name="title" value="Params"/>
+              <param name="body" value="Template attributes can read param values with fallback text."/>
+              <param name="action" value="noop"/>
+            </component>
+            <component src="echoscreencore:action_card">
+              <param name="title" value="Slots"/>
+              <param name="body" value="Named slot content projects into slot outlets."/>
+              <param name="action" value="noop"/>
+            </component>
+          </row>
+        </hero-card>
+        <section title="Repeated Template">
+          <list bind="missions.demo" item="mission" selected="{selectedMission.id}">
+            <component src="echoscreencore:mission_row">
+              <param name="action" value="terminal.select_mission"/>
+              <param name="value" value="{mission.id}"/>
+              <param name="title" value="{mission.title}"/>
+              <param name="summary" value="{mission.summary}"/>
+              <param name="status" value="{mission.status}"/>
+              <param name="statusLabel" value="{mission.statusLabel}"/>
+            </component>
+          </list>
+        </section>
+      </slot>
+    </component>
+  </screen-shell>
+</page>

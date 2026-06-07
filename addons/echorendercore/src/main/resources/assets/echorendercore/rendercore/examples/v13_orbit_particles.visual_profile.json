@@ -1,0 +1,99 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_orbit_particles.png",
+  "particle_profile": "echorendercore:v13_orbit_particles",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "V13 Orbit Particle Rings",
+    "tags": [
+      "v13",
+      "particles",
+      "orbit"
+    ]
+  },
+  "effect": {
+    "preset": "energy_field",
+    "pulse_speed": 1.2,
+    "bloom_channel": "orbit"
+  },
+  "layers": [
+    {
+      "id": "orbit_ring",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_orbit_ring.png",
+      "states": [
+        "ACTIVE"
+      ],
+      "parts": [
+        "ring"
+      ],
+      "alpha": 0.7,
+      "emissive": true,
+      "effect": {
+        "preset": "energy_field",
+        "bloom_mask_mode": "layer_alpha",
+        "advanced_priority": 35
+      }
+    }
+  ],
+  "anchors": {
+    "ring": [
+      0,
+      0.6,
+      0
+    ],
+    "spark": [
+      0,
+      0.8,
+      0
+    ]
+  },
+  "block_parts": {
+    "ring": {
+      "indices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "surface": {
+    "type": "particle_only",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Orbit Particle Rings",
+    "tags": [
+      "particle_only"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "minimal",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": false,
+    "corner_brackets": false,
+    "accent_rails": false,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "world_surface"
+    ],
+    "reduced_motion": false
+  }
+}

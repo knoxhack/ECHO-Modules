@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:holomap_routes",
+  "category": "echoindex:routes",
+  "title": "HoloMap Routes",
+  "subtitle": "Map Records As Sources",
+  "summary": "HoloMap and WorldCore route data can become Index source cards for structures, caches, hazards, and recovery paths.",
+  "body": "Route source facts should answer where to go, why it matters, which hazard applies, and which mission or map marker points at the next step.",
+  "icon": "minecraft:filled_map",
+  "tags": ["holomap", "worldcore", "route", "structure", "cache"],
+  "related": ["echoindex:source_facts"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 0
+}

@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:signal_analyst_basic",
+  "groups": [
+    {
+      "id": "navigation",
+      "title": "Navigation",
+      "offers": [
+        {
+          "id": "paper_for_compass_hint",
+          "title": "Bearing Scrap",
+          "input": [
+            { "item": "minecraft:paper", "count": 2 }
+          ],
+          "output": { "item": "minecraft:compass", "count": 1 },
+          "stock": 1,
+          "restockTime": 24000,
+          "requiresMission": ""
+        }
+      ]
+    }
+  ]
+}

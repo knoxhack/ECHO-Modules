@@ -1,0 +1,7 @@
+<template>
+  <grid class="sc-list-detail" columns="{param.columns|0.85fr 1.15fr}" gap="{param.gap|8}" stack-below="{param.stackBelow|760}">
+    <slot-outlet name="list"/>
+    <slot-outlet name="detail"/>
+  </grid>
+</template>
+

@@ -1,0 +1,29 @@
+<page id="index_history" title="ECHO Index History" styles="index_cyberglass,index_components">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Recently Viewed"/>
+    <param name="inspectorTitle" value="History"/>
+    <slot name="content">
+      <hero-card>
+        <title value="{index.history.summary.title}"/>
+        <text class="index-dashboard-hint" value="{index.history.summary.hint}"/>
+      </hero-card>
+      <list bind="index.history.recent" item="recent">
+        <list-row action="index.open_related_item" action-value="{recent.id}" help="Open this recent Index record.">
+          <row gap="8"><item-stack item="{recent.icon}"/><column class="index-item-copy"><title class="index-item-title" value="{recent.label}"/><text class="index-item-subtitle" value="{recent.kind} / {recent.id}"/></column></row>
+        </list-row>
+        <empty-state title="No recent records" body="Open items, recipes, and machines to build your local Index history."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <text class="index-dashboard-hint" value="Clearing history only removes local recently viewed shortcuts."/>
+      <button action="screencore.open_modal" action-target="clear-history" tooltip="Open a confirmation dialog before clearing local Index history.">Clear History</button>
+      <component src="echoindex:index_confirm_dialog">
+        <param name="id" value="clear-history"/>
+        <param name="title" value="Clear Index History"/>
+        <param name="body" value="Remove all locally stored recent Index records for this player profile? Favorites and provider data are not changed."/>
+        <param name="confirmAction" value="index.clear_history"/>
+        <param name="confirmLabel" value="Clear"/>
+      </component>
+    </slot>
+  </component>
+</page>

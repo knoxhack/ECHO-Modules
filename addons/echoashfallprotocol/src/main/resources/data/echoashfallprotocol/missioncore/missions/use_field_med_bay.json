@@ -1,0 +1,112 @@
+{
+  "id": "echoashfallprotocol:use_field_med_bay",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 7,
+  "title": "Use Field Med Bay",
+  "briefing": "[ECHO-7] Power the Field Med Bay and let it run a treatment pulse and mutation baseline while you are nearby.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:bandage",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:scan_mutation_status"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "use_field_med_bay",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.use_field_med_bay",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "7",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "53",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:use_field_med_bay:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "ashfall.med_bay_used",
+      "ashfall.location_visited",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:use_field_med_bay/field_med_bay_used",
+      "type": "custom",
+      "label": "Med Bay Treatment",
+      "detail": "Log special progress or a Field Med Bay treatment event for this Ashfall route step.",
+      "icon": "echoashfallprotocol:bandage",
+      "target": "medical:field_med_bay_used",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "special",
+        "location": "medical:field_med_bay_used"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "special",
+      "locationId": "medical:field_med_bay_used",
+      "count": 1,
+      "label": "Med Bay Treatment"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:use_field_med_bay/reward_0",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:use_field_med_bay/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:use_field_med_bay/reward_1",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:use_field_med_bay/reward_1"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:use_field_med_bay/reward_2",
+      "item": "echoashfallprotocol:stim_pack",
+      "count": 1,
+      "label": "Stim Pack",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:use_field_med_bay/reward_2"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Treatment and mutation baseline confirmed. This stabilizes symptoms; it does not make exposure safe."
+}

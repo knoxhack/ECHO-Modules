@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:unclaimed_reward",
+  "type": "PROGRESSION",
+  "category": "TERMINAL",
+  "title": "Unclaimed Reward",
+  "message": "Mission reward pending. Claim it in the Terminal.",
+  "details": "Unclaimed rewards may block future mission unlocks or expire.",
+  "actionLabel": "Review rewards",
+  "actionCardId": "echotutorialcore:reward_inbox",
+  "cooldownTicks": 36000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 70,
+  "dismissible": true,
+  "conditions": [
+    "mission_state:reward_available"
+  ]
+}

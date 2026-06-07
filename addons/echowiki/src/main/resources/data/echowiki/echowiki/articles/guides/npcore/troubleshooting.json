@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/npcore/troubleshooting",
+  "title": "NPCore: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Recover from missing profiles, blocked trades, service cooldowns, and fallback screens.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Generic Or Empty Contact",
+      "body": "Check whether the NPC profile id exists and whether its visual profile, dialogue, trade set, and service set all use resolvable identifiers.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Blocked Action",
+      "body": "A trade can be out of stock, missing required items, mission-locked, or invalid. A service can be cooling down or missing its cost.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Screen",
+      "body": "If the ScreenCore page is absent, disabled, or declined, NPCore should still open the classic interaction screen. That is a fallback, not a broken contact.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1101
+}

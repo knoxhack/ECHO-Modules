@@ -1,0 +1,11 @@
+<list-row class="index-recipe-card" action="index.select_recipe" action-value="{param.id|}" selected="{param.selected|}" active="{param.active|}" help="Select this recipe to preview ingredients, outputs, and actions.">
+  <row class="index-recipe-card-row" gap="8">
+    <item-stack item="{param.icon|minecraft:crafting_table}"/>
+    <column class="index-recipe-card-copy">
+      <title class="index-recipe-title" value="{param.title|Recipe}"/>
+      <text class="index-recipe-summary" value="{param.summary|Inputs to outputs}"/>
+      <text class="index-recipe-meta" value="{param.meta|Recipe}"/>
+    </column>
+    <button class="index-recipe-card-pin" action="index.add_bookmark" action-value="{param.id|}" action-param-kind="recipe" tooltip="Bookmark this recipe so it appears in Favorites.">Save</button>
+  </row>
+</list-row>

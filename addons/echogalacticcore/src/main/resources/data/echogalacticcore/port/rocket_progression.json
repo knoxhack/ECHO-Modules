@@ -1,0 +1,40 @@
+{
+  "schema": "echogalacticcore.port.rocket_progression.v1",
+  "source": "galacticraft_legacy_rocket_progression",
+  "vehicles": [
+    {
+      "id": "echogalacticcore:entity/tier_1_rocket",
+      "item": "echogalacticcore:tier_1_rocket",
+      "legacySource": "micdoodle8.mods.galacticraft.core.entities.EntityTier1Rocket",
+      "requiredPad": "echogalacticcore:launch_pad",
+      "requiredFuel": "echogalacticcore:fuel",
+      "unlockRoutes": ["echogalacticcore:route/earth_orbit", "echogalacticcore:route/moon"]
+    },
+    {
+      "id": "echogalacticcore:entity/lander",
+      "legacySource": "micdoodle8.mods.galacticraft.core.entities.EntityLander",
+      "requiredAttachment": "echogalacticcore:rocket_launch_state"
+    }
+  ],
+  "routeTiers": [
+    {"route": "echogalacticcore:route/earth_orbit", "requiredVehicle": "tier_1_rocket"},
+    {"route": "echogalacticcore:route/moon", "requiredVehicle": "tier_1_rocket"},
+    {"route": "echogalacticcore:route/mars", "requiredVehicle": "tier_2_rocket"},
+    {"route": "echogalacticcore:route/asteroids", "requiredVehicle": "tier_3_rocket"},
+    {"route": "echogalacticcore:route/venus", "requiredVehicle": "tier_3_rocket"}
+  ],
+  "packets": [
+    "echogalacticcore:launch_state_sync",
+    "echogalacticcore:celestial_route_action"
+  ],
+  "screens": [
+    "echogalacticcore:launch_checklist",
+    "echogalacticcore:celestial_selection",
+    "echogalacticcore:rocket_inventory"
+  ],
+  "events": [
+    "echogalacticcore:event/rocket_launch_prepare",
+    "echogalacticcore:event/celestial_route_unlock"
+  ],
+  "echoIntegrations": ["echoholomap", "echoscreencore", "echoindex", "echolens"]
+}

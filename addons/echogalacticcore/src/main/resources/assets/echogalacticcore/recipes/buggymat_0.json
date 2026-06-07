@@ -1,0 +1,24 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:buggymat",
+                   "data":  0
+               },
+    "pattern":  [
+                    " W ",
+                    "WXW",
+                    " W "
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/leather"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

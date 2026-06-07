@@ -1,0 +1,209 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+}
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+
+    runs {
+        textureForgeClient {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            clientData()
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.INFO
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    implementation project(":echocore")
+    implementation project(":echoadaptercore")
+    compileOnly project(":echo-native-contracts")
+
+    compileOnly project(":echothemecore")
+    localRuntime project(":echothemecore")
+
+    compileOnly project(":echorendercore")
+    localRuntime project(":echorendercore")
+
+    // ScreenCore is detected at runtime through EchoRuntimeModules by the placeholder bridge.
+    // Keep TextureForge usable even when ScreenCore is absent or under active development.
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.register('verifyCommonServerSafe') {
+    group = 'verification'
+    description = 'Fails if non-client TextureForge sources import Minecraft client classes.'
+    def commonSources = fileTree('src/main/java') {
+        include '**/*.java'
+        exclude '**/client/**'
+        exclude '**/test/**'
+    }
+    inputs.files(commonSources)
+    doLast {
+        def offenders = commonSources.files.findAll { file ->
+            file.text.contains('net.minecraft.client')
+        }
+        if (!offenders.empty) {
+            throw new GradleException("TextureForge common sources must not import net.minecraft.client: ${offenders*.path}")
+        }
+    }
+}
+
+tasks.named('check') { dependsOn tasks.named('verifyCommonServerSafe') }
+
+tasks.register('textureForgeScan', JavaExec) {
+    group = 'textureforge'
+    description = 'Runs a filesystem-only TextureForge scan and writes reports to build/textureforge.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'scan'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgeReport', JavaExec) {
+    group = 'textureforge'
+    description = 'Writes TextureForge Markdown and JSON audit reports.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'report'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgePrompts', JavaExec) {
+    group = 'textureforge'
+    description = 'Writes copy/paste Codex texture prompts and grouped sheet prompts.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'prompts'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgeValidate', JavaExec) {
+    group = 'textureforge'
+    description = 'Validates discovered PNG dimensions and model references.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'validate'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgeSheets', JavaExec) {
+    group = 'textureforge'
+    description = 'Writes TextureForge grouped sheet prompts and cut maps.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'sheets'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgeImportPlan', JavaExec) {
+    group = 'textureforge'
+    description = 'Plans a safe import from build/textureforge/import/incoming without touching source assets.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'import-plan'
+    if (project.hasProperty('textureForgeSheet')) {
+        args '--sheet', project.property('textureForgeSheet')
+    }
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('textureForgeApplyDryRun', JavaExec) {
+    group = 'textureforge'
+    description = 'Dry-runs safe application of staged TextureForge textures.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.knoxhack.echotextureforge.common.TextureForgeCli'
+    args 'apply-dryrun'
+    if (project.hasProperty('textureForgeMod')) {
+        args '--modid', project.property('textureForgeMod')
+    }
+    workingDir = rootProject.projectDir
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+}

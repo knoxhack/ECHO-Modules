@@ -1,0 +1,3 @@
+<page id="test_index_search_filters" title="Test Index Search Filters" styles="index_cyberglass,index_components">
+  <screen-shell><header title="Index Search Filters" subtitle="Search, dropdowns, suggestions, and active-filter copy"/><component src="echoindex:index_search_filter_bar"/><panel title="Suggestions"><text class="index-filter-hint" value="Suggestion buttons write safe query text into the search box."/><repeat source="index.search.suggestions" item="suggestion"><button action="index.search_changed" action-value="{suggestion.id}" tooltip="{suggestion.subtitle}">{suggestion.label}</button></repeat></panel></screen-shell>
+</page>

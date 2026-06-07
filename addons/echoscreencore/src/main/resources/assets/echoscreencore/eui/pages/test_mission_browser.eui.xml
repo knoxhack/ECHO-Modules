@@ -1,0 +1,55 @@
+<page id="test-mission-browser" title="Mission Browser Mock" styles="terminal_mock">
+  <screen-shell>
+    <header title="Mission Browser" subtitle="Static list rows, selected states, and scrollable details"/>
+    <grid columns="300px 1fr" gap="16">
+      <panel title="Missions">
+        <list id="mission-list" selected="{selectedMission.id}">
+          <list-row action="select:restore_water" selected="true">
+            <column>
+              <title>Restore Water Supply</title>
+              <text>Find a clean water source.</text>
+            </column>
+            <status-chip status="active">ACTIVE</status-chip>
+          </list-row>
+          <list-row action="select:raise_antenna">
+            <column>
+              <title>Raise Signal Antenna</title>
+              <text>Recover enough parts to boost terminal range.</text>
+            </column>
+            <status-chip status="locked">LOCKED</status-chip>
+          </list-row>
+          <list-row action="select:secure_shelter">
+            <column>
+              <title>Secure Shelter</title>
+              <text>Stabilize a safe room before the next event.</text>
+            </column>
+            <status-chip status="ready">READY</status-chip>
+          </list-row>
+        </list>
+      </panel>
+      <scroll height="100%">
+        <column gap="16">
+          <hero-card>
+            <title>{selectedMission.title}</title>
+            <text>Mission details can be composed from markup instead of bespoke render loops.</text>
+            <button action="noop" variant="primary">Track Mission</button>
+          </hero-card>
+          <section title="Requirements">
+            <list>
+              <list-row selected="true"><text>Locate a water source</text><status-chip status="done">DONE</status-chip></list-row>
+              <list-row><text>Install a filtration cartridge</text><status-chip status="active">ACTIVE</status-chip></list-row>
+              <list-row><text>Route output to shelter storage</text><status-chip status="missing">MISSING</status-chip></list-row>
+            </list>
+          </section>
+          <section title="Rewards">
+            <row gap="12">
+              <card><item-stack item="minecraft:water_bucket" count="1"/><text>Water reserve</text></card>
+              <card><item-stack item="minecraft:iron_ingot" count="4"/><text>Repair metal</text></card>
+              <card><item-stack item="minecraft:redstone" count="8"/><text>Signal parts</text></card>
+            </row>
+          </section>
+        </column>
+      </scroll>
+    </grid>
+  </screen-shell>
+</page>

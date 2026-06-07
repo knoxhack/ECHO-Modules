@@ -1,0 +1,41 @@
+{
+  "parent": "echoashfallprotocol:poi_explorer",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:thermal_liner"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.cryogenic_ruins.title",
+      "fallback": "Frozen Wasteland"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.cryogenic_ruins.desc",
+      "fallback": "Discover the Cryogenic Ruins biome."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_cryogenic_ruins": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "echoashfallprotocol:cryogenic_ruins"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["entered_cryogenic_ruins"]
+  ]
+}

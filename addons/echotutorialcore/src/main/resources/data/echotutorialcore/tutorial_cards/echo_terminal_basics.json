@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:echo_terminal_basics",
+  "category": "TERMINAL",
+  "title": "ECHO Terminal Basics",
+  "summary": "Your command center for survival.",
+  "body": [
+    "The ECHO Terminal tracks missions, routes, vitals, factions, rewards, and recovered intel.",
+    "Open it to see your current directive and available actions.",
+    "Many systems in Ashfall are accessed through the Terminal."
+  ],
+  "steps": [
+    "Open the Terminal with its bound key or item.",
+    "Browse the mission browser.",
+    "Check the reward inbox."
+  ],
+  "commonMistakes": [
+    "Never opening the Terminal.",
+    "Ignoring the reward inbox."
+  ],
+  "related": [
+    "echotutorialcore:reward_inbox",
+    "echotutorialcore:mission_browser"
+  ],
+  "unlockTriggers": [
+    "opened_terminal"
+  ],
+  "defaultUnlocked": false,
+  "priority": 90
+}

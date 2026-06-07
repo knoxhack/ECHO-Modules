@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "label": "Operator Handoff",
+  "records": [
+    {
+      "id": "signalos:drive/handoff_summary",
+      "title": "Handoff Summary",
+      "type": "record",
+      "source": "SignalOS Drive Template",
+      "body": "Terminal anchor verified. Rack bay pending. Copy local route, hazard, or archive records before leaving the field site.",
+      "order": 0,
+      "metadata": {
+        "signalos.path": "/handoff/summary.txt",
+        "signalos.mime": "text/plain"
+      }
+    },
+    {
+      "id": "signalos:drive/handoff_checklist",
+      "title": "Handoff Checklist",
+      "type": "guide",
+      "source": "SignalOS Drive Template",
+      "body": "1. Boot terminal. 2. Open Echo Link. 3. Copy active records. 4. Eject drive. 5. Leave no unclaimed rewards in the inbox.",
+      "order": 10,
+      "metadata": {
+        "signalos.path": "/handoff/checklist.txt",
+        "signalos.mime": "text/plain"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "echoashfallprotocol:radwarden_outpost/town_centers",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/radwarden_outpost/command_bunker",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/plains/town_centers/plains_fountain_01",
+        "processors": "echoashfallprotocol:radwarden_outpost_theme"
+      }
+    }
+  ]
+}

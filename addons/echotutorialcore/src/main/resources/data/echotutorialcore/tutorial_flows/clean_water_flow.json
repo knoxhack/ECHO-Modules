@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:clean_water_flow",
+  "title": "Clean Water Setup",
+  "category": "WATER",
+  "steps": [
+    {
+      "id": "place_water_purifier",
+      "type": "place_block",
+      "target": "echoashfallprotocol:water_purifier",
+      "text": "Place a Water Purifier."
+    },
+    {
+      "id": "provide_power",
+      "type": "custom",
+      "target": "echotutorialcore:powered_first_machine",
+      "text": "Provide power to the purifier."
+    },
+    {
+      "id": "produce_clean_water",
+      "type": "custom",
+      "target": "echotutorialcore:created_clean_water",
+      "text": "Produce Clean Water."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:clean_water"
+  ],
+  "defaultUnlocked": false
+}

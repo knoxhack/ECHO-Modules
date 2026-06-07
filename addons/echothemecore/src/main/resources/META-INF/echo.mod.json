@@ -1,0 +1,135 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echothemecore",
+  "name": "ECHO: ThemeCore",
+  "version": "1.3.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "theme_core",
+  "entrypoint": "com.knoxhack.echothemecore.EchoThemeCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoblockworks",
+    "echoholomap",
+    "echolens",
+    "echorendercore",
+    "echoruntimeguard",
+    "echoscreencore",
+    "signalos",
+    "echosoundcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "theme.asset_kits",
+    "theme.block_palettes",
+    "theme.echo_platform",
+    "theme.cyberglass",
+    "theme.render_profiles",
+    "theme.tokens",
+    "theme.ui_skins"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "assets.read",
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [
+    "metadata/assets/modules/echothemecore/icon.png",
+    "metadata/assets/modules/echothemecore/banner.png",
+    "metadata/assets/modules/echothemecore/module_card.png",
+    "metadata/assets/modules/echothemecore/showcase.png"
+  ],
+  "transforms": [
+    "native:client_surface_projection",
+    "native:resource_pipeline_projection"
+  ],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "blocks",
+        "rendering",
+        "themes",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echothemecore.EchoThemeCoreNativeModule",
+    "nativeClasspath": [],
+    "nativeTransformCompatibility": {
+      "mode": "native_projection_replacement",
+      "bytecodeMutationAllowed": false,
+      "minecraftBytecodeMutationAllowed": false,
+      "addonBytecodeMutationAllowed": false,
+      "forgeStyleTransforms": [
+        "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreButtonMixin",
+        "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreContainerScreenMixin",
+        "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreLoadingOverlayMixin",
+        "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreScreenMixin"
+      ],
+      "nativeReplacements": [
+        "native:client_surface_projection",
+        "native:resource_pipeline_projection"
+      ],
+      "replacementMappings": [
+        {
+          "forgeStyleTransform": "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreButtonMixin",
+          "nativeReplacement": "native:client_surface_projection"
+        },
+        {
+          "forgeStyleTransform": "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreContainerScreenMixin",
+          "nativeReplacement": "native:client_surface_projection"
+        },
+        {
+          "forgeStyleTransform": "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreLoadingOverlayMixin",
+          "nativeReplacement": "native:resource_pipeline_projection"
+        },
+        {
+          "forgeStyleTransform": "neoforge:mixin:echothemecore.mixins.json#client.ThemeCoreScreenMixin",
+          "nativeReplacement": "native:client_surface_projection"
+        }
+      ],
+      "notes": "NeoForge client mixins are not executed by Native Loader release mode; theme replacement behavior must be exposed through native client surface and resource projections."
+    },
+    "notes": "Theme token, palette, UI skin, render preset, and universal theme asset-kit provider for first-party ECHO surfaces."
+  },
+  "apiStability": "stable",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echothemecore/**",
+      "src/main/resources/**",
+      "docs/**",
+      "README.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:triangulate_route_matrix",
+  "display_name": "Triangulate Route Matrix",
+  "category": "scanner",
+  "allowed_multiblocks": ["echomultiblockcore:scanner_array"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["SCANNER", "CALIBRATOR"],
+  "duration_ticks": 220,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "animation_profile": "echomultiblockcore:scanner_sweep",
+  "effects": ["echolens:publish_scan_context", "echoholomap:refresh_multiblock_marker"],
+  "inputs": [
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 },
+    { "item": "echomultiblockcore:supply_manifest", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 }
+  ],
+  "notes": ["Route intelligence loop for Lens and HoloMap provider consumers."]
+}

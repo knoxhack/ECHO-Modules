@@ -1,0 +1,15 @@
+{
+  "id": "echoashfallprotocol:toxic_swamp",
+  "type": "toxic_swamp",
+  "displayName": "Toxic Swamp",
+  "summary": "Corroded wetlands, chemical runoff, bio-lab remains, and spore exposure.",
+  "biomeIds": ["echoashfallprotocol:toxic_swamp"],
+  "biomeTags": ["echoashfallprotocol:toxic_air_biomes", "echoashfallprotocol:hazardous_wasteland_biomes", "echoashfallprotocol:has_structure/toxic_swamp"],
+  "structureIds": ["echoashfallprotocol:toxic_swamp", "echoashfallprotocol:toxic_swamp_landmarks", "echoashfallprotocol:bio_lab", "echoashfallprotocol:sporebound_sanctum"],
+  "hazardIds": ["echoworldcore:hazard/toxic_air", "echoashfallprotocol:hazard/toxic_ash"],
+  "discoveryId": "echoashfallprotocol:toxic_swamp",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/toxic_swamp",
+  "audioProfileId": "echoworldcore:ambience/toxic_swamp",
+  "sortOrder": 30
+}

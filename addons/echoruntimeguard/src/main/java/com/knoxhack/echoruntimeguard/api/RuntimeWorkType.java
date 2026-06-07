@@ -1,0 +1,15 @@
+package com.knoxhack.echoruntimeguard.api;
+
+public enum RuntimeWorkType {
+    BLOCK_ENTITY,
+    MULTIBLOCK_VALIDATION,
+    HOLOMAP_REFRESH,
+    LENS_SCAN,
+    PARTICLE,
+    NETWORK_SYNC,
+    ROBOTICS_ANIMATION,
+    CONVOY_SIMULATION,
+    ORBITAL_TELEMETRY,
+    RECLAMATION_UPDATE,
+    NEXUS_STORM
+}

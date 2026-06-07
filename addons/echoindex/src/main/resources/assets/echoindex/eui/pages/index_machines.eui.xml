@@ -1,0 +1,43 @@
+<page id="index_machines" title="ECHO Index Machines" styles="index_cyberglass,index_components,index_machines">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Machine Browser"/>
+    <param name="inspectorTitle" value="Machine Detail"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar">
+        <param name="categorySource" value="index.filters.machines"/>
+        <param name="categoryValue" value="{index.filters.machine}"/>
+        <param name="categoryFilter" value="machine"/>
+      </component>
+      <list bind="index.machines.visible" item="machine" selected="{index.machine.selected.id}">
+        <component src="echoindex:index_machine_card" value="{machine.id}">
+          <param name="id" value="{machine.id}"/>
+          <param name="icon" value="{machine.icon}"/>
+          <param name="title" value="{machine.name}"/>
+          <param name="summary" value="{machine.recipeTypeSummary}"/>
+          <param name="meta" value="{machine.modName} / {machine.recipeCount} recipe(s)"/>
+        </component>
+        <empty-state title="No machines found" body="No machine-backed recipe cards match these filters. Clear search or choose All Machines."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <component src="echoindex:index_detail_panel">
+        <param name="title" value="{index.machine.selected.name|Select a Machine}"/>
+        <param name="icon" value="{index.machine.selected.icon|minecraft:crafting_table}"/>
+        <param name="subtitle" value="{index.machine.selected.modName|No machine selected}"/>
+        <param name="meta" value="{index.machine.selected.recipeCount|0} recipe(s)"/>
+        <slot name="body">
+          <component src="echoindex:index_machine_slots">
+            <param name="inputs" value="{index.machine.selected.inputSlots|0}"/>
+            <param name="outputs" value="{index.machine.selected.outputSlots|0}"/>
+          </component>
+          <text class="index-machine-description" value="{index.machine.selected.description|Select a machine to inspect supported recipes and process metadata.}"/>
+          <row class="index-machine-actions" gap="8">
+            <button action="index.open_machine_detail" action-value="{index.machine.selected.id}" tooltip="Open the full machine profile.">Detail</button>
+            <button action="index.open_machine_recipes" action-value="{index.machine.selected.id}" tooltip="Show recipes handled by this machine.">Recipes</button>
+            <button action="index.add_bookmark" action-value="{index.machine.selected.id}" action-param-kind="machine" tooltip="Bookmark this machine for quick access from Favorites.">Bookmark</button>
+          </row>
+        </slot>
+      </component>
+    </slot>
+  </component>
+</page>

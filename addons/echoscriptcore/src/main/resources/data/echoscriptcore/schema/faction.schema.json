@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "faction",
+  "required": ["schema_version", "id", "type", "display_name"],
+  "fields": ["pack", "description", "starting_reputation", "ranks", "reputation_events", "metadata"]
+}

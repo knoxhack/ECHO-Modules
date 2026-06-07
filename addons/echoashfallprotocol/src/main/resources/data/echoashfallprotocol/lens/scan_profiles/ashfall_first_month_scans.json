@@ -1,0 +1,94 @@
+{
+  "id": "echoashfallprotocol:ashfall_first_month_scans",
+  "title": "Ashfall First-Month Field Scans",
+  "rows": [
+    {
+      "target": "portable_signal_scanner",
+      "category": "tool",
+      "text": "This scanner turns unknown signals into route records. Use it from shelter first, then confirm the nearest cache marker before committing to the walk.",
+      "riskLabel": "safe",
+      "indexEntry": "echoashfallprotocol:field_scanning",
+      "mission": "echoashfallprotocol:ashfall_first_month_routes",
+      "holomapMarker": "echoashfallprotocol:survivor_cache_signal",
+      "routeLink": "echoashfallprotocol:survivor_cache",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "survivor_cache",
+      "category": "cache",
+      "text": "A sealed survivor cache. Low risk, high utility. Recover supplies, log the route, and use the cache note to choose the next objective.",
+      "riskLabel": "low risk",
+      "indexEntry": "echoashfallprotocol:field_caches",
+      "mission": "echoashfallprotocol:survivor_cache_sweep",
+      "holomapMarker": "echoashfallprotocol:survivor_cache_signal",
+      "routeLink": "echoashfallprotocol:survivor_cache",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "ruined_plains_signal",
+      "category": "poi_signal",
+      "text": "Open salvage ground with poor cover. The route is useful, but weather exposure matters more than distance.",
+      "riskLabel": "medium exposure",
+      "indexEntry": "echoashfallprotocol:poi_signals",
+      "mission": "echoashfallprotocol:ashfall_first_month_routes",
+      "holomapMarker": "echoashfallprotocol:ruined_plains_route",
+      "routeLink": "echoashfallprotocol:ruined_plains",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "radio_relay_small",
+      "category": "route",
+      "text": "A damaged relay node. If restored or documented, it can anchor safer return navigation and later field communication work.",
+      "riskLabel": "medium risk",
+      "indexEntry": "echoashfallprotocol:route_records",
+      "mission": "echoashfallprotocol:ashfall_first_month_routes",
+      "holomapMarker": "echoashfallprotocol:relay_station_signal",
+      "routeLink": "echoashfallprotocol:relay_station",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "crashbreak_route_board",
+      "category": "faction",
+      "text": "Crashbreak markings. This is a contact lead, not a raid target. Scan, read the dossier, and leave room to retreat.",
+      "riskLabel": "guarded contact",
+      "indexEntry": "echoashfallprotocol:faction_field_contacts",
+      "mission": "echoashfallprotocol:faction_signal_ping",
+      "holomapMarker": "echoashfallprotocol:crashbreak_salvage_yard",
+      "routeLink": "echoashfallprotocol:crashbreak_salvage_yard",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "radwarden_perimeter_sign",
+      "category": "faction",
+      "text": "Radwarden perimeter text. Standing matters here; treat this as observation unless a mission explicitly asks for contact.",
+      "riskLabel": "restricted",
+      "indexEntry": "echoashfallprotocol:faction_field_contacts",
+      "mission": "echoashfallprotocol:faction_signal_ping",
+      "holomapMarker": "echoashfallprotocol:radwarden_perimeter",
+      "routeLink": "echoashfallprotocol:radwarden_outpost",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "toxic_air_warning",
+      "category": "hazard",
+      "text": "The route is contaminated. Mark it, read the hazard prep entry, and come back with filters, water, and a planned exit.",
+      "riskLabel": "high toxicity",
+      "indexEntry": "echoashfallprotocol:weather_route_planning",
+      "mission": "echoashfallprotocol:hazard_route_prep",
+      "holomapMarker": "echoashfallprotocol:toxic_swamp_warning",
+      "routeLink": "echoashfallprotocol:toxic_swamp",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    },
+    {
+      "target": "reactor_warning_marker",
+      "category": "hazard",
+      "text": "Radiation warning marker. This is first-month intel, not first-month clearance. Log it and return after countermeasures exist.",
+      "riskLabel": "radiation",
+      "indexEntry": "echoashfallprotocol:weather_route_planning",
+      "mission": "echoashfallprotocol:hazard_route_prep",
+      "holomapMarker": "echoashfallprotocol:reactor_route_warning",
+      "routeLink": "echoashfallprotocol:reactor_ruin",
+      "tutorialHint": "echoashfallprotocol:first_month_route_hint"
+    }
+  ]
+}

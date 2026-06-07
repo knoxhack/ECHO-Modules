@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoblockworks:block/wall_pipe"
+    },
+    "facing=east": {
+      "model": "echoblockworks:block/wall_pipe",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoblockworks:block/wall_pipe",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoblockworks:block/wall_pipe",
+      "y": 270
+    }
+  }
+}

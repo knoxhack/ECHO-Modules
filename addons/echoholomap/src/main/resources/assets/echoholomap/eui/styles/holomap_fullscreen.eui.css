@@ -1,0 +1,41 @@
+page {
+  padding: 2px;
+  gap: 0;
+  background: #01070DF8;
+}
+
+.holomap-fullscreen-shell {
+  padding: 4px;
+  gap: 0;
+  overflow: hidden;
+  background: #01070DF2;
+  border-color: #38DFF4AA;
+  border-width: 1px;
+  border-radius: 4px;
+  texture-alpha: 34;
+  texture-alpha-2: 16;
+  texture-alpha-3: 6;
+  glow-strength: 6;
+}
+
+.holomap-fullscreen-content {
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  background: #020A0FE8;
+  border-color: #38DFF455;
+  border-width: 1px;
+  border-radius: 4px;
+  texture-alpha: 26;
+  texture-alpha-2: 12;
+  texture-alpha-3: 4;
+  glow-strength: 2;
+}
+
+.holomap-fullscreen-canvas {
+  min-height: 240px;
+  background: #040E14D8;
+  border-color: #38DFF488;
+  border-width: 1px;
+  border-radius: 3px;
+}

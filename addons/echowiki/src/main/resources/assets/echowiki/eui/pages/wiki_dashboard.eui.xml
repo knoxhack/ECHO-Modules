@@ -1,0 +1,96 @@
+<page id="wiki_dashboard" title="ECHO Survival Codex" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists,wiki_fast">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Overview"/>
+    <param name="inspectorTitle" value="Codex Status"/>
+    <slot name="content">
+      <hero-card class="wiki-dashboard-hero">
+        <title value="{wiki.dashboard.title}"/>
+        <text value="{wiki.dashboard.subtitle}"/>
+        <row gap="10">
+          <command-card action="wiki.open_page" action-page="echowiki:wiki_articles"><title>Articles</title><text value="{wiki.dashboard.articleCount} article(s)"/></command-card>
+          <command-card action="wiki.open_page" action-page="echowiki:wiki_guide_books"><title>Guide Books</title><text value="{wiki.dashboard.visibleGuideBookCount} manual(s)"/></command-card>
+          <command-card action="wiki.open_page" action-page="echowiki:wiki_regions"><title>Regions</title><text value="{wiki.dashboard.regionCount} WorldCore region(s)"/></command-card>
+          <command-card action="wiki.open_page" action-page="echowiki:wiki_hazards"><title>Hazards</title><text value="{wiki.dashboard.hazardCount} hazard profile(s)"/></command-card>
+        </row>
+      </hero-card>
+      <component src="echowiki:wiki_search_filter_bar"/>
+      <panel class="wiki-manual-shelf-panel" title="Manual Shelf">
+        <row class="wiki-panel-toolbar" gap="8">
+          <text value="{wiki.dashboard.visibleGuideBookCount} manual(s) ready"/>
+          <button action="wiki.open_page" action-page="echowiki:wiki_guide_books" variant="secondary">Open Library</button>
+        </row>
+        <scroll class="wiki-inner-scroll" scroll-state="true" state-key="wiki.dashboard.manualShelf">
+          <list class="wiki-compact-list" bind="wiki.dashboard.guideBooks" item="guide">
+            <component src="echowiki:wiki_guide_book_shelf_row">
+              <param name="id" value="{guide.id}"/>
+              <param name="heroArt" value="{guide.heroArt}"/>
+              <param name="title" value="{guide.title}"/>
+              <param name="moduleBadge" value="{guide.moduleBadge}"/>
+              <param name="chapterBadge" value="{guide.chapterBadge}"/>
+              <param name="summaryPreview" value="{guide.summaryPreview}"/>
+              <param name="selected" value="{guide.selected}"/>
+            </component>
+            <empty-state class="wiki-manual-shelf-empty-state" title="No manuals" body="No physical guide books are available in this addon set."/>
+          </list>
+        </scroll>
+      </panel>
+      <grid columns="1fr 1fr" gap="12">
+        <panel class="wiki-status-panel" title="Recently Available">
+          <scroll class="wiki-inner-scroll" scroll-state="true" state-key="wiki.dashboard.articles">
+            <list class="wiki-compact-list" bind="wiki.dashboard.articles" item="article">
+              <component src="echowiki:wiki_article_card">
+                <param name="id" value="{article.id}"/>
+                <param name="icon" value="{article.icon}"/>
+                <param name="heroArt" value="{article.heroArtFallback}"/>
+                <param name="title" value="{article.title}"/>
+                <param name="category" value="{article.category}"/>
+                <param name="summary" value="{article.summary}"/>
+                <param name="state" value="{article.state}"/>
+                <param name="statusLabel" value="{article.statusLabel}"/>
+                <param name="tags" value="{article.tagsLabel}"/>
+                <param name="selected" value="{article.selected}"/>
+              </component>
+              <empty-state title="No articles" body="No Codex articles match the current filters."/>
+            </list>
+          </scroll>
+        </panel>
+        <panel class="wiki-status-panel" title="Active World Context">
+          <scroll class="wiki-inner-scroll" scroll-state="true" state-key="wiki.dashboard.context">
+            <list class="wiki-compact-list" bind="wiki.dashboard.worldContext" item="record">
+              <component src="echowiki:wiki_record_row">
+                <param name="id" value="{record.id}"/>
+                <param name="title" value="{record.title}"/>
+                <param name="summary" value="{record.summary}"/>
+                <param name="status" value="{record.status}"/>
+                <param name="chip" value="{record.chip}"/>
+                <param name="meta" value="{record.meta}"/>
+                <param name="countLabel" value="{record.countLabel}"/>
+              </component>
+              <empty-state title="Nominal" body="No active shared hazard telemetry is available."/>
+            </list>
+          </scroll>
+        </panel>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <stat-card label="Articles" value="{wiki.dashboard.articleCount}"/>
+      <stat-card label="Guide Books" value="{wiki.dashboard.visibleGuideBookCount}"/>
+      <stat-card label="Regions" value="{wiki.dashboard.regionCount}"/>
+      <stat-card label="Missions" value="{wiki.dashboard.missionCount}"/>
+      <stat-card label="Factions" value="{wiki.dashboard.factionCount}"/>
+      <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.dashboard.addons">
+        <list class="wiki-compact-list" bind="wiki.dashboard.optionalAddons" item="addon">
+          <component src="echowiki:wiki_record_row">
+            <param name="id" value="{addon.id}"/>
+            <param name="title" value="{addon.title}"/>
+            <param name="summary" value="{addon.summary}"/>
+            <param name="status" value="{addon.status}"/>
+            <param name="chip" value="{addon.chip}"/>
+            <param name="meta" value="{addon.meta}"/>
+            <param name="countLabel" value="{addon.countLabel}"/>
+          </component>
+        </list>
+      </scroll>
+    </slot>
+  </component>
+</page>

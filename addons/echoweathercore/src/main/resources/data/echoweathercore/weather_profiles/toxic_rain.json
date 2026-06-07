@@ -1,0 +1,26 @@
+{
+  "id": "echoweathercore:toxic_rain",
+  "displayName": "Toxic Rain",
+  "type": "TOXIC_RAIN",
+  "defaultSeverity": "MODERATE",
+  "scope": "REGIONAL",
+  "durationTicks": 10000,
+  "warningTicks": 2000,
+  "weight": 30,
+  "cooldownTicks": 20000,
+  "effects": {
+    "filterDrainMultiplier": 1.35,
+    "toxicExposureMultiplier": 1.40,
+    "droneScoutReliability": 0.85,
+    "routeRiskModifier": 1.25
+  },
+  "recommendedGear": [
+    "echoweathercore:ash_filter_wrap",
+    "echoweathercore:toxic_rain_collector"
+  ],
+  "terminalWarning": "Toxic rain cell forming. Filter drain will increase.",
+  "echoLines": [
+    "Airborne toxins detected. Filter check recommended.",
+    "Water contamination risk elevated."
+  ]
+}

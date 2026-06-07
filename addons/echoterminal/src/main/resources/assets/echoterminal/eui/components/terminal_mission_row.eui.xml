@@ -1,0 +1,4 @@
+<list-row action="terminal.select_mission" action-value="{param.id|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Mission}" subtitle="{param.summary|No mission summary.}"/>
+  <status-chip status="{param.status|locked}" value="{param.statusLabel|LOCKED}"/>
+</list-row>

@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:nexus_guardian",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:guardian_core"
+                             },
+                    "title":  "Core Chamber Cleared",
+                    "description":  "Recover the Guardian Core and force the final choice.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "guardian_core":  {
+                                           "trigger":  "minecraft:inventory_changed",
+                                           "conditions":  {
+                                                              "items":  [
+                                                                            {
+                                                                                "items":  "echoblackboxprotocol:guardian_core"
+                                                                            }
+                                                                        ]
+                                                          }
+                                       }
+                 },
+    "requirements":  [
+                         [
+                             "guardian_core"
+                         ]
+                     ]
+}

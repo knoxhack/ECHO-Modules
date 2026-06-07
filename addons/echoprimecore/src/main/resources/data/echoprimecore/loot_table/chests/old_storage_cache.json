@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 5,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:storage_chip",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:wire_bundle",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:broken_circuit",
+          "weight": 18,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:scanner_handle",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:data_wafer_blank",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoprimecore:signal_shard",
+          "weight": 8
+        }
+      ]
+    }
+  ]
+}

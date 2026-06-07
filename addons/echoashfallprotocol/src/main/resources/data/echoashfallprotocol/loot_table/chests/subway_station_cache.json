@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_metal", "weight": 22 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_wire", "weight": 16 },
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_plastic", "weight": 10 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:energy_cell", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:circuit_board", "weight": 5 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:gas_mask", "weight": 2 }
+      ]
+    }
+  ]
+}

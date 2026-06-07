@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:restore_repair_nodes",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 0,
+  "title": "Activate 3 Power Nodes",
+  "briefing": "[ECHO-7] The grid requires stabilization. Activate 3 Power Nodes; crafted replacements work if old nodes are lost.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_crystal",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:reach_decision"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "restore_repair_nodes",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.restore_repair_nodes",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "0",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "93",
+    "requiredPath": "restore",
+    "routeRoleTag": "restore_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:restore_repair_nodes:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "restore",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:restore_repair_nodes/restore_repair_nodes",
+      "type": "custom",
+      "label": "Activate 3 Power Nodes",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_crystal",
+      "target": "echoashfallprotocol:restore_repair_nodes",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.restore_repair_nodes"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:restore_repair_nodes/reward_0",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 2,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_repair_nodes/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:restore_repair_nodes/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 8,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_repair_nodes/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Grid stabilization progressing. The Core's influence spreads with each node restored."
+}

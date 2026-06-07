@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:repair_convoy_vehicle",
+  "display_name": "Repair Convoy Vehicle",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "REPAIR",
+  "required_tools": ["WELDER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:repair_kit", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 200,
+  "heat_per_second": 2,
+  "animation": "repair",
+  "effects": ["echoconvoyprotocol:repair_convoy_vehicle"],
+  "notes": ["Restores convoy vehicle condition through the facility runtime."]
+}

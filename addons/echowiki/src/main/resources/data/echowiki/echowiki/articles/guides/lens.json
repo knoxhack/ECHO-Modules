@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/lens",
+  "title": "Lens Inspection Manual",
+  "category": "Guide Books",
+  "summary": "Scan before acting so unknown blocks, machines, and records become decisions rather than guesses.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Lens is the player's question tool. It should be used before spending rare materials, touching unknown machinery, or ignoring a suspicious block.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Bind Lens to a comfortable slot and scan common machines near base so you know what normal output looks like before a crisis.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Find an unknown target, scan it, read the result, open related Wiki or Index records, then decide whether to harvest, power, repair, or avoid it.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Scan categories, target hints, and tooltip bridges explain what kind of information Lens can expose for the thing in front of you.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Index and Wiki give scan results somewhere to link. TutorialCore can report Lens progress, and HoloMap can turn scan discoveries into route notes.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If Lens gives little information, check whether the owning addon is loaded and try scanning adjacent blocks in complex machines.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "lens",
+    "scan"
+  ],
+  "icon": "minecraft:spyglass",
+  "heroArt": "echowiki:textures/gui/guide_books/lens_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/lens/first_steps",
+    "echowiki:guides/lens/core_loop",
+    "echowiki:guides/lens/systems",
+    "echowiki:guides/lens/progression",
+    "echowiki:guides/lens/integrations",
+    "echowiki:guides/lens/troubleshooting"
+  ],
+  "sortOrder": 1200
+}

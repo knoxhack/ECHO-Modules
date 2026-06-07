@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:power_and_machines",
+  "category": "echoindex:machines",
+  "title": "Power And Machines",
+  "subtitle": "Process Ownership",
+  "summary": "Machine recipes should be published by the owning addon, with inputs, outputs, catalysts, locked hints, and source notes kept searchable in Index.",
+  "body": "EchoIndex can render recipe-like cards and planning state, but it does not become recipe authority for machines. PowerGrid, Industrial Nexus, MultiblockCore, and other process owners should publish provider-backed cards.",
+  "icon": "minecraft:crafter",
+  "tags": ["machine", "power", "process", "provider"],
+  "related": ["echoindex:source_facts"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 0
+}

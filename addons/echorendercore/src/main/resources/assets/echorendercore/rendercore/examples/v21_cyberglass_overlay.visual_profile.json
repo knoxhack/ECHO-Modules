@@ -1,0 +1,11 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "hud_overlay", "owner_addon": "echorendercore", "display_name": "V21 Cyberglass Overlay", "tags": ["hud_overlay"], "integration_mode": "optional" },
+  "fallback": { "mode": "minimal_screen", "expectation": "quiet overlay can fall back to minimal chrome", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "low", "advanced_fx": "auto" },
+  "screen_chrome": { "style": "cyberglass", "label": "", "backdrop": false, "edge_glow": false, "corner_brackets": true, "accent_rails": true, "scanlines": false, "glass_glints": false, "chromatic_edge": false, "quiet_fallback": true },
+  "qa": { "required": true, "evidence": ["screenshot", "screen_chrome"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/gui/v21_cyberglass_overlay.png",
+  "default_state": "ACTIVE",
+  "effect": { "preset": "hologram", "glow_intensity": 0.32, "pulse_speed": 0.12, "bloom_tint": "#FF66E8FF" }
+}

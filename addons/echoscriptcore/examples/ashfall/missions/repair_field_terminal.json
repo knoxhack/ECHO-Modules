@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "pack": "ashfall",
+  "id": "ashfall:repair_field_terminal",
+  "type": "mission",
+  "title": "Repair Field Terminal",
+  "route": "ashfall_example",
+  "phase": "field_recovery",
+  "role": "main",
+  "objectives": [
+    { "id": "scrap_circuit", "type": "collect_item", "title": "Find a scrap circuit", "item": "echo:scrap_circuit", "count": 1 },
+    { "id": "field_battery", "type": "collect_item", "title": "Find a field battery", "item": "echo:field_battery", "count": 1 }
+  ],
+  "metadata": { "example_only": true }
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echospellcore",
+  "name": "ECHO: SpellCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "story",
+  "entrypoint": "com.knoxhack.echospellcore.EchoSpellCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoarcaneindex",
+    "echocursecore",
+    "echogrimoire",
+    "echolens",
+    "echomissioncore",
+    "echoritualcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "spell.aether_costs",
+    "spell.cooldowns",
+    "spell.deck",
+    "spell.definitions",
+    "spell.focus",
+    "spell.hud_diagnostics",
+    "spell.projectiles",
+    "spell.runtime_hooks"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "story_packs"
+  ],
+  "permissions": [
+    "network.payloads",
+    "resources.data",
+    "ui.screens",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "items",
+        "player",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echospellcore.EchoSpellCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Starter casting slice for Arcana Division with Signal Focus casting, Spell Deck loadouts, synchronized projectiles, Aether Signal costs, cooldowns, HUD diagnostics, and optional knowledge-surface bridges. JEI is not required."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echospellcore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Ruined Highway Incidents",
+  "incidents": [
+    {
+      "id": "echoconvoyprotocol:collapsed_overpass",
+      "stage": 2,
+      "displayText": "Collapsed overpass debris blocked the lead vehicle; loader support is required.",
+      "readinessThreshold": 58,
+      "fuelEffect": -4,
+      "integrityEffect": -6,
+      "cargoEffect": 0,
+      "delayTicks": 100,
+      "requiredResponseTask": "echoconvoyprotocol:resolve_field_incident",
+      "holomapMarkerHint": "convoy_route_warning"
+    }
+  ]
+}

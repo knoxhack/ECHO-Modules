@@ -1,0 +1,65 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoblockworks:textures/block/flickering_warning_light.png",
+  "particle_profile": "echoblockworks:static/flickering_warning_light",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "energy_field",
+    "glow_intensity": 0.9,
+    "pulse_speed": 1.7,
+    "flicker_intensity": 0.18,
+    "target_scope": "block"
+  },
+  "anchors": {
+    "light": {
+      "offset": [
+        0,
+        0.52,
+        0
+      ]
+    },
+    "core": {
+      "offset": [
+        0,
+        0.5,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echoblockworks",
+    "display_name": "Static Flickering Warning Light",
+    "tags": [
+      "static_block"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

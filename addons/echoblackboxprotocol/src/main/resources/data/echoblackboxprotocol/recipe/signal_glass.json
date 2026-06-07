@@ -1,0 +1,18 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "GRG",
+                    "RSR",
+                    "GRG"
+                ],
+    "key":  {
+                "G":  "minecraft:glass",
+                "R":  "minecraft:redstone",
+                "S":  "echoblackboxprotocol:static_fluid"
+            },
+    "result":  {
+                   "id":  "echoblackboxprotocol:signal_glass",
+                   "count":  4
+               }
+}

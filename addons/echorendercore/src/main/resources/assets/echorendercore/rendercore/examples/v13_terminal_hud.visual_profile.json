@@ -1,0 +1,92 @@
+{
+  "schema_version": 12,
+  "base_texture": "echorendercore:textures/block/v13_terminal_hud.png",
+  "default_state": "ONLINE",
+  "preview": {
+    "title": "V13 Terminal HUD",
+    "tags": [
+      "v13",
+      "terminal",
+      "hud"
+    ]
+  },
+  "effect": {
+    "preset": "terminal_hud",
+    "scanline_strength": 0,
+    "pulse_speed": 0.25
+  },
+  "layers": [
+    {
+      "id": "screen_scanlines",
+      "kind": "overlay",
+      "texture": "echorendercore:textures/block/v13_terminal_scanlines.png",
+      "states": [
+        "ONLINE",
+        "ACTIVE"
+      ],
+      "parts": [
+        "screen"
+      ],
+      "alpha": 0.8,
+      "emissive": true,
+      "effect": {
+        "preset": "terminal_hud",
+        "bloom_mask_mode": "layer_alpha",
+        "bloom_channel": "terminal"
+      }
+    }
+  ],
+  "anchors": {
+    "screen": [
+      0,
+      0.65,
+      -0.5
+    ]
+  },
+  "block_parts": {
+    "screen": {
+      "directions": [
+        "north"
+      ]
+    }
+  },
+  "surface": {
+    "type": "hud_overlay",
+    "owner_addon": "echorendercore",
+    "display_name": "V13 Terminal HUD",
+    "tags": [
+      "hud_overlay"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Stable RenderCore fallback remains readable.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "terminal",
+    "label": "V13 TERMINAL HUD",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": false,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": false
+  }
+}

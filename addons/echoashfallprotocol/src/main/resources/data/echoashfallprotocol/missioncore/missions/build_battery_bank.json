@@ -1,0 +1,111 @@
+{
+  "id": "echoashfallprotocol:build_battery_bank",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 7,
+  "title": "Build a Battery Bank",
+  "briefing": "[ECHO-7] Single-generator output is unstable. Build a Battery Bank to buffer power before expanding the workshop.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall power-buffer bridge that stabilizes early generator output before the Scrap Dynamo route.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:battery_bank",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:stockpile_clean_water"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_battery_bank",
+    "nativeGameplayHook": "ashfall.first_route.build_battery_bank",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.scrap_dynamo.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "7",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "16",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_battery_bank:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_battery_bank/place_battery_bank",
+      "type": "place_block",
+      "label": "Build a Battery Bank",
+      "detail": "Place one Battery Bank to buffer Micro Generator output before the next workshop expansion.",
+      "icon": "echoashfallprotocol:battery_bank",
+      "target": "echoashfallprotocol:battery_bank",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:battery_bank",
+        "required_blocks": "echoashfallprotocol:battery_bank=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 6,
+      "label": "Scrap Metal"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cells"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 1,
+      "label": "Circuit Board"
+    },
+    {
+      "block": "echoashfallprotocol:battery_bank",
+      "count": 1,
+      "label": "Placed Battery Bank"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_battery_bank/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 6,
+      "label": "Scrap Wire",
+      "detail": "Wiring reserve for the next power expansion."
+    },
+    {
+      "id": "echoashfallprotocol:build_battery_bank/reward_scrap_circuit",
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 2,
+      "label": "Scrap Circuit",
+      "detail": "Circuit salvage for Scrap Dynamo control wiring."
+    }
+  ],
+  "completionText": "[ECHO-7] Stored power online. Use the bank to smooth machine demand and prevent processing stalls."
+}

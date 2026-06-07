@@ -1,0 +1,87 @@
+{
+  "schema": {
+    "id": "echo.mod",
+    "version": "1",
+    "kind": "echo_mod_manifest"
+  },
+  "id": "echoterminal",
+  "name": "ECHO: Terminal",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "ui_pack",
+  "role": "terminal_surface",
+  "entrypoint": "com.knoxhack.echo.terminal.EchoTerminal",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "requires": [
+    {
+      "module": "echocore",
+      "versionRange": "[1.0.0,)",
+      "reason": "Base ECHO services."
+    }
+  ],
+  "optional": [
+    {
+      "module": "echomissioncore",
+      "versionRange": "[1.0.0,)",
+      "reason": "Mission route and objective display."
+    },
+    {
+      "module": "echothemecore",
+      "versionRange": "[1.0.0,)",
+      "reason": "Cyberglass theme tokens."
+    }
+  ],
+  "provides": [
+    "terminal.surface",
+    "terminal.tabs",
+    "terminal.system_tab"
+  ],
+  "consumes": [
+    "missions.routes",
+    "screen_core.components",
+    "theme.tokens",
+    "pack.profile",
+    "runtime.health"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [
+    "ui.screens",
+    "diagnostics.write",
+    "pack.read"
+  ],
+  "assets": [
+    {
+      "id": "terminal_icons",
+      "kind": "icon",
+      "path": "assets/echoterminal/textures/gui",
+      "required": true
+    }
+  ],
+  "transforms": [],
+  "access": {
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Terminal metadata is descriptive and does not authorize direct command execution."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "metadataPath": "META-INF/echo.ai.json",
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "ui_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

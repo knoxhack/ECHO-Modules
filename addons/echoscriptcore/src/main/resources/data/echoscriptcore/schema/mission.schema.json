@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "mission",
+  "required": ["schema_version", "id", "type"],
+  "fields": ["pack", "title", "route", "phase", "role", "briefing", "objectives", "rewards", "prerequisites", "unlock_conditions", "on_start", "on_complete", "on_fail", "terminal", "lens", "holomap", "metadata"]
+}

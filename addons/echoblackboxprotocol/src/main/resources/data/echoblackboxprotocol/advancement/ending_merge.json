@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_deleted",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:merge_directive"
+                             },
+                    "title":  "Merge Protocol",
+                    "description":  "Unlock the secret Merge directive.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  true
+                },
+    "criteria":  {
+                     "directive":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:merge_directive"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "directive"
+                         ]
+                     ]
+}

@@ -1,0 +1,65 @@
+<page id="reference-feature-hub" title="ScreenCore Feature Hub" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header"
+                 title="ScreenCore Feature Hub"
+                 subtitle="Central wiki for real ScreenCore features, examples, diagnostics, and reference pages."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-feature-grid" columns="0.7fr 1fr 1.1fr" gap="8" stack-below="900">
+        <section class="sc-panel" title="FEATURE CATEGORIES">
+          <scroll class="sc-scroll-region" scroll-state="true" state-key="reference.categories">
+            <list bind="screencore.reference.categories" item="category" selected="{screencore.reference.selectedCategoryId}">
+              <list-row class="sc-list-row"
+                        action="screencore.reference.select_category"
+                        action-value="{category.id}"
+                        value="{category.id}">
+                <column class="sc-row-copy">
+                  <title value="{category.title}"/>
+                  <text value="{category.summary}"/>
+                </column>
+              </list-row>
+              <empty-state title="No Categories" body="ScreenCore reference categories did not load."/>
+            </list>
+          </scroll>
+        </section>
+
+        <section class="sc-panel" title="FEATURES">
+          <scroll class="sc-scroll-region" scroll-state="true" state-key="reference.features">
+            <list bind="screencore.reference.features" item="feature" selected="{screencore.reference.selectedFeatureId}">
+              <list-row class="sc-list-row"
+                        action="screencore.reference.select_feature"
+                        action-value="{feature.id}"
+                        value="{feature.id}">
+                <status-chip class="sc-row-badge" status="ready" value="{feature.badge}"/>
+                <column class="sc-row-copy">
+                  <title value="{feature.title}"/>
+                  <text value="{feature.body}"/>
+                </column>
+              </list-row>
+              <empty-state title="No Features" body="No features are registered for this category."/>
+            </list>
+          </scroll>
+        </section>
+
+        <section class="sc-detail-panel" title="FEATURE DETAIL">
+          <status-chip status="ready" value="{screencore.reference.selectedFeature.diagnostic|SC}"/>
+          <title value="{screencore.reference.selectedFeature.title|Select a feature}"/>
+          <text class="sc-readable-body" value="{screencore.reference.selectedFeature.body|Choose a category and feature to see the reference page.}"/>
+          <text class="sc-fix-note" value="Reference page: {screencore.reference.selectedFeature.page|echoscreencore:reference_dashboard}"/>
+          <component src="echoscreencore:sc_action_strip">
+            <slot name="actions">
+              <button action="screencore.reference.open_reference"
+                      action-value="{screencore.reference.selectedFeature.page}"
+                      variant="primary">Open Reference</button>
+              <button action="screencore.open_page"
+                      action-page="echoscreencore:reference_workbench"
+                      variant="ghost">Workbench</button>
+            </slot>
+          </component>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

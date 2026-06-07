@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:reclaimer_farmer",
+  "displayName": "Reclaimer Farmer",
+  "role": "Food Reclaimer",
+  "faction": "echonpcore:reclaimers",
+  "visualProfile": "echonpcore:reclaimer_farmer",
+  "dialogue": "echonpcore:reclaimer_farmer",
+  "trades": "echonpcore:reclaimer_farmer_basic",
+  "services": "echonpcore:reclaimer_farmer_services",
+  "missions": [],
+  "ambientLines": [
+    "Soil's bad, but not dead.",
+    "Bring me charcoal and I can patch a filter."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 8,
+    "returnRadius": 20,
+    "ambientCooldown": 2400,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Reclaimers know which food routes and soil patches are still usable."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:farmer"
+  }
+}

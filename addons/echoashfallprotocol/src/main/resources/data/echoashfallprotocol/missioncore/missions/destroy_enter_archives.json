@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:destroy_enter_archives",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 9,
+  "title": "Enter the Pre-Fall Archives",
+  "briefing": "[ECHO-7] The severed grid exposed the Pre-Fall Archives. Right-click the Archives Key on overworld ground; I will issue a Return Keystone inside.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "exploration",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:return_keystone",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_survive_storms"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_enter_archives",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_enter_archives",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "9",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "102",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_enter_archives:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.location_visited",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_enter_archives/prefall_archives",
+      "type": "enter_region",
+      "label": "Pre-Fall Archives",
+      "detail": "Log dimension progress for this Ashfall route step.",
+      "icon": "echoashfallprotocol:return_keystone",
+      "target": "echoashfallprotocol:prefall_archives",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "dimension",
+        "location": "echoashfallprotocol:prefall_archives"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "dimension",
+      "locationId": "echoashfallprotocol:prefall_archives",
+      "count": 1,
+      "label": "Pre-Fall Archives"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_enter_archives/reward_0",
+      "item": "echoashfallprotocol:return_keystone",
+      "count": 1,
+      "label": "Return Keystone",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_enter_archives/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Archive gate breached. Return Keystone fallback active. The final guardian is awake."
+}

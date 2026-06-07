@@ -1,0 +1,23 @@
+{
+  "id": "echorelictech:matter_stitcher",
+  "entries": [
+    {
+      "severity": "minor",
+      "weight": 60,
+      "message": "Stitcher misfired. Minor item damage.",
+      "effects": ["damage_item"]
+    },
+    {
+      "severity": "medium",
+      "weight": 30,
+      "message": "Reconstruction error caused tissue rejection.",
+      "effects": ["add_debuff"]
+    },
+    {
+      "severity": "major",
+      "weight": 10,
+      "message": "Matter cascade. Null charge drained.",
+      "effects": ["drain_charge", "add_instability"]
+    }
+  ]
+}

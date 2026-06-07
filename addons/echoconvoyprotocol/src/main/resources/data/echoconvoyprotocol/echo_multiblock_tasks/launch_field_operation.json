@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:launch_field_operation",
+  "display_name": "Launch Field Operation",
+  "category": "echoconvoyprotocol:field_operations",
+  "required_workcell": "ROUTE_DISPATCH",
+  "required_tools": ["SCANNER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:dispatch_contract", "count": 1 }
+  ],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 100,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:launch_field_operation"],
+  "notes": ["Launches the staged field operation if depot readiness and route supplies are ready."]
+}

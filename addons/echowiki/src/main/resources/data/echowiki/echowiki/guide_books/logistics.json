@@ -1,0 +1,28 @@
+{
+  "id": "echowiki:logistics",
+  "moduleId": "echologisticsnetwork",
+  "requiredModId": "echologisticsnetwork",
+  "title": "Logistics Network Manual",
+  "subtitle": "Supply tags, loadouts, routes, lockers, and remote requests",
+  "summary": "Move supplies with clear routes, filters, labels, and buffers.",
+  "icon": "minecraft:chest",
+  "accent": "#FF66E8FF",
+  "collectionId": "echowiki:guides/logistics",
+  "homeArticleId": "echowiki:guides/logistics",
+  "chapterArticleIds": [
+    "echowiki:guides/logistics",
+    "echowiki:guides/logistics/first_steps",
+    "echowiki:guides/logistics/core_loop",
+    "echowiki:guides/logistics/systems",
+    "echowiki:guides/logistics/progression",
+    "echowiki:guides/logistics/integrations",
+    "echowiki:guides/logistics/troubleshooting"
+  ],
+  "tags": [
+    "logistics",
+    "storage",
+    "loadouts",
+    "routes"
+  ],
+  "sortOrder": 80
+}

@@ -1,0 +1,26 @@
+{
+  "id": "echoindustrialnexus:stabilize_hybrid_thermal_core",
+  "display_name": "Stabilize Hybrid Thermal Core",
+  "category": "unstable_processing",
+  "allowed_multiblocks": ["echoindustrialnexus:nexus_furnace_array"],
+  "required_workcell": "MATRIX_PROCESSING",
+  "required_tools": ["INJECTOR", "SCANNER"],
+  "duration_ticks": 360,
+  "heat_per_second": 4,
+  "animation": "inject",
+  "consume_inputs_on_start": true,
+  "effects": ["echoindustrialnexus:nexus_array_pressure"],
+  "capability_costs": [
+    { "capability": "echo:power_input", "amount": 480, "throughput": 80, "unit": "EP/t" }
+  ],
+  "inputs": [
+    { "item": "echoindustrialnexus:stable_nexus_core", "count": 1, "label": "Stable Nexus Core" },
+    { "item": "echoindustrialnexus:recipe_matrix_shard", "count": 1, "label": "Recipe Matrix Shard" },
+    { "item": "echoindustrialnexus:coolant_cell", "count": 2, "label": "Coolant Cell" },
+    { "item": "echoindustrialnexus:flux_crystal", "count": 2, "label": "Flux Crystal" }
+  ],
+  "outputs": [
+    { "item": "echoindustrialnexus:hybrid_thermal_core", "count": 1, "label": "Hybrid Thermal Core" },
+    { "item": "echoindustrialnexus:rad_slag", "count": 1, "label": "Rad Slag" }
+  ]
+}

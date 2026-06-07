@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:encode_armory_loadout_pattern",
+  "display_name": "Encode Armory Loadout Pattern",
+  "category": "fabrication",
+  "allowed_multiblocks": ["echomultiblockcore:armory_fabricator"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["ASSEMBLER", "CUTTER"],
+  "duration_ticks": 260,
+  "heat_per_second": 3,
+  "animation": "assemble",
+  "animation_profile": "echomultiblockcore:armory_pattern",
+  "effects": ["echoarmory:stage_pattern_unlock"],
+  "inputs": [
+    { "item": "echomultiblockcore:armory_pattern_core", "count": 1 },
+    { "item": "echomultiblockcore:reinforced_machine_frame", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:armory_pattern_core", "count": 2 }
+  ],
+  "notes": ["Armory-facing pattern recipe exposed through the shared automation contract."]
+}

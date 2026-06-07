@@ -1,0 +1,4 @@
+<card action="terminal.discoveryGrid.select_card" action-value="{param.id|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Discovery}" subtitle="{param.summary|Discovery summary.}"/>
+  <status-chip status="{param.state|locked}" value="{param.state|LOCKED}"/>
+</card>

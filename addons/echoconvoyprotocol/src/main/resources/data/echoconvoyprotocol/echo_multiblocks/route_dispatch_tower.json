@@ -1,0 +1,163 @@
+{
+    "id":  "echoconvoyprotocol:route_dispatch_tower",
+    "display_name":  "Route Dispatch Tower",
+    "translation_key":  "multiblock.echoconvoyprotocol.route_dispatch_tower",
+    "role":  "COMMAND",
+    "category":  "route_dispatch",
+    "size":  [
+                 5,
+                 3,
+                 3
+             ],
+    "controller":  "echoconvoyprotocol:route_dispatch_tower_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FICOF",
+                       "RDSAF",
+                       "FTWTF"
+                   ],
+                   [
+                       "..A..",
+                       "..T..",
+                       "..D.."
+                   ],
+                   [
+                       "..A..",
+                       "..A..",
+                       "..F.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "block":  "echoconvoyprotocol:field_command_wall",
+                              "component":  true
+                          },
+                    "I":  {
+                              "block":  "echoconvoyprotocol:cargo_input_crate",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echoconvoyprotocol:route_dispatch_tower_controller",
+                              "controller":  true
+                          },
+                    "O":  {
+                              "block":  "echoconvoyprotocol:cargo_output_crate",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "D":  {
+                              "block":  "echoconvoyprotocol:depot_data_bus",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echoconvoyprotocol:dispatch_terminal_block",
+                              "component":  true
+                          },
+                    "A":  {
+                              "block":  "echoconvoyprotocol:route_uplink_antenna",
+                              "component":  true
+                          },
+                    "T":  {
+                              "block":  "echoconvoyprotocol:route_marker_panel",
+                              "component":  true
+                          },
+                    "W":  {
+                              "block":  "echoconvoyprotocol:convoy_warning_light",
+                              "component":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:scanner_target",
+                         "echo:mission_provider",
+                         "echo:map_marker",
+                         "echo:convoy_dispatch"
+                     ],
+    "workcells":  [
+                      {
+                          "id":  "echoconvoyprotocol:route_dispatch_tower/route_planning",
+                          "type":  "ROUTE_PLANNING",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:prepare_route_dispatch"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:route_dispatch_tower/mission_dispatch",
+                          "type":  "ROUTE_DISPATCH",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:dispatch_convoy_to_route"
+                                            ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:route_dispatch_tower/holomap_uplink",
+                          "type":  "HOLOMAP_UPLINK",
+                          "pos":  [
+                                      2,
+                                      2,
+                                      1
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "SCANNER"
+                                             ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "SCANNER"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true,
+                      "damaged_threshold":  70,
+                      "offline_threshold":  25
+                  },
+    "preview":  {
+                    "color":  "33ccff"
+                }
+}

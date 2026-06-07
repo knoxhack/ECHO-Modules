@@ -1,0 +1,4 @@
+<row class="status-chip-row" gap="8">
+  <label value="{param.label|Status}"/>
+  <status-chip status="{param.status|info}" value="{param.value|INFO}"/>
+</row>

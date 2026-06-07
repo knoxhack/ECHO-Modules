@@ -1,0 +1,177 @@
+{
+    "id":  "echomultiblockcore:nexus_stabilizer",
+    "display_name":  "Nexus Stabilizer",
+    "translation_key":  "multiblock.echomultiblockcore.nexus_stabilizer",
+    "role":  "NEXUS",
+    "category":  "stabilizer",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "SFFFS",
+                       "FIIOF",
+                       "SDCDS",
+                       "SOROS",
+                       "SFFFS"
+                   ],
+                   [
+                       ".P.P.",
+                       "PR.RP",
+                       "P.C.P",
+                       "PR.RP",
+                       ".A.A."
+                   ],
+                   [
+                       "..S..",
+                       ".SSS.",
+                       "SSSSS",
+                       ".SSS.",
+                       "..S.."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echomultiblockcore:signal_conduit",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:nexus_gate",
+                         "echo:hazard_suppression",
+                         "echo:terminal_tab",
+                         "echo:map_marker",
+                         "echo:data",
+                         "echo:robotics",
+                         "echo:workcell"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  160,
+                                        "throughput":  48,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  140,
+                                        "throughput":  40,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:nexus_stabilizer/cooling_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:nexus_stabilizer/stability_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:nexus_stabilizer/hazard_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:nexus_stabilizer/stabilize",
+                          "type":  "SCANNING",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "STABILIZER",
+                                                 "CALIBRATOR"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:stabilize_nexus_field_coil"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "d48bff"
+                },
+    "facility_stage":  "P8 NEXUS DECISION",
+    "facility_route":  "nexus",
+    "primary_use":  "Stabilizes nexus field coils and exposes hazard/stability support to optional chapters.",
+    "integration_hints":  [
+                              "Nexus Protocol should consume provider snapshots, not direct saves.",
+                              "RuntimeGuard should flag overheating or blocked stabilizer queues.",
+                              "Nexus Field Coil remains the standalone-safe output."
+                          ]
+}

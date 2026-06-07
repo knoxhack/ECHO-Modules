@@ -1,0 +1,29 @@
+<page id="index_item_detail" title="ECHO Index Item Detail" styles="index_cyberglass,index_components,index_items">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Item Detail"/>
+    <param name="inspectorTitle" value="Actions"/>
+    <slot name="content">
+      <hero-card>
+        <row class="index-detail-header" gap="12"><item-stack item="{index.items.selected.icon|minecraft:book}"/><column class="index-detail-copy"><title class="index-detail-title" value="{index.items.selected.displayName|Select an Item}"/><text class="index-detail-subtitle" value="{index.items.selected.modName|Choose an item from the browser to inspect recipes and tags.}"/><text class="index-detail-meta" value="{index.items.selected.registryId|}"/></column><status-chip status="info" value="{index.items.selected.category|ITEM}"/></row>
+      </hero-card>
+      <grid columns="1fr 1fr" gap="12">
+        <panel title="Properties">
+          <text class="index-item-meta" value="Stack Size: {index.items.selected.stackSize|0}"/>
+          <text class="index-item-meta" value="Rarity: {index.items.selected.rarity|Unknown}"/>
+          <text class="index-item-meta" value="Durability: {index.items.selected.durability|0}"/>
+          <text class="index-item-meta" value="Recipes: {index.items.selected.recipeCount|0}"/>
+          <text class="index-item-meta" value="Usages: {index.items.selected.usageCount|0}"/>
+        </panel>
+        <panel title="Tags">
+          <list bind="index.items.selected.tags" item="tag"><list-row help="Indexed item tag."><text class="index-item-meta" value="{tag}"/></list-row><empty-state title="No tags" body="This item exposes no indexed tags through current providers."/></list>
+        </panel>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <button action="index.open_recipes_for_item" action-value="{index.items.selected.id}" tooltip="Show recipes that produce this item.">Recipes</button>
+      <button action="index.open_usages_for_item" action-value="{index.items.selected.id}" tooltip="Show recipes that consume this item.">Usages</button>
+      <button action="index.toggle_favorite" action-value="{index.items.selected.id}" action-param-kind="item" tooltip="Toggle this item in Favorites.">Favorite</button>
+      <button action="index.copy_item_id" action-value="{index.items.selected.id}" variant="ghost" tooltip="Copy the selected item registry ID.">Copy Registry ID</button>
+    </slot>
+  </component>
+</page>

@@ -1,0 +1,77 @@
+{
+  "id": "echorelictech:echo_mirror",
+  "tier": "forbidden",
+  "category": "combat",
+  "origin": "Forbidden Echo Warfare Project",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 2400,
+  "instabilityCost": 12,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "nexus_instability",
+    "ai_whisper",
+    "hostile_signal_attraction"
+  ],
+  "failureTable": "echorelictech:echo_mirror",
+  "terminal": {
+    "summary": "Creates temporary Echo projection to divert hostile attention.",
+    "warning": "The mirror may reflect something that looks back."
+  },
+  "lens": {
+    "compact": "Forbidden combat decoy device.",
+    "deepScan": [
+      "Project designation: ECHO-WARDEN.",
+      "Status: decommissioned.",
+      "ECHO warning: projections carry trace echoes."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 3 },
+      { "item": "echorelictech:quantum_lattice", "count": 1 },
+      { "item": "echorelictech:null_cell", "count": 2 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 3 },
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 2 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 10,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:memory_filament", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 2 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 1200,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 3 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 8,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "durationTicks": 220,
+    "effectAmplifier": 0
+  }
+}

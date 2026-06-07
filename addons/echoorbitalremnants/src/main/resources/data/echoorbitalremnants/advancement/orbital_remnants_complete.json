@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:nexus_stabilized",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:stabilized_echo_core"
+    },
+    "title": {
+      "text": "Orbital Remnants Complete"
+    },
+    "description": {
+      "text": "Resolve ECHO-0, stabilize every route survey, and seal one faction relay."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

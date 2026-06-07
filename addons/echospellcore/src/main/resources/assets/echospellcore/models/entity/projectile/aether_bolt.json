@@ -1,0 +1,69 @@
+{
+  "credit": "ECHO SpellCore bespoke baked projectile model",
+  "texture_size": [32, 32],
+  "textures": {
+    "particle": "echospellcore:entity/projectile/aether_bolt",
+    "sprite": "echospellcore:entity/projectile/aether_bolt"
+  },
+  "elements": [
+    {
+      "name": "signal_core",
+      "from": [7, 7, 7],
+      "to": [9, 9, 9],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"},
+        "up": {"texture": "#sprite"},
+        "down": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "cross_flare",
+      "from": [4, 7.75, 7.75],
+      "to": [12, 8.25, 8.25],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "vertical_flare",
+      "from": [7.75, 4, 7.75],
+      "to": [8.25, 12, 8.25],
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "up": {"texture": "#sprite"},
+        "down": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "forward_prism",
+      "from": [8.5, 6.5, 7.5],
+      "to": [12.5, 9.5, 8.5],
+      "rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "rear_signal_tab",
+      "from": [3.5, 7.25, 7.5],
+      "to": [5.5, 8.75, 8.5],
+      "rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    }
+  ]
+}

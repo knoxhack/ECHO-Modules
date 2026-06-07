@@ -1,0 +1,67 @@
+{
+  "id": "echowiki:guides/powergrid",
+  "title": "PowerGrid Field Manual",
+  "category": "Guide Books",
+  "summary": "Build stable loops with generation, storage, cables, substations, meters, and breaker discipline.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "PowerGrid makes energy a network you can reason about. A stable grid has generation, storage, clear cable tiers, metering, protection, and enough room to expand.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Start with one generator, one storage block, one consumer, and a meter. Confirm power flow before adding machines or long cable runs.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Generate power, buffer it, distribute it through appropriate cables, monitor demand, isolate overloads, and upgrade the weakest segment before adding new load.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Battery banks buffer spikes, substations organize lines, breakers protect failures, meters explain the current state, and diagnostic tools identify why a consumer is offline.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Industrial Nexus and Logistics depend on reliable energy. TutorialCore can mark power alerts, Index can explain blocks, and Wiki pages can link machine symptoms to grid causes.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If machines stall, check generator fuel, cable continuity, voltage tier, storage level, breaker state, and consumer demand. Most outages are a missing link or overloaded segment.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy"
+  ],
+  "icon": "minecraft:redstone",
+  "heroArt": "echowiki:textures/gui/guide_books/powergrid_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/powergrid/first_steps",
+    "echowiki:guides/powergrid/core_loop",
+    "echowiki:guides/powergrid/systems",
+    "echowiki:guides/powergrid/progression",
+    "echowiki:guides/powergrid/integrations",
+    "echowiki:guides/powergrid/troubleshooting"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1120
+}

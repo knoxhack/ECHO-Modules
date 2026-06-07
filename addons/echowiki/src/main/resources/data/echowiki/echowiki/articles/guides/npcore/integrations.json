@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/npcore/integrations",
+  "title": "NPCore: Integrations",
+  "category": "Guide Books",
+  "summary": "Use optional addon bridges without making NPC contacts depend on every surface.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Screen And Terminal",
+      "body": "ScreenCore can provide the richer NPC page, while Terminal can expose NPCore status and diagnostics. The classic screen remains the fallback.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Mission And Data",
+      "body": "MissionCore can gate trade offers. DataCore can preserve stock, cooldowns, and conversion records so repeated interactions behave consistently.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "World And Render Bridges",
+      "body": "WorldCore and RenderCore are optional future-facing bridges for context and richer presentation. Missing them should not block dialogue, trades, or services.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1100
+}

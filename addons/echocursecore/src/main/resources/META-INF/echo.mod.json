@@ -1,0 +1,83 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocursecore",
+  "name": "ECHO: CurseCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "content_pack",
+  "role": "curse_core",
+  "entrypoint": "com.knoxhack.echocursecore.EchoCurseCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoarcanacore",
+    "echocore"
+  ],
+  "optional": [
+    "echoarcaneindex",
+    "echogrimoire",
+    "echolens",
+    "echomissioncore",
+    "echoritualcore",
+    "echospellcore",
+    "echoterminal"
+  ],
+  "provides": [
+    "curse.cleansing",
+    "curse.contracts",
+    "curse.diagnostics",
+    "curse.persistence",
+    "curse.stages"
+  ],
+  "consumes": [
+    "arcana.core",
+    "echo.core"
+  ],
+  "gameModes": [
+    "arcana_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "player.data",
+    "network.sync"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "player"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echocursecore.EchoCurseCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": false,
+    "notes": "Persistent player curse state, curse contracts, cleansing hooks, HUD/menu sync, and optional Arcana/Lens/Mission/Terminal integrations."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "content_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

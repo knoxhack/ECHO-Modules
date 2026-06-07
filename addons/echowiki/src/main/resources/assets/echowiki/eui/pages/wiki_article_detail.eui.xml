@@ -1,0 +1,98 @@
+<page id="wiki_article_detail" title="Wiki Article Detail" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="{wiki.article.selected.title}"/>
+    <param name="contentSubtitle" value="{wiki.article.selected.category} / {wiki.article.selected.statusLabel}"/>
+    <param name="inspectorTitle" value="Article Tools"/>
+    <param name="stateKey" value="wiki.article.page"/>
+    <slot name="content">
+      <hero-card class="wiki-page-hero wiki-article-hero">
+        <image class="wiki-article-hero-image" src="{wiki.article.selected.heroArtFallback}" width="512" height="96" source-width="512" source-height="160" fit="cover"/>
+        <row class="wiki-article-hero-row" gap="12">
+          <item-icon class="wiki-article-hero-icon" item="{wiki.article.selected.icon|minecraft:book}"/>
+          <column class="wiki-article-hero-copy">
+            <title class="wiki-page-title-large" value="{wiki.article.selected.title}"/>
+            <row class="wiki-chip-line" gap="6">
+              <status-chip class="wiki-detail-chip" status="{wiki.article.selected.state}" value="{wiki.article.selected.statusLabel}"/>
+              <status-chip class="wiki-detail-chip" status="info" value="{wiki.article.selected.category}"/>
+              <status-chip class="wiki-detail-chip" status="info" value="{wiki.article.selected.countLabel}"/>
+            </row>
+            <text class="wiki-page-lede" value="{wiki.article.selected.summary}"/>
+          </column>
+        </row>
+      </hero-card>
+
+      <grid class="wiki-article-layout" columns="156px 1fr" gap="9" stack-below="820">
+        <section class="wiki-toc-panel" title="CONTENTS">
+          <scroll class="wiki-toc-scroll" scroll-state="true" state-key="wiki.article.toc">
+            <list class="wiki-compact-list" bind="wiki.article.toc" item="toc">
+              <list-row class="wiki-toc-row" action="noop" value="{toc.id}">
+                <status-chip class="wiki-toc-ordinal" status="info" value="{toc.ordinal}"/>
+                <column class="wiki-toc-copy">
+                  <title value="{toc.title}"/>
+                  <text value="{toc.chip}"/>
+                </column>
+              </list-row>
+              <empty-state title="No contents" body="This article has no visible sections."/>
+            </list>
+          </scroll>
+        </section>
+
+        <column class="wiki-article-reader" gap="8">
+          <section class="wiki-article-lede-panel" title="SUMMARY">
+            <text class="wiki-reader-text" value="{wiki.article.selected.summary}"/>
+            <text class="wiki-muted-text" value="{wiki.article.selected.tagsLabel}"/>
+          </section>
+          <list class="wiki-article-block-list" bind="wiki.article.blocks" item="block">
+            <component src="echowiki:wiki_article_block">
+              <param name="id" value="{block.id}"/>
+              <param name="type" value="{block.type}"/>
+              <param name="titleOrLabel" value="{block.titleOrLabel}"/>
+              <param name="body" value="{block.body}"/>
+              <param name="tone" value="{block.tone}"/>
+              <param name="status" value="{block.status}"/>
+              <param name="height" value="{block.height}"/>
+              <param name="chip" value="{block.chip}"/>
+              <param name="ordinal" value="{block.ordinal}"/>
+              <param name="image" value="{block.image}"/>
+              <param name="imageFit" value="{block.imageFit}"/>
+              <param name="icon" value="{block.icon}"/>
+              <param name="item" value="{block.item}"/>
+              <param name="count" value="{block.count}"/>
+              <param name="targetKind" value="{block.targetKind}"/>
+              <param name="target" value="{block.target}"/>
+              <param name="label" value="{block.label}"/>
+              <param name="subtitlePreview" value="{block.subtitlePreview}"/>
+              <param name="action" value="{block.action}"/>
+            </component>
+            <empty-state title="No body" body="This article has no visible sections."/>
+          </list>
+        </column>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <section class="wiki-side-summary" title="RELATED">
+        <scroll class="wiki-inspector-scroll" scroll-state="true" state-key="wiki.article.related">
+          <list bind="wiki.article.related" item="related">
+            <component src="echowiki:wiki_related_row">
+              <param name="kind" value="{related.kind}"/>
+              <param name="id" value="{related.id}"/>
+              <param name="label" value="{related.label}"/>
+              <param name="subtitle" value="{related.subtitle}"/>
+              <param name="subtitlePreview" value="{related.subtitlePreview}"/>
+              <param name="status" value="{related.status}"/>
+              <param name="disabled" value="{related.disabled|false}"/>
+              <param name="disabledReason" value="{related.disabledReason}"/>
+            </component>
+            <empty-state title="No links" body="This Codex article has no related records."/>
+          </list>
+        </scroll>
+      </section>
+      <section class="wiki-meta-panel" title="ARTICLE META">
+        <text value="{wiki.article.selected.countLabel}"/>
+        <text value="{wiki.article.selected.tagsLabel}"/>
+        <text value="State: {wiki.article.selected.statusLabel}"/>
+        <text value="Id: {wiki.article.selected.id}"/>
+      </section>
+    </slot>
+  </component>
+</page>

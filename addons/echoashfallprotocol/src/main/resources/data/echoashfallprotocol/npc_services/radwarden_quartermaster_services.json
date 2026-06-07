@@ -1,0 +1,35 @@
+{
+  "id": "echoashfallprotocol:radwarden_quartermaster_services",
+  "services": [
+    {
+      "id": "decon_brief",
+      "title": "Decon Brief",
+      "description": "Uploads current containment and decon supply warnings.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "record_compact_contact",
+      "title": "Record Compact Contact",
+      "description": "Adds Quartermaster Voss to your Terminal contact providers.",
+      "cost": [],
+      "action": "discover_contact",
+      "amount": 1,
+      "cooldown": 600
+    },
+    {
+      "id": "request_decon_support",
+      "title": "Request Decon Support",
+      "description": "Asks the Radwarden Compact to prioritize a decon support action.",
+      "cost": [],
+      "action": "faction_action",
+      "amount": 1,
+      "cooldown": 4800,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:radwarden_compact_service",
+      "disabledReason": "Compact support standing required."
+    }
+  ]
+}

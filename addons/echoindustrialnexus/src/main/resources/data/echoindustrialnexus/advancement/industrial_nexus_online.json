@@ -1,0 +1,35 @@
+{
+  "parent": "echoindustrialnexus:clean_air_bubble",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:nexus_thermal_injector"
+    },
+    "title": {
+      "text": "Industrial Nexus Online"
+    },
+    "description": {
+      "text": "Build a Nexus-Thermal Injector and begin stabilized hybrid industrial work."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "injector": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:nexus_thermal_injector"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "injector"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

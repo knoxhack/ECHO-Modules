@@ -1,0 +1,18 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "pattern":  [
+                    "LRL",
+                    "RCR",
+                    "LRL"
+                ],
+    "key":  {
+                "L":  "minecraft:lapis_lazuli",
+                "R":  "minecraft:redstone",
+                "C":  "minecraft:copper_ingot"
+            },
+    "result":  {
+                   "id":  "echoconvoyprotocol:convoy_upgrade_chip",
+                   "count":  1
+               }
+}

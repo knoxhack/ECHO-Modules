@@ -1,0 +1,11 @@
+<dialog id="{param.id|cyberglass-confirm-dialog}" class="cyberglass-dialog {param.class|}" size="{param.size|md}" close-on-outside="{param.closeOnOutside|false}">
+  <dialog-title value="{param.title|Confirm Action}"/>
+  <dialog-body>
+    <text value="{param.body|Confirm this action?}"/>
+    <slot-outlet name="body"/>
+  </dialog-body>
+  <dialog-actions class="cyberglass-action-row" gap="8">
+    <button action="{param.cancelAction|screencore.close_modal}" action-value="{param.cancelValue|}" variant="ghost">{param.cancelLabel|Cancel}</button>
+    <button action="{param.confirmAction|noop}" action-value="{param.confirmValue|}" variant="primary" autofocus="true">{param.confirmLabel|Confirm}</button>
+  </dialog-actions>
+</dialog>

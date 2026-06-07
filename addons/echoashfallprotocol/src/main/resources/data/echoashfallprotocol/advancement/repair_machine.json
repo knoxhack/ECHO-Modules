@@ -1,0 +1,38 @@
+{
+  "parent": "echoashfallprotocol:first_machine",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:scrap_knife"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.repair_machine.title",
+      "fallback": "Maintenance Required"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.repair_machine.desc",
+      "fallback": "Repair a jammed machine with your scrap knife."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_knife_and_machine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:scrap_knife"
+          },
+          {
+            "items": "echoashfallprotocol:hand_recycler"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_knife_and_machine"]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "echoconvoyprotocol:item/scrap_bike_kit"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [0, -92, 24],
+      "translation": [1.2, 2.2, -2.2],
+      "scale": [0.42, 0.42, 0.42]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 92, -24],
+      "translation": [1.2, 2.2, -2.2],
+      "scale": [0.42, 0.42, 0.42]
+    },
+    "thirdperson_righthand": {
+      "rotation": [72, 0, 0],
+      "translation": [0, 1.2, 0.8],
+      "scale": [0.48, 0.48, 0.48]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [72, 0, 0],
+      "translation": [0, 1.2, 0.8],
+      "scale": [0.48, 0.48, 0.48]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Native-ready platform contracts for the ECHO ecosystem."
+description='''
+ECHO: PlatformCore defines lightweight module, feature, capability, permission,
+compatibility, trust, and diagnostics contracts for ECHO addons today and the
+future ECHO Native Platform.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the base ECHO core service layer while PlatformCore adds Native-ready contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

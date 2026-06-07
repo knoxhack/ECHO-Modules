@@ -1,0 +1,31 @@
+{
+  "parent": "echoorbitalremnants:mars_ash_basin",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:europa_transfer_window"
+    },
+    "title": {
+      "text": "Europa Cryo Ocean"
+    },
+    "description": {
+      "text": "Trace the preserved deep-space ping beneath Europa's ice."
+    }
+  },
+  "criteria": {
+    "europa_window": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:europa_transfer_window"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "europa_window"
+    ]
+  ]
+}

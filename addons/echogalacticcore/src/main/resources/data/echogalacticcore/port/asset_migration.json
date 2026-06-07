@@ -1,0 +1,34 @@
+{
+  "schema": "echogalacticcore.asset_migration.v1",
+  "module": "echogalacticcore",
+  "label": "Unofficial ECHO Platform port/fork of Galacticraft Legacy",
+  "sourceNamespaces": [
+    "galacticraftcore",
+    "galacticraftplanets"
+  ],
+  "targetNamespace": "echogalacticcore",
+  "license": "MIT",
+  "credit": "Original Galacticraft Legacy code and assets by TeamGalacticraft where present. ECHO Platform port and additions by KnoxHack / ECHO Labs.",
+  "rules": [
+    {
+      "from": "assets/galacticraftcore/lang/*.lang",
+      "to": "assets/echogalacticcore/lang/*.json",
+      "status": "scaffolded"
+    },
+    {
+      "from": "assets/galacticraftcore/recipes/*.json",
+      "to": "data/echogalacticcore/recipes/*.json",
+      "status": "scaffolded"
+    },
+    {
+      "from": "assets/galacticraftcore/models/** and assets/galacticraftplanets/models/**",
+      "to": "assets/echogalacticcore/models/**",
+      "status": "planned"
+    },
+    {
+      "from": "assets/galacticraftcore/sounds/**",
+      "to": "assets/echogalacticcore/sounds/**",
+      "status": "planned"
+    }
+  ]
+}

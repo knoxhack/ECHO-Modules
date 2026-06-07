@@ -1,0 +1,64 @@
+{
+    "title":  "Crash Zone Recovery",
+    "summary":  "Convoy logistics route: Crash Zone Recovery.",
+    "order":  40,
+    "requiredVehicle":  "any",
+    "minFuel":  55,
+    "missionType":  "Recovery",
+    "distance":  780,
+    "biomeTheme":  "crash_zone",
+    "threatLevel":  4,
+    "fuelCost":  55,
+    "cargoCapacityRecommendation":  2,
+    "requiredReadiness":  70,
+    "logisticsNetworkId":  "global",
+    "logisticsLoadoutId":  "echoconvoyprotocol:recovery_beacon_kit",
+    "autoRequestCargo":  true,
+    "fieldOps":  {
+                     "durationTicks":  840,
+                     "stageCount":  2,
+                     "incidentProfile":  "echoconvoyprotocol:crash_recovery",
+                     "vehicleJoinPolicy":  "optional",
+                     "completionMode":  "depot_return"
+                 },
+    "requiredCargo":  [
+                          {
+                              "item":  "echoconvoyprotocol:emergency_beacon",
+                              "count":  1
+                          }
+                      ],
+    "rewards":  [
+                    {
+                        "item":  "echoconvoyprotocol:engine_module",
+                        "count":  2
+                    }
+                ],
+    "possibleHazards":  [
+                            "wreckage field",
+                            "signal blackout"
+                        ],
+    "holomapMarker":  {
+                          "icon":  "failed_convoy_signal",
+                          "color":  "ff5533",
+                          "layer":  "echoconvoyprotocol:recovery_signals"
+                      },
+    "destinationHint":  "crash_zone",
+    "requiredSignalMarkers":  2,
+    "minDistanceFromStart":  195,
+    "legs":  [
+                 {
+                     "id":  "checkpoint",
+                     "title":  "Checkpoint Signal",
+                     "minDistanceFromStart":  24,
+                     "requiresCheckpoint":  false,
+                     "roadsideStructure":  "echoconvoyprotocol:roadside/signal_marker"
+                 },
+                 {
+                     "id":  "destination",
+                     "title":  "Destination Signal",
+                     "minDistanceFromStart":  260,
+                     "requiresCheckpoint":  false,
+                     "roadsideStructure":  "echoconvoyprotocol:roadside/signal_marker"
+                 }
+             ]
+}

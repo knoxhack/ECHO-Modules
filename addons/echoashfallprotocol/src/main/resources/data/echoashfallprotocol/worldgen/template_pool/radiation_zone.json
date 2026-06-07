@@ -1,0 +1,96 @@
+{
+  "name": "echoashfallprotocol:radiation_zone",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/containment_breach",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/waste_barrel_cluster",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/irradiated_vehicle",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/radiation_crater",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/contaminated_lab",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/fallout_shelter",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/radiation_zone/power_plant_ruin",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:biomes/radiation_zone/reactor_ruin",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/radiation_beacon_line",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "echoashfallprotocol:biomes/radiation_zone/reactor_gatehouse",
+        "processors": "echoashfallprotocol:radiation_zone_loot"
+      }
+    }
+  ]
+}

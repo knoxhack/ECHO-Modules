@@ -1,0 +1,152 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_smooth"
+          },
+          "output_state": {
+            "Name": "echoblockworks:charred_concrete_smooth"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:rusted_metal_panel"
+          },
+          "output_state": {
+            "Name": "echoblockworks:ashstone_brick"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:dead_wood_log"
+          },
+          "output_state": {
+            "Name": "echoblockworks:blackbox_vault_dark_alloy"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:dead_wood_log"
+          },
+          "output_state": {
+            "Name": "echoblockworks:blackbox_vault_archive_panel"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_smooth_stairs"
+          },
+          "output_state": {
+            "Name": "echoblockworks:ashstone_brick_stairs"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:wasteland_grass_block"
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:wasteland_dirt"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoashfallprotocol:wasteland_dirt"
+          },
+          "output_state": {
+            "Name": "echoblockworks:rubble_pile"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:ashstone_raw"
+          },
+          "output_state": {
+            "Name": "echoblockworks:ashstone_debris"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "echoblockworks:reclamation_glass_framed_glass"
+          },
+          "output_state": {
+            "Name": "echoblockworks:reinforced_metal_grate"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:structure_cache",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:weapon_rack"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "echoashfallprotocol:workshop_block",
+            "probability": 0.5
+          },
+          "output_state": {
+            "Name": "echoashfallprotocol:supply_crate"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:block_rot",
+      "integrity": 0.85
+    },
+    {
+      "processor_type": "minecraft:gravity",
+      "heightmap": "WORLD_SURFACE_WG",
+      "offset": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:first_signal_lead",
+  "title": "First Signal Lead",
+  "category": "SCANNER",
+  "steps": [
+    {
+      "id": "use_scanner",
+      "type": "custom",
+      "target": "echotutorialcore:used_scanner",
+      "text": "Use your scanner."
+    },
+    {
+      "id": "detect_signal",
+      "type": "custom",
+      "target": "echotutorialcore:detected_first_signal",
+      "text": "Detect a signal lead."
+    },
+    {
+      "id": "investigate",
+      "type": "custom",
+      "target": "echotutorialcore:investigated_signal",
+      "text": "Investigate the signal source."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:signal_leads"
+  ],
+  "defaultUnlocked": false
+}

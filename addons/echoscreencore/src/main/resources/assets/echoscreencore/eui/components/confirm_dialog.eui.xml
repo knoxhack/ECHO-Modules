@@ -1,0 +1,11 @@
+<dialog id="{param.id|confirm-dialog}" size="{param.size|md}" close-on-outside="{param.closeOnOutside|false}">
+  <dialog-title value="{param.title|Confirm Action}"/>
+  <dialog-body>
+    <text value="{param.body|Confirm this ScreenCore action?}"/>
+    <slot-outlet name="body"/>
+  </dialog-body>
+  <dialog-actions gap="12">
+    <button action="screencore.close_modal" variant="ghost">Cancel</button>
+    <button action="{param.confirmAction|noop}" action-value="{param.confirmValue|}" variant="danger" autofocus="true">{param.confirmLabel|Confirm}</button>
+  </dialog-actions>
+</dialog>

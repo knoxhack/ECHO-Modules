@@ -1,0 +1,114 @@
+{
+  "id": "echoashfallprotocol:activate_relay_station",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 2,
+  "title": "Activate a Relay Station",
+  "briefing": "[ECHO-7] Long-distance travel is inefficient. Place and fuel a Relay Station so grid routes have a return path before the guardian sweep.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:relay_station",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:activate_power_node"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "activate_relay_station",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.activate_relay_station",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "70",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:activate_relay_station:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "ashfall.relay_activated"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:activate_relay_station/relay_station",
+      "type": "place_block",
+      "label": "Place Relay Station",
+      "detail": "Place 1 Relay Station for the Ashfall route; live relay activation also reports the route contract.",
+      "icon": "echoashfallprotocol:relay_station",
+      "target": "echoashfallprotocol:relay_station",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:relay_station"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 2,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 2,
+      "label": "Energy Cell"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit"
+    },
+    {
+      "block": "echoashfallprotocol:relay_station",
+      "count": 1,
+      "label": "Relay Station"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:activate_relay_station/reward_0",
+      "item": "echoashfallprotocol:machine_upgrade_speed",
+      "count": 1,
+      "label": "Machine Upgrade Speed",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:activate_relay_station/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:activate_relay_station/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 8,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:activate_relay_station/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Fast travel network initialized. You now have scanner, drone, node, workshop, and relay support for guardian routes."
+}

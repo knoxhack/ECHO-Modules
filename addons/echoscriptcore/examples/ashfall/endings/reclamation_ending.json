@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "pack": "ashfall",
+  "id": "ashfall:reclamation_ending",
+  "type": "ending",
+  "title": "Reclamation",
+  "conditions": [{ "type": "world_state_set", "state": "ashfall:relay_alpha_restored" }],
+  "metadata": { "example_only": true }
+}

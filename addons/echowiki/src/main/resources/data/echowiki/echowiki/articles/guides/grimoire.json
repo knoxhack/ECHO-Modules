@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/grimoire",
+  "title": "Grimoire Archive Manual",
+  "category": "Guide Books",
+  "summary": "Read Arcana archive records, warning states, and forbidden-page context through Terminal.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Grimoire is the Terminal archive for Arcana lore, warnings, forbidden records, and route context. It explains why an arcane system matters before the player pushes it further.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Read the first archive entry when Aether Signal appears. Treat locked and forbidden entries as route warnings, not collectible clutter.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Unlock a record, read the warning or field note, follow related Index pages, then return to the route with a safer question.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Archive entries can be unlocked, locked, active, bridge-backed, scanned, or forbidden. Those states are the grammar of Arcana knowledge.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Grimoire pairs with Terminal, Arcane Index, Arcana Core records, Veilbound runtime data, RelicTech archives, RitualCore entries, and future curse consequences.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If an archive feels empty, verify Terminal is loaded, the provider registered entries, and the optional bridge has data to report.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "grimoire",
+    "arcana"
+  ],
+  "icon": "minecraft:written_book",
+  "heroArt": "echowiki:textures/gui/guide_books/grimoire_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/grimoire/first_steps",
+    "echowiki:guides/grimoire/core_loop",
+    "echowiki:guides/grimoire/systems",
+    "echowiki:guides/grimoire/progression",
+    "echowiki:guides/grimoire/integrations",
+    "echowiki:guides/grimoire/troubleshooting"
+  ],
+  "sortOrder": 1270
+}

@@ -1,0 +1,23 @@
+{
+  "id": "echowiki:systems/survival_codex",
+  "title": "Using the Survival Codex",
+  "category": "Systems",
+  "summary": "The Codex gathers ECHO articles, discoveries, regions, hazards, missions, factions, and related Index records.",
+  "sections": [
+    {
+      "title": "What It Shows",
+      "body": "Articles are datapack-driven. Dynamic pages are assembled from EchoCore services, so optional addons can appear without the Wiki hardcoding their content.",
+      "tone": "body"
+    },
+    {
+      "title": "Locked Intel",
+      "body": "Discovery-linked entries show safe hints until the owning feature is discovered.",
+      "tone": "warning"
+    }
+  ],
+  "tags": ["wiki", "screencore", "guide"],
+  "icon": "minecraft:written_book",
+  "relatedArticles": ["echowiki:survival/first_hour"],
+  "spoilerLevel": 0,
+  "sortOrder": 20
+}

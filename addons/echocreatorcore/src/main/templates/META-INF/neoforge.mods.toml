@@ -1,0 +1,157 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="CreatorCore by ECHO Labs: visual authoring, dashboard, draft, validation, and export tools for ECHO creator workflows."
+description='''
+CreatorCore by ECHO Labs is the in-game creator/admin authoring suite for ECHO-powered modpacks. It provides a visual dashboard layer over ScriptCore and existing ECHO systems without replacing their runtime responsibilities.
+'''
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides the shared ECHO module registry, /echo command root, and optional service facades."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscriptcore"
+type="optional"
+reason="Provides JSON/data definitions, validation, reload, and export APIs when the ScriptCore authoring backend is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="Provides richer ECHO-native screen primitives for future CreatorCore dashboard pages."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Allows CreatorCore to expose an admin/creator entry point inside Terminal when a safe public hook is available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echomissioncore"
+type="optional"
+reason="Allows CreatorCore to preview and validate mission definitions through MissionCore when a public API is available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Allows CreatorCore to preview HoloMap markers, layers, and route authoring surfaces when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Allows CreatorCore to preview Lens scan definitions and diagnostics when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoweathercore"
+type="optional"
+reason="Allows CreatorCore to preview weather event definitions when WeatherCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echotutorialcore"
+type="optional"
+reason="Allows CreatorCore to preview tutorial hints, cards, and flows when TutorialCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="Allows CreatorCore screens to align with active ECHO theme tokens when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echotextureforge"
+type="optional"
+reason="Reserves future asset preview and texture generation handoffs from CreatorCore dashboards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echowiki"
+type="optional"
+reason="Reserves future creator help, docs, and wiki browser panels."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echodatacore"
+type="optional"
+reason="Reserves future durable creator project, world-state, faction, and metric persistence."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="optional"
+reason="Reserves future world region, hazard, and world-state creator tools."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosoundcore"
+type="optional"
+reason="Reserves future sound cue preview and validation hooks for creator-authored definitions."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonpcore"
+type="optional"
+reason="Allows Codex Pilot to use NPCore's echo_npc as a visible local dev avatar when NPCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

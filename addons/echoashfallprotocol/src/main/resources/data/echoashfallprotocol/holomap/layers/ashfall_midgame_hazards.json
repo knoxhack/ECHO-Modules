@@ -1,0 +1,80 @@
+{
+  "id": "echoashfallprotocol:ashfall_midgame_hazards",
+  "name": "Midgame Hazard Routes",
+  "description": "Hazard, med bay, lab, reactor, vault, and data-log markers for midgame Ashfall route planning.",
+  "visibleByDefault": false,
+  "markerStyle": "ashfall_midgame_hazard",
+  "filters": [
+    "hazard",
+    "medical",
+    "lab",
+    "vault",
+    "data_log"
+  ],
+  "markers": [
+    {
+      "id": "echoashfallprotocol:bio_lab_toxic_entry",
+      "label": "Bio Lab Toxic Entry",
+      "kind": "lab",
+      "description": "A toxic lab route that should be scanned and supplied before entry.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_hazard_toxic",
+      "riskLabel": "toxic lab",
+      "routeStatus": "countermeasure-required",
+      "routeLink": "echoashfallprotocol:bio_lab",
+      "missionId": "echoashfallprotocol:enter_bio_lab",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+      "prep": "Bring filters, clean water, mutation treatment, and a planned exit.",
+      "discoveryState": "midgame_unlocked",
+      "filter": "lab"
+    },
+    {
+      "id": "echoashfallprotocol:reactor_radiation_route",
+      "label": "Reactor Radiation Route",
+      "kind": "hazard",
+      "description": "A radiation route where exposure time and RadAway reserves matter more than speed.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_hazard_radiation",
+      "riskLabel": "radiation",
+      "routeStatus": "time-limited",
+      "routeLink": "echoashfallprotocol:reactor_ruin",
+      "missionId": "echoashfallprotocol:survey_reactor_ruin",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+      "prep": "Carry RadAway, protective gear, and a retreat marker.",
+      "discoveryState": "hazard_scanned",
+      "filter": "hazard"
+    },
+    {
+      "id": "echoashfallprotocol:field_med_bay_anchor",
+      "label": "Field Med Bay Anchor",
+      "kind": "medical",
+      "description": "Base recovery point for mutation status, bandage use, and severe exposure resets.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_cache_power",
+      "riskLabel": "safe recovery",
+      "routeStatus": "return-after-exposure",
+      "routeLink": "echoashfallprotocol:field_med_bay",
+      "missionId": "echoashfallprotocol:use_field_med_bay",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+      "prep": "Restock treatment items before chaining routes.",
+      "discoveryState": "base_built",
+      "filter": "medical"
+    },
+    {
+      "id": "echoashfallprotocol:military_vault_warning",
+      "label": "Military Vault Warning",
+      "kind": "vault",
+      "description": "A combat-heavy vault route that should expose loot, data-log, and recovery expectations before breach.",
+      "icon": "echoashfallprotocol:textures/gui/holomap/icons/ashfall_data_ruin",
+      "riskLabel": "armed vault",
+      "routeStatus": "scan-before-clear",
+      "routeLink": "echoashfallprotocol:military_vault",
+      "missionId": "echoashfallprotocol:clear_military_vault",
+      "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+      "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+      "prep": "Bring medical supplies, route food, and enough storage for data logs.",
+      "discoveryState": "vault_signal",
+      "filter": "vault"
+    }
+  ]
+}

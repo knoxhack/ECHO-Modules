@@ -1,0 +1,24 @@
+{
+  "id": "echoashfallprotocol:ashfall_showcase_flow",
+  "category": "official_pack",
+  "title": "Ashfall Showcase Opening",
+  "summary": "Touch Terminal, Index, Lens, HoloMap, MissionCore, WeatherCore, RelicTech, PowerGrid, Armory, and story hooks in one clear first-session path.",
+  "body": "Use this only in the Ashfall official profile. Generic templates should keep their own starter loops and should not inherit Ashfall story names or required modules.",
+  "steps": [
+    "Open Terminal and read the dashboard.",
+    "Read the Showcase Flow Index entry.",
+    "Scan pod wreckage with Lens.",
+    "Pin the first HoloMap marker.",
+    "Accept the Ashfall Showcase Opening mission.",
+    "Respond to the first WeatherCore warning.",
+    "Recover the relic field note.",
+    "Repair the pod power spine.",
+    "Install the first Armory upgrade."
+  ],
+  "commonMistakes": [
+    "Copying Ashfall text into generic templates.",
+    "Making echoashfallprotocol a reusable module dependency."
+  ],
+  "defaultUnlocked": true,
+  "addonOwnerId": "echoashfallprotocol"
+}

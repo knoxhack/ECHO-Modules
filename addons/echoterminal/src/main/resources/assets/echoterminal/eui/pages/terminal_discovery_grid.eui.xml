@@ -1,0 +1,46 @@
+<page id="terminal-discovery-grid" title="Discovery Grid" fit-mode="canvas" design-width="1280" design-height="720" styles="echothemecore:cyberglass_kit,terminal_base,terminal_shell,terminal_archive_intel,terminal_cyberglass_v2">
+  <component src="echoterminal:terminal_shell">
+    <param name="subtitle" value="Discovery Grid / spoiler-safe discovered features"/>
+    <param name="inspectorTitle" value="Discovery Filters"/>
+    <slot name="body">
+      <hero-card class="terminal-page-hero" status="ready">
+        <copy-block class="terminal-row-copy" title="Discovery Grid" subtitle="{terminal.discoveryGrid.count} spoiler-safe discovery signal(s) match the current filters. Locked rows show hints only."/>
+        <row class="terminal-page-toolbar" gap="6">
+          <status-chip status="ready" value="{terminal.discoveryGrid.count} signals"/>
+          <status-chip status="info" value="{terminal.discoveryGrid.category|all}"/>
+          <status-chip status="info" value="{terminal.discoveryGrid.state|all}"/>
+        </row>
+      </hero-card>
+      <section title="Discovery Signals">
+        <scroll class="intel-list" scroll-state="true" state-key="terminal.discovery.signals">
+          <list bind="terminal.discoveryGrid.visibleCards" item="card" selected="{terminal.discoveryGrid.selectedId}">
+            <list-row class="terminal-tall-row" action="terminal.discoveryGrid.select_card" action-value="{card.id}" value="{card.id}"
+                      tooltip="Inspect discovery signal {card.title}.">
+              <copy-block class="terminal-row-copy" title="{card.title}" subtitle="{card.category} / {card.summary}"/>
+              <status-chip status="{card.statusKey}" value="{card.state}"/>
+            </list-row>
+            <empty-state title="No signals match" body="Change the category or status filter to inspect the grid."/>
+          </list>
+        </scroll>
+      </section>
+    </slot>
+    <slot name="inspector">
+      <stat-card label="Signals" value="{terminal.discoveryGrid.count}" status="ready"/>
+      <copy-block class="terminal-row-copy" title="{terminal.discoveryGrid.selected.title|No signal selected}" subtitle="{terminal.discoveryGrid.selected.summary|Locked entries use hint text only.}"/>
+      <section title="Category">
+        <list bind="terminal.discoveryGrid.categories" item="category" selected="{terminal.discoveryGrid.category}">
+          <list-row class="terminal-compact-row" action="terminal.discoveryGrid.filter_category" action-value="{category.id}" value="{category.id}">
+            <copy-block class="terminal-row-copy" title="{category.label}"/>
+          </list-row>
+        </list>
+      </section>
+      <section title="State">
+        <list bind="terminal.discoveryGrid.states" item="state" selected="{terminal.discoveryGrid.state}">
+          <list-row class="terminal-compact-row" action="terminal.discoveryGrid.filter_state" action-value="{state.id}" value="{state.id}">
+            <copy-block class="terminal-row-copy" title="{state.label}"/>
+          </list-row>
+        </list>
+      </section>
+    </slot>
+  </component>
+</page>

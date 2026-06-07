@@ -1,0 +1,14 @@
+<page id="test-dropdown-menu" title="Dropdown Menu" styles="echoscreencore:advanced_mock,echoscreencore:dropdown_advanced">
+  <screen-shell>
+    <header title="Dropdown Menu" subtitle="Menu items can carry labels, subtitles, danger state, and actions"/>
+    <panel title="Action Menu">
+      <dropdown-menu placeholder="Open menu" clearable="true">
+        <menu-section label="Navigation"/>
+        <dropdown-item value="dashboard" label="Dashboard" subtitle="Open test dashboard" action="screencore.open_page" action-value="echoscreencore:test_dashboard"/>
+        <dropdown-item value="templates" label="Templates" subtitle="Open template test" action="screencore.open_page" action-value="echoscreencore:test_components_templates"/>
+        <divider/>
+        <dropdown-item value="danger" label="Danger Action" subtitle="Styled as destructive" action="demo.menu_action" danger="true"/>
+      </dropdown-menu>
+    </panel>
+  </screen-shell>
+</page>

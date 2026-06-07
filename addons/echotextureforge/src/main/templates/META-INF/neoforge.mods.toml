@@ -1,0 +1,63 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Development-only texture planning, auditing, specification, and prompt export for ECHO."
+description='''
+ECHO: TextureForge is a development-only texture audit, specification, validation,
+and prompt-export workflow for ECHO addon assets. It does not add gameplay content,
+generate images in Minecraft, call online services, or require player-facing installs.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon discovery and config registry contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echothemecore"
+type="optional"
+reason="ThemeCore can provide future shared palette and visual identity defaults for TextureForge specs."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="RenderCore can provide future low-level preview and evidence capture helpers for TextureForge dashboards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoscreencore"
+type="optional"
+reason="ScreenCore can host a future dev dashboard while TextureForge remains fully command/report driven without it."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

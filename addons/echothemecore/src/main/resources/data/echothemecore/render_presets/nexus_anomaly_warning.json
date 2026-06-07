@@ -1,0 +1,9 @@
+{
+  "id": "echothemecore:nexus_anomaly_warning",
+  "theme": "echothemecore:nexus",
+  "type": "anomaly_warning",
+  "effects": [
+    {"type": "glow_pulse", "duration_ticks": 24, "color": "theme:error"},
+    {"type": "phase_ripple", "duration_ticks": 30, "strength": "theme:distortion_strength"}
+  ]
+}

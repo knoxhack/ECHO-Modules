@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:cultivate_reclamation_matrix",
+  "display_name": "Cultivate Reclamation Growth Matrix",
+  "category": "reclamation",
+  "allowed_multiblocks": ["echomultiblockcore:agriculture_dome"],
+  "required_workcell": "RECLAMATION",
+  "required_tools": ["INJECTOR", "DRILL"],
+  "duration_ticks": 240,
+  "heat_per_second": 2,
+  "animation": "inject",
+  "animation_profile": "echomultiblockcore:reclamation_cultivate",
+  "inputs": [
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 },
+    { "item": "echomultiblockcore:archive_memory_cell", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:reclamation_growth_matrix", "count": 1 }
+  ],
+  "notes": ["Creates a growth matrix for agriculture-side integrations."]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "echothemecore:nexus_phase_pulse",
+  "theme": "echothemecore:nexus",
+  "type": "phase_pulse",
+  "effects": [
+    {"type": "phase_ripple", "duration_ticks": 36, "strength": "theme:distortion_strength"},
+    {"type": "energy_edge_pulse", "duration_ticks": 30, "strength": "theme:edge_glow_strength"}
+  ]
+}

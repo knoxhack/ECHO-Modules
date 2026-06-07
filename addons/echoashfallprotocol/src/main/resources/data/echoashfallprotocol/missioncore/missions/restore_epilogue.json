@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:restore_epilogue",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 6,
+  "title": "Complete Restore Epilogue",
+  "briefing": "[ECHO-7] Restoration has a cost. Turn in this terminal protocol to seal the repaired grid and close the branch.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "story",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:filter_cartridge_elite",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:restore_finale"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "restore_epilogue",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.restore_epilogue",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "99",
+    "requiredPath": "restore",
+    "routeRoleTag": "restore_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:restore_epilogue:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "restore",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:restore_epilogue/restore_epilogue",
+      "type": "custom",
+      "label": "Complete Restore Epilogue",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:filter_cartridge_elite",
+      "target": "echoashfallprotocol:restore_epilogue",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.restore_epilogue"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:restore_epilogue/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_elite",
+      "count": 1,
+      "label": "Filter Cartridge Elite",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:restore_epilogue/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] The grid breathes again. Settlements reconnect, water clears, and the old world becomes a scaffold for the new."
+}

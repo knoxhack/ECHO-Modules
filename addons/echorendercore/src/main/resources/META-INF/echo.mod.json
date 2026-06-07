@@ -1,0 +1,82 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echorendercore",
+  "name": "ECHO: RenderCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "render_core",
+  "entrypoint": "com.knoxhack.echorendercore.EchoRenderCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore"
+  ],
+  "optional": [
+    "echoruntimeguard",
+    "echoscreencore",
+    "echothemecore"
+  ],
+  "provides": [
+    "render.animation_profiles",
+    "render.creator_exports",
+    "render.diagnostics",
+    "render.particle_profiles",
+    "render.preview",
+    "render.profiles",
+    "render.screen_chrome",
+    "render.validation"
+  ],
+  "consumes": [
+    "echo.core"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "rendering",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ],
+      "rendererTarget": "opengl"
+    },
+    "nativeEntrypoint": "com.knoxhack.echorendercore.EchoRenderCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Shared visual profile and render contract layer. Client renderer implementations remain isolated in client packages and this module does not own gameplay content."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echorendercore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

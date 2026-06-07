@@ -1,0 +1,55 @@
+{
+  "id": "echowiki:guides/armory/core_loop",
+  "title": "Armory: Core Loop",
+  "category": "Guide Books",
+  "summary": "Build, test, repair, and refine loadouts around the dangers you actually meet.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Salvage parts, craft gear, test stance behavior, install modules, then use feedback from failed routes to refine the loadout rather than blindly climbing tiers.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each route, check what failed first: damage type, reach, stamina, shield timing, or spare parts. Upgrade the weak point instead of replacing the whole kit.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Return while the armor can still take a mistake. A spare blade, shield, and repair window matter more than one extra fight.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "item",
+      "title": "Loop Anchor",
+      "body": "Treat this as a material checkpoint: if it helps the loop, bring it home before chasing bulk.",
+      "tone": "tip",
+      "item": "minecraft:iron_sword",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Iron Sword",
+      "subtitle": "Core Loop checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "armory",
+    "combat",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:iron_sword",
+  "relatedArticles": [
+    "echowiki:guides/armory"
+  ],
+  "relatedItems": [
+    "minecraft:iron_sword",
+    "minecraft:shield"
+  ],
+  "sortOrder": 1032
+}

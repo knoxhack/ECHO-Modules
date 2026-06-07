@@ -1,0 +1,47 @@
+<page id="test-app-shell" title="App Shell" styles="echoscreencore:advanced_mock">
+  <app-shell>
+    <app-header title="ECHO App Shell" subtitle="Generic navigation and detail pattern"/>
+    <grid columns="230px 1fr 280px" gap="16">
+      <app-sidebar title="Navigation">
+        <nav-list>
+          <nav-item action="screencore.open_page" action-page="echoscreencore:test_terminal_dashboard" selected="true">
+            <title>Dashboard</title>
+            <text>Terminal-style overview</text>
+          </nav-item>
+          <nav-item action="screencore.open_page" action-page="echoscreencore:test_dynamic_lists">
+            <title>Dynamic Lists</title>
+            <text>Provider rows</text>
+          </nav-item>
+          <nav-item action="screencore.open_page" action-page="echoscreencore:test_dropdowns">
+            <title>Filters</title>
+            <text>Select controls</text>
+          </nav-item>
+        </nav-list>
+      </app-sidebar>
+      <app-content title="Workspace">
+        <hero-card>
+          <title>Reusable App Structure</title>
+          <text>App shell tags are clean containers for future Terminal, Index, HoloMap, and Guide screens.</text>
+          <row gap="12">
+            <command-card action="noop" tooltip="Command cards are styled cards with actions.">
+              <title>Command Card</title>
+              <text>Use for major actions or tool entry points.</text>
+            </command-card>
+            <command-card action="screencore.open_page" action-page="echoscreencore:test_components_templates">
+              <title>Templates</title>
+              <text>Open template validation page.</text>
+            </command-card>
+          </row>
+        </hero-card>
+      </app-content>
+      <inspector-panel title="Inspector">
+        <include src="echoscreencore:status_chip_row" label="Status" status="ready" value="READY"/>
+        <stat-bar label="Readability" value="95" max="100"/>
+        <stat-bar label="Layout" value="82" max="100"/>
+      </inspector-panel>
+    </grid>
+    <app-footer>
+      <text>Footer regions remain ordinary ScreenCore containers.</text>
+    </app-footer>
+  </app-shell>
+</page>

@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:settlement_survivor",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Keep your voice down. People listen when supplies run low.",
+      "options": [
+        { "id": "local", "label": "Anything I should know?", "next": "local" },
+        { "id": "trade", "label": "Anything to trade?", "action": "open_trade" },
+        { "id": "service", "label": "Any help?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Take care.", "action": "close" }
+      ]
+    },
+    "local": {
+      "text": "North path floods after ash rain. East path has better scrap, worse company.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

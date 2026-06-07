@@ -1,0 +1,9 @@
+{
+  "id": "echothemecore:cyberglass_selection_pulse",
+  "theme": "echothemecore:cyberglass",
+  "type": "selection_pulse",
+  "effects": [
+    {"type": "energy_edge_pulse", "duration_ticks": 20, "strength": "theme:edge_glow_strength"},
+    {"type": "glow_pulse", "duration_ticks": 20, "color": "theme:selection"}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "echoblockworks:terminal_bunker",
+  "display_name": "Terminal Bunker",
+  "description": "Terminal screens, ECHO circuitry, server cabinets, data walls, and cyan-lit command surfaces.",
+  "recommended_usage": "Command bunkers, restored control rooms, diagnostics labs, and mission terminals.",
+  "theme": "terminal",
+  "family_ids": [
+    "terminal_panel",
+    "echo_circuit",
+    "reinforced_metal"
+  ],
+  "featured_blocks": [
+    "echoblockworks:terminal_panel_wall_panel",
+    "echoblockworks:terminal_panel_screen",
+    "echoblockworks:terminal_panel_data_panel",
+    "echoblockworks:echo_circuit_matrix"
+  ],
+  "accent_blocks": [
+    "echoblockworks:data_wall",
+    "echoblockworks:server_cabinet",
+    "echoblockworks:echo_strip_light",
+    "echoblockworks:reinforced_metal_frame"
+  ],
+  "worldgen_site": "echoblockworks:terminal_bunker_alcove"
+}

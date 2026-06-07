@@ -1,0 +1,39 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoashfallprotocol:textures/block/ooze_crystal_crystal.png",
+  "particle_profile": "echoashfallprotocol:static/ooze_crystal",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "energy_field",
+    "glow_intensity": 0.8,
+    "pulse_speed": 0.35,
+    "target_scope": "block"
+  },
+  "anchors": {
+    "crystal_top": { "offset": [0, 0.88, 0] },
+    "core": { "offset": [0, 0.5, 0] }
+  },
+  "surface": {
+    "type": "static_block",
+    "owner_addon": "echoashfallprotocol",
+    "display_name": "Ooze Crystal",
+    "tags": ["crystal_block", "world_crystal"],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "vanilla light remains visible when RenderCore particles are unavailable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "max_emitters": 2,
+    "advanced_fx": "auto"
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

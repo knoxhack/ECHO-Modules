@@ -1,0 +1,24 @@
+{
+  "id": "echoblockworks:reclamation_dome",
+  "display_name": "Reclamation Dome",
+  "description": "Transparent greenhouse glass, overgrowth, hydroponic panels, grow lights, and irrigation detail.",
+  "recommended_usage": "Agriculture domes, reclamation labs, greenhouse ruins, and restored food-route spaces.",
+  "theme": "reclamation",
+  "family_ids": [
+    "reclamation_glass",
+    "echo_circuit"
+  ],
+  "featured_blocks": [
+    "echoblockworks:reclamation_glass_clear_glass",
+    "echoblockworks:reclamation_glass_framed_glass",
+    "echoblockworks:reclamation_glass_green_glass",
+    "echoblockworks:reclamation_glass_overgrown_glass"
+  ],
+  "accent_blocks": [
+    "echoblockworks:reclamation_glass_lit_grow_panel",
+    "echoblockworks:reclamation_glass_hydroponic_panel",
+    "echoblockworks:reclamation_glass_irrigation_pipe",
+    "echoblockworks:hologram_floor_projector"
+  ],
+  "worldgen_site": "echoblockworks:reclamation_dome_remnant"
+}

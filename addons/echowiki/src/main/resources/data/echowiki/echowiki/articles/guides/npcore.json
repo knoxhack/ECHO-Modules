@@ -1,0 +1,57 @@
+{
+  "id": "echowiki:guides/npcore",
+  "title": "NPCore Field Manual",
+  "category": "Guide Books",
+  "summary": "Understand ECHO NPC contacts, interaction screens, dialogue, trades, services, and replacement behavior.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "NPCore turns authored profile data into interactive contacts. A contact can carry a profile, visual style, dialogue tree, trade set, service set, faction label, and replacement mapping.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Safe Contact",
+      "body": "Approach an ECHO NPC, right-click, read the current dialogue options, and back out if the screen reports a missing trade, service, or profile state.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "What Matters In Play",
+      "body": "Players mainly need to know who the contact is, what tab is active, what a trade or service costs, and whether a mission or cooldown is blocking the action.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Fallbacks",
+      "body": "ScreenCore improves the page when available. Without it, NPCore keeps a classic interaction path so dialogue, trades, and services remain reachable.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If an NPC looks generic or has no useful options, check whether its profile, visual profile, dialogue, trade set, and service set loaded from the datapack namespace.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "npc"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "heroArt": "echowiki:textures/gui/guide_books/npcore_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/npcore/first_steps",
+    "echowiki:guides/npcore/core_loop",
+    "echowiki:guides/npcore/systems",
+    "echowiki:guides/npcore/progression",
+    "echowiki:guides/npcore/integrations",
+    "echowiki:guides/npcore/troubleshooting"
+  ],
+  "sortOrder": 1095
+}

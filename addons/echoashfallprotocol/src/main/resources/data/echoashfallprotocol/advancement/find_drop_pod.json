@@ -1,0 +1,28 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:machine_casing"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_drop_pod.title",
+      "fallback": "First Contact"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_drop_pod.desc",
+      "fallback": "Discover a crashed Drop Pod from the sky."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_drop_pod": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    ["found_drop_pod"]
+  ]
+}

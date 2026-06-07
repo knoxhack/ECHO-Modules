@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:nexus_guardian",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:destroy_directive"
+                             },
+                    "title":  "Destroy Protocol",
+                    "description":  "Choose the Destroy directive.",
+                    "frame":  "challenge",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "directive":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:destroy_directive"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "directive"
+                         ]
+                     ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/ritualcore/integrations",
+  "title": "RitualCore Altar: Integrations",
+  "category": "Guide Books",
+  "summary": "Use RitualCore events to connect relic, curse, spell, map, scan, and mission systems.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "RitualCore can consume RelicTech lifecycle data, CurseCore player curses, SpellCore core requirements, HoloMap traces, Lens diagnostics, and MissionCore objectives.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use Arcane Index for layouts, Grimoire for warnings, Lens for altar scans, and HoloMap when a ritual reveals a field route.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If an optional target is missing, keep the altar intact and report the missing condition instead of consuming the offering.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ritualcore",
+    "arcana",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:lodestone",
+  "relatedArticles": [
+    "echowiki:guides/ritualcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1285
+}

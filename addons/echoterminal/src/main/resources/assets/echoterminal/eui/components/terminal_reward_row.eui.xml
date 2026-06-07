@@ -1,0 +1,5 @@
+<list-row class="terminal-compact-row terminal-mission-check-row terminal-mission-reward-row">
+  <status-chip class="terminal-reward-badge-chip" status="{param.status|info}" value="{param.stateLabel|REWARD}"/>
+  <copy-block class="terminal-row-copy" title="{param.label|Reward}" subtitle="{param.detail|Reward detail unavailable.}"/>
+  <status-chip class="terminal-reward-count-chip" status="info" value="{param.countLabel|INFO}"/>
+</list-row>

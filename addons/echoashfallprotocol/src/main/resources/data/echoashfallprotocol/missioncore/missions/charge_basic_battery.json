@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:charge_basic_battery",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 9,
+  "title": "Charge Basic Battery + Turn In",
+  "briefing": "[ECHO-7] Portable power prevents machine stalls away from cables. Keep a charged Basic Battery in inventory, then return this protocol.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall charged BatteryItem predicate that requires any Basic Battery with at least 1000 stored FE before cable routing.",
+  "category": "tech",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:basic_battery",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_scrap_dynamo"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "charge_basic_battery",
+    "nativeGameplayHook": "ashfall.first_route.charge_basic_battery",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.power_cable.route_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "9",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "18",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:charge_basic_battery:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:charge_basic_battery/confirm_charged_battery",
+      "type": "custom",
+      "label": "Charge Basic Battery",
+      "detail": "Carry a Basic Battery with at least 1000 FE stored.",
+      "icon": "echoashfallprotocol:basic_battery",
+      "target": "echoashfallprotocol:basic_battery",
+      "required": 1,
+      "criteria": {
+        "predicate": "charged_item_energy_at_least",
+        "item": "echoashfallprotocol:basic_battery",
+        "minimum_energy": 1000,
+        "events": "player.inventory_changed,ashfall.energy_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:basic_battery",
+      "count": 1,
+      "minimumEnergy": 1000,
+      "label": "Charged Basic Battery"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:charge_basic_battery/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Wiring reserve for the first cable route."
+    },
+    {
+      "id": "echoashfallprotocol:charge_basic_battery/reward_redstone",
+      "item": "minecraft:redstone",
+      "count": 2,
+      "label": "Redstone",
+      "detail": "Signal material for basic power routing."
+    }
+  ],
+  "completionText": "[ECHO-7] Portable FE reserve confirmed. Insert batteries into machines, generators, or banks, or sneak-right-click energy blocks to transfer charge."
+}

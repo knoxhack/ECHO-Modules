@@ -1,0 +1,93 @@
+{
+  "id": "echoashfallprotocol:destroy_dead_signal",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 11,
+  "title": "Collapse Dead Signal",
+  "briefing": "[ECHO-7] The Warden exposed a dead command carrier below the Archives. Collapse the remaining signal infrastructure before it reboots.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "tech",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:mutagen_vial",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_guardian"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_dead_signal",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_dead_signal",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "11",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "104",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_dead_signal:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_dead_signal/destroy_dead_signal",
+      "type": "custom",
+      "label": "Collapse Dead Signal",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:mutagen_vial",
+      "target": "echoashfallprotocol:destroy_dead_signal",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.destroy_dead_signal"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_dead_signal/reward_0",
+      "item": "echoashfallprotocol:mutagen_vial",
+      "count": 2,
+      "label": "Mutagen Vial",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_dead_signal/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:destroy_dead_signal/reward_1",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 8,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_dead_signal/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Dead signal collapse confirmed. The Severance Engine is exposed."
+}

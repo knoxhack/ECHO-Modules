@@ -1,0 +1,8 @@
+<grid class="two-column-shell" columns="{param.columns|260px 1fr}" gap="{param.gap|16}">
+  <panel title="{param.sidebarTitle|Navigation}">
+    <slot-outlet name="sidebar"/>
+  </panel>
+  <column gap="16">
+    <slot-outlet name="body"/>
+  </column>
+</grid>

@@ -1,0 +1,280 @@
+{
+  "dimensions": {
+    "minecraft:overworld": {
+      "type": "minecraft:overworld",
+      "generator": {
+        "type": "minecraft:noise",
+        "biome_source": {
+          "type": "minecraft:multi_noise",
+          "biomes": [
+            {
+              "biome": "echoashfallprotocol:the_wasteland",
+              "parameters": {
+                "temperature": [
+                  -0.55,
+                  0.55
+                ],
+                "humidity": [
+                  -0.65,
+                  0.25
+                ],
+                "continentalness": [
+                  -0.2,
+                  0.82
+                ],
+                "erosion": [
+                  -1.0,
+                  1.0
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  -0.45,
+                  0.45
+                ],
+                "offset": 0.02
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:ruined_plains",
+              "parameters": {
+                "temperature": [
+                  0.0625,
+                  0.5875
+                ],
+                "humidity": [
+                  -0.5375,
+                  -0.1125
+                ],
+                "continentalness": [
+                  0.08,
+                  0.62
+                ],
+                "erosion": [
+                  0.025,
+                  0.675
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  0.6125,
+                  0.9375
+                ],
+                "offset": 0.12
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:crash_zone_wasteland",
+              "parameters": {
+                "temperature": [
+                  0.5125,
+                  0.8375
+                ],
+                "humidity": [
+                  -0.8125,
+                  -0.4375
+                ],
+                "continentalness": [
+                  0.12,
+                  0.58
+                ],
+                "erosion": [
+                  0.3625,
+                  0.7875
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  -1.175,
+                  -0.725
+                ],
+                "offset": 0.0
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:industrial_ruins",
+              "parameters": {
+                "temperature": [
+                  0.2437,
+                  0.5062
+                ],
+                "humidity": [
+                  0.0063,
+                  0.2437
+                ],
+                "continentalness": [
+                  0.42,
+                  0.78
+                ],
+                "erosion": [
+                  -0.5313,
+                  -0.2188
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  -0.8375,
+                  -0.5625
+                ],
+                "offset": 0.08
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:toxic_swamp",
+              "parameters": {
+                "temperature": [
+                  0.4438,
+                  0.7063
+                ],
+                "humidity": [
+                  0.5313,
+                  0.7188
+                ],
+                "continentalness": [
+                  0.02,
+                  0.34
+                ],
+                "erosion": [
+                  0.375,
+                  0.625
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  0.1563,
+                  0.4938
+                ],
+                "offset": 0.0
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:ruined_cityscape",
+              "parameters": {
+                "temperature": [
+                  0.1625,
+                  0.4375
+                ],
+                "humidity": [
+                  0.125,
+                  0.375
+                ],
+                "continentalness": [
+                  0.58,
+                  0.9
+                ],
+                "erosion": [
+                  -0.6062,
+                  -0.3438
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  1.2813,
+                  1.5688
+                ],
+                "offset": 0.06
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:radiation_zone",
+              "parameters": {
+                "temperature": [
+                  0.7,
+                  0.9
+                ],
+                "humidity": [
+                  -0.7,
+                  -0.5
+                ],
+                "continentalness": [
+                  0.28,
+                  0.72
+                ],
+                "erosion": [
+                  -0.3438,
+                  0.0938
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  1.0563,
+                  1.3938
+                ],
+                "offset": 0.0
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:cryogenic_ruins",
+              "parameters": {
+                "temperature": [
+                  -0.8438,
+                  -0.6062
+                ],
+                "humidity": [
+                  -0.4563,
+                  -0.0938
+                ],
+                "continentalness": [
+                  0.18,
+                  0.62
+                ],
+                "erosion": [
+                  -0.475,
+                  -0.125
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  -1.2437,
+                  -0.8062
+                ],
+                "offset": 0.08
+              }
+            },
+            {
+              "biome": "echoashfallprotocol:nexus_scar",
+              "parameters": {
+                "temperature": [
+                  0.02,
+                  0.08
+                ],
+                "humidity": [
+                  0.02,
+                  0.08
+                ],
+                "continentalness": [
+                  0.64,
+                  0.76
+                ],
+                "erosion": [
+                  -0.03,
+                  0.03
+                ],
+                "depth": 0.0,
+                "weirdness": [
+                  -0.025,
+                  0.025
+                ],
+                "offset": 0.02
+              }
+            }
+          ]
+        },
+        "settings": "echoashfallprotocol:wasteland_overworld"
+      }
+    },
+    "minecraft:the_end": {
+      "type": "minecraft:the_end",
+      "generator": {
+        "type": "minecraft:noise",
+        "biome_source": {
+          "type": "minecraft:the_end"
+        },
+        "settings": "minecraft:end"
+      }
+    },
+    "minecraft:the_nether": {
+      "type": "minecraft:the_nether",
+      "generator": {
+        "type": "minecraft:noise",
+        "biome_source": {
+          "type": "minecraft:multi_noise",
+          "preset": "minecraft:nether"
+        },
+        "settings": "minecraft:nether"
+      }
+    }
+  }
+}

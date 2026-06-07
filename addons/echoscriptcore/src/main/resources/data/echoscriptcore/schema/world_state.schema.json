@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "world_state",
+  "required": ["schema_version", "id", "type"],
+  "fields": ["pack", "title", "set_by", "effects", "metadata"]
+}

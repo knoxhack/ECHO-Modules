@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:recipe_unlocks",
+  "category": "RESEARCH",
+  "title": "Recipe Unlocks",
+  "summary": "A locked recipe is usually a message, not a wall.",
+  "body": [
+    "Recipes may require research, mission state, item discovery, or chapter progress.",
+    "TutorialCore can explain common locks, but the owning addon remains authoritative."
+  ],
+  "steps": [
+    "Read the lock reason when a recipe fails.",
+    "Check Research and Mission Browser.",
+    "Scan the related machine or item with Lens."
+  ],
+  "commonMistakes": [
+    "Crafting the same locked recipe repeatedly.",
+    "Skipping prerequisite research."
+  ],
+  "related": [
+    "echotutorialcore:why_recipe_locked",
+    "echotutorialcore:research_basics"
+  ],
+  "unlockTriggers": [
+    "recipe_locked",
+    "research_completed"
+  ],
+  "defaultUnlocked": false,
+  "priority": 62
+}

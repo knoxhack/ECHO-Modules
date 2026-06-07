@@ -1,0 +1,11 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "screen", "owner_addon": "echorendercore", "display_name": "V21 Hologram Screen", "tags": ["screen"], "integration_mode": "optional" },
+  "fallback": { "mode": "stable", "expectation": "hologram surface keeps a stable glass frame", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "normal", "advanced_fx": "auto" },
+  "screen_chrome": { "style": "hologram", "label": "HOLOGRAM", "backdrop": false, "edge_glow": true, "corner_brackets": true, "accent_rails": true, "scanlines": false, "glass_glints": true, "chromatic_edge": true, "quiet_fallback": false },
+  "qa": { "required": true, "evidence": ["screenshot", "screen_chrome"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/gui/v21_hologram_screen.png",
+  "default_state": "SCANNING",
+  "effect": { "preset": "hologram", "glow_intensity": 0.5, "pulse_speed": 0.18, "bloom_tint": "#FF52FFCB" }
+}

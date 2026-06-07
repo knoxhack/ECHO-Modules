@@ -1,0 +1,69 @@
+{
+  "name": "echoashfallprotocol:sporebound_sanctum/streets",
+  "fallback": "echoashfallprotocol:sporebound_sanctum/terminators",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/straight_01",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/straight_02",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/corner_01",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/corner_02",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/crossroad_01",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/corner_03",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "minecraft:village/taiga/streets/straight_03",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    }
+  ]
+}

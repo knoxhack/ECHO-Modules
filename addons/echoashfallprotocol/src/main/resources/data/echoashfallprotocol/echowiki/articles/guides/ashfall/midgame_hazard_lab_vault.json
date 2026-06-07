@@ -1,0 +1,72 @@
+{
+  "id": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+  "title": "Ashfall: Hazards, Labs, and Vaults",
+  "category": "Guide Books",
+  "summary": "Read toxic, radiation, mutation, med bay, lab, vault, and data-log state before breaching the midgame.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Entry Check",
+      "body": "Midgame routes should say what hurts you, which countermeasure helps, where the retreat line is, and what evidence makes the breach worth it. If one of those is missing, prepare before entering.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Treatment Loop",
+      "body": "The field med bay is the place to read status changes after hard routes. Check mutation pressure, radiation recovery, and supplies before starting another lab or vault run.",
+      "tone": "body",
+      "item": "echoashfallprotocol:field_med_bay",
+      "count": 1,
+      "targetKind": "mission",
+      "target": "echoashfallprotocol:build_field_med_bay",
+      "label": "Build Field Med Bay",
+      "subtitle": "Recovery objective"
+    },
+    {
+      "type": "callout",
+      "title": "Data Before Loot",
+      "body": "Labs and vaults should explain the data-log context, not only the chest reward. Recover the log, read the hazard note, and decide whether to push deeper.",
+      "tone": "warning",
+      "icon": "echoashfallprotocol:data_log_survivor_alpha"
+    },
+    {
+      "type": "paragraph",
+      "title": "Retreat Is Progress",
+      "body": "A marked exit, a cleansed status effect, and a stored data log are progress even when the vault remains unfinished. Ashfall expects repeated prepared entries.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "ashfall",
+    "hazards",
+    "mutations",
+    "labs",
+    "vaults",
+    "guide_book_chapter"
+  ],
+  "icon": "echoashfallprotocol:field_med_bay",
+  "relatedArticles": [
+    "echowiki:guides/ashfall",
+    "echowiki:guides/ashfall/systems",
+    "echowiki:guides/ashfall/progression"
+  ],
+  "relatedItems": [
+    "echoashfallprotocol:field_med_bay",
+    "echoashfallprotocol:gas_mask",
+    "echoashfallprotocol:rad_away",
+    "echoashfallprotocol:data_log_survivor_alpha"
+  ],
+  "relatedMissions": [
+    "echoashfallprotocol:enter_bio_lab",
+    "echoashfallprotocol:scan_mutation_status",
+    "echoashfallprotocol:clear_military_vault",
+    "echoashfallprotocol:recover_data_log"
+  ],
+  "relatedRegions": [
+    "echoashfallprotocol:toxic_swamp",
+    "echoashfallprotocol:radiation_zone",
+    "echoashfallprotocol:cryogenic_ruins"
+  ],
+  "sortOrder": 1019
+}

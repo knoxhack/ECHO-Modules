@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:labyrinth_unlock",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:core_access_key_right"
+                             },
+                    "title":  "Labyrinth Stabilized",
+                    "description":  "Recover the right Core Access Key segment.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "right_key":  {
+                                       "trigger":  "minecraft:inventory_changed",
+                                       "conditions":  {
+                                                          "items":  [
+                                                                        {
+                                                                            "items":  "echoblackboxprotocol:core_access_key_right"
+                                                                        }
+                                                                    ]
+                                                      }
+                                   }
+                 },
+    "requirements":  [
+                         [
+                             "right_key"
+                         ]
+                     ]
+}

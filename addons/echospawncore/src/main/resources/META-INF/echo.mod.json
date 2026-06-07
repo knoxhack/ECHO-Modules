@@ -1,0 +1,85 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echospawncore",
+  "name": "ECHO: SpawnCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "spawn_core",
+  "entrypoint": "com.knoxhack.echo.spawncore.EchoSpawnCore",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echoprogressioncore",
+    "echoschemacore",
+    "echosocialcore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "spawn.difficulty_scaling",
+    "spawn.faction_rules",
+    "spawn.hazard_rules",
+    "spawn.poi_rules",
+    "spawn.profiles",
+    "spawn.weather_rules"
+  ],
+  "consumes": [
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "social.factions",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "resources.data",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "entities",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "Neutral spawn profile, hazard, POI, faction, weather, and difficulty-scaling contract layer for ECHO packs.",
+    "nativeEntrypoint": "com.knoxhack.echo.spawncore.EchoSpawnCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/spawncore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

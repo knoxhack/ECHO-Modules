@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "pack": "generic_survival",
+  "id": "generic_survival:safe_haven_ending",
+  "type": "ending",
+  "title": "Safe Haven",
+  "conditions": [{ "type": "world_state_set", "state": "generic_survival:radio_restored" }],
+  "terminal_summary": "A stable settlement route is possible."
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:first_light/hide_wrap",
+  "criteria": {
+    "obtain_schematic_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Recover a Schematic Fragment from ruins or survivors.",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:schematic_fragment"
+    },
+    "title": "Technology Recovered",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "requirements": [
+    [
+      "obtain_schematic_fragment"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

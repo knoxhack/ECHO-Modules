@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ECHO Recovery Preset",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "display_name": { "type": "string" },
+    "enable_graves": { "type": "boolean" },
+    "store_items": { "type": "boolean" },
+    "store_armor": { "type": "boolean" },
+    "store_offhand": { "type": "boolean" },
+    "store_xp": { "type": "boolean" },
+    "grave_expiration_minutes": { "type": "integer" },
+    "max_graves_per_player": { "type": "integer" },
+    "owner_only": { "type": "boolean" },
+    "team_access": { "type": "boolean" },
+    "public_access_after_minutes": { "type": "integer" },
+    "explosion_proof": { "type": "boolean" },
+    "safe_placement": { "type": "boolean" },
+    "grave_key_enabled": { "type": "boolean" },
+    "recovery_compass_enabled": { "type": "boolean" }
+  },
+  "required": ["id", "display_name"]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "echoindustrialnexus:overclock_core",
+  "display_name": "Overclock Core",
+  "category": "industrial_throughput",
+  "item": "echoindustrialnexus:overclock_core",
+  "allowed_multiblocks": [
+    "echoindustrialnexus:industrial_assembly_line",
+    "echoindustrialnexus:scrap_processor",
+    "echoindustrialnexus:plate_press",
+    "echoindustrialnexus:circuit_fabricator",
+    "echoindustrialnexus:recipe_matrix_core",
+    "echoindustrialnexus:nexus_furnace_array"
+  ],
+  "modifiers": [
+    { "type": "speed_multiplier", "value": 0.5 },
+    { "type": "power_cost_multiplier", "value": 0.35 },
+    { "type": "heat_reduction", "value": -3.0 }
+  ],
+  "notes": [
+    "Reduces duration while increasing power draw and heat risk."
+  ]
+}

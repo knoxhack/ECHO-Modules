@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:armory_fabricator",
+    "facility":  "echomultiblockcore:armory_fabricator",
+    "tier":  8,
+    "prerequisites":  [
+                          "echomultiblockcore:industrial_assembly_line"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:fabricate_armory_pattern_core",
+                             "echomultiblockcore:encode_armory_loadout_pattern"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:armory_pattern_core"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/armory_fabricator",
+    "title":  "Armory Fabricator",
+    "guide":  "Fabricate armory pattern cores for advanced gear loadouts and armory station recipes."
+}

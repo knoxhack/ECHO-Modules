@@ -1,0 +1,20 @@
+{
+    "parent":"echogalacticcore:block/panel_lighting",
+	"textures": {
+		"texture": "echogalacticcore:block/panel_light_off",
+		"lights": "echogalacticcore:block/panel_light_square",
+		"particle": "blocks/glass"
+	},
+    "display": {
+        "firstperson": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<list-row class="index-item-card" action="index.select_item" action-value="{param.id|}" selected="{param.selected|}" active="{param.active|}" help="{param.help|Select this item to preview details and navigation actions.}">
+  <row class="index-item-row-inner" gap="8">
+    <item-stack item="{param.icon|minecraft:barrier}" count="{param.count|1}"/>
+    <column class="index-item-copy">
+      <title class="index-item-title" value="{param.title|Unknown Item}"/>
+      <text class="index-item-subtitle" value="{param.subtitle|No item data}"/>
+      <text class="index-item-meta" value="{param.meta|}"/>
+    </column>
+    <button class="index-item-favorite" action="index.toggle_favorite" action-value="{param.id|}" action-param-kind="item" tooltip="Toggle this item in Favorites.">Save</button>
+  </row>
+</list-row>

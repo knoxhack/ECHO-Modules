@@ -1,0 +1,87 @@
+{
+  "id": "echoashfallprotocol:scan_mutation_status",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 6,
+  "title": "Scan Mutation Status",
+  "briefing": "[ECHO-7] Mutation risk is now measurable. Stand near the Field Med Bay and check your biological status before treating symptoms.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:field_med_bay",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:craft_radaway"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "scan_mutation_status",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.scan_mutation_status",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "52",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:scan_mutation_status:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:scan_mutation_status/field_med_bay",
+      "type": "place_block",
+      "label": "Place Field Med Bay",
+      "detail": "Place 1 Field Med Bay for the Ashfall route.",
+      "icon": "echoashfallprotocol:field_med_bay",
+      "target": "echoashfallprotocol:field_med_bay",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:field_med_bay"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:field_med_bay",
+      "count": 1,
+      "label": "Field Med Bay"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:scan_mutation_status/reward_0",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scan_mutation_status/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Mutation scan baseline recorded. Adaptation has benefits, but every benefit has a cost."
+}

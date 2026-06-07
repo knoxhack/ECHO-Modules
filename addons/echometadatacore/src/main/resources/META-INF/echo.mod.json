@@ -1,0 +1,80 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echometadatacore",
+  "name": "ECHO: MetadataCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "metadata_core",
+  "entrypoint": "com.knoxhack.echo.metadatacore.EchoMetadataCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echopackcore"
+  ],
+  "optional": [],
+  "provides": [
+    "metadata.manifest",
+    "metadata.ai",
+    "metadata.migration"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack",
+    "pack.profile"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "pack.read",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echo.metadatacore.EchoMetadataCoreNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "MetadataCore defines manifest contracts only; it does not make missing metadata fatal by itself."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,80 @@
+{
+  "id": "echoashfallprotocol:faction_reputation",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 8,
+  "title": "Earn Faction Trust",
+  "briefing": "[ECHO-7] Alliances matter. Earn visible trust with any faction by completing contract work and reading the terminal reports.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "survival",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:filter_cartridge_elite",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:recover_drone_intel"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "faction_reputation",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.faction_reputation",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "8",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "43",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:faction_reputation:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "ashfall.reputation_updated",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:faction_reputation/faction_reputation",
+      "type": "custom",
+      "label": "Earn Faction Trust",
+      "detail": "Progress is recorded by the Ashfall runtime predicate, reputation event, or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:filter_cartridge_elite",
+      "target": "echoashfallprotocol:faction_reputation",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.faction_reputation"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:faction_reputation/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_elite",
+      "count": 1,
+      "label": "Filter Cartridge Elite",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:faction_reputation/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Faction relationship established. Better supplies, intel, and support routes are now visible."
+}

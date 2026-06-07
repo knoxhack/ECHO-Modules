@@ -1,0 +1,102 @@
+{
+  "id": "echoashfallprotocol:build_isotope_refiner",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 4,
+  "title": "Build an Isotope Refiner",
+  "briefing": "[ECHO-7] These minerals are highly contaminated. Use an Isotope Refiner to separate useful trace material from whatever the Gridfall left inside it.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:isotope_refiner",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_ore_grinder"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_isotope_refiner",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_isotope_refiner",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "63",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_isotope_refiner:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_isotope_refiner/isotope_refiner",
+      "type": "place_block",
+      "label": "Place Isotope Refiner",
+      "detail": "Place 1 Isotope Refiner for the Ashfall route.",
+      "icon": "echoashfallprotocol:isotope_refiner",
+      "target": "echoashfallprotocol:isotope_refiner",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:isotope_refiner"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_circuit",
+      "count": 4,
+      "label": "Scrap Circuit"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "block": "echoashfallprotocol:isotope_refiner",
+      "count": 1,
+      "label": "Isotope Refiner"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_isotope_refiner/reward_0",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 4,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_isotope_refiner/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Refiner active. This is the only path to nuclear-grade materials and alloys."
+}

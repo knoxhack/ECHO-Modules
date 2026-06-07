@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:recipe_locked",
+  "type": "RECIPE_HELP",
+  "category": "TROUBLESHOOTING",
+  "title": "Recipe Locked",
+  "message": "This recipe is gated by progression or research.",
+  "details": "Check the Terminal or TutorialCore lock explanation for requirements.",
+  "actionLabel": "Review recipe locks",
+  "actionCardId": "echotutorialcore:recipe_unlocks",
+  "cooldownTicks": 12000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 60,
+  "dismissible": true,
+  "conditions": [
+    "mistake:echotutorialcore:recipe_locked"
+  ]
+}

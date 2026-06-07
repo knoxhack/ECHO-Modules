@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:stabilize_mutation_effects",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 8,
+  "title": "Stabilize Mutation Effects",
+  "briefing": "[ECHO-7] Stabilization protocol: keep RadAway, bandages, and med bay access available before experimenting with mutation catalysts.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "survival",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:rad_away",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:use_field_med_bay"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "stabilize_mutation_effects",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.stabilize_mutation_effects",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "8",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "54",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:stabilize_mutation_effects:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:stabilize_mutation_effects/rad_away",
+      "type": "deliver_item",
+      "label": "Deliver Rad Away",
+      "detail": "Confirm 1 Rad Away for this route step.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:rad_away",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:rad_away",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stabilize_mutation_effects/bandage",
+      "type": "deliver_item",
+      "label": "Deliver Bandage",
+      "detail": "Confirm 1 Bandage for this route step.",
+      "icon": "echoashfallprotocol:rad_away",
+      "target": "echoashfallprotocol:bandage",
+      "required": 1,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:bandage",
+        "turn_in": "true",
+        "consume_on_turn_in": "false"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away"
+    },
+    {
+      "item": "echoashfallprotocol:bandage",
+      "count": 1,
+      "label": "Bandage"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:stabilize_mutation_effects/reward_0",
+      "item": "echoashfallprotocol:mutated_tissue",
+      "count": 1,
+      "label": "Mutated Tissue",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:stabilize_mutation_effects/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:stabilize_mutation_effects/reward_1",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:stabilize_mutation_effects/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Stabilization kit confirmed. Mutation is a tradeoff, not a free upgrade."
+}

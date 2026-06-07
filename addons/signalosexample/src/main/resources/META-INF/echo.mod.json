@@ -1,0 +1,78 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "signalosexample",
+  "name": "SignalOS Example Addon",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "developer_tool",
+  "entrypoint": "com.knoxhack.signalosexample.SignalOsExample",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": false,
+  "trustLevel": "sandboxed",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "signalos"
+  ],
+  "optional": [
+    "echoindex",
+    "echoterminal"
+  ],
+  "provides": [
+    "signalos.example_content"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net",
+    "signalos.archives",
+    "signalos.data_drives",
+    "signalos.missions"
+  ],
+  "gameModes": [
+    "creator_tools"
+  ],
+  "permissions": [
+    "resources.data"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "missions",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.signalosexample.SignalOsExampleNativeModule",
+    "nativeClasspath": [],
+    "notes": "Internal example-only SignalOS integration addon. It is not launcher visible, not storefront ready, and not required by public packs."
+  },
+  "apiStability": "internal",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/signalosexample/**",
+      "src/main/resources/**",
+      "README.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

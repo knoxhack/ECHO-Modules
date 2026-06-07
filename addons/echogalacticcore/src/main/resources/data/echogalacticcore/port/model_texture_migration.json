@@ -1,0 +1,26 @@
+{
+  "schema": "echogalacticcore.port.model_texture_migration.v1",
+  "source": "galacticraft_legacy_model_texture_assets",
+  "originalTextureRoots": [
+    "assets/galacticraftcore/textures/blocks",
+    "assets/galacticraftcore/textures/items",
+    "assets/galacticraftplanets/textures/blocks",
+    "assets/galacticraftplanets/textures/items"
+  ],
+  "nativeTextureRoots": [
+    "assets/echogalacticcore/textures/block",
+    "assets/echogalacticcore/textures/item"
+  ],
+  "rewrites": {
+    "echogalacticcore:blocks/": "echogalacticcore:block/",
+    "echogalacticcore:items/": "echogalacticcore:item/",
+    "minecraft:blocks/": "minecraft:block/",
+    "minecraft:items/": "minecraft:item/"
+  },
+  "blockTextureFileCount": 344,
+  "itemTextureFileCount": 207,
+  "notes": [
+    "Preserves Galacticraft Legacy visual assets while moving runtime texture ids to native singular resource roots.",
+    "OBJ material files, blockstate variants, and model JSON files are covered by the migration gate."
+  ]
+}

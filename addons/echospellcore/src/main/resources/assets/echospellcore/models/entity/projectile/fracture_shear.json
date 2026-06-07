@@ -1,0 +1,54 @@
+{
+  "credit": "ECHO SpellCore bespoke baked projectile model",
+  "texture_size": [32, 32],
+  "textures": {
+    "particle": "echospellcore:entity/projectile/fracture_shear",
+    "sprite": "echospellcore:entity/projectile/fracture_shear"
+  },
+  "elements": [
+    {
+      "name": "primary_shear",
+      "from": [1, 7.25, 7.25],
+      "to": [15, 8.75, 8.75],
+      "rotation": {"angle": -22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "secondary_shear",
+      "from": [4, 6.25, 7.5],
+      "to": [13, 7.25, 8.5],
+      "rotation": {"angle": 22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"},
+        "east": {"texture": "#sprite"},
+        "west": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "split_edge_top",
+      "from": [5.5, 4.75, 7.75],
+      "to": [14, 5.5, 8.25],
+      "rotation": {"angle": -22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"}
+      }
+    },
+    {
+      "name": "split_edge_bottom",
+      "from": [2, 10.5, 7.75],
+      "to": [10.5, 11.25, 8.25],
+      "rotation": {"angle": -22.5, "axis": "z", "origin": [8, 8, 8]},
+      "faces": {
+        "north": {"texture": "#sprite"},
+        "south": {"texture": "#sprite"}
+      }
+    }
+  ]
+}

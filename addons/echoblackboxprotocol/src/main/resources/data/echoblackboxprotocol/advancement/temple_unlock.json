@@ -1,0 +1,44 @@
+{
+    "parent":  "echoblackboxprotocol:decoded_core",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:temple_monolith"
+                             },
+                    "title":  "Core Access Temple Route",
+                    "description":  "Hold Core Logs and Command Remnant proof.",
+                    "frame":  "goal",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "core":  {
+                                  "trigger":  "minecraft:inventory_changed",
+                                  "conditions":  {
+                                                     "items":  [
+                                                                   {
+                                                                       "items":  "echoblackboxprotocol:core_memory_record"
+                                                                   }
+                                                               ]
+                                                 }
+                              },
+                     "command_key":  {
+                                         "trigger":  "minecraft:inventory_changed",
+                                         "conditions":  {
+                                                            "items":  [
+                                                                          {
+                                                                              "items":  "echoblackboxprotocol:command_key"
+                                                                          }
+                                                                      ]
+                                                        }
+                                     }
+                 },
+    "requirements":  [
+                         [
+                             "core"
+                         ],
+                         [
+                             "command_key"
+                         ]
+                     ]
+}

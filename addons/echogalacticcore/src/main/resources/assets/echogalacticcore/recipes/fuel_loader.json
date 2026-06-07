@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:fuel_loader"
+               },
+    "pattern":  [
+                    "XXX",
+                    "XZX",
+                    "WYW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_copper"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:canister",
+                          "data":  0
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

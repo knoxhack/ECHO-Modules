@@ -1,0 +1,42 @@
+{
+  "emitters": {
+    "echo_glyph_glints": {
+      "anchor": "crystal_top",
+      "particle": "echorendercore:soft_mote",
+      "states": ["ACTIVE"],
+      "rate": 0.035,
+      "burst_count": 1,
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.24, 0.08, 0.24],
+      "options": {
+        "type": "echorendercore:soft_mote",
+        "color": "#B883FF",
+        "scale": 0.46,
+        "lifetime": 24,
+        "alpha": 0.82,
+        "style": "nexus_glyph",
+        "fullbright": true,
+        "flicker": 0.22
+      }
+    },
+    "echo_stream": {
+      "anchor": "core",
+      "particle": "echorendercore:soft_wisp",
+      "states": ["ACTIVE"],
+      "rate": 0.015,
+      "burst_count": 1,
+      "velocity": [0.0, 0.012, 0.0],
+      "spread": [0.28, 0.12, 0.28],
+      "options": {
+        "type": "echorendercore:soft_wisp",
+        "color": "#58D9FF",
+        "scale": 0.68,
+        "lifetime": 38,
+        "alpha": 0.42,
+        "style": "nexus_stream",
+        "fullbright": true,
+        "flicker": 0.14
+      }
+    }
+  }
+}

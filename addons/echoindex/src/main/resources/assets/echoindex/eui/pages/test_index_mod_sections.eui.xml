@@ -1,0 +1,3 @@
+<page id="test_index_mod_sections" title="Test Index Mod Sections" styles="index_cyberglass,index_components,index_items">
+  <screen-shell><header title="Index Mod Sections" subtitle="Grouped item browser"/><list bind="index.items.groupedByMod" item="section"><panel title="{section.name}"><text value="{section.itemCount} item(s)"/><list bind="section.items" item="item"><component src="echoindex:index_item_row"><param name="id" value="{item.id}"/><param name="icon" value="{item.icon}"/><param name="title" value="{item.displayName}"/><param name="subtitle" value="{item.category}"/></component></list></panel></list></screen-shell>
+</page>

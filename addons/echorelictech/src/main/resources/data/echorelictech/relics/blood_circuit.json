@@ -1,0 +1,67 @@
+{
+  "id": "echorelictech:blood_circuit",
+  "tier": "forbidden",
+  "category": "combat",
+  "origin": "Forbidden Biometric Overcharge Circuit",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 1200,
+  "instabilityCost": 14,
+  "nullChargeCost": 0,
+  "riskTypes": [
+    "player_debuff",
+    "cooldown_trauma",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:echo_mirror",
+  "terminal": {
+    "summary": "Converts health strain into a short combat overcharge.",
+    "warning": "Use can invite Blood Debt behavior when CurseCore is present."
+  },
+  "lens": {
+    "compact": "Forbidden blood-aether circuit.",
+    "deepScan": [
+      "Contact plate: living circuit residue.",
+      "Power source: operator trauma.",
+      "ECHO warning: medical consent flag absent."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:nexus_stained_capacitor", "count": 1 },
+      { "item": "echorelictech:memory_filament", "count": 2 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:nexus_stained_capacitor", "count": 1 },
+        { "item": "echorelictech:memory_filament", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 1200,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 3 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 10,
+      "materials": [
+        { "item": "echorelictech:forbidden_prototype_file", "count": 1 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "durationTicks": 500,
+    "effectAmplifier": 1
+  }
+}

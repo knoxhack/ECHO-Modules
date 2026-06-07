@@ -1,0 +1,79 @@
+{
+  "parent": "echoashfallprotocol:build_research_lab",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:schematic_fragment_machines"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.schematic_collector.title",
+      "fallback": "Knowledge Keeper"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.schematic_collector.desc",
+      "fallback": "Collect all 5 types of schematic fragments."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_weapons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_weapons"
+          }
+        ]
+      }
+    },
+    "has_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_armor"
+          }
+        ]
+      }
+    },
+    "has_machines": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_machines"
+          }
+        ]
+      }
+    },
+    "has_medical": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_medical"
+          }
+        ]
+      }
+    },
+    "has_energy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_energy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_weapons"],
+    ["has_armor"],
+    ["has_machines"],
+    ["has_medical"],
+    ["has_energy"]
+  ]
+}

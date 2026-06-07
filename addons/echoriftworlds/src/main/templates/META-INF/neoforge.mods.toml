@@ -1,0 +1,77 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Rift content scaffold for ECHO: Arcana Division."
+description='''
+ECHO: RiftWorlds defines the Arcana Division rift, portal, pocket-world,
+dimensional ruin, HoloMap marker, and mission scaffold. Playable rifts,
+worldgen, mobs, and dimensions are future work.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon registry and module catalog contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides Arcana provider contracts for rift markers, Index pages, and missions."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Future rift cracks and ruins will publish HoloMap markers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Future Lens scans will discover rift cracks and dimensional hazards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoritualcore"
+type="optional"
+reason="Future portal opening and stabilization will use RitualCore arrays."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocursecore"
+type="optional"
+reason="Future rift exposure will amplify curse risk and Void Mark style consequences."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

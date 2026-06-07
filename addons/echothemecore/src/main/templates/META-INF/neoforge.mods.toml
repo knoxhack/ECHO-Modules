@@ -1,0 +1,112 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/Echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/Echo"
+authors="KnoxHack"
+credits="Shared visual, audio, UI, and development-time asset theme manager for ECHO."
+description='''
+ECHO ThemeCore provides data-driven visual, audio, UI, vanilla UI skin, and asset-pipeline theme services for the ECHO/Ashfall ecosystem.
+'''
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO service and config registry contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared packet registration and theme sync sends."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorendercore"
+type="optional"
+reason="Allows RenderCore consumers to use ThemeCore render profiles and presets."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoruntimeguard"
+type="optional"
+reason="Allows ThemeCore visual settings to honor RuntimeGuard performance modes."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoterminal"
+type="optional"
+reason="Allows ThemeCore to register CyberGlass as an optional Terminal theme and fresh-install Terminal default."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosignalos"
+type="optional"
+reason="Allows SignalOS screens and sounds to resolve ThemeCore colors and sound ids when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Allows HoloMap markers, routes, overlays, and map chrome to use active ThemeCore styling."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echolens"
+type="optional"
+reason="Allows Lens scan overlays and highlight colors to use active ThemeCore styling."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echosoundcore"
+type="optional"
+reason="Allows themed UI sound ids to resolve to SoundCore events when SoundCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoblockworks"
+type="optional"
+reason="Documents the optional CyberGlass Blockworks palette-kit relationship; no runtime dependency is required."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

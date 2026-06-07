@@ -1,0 +1,117 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.15,
+  "downfall": 0.9,
+  "effects": {
+    "fog_color": 5270058,
+    "foliage_color": 6130730,
+    "grass_color": 7907379,
+    "sky_color": 5923374,
+    "water_color": 3627542,
+    "water_fog_color": 2505234,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:spore_blossom_air"
+      },
+      "probability": 0.015
+    },
+    "ambient_loop_sound": "minecraft:ambient.swamp.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.swamp.additions",
+      "tick_chance": 0.011
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:toxic_swamp_rubble_scatter",
+      "echoashfallprotocol:toxic_slagstone_scatter",
+      "echoashfallprotocol:toxic_swamp_bone_scatter",
+      "echoashfallprotocol:toxic_swamp_fallout_dust_patches",
+      "echoashfallprotocol:toxic_swamp_contaminated_soil_patches",
+      "echoashfallprotocol:toxic_swamp_deep_ash_patch",
+      "echoashfallprotocol:toxic_swamp_toxic_moss",
+      "echoashfallprotocol:toxic_swamp_toxic_moss_patches",
+      "echoashfallprotocol:toxic_swamp_toxic_puddle_patches",
+      "echoashfallprotocol:toxic_swamp_acidic_sludge_pools",
+      "echoashfallprotocol:toxic_pools",
+      "echoashfallprotocol:toxic_waste_barrels",
+      "echoashfallprotocol:salvage_scrap_pile",
+      "echoashfallprotocol:flora_mutated_bush_resource",
+      "echoashfallprotocol:toxic_swamp_acid_mud",
+      "echoashfallprotocol:bio_lab_leaks"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:toxic_swamp_mutated_purple_trees",
+      "echoashfallprotocol:toxic_swamp_mutated_gray_trees",
+      "echoashfallprotocol:toxic_swamp_mutated_twisted_trees",
+      "echoashfallprotocol:toxic_swamp_nuclear_fungus",
+      "echoashfallprotocol:toxic_swamp_mutated_bush_clusters",
+      "echoashfallprotocol:toxic_swamp_wasteland_reeds",
+      "echoashfallprotocol:toxic_swamp_grass_patches",
+      "echoashfallprotocol:toxic_swamp_ooze_crystals",
+      "echoashfallprotocol:toxic_swamp_corroded_pipes",
+      "echoashfallprotocol:toxic_swamp_dry_grass_patches",
+      "echoashfallprotocol:toxic_swamp_burnt_ferns",
+      "echoashfallprotocol:toxic_swamp_mutated_giant_trees",
+      "echoashfallprotocol:toxic_swamp_ash_bushes",
+      "echoashfallprotocol:toxic_swamp_charred_trees",
+      "echoashfallprotocol:toxic_swamp_dead_trees",
+      "echoashfallprotocol:toxic_swamp_dead_trees_fallen",
+      "echoashfallprotocol:toxic_swamp_dead_trees_snapped"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:rad_zombie",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:irradiated_wolf",
+        "weight": 21,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "echoashfallprotocol:scavenger_bandit",
+        "weight": 11,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:toxic_slime",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:mutated_crawler",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.9
+}

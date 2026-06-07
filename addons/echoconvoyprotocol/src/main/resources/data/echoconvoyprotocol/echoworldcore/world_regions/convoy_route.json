@@ -1,0 +1,13 @@
+{
+  "id": "echoconvoyprotocol:convoy_route",
+  "type": "convoy_route",
+  "displayName": "Convoy Route",
+  "summary": "Active vehicle route, roadside signal, checkpoint, and destination corridor.",
+  "structureIds": ["echoconvoyprotocol:convoy_route", "echoconvoyprotocol:roadside_signal"],
+  "hazardIds": ["echoworldcore:hazard/convoy_threat"],
+  "discoveryId": "echoconvoyprotocol:convoy_route",
+  "radius": 96,
+  "renderProfileId": "echoworldcore:region/convoy_route",
+  "audioProfileId": "echoworldcore:ambience/convoy_route",
+  "sortOrder": 80
+}

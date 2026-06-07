@@ -1,0 +1,21 @@
+{
+  "id": "echoindustrialnexus:factory_link_chip",
+  "display_name": "Factory Link Chip",
+  "category": "industrial_networking",
+  "item": "echoindustrialnexus:factory_link_chip",
+  "allowed_multiblocks": [
+    "echoindustrialnexus:industrial_assembly_line",
+    "echoindustrialnexus:scrap_processor",
+    "echoindustrialnexus:plate_press",
+    "echoindustrialnexus:circuit_fabricator",
+    "echoindustrialnexus:recipe_matrix_core",
+    "echoindustrialnexus:nexus_furnace_array"
+  ],
+  "modifiers": [
+    { "type": "capability_bonus", "value": 128.0 },
+    { "type": "storage_bonus", "value": 128.0 }
+  ],
+  "notes": [
+    "Improves Factory Command and Logistics discovery capacity."
+  ]
+}

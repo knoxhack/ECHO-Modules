@@ -1,0 +1,111 @@
+{
+  "schema_version": 9,
+  "base_texture": "examplemod:textures/block/v9_neon_core.png",
+  "particle_profile": "examplemod:v8_neon_cube",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "neon",
+    "glow_intensity": 1.45,
+    "bloom_intensity": 0.9,
+    "pulse_speed": 1.35,
+    "pulse_min_alpha": 0.72,
+    "pulse_max_alpha": 1.0,
+    "hue_shift_speed": 0.02,
+    "advanced_enabled": true,
+    "bloom_radius": 2.4,
+    "bloom_threshold": 0.62,
+    "bloom_passes": 2,
+    "screen_blend": 0.32,
+    "target_scope": "block"
+  },
+  "preview": {
+    "title": "V9 Advanced Neon",
+    "notes": "Opt-in advanced bloom with stable emissive fallback for cyan/magenta Render Core visuals."
+  },
+  "materials": {
+    "cyan_glass": {
+      "color": "#FF2FE7FF",
+      "alpha": 0.88,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 1.4,
+        "bloom_intensity": 0.55,
+        "pulse_speed": 1.8,
+        "scanline_strength": 0.18,
+        "advanced_enabled": true,
+        "bloom_radius": 1.6,
+        "bloom_threshold": 0.7,
+        "bloom_passes": 1,
+        "screen_blend": 0.2,
+        "target_scope": "block"
+      }
+    },
+    "magenta_energy": {
+      "color": "#FFFF45F6",
+      "alpha": 0.82,
+      "emissive": true,
+      "blend_mode": "additive",
+      "light_mode": "fullbright",
+      "render_pass": "emissive",
+      "effect": {
+        "preset": "energy_field",
+        "glow_intensity": 1.8,
+        "bloom_intensity": 0.75,
+        "flicker_intensity": 0.06,
+        "hue_shift_speed": -0.015,
+        "advanced_enabled": true,
+        "bloom_radius": 2.0,
+        "bloom_threshold": 0.66,
+        "bloom_passes": 2,
+        "screen_blend": 0.28,
+        "target_scope": "block"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "neon_cube_faces",
+      "kind": "glow",
+      "texture": "examplemod:textures/block/v9_neon_core_faces.png",
+      "material": "cyan_glass",
+      "states": ["ONLINE", "ACTIVE", "WORKING"],
+      "parts": ["core", "screen"]
+    },
+    {
+      "id": "advanced_bloom_shell",
+      "kind": "overlay",
+      "texture": "examplemod:textures/block/v9_neon_core_shell.png",
+      "material": "magenta_energy",
+      "states": ["ACTIVE", "SCANNING"],
+      "effect": {
+        "preset": "terminal_hud",
+        "glow_intensity": 1.2,
+        "bloom_intensity": 0.65,
+        "pulse_speed": 2.6,
+        "pulse_min_alpha": 0.5,
+        "pulse_max_alpha": 0.92,
+        "scanline_strength": 0.38,
+        "depth_bias": 2.0,
+        "advanced_enabled": true,
+        "bloom_radius": 1.8,
+        "bloom_threshold": 0.68,
+        "bloom_passes": 2,
+        "screen_blend": 0.24,
+        "target_scope": "block"
+      }
+    }
+  ],
+  "anchors": {
+    "core": { "offset": [0.5, 0.5, 0.5] },
+    "orbit": { "offset": [0.5, 0.9, 0.5] },
+    "atmosphere": { "offset": [0.5, 1.1, 0.5] }
+  },
+  "block_parts": {
+    "core": { "directions": ["north", "south", "east", "west", "up"] },
+    "screen": { "directions": ["north"], "tint_indices": [0] }
+  }
+}

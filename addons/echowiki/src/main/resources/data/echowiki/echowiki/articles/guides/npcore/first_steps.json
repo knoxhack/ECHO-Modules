@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/npcore/first_steps",
+  "title": "NPCore: First Steps",
+  "category": "Guide Books",
+  "summary": "Make first contact with an ECHO NPC and identify the useful screen state.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Approach And Read",
+      "body": "Right-click the NPC, pause on the first dialogue node, and read the active options before choosing a trade, service, or exit action.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Confirm The Contact",
+      "body": "Check the name, role, faction, portrait, and status line. If those are generic, the NPC may be using fallback profile data.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "First Clean Win",
+      "body": "Complete one harmless dialogue option or low-cost trade, then close the screen. That proves the profile, dialogue, network sync, and interaction range all work.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Ready Check",
+      "body": "Before moving on, confirm the first setup step is repeatable and safe enough to do again.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "first_steps",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1096
+}

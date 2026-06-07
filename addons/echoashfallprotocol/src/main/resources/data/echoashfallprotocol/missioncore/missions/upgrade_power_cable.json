@@ -1,0 +1,106 @@
+{
+  "id": "echoashfallprotocol:upgrade_power_cable",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_1",
+  "phaseTitle": "OUTPOST SURVIVAL",
+  "phaseOrder": 1,
+  "order": 11,
+  "title": "Upgrade Power Cable",
+  "briefing": "[ECHO-7] Basic cable is a bottleneck. Craft and place Reinforced Power Cable to move more FE through the workshop.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block-near-player check for a placed Reinforced Power Cable after the first basic cable route is confirmed.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:reinforced_power_cable",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:route_power_cable"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "upgrade_power_cable",
+    "nativeGameplayHook": "ashfall.first_route.upgrade_power_cable",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.machine.energy_meter.components_bridge",
+    "terminal_route_phase": "1",
+    "terminal_route_order": "11",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_1",
+    "routePhaseTitle": "OUTPOST SURVIVAL",
+    "routeGlobalOrder": "20",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:upgrade_power_cable:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:upgrade_power_cable/place_reinforced_power_cable",
+      "type": "place_block",
+      "label": "Upgrade Power Cable",
+      "detail": "Place one Reinforced Power Cable to reduce early workshop power bottlenecks.",
+      "icon": "echoashfallprotocol:reinforced_power_cable",
+      "target": "echoashfallprotocol:reinforced_power_cable",
+      "required": 1,
+      "criteria": {
+        "predicate": "block_requirement",
+        "block": "echoashfallprotocol:reinforced_power_cable",
+        "required_blocks": "echoashfallprotocol:reinforced_power_cable=1",
+        "events": "player.block_placed,ashfall.block_requirement",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:power_cable",
+      "count": 4,
+      "label": "Power Cable"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 6,
+      "label": "Scrap Wire"
+    },
+    {
+      "block": "echoashfallprotocol:reinforced_power_cable",
+      "count": 1,
+      "label": "Placed Reinforced Power Cable"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:upgrade_power_cable/reward_scrap_wire",
+      "item": "echoashfallprotocol:scrap_wire",
+      "count": 4,
+      "label": "Scrap Wire",
+      "detail": "Wiring reserve for instrumentation and next-route power work."
+    },
+    {
+      "id": "echoashfallprotocol:upgrade_power_cable/reward_redstone",
+      "item": "minecraft:redstone",
+      "count": 2,
+      "label": "Redstone",
+      "detail": "Signal material for power diagnostics."
+    }
+  ],
+  "completionText": "[ECHO-7] Reinforced cable route confirmed. Larger machine chains can now draw power without starving instantly."
+}

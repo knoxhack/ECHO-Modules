@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoprogressioncore",
+  "name": "ECHO: ProgressionCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "progression_core",
+  "entrypoint": "com.knoxhack.echo.progressioncore.EchoProgressionCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echorecipecore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "progression.feature_unlocks",
+    "progression.gates",
+    "progression.objectives",
+    "progression.recipe_unlocks",
+    "progression.server_objectives",
+    "progression.team_objectives",
+    "progression.ui_surface_unlocks",
+    "progression.unlock_graph",
+    "progression.world_event_unlocks"
+  ],
+  "consumes": [
+    "content.gates",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "missions",
+        "recipes",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "ProgressionCore is the shared unlock graph and objective contract layer. It references content and recipe ids without depending on concrete mission runtime, Terminal, Index, Lens, HoloMap, or content packs.",
+    "nativeEntrypoint": "com.knoxhack.echo.progressioncore.EchoProgressionCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/progressioncore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

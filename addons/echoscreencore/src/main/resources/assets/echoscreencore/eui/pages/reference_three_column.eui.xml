@@ -1,0 +1,21 @@
+<page id="reference-three-column" title="Reference Three Column" styles="echoscreencore:screencore_app_kit,echoscreencore:screencore_reference">
+  <component src="echoscreencore:sc_app_shell">
+    <slot name="header">
+      <component src="echoscreencore:sc_page_header" title="Three Column Pattern" subtitle="Left navigation, center content, right inspection."/>
+    </slot>
+    <slot name="body">
+      <grid class="sc-three-column" columns="0.7fr 1.2fr 0.9fr" gap="8" stack-below="900">
+        <section class="sc-panel" title="LEFT NAV">
+          <text class="sc-readable-body" value="Use this for phase lanes, filters, or primary navigation."/>
+        </section>
+        <section class="sc-panel" title="CENTER LIST">
+          <text class="sc-readable-body" value="Use this for the main objective, table, or active list."/>
+        </section>
+        <section class="sc-panel" title="RIGHT DETAIL">
+          <text class="sc-readable-body" value="Use this for selected detail, side actions, and diagnostics."/>
+        </section>
+      </grid>
+    </slot>
+  </component>
+</page>
+

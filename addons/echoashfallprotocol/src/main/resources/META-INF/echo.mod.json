@@ -1,0 +1,131 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoashfallprotocol",
+  "name": "ECHO: Ashfall Protocol",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "pack_root",
+  "role": "official_pack",
+  "entrypoint": "com.knoxhack.echoashfallprotocol.EchoAshfallProtocol",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoblockworks",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echonpcore",
+    "echopresencelink",
+    "echorendercore",
+    "echoruntimeguard",
+    "echosoundcore",
+    "echoterminal",
+    "echothemecore",
+    "echowiki",
+    "echoworldcore"
+  ],
+  "provides": [
+    "ashfall.content",
+    "ashfall.missions",
+    "ashfall.protocol",
+    "ashfall.survival",
+    "ashfall.world"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival"
+  ],
+  "permissions": [
+    "commands.register",
+    "data.world",
+    "gameplay.content",
+    "pack.root"
+  ],
+  "assets": [],
+  "transforms": [
+    "native:client_surface_projection"
+  ],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "commands",
+        "data",
+        "entities",
+        "items",
+        "loot",
+        "missions",
+        "networking",
+        "recipes",
+        "saves",
+        "sounds",
+        "structures",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoashfallprotocol.EchoAshfallNativeModule",
+    "nativeClasspath": [],
+    "nativeBootstrapProfile": "com.knoxhack.echoashfallprotocol.EchoAshfallBootstrapProductProfile",
+    "nativeProductBridgeProvider": "com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeProductBridgeProvider",
+    "nativeTransformCompatibility": {
+      "mode": "native_projection_replacement",
+      "bytecodeMutationAllowed": false,
+      "minecraftBytecodeMutationAllowed": false,
+      "addonBytecodeMutationAllowed": false,
+      "forgeStyleTransforms": [
+        "neoforge:mixin:echoashfallprotocol.mixins.json#client.EchoButtonMixin",
+        "neoforge:mixin:echoashfallprotocol.mixins.json#client.EchoLoadingOverlayMixin"
+      ],
+      "nativeReplacements": [
+        "native:client_surface_projection"
+      ],
+      "replacementMappings": [
+        {
+          "forgeStyleTransform": "neoforge:mixin:echoashfallprotocol.mixins.json#client.EchoButtonMixin",
+          "nativeReplacement": "native:client_surface_projection"
+        },
+        {
+          "forgeStyleTransform": "neoforge:mixin:echoashfallprotocol.mixins.json#client.EchoLoadingOverlayMixin",
+          "nativeReplacement": "native:client_surface_projection"
+        }
+      ],
+      "notes": "NeoForge client mixins are not executed by Native Loader release mode, and Minecraft/addon bytecode mutation remains disabled. Equivalent client UI behavior must come through native client surface projection hooks."
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Ashfall Protocol is hosted as a normal addon module under addons/echoashfallprotocol and serves as the large example content pack. Standalone activation uses AdapterCore contracts first; registry, lifecycle, and event bridges remain explicit NeoForge, Native Loader, and standalone runtime milestones."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "packos_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "echoweathercore:electromagnetic_blackout",
+  "displayName": "Electromagnetic Blackout",
+  "type": "ELECTROMAGNETIC_BLACKOUT",
+  "defaultSeverity": "SEVERE",
+  "scope": "REGIONAL",
+  "durationTicks": 5000,
+  "warningTicks": 2400,
+  "weight": 12,
+  "cooldownTicks": 36000,
+  "effects": {
+    "scannerRangeMultiplier": 0.40,
+    "scannerReliabilityMultiplier": 0.50,
+    "holomapReliabilityMultiplier": 0.60,
+    "powerGridInstabilityMultiplier": 1.50,
+    "batteryEfficiencyMultiplier": 0.70,
+    "droneScoutReliability": 0.40,
+    "routeRiskModifier": 1.45
+  },
+  "recommendedGear": [
+    "echoweathercore:faraday_coil",
+    "echoweathercore:faraday_shelter_core"
+  ],
+  "terminalWarning": "Electromagnetic blackout imminent. PowerGrid desynchronization likely.",
+  "echoLines": [
+    "Electronic interference at critical levels. Analog backup recommended.",
+    "Drone telemetry severed. Manual recall only."
+  ]
+}

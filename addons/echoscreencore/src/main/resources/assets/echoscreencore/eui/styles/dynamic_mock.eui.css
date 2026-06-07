@@ -1,0 +1,22 @@
+.dynamic-grid {
+  columns: 320px 1fr;
+  gap: space(md);
+}
+
+.action-grid {
+  columns: 1fr 1fr 1fr;
+  gap: space(md);
+}
+
+.input-row {
+  min-height: 36px;
+}
+
+.row-value {
+  color: theme(textMuted);
+  font-size: font(small);
+}
+
+.empty-demo {
+  min-height: 84px;
+}

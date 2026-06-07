@@ -1,0 +1,4 @@
+<card class="terminal-command-card" action="{param.action|noop}" action-value="{param.value|}">
+  <copy-block class="terminal-row-copy" title="{param.title|Command}" subtitle="{param.body|No detail available.}"/>
+  <status-chip status="{param.status|ready}" value="{param.badge|OPEN}"/>
+</card>

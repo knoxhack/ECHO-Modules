@@ -1,0 +1,48 @@
+{
+  "id": "echoashfallprotocol:machine_power_logistics",
+  "category": "ashfall.infrastructure",
+  "title": "Machine, Power, and Logistics",
+  "subtitle": "Production should explain itself",
+  "summary": "Ashfall machines become fair when the player can read input, power, output, route priority, and the reason to upgrade.",
+  "body": [
+    "The first machine loop is Hand Recycler into Machine Casing, Micro Generator, Battery, and Water Purifier.",
+    "Power systems should name charge, demand, priority, and cable tier before the player is asked to scale production.",
+    "Logistics should not hide shortages. Pipes, storage, and factory control need labels that explain what moved, what stalled, and what the player can fix."
+  ],
+  "relatedSystems": [
+    "echoashfallprotocol:rain_collector",
+    "echoashfallprotocol:hand_recycler",
+    "echoashfallprotocol:field_med_bay",
+    "echoashfallprotocol:water_purifier",
+    "echoashfallprotocol:filter_workbench",
+    "echoashfallprotocol:micro_generator",
+    "echoashfallprotocol:scrap_dynamo",
+    "echoashfallprotocol:battery_bank",
+    "echoashfallprotocol:power_cable",
+    "echoashfallprotocol:reinforced_power_cable",
+    "echoashfallprotocol:high_voltage_power_cable",
+    "echoashfallprotocol:item_pipe",
+    "echoashfallprotocol:ore_grinder",
+    "echoashfallprotocol:scrap_press",
+    "echoashfallprotocol:thermal_burner",
+    "echoashfallprotocol:thermal_array",
+    "echoashfallprotocol:isotope_refiner",
+    "echoashfallprotocol:atmospheric_scrubber",
+    "echoashfallprotocol:radiation_cleanser",
+    "echoashfallprotocol:research_lab",
+    "echoashfallprotocol:factory_controller",
+    "echoashfallprotocol:nexus_capacitor"
+  ],
+  "links": {
+    "mission": "echoashfallprotocol:build_hand_recycler",
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans"
+  },
+  "tags": [
+    "ashfall",
+    "machines",
+    "power",
+    "logistics"
+  ]
+}

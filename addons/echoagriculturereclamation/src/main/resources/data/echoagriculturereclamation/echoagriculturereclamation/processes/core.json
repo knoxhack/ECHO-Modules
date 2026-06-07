@@ -1,0 +1,46 @@
+{
+  "processes": {
+    "seed_vault_analysis": {
+      "machine": "seed_vault_terminal",
+      "title": "Seed Vault Analysis",
+      "inputs": ["echoagriculturereclamation:recovered_seed_capsule"],
+      "outputs": ["echoagriculturereclamation:contaminated_seed"],
+      "ticks": 80,
+      "notes": ["Creates one profiled contaminated seed and records the crop in FIELD > Reclamation."]
+    },
+    "soil_purifier_enzyme": {
+      "machine": "soil_purifier",
+      "title": "Enzyme Soil Purification",
+      "inputs": ["reclamation soil"],
+      "catalysts": ["echoagriculturereclamation:purification_enzyme"],
+      "outputs": ["next safer soil state"],
+      "ticks": 100,
+      "notes": ["Converts Agriculture or compatible Ashfall soil locally without changing biome ids."]
+    },
+    "gene_stabilization": {
+      "machine": "gene_stabilizer",
+      "title": "Gene Stabilization",
+      "inputs": ["echoagriculturereclamation:contaminated_seed"],
+      "catalysts": ["echoagriculturereclamation:bio_gel", "echoagriculturereclamation:gene_sample"],
+      "outputs": ["echoagriculturereclamation:stabilized_seed"],
+      "ticks": 120,
+      "notes": ["Consumes one catalyst and writes a stable seed profile."]
+    },
+    "bio_reactor_biomass": {
+      "machine": "bio_reactor",
+      "title": "Biomass Bio-Reaction",
+      "inputs": ["Agriculture crop matter or seed biomass"],
+      "outputs": ["echoagriculturereclamation:bio_gel"],
+      "ticks": 120,
+      "notes": ["Special crops can add enzymes, gene samples, or optional sibling outputs."]
+    },
+    "compost_recycler_biomass": {
+      "machine": "compost_recycler",
+      "title": "Biomass Composting",
+      "inputs": ["Agriculture crop matter or seed biomass"],
+      "outputs": ["echoagriculturereclamation:soil_nutrient_mix"],
+      "ticks": 100,
+      "notes": ["Returns nutrient mix for hydroponics and purifier passes."]
+    }
+  }
+}

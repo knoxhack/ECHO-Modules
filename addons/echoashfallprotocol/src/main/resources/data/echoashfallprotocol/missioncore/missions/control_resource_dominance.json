@@ -1,0 +1,136 @@
+{
+  "id": "echoashfallprotocol:control_resource_dominance",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 15,
+  "title": "Collect 50 of Each Rare Resource",
+  "briefing": "[ECHO-7] Power requires resources. Collect or carry 50 Dense Alloy Chunks, 50 Nexus Crystals, and 50 Energy Cells.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "exploration",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:dense_alloy_chunk",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:control_signal_expansion"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "control_resource_dominance",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.control_resource_dominance",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "15",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "108",
+    "requiredPath": "control",
+    "routeRoleTag": "control_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:control_resource_dominance:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "control",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:control_resource_dominance/dense_alloy_chunk",
+      "type": "obtain_item",
+      "label": "Obtain Dense Alloy Chunk",
+      "detail": "Confirm 50 Dense Alloy Chunk for this route step.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:dense_alloy_chunk",
+      "required": 50,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:dense_alloy_chunk"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:control_resource_dominance/nexus_crystal",
+      "type": "obtain_item",
+      "label": "Obtain Nexus Crystal",
+      "detail": "Confirm 50 Nexus Crystal for this route step.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:nexus_crystal",
+      "required": 50,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:nexus_crystal"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:control_resource_dominance/energy_cell",
+      "type": "obtain_item",
+      "label": "Obtain Energy Cell",
+      "detail": "Confirm 50 Energy Cell for this route step.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:energy_cell",
+      "required": 50,
+      "criteria": {
+        "event": "player.inventory_changed",
+        "item": "echoashfallprotocol:energy_cell"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 50,
+      "label": "Dense Alloy Chunk"
+    },
+    {
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 50,
+      "label": "Nexus Crystal"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 50,
+      "label": "Energy Cell"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:control_resource_dominance/reward_0",
+      "item": "echoashfallprotocol:prefall_archives_key",
+      "count": 1,
+      "label": "Prefall Archives Key",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_resource_dominance/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:control_resource_dominance/reward_1",
+      "item": "echoashfallprotocol:nexus_crystal",
+      "count": 5,
+      "label": "Nexus Crystal",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:control_resource_dominance/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] You have gathered what the old world could not hold. Your dominion is secured by wealth."
+}

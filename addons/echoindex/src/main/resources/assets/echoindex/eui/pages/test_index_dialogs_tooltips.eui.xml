@@ -1,0 +1,3 @@
+<page id="test_index_dialogs_tooltips" title="Test Index Dialogs Tooltips" styles="index_cyberglass,index_components">
+  <screen-shell><header title="Index Dialogs and Tooltips" subtitle="Overlay manager integration"/><button action="screencore.open_modal" action-target="index-test-dialog" tooltip="Opens a ScreenCore modal.">Open Dialog</button><tooltip text="Index tooltip content is layered by ScreenCore."><status-chip status="ready" value="TOOLTIP"/></tooltip><component src="echoindex:index_confirm_dialog"><param name="id" value="index-test-dialog"/><param name="title" value="Index Test Dialog"/><param name="body" value="ScreenCore dialog layering is active."/></component></screen-shell>
+</page>

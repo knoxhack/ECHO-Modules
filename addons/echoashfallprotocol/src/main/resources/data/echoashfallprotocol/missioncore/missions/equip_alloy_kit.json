@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:equip_alloy_kit",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_5",
+  "phaseTitle": "DEEP EXTRACTION",
+  "phaseOrder": 5,
+  "order": 6,
+  "title": "Equip Alloy Route Kit",
+  "briefing": "[ECHO-7] Weapon alone is not a survival plan. Equip Alloy Helmet and Alloy Chestplate while carrying an alloy weapon.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 6: DEEP EXTRACTION.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:alloy_helmet",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:forge_alloy_weapon"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "equip_alloy_kit",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.equip_alloy_kit",
+    "terminal_route_phase": "5",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_5",
+    "routePhaseTitle": "DEEP EXTRACTION",
+    "routeGlobalOrder": "65",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:equip_alloy_kit:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:equip_alloy_kit/alloy_helmet",
+      "type": "custom",
+      "label": "Alloy Helmet",
+      "detail": "Equip the required head item before continuing.",
+      "icon": "echoashfallprotocol:alloy_helmet",
+      "target": "echoashfallprotocol:alloy_helmet",
+      "required": 1,
+      "criteria": {
+        "event": "player.equipment_changed",
+        "slot": "head",
+        "item": "echoashfallprotocol:alloy_helmet"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:equip_alloy_kit/alloy_chestplate",
+      "type": "custom",
+      "label": "Alloy Chestplate",
+      "detail": "Equip the required chest item before continuing.",
+      "icon": "echoashfallprotocol:alloy_helmet",
+      "target": "echoashfallprotocol:alloy_chestplate",
+      "required": 1,
+      "criteria": {
+        "event": "player.equipment_changed",
+        "slot": "chest",
+        "item": "echoashfallprotocol:alloy_chestplate"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "equipmentSlot": "head",
+      "item": "echoashfallprotocol:alloy_helmet",
+      "count": 1,
+      "label": "Alloy Helmet"
+    },
+    {
+      "equipmentSlot": "chest",
+      "item": "echoashfallprotocol:alloy_chestplate",
+      "count": 1,
+      "label": "Alloy Chestplate"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:equip_alloy_kit/reward_0",
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:equip_alloy_kit/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:equip_alloy_kit/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:equip_alloy_kit/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Alloy kit confirmed. You can absorb midgame ambushes long enough to retreat or finish the fight."
+}

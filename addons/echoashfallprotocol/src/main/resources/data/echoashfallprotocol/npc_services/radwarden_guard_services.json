@@ -1,0 +1,36 @@
+{
+  "id": "echoashfallprotocol:radwarden_guard_services",
+  "services": [
+    {
+      "id": "perimeter_intel",
+      "title": "Perimeter Intel",
+      "description": "Shares perimeter risk notes and current hazard context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "reveal_perimeter_marker",
+      "title": "Reveal Perimeter Marker",
+      "description": "Pins Hale's watch route as a field marker.",
+      "cost": [],
+      "action": "reveal_marker",
+      "amount": 1,
+      "cooldown": 2400,
+      "target": "echoashfallprotocol:radwarden_perimeter_contact"
+    },
+    {
+      "id": "review_containment_contract",
+      "title": "Review Containment Contract",
+      "description": "Submits a containment contract review to the Compact.",
+      "cost": [],
+      "action": "faction_action",
+      "amount": 1,
+      "cooldown": 4800,
+      "requiresFactionStanding": 10,
+      "target": "echoashfallprotocol:radwarden_compact_contract",
+      "disabledReason": "Compact support standing required."
+    }
+  ]
+}

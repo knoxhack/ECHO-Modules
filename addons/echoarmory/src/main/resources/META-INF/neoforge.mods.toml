@@ -1,0 +1,180 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echoarmory"
+version="1.0.0"
+displayName="ECHO: Armory"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the modular combat and loadout chapter for the ECHO release stack."
+description='''
+ECHO: Armory adds modular weapons, armor, augments, energy cores,
+mission loadouts, faction gear, and Terminal-managed combat readiness.
+'''
+
+[[dependencies.echoarmory]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon, route, diagnostic, reward, faction, and hazard APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoterminal"
+type="optional"
+reason="Adds the SYSTEM > Armory command surface and terminal action routing."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echologisticsnetwork"
+type="optional"
+reason="Allows Armory mission kits to be delivered through Logistics loadouts."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoindustrialnexus"
+type="optional"
+reason="Shares industrial materials and production-route context."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Adds orbital progression context and late-game armory material routes."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echostationfall"
+type="optional"
+reason="Adds station route context and boarding-kit readiness targets."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echonexusprotocol"
+type="optional"
+reason="Adds Nexus progression context for convergence gear readiness."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoblackboxprotocol"
+type="optional"
+reason="Adds blackbox material context for endgame armory upgrades."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echomissioncore"
+type="optional"
+reason="Registers Armory combat and loadout side-op missions when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoindex"
+type="optional"
+reason="Publishes Armory station recipes, gear/module compatibility, and loadout readiness recipes."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echolens"
+type="optional"
+reason="Allows Lens scans to describe Armory gear, stations, projectiles, staged kits, and blockers."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoholomap"
+type="optional"
+reason="Allows HoloMap route markers and readiness hints to reflect Armory route-kit state."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoworldcore"
+type="optional"
+reason="Adds region and hazard context for route-kit readiness hints."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoruntimeguard"
+type="optional"
+reason="Allows RuntimeGuard budget labeling for projectile scans, station searches, and readiness recompute."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echosoundcore"
+type="optional"
+reason="Adds guarded Armory sound contexts for weapons, stations, and readiness receipts."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echothemecore"
+type="optional"
+reason="Adds Armory visual theme tokens for station and Terminal UI surfaces."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echorendercore"
+type="optional"
+reason="Allows RenderCore profiles for Armory projectiles and station visuals."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echotutorialcore"
+type="optional"
+reason="Adds contextual tutorials for first craft, station use, route kits, and projectile combat."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoarmory]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Adds Ashfall route profiles, faction unlock context, material hooks, and boss readiness records."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

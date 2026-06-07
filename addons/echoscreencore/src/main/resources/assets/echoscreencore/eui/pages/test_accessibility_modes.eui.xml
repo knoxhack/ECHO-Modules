@@ -1,0 +1,35 @@
+<page id="test-accessibility-modes" title="Accessibility Modes">
+  <screen-shell>
+    <header title="Accessibility Modes" subtitle="Use /echoscreencore accessibility commands to compare rendering"/>
+    <grid columns="1fr 1fr 1fr" gap="16">
+      <card>
+        <title>Large Text</title>
+        <text>Font and spacing tokens scale up. Button height and row spacing should prevent overlap.</text>
+        <button action="noop" variant="primary">Readable Button</button>
+      </card>
+      <card>
+        <title>High Contrast</title>
+        <text>Text and borders become stronger while markup stays the same.</text>
+        <status-chip status="ready">READY</status-chip>
+      </card>
+      <card>
+        <title>Reduced Clutter</title>
+        <text>Glow and decorative noise are suppressed by the render bridge and style resolver.</text>
+        <button action="debug_toggle" variant="ghost">Debug</button>
+      </card>
+      <card>
+        <title>Compact Density</title>
+        <text>Spacing contracts for dense operational screens.</text>
+      </card>
+      <card>
+        <title>Comfortable Density</title>
+        <text>Spacing expands for guided screens and longer reading sessions.</text>
+      </card>
+      <card>
+        <title>Safe Fallbacks</title>
+        <item-icon item="echoscreencore:not_a_real_item"/>
+        <text value="Missing binding: {missing.value}"/>
+      </card>
+    </grid>
+  </screen-shell>
+</page>

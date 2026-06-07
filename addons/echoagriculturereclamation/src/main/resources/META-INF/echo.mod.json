@@ -1,0 +1,87 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoagriculturereclamation",
+  "name": "ECHO: Agriculture Reclamation",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "survival",
+  "entrypoint": "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echologisticsnetwork",
+    "echopowergrid",
+    "echoterminal",
+    "echothemecore",
+    "echotutorialcore",
+    "echoweathercore"
+  ],
+  "provides": [
+    "agriculture.reclamation",
+    "agriculture.greenhouse",
+    "agriculture.hydroponics",
+    "agriculture.ecology"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "survival"
+  ],
+  "permissions": [
+    "diagnostics.write",
+    "resources.data",
+    "ui.screens",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamationNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "worldgen",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Agriculture Reclamation may report restoration state and optional integrations, but metadata does not authorize save, config, or pack repairs."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "content_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

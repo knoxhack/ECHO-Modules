@@ -1,0 +1,32 @@
+{
+  "parent": "echologisticsnetwork:root",
+  "display": {
+    "icon": {
+      "id": "echologisticsnetwork:supply_crate"
+    },
+    "title": {
+      "text": "Label the Cache"
+    },
+    "description": {
+      "text": "Craft a Supply Crate so tagged stock can join a logistics network."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "supply_crate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echologisticsnetwork:supply_crate"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "supply_crate"
+    ]
+  ]
+}

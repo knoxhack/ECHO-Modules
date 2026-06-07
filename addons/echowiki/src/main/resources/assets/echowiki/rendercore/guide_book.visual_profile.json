@@ -1,0 +1,50 @@
+{
+  "schema_version": 12,
+  "base_texture": "minecraft:textures/item/written_book.png",
+  "default_state": "ACTIVE",
+  "preview": {
+    "title": "ECHO Guide Book Chrome",
+    "tags": ["wiki", "guide_book", "screen"]
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "echowiki",
+    "display_name": "ECHO Guide Book",
+    "tags": ["screen", "guide_book"],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "Guide books remain readable through ScreenCore when RenderCore is absent.",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "low",
+    "advanced_fx": "auto"
+  },
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.38,
+    "pulse_speed": 0.18,
+    "bloom_tint": "#FF66E8FF",
+    "target_scope": "profile"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "ECHO GUIDE BOOK",
+    "backdrop": true,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": false,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": false,
+    "evidence": ["screenshot", "screen_chrome"],
+    "reduced_motion": false
+  }
+}

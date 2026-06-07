@@ -1,0 +1,20 @@
+{
+  "id": "echoindustrialnexus:emergency_shutdown_module",
+  "display_name": "Emergency Shutdown Module",
+  "category": "industrial_safety",
+  "item": "echoindustrialnexus:emergency_shutdown_module",
+  "allowed_multiblocks": [
+    "echoindustrialnexus:industrial_assembly_line",
+    "echoindustrialnexus:scrap_processor",
+    "echoindustrialnexus:plate_press",
+    "echoindustrialnexus:circuit_fabricator",
+    "echoindustrialnexus:recipe_matrix_core",
+    "echoindustrialnexus:nexus_furnace_array"
+  ],
+  "modifiers": [
+    { "type": "emergency_shutdown", "value": 1.0 }
+  ],
+  "notes": [
+    "Pauses unsafe active tasks before robotic overheat."
+  ]
+}

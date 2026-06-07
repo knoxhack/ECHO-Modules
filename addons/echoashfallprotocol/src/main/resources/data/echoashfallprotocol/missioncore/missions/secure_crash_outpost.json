@@ -1,0 +1,121 @@
+{
+  "id": "echoashfallprotocol:secure_crash_outpost",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 0,
+  "title": "Anchor Pod Outpost",
+  "briefing": "[ECHO-7] Anchor the pod route first. Craft and place an Ash Campfire near the crash site, then keep storage, light, and ECHO objectives at the outpost.",
+  "fieldGuide": "Matches the NeoForge Ashfall first-route outpost mission as native MissionCore content.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:ash_campfire",
+  "kind": "main",
+  "metadata": {
+    "neoForgeMissionId": "secure_crash_outpost",
+    "nativeGameplayHook": "ashfall.first_route.secure_crash_outpost",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "0",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "0",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:secure_crash_outpost:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.item_collected",
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/place_ash_campfire",
+      "type": "place_block",
+      "label": "Place an Ash Campfire near the crash site",
+      "detail": "Anchor the first shelter and route objective before scouting beyond the pod.",
+      "icon": "echoashfallprotocol:ash_campfire",
+      "target": "echoashfallprotocol:ash_campfire",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/collect_scrap",
+      "type": "obtain_item",
+      "label": "Collect salvage scrap",
+      "detail": "Recover the first scrap metal from the crash site so the outpost has repair stock.",
+      "icon": "echoashfallprotocol:scrap_metal",
+      "target": "echoashfallprotocol:scrap_metal",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:ash_campfire",
+      "count": 1,
+      "label": "Ash Campfire"
+    },
+    {
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 1,
+      "label": "Scrap Metal"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Starter hydration for the first route expansion."
+    },
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/reward_bandages",
+      "item": "echoashfallprotocol:bandage",
+      "count": 2,
+      "label": "Bandages",
+      "detail": "Emergency field treatment for early Ashfall hazards."
+    },
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/reward_scrap",
+      "item": "echoashfallprotocol:scrap_metal",
+      "count": 4,
+      "label": "Scrap Metal",
+      "detail": "First machine and repair material."
+    },
+    {
+      "id": "echoashfallprotocol:secure_crash_outpost/reward_fiber",
+      "item": "echoashfallprotocol:plant_fiber",
+      "count": 4,
+      "label": "Plant Fiber",
+      "detail": "Primitive crafting material for the first night."
+    }
+  ],
+  "completionText": "[ECHO-7] Pod outpost anchored. Keep storage, light, and early machines near this position until water and power are stable."
+}

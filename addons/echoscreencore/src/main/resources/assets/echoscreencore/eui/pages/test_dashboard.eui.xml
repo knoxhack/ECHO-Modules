@@ -1,0 +1,47 @@
+<page id="test-dashboard" title="ScreenCore Test Dashboard">
+  <screen-shell>
+    <header title="ECHO: ScreenCore" subtitle="Minecraft-native UI framework"/>
+
+    <grid columns="260px 1fr 320px" gap="16">
+      <panel title="Navigation">
+        <button action="open_page:echoscreencore:test_dashboard" variant="primary">Dashboard</button>
+        <button action="noop">Components</button>
+        <button action="debug_toggle" variant="ghost">Debug Overlay</button>
+        <button action="close" variant="ghost">Close</button>
+      </panel>
+
+      <column gap="16">
+        <hero-card status="warning">
+          <title>Readable Screens, Not Java Spaghetti</title>
+          <text>ScreenCore builds ECHO pages from markup, styles, theme tokens, and safe data providers.</text>
+          <text value="Bound sample: {screen.title}"/>
+          <button action="noop" variant="primary">Primary Action</button>
+        </hero-card>
+
+        <section title="Framework Features">
+          <row gap="12">
+            <card status="ready">
+              <title>Markup</title>
+              <text>.eui.xml page structure</text>
+            </card>
+            <card status="ready">
+              <title>Styles</title>
+              <text>.eui.css visual rules</text>
+            </card>
+            <card status="ready">
+              <title>Binding</title>
+              <text>Safe Java data providers</text>
+            </card>
+          </row>
+        </section>
+      </column>
+
+      <panel title="Diagnostics">
+        <status-chip status="{system.status}">READY</status-chip>
+        <stat-bar label="Layout" value="{metrics.layout}" max="100"/>
+        <stat-bar label="Readability" value="95" max="100"/>
+        <empty-state title="No warnings" body="The test page rendered without blocking diagnostics."/>
+      </panel>
+    </grid>
+  </screen-shell>
+</page>

@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:radiation",
+  "category": "HAZARDS",
+  "title": "Radiation",
+  "summary": "Radiation fields require specialized protection.",
+  "body": [
+    "Radiation zones are deadly without hazmat gear or RadAway.",
+    "Use a radiation scanner to check area levels before entering.",
+    "Stay brief. Even with protection, long exposure adds up."
+  ],
+  "steps": [
+    "Equip hazmat gear or take RadAway.",
+    "Carry clean water and a medical kit.",
+    "Limit time in the field."
+  ],
+  "commonMistakes": [
+    "Entering without checking radiation levels.",
+    "Staying too long even with protection."
+  ],
+  "related": [
+    "echotutorialcore:cryogenic_cold"
+  ],
+  "unlockTriggers": [
+    "entered_radiation_zone"
+  ],
+  "defaultUnlocked": false,
+  "priority": 85
+}

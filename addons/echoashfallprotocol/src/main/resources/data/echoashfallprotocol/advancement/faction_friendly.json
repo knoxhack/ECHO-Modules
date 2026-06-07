@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:first_faction_contact",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:schematic_fragment_armor"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.faction_friendly.title",
+      "fallback": "Making Friends"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.faction_friendly.desc",
+      "fallback": "Reach Friendly reputation (+50) with any faction."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "friendly_reputation": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoashfallprotocol:schematic_fragment_armor"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["friendly_reputation"]
+  ]
+}

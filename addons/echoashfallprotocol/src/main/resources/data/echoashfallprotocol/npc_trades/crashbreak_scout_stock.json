@@ -1,0 +1,51 @@
+{
+  "id": "echoashfallprotocol:crashbreak_scout_stock",
+  "groups": [
+    {
+      "id": "route_pack",
+      "title": "Route Pack",
+      "offers": [
+        {
+          "id": "wire_for_rations",
+          "title": "Route Ration Pair",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_wire", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:emergency_ration", "count": 2 },
+          "stock": 4,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 0,
+          "disabledReason": ""
+        },
+        {
+          "id": "plastic_for_filter",
+          "title": "Dust Filter",
+          "input": [
+            { "item": "echoashfallprotocol:scrap_plastic", "count": 4 }
+          ],
+          "output": { "item": "echoashfallprotocol:filter_cartridge_basic", "count": 1 },
+          "stock": 3,
+          "restockTime": 24000,
+          "requiresMission": "",
+          "requiresFactionStanding": 10,
+          "disabledReason": "Route support standing required."
+        },
+        {
+          "id": "trusted_scanner_lens",
+          "title": "Trusted Scanner Lens",
+          "input": [
+            { "item": "echoashfallprotocol:power_cell", "count": 1 },
+            { "item": "echoashfallprotocol:scrap_wire", "count": 2 }
+          ],
+          "output": { "item": "echoashfallprotocol:relay_scanner_lens", "count": 1 },
+          "stock": 1,
+          "restockTime": 36000,
+          "requiresMission": "",
+          "requiresFactionStanding": 35,
+          "disabledReason": "Trusted salvage standing required."
+        }
+      ]
+    }
+  ]
+}

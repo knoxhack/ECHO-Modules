@@ -1,0 +1,24 @@
+{
+  "id": "echoblockworks:orbital_station",
+  "display_name": "Orbital Station",
+  "description": "Station hull plating, thermal tiles, airlock frames, white/black hull contrast, and signal hardware.",
+  "recommended_usage": "Orbital interiors, airlock remnants, station corridors, and launch infrastructure.",
+  "theme": "orbital",
+  "family_ids": [
+    "orbital_hull",
+    "reinforced_metal"
+  ],
+  "featured_blocks": [
+    "echoblockworks:orbital_hull_hull_panel",
+    "echoblockworks:orbital_hull_thermal_tile",
+    "echoblockworks:orbital_hull_airlock_frame",
+    "echoblockworks:orbital_hull_lit_strip"
+  ],
+  "accent_blocks": [
+    "echoblockworks:orbital_hull_white_hull",
+    "echoblockworks:orbital_hull_black_hull",
+    "echoblockworks:ceiling_pipe",
+    "echoblockworks:signal_dish_decorative"
+  ],
+  "worldgen_site": "echoblockworks:orbital_airlock_remnant"
+}

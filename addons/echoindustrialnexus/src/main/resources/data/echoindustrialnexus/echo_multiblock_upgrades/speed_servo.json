@@ -1,0 +1,20 @@
+{
+  "id": "echoindustrialnexus:speed_servo",
+  "display_name": "Speed Servo",
+  "category": "industrial_throughput",
+  "item": "echoindustrialnexus:speed_servo",
+  "allowed_multiblocks": [
+    "echoindustrialnexus:industrial_assembly_line",
+    "echoindustrialnexus:scrap_processor",
+    "echoindustrialnexus:plate_press",
+    "echoindustrialnexus:circuit_fabricator",
+    "echoindustrialnexus:recipe_matrix_core",
+    "echoindustrialnexus:nexus_furnace_array"
+  ],
+  "modifiers": [
+    { "type": "speed_multiplier", "value": 0.2 }
+  ],
+  "notes": [
+    "Reduces Industrial MultiblockCore task duration."
+  ]
+}

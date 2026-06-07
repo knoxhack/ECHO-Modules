@@ -1,0 +1,65 @@
+{
+  "id": "echorelictech:void_compass",
+  "tier": "prototype",
+  "category": "scanner",
+  "origin": "Dimensional Vault Locator",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 2000,
+  "instabilityCost": 9,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "false_guidance",
+    "hostile_signal_attraction",
+    "nexus_instability"
+  ],
+  "failureTable": "echorelictech:guardian_lens",
+  "terminal": {
+    "summary": "Locates pre-Gridfall relic vaults and records exact map markers.",
+    "warning": "The compass may point toward danger before it points toward loot."
+  },
+  "lens": {
+    "compact": "Dimensional vault locator.",
+    "deepScan": [
+      "Map structure target: pre_gridfall_research_vault.",
+      "Coordinate persistence: HoloMap compatible.",
+      "ECHO warning: verify entry seals before opening."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 3 },
+      { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 3 },
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 7,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:old_world_patent_fragment", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 900,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "radius": 96
+  }
+}

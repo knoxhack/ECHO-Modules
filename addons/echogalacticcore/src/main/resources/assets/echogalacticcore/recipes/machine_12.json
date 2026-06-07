@@ -1,0 +1,31 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:machine",
+                   "data":  12
+               },
+    "pattern":  [
+                    "WXW",
+                    "WYW",
+                    "WZW"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_aluminum"
+                      },
+                "X":  {
+                          "item":  "minecraft:anvil",
+                          "data":  0
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_copper"
+                      },
+                "Z":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

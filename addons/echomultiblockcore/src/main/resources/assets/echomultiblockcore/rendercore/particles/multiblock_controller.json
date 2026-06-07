@@ -1,0 +1,19 @@
+{
+  "emitters": {
+    "anchor_grid": {
+      "anchor": "anchor_grid",
+      "particle": "minecraft:dust",
+      "states": ["ACTIVE", "SCANNING"],
+      "rate": 0.055,
+      "spread": [0.25, 0.08, 0.25],
+      "options": { "type": "minecraft:dust", "color": [0.4, 0.91, 1.0], "scale": 0.65 }
+    },
+    "damage_static": {
+      "anchor": "screen",
+      "particle": "minecraft:electric_spark",
+      "state": "DAMAGED",
+      "rate": 0.05,
+      "spread": [0.15, 0.04, 0.02]
+    }
+  }
+}

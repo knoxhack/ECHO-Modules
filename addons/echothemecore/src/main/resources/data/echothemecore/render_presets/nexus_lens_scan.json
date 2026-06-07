@@ -1,0 +1,10 @@
+{
+  "id": "echothemecore:nexus_lens_scan",
+  "theme": "echothemecore:nexus",
+  "type": "lens_scan",
+  "effects": [
+    {"type": "phase_ripple", "duration_ticks": 26, "strength": "theme:distortion_strength"},
+    {"type": "particle_burst", "particle_style": "theme:particle_style", "count": 26},
+    {"type": "glow_pulse", "duration_ticks": 24, "color": "theme:accent"}
+  ]
+}

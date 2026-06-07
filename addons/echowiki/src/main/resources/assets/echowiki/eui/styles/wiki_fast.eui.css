@@ -1,0 +1,127 @@
+.wiki-fast-reader {
+  background: #050B12F4;
+  padding: 8px;
+  gap: 8px;
+}
+
+.wiki-fast-reader-top {
+  height: 34px;
+  min-height: 34px;
+  background: #071523EE;
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 5px 7px;
+}
+
+.wiki-fast-reader-title {
+  min-width: 0;
+  gap: 2px;
+}
+
+.wiki-fast-reader-title title {
+  height: 14px;
+  min-height: 12px;
+  max-lines: 1;
+  line-height: 12px;
+}
+
+.wiki-fast-reader-title text {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+  color: theme(textMuted);
+}
+
+.wiki-fast-reader-chip {
+  width: 96px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.wiki-fast-reader-banner {
+  height: 88px;
+  min-height: 88px;
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+}
+
+.wiki-fast-reader-meta {
+  height: 24px;
+  min-height: 24px;
+  background: #071523CC;
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 4px 6px;
+}
+
+.wiki-fast-reader-meta text {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+  line-height: 10px;
+}
+
+.wiki-fast-reader-summary {
+  height: 28px;
+  min-height: 22px;
+  wrap: true;
+  max-lines: 2;
+  line-height: 11px;
+  color: theme(textSecondary);
+}
+
+.wiki-fast-reader-scroll {
+  height: 258px;
+  min-height: 180px;
+  overflow: scroll;
+}
+
+.wiki-fast-list {
+  gap: 4px;
+}
+
+.wiki-fast-related-panel {
+  height: 104px;
+  min-height: 72px;
+  background: #071523CC;
+  border-color: theme(borderMuted);
+  border-width: 1;
+  border-radius: radius(sm);
+  padding: 6px;
+  gap: 4px;
+}
+
+.wiki-fast-related-list {
+  gap: 4px;
+}
+
+.wiki-fast-reader .wiki-guide-chapter-row {
+  height: 62px;
+  min-height: 62px;
+}
+
+.wiki-fast-reader .wiki-guide-chapter-layout {
+  height: 50px;
+  min-height: 50px;
+}
+
+.wiki-fast-reader .wiki-guide-chapter-summary {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+}
+
+.wiki-fast-reader .wiki-related-row {
+  height: 38px;
+  min-height: 38px;
+}
+
+.wiki-fast-reader .wiki-row-summary {
+  height: 12px;
+  min-height: 10px;
+  max-lines: 1;
+}

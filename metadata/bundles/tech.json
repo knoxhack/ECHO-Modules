@@ -1,0 +1,44 @@
+{
+  "id": "tech",
+  "name": "Tech Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore",
+    "echoindex",
+    "echothemecore",
+    "echopowergrid",
+    "echoindustrialnexus",
+    "echomultiblockcore",
+    "echologisticsnetwork"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [
+    "echoindex",
+    "echothemecore",
+    "echopowergrid",
+    "echoindustrialnexus",
+    "echomultiblockcore",
+    "echologisticsnetwork"
+  ],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "tech"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Tech",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "tech"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

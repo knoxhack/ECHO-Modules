@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_plains_warlord",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 6,
+  "title": "Defeat Plains Warlord",
+  "briefing": "[ECHO-7] Guardian signal locked below Ruined Plains. Scan for the visible Radwarden Outpost entrance, descend into the buried node, read the room before it reads you, then neutralize Plains Warlord.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:dense_alloy_chunk",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_workshop"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_plains_warlord",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_plains_warlord",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "6",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "74",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_plains_warlord:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_plains_warlord/plains_warlord",
+      "type": "kill_entity",
+      "label": "Plains Warlord",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:plains_warlord",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:plains_warlord"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:plains_warlord",
+      "count": 1,
+      "label": "Plains Warlord"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_plains_warlord/reward_0",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 2,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_plains_warlord/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_plains_warlord/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_plains_warlord/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Plains Warlord neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

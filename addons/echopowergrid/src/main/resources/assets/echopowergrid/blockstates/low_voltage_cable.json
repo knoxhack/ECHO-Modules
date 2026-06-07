@@ -1,0 +1,18 @@
+{
+  "multipart": [
+    {
+      "when": { "OR": [{ "north": true }, { "south": true }, { "east": true }, { "west": true }, { "up": true }, { "down": true }] },
+      "apply": { "model": "echopowergrid:block/low_voltage_cable_core" }
+    },
+    {
+      "when": { "north": false, "south": false, "east": false, "west": false, "up": false, "down": false },
+      "apply": { "model": "echopowergrid:block/low_voltage_cable_core" }
+    },
+    { "when": { "north": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "uvlock": true } },
+    { "when": { "south": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "y": 180, "uvlock": true } },
+    { "when": { "east": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "y": 90, "uvlock": true } },
+    { "when": { "west": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "y": 270, "uvlock": true } },
+    { "when": { "up": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "x": 270, "uvlock": true } },
+    { "when": { "down": true }, "apply": { "model": "echopowergrid:block/low_voltage_cable_connection", "x": 90, "uvlock": true } }
+  ]
+}

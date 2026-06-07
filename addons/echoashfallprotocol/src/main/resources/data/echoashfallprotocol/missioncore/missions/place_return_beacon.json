@@ -1,0 +1,87 @@
+{
+  "id": "echoashfallprotocol:place_return_beacon",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "FIELD RECOVERY",
+  "phaseOrder": 6,
+  "order": 8,
+  "title": "Place Return Beacon",
+  "briefing": "[ECHO-7] Anchor a Return Beacon after relay activation so the extraction fallback has a real signal source.",
+  "fieldGuide": "AdapterCore field recovery mirror for standalone and NeoForge Ashfall runtime parity.",
+  "category": "tech",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:return_beacon",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_scout_drone"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "place_return_beacon",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.place_return_beacon",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "8",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "FIELD RECOVERY",
+    "routeGlobalOrder": "76",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:place_return_beacon:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:place_return_beacon/beacon_placed",
+      "type": "custom",
+      "label": "Place Return Beacon",
+      "detail": "Place or activate the Return Beacon at the relay fallback point.",
+      "icon": "echoashfallprotocol:return_beacon",
+      "target": "echoashfallprotocol:return_beacon",
+      "required": 1,
+      "criteria": {
+        "event": "missioncore.record_objective",
+        "item": "echoashfallprotocol:return_beacon",
+        "marker": "return_beacon_activated"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:return_beacon",
+      "count": 1,
+      "label": "Return Beacon"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:place_return_beacon/reward_0",
+      "item": "echoashfallprotocol:power_cell",
+      "count": 1,
+      "label": "Power Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "adaptercore_field_recovery",
+        "duplicateGuard": "echoashfallprotocol:place_return_beacon/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Return beacon signal is stable. Do not treat that as permission to get careless."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:ballistics_tech",
+  "displayName": "Ballistics Tech",
+  "role": "Range Mechanic",
+  "faction": "echonpcore:technicians",
+  "visualProfile": "echonpcore:ballistics_tech",
+  "dialogue": "echonpcore:ballistics_tech",
+  "trades": "echonpcore:ballistics_tech_basic",
+  "services": "echonpcore:ballistics_tech_services",
+  "missions": [],
+  "ambientLines": [
+    "Keep the barrel clean and the stock dry.",
+    "Noise travels farther after ashfall."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 6,
+    "returnRadius": 18,
+    "ambientCooldown": 2200,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Ballistics contacts tune field gear and mark loud routes as risky."
+  },
+  "convertedFrom": {
+    "profession": "minecraft:weaponsmith"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echogalacticcore",
+  "name": "ECHO: GalacticCore",
+  "version": "0.1.0-native-alpha",
+  "type": "addon",
+  "kind": "addon",
+  "role": "space_exploration",
+  "entrypoint": "com.knoxhack.echogalacticcore.EchoGalacticCoreNativeModule",
+  "publisher": "KnoxHack / ECHO Labs",
+  "channel": "alpha",
+  "official": false,
+  "trustLevel": "community",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoaddonapi",
+    "echoadaptercore"
+  ],
+  "optional": [
+    "echopackcore",
+    "echoindex",
+    "echolens",
+    "echoholomap",
+    "echoscreencore",
+    "echoashfallprotocol",
+    "echoterminal",
+    "echosoundcore",
+    "echorendercore",
+    "echoatmospherecore",
+    "echopowercore",
+    "echomachinecore",
+    "echovehiclecore"
+  ],
+  "provides": [
+    "galacticcore.content",
+    "galacticcore.celestial_routes",
+    "galacticcore.life_support",
+    "galacticcore.rockets",
+    "galacticcore.legacy_parity_map"
+  ],
+  "consumes": [
+    "platform.contracts",
+    "echo.sdk.public_api",
+    "adapter.echo_native",
+    "echo.native.registry",
+    "echo.native.lifecycle",
+    "echo.native.events",
+    "echo.native.commands",
+    "echo.native.config",
+    "echo.native.network",
+    "echo.native.resources",
+    "echo.native.capabilities",
+    "echo.native.attachments",
+    "echo.native.worldgen",
+    "echo.native.render",
+    "echo.native.screens",
+    "echo.native.save_data"
+  ],
+  "gameModes": [
+    "space_survival",
+    "ashfall_survival",
+    "story_packs"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "resources.data",
+    "world.write",
+    "screens.client",
+    "render.client"
+  ],
+  "assets": [
+    "assets/echogalacticcore",
+    "data/echogalacticcore"
+  ],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echogalacticcore.EchoGalacticCoreNativeModule",
+    "nativeClasspath": [],
+    "notes": "Unofficial ECHO Platform port/fork of Galacticraft Legacy. Production code must use ASDK typed services and must not depend on echo-native-loader, NeoForge, Forge, or legacy activateNative(Map) surfaces."
+  },
+  "apiStability": "BETA",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echogalacticcore/**",
+      "src/main/resources/assets/echogalacticcore/**",
+      "src/main/resources/data/echogalacticcore/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "LICENSE",
+      "CREDITS.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "native_sdk_agent"
+    ]
+  },
+  "deprecatedFeatures": [
+    "miccore_transformers",
+    "legacy_activate_native_map",
+    "forge_1_12_runtime"
+  ],
+  "replacements": [
+    {
+      "from": "micdoodle8.mods.miccore",
+      "to": "ASDK attachments, capabilities, lifecycle events, and typed network services"
+    },
+    {
+      "from": "galacticraftcore / galacticraftplanets runtime namespaces",
+      "to": "echogalacticcore"
+    }
+  ],
+  "conflicts": []
+}

@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:scan_first_poi",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 2,
+  "title": "Scan First POI",
+  "briefing": "[ECHO-7] Scanner protocol online. Use the Portable Signal Scanner until a point of interest is logged, then choose gear from that route's hazard profile instead of carrying every system at once.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:energy_cell",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:expedition_readiness"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "scan_first_poi",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.scan_first_poi",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "2",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "37",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:scan_first_poi:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.scanner_used",
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:scan_first_poi/scan_first_poi",
+      "type": "scan_block",
+      "label": "Scan First POI",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:energy_cell",
+      "target": "echoashfallprotocol:scan_first_poi",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.scan_first_poi"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:scan_first_poi/reward_0",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scan_first_poi/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:scan_first_poi/reward_1",
+      "item": "echoashfallprotocol:emergency_ration",
+      "count": 2,
+      "label": "Emergency Ration",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:scan_first_poi/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] POI signature archived. The field log now tracks scanned, entered, cleared, and reward-claimed site states."
+}

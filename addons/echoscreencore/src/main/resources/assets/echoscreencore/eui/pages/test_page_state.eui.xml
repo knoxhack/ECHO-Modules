@@ -1,0 +1,17 @@
+<page id="test-page-state" title="Page State" styles="echoscreencore:advanced_mock,echoscreencore:page_state_mock">
+  <screen-shell>
+    <header title="Page State" subtitle="Search, select, and toggle values persist in session page state"/>
+    <search-box state-key="query" placeholder="Persisted query..." on-change="terminal.set_search" clearable="true"/>
+    <select state-key="filter" value="{state.filter|active}" on-change="demo.set_filter" clearable="true">
+      <option value="active">Active</option>
+      <option value="ready">Ready</option>
+      <option value="all">All</option>
+    </select>
+    <toggle state-key="flag" label="Persisted toggle"/>
+    <card class="state-readout">
+      <text value="query={state.query|empty}"/>
+      <text value="filter={state.filter|empty}"/>
+      <text value="flag={state.flag|false}"/>
+    </card>
+  </screen-shell>
+</page>

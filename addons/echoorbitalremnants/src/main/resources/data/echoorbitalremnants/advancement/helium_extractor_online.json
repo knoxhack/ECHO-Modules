@@ -1,0 +1,25 @@
+{
+  "parent": "echoorbitalremnants:station_network_restored",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:helium_extractor_core"
+    },
+    "title": {
+      "text": "Helium Extractor Online"
+    },
+    "description": {
+      "text": "Restore three lunar Helium Extractor Nodes."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "complete": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "complete"
+    ]
+  ]
+}

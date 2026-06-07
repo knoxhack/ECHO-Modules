@@ -1,0 +1,74 @@
+{
+  "id": "echoashfallprotocol:crashbreak_relay_contract",
+  "chapterId": "echoashfallprotocol:ashfall_major_routes",
+  "title": "Optional: Crashbreak Relay Proof",
+  "optional": true,
+  "briefing": "Crashbreak will pay for proof that the relay route is safe enough for salvage crews. This is a small field contract, not a full faction commitment.",
+  "prerequisites": [
+    "echoashfallprotocol:first_relay_station_route"
+  ],
+  "objectives": [
+    {
+      "id": "scan_contract_board",
+      "type": "scan_block",
+      "label": "Scan the Crashbreak contract board",
+      "detail": "Confirm the contract is optional and tied to relay route proof.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "criteria": {
+        "native_objective_type": "lens_scan"
+      }
+    },
+    {
+      "id": "log_relay_proof",
+      "type": "establish_route",
+      "label": "Log relay proof",
+      "detail": "Record the relay route state and cache result in Terminal Route Records.",
+      "icon": "echoashfallprotocol:relay_scanner_lens",
+      "criteria": {
+        "native_objective_type": "terminal_route_record"
+      }
+    },
+    {
+      "id": "claim_contract_reward",
+      "type": "custom",
+      "label": "Claim contract support",
+      "detail": "Reward should support route progression with power cells, scrap metal, or scanner supplies.",
+      "icon": "echoashfallprotocol:power_cell",
+      "criteria": {
+        "native_objective_type": "reward_claim"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "type": "items",
+      "id": "echoashfallprotocol:crashbreak_relay_support",
+      "label": "Power cell, scrap metal, and route note support",
+      "detail": "Power cell, scrap metal, and route note support appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    },
+    {
+      "type": "reputation_note",
+      "id": "echoashfallprotocol:crashbreak_field_proof",
+      "label": "Crashbreak field proof",
+      "detail": "Crashbreak field proof appears in Terminal rewards and route records so the payoff is readable before claiming it."
+    }
+  ],
+  "completionText": "Crashbreak relay proof logged. The contract stays optional and should not block the main Ashfall route.",
+  "phase": "major_route_0",
+  "phaseTitle": "First Major Route",
+  "phaseOrder": 2,
+  "order": 1,
+  "fieldGuide": "Optional Crashbreak relay contract that rewards route proof without blocking the main relay route or starting a full faction arc.",
+  "category": "faction",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:power_cell",
+  "kind": "side",
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_major_route_records",
+    "indexEntry": "echoashfallprotocol:field_contracts",
+    "holomapMarker": "echoashfallprotocol:crashbreak_relay_contract",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "wikiArticle": "echowiki:guides/ashfall/integrations",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  }
+}

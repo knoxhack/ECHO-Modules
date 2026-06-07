@@ -1,0 +1,30 @@
+{
+  "id": "echoashfallprotocol:crashbreak_scout",
+  "displayName": "Scout Jax",
+  "role": "Salvage Scout",
+  "faction": "echoashfallprotocol:crashbreak_salvage",
+  "visualProfile": "echoashfallprotocol:crashbreak_scout",
+  "dialogue": "echoashfallprotocol:crashbreak_scout",
+  "trades": "echoashfallprotocol:crashbreak_scout_stock",
+  "services": "echoashfallprotocol:crashbreak_scout_services",
+  "missions": [],
+  "ambientLines": [
+    "Fast hands live longer than heavy packs.",
+    "If the road goes silent, count your exits."
+  ],
+  "interactionRange": 5.5,
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 10,
+    "returnRadius": 26,
+    "ambientCooldown": 2000,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Scout Jax refreshes route leads, salvage lanes, and quick-exit map context."
+  }
+}

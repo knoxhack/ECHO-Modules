@@ -1,0 +1,32 @@
+{
+  "id": "echonpcore:roaming_scavenger",
+  "displayName": "Roaming Scavenger",
+  "role": "Wasteland Trader",
+  "faction": "echonpcore:traders",
+  "visualProfile": "echonpcore:roaming_scavenger",
+  "dialogue": "echonpcore:roaming_scavenger",
+  "trades": "echonpcore:roaming_scavenger_basic",
+  "services": "echonpcore:roaming_scavenger_services",
+  "missions": [],
+  "ambientLines": [
+    "Found something useful. Maybe.",
+    "No refunds after the dust hits it."
+  ],
+  "behavior": {
+    "mode": "settler_trader",
+    "wanderRadius": 12,
+    "returnRadius": 32,
+    "ambientCooldown": 1800,
+    "stationary": false,
+    "homebound": true
+  },
+  "integrations": {
+    "terminalContact": true,
+    "mapMarker": true,
+    "discoverOnInteract": true,
+    "intelSummary": "Roaming scavengers carry route rumors and can refresh nearby map contacts."
+  },
+  "convertedFrom": {
+    "entityType": "minecraft:wandering_trader"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:repeated_hazard_death",
+  "type": "DANGER",
+  "category": "HAZARDS",
+  "title": "Repeated Hazard Failure",
+  "message": "Repeated failure detected in hazard zone. Adjust approach.",
+  "details": "Review gear, bring protective items, and take shorter exposure windows.",
+  "actionLabel": "Review hazard prep",
+  "actionCardId": "echotutorialcore:toxic_air",
+  "cooldownTicks": 24000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 85,
+  "dismissible": true,
+  "conditions": [
+    "repeated_death_count:3"
+  ]
+}

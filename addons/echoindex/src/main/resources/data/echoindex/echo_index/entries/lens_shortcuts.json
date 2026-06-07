@@ -1,0 +1,14 @@
+{
+  "id": "echoindex:lens_shortcuts",
+  "category": "echoindex:tools",
+  "title": "Lens Shortcuts",
+  "subtitle": "Inspection To Index",
+  "summary": "Lens-facing actions can hand players directly to Index recipes, uses, source cards, and archive context.",
+  "body": "EchoIndex records Lens shortcut mission hooks when those actions happen, but Lens remains responsible for target inspection and validation.",
+  "icon": "minecraft:spyglass",
+  "tags": ["lens", "tool", "inspection", "shortcut"],
+  "related": ["echoindex:inventory_overlay", "echoindex:source_facts"],
+  "source_mod": "echoindex",
+  "default_state": "visible",
+  "sort_order": 20
+}

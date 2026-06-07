@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:deep_scan",
+  "category": "LENS",
+  "title": "Deep Scan",
+  "summary": "When the surface lies, ask for the longer answer.",
+  "body": [
+    "Deep Scan asks the server for safer, richer context about machines, hazards, inventories, and route logic.",
+    "It is slower than a quick Lens glance, but it often explains blocked machines and unknown targets."
+  ],
+  "steps": [
+    "Aim Lens at the target.",
+    "Use Deep Scan when compact rows do not explain the problem.",
+    "Check Tutorial rows for the next practical action."
+  ],
+  "commonMistakes": [
+    "Ignoring warning rows.",
+    "Scanning only the machine, not its power path."
+  ],
+  "related": [
+    "echotutorialcore:lens_basics",
+    "echotutorialcore:machine_troubleshooting"
+  ],
+  "unlockTriggers": [
+    "used_lens"
+  ],
+  "defaultUnlocked": false,
+  "priority": 72
+}

@@ -1,0 +1,44 @@
+{
+  "id": "server_smp",
+  "name": "Server Smp Bundle",
+  "version": "1.0.0",
+  "description": "Curated ECHO module bundle for launcher pack building.",
+  "modules": [
+    "echocore",
+    "echonetcore",
+    "echoplayercore",
+    "echomissioncore",
+    "echoholomap",
+    "echologisticsnetwork",
+    "echoruntimeguard",
+    "echodatacore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echonetcore"
+  ],
+  "optionalModules": [
+    "echoplayercore",
+    "echomissioncore",
+    "echoholomap",
+    "echologisticsnetwork",
+    "echoruntimeguard",
+    "echodatacore"
+  ],
+  "bestFor": [
+    "Creator Packs"
+  ],
+  "packStyles": [
+    "server smp"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Server Smp",
+    "accent": "#58d7ff",
+    "description": "Curated ECHO module bundle for launcher pack building.",
+    "status": "Ready",
+    "style": "server smp"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

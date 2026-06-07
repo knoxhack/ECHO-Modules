@@ -1,0 +1,47 @@
+<page id="wiki_machines" title="Machine Reference" styles="echothemecore:cyberglass_kit,wiki_cyberglass,wiki_components,wiki_lists">
+  <component src="echowiki:wiki_shell">
+    <param name="contentTitle" value="Machines And Index Records"/>
+    <param name="contentSubtitle" value="Index-backed machine layouts, recipes, and item records."/>
+    <param name="inspectorTitle" value="Index Status"/>
+    <param name="stateKey" value="wiki.machines.page"/>
+    <slot name="content">
+      <grid class="wiki-reference-layout" columns="0.92fr 1.08fr" gap="9" stack-below="820">
+        <section class="wiki-reference-list-panel" title="INDEX RECORDS">
+          <scroll class="wiki-reference-scroll" scroll-state="true" state-key="wiki.machines">
+            <list class="wiki-browser-list" bind="wiki.machines.visible" item="machine">
+              <component src="echowiki:wiki_record_row">
+                <param name="action" value="wiki.open_related"/>
+                <param name="kind" value="recipe"/>
+                <param name="id" value="{machine.id}"/>
+                <param name="title" value="{machine.title}"/>
+                <param name="summary" value="{machine.summary}"/>
+                <param name="status" value="{machine.status}"/>
+                <param name="chip" value="{machine.chip}"/>
+                <param name="meta" value="{machine.meta}"/>
+                <param name="countLabel" value="{machine.countLabel}"/>
+              </component>
+              <empty-state title="No machine records" body="Index content is not loaded or has no machine-like records."/>
+            </list>
+          </scroll>
+        </section>
+        <section class="wiki-reference-detail-panel" title="INDEX BRIDGE">
+          <title class="wiki-detail-title" value="Machine Reference"/>
+          <row class="wiki-chip-line" gap="6">
+            <status-chip class="wiki-detail-chip" status="info" value="recipes"/>
+            <status-chip class="wiki-detail-chip" status="info" value="layouts"/>
+            <status-chip class="wiki-detail-chip" status="info" value="{wiki.settings.indexLoaded}"/>
+          </row>
+          <text class="wiki-reader-text" value="Machine rows are published by Index providers. Recipe and item links open Echo Index when the optional addon is installed, while the Wiki remains readable without it."/>
+          <grid class="wiki-detail-stat-grid" columns="1fr 1fr" gap="8">
+            <stat-card label="Index Loaded" value="{wiki.settings.indexLoaded}"/>
+            <stat-card label="Records" value="{wiki.dashboard.visibleArticleCount}"/>
+          </grid>
+        </section>
+      </grid>
+    </slot>
+    <slot name="inspector">
+      <stat-card label="Index Loaded" value="{wiki.settings.indexLoaded}"/>
+      <text class="wiki-inspector-copy" value="Related item and recipe links open Index when echoindex is present."/>
+    </slot>
+  </component>
+</page>

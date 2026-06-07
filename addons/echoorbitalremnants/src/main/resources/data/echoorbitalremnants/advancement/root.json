@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:echo_terminal"
+    },
+    "title": {
+      "text": "ECHO: Orbital Remnants"
+    },
+    "description": {
+      "text": "Earth made its choice below. Orbit still calls it quarantine."
+    },
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "terminal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:echo_terminal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "terminal"
+    ]
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "echoashfallprotocol:survive_core_countermeasure",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_7",
+  "phaseTitle": "NEXUS DECISION",
+  "phaseOrder": 7,
+  "order": 5,
+  "title": "Survive Core Countermeasure",
+  "briefing": "[ECHO-7] The Core is cornered. Hold the active grid through one countermeasure siege, then the final command interface can open.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 8: NEXUS DECISION.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:elite_battery",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:stabilize_nexus_grid"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "survive_core_countermeasure",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.survive_core_countermeasure",
+    "terminal_route_phase": "7",
+    "terminal_route_order": "5",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_7",
+    "routePhaseTitle": "NEXUS DECISION",
+    "routeGlobalOrder": "91",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:survive_core_countermeasure:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.nexus_state",
+      "ashfall.post_nexus_persisted"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:survive_core_countermeasure/survive_core_countermeasure",
+      "type": "survive_time",
+      "label": "Survive Core Countermeasure",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:elite_battery",
+      "target": "echoashfallprotocol:survive_core_countermeasure",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.survive_core_countermeasure"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:survive_core_countermeasure/reward_0",
+      "item": "echoashfallprotocol:elite_battery",
+      "count": 1,
+      "label": "Elite Battery",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:survive_core_countermeasure/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:survive_core_countermeasure/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 2,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:survive_core_countermeasure/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Countermeasure survived. The Nexus choice is ready, and it is still irreversible."
+}

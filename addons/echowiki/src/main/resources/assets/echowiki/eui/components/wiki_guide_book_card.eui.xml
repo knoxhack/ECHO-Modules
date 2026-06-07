@@ -1,0 +1,14 @@
+<list-row class="wiki-guide-book-card wiki-fast-card" action="wiki.open_guide_book" action-value="{param.id|}" selected="{param.selected|false}">
+  <column class="wiki-guide-card-copy">
+    <row class="wiki-guide-card-title-line" gap="6">
+      <item-icon class="wiki-row-icon" item="{param.icon|minecraft:written_book}"/>
+      <title class="wiki-guide-card-title" value="{param.title|Guide Book}"/>
+      <status-chip class="wiki-guide-status-chip" status="{param.status|ready}" value="{param.statusLabel|ready}"/>
+    </row>
+    <row class="wiki-guide-card-meta-line" gap="6">
+      <text class="wiki-row-meta-text" value="{param.moduleBadge|Manual}"/>
+      <text class="wiki-row-meta-text" value="{param.chapterBadge|0 chapters}"/>
+    </row>
+    <text class="wiki-guide-card-summary" value="{param.summaryPreview|}"/>
+  </column>
+</list-row>

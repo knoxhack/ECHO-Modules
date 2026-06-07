@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "echoashfallprotocol:rusted_metal_sheet"
+      }
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:dirt",
+        "minecraft:grass_block",
+        "minecraft:coarse_dirt",
+        "minecraft:stone",
+        "echoashfallprotocol:wasteland_stone",
+        "minecraft:cobblestone",
+        "minecraft:gravel",
+        "echoashfallprotocol:debris_block",
+        "echoashfallprotocol:concrete_rubble"
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 1,
+      "max_inclusive": 2
+    },
+    "half_height": 1
+  }
+}

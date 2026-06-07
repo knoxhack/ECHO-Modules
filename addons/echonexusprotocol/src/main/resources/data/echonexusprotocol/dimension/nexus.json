@@ -1,0 +1,17 @@
+{
+  "type": "echonexusprotocol:nexus",
+  "generator": {
+    "type": "echonexusprotocol:nexus_terrain",
+    "biome_source": {
+      "type": "minecraft:checkerboard",
+      "biomes": [
+        "echonexusprotocol:nexus_scar",
+        "echonexusprotocol:blackbox_forest",
+        "echonexusprotocol:static_basin",
+        "echonexusprotocol:fractured_wasteland",
+        "echonexusprotocol:core_exclusion_zone"
+      ],
+      "scale": 2
+    }
+  }
+}

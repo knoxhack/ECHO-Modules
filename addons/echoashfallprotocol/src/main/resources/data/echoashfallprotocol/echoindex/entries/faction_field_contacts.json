@@ -1,0 +1,23 @@
+{
+  "id": "echoashfallprotocol:faction_field_contacts",
+  "category": "ashfall.factions",
+  "title": "Faction Field Contacts",
+  "subtitle": "Observe first, commit later",
+  "summary": "Crashbreak and Radwarden field signals are early contact hooks. They should teach recognition and caution before deeper faction work.",
+  "body": [
+    "A faction marker is not automatically a combat objective. Scan signs, read standing text, and leave if the contact is restricted.",
+    "Crashbreak routes are salvage-adjacent. Radwarden perimeter signs are warnings until the player has a reason and standing to approach.",
+    "Faction work should remain optional in first-month progression unless a mission clearly states the requirement."
+  ],
+  "links": {
+    "mission": "echoashfallprotocol:faction_signal_ping",
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans"
+  },
+  "tags": [
+    "ashfall",
+    "factions",
+    "standing"
+  ]
+}

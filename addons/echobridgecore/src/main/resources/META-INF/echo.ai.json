@@ -1,0 +1,95 @@
+{
+  "schema": "echo.ai.v1",
+  "module": "echobridgecore",
+  "summary": "Neutral local bridge contracts for CyberDex, Command Center, and Codex session control without granting command execution authority.",
+  "owners": [
+    {
+      "name": "KnoxHack",
+      "role": "platform owner",
+      "areas": [
+        "BridgeCore contracts",
+        "Codex session state",
+        "safe action confirmation"
+      ]
+    }
+  ],
+  "importantPackages": [
+    "com.knoxhack.echo.bridgecore"
+  ],
+  "mainClasses": [
+    "EchoBridgeCore",
+    "EchoBridgeSession",
+    "EchoBridgeJob",
+    "EchoBridgeControlRequest",
+    "EchoBridgeControlResult"
+  ],
+  "commonTasks": [
+    {
+      "id": "bridge_contract_review",
+      "label": "Review bridge contracts",
+      "summary": "Confirm BridgeCore still models local-only session control, streaming logs, diagnostics, and confirmations without becoming an executor.",
+      "suggestedLanes": [
+        "architect_agent",
+        "diagnostics_agent"
+      ],
+      "acceptanceHints": [
+        "compile_passes",
+        "docs_updated",
+        "no_command_execution"
+      ]
+    }
+  ],
+  "doNotEdit": [
+    "user secrets",
+    "local bridge pairing keys",
+    "support bundles containing private logs"
+  ],
+  "protectedFiles": [
+    "addons/echobridgecore/src/main/resources/META-INF/neoforge.mods.toml",
+    "addons/echobridgecore/src/main/templates/META-INF/neoforge.mods.toml"
+  ],
+  "safeEditZones": [
+    "addons/echobridgecore/src/main/java/**",
+    "addons/echobridgecore/src/main/resources/META-INF/echo.mod.json",
+    "addons/echobridgecore/src/main/resources/META-INF/echo.ai.json",
+    "docs/echo/bridge/**",
+    "docs/echo/cyberdex/**"
+  ],
+  "requiresHumanReview": true,
+  "testCommands": [
+    ".\\gradlew.bat :echobridgecore:compileJava -PechoAddonSet=beta",
+    ".\\gradlew.bat generateEchoBridgeReports -PechoAddonSet=beta"
+  ],
+  "buildCommands": [
+    ".\\gradlew.bat build -PechoAddonSet=beta"
+  ],
+  "recommendedAgentLanes": [
+    "architect_agent",
+    "diagnostics_agent",
+    "test_agent"
+  ],
+  "knownScreens": [
+    "command_center_bridge_sessions",
+    "cyberdex_bridge"
+  ],
+  "knownRegistries": [
+    "bridge.sessions",
+    "bridge.jobs",
+    "bridge.safe_actions",
+    "bridge.events"
+  ],
+  "commonDiagnostics": [
+    {
+      "code": "ECHO-BRIDGE-CODEX-NOT-CONFIGURED",
+      "severity": "WARNING",
+      "category": "bridge",
+      "summary": "Codex execution is not configured; bridge must record the job as blocked or not_configured."
+    }
+  ],
+  "promptHints": [
+    "Keep BridgeCore model-only and local-only.",
+    "Do not add raw shell execution to the Minecraft addon.",
+    "Require confirmation for write, repair, download, network, and process-launch actions.",
+    "Prefer redacted report references over raw logs in support bundles."
+  ]
+}

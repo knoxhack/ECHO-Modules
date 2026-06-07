@@ -1,0 +1,119 @@
+{
+  "id": "echoashfallprotocol:build_radiation_cleanser",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_4",
+  "phaseTitle": "BIOHAZARD ADAPTATION",
+  "phaseOrder": 4,
+  "order": 4,
+  "title": "Build Radiation Cleanser",
+  "briefing": "[ECHO-7] Contaminated materials will poison the production chain. Build a Radiation Cleanser for sustained cleanup.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 5: BIOHAZARD ADAPTATION.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:radiation_cleanser",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:build_field_med_bay"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_radiation_cleanser",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.build_radiation_cleanser",
+    "terminal_route_phase": "4",
+    "terminal_route_order": "4",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_4",
+    "routePhaseTitle": "BIOHAZARD ADAPTATION",
+    "routeGlobalOrder": "50",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_midgame_hazard_lab_vault",
+    "indexEntry": "echoashfallprotocol:midgame_hazard_lab_vault",
+    "wikiArticle": "echowiki:guides/ashfall/midgame_hazard_lab_vault",
+    "lensProfile": "echoashfallprotocol:ashfall_midgame_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_midgame_hazards"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_radiation_cleanser:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement",
+      "ashfall.cleanser_used"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_radiation_cleanser/radiation_cleanser",
+      "type": "place_block",
+      "label": "Place Radiation Cleanser",
+      "detail": "Place 1 Radiation Cleanser for the Ashfall route; powered use also reports the live cleanser contract.",
+      "icon": "echoashfallprotocol:radiation_cleanser",
+      "target": "echoashfallprotocol:radiation_cleanser",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:radiation_cleanser"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Filter Cartridge Advanced"
+    },
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Board"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 1,
+      "label": "Machine Casing"
+    },
+    {
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane"
+    },
+    {
+      "block": "echoashfallprotocol:radiation_cleanser",
+      "count": 1,
+      "label": "Radiation Cleanser"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_radiation_cleanser/reward_0",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 2,
+      "label": "Filtration Membrane",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_radiation_cleanser/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:build_radiation_cleanser/reward_1",
+      "item": "echoashfallprotocol:rad_away",
+      "count": 1,
+      "label": "Rad Away",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:build_radiation_cleanser/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Radiation Cleanser online. Contaminated salvage can now become reliable material instead of a liability."
+}

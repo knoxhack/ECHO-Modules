@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:ballistics_tech",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "Range gear, springs, and old firing pins. Keep your hands steady.",
+      "options": [
+        { "id": "noise", "label": "Does sound draw trouble?", "next": "noise" },
+        { "id": "trade", "label": "Show me range parts.", "action": "open_trade" },
+        { "id": "service", "label": "Tune my held gear.", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Stand down.", "action": "close" }
+      ]
+    },
+    "noise": {
+      "text": "Yes. But silence is not always safer. Sometimes distance is the answer.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

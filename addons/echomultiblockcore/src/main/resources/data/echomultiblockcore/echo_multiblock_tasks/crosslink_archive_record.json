@@ -1,0 +1,21 @@
+{
+  "id": "echomultiblockcore:crosslink_archive_record",
+  "display_name": "Crosslink Archive Record",
+  "category": "archive",
+  "allowed_multiblocks": ["echomultiblockcore:archive_data_chamber"],
+  "required_workcell": "ARCHIVE",
+  "required_tools": ["SCANNER", "STABILIZER"],
+  "duration_ticks": 240,
+  "heat_per_second": 2,
+  "animation": "scan",
+  "animation_profile": "echomultiblockcore:archive_encode",
+  "effects": ["echodatacore:mirror_archive_summary", "echoblackboxprotocol:stage_memory_evidence"],
+  "inputs": [
+    { "item": "echomultiblockcore:archive_memory_cell", "count": 1 },
+    { "item": "echomultiblockcore:scanner_matrix", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:archive_memory_cell", "count": 2 }
+  ],
+  "notes": ["Archive/DataCore handoff recipe with isolated optional effects."]
+}

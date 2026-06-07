@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:archive_data_chamber",
+    "facility":  "echomultiblockcore:archive_data_chamber",
+    "tier":  6,
+    "prerequisites":  [
+                          "echomultiblockcore:scanner_array"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:encode_archive_memory_cell",
+                             "echomultiblockcore:crosslink_archive_record"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:archive_memory_cell"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/archive_data_chamber",
+    "title":  "Archive Data Chamber",
+    "guide":  "Encode scan results into portable archive memory cells for DataCore snapshots and archive handoffs."
+}

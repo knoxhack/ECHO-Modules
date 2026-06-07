@@ -1,0 +1,25 @@
+{
+  "id": "echomultiblockcore:assemble_reinforced_machine_frame",
+  "display_name": "Assemble Reinforced Machine Frame",
+  "category": "assembly",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line"],
+  "required_workcell": "ASSEMBLY",
+  "required_tools": ["WELDER", "ASSEMBLER"],
+  "duration_ticks": 200,
+  "heat_per_second": 2,
+  "animation": "assemble",
+  "animation_profile": "echomultiblockcore:assembly_weld",
+  "consume_inputs_on_start": true,
+  "capability_costs": [
+    { "capability": "echo:power_input", "amount": 120, "throughput": 32, "unit": "FE/t" },
+    { "capability": "echo:data", "amount": 20, "throughput": 8, "unit": "data/t" }
+  ],
+  "inputs": [
+    { "item": "echomultiblockcore:reinforced_frame", "count": 4, "label": "Reinforced Frame" },
+    { "item": "echomultiblockcore:signal_conduit", "count": 1, "label": "Signal Conduit" }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:reinforced_machine_frame", "count": 1, "label": "Reinforced Machine Frame" }
+  ],
+  "notes": ["Legacy v0.3 task id preserved as a data automation recipe."]
+}

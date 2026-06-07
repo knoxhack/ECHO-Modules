@@ -1,0 +1,13 @@
+{
+  "id": "echoconvoyprotocol:export_salvage_manifest",
+  "display_name": "Export Salvage Manifest",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "CARGO_OUTPUT",
+  "required_tools": ["CLAMP", "GRIPPER"],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 120,
+  "heat_per_second": 2,
+  "animation": "unload",
+  "effects": ["echoconvoyprotocol:export_salvage_manifest"],
+  "notes": ["Exports convoy salvage to Logistics storage when available, otherwise falls back to the output crate."]
+}

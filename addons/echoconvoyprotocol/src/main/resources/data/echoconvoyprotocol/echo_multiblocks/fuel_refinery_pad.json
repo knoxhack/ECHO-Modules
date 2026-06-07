@@ -1,0 +1,150 @@
+{
+    "id":  "echoconvoyprotocol:fuel_refinery_pad",
+    "display_name":  "Fuel Refinery Pad",
+    "translation_key":  "multiblock.echoconvoyprotocol.fuel_refinery_pad",
+    "role":  "SURVIVAL",
+    "category":  "fuel_logistics",
+    "size":  [
+                 5,
+                 2,
+                 3
+             ],
+    "controller":  "echoconvoyprotocol:fuel_refinery_pad_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "requires_foundation":  false,
+    "layers":  [
+                   [
+                       "FICOF",
+                       "RPSDF",
+                       "FPKTF"
+                   ],
+                   [
+                       ".H.H.",
+                       "..T..",
+                       "....."
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echoconvoyprotocol:valid_fuel_pad_blocks"
+                          },
+                    "I":  {
+                              "block":  "echoconvoyprotocol:fuel_input_tank",
+                              "component":  true
+                          },
+                    "C":  {
+                              "block":  "echoconvoyprotocol:fuel_refinery_pad_controller",
+                              "controller":  true
+                          },
+                    "O":  {
+                              "block":  "echoconvoyprotocol:fuel_output_tank",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "P":  {
+                              "block":  "echoconvoyprotocol:depot_power_bus",
+                              "component":  true
+                          },
+                    "S":  {
+                              "block":  "echoconvoyprotocol:fuel_pipe_block",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echoconvoyprotocol:depot_data_bus",
+                              "component":  true
+                          },
+                    "K":  {
+                              "block":  "echoconvoyprotocol:fuel_injector_arm_mount",
+                              "component":  true
+                          },
+                    "T":  {
+                              "block":  "echoconvoyprotocol:fuel_tank_block",
+                              "component":  true
+                          },
+                    "H":  {
+                              "block":  "echoconvoyprotocol:heavy_garage_frame",
+                              "component":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:robotics",
+                         "echo:workcell",
+                         "echo:terminal_tab",
+                         "echo:scanner_target",
+                         "echo:fuel_handling"
+                     ],
+    "workcells":  [
+                      {
+                          "id":  "echoconvoyprotocol:fuel_refinery_pad/fuel_input",
+                          "type":  "FUEL_INPUT",
+                          "pos":  [
+                                      1,
+                                      0,
+                                      0
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:fuel_refinery_pad/fuel_processing",
+                          "type":  "FUEL_PROCESSING",
+                          "pos":  [
+                                      3,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ]
+                      },
+                      {
+                          "id":  "echoconvoyprotocol:fuel_refinery_pad/fuel_injection",
+                          "type":  "FUEL_INJECTION",
+                          "pos":  [
+                                      2,
+                                      0,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "INJECTOR"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echoconvoyprotocol:refuel_convoy"
+                                            ]
+                      }
+                  ],
+    "robotics":  {
+                     "min_arms":  1,
+                     "required_tools":  [
+                                            "INJECTOR"
+                                        ]
+                 },
+    "integrity":  {
+                      "max":  100,
+                      "damageable":  true,
+                      "damaged_threshold":  70,
+                      "offline_threshold":  25
+                  },
+    "preview":  {
+                    "color":  "ff9d00"
+                }
+}

@@ -1,0 +1,94 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.03,
+  "downfall": 0.1,
+  "effects": {
+    "fog_color": 3152453,
+    "foliage_color": 6241675,
+    "grass_color": 8211376,
+    "sky_color": 4397151,
+    "water_color": 6043511,
+    "water_fog_color": 2628668,
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:warped_spore"
+      },
+      "probability": 0.035
+    },
+    "ambient_loop_sound": "minecraft:ambient.warped_forest.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.warped_forest.additions",
+      "tick_chance": 0.012
+    }
+  },
+  "features": [
+    [],
+    [],
+    [
+      "echoashfallprotocol:nexus_scar_radiation_zones",
+      "echoashfallprotocol:nexus_scar_radiation_hotspot",
+      "echoashfallprotocol:irradiated_shale_scatter",
+      "echoashfallprotocol:nexus_scar_fallout_dust_patches",
+      "echoashfallprotocol:nexus_scar_toxic_puddle_patches",
+      "echoashfallprotocol:toxic_waste_barrels",
+      "echoashfallprotocol:crystal_radiation_cluster",
+      "echoashfallprotocol:crystal_energy_deposit",
+      "echoashfallprotocol:nexus_scar_riftstone_scatter",
+      "echoashfallprotocol:nexus_scar_energized_fissures"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "echoashfallprotocol:nexus_scar_twisted_spires",
+      "echoashfallprotocol:nexus_scar_purple_crystal_trees",
+      "echoashfallprotocol:nexus_scar_nuclear_fungus",
+      "echoashfallprotocol:nexus_scar_mutated_bush_clusters",
+      "echoashfallprotocol:nexus_scar_anomaly_grass",
+      "echoashfallprotocol:nexus_scar_echo_crystals"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "echoashfallprotocol:glowing_ghoul",
+        "weight": 21,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:ash_wraith",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:mutated_crawler",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "echoashfallprotocol:echo_drone",
+        "weight": 7,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 1.1
+}

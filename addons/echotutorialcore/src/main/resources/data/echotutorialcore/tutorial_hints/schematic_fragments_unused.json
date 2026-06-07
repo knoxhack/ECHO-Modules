@@ -1,0 +1,18 @@
+{
+  "id": "echotutorialcore:schematic_fragments_unused",
+  "type": "PROGRESSION",
+  "category": "RESEARCH",
+  "title": "Schematic Fragments Unused",
+  "message": "You have schematic fragments. Research them to unlock recipes.",
+  "details": "Use a Research Lab to convert fragments into usable technology.",
+  "actionLabel": "Review fragments",
+  "actionCardId": "echotutorialcore:schematic_fragments",
+  "cooldownTicks": 48000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 65,
+  "dismissible": true,
+  "conditions": [
+    "has_item:echoashfallprotocol:schematic_fragment",
+    "time_since_progress_minutes:20"
+  ]
+}

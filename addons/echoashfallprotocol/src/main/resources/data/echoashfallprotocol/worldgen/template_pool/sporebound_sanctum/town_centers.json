@@ -1,0 +1,33 @@
+{
+  "name": "echoashfallprotocol:sporebound_sanctum/town_centers",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/town_centers/taiga_meeting_point_1",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "minecraft:village/taiga/town_centers/taiga_meeting_point_2",
+        "processors": "echoashfallprotocol:sporebound_sanctum_theme"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "echoashfallprotocol:faction/sporebound_sanctum/biodome_hub",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:telemetry"
+               },
+    "pattern":  [
+                    "XFX",
+                    "XWX",
+                    "YYY"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "F":  {
+                          "item":  "echogalacticcore:basic_item",
+                          "data":  19
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/wafer_basic"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_tin"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_copper"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

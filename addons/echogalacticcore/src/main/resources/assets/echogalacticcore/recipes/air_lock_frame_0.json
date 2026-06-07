@@ -1,0 +1,28 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:air_lock_frame",
+                   "data":  0,
+                   "count":  4
+               },
+    "pattern":  [
+                    "XXX",
+                    "YZY",
+                    "XXX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:oxygen_concentrator"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

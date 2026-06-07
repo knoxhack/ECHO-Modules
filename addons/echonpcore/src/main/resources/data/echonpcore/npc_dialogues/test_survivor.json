@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:test_survivor",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "You made it out of the pod. Barely.",
+      "options": [
+        { "id": "where_am_i", "label": "Where am I?", "next": "where" },
+        { "id": "trade", "label": "I need supplies.", "action": "open_trade" },
+        { "id": "services", "label": "Can you help me?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Stay safe.", "action": "close" }
+      ]
+    },
+    "where": {
+      "text": "Ashfall zone. Old relay grid collapsed years ago.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "particle_only", "owner_addon": "echorendercore", "display_name": "V21 Particle Only Visual", "tags": ["particle_only"], "integration_mode": "optional" },
+  "fallback": { "mode": "particles_only", "expectation": "particle emitters remain optional and stable", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "low", "advanced_fx": "deny" },
+  "qa": { "required": true, "evidence": ["world_surface"], "reduced_motion": false },
+  "default_state": "ACTIVE",
+  "anchors": { "spark": { "offset": [0.0, 0.5, 0.0] } }
+}

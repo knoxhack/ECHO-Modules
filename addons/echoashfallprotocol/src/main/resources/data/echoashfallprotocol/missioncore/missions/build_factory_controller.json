@@ -1,0 +1,114 @@
+{
+  "id": "echoashfallprotocol:build_factory_controller",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 11,
+  "title": "Build a Factory Controller",
+  "briefing": "[ECHO-7] Your workshop has enough moving parts to require oversight. Build a Factory Controller near connected machines.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall block requirement for factory_controller after the first schematic unlock.",
+  "category": "tech",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:factory_controller",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:first_schematic"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_factory_controller",
+    "nativeGameplayHook": "ashfall.first_route.build_factory_controller",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.poi.portable_scanner.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "11",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "34",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_factory_controller:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_factory_controller/place_factory_controller",
+      "type": "place_block",
+      "label": "Place Factory Controller",
+      "detail": "Build and place one Factory Controller near connected machines so the base can scale safely.",
+      "icon": "echoashfallprotocol:factory_controller",
+      "target": "echoashfallprotocol:factory_controller",
+      "required": 1,
+      "criteria": {
+        "event": "player.block_placed",
+        "block_requirement_event": "ashfall.block_requirement",
+        "block": "echoashfallprotocol:factory_controller",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 5,
+      "label": "Circuit Boards"
+    },
+    {
+      "item": "echoashfallprotocol:machine_casing",
+      "count": 2,
+      "label": "Machine Casings"
+    },
+    {
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "item": "minecraft:redstone_block",
+      "count": 1,
+      "label": "Redstone Block"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_factory_controller/reward_circuit_boards",
+      "item": "echoashfallprotocol:circuit_board",
+      "count": 2,
+      "label": "Circuit Boards"
+    },
+    {
+      "id": "echoashfallprotocol:build_factory_controller/reward_energy_cell",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 1,
+      "label": "Energy Cell"
+    },
+    {
+      "id": "echoashfallprotocol:build_factory_controller/reward_redstone",
+      "item": "minecraft:redstone",
+      "count": 6,
+      "label": "Redstone Dust"
+    }
+  ],
+  "completionText": "[ECHO-7] Factory Controller online. It scans connected machines through cables and pipes so the base can scale safely."
+}

@@ -1,0 +1,211 @@
+{
+  "pools": [
+    {
+      "name": "dungeon_tier_2",
+      "rolls": {
+        "min": 6,
+        "max": 9
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:carbon_fragments",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 7
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "canned_apple",
+          "name": "echogalacticcore:food",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 0
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "canned_carrot",
+          "name": "echogalacticcore:food",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 1
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "canned_melon",
+          "name": "echogalacticcore:food",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 2
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "canned_potato",
+          "name": "echogalacticcore:food",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 3
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:oil_canister_partial",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 1001
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:desh_boots",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:desh_chestplate",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:desh_helmet",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echogalacticcore:desh_leggings",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:redstone",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 7
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_mall",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_mellohi",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "raw_desh",
+          "name": "echogalacticcore:item_basic_mars",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "desh_stick",
+          "name": "echogalacticcore:item_basic_mars",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "echogalacticcore:set_legacy_data",
+              "data": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "book22",
+          "name": "minecraft:book",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 22,
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "entryName": "book24",
+          "name": "minecraft:book",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 24,
+              "treasure": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

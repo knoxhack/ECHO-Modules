@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:power_basics",
+  "category": "POWER",
+  "title": "Power Basics",
+  "summary": "EP is the lifeblood of ECHO infrastructure.",
+  "body": [
+    "Most machines require EP (Echo Power) to function.",
+    "Generators produce EP. Batteries store it. Cables transfer it.",
+    "If a machine is offline, check power input with the Lens."
+  ],
+  "steps": [
+    "Place a generator.",
+    "Connect it to machines with cables.",
+    "Monitor demand versus supply."
+  ],
+  "commonMistakes": [
+    "Forgetting to connect cables.",
+    "Overloading a single generator."
+  ],
+  "related": [
+    "echotutorialcore:machine_troubleshooting"
+  ],
+  "unlockTriggers": [
+    "powered_first_machine"
+  ],
+  "defaultUnlocked": false,
+  "priority": 80
+}

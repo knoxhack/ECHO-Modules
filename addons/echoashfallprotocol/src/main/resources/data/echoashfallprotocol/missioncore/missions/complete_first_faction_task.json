@@ -1,0 +1,108 @@
+{
+  "id": "echoashfallprotocol:complete_first_faction_task",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 5,
+  "title": "Complete One Faction Task",
+  "briefing": "[ECHO-7] Contact is not trust. Complete one faction job from any Ashfall job-site block to prove you can work inside survivor rules.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "minecraft:emerald",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:first_faction_contact"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "complete_first_faction_task",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.complete_first_faction_task",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "5",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "40",
+    "deprecatedAliases": "contact_radwarden_compact,contact_crashbreak_salvage,contact_sporebound_sanctum,complete_radwarden_contract,complete_crashbreak_contract,complete_sporebound_contract",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:complete_first_faction_task:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "deprecatedAliases": [
+    "echoashfallprotocol:contact_radwarden_compact",
+    "echoashfallprotocol:contact_crashbreak_salvage",
+    "echoashfallprotocol:contact_sporebound_sanctum",
+    "echoashfallprotocol:complete_radwarden_contract",
+    "echoashfallprotocol:complete_crashbreak_contract",
+    "echoashfallprotocol:complete_sporebound_contract"
+  ],
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:complete_first_faction_task/first_task_complete",
+      "type": "custom",
+      "label": "Faction Task Complete",
+      "detail": "Log special progress for this Ashfall route step.",
+      "icon": "minecraft:emerald",
+      "target": "faction:first_task_complete",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.location_visited",
+        "location_type": "special",
+        "location": "faction:first_task_complete"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "locationType": "special",
+      "locationId": "faction:first_task_complete",
+      "count": 1,
+      "label": "Faction Task Complete"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:complete_first_faction_task/reward_0",
+      "item": "minecraft:emerald",
+      "count": 2,
+      "label": "Emerald",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:complete_first_faction_task/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:complete_first_faction_task/reward_1",
+      "item": "echoashfallprotocol:bandage",
+      "count": 1,
+      "label": "Bandage",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:complete_first_faction_task/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Contract record accepted. Faction work is now a viable supply route; individual faction dossiers remain optional intel."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "echoconvoyprotocol:request_route_supplies",
+  "display_name": "Request Route Supplies",
+  "category": "echoconvoyprotocol:convoy_automation",
+  "required_workcell": "ROUTE_DISPATCH",
+  "required_tools": ["SCANNER"],
+  "consume_inputs_on_start": true,
+  "duration_ticks": 80,
+  "heat_per_second": 1,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:request_route_supplies"],
+  "notes": ["Requests the selected route loadout from ECHO Logistics Network into Convoy input storage."]
+}

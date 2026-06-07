@@ -1,0 +1,61 @@
+page {
+  padding: space(lg);
+  background: theme(background);
+  layout: column;
+  gap: space(md);
+}
+
+screen-shell {
+  padding: space(md);
+  background: theme(terminalBackground);
+  border-color: theme(borderMuted);
+  border-width: 1;
+  gap: space(md);
+  layout: column;
+}
+
+header {
+  min-height: 44px;
+  padding: space(md);
+  background: theme(panel);
+  border-color: theme(borderMuted);
+  border-width: 1;
+}
+
+title {
+  font-size: font(title);
+  color: theme(textPrimary);
+  wrap: true;
+}
+
+label {
+  font-size: font(small);
+  color: theme(textMuted);
+  wrap: true;
+}
+
+text {
+  font-size: font(body);
+  color: theme(textSecondary);
+  wrap: true;
+}
+
+row {
+  layout: row;
+  gap: space(sm);
+}
+
+column,
+stack {
+  layout: column;
+  gap: space(sm);
+}
+
+grid {
+  layout: grid;
+  gap: space(md);
+}
+
+spacer {
+  height: space(md);
+}

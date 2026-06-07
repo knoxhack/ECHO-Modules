@@ -1,0 +1,19 @@
+{
+  "id": "echomultiblockcore:weld_power_bus",
+  "display_name": "Weld Power Bus",
+  "category": "welding",
+  "allowed_multiblocks": ["echomultiblockcore:industrial_assembly_line"],
+  "required_workcell": "WELDING",
+  "required_tools": ["WELDER"],
+  "duration_ticks": 160,
+  "heat_per_second": 3,
+  "animation": "weld",
+  "consume_inputs_on_start": true,
+  "inputs": [
+    { "item": "echomultiblockcore:power_bus", "count": 1, "label": "Power Bus" },
+    { "item": "echomultiblockcore:reinforced_frame", "count": 1, "label": "Reinforced Frame" }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:machine_casing", "count": 1, "label": "Machine Casing" }
+  ]
+}

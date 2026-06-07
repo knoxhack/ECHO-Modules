@@ -1,0 +1,2898 @@
+{
+  "mod": "ECHO: Industrial Nexus",
+  "modid": "echoindustrialnexus",
+  "texture_sheet_format": {
+    "resolution": "2048x1024",
+    "grid": "8x4",
+    "cell_size": 256
+  },
+  "items": [
+    {
+      "item_id": "echoindustrialnexus:nano_carbon_alloy_ingot",
+      "display_name": "Nano Carbon Alloy Ingot",
+      "rarity": "common",
+      "lore": "Nano Carbon Alloy Ingot belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with nano carbon alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "nano_carbon_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Nano Carbon Alloy Ingot, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #66e8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "nano_carbon_alloy_ingot"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:nano_carbon_alloy_plate",
+      "display_name": "Nano Carbon Alloy Plate",
+      "rarity": "common",
+      "lore": "Nano Carbon Alloy Plate belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with nano carbon alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "nano_carbon_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Nano Carbon Alloy Plate, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #66e8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "nano_carbon_alloy_plate"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:nano_carbon_weave",
+      "display_name": "Nano Carbon Weave",
+      "rarity": "common",
+      "lore": "Nano Carbon Weave belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with nano carbon alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "nano_carbon_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Nano Carbon Weave, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #66e8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "nano_carbon_weave"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_steel_ingot",
+      "display_name": "Reactor Steel Ingot",
+      "rarity": "common",
+      "lore": "Reactor Steel Ingot belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Steel Ingot, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "reactor_steel_ingot"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_steel_plate",
+      "display_name": "Reactor Steel Plate",
+      "rarity": "common",
+      "lore": "Reactor Steel Plate belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Steel Plate, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "reactor_steel_plate"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_steel_frame",
+      "display_name": "Reactor Steel Frame",
+      "rarity": "common",
+      "lore": "Reactor Steel Frame belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Steel Frame, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "reactor_steel_frame"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ionized_titanium_ingot",
+      "display_name": "Ionized Titanium Ingot",
+      "rarity": "common",
+      "lore": "Ionized Titanium Ingot belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Ionized Titanium Ingot, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "ionized_titanium_ingot"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ionized_titanium_plate",
+      "display_name": "Ionized Titanium Plate",
+      "rarity": "common",
+      "lore": "Ionized Titanium Plate belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Ionized Titanium Plate, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "ionized_titanium_plate"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 0,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:plasma_infused_alloy_ingot",
+      "display_name": "Plasma Infused Alloy Ingot",
+      "rarity": "common",
+      "lore": "Plasma Infused Alloy Ingot belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with plasma infused alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "plasma_infused_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Plasma Infused Alloy Ingot, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ff983d emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "plasma_infused_alloy_ingot"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:plasma_infused_alloy_plate",
+      "display_name": "Plasma Infused Alloy Plate",
+      "rarity": "common",
+      "lore": "Plasma Infused Alloy Plate belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with plasma infused alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "plasma_infused_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Plasma Infused Alloy Plate, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ff983d emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "plasma_infused_alloy_plate"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:flux_conductor_wire",
+      "display_name": "Flux Conductor Wire",
+      "rarity": "common",
+      "lore": "Flux Conductor Wire belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Flux Conductor Wire, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "flux_conductor_wire"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:flux_conductor_mesh",
+      "display_name": "Flux Conductor Mesh",
+      "rarity": "common",
+      "lore": "Flux Conductor Mesh belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Flux Conductor Mesh, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "flux_conductor_mesh"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:luminous_polymer_sheet",
+      "display_name": "Luminous Polymer Sheet",
+      "rarity": "common",
+      "lore": "Luminous Polymer Sheet belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with luminous polymer, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "luminous_polymer",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Luminous Polymer Sheet, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ffffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "luminous_polymer_sheet"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:luminous_polymer_lens",
+      "display_name": "Luminous Polymer Lens",
+      "rarity": "common",
+      "lore": "Luminous Polymer Lens belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with luminous polymer, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "luminous_polymer",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Luminous Polymer Lens, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ffffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "luminous_polymer_lens"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:synthetic_crystal_shard",
+      "display_name": "Synthetic Crystal Shard",
+      "rarity": "uncommon",
+      "lore": "Synthetic Crystal Shard belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with synthetic crystal, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "synthetic_crystal",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Synthetic Crystal Shard, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #9fffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "synthetic_crystal_shard"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:synthetic_crystal_core",
+      "display_name": "Synthetic Crystal Core",
+      "rarity": "uncommon",
+      "lore": "Synthetic Crystal Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with synthetic crystal, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "synthetic_crystal",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Synthetic Crystal Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #9fffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "synthetic_crystal_core"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 1,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dimensional_glass_shard",
+      "display_name": "Dimensional Glass Shard",
+      "rarity": "rare",
+      "lore": "Dimensional Glass Shard belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dimensional Glass Shard, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "dimensional_glass_shard"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dimensional_glass_panel",
+      "display_name": "Dimensional Glass Panel",
+      "rarity": "rare",
+      "lore": "Dimensional Glass Panel belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dimensional Glass Panel, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "dimensional_glass_panel"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_circuitry_wafer",
+      "display_name": "Quantum Circuitry Wafer",
+      "rarity": "rare",
+      "lore": "Quantum Circuitry Wafer belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Circuitry Wafer, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "quantum_circuitry_wafer"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "quantum_materials",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_circuitry_board",
+      "display_name": "Quantum Circuitry Board",
+      "rarity": "rare",
+      "lore": "Quantum Circuitry Board belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Circuitry Board, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "quantum_circuitry_board"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "quantum_materials",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ai_neural_substrate",
+      "display_name": "AI Neural Substrate",
+      "rarity": "rare",
+      "lore": "AI Neural Substrate belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated AI Neural Substrate, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "ai_neural_substrate"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:neural_memory_lattice",
+      "display_name": "Neural Memory Lattice",
+      "rarity": "rare",
+      "lore": "Neural Memory Lattice belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Neural Memory Lattice, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "neural_memory_lattice"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:cyan_photon_emitter",
+      "display_name": "Cyan Photon Emitter",
+      "rarity": "uncommon",
+      "lore": "Cyan Photon Emitter belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Cyan Photon Emitter, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "cyan_photon_emitter"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:electric_blue_resonator",
+      "display_name": "Electric Blue Resonator",
+      "rarity": "uncommon",
+      "lore": "Electric Blue Resonator belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Electric Blue Resonator, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "electric_blue_resonator"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 2,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:white_light_matrix",
+      "display_name": "White Light Matrix",
+      "rarity": "uncommon",
+      "lore": "White Light Matrix belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated White Light Matrix, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "white_light_matrix"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:orange_warning_diode",
+      "display_name": "Orange Warning Diode",
+      "rarity": "uncommon",
+      "lore": "Orange Warning Diode belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Orange Warning Diode, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "orange_warning_diode"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:purple_dimensional_resonator",
+      "display_name": "Purple Dimensional Resonator",
+      "rarity": "rare",
+      "lore": "Purple Dimensional Resonator belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Purple Dimensional Resonator, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "purple_dimensional_resonator"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:green_reactor_isotope",
+      "display_name": "Green Reactor Isotope",
+      "rarity": "uncommon",
+      "lore": "Green Reactor Isotope belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Green Reactor Isotope, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "green_reactor_isotope"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:polished_steel_microgear",
+      "display_name": "Polished Steel Microgear",
+      "rarity": "common",
+      "lore": "Polished Steel Microgear belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Polished Steel Microgear, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "polished_steel_microgear"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:graphite_machine_pin",
+      "display_name": "Graphite Machine Pin",
+      "rarity": "common",
+      "lore": "Graphite Machine Pin belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Graphite Machine Pin, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "graphite_machine_pin"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:carbon_sealed_bearing",
+      "display_name": "Carbon Sealed Bearing",
+      "rarity": "common",
+      "lore": "Carbon Sealed Bearing belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Carbon Sealed Bearing, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "carbon_sealed_bearing"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:modular_panel_fastener",
+      "display_name": "Modular Panel Fastener",
+      "rarity": "common",
+      "lore": "Modular Panel Fastener belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "low",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Baseline material for early Industrial Nexus component chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Modular Panel Fastener, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "scrap recovery",
+        "refined plates",
+        "modular_panel_fastener"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "materials_core_tech",
+      "sheet_cell": {
+        "row": 3,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:micro_flux_cell",
+      "display_name": "Micro Flux Cell",
+      "rarity": "uncommon",
+      "lore": "Micro Flux Cell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Micro Flux Cell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "micro_flux_cell"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:standard_flux_cell",
+      "display_name": "Standard Flux Cell",
+      "rarity": "uncommon",
+      "lore": "Standard Flux Cell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Standard Flux Cell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "standard_flux_cell"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dense_flux_cell",
+      "display_name": "Dense Flux Cell",
+      "rarity": "uncommon",
+      "lore": "Dense Flux Cell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Dense Flux Cell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "dense_flux_cell"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_power_cell",
+      "display_name": "Reactor Power Cell",
+      "rarity": "rare",
+      "lore": "Reactor Power Cell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Power Cell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "reactor_power_cell"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_power_cell",
+      "display_name": "Quantum Power Cell",
+      "rarity": "rare",
+      "lore": "Quantum Power Cell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Portable Thermal Flux storage and staged power buffering.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Power Cell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "quantum_power_cell"
+      ],
+      "related_machines": [
+        "flux_capacitor_bank",
+        "stabilized_flux_bank"
+      ],
+      "related_technology_branch": "power_cells",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ai_control_chip",
+      "display_name": "AI Control Chip",
+      "rarity": "uncommon",
+      "lore": "AI Control Chip belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated AI Control Chip, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "ai_control_chip"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:neural_logic_core",
+      "display_name": "Neural Logic Core",
+      "rarity": "uncommon",
+      "lore": "Neural Logic Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Neural Logic Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "neural_logic_core"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:autonomous_pathing_module",
+      "display_name": "Autonomous Pathing Module",
+      "rarity": "uncommon",
+      "lore": "Autonomous Pathing Module belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Autonomous Pathing Module, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "autonomous_pathing_module"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 0,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:machine_vision_array",
+      "display_name": "Machine Vision Array",
+      "rarity": "uncommon",
+      "lore": "Machine Vision Array belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Machine Vision Array, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "machine_vision_array"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:holographic_projector_chip",
+      "display_name": "Holographic Projector Chip",
+      "rarity": "uncommon",
+      "lore": "Holographic Projector Chip belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Holographic Projector Chip, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "holographic_projector_chip"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:industrial_sensor_cluster",
+      "display_name": "Industrial Sensor Cluster",
+      "rarity": "uncommon",
+      "lore": "Industrial Sensor Cluster belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Industrial Sensor Cluster, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "industrial_sensor_cluster"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:cybernetic_servo_bundle",
+      "display_name": "Cybernetic Servo Bundle",
+      "rarity": "uncommon",
+      "lore": "Cybernetic Servo Bundle belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Cybernetic Servo Bundle, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "cybernetic_servo_bundle"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "cybernetic_systems",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:precision_robotic_hand",
+      "display_name": "Precision Robotic Hand",
+      "rarity": "uncommon",
+      "lore": "Precision Robotic Hand belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Precision Robotic Hand, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "precision_robotic_hand"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "cybernetic_systems",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:drone_rotor_core",
+      "display_name": "Drone Rotor Core",
+      "rarity": "uncommon",
+      "lore": "Drone Rotor Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Forms drone chassis, sensing, and logistics automation subassemblies.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Drone Rotor Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "drone_rotor_core"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "drone_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:drone_optic_eye",
+      "display_name": "Drone Optic Eye",
+      "rarity": "uncommon",
+      "lore": "Drone Optic Eye belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Forms drone chassis, sensing, and logistics automation subassemblies.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Drone Optic Eye, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "drone_optic_eye"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "drone_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:maintenance_drone_shell",
+      "display_name": "Maintenance Drone Shell",
+      "rarity": "uncommon",
+      "lore": "Maintenance Drone Shell belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Forms drone chassis, sensing, and logistics automation subassemblies.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Maintenance Drone Shell, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "maintenance_drone_shell"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "drone_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 1,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:assembly_drone_core",
+      "display_name": "Assembly Drone Core",
+      "rarity": "uncommon",
+      "lore": "Assembly Drone Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Forms drone chassis, sensing, and logistics automation subassemblies.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Assembly Drone Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "assembly_drone_core"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "drone_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:logistics_drone_core",
+      "display_name": "Logistics Drone Core",
+      "rarity": "uncommon",
+      "lore": "Logistics Drone Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Forms drone chassis, sensing, and logistics automation subassemblies.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Logistics Drone Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "logistics_drone_core"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "drone_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:automation_bus_module",
+      "display_name": "Automation Bus Module",
+      "rarity": "uncommon",
+      "lore": "Automation Bus Module belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Automation Bus Module, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "automation_bus_module"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:input_filter_module",
+      "display_name": "Input Filter Module",
+      "rarity": "uncommon",
+      "lore": "Input Filter Module belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with luminous polymer, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "luminous_polymer",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Input Filter Module, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ffffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "input_filter_module"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:output_sorter_module",
+      "display_name": "Output Sorter Module",
+      "rarity": "uncommon",
+      "lore": "Output Sorter Module belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Output Sorter Module, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "output_sorter_module"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:overclock_heat_spreader",
+      "display_name": "Overclock Heat Spreader",
+      "rarity": "uncommon",
+      "lore": "Overclock Heat Spreader belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Overclock Heat Spreader, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "overclock_heat_spreader"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:coolant_distribution_manifold",
+      "display_name": "Coolant Distribution Manifold",
+      "rarity": "uncommon",
+      "lore": "Coolant Distribution Manifold belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Coolant Distribution Manifold, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "coolant_distribution_manifold"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:shielded_data_cable",
+      "display_name": "Shielded Data Cable",
+      "rarity": "uncommon",
+      "lore": "Shielded Data Cable belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Shielded Data Cable, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "shielded_data_cable"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 2,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:encrypted_control_bus",
+      "display_name": "Encrypted Control Bus",
+      "rarity": "uncommon",
+      "lore": "Encrypted Control Bus belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Encrypted Control Bus, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "encrypted_control_bus"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:modular_storage_core",
+      "display_name": "Modular Storage Core",
+      "rarity": "uncommon",
+      "lore": "Modular Storage Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Unlocks compact storage, recipe indexing, and high-density item handling.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Modular Storage Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "modular_storage_core"
+      ],
+      "related_machines": [
+        "recipe_matrix_core",
+        "factory_controller"
+      ],
+      "related_technology_branch": "storage_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dimensional_storage_lattice",
+      "display_name": "Dimensional Storage Lattice",
+      "rarity": "rare",
+      "lore": "Dimensional Storage Lattice belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dimensional Storage Lattice, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "dimensional_storage_lattice"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:item_compression_matrix",
+      "display_name": "Item Compression Matrix",
+      "rarity": "uncommon",
+      "lore": "Item Compression Matrix belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Unlocks compact storage, recipe indexing, and high-density item handling.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Item Compression Matrix, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "item_compression_matrix"
+      ],
+      "related_machines": [
+        "recipe_matrix_core",
+        "factory_controller"
+      ],
+      "related_technology_branch": "storage_technology",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:fluid_regulation_core",
+      "display_name": "Fluid Regulation Core",
+      "rarity": "uncommon",
+      "lore": "Fluid Regulation Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Fluid Regulation Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "fluid_regulation_core"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_safety_interlock",
+      "display_name": "Reactor Safety Interlock",
+      "rarity": "rare",
+      "lore": "Reactor Safety Interlock belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Safety Interlock, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "reactor_safety_interlock"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:radiation_control_matrix",
+      "display_name": "Radiation Control Matrix",
+      "rarity": "rare",
+      "lore": "Radiation Control Matrix belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Radiation Control Matrix, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "radiation_control_matrix"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:factory_sync_transponder",
+      "display_name": "Factory Sync Transponder",
+      "rarity": "uncommon",
+      "lore": "Factory Sync Transponder belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "mid",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Factory Sync Transponder, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "reinforced machinery",
+        "precision circuits",
+        "factory_sync_transponder"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "systems_automation",
+      "sheet_cell": {
+        "row": 3,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:nano_fabricator_tool",
+      "display_name": "Nano Fabricator Tool",
+      "rarity": "rare",
+      "lore": "Nano Fabricator Tool belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Builds advanced handheld maintenance, fabrication, and diagnostic tools.",
+      "visual_description": "Readable HD Minecraft item silhouette with nano carbon alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "nano_carbon_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Nano Fabricator Tool, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #66e8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "nano_fabricator_tool"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "factory_controller"
+      ],
+      "related_technology_branch": "advanced_tools",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ion_torch",
+      "display_name": "Ion Torch",
+      "rarity": "rare",
+      "lore": "Ion Torch belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Builds advanced handheld maintenance, fabrication, and diagnostic tools.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Ion Torch, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "ion_torch"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "factory_controller"
+      ],
+      "related_technology_branch": "advanced_tools",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_multitool",
+      "display_name": "Quantum Multitool",
+      "rarity": "rare",
+      "lore": "Quantum Multitool belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Builds advanced handheld maintenance, fabrication, and diagnostic tools.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Multitool, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "quantum_multitool"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "factory_controller"
+      ],
+      "related_technology_branch": "advanced_tools",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:holographic_schematic_tablet",
+      "display_name": "Holographic Schematic Tablet",
+      "rarity": "rare",
+      "lore": "Holographic Schematic Tablet belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Builds advanced handheld maintenance, fabrication, and diagnostic tools.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Holographic Schematic Tablet, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "holographic_schematic_tablet"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "factory_controller"
+      ],
+      "related_technology_branch": "advanced_tools",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:cybernetic_interface_spine",
+      "display_name": "Cybernetic Interface Spine",
+      "rarity": "rare",
+      "lore": "Cybernetic Interface Spine belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Cybernetic Interface Spine, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "cybernetic_interface_spine"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "cybernetic_systems",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:neural_calibration_harness",
+      "display_name": "Neural Calibration Harness",
+      "rarity": "rare",
+      "lore": "Neural Calibration Harness belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Neural Calibration Harness, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "neural_calibration_harness"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_gauntlet_core",
+      "display_name": "Reactor Gauntlet Core",
+      "rarity": "rare",
+      "lore": "Reactor Gauntlet Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor Gauntlet Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "reactor_gauntlet_core"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:plasma_cutter_blade",
+      "display_name": "Plasma Cutter Blade",
+      "rarity": "rare",
+      "lore": "Plasma Cutter Blade belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with plasma infused alloy, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "plasma_infused_alloy",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Plasma Cutter Blade, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ff983d emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "plasma_cutter_blade"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 0,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:flux_rifle_receiver",
+      "display_name": "Flux Rifle Receiver",
+      "rarity": "rare",
+      "lore": "Flux Rifle Receiver belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Feeds late industrial armory assemblies without adding direct weapon behavior yet.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Flux Rifle Receiver, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "flux_rifle_receiver"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "modular_weapons",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:modular_weapon_chassis",
+      "display_name": "Modular Weapon Chassis",
+      "rarity": "rare",
+      "lore": "Modular Weapon Chassis belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Feeds late industrial armory assemblies without adding direct weapon behavior yet.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Modular Weapon Chassis, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "modular_weapon_chassis"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "modular_weapons",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ionized_titanium_barrel",
+      "display_name": "Ionized Titanium Barrel",
+      "rarity": "rare",
+      "lore": "Ionized Titanium Barrel belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Feeds late industrial armory assemblies without adding direct weapon behavior yet.",
+      "visual_description": "Readable HD Minecraft item silhouette with ionized titanium, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ionized_titanium",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Ionized Titanium Barrel, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #69a8ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "ionized_titanium_barrel"
+      ],
+      "related_machines": [
+        "industrial_assembly_line",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "modular_weapons",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_focus_lens",
+      "display_name": "Quantum Focus Lens",
+      "rarity": "rare",
+      "lore": "Quantum Focus Lens belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Focus Lens, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "quantum_focus_lens"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "quantum_materials",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ai_targeting_processor",
+      "display_name": "AI Targeting Processor",
+      "rarity": "rare",
+      "lore": "AI Targeting Processor belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated AI Targeting Processor, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "ai_targeting_processor"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dimensional_anchor",
+      "display_name": "Dimensional Anchor",
+      "rarity": "rare",
+      "lore": "Dimensional Anchor belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dimensional Anchor, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "dimensional_anchor"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:phase_stabilizer",
+      "display_name": "Phase Stabilizer",
+      "rarity": "rare",
+      "lore": "Phase Stabilizer belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Phase Stabilizer, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "phase_stabilizer"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:rift_containment_orb",
+      "display_name": "Rift Containment Orb",
+      "rarity": "rare",
+      "lore": "Rift Containment Orb belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Rift Containment Orb, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "rift_containment_orb"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 1,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reality_alignment_core",
+      "display_name": "Reality Alignment Core",
+      "rarity": "epic",
+      "lore": "Reality Alignment Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Reality Alignment Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "reality_alignment_core"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:synthetic_ecology_seed",
+      "display_name": "Synthetic Ecology Seed",
+      "rarity": "rare",
+      "lore": "Synthetic Ecology Seed belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Synthetic Ecology Seed, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "synthetic_ecology_seed"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:bio_synthetic_filter",
+      "display_name": "Bio Synthetic Filter",
+      "rarity": "rare",
+      "lore": "Bio Synthetic Filter belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Upgrades factories, ducts, and controller logic with more precise automation behavior.",
+      "visual_description": "Readable HD Minecraft item silhouette with luminous polymer, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "luminous_polymer",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Bio Synthetic Filter, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ffffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "bio_synthetic_filter"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "industrial_assembly_line"
+      ],
+      "related_technology_branch": "automation_modules",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:cleanroom_growth_capsule",
+      "display_name": "Cleanroom Growth Capsule",
+      "rarity": "rare",
+      "lore": "Cleanroom Growth Capsule belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "high",
+      "energy_role": "Passive conductivity and signal conditioning for modular machines.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Cleanroom Growth Capsule, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "stabilized alloy",
+        "AI/reactor calibration",
+        "cleanroom_growth_capsule"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:ancient_factory_key",
+      "display_name": "Ancient Factory Key",
+      "rarity": "epic",
+      "lore": "Ancient Factory Key belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Exotic energy mediation for reality-scale Industrial Nexus systems.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Ancient Factory Key, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "ancient_factory_key"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:megafactory_access_cipher",
+      "display_name": "Megafactory Access Cipher",
+      "rarity": "epic",
+      "lore": "Megafactory Access Cipher belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Exotic energy mediation for reality-scale Industrial Nexus systems.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Megafactory Access Cipher, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "megafactory_access_cipher"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:reactor_ai_blackbox",
+      "display_name": "Reactor AI Blackbox",
+      "rarity": "epic",
+      "lore": "Reactor AI Blackbox belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Reactor AI Blackbox, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "reactor_ai_blackbox"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dormant_overseer_core",
+      "display_name": "Dormant Overseer Core",
+      "rarity": "epic",
+      "lore": "Dormant Overseer Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Low-latency control substrate for autonomous factory decisions.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with ai neural substrate, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "ai_neural_substrate",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dormant Overseer Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #53ffd0 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "dormant_overseer_core"
+      ],
+      "related_machines": [
+        "component_assembler",
+        "circuit_fabricator",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "ai_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 2,
+        "column": 7
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:precursor_alignment_core",
+      "display_name": "Precursor Alignment Core",
+      "rarity": "epic",
+      "lore": "Precursor Alignment Core belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Precursor Alignment Core, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "precursor_alignment_core"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 0
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:quantum_archive_drive",
+      "display_name": "Quantum Archive Drive",
+      "rarity": "epic",
+      "lore": "Quantum Archive Drive belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Exotic energy mediation for reality-scale Industrial Nexus systems.",
+      "crafting_purpose": "Unlocks compact storage, recipe indexing, and high-density item handling.",
+      "visual_description": "Readable HD Minecraft item silhouette with quantum circuitry, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "quantum_circuitry",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Quantum Archive Drive, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #7a9cff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "quantum_archive_drive"
+      ],
+      "related_machines": [
+        "recipe_matrix_core",
+        "factory_controller",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "storage_technology",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 1
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:nullspace_storage_key",
+      "display_name": "Nullspace Storage Key",
+      "rarity": "epic",
+      "lore": "Nullspace Storage Key belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Nullspace Storage Key, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "nullspace_storage_key"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 2
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:luminous_control_key",
+      "display_name": "Luminous Control Key",
+      "rarity": "epic",
+      "lore": "Luminous Control Key belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Exotic energy mediation for reality-scale Industrial Nexus systems.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with luminous polymer, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "luminous_polymer",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Luminous Control Key, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #ffffff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "luminous_control_key"
+      ],
+      "related_machines": [
+        "alloy_kiln",
+        "component_assembler",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "advanced_industrial_components",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 3
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:plasma_reactor_crown",
+      "display_name": "Plasma Reactor Crown",
+      "rarity": "epic",
+      "lore": "Plasma Reactor Crown belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Reactor heat control, radiation isolation, and high-density flux conversion.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with reactor steel, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "reactor_steel",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Plasma Reactor Crown, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #8af6b6 emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "plasma_reactor_crown"
+      ],
+      "related_machines": [
+        "reactor_heat_exchanger",
+        "nexus_furnace_array",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "reactor_cores",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:nexus_industrial_conduit",
+      "display_name": "Nexus Industrial Conduit",
+      "rarity": "epic",
+      "lore": "Nexus Industrial Conduit belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Nexus Industrial Conduit, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "nexus_industrial_conduit"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 5
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:dimensional_research_artifact",
+      "display_name": "Dimensional Research Artifact",
+      "rarity": "epic",
+      "lore": "Dimensional Research Artifact belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with dimensional glass, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "dimensional_glass",
+        "flux_conductor"
+      ],
+      "texture_prompt": "Isolated Dimensional Research Artifact, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #b66dff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "dimensional_research_artifact"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 6
+      }
+    },
+    {
+      "item_id": "echoindustrialnexus:industrial_nexus_heart",
+      "display_name": "Industrial Nexus Heart",
+      "rarity": "epic",
+      "lore": "Industrial Nexus Heart belongs to the active Industrial Nexus stack: clean future hardware built on old megafactory bones.",
+      "progression_tier": "endgame",
+      "energy_role": "Phase stabilization for dimensional machinery and Nexus-safe routing.",
+      "crafting_purpose": "Intermediate component for high-tier Industrial Nexus machine chains.",
+      "visual_description": "Readable HD Minecraft item silhouette with flux conductor, crisp panels, controlled glow accents, and minimal wear.",
+      "material_composition": [
+        "flux_conductor",
+        "luminous_polymer"
+      ],
+      "texture_prompt": "Isolated Industrial Nexus Heart, futuristic Minecraft item icon, transparent background, centered, dark graphite/silver body, #52e6ff emissive accents, clean sci-fi industrial surfaces, no text.",
+      "upgrade_path": [
+        "hybrid thermal core",
+        "recipe matrix shard",
+        "industrial_nexus_heart"
+      ],
+      "related_machines": [
+        "nexus_thermal_injector",
+        "reality_furnace"
+      ],
+      "related_technology_branch": "dimensional_artifacts",
+      "texture_sheet": "advanced_endgame",
+      "sheet_cell": {
+        "row": 3,
+        "column": 7
+      }
+    }
+  ]
+}

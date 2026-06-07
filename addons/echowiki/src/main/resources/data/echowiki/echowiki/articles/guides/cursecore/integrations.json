@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/cursecore/integrations",
+  "title": "CurseCore Field: Integrations",
+  "category": "Guide Books",
+  "summary": "Connect CurseCore to RitualCore, Arcane Index, Grimoire, Lens, RelicTech, SpellCore, and missions.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "RitualCore cleanses minor curses, Arcane Index explains records, Grimoire warns about consequences, Lens scans live state, and MissionCore tracks gains and cleanses.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Use diagnostics before rituals, Index before risky items, Grimoire before forbidden choices, and RelicTech warnings when corruption flags appear.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "If a bridge is absent, keep curse state server-side and visible through the simplest diagnostic path available.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "relatedArticles": [
+    "echowiki:guides/cursecore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1305
+}

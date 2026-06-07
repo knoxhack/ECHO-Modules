@@ -1,0 +1,66 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:circuit_board", "weight": 18 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:energy_cell", "weight": 16 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:crystal_dust", "weight": 14 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:scrap_circuit", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_basic", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:emergency_ration", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 5 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:portable_signal_scanner", "weight": 10 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "Storm Shelter Blueprint",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_energy", "weight": 12 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_machines", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment", "weight": 10 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.20
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 18, "functions": [{ "function": "minecraft:set_count", "count": { "min": 3, "max": 6 }}] },
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] },
+        { "type": "minecraft:item", "name": "minecraft:gold_ingot", "weight": 8, "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 2 }}] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+button:focus,
+list-row:focus,
+nav-item:focus,
+select:focus,
+search-box:focus,
+input:focus,
+toggle:focus,
+checkbox:focus {
+  border-color: theme(accent);
+}
+
+button:hover,
+list-row:hover,
+nav-item:hover,
+command-card:hover {
+  border-color: theme(accentMuted);
+}
+
+list-row:selected,
+nav-item:selected {
+  background: theme(cardSelected);
+  border-color: theme(accent);
+}
+
+button:disabled,
+select:disabled,
+input:disabled {
+  background: theme(disabled);
+  border-color: theme(disabled);
+  color: theme(textMuted);
+}

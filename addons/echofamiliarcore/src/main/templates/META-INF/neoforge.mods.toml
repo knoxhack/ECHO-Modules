@@ -1,0 +1,77 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Familiar scaffold for ECHO: Arcana Division."
+description='''
+ECHO: FamiliarCore defines the Arcana Division familiar, bond, command,
+upgrade, spirit drone, and cursed companion scaffold. Playable familiar
+entities, commands, screens, and bond persistence are future work.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon registry and module catalog contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoarcanacore"
+type="required"
+reason="Provides Familiar provider contracts for Arcana Division."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoritualcore"
+type="optional"
+reason="Future familiar binding and ascension will use RitualCore rituals."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echospellcore"
+type="optional"
+reason="Future familiar-assisted casting will add SpellCore modifiers and assists."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocursecore"
+type="optional"
+reason="Future cursed familiars will mirror CurseCore contamination and contracts."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorelictech"
+type="optional"
+reason="Future soul and relic devices will support familiar revival and upgrades."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

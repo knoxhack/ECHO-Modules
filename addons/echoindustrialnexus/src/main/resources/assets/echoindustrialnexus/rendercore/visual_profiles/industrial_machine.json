@@ -1,0 +1,252 @@
+{
+  "schema_version": 12,
+  "base_texture": "echoindustrialnexus:textures/block/machine_casing.png",
+  "animation_profile": "echoindustrialnexus:industrial_machine",
+  "particle_profile": "echoindustrialnexus:industrial_machine",
+  "default_state": "IDLE",
+  "transition_seconds": 0.2,
+  "materials": {
+    "cyan_emissive": {
+      "color": "#FF66E8FF",
+      "alpha": 0.9,
+      "emissive": true,
+      "blend_mode": "additive",
+      "effect": {
+        "preset": "neon",
+        "glow_intensity": 1.1,
+        "bloom_intensity": 0.45,
+        "advanced_enabled": true,
+        "bloom_mask_mode": "emissive",
+        "bloom_channel": "industrial_machine",
+        "target_scope": "block"
+      }
+    },
+    "warning_emissive": {
+      "color": "#FFFF7A28",
+      "alpha": 0.85,
+      "emissive": true,
+      "blend_mode": "additive",
+      "effect": {
+        "preset": "energy_field",
+        "glow_intensity": 1,
+        "pulse_speed": 1.4,
+        "bloom_intensity": 0.35,
+        "target_scope": "block"
+      }
+    },
+    "corrupt_emissive": {
+      "color": "#FFB64DFF",
+      "alpha": 0.9,
+      "emissive": true,
+      "blend_mode": "additive",
+      "effect": {
+        "preset": "hologram",
+        "glow_intensity": 1.2,
+        "flicker_intensity": 0.18,
+        "scanline_strength": 0.2,
+        "target_scope": "block"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "online_flux_glow",
+      "kind": "glow",
+      "texture": "echoindustrialnexus:textures/block/factory_light.png",
+      "material": "cyan_emissive",
+      "states": [
+        "ONLINE",
+        "ACTIVE",
+        "WORKING",
+        "CHARGING",
+        "COMPLETE"
+      ],
+      "parts": [
+        "core",
+        "screen",
+        "output_face",
+        "active_core"
+      ]
+    },
+    {
+      "id": "thermal_warning",
+      "kind": "overlay",
+      "texture": "echoindustrialnexus:textures/block/emergency_light.png",
+      "material": "warning_emissive",
+      "states": [
+        "OVERHEATED",
+        "FAILED"
+      ],
+      "parts": [
+        "vent_left",
+        "vent_right",
+        "exhaust_top"
+      ]
+    },
+    {
+      "id": "nexus_corruption",
+      "kind": "overlay",
+      "texture": "echoindustrialnexus:textures/block/nexus_thermal_injector.png",
+      "material": "corrupt_emissive",
+      "states": [
+        "CORRUPTED"
+      ],
+      "parts": [
+        "core",
+        "screen",
+        "vent_left",
+        "vent_right"
+      ]
+    }
+  ],
+  "state_animations": {
+    "ONLINE": "machine_idle",
+    "ACTIVE": "machine_active",
+    "WORKING": "machine_active",
+    "CHARGING": "machine_charge",
+    "OVERHEATED": "thermal_warning",
+    "FAILED": "thermal_warning",
+    "CORRUPTED": "corrupt_flicker"
+  },
+  "anchors": {
+    "core": {
+      "offset": [
+        0,
+        0.62,
+        0
+      ]
+    },
+    "screen": {
+      "offset": [
+        0,
+        0.72,
+        -0.53
+      ]
+    },
+    "vent_left": {
+      "offset": [
+        -0.42,
+        0.42,
+        0
+      ]
+    },
+    "vent_right": {
+      "offset": [
+        0.42,
+        0.42,
+        0
+      ]
+    },
+    "exhaust_top": {
+      "offset": [
+        0,
+        1.05,
+        0
+      ]
+    },
+    "output_face": {
+      "offset": [
+        0,
+        0.45,
+        0.56
+      ]
+    }
+  },
+  "block_parts": {
+    "core": {
+      "directions": [
+        "north",
+        "south",
+        "east",
+        "west",
+        "up"
+      ],
+      "ambient_occlusion": true
+    },
+    "active_core": {
+      "directions": [
+        "north",
+        "south",
+        "east",
+        "west",
+        "up"
+      ],
+      "ambient_occlusion": true,
+      "block_state": {
+        "active": "true"
+      }
+    },
+    "screen": {
+      "directions": [
+        "north"
+      ],
+      "ambient_occlusion": true
+    },
+    "vent_left": {
+      "directions": [
+        "west"
+      ],
+      "ambient_occlusion": true
+    },
+    "vent_right": {
+      "directions": [
+        "east"
+      ],
+      "ambient_occlusion": true
+    },
+    "vents": {
+      "directions": [
+        "east",
+        "west"
+      ],
+      "ambient_occlusion": true
+    },
+    "exhaust_top": {
+      "directions": [
+        "up"
+      ]
+    },
+    "output_face": {
+      "directions": [
+        "south"
+      ],
+      "ambient_occlusion": true
+    }
+  },
+  "surface": {
+    "type": "block_entity",
+    "owner_addon": "echoindustrialnexus",
+    "display_name": "Industrial Machine",
+    "tags": [
+      "block_entity"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": false
+  },
+  "qa": {
+    "required": false,
+    "evidence": [],
+    "reduced_motion": false
+  }
+}

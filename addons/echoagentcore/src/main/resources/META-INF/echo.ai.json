@@ -1,0 +1,63 @@
+{
+  "schema": "echo.ai.v1",
+  "module": "echoagentcore",
+  "summary": "AgentCore owns AI task queues, prompt bundles, next-phase prompts, safe command descriptors, and Codex run report contracts for the ECHO ecosystem.",
+  "owners": [
+    "KnoxHack"
+  ],
+  "importantPackages": [
+    "com.knoxhack.echo.agentcore"
+  ],
+  "mainClasses": [
+    "com.knoxhack.echo.agentcore.EchoAgentCore",
+    "com.knoxhack.echo.agentcore.EchoAiTask",
+    "com.knoxhack.echo.agentcore.EchoAiTaskQueue",
+    "com.knoxhack.echo.agentcore.EchoAiPromptBundle",
+    "com.knoxhack.echo.agentcore.EchoAiNextPhasePrompt"
+  ],
+  "commonTasks": [
+    "Route diagnostics into safe AI tasks.",
+    "Generate prompt bundle contracts for Codex, CyberDex, Command Center, and future Native CLI.",
+    "Describe safe command previews without executing them.",
+    "Parse Codex run reports into deterministic local report data."
+  ],
+  "doNotEdit": [
+    "Do not add command execution, process launching, remote upload, or repair execution behavior to AgentCore contracts."
+  ],
+  "protectedFiles": [
+    "addons/echoagentcore/build.gradle",
+    "addons/echoagentcore/src/main/templates/META-INF/neoforge.mods.toml"
+  ],
+  "safeEditZones": [
+    "addons/echoagentcore/src/main/java/com/knoxhack/echo/agentcore",
+    "addons/echoagentcore/src/main/resources/META-INF",
+    "docs/echo/ai"
+  ],
+  "requiresHumanReview": true,
+  "testCommands": [
+    ".\\gradlew.bat :echoagentcore:compileJava -PechoAddonSet=beta",
+    ".\\gradlew.bat generateEchoAiTasks -PechoPack=ashfall -PechoAddonSet=beta",
+    ".\\gradlew.bat validateEchoReports -PechoAddonSet=beta"
+  ],
+  "buildCommands": [
+    ".\\gradlew.bat build -PechoAddonSet=beta"
+  ],
+  "recommendedAgentLanes": [
+    "architect_agent",
+    "diagnostics_agent",
+    "metadata_agent",
+    "packos_agent",
+    "release_agent"
+  ],
+  "knownScreens": [],
+  "knownRegistries": [],
+  "commonDiagnostics": [
+    "ECHO-FEATURE-MISSING-REQUIRED",
+    "metadata.echo_mod.missing",
+    "metadata.echo_ai.safe_edit_zones_missing"
+  ],
+  "promptHints": [
+    "Treat AgentCore commands as descriptors until a future confirmation-aware executor exists.",
+    "Keep paths repo-relative and support-bundle-safe."
+  ]
+}

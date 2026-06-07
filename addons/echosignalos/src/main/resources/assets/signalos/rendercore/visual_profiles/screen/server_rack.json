@@ -1,0 +1,60 @@
+{
+  "schema_version": 12,
+  "base_texture": "signalos:textures/item/server_rack.png",
+  "default_state": "ACTIVE",
+  "effect": {
+    "preset": "terminal_hud",
+    "glow_intensity": 0.8,
+    "pulse_speed": 0.38,
+    "bloom_tint": "#FF8A7CFF",
+    "target_scope": "profile"
+  },
+  "anchors": {
+    "screen": {
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "surface": {
+    "type": "screen",
+    "owner_addon": "signalos",
+    "display_name": "Screen Server Rack",
+    "tags": [
+      "screen"
+    ],
+    "integration_mode": "optional"
+  },
+  "fallback": {
+    "mode": "stable",
+    "expectation": "stable RenderCore fallback remains readable",
+    "allow_advanced_fx_fallback": true,
+    "allow_missing_assets": false
+  },
+  "budget": {
+    "tier": "normal",
+    "advanced_fx": "auto"
+  },
+  "screen_chrome": {
+    "style": "cyberglass",
+    "label": "SIGNALOS RACK",
+    "backdrop": false,
+    "edge_glow": true,
+    "corner_brackets": true,
+    "accent_rails": true,
+    "scanlines": false,
+    "glass_glints": true,
+    "chromatic_edge": true,
+    "quiet_fallback": true
+  },
+  "qa": {
+    "required": true,
+    "evidence": [
+      "screenshot",
+      "screen_chrome"
+    ],
+    "reduced_motion": false
+  }
+}

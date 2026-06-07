@@ -1,0 +1,102 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:mutagen_vial", "weight": 14 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filtration_membrane", "weight": 18 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_basic", "weight": 20 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:filter_cartridge_advanced", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:rad_away", "weight": 10 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_medical", "weight": 15 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:schematic_fragment_machines", "weight": 10 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.25
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_biome_bosses", "weight": 8 },
+        { "type": "minecraft:item", "name": "echoashfallprotocol:data_log_research_protocol", "weight": 6 }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.30
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:lapis_lazuli", "weight": 20, "functions": [{ "function": "minecraft:set_count", "count": { "min": 3, "max": 6 }}] },
+        { "type": "minecraft:item", "name": "minecraft:redstone", "weight": 12, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 5 }}] },
+        { "type": "minecraft:item", "name": "minecraft:iron_ingot", "weight": 8, "functions": [{ "function": "minecraft:set_count", "count": { "min": 2, "max": 4 }}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:oak_sapling", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:birch_sapling", "weight": 4 },
+        { "type": "minecraft:item", "name": "minecraft:spruce_sapling", "weight": 4 },
+        { "type": "minecraft:empty", "weight": 87 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:random_chance", "chance": 0.22 }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:sugar_cane", "weight": 14 },
+        { "type": "minecraft:item", "name": "minecraft:cactus", "weight": 12 },
+        { "type": "minecraft:item", "name": "minecraft:bamboo", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:cocoa_beans", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:dandelion", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:poppy", "weight": 8 },
+        { "type": "minecraft:item", "name": "minecraft:cornflower", "weight": 6 },
+        { "type": "minecraft:item", "name": "minecraft:blue_orchid", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:pumpkin_seeds", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:melon_seeds", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:brown_mushroom", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:red_mushroom", "weight": 7 },
+        { "type": "minecraft:item", "name": "minecraft:moss_block", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:azalea", "weight": 4 },
+        { "type": "minecraft:item", "name": "minecraft:flowering_azalea", "weight": 3 },
+        { "type": "minecraft:item", "name": "minecraft:honeycomb", "weight": 3 },
+        { "type": "minecraft:item", "name": "minecraft:honey_bottle", "weight": 2 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:random_chance", "chance": 0.35 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<page id="test-guide-article" title="Guide Article Mock" styles="guide_mock">
+  <screen-shell>
+    <header title="GuideCore Article" subtitle="Category lists, article lists, and scrollable body copy"/>
+    <grid class="guide-grid" columns="220px 260px 1fr" gap="16">
+      <panel title="Categories">
+        <list>
+          <list-row selected="true"><text>Getting Started</text></list-row>
+          <list-row><text>Power</text></list-row>
+          <list-row><text>Logistics</text></list-row>
+          <list-row><text>Survival</text></list-row>
+        </list>
+      </panel>
+      <panel title="Articles">
+        <list>
+          <list-row selected="true"><column><title>First Terminal Steps</title><text>Open pages, inspect alerts, and track missions.</text></column></list-row>
+          <list-row><column><title>Reading Index Results</title><text>Understand recipes, uses, sources, and warnings.</text></column></list-row>
+          <list-row><column><title>Troubleshooting Power</title><text>Debug missing inputs and disabled actions.</text></column></list-row>
+        </list>
+      </panel>
+      <scroll class="article-body">
+        <column gap="16">
+          <hero-card>
+            <title>First Terminal Steps</title>
+            <text>ScreenCore guide articles need long-form text, callouts, related links, and accessible spacing without custom coordinate math.</text>
+          </hero-card>
+          <section title="Procedure">
+            <text>Open the terminal, review the left navigation, check the current system status, then choose a mission or index entry. This test intentionally wraps multiple lines so text clipping and scroll behavior are visible.</text>
+          </section>
+          <card class="callout">
+            <title>Troubleshooting</title>
+            <text>If a page has missing data, ScreenCore should display a fallback value and add a diagnostic instead of crashing.</text>
+          </card>
+          <section title="Related Links">
+            <list>
+              <list-row class="related-row"><text>Mission Browser</text><button action="open_page:echoscreencore:test_mission_browser">Open</button></list-row>
+              <list-row class="related-row"><text>Index Recipe</text><button action="open_page:echoscreencore:test_index_recipe">Open</button></list-row>
+            </list>
+          </section>
+        </column>
+      </scroll>
+    </grid>
+  </screen-shell>
+</page>

@@ -1,0 +1,17 @@
+{
+  "emitters": {
+    "status_pixels": {
+      "anchor": "screen",
+      "particle": "minecraft:dust",
+      "rate": 0.045,
+      "burst_count": 1,
+      "velocity": [0.0, 0.01, 0.0],
+      "spread": [0.18, 0.04, 0.02],
+      "options": {
+        "type": "minecraft:dust",
+        "color": [0.4, 0.91, 1.0],
+        "scale": 0.45
+      }
+    }
+  }
+}

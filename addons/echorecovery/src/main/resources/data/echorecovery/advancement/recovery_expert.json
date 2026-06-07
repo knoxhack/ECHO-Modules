@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "id": "echorecovery:recovery_compass"
+    },
+    "title": {
+      "translate": "advancements.echorecovery.recovery_expert.title",
+      "fallback": "Recovery Expert"
+    },
+    "description": {
+      "translate": "advancements.echorecovery.recovery_expert.desc",
+      "fallback": "Recover 10 graves."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "echorecovery:recover_grave",
+  "criteria": {
+    "recover_10": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "echorecovery:grave"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "recover_10"
+    ]
+  ]
+}

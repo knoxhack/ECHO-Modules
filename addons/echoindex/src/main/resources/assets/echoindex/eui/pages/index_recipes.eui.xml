@@ -1,0 +1,48 @@
+<page id="index_recipes" title="ECHO Index Recipes" styles="index_cyberglass,index_components,index_recipes">
+  <component src="echoindex:index_shell">
+    <param name="contentTitle" value="Recipe Browser"/>
+    <param name="inspectorTitle" value="Recipe Detail"/>
+    <slot name="content">
+      <component src="echoindex:index_search_filter_bar">
+        <param name="categorySource" value="index.filters.recipeTypes"/>
+        <param name="categoryValue" value="{index.filters.recipeType}"/>
+        <param name="categoryFilter" value="recipeType"/>
+      </component>
+      <select bind="index.filters.machines" item="machine" value="{index.filters.machine}" on-change="index.filter_changed" action-param-filter="machine" clearable="true" help="Filter recipes by workstation or process provider.">
+        <option value="{machine.id}" label="{machine.label}"/>
+      </select>
+      <list bind="index.recipes.visible" item="recipe" selected="{index.recipe.selected.id}">
+        <component src="echoindex:index_recipe_card" value="{recipe.id}">
+          <param name="id" value="{recipe.id}"/>
+          <param name="icon" value="{recipe.icon}"/>
+          <param name="title" value="{recipe.title}"/>
+          <param name="summary" value="{recipe.inputSummary} &gt; {recipe.outputSummary}"/>
+          <param name="meta" value="{recipe.typeName} / {recipe.machineName}"/>
+        </component>
+        <empty-state title="No recipes found" body="No indexed recipes match these filters. Clear search, choose All Recipe Types, or refresh provider data."/>
+      </list>
+    </slot>
+    <slot name="inspector">
+      <component src="echoindex:index_detail_panel">
+        <param name="title" value="{index.recipe.selected.title|Select a Recipe}"/>
+        <param name="icon" value="{index.recipe.selected.icon|minecraft:crafting_table}"/>
+        <param name="subtitle" value="{index.recipe.selected.typeName|No recipe selected}"/>
+        <param name="meta" value="{index.recipe.selected.id|}"/>
+        <slot name="body">
+          <text class="index-recipe-helper" value="Select a recipe card to inspect its flow, then open detail for a larger ingredient view."/>
+          <component src="echoindex:index_recipe_flow">
+            <slot name="inputs"><repeat source="index.recipe.inputs" item="input"><item-stack item="{input.icon}" count="{input.count}" tooltip="{input.label}"/></repeat></slot>
+            <slot name="outputs"><repeat source="index.recipe.outputs" item="output"><item-stack item="{output.icon}" count="{output.count}" tooltip="{output.label}"/></repeat></slot>
+          </component>
+          <text class="index-recipe-meta-line" value="Machine: {index.recipe.machine.name|Generic Layout}"/>
+          <text class="index-recipe-meta-line" value="Time: {index.recipe.selected.processingTime|0} ticks"/>
+          <row class="index-recipe-actions" gap="8">
+            <button action="index.open_recipe_detail" action-value="{index.recipe.selected.id}" tooltip="Open the full recipe detail page.">Open Detail</button>
+            <button action="index.add_bookmark" action-value="{index.recipe.selected.id}" action-param-kind="recipe" tooltip="Bookmark this recipe for quick access from Favorites.">Bookmark</button>
+            <button action="index.copy_recipe_id" action-value="{index.recipe.selected.id}" variant="ghost" tooltip="Copy the recipe identifier to the clipboard.">Copy ID</button>
+          </row>
+        </slot>
+      </component>
+    </slot>
+  </component>
+</page>

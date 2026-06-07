@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://echo/rendercore/creator_pack.schema.json",
+  "title": "ECHO RenderCore V21 Creator Pack Export",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "generator": { "type": "string" },
+        "namespace": { "type": "string" },
+        "schema_version": { "type": "integer", "const": 21 },
+        "target_schema_version": { "type": "integer", "const": 12 },
+        "profile_count": { "type": "integer", "minimum": 0 },
+        "migration_required_count": { "type": "integer", "minimum": 0 },
+        "screenshot_available_count": { "type": "integer", "minimum": 0 },
+        "cache": { "type": "string" }
+      }
+    },
+    "certification": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "namespace": { "type": "string" },
+        "status": { "type": "string", "enum": ["pass", "warn", "fail"] },
+        "policy": { "type": "string", "enum": ["errors_only"] },
+        "checked_profile_count": { "type": "integer", "minimum": 0 },
+        "passing_profile_count": { "type": "integer", "minimum": 0 },
+        "warning_profile_count": { "type": "integer", "minimum": 0 },
+        "failing_profile_count": { "type": "integer", "minimum": 0 },
+        "validation_warning_count": { "type": "integer", "minimum": 0 },
+        "validation_error_count": { "type": "integer", "minimum": 0 },
+        "performance_warning_count": { "type": "integer", "minimum": 0 },
+        "migration_required_count": { "type": "integer", "minimum": 0 },
+        "missing_dependency_count": { "type": "integer", "minimum": 0 },
+        "malformed_source_count": { "type": "integer", "minimum": 0 },
+        "missing_screenshot_count": { "type": "integer", "minimum": 0 },
+        "artifact_failure_count": { "type": "integer", "minimum": 0 },
+        "issue_summaries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "category": { "type": "string" },
+              "severity": { "type": "string" },
+              "profile": { "type": "string" },
+              "code": { "type": "string" },
+              "path": { "type": "string" },
+              "message": { "type": "string" },
+              "blocking": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "visual_qa": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "advanced_fx_mode": { "type": "string" },
+        "advanced_fx_status": { "type": "string" },
+        "screenshot_evidence_count": { "type": "integer", "minimum": 0 },
+        "tested_fallback_modes": { "type": "array", "items": { "type": "string" } },
+        "tested_addon_namespaces": { "type": "array", "items": { "type": "string" } },
+        "remaining_blockers": { "type": "array", "items": { "type": "string" } },
+        "screen_chrome_surface_count": { "type": "integer", "minimum": 0 },
+        "screen_chrome_evidence_count": { "type": "integer", "minimum": 0 },
+        "screen_chrome_blockers": { "type": "array", "items": { "type": "string" } },
+        "world_surface_evidence_count": { "type": "integer", "minimum": 0 },
+        "world_surface_blockers": { "type": "array", "items": { "type": "string" } },
+        "world_surface_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "addon_id": { "type": "string" },
+              "surface_id": { "type": "string" },
+              "profile_id": { "type": "string" },
+              "surface_type": { "type": "string" },
+              "qa_status": { "type": "string", "enum": ["pending", "pass", "fail"] },
+              "notes": { "type": "string" },
+              "screenshot_path": { "type": "string" }
+            }
+          }
+        },
+        "screen_chrome_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "addon_id": { "type": "string" },
+              "surface_id": { "type": "string" },
+              "display_name": { "type": "string" },
+              "chrome_style": { "type": "string", "enum": ["CYBERGLASS", "TERMINAL", "HOLOGRAM", "NEON", "MINIMAL"] },
+              "label_policy": { "type": "string" },
+              "profile_id": { "type": "string" },
+              "reduced_motion": { "type": "boolean" },
+              "qa_status": { "type": "string", "enum": ["pending", "pass", "fail"] },
+              "notes": { "type": "string" },
+              "screenshot_path": { "type": "string" }
+            }
+          }
+        },
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "label": { "type": "string" },
+              "status_line": { "type": "string" },
+              "mode_line": { "type": "string" },
+              "fallback_reason": { "type": "string" },
+              "unavailable_reason": { "type": "string" },
+              "mask_submissions": { "type": "integer", "minimum": 0 },
+              "skipped_submissions": { "type": "integer", "minimum": 0 },
+              "active_effects": { "type": "integer", "minimum": 0 },
+              "channel_count": { "type": "integer", "minimum": 0 },
+              "downscale": { "type": "integer", "minimum": 0 },
+              "pass_count": { "type": "integer", "minimum": 0 },
+              "bloom_cost": { "type": "integer", "minimum": 0 },
+              "compile_failed": { "type": "boolean" },
+              "screenshot_path": { "type": "string" },
+              "tested_modes": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "profile": { "type": "string" },
+          "title": { "type": "string" },
+          "schema_version": { "type": "integer", "minimum": 1 },
+          "target_schema_version": { "type": "integer", "const": 12 },
+          "migration_required": { "type": "boolean" },
+          "layers": { "type": "integer", "minimum": 0 },
+          "materials": { "type": "integer", "minimum": 0 },
+          "emitters": { "type": "integer", "minimum": 0 },
+          "active_effects": { "type": "integer", "minimum": 0 },
+          "effect_presets": { "type": "array", "items": { "type": "string" } },
+          "validation_warnings": { "type": "integer", "minimum": 0 },
+          "validation_errors": { "type": "integer", "minimum": 0 },
+          "performance_warnings": { "type": "integer", "minimum": 0 },
+          "screenshot": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "available": { "type": "boolean" },
+              "provider": { "type": "string" },
+              "path": { "type": "string" },
+              "skipped_reason": { "type": "string" }
+            }
+          },
+          "artifact": { "type": "string" }
+        }
+      }
+    },
+    "surface_integration": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "world_surface_count": { "type": "integer", "minimum": 0 },
+        "screen_surface_count": { "type": "integer", "minimum": 0 },
+        "particle_only_static_surface_count": { "type": "integer", "minimum": 0 },
+        "converted_block_entity_count": { "type": "integer", "minimum": 0 },
+        "fallback_renderer_count": { "type": "integer", "minimum": 0 },
+        "profile_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "audits": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "migration_reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "profile": { "type": "string" },
+          "source_schema_version": { "type": "integer", "minimum": 0 },
+          "target_schema_version": { "type": "integer", "const": 12 },
+          "migration_required": { "type": "boolean" },
+          "write_safe": { "type": "boolean" },
+          "changes": { "type": "array", "items": { "type": "string" } },
+          "issues": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+          "suggested_path": { "type": "string" },
+          "migrated_profile": { "type": "object", "additionalProperties": true }
+        }
+      }
+    },
+    "addon_integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "namespace": { "type": "string" },
+          "display_name": { "type": "string" },
+          "status": { "type": "string", "enum": ["integrated", "declared_no_visual_surface", "declared", "showcase_pending"] },
+          "surface": { "type": "string" },
+          "showcase_profile": { "type": "string" },
+          "surface_type": { "type": "string" },
+          "fallback_expectation": { "type": "string" },
+          "qa_notes": { "type": "string" },
+          "render_integration": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["rendercore_native", "rendercore_particles_only", "fallback_renderer", "no_visual_surface"]
+              },
+              "converted_entity_count": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "surface_integration": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "world_surface_count": { "type": "integer", "minimum": 0 },
+              "screen_surface_count": { "type": "integer", "minimum": 0 },
+              "particle_only_static_surface_count": { "type": "integer", "minimum": 0 },
+              "converted_block_entity_count": { "type": "integer", "minimum": 0 },
+              "fallback_renderer_count": { "type": "integer", "minimum": 0 },
+              "profile_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

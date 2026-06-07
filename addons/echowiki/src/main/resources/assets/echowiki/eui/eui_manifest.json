@@ -1,0 +1,36 @@
+{
+  "pages": [
+    {"id": "echowiki:wiki_dashboard", "title": "ECHO Survival Codex", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists", "echowiki:wiki_fast"]},
+    {"id": "echowiki:wiki_articles", "title": "Wiki Articles", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists", "echowiki:wiki_fast"]},
+    {"id": "echowiki:wiki_article_detail", "title": "Wiki Article Detail", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_guide_books", "title": "Guide Books", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists", "echowiki:wiki_fast"]},
+    {"id": "echowiki:wiki_guide_book_detail", "title": "Guide Book Detail", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_guide_book_reader", "title": "Guide Book Reader", "styles": ["echowiki:wiki_components", "echowiki:wiki_lists", "echowiki:wiki_fast"]},
+    {"id": "echowiki:wiki_regions", "title": "World Regions", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_hazards", "title": "World Hazards", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_missions", "title": "Mission Reference", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_machines", "title": "Machine Reference", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_factions", "title": "Faction Atlas", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_discoveries", "title": "Discovery Intel", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]},
+    {"id": "echowiki:wiki_settings", "title": "Wiki Debug", "styles": ["echothemecore:cyberglass_kit", "echowiki:wiki_cyberglass", "echowiki:wiki_components", "echowiki:wiki_lists"]}
+  ],
+  "components": [
+    "echowiki:wiki_shell",
+    "echowiki:wiki_search_filter_bar",
+    "echowiki:wiki_article_card",
+    "echowiki:wiki_guide_book_card",
+    "echowiki:wiki_guide_book_shelf_row",
+    "echowiki:wiki_guide_chapter_row",
+    "echowiki:wiki_article_body",
+    "echowiki:wiki_article_block",
+    "echowiki:wiki_related_row",
+    "echowiki:wiki_record_row",
+    "echowiki:wiki_locked_panel"
+  ],
+  "styles": [
+    "echowiki:wiki_cyberglass",
+    "echowiki:wiki_components",
+    "echowiki:wiki_lists",
+    "echowiki:wiki_fast"
+  ]
+}

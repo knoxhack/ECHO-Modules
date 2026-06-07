@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://echo/rendercore/animation_profile.schema.json",
+  "title": "ECHO RenderCore Animation Profile",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "animations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "loop": { "type": "boolean" },
+          "length": { "type": "number", "minimum": 0 },
+          "transition_seconds": { "type": "number", "minimum": 0 },
+          "transitionSeconds": { "type": "number", "minimum": 0 },
+          "blend_mode": { "type": "string" },
+          "blendMode": { "type": "string" },
+          "tracks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "part": { "type": "string" },
+                "channel": { "type": "string" },
+                "from": { "type": "number" },
+                "to": { "type": "number" },
+                "start_time": { "type": "number" },
+                "startTime": { "type": "number" },
+                "end_time": { "type": "number" },
+                "endTime": { "type": "number" },
+                "length": { "type": "number" },
+                "easing": { "type": "string" },
+                "blend_mode": { "type": "string" },
+                "blendMode": { "type": "string" },
+                "keyframes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                      "time": { "type": "number" },
+                      "value": { "type": "number" },
+                      "easing": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

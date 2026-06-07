@@ -1,0 +1,90 @@
+{
+  "id": "echoashfallprotocol:poi_explorer",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_3",
+  "phaseTitle": "SIGNAL CONTACT",
+  "phaseOrder": 3,
+  "order": 10,
+  "title": "Discover 3 POIs",
+  "briefing": "[ECHO-7] The wasteland holds patterns, not secrets. Discover 3 unique Points of Interest so the map can stop guessing.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 4: SIGNAL CONTACT.",
+  "category": "exploration",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:portable_signal_scanner",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:first_perk"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "poi_explorer",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.poi_explorer",
+    "terminal_route_phase": "3",
+    "terminal_route_order": "10",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_3",
+    "routePhaseTitle": "SIGNAL CONTACT",
+    "routeGlobalOrder": "45",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_scanner_faction_ops",
+    "indexEntry": "echoashfallprotocol:scanner_faction_ops",
+    "wikiArticle": "echowiki:guides/ashfall/scanner_faction_ops",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:poi_explorer:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:poi_explorer/poi_explorer",
+      "type": "custom",
+      "label": "Discover 3 POIs",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:portable_signal_scanner",
+      "target": "echoashfallprotocol:poi_explorer",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.poi_explorer"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:poi_explorer/reward_0",
+      "item": "echoashfallprotocol:portable_signal_scanner",
+      "count": 1,
+      "label": "Portable Signal Scanner",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:poi_explorer/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:poi_explorer/reward_1",
+      "item": "echoashfallprotocol:energy_cell",
+      "count": 4,
+      "label": "Energy Cell",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:poi_explorer/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Exploration milestone reached. Your map now shows additional points of interest."
+}

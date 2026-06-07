@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "echoblockworks:block/cable_bundle"
+    },
+    "facing=east": {
+      "model": "echoblockworks:block/cable_bundle",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "echoblockworks:block/cable_bundle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "echoblockworks:block/cable_bundle",
+      "y": 270
+    }
+  }
+}

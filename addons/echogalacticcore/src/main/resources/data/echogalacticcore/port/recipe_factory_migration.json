@@ -1,0 +1,28 @@
+{
+  "schema": "echogalacticcore.port.recipe_factory_migration.v1",
+  "source": "galacticraft_legacy_recipe_factories",
+  "runtimePolicy": "Legacy Forge recipe factories are not runtime assets in the ASDK port.",
+  "replacements": [
+    {
+      "legacyRole": "updatable_ore_recipe_factory",
+      "replacement": "echogalacticcore:legacy_oredict tag-backed shaped and shapeless JSON recipes",
+      "typedSurface": "resources"
+    },
+    {
+      "legacyRole": "advanced_metal_ingredient",
+      "replacement": "echogalacticcore:legacy_oredict/advanced_metal item tag",
+      "typedSurface": "resources"
+    },
+    {
+      "legacyRole": "config_enabled_recipe_condition",
+      "replacement": "EchoNativeConfigService recipe feature gates plus data reload filtering",
+      "typedSurface": "config"
+    }
+  ],
+  "forbiddenRuntimeAssets": [
+    "assets/echogalacticcore/recipes/_factories.json",
+    "Forge recipe factory class names",
+    "legacy custom ingredient class names",
+    "legacy recipe condition class names"
+  ]
+}

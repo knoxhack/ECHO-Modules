@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/playercore/integrations",
+  "title": "PlayerCore: Integrations",
+  "category": "Guide Books",
+  "summary": "Understand how PlayerCore travel can respect wider world, map, and runtime systems.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "World Context",
+      "body": "When a pack connects travel to world rules, random teleport and safe-destination checks can become part of route planning instead of a shortcut around danger.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Map And Diagnostics",
+      "body": "HoloMap and runtime diagnostics can help admins and players understand why a route is safe, blocked, expensive, or worth bookmarking.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Standalone Fallback",
+      "body": "PlayerCore stays useful without optional addons. Commands, config, saved locations, and safety checks are the core experience.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Check",
+      "body": "If the helper addon is absent, keep the same order by hand and follow the manual checkpoint.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "playercore",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:compass",
+  "relatedArticles": [
+    "echowiki:guides/playercore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1101
+}

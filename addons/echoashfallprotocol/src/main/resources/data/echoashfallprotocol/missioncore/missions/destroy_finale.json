@@ -1,0 +1,82 @@
+{
+  "id": "echoashfallprotocol:destroy_finale",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_8",
+  "phaseTitle": "AFTERMATH PROTOCOL",
+  "phaseOrder": 8,
+  "order": 12,
+  "title": "Defeat Severance Engine",
+  "briefing": "[ECHO-7] The Severance Engine is trying to preserve the old kill-switch. Destroy it before the epilogue.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 9: AFTERMATH PROTOCOL.",
+  "category": "combat",
+  "difficulty": "extreme",
+  "icon": "echoashfallprotocol:nexus_annihilator",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:destroy_dead_signal"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "destroy_finale",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.destroy_finale",
+    "terminal_route_phase": "8",
+    "terminal_route_order": "12",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_8",
+    "routePhaseTitle": "AFTERMATH PROTOCOL",
+    "routeGlobalOrder": "105",
+    "requiredPath": "destroy",
+    "routeRoleTag": "destroy_branch"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:destroy_finale:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "ashfall.runtime_predicate",
+      "missioncore.record_objective",
+      "ashfall.path_gate"
+    ]
+  },
+  "requiredPath": "destroy",
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:destroy_finale/destroy_finale",
+      "type": "custom",
+      "label": "Defeat Severance Engine",
+      "detail": "Progress is recorded by the Ashfall runtime predicate or an AdapterCore MissionCore hook.",
+      "icon": "echoashfallprotocol:nexus_annihilator",
+      "target": "echoashfallprotocol:destroy_finale",
+      "required": 1,
+      "criteria": {
+        "event": "ashfall.runtime_predicate",
+        "predicate": "ashfall.destroy_finale"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:destroy_finale/reward_0",
+      "item": "echoashfallprotocol:nexus_annihilator",
+      "count": 1,
+      "label": "Nexus Annihilator",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:destroy_finale/reward_0"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Severance Engine destroyed. The Destroy epilogue can now be sealed."
+}

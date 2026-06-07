@@ -1,0 +1,185 @@
+{
+    "id":  "echomultiblockcore:vehicle_repair_gantry",
+    "display_name":  "Vehicle Repair Gantry",
+    "translation_key":  "multiblock.echomultiblockcore.vehicle_repair_gantry",
+    "role":  "TRANSPORT",
+    "category":  "repair",
+    "size":  [
+                 5,
+                 3,
+                 5
+             ],
+    "controller":  "echomultiblockcore:multiblock_controller",
+    "allowed_rotations":  true,
+    "mirrorable":  true,
+    "layers":  [
+                   [
+                       "FFFFF",
+                       "FIIOF",
+                       "FDCDF",
+                       "FOROF",
+                       "FFFFF"
+                   ],
+                   [
+                       "R...R",
+                       "F.P.F",
+                       "F.C.F",
+                       "F.P.F",
+                       "A...A"
+                   ],
+                   [
+                       "F...F",
+                       "FFFFF",
+                       "..R..",
+                       "FFFFF",
+                       "F...F"
+                   ]
+               ],
+    "palette":  {
+                    "F":  {
+                              "tag":  "echomultiblockcore:reinforced_frames"
+                          },
+                    "I":  {
+                              "block":  "echomultiblockcore:input_crate",
+                              "component":  true
+                          },
+                    "O":  {
+                              "block":  "echomultiblockcore:output_crate",
+                              "component":  true
+                          },
+                    "D":  {
+                              "block":  "echomultiblockcore:data_bus",
+                              "component":  true
+                          },
+                    "P":  {
+                              "block":  "echomultiblockcore:power_bus",
+                              "component":  true
+                          },
+                    "R":  {
+                              "block":  "echomultiblockcore:robotic_arm",
+                              "robotics":  true
+                          },
+                    "A":  {
+                              "block":  "echomultiblockcore:auto_builder",
+                              "component":  true,
+                              "optional":  true
+                          },
+                    "C":  {
+                              "block":  "echomultiblockcore:multiblock_controller",
+                              "controller":  true
+                          },
+                    ".":  {
+                              "air":  true
+                          }
+                },
+    "capabilities":  [
+                         "echo:workcell",
+                         "echo:item_input",
+                         "echo:item_output",
+                         "echo:terminal_tab",
+                         "echo:data",
+                         "echo:robotics"
+                     ],
+    "capability_requirements":  [
+                                    {
+                                        "capability":  "echo:power_input",
+                                        "amount":  120,
+                                        "throughput":  36,
+                                        "unit":  "EP/t"
+                                    },
+                                    {
+                                        "capability":  "echo:data",
+                                        "amount":  100,
+                                        "throughput":  24,
+                                        "unit":  "data/t"
+                                    },
+                                    {
+                                        "capability":  "echo:item_input",
+                                        "amount":  48,
+                                        "throughput":  12,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:item_output",
+                                        "amount":  32,
+                                        "throughput":  8,
+                                        "unit":  "items"
+                                    },
+                                    {
+                                        "capability":  "echo:robotics",
+                                        "amount":  1,
+                                        "throughput":  1,
+                                        "unit":  "arm"
+                                    }
+                                ],
+    "upgrade_slots":  [
+                          {
+                              "id":  "echomultiblockcore:vehicle_repair_gantry/repair_slot",
+                              "pos":  [
+                                          1,
+                                          1,
+                                          1
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:integrity_upgrade",
+                                                       "echomultiblockcore:speed_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:vehicle_repair_gantry/clamp_slot",
+                              "pos":  [
+                                          3,
+                                          1,
+                                          3
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:reach_upgrade"
+                                                   ]
+                          },
+                          {
+                              "id":  "echomultiblockcore:vehicle_repair_gantry/cooling_slot",
+                              "pos":  [
+                                          2,
+                                          2,
+                                          2
+                                      ],
+                              "allowed_upgrades":  [
+                                                       "echomultiblockcore:cooling_upgrade"
+                                                   ]
+                          }
+                      ],
+    "workcells":  [
+                      {
+                          "id":  "echomultiblockcore:vehicle_repair_gantry/repair",
+                          "type":  "REPAIR",
+                          "pos":  [
+                                      2,
+                                      1,
+                                      2
+                                  ],
+                          "size":  [
+                                       1,
+                                       1,
+                                       1
+                                   ],
+                          "required_tools":  [
+                                                 "WELDER",
+                                                 "CLAMP"
+                                             ],
+                          "allowed_tasks":  [
+                                                "echomultiblockcore:overhaul_vehicle_frame"
+                                            ]
+                      }
+                  ],
+    "preview":  {
+                    "color":  "ffd166"
+                },
+    "facility_stage":  "P7 GRID RESTORATION",
+    "facility_route":  "convoy",
+    "primary_use":  "Overhauls vehicle frame kits and prepares mobile operations without hard Convoy dependency.",
+    "integration_hints":  [
+                              "Convoy vehicle logic should subscribe to events/effects, not controller saves.",
+                              "Repair blocked states should report tooling and output crate needs.",
+                              "Vehicle Frame Kit output is the standalone-safe handoff item."
+                          ]
+}

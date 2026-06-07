@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "echoashfallprotocol:radiation_block"
+      }
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:dirt",
+        "minecraft:grass_block",
+        "minecraft:stone",
+        "echoashfallprotocol:wasteland_stone",
+        "minecraft:cobblestone",
+        "echoashfallprotocol:contaminated_soil",
+        "echoashfallprotocol:wasteland_dirt",
+        "echoashfallprotocol:irradiated_crust",
+        "echoashfallprotocol:nexus_cracked_soil"
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 1,
+      "max_inclusive": 2
+    },
+    "half_height": 1
+  }
+}

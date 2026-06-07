@@ -1,0 +1,64 @@
+{
+    "title":  "Ash Wastes Supply Run",
+    "summary":  "Convoy logistics route: Ash Wastes Supply Run.",
+    "order":  30,
+    "requiredVehicle":  "any",
+    "minFuel":  45,
+    "missionType":  "Delivery",
+    "distance":  920,
+    "biomeTheme":  "ash_wastes",
+    "threatLevel":  3,
+    "fuelCost":  45,
+    "cargoCapacityRecommendation":  2,
+    "requiredReadiness":  65,
+    "logisticsNetworkId":  "global",
+    "logisticsLoadoutId":  "echoconvoyprotocol:fuel_cell_resupply",
+    "autoRequestCargo":  true,
+    "fieldOps":  {
+                     "durationTicks":  760,
+                     "stageCount":  2,
+                     "incidentProfile":  "echoconvoyprotocol:ash_wastes",
+                     "vehicleJoinPolicy":  "optional",
+                     "completionMode":  "depot_return"
+                 },
+    "requiredCargo":  [
+                          {
+                              "item":  "echoconvoyprotocol:field_supply_crate",
+                              "count":  1
+                          }
+                      ],
+    "rewards":  [
+                    {
+                        "item":  "echoconvoyprotocol:vehicle_armor_plate",
+                        "count":  2
+                    }
+                ],
+    "possibleHazards":  [
+                            "ash storm",
+                            "raider scouts"
+                        ],
+    "holomapMarker":  {
+                          "icon":  "high_risk_delivery",
+                          "color":  "ff9d00",
+                          "layer":  "echoconvoyprotocol:convoy_routes"
+                      },
+    "destinationHint":  "ash_wastes",
+    "requiredSignalMarkers":  2,
+    "minDistanceFromStart":  230,
+    "legs":  [
+                 {
+                     "id":  "checkpoint",
+                     "title":  "Checkpoint Signal",
+                     "minDistanceFromStart":  24,
+                     "requiresCheckpoint":  false,
+                     "roadsideStructure":  "echoconvoyprotocol:roadside/signal_marker"
+                 },
+                 {
+                     "id":  "destination",
+                     "title":  "Destination Signal",
+                     "minDistanceFromStart":  307,
+                     "requiresCheckpoint":  false,
+                     "roadsideStructure":  "echoconvoyprotocol:roadside/signal_marker"
+                 }
+             ]
+}

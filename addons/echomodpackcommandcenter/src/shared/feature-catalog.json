@@ -1,0 +1,3679 @@
+{
+  "features": [
+    {
+      "projectSlug": "echo",
+      "id": "echo-current-stack",
+      "title": "Full ECHO Release Stack",
+      "category": "Release Ops",
+      "status": "implemented",
+      "playerPromise": "Run the public ECHO release stack as one coordinated workspace instead of isolated test mods.",
+      "loreContext": "Ashfall is the first terrestrial campaign, while Core, Terminal, Orbital, Agriculture, Stationfall, Nexus, Industrial, and Blackbox extend the same post-Gridfall continuity.",
+      "implementationSummary": "The Gradle modules are seeded, grouped, scanned, built, and jar-managed as one 1.0.0 public beta project including Arcana Division, Community Bridge, BaseGrid, ScriptCore, CreatorCore, and the active tech/recovery waves.",
+      "nextAction": "Keep this aligned with settings.gradle and the jar manifest whenever modules change.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Current Stack"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "seed",
+          "label": "Command Center seeds 47 expected ECHO modules",
+          "path": "src/shared/seed-data.json",
+          "detail": "The echo project module list drives full-stack release and jar actions for every addon in settings.gradle."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-core-loop",
+      "title": "Crash-To-Nexus Core Loop",
+      "category": "Gameplay Loop",
+      "status": "partial",
+      "playerPromise": "Start at the crash pod, stabilize survival, recover route intel, defeat guardians, and reach the Nexus choice before the addon chain opens.",
+      "loreContext": "ECHO-7 wakes after Gridfall under a damaged field protocol and follows the Nexus signal back through ruined Earth.",
+      "implementationSummary": "The plan and release smoke notes define the complete loop; Command Center can verify resources and release actions but does not yet prove every gameplay beat from inside Minecraft.",
+      "nextAction": "Use deep scan, GameTests, and manual smoke notes to close the remaining in-game proof gap.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Core Loop"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "release-doc",
+          "label": "Full stack smoke notes cover terminal, guardians, Nexus, and addon entry checks",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "Smoke coverage is documented but still needs run evidence per release."
+        }
+      ],
+      "order": 2
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-progression",
+      "title": "P1-P9 Progression Ladder",
+      "category": "Progression",
+      "status": "partial",
+      "playerPromise": "Move from crash setup through survival infrastructure, POIs, guardians, Nexus, orbit, and the public release chapter chain.",
+      "loreContext": "The ladder turns post-collapse survival into ECHO's escalating recovery, quarantine, and memory arc.",
+      "implementationSummary": "The progression ladder is documented and mapped to modules; readiness remains tied to scans, jars, and release gates rather than a dedicated progression simulator.",
+      "nextAction": "Attach release run evidence to each ladder segment after full-stack verification.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Progression"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "P1-P9 progression table",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The plan assigns each major phase to survival, Nexus, and addon milestones."
+        }
+      ],
+      "order": 3
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-hazard-zones",
+      "title": "Hazard Zone Survival",
+      "category": "Survival",
+      "status": "partial",
+      "playerPromise": "Treat toxic swamps, industrial ruins, radiation zones, cryogenic ruins, and Nexus scars as readable environmental pressure systems.",
+      "loreContext": "Gridfall changed biomes into faction-owned, machine-scarred danger regions.",
+      "implementationSummary": "The hazard model is documented and represented by module scans and smoke checks; not every hazard beat is independently summarized by Command Center yet.",
+      "nextAction": "Record deep scan and GameTest evidence for each hazard type.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Survival Systems / Hazard Zones"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "scan",
+          "label": "Quick scanner checks resources, runtime logs, and jar expectations",
+          "path": "src/server/scanner.ts",
+          "detail": "Command Center can catch missing assets and jar blockers for hazard content."
+        }
+      ],
+      "order": 4
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-toxic-air",
+      "title": "Toxic Air And Filtration",
+      "category": "Survival",
+      "status": "partial",
+      "playerPromise": "Make toxic air a zone pressure that players counter with filters, safe zones, and infrastructure.",
+      "loreContext": "Industrial collapse and Sporebound contamination leave air itself as part of the survival puzzle.",
+      "implementationSummary": "Toxic-air expectations are in the mod plan and Industrial Nexus scrubbers provide cross-chapter support, but Command Center still treats this as feature evidence rather than a completed release gate.",
+      "nextAction": "Link latest validator/GameTest runs that prove toxic-air helper paths and scrubber modes.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Toxic Air"
+        },
+        {
+          "label": "Industrial Nexus README",
+          "path": "C:/Github/Echo/addons/echoindustrialnexus/README.md",
+          "section": "Release Checklist"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Industrial Scrubber lists air, radiation, blight, station, and cooling modes",
+          "path": "C:/Github/Echo/addons/echoindustrialnexus/README.md",
+          "detail": "Scrubber behavior is part of the Industrial Nexus release promise."
+        }
+      ],
+      "order": 5
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-radiation",
+      "title": "Radiation Pressure",
+      "category": "Survival",
+      "status": "partial",
+      "playerPromise": "Let radiation build, punish unsafe exploration, and reward cleansing gear, routes, and machines.",
+      "loreContext": "Radwarden tracks the radiation scars left by Gridfall control nodes and Nexus exposure.",
+      "implementationSummary": "Radiation appears in Ashfall, Orbital suit survival, Industrial scrubbers, and Nexus lore, but the app does not yet aggregate per-system runtime proof.",
+      "nextAction": "Add release-run evidence to distinguish implemented mechanics from plan coverage.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Radiation"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Radiation is referenced by survival, Orbital suit telemetry, and Industrial scrubber checks",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The feature spans several modules."
+        }
+      ],
+      "order": 6
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-hydration",
+      "title": "Hydration And Clean Water",
+      "category": "Survival",
+      "status": "partial",
+      "playerPromise": "Make water cleanup and hydration part of the early survival economy.",
+      "loreContext": "The ruined world makes basic human survival infrastructure an ECHO recovery objective.",
+      "implementationSummary": "The plan calls out hydration and water purification; Industrial Nexus extends purifier tooling, while full in-game release proof remains external to the feature catalog.",
+      "nextAction": "Attach deep scan or GameTest evidence for water purifier and hydration paths.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Hydration"
+        },
+        {
+          "label": "Industrial Nexus README",
+          "path": "C:/Github/Echo/addons/echoindustrialnexus/README.md",
+          "section": "Core systems"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Water Purifier appears in Industrial automation lists",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "Machine-side support is documented."
+        }
+      ],
+      "order": 7
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-mutations",
+      "title": "Mutation Instability",
+      "category": "Survival",
+      "status": "planned",
+      "playerPromise": "Make Nexus scars and long-term exposure push the player toward unstable but readable mutation consequences.",
+      "loreContext": "The Nexus does not only corrupt terrain; it rewrites living systems and ECHO's final choices.",
+      "implementationSummary": "Mutation behavior is present in the mod plan as a survival pillar, but Command Center has no concrete implementation evidence to mark it complete.",
+      "nextAction": "Keep this as planned until code/resources or release checks prove the mechanic.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Mutations"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Mutation instability is described as a planned survival system",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "No stronger implementation evidence was found during catalog seeding."
+        }
+      ],
+      "order": 8
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-machines-automation",
+      "title": "Machines And Automation",
+      "category": "Automation",
+      "status": "partial",
+      "playerPromise": "Turn salvage into power, water, filters, parts, and late-game materials through visible machines and recipe guidance.",
+      "loreContext": "Recovered machinery is the practical language of rebuilding after Gridfall.",
+      "implementationSummary": "Ashfall machine notes, JEI coverage, Terminal Recipe Index, and Industrial Nexus processing are documented; release evidence is still split across modules.",
+      "nextAction": "Use full-stack GameTests and recipe scans to prove the whole automation surface.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Machines and Automation"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "JEI and Terminal Recipe Index coverage is part of smoke notes",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "Machine recipes are expected in both JEI and Terminal."
+        }
+      ],
+      "order": 9
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-world-exploration",
+      "title": "World, POIs, And Route Exploration",
+      "category": "World",
+      "status": "partial",
+      "playerPromise": "Give every route and biome a reason to scan, recover caches, find records, and return with better tools.",
+      "loreContext": "ECHO's world is a field archive: every ruined structure is part of a broken command history.",
+      "implementationSummary": "The plan covers POIs, route maps, faction sites, and smoke checks. Command Center can find resource/reference issues but not yet certify worldgen quality.",
+      "nextAction": "Run deep validators and manual world smoke passes for POI coverage.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "World and Exploration"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "resource",
+          "label": "Ashfall structure README files are present",
+          "path": "C:/Github/Echo/src/main/resources/data/echoashfallprotocol/structure/README.md",
+          "detail": "Structure docs support the exploration plan."
+        }
+      ],
+      "order": 10
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-factions-intel",
+      "title": "Factions And Intel",
+      "category": "Narrative",
+      "status": "partial",
+      "playerPromise": "Expose Radwarden, Crashbreak, Sporebound, and chapter factions through atlas entries, route records, and reward state.",
+      "loreContext": "The factions interpret Gridfall differently and turn survival choices into political telemetry.",
+      "implementationSummary": "Faction canon and Terminal surfaces are documented; Orbital and Logistics include faction-facing evidence, but the catalog conservatively treats the full-stack feature as partial.",
+      "nextAction": "Attach latest terminal and chapter GameTest evidence for faction records.",
+      "sources": [
+        {
+          "label": "ECHO Lore Bible",
+          "path": "C:/Github/Echo/LORE_BIBLE.md",
+          "section": "Factions"
+        },
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Factions and Intel"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Terminal Faction Atlas and route records are listed as shared surfaces",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The player-facing intel surface is part of the stack plan."
+        }
+      ],
+      "order": 11
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-terminal",
+      "title": "ECHO-7 Terminal Surface",
+      "category": "Terminal",
+      "status": "implemented",
+      "playerPromise": "Use one shared terminal for command, progress, intel, system diagnostics, recipes, rewards, routes, and addon chapter tabs.",
+      "loreContext": "ECHO-7 is both guide and witness, translating damaged command protocol into player-facing decisions.",
+      "implementationSummary": "The Terminal module documents concrete APIs, navigation groups, mission providers, recipe providers, themes, route records, archives, vitals, and addon integration.",
+      "nextAction": "Keep terminal page coverage tied to readiness and scan findings.",
+      "sources": [
+        {
+          "label": "ECHO Terminal README",
+          "path": "C:/Github/Echo/addons/echoterminal/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "ECHO-7 Terminal"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "code",
+          "label": "Terminal APIs and resources are housed in the echoterminal module",
+          "path": "C:/Github/Echo/addons/echoterminal",
+          "detail": "README names mission, action, archive, reward, vitals, route, recipe, and theme surfaces."
+        }
+      ],
+      "order": 12
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-drone-system",
+      "title": "Drone System",
+      "category": "Automation",
+      "status": "planned",
+      "playerPromise": "Use drones as recoverable utility actors for scouting, delivery, and field support.",
+      "loreContext": "Autonomous systems are old ECHO infrastructure learning to function in a broken world.",
+      "implementationSummary": "The full-stack plan has a drone section, while concrete evidence is currently stronger in Logistics courier drones than in the broad ECHO feature.",
+      "nextAction": "Promote this to partial when the full-stack drone loop has project-level smoke evidence.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Drone System"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "code",
+          "label": "Logistics Network contains courier drone implementation evidence",
+          "path": "C:/Github/Echo/addons/echologisticsnetwork/src/main/java/com/knoxhack/echologisticsnetwork/entity/CourierDroneEntity.java",
+          "detail": "This proves module-level courier behavior, not the entire full-stack drone plan."
+        }
+      ],
+      "order": 13
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-research",
+      "title": "Research And Perk Guidance",
+      "category": "Progression",
+      "status": "partial",
+      "playerPromise": "Make research unlocks, schematic hints, locked outputs, and late-game knowledge visible before players have every item.",
+      "loreContext": "Research is how ECHO converts field ruins into actionable survival knowledge.",
+      "implementationSummary": "Terminal Recipe Index and Nexus Protocol research are documented; the broad feature remains partial until run evidence is attached.",
+      "nextAction": "Use scan findings and release runs to distinguish recipe visibility from research unlock completion.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Research"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Recipe Index locked schematic hints are documented",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The research surface is tied to recipe visibility and Nexus progression."
+        }
+      ],
+      "order": 14
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-nexus-endgame",
+      "title": "Nexus Endgame Choices",
+      "category": "Endgame",
+      "status": "partial",
+      "playerPromise": "Reach the Nexus Core and commit Restore, Control, Destroy, or Merge with visible consequences across later chapters.",
+      "loreContext": "The Nexus choice is the first irreversible answer to whether ECHO repairs, controls, destroys, or joins the broken system.",
+      "implementationSummary": "The plan defines guardian gates, Nexus states, and cross-chapter interpretations, but the app should continue to require release evidence before calling the whole endgame complete.",
+      "nextAction": "Run Nexus Protocol smoke checks and full-stack release verification.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Nexus Endgame"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Nexus Protocol smoke checks enumerate gates, machines, boss, and choices",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The planned acceptance path is explicit."
+        }
+      ],
+      "order": 15
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-addon-chain",
+      "title": "Release Addon Chapter Chain",
+      "category": "Release Chapters",
+      "status": "partial",
+      "playerPromise": "Continue after Ashfall through Orbital, Agriculture, Stationfall, Nexus Protocol, Industrial Nexus, and Blackbox Protocol.",
+      "loreContext": "The addon chain widens ECHO from crash survival into orbit, station horror, infrastructure, memory, and final authorship.",
+      "implementationSummary": "The overview documents the chain and individual chapter promises; module-level feature rows show which chapters have stronger local evidence.",
+      "nextAction": "Open each module project and use its feature rows plus release actions for chapter-specific completion.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Release Addon Chapters"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Full stack smoke notes list chapter checks",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "Stationfall, Nexus, Industrial, and Blackbox all have named smoke paths."
+        }
+      ],
+      "order": 16
+    },
+    {
+      "projectSlug": "echocore",
+      "id": "shared-echo-services",
+      "title": "Shared ECHO Services",
+      "category": "Core",
+      "status": "implemented",
+      "playerPromise": "Let addons share state through Core services instead of reaching into each other's saves.",
+      "loreContext": "ECHO Core is the hidden protocol layer that lets every chapter speak the same recovery language.",
+      "implementationSummary": "Core is seeded as a real module and is described as the owner for shared contracts, state, and cross-addon infrastructure.",
+      "nextAction": "Keep new addons behind public Core APIs rather than private chapter state.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "ECHO Ecosystem"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "module",
+          "label": "echocore is an expected full-stack jar",
+          "path": "C:/Github/Echo/core/echocore",
+          "detail": "Command Center jar management derives a Core artifact from project metadata."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoashfallprotocol",
+      "id": "ashfall-survival-campaign",
+      "title": "Ashfall Survival Campaign",
+      "category": "Campaign",
+      "status": "partial",
+      "playerPromise": "Deliver the terrestrial crash survival campaign that starts the ECHO saga and opens the Nexus branch.",
+      "loreContext": "Ashfall is ECHO-7's first field recovery route on ruined Earth.",
+      "implementationSummary": "Ashfall owns the root workspace and large portions of the plan; Command Center tracks its scoped build, validation, resources, and jar expectations.",
+      "nextAction": "Use Ashfall scoped scans and full-stack GameTests to prove route, guardian, and Nexus coverage.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Core Loop"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "resource",
+          "label": "Ashfall resources live in the root workspace",
+          "path": "C:/Github/Echo/src/main/resources",
+          "detail": "The scanner uses root resources for the Ashfall module."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoterminal",
+      "id": "terminal-command-surface",
+      "title": "Shared Command Surface",
+      "category": "Terminal",
+      "status": "implemented",
+      "playerPromise": "Provide terminal block, menu, mission routing, navigation sections, archives, rewards, route records, diagnostics, faction atlas, and vitals.",
+      "loreContext": "ECHO-7 turns fragmented command authority into a practical player interface.",
+      "implementationSummary": "The README lists the public APIs and player surfaces that the module ships.",
+      "nextAction": "Keep deferred badge/notification APIs visible as future polish rather than current implementation.",
+      "sources": [
+        {
+          "label": "ECHO Terminal README",
+          "path": "C:/Github/Echo/addons/echoterminal/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Terminal API and theme systems are documented",
+          "path": "C:/Github/Echo/addons/echoterminal/README.md",
+          "detail": "The README names mission providers, action routing, navigation profiles, recipe providers, and theme tokens."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "signalosexample",
+      "id": "signalos-integration-sample",
+      "title": "SignalOS Integration Sample",
+      "category": "Tooling",
+      "status": "implemented",
+      "playerPromise": "Show concrete Java, datapack, and KubeJS integration paths for SignalOS.",
+      "loreContext": "This example is not ECHO canon; it is implementation guidance for command-surface authors.",
+      "implementationSummary": "The example README lists three integration paths and sample registration snippets.",
+      "nextAction": "Keep examples compiling when SignalOS public APIs change.",
+      "sources": [
+        {
+          "label": "SignalOS Example README",
+          "path": "C:/Github/Echo/addons/signalosexample/README.md",
+          "section": "Integration paths"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README shows Java API, datapack JSON, and KubeJS-friendly usage",
+          "path": "C:/Github/Echo/addons/signalosexample/README.md",
+          "detail": "The example is intentionally focused on integration coverage."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoorbitalremnants",
+      "id": "orbital-route-survival",
+      "title": "Orbital Route Survival Arc",
+      "category": "Chapter",
+      "status": "implemented",
+      "playerPromise": "Follow ECHO-7 from Earth recovery to orbit, outer route worlds, ECHO-0, faction contracts, and the final survey network seal.",
+      "loreContext": "After the Nexus choice, orbit proves Earth was never only a containment field.",
+      "implementationSummary": "Orbital's release status marks the route survival arc complete as a standalone NeoForge space-survival chapter, with implemented systems and release checks listed.",
+      "nextAction": "Treat planetary RPG, bespoke animated encounters, and settlement/vendor expansion as future scope.",
+      "sources": [
+        {
+          "label": "Orbital Remnants PLAN",
+          "path": "C:/Github/Echo/addons/echoorbitalremnants/PLAN.md",
+          "section": "Implemented Systems"
+        },
+        {
+          "label": "Orbital Remnants README",
+          "path": "C:/Github/Echo/addons/echoorbitalremnants/README.md",
+          "section": "Release promise"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "PLAN says the standalone space-survival arc is complete",
+          "path": "C:/Github/Echo/addons/echoorbitalremnants/PLAN.md",
+          "detail": "Implemented systems include progression, launch, routes, surveys, threats, factions, CI, docs, and GameTests."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echonexusprotocol",
+      "id": "nexus-protocol-chain",
+      "title": "Nexus Protocol Chain",
+      "category": "Chapter",
+      "status": "partial",
+      "playerPromise": "Open after Stationfall's blackbox handoff, expose Nexus research, machines, dimension/worldgen, monoliths, bosses, and final commitments.",
+      "loreContext": "Nexus Protocol turns the first Ashfall choice into deeper Core instructions and world-state consequences.",
+      "implementationSummary": "The overview and public smoke pass describe the chapter; Command Center should still rely on scoped scans and release actions for current proof.",
+      "nextAction": "Run the Nexus scoped quick scan and release smoke pass before calling it complete.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Nexus Protocol"
+        },
+        {
+          "label": "Nexus Public Release Smoke Pass",
+          "path": "C:/Github/Echo/addons/echonexusprotocol/docs/nexus_public_release_smoke_pass.md",
+          "section": "Smoke pass"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Nexus systems and smoke checks are documented",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The plan names machines, state, worldgen, boss, and commit actions."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoagriculturereclamation",
+      "id": "field-reclamation-loop",
+      "title": "Field Reclamation Farming Loop",
+      "category": "Chapter",
+      "status": "implemented",
+      "playerPromise": "Recover seeds, stabilize crops, run hydroponics, score greenhouse safety, and restore ruined-world farming routes.",
+      "loreContext": "Agriculture Reclamation makes survival recovery physical: food, soil, genes, and ecology pressure.",
+      "implementationSummary": "The README documents standalone NeoForge addon behavior, Terminal/Core integration, route milestones, crop loops, and 0.1.1 utility outputs.",
+      "nextAction": "Keep scans attached to mature-only crop drops, hydroponics, and greenhouse checks.",
+      "sources": [
+        {
+          "label": "Agriculture Reclamation README",
+          "path": "C:/Github/Echo/addons/echoagriculturereclamation/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ECHO README",
+          "path": "C:/Github/Echo/README.md",
+          "section": "Full Stack Smoke Notes"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README names FIELD > Reclamation metrics and six route milestones",
+          "path": "C:/Github/Echo/addons/echoagriculturereclamation/README.md",
+          "detail": "The chapter has concrete recovery mechanics and terminal integration."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echostationfall",
+      "id": "stationfall-horror-route",
+      "title": "Station ECHO Horror Route",
+      "category": "Chapter",
+      "status": "partial",
+      "playerPromise": "Board Station ECHO, recover logs, manage oxygen/pressure/panic telemetry, override the AI, defeat Station Mother, and hand off the blackbox.",
+      "loreContext": "Stationfall reveals the station did not merely die; it kept recording the fall.",
+      "implementationSummary": "The overview and local lore code show the chapter shape, but the feature catalog keeps it partial until scoped scan and GameTest evidence are current.",
+      "nextAction": "Run Stationfall quick scan and confirm station boarding, nine sections, logs, AI override, and blackbox recovery.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Stationfall"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "code",
+          "label": "Station lore class exists",
+          "path": "C:/Github/Echo/addons/echostationfall/src/main/java/com/knoxhack/echostationfall/progression/StationLore.java",
+          "detail": "The module has concrete lore/progression implementation evidence."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoblackboxprotocol",
+      "id": "blackbox-memory-finale",
+      "title": "Blackbox Memory Finale",
+      "category": "Chapter",
+      "status": "partial",
+      "playerPromise": "Decode fragments, survive archive dungeons, confront hostile recordings, assemble Core access, and choose final directives.",
+      "loreContext": "Blackbox Protocol asks who gets to author the final memory after ECHO and the Nexus have both failed trust.",
+      "implementationSummary": "The overview describes the finale, structures, bosses, machines, and directives; current status remains partial without fresh module scan evidence.",
+      "nextAction": "Run scoped scan and release checks for memory stability, monolith access, bosses, and Truth Engine directives.",
+      "sources": [
+        {
+          "label": "ECHO Modpack Overview",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "section": "Blackbox Protocol"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Blackbox checks are listed in full-stack smoke notes",
+          "path": "C:/Github/Echo/MODPACK_OVERVIEW.md",
+          "detail": "The smoke notes name fragments, stability, dungeons, bosses, keys, and directives."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoindustrialnexus",
+      "id": "industrial-automation-recovery",
+      "title": "Industrial Automation Recovery",
+      "category": "Chapter",
+      "status": "implemented",
+      "playerPromise": "Build Thermal Flux infrastructure, ducts, recipe-driven machines, scrubber safe zones, heat handling, industrial POIs, and Furnace Warden progression.",
+      "loreContext": "Industrial Nexus rebuilds the world through machinery while heat and corruption keep that recovery dangerous.",
+      "implementationSummary": "The README documents standalone play, optional sibling hooks, machine systems, terminal recipe integration, overheating, scrubbers, boss progression, and an RC note that validation/build/GameTests pass in the checkout.",
+      "nextAction": "Keep optional compat matrix checks visible when sibling chapters are absent or present.",
+      "sources": [
+        {
+          "label": "Industrial Nexus README",
+          "path": "C:/Github/Echo/addons/echoindustrialnexus/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "release-doc",
+          "label": "README RC note says validation, compile, build, and shared GameTests pass",
+          "path": "C:/Github/Echo/addons/echoindustrialnexus/README.md",
+          "detail": "This is strong local evidence for implemented status."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echologisticsnetwork",
+      "id": "logistics-network-loop",
+      "title": "Storage, Loadout, And Courier Logistics",
+      "category": "Chapter",
+      "status": "implemented",
+      "playerPromise": "Use labeled storage networks, expedition loadouts, courier drones, depot offers, relay rewards, and SYSTEM > Logistics terminal support.",
+      "loreContext": "Logistics turns recovery into base operations: supplies, routes, drones, and field readiness.",
+      "implementationSummary": "The smoke test and module resources show concrete blocks, items, courier drone code, terminal support, and GameTest coverage.",
+      "nextAction": "Keep deeper faction economy integration marked as future until public faction APIs exist.",
+      "sources": [
+        {
+          "label": "Logistics Network Smoke Test",
+          "path": "C:/Github/Echo/addons/echologisticsnetwork/SMOKE_TEST.md",
+          "section": "Smoke Test"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "code",
+          "label": "Courier drone and Logistics GameTests exist",
+          "path": "C:/Github/Echo/addons/echologisticsnetwork/src/main/java/com/knoxhack/echologisticsnetwork/registry/ModGameTests.java",
+          "detail": "The smoke test also names SYSTEM > Logistics terminal behavior."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoconvoyprotocol",
+      "id": "convoy-route-layer",
+      "title": "Convoy Route Layer",
+      "category": "Chapter",
+      "status": "implemented",
+      "playerPromise": "Add ruined-Earth travel through field vehicles, fuel, cargo, roadside route contracts, checkpoint gating, and FIELD > Convoy Routes terminal support.",
+      "loreContext": "Convoy Protocol makes the wasteland traversable after the player can maintain a vehicle and protect supplies.",
+      "implementationSummary": "The README documents the feature promise and a smoke path covering vehicle workbench, fuel, cargo, repair, beacon activation, contracts, rewards, and Terminal route actions.",
+      "nextAction": "Run scoped scan and GameTests before including a release build.",
+      "sources": [
+        {
+          "label": "Convoy Protocol README",
+          "path": "C:/Github/Echo/addons/echoconvoyprotocol/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README smoke path covers vehicle, fuel, repair, route, and terminal actions",
+          "path": "C:/Github/Echo/addons/echoconvoyprotocol/README.md",
+          "detail": "The chapter has concrete functional acceptance notes."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-hidden-resonances",
+      "title": "Hidden Resonance Scanning",
+      "category": "Discovery",
+      "status": "partial",
+      "playerPromise": "Scan hidden resonance in blocks, entities, items, biomes, dimensions, weather, and landmarks.",
+      "loreContext": "ARCANA starts from the idea that the world is full of Veil patterns the player cannot see until studied.",
+      "implementationSummary": "The README and creative checklist define the scanning loop; status is partial until current resource validation and GameTests are attached.",
+      "nextAction": "Run ARCANA validator and GameTests after opening a dev world scan pass.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Checklist includes Veil Lens scanning on blocks, entities, items, biome, dimension, and weather/place observations",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "detail": "The desired scanner surface is explicit."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-research-theory",
+      "title": "Research Theory And Node Graph",
+      "category": "Research",
+      "status": "partial",
+      "playerPromise": "Build research theory through graph nodes, active research details, hidden nodes, and claimable discoveries.",
+      "loreContext": "ARCANA treats knowledge as something assembled, not unlocked by a simple checklist.",
+      "implementationSummary": "The README documents research JSON with optional journal layout metadata and automatic placement fallback; the checklist covers tabs, graph pages, nodes, and claims.",
+      "nextAction": "Run resource validator to confirm research layout and datapack fallback behavior.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Research JSON supports optional journal layout metadata",
+          "path": "C:/Github/ARCANA/README.md",
+          "detail": "Datapack research without layout auto-places."
+        }
+      ],
+      "order": 2
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-field-journal",
+      "title": "Field Journal UI",
+      "category": "UI",
+      "status": "implemented",
+      "playerPromise": "Open a textured two-page research book with Resonance, Discoveries, Research, Rituals, Machines, Fractures, Constructs, and Paths tabs.",
+      "loreContext": "The journal is the player's hand-written interface to Veil study.",
+      "implementationSummary": "The README describes the runtime GUI texture location and the asset audit confirms the Field Journal and machine screens are code-rendered with the intended visual language.",
+      "nextAction": "Keep browser-like manual creative checks for missing textures and tooltip coverage.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Matching Reference Direction"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "Asset audit confirms Field Journal and machine screens are code-rendered",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "The audit names dark panels, copper borders, violet headers, teal status text, pressure bars, and fracture warnings."
+        }
+      ],
+      "order": 3
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-veil-pressure",
+      "title": "Ambient Veil Pressure",
+      "category": "World State",
+      "status": "planned",
+      "playerPromise": "Let local Veil pressure become a readable world-state that rituals, fractures, machines, and monitors respond to.",
+      "loreContext": "The Veil is not a spell list; it is environmental pressure that must be shaped or contained.",
+      "implementationSummary": "The README names ambient Veil pressure as core design, and the checklist includes Veil Monitor and Fracture Detector checks, but current implementation proof is not summarized here yet.",
+      "nextAction": "Attach validator/GameTest evidence for Veil Monitor, Fracture Detector, and pressure mutations.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Checklist includes Veil Monitor and Fracture Detector status text",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "detail": "Pressure feedback has a manual acceptance target."
+        }
+      ],
+      "order": 4
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-rituals-convergence",
+      "title": "Ritual And Convergence Work",
+      "category": "Magic Systems",
+      "status": "partial",
+      "playerPromise": "Run Ritual Basin recipes, Focus Pedestals, Convergence Matrix recipes, and Stabilizer Pillar-supported convergence work.",
+      "loreContext": "ARCANA magic is procedural and risky, with ritual geometry and stabilization as part of the cost.",
+      "implementationSummary": "The checklist covers ritual and convergence actions, and the asset audit reports data entries for rituals and convergence.",
+      "nextAction": "Run resource validation and one creative test pass for Ritual Basin and Convergence Matrix flows.",
+      "sources": [
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        },
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Redesigned In This Pass"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "Audit lists data entries for rituals, convergence, recipes, and machines",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "The feature has data/resource evidence."
+        }
+      ],
+      "order": 5
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-fracture-risk",
+      "title": "Fracture Risk And Containment",
+      "category": "Risk",
+      "status": "partial",
+      "playerPromise": "Expose fracture samples, seals, detectors, transforms, entities, and pressure reduction as the cost of pushing Veil work too far.",
+      "loreContext": "Fracture is the shadow of research: every discovery can tear the world open.",
+      "implementationSummary": "The checklist covers Fracture Seal use, Fracture Detector status text, fracture entities, and Fracture Heart; the asset audit reports fracture transforms and no intentionally missing assets.",
+      "nextAction": "Run validator and runtime log checks to prove fracture resources and transforms remain clean.",
+      "sources": [
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "Items / Blocks / Entities"
+        },
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Missing Assets"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "Audit says no registered item, block, or entity intentionally lacks model, texture, lang, or loot coverage",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "Fracture assets are part of the audited set."
+        }
+      ],
+      "order": 6
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-constructs",
+      "title": "Sigil Constructs",
+      "category": "Entities",
+      "status": "implemented",
+      "playerPromise": "Assign constructs to carry, guard, scan, maintain rituals, deliver, repair, and harvest through Sigil Plates.",
+      "loreContext": "Constructs are ARCANA's practical proof that theory can be embodied.",
+      "implementationSummary": "The asset audit reports practical construct behaviors with held-item persistence, while the creative checklist names assignment and order cycling.",
+      "nextAction": "Keep animation/proportion polish tracked as future art polish, not blocker status.",
+      "sources": [
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Redesigned In This Pass"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "Sigil Constructs support practical carry, deliver, guard, scan, and ritual maintenance behaviors",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "The audit calls out held-item persistence through vanilla equipment saving."
+        }
+      ],
+      "order": 7
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-assets-resources",
+      "title": "Assets And Resource Coverage",
+      "category": "Assets",
+      "status": "implemented",
+      "playerPromise": "Ship authored Minecraft-scale textures, models, lang, loot, GUI, entity, particle, worldgen, and research resources without intentional missing coverage.",
+      "loreContext": "ARCANA's identity depends on readable ritual tools, Veil color language, fracture warnings, and journal surfaces.",
+      "implementationSummary": "The asset audit says runtime assets cover every registered item, block, and entity and no registered item/block/entity is intentionally missing model, texture, lang key, or loot coverage.",
+      "nextAction": "Keep validator output attached to exports after each asset pass.",
+      "sources": [
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Matching Reference Direction"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "No intentional missing assets",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "The audit explicitly covers item, block, entity, GUI, particle, data, worldgen, and research resources."
+        }
+      ],
+      "order": 8
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-worldgen-landmarks",
+      "title": "Worldgen Landmarks",
+      "category": "World",
+      "status": "partial",
+      "playerPromise": "Discover Deep Veil Gates, observatories, vaults, sealed archives, ritual circles, and fractured groves through structure discovery.",
+      "loreContext": "ARCANA landmarks are where the Veil has already written into the world.",
+      "implementationSummary": "The asset audit reports larger NBT landmark template variants and worldgen data; interiors remain future expansion.",
+      "nextAction": "Keep hand-authored landmark interiors as future art/worldgen polish.",
+      "sources": [
+        {
+          "label": "ARCANA Asset Audit",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "section": "Weak Or Future Art Targets"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "Blocks"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "asset-audit",
+          "label": "Worldgen has larger variant NBT templates and loot processors",
+          "path": "C:/Github/ARCANA/docs/ARCANA_ASSET_AUDIT.md",
+          "detail": "The audit also notes interiors can still expand."
+        }
+      ],
+      "order": 9
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-endgame-veil-choices",
+      "title": "Late-Game Veil Choices",
+      "category": "Endgame",
+      "status": "planned",
+      "playerPromise": "Progress toward late-game Veil choices through boss discovery, Deep Veil gates, and path eligibility.",
+      "loreContext": "The endgame asks whether the player contains, accepts, or rewrites the Veil's fracture pressure.",
+      "implementationSummary": "The README names late-game Veil choices and the checklist mentions The Unwritten One, Fracture Heart, Deep Veil Gate, and endgame path eligibility; stronger implementation proof is still needed.",
+      "nextAction": "Attach GameTest or manual creative evidence for Deep Veil Gate, boss defeat records, and path eligibility.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ARCANA Creative Visual Test Checklist",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "section": "UI And Gameplay"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "Checklist includes Deep Veil Gate discovery and boss defeat path eligibility",
+          "path": "C:/Github/ARCANA/docs/ARCANA_CREATIVE_TEST_CHECKLIST.md",
+          "detail": "The endgame acceptance path is documented."
+        }
+      ],
+      "order": 10
+    },
+    {
+      "projectSlug": "arcana",
+      "id": "arcana-verification-pipeline",
+      "title": "ARCANA Verification Pipeline",
+      "category": "Release Ops",
+      "status": "implemented",
+      "playerPromise": "Validate build, resources, GameTests, runtime logs, and release readiness through explicit local commands.",
+      "loreContext": "Release verification protects the magic system from invisible resource and runtime drift.",
+      "implementationSummary": "The README lists build, resource validator, GameTest server, runtime log check, and verifyArcanaRelease commands.",
+      "nextAction": "Run the scoped release actions from Command Center before promoting jars.",
+      "sources": [
+        {
+          "label": "ARCANA README",
+          "path": "C:/Github/ARCANA/README.md",
+          "section": "Verification"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "release-doc",
+          "label": "README lists five verification commands",
+          "path": "C:/Github/ARCANA/README.md",
+          "detail": "The validator checks item, block, entity, particle, GUI, worldgen, research layout, and data resources."
+        }
+      ],
+      "order": 11
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-shared-service-addons",
+      "title": "Shared Service Addons",
+      "category": "Core Services",
+      "status": "partial",
+      "playerPromise": "Unify ECHO networking, persistent data, missions, facility multiblocks, runtime performance, world telemetry, and render state behind shared addon services.",
+      "loreContext": "The ECHO command stack becomes more believable when every chapter reports through common infrastructure instead of isolated systems.",
+      "implementationSummary": "NetCore, DataCore, MissionCore, MultiblockCore, RuntimeGuard, WorldCore, RenderCore, ThemeCore, PlayerCore, SoundCore, TutorialCore, and WeatherCore now have Gradle modules and Command Center project coverage; each still needs scoped scans and GameTest or smoke evidence before release promotion.",
+      "nextAction": "Run scoped quick scans, module GameTests, and smoke checks for the shared service modules.",
+      "sources": [
+        {
+          "label": "ECHO settings.gradle",
+          "path": "C:/Github/Echo/settings.gradle",
+          "section": "Addon declarations"
+        },
+        {
+          "label": "NetCore README",
+          "path": "C:/Github/Echo/addons/echonetcore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "WorldCore README",
+          "path": "C:/Github/Echo/addons/echoworldcore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "MultiblockCore README",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "RuntimeGuard README",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "build-config",
+          "label": "Gradle workspace includes the shared service modules",
+          "path": "C:/Github/Echo/settings.gradle",
+          "detail": "The beta addon set includes the shared service modules as part of the full-stack build target."
+        }
+      ],
+      "order": 30
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-field-intel-suite",
+      "title": "Field Intel And Scanner Suite",
+      "category": "Terminal Intel",
+      "status": "partial",
+      "playerPromise": "Give players a HoloMap, shared Index archive, Armory readiness surface, Lens scanner HUD, and Blockworks structural palette inside the ECHO command/build layer.",
+      "loreContext": "Maps, archives, and combat loadouts turn scattered survival data into actionable ECHO field intelligence.",
+      "implementationSummary": "HoloMap, Index, Armory, Lens, Blockworks, PowerGrid, RelicTech, WeatherCore, SoundCore, TutorialCore, ThemeCore, and PlayerCore have build modules and concrete source or documentation evidence; release confidence still depends on scoped validation and a clean promoted jar set.",
+      "nextAction": "Run scoped scans and jar promotion for the expanded addon surface.",
+      "sources": [
+        {
+          "label": "HoloMap README",
+          "path": "C:/Github/Echo/addons/echoholomap/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ECHO Index source",
+          "path": "C:/Github/Echo/addons/echoindex/src/main/java/com/knoxhack/echoindex/EchoIndex.java",
+          "section": "Terminal chapter registration"
+        },
+        {
+          "label": "Armory mod metadata",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/resources/META-INF/neoforge.mods.toml",
+          "section": "Description"
+        },
+        {
+          "label": "Lens metadata",
+          "path": "C:/Github/Echo/addons/echolens/gradle.properties",
+          "section": "Module description"
+        },
+        {
+          "label": "Blockworks README",
+          "path": "C:/Github/Echo/addons/echoblockworks/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Index registers a shared item, recipe, usage, and archive browser",
+          "path": "C:/Github/Echo/addons/echoindex/src/main/java/com/knoxhack/echoindex/EchoIndex.java",
+          "detail": "The source summary identifies the player-facing archive role."
+        },
+        {
+          "kind": "resource",
+          "label": "Armory metadata names Terminal-managed combat readiness",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/resources/META-INF/neoforge.mods.toml",
+          "detail": "The module describes modular weapons, armor, augments, loadouts, faction gear, and Terminal readiness."
+        },
+        {
+          "kind": "source",
+          "label": "Lens registers a scanner HUD and ECHO Core service integration",
+          "path": "C:/Github/Echo/addons/echolens/src/main/java/com/knoxhack/echolens/integration/LensCoreIntegration.java",
+          "detail": "The integration registers Lens as an addon chapter and exposes inspection service diagnostics."
+        },
+        {
+          "kind": "doc",
+          "label": "Blockworks README describes block families, conversion tools, palette kits, and worldgen",
+          "path": "C:/Github/Echo/addons/echoblockworks/README.md",
+          "detail": "The module provides the first-party structural/decorative library used by ECHO locations and future multiblock casings."
+        }
+      ],
+      "order": 31
+    },
+    {
+      "projectSlug": "echonetcore",
+      "id": "netcore-shared-network-layer",
+      "title": "Shared Network Layer",
+      "category": "Infrastructure",
+      "status": "implemented",
+      "playerPromise": "Let ECHO addons send optional sync packets and server-validated actions without crashing missing consumers.",
+      "loreContext": "ECHO field systems need reliable comms before terminals, drones, missions, and telemetry can coordinate.",
+      "implementationSummary": "The README documents clientbound sync, serverbound action packets, rate limiting, safe sends, no-op fallback, and debug controls.",
+      "nextAction": "Run NetCore scoped scan and GameTests before promoting a release jar.",
+      "sources": [
+        {
+          "label": "NetCore README",
+          "path": "C:/Github/Echo/addons/echonetcore/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README documents optional packet registration and safe send helpers",
+          "path": "C:/Github/Echo/addons/echonetcore/README.md",
+          "detail": "Serverbound handlers validate context and rate-limited packets drop without mutating gameplay state."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echodatacore",
+      "id": "datacore-persistent-data-layer",
+      "title": "Persistent Data Layer",
+      "category": "Infrastructure",
+      "status": "partial",
+      "playerPromise": "Store shared ECHO progression and addon state through one persistent data layer.",
+      "loreContext": "Recovered infrastructure should remember discoveries, missions, regions, and player decisions across sessions.",
+      "implementationSummary": "DataCore is present as a Gradle module with project metadata and is included in the ECHO beta addon set; more source-backed feature evidence should be attached after the next docs pass.",
+      "nextAction": "Attach DataCore README/source evidence and run a scoped scan.",
+      "sources": [
+        {
+          "label": "DataCore gradle metadata",
+          "path": "C:/Github/Echo/addons/echodatacore/gradle.properties",
+          "section": "Module identity"
+        },
+        {
+          "label": "ECHO settings.gradle",
+          "path": "C:/Github/Echo/settings.gradle",
+          "section": "Beta addon set"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "build-config",
+          "label": "DataCore is included in the Gradle beta addon set",
+          "path": "C:/Github/Echo/settings.gradle",
+          "detail": "The module is now part of the full-stack build target."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echomissioncore",
+      "id": "missioncore-objective-backend",
+      "title": "Mission Objective Backend",
+      "category": "Missions",
+      "status": "implemented",
+      "playerPromise": "Provide shared missions, objectives, rewards, JSON content, commands, and Terminal mission feeds.",
+      "loreContext": "ECHO missions turn survival tasks into recoverable command objectives with traceable rewards.",
+      "implementationSummary": "MissionCore documentation describes the shared backend role for objectives, rewards, terminal feeds, JSON content, and commands.",
+      "nextAction": "Run MissionCore scoped scan and GameTests before marking release-ready.",
+      "sources": [
+        {
+          "label": "MissionCore README",
+          "path": "C:/Github/Echo/addons/echomissioncore/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README names mission, objective, reward, and Terminal feed services",
+          "path": "C:/Github/Echo/addons/echomissioncore/README.md",
+          "detail": "The feature contract is documented at module level."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoworldcore",
+      "id": "worldcore-telemetry-runtime",
+      "title": "World Telemetry Runtime",
+      "category": "World Services",
+      "status": "implemented",
+      "playerPromise": "Define regions, hazards, world markers, discoveries, runtime events, HoloMap feeds, and RenderCore profile resources.",
+      "loreContext": "WorldCore gives the ruined Earth a shared vocabulary so maps, hazards, and visual states can agree.",
+      "implementationSummary": "The README documents world vocabulary, runtime services, HoloMap feeds, /echoworld commands, and RenderCore profile resources.",
+      "nextAction": "Run WorldCore scoped scan and GameTests before promoting a release jar.",
+      "sources": [
+        {
+          "label": "WorldCore README",
+          "path": "C:/Github/Echo/addons/echoworldcore/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README lists region, hazard, marker, discovery, and map feed services",
+          "path": "C:/Github/Echo/addons/echoworldcore/README.md",
+          "detail": "The module has an explicit shared-world contract."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echorendercore",
+      "id": "rendercore-visual-profile-runtime",
+      "title": "Visual Profile Runtime",
+      "category": "Rendering",
+      "status": "implemented",
+      "playerPromise": "Drive data-defined visual states, animation, glow overlays, particle profiles, and debug validation for ECHO modules.",
+      "loreContext": "ECHO visual feedback needs one render vocabulary for hazards, machines, mission states, and world markers.",
+      "implementationSummary": "RenderCore documentation and versioned metadata identify a shared rendering/animation module with validation and debug tools.",
+      "nextAction": "Run RenderCore scoped scan and include the 1.0.0 jar in the next clean modpack promotion.",
+      "sources": [
+        {
+          "label": "RenderCore README",
+          "path": "C:/Github/Echo/addons/echorendercore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "RenderCore gradle metadata",
+          "path": "C:/Github/Echo/addons/echorendercore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README describes visual states, animations, overlays, particles, validation, and debug tools",
+          "path": "C:/Github/Echo/addons/echorendercore/README.md",
+          "detail": "The module is source-backed and buildable as a release addon."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoholomap",
+      "id": "holomap-terminal-map",
+      "title": "Terminal HoloMap",
+      "category": "Map Intel",
+      "status": "implemented",
+      "playerPromise": "Show crash sites, routes, hazards, missions, bases, orbital overlays, anomalies, and drone scan markers in the Terminal.",
+      "loreContext": "The HoloMap gives field operators a living picture of the wasteland instead of a static checklist.",
+      "implementationSummary": "The README describes the Terminal command-map tab and telemetry surfaces, and the module is now part of the release addon set.",
+      "nextAction": "Run HoloMap scoped scan and GameTests before release promotion.",
+      "sources": [
+        {
+          "label": "HoloMap README",
+          "path": "C:/Github/Echo/addons/echoholomap/README.md",
+          "section": "Overview"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README names map layers for sites, routes, hazards, missions, bases, overlays, anomalies, and drones",
+          "path": "C:/Github/Echo/addons/echoholomap/README.md",
+          "detail": "The player-facing map promise is documented."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoindex",
+      "id": "index-shared-archive-browser",
+      "title": "Shared Archive Browser",
+      "category": "Terminal Intel",
+      "status": "implemented",
+      "playerPromise": "Browse item, recipe, usage, tutorial, lore, research, and archive records through a shared Index surface.",
+      "loreContext": "The Index is ECHO knowledge made searchable: salvage, recipes, machines, tutorials, and research in one field archive.",
+      "implementationSummary": "Source code registers the Index service, builtin provider, recipe provider, and Terminal integration with a shared archive summary.",
+      "nextAction": "Run Index scoped scan and GameTests before promoting the jar.",
+      "sources": [
+        {
+          "label": "ECHO Index source",
+          "path": "C:/Github/Echo/addons/echoindex/src/main/java/com/knoxhack/echoindex/EchoIndex.java",
+          "section": "Service registration"
+        },
+        {
+          "label": "Index Terminal integration",
+          "path": "C:/Github/Echo/addons/echoindex/src/main/java/com/knoxhack/echoindex/integration/IndexTerminalClientIntegration.java",
+          "section": "Terminal tab"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Index registers service, builtin provider, recipe provider, and Terminal integration",
+          "path": "C:/Github/Echo/addons/echoindex/src/main/java/com/knoxhack/echoindex/EchoIndex.java",
+          "detail": "The source summary is Shared item, recipe, usage, and archive browser."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoarmory",
+      "id": "armory-loadout-readiness",
+      "title": "Armory Loadout Readiness",
+      "category": "Combat",
+      "status": "implemented",
+      "playerPromise": "Equip modular weapons, armor, augments, energy cores, mission loadouts, faction gear, and Terminal-managed combat readiness.",
+      "loreContext": "Armory turns ECHO recovery into survivable combat preparation for toxic, radiation, fracture, convoy, and orbital threats.",
+      "implementationSummary": "Mod metadata describes the module promise, resources define gear/modules/loadouts/synergies, and Terminal integration registers an Armory tab with readiness metrics and actions.",
+      "nextAction": "Run Armory scoped scan and GameTests, then promote after Minecraft releases the current mods folder locks.",
+      "sources": [
+        {
+          "label": "Armory mod metadata",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/resources/META-INF/neoforge.mods.toml",
+          "section": "Description"
+        },
+        {
+          "label": "Armory Terminal integration",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/java/com/knoxhack/echoarmory/integration/ArmoryTerminalClientIntegration.java",
+          "section": "Terminal tab"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "resource",
+          "label": "Gear, modules, logistics loadouts, and synergies are defined as data resources",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/resources/data/echoarmory",
+          "detail": "Resources include armory gear, modules, loadouts, logistics presets, faction unlocks, and synergies."
+        },
+        {
+          "kind": "source",
+          "label": "Terminal Armory tab reports modules, protection, loadouts, and combat actions",
+          "path": "C:/Github/Echo/addons/echoarmory/src/main/java/com/knoxhack/echoarmory/integration/ArmoryTerminalClientIntegration.java",
+          "detail": "The integration exposes scan, equip, install, stance, recharge, preview, and logistics actions."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echolens",
+      "id": "lens-scanner-hud",
+      "title": "Scanner HUD",
+      "category": "Field Intel",
+      "status": "implemented",
+      "playerPromise": "Inspect blocks, entities, fluids, machines, progression, and addon context through a compact modern ECHO HUD.",
+      "loreContext": "Lens makes field intelligence immediate: operators read the world directly instead of opening a separate archive for every target.",
+      "implementationSummary": "Gradle metadata describes the scanner HUD, Index resources document the player-facing overview, GameTests cover provider ordering and block/entity sections, and Core integration registers the inspection service.",
+      "nextAction": "Run Lens scoped scan and GameTests, then include echolens-1.0.0.jar in the next clean modpack promotion.",
+      "sources": [
+        {
+          "label": "Lens gradle metadata",
+          "path": "C:/Github/Echo/addons/echolens/gradle.properties",
+          "section": "Module description"
+        },
+        {
+          "label": "Lens Index entry",
+          "path": "C:/Github/Echo/addons/echolens/src/main/resources/data/echolens/echo_index/entries/lens_overview.json",
+          "section": "Overview"
+        },
+        {
+          "label": "Lens Core integration",
+          "path": "C:/Github/Echo/addons/echolens/src/main/java/com/knoxhack/echolens/integration/LensCoreIntegration.java",
+          "section": "Addon chapter and service registration"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "resource",
+          "label": "Index entry says Lens scans blocks, entities, and fluids",
+          "path": "C:/Github/Echo/addons/echolens/src/main/resources/data/echolens/echo_index/entries/lens_overview.json",
+          "detail": "The overview also documents safe public inventory behavior."
+        },
+        {
+          "kind": "test",
+          "label": "GameTests cover provider ordering and block/entity section generation",
+          "path": "C:/Github/Echo/addons/echolens/src/main/java/com/knoxhack/echolens/test/ModGameTests.java",
+          "detail": "Tests assert provider order, duplicate rejection, safe failure handling, block sections, entity sections, and Core registration."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echomultiblockcore",
+      "id": "multiblockcore-facility-runtime",
+      "title": "Facility Multiblock Runtime",
+      "category": "Facility Automation",
+      "status": "implemented",
+      "playerPromise": "Form, validate, diagnose, persist, and operate facility-scale multiblocks with runtime snapshots, robotic task queues, workcells, integrity, blueprints, and optional ECHO UI/intel integrations.",
+      "loreContext": "MultiblockCore turns ECHO facilities from static ruins into rebuildable infrastructure with controllers, diagnostics, robotics, maps, scans, and mission-facing state.",
+      "implementationSummary": "The README documents v3 integration services, JSON definitions, controller runtime behavior, persisted task queues, diagnostics, public APIs, map markers, scan providers, and debug commands.",
+      "nextAction": "Run MultiblockCore scoped scan, GameTests, and promote echomultiblockcore-1.0.0.jar in the next clean modpack update.",
+      "sources": [
+        {
+          "label": "MultiblockCore README",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/README.md",
+          "section": "v3 Integration Core"
+        },
+        {
+          "label": "MultiblockCore smoke test",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/SMOKE_TEST.md",
+          "section": "Smoke coverage"
+        },
+        {
+          "label": "MultiblockCore metadata",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README documents integration facade, validation diagnostics, runtime snapshots, and task queues",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/README.md",
+          "detail": "The module has a concrete public API and runtime behavior for facility multiblocks."
+        },
+        {
+          "kind": "doc",
+          "label": "Smoke notes cover module validation and runtime acceptance",
+          "path": "C:/Github/Echo/addons/echomultiblockcore/SMOKE_TEST.md",
+          "detail": "The smoke test document gives release-facing verification steps."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoruntimeguard",
+      "id": "runtimeguard-performance-manager",
+      "title": "Runtime Performance Manager",
+      "category": "Performance Services",
+      "status": "implemented",
+      "playerPromise": "Keep the ECHO modpack responsive with runtime modes, honest TPS/MSPT/FPS reports, smart tick budgets, particle budgets, multiblock validation queues, network accounting, and opt-in throttles for expensive addon work.",
+      "loreContext": "RuntimeGuard is the operational layer that keeps ECHO field systems from overwhelming fragile recovered hardware while still explaining what it can and cannot observe.",
+      "implementationSummary": "The README documents TPS/MSPT monitoring, client FPS monitoring, Potato/Balanced/Cinematic/Server/Debug/Emergency modes, smart tick recommendations, particle budgeting, multiblock validation queueing, network budget tracking, block entity/entity throttles, reports, commands, public APIs, and optional MultiblockCore/HoloMap/Lens integrations.",
+      "nextAction": "Run RuntimeGuard scoped scan, GameTests, and promote echoruntimeguard-1.0.0.jar in the next clean modpack update.",
+      "sources": [
+        {
+          "label": "RuntimeGuard README",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "RuntimeGuard smoke test",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/SMOKE_TEST.md",
+          "section": "Smoke coverage"
+        },
+        {
+          "label": "RuntimeGuard metadata",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README documents runtime modes, smart ticks, particle budgets, validation queues, and network budgets",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/README.md",
+          "detail": "The module has concrete player/admin commands and opt-in APIs for first-party addon performance management."
+        },
+        {
+          "kind": "doc",
+          "label": "Smoke notes cover commands, reports, permissions, and addon integrations",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/SMOKE_TEST.md",
+          "detail": "The smoke test backs release validation for commands, RuntimeGuard reports, server-safe behavior, and MultiblockCore/HoloMap/Lens integrations."
+        },
+        {
+          "kind": "source",
+          "label": "RuntimeGuard API and runtime services exist in source",
+          "path": "C:/Github/Echo/addons/echoruntimeguard/src/main/java/com/knoxhack/echoruntimeguard",
+          "detail": "Source includes RuntimeGuardServices, RuntimeGuardProfiler, SmartTickService, ParticleBudgetService, MultiblockValidationScheduler, NetworkBudgetService, and command/report classes."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoblockworks",
+      "id": "blockworks-structural-library",
+      "title": "Structural Block Library",
+      "category": "World Building",
+      "status": "implemented",
+      "playerPromise": "Build ECHO bases, ruined cities, crash zones, convoy depots, orbital interiors, Terminal rooms, Blackbox vaults, Nexus structures, reclamation domes, and MultiblockCore casings with first-party block families and conversion tools.",
+      "loreContext": "Blockworks gives every ECHO chapter a consistent material language, from ash-choked starter ruins to orbital hulls, Blackbox vaults, Nexus crystal, and reclamation glass.",
+      "implementationSummary": "The README documents ten block families, structural variants, detail blocks, Blockworks Table conversion, Pattern Cutter cycling, tags, recipes, palette kits, rare showcase worldgen, procedural scatter, Index integration, and development tooling.",
+      "nextAction": "Run Blockworks scoped scan, GameTests, asset/resource validation, and promote echoblockworks-1.0.0.jar in the next clean modpack update.",
+      "sources": [
+        {
+          "label": "Blockworks README",
+          "path": "C:/Github/Echo/addons/echoblockworks/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "Blockworks smoke test",
+          "path": "C:/Github/Echo/addons/echoblockworks/SMOKE_TEST.md",
+          "section": "Smoke coverage"
+        },
+        {
+          "label": "Blockworks metadata",
+          "path": "C:/Github/Echo/addons/echoblockworks/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README lists block families, detail blocks, conversion systems, palette kits, and worldgen",
+          "path": "C:/Github/Echo/addons/echoblockworks/README.md",
+          "detail": "The module has concrete player-facing building content and generated resources."
+        },
+        {
+          "kind": "doc",
+          "label": "Smoke notes cover Blockworks release validation",
+          "path": "C:/Github/Echo/addons/echoblockworks/SMOKE_TEST.md",
+          "detail": "The smoke test document backs scoped QA and release acceptance."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echothemecore",
+      "id": "themecore-cyberglass-service",
+      "title": "CyberGlass Theme Service",
+      "category": "Visual Identity",
+      "status": "implemented",
+      "playerPromise": "Apply a consistent ECHO visual language to Terminal, SignalOS, HoloMap, Lens, SoundCore, Blockworks, RenderCore, and safe vanilla UI accents.",
+      "loreContext": "ThemeCore is the recovered presentation layer that lets every ECHO interface feel like part of the same command stack.",
+      "implementationSummary": "ThemeCore documentation describes datapack themes, CyberGlass and Nexus defaults, config groups, commands, optional provider APIs, Terminal defaulting, and vanilla UI safety behavior.",
+      "nextAction": "Run ThemeCore scoped scan, GameTests, and the CyberGlass smoke test before release promotion.",
+      "sources": [
+        {
+          "label": "ThemeCore README",
+          "path": "C:/Github/Echo/addons/echothemecore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "ThemeCore smoke test",
+          "path": "C:/Github/Echo/addons/echothemecore/SMOKE_TEST.md",
+          "section": "CyberGlass default smoke test"
+        },
+        {
+          "label": "ThemeCore metadata",
+          "path": "C:/Github/Echo/addons/echothemecore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "doc",
+          "label": "README documents theme loading, commands, provider APIs, and vanilla UI skinning",
+          "path": "C:/Github/Echo/addons/echothemecore/README.md",
+          "detail": "The module exposes shared theme tokens and optional-safe integrations for first-party UI and visual systems."
+        },
+        {
+          "kind": "test",
+          "label": "GameTests exist for ThemeCore",
+          "path": "C:/Github/Echo/addons/echothemecore/src/main/java/com/knoxhack/echothemecore/test/ModGameTests.java",
+          "detail": "The module has source-level GameTest coverage for release validation."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoplayercore",
+      "id": "playercore-travel-utility",
+      "title": "Player Travel Utility Layer",
+      "category": "Player Services",
+      "status": "implemented",
+      "playerPromise": "Use homes, back, random teleport, spawn, cooldowns, and ECHO command aliases without depending on a specific chapter addon.",
+      "loreContext": "PlayerCore handles the practical operator movement tools that keep long ECHO expeditions readable and recoverable.",
+      "implementationSummary": "PlayerCore documentation and source define homes, teleport history, death return, RTP safety, persistent saved data, command aliases, config, and optional integration hooks.",
+      "nextAction": "Run PlayerCore scoped scan, GameTests, and smoke test before promoting the jar.",
+      "sources": [
+        {
+          "label": "PlayerCore README",
+          "path": "C:/Github/Echo/addons/echoplayercore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "PlayerCore smoke test",
+          "path": "C:/Github/Echo/addons/echoplayercore/SMOKE_TEST.md",
+          "section": "Smoke coverage"
+        },
+        {
+          "label": "PlayerCore commands",
+          "path": "C:/Github/Echo/addons/echoplayercore/src/main/java/com/knoxhack/echoplayercore/command/PlayerCoreCommands.java",
+          "section": "Commands"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Travel commands and saved data exist in source",
+          "path": "C:/Github/Echo/addons/echoplayercore/src/main/java/com/knoxhack/echoplayercore",
+          "detail": "Source includes home, warp, back, spawn, RTP, TPA, events, config, and saved-data classes."
+        },
+        {
+          "kind": "test",
+          "label": "GameTests exist for PlayerCore",
+          "path": "C:/Github/Echo/addons/echoplayercore/src/main/java/com/knoxhack/echoplayercore/test/ModGameTests.java",
+          "detail": "The smoke and GameTest paths cover persistence and command behavior."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echopowergrid",
+      "id": "powergrid-ep-network",
+      "title": "EP Power Network",
+      "category": "Power Systems",
+      "status": "implemented",
+      "playerPromise": "Build generators, batteries, cables, substations, breakers, meters, and consumers that power ECHO facilities with visible brownout and overload states.",
+      "loreContext": "PowerGrid turns post-Gridfall recovery into a literal restoration of energy infrastructure for terminals, launchpads, machines, and outposts.",
+      "implementationSummary": "PowerGrid documentation and source define EP storage, generators, battery tiers, cables, path-aware route/loss diagnostics, network state, brownout/overload alerts, substation policies, drawPower APIs, network/node/alert summaries, Terminal dashboard wiring, HoloMap markers, MultiblockCore provider registration, diagnostics, commands, blocks, items, and GameTests.",
+      "nextAction": "Run PowerGrid GameTests and the full grid smoke test before promoting the 1.0.0 jar.",
+      "sources": [
+        {
+          "label": "PowerGrid README",
+          "path": "C:/Github/Echo/addons/echopowergrid/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "PowerGrid smoke test",
+          "path": "C:/Github/Echo/addons/echopowergrid/SMOKE_TEST.md",
+          "section": "Basic Grid"
+        },
+        {
+          "label": "PowerGrid API source",
+          "path": "C:/Github/Echo/addons/echopowergrid/src/main/java/com/knoxhack/echopowergrid/api",
+          "section": "EP network API"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Power API, blocks, block entities, and commands exist in source",
+          "path": "C:/Github/Echo/addons/echopowergrid/src/main/java/com/knoxhack/echopowergrid",
+          "detail": "Source includes EchoPowerGridApi draw, route, alert, node, and network summary APIs, generators, batteries, cables, consumers, substations, meters, breakers, config, network management, sync packets, Terminal/HoloMap/Lens providers, and commands."
+        },
+        {
+          "kind": "test",
+          "label": "PowerGrid GameTests exist",
+          "path": "C:/Github/Echo/addons/echopowergrid/src/main/java/com/knoxhack/echopowergrid/test/PowerGridGameTests.java",
+          "detail": "GameTests cover network flow, drawPower simulation/commit behavior, FE transaction rollback, route summaries, 1.0.0 node summaries, Terminal packet creation, and HoloMap marker output."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echosoundcore",
+      "id": "soundcore-adaptive-audio",
+      "title": "Adaptive Audio Framework",
+      "category": "Audio",
+      "status": "implemented",
+      "playerPromise": "Hear adaptive music, ambience, mission stingers, chapter themes, and UI sound cues that respond to ECHO context.",
+      "loreContext": "SoundCore gives each ruined route, faction pressure, and command surface an audible identity inside the same ecosystem.",
+      "implementationSummary": "SoundCore documentation and source define adaptive music managers, ambience layers, sound events, profile reload listeners, public APIs, context stacks, commands, and optional integrations.",
+      "nextAction": "Run SoundCore scoped scan and add smoke/GameTest evidence before promoting the jar.",
+      "sources": [
+        {
+          "label": "SoundCore README",
+          "path": "C:/Github/Echo/addons/echosoundcore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "SoundCore API source",
+          "path": "C:/Github/Echo/addons/echosoundcore/src/main/java/com/knoxhack/echosoundcore/api",
+          "section": "Audio APIs"
+        },
+        {
+          "label": "SoundCore metadata",
+          "path": "C:/Github/Echo/addons/echosoundcore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Adaptive music, ambience, data reload, and integration source exists",
+          "path": "C:/Github/Echo/addons/echosoundcore/src/main/java/com/knoxhack/echosoundcore",
+          "detail": "Source includes SoundCoreApi, SoundCoreClientApi, music and ambience managers, profile reload listeners, commands, and optional module integrations."
+        },
+        {
+          "kind": "resource",
+          "label": "Sound resources are defined under the SoundCore namespace",
+          "path": "C:/Github/Echo/addons/echosoundcore/src/main/resources/assets/echosoundcore",
+          "detail": "The module owns first-party sound definitions and expected audio resource paths."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echotutorialcore",
+      "id": "tutorialcore-contextual-guidance",
+      "title": "Contextual Guidance System",
+      "category": "Onboarding",
+      "status": "implemented",
+      "playerPromise": "Receive guide cards, contextual hints, mistake feedback, beginner modes, and Terminal help that make deep ECHO systems readable.",
+      "loreContext": "TutorialCore is ECHO-7 translating dangerous field procedures into timely operator guidance instead of detached documentation.",
+      "implementationSummary": "TutorialCore documentation and source define guide modes, tutorial cards, hints, mistake detection, data reloads, command controls, client display, player data, and Terminal-style help surfaces.",
+      "nextAction": "Run TutorialCore scoped scan and smoke test, then add GameTest evidence when available.",
+      "sources": [
+        {
+          "label": "TutorialCore README",
+          "path": "C:/Github/Echo/addons/echotutorialcore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "TutorialCore smoke test",
+          "path": "C:/Github/Echo/addons/echotutorialcore/SMOKE_TEST.md",
+          "section": "Smoke coverage"
+        },
+        {
+          "label": "TutorialCore API source",
+          "path": "C:/Github/Echo/addons/echotutorialcore/src/main/java/com/knoxhack/echotutorialcore/api",
+          "section": "Guide APIs"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Guide cards, hints, flows, player data, commands, and integrations exist in source",
+          "path": "C:/Github/Echo/addons/echotutorialcore/src/main/java/com/knoxhack/echotutorialcore",
+          "detail": "Source includes TutorialCoreApi, card/hint/flow APIs, config, reload listeners, commands, client display, and integration classes."
+        },
+        {
+          "kind": "doc",
+          "label": "Smoke test covers load, reload, command, and Terminal guide behavior",
+          "path": "C:/Github/Echo/addons/echotutorialcore/SMOKE_TEST.md",
+          "detail": "The module has a documented release verification path."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echorelictech",
+      "id": "relictech-prototype-loot",
+      "title": "Prototype Relic Loot Loop",
+      "category": "Progression Loot",
+      "status": "implemented",
+      "playerPromise": "Recover old-world prototype relics, identify them, repair or stabilize them, and decide when their instability risk is worth using.",
+      "loreContext": "RelicTech turns pre-Gridfall experiments and Nexus-corrupted prototypes into powerful but dangerous artifacts of the collapse.",
+      "implementationSummary": "RelicTech documentation and source define relic categories, tiers, conditions, instability, failure tables, analyzers, workbenches, containment, null batteries, APIs, and GameTests.",
+      "nextAction": "Run RelicTech scoped scan, GameTests, and add smoke notes before promoting the jar.",
+      "sources": [
+        {
+          "label": "RelicTech README",
+          "path": "C:/Github/Echo/addons/echorelictech/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "RelicTech API source",
+          "path": "C:/Github/Echo/addons/echorelictech/src/main/java/com/knoxhack/echorelictech/api",
+          "section": "Relic APIs"
+        },
+        {
+          "label": "RelicTech metadata",
+          "path": "C:/Github/Echo/addons/echorelictech/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Relic APIs, machine blocks, failure tables, and item systems exist in source",
+          "path": "C:/Github/Echo/addons/echorelictech/src/main/java/com/knoxhack/echorelictech",
+          "detail": "Source includes RelicTechApi, relic data, failure tables, analyzer/workbench/containment blocks, null battery systems, commands, and client screens."
+        },
+        {
+          "kind": "test",
+          "label": "RelicTech GameTests exist",
+          "path": "C:/Github/Echo/addons/echorelictech/src/main/java/com/knoxhack/echorelictech/test/RelicTechGameTests.java",
+          "detail": "GameTests back the relic release path."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echoweathercore",
+      "id": "weathercore-atmospheric-hazards",
+      "title": "Atmospheric Hazard Framework",
+      "category": "Weather",
+      "status": "implemented",
+      "playerPromise": "Plan expeditions around ash storms, toxic rain, radiation storms, cryo fronts, heat surges, Nexus signal storms, debris showers, and blackouts.",
+      "loreContext": "WeatherCore makes the broken atmosphere part of the Gridfall aftermath, turning forecasts and shelter into survival decisions.",
+      "implementationSummary": "WeatherCore documentation and source define weather types, phases, severities, scopes, forecasts, route risk, stations, sensors, sirens, route posts, commands, and client config.",
+      "nextAction": "Run WeatherCore scoped scan and add smoke/GameTest evidence before promoting the jar.",
+      "sources": [
+        {
+          "label": "WeatherCore README",
+          "path": "C:/Github/Echo/addons/echoweathercore/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "WeatherCore API source",
+          "path": "C:/Github/Echo/addons/echoweathercore/src/main/java/com/knoxhack/echoweathercore/api",
+          "section": "Weather APIs"
+        },
+        {
+          "label": "WeatherCore metadata",
+          "path": "C:/Github/Echo/addons/echoweathercore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Weather API, station blocks, commands, and client config exist in source",
+          "path": "C:/Github/Echo/addons/echoweathercore/src/main/java/com/knoxhack/echoweathercore",
+          "detail": "Source includes WeatherCoreApi, weather events, forecasts, route risk, station blocks, warning devices, commands, config, and client classes."
+        },
+        {
+          "kind": "resource",
+          "label": "WeatherCore resources exist under the module namespace",
+          "path": "C:/Github/Echo/addons/echoweathercore/src/main/resources",
+          "detail": "The module has first-party resources for weather blocks, items, recipes, loot, tags, and data."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "projectSlug": "echorecovery",
+      "id": "recovery-grave-system",
+      "title": "Grave Recovery System",
+      "category": "Player Recovery",
+      "status": "implemented",
+      "playerPromise": "Recover inventory, armor, and offhand items from graves, use keys and compasses to locate lost gear, and manage death history through commands and UI.",
+      "loreContext": "Recovery turns dangerous ECHO deaths into field recovery operations, with Ashfall naming graves as caches and optional addon hooks adding routes, hazards, records, and extraction support.",
+      "implementationSummary": "Recovery documentation and source define standalone grave creation, grave storage, recover-all networking, commands, config, world data, grave UI, sounds, recipes, advancements, datapack grave types, and optional integrations across the ECHO stack.",
+      "nextAction": "Run Recovery scoped scan, GameTests, and promote echorecovery-1.0.0.jar in the next clean modpack update.",
+      "sources": [
+        {
+          "label": "Recovery README",
+          "path": "C:/Github/Echo/addons/echorecovery/docs/README.md",
+          "section": "Overview"
+        },
+        {
+          "label": "Recovery integrations",
+          "path": "C:/Github/Echo/addons/echorecovery/docs/INTEGRATIONS.md",
+          "section": "Optional Module Hooks"
+        },
+        {
+          "label": "Recovery metadata",
+          "path": "C:/Github/Echo/addons/echorecovery/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Grave, command, config, packet, data, registry, and integration source exists",
+          "path": "C:/Github/Echo/addons/echorecovery/src/main/java/com/knoxhack/echorecovery",
+          "detail": "Source includes the mod entrypoint, death handler, grave manager, commands, config, world data, recover-all packet, client screen, registries, and optional integration dispatcher/classes."
+        },
+        {
+          "kind": "resource",
+          "label": "Recovery resources exist under the module namespace",
+          "path": "C:/Github/Echo/addons/echorecovery/src/main/resources",
+          "detail": "Resources include sounds, blockstates, models, lang, loot, recipes, advancements, item tags, and data-driven recovery grave types."
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "screencore-eui-framework",
+      "title": "Reusable EUI Screen Framework",
+      "category": "UI Framework",
+      "status": "partial",
+      "playerPromise": "Give ECHO modules a shared screen/action/data context layer while allowing modules to run safely when ScreenCore is absent.",
+      "loreContext": "ECHO interfaces need one Cyberglass control grammar without forcing every standalone addon to install the UI framework.",
+      "implementationSummary": "ScreenCore ships action contexts, data contexts, usage documentation, and client-side bridge contracts; 1.0.0 treats it as optional integration unless a module declares it as required.",
+      "nextAction": "Run standalone module smoke tests to catch accidental ScreenCore client classloading.",
+      "sources": [
+        {
+          "label": "ScreenCore usage guide",
+          "path": "C:/Github/Echo/addons/echoscreencore/SCREENCORE_USAGE.md",
+          "section": "Usage"
+        },
+        {
+          "label": "ScreenCore metadata",
+          "path": "C:/Github/Echo/addons/echoscreencore/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ScreenCore source tree exists in the active Gradle workspace",
+          "path": "C:/Github/Echo/addons/echoscreencore/src/main/java",
+          "detail": "The addon is included by settings.gradle and exposes the EUI contracts used by optional client bridges."
+        }
+      ],
+      "order": 1,
+      "projectSlug": "echoscreencore"
+    },
+    {
+      "id": "textureforge-resource-audit",
+      "title": "TextureForge Resource Audit Tools",
+      "category": "Asset Pipeline",
+      "status": "partial",
+      "playerPromise": "Help pack makers audit ECHO texture refresh work, asset specs, and resource-readiness signals from inside the active workspace.",
+      "loreContext": "TextureForge is the workshop layer that keeps ECHO module visuals readable and consistent across the Cyberglass style.",
+      "implementationSummary": "TextureForge ships usage docs, Gradle metadata, source-backed commands, and resource pipeline hooks for texture polish validation.",
+      "nextAction": "Connect the dashboard bridge to the Command Center release-readiness cards and keep generated art manifests current.",
+      "sources": [
+        {
+          "label": "TextureForge usage guide",
+          "path": "C:/Github/Echo/addons/echotextureforge/TEXTUREFORGE_USAGE.md",
+          "section": "Usage"
+        },
+        {
+          "label": "TextureForge metadata",
+          "path": "C:/Github/Echo/addons/echotextureforge/gradle.properties",
+          "section": "Version"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "TextureForge source tree exists in the active Gradle workspace",
+          "path": "C:/Github/Echo/addons/echotextureforge/src/main/java",
+          "detail": "The addon is included by settings.gradle and participates in texture audit tooling."
+        }
+      ],
+      "order": 1,
+      "projectSlug": "echotextureforge"
+    },
+    {
+      "id": "wiki-content-registry",
+      "title": "Wiki Content Registry",
+      "category": "Documentation",
+      "status": "partial",
+      "playerPromise": "Expose ECHO documentation as source-backed wiki collections that can be expanded by modules and datapacks.",
+      "loreContext": "ECHO players need in-world documentation that explains systems without making Ashfall the only entry point.",
+      "implementationSummary": "Wiki is included as an active Gradle addon with metadata, resources, and a content registry surface for EUI-backed articles.",
+      "nextAction": "Add a root README and connect wiki article coverage to the Command Center docs checks.",
+      "sources": [
+        {
+          "label": "Wiki metadata",
+          "path": "C:/Github/Echo/addons/echowiki/gradle.properties",
+          "section": "Version"
+        },
+        {
+          "label": "Wiki resources",
+          "path": "C:/Github/Echo/addons/echowiki/src/main/resources",
+          "section": "Assets and data"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "Wiki source tree exists in the active Gradle workspace",
+          "path": "C:/Github/Echo/addons/echowiki/src/main/java",
+          "detail": "The addon is included by settings.gradle and now has valid pack metadata for resource validation."
+        }
+      ],
+      "order": 1,
+      "projectSlug": "echowiki"
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-creator-platform-templates",
+      "title": "Creator Pack Templates",
+      "category": "Creator Platform",
+      "status": "implemented",
+      "playerPromise": "Let creators generate starter ECHO packs without starting from an empty folder.",
+      "loreContext": "Ashfall remains the first official pack while creators build their own ECHO-powered worlds.",
+      "implementationSummary": "metadata/templates contains validated starter templates for major pack styles and tools/generate_echo_pack.py materializes them.",
+      "nextAction": "Generate and validate a template pack before publishing a custom pack.",
+      "sources": [
+        {
+          "label": "Launcher Pack Builder Contract",
+          "path": "C:/Github/Echo/docs/LAUNCHER_PACK_BUILDER_CONTRACT.md",
+          "section": "Templates"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "validator",
+          "label": "Template validator",
+          "path": "tools/validate_echo_templates.py",
+          "detail": "Validates template IDs, module references, themes, starter files, and export profiles."
+        }
+      ],
+      "order": 900
+    },
+    {
+      "projectSlug": "echo",
+      "id": "echo-creator-validation-tools",
+      "title": "Creator Validation Tools",
+      "category": "Creator Platform",
+      "status": "implemented",
+      "playerPromise": "Give creators readable validation reports before they ship a custom ECHO pack.",
+      "loreContext": "The platform treats creator packs as first-class citizens alongside official packs.",
+      "implementationSummary": "New validators cover pack templates, config presets, theme templates, datapack examples, and echo_pack.json folders with optional JSON output.",
+      "nextAction": "Run the 1.0.0 creator and stabilization validation suite after metadata, template, or pack-surface edits.",
+      "sources": [
+        {
+          "label": "Creator Tooling API",
+          "path": "C:/Github/Echo/docs/CREATOR_TOOLING_API.md",
+          "section": "Validators"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "validator",
+          "label": "Pack validator",
+          "path": "tools/validate_echo_pack.py",
+          "detail": "Validates community and generated starter packs."
+        }
+      ],
+      "order": 901
+    },
+    {
+      "projectSlug": "echoscriptcore",
+      "id": "echoscriptcore-creator-docs",
+      "title": "ScriptCore Creator Documentation",
+      "category": "Creator Platform",
+      "status": "implemented",
+      "playerPromise": "JSON-first campaign authoring framework for missions, lore, scans, maps, weather events, tutorials, dialogue, endings, recipe unlocks, and generic condition/action flows.",
+      "loreContext": "Creator tooling stays generic so Ashfall remains Official ECHO Pack #1 rather than a hard dependency.",
+      "implementationSummary": "ECHO: ScriptCore is represented in Command Center seed data, docs, metadata, and validation reports.",
+      "nextAction": "Keep docs and module metadata synchronized with settings.gradle and release validators.",
+      "sources": [
+        {
+          "label": "ScriptCore README",
+          "path": "C:/Github/Echo/addons/echoscriptcore/README.md",
+          "section": "Standalone Use"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "metadata",
+          "label": "ScriptCore module seed",
+          "path": "src/shared/seed-data.json",
+          "detail": "echoscriptcore is a first-class ECHO workspace project for release validation."
+        }
+      ],
+      "order": 200
+    },
+    {
+      "projectSlug": "echocreatorcore",
+      "id": "echocreatorcore-creator-docs",
+      "title": "CreatorCore Creator Documentation",
+      "category": "Creator Platform",
+      "status": "implemented",
+      "playerPromise": "In-game creator dashboard, validation center, adapter registry, draft store, and export foundation for ECHO-powered modpacks.",
+      "loreContext": "Creator tooling stays generic so Ashfall remains Official ECHO Pack #1 rather than a hard dependency.",
+      "implementationSummary": "ECHO: CreatorCore is represented in Command Center seed data, docs, metadata, and validation reports.",
+      "nextAction": "Keep docs and module metadata synchronized with settings.gradle and release validators.",
+      "sources": [
+        {
+          "label": "CreatorCore README",
+          "path": "C:/Github/Echo/addons/echocreatorcore/README.md",
+          "section": "Standalone Use"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "metadata",
+          "label": "CreatorCore module seed",
+          "path": "src/shared/seed-data.json",
+          "detail": "echocreatorcore is a first-class ECHO workspace project for release validation."
+        }
+      ],
+      "order": 200
+    },
+    {
+      "projectSlug": "echonpcore",
+      "id": "npcore-data-driven-npcs",
+      "title": "Data-Driven NPC Runtime",
+      "category": "NPC Services",
+      "status": "partial",
+      "playerPromise": "Let packs define ECHO NPC profiles, dialogue, trades, services, and villager replacement through reusable data and API hooks.",
+      "loreContext": "NPCore gives post-Gridfall settlements and route crews a shared character layer without tying the runtime to Ashfall-specific content.",
+      "implementationSummary": "Module metadata, commands, public API flags, and datapack support are registered for NPCore; release validation treats it as an experimental workspace addon.",
+      "nextAction": "Run NPCore scoped build, resource validation, and GameTests before promoting launcher-visible metadata.",
+      "sources": [
+        {
+          "label": "NPCore metadata",
+          "path": "C:/Github/Echo/metadata/modules/echonpcore.json",
+          "section": "Module description"
+        },
+        {
+          "label": "NPCore module",
+          "path": "C:/Github/Echo/addons/echonpcore",
+          "section": "Workspace addon"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "metadata",
+          "label": "NPCore declares datapack, command, UI, and public API support",
+          "path": "C:/Github/Echo/metadata/modules/echonpcore.json",
+          "detail": "The module remains experimental and not launcher-visible for the 1.0.0 public beta lock."
+        }
+      ],
+      "order": 200
+    },
+    {
+      "projectSlug": "echocommunitybridge",
+      "id": "echocommunitybridge-command-center-coverage",
+      "title": "ECHO: Community Bridge Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Community Bridge is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Community Bridge remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Community Bridge is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Community Bridge metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocommunitybridge/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Community Bridge seeded project path",
+          "path": "addons/echocommunitybridge"
+        }
+      ],
+      "order": 902
+    },
+    {
+      "projectSlug": "echopresencelink",
+      "id": "echopresencelink-command-center-coverage",
+      "title": "ECHO: Presence Link Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Presence Link is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Presence Link remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Presence Link is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Presence Link metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echopresencelink/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Presence Link seeded project path",
+          "path": "addons/echopresencelink"
+        }
+      ],
+      "order": 903
+    },
+    {
+      "projectSlug": "echoplatformcore",
+      "id": "echoplatformcore-command-center-coverage",
+      "title": "ECHO: PlatformCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: PlatformCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: PlatformCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: PlatformCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: PlatformCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoplatformcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: PlatformCore seeded project path",
+          "path": "addons/echoplatformcore"
+        }
+      ],
+      "order": 904
+    },
+    {
+      "projectSlug": "echoadaptercore",
+      "id": "echoadaptercore-command-center-coverage",
+      "title": "ECHO: AdapterCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: AdapterCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: AdapterCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: AdapterCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: AdapterCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoadaptercore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: AdapterCore seeded project path",
+          "path": "addons/echoadaptercore"
+        }
+      ],
+      "order": 905
+    },
+    {
+      "projectSlug": "echoschemacore",
+      "id": "echoschemacore-command-center-coverage",
+      "title": "ECHO: SchemaCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: SchemaCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: SchemaCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: SchemaCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: SchemaCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoschemacore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: SchemaCore seeded project path",
+          "path": "addons/echoschemacore"
+        }
+      ],
+      "order": 906
+    },
+    {
+      "projectSlug": "echovalidationcore",
+      "id": "echovalidationcore-command-center-coverage",
+      "title": "ECHO: ValidationCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: ValidationCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: ValidationCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: ValidationCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: ValidationCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echovalidationcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: ValidationCore seeded project path",
+          "path": "addons/echovalidationcore"
+        }
+      ],
+      "order": 907
+    },
+    {
+      "projectSlug": "echopackcore",
+      "id": "echopackcore-command-center-coverage",
+      "title": "ECHO: PackCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: PackCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: PackCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: PackCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: PackCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echopackcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: PackCore seeded project path",
+          "path": "addons/echopackcore"
+        }
+      ],
+      "order": 908
+    },
+    {
+      "projectSlug": "echometadatacore",
+      "id": "echometadatacore-command-center-coverage",
+      "title": "ECHO: MetadataCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: MetadataCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: MetadataCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: MetadataCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: MetadataCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echometadatacore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: MetadataCore seeded project path",
+          "path": "addons/echometadatacore"
+        }
+      ],
+      "order": 909
+    },
+    {
+      "projectSlug": "echomodulegraph",
+      "id": "echomodulegraph-command-center-coverage",
+      "title": "ECHO: ModuleGraph Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: ModuleGraph is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: ModuleGraph remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: ModuleGraph is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: ModuleGraph metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echomodulegraph/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: ModuleGraph seeded project path",
+          "path": "addons/echomodulegraph"
+        }
+      ],
+      "order": 910
+    },
+    {
+      "projectSlug": "echohealthcore",
+      "id": "echohealthcore-command-center-coverage",
+      "title": "ECHO: HealthCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: HealthCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: HealthCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: HealthCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: HealthCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echohealthcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: HealthCore seeded project path",
+          "path": "addons/echohealthcore"
+        }
+      ],
+      "order": 911
+    },
+    {
+      "projectSlug": "echoagentcore",
+      "id": "echoagentcore-command-center-coverage",
+      "title": "ECHO: AgentCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: AgentCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: AgentCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: AgentCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: AgentCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoagentcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: AgentCore seeded project path",
+          "path": "addons/echoagentcore"
+        }
+      ],
+      "order": 912
+    },
+    {
+      "projectSlug": "echobridgecore",
+      "id": "echobridgecore-command-center-coverage",
+      "title": "ECHO: BridgeCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: BridgeCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: BridgeCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: BridgeCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: BridgeCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echobridgecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: BridgeCore seeded project path",
+          "path": "addons/echobridgecore"
+        }
+      ],
+      "order": 913
+    },
+    {
+      "projectSlug": "echocontentcore",
+      "id": "echocontentcore-command-center-coverage",
+      "title": "ECHO: ContentCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: ContentCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: ContentCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: ContentCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: ContentCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocontentcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: ContentCore seeded project path",
+          "path": "addons/echocontentcore"
+        }
+      ],
+      "order": 914
+    },
+    {
+      "projectSlug": "echoassetcore",
+      "id": "echoassetcore-command-center-coverage",
+      "title": "ECHO: AssetCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: AssetCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: AssetCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: AssetCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: AssetCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoassetcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: AssetCore seeded project path",
+          "path": "addons/echoassetcore"
+        }
+      ],
+      "order": 915
+    },
+    {
+      "projectSlug": "echoreportcore",
+      "id": "echoreportcore-command-center-coverage",
+      "title": "ECHO: ReportCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: ReportCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: ReportCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: ReportCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: ReportCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoreportcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: ReportCore seeded project path",
+          "path": "addons/echoreportcore"
+        }
+      ],
+      "order": 916
+    },
+    {
+      "projectSlug": "echopowercore",
+      "id": "echopowercore-command-center-coverage",
+      "title": "ECHO: PowerCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: PowerCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: PowerCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: PowerCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: PowerCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echopowercore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: PowerCore seeded project path",
+          "path": "addons/echopowercore"
+        }
+      ],
+      "order": 917
+    },
+    {
+      "projectSlug": "echomachinecore",
+      "id": "echomachinecore-command-center-coverage",
+      "title": "ECHO: MachineCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: MachineCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: MachineCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: MachineCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: MachineCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echomachinecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: MachineCore seeded project path",
+          "path": "addons/echomachinecore"
+        }
+      ],
+      "order": 918
+    },
+    {
+      "projectSlug": "echologisticscore",
+      "id": "echologisticscore-command-center-coverage",
+      "title": "ECHO: LogisticsCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: LogisticsCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: LogisticsCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: LogisticsCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: LogisticsCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echologisticscore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: LogisticsCore seeded project path",
+          "path": "addons/echologisticscore"
+        }
+      ],
+      "order": 919
+    },
+    {
+      "projectSlug": "echovehiclecore",
+      "id": "echovehiclecore-command-center-coverage",
+      "title": "ECHO: VehicleCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: VehicleCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: VehicleCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: VehicleCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: VehicleCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echovehiclecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: VehicleCore seeded project path",
+          "path": "addons/echovehiclecore"
+        }
+      ],
+      "order": 920
+    },
+    {
+      "projectSlug": "echobiomecore",
+      "id": "echobiomecore-command-center-coverage",
+      "title": "ECHO: BiomeCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: BiomeCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: BiomeCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: BiomeCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: BiomeCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echobiomecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: BiomeCore seeded project path",
+          "path": "addons/echobiomecore"
+        }
+      ],
+      "order": 921
+    },
+    {
+      "projectSlug": "echoatmospherecore",
+      "id": "echoatmospherecore-command-center-coverage",
+      "title": "ECHO: AtmosphereCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: AtmosphereCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: AtmosphereCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: AtmosphereCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: AtmosphereCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoatmospherecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: AtmosphereCore seeded project path",
+          "path": "addons/echoatmospherecore"
+        }
+      ],
+      "order": 922
+    },
+    {
+      "projectSlug": "echocinematiccore",
+      "id": "echocinematiccore-command-center-coverage",
+      "title": "ECHO: CinematicCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CinematicCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CinematicCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CinematicCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CinematicCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocinematiccore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CinematicCore seeded project path",
+          "path": "addons/echocinematiccore"
+        }
+      ],
+      "order": 923
+    },
+    {
+      "projectSlug": "echocameracore",
+      "id": "echocameracore-command-center-coverage",
+      "title": "ECHO: CameraCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CameraCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CameraCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CameraCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CameraCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocameracore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CameraCore seeded project path",
+          "path": "addons/echocameracore"
+        }
+      ],
+      "order": 924
+    },
+    {
+      "projectSlug": "echoinputcore",
+      "id": "echoinputcore-command-center-coverage",
+      "title": "ECHO: InputCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: InputCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: InputCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: InputCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: InputCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoinputcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: InputCore seeded project path",
+          "path": "addons/echoinputcore"
+        }
+      ],
+      "order": 925
+    },
+    {
+      "projectSlug": "echorecipecore",
+      "id": "echorecipecore-command-center-coverage",
+      "title": "ECHO: RecipeCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: RecipeCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: RecipeCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: RecipeCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: RecipeCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echorecipecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: RecipeCore seeded project path",
+          "path": "addons/echorecipecore"
+        }
+      ],
+      "order": 926
+    },
+    {
+      "projectSlug": "echoprogressioncore",
+      "id": "echoprogressioncore-command-center-coverage",
+      "title": "ECHO: ProgressionCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: ProgressionCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: ProgressionCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: ProgressionCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: ProgressionCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoprogressioncore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: ProgressionCore seeded project path",
+          "path": "addons/echoprogressioncore"
+        }
+      ],
+      "order": 927
+    },
+    {
+      "projectSlug": "echosocialcore",
+      "id": "echosocialcore-command-center-coverage",
+      "title": "ECHO: SocialCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: SocialCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: SocialCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: SocialCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: SocialCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echosocialcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: SocialCore seeded project path",
+          "path": "addons/echosocialcore"
+        }
+      ],
+      "order": 928
+    },
+    {
+      "projectSlug": "echoeconomycore",
+      "id": "echoeconomycore-command-center-coverage",
+      "title": "ECHO: EconomyCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: EconomyCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: EconomyCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: EconomyCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: EconomyCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoeconomycore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: EconomyCore seeded project path",
+          "path": "addons/echoeconomycore"
+        }
+      ],
+      "order": 929
+    },
+    {
+      "projectSlug": "echolootcore",
+      "id": "echolootcore-command-center-coverage",
+      "title": "ECHO: LootCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: LootCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: LootCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: LootCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: LootCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echolootcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: LootCore seeded project path",
+          "path": "addons/echolootcore"
+        }
+      ],
+      "order": 930
+    },
+    {
+      "projectSlug": "echostructurecore",
+      "id": "echostructurecore-command-center-coverage",
+      "title": "ECHO: StructureCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: StructureCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: StructureCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: StructureCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: StructureCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echostructurecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: StructureCore seeded project path",
+          "path": "addons/echostructurecore"
+        }
+      ],
+      "order": 931
+    },
+    {
+      "projectSlug": "echostatuscore",
+      "id": "echostatuscore-command-center-coverage",
+      "title": "ECHO: StatusCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: StatusCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: StatusCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: StatusCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: StatusCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echostatuscore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: StatusCore seeded project path",
+          "path": "addons/echostatuscore"
+        }
+      ],
+      "order": 932
+    },
+    {
+      "projectSlug": "echocombatcore",
+      "id": "echocombatcore-command-center-coverage",
+      "title": "ECHO: CombatCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CombatCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CombatCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CombatCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CombatCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocombatcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CombatCore seeded project path",
+          "path": "addons/echocombatcore"
+        }
+      ],
+      "order": 933
+    },
+    {
+      "projectSlug": "echocreaturecore",
+      "id": "echocreaturecore-command-center-coverage",
+      "title": "ECHO: CreatureCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CreatureCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CreatureCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CreatureCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CreatureCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocreaturecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CreatureCore seeded project path",
+          "path": "addons/echocreaturecore"
+        }
+      ],
+      "order": 934
+    },
+    {
+      "projectSlug": "echospawncore",
+      "id": "echospawncore-command-center-coverage",
+      "title": "ECHO: SpawnCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: SpawnCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: SpawnCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: SpawnCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: SpawnCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echospawncore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: SpawnCore seeded project path",
+          "path": "addons/echospawncore"
+        }
+      ],
+      "order": 935
+    },
+    {
+      "projectSlug": "echoeventcore",
+      "id": "echoeventcore-command-center-coverage",
+      "title": "ECHO: EventCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: EventCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: EventCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: EventCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: EventCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoeventcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: EventCore seeded project path",
+          "path": "addons/echoeventcore"
+        }
+      ],
+      "order": 936
+    },
+    {
+      "projectSlug": "echoencountercore",
+      "id": "echoencountercore-command-center-coverage",
+      "title": "ECHO: EncounterCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: EncounterCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: EncounterCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: EncounterCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: EncounterCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoencountercore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: EncounterCore seeded project path",
+          "path": "addons/echoencountercore"
+        }
+      ],
+      "order": 937
+    },
+    {
+      "projectSlug": "echodifficultycore",
+      "id": "echodifficultycore-command-center-coverage",
+      "title": "ECHO: DifficultyCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: DifficultyCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: DifficultyCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: DifficultyCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: DifficultyCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echodifficultycore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: DifficultyCore seeded project path",
+          "path": "addons/echodifficultycore"
+        }
+      ],
+      "order": 938
+    },
+    {
+      "projectSlug": "echoquestdirector",
+      "id": "echoquestdirector-command-center-coverage",
+      "title": "ECHO: QuestDirector Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: QuestDirector is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: QuestDirector remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: QuestDirector is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: QuestDirector metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoquestdirector/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: QuestDirector seeded project path",
+          "path": "addons/echoquestdirector"
+        }
+      ],
+      "order": 939
+    },
+    {
+      "projectSlug": "echohudcore",
+      "id": "echohudcore-command-center-coverage",
+      "title": "ECHO: HUDCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: HUDCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: HUDCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: HUDCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: HUDCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echohudcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: HUDCore seeded project path",
+          "path": "addons/echohudcore"
+        }
+      ],
+      "order": 940
+    },
+    {
+      "projectSlug": "echonotificationcore",
+      "id": "echonotificationcore-command-center-coverage",
+      "title": "ECHO: NotificationCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: NotificationCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: NotificationCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: NotificationCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: NotificationCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echonotificationcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: NotificationCore seeded project path",
+          "path": "addons/echonotificationcore"
+        }
+      ],
+      "order": 941
+    },
+    {
+      "projectSlug": "echoguidecore",
+      "id": "echoguidecore-command-center-coverage",
+      "title": "ECHO: GuideCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: GuideCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: GuideCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: GuideCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: GuideCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoguidecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: GuideCore seeded project path",
+          "path": "addons/echoguidecore"
+        }
+      ],
+      "order": 942
+    },
+    {
+      "projectSlug": "echocodexcore",
+      "id": "echocodexcore-command-center-coverage",
+      "title": "ECHO: CodexCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CodexCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CodexCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CodexCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CodexCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocodexcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CodexCore seeded project path",
+          "path": "addons/echocodexcore"
+        }
+      ],
+      "order": 943
+    },
+    {
+      "projectSlug": "echolorecore",
+      "id": "echolorecore-command-center-coverage",
+      "title": "ECHO: LoreCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: LoreCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: LoreCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: LoreCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: LoreCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echolorecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: LoreCore seeded project path",
+          "path": "addons/echolorecore"
+        }
+      ],
+      "order": 944
+    },
+    {
+      "projectSlug": "echosignalos",
+      "id": "signalos-command-center-coverage",
+      "title": "SignalOS Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "SignalOS is visible in Command Center module and report workflows.",
+      "loreContext": "SignalOS remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "SignalOS is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep SignalOS metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echosignalos/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "SignalOS seeded project path",
+          "path": "addons/echosignalos"
+        }
+      ],
+      "order": 945
+    },
+    {
+      "projectSlug": "echoarcanacore",
+      "id": "echoarcanacore-command-center-coverage",
+      "title": "ECHO: Arcana Core Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Arcana Core is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Arcana Core remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Arcana Core is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Arcana Core metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoarcanacore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Arcana Core seeded project path",
+          "path": "addons/echoarcanacore"
+        }
+      ],
+      "order": 946
+    },
+    {
+      "projectSlug": "echoarcaneindex",
+      "id": "echoarcaneindex-command-center-coverage",
+      "title": "ECHO: Arcane Index Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Arcane Index is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Arcane Index remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Arcane Index is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Arcane Index metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoarcaneindex/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Arcane Index seeded project path",
+          "path": "addons/echoarcaneindex"
+        }
+      ],
+      "order": 947
+    },
+    {
+      "projectSlug": "echogrimoire",
+      "id": "echogrimoire-command-center-coverage",
+      "title": "ECHO: Grimoire Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Grimoire is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Grimoire remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Grimoire is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Grimoire metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echogrimoire/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Grimoire seeded project path",
+          "path": "addons/echogrimoire"
+        }
+      ],
+      "order": 948
+    },
+    {
+      "projectSlug": "echoritualcore",
+      "id": "echoritualcore-command-center-coverage",
+      "title": "ECHO: RitualCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: RitualCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: RitualCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: RitualCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: RitualCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoritualcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: RitualCore seeded project path",
+          "path": "addons/echoritualcore"
+        }
+      ],
+      "order": 949
+    },
+    {
+      "projectSlug": "echospellcore",
+      "id": "echospellcore-command-center-coverage",
+      "title": "ECHO: SpellCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: SpellCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: SpellCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: SpellCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: SpellCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echospellcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: SpellCore seeded project path",
+          "path": "addons/echospellcore"
+        }
+      ],
+      "order": 950
+    },
+    {
+      "projectSlug": "echocursecore",
+      "id": "echocursecore-command-center-coverage",
+      "title": "ECHO: CurseCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: CurseCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: CurseCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: CurseCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: CurseCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echocursecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: CurseCore seeded project path",
+          "path": "addons/echocursecore"
+        }
+      ],
+      "order": 951
+    },
+    {
+      "projectSlug": "echoaetherworks",
+      "id": "echoaetherworks-command-center-coverage",
+      "title": "ECHO: AetherWorks Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: AetherWorks is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: AetherWorks remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: AetherWorks is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: AetherWorks metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoaetherworks/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: AetherWorks seeded project path",
+          "path": "addons/echoaetherworks"
+        }
+      ],
+      "order": 952
+    },
+    {
+      "projectSlug": "echoriftworlds",
+      "id": "echoriftworlds-command-center-coverage",
+      "title": "ECHO: RiftWorlds Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: RiftWorlds is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: RiftWorlds remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: RiftWorlds is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: RiftWorlds metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoriftworlds/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: RiftWorlds seeded project path",
+          "path": "addons/echoriftworlds"
+        }
+      ],
+      "order": 953
+    },
+    {
+      "projectSlug": "echofamiliarcore",
+      "id": "echofamiliarcore-command-center-coverage",
+      "title": "ECHO: FamiliarCore Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: FamiliarCore is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: FamiliarCore remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: FamiliarCore is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: FamiliarCore metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echofamiliarcore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: FamiliarCore seeded project path",
+          "path": "addons/echofamiliarcore"
+        }
+      ],
+      "order": 954
+    },
+    {
+      "projectSlug": "echobasegrid",
+      "id": "echobasegrid-command-center-coverage",
+      "title": "ECHO: BaseGrid Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: BaseGrid is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: BaseGrid remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: BaseGrid is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: BaseGrid metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echobasegrid/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: BaseGrid seeded project path",
+          "path": "addons/echobasegrid"
+        }
+      ],
+      "order": 955
+    },
+    {
+      "projectSlug": "echoprimecore",
+      "id": "echoprimecore-command-center-coverage",
+      "title": "ECHO: Prime Core Command Center Coverage",
+      "category": "Command Center",
+      "status": "partial",
+      "playerPromise": "ECHO: Prime Core is visible in Command Center module and report workflows.",
+      "loreContext": "ECHO: Prime Core remains part of the ECHO operations map while platform reports mature.",
+      "implementationSummary": "ECHO: Prime Core is seeded from settings.gradle and module Gradle metadata for Phase 4 report ingestion.",
+      "nextAction": "Keep ECHO: Prime Core metadata, report coverage, and validation commands current.",
+      "sources": [
+        {
+          "label": "Module Gradle metadata",
+          "path": "addons/echoprimecore/gradle.properties",
+          "section": "module metadata"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "label": "ECHO: Prime Core seeded project path",
+          "path": "addons/echoprimecore"
+        }
+      ],
+      "order": 956
+    }
+  ]
+}

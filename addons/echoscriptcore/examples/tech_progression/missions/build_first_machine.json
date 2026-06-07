@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "pack": "tech_progression",
+  "id": "tech_progression:build_first_machine",
+  "type": "mission",
+  "title": "Build the First Machine",
+  "route": "automation",
+  "phase": "power_intro",
+  "role": "main",
+  "objectives": [
+    { "id": "craft_furnace", "type": "craft_item", "title": "Craft a furnace", "item": "minecraft:furnace", "count": 1 },
+    { "id": "obtain_redstone", "type": "obtain_item", "title": "Obtain redstone", "item": "minecraft:redstone", "count": 4 }
+  ],
+  "on_complete": [{ "type": "set_world_state", "state": "tech_progression:grid_online" }]
+}

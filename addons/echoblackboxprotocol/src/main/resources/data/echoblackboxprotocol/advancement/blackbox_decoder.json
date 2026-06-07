@@ -1,0 +1,31 @@
+{
+    "parent":  "echoblackboxprotocol:root",
+    "display":  {
+                    "icon":  {
+                                 "id":  "echoblackboxprotocol:blackbox_decoder"
+                             },
+                    "title":  "Decoder Online",
+                    "description":  "Craft a Blackbox Decoder.",
+                    "frame":  "task",
+                    "show_toast":  true,
+                    "announce_to_chat":  true,
+                    "hidden":  false
+                },
+    "criteria":  {
+                     "has_decoder":  {
+                                         "trigger":  "minecraft:inventory_changed",
+                                         "conditions":  {
+                                                            "items":  [
+                                                                          {
+                                                                              "items":  "echoblackboxprotocol:blackbox_decoder"
+                                                                          }
+                                                                      ]
+                                                        }
+                                     }
+                 },
+    "requirements":  [
+                         [
+                             "has_decoder"
+                         ]
+                     ]
+}

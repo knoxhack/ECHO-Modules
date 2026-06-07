@@ -1,0 +1,8 @@
+<template>
+  <card class="sc-panel" action="{param.action|noop}" action-page="{param.page|}">
+    <status-chip class="sc-row-badge" status="{param.status|ready}" value="{param.badge|SC}"/>
+    <title value="{param.title|ScreenCore Feature}"/>
+    <text class="sc-readable-body" value="{param.body|Open the reference page for a working example.}"/>
+  </card>
+</template>
+

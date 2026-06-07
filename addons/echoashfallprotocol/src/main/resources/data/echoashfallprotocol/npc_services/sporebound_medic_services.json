@@ -1,0 +1,34 @@
+{
+  "id": "echoashfallprotocol:sporebound_medic_services",
+  "services": [
+    {
+      "id": "antitoxin_triage",
+      "title": "Antitoxin Triage",
+      "description": "Consumes one bandage and applies field treatment.",
+      "cost": [
+        { "item": "echoashfallprotocol:bandage", "count": 1 }
+      ],
+      "action": "heal",
+      "amount": 6,
+      "cooldown": 1200
+    },
+    {
+      "id": "spore_warning",
+      "title": "Spore Warning",
+      "description": "Uploads spore exposure warnings and current hazard context.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 1200
+    },
+    {
+      "id": "record_sanctum_contact",
+      "title": "Record Sanctum Contact",
+      "description": "Adds Medic Sable to your Terminal contact providers.",
+      "cost": [],
+      "action": "discover_contact",
+      "amount": 1,
+      "cooldown": 600
+    }
+  ]
+}

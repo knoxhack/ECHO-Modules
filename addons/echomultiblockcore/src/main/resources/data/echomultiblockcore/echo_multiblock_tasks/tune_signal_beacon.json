@@ -1,0 +1,20 @@
+{
+  "id": "echomultiblockcore:tune_signal_beacon",
+  "display_name": "Tune Signal Beacon",
+  "category": "signal",
+  "allowed_multiblocks": ["echomultiblockcore:signal_tower_tier_1"],
+  "required_workcell": "SCANNING",
+  "required_tools": ["SCANNER", "CALIBRATOR"],
+  "duration_ticks": 160,
+  "heat_per_second": 1,
+  "animation": "scan",
+  "animation_profile": "echomultiblockcore:signal_tune",
+  "inputs": [
+    { "item": "echomultiblockcore:signal_conduit", "count": 1 },
+    { "item": "minecraft:redstone", "count": 1 }
+  ],
+  "outputs": [
+    { "item": "echomultiblockcore:signal_circuit", "count": 1 }
+  ],
+  "notes": ["Optional crates and a scanner/calibrator arm turn the tower into the first progression loop."]
+}

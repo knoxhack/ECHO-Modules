@@ -1,0 +1,134 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:emergency_ration",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 16 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:emergency_ration",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:gas_mask"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:filter_cartridge_basic",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:filter_cartridge_basic",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:filter_cartridge_basic",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:dirty_water_bottle",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:clean_water_bottle",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 6 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:bandage",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:stim_pack",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoashfallprotocol:rad_away",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 2 }
+          ]
+        }
+      ]
+    }
+  ]
+}

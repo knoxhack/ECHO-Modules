@@ -1,0 +1,29 @@
+{
+  "id": "echotutorialcore:welcome_flow",
+  "title": "Welcome to Ashfall",
+  "category": "START_HERE",
+  "steps": [
+    {
+      "id": "open_terminal",
+      "type": "custom",
+      "target": "echotutorialcore:opened_terminal",
+      "text": "Open the ECHO Terminal."
+    },
+    {
+      "id": "find_water",
+      "type": "custom",
+      "target": "echotutorialcore:found_water",
+      "text": "Locate a water source."
+    },
+    {
+      "id": "gather_resources",
+      "type": "custom",
+      "target": "echotutorialcore:gathered_resources",
+      "text": "Gather basic survival resources."
+    }
+  ],
+  "unlockCards": [
+    "echotutorialcore:welcome_to_ashfall"
+  ],
+  "defaultUnlocked": true
+}

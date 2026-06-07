@@ -1,0 +1,69 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echonexusprotocol"
+version="1.0.0"
+displayName="ECHO: Nexus Protocol"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the Nexus corruption chapter for the ECHO public release stack."
+description='''
+ECHO: Nexus Protocol is a reality-corruption chapter for ECHO.
+Control Nexus Charge, stabilize corrupted fields, recover Blackbox memory,
+rewrite matter, and mirror Core-state escalation through ECHO Core and ECHO Terminal.
+'''
+
+[[dependencies.echonexusprotocol]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO chapter, progress, and Nexus service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="echoterminal"
+type="optional"
+reason="Adds Nexus research, mission, route placement, and scan surfaces to the modular ECHO Terminal."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Allows local testing alongside the prior ECHO chapter."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="echorendercore"
+type="optional"
+reason="Enables RenderCore static crystal particles and Nexus mob visual profiles when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="jei"
+type="optional"
+reason="Shows Nexus machine recipes and progression notes in Just Enough Items."
+versionRange="[29.5.0,)"
+ordering="NONE"
+side="BOTH"

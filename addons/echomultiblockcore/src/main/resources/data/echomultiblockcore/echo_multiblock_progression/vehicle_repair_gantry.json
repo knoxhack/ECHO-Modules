@@ -1,0 +1,18 @@
+{
+    "id":  "echomultiblockcore:vehicle_repair_gantry",
+    "facility":  "echomultiblockcore:vehicle_repair_gantry",
+    "tier":  5,
+    "prerequisites":  [
+                          "echomultiblockcore:industrial_assembly_line"
+                      ],
+    "featured_recipes":  [
+                             "echomultiblockcore:overhaul_vehicle_frame",
+                             "echomultiblockcore:prep_vehicle_convoy_kit"
+                         ],
+    "reward_items":  [
+                         "echomultiblockcore:vehicle_frame_kit"
+                     ],
+    "advancement":  "echomultiblockcore:multiblock/vehicle_repair_gantry",
+    "title":  "Vehicle Repair Gantry",
+    "guide":  "Use calibrated machine parts to produce a repair-ready vehicle frame kit."
+}

@@ -1,0 +1,91 @@
+{
+  "id": "echoashfallprotocol:build_rain_collector",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_0",
+  "phaseTitle": "PODFALL",
+  "phaseOrder": 0,
+  "order": 6,
+  "title": "Build Rain Collector",
+  "briefing": "[ECHO-7] Weather can refill bottles if you catch it. Use the rewarded cauldron and scrap plastic to place a Rain Collector near shelter.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall Rain Collector placement mission as native MissionCore content.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echoashfallprotocol:rain_collector",
+  "kind": "main",
+  "prerequisites": [
+    "echoashfallprotocol:plant_mutated_sapling"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "build_rain_collector",
+    "nativeGameplayHook": "ashfall.first_route.build_rain_collector",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "terminal_route_phase": "0",
+    "terminal_route_order": "6",
+    "terminal_route_role": "MAIN",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_0",
+    "routePhaseTitle": "PODFALL",
+    "routeGlobalOrder": "6",
+    "routeRoleTag": "main_spine"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_first_month_routes",
+    "indexEntry": "echoashfallprotocol:starter_power_water",
+    "wikiArticle": "echowiki:guides/ashfall/first_steps",
+    "lensProfile": "echoashfallprotocol:ashfall_first_month_scans",
+    "holomapLayer": "echoashfallprotocol:first_month_field_intel"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:build_rain_collector:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.block_placed",
+      "ashfall.block_requirement"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:build_rain_collector/place_rain_collector",
+      "type": "place_block",
+      "label": "Place a Rain Collector near shelter",
+      "detail": "Start a weather-fed dirty-water source before longer route pushes.",
+      "icon": "echoashfallprotocol:rain_collector",
+      "target": "echoashfallprotocol:rain_collector",
+      "required": 1,
+      "criteria": {
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "block": "echoashfallprotocol:rain_collector",
+      "count": 1,
+      "label": "Rain Collector"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:build_rain_collector/reward_bottles",
+      "item": "minecraft:glass_bottle",
+      "count": 3,
+      "label": "Glass Bottles",
+      "detail": "Containers for the first rain-water collection loop."
+    },
+    {
+      "id": "echoashfallprotocol:build_rain_collector/reward_dirty_water",
+      "item": "echoashfallprotocol:dirty_water_bottle",
+      "count": 1,
+      "label": "Dirty Water Bottle",
+      "detail": "Reminder that collected water still needs purification."
+    }
+  ],
+  "completionText": "[ECHO-7] Rain catchment online. It produces dirty water; purify it before drinking."
+}

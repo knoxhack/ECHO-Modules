@@ -1,0 +1,31 @@
+{
+  "parent": "echoindustrialnexus:reclaim_power",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:ore_grinder"
+    },
+    "title": {
+      "text": "Grind the Wasteland"
+    },
+    "description": {
+      "text": "Build an Ore Grinder and turn ore into industrial dust."
+    }
+  },
+  "criteria": {
+    "grinder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:ore_grinder"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "grinder"
+    ]
+  ]
+}

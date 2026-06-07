@@ -1,0 +1,24 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:landing_pad",
+                   "data":  0,
+                   "count":  9
+               },
+    "pattern":  [
+                    "YYY",
+                    "XXX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/block_iron"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_iron"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

@@ -1,0 +1,96 @@
+{
+  "id": "echoashfallprotocol:craft_advanced_filter",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_2",
+  "phaseTitle": "LIFE SUPPORT",
+  "phaseOrder": 2,
+  "order": 8,
+  "title": "Craft Advanced Filter + Turn In",
+  "briefing": "[ECHO-7] Toxic pockets can still empty basic cartridges on long routes. Craft 1 Advanced Filter Cartridge and turn it in for verification.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall inventory predicate for one Advanced Filter Cartridge after the Filter Workbench is online.",
+  "category": "crafting",
+  "difficulty": "normal",
+  "icon": "echoashfallprotocol:filter_cartridge_advanced",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:build_filter_workbench"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "craft_advanced_filter",
+    "nativeGameplayHook": "ashfall.first_route.craft_advanced_filter",
+    "worldRegion": "echoashfallprotocol:crash_zone_wasteland",
+    "hazardContext": "echoworldcore:hazard/salvage_debris",
+    "machineProgressionBridge": "ashfall.survival.research_lab.components_bridge",
+    "terminal_route_phase": "2",
+    "terminal_route_order": "8",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "nativeProvider": "echomissioncore",
+    "terminalAction": "turn_in",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_2",
+    "routePhaseTitle": "LIFE SUPPORT",
+    "routeGlobalOrder": "31",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_machine_power_logistics",
+    "indexEntry": "echoashfallprotocol:machine_power_logistics",
+    "wikiArticle": "echowiki:guides/ashfall/machine_power_logistics",
+    "lensProfile": "echoashfallprotocol:ashfall_major_route_scans",
+    "holomapLayer": "echoashfallprotocol:first_major_route"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:craft_advanced_filter:completed",
+    "terminalAction": "turn_in",
+    "runtimeEvents": [
+      "player.inventory_changed",
+      "ashfall.inventory_predicate"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:craft_advanced_filter/confirm_advanced_filter",
+      "type": "obtain_item",
+      "label": "Craft Advanced Filter",
+      "detail": "Carry one Advanced Filter Cartridge for longer marked toxic-zone routes.",
+      "icon": "echoashfallprotocol:filter_cartridge_advanced",
+      "target": "echoashfallprotocol:filter_cartridge_advanced",
+      "required": 1,
+      "criteria": {
+        "predicate": "inventory_contains",
+        "item": "echoashfallprotocol:filter_cartridge_advanced",
+        "required_items": "echoashfallprotocol:filter_cartridge_advanced=1",
+        "events": "player.inventory_changed,ashfall.inventory_predicate",
+        "region": "echoashfallprotocol:crash_zone_wasteland",
+        "hazard": "echoworldcore:hazard/salvage_debris"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "echoashfallprotocol:filter_cartridge_advanced",
+      "count": 1,
+      "label": "Advanced Filter Cartridge"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:craft_advanced_filter/reward_clean_water",
+      "item": "echoashfallprotocol:clean_water_bottle",
+      "count": 1,
+      "label": "Clean Water Bottle",
+      "detail": "Hydration reserve for longer toxic-zone routes."
+    },
+    {
+      "id": "echoashfallprotocol:craft_advanced_filter/reward_filtration_membrane",
+      "item": "echoashfallprotocol:filtration_membrane",
+      "count": 1,
+      "label": "Filtration Membrane",
+      "detail": "Reserve membrane for research-lab and hazard preparation."
+    }
+  ],
+  "completionText": "[ECHO-7] Advanced filtration verified. Keep one installed and one spare only for toxic-zone expeditions."
+}

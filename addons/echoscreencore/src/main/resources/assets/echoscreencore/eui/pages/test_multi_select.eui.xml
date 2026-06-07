@@ -1,0 +1,11 @@
+<page id="test-multi-select" title="Multi Select" styles="echoscreencore:advanced_mock,echoscreencore:dropdown_advanced">
+  <screen-shell>
+    <header title="Multi Select" subtitle="Multiple selected values render as a comma-separated chip line"/>
+    <panel title="Tags">
+      <select bind="tags.visible" item="tag" multi="true" selected-values="{filters.tags}" searchable="true" clearable="true" max-selected="3" max-visible-options="6">
+        <option value="{tag.id}" label="{tag.label}" subtitle="{tag.description}"/>
+      </select>
+      <text value="Selected tags: {filters.tags|none}"/>
+    </panel>
+  </screen-shell>
+</page>

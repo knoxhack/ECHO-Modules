@@ -1,0 +1,27 @@
+{
+  "id": "echotutorialcore:radwarden_compact",
+  "category": "FACTIONS",
+  "title": "Radwarden Compact",
+  "summary": "Radiation discipline, hard borders, fewer second chances.",
+  "body": [
+    "Radwardens care about containment and survival math.",
+    "Their tasks often reward protection, route discipline, and clean handoffs."
+  ],
+  "steps": [
+    "Read faction offers in the Terminal.",
+    "Check required protection before accepting field work."
+  ],
+  "commonMistakes": [
+    "Treating radiation as ordinary damage.",
+    "Accepting contracts without route prep."
+  ],
+  "related": [
+    "echotutorialcore:faction_basics",
+    "echotutorialcore:radiation"
+  ],
+  "unlockTriggers": [
+    "faction_contact"
+  ],
+  "defaultUnlocked": false,
+  "priority": 56
+}

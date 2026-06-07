@@ -1,0 +1,159 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echoagriculturereclamation"
+version="1.0.0"
+displayName="Reclamation by ECHO Labs"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the ruined-world ecology recovery chapter for the ECHO beta stack."
+description='''
+The player brings life back to a dead world.
+
+ECHO: Agriculture Reclamation adds recovered seeds, contaminated soil,
+hydroponics, gene stabilization, greenhouses, pollinator drones, bio-reactors, and chunk-local
+ecological restoration without rewriting biome ids.
+'''
+
+[[dependencies.echoagriculturereclamation]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoterminal"
+type="optional"
+reason="Publishes Agriculture Reclamation records and missions in ECHO Terminal; current Terminal builds also place them as optional Survival Route leads."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Seed vault, toxic salvage, and ruined ecology hooks complement Ashfall survival."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echonexusprotocol"
+type="optional"
+reason="Nexus-touched crops can be stabilized when Nexus Protocol is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoorbitalremnants"
+type="optional"
+reason="Cryogenic ruins and orbital caches can feed seed recovery when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoindustrialnexus"
+type="optional"
+reason="Industrial salvage caches can import rare recovered seed material when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echolens"
+type="optional"
+reason="Adds server-safe FIELD Reclamation scan rows for Agriculture soils, crops, machines, greenhouses, and pollinator docks."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echotutorialcore"
+type="optional"
+reason="Registers Agriculture onboarding cards and contextual hints for seed recovery, greenhouse scans, and chunk restoration."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echomissioncore"
+type="optional"
+reason="Registers Field Reclamation / Ecology Recovery objectives independently of Terminal when MissionCore is installed."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echologisticsnetwork"
+type="optional"
+reason="Exposes Reclamation trays and machines as seed, nutrient, and supply endpoints for Logistics routes."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoindex"
+type="optional"
+reason="Shows crop, soil, hydroponics, greenhouse, and restoration guide entries in Index when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echothemecore"
+type="optional"
+reason="Allows Reclamation screens to resolve Cyberglass and themed UI tokens while keeping a default dark fallback."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoholomap"
+type="optional"
+reason="Displays restoration field and greenhouse zone markers through shared ECHO map providers when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echoweathercore"
+type="optional"
+reason="Applies optional weather growth pressure to exposed Agriculture crops while safe greenhouse zones mitigate it."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echopowergrid"
+type="optional"
+reason="Allows powered Agriculture machines to report accelerated throughput without making power required."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoagriculturereclamation]]
+modId="echosoundcore"
+type="optional"
+reason="Plays shared ECHO stingers for Agriculture machine progress, crop harvests, and restoration milestones when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

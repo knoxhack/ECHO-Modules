@@ -1,0 +1,54 @@
+{
+  "id": "echowiki:guides/powergrid/integrations",
+  "title": "PowerGrid: Integrations",
+  "category": "Guide Books",
+  "summary": "Feed machines, factories, terminals, logistics, and bases from a measured grid.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Connected Systems",
+      "body": "Industrial Nexus and Logistics depend on reliable energy. TutorialCore can mark power alerts, Index can explain blocks, and Wiki pages can link machine symptoms to grid causes.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Practical Pairings",
+      "body": "Feed Industrial Nexus machines, Logistics request blocks, MultiblockCore structures, and Terminal diagnostics with a grid that can explain its failures.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Fallback Play",
+      "body": "Without linked dashboards, label cable runs and test one load at a time. Meters and breakers still tell the truth.",
+      "tone": "body"
+    },
+    {
+      "type": "item",
+      "title": "Integration Anchor",
+      "body": "Use this reference when the related system is present; the manual path still works without it.",
+      "tone": "tip",
+      "item": "minecraft:redstone",
+      "count": 1,
+      "targetKind": "item",
+      "label": "Redstone",
+      "subtitle": "Integrations checkpoint"
+    }
+  ],
+  "tags": [
+    "guide",
+    "powergrid",
+    "energy",
+    "integrations",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:redstone",
+  "relatedArticles": [
+    "echowiki:guides/powergrid"
+  ],
+  "relatedItems": [
+    "minecraft:redstone",
+    "minecraft:lever"
+  ],
+  "sortOrder": 1125
+}

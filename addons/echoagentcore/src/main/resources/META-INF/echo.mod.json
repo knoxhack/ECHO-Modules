@@ -1,0 +1,95 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoagentcore",
+  "name": "ECHO: AgentCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "ai_agent_core",
+  "entrypoint": "com.knoxhack.echo.agentcore.EchoAgentCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echoplatformcore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echometadatacore",
+    "echomodulegraph",
+    "echohealthcore"
+  ],
+  "optional": [
+    "echobridgecore",
+    "echoreportcore",
+    "echomodpackcommandcenter"
+  ],
+  "provides": [
+    "ai.tasks",
+    "ai.task_queue",
+    "ai.prompt_bundle",
+    "ai.next_phase_prompt",
+    "ai.run_report",
+    "ai.safe_commands"
+  ],
+  "consumes": [
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack",
+    "runtime.health"
+  ],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "diagnostics.read",
+    "reports.read",
+    "reports.write",
+    "ai.prompt_bundle"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "nativeEntrypoint": "com.knoxhack.echo.agentcore.EchoAgentCoreNativeModule",
+    "nativeClasspath": [],
+    "adapterCore": {
+      "domains": [
+        "diagnostics",
+        "data",
+        "commands"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresConfirmationForWriteActions": true,
+    "localOnly": true,
+    "notes": "AgentCore models task queues, prompt bundles, safe commands, and run reports. It does not execute commands, run repairs, launch Minecraft, upload telemetry, or grant remote authority."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "architect_agent",
+      "diagnostics_agent",
+      "metadata_agent",
+      "packos_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

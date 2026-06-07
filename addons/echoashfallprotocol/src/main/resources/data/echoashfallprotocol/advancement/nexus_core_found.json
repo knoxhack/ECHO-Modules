@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "id": "echoashfallprotocol:nexus_core" },
+    "title": { "translate": "advancement.EchoAshfallProtocol.nexus_core_found.title" },
+    "description": { "translate": "advancement.EchoAshfallProtocol.nexus_core_found.desc" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "echoashfallprotocol:first_power_node",
+  "criteria": {
+    "found_nexus_core": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [["found_nexus_core"]]
+}

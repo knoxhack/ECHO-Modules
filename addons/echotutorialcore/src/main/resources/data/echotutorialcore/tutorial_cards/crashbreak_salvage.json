@@ -1,0 +1,27 @@
+{
+  "id": "echotutorialcore:crashbreak_salvage",
+  "category": "FACTIONS",
+  "title": "Crashbreak Salvage",
+  "summary": "If it fell from the sky, someone has already priced the pieces.",
+  "body": [
+    "Crashbreak crews trade in wreckage, parts, and the ugly wisdom of getting out alive.",
+    "Their work often points toward salvage routes, machine repairs, and contested caches."
+  ],
+  "steps": [
+    "Bring storage before salvage runs.",
+    "Scan wrecks before cutting into them."
+  ],
+  "commonMistakes": [
+    "Overloading inventory before the return trip.",
+    "Ignoring hostile route markers."
+  ],
+  "related": [
+    "echotutorialcore:faction_basics",
+    "echotutorialcore:signal_leads"
+  ],
+  "unlockTriggers": [
+    "faction_contact"
+  ],
+  "defaultUnlocked": false,
+  "priority": 55
+}

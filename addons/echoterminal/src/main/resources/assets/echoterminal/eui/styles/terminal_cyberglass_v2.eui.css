@@ -1,0 +1,4397 @@
+screen-shell,
+.terminal-shell,
+.terminal-app {
+  surface: glass;
+  surface-depth: floating;
+  corner-treatment: bevel;
+  background: #01070df3;
+  border-color: #00eaffb8;
+  border-width: 1px;
+  border-radius: 8px;
+  accent-color: #00eaffff;
+  background-texture: theme-texture(screencore.surface.floating);
+  texture-alpha: 22;
+  background-texture-2: theme-texture(screencore.edge_rails);
+  texture-alpha-2: 84;
+  background-texture-3: theme-texture(screencore.micro_ticks);
+  texture-alpha-3: 18;
+  shadow-strength: 38;
+  glow-strength: 10;
+  inner-highlight: true;
+  padding: 8px;
+  gap: 8px;
+}
+
+title {
+  color: #f1fdffff;
+  font-size: font(title);
+  max-lines: 1;
+}
+
+text,
+label {
+  color: #abc1cfff;
+  max-lines: 2;
+}
+
+panel,
+section,
+card,
+hero-card,
+empty-state,
+.glass-panel,
+.terminal-panel,
+.terminal-card,
+.terminal-rail,
+.terminal-topbar,
+.terminal-page-head,
+.terminal-footer-strip {
+  surface: glass;
+  surface-depth: raised;
+  corner-treatment: bevel;
+  background: #03101bd4;
+  border-color: #55eaff35;
+  border-width: 1px;
+  border-radius: 6px;
+  accent-color: #00eaffff;
+  background-texture: theme-texture(screencore.surface.raised);
+  texture-alpha: 24;
+  background-texture-2: theme-texture(screencore.panel_sheen);
+  texture-alpha-2: 16;
+  background-texture-3: theme-texture(screencore.corner_cuts);
+  texture-alpha-3: 10;
+  shadow-strength: 16;
+  glow-strength: 3;
+  inner-highlight: true;
+}
+
+hero-card,
+.hero-card,
+.terminal-hero,
+.terminal-active-mission,
+.terminal-dossier-hero,
+.terminal-map-surface {
+  background: #061b29d8;
+  border-color: #61eaff62;
+  texture-alpha: 30;
+  texture-alpha-2: 22;
+  glow-strength: 7;
+}
+
+row,
+column {
+  gap: 6px;
+}
+
+scroll {
+  surface: glass;
+  background: transparent;
+  border-color: transparent;
+  border-width: 0;
+}
+
+button,
+status-chip,
+input-text,
+list-row {
+  layout: row;
+  surface: glass;
+  surface-depth: base;
+  corner-treatment: bevel;
+  background: #061522c8;
+  border-color: #45eaff3a;
+  border-width: 1px;
+  border-radius: 4px;
+  accent-color: #00eaffff;
+  background-texture: theme-texture(screencore.status_chip);
+  texture-alpha: 22;
+  background-texture-2: theme-texture(screencore.micro_ticks);
+  texture-alpha-2: 8;
+  shadow-strength: 9;
+  glow-strength: 2;
+  inner-highlight: true;
+  color: #dff9ffff;
+}
+
+button {
+  height: 30px;
+  min-height: 28px;
+  padding: 5px 10px;
+  background-texture: theme-texture(screencore.button);
+  texture-fit: nine-slice;
+  texture-region: 0.078 0.398 0.922 0.716;
+}
+
+button[variant="primary"] {
+  background: #00dff0a0;
+  border-color: #55f8ffff;
+  color: #00161bff;
+  glow-strength: 18;
+}
+
+button[variant="ghost"] {
+  background: #061724b4;
+  border-color: #55eaff46;
+  color: #d8f8ffff;
+}
+
+button:focused {
+  border-color: #91fbffff;
+  background: #0b2a3cde;
+  background-texture-2: theme-texture(screencore.focus_ring);
+  glow-strength: 12;
+}
+
+button[disabled="true"],
+list-row[disabled="true"] {
+  background: #06101a92;
+  border-color: #59717b34;
+  color: #708893ff;
+  glow-strength: 0;
+  texture-alpha: 12;
+}
+
+list-row:hover,
+button:hover,
+input-text:focused {
+  background: #092538dc;
+  border-color: #00eaffaa;
+  background-texture: theme-texture(screencore.button.hover);
+  texture-region: 0.073 0.388 0.907 0.718;
+  glow-strength: 10;
+}
+
+button[disabled="true"]:hover,
+list-row[disabled="true"]:hover,
+button[disabled="true"]:focused,
+list-row[disabled="true"]:focused {
+  background: #06101a92;
+  border-color: #59717b34;
+  color: #708893ff;
+  background-texture: theme-texture(screencore.status_chip);
+  background-texture-2: theme-texture(screencore.micro_ticks);
+  glow-strength: 0;
+}
+
+list-row[selected="true"],
+list-row[active="true"],
+list-row:active,
+list-row:focused {
+  background: #073326e8;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+  background-texture-2: theme-texture(screencore.focus_ring);
+  glow-strength: 14;
+}
+
+status-chip {
+  height: 21px;
+  min-height: 19px;
+  padding: 2px 6px;
+  color: #dafbffff;
+}
+
+status-chip[status="active"],
+status-chip[status="info"] {
+  background: #052339cc;
+  border-color: #40eaff9a;
+  color: #d9fbffff;
+  accent-color: #00eaffff;
+}
+
+status-chip[status="ready"],
+status-chip[status="success"],
+status-chip[status="done"] {
+  background: #06351fd0;
+  border-color: #5bff96aa;
+  color: #bfffd1ff;
+  accent-color: #53ff93ff;
+}
+
+status-chip[status="warning"],
+status-chip[status="optional"] {
+  background: #3b2609da;
+  border-color: #ffb734b8;
+  color: #ffd681ff;
+  accent-color: #ffad28ff;
+}
+
+status-chip[status="danger"],
+status-chip[status="critical"],
+status-chip[status="missing"] {
+  background: #3a0d14da;
+  border-color: #ff4f68b8;
+  color: #ff97a6ff;
+  accent-color: #ff4f68ff;
+}
+
+status-chip[status="locked"],
+status-chip[status="disabled"] {
+  background: #111820d0;
+  border-color: #75869078;
+  color: #91a4afff;
+  accent-color: #7e8c96ff;
+}
+
+tooltip {
+  surface: glass;
+  surface-depth: floating;
+  padding: 6px 8px;
+  background: #020a12f2;
+  border-color: #7cf8ffbc;
+  border-width: 1px;
+  border-radius: 4px;
+  color: #e8fbffff;
+  shadow-strength: 24;
+}
+
+progress-bar {
+  surface: glass;
+  height: 6px;
+  min-height: 4px;
+  background: #02101aee;
+  background-texture: theme-texture(screencore.progress_bar);
+  texture-alpha: 62;
+  track-color: #0b2632ff;
+  fill-color: #2ceaffee;
+  border-color: #49eaff6a;
+  border-width: 1px;
+  border-radius: 2px;
+  glow-strength: 4;
+}
+
+.terminal-topbar {
+  height: 58px;
+  min-height: 58px;
+  padding: 8px 12px;
+  gap: 12px;
+  background: #020a12ea;
+  border-color: #34eaff65;
+}
+
+.terminal-brand {
+  width: 430px;
+  gap: 8px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-brand-copy {
+  gap: 2px;
+}
+
+.terminal-mark {
+  width: 42px;
+  height: 34px;
+  min-height: 32px;
+  font-size: font(title);
+}
+
+.terminal-alert {
+  width: 150px;
+  height: 29px;
+  min-height: 27px;
+}
+
+.terminal-vitals {
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-vital-meter {
+  width: 132px;
+  height: 38px;
+  min-height: 38px;
+  padding: 5px 8px;
+  gap: 2px;
+  background: #020e18b8;
+  border-color: #44eaff30;
+}
+
+.terminal-mini-meter {
+  width: 70px;
+  height: 5px;
+  min-height: 4px;
+}
+
+.terminal-app-grid {
+  gap: 12px;
+}
+
+.terminal-rail {
+  min-height: 668px;
+  padding: 10px;
+  background: #020b13df;
+  border-color: #28eaff50;
+}
+
+.terminal-section-scroll {
+  height: 342px;
+  min-height: 342px;
+  overflow: scroll;
+}
+
+.terminal-section-list {
+  gap: 6px;
+}
+
+.terminal-section-row {
+  height: 44px;
+  min-height: 44px;
+  padding: 5px 7px;
+  gap: 7px;
+  background: #061622cc;
+  border-color: #35eaff2f;
+}
+
+.terminal-section-row title {
+  color: #cbeaf6ff;
+}
+
+.terminal-section-row[selected="true"],
+.terminal-section-row[active="true"],
+.terminal-section-row:active,
+.terminal-section-row:focused {
+  background: #073022e8;
+  border-color: #00eaffee;
+  accent-color: #62ff9cff;
+  glow-strength: 18;
+}
+
+.terminal-section-row[selected="true"] title,
+.terminal-section-row[active="true"] title {
+  color: #f1fdffff;
+}
+
+.terminal-section-icon {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+}
+
+.terminal-section-count {
+  width: 30px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-core-link {
+  height: 220px;
+  min-height: 220px;
+  padding: 10px;
+  gap: 5px;
+  background: #03101aa8;
+  border-color: #2eeaff36;
+}
+
+.terminal-workspace {
+  height: 666px;
+  min-height: 666px;
+  gap: 8px;
+}
+
+.terminal-page-head {
+  height: 52px;
+  min-height: 52px;
+  padding: 7px 10px;
+  background: transparent;
+  border-color: transparent;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-page-title {
+  gap: 3px;
+}
+
+.terminal-page-title title {
+  font-size: font(title);
+  color: #f5fdffff;
+}
+
+.terminal-page-state {
+  width: 108px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-page-tabs {
+  height: 30px;
+  min-height: 30px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-page-tab-list {
+  direction: horizontal;
+  gap: 5px;
+  overflow: hidden;
+  height: 30px;
+  min-height: 30px;
+}
+
+.terminal-page-tab {
+  width: 112px;
+  height: 31px;
+  min-height: 29px;
+  padding: 4px 6px;
+  gap: 5px;
+  background: #051522bb;
+  border-color: #39eaff38;
+}
+
+.terminal-page-tab[selected="true"],
+.terminal-page-tab[active="true"],
+.terminal-page-tab:active {
+  background: #073326dd;
+  border-color: #78ff9fff;
+}
+
+.terminal-main-scroll {
+  height: 606px;
+  min-height: 606px;
+  overflow: scroll;
+}
+
+.terminal-main-column {
+  height: 760px;
+  min-height: 760px;
+  gap: 8px;
+}
+
+.terminal-footer-strip {
+  height: 34px;
+  min-height: 32px;
+  padding: 5px 10px;
+  background: #020a12e4;
+  border-color: #34eaff50;
+}
+
+.terminal-keycap {
+  width: 58px;
+  height: 22px;
+  min-height: 20px;
+  text-align: center;
+  background: #052238dd;
+  border-color: #39eaff96;
+  color: #dffbffff;
+}
+
+.terminal-page-hero,
+.terminal-command-hero,
+.terminal-dossier-hero {
+  height: 106px;
+  min-height: 106px;
+  padding: 12px 14px;
+  gap: 8px;
+}
+
+.terminal-dashboard-grid {
+  gap: 10px;
+}
+
+.terminal-command-top-grid {
+  height: 292px;
+  min-height: 292px;
+}
+
+.terminal-command-bottom-grid {
+  height: 260px;
+  min-height: 260px;
+}
+
+.terminal-route-layout,
+.terminal-recipe-layout,
+.terminal-reward-layout,
+.terminal-addon-layout,
+.terminal-archive-layout,
+.terminal-map-layout,
+.terminal-system-layout {
+  height: 610px;
+  min-height: 610px;
+}
+
+.terminal-dossier-layout {
+  height: 250px;
+  min-height: 250px;
+}
+
+.terminal-system-overview-grid {
+  height: 210px;
+  min-height: 210px;
+}
+
+.terminal-system-detail-grid {
+  height: 360px;
+  min-height: 360px;
+}
+
+.terminal-panel {
+  padding: 10px;
+  gap: 8px;
+}
+
+.terminal-card {
+  padding: 9px;
+  gap: 6px;
+}
+
+.terminal-active-mission {
+  height: 260px;
+  min-height: 260px;
+  padding: 14px;
+  gap: 10px;
+  background-texture: echoterminal:textures/gui/cyberglass/hero_podfall.png;
+  texture-alpha: 96;
+  background-texture-2: theme-texture(screencore.panel_sheen);
+  texture-alpha-2: 50;
+}
+
+.terminal-action-row,
+.terminal-priority-row,
+.terminal-mission-row,
+.terminal-reward-row,
+.terminal-record-row,
+.terminal-addon-card,
+.terminal-recipe-row,
+.terminal-dossier-action-row {
+  height: 58px;
+  min-height: 58px;
+  padding: 7px 9px;
+  gap: 8px;
+}
+
+.terminal-compact-row {
+  height: 38px;
+  min-height: 38px;
+  padding: 6px 8px;
+}
+
+.terminal-metric-grid {
+  gap: 8px;
+}
+
+.terminal-status-tile,
+stat-card,
+.terminal-metric-card {
+  height: 56px;
+  min-height: 56px;
+  padding: 8px 10px;
+  background: #03131fc8;
+  border-color: #4deaff35;
+}
+
+.terminal-what-now-row {
+  height: 58px;
+  min-height: 58px;
+  padding: 9px;
+  background: #061c2bce;
+}
+
+.terminal-module-grid {
+  gap: 8px;
+}
+
+.terminal-module-card {
+  height: 78px;
+  min-height: 78px;
+  padding: 9px;
+}
+
+.terminal-mission-list {
+  height: 500px;
+  min-height: 500px;
+  overflow: scroll;
+}
+
+.terminal-mission-detail {
+  height: 610px;
+  min-height: 610px;
+  padding: 12px;
+}
+
+.terminal-side-panel {
+  height: 132px;
+  min-height: 132px;
+  padding: 9px;
+}
+
+.terminal-map-surface {
+  height: 430px;
+  min-height: 430px;
+  padding: 12px;
+  background-texture: theme-texture(screencore.surface.floating);
+  texture-alpha: 54;
+  background-texture-2: theme-texture(screencore.panel_sheen);
+  texture-alpha-2: 30;
+}
+
+.terminal-map-node {
+  height: 68px;
+  min-height: 68px;
+  padding: 8px;
+}
+
+.terminal-map-node-grid {
+  height: 330px;
+  min-height: 330px;
+  gap: 12px;
+}
+
+.terminal-dossier-actions {
+  height: 300px;
+  min-height: 300px;
+  padding: 10px;
+}
+
+.terminal-search-bar {
+  height: 34px;
+  min-height: 32px;
+  padding: 7px 10px;
+}
+
+.terminal-filter-row {
+  height: 34px;
+  min-height: 34px;
+  padding: 4px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-chip-row {
+  height: 30px;
+  min-height: 30px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-category-list {
+  direction: horizontal;
+  height: 31px;
+  min-height: 31px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.mission-progress-line {
+  height: 5px;
+  min-height: 4px;
+}
+
+.terminal-danger-panel {
+  background: #2a1409d8;
+  border-color: #ffad2f94;
+  accent-color: #ffad2fff;
+}
+
+.terminal-danger-panel title {
+  color: #ffd38aff;
+}
+
+.terminal-danger-panel .terminal-compact-row {
+  background: #1d1208d8;
+  border-color: #ffb53248;
+}
+
+.terminal-action-strip {
+  height: 42px;
+  min-height: 42px;
+  padding: 6px 8px;
+  gap: 8px;
+}
+
+.terminal-action-strip button,
+.terminal-filter-row button {
+  height: 28px;
+  min-height: 28px;
+}
+
+/* Final compact ScreenCore terminal pass. EUI layout units are GUI-scaled, so these
+   dimensions are intentionally much smaller than the physical 2048x1152 screenshots. */
+screen-shell,
+.terminal-shell,
+.terminal-app {
+  padding: 6px;
+  gap: 7px;
+  background: #01070df8;
+  texture-alpha: 14;
+  texture-alpha-2: 50;
+  texture-alpha-3: 10;
+  glow-strength: 7;
+}
+
+panel,
+section,
+card,
+hero-card,
+empty-state,
+.glass-panel,
+.terminal-panel,
+.terminal-card,
+.terminal-rail,
+.terminal-topbar,
+.terminal-page-head,
+.terminal-footer-strip {
+  background: #020d16d8;
+  border-color: #49eaff2c;
+  texture-alpha: 14;
+  texture-alpha-2: 8;
+  texture-alpha-3: 5;
+  shadow-strength: 10;
+  glow-strength: 2;
+}
+
+title {
+  color: #effbffff;
+}
+
+text,
+label {
+  color: #a9c2d0ff;
+}
+
+button,
+status-chip,
+input-text,
+list-row {
+  background: #04131ed8;
+  border-color: #3deaff34;
+  texture-alpha: 10;
+  texture-alpha-2: 4;
+  shadow-strength: 5;
+  glow-strength: 1;
+}
+
+button {
+  height: 24px;
+  min-height: 24px;
+  padding: 4px 8px;
+}
+
+status-chip {
+  height: 17px;
+  min-height: 17px;
+  padding: 1px 5px;
+}
+
+.terminal-topbar {
+  height: 52px;
+  min-height: 52px;
+  padding: 6px 9px;
+  gap: 8px;
+  background: #010911ee;
+}
+
+.terminal-brand {
+  width: 335px;
+}
+
+.terminal-mark {
+  width: 34px;
+  height: 30px;
+  min-height: 30px;
+}
+
+.terminal-alert {
+  width: 118px;
+  height: 23px;
+  min-height: 23px;
+  background: #3b270bc8;
+  border-color: #ffb73490;
+  color: #ffd98dff;
+  accent-color: #ffad28ff;
+}
+
+.terminal-vital-meter {
+  width: 104px;
+  height: 30px;
+  min-height: 30px;
+  padding: 4px 6px;
+}
+
+.terminal-mini-meter {
+  width: 54px;
+  height: 4px;
+  min-height: 4px;
+}
+
+.terminal-app-grid {
+  columns: 182px 1fr;
+  gap: 9px;
+}
+
+.terminal-rail {
+  padding: 7px;
+  background: #020a12e8;
+  border-color: #2eeaff44;
+}
+
+.terminal-section-scroll {
+  height: 252px;
+  min-height: 252px;
+}
+
+.terminal-section-list {
+  gap: 5px;
+}
+
+.terminal-section-row {
+  height: 36px;
+  min-height: 36px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #04131eca;
+  border-color: #3feaff2b;
+}
+
+.terminal-section-row[selected="true"],
+.terminal-section-row[active="true"],
+.terminal-section-row:active,
+.terminal-section-row:focused {
+  background: #062331e2;
+  border-color: #00eaffcc;
+  glow-strength: 11;
+}
+
+.terminal-section-icon {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  background: #052439cc;
+  border-color: #39eaff8a;
+  color: #d8fbffff;
+  accent-color: #00eaffff;
+}
+
+.terminal-section-count {
+  width: 24px;
+  height: 17px;
+  min-height: 17px;
+  background: #052439cc;
+  border-color: #39eaff8a;
+  color: #d8fbffff;
+  accent-color: #00eaffff;
+}
+
+.terminal-core-link {
+  height: 132px;
+  min-height: 132px;
+  padding: 8px;
+  gap: 4px;
+}
+
+.terminal-workspace {
+  gap: 7px;
+}
+
+.terminal-page-head {
+  height: 40px;
+  min-height: 40px;
+  padding: 4px 6px;
+}
+
+.terminal-page-state {
+  width: 86px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-main-scroll {
+  height: 420px;
+  min-height: 420px;
+}
+
+.terminal-main-column {
+  height: 420px;
+  min-height: 420px;
+  gap: 7px;
+}
+
+.terminal-footer-strip {
+  height: 28px;
+  min-height: 28px;
+  padding: 4px 8px;
+  gap: 7px;
+}
+
+.terminal-keycap {
+  width: 42px;
+  height: 18px;
+  min-height: 18px;
+  background: #052238dd;
+  border-color: #39eaff88;
+  color: #dffbffff;
+  accent-color: #00eaffff;
+}
+
+.terminal-footer-strip text {
+  width: 78px;
+  max-lines: 1;
+  color: #91aebeff;
+}
+
+.terminal-command-top-grid {
+  height: 172px;
+  min-height: 172px;
+}
+
+.terminal-command-bottom-grid {
+  height: 198px;
+  min-height: 198px;
+}
+
+.terminal-reward-layout,
+.terminal-addon-layout,
+.terminal-archive-layout,
+.terminal-system-layout {
+  height: 380px;
+  min-height: 380px;
+}
+
+.terminal-map-layout {
+  height: 390px;
+  min-height: 390px;
+}
+
+.terminal-page-hero {
+  height: 82px;
+  min-height: 82px;
+  padding: 8px;
+  gap: 5px;
+}
+
+.terminal-route-layout {
+  height: 372px;
+  min-height: 372px;
+}
+
+.terminal-recipe-layout {
+  height: 342px;
+  min-height: 342px;
+}
+
+.terminal-dossier-layout {
+  height: 170px;
+  min-height: 170px;
+}
+
+.terminal-system-overview-grid {
+  height: 116px;
+  min-height: 116px;
+}
+
+.terminal-system-detail-grid {
+  height: 190px;
+  min-height: 190px;
+}
+
+.terminal-system-list {
+  height: 160px;
+  min-height: 160px;
+}
+
+.terminal-panel {
+  padding: 7px;
+  gap: 5px;
+}
+
+.terminal-command-bottom-grid .terminal-panel {
+  padding: 5px;
+  gap: 3px;
+}
+
+.terminal-card {
+  padding: 6px;
+  gap: 4px;
+}
+
+.terminal-active-mission {
+  height: 136px;
+  min-height: 136px;
+  padding: 9px;
+  gap: 6px;
+  texture-alpha: 72;
+  texture-alpha-2: 24;
+}
+
+.terminal-home-route-chip-row {
+  height: 22px;
+  min-height: 22px;
+  padding: 0;
+  gap: 5px;
+}
+
+.terminal-home-route-chip-row status-chip {
+  width: 58px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-action-row,
+.terminal-priority-row,
+.terminal-mission-row,
+.terminal-reward-row,
+.terminal-record-row,
+.terminal-addon-card,
+.terminal-recipe-row,
+.terminal-dossier-action-row,
+.terminal-tall-row {
+  height: 42px;
+  min-height: 42px;
+  padding: 5px 7px;
+  gap: 6px;
+}
+
+.terminal-compact-row {
+  height: 28px;
+  min-height: 28px;
+  padding: 4px 6px;
+}
+
+.terminal-status-tile,
+stat-card,
+.terminal-metric-card {
+  height: 38px;
+  min-height: 38px;
+  padding: 5px 7px;
+}
+
+.terminal-what-now-row {
+  height: 40px;
+  min-height: 40px;
+  padding: 6px;
+}
+
+.terminal-command-row {
+  height: 38px;
+  min-height: 38px;
+  padding: 4px 6px;
+  background: #041521d8;
+  border-color: #3deaff34;
+  texture-alpha: 6;
+  texture-alpha-2: 3;
+}
+
+.terminal-command-row title {
+  color: #e2f8ffff;
+}
+
+.terminal-command-row text {
+  color: #9bb5c5ff;
+}
+
+.terminal-action-row title,
+.terminal-dossier-action-row title,
+.terminal-map-provider-row title,
+.terminal-what-now-row title {
+  color: #e4fbffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-action-row text,
+.terminal-dossier-action-row text,
+.terminal-map-provider-row text,
+.terminal-what-now-row text {
+  color: #98bac8ff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-command-list {
+  height: 98px;
+  min-height: 98px;
+}
+
+.terminal-feed-list {
+  height: 100px;
+  min-height: 100px;
+}
+
+.terminal-command-feed-list {
+  height: 124px;
+  min-height: 124px;
+}
+
+.terminal-hazard-list {
+  height: 46px;
+  min-height: 46px;
+}
+
+.terminal-module-list {
+  height: 150px;
+  min-height: 150px;
+}
+
+.terminal-reward-list {
+  height: 245px;
+  min-height: 245px;
+}
+
+.terminal-reward-list-small {
+  height: 154px;
+  min-height: 154px;
+}
+
+.terminal-addon-list {
+  height: 248px;
+  min-height: 248px;
+}
+
+.terminal-module-card {
+  height: 34px;
+  min-height: 34px;
+  padding: 4px 6px;
+  background: #03131fca;
+  border-color: #35eaff40;
+  accent-color: #00eaffff;
+  texture-alpha: 8;
+  texture-alpha-2: 4;
+}
+
+.terminal-module-card[selected="true"],
+.terminal-module-card[active="true"],
+.terminal-module-card:active,
+.terminal-module-card:focused {
+  background: #062331e2;
+  border-color: #00eaffcc;
+  accent-color: #00eaffff;
+  glow-strength: 8;
+}
+
+.terminal-mission-list {
+  height: 304px;
+  min-height: 304px;
+}
+
+.terminal-recipe-list {
+  height: 310px;
+  min-height: 310px;
+}
+
+.terminal-mission-detail {
+  height: 372px;
+  min-height: 372px;
+  padding: 7px;
+  gap: 6px;
+}
+
+.terminal-mission-detail-scroll {
+  height: 272px;
+  min-height: 272px;
+  overflow: scroll;
+}
+
+.terminal-mission-detail-content {
+  height: 500px;
+  min-height: 500px;
+  gap: 6px;
+}
+
+.terminal-side-panel {
+  height: 94px;
+  min-height: 94px;
+  padding: 6px;
+}
+
+.terminal-mission-check-panel {
+  height: 86px;
+  min-height: 86px;
+  padding: 5px 6px;
+  gap: 4px;
+  background: #031521bf;
+  border-color: #35eaff2e;
+  texture-alpha: 5;
+  texture-alpha-2: 3;
+}
+
+.terminal-mission-check-row {
+  height: 30px;
+  min-height: 30px;
+  padding: 3px 5px;
+  gap: 5px;
+  background: #061a26c8;
+  border-color: #39eaff24;
+}
+
+.terminal-mission-check-row text {
+  color: #88a8b8ff;
+}
+
+.terminal-mission-reward-panel {
+  height: 112px;
+  min-height: 112px;
+}
+
+.terminal-mission-reward-row {
+  height: 30px;
+  min-height: 30px;
+  background: #051c22d2;
+  border-color: #58ff9a38;
+}
+
+.terminal-mission-reward-row title {
+  color: #e5fff5ff;
+}
+
+.terminal-mission-reward-row text {
+  color: #91bcb8ff;
+}
+
+.terminal-map-surface {
+  height: 214px;
+  min-height: 214px;
+  padding: 7px;
+  texture-alpha: 34;
+  texture-alpha-2: 16;
+}
+
+.terminal-roadmap-scroll {
+  height: 154px;
+  min-height: 154px;
+}
+
+.terminal-side-scroll {
+  height: 52px;
+  min-height: 52px;
+}
+
+.terminal-mission-action-strip {
+  height: 36px;
+  min-height: 36px;
+  padding: 4px 5px;
+  gap: 5px;
+  columns: 1fr 1fr 1fr;
+  background: #041521dd;
+  border-color: #2deaff44;
+  texture-alpha: 6;
+  texture-alpha-2: 4;
+}
+
+.terminal-mission-action-strip button {
+  height: 26px;
+  min-height: 26px;
+}
+
+.terminal-route-action-button {
+  min-width: 0px;
+  padding: 4px 5px;
+  text-align: center;
+  background: #061a27cf;
+  border-color: #45eaff55;
+}
+
+.terminal-route-action-button[variant="primary"] {
+  background: #00d9eeb2;
+  border-color: #69fbffff;
+  color: #00151aff;
+  glow-strength: 16;
+}
+
+.terminal-route-action-button:hover,
+.terminal-route-action-button:focused {
+  background: #0a2a3ce8;
+  border-color: #66f5ffff;
+  glow-strength: 12;
+}
+
+.terminal-route-summary-row {
+  gap: 5px;
+}
+
+.terminal-route-summary-row status-chip {
+  width: 62px;
+}
+
+.terminal-route-focus-button {
+  width: 54px;
+  min-width: 54px;
+}
+
+.terminal-route-chip-row status-chip {
+  width: 70px;
+}
+
+.terminal-route-legend {
+  height: 24px;
+  min-height: 24px;
+  padding: 2px 4px;
+  gap: 5px;
+  background: transparent;
+  border-color: transparent;
+  texture-alpha: 0;
+}
+
+.terminal-route-legend status-chip {
+  width: 52px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-phase-lane {
+  height: 188px;
+  min-height: 188px;
+  background: #04131fd6;
+  border-color: #46eaff38;
+}
+
+.terminal-roadmap-scroll {
+  height: 128px;
+  min-height: 128px;
+}
+
+.terminal-phase-row {
+  height: 42px;
+  min-height: 42px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #061927d0;
+  border-color: #39eaff32;
+  texture-alpha: 8;
+  texture-alpha-2: 4;
+}
+
+.terminal-phase-row[selected="true"],
+.terminal-phase-row[active="true"],
+.terminal-phase-row:active,
+.terminal-phase-row:focused {
+  background: #073326e8;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+  glow-strength: 12;
+}
+
+.terminal-selected-phase-card {
+  height: 58px;
+  min-height: 58px;
+  padding: 5px 6px;
+  gap: 3px;
+  background: #031521bf;
+  border-color: #35eaff2e;
+  texture-alpha: 5;
+  texture-alpha-2: 3;
+}
+
+.terminal-route-layout .terminal-panel {
+  background: #03131fca;
+  border-color: #35eaff35;
+  texture-alpha: 8;
+  texture-alpha-2: 4;
+}
+
+.terminal-route-layout .terminal-mission-list {
+  height: 264px;
+  min-height: 220px;
+  max-height: 304px;
+}
+
+.terminal-route-layout .terminal-mission-detail {
+  height: 340px;
+  min-height: 320px;
+  max-height: 372px;
+}
+
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 238px;
+  min-height: 214px;
+  max-height: 272px;
+}
+
+.terminal-route-layout .terminal-mission-detail-content {
+  height: 430px;
+  min-height: 430px;
+}
+
+.terminal-route-layout .terminal-mission-row {
+  height: 40px;
+  min-height: 40px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #061927d0;
+  border-color: #39eaff32;
+  accent-color: #00eaffff;
+  texture-alpha: 8;
+  texture-alpha-2: 4;
+}
+
+.terminal-route-layout .terminal-mission-row title {
+  color: #e2fbffff;
+}
+
+.terminal-route-layout .terminal-mission-row text {
+  color: #91b9c6ff;
+}
+
+.terminal-route-layout .terminal-mission-row[selected="true"],
+.terminal-route-layout .terminal-mission-row[active="true"],
+.terminal-route-layout .terminal-mission-row:active,
+.terminal-route-layout .terminal-mission-row:focused {
+  background: #073326e8;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+  glow-strength: 12;
+}
+
+.terminal-route-layout .terminal-mission-row[selected="true"] title,
+.terminal-route-layout .terminal-mission-row[active="true"] title,
+.terminal-route-layout .terminal-mission-row:active title,
+.terminal-route-layout .terminal-mission-row:focused title {
+  color: #effff5ff;
+}
+
+.terminal-map-node {
+  height: 48px;
+  min-height: 48px;
+  padding: 5px;
+}
+
+.terminal-map-node-grid {
+  height: 260px;
+  min-height: 260px;
+  gap: 8px;
+}
+
+.terminal-map-provider-row {
+  height: 42px;
+  min-height: 42px;
+  background: #041521d8;
+  border-color: #3deaff34;
+  accent-color: #00eaffff;
+  texture-alpha: 6;
+  texture-alpha-2: 3;
+}
+
+.terminal-map-provider-row[selected="true"],
+.terminal-map-provider-row[active="true"],
+.terminal-map-provider-row:active,
+.terminal-map-provider-row:focused {
+  background: #062331e2;
+  border-color: #00eaffcc;
+  accent-color: #00eaffff;
+  glow-strength: 9;
+}
+
+.terminal-dossier-actions {
+  height: 220px;
+  min-height: 220px;
+  padding: 7px;
+}
+
+.terminal-dossier-action-scroll,
+.terminal-provider-list,
+.intel-list,
+.system-list {
+  height: 210px;
+  min-height: 210px;
+}
+
+.terminal-map-provider-list {
+  height: 235px;
+  min-height: 235px;
+}
+
+.terminal-system-health-panel stat-card {
+  height: 27px;
+  min-height: 27px;
+  padding: 3px 6px;
+}
+
+.terminal-system-health-panel button {
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-recipe-row {
+  height: 50px;
+  min-height: 50px;
+}
+
+.terminal-filter-option-list {
+  height: 92px;
+  min-height: 92px;
+}
+
+.terminal-search-bar {
+  height: 26px;
+  min-height: 26px;
+  padding: 5px 8px;
+}
+
+.terminal-filter-row {
+  height: 28px;
+  min-height: 28px;
+  padding: 3px;
+}
+
+.terminal-chip-row,
+.terminal-category-list {
+  height: 24px;
+  min-height: 24px;
+}
+
+.terminal-page-tab {
+  width: 82px;
+  height: 24px;
+  min-height: 24px;
+  padding: 3px 5px;
+}
+
+.terminal-action-strip {
+  height: 32px;
+  min-height: 32px;
+  padding: 4px 6px;
+  gap: 6px;
+}
+
+.terminal-action-strip button,
+.terminal-filter-row button {
+  height: 22px;
+  min-height: 22px;
+}
+
+list-row[selected="true"],
+list-row[active="true"],
+list-row:active,
+list-row:focused {
+  background: #062331e2;
+  border-color: #00eaffcc;
+  accent-color: #00eaffff;
+  background-texture-2: theme-texture(screencore.focus_ring);
+  glow-strength: 10;
+}
+
+/* Route browser final pass: keep the survival route readable and self-contained. */
+.terminal-route-layout .terminal-phase-row,
+.terminal-route-layout .terminal-mission-row {
+  surface: panel;
+  height: 50px;
+  min-height: 50px;
+  padding: 5px 7px;
+  gap: 6px;
+  background: #041722f0;
+  border-color: #2feaff66;
+  accent-color: #00eaffff;
+  background-texture: "";
+  background-texture-2: "";
+  background-texture-3: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  shadow-strength: 4;
+  glow-strength: 2;
+}
+
+.terminal-route-layout .terminal-phase-row[selected="true"],
+.terminal-route-layout .terminal-phase-row[active="true"],
+.terminal-route-layout .terminal-phase-row:active,
+.terminal-route-layout .terminal-phase-row:focused,
+.terminal-route-layout .terminal-mission-row[selected="true"],
+.terminal-route-layout .terminal-mission-row[active="true"],
+.terminal-route-layout .terminal-mission-row:active,
+.terminal-route-layout .terminal-mission-row:focused {
+  surface: panel;
+  background: #073323f2;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+  background-texture: "";
+  background-texture-2: "";
+  background-texture-3: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  glow-strength: 9;
+}
+
+.terminal-route-layout .terminal-phase-row:hover,
+.terminal-route-layout .terminal-mission-row:hover {
+  surface: panel;
+  background: #062436f2;
+  border-color: #44eaffbb;
+  accent-color: #25eaffff;
+  background-texture: "";
+  background-texture-2: "";
+  background-texture-3: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  glow-strength: 7;
+}
+
+.terminal-route-layout .terminal-phase-row[selected="true"]:hover,
+.terminal-route-layout .terminal-phase-row[active="true"]:hover,
+.terminal-route-layout .terminal-mission-row[selected="true"]:hover,
+.terminal-route-layout .terminal-mission-row[active="true"]:hover {
+  background: #083b29f6;
+  border-color: #8affadff;
+  accent-color: #62ff9cff;
+  glow-strength: 11;
+}
+
+.terminal-route-layout .terminal-phase-row column,
+.terminal-route-layout .terminal-mission-row column {
+  gap: 2px;
+}
+
+.terminal-route-layout .terminal-phase-row title,
+.terminal-route-layout .terminal-mission-row title {
+  color: #e9fbffff;
+  line-height: 10px;
+  max-lines: 1;
+}
+
+.terminal-route-layout .terminal-phase-row text,
+.terminal-route-layout .terminal-mission-row text {
+  color: #9cc8d5ff;
+  line-height: 9px;
+  max-lines: 1;
+}
+
+.terminal-route-layout .terminal-phase-row[selected="true"] title,
+.terminal-route-layout .terminal-phase-row[active="true"] title,
+.terminal-route-layout .terminal-phase-row:active title,
+.terminal-route-layout .terminal-phase-row:focused title,
+.terminal-route-layout .terminal-mission-row[selected="true"] title,
+.terminal-route-layout .terminal-mission-row[active="true"] title,
+.terminal-route-layout .terminal-mission-row:active title,
+.terminal-route-layout .terminal-mission-row:focused title {
+  color: #f3fff8ff;
+}
+
+.terminal-route-layout .mission-progress-line {
+  surface: panel;
+  height: 4px;
+  min-height: 4px;
+  background: #03111bdd;
+  border-color: #31eaff66;
+  accent-color: #25eaffff;
+  fill-color: #58ff9aff;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-route-action-button {
+  surface: panel;
+  background: #052238e8;
+  border-color: #43eaff74;
+  color: #dffbffff;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-route-action-button[variant="primary"] {
+  background: #13d8e6dc;
+  border-color: #76fbffff;
+  color: #001419ff;
+  accent-color: #00eaffff;
+}
+
+.terminal-route-layout {
+  gap: 8px;
+}
+
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-layout .terminal-route-briefing-panel {
+  padding: 7px;
+  gap: 6px;
+  background: #02101bf0;
+  border-color: #38eaff55;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+}
+
+.terminal-route-layout .terminal-phase-lane {
+  height: 210px;
+  min-height: 200px;
+  background: #03131ff0;
+  border-color: #42eaff55;
+  texture-alpha: 10;
+  texture-alpha-2: 5;
+}
+
+.terminal-route-layout .terminal-roadmap-scroll {
+  height: 148px;
+  min-height: 132px;
+}
+
+.terminal-route-layout list {
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-mission-list {
+  height: 286px;
+  min-height: 236px;
+  max-height: 304px;
+}
+
+.terminal-route-layout .terminal-selected-phase-card {
+  height: 64px;
+  min-height: 58px;
+  background: #031721e8;
+  border-color: #35eaff42;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-selected-phase-card title,
+.terminal-route-layout .terminal-selected-mission-title {
+  color: #f1fdffff;
+  line-height: 11px;
+  max-lines: 1;
+}
+
+.terminal-route-layout .terminal-selected-phase-card text,
+.terminal-route-layout .terminal-selected-mission-subtitle {
+  color: #a8c9d7ff;
+  line-height: 10px;
+  max-lines: 2;
+}
+
+.terminal-route-layout .terminal-selected-mission-progress {
+  surface: panel;
+  height: 5px;
+  min-height: 5px;
+  background: #03111bdd;
+  border-color: #46eaff80;
+  fill-color: #2deaffee;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-mission-check-panel,
+.terminal-route-layout .terminal-mission-check-row {
+  surface: panel;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-mission-check-panel {
+  background: #031521e6;
+  border-color: #35eaff3c;
+}
+
+.terminal-route-layout .terminal-mission-check-row {
+  background: #061c27df;
+  border-color: #35eaff32;
+}
+
+/* Finished Survival Route pass. Direct classes keep the route readable even when
+   shared terminal row styles change, while descendant/state selectors handle polish. */
+.terminal-route-layout {
+  height: 380px;
+  min-height: 360px;
+  gap: 8px;
+}
+
+.terminal-route-panel,
+.terminal-route-briefing-panel,
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-layout .terminal-route-briefing-panel {
+  padding: 7px;
+  gap: 6px;
+  background: #020f19f2;
+  border-color: #36eaff55;
+  texture-alpha: 3;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-route-briefing-scroll,
+.terminal-route-layout .terminal-route-briefing-scroll {
+  height: 380px;
+  min-height: 340px;
+  overflow: scroll;
+  padding: 7px 7px 12px 7px;
+}
+
+.terminal-route-briefing-stack,
+.terminal-route-layout .terminal-route-briefing-stack {
+  min-height: 430px;
+  padding-bottom: 18px;
+  gap: 6px;
+}
+
+.terminal-route-summary-row {
+  height: 34px;
+  min-height: 32px;
+  gap: 5px;
+}
+
+.terminal-route-summary-row status-chip,
+.terminal-route-chip-row status-chip {
+  width: 70px;
+}
+
+.terminal-route-focus-button {
+  width: 58px;
+  min-width: 58px;
+}
+
+.terminal-phase-lane,
+.terminal-route-layout .terminal-phase-lane {
+  height: 202px;
+  min-height: 190px;
+  padding: 7px;
+  background: #03131ff2;
+  border-color: #3deaff50;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+}
+
+.terminal-route-layout .terminal-mission-detail {
+  height: 328px;
+  min-height: 300px;
+  padding-bottom: 10px;
+}
+
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 214px;
+  min-height: 184px;
+}
+
+.terminal-route-layout .terminal-mission-detail-content {
+  min-height: 430px;
+  padding-bottom: 12px;
+}
+
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 38px;
+  min-height: 38px;
+  padding-bottom: 6px;
+}
+
+.terminal-route-layout .terminal-route-phases-panel,
+.terminal-route-layout .terminal-route-missions-panel {
+  padding-bottom: 12px;
+}
+
+.terminal-roadmap-scroll,
+.terminal-route-layout .terminal-roadmap-scroll {
+  height: 140px;
+  min-height: 126px;
+  overflow: scroll;
+}
+
+.terminal-route-layout list {
+  gap: 5px;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  surface: panel;
+  height: 56px;
+  min-height: 56px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #041722f2;
+  border-color: #31eaff68;
+  accent-color: #00eaffff;
+  background-texture: "";
+  background-texture-2: "";
+  background-texture-3: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  shadow-strength: 4;
+  glow-strength: 2;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-phase-row:active,
+.terminal-route-phase-row:focused,
+.terminal-route-mission-row[selected="true"],
+.terminal-route-mission-row[active="true"],
+.terminal-route-mission-row:active,
+.terminal-route-mission-row:focused,
+.terminal-route-layout .terminal-route-phase-row[selected="true"],
+.terminal-route-layout .terminal-route-phase-row[active="true"],
+.terminal-route-layout .terminal-route-phase-row:active,
+.terminal-route-layout .terminal-route-phase-row:focused,
+.terminal-route-layout .terminal-route-mission-row[selected="true"],
+.terminal-route-layout .terminal-route-mission-row[active="true"],
+.terminal-route-layout .terminal-route-mission-row:active,
+.terminal-route-layout .terminal-route-mission-row:focused {
+  background: #073323f6;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+  background-texture: "";
+  background-texture-2: "";
+  background-texture-3: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  glow-strength: 10;
+}
+
+.terminal-route-phase-row:hover,
+.terminal-route-mission-row:hover,
+.terminal-route-layout .terminal-route-phase-row:hover,
+.terminal-route-layout .terminal-route-mission-row:hover {
+  background: #062436f4;
+  border-color: #44eaffcc;
+  accent-color: #25eaffff;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+  glow-strength: 7;
+}
+
+.terminal-route-phase-row[disabled],
+.terminal-route-mission-row[disabled],
+.terminal-route-phase-row.locked,
+.terminal-route-mission-row.locked {
+  background: #08121bdf;
+  border-color: #526c7a66;
+  color: #8ea3aeff;
+  accent-color: #7c95a2ff;
+}
+
+.terminal-route-row-copy,
+.terminal-route-layout .terminal-route-row-copy {
+  gap: 2px;
+}
+
+.terminal-route-row-title,
+.terminal-route-layout .terminal-route-row-title {
+  color: #e9fbffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-row-subtitle,
+.terminal-route-layout .terminal-route-row-subtitle {
+  color: #9fc7d3ff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-phase-row[selected="true"] .terminal-route-row-title,
+.terminal-route-phase-row[active="true"] .terminal-route-row-title,
+.terminal-route-phase-row:active .terminal-route-row-title,
+.terminal-route-phase-row:focused .terminal-route-row-title,
+.terminal-route-mission-row[selected="true"] .terminal-route-row-title,
+.terminal-route-mission-row[active="true"] .terminal-route-row-title,
+.terminal-route-mission-row:active .terminal-route-row-title,
+.terminal-route-mission-row:focused .terminal-route-row-title {
+  color: #f3fff8ff;
+}
+
+.terminal-route-index-chip,
+.terminal-route-layout .terminal-route-index-chip {
+  width: 46px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-route-state-chip,
+.terminal-route-layout .terminal-route-state-chip {
+  width: 64px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-route-row-progress,
+.terminal-route-layout .terminal-route-row-progress,
+.terminal-route-detail-progress,
+.terminal-route-layout .terminal-route-detail-progress {
+  surface: panel;
+  height: 4px;
+  min-height: 4px;
+  background: #03111bdd;
+  track-color: #03111bdd;
+  border-color: #31eaff66;
+  accent-color: #25eaffff;
+  fill-color: #58ff9aff;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-mission-list {
+  height: 292px;
+  min-height: 240px;
+  max-height: 312px;
+  overflow: scroll;
+}
+
+.terminal-selected-phase-card,
+.terminal-route-layout .terminal-selected-phase-card {
+  height: 66px;
+  min-height: 62px;
+  padding: 6px 7px;
+  gap: 3px;
+  background: #031721e8;
+  border-color: #35eaff42;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-selected-phase-card title,
+.terminal-route-detail-title,
+.terminal-route-layout .terminal-route-detail-title {
+  color: #f1fdffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-selected-phase-card text,
+.terminal-route-detail-subtitle,
+.terminal-route-layout .terminal-route-detail-subtitle {
+  color: #a8c9d7ff;
+  line-height: 10px;
+  max-lines: 2;
+  wrap: true;
+}
+
+.terminal-route-layout .terminal-mission-detail {
+  height: 360px;
+  min-height: 330px;
+  max-height: 380px;
+  padding: 7px;
+  gap: 6px;
+}
+
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 252px;
+  min-height: 220px;
+  max-height: 292px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-mission-detail-content {
+  height: 480px;
+  min-height: 460px;
+  gap: 6px;
+}
+
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-route-detail-card {
+  surface: panel;
+  height: 92px;
+  min-height: 86px;
+  padding: 6px 7px;
+  gap: 4px;
+  background: #031521e8;
+  border-color: #35eaff40;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  surface: panel;
+  height: 34px;
+  min-height: 32px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #061c27df;
+  border-color: #35eaff32;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-detail-row title,
+.terminal-route-detail-row .terminal-route-row-title {
+  color: #e6fbffff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-detail-row text {
+  color: #91b9c6ff;
+  line-height: 9px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-mission-action-strip,
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 40px;
+  min-height: 38px;
+  padding: 5px 6px;
+  gap: 6px;
+  columns: 1fr 1fr 1fr;
+  background: #041521ef;
+  border-color: #2deaff55;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-action-button,
+.terminal-route-layout .terminal-route-action-button {
+  surface: panel;
+  height: 28px;
+  min-height: 28px;
+  min-width: 0px;
+  padding: 4px 5px;
+  text-align: center;
+  background: #062033ef;
+  border-color: #45eaff77;
+  color: #dffbffff;
+  background-texture: "";
+  background-texture-2: "";
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-action-button[variant="primary"],
+.terminal-route-layout .terminal-route-action-button[variant="primary"] {
+  background: #11dbe8e8;
+  border-color: #76fbffff;
+  color: #001419ff;
+  accent-color: #00eaffff;
+  glow-strength: 10;
+}
+
+.terminal-route-action-button:hover,
+.terminal-route-action-button:focused,
+.terminal-route-layout .terminal-route-action-button:hover,
+.terminal-route-layout .terminal-route-action-button:focused {
+  background: #0a2a3cf4;
+  border-color: #66f5ffff;
+  color: #f1fdffff;
+  glow-strength: 9;
+}
+
+.terminal-route-action-button[variant="primary"]:hover,
+.terminal-route-action-button[variant="primary"]:focused,
+.terminal-route-layout .terminal-route-action-button[variant="primary"]:hover,
+.terminal-route-layout .terminal-route-action-button[variant="primary"]:focused {
+  background: #46f4fff0;
+  border-color: #a5ffffff;
+  color: #001419ff;
+}
+
+.terminal-route-action-button[disabled],
+.terminal-route-action-button:disabled,
+.terminal-route-layout .terminal-route-action-button[disabled],
+.terminal-route-layout .terminal-route-action-button:disabled {
+  background: #0a151f9a;
+  border-color: #526c7a66;
+  color: #8aa4b0cc;
+  accent-color: #7c95a2aa;
+  glow-strength: 0;
+}
+
+/* Terminal audit polish pass */
+.terminal-main-scroll,
+.terminal-main-column {
+  height: 420px;
+  min-height: 0px;
+  max-height: 420px;
+}
+
+.terminal-main-scroll {
+  overflow: scroll;
+}
+
+.terminal-row-copy {
+  min-width: 0px;
+  gap: 2px;
+}
+
+.terminal-row-copy title,
+.terminal-command-row title,
+.terminal-action-row title,
+.terminal-dossier-action-row title,
+.terminal-map-provider-row title,
+.terminal-what-now-row title,
+.terminal-reward-row title,
+.terminal-recipe-row title,
+.terminal-record-row title,
+.terminal-addon-card title,
+.terminal-module-card title,
+.terminal-tall-row title,
+.terminal-compact-row title {
+  color: #e7fbffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-row-copy text,
+.terminal-command-row text,
+.terminal-action-row text,
+.terminal-dossier-action-row text,
+.terminal-map-provider-row text,
+.terminal-what-now-row text,
+.terminal-reward-row text,
+.terminal-recipe-row text,
+.terminal-record-row text,
+.terminal-addon-card text,
+.terminal-module-card text,
+.terminal-tall-row text,
+.terminal-compact-row text {
+  color: #9bbbc8ff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-action-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-record-row,
+.terminal-reward-row,
+.terminal-what-now-row {
+  height: 44px;
+  min-height: 44px;
+  padding: 5px 7px;
+  gap: 7px;
+}
+
+.terminal-recipe-row {
+  height: 50px;
+  min-height: 50px;
+  padding: 6px 7px;
+  gap: 7px;
+}
+
+.terminal-reward-row,
+.terminal-recipe-row,
+.terminal-record-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-action-row {
+  background: #041621e2;
+  border-color: #35eaff38;
+  accent-color: #00eaffff;
+  texture-alpha: 6;
+  texture-alpha-2: 3;
+}
+
+.terminal-reward-row:hover,
+.terminal-recipe-row:hover,
+.terminal-record-row:hover,
+.terminal-dossier-action-row:hover,
+.terminal-map-provider-row:hover,
+.terminal-action-row:hover {
+  background: #062331f0;
+  border-color: #54f2ff88;
+  color: #f4feffff;
+  glow-strength: 7;
+}
+
+.terminal-reward-row[selected="true"],
+.terminal-recipe-row[selected="true"],
+.terminal-record-row[selected="true"],
+.terminal-dossier-action-row[selected="true"],
+.terminal-map-provider-row[selected="true"],
+.terminal-action-row[selected="true"],
+.terminal-reward-row[active="true"],
+.terminal-recipe-row[active="true"],
+.terminal-record-row[active="true"],
+.terminal-dossier-action-row[active="true"],
+.terminal-map-provider-row[active="true"],
+.terminal-action-row[active="true"],
+.terminal-reward-row:focused,
+.terminal-recipe-row:focused,
+.terminal-record-row:focused,
+.terminal-dossier-action-row:focused,
+.terminal-map-provider-row:focused,
+.terminal-action-row:focused {
+  background: #073523e8;
+  border-color: #57ff9cd6;
+  accent-color: #58ff9aff;
+  glow-strength: 9;
+}
+
+button[disabled],
+button:disabled,
+list-row[disabled],
+list-row:disabled {
+  background: #07131c99;
+  border-color: #526c7a55;
+  color: #809ba8cc;
+  accent-color: #6d8490aa;
+  glow-strength: 0;
+}
+
+.terminal-reward-layout {
+  height: 380px;
+  min-height: 360px;
+  max-height: 390px;
+}
+
+.terminal-reward-list {
+  height: 300px;
+  min-height: 240px;
+  max-height: 318px;
+  overflow: scroll;
+}
+
+.terminal-reward-list-small {
+  height: 126px;
+  min-height: 112px;
+  max-height: 138px;
+  overflow: scroll;
+}
+
+.terminal-reward-summary-scroll,
+.terminal-reward-content-scroll {
+  height: 112px;
+  min-height: 94px;
+  max-height: 126px;
+  overflow: scroll;
+}
+
+.terminal-reward-summary-row,
+.terminal-reward-content-row {
+  height: 30px;
+  min-height: 30px;
+  padding: 4px 6px;
+  gap: 6px;
+}
+
+.terminal-reward-badge-chip,
+.terminal-recipe-category-chip,
+.terminal-dossier-badge-chip,
+.terminal-command-badge-chip,
+.terminal-archive-state-chip {
+  width: 54px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-provider-count-chip,
+.terminal-system-badge-chip,
+.terminal-module-icon-chip {
+  width: 46px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-module-count-chip {
+  width: 40px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-reward-state-chip {
+  width: 76px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-command-state-chip,
+.terminal-system-warning-chip {
+  width: 80px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-system-state-chip,
+.terminal-module-state-chip,
+.scriptcore-state-chip {
+  width: 88px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-reward-state-chip-wide {
+  width: 90px;
+}
+
+.terminal-reward-count-chip,
+.terminal-dossier-state-chip {
+  width: 92px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-reward-action-button {
+  height: 28px;
+  min-height: 28px;
+  min-width: 0px;
+  padding: 4px 5px;
+}
+
+.terminal-recipe-layout {
+  height: 342px;
+  min-height: 330px;
+  max-height: 360px;
+}
+
+.terminal-search-clear-button {
+  width: 64px;
+  min-width: 58px;
+  height: 24px;
+  min-height: 24px;
+}
+
+.terminal-visible-count-chip {
+  width: 104px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-dossier-layout {
+  height: 170px;
+  min-height: 160px;
+  max-height: 190px;
+}
+
+.terminal-dossier-action-scroll {
+  height: 214px;
+  min-height: 180px;
+  max-height: 230px;
+  overflow: scroll;
+}
+
+.terminal-route-item-icon,
+.terminal-route-layout .terminal-route-item-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  height: 38px;
+  min-height: 36px;
+  gap: 6px;
+}
+
+/* Terminal recovery pass: final readable shell, row, route, and background overrides. */
+screen-shell,
+.terminal-shell,
+.terminal-app {
+  background: #01070df0;
+  border-color: #00eaff94;
+  texture-alpha: 10;
+  texture-alpha-2: 34;
+  texture-alpha-3: 6;
+  shadow-strength: 22;
+  glow-strength: 5;
+  padding: 7px;
+  gap: 7px;
+}
+
+.terminal-topbar {
+  height: 44px;
+  min-height: 44px;
+  padding: 6px 10px;
+  gap: 10px;
+  background: #020a12d4;
+  border-color: #34eaff48;
+  texture-alpha: 8;
+  texture-alpha-2: 4;
+  texture-alpha-3: 0;
+}
+
+.terminal-brand {
+  width: 430px;
+  min-width: 260px;
+}
+
+.terminal-brand-copy,
+.terminal-page-title,
+.terminal-row-copy,
+.terminal-route-row-copy {
+  min-width: 96px;
+  gap: 2px;
+}
+
+.terminal-brand-copy title,
+.terminal-page-title title,
+.terminal-row-copy title,
+.terminal-command-row title,
+.terminal-action-row title,
+.terminal-dossier-action-row title,
+.terminal-map-provider-row title,
+.terminal-what-now-row title,
+.terminal-reward-row title,
+.terminal-recipe-row title,
+.terminal-record-row title,
+.terminal-addon-card title,
+.terminal-module-card title,
+.terminal-tall-row title,
+.terminal-compact-row title,
+.terminal-route-row-title,
+.terminal-route-detail-title {
+  color: #f2fdffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-brand-copy text,
+.terminal-page-title text,
+.terminal-row-copy text,
+.terminal-command-row text,
+.terminal-action-row text,
+.terminal-dossier-action-row text,
+.terminal-map-provider-row text,
+.terminal-what-now-row text,
+.terminal-reward-row text,
+.terminal-recipe-row text,
+.terminal-record-row text,
+.terminal-addon-card text,
+.terminal-module-card text,
+.terminal-tall-row text,
+.terminal-compact-row text,
+.terminal-route-row-subtitle,
+.terminal-route-detail-subtitle {
+  color: #b6d3deff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-page-head {
+  height: 40px;
+  min-height: 40px;
+  padding: 5px 8px;
+  background: #020b13a8;
+  border-color: #2deaff2e;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-app-grid {
+  columns: 182px 1fr;
+  gap: 9px;
+}
+
+.terminal-rail {
+  min-height: 500px;
+  padding: 8px;
+  texture-alpha: 7;
+  texture-alpha-2: 3;
+}
+
+.terminal-section-scroll {
+  height: 252px;
+  min-height: 252px;
+}
+
+.terminal-section-row {
+  height: 36px;
+  min-height: 36px;
+  padding: 4px 6px;
+  gap: 6px;
+}
+
+.terminal-core-link {
+  height: 160px;
+  min-height: 150px;
+  padding: 8px;
+  gap: 3px;
+}
+
+.terminal-workspace {
+  height: 500px;
+  min-height: 0px;
+  max-height: 520px;
+  gap: 7px;
+}
+
+.terminal-main-scroll,
+.terminal-main-column {
+  height: 420px;
+  min-height: 0px;
+  max-height: 420px;
+}
+
+.terminal-main-scroll {
+  overflow: scroll;
+}
+
+.terminal-main-column {
+  gap: 8px;
+}
+
+.terminal-footer-strip {
+  height: 28px;
+  min-height: 26px;
+  padding: 3px 8px;
+  gap: 7px;
+  background: #020b13c0;
+  border-color: #2deaff38;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+}
+
+.terminal-action-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-record-row,
+.terminal-reward-row,
+.terminal-what-now-row,
+.terminal-module-card,
+.terminal-addon-card {
+  height: 48px;
+  min-height: 46px;
+  padding: 5px 7px;
+  gap: 7px;
+  background: #041621e2;
+  border-color: #35eaff42;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-recipe-row {
+  height: 52px;
+  min-height: 50px;
+  padding: 6px 7px;
+  gap: 7px;
+}
+
+.terminal-action-row[selected="true"],
+.terminal-action-row[active="true"],
+.terminal-dossier-action-row[selected="true"],
+.terminal-dossier-action-row[active="true"],
+.terminal-map-provider-row[selected="true"],
+.terminal-map-provider-row[active="true"],
+.terminal-record-row[selected="true"],
+.terminal-record-row[active="true"],
+.terminal-reward-row[selected="true"],
+.terminal-reward-row[active="true"],
+.terminal-recipe-row[selected="true"],
+.terminal-recipe-row[active="true"] {
+  background: #073523ec;
+  border-color: #57ff9ce0;
+  accent-color: #58ff9aff;
+}
+
+.terminal-route-layout {
+  height: 390px;
+  min-height: 370px;
+  gap: 8px;
+}
+
+.terminal-route-panel,
+.terminal-route-briefing-panel,
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-layout .terminal-route-briefing-panel {
+  background: #020f19f0;
+  border-color: #36eaff55;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-phase-lane,
+.terminal-route-layout .terminal-phase-lane {
+  height: 220px;
+  min-height: 200px;
+}
+
+.terminal-roadmap-scroll,
+.terminal-route-layout .terminal-roadmap-scroll {
+  height: 156px;
+  min-height: 140px;
+  overflow: scroll;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  height: 64px;
+  min-height: 64px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #041722f2;
+  border-color: #31eaff74;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  texture-alpha-3: 0;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-mission-row[selected="true"],
+.terminal-route-mission-row[active="true"],
+.terminal-route-layout .terminal-route-phase-row[selected="true"],
+.terminal-route-layout .terminal-route-phase-row[active="true"],
+.terminal-route-layout .terminal-route-mission-row[selected="true"],
+.terminal-route-layout .terminal-route-mission-row[active="true"] {
+  background: #073323f6;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+}
+
+/* Terminal completion polish seal: this intentionally stays last. */
+.terminal-row-copy,
+.terminal-shell-copy-block,
+.terminal-section-copy,
+.terminal-module-copy,
+.terminal-hero-copy,
+.terminal-route-status-copy,
+.terminal-route-detail-copy,
+.terminal-recipe-category-copy {
+  min-width: 0px;
+  title-color: #f2fdffff;
+  detail-color: #b7d4deff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 2px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-main-scroll,
+.terminal-main-column {
+  height: 420px;
+  min-height: 0px;
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.terminal-action-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-record-row,
+.terminal-reward-row,
+.terminal-what-now-row,
+.terminal-module-card,
+.terminal-addon-card {
+  height: 52px;
+  min-height: 50px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #041722e6;
+  border-color: #35eaff54;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-command-list {
+  height: 112px;
+  min-height: 104px;
+  max-height: 122px;
+  overflow: scroll;
+}
+
+.terminal-command-feed-list,
+.terminal-feed-list {
+  height: 136px;
+  min-height: 124px;
+  max-height: 146px;
+  overflow: scroll;
+}
+
+.terminal-danger-panel .terminal-hazard-list {
+  height: 58px;
+  min-height: 52px;
+  max-height: 66px;
+  overflow: scroll;
+}
+
+.terminal-danger-panel .terminal-compact-row {
+  height: 42px;
+  min-height: 40px;
+  padding: 5px 7px;
+}
+
+.terminal-action-strip button,
+.terminal-filter-row button,
+.terminal-search-clear-button,
+.terminal-route-action-button,
+.terminal-reward-action-button {
+  height: 28px;
+  min-height: 28px;
+  min-width: 0px;
+  color: #dffbffff;
+  background: #07304ad6;
+  border-color: #36eaff88;
+}
+
+button[disabled],
+button:disabled,
+list-row[disabled] {
+  color: #87a0aacc;
+  background: #07131d9c;
+  border-color: #4c647066;
+  accent-color: #7b97a6aa;
+}
+
+.terminal-category-list {
+  direction: horizontal;
+  height: 34px;
+  min-height: 32px;
+  max-height: 36px;
+  gap: 6px;
+  overflow: scroll;
+}
+
+.terminal-page-tab {
+  width: 112px;
+  min-width: 96px;
+  height: 26px;
+  min-height: 24px;
+  padding: 4px 6px;
+}
+
+.terminal-recipe-category-copy {
+  title-line-height: 10px;
+  detail-line-height: 0px;
+  title-color: #dffbffff;
+}
+
+.terminal-command-overview-grid {
+  height: 408px;
+  min-height: 396px;
+  max-height: 420px;
+  gap: 10px;
+}
+
+.terminal-command-left-stack {
+  height: 408px;
+  min-height: 396px;
+  max-height: 420px;
+  gap: 10px;
+  padding: 0px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-command-primary-grid {
+  height: 190px;
+  min-height: 184px;
+  max-height: 204px;
+  gap: 10px;
+}
+
+.terminal-command-secondary-grid {
+  height: 208px;
+  min-height: 202px;
+  max-height: 220px;
+  gap: 10px;
+}
+
+.terminal-route-status-panel {
+  height: 408px;
+  min-height: 396px;
+  max-height: 420px;
+  overflow: hidden;
+}
+
+.terminal-route-status-scroll {
+  height: 330px;
+  min-height: 318px;
+  max-height: 342px;
+  overflow: scroll;
+}
+
+.terminal-route-status-content {
+  gap: 8px;
+  padding: 0px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-route-status-panel .terminal-metric-grid {
+  height: 66px;
+  min-height: 62px;
+  max-height: 72px;
+}
+
+.terminal-route-status-hazard-list {
+  gap: 6px;
+  min-height: 0px;
+}
+
+/* Survival Route final briefing system: info stays visible, lower panels scroll. */
+.terminal-route-briefing-panel,
+.terminal-route-layout .terminal-route-briefing-panel {
+  gap: 6px;
+  overflow: hidden;
+}
+
+.terminal-route-info-card,
+.terminal-route-layout .terminal-route-info-card {
+  height: 116px;
+  min-height: 110px;
+  max-height: 124px;
+  padding: 7px 8px;
+  gap: 5px;
+  background: #041b27f2;
+  border-color: #52f6ff9e;
+  accent-color: #49f7ffff;
+  texture-alpha: 3;
+  texture-alpha-2: 1;
+}
+
+.terminal-route-info-copy,
+.terminal-route-layout .terminal-route-info-copy {
+  height: 39px;
+  min-height: 36px;
+  title-color: #f7fdffff;
+  detail-color: #d4edf4ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  detail-wrap: true;
+  detail-max-lines: 2;
+  max-lines: 2;
+}
+
+.terminal-route-guidance-copy,
+.terminal-route-context-copy,
+.terminal-route-layout .terminal-route-guidance-copy,
+.terminal-route-layout .terminal-route-context-copy {
+  height: 28px;
+  min-height: 26px;
+  title-color: #68ffd7ff;
+  detail-color: #b8dce7ff;
+  title-line-height: 10px;
+  detail-line-height: 9px;
+  detail-wrap: false;
+  detail-max-lines: 1;
+  max-lines: 1;
+}
+
+.terminal-selected-mission-progress,
+.terminal-route-layout .terminal-selected-mission-progress {
+  height: 5px;
+  min-height: 4px;
+  max-height: 5px;
+}
+
+.terminal-mission-detail-scroll,
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 168px;
+  min-height: 154px;
+  max-height: 176px;
+  overflow: scroll;
+}
+
+.terminal-mission-detail-content,
+.terminal-route-layout .terminal-mission-detail-content {
+  gap: 5px;
+}
+
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-route-detail-card {
+  height: 74px;
+  min-height: 68px;
+  max-height: 92px;
+  padding: 6px 7px;
+  gap: 4px;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  height: 40px;
+  min-height: 38px;
+  padding: 4px 7px;
+  gap: 7px;
+}
+
+.terminal-mission-action-strip,
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 42px;
+  min-height: 40px;
+  max-height: 44px;
+  padding: 5px;
+  columns: 1fr 1fr 1fr;
+  gap: 6px;
+  background: #03131ff0;
+  border-color: #22d6efaa;
+}
+
+/* Survival Route briefing polish: keep mission guidance visible above checklist rows. */
+.terminal-route-layout .terminal-mission-detail-scroll,
+.terminal-mission-detail-scroll {
+  height: 300px;
+  min-height: 286px;
+  max-height: 312px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-route-detail-card,
+.terminal-route-detail-card {
+  height: 78px;
+  min-height: 68px;
+  max-height: 92px;
+  padding: 6px 7px;
+  gap: 4px;
+}
+
+.terminal-route-layout .terminal-route-info-card,
+.terminal-route-info-card {
+  height: 126px;
+  min-height: 118px;
+  max-height: 144px;
+  padding: 8px;
+  gap: 7px;
+  background: #041b27ee;
+  border-color: #48f4ff8f;
+  accent-color: #45f6ffff;
+  texture-alpha: 3;
+  texture-alpha-2: 2;
+}
+
+.terminal-route-layout .terminal-route-info-copy,
+.terminal-route-info-copy {
+  height: 62px;
+  min-height: 56px;
+  title-color: #f5fdffff;
+  detail-color: #cfeaf2ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  detail-wrap: true;
+  detail-max-lines: 3;
+  max-lines: 3;
+}
+
+.terminal-route-layout .terminal-route-guidance-copy,
+.terminal-route-guidance-copy {
+  height: 42px;
+  min-height: 38px;
+  title-color: #62ffd4ff;
+  detail-color: #bfe8eaff;
+  title-line-height: 11px;
+  detail-line-height: 10px;
+  detail-wrap: true;
+  detail-max-lines: 2;
+  max-lines: 2;
+}
+
+.terminal-route-layout .terminal-route-detail-row,
+.terminal-route-detail-row {
+  height: 40px;
+  min-height: 38px;
+  padding: 4px 7px;
+  gap: 7px;
+}
+
+.terminal-route-layout .terminal-route-item-icon,
+.terminal-route-item-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
+}
+
+.terminal-route-layout .terminal-mission-action-strip,
+.terminal-mission-action-strip {
+  height: 42px;
+  min-height: 40px;
+  padding: 5px;
+  background: #03131fe6;
+  border-color: #21d6f0aa;
+}
+
+.terminal-route-layout .terminal-route-action-button,
+.terminal-route-action-button {
+  height: 30px;
+  min-height: 28px;
+  background: #061f2bdb;
+  border-color: #24d9f2bf;
+  color: #d9f8ffff;
+}
+
+.terminal-route-layout .terminal-route-action-button[variant="primary"],
+.terminal-route-action-button[variant="primary"] {
+  background: #0db8cddb;
+  border-color: #65fbffff;
+  color: #021218ff;
+}
+
+.terminal-route-layout .terminal-route-action-button[disabled],
+.terminal-route-action-button[disabled],
+.terminal-route-layout .terminal-route-action-button:disabled,
+.terminal-route-action-button:disabled {
+  background: #071722aa;
+  border-color: #4e7480aa;
+  color: #9db7c0dd;
+}
+
+/* Terminal completion polish pass. Keep this final so stale route and row overrides cannot re-cramp copy blocks. */
+.terminal-row-copy,
+.terminal-shell-copy-block,
+.terminal-section-copy,
+.terminal-module-copy,
+.terminal-hero-copy,
+.terminal-route-status-copy,
+.terminal-route-detail-copy,
+.terminal-recipe-category-copy {
+  min-width: 0px;
+  title-color: #f2fdffff;
+  detail-color: #b7d4deff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 2px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-page-title,
+.terminal-brand-copy {
+  title-color: #f4fdffff;
+  detail-color: #a9c9d6ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+}
+
+.terminal-main-scroll,
+.terminal-main-column {
+  height: 420px;
+  min-height: 0px;
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.terminal-command-top-grid {
+  height: 190px;
+  min-height: 184px;
+  max-height: 204px;
+}
+
+.terminal-command-bottom-grid {
+  height: 208px;
+  min-height: 202px;
+  max-height: 220px;
+}
+
+.terminal-active-mission {
+  height: 164px;
+  min-height: 154px;
+  max-height: 178px;
+  padding: 9px;
+  gap: 6px;
+  texture-alpha: 52;
+  texture-alpha-2: 14;
+}
+
+.terminal-command-list {
+  height: 112px;
+  min-height: 104px;
+  max-height: 122px;
+  overflow: scroll;
+}
+
+.terminal-command-feed-list,
+.terminal-feed-list {
+  height: 136px;
+  min-height: 124px;
+  max-height: 146px;
+  overflow: scroll;
+}
+
+.terminal-action-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-record-row,
+.terminal-reward-row,
+.terminal-what-now-row,
+.terminal-module-card,
+.terminal-addon-card {
+  height: 52px;
+  min-height: 50px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #041722e6;
+  border-color: #35eaff54;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-command-row .terminal-row-copy,
+.terminal-action-row .terminal-row-copy,
+.terminal-dossier-action-row .terminal-row-copy,
+.terminal-map-provider-row .terminal-row-copy,
+.terminal-record-row .terminal-row-copy,
+.terminal-reward-row .terminal-row-copy,
+.terminal-module-card .terminal-row-copy {
+  min-width: 120px;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 1px;
+}
+
+.terminal-danger-panel {
+  background: #241306d8;
+  border-color: #e6a83f9c;
+  accent-color: #e6a83fff;
+  texture-alpha: 8;
+  texture-alpha-2: 3;
+}
+
+.terminal-danger-panel .terminal-hazard-list {
+  height: 58px;
+  min-height: 52px;
+  max-height: 66px;
+  overflow: scroll;
+}
+
+.terminal-danger-panel .terminal-compact-row {
+  height: 42px;
+  min-height: 40px;
+  padding: 5px 7px;
+}
+
+.terminal-action-strip {
+  height: 38px;
+  min-height: 36px;
+  padding: 5px 7px;
+  gap: 8px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.terminal-action-strip button,
+.terminal-filter-row button,
+.terminal-search-clear-button,
+.terminal-route-action-button,
+.terminal-reward-action-button {
+  height: 28px;
+  min-height: 28px;
+  min-width: 0px;
+  color: #dffbffff;
+  background: #07304ad6;
+  border-color: #36eaff88;
+}
+
+.terminal-action-strip button[variant="primary"],
+.terminal-filter-row button[variant="primary"],
+.terminal-route-action-button[variant="primary"] {
+  color: #06151aff;
+  background: #18d5e9ef;
+  border-color: #59f8ffff;
+}
+
+button[disabled],
+button:disabled,
+list-row[disabled] {
+  color: #87a0aacc;
+  background: #07131d9c;
+  border-color: #4c647066;
+  accent-color: #7b97a6aa;
+}
+
+.terminal-route-layout {
+  height: 398px;
+  min-height: 386px;
+  max-height: 412px;
+  gap: 9px;
+}
+
+.terminal-route-panel,
+.terminal-route-briefing-panel,
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-layout .terminal-route-briefing-panel {
+  background: #020f19f2;
+  border-color: #36eaff66;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-phase-lane,
+.terminal-route-layout .terminal-phase-lane {
+  height: 216px;
+  min-height: 204px;
+  max-height: 232px;
+}
+
+.terminal-roadmap-scroll,
+.terminal-route-layout .terminal-roadmap-scroll {
+  height: 172px;
+  min-height: 160px;
+  max-height: 184px;
+  overflow: scroll;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  height: 64px;
+  min-height: 64px;
+  padding: 7px 8px;
+  gap: 8px;
+  background: #031521ed;
+  border-color: #22d7f08c;
+  accent-color: #00eaffff;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-mission-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-mission-row[active="true"],
+.terminal-route-layout .terminal-route-phase-row[selected="true"],
+.terminal-route-layout .terminal-route-mission-row[selected="true"],
+.terminal-route-layout .terminal-route-phase-row[active="true"],
+.terminal-route-layout .terminal-route-mission-row[active="true"] {
+  background: #073323f6;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+}
+
+.terminal-route-row-copy,
+.terminal-route-copy-block,
+.terminal-route-detail-copy,
+.terminal-route-layout .terminal-route-row-copy,
+.terminal-route-layout .terminal-route-copy-block,
+.terminal-route-layout .terminal-route-detail-copy {
+  min-width: 116px;
+  title-color: #f4fdffff;
+  detail-color: #c3dee8ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 1px;
+  content-height: 5px;
+  max-lines: 1;
+}
+
+.terminal-route-row-progress,
+.terminal-route-detail-progress,
+.terminal-route-layout .terminal-route-row-progress,
+.terminal-route-layout .terminal-route-detail-progress {
+  height: 4px;
+  min-height: 4px;
+}
+
+.terminal-route-index-chip {
+  width: 48px;
+  min-width: 44px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-route-state-chip {
+  width: 68px;
+  min-width: 64px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.terminal-mission-list,
+.terminal-route-layout .terminal-mission-list {
+  height: 342px;
+  min-height: 330px;
+  max-height: 356px;
+  overflow: scroll;
+}
+
+.terminal-mission-detail,
+.terminal-route-layout .terminal-mission-detail {
+  height: 398px;
+  min-height: 386px;
+  max-height: 412px;
+  padding: 8px;
+}
+
+.terminal-mission-detail-scroll,
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 286px;
+  min-height: 268px;
+  max-height: 296px;
+  overflow: scroll;
+}
+
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-route-detail-card {
+  height: 86px;
+  min-height: 78px;
+  max-height: 100px;
+  padding: 7px;
+  gap: 5px;
+  background: #03131fe8;
+  border-color: #28eaff58;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  height: 44px;
+  min-height: 42px;
+  padding: 5px 7px;
+  gap: 7px;
+}
+
+.terminal-route-item-icon,
+.terminal-route-layout .terminal-route-item-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-mission-action-strip,
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 40px;
+  min-height: 38px;
+  padding: 5px;
+  columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.terminal-recipe-layout {
+  height: 350px;
+  min-height: 340px;
+  max-height: 366px;
+}
+
+.terminal-category-list {
+  direction: horizontal;
+  height: 34px;
+  min-height: 32px;
+  max-height: 36px;
+  gap: 6px;
+  overflow: scroll;
+}
+
+.terminal-page-tab {
+  width: 112px;
+  min-width: 96px;
+  height: 26px;
+  min-height: 24px;
+  padding: 4px 6px;
+}
+
+.terminal-recipe-category-copy {
+  title-line-height: 10px;
+  detail-line-height: 0px;
+  title-color: #dffbffff;
+}
+
+.terminal-recipe-row {
+  height: 54px;
+  min-height: 52px;
+  padding: 6px 8px;
+  gap: 7px;
+}
+
+.terminal-recipe-layout .terminal-card {
+  height: 112px;
+  min-height: 104px;
+  max-height: 124px;
+}
+
+.terminal-recipe-layout .terminal-side-panel {
+  height: 92px;
+  min-height: 84px;
+  max-height: 104px;
+}
+
+.terminal-map-layout,
+.terminal-archive-layout,
+.terminal-reward-layout,
+.terminal-addon-layout,
+.terminal-system-layout {
+  height: 398px;
+  min-height: 386px;
+  max-height: 412px;
+}
+
+.terminal-map-node {
+  height: 86px;
+  min-height: 78px;
+  padding: 8px;
+}
+
+.terminal-map-node-grid {
+  height: 300px;
+  min-height: 286px;
+  max-height: 316px;
+}
+
+.terminal-dossier-action-scroll,
+.terminal-reward-summary-scroll,
+.terminal-reward-content-scroll {
+  overflow: scroll;
+}
+
+.terminal-route-row-copy,
+.terminal-route-layout .terminal-route-row-copy {
+  min-width: 120px;
+  gap: 2px;
+}
+
+.terminal-route-row-title,
+.terminal-route-layout .terminal-route-row-title {
+  color: #f0fdffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-row-subtitle,
+.terminal-route-layout .terminal-route-row-subtitle {
+  color: #b7d3dcff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-row-progress,
+.terminal-route-layout .terminal-route-row-progress {
+  height: 4px;
+  min-height: 4px;
+}
+
+.terminal-route-index-chip {
+  width: 46px;
+  min-width: 46px;
+}
+
+.terminal-route-state-chip {
+  width: 70px;
+  min-width: 64px;
+}
+
+.terminal-route-layout .terminal-mission-list {
+  height: 306px;
+  min-height: 260px;
+  max-height: 318px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-mission-detail {
+  height: 370px;
+  min-height: 350px;
+  max-height: 390px;
+}
+
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 262px;
+  min-height: 230px;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-mission-detail-content {
+  height: 360px;
+  min-height: 340px;
+  gap: 7px;
+}
+
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-route-detail-card {
+  height: 100px;
+  min-height: 92px;
+  padding: 6px 7px;
+  gap: 5px;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  height: 42px;
+  min-height: 40px;
+  padding: 5px 7px;
+  gap: 7px;
+}
+
+.terminal-route-item-icon,
+.terminal-route-layout .terminal-route-item-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-mission-action-strip,
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 40px;
+  min-height: 40px;
+  columns: 1fr 1fr 1fr;
+}
+
+.terminal-route-action-button,
+.terminal-route-layout .terminal-route-action-button {
+  height: 30px;
+  min-height: 28px;
+  min-width: 0px;
+  color: #e6fbffff;
+}
+
+.terminal-route-action-button[variant="primary"],
+.terminal-route-layout .terminal-route-action-button[variant="primary"] {
+  color: #001419ff;
+}
+
+.terminal-route-action-button[disabled],
+.terminal-route-action-button:disabled,
+.terminal-route-layout .terminal-route-action-button[disabled],
+.terminal-route-layout .terminal-route-action-button:disabled {
+  color: #8aa4b0cc;
+  background: #0a151f9a;
+  border-color: #526c7a66;
+}
+
+/* Final route text lock: out-specific older generic mission-row descendants. */
+.terminal-route-layout title.terminal-route-row-title,
+.terminal-route-layout title.terminal-route-detail-title,
+.terminal-route-phase-row title.terminal-route-row-title,
+.terminal-route-mission-row title.terminal-route-row-title,
+.terminal-route-detail-row title.terminal-route-row-title {
+  color: #f4fdffff;
+  line-height: 11px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-layout text.terminal-route-row-subtitle,
+.terminal-route-layout text.terminal-route-detail-subtitle,
+.terminal-route-phase-row text.terminal-route-row-subtitle,
+.terminal-route-mission-row text.terminal-route-row-subtitle,
+.terminal-route-detail-row text.terminal-route-row-subtitle {
+  color: #c1dce6ff;
+  line-height: 10px;
+  max-lines: 1;
+  wrap: false;
+}
+
+/* Direct-render copy blocks. These bypass fragile nested title/text row rendering. */
+.terminal-row-copy,
+.terminal-shell-copy-block,
+.terminal-section-copy,
+.terminal-module-copy,
+.terminal-hero-copy,
+.terminal-route-status-copy,
+.terminal-route-detail-copy {
+  min-width: 0px;
+  title-color: #e9fbffff;
+  detail-color: #a9c9d6ff;
+  title-line-height: 11px;
+  detail-line-height: 10px;
+  text-gap: 1px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-shell-copy-block {
+  title-color: #effdffff;
+  detail-color: #9db9c8ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+}
+
+.terminal-brand-copy {
+  min-width: 210px;
+}
+
+.terminal-page-title {
+  min-width: 260px;
+}
+
+.terminal-section-copy,
+.terminal-module-copy {
+  title-color: #eafcffff;
+  detail-color: #89aebbff;
+  title-line-height: 11px;
+  detail-line-height: 9px;
+}
+
+.terminal-hero-copy {
+  title-color: #f4fdffff;
+  detail-color: #b8d7e3ff;
+  title-line-height: 13px;
+  detail-line-height: 11px;
+  text-gap: 2px;
+}
+
+.terminal-route-row-copy,
+.terminal-route-copy-block,
+.terminal-route-detail-copy,
+.terminal-route-layout .terminal-route-row-copy,
+.terminal-route-layout .terminal-route-copy-block,
+.terminal-route-layout .terminal-route-detail-copy {
+  min-width: 120px;
+  title-color: #f4fdffff;
+  detail-color: #c1dce6ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 1px;
+  content-height: 4px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-route-detail-copy,
+.terminal-route-layout .terminal-route-detail-copy {
+  title-line-height: 12px;
+  detail-line-height: 11px;
+  detail-color: #bad8e4ff;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  height: 64px;
+  min-height: 64px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #031520e8;
+  border-color: #22d7f078;
+  accent-color: #00eaffff;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-mission-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-mission-row[active="true"],
+.terminal-route-layout .terminal-route-phase-row[selected="true"],
+.terminal-route-layout .terminal-route-mission-row[selected="true"],
+.terminal-route-layout .terminal-route-phase-row[active="true"],
+.terminal-route-layout .terminal-route-mission-row[active="true"] {
+  background: #073323f6;
+  border-color: #70ff9fff;
+  accent-color: #58ff9aff;
+}
+
+/* Terminal completion polish seal EOF: authoritative final terminal overrides. */
+.terminal-row-copy,
+.terminal-shell-copy-block,
+.terminal-section-copy,
+.terminal-module-copy,
+.terminal-hero-copy,
+.terminal-route-status-copy,
+.terminal-route-detail-copy,
+.terminal-recipe-category-copy {
+  min-width: 0px;
+  title-color: #f2fdffff;
+  detail-color: #b7d4deff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 2px;
+  max-lines: 1;
+  wrap: false;
+}
+
+.terminal-main-scroll,
+.terminal-main-column {
+  height: 420px;
+  min-height: 0px;
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.terminal-command-list {
+  height: 112px;
+  min-height: 104px;
+  max-height: 122px;
+  overflow: scroll;
+}
+
+.terminal-command-feed-list,
+.terminal-feed-list {
+  height: 136px;
+  min-height: 124px;
+  max-height: 146px;
+  overflow: scroll;
+}
+
+.terminal-action-row,
+.terminal-dossier-action-row,
+.terminal-map-provider-row,
+.terminal-record-row,
+.terminal-reward-row,
+.terminal-what-now-row,
+.terminal-module-card,
+.terminal-addon-card {
+  height: 52px;
+  min-height: 50px;
+  padding: 6px 8px;
+  gap: 7px;
+  background: #041722e6;
+  border-color: #35eaff54;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+  texture-alpha-3: 0;
+}
+
+.terminal-danger-panel .terminal-hazard-list {
+  height: 58px;
+  min-height: 52px;
+  max-height: 66px;
+  overflow: scroll;
+}
+
+.terminal-danger-panel .terminal-compact-row {
+  height: 42px;
+  min-height: 40px;
+  padding: 5px 7px;
+}
+
+.terminal-action-strip button,
+.terminal-filter-row button,
+.terminal-search-clear-button,
+.terminal-route-action-button,
+.terminal-reward-action-button {
+  height: 28px;
+  min-height: 28px;
+  min-width: 0px;
+  color: #dffbffff;
+  background: #07304ad6;
+  border-color: #36eaff88;
+}
+
+.terminal-action-strip button[variant="primary"],
+.terminal-filter-row button[variant="primary"],
+.terminal-route-action-button[variant="primary"] {
+  color: #06151aff;
+  background: #18d5e9ef;
+  border-color: #59f8ffff;
+}
+
+button[disabled],
+button:disabled,
+list-row[disabled] {
+  color: #87a0aacc;
+  background: #07131d9c;
+  border-color: #4c647066;
+  accent-color: #7b97a6aa;
+}
+
+.terminal-route-layout {
+  height: 398px;
+  min-height: 386px;
+  max-height: 412px;
+  gap: 9px;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  height: 64px;
+  min-height: 64px;
+  padding: 7px 8px;
+  gap: 8px;
+  background: #031521ed;
+  border-color: #22d7f08c;
+  accent-color: #00eaffff;
+  texture-alpha: 4;
+  texture-alpha-2: 2;
+}
+
+.terminal-route-row-copy,
+.terminal-route-copy-block,
+.terminal-route-detail-copy,
+.terminal-route-layout .terminal-route-row-copy,
+.terminal-route-layout .terminal-route-copy-block,
+.terminal-route-layout .terminal-route-detail-copy {
+  min-width: 116px;
+  title-color: #f4fdffff;
+  detail-color: #c3dee8ff;
+  title-line-height: 12px;
+  detail-line-height: 10px;
+  text-gap: 1px;
+  content-height: 5px;
+  max-lines: 1;
+}
+
+.terminal-mission-list,
+.terminal-route-layout .terminal-mission-list {
+  height: 342px;
+  min-height: 330px;
+  max-height: 356px;
+  overflow: scroll;
+}
+
+.terminal-mission-detail-scroll,
+.terminal-route-layout .terminal-mission-detail-scroll {
+  height: 286px;
+  min-height: 268px;
+  max-height: 296px;
+  overflow: scroll;
+}
+
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-route-detail-card {
+  height: 86px;
+  min-height: 78px;
+  max-height: 100px;
+  padding: 7px;
+  gap: 5px;
+  background: #03131fe8;
+  border-color: #28eaff58;
+}
+
+.terminal-route-detail-row,
+.terminal-route-layout .terminal-route-detail-row {
+  height: 44px;
+  min-height: 42px;
+  padding: 5px 7px;
+  gap: 7px;
+}
+
+.terminal-mission-action-strip,
+.terminal-route-layout .terminal-mission-action-strip {
+  height: 40px;
+  min-height: 38px;
+  padding: 5px;
+  columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.terminal-category-list {
+  direction: horizontal;
+  height: 34px;
+  min-height: 32px;
+  max-height: 36px;
+  gap: 6px;
+  overflow: scroll;
+}
+
+.terminal-page-tab {
+  width: 112px;
+  min-width: 96px;
+  height: 26px;
+  min-height: 24px;
+  padding: 4px 6px;
+}
+
+.terminal-recipe-category-copy {
+  title-line-height: 10px;
+  detail-line-height: 0px;
+  title-color: #dffbffff;
+}
+
+/* Canonical Survival Route split-panel layout. Keep this block last so older route
+   experiments above cannot reintroduce clipped briefing rows or hidden buttons. */
+.terminal-route-layout {
+  height: 456px;
+  min-height: 456px;
+  max-height: 456px;
+  gap: 9px;
+}
+
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-phases-panel,
+.terminal-route-missions-panel,
+.terminal-route-briefing-panel {
+  height: 456px;
+  min-height: 456px;
+  max-height: 456px;
+  padding: 7px;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-chip-row,
+.terminal-route-layout .terminal-chip-row {
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+}
+
+.terminal-route-layout .terminal-phase-lane,
+.terminal-phase-lane {
+  height: 248px;
+  min-height: 248px;
+  max-height: 248px;
+}
+
+.terminal-route-layout .terminal-roadmap-scroll,
+.terminal-roadmap-scroll {
+  height: 216px;
+  min-height: 216px;
+  max-height: 216px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-selected-phase-card,
+.terminal-selected-phase-card {
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+}
+
+.terminal-route-layout .terminal-route-legend,
+.terminal-route-legend {
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-mission-list,
+.terminal-mission-list {
+  height: 420px;
+  min-height: 420px;
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-panel,
+.terminal-route-briefing-panel {
+  padding: 0px;
+  gap: 6px;
+  background: transparent;
+  border-color: #15394aaa;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card {
+  height: 310px;
+  min-height: 310px;
+  max-height: 310px;
+  padding: 7px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card {
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  padding: 6px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-info-card,
+.terminal-route-info-card {
+  height: 102px;
+  min-height: 102px;
+  max-height: 102px;
+  padding: 6px 8px;
+  gap: 4px;
+}
+
+.terminal-route-layout .terminal-route-info-copy,
+.terminal-route-info-copy {
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  detail-wrap: true;
+  detail-max-lines: 2;
+  max-lines: 2;
+}
+
+.terminal-route-layout .terminal-route-guidance-copy,
+.terminal-route-guidance-copy {
+  height: 26px;
+  min-height: 26px;
+  max-height: 26px;
+  detail-wrap: false;
+  detail-max-lines: 1;
+  max-lines: 1;
+}
+
+.terminal-route-layout .terminal-route-detail-progress,
+.terminal-route-layout .terminal-selected-mission-progress {
+  height: 5px;
+  min-height: 5px;
+  max-height: 5px;
+}
+
+.terminal-route-layout .terminal-mission-detail-scroll,
+.terminal-mission-detail-scroll {
+  height: 92px;
+  min-height: 92px;
+  max-height: 92px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-sideops-scroll,
+.terminal-route-sideops-scroll {
+  height: 108px;
+  min-height: 108px;
+  max-height: 108px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  height: 172px;
+  min-height: 172px;
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-route-detail-card,
+.terminal-route-detail-card {
+  height: 78px;
+  min-height: 78px;
+  max-height: 78px;
+  padding: 5px 7px;
+  gap: 4px;
+}
+
+.terminal-route-layout .terminal-route-detail-row,
+.terminal-route-detail-row {
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 4px 7px;
+  gap: 7px;
+}
+
+.terminal-route-layout .terminal-route-item-icon,
+.terminal-route-item-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-route-layout .terminal-mission-action-strip,
+.terminal-mission-action-strip {
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 5px;
+  columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  background: #03131ff0;
+  border-color: #22d6efaa;
+}
+
+.terminal-route-layout .terminal-route-action-button,
+.terminal-route-action-button {
+  height: 30px;
+  min-height: 30px;
+  max-height: 32px;
+  min-width: 0px;
+  padding: 3px 4px;
+}
+
+/* Ashfall 1.0.1: keep every mission column reachable at 720p and below. */
+.terminal-route-layout .terminal-route-briefing-scroll,
+.terminal-route-briefing-scroll {
+  height: 456px;
+  min-height: 420px;
+  max-height: 456px;
+  padding: 0px 0px 12px 0px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-stack,
+.terminal-route-briefing-stack {
+  height: 470px;
+  min-height: 470px;
+  padding-bottom: 18px;
+  gap: 6px;
+}
+
+.terminal-route-layout .terminal-route-phases-panel,
+.terminal-route-layout .terminal-route-missions-panel,
+.terminal-route-phases-panel,
+.terminal-route-missions-panel {
+  padding-bottom: 12px;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card {
+  max-height: 324px;
+  padding-bottom: 10px;
+}
+
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card {
+  margin-bottom: 14px;
+}
+
+.terminal-route-layout .terminal-mission-action-strip,
+.terminal-mission-action-strip {
+  padding-bottom: 7px;
+}
+
+/* Ashfall 1.0.1 flexible mission page pass. The outer grid stays bounded by the
+   terminal viewport; dynamic briefing content expands inside one right-column
+   scroll owner instead of creating tiny nested requirement/side-op scrollers. */
+.terminal-route-layout {
+  height: 376px;
+  min-height: 376px;
+  max-height: 376px;
+  gap: 9px;
+}
+
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-phases-panel,
+.terminal-route-missions-panel,
+.terminal-route-briefing-panel {
+  height: 376px;
+  min-height: 376px;
+  max-height: 376px;
+}
+
+.terminal-route-layout .terminal-phase-lane,
+.terminal-phase-lane {
+  height: 210px;
+  min-height: 210px;
+  max-height: 210px;
+}
+
+.terminal-route-layout .terminal-roadmap-scroll,
+.terminal-roadmap-scroll {
+  height: 178px;
+  min-height: 178px;
+  max-height: 178px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-selected-phase-card,
+.terminal-selected-phase-card {
+  height: 62px;
+  min-height: 62px;
+  max-height: 62px;
+}
+
+.terminal-route-layout .terminal-route-legend,
+.terminal-route-legend {
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+}
+
+.terminal-route-layout .terminal-mission-list,
+.terminal-mission-list {
+  height: 338px;
+  min-height: 338px;
+  max-height: 338px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-scroll,
+.terminal-route-briefing-scroll {
+  height: 376px;
+  min-height: 376px;
+  max-height: 376px;
+  padding: 0px 0px 36px 0px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-stack,
+.terminal-route-briefing-stack {
+  height: auto;
+  min-height: 0px;
+  max-height: auto;
+  padding-bottom: 40px;
+  gap: 6px;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card,
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card,
+.terminal-route-layout .terminal-route-detail-card,
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  height: auto;
+  min-height: 0px;
+  max-height: auto;
+  overflow: visible;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card {
+  padding: 7px 8px 12px 8px;
+  gap: 6px;
+}
+
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card {
+  margin-bottom: 22px;
+  padding: 6px 8px 10px 8px;
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-route-detail-card,
+.terminal-route-detail-card {
+  padding: 5px 7px 7px 7px;
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  gap: 6px;
+  padding-bottom: 2px;
+}
+
+.terminal-route-layout .terminal-mission-action-strip,
+.terminal-mission-action-strip {
+  height: 44px;
+  min-height: 44px;
+  max-height: 46px;
+  padding: 5px 5px 9px 5px;
+  columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+/* Phase 20 cyberglass contract pass: tighter premium corners, stable rows, and
+   an explicit active-route affordance without introducing new dependencies. */
+screen-shell,
+.terminal-shell,
+.terminal-app,
+.terminal-panel,
+.terminal-card,
+.terminal-rail,
+.terminal-topbar,
+.terminal-footer-strip,
+.terminal-route-panel {
+  corner-treatment: bevel;
+  border-radius: 4px;
+}
+
+.terminal-route-summary-row {
+  height: 32px;
+  min-height: 32px;
+  max-height: 34px;
+  overflow: hidden;
+}
+
+.terminal-route-focus-button {
+  width: 68px;
+  min-width: 64px;
+  height: 28px;
+  min-height: 28px;
+  padding: 3px 6px;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-mission-row[selected="true"],
+.terminal-route-mission-row[active="true"] {
+  background: #062b20f2;
+  border-color: #76ffadff;
+  accent-color: #58ff9aff;
+  background-texture-2: theme-texture(screencore.focus_ring);
+  glow-strength: 12;
+}
+
+.terminal-route-phase-row[locked="true"],
+.terminal-route-mission-row[locked="true"] {
+  background: #07121bba;
+  border-color: #63788466;
+  color: #90a7b2ff;
+  glow-strength: 0;
+}
+
+.terminal-route-briefing-card,
+.terminal-route-sideops-card,
+.terminal-route-detail-card {
+  background: #03131fe8;
+  border-color: #29eaff58;
+  texture-alpha: 5;
+  texture-alpha-2: 2;
+}

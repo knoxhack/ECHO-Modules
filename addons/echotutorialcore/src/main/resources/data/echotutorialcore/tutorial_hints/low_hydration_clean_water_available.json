@@ -1,0 +1,17 @@
+{
+  "id": "echotutorialcore:low_hydration_clean_water_available",
+  "type": "INFO",
+  "category": "WATER",
+  "title": "Clean Water Available",
+  "message": "Hydration low. Clean water detected in inventory.",
+  "details": "Drink the clean water in your inventory to restore hydration safely.",
+  "actionLabel": "Review clean water",
+  "actionCardId": "echotutorialcore:clean_water",
+  "cooldownTicks": 12000,
+  "guideModes": ["NORMAL", "ASSISTED"],
+  "priority": 60,
+  "dismissible": true,
+  "conditions": [
+    "has_item:echoashfallprotocol:clean_water"
+  ]
+}

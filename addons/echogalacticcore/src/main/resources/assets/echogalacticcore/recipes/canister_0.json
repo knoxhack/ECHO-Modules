@@ -1,0 +1,26 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:canister",
+                   "data":  0,
+                   "count":  2
+               },
+    "pattern":  [
+                    "X X",
+                    "X X",
+                    "XXX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "conditions":  {
+                       "type":  "echogalacticcore:condition",
+                       "data":  "can_default"
+                   },
+    "key":  {
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/ingot_tin"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

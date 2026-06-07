@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "entrypoints": {
+    "humanDocs": "docs/SCREENCORE_FEATURE_HUB.md",
+    "aiDocs": "AGENTS.md",
+    "inGameHub": "echoscreencore:reference_feature_hub",
+    "workbench": "echoscreencore:reference_workbench"
+  },
+  "safeStarterPages": [
+    "echoscreencore:reference_dashboard",
+    "echoscreencore:reference_list_detail",
+    "echoscreencore:reference_settings",
+    "echoscreencore:reference_dense_list",
+    "echoscreencore:reference_modal_overlay"
+  ],
+  "starterComponents": [
+    "echoscreencore:sc_app_shell",
+    "echoscreencore:sc_page_header",
+    "echoscreencore:sc_dashboard_grid",
+    "echoscreencore:sc_list_detail_shell",
+    "echoscreencore:sc_dense_list",
+    "echoscreencore:sc_detail_panel",
+    "echoscreencore:sc_action_strip",
+    "echoscreencore:sc_empty_panel",
+    "echoscreencore:sc_feature_card",
+    "echoscreencore:sc_diagnostic_row"
+  ],
+  "requiredRules": [
+    "grid_missing_stack_below",
+    "single_scroll_owner",
+    "bounded_fixed_heights",
+    "safe_row_text",
+    "empty_state_required"
+  ],
+  "viewportChecks": [
+    {"width": 360, "height": 240},
+    {"width": 854, "height": 480},
+    {"width": 1280, "height": 720}
+  ],
+  "diagnostics": [
+    "root_overflows_viewport",
+    "large_fixed_height",
+    "grid_missing_stack_below",
+    "nested_scroll_region",
+    "row_overflow",
+    "unbounded_row_text",
+    "missing_list_empty_state",
+    "unknown_reference_page",
+    "reference_page_failed_contract"
+  ]
+}
+

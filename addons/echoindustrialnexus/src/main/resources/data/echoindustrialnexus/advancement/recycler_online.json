@@ -1,0 +1,32 @@
+{
+  "parent": "echoindustrialnexus:feed_the_factory",
+  "display": {
+    "icon": {
+      "id": "echoindustrialnexus:industrial_recycler"
+    },
+    "title": {
+      "text": "Recycler Online"
+    },
+    "description": {
+      "text": "Build an Industrial Recycler and reclaim machine parts from the old world."
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "industrial_recycler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoindustrialnexus:industrial_recycler"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "industrial_recycler"
+    ]
+  ]
+}

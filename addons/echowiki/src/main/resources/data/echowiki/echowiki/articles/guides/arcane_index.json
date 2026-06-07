@@ -1,0 +1,63 @@
+{
+  "id": "echowiki:guides/arcane_index",
+  "title": "Arcane Index Reference Manual",
+  "category": "Guide Books",
+  "summary": "Search Arcana pages, discovery states, relations, and optional magic records without relying on JEI.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Overview",
+      "body": "Arcane Index is the official magic knowledge browser for Arcana Division. It organizes recipes, research, rituals, spells, relics, curses, machines, mobs, and progression records.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "First Steps",
+      "body": "Open the Arcane Index before copying a recipe from memory. Search by category, discovery state, relation, or known item to find the current truth.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Core Loop",
+      "body": "Find an arcane clue, search its record, follow related links, compare required systems, and return with the exact ritual, spell, relic, or curse context you need.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Important Systems",
+      "body": "Categories, entries, relations, discovery states, generated bridge pages, and provider snapshots let Arcane Index stay useful even when JEI or optional magic addons are absent.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Integrations",
+      "body": "Arcana Core feeds dynamic records, Grimoire supplies archive context, RelicTech and RitualCore publish starter pages, and Veilbound bridges can generate large reference catalogs safely.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Troubleshooting",
+      "body": "If a page is absent, check the source provider, discovery state, and optional addon. If JEI is missing, Arcane Index should still be the source of truth.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    }
+  ],
+  "tags": [
+    "guide",
+    "arcane_index",
+    "arcana"
+  ],
+  "icon": "minecraft:enchanted_book",
+  "heroArt": "echowiki:textures/gui/guide_books/arcane_index_banner.png",
+  "relatedArticles": [
+    "echowiki:guides/arcane_index/first_steps",
+    "echowiki:guides/arcane_index/core_loop",
+    "echowiki:guides/arcane_index/systems",
+    "echowiki:guides/arcane_index/progression",
+    "echowiki:guides/arcane_index/integrations",
+    "echowiki:guides/arcane_index/troubleshooting"
+  ],
+  "sortOrder": 1260
+}

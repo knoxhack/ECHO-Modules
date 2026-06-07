@@ -1,0 +1,4 @@
+<card action="terminal.recipeIndex.select_item" action-value="{param.item|}">
+  <item-icon item="{param.item|minecraft:air}"/>
+  <copy-block class="terminal-row-copy" title="{param.label|Item}"/>
+</card>

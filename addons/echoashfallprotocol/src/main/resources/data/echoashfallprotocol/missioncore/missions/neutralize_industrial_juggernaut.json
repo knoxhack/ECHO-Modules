@@ -1,0 +1,97 @@
+{
+  "id": "echoashfallprotocol:neutralize_industrial_juggernaut",
+  "chapterId": "echoashfallprotocol:ashfall_crash_landing",
+  "phase": "phase_6",
+  "phaseTitle": "GRID RESTORATION",
+  "phaseOrder": 6,
+  "order": 8,
+  "title": "Defeat Industrial Juggernaut",
+  "briefing": "[ECHO-7] Guardian signal locked below Industrial Ruins. Scan for the visible Data Center entrance, descend into the buried node, read the room before it reads you, then neutralize Industrial Juggernaut.",
+  "fieldGuide": "Native MissionCore mirror of AshfallMissionRoute phase 7: GRID RESTORATION.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echoashfallprotocol:dense_alloy_chunk",
+  "kind": "side_op",
+  "prerequisites": [
+    "echoashfallprotocol:neutralize_city_ruin_stalker"
+  ],
+  "metadata": {
+    "neoForgeMissionId": "neutralize_industrial_juggernaut",
+    "nativeProvider": "echomissioncore",
+    "nativeGameplayHook": "ashfall.route.neutralize_industrial_juggernaut",
+    "terminal_route_phase": "6",
+    "terminal_route_order": "8",
+    "terminal_route_role": "OPTIONAL",
+    "terminal_route_visible": "true",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "turnInConsumesRequiredItems": "false",
+    "rewardClaimMode": "claimable",
+    "routePhaseId": "phase_6",
+    "routePhaseTitle": "GRID RESTORATION",
+    "routeGlobalOrder": "76",
+    "routeRoleTag": "side_route"
+  },
+  "guidanceLinks": {
+    "terminalPage": "echoashfallprotocol:ashfall_nexus_prime_relays",
+    "indexEntry": "echoashfallprotocol:nexus_prime_relays",
+    "wikiArticle": "echowiki:guides/ashfall/nexus_prime_relays",
+    "lensProfile": "echoashfallprotocol:ashfall_late_game_scans",
+    "holomapLayer": "echoashfallprotocol:ashfall_late_game_state"
+  },
+  "nativeHooks": {
+    "provider": "echomissioncore",
+    "completionSignal": "echoashfallprotocol:neutralize_industrial_juggernaut:completed",
+    "terminalAction": "auto_complete_when_predicate_true",
+    "runtimeEvents": [
+      "player.kill_entity",
+      "ashfall.entity_kill"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "echoashfallprotocol:neutralize_industrial_juggernaut/industrial_juggernaut",
+      "type": "kill_entity",
+      "label": "Industrial Juggernaut",
+      "detail": "Neutralize 1 target before turning the route forward.",
+      "icon": "echoashfallprotocol:dense_alloy_chunk",
+      "target": "echoashfallprotocol:industrial_juggernaut",
+      "required": 1,
+      "criteria": {
+        "event": "player.kill_entity",
+        "entity": "echoashfallprotocol:industrial_juggernaut"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "entity": "echoashfallprotocol:industrial_juggernaut",
+      "count": 1,
+      "label": "Industrial Juggernaut"
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echoashfallprotocol:neutralize_industrial_juggernaut/reward_0",
+      "item": "echoashfallprotocol:dense_alloy_chunk",
+      "count": 3,
+      "label": "Dense Alloy Chunk",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_industrial_juggernaut/reward_0"
+      }
+    },
+    {
+      "id": "echoashfallprotocol:neutralize_industrial_juggernaut/reward_1",
+      "item": "echoashfallprotocol:schematic_fragment_weapons",
+      "count": 1,
+      "label": "Schematic Fragment Weapons",
+      "claimMode": "claimable",
+      "metadata": {
+        "source": "ashfall_mission_route",
+        "duplicateGuard": "echoashfallprotocol:neutralize_industrial_juggernaut/reward_1"
+      }
+    }
+  ],
+  "completionText": "[ECHO-7] Industrial Juggernaut neutralized. Underground Gridfall node archived; another old instruction has gone quiet."
+}

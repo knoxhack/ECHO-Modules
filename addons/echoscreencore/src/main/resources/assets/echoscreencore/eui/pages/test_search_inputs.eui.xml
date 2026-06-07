@@ -1,0 +1,21 @@
+<page id="test-search-inputs" title="Search Inputs" styles="echoscreencore:advanced_mock,echoscreencore:page_state_mock">
+  <screen-shell>
+    <header title="Search Inputs" subtitle="Search state persists through reloads when state-key is set"/>
+    <component src="echoscreencore:search_filter_bar">
+      <param name="searchKey" value="inputs.search"/>
+      <param name="placeholder" value="Search missions..."/>
+      <param name="searchAction" value="terminal.set_search"/>
+      <param name="filterKey" value="inputs.filter"/>
+      <param name="filterAction" value="demo.set_filter"/>
+      <slot name="options">
+        <option value="active">Active</option>
+        <option value="ready">Ready</option>
+        <option value="all">All</option>
+      </slot>
+    </component>
+    <card class="state-readout">
+      <text value="Query: {state.inputs.search|empty}"/>
+      <text value="Filter: {state.inputs.filter|empty}"/>
+    </card>
+  </screen-shell>
+</page>

@@ -1,0 +1,62 @@
+{
+  "emitters": {
+    "moving_dust_left": {
+      "anchor": "wheel_back_left",
+      "particle": "minecraft:dust",
+      "state": "ACTIVE",
+      "requires_moving": true,
+      "rate": 0.18,
+      "burst_count": 1,
+      "offset": [0.0, 0.05, 0.0],
+      "velocity": [0.0, 0.01, 0.02],
+      "spread": [0.25, 0.08, 0.25],
+      "options": {
+        "type": "minecraft:dust",
+        "color": [0.47, 0.36, 0.24],
+        "scale": 0.9,
+        "lifetime": 28
+      }
+    },
+    "moving_dust_right": {
+      "anchor": "wheel_back_right",
+      "particle": "minecraft:dust",
+      "state": "ACTIVE",
+      "requires_moving": true,
+      "rate": 0.18,
+      "burst_count": 1,
+      "offset": [0.0, 0.05, 0.0],
+      "velocity": [0.0, 0.01, 0.02],
+      "spread": [0.25, 0.08, 0.25],
+      "options": {
+        "type": "minecraft:dust",
+        "color": [0.47, 0.36, 0.24],
+        "scale": 0.9,
+        "lifetime": 28
+      }
+    },
+    "damaged_smoke_left": {
+      "anchor": "exhaust_left",
+      "particle": "minecraft:smoke",
+      "state": "DAMAGED",
+      "requires_damaged": true,
+      "rate": 0.08,
+      "burst_count": 1,
+      "offset": [0.0, 0.1, 0.0],
+      "velocity": [0.0, 0.025, 0.0],
+      "spread": [0.12, 0.04, 0.12],
+      "lifetime": 45
+    },
+    "damaged_smoke_right": {
+      "anchor": "exhaust_right",
+      "particle": "minecraft:smoke",
+      "state": "DAMAGED",
+      "requires_damaged": true,
+      "rate": 0.06,
+      "burst_count": 1,
+      "offset": [0.0, 0.1, 0.0],
+      "velocity": [0.0, 0.025, 0.0],
+      "spread": [0.12, 0.04, 0.12],
+      "lifetime": 45
+    }
+  }
+}

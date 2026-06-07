@@ -1,0 +1,32 @@
+{
+  "parent": "echomultiblockcore:multiblock/armory_fabricator",
+  "display": {
+    "icon": {
+      "id": "echomultiblockcore:armory_pattern_core"
+    },
+    "title": {
+      "text": "Fabricate a Pattern Core"
+    },
+    "description": {
+      "text": "Complete the Armory Fabricator featured automation loop."
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "reward": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echomultiblockcore:armory_pattern_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reward"
+    ]
+  ]
+}

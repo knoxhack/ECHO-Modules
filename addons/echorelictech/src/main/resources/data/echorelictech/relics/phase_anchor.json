@@ -1,0 +1,74 @@
+{
+  "id": "echorelictech:phase_anchor",
+  "tier": "prototype",
+  "category": "mobility",
+  "origin": "Pre-Gridfall Rescue Prototype",
+  "defaultCondition": "damaged",
+  "cooldownTicks": 7200,
+  "instabilityCost": 18,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "nexus_instability",
+    "malfunction",
+    "hostile_signal_attraction"
+  ],
+  "failureTable": "echorelictech:phase_anchor",
+  "terminal": {
+    "summary": "Teleports the player back to a bound safe anchor point.",
+    "warning": "Recall matrix unstable. Destination drift possible."
+  },
+  "lens": {
+    "compact": "Damaged recall prototype.",
+    "deepScan": [
+      "Last activation: 17 years after Gridfall.",
+      "Return coordinate: corrupted.",
+      "ECHO warning: do not bind indoors."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:relic_shard", "count": 4 },
+      { "item": "echorelictech:pre_gridfall_circuit", "count": 2 },
+      { "item": "echorelictech:null_cell", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "stabilize": {
+      "fromCondition": "damaged",
+      "toCondition": "stabilized",
+      "materials": [
+        { "item": "echorelictech:relic_shard", "count": 4 },
+        { "item": "echorelictech:pre_gridfall_circuit", "count": 2 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 6,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 1 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 1200,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "damaged",
+      "instabilityDelta": 4,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 1 },
+        { "item": "echorelictech:null_cell", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "teleportDriftRadius": 2
+  }
+}

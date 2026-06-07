@@ -1,0 +1,32 @@
+{
+  "parent": "echoorbitalremnants:europa_cryo_ocean",
+  "display": {
+    "icon": {
+      "id": "echoorbitalremnants:nexus_drive_vessel"
+    },
+    "title": {
+      "text": "Deep Space Protocol"
+    },
+    "description": {
+      "text": "Build the Nexus Drive Vessel and follow the deep-space signal toward ECHO-0."
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "nexus_vessel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoorbitalremnants:nexus_drive_vessel"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nexus_vessel"
+    ]
+  ]
+}

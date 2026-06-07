@@ -1,0 +1,13 @@
+{
+  "title": "Fuel-Cell Resupply",
+  "order": 110,
+  "icon": "echoconvoyprotocol:fuel_cell",
+  "deliveryTicks": 160,
+  "requirements": [
+    { "item": "echoconvoyprotocol:fuel_cell", "count": 2 }
+  ],
+  "targetBlockTypes": [
+    "echoconvoyprotocol:cargo_input_crate",
+    "echoconvoyprotocol:fuel_input_tank"
+  ]
+}

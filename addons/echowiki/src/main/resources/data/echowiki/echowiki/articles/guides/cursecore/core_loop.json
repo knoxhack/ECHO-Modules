@@ -1,0 +1,46 @@
+{
+  "id": "echowiki:guides/cursecore/core_loop",
+  "title": "CurseCore Field: Core Loop",
+  "category": "Guide Books",
+  "summary": "Detect, monitor, prepare, cleanse, and verify each curse state change.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Detect",
+      "body": "Identify the curse category, stage, severity, visibility, symptoms, and available cleansing methods.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Prepare",
+      "body": "Gather the ritual, catalyst, or diagnostic route before the curse reaches a worse stage.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Verify",
+      "body": "After cleansing, confirm the player data changed and that related mission or event hooks recorded the result.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "cursecore",
+    "arcana",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "relatedArticles": [
+    "echowiki:guides/cursecore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1302
+}

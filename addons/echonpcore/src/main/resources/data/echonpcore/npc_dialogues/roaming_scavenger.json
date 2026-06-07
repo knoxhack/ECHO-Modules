@@ -1,0 +1,22 @@
+{
+  "id": "echonpcore:roaming_scavenger",
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "I buy what rattles and sell what almost works.",
+      "options": [
+        { "id": "route", "label": "Where did you come from?", "next": "route" },
+        { "id": "trade", "label": "Open your pack.", "action": "open_trade" },
+        { "id": "service", "label": "Any useful intel?", "action": "open_services" },
+        { "id": "intel", "label": "Log this contact.", "action": "discover_contact" },
+        { "id": "exit", "label": "Safe roads.", "action": "close" }
+      ]
+    },
+    "route": {
+      "text": "West relay, south culvert, and one place I am not stupid enough to name twice.",
+      "options": [
+        { "id": "back", "label": "Back.", "next": "intro" }
+      ]
+    }
+  }
+}

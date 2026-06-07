@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:core_blackbox_fragment",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:core_access_key_left"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:black_metal",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:static_fluid",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "echoblackboxprotocol:core_memory_record",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomachinecore",
+  "name": "ECHO: MachineCore",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "machine_core",
+  "entrypoint": "com.knoxhack.echo.machinecore.EchoMachineCore",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echoassetcore",
+    "echocontentcore",
+    "echocore",
+    "echoplatformcore",
+    "echorecipecore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "machine.automation",
+    "machine.diagnostics",
+    "machine.profiles",
+    "machine.recipes"
+  ],
+  "consumes": [
+    "assets.registry",
+    "content.references",
+    "echo.core",
+    "platform.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "items",
+        "recipes",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "requiresMinecraft": false,
+    "contractsOnly": true,
+    "notes": "Defines neutral machine profile, recipe binding, automation hook, diagnostic, upgrade, maintenance, and failure contracts.",
+    "nativeEntrypoint": "com.knoxhack.echo.machinecore.EchoMachineCoreNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echo/machinecore/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ],
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

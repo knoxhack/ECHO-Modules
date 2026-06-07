@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "echoashfallprotocol:cracked_asphalt"
+      }
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:dirt",
+        "minecraft:grass_block",
+        "minecraft:coarse_dirt",
+        "minecraft:stone",
+        "echoashfallprotocol:wasteland_stone",
+        "minecraft:cobblestone",
+        "echoashfallprotocol:wasteland_dirt",
+        "echoashfallprotocol:ashen_wasteland_dirt",
+        "echoashfallprotocol:concrete_rubble",
+        "echoashfallprotocol:oil_stained_concrete",
+        "echoashfallprotocol:industrial_aggregate"
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 3,
+      "max_inclusive": 5
+    },
+    "half_height": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 12,
+  "surface": { "type": "static_block", "owner_addon": "echorendercore", "display_name": "V21 Static Block Visual", "tags": ["static_block"], "integration_mode": "optional" },
+  "fallback": { "mode": "stable", "expectation": "static block remains visible without advanced FX", "allow_advanced_fx_fallback": true, "allow_missing_assets": false },
+  "budget": { "tier": "low", "advanced_fx": "auto" },
+  "qa": { "required": true, "evidence": ["screenshot", "world_surface"], "reduced_motion": false },
+  "base_texture": "echorendercore:textures/block/v21_static_block.png",
+  "default_state": "ONLINE",
+  "effect": { "preset": "hologram", "glow_intensity": 0.35, "pulse_speed": 0.12, "bloom_tint": "#FF66E8FF" }
+}

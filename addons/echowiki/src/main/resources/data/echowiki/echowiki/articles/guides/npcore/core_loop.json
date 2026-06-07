@@ -1,0 +1,45 @@
+{
+  "id": "echowiki:guides/npcore/core_loop",
+  "title": "NPCore: Core Loop",
+  "category": "Guide Books",
+  "summary": "Use NPC contacts as repeatable sources of guidance, exchange, and services.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "The Loop",
+      "body": "Find a contact, read the dialogue, choose the useful tab, pay the required cost, note cooldowns or stock, and return when the route or mission state changes.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Read The Result",
+      "body": "A successful NPC action should update the status line, inventory, stock, cooldown, or dialogue node. If nothing changes, stop and check the requirement text.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "Keep Contacts Useful",
+      "body": "Treat contacts as local tools. A medic, archivist, scavenger, or technician is strongest when you remember what they provide and when they refresh.",
+      "tone": "body"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "npcore",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "echonpcore:echo_npc_spawn_egg",
+  "relatedArticles": [
+    "echowiki:guides/npcore"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1097
+}

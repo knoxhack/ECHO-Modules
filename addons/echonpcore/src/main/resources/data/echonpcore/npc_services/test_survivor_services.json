@@ -1,0 +1,34 @@
+{
+  "id": "echonpcore:test_survivor_services",
+  "services": [
+    {
+      "id": "basic_heal",
+      "title": "Basic Field Treatment",
+      "description": "Restores a small amount of health.",
+      "cost": [
+        { "item": "minecraft:bread", "count": 1 }
+      ],
+      "action": "heal",
+      "amount": 4,
+      "cooldown": 1200
+    },
+    {
+      "id": "reveal_hint",
+      "title": "Local Intel",
+      "description": "Uploads local world context and contact intel.",
+      "cost": [],
+      "action": "world_intel",
+      "amount": 1,
+      "cooldown": 2400
+    },
+    {
+      "id": "record_contact",
+      "title": "Record Contact",
+      "description": "Adds this NPC to Terminal contact providers.",
+      "cost": [],
+      "action": "discover_contact",
+      "amount": 1,
+      "cooldown": 600
+    }
+  ]
+}

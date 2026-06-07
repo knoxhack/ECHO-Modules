@@ -1,0 +1,27 @@
+.sc-workbench-shell {
+  padding: 8px;
+  gap: 8px;
+  overflow: hidden;
+  background: theme(background);
+}
+
+.sc-workbench-preview {
+  min-height: 180px;
+  padding: 8px;
+  gap: 6px;
+  border-width: 1px;
+  border-color: theme(accent);
+  background: theme(panel);
+}
+
+.sc-workbench-sidebar {
+  min-height: 160px;
+  max-height: 260px;
+  padding: 8px;
+  gap: 6px;
+  overflow: hidden;
+  border-width: 1px;
+  border-color: theme(borderMuted);
+  background: theme(card);
+}
+

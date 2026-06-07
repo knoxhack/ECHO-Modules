@@ -1,0 +1,16 @@
+{
+  "chapter": "signalos:signalos",
+  "title": "Rack Network Online",
+  "description": "Install a data drive into a server rack and verify that the network monitor sees rack-backed storage.",
+  "objectives": [
+    "Craft or obtain a SignalOS Data Drive",
+    "Insert the drive into a SignalOS Server Rack",
+    "Open the rack screen and inspect the drive bay"
+  ],
+  "order": 20,
+  "icon": "signalos:server_rack",
+  "rewardClaim": true,
+  "displayRewards": [
+    { "item": "minecraft:redstone", "count": 12, "label": "Signal repair dust" }
+  ]
+}

@@ -1,0 +1,24 @@
+<page id="test-keyboard-navigation" title="Keyboard Navigation" styles="echoscreencore:advanced_mock,echoscreencore:focus_states">
+  <screen-shell>
+    <header title="Keyboard Navigation" subtitle="Tab, Shift+Tab, arrows, Enter, Space, Home, End, PageUp, PageDown"/>
+    <grid columns="240px 1fr" gap="16" stack-below="md">
+      <panel title="Focus Order">
+        <button focus-order="1" autofocus="true" action="noop">First Button</button>
+        <button focus-order="2" action="noop">Second Button</button>
+        <select focus-order="3" value="{filters.status}" on-change="demo.set_filter">
+          <option value="active">Active</option>
+          <option value="ready">Ready</option>
+          <option value="done">Done</option>
+        </select>
+      </panel>
+      <scroll>
+        <list bind="missions.demo" item="mission" selected="{selectedMission.id}">
+          <list-row action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}" focusable="true">
+            <title value="{mission.title}"/>
+            <text value="{mission.summary}"/>
+          </list-row>
+        </list>
+      </scroll>
+    </grid>
+  </screen-shell>
+</page>

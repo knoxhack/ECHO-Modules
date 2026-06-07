@@ -1,0 +1,35 @@
+{
+  "parent": "echoashfallprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echoashfallprotocol:contaminated_iron"
+    },
+    "title": {
+      "translate": "advancements.EchoAshfallProtocol.find_reactor_ruin.title",
+      "fallback": "Hot Zone"
+    },
+    "description": {
+      "translate": "advancements.EchoAshfallProtocol.find_reactor_ruin.desc",
+      "fallback": "Discover a melted-down Reactor Ruin."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found_reactor_ruin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": "echoashfallprotocol:reactor_ruin"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["found_reactor_ruin"]
+  ]
+}

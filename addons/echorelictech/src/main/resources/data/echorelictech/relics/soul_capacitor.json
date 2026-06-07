@@ -1,0 +1,65 @@
+{
+  "id": "echorelictech:soul_capacitor",
+  "tier": "nexus",
+  "category": "power",
+  "origin": "Ancient Soul-Aether Capacitor",
+  "defaultCondition": "stabilized",
+  "cooldownTicks": 2400,
+  "instabilityCost": 10,
+  "nullChargeCost": 1,
+  "riskTypes": [
+    "memory_corruption",
+    "ai_whisper",
+    "hostile_signal_attraction"
+  ],
+  "failureTable": "echorelictech:generic_relic",
+  "terminal": {
+    "summary": "Releases soul-aether as a temporary ward and recovery pulse.",
+    "warning": "Capacitor echoes may attract soul-sensitive entities."
+  },
+  "lens": {
+    "compact": "Ancient soul-aether battery.",
+    "deepScan": [
+      "Storage lattice: active.",
+      "Operator echo imprint: faint.",
+      "ECHO warning: do not charge with unknown remains."
+    ]
+  },
+  "repair": {
+    "materials": [
+      { "item": "echorelictech:null_battery", "count": 1 },
+      { "item": "echorelictech:memory_filament", "count": 2 },
+      { "item": "echorelictech:stabilized_riftstone", "count": 1 }
+    ]
+  },
+  "workbenchActions": {
+    "overclock": {
+      "fromCondition": "stabilized",
+      "toCondition": "overclocked",
+      "instabilityDelta": 8,
+      "materials": [
+        { "item": "echorelictech:quantum_lattice", "count": 1 },
+        { "item": "echorelictech:memory_filament", "count": 2 }
+      ]
+    },
+    "contain": {
+      "toCondition": "contained",
+      "cooldownTicks": 900,
+      "materials": [
+        { "item": "echorelictech:containment_glass", "count": 2 }
+      ]
+    },
+    "purge": {
+      "fromCondition": "corrupted",
+      "toCondition": "stabilized",
+      "instabilityDelta": 6,
+      "materials": [
+        { "item": "echorelictech:stabilized_riftstone", "count": 2 }
+      ]
+    }
+  },
+  "activation": {
+    "durationTicks": 400,
+    "effectAmplifier": 1
+  }
+}

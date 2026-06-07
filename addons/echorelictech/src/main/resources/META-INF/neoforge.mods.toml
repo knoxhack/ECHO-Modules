@@ -1,0 +1,120 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echorelictech"
+version="1.0.0"
+displayName="ECHO: RelicTech"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="ECHO: RelicTech - rare pre-Gridfall artifacts, forbidden prototypes, damaged AI cores, and unstable relic devices."
+description='''
+ECHO: RelicTech is Ashfall's legendary loot chase.
+
+Players recover damaged old-world prototypes from vaults, labs, blacksites, and orbital wreckage,
+then identify, repair, stabilize, overclock, contain, or risk using them.
+
+Every relic is powerful enough to be exciting, but dangerous enough to respect.
+'''
+
+[[dependencies.echorelictech]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echoarcanacore"
+type="optional"
+reason="Publishes RelicTech starter relic definitions into the shared Arcana Core registries when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echoterminal"
+type="optional"
+reason="Exposes relic data in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echolens"
+type="optional"
+reason="Provides relic scan data to the ECHO Lens when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echoholomap"
+type="optional"
+reason="Displays discovered relic vault markers in the ECHO HoloMap when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echopowergrid"
+type="optional"
+reason="Provides PowerGrid backfire and overload hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echoworldcore"
+type="optional"
+reason="Provides world hazard spike hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echosoundcore"
+type="optional"
+reason="Provides audio hooks for relic warnings when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echomissioncore"
+type="optional"
+reason="Publishes Relic Operations side-route missions when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echonexusprotocol"
+type="optional"
+reason="Records high-instability relic milestones when NexusProtocol is present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorelictech]]
+modId="echodatacore"
+type="optional"
+reason="Mirrors player relic profile summary data when DataCore is present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

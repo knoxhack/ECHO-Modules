@@ -1,0 +1,44 @@
+package com.knoxhack.echoterminal.mission;
+
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+
+public final class VanillaJourneyProgression {
+    private VanillaJourneyProgression() {
+    }
+
+    public static void register() {
+        EchoBackendLifecycleBridge.registerGameEventHandler(VanillaJourneyProgression::onAdvancementEarned);
+        EchoBackendLifecycleBridge.registerGameEventHandler(VanillaJourneyProgression::onPlayerLoggedIn);
+        EchoBackendLifecycleBridge.registerGameEventHandler(VanillaJourneyProgression::onPlayerRespawned);
+        EchoBackendLifecycleBridge.registerGameEventHandler(VanillaJourneyProgression::onPlayerChangedDimension);
+    }
+
+    private static void onAdvancementEarned(Object event) {
+        Identifier advancementId = EchoBackendWorldEventBridge.advancementId(event);
+        if (advancementId == null || !VanillaJourneyProvider.INSTANCE.tracksAdvancement(advancementId)) {
+            return;
+        }
+        sync(EchoBackendWorldEventBridge.advancementServerPlayer(event));
+    }
+
+    private static void onPlayerLoggedIn(Object event) {
+        sync(EchoBackendWorldEventBridge.loggedInServerPlayer(event));
+    }
+
+    private static void onPlayerRespawned(Object event) {
+        sync(EchoBackendWorldEventBridge.playerEventServerPlayer(event));
+    }
+
+    private static void onPlayerChangedDimension(Object event) {
+        sync(EchoBackendWorldEventBridge.playerEventServerPlayer(event));
+    }
+
+    static boolean sync(Player player) {
+        return player instanceof ServerPlayer serverPlayer
+                && VanillaJourneyProvider.INSTANCE.refreshIfChanged(serverPlayer);
+    }
+}

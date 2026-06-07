@@ -1,0 +1,32 @@
+{
+  "parent": "echoashfallprotocol:find_poi",
+  "criteria": {
+    "explore_military_vault": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "echoashfallprotocol:military_vault"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": "Enter a military vault in the radiation zone",
+    "icon": {
+      "count": 1,
+      "id": "echoashfallprotocol:power_node"
+    },
+    "title": "Secure the Perimeter"
+  },
+  "requirements": [
+    ["explore_military_vault"]
+  ]
+}

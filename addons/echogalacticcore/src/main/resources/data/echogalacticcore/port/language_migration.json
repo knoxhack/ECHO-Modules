@@ -1,0 +1,41 @@
+{
+  "schema": "echogalacticcore.port.language-migration.v1",
+  "source": "galacticraft_legacy_lang_assets",
+  "targetNamespace": "echogalacticcore",
+  "convertedLocaleCount": 25,
+  "convertedLocales": [
+    "cs_cz",
+    "cy_gb",
+    "de_de",
+    "en_gb",
+    "en_us",
+    "es_es",
+    "fi_fi",
+    "fr_ca",
+    "fr_fr",
+    "hr_hr",
+    "hu_hu",
+    "it_it",
+    "ja_jp",
+    "ko_kr",
+    "nl_nl",
+    "pl_pl",
+    "pt_br",
+    "pt_pt",
+    "ru_ru",
+    "sv_se",
+    "th_th",
+    "tr_tr",
+    "uk_ua",
+    "zh_cn",
+    "zh_tw"
+  ],
+  "conversionRules": [
+    "legacy .lang files are converted to UTF-8 JSON language files",
+    "comments and blank lines are omitted from runtime resources",
+    "duplicate keys resolve to the last legacy value, matching legacy resource-pack override behavior",
+    "ECHO-specific module identity keys are merged into en_us.json"
+  ],
+  "requiredRuntimeInvariant": "assets/echogalacticcore/lang contains JSON language files only; legacy .lang files are excluded from release packaging",
+  "attribution": "Derived from Galacticraft Legacy language assets under the original MIT license."
+}

@@ -1,0 +1,24 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:parachute",
+                   "data":  0
+               },
+    "pattern":  [
+                    "XXX",
+                    "Y Y",
+                    " Y "
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "X":  {
+                          "item":  "echogalacticcore:canvas"
+                      },
+                "Y":  {
+                          "tag":  "echogalacticcore:legacy_oredict/string"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

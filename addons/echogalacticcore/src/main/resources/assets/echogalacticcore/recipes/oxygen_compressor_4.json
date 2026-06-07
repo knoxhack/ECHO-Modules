@@ -1,0 +1,33 @@
+{
+    "result":  {
+                   "item":  "echogalacticcore:oxygen_compressor",
+                   "data":  4
+               },
+    "pattern":  [
+                    "XVX",
+                    "WZW",
+                    "XYX"
+                ],
+    "type":  "minecraft:crafting_shaped",
+    "key":  {
+                "V":  {
+                          "item":  "echogalacticcore:air_fan"
+                      },
+                "W":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_aluminum"
+                      },
+                "X":  {
+                          "tag":  "echogalacticcore:legacy_oredict/compressed_steel"
+                      },
+                "Y":  {
+                          "item":  "minecraft:redstone_torch"
+                      },
+                "Z":  {
+                          "item":  "echogalacticcore:oxygen_concentrator"
+                      }
+            },
+    "echo_migration":  {
+                           "source":  "galacticraft_legacy_forge_ore_recipe",
+                           "tagNamespace":  "echogalacticcore:legacy_oredict"
+                       }
+}

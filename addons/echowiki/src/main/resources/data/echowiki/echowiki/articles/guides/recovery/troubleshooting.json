@@ -1,0 +1,48 @@
+{
+  "id": "echowiki:guides/recovery/troubleshooting",
+  "title": "Recovery: Troubleshooting",
+  "category": "Guide Books",
+  "summary": "Diagnose common Recovery failures by shrinking the loop and testing one fix.",
+  "blocks": [
+    {
+      "type": "callout",
+      "title": "Common Failure",
+      "body": "If the compass seems unclear, check dimension, target status, expiration, and whether multiple graves share similar ids. Travel slower on the recovery run than on the failed one.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "callout",
+      "title": "Reset The Loop",
+      "body": "If recovery attempts keep failing, stop rushing. Build a cheaper backup kit, change the route, remove extra objectives, and recover in stages.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "paragraph",
+      "title": "One Fix At A Time",
+      "body": "Change one variable, run a smaller test, and compare the result. Fixing three things at once can hide the part that actually mattered.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Retest Cleanly",
+      "body": "Change one variable, test on a smaller route, and keep the fix only if the failure becomes easier to explain.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    }
+  ],
+  "tags": [
+    "guide",
+    "recovery",
+    "grave",
+    "troubleshooting",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:recovery_compass",
+  "relatedArticles": [
+    "echowiki:guides/recovery"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1136
+}

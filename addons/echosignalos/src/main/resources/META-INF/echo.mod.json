@@ -1,0 +1,96 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "signalos",
+  "name": "SignalOS",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "story",
+  "entrypoint": "com.knoxhack.signalos.SignalOS",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echodatacore",
+    "echoindex",
+    "echomissioncore",
+    "echorendercore",
+    "echoscreencore",
+    "echoterminal"
+  ],
+  "provides": [
+    "signalos.archives",
+    "signalos.chapters",
+    "signalos.data_drives",
+    "signalos.missions",
+    "signalos.net",
+    "signalos.terminal"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "creator_tools",
+    "rpg",
+    "story"
+  ],
+  "permissions": [
+    "commands.register",
+    "player.data",
+    "resources.data",
+    "ui.screens"
+  ],
+  "assets": [
+    "metadata/assets/modules/signalos/icon.png",
+    "metadata/assets/modules/signalos/banner.png",
+    "metadata/assets/modules/signalos/module_card.png",
+    "metadata/assets/modules/signalos/showcase.png"
+  ],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "data",
+        "missions",
+        "ui_screens"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.signalos.EchoSignalOsNativeModule",
+    "nativeClasspath": [],
+    "notes": "Chapter, mission, archive, data-drive, terminal, SignalNet, diagnostics, and JSON content framework. KubeJS remains optional."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/signalos/**",
+      "src/main/resources/**",
+      "README.md",
+      "DATA_FORMATS.md",
+      "RELEASE_NOTES.md"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

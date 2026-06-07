@@ -1,0 +1,47 @@
+{
+  "id": "echowiki:guides/convoy/core_loop",
+  "title": "Convoy: Core Loop",
+  "category": "Guide Books",
+  "summary": "Scout, load, move, unload, and repair vehicles before the next haul.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "title": "Repeatable Loop",
+      "body": "Scout, stage, travel, respond to incidents, unload, and update the route with what you learned. The best convoy path gets safer each time.",
+      "tone": "body"
+    },
+    {
+      "type": "callout",
+      "title": "Pressure Check",
+      "body": "After each haul, check what slowed the convoy: fuel, cargo order, road hazards, escorts, or repair parts. Fix that before adding distance.",
+      "tone": "tip",
+      "icon": "minecraft:writable_book"
+    },
+    {
+      "type": "callout",
+      "title": "Stop Point",
+      "body": "Park with fuel, parts, and a clear unload point. A stranded vehicle turns one bad decision into a rescue mission.",
+      "tone": "warning",
+      "icon": "minecraft:bell"
+    },
+    {
+      "type": "paragraph",
+      "title": "Loop Check",
+      "body": "Run the loop once more only if the return path, inventory space, and next upgrade are clear.",
+      "tone": "body"
+    }
+  ],
+  "tags": [
+    "guide",
+    "convoy",
+    "routes",
+    "core_loop",
+    "guide_book_chapter"
+  ],
+  "icon": "minecraft:minecart",
+  "relatedArticles": [
+    "echowiki:guides/convoy"
+  ],
+  "relatedItems": [],
+  "sortOrder": 1062
+}

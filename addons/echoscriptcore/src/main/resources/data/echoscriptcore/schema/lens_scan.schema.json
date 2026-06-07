@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "type": "lens_scan",
+  "required": ["schema_version", "id", "type", "target", "target_type", "title"],
+  "fields": ["pack", "summary", "details", "danger", "unlock_conditions", "actions", "metadata"]
+}

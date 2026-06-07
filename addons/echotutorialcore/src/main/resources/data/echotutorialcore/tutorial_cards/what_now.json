@@ -1,0 +1,28 @@
+{
+  "id": "echotutorialcore:what_now",
+  "category": "START_HERE",
+  "title": "What Now",
+  "summary": "Stuck? Let ECHO-7 suggest your next step.",
+  "body": [
+    "The 'What Now' section of the Terminal gives you a prioritized list of recommended actions.",
+    "It updates based on your current progress, inventory, and world state.",
+    "Use it whenever you are unsure what to do next."
+  ],
+  "steps": [
+    "Open the Terminal.",
+    "Navigate to What Now.",
+    "Follow the top recommendation."
+  ],
+  "commonMistakes": [
+    "Ignoring What Now for too long.",
+    "Skipping recommended infrastructure steps."
+  ],
+  "related": [
+    "echotutorialcore:echo_terminal_basics"
+  ],
+  "unlockTriggers": [
+    "opened_what_now"
+  ],
+  "defaultUnlocked": false,
+  "priority": 85
+}

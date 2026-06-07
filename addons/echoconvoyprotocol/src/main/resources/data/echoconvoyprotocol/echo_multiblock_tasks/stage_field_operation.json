@@ -1,0 +1,16 @@
+{
+  "id": "echoconvoyprotocol:stage_field_operation",
+  "display_name": "Stage Field Operation",
+  "category": "echoconvoyprotocol:field_operations",
+  "required_workcell": "ROUTE_DISPATCH",
+  "required_tools": ["SCANNER"],
+  "inputs": [
+    { "item": "echoconvoyprotocol:convoy_route_chip", "count": 1 }
+  ],
+  "consume_inputs_on_start": false,
+  "duration_ticks": 80,
+  "heat_per_second": 1,
+  "animation": "scan",
+  "effects": ["echoconvoyprotocol:stage_field_operation"],
+  "notes": ["Stages a depot-owned Convoy Field Operation from the prepared route."]
+}
