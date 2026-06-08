@@ -126,16 +126,16 @@ export function buildDistributionSummary(store: CommandCenterStore, options: Dis
   const generatedAt = (options.now?.() ?? new Date()).toISOString();
   const repoRoot = path.dirname(path.resolve(settings.echoRoot || ECHO_ROOT));
   const echoReleaseDir = path.join(settings.echoRoot || ECHO_ROOT, "dist", "echo-module-release");
-  const launcherRoot = path.join(repoRoot, "ECHOLauncher");
+  const launcherRoot = path.join(repoRoot, "ECHO-Launcher");
   const packs = PACK_DEFINITIONS.map((definition) => packFromDefinition(definition, repoRoot, store));
   return {
     generatedAt,
     echoModuleRelease: localReleaseStatus("knoxhack/ECHO", echoReleaseDir, ["echo-modules-index.json", "release-manifest.tsv", "checksums.sha256"]),
     launcherRelease: {
-      repo: "knoxhack/ECHOLauncher",
-      repoUrl: repoUrl("knoxhack/ECHOLauncher"),
-      windows: localReleaseStatus("knoxhack/ECHOLauncher", path.join(launcherRoot, "installer-artifacts"), ["latest.yml"], [".exe"]),
-      linux: localReleaseStatus("knoxhack/ECHOLauncher", path.join(launcherRoot, "installer-artifacts"), ["latest-linux.yml"], [".AppImage"])
+      repo: "knoxhack/ECHO-Launcher",
+      repoUrl: repoUrl("knoxhack/ECHO-Launcher"),
+      windows: localReleaseStatus("knoxhack/ECHO-Launcher", path.join(launcherRoot, "installer-artifacts"), ["latest.yml"], [".exe"]),
+      linux: localReleaseStatus("knoxhack/ECHO-Launcher", path.join(launcherRoot, "installer-artifacts"), ["latest-linux.yml"], [".AppImage"])
     },
     packs,
     latestRun: listDistributionRuns(store, 1)[0] ?? null

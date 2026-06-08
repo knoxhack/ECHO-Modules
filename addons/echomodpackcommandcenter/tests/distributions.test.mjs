@@ -47,7 +47,7 @@ test("distribution summary exposes four official packs", () => {
     const summary = buildDistributionSummary(store);
     assert.deepEqual(summary.packs.map((pack) => pack.id), ["echo-prime", "ashfall", "orbital", "arcane-division"]);
     assert.equal(summary.packs.find((pack) => pack.id === "arcane-division")?.name, "Arcana Division");
-    assert.equal(summary.launcherRelease.repo, "knoxhack/ECHOLauncher");
+    assert.equal(summary.launcherRelease.repo, "knoxhack/ECHO-Launcher");
   } finally {
     store.close();
   }
