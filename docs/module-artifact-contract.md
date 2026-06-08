@@ -30,6 +30,28 @@ Applicability:
 | `META-INF/neoforge.mods.toml` | NeoForge artifacts only. |
 | `echo-addon-package.json` | `.echo-addon` packages only. |
 
+## Generator
+
+Use the repository release generator from `knoxhack/ECHO-Modules`:
+
+```sh
+node scripts/generate-module-release.mjs
+```
+
+The generator writes `dist/echo-module-release/` with per-module folders, `echo-release.json`, and `checksums.txt`.
+
+By default it is strict: runtime artifacts are only emitted from existing built jars under `addons/<module>/build/libs`, and the command fails if a required runtime jar is missing. This prevents publishing placeholder runnable jars.
+
+Useful options:
+
+```sh
+node scripts/generate-module-release.mjs --module echocore
+node scripts/generate-module-release.mjs --module echocore --module echoadaptercore
+node scripts/generate-module-release.mjs --allow-missing-runtime
+```
+
+Use `--allow-missing-runtime` only for metadata/source dry runs while the module build graph is being prepared; do not upload those outputs as player-facing runtime releases.
+
 ## Edition Consumption
 
 | Edition | Repo | Module artifact family |
