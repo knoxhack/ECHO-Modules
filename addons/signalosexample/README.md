@@ -1,107 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# SignalOS Example Addon by ECHO Labs
-
-![SignalOS Example Addon by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/signalosexample/brand-sheet.png)
-
-**Example SignalOS integration module with Java registration, JSON content, custom record apps, diagnostics, archives, missions, drive templates, and script-friendly patterns.**
-
-![SignalOS Example Addon by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/signalosexample/features-portrait.png)
-
-![SignalOS Example Addon by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/signalosexample/features-landscape.png)
-
-## CurseForge Summary
-
-Example SignalOS integration module with Java registration, JSON content, custom record apps, diagnostics, archives, missions, drive templates, and script-friendly patterns.
-
-## Main Features
-
-- Example SignalOS widgets.
-- Sample addon integration.
-- Reference workflow panels.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/signalosexample/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/signalosexample/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/signalosexample/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # SignalOS Example Addon
 
-This module shows three SignalOS integration paths:
+Provides `signalos.example_content` for the ECHO module graph.
 
-- Java registration in `SignalOsExample`.
-- Datapack JSON under `data/signalosexample/signalos`.
-- KubeJS-friendly usage through `SignalOSKubeBridge`.
+## Module Identity
 
-## Included Content
+| Field | Value |
+| --- | --- |
+| Module ID | `signalosexample` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `developer_tool` |
+| Side | `common` |
+| Trust | `sandboxed` |
 
-- Java chapter: `signalosexample:java_ops`
-- Java mission: `signalosexample:java_boot`
-- Java record app: `signalosexample:java_records`
-- Java data provider: `signalosexample:example_records`
-- Java peripheral provider: `signalosexample:example_peripheral`
-- Java app action: `signalosexample:actions/ping`
-- Java diagnostics provider: `signalosexample:example_diagnostics`
-- JSON chapter: `signalosexample:field_ops`
-- JSON mission: `signalosexample:secure_cache`
-- JSON archive: `signalosexample:field_ops_brief`
-- JSON app: `signalosexample:field_records`
-- JSON record: `signalosexample:field_cache`
-- JSON drive template: `signalosexample:handoff_drive`
+## Runtime Targets
 
-The JSON mission uses `minecraft:story/root` as its completion advancement so it can be completed quickly in a normal test world.
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-## Java API Shape
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-```java
-SignalOsApi.registerChapter(TerminalChapter.builder("signalosexample:java_ops")
-        .title("Java Ops")
-        .section("system")
-        .page("missions")
-        .page("archives")
-        .page("diagnostics")
-        .build());
+## Dependencies
+
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`, `signalos`
+
+Optional modules: `echoindex`, `echoterminal`
+
+Provides: `signalos.example_content`
+
+Consumes: `echo.core`, `echo.net`, `signalos.archives`, `signalos.data_drives`, `signalos.missions`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `signalosexample-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `signalosexample-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `signalosexample-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `signalosexample-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module signalosexample
 ```
 
-## KubeJS-Friendly Script Shape
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
 
-This is a soft bridge loaded through `Java.loadClass`, not a native KubeJS plugin event.
+## More Detail
 
-```js
-const SignalOSEvents = Java.loadClass('com.knoxhack.signalos.kubejs.SignalOSEvents')
-
-ServerEvents.loaded(event => {
-  SignalOSEvents.content(event => {
-    event.clear()
-
-    event.chapter('signalosexample:script_ops')
-      .title('Script Ops')
-      .section('progress')
-      .page('missions')
-      .register()
-
-    event.archive('signalosexample:script_brief')
-      .chapter('signalosexample:script_ops')
-      .title('Script Brief')
-      .line('This content was registered from a KubeJS script.')
-      .register()
-  })
-})
-```
-
-For reloadable pack content, prefer placing equivalent JSON files under the KubeJS `data/` folder.
-
-## 1.0.0 Public Beta Quickstart
-
-1. Install required dependencies: echocore, echonetcore, signalos.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/signalosexample.json`.
-3. First action: review the API/tooling docs before using it in a public pack.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
-
-Public release page: `docs/release_pages/signalosexample.md`.
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

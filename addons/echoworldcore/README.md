@@ -1,140 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# WorldCore by ECHO Labs
-
-![WorldCore by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echoworldcore/brand-sheet.png)
-
-**Foundation module for region definitions, world markers, hazard snapshots, structure discovery, and world event contracts.**
-
-![WorldCore by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echoworldcore/features-portrait.png)
-
-![WorldCore by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echoworldcore/features-landscape.png)
-
-## CurseForge Summary
-
-Foundation module for region definitions, world markers, hazard snapshots, structure discovery, and world event contracts.
-
-## Main Features
-
-- Data-driven world regions.
-- Hazard definitions.
-- Datapack override support.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echoworldcore/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echoworldcore/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echoworldcore/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: WorldCore
 
-WorldCore is a foundation module for the ECHO ecosystem. It does not own
-Ashfall world generation, Convoy routes, Orbital debris generation, Nexus
-structures, chapter region definitions, or any player craftable content. It
-provides the shared vocabulary and runtime services that those systems use to
-describe the same world safely.
+Provides `world.hazards`, `world.regions` for the ECHO module graph.
 
-## What WorldCore Provides
+## Module Identity
 
-- Region definitions and active region lookup.
-- Hazard definitions and current hazard snapshots.
-- Persistent world markers for structures, crash sites, routes, debris, outposts,
-  and anomalies.
-- Per-player region discovery through ECHO Core discovery data plus WorldCore
-  SavedData.
-- Runtime bus events for region enter/discover/scan, marker reveal, and hazard
-  changes.
-- Optional Terminal status and HoloMap feed support through ECHO Core services.
-- Permission-gated `/echoworld` validation and inspection commands.
-- RenderCore profile resources for shared region and hazard categories.
-- Forward-compatible AudioCore ambience profile resources for shared region
-  `audioProfileId` values.
+| Field | Value |
+| --- | --- |
+| Module ID | `echoworldcore` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `library` |
+| Role | `world` |
+| Side | `common` |
+| Trust | `official` |
 
-## Public Services
+## Runtime Targets
 
-Use ECHO Core accessors instead of depending on the implementation class:
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-- `EchoCoreServices.worldRegions()`
-- `EchoCoreServices.worldContext(player)`
-- `EchoCoreServices.worldValidationReport(level)`
-- `EchoCoreServices.regionService()`
-- `EchoCoreServices.hazardService()`
-- `EchoCoreServices.worldMarkerService()`
-- `EchoCoreServices.structureDiscoveryService()`
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-WorldCore 1.0.0 adds a compact world context snapshot and structured validation
-report while preserving the older service methods. Existing addons can keep
-calling region, hazard, marker, and discovery services directly; newer consumers
-should prefer the snapshot/report helpers for UI, diagnostics, Lens, SoundCore,
-TutorialCore, and RuntimeGuard surfaces.
+## Dependencies
 
-When WorldCore is absent, these resolve to `NoOpWorldService`, so optional
-integrations can call them safely.
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-## Built-In Integrations
+Optional modules: `echodatacore`, `echoholomap`, `echoindex`, `echolens`, `echoterminal`
 
-- Ashfall scanner discoveries are recorded as WorldCore structure markers.
-- Convoy route start, checkpoint, and destination events create route markers.
-- Orbital recovery and debris sites create persistent orbital markers.
-- HoloMap consumes WorldCore regions, markers, and hazards through the WorldCore
-  map data provider when WorldCore is installed.
-- Terminal shows active regions, marker counts, hazard summary, validation state,
-  and a HoloMap link when HoloMap is installed.
-- DataCore subscribes to WorldCore runtime events and stores last region, marker,
-  discovery, and hazard summary keys when DataCore is installed.
-- MissionCore subscribes to WorldCore runtime events and records matching
-  `enter_region`, `discover_structure`, and custom objective progress.
-- Lens reads `WorldContextSnapshot` for current region, hazard, marker, and
-  discovery context.
-- SoundCore receives region and hazard context patches for ambience/music
-  selection when installed.
-- TutorialCore listens for WorldCore hazard changes and can surface lightweight
-  contextual guidance.
-- ECHO diagnostics include WorldCore validation issue counts, marker counts, and
-  scan cadence for RuntimeGuard/status surfaces.
+Provides: `world.hazards`, `world.regions`
 
-## Commands
+Consumes: `echo.core`, `echo.net`
 
-Player-safe commands:
+## Consumed By Editions
 
-- `/echoworld current`
-- `/echoworld hazard`
-- `/echoworld nearby [radius]`
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
 
-Debug/operator commands require game-master permission and
-`debug.commandsEnabled=true`:
+## Generated Release Files
 
-- `/echoworld validate`
-- `/echoworld list [region|hazard|all]`
-- `/echoworld markers [radius]`
-- `/echoworld reveal <region_id>`
+| File | Requirement |
+| --- | --- |
+| `echoworldcore-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoworldcore-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echoworldcore-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoworldcore-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
 
-Debug commands include suggestions for list types and known region ids. The
-validation command reports structured categories for reload warnings, duplicate
-discovery ids, missing hazard references, marker references, source counts, and
-optional integration status.
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
 
-## Configuration
+## Descriptor Files
 
-Common config keys:
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
 
-- `runtime.playerScanIntervalTicks`
-- `runtime.activeRegionRadius`
-- `runtime.markerQueryRadiusCap`
-- `debug.commandsEnabled`
+## Build And Release
 
-Defaults preserve the initial WorldCore behavior.
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
 
-## 1.0.0 Public Beta Quickstart
+```sh
+node scripts/generate-module-release.mjs --module echoworldcore
+```
 
-1. Install required dependencies: echocore, echonetcore.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/echoworldcore.json`.
-3. First action: run the documented command or trigger its in-world behavior.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
 
-Public release page: `docs/release_pages/echoworldcore.md`.
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

@@ -1,93 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# PlayerCore by ECHO Labs
+# ECHO: PlayerCore
 
-![PlayerCore by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echoplayercore/brand-sheet.png)
+Provides `player.back`, `player.cooldowns`, `player.homes`, `player.random_teleport`, `player.spawn`, `player.tpa`, `player.warps` for the ECHO module graph.
 
-**Player utility, homes, random teleport, back, spawn, cooldown, and travel QoL systems for the ECHO/Ashfall ecosystem.**
+## Module Identity
 
-![PlayerCore by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echoplayercore/features-portrait.png)
+| Field | Value |
+| --- | --- |
+| Module ID | `echoplayercore` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `utility` |
+| Side | `common` |
+| Trust | `official` |
 
-![PlayerCore by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echoplayercore/features-landscape.png)
+## Runtime Targets
 
-## CurseForge Summary
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-Player utility, homes, random teleport, back, spawn, cooldown, and travel QoL systems for the ECHO/Ashfall ecosystem.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Main Features
+## Dependencies
 
-- Player profile data.
-- Vitals and progression hooks.
-- Shared player services.
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-## CurseForge Asset Files
+Optional modules: `echodatacore`, `echoholomap`, `echorendercore`, `echoruntimeguard`, `echoterminal`, `echoworldcore`
 
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echoplayercore/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echoplayercore/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echoplayercore/features-landscape.png`
+Provides: `player.back`, `player.cooldowns`, `player.homes`, `player.random_teleport`, `player.spawn`, `player.tpa`, `player.warps`
 
-<!-- CURSEFORGE_README_END -->
----
+Consumes: `echo.core`, `echo.net`
 
-## Existing Developer Notes
+## Consumed By Editions
 
-# ECHO PlayerCore
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
 
-Player utility, homes, random teleport, back, spawn, cooldown, and travel QoL systems for the ECHO/Ashfall ecosystem.
+## Generated Release Files
 
-## Purpose
-ECHO PlayerCore is a first-party ECHO addon that owns player utility commands and quality-of-life features. It is intentionally separate from ECHO Ashfall Protocol (survival campaign/content) and ECHO WorldCore (world regions/hazards/marker services).
+| File | Requirement |
+| --- | --- |
+| `echoplayercore-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoplayercore-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echoplayercore-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoplayercore-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
 
-## Commands
-- `/sethome [name]` - Save your current location as a home.
-- `/home [name]` - Teleport to a saved home.
-- `/delhome [name]` - Delete a saved home.
-- `/homes` - List your saved homes.
-- `/back` - Return to your last teleport/death location.
-- `/rtp` - Random teleport to a safe surface location.
-- `/spawn` - Teleport to world spawn.
-- `/echo sethome [name]`, `/echo home [name]`, `/echo delhome [name]`, `/echo homes`, `/echo back`, `/echo rtp`, `/echo spawn` - ECHO namespace aliases.
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
 
-## Config
-All config lives in `echoplayercore.toml` (COMMON side).
+## Descriptor Files
 
-### Categories
-- `general` - Enable/disable module and aliases.
-- `homes` - Max homes, cross-dimension rules, naming rules.
-- `random_teleport` - Radius, cooldown, safety checks, allowed dimensions.
-- `back` - Cooldown, store-back rules, death recovery.
-- `spawn` - Spawn command settings, cross-dimension rules.
-- `permissions` - Op bypass, permission levels for admin commands.
-- `performance` - RTP scan limits and optional RuntimeGuard integration.
-- `messages` - Prefix and message style settings.
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
 
-## Data Storage
-Player travel data (homes, back, death, cooldowns) is stored via Minecraft `SavedData` per overworld by default. If ECHO DataCore is present, future integration may migrate to DataCore keys.
+## Build And Release
 
-## Optional Integrations
-- **DataCore** - Future persistent data bridge if safe.
-- **WorldCore** - Safe-location search and hazard avoidance if available.
-- **HoloMap** - Future home/warp/death markers provider.
-- **Terminal** - Future Player/Travel tab DTOs.
-- **RuntimeGuard** - RTP search budgeting if available.
-- **ClaimCore** - Future claim-aware RTP landing.
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
 
-## Future Roadmap
-- TPA system (`/tpa`, `/tpaccept`, `/tpdeny`)
-- Warps (`/warp`, `/warps`, `/setwarp`, `/delwarp`)
-- Terminal Travel tab integration
-- HoloMap home/warp markers
-- Outpost fast travel network
-- ClaimCore support for RTP
+```sh
+node scripts/generate-module-release.mjs --module echoplayercore
+```
 
-## License
-All Rights Reserved
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
 
-## 1.0.0 Public Beta Quickstart
+## More Detail
 
-1. Install required dependencies: echocore, echonetcore.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/echoplayercore.json`.
-3. First action: run the documented command or trigger its in-world behavior.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
-
-Public release page: `docs/release_pages/echoplayercore.md`.
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

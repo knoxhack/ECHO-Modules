@@ -1,59 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# TextureForge by ECHO Labs
-
-![TextureForge by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echotextureforge/brand-sheet.png)
-
-**TextureForge is the ECHO asset-audit and texture-pipeline tooling module.**
-
-![TextureForge by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echotextureforge/features-portrait.png)
-
-![TextureForge by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echotextureforge/features-landscape.png)
-
-## CurseForge Summary
-
-TextureForge is the ECHO asset-audit and texture-pipeline tooling module.
-
-## Main Features
-
-- Material generation workflows.
-- Texture preview benches.
-- Creator-facing asset tools.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echotextureforge/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echotextureforge/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echotextureforge/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: TextureForge
 
-TextureForge is the ECHO asset-audit and texture-pipeline tooling module. It keeps source-sheet manifests, texture refresh reports, and command/tool hooks close to the playable mod stack so pack developers can audit visual readiness.
+Provides `asset.textureforge` for the ECHO module graph.
 
-## Standalone Use
+## Module Identity
 
-TextureForge is useful as a developer/admin module with Core and NetCore. It is not required for normal player-facing modules and should not be a hard dependency for gameplay content.
+| Field | Value |
+| --- | --- |
+| Module ID | `echotextureforge` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `tooling` |
+| Role | `asset_tooling` |
+| Side | `common` |
+| Trust | `official` |
 
-## Integration Rules
+## Runtime Targets
 
-- Command Center may link to TextureForge audit outputs when present.
-- ThemeCore may provide styling for TextureForge UI surfaces, but Default Dark fallback is required.
-- Generated source sheets remain art sources; runtime resource JSON must reference final promoted textures only.
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-## 1.0.0 Status
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-Release grade: Experimental. The texture refresh v2 validation path is passing and remains the authoritative asset baseline for 1.0.0. Remaining RC polish is dashboard bridge clarity, in-game review ergonomics, and human visual review of promoted assets.
+## Dependencies
 
-## 1.0.0 Public Beta Quickstart
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-1. Install required dependencies: echocore, echonetcore.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/echotextureforge.json`.
-3. First action: review the API/tooling docs before using it in a public pack.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
+Optional modules: `echomodpackcommandcenter`, `echorendercore`, `echoscreencore`, `echothemecore`
 
-Public release page: `docs/release_pages/echotextureforge.md`.
+Provides: `asset.textureforge`
+
+Consumes: `echo.core`, `echo.net`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echotextureforge-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echotextureforge-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echotextureforge-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echotextureforge-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echotextureforge
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

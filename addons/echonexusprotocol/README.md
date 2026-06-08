@@ -1,37 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# Nexus Protocol by ECHO Labs
+# ECHO: Nexus Protocol
 
-![Nexus Protocol by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/brand-sheet.png)
+Provides `nexus.content`, `nexus.endings`, `nexus.field_telemetry`, `nexus.machines`, `nexus.progression`, `nexus.reality_field` for the ECHO module graph.
 
-**Nexus corruption chapter with Nexus Charge, field planning, corrupted biomes, machines, memory decoding, clearer route guidance, Guardian fights, and endings.**
+## Module Identity
 
-![Nexus Protocol by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/features-portrait.png)
+| Field | Value |
+| --- | --- |
+| Module ID | `echonexusprotocol` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `story` |
+| Side | `common` |
+| Trust | `official` |
 
-![Nexus Protocol by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/features-landscape.png)
+## Runtime Targets
 
-## CurseForge Summary
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-Nexus corruption chapter with Nexus Charge, field planning, corrupted biomes, machines, memory decoding, clearer route guidance, Guardian fights, and endings.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Main Features
+## Dependencies
 
-- Nexus core progression.
-- Protocol lattice systems.
-- Ancient-tech energy nodes.
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-## CurseForge Asset Files
+Optional modules: `echoholomap`, `echoindex`, `echolens`, `echomissioncore`, `echoorbitalremnants`, `echorendercore`, `echosoundcore`, `echoterminal`
 
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echonexusprotocol/features-landscape.png`
+Provides: `nexus.content`, `nexus.endings`, `nexus.field_telemetry`, `nexus.machines`, `nexus.progression`, `nexus.reality_field`
 
-<!-- CURSEFORGE_README_END -->
-## 1.0.0 Public Beta Quickstart
+Consumes: `echo.core`, `echo.net`
 
-1. Install required dependencies: echocore, echonetcore.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/echonexusprotocol.json`.
-3. First action: open the module UI, command, keybind, or primary block/item.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
+## Consumed By Editions
 
-Public release page: `docs/release_pages/echonexusprotocol.md`.
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echonexusprotocol-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echonexusprotocol-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echonexusprotocol-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echonexusprotocol-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/resources/META-INF/neoforge.mods.toml](src/main/resources/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echonexusprotocol
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

@@ -1,57 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# CurseCore by ECHO Labs
-
-![CurseCore by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echocursecore/brand-sheet.png)
-
-****
-
-![CurseCore by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echocursecore/features-portrait.png)
-
-![CurseCore by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echocursecore/features-landscape.png)
-
-## CurseForge Summary
-
-
-
-## Main Features
-
-- Curse containment wards.
-- Corrupted artifact systems.
-- Risk and warning sigils.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echocursecore/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echocursecore/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echocursecore/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: CurseCore
 
-Version: `1.0.0`
+Provides `curse.cleansing`, `curse.contracts`, `curse.diagnostics`, `curse.persistence`, `curse.stages` for the ECHO module graph.
 
-CurseCore is the persistent consequence layer for Arcana Division. It tracks live curse targets such as Echo Rot and Glass Veins, exposes curse stages to diagnostics, and bridges cleansing through RitualCore while leaving spell backlash and campaign-specific curse sources optional.
+## Module Identity
 
-## Role
+| Field | Value |
+| --- | --- |
+| Module ID | `echocursecore` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `content_pack` |
+| Role | `curse_core` |
+| Side | `common` |
+| Trust | `official` |
 
-- Owns shared curse definitions and player curse state.
-- Publishes curse gained/cleansed route hooks for MissionCore.
-- Surfaces curse diagnostics through Terminal, Lens, Arcane Index, and Grimoire when present.
+## Runtime Targets
 
-## Integrations
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-- Required: `echocore`, `echoarcanacore`.
-- Optional: `echoritualcore`, `echospellcore`, `echoterminal`, `echomissioncore`, `echolens`, `echoarcaneindex`, `echogrimoire`, and external `arcanaveil`.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Validation
+## Dependencies
 
-Run:
+Required modules: `echoadaptercore`, `echoarcanacore`, `echocore`
 
-```bash
-gradlew.bat :echocursecore:compileJava
-gradlew.bat validateArcanaDivision validateMissionRoutes
+Optional modules: `echoarcaneindex`, `echogrimoire`, `echolens`, `echomissioncore`, `echoritualcore`, `echospellcore`, `echoterminal`
+
+Provides: `curse.cleansing`, `curse.contracts`, `curse.diagnostics`, `curse.persistence`, `curse.stages`
+
+Consumes: `arcana.core`, `echo.core`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echocursecore-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echocursecore-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echocursecore-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echocursecore-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echocursecore
 ```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

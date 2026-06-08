@@ -1,60 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# Base Grid by ECHO Labs
-
-![Base Grid by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echobasegrid/brand-sheet.png)
-
-**Claim chunks, trust members, and protect builds with a standalone ScreenCore base-management grid.**
-
-![Base Grid by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echobasegrid/features-portrait.png)
-
-![Base Grid by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echobasegrid/features-landscape.png)
-
-## CurseForge Summary
-
-Base Grid is the ECHO chunk-claiming and base protection addon for servers, SMP packs, and custom survival worlds. It adds a ScreenCore claim map, server-authoritative claim actions, trusted-member permissions, player commands, and optional Terminal navigation without requiring Ashfall.
-
-## Main Features
-
-- ScreenCore local chunk grid with owned, trusted, open, and occupied claim states.
-- Server-authoritative chunk claiming, unclaiming, and member permission actions.
-- Trusted-member roles for build, interact, storage, and management access.
-- Player commands: `/basegrid`, `/basegrid status`, `/basegrid claim`, `/basegrid unclaim`, and `/basegrid inspect`.
-- Optional ECHO Terminal tab when Terminal is installed.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echobasegrid/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echobasegrid/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echobasegrid/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: Base Grid
 
-Version: `1.0.0`
+Provides `basegrid.claims`, `basegrid.commands`, `basegrid.permissions`, `basegrid.screens` for the ECHO module graph.
 
-Base Grid provides the shared base-claiming and protection layer for ECHO servers and packs. It uses ScreenCore pages for claim management, NetCore packets for guarded claim actions, player commands for quick chunk operations, and optional Terminal navigation so players can manage chunks, members, and permissions without requiring Ashfall.
+## Module Identity
 
-## Role
+| Field | Value |
+| --- | --- |
+| Module ID | `echobasegrid` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `base_grid` |
+| Side | `common` |
+| Trust | `official` |
 
-- Tracks claimed chunks, member roles, permissions, and base protection state.
-- Uses ScreenCore for the management UI and NetCore for server-authoritative actions.
-- Provides `/basegrid` and `/echo_basegrid` commands for status, claim, unclaim, and inspection flows.
-- Stays standalone-first so custom packs can use claims without the Ashfall campaign.
+## Runtime Targets
 
-## Integrations
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-- Required: `echocore`, `echonetcore`, `echoscreencore`.
-- Optional: `echoterminal`.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Validation
+## Dependencies
 
-Run:
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`, `echoscreencore`
 
-```bash
-gradlew.bat :echobasegrid:compileJava
-gradlew.bat buildEchoWorkspace -PechoAddonSet=all
+Optional modules: `echoholomap`, `echoterminal`
+
+Provides: `basegrid.claims`, `basegrid.commands`, `basegrid.permissions`, `basegrid.screens`
+
+Consumes: `echo.core`, `echo.net`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echobasegrid-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echobasegrid-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echobasegrid-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echobasegrid-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echobasegrid
 ```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

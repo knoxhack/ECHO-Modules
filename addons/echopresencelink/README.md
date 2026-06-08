@@ -1,58 +1,75 @@
-# ECHO Presence Link
+# ECHO: Presence Link
 
-`echopresencelink` is the client-side Discord Rich Presence addon for the ECHO/Ashfall stack.
+Provides `presence.discord_rpc`, `presence.privacy`, `presence.providers`, `presence.status_commands` for the ECHO module graph.
 
-Presence Link publishes privacy-safe local activity over Discord RPC IPC. It does not post Discord bot messages, does not use Community Bridge bot tokens or REST relay code, and does not own gameplay state. Providers read public ECHO services and optional Ashfall client state, then choose one concise activity line by priority.
+## Module Identity
 
-## Defaults
+| Field | Value |
+| --- | --- |
+| Module ID | `echopresencelink` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `presence_link` |
+| Side | `client` |
+| Trust | `official` |
 
-- `enabled=true`
-- `privacyMode=true`
-- `updateIntervalSeconds=15`
-- `showButtons=true`
-- `includeWorldName=false`
-- `includeServerName=false`
-- `includeCoordinates=false`
-- No join, spectate, party, server address, world name, coordinate, player-name, or secret sharing in v1.
+## Runtime Targets
 
-If `discord.applicationId` is blank, the addon stays quiet and records debug/diagnostic status. If Discord desktop is configured but rejects or cannot receive activity, Presence Link records the IPC response and logs the first configured failure at info level, then suppresses repeated noise.
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-## Troubleshooting
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-- Check the client log for `ECHO: Presence Link registered.` and `ECHO Presence Link client IPC controller online.` to confirm the addon loaded and the client ticker registered.
-- Use `/echopresence status` in-game to see ticking state, masked application id, config path, selected provider, IPC endpoint, last Discord response, and last failure.
-- Use `/echopresence test` to send a minimal no-asset Rich Presence payload before the Discord Developer Portal assets are uploaded.
-- Use `/echopresence resend` after changing Discord settings or uploading assets to bypass duplicate suppression and send the current provider payload again.
+## Dependencies
 
-## Priority
+Required modules: `echoadaptercore`, `echocore`
 
-1. Live boss or Nexus warfront.
-2. ECHO Terminal, archive, or mission-review screen.
-3. Active environmental event or hazard.
-4. Active mission phase.
-5. World region or faction context.
-6. Generic ECHO idle.
+Optional modules: `echoashfallprotocol`, `echocommunitybridge`, `echoterminal`, `signalos`
 
-## ECHO Ecosystem Integration
+Provides: `presence.discord_rpc`, `presence.privacy`, `presence.providers`, `presence.status_commands`
 
-- `echocore` is required for pack mode, diagnostics, mission, faction, world, hazard, and Nexus campaign service reads.
-- `echoashfallprotocol` optionally registers richer Ashfall client context when Presence Link is loaded.
-- `echoterminal` is observed as screen state only; Terminal continues to own presentation.
-- `signalos` receives diagnostics for IPC state, current provider, last update age, and last failure.
-- `echocommunitybridge` may contribute a public Discord invite button only. Presence Link never reads bot tokens or relay queues.
+Consumes: `echo.core`
 
-## Discord Assets
+## Consumed By Editions
 
-Generated source assets live under `../../../art_sources/echopresencelink/discord/`.
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
 
-Release-ready copies live under `src/main/resources/assets/echopresencelink/textures/presence/`.
+## Generated Release Files
 
-Upload the lowercase keys listed in `docs/discord-assets.md` to the Discord Developer Portal for the **ECHO Presence Link** application before release.
+| File | Requirement |
+| --- | --- |
+| `echopresencelink-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echopresencelink-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echopresencelink-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echopresencelink-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
 
-## Verification
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
 
-```bash
-gradlew.bat :echopresencelink:compileJava
-gradlew.bat :echopresencelink:runGameTestServer
-gradlew.bat buildEchoWorkspace -PechoAddonSet=all
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echopresencelink
 ```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

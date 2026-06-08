@@ -1,60 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# Wiki by ECHO Labs
-
-![Wiki by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echowiki/brand-sheet.png)
-
-**Wiki is the in-game documentation/content registry module for ECHO.**
-
-![Wiki by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echowiki/features-portrait.png)
-
-![Wiki by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echowiki/features-landscape.png)
-
-## CurseForge Summary
-
-Wiki is the in-game documentation/content registry module for ECHO.
-
-## Main Features
-
-- In-game guide books.
-- Searchable article collections.
-- Lore and tutorial records.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echowiki/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echowiki/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echowiki/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: Wiki
 
-Wiki is the in-game documentation/content registry module for ECHO. It is intended to expose article collections, module docs, and datapack-authored reference content without making Ashfall the only documentation path.
+Provides `wiki.articles`, `wiki.collections`, `wiki.guide_books`, `wiki.search`, `wiki.survival_codex` for the ECHO module graph.
 
-## Standalone Use
+## Module Identity
 
-Wiki can run as a documentation addon with Core, NetCore, and ScreenCore. Module content should be generic by default; Ashfall article packs belong in Ashfall-specific namespaces.
+| Field | Value |
+| --- | --- |
+| Module ID | `echowiki` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `ui/ux` |
+| Side | `common` |
+| Trust | `official` |
 
-## Integration Rules
+## Runtime Targets
 
-- Index can cross-link wiki articles when both modules are installed.
-- Terminal can expose wiki pages as an optional documentation page.
-- ThemeCore may skin article surfaces, but Wiki must keep a readable fallback style.
-- Datapack content should use stable schema-backed article and collection definitions.
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-## 1.0.0 Status
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-Release grade: Experimental. The addon is build-included and resource-valid after pack metadata repair, and 1.0.0 documents it as an active documentation surface. It still needs fuller article examples, player-facing browsing polish, and UI smoke tests before it should be treated as release-polished.
+## Dependencies
 
-## 1.0.0 Public Beta Quickstart
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-1. Install required dependencies: echocore, echonetcore.
-2. Launch the game or tool and confirm the module appears in `metadata/modules/echowiki.json`.
-3. First action: open the module UI, command, keybind, or primary block/item.
-4. Common issue: missing optional integrations should reduce features, not crash.
-5. Ashfall behavior: Ashfall is optional and may add profile-specific content.
+Optional modules: `echoholomap`, `echoindex`, `echolens`, `echomissioncore`, `echopowergrid`, `echorelictech`, `echoscreencore`, `echoterminal`, `echothemecore`, `echotutorialcore`, `echoweathercore`, `echoworldcore`
 
-Public release page: `docs/release_pages/echowiki.md`.
+Provides: `wiki.articles`, `wiki.collections`, `wiki.guide_books`, `wiki.search`, `wiki.survival_codex`
+
+Consumes: `echo.core`, `echo.net`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echowiki-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echowiki-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echowiki-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echowiki-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echowiki
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

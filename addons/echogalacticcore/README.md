@@ -1,35 +1,74 @@
 # ECHO: GalacticCore
 
-ECHO: GalacticCore is a faithful ECHO Platform port and modernization of Galacticraft Legacy by TeamGalacticraft, licensed under MIT. It preserves the classic Galacticraft-style space exploration experience while integrating with ECHO Core, PackOS, Index, Lens, HoloMap, ScreenCore, and Ashfall systems.
+Provides `galacticcore.content`, `galacticcore.celestial_routes`, `galacticcore.life_support`, `galacticcore.rockets`, `galacticcore.legacy_parity_map` for the ECHO module graph.
 
-Best honest label: Unofficial ECHO Platform port/fork of Galacticraft Legacy.
+## Module Identity
 
-This project is not affiliated with, endorsed by, or presented as a replacement for the maintained Galacticraft project.
+| Field | Value |
+| --- | --- |
+| Module ID | `echogalacticcore` |
+| Version | `0.1.0-native-alpha` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `space_exploration` |
+| Side | `common` |
+| Trust | `community` |
 
-## Native SDK Direction
+## Runtime Targets
 
-GalacticCore is being rebuilt as an ASDK-native ECHO addon:
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Not declared. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-- Production code compiles against `echo-native-contracts`, `echoaddonapi`, and `echoadaptercore`.
-- `echo-native-testkit` is used only for tests.
-- Production code must not depend on `echo-native-loader`, NeoForge, Forge, or legacy `activateNative(Map)` surfaces.
-- Runtime changes must be represented by typed ASDK service calls and `EchoNativeMutationReceipt` evidence.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`
 
-## Current Port Foundation
+## Dependencies
 
-The original 1.12.2 Forge/Galacticraft Legacy source remains in this repository as reference material while the native ECHO implementation is built under `com.knoxhack.echogalacticcore`.
+Required modules: `echoaddonapi`, `echoadaptercore`
 
-Implemented foundation pieces:
+Optional modules: `echopackcore`, `echoindex`, `echolens`, `echoholomap`, `echoscreencore`, `echoashfallprotocol`, `echoterminal`, `echosoundcore`, `echorendercore`, `echoatmospherecore`, `echopowercore`, `echomachinecore`, `echovehiclecore`
 
-- ASDK-native build wiring.
-- ECHO module descriptor.
-- Native entrypoint.
-- Typed service registration plan.
-- Data-first content declaration scaffolds.
-- Resource migration scaffolds under the `echogalacticcore` namespace.
-- Parity, legal, and release-gate documentation.
-- ASDK testkit coverage for typed mutation receipts.
+Provides: `galacticcore.content`, `galacticcore.celestial_routes`, `galacticcore.life_support`, `galacticcore.rockets`, `galacticcore.legacy_parity_map`
 
-## Attribution
+Consumes: `platform.contracts`, `echo.sdk.public_api`, `adapter.echo_native`, `echo.native.registry`, `echo.native.lifecycle`, `echo.native.events`, `echo.native.commands`, `echo.native.config`, `echo.native.network`, `echo.native.resources`, `echo.native.capabilities`, `echo.native.attachments`, `echo.native.worldgen`, `echo.native.render`, `echo.native.screens`, `echo.native.save_data`
 
-See `CREDITS.md` and `LICENSE`.
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echogalacticcore-0.1.0-native-alpha-neoforge.jar` | Not applicable until NeoForge metadata/runtime support is added. |
+| `echogalacticcore-0.1.0-native-alpha.echo-addon` | Required for Ashfall Native Edition. |
+| `echogalacticcore-0.1.0-native-alpha-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echogalacticcore-0.1.0-native-alpha-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Only required when NeoForge support is enabled. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: Not present.
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echogalacticcore
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

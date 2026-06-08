@@ -1,57 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# Arcane Index by ECHO Labs
-
-![Arcane Index by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/brand-sheet.png)
-
-****
-
-![Arcane Index by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/features-portrait.png)
-
-![Arcane Index by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/features-landscape.png)
-
-## CurseForge Summary
-
-
-
-## Main Features
-
-- Arcane record index.
-- Rune and spell discoveries.
-- Magic knowledge catalog.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echoarcaneindex/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: Arcane Index
 
-Version: `1.0.0`
+Provides `arcana.index`, `arcana.knowledge`, `arcana.reference` for the ECHO module graph.
 
-Arcane Index is the official magic knowledge browser for Arcana Division. It extends ECHO: Index with Aether Signal, spell, ritual, curse, relic, Veilbound bridge, and discovery-state pages so players can learn magic through reference records before crafting blindly.
+## Module Identity
 
-## Role
+| Field | Value |
+| --- | --- |
+| Module ID | `echoarcaneindex` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `ui_pack` |
+| Role | `arcane_index` |
+| Side | `common` |
+| Trust | `official` |
 
-- Publishes Arcana reference pages through the shared Index surface.
-- Reads Arcana Core providers for dynamic relic, ritual, spell, and curse entries.
-- Keeps JEI optional; JEI may mirror recipes, but Arcane Index remains the source of truth.
+## Runtime Targets
 
-## Integrations
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-- Required: `echocore`, `echoarcanacore`, `echoindex`.
-- Optional: external `arcanaveil` and JEI.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Validation
+## Dependencies
 
-Run:
+Required modules: `echoadaptercore`, `echoarcanacore`, `echocore`, `echoindex`
 
-```bash
-gradlew.bat :echoarcaneindex:compileJava
-gradlew.bat validateArcaneIndex
+Optional modules: `echomissioncore`
+
+Provides: `arcana.index`, `arcana.knowledge`, `arcana.reference`
+
+Consumes: `arcana.core`, `echo.core`, `index.recipes`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echoarcaneindex-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoarcaneindex-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echoarcaneindex-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoarcaneindex-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echoarcaneindex
 ```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

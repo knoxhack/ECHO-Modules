@@ -1,39 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# NPCore by ECHO Labs
+# ECHO: NPCore
 
-![NPCore by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echonpcore/brand-sheet.png)
+Provides `npc.dialogue`, `npc.profiles`, `npc.screens`, `npc.services`, `npc.trades`, `npc.villager_replacement` for the ECHO module graph.
 
-**NPCore is an already-active ECHO workspace module for data-driven NPC profiles, custom textures, dialogue, trades, services, and vanilla villager replacement.**
+## Module Identity
 
-![NPCore by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echonpcore/features-portrait.png)
+| Field | Value |
+| --- | --- |
+| Module ID | `echonpcore` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `utility` |
+| Side | `common` |
+| Trust | `official` |
 
-![NPCore by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echonpcore/features-landscape.png)
+## Runtime Targets
 
-## CurseForge Summary
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-NPCore is an already-active ECHO workspace module for data-driven NPC profiles, custom textures, dialogue, trades, services, and vanilla villager replacement.
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-## Main Features
+## Dependencies
 
-- NPC dialogue screens.
-- Faction services and trades.
-- Villager replacement hooks.
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-## CurseForge Asset Files
+Optional modules: `echodatacore`, `echomissioncore`, `echorendercore`, `echoscreencore`, `echoterminal`, `echoworldcore`
 
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echonpcore/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echonpcore/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echonpcore/features-landscape.png`
+Provides: `npc.dialogue`, `npc.profiles`, `npc.screens`, `npc.services`, `npc.trades`, `npc.villager_replacement`
 
-<!-- CURSEFORGE_README_END -->
----
+Consumes: `echo.core`, `echo.net`
 
-## Existing Developer Notes
+## Consumed By Editions
 
-# NPCore
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
 
-NPCore is an already-active ECHO workspace module for data-driven NPC profiles, custom textures, dialogue, trades, services, and vanilla villager replacement.
+## Generated Release Files
 
-Ashfall is not required for NPCore. Required dependencies are `echocore` and `echonetcore`. Optional integrations are DataCore, ScreenCore, MissionCore, WorldCore, RenderCore, and Terminal.
+| File | Requirement |
+| --- | --- |
+| `echonpcore-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echonpcore-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echonpcore-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echonpcore-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
 
-ECHO version: `1.0.0`.
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echonpcore
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)

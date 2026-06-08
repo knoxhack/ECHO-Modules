@@ -1,50 +1,75 @@
-<!-- CURSEFORGE_README_START -->
-# ScriptCore by ECHO Labs
-
-![ScriptCore by ECHO Labs brand sheet](../../../publishing/curseforge/ai-generated-v4/echoscriptcore/brand-sheet.png)
-
-**ScriptCore by ECHO Labs is a JSON-first campaign authoring framework for standalone modpack creators and ECHO addon stacks.**
-
-![ScriptCore by ECHO Labs feature overview portrait](../../../publishing/curseforge/ai-generated-v4/echoscriptcore/features-portrait.png)
-
-![ScriptCore by ECHO Labs feature overview landscape](../../../publishing/curseforge/ai-generated-v4/echoscriptcore/features-landscape.png)
-
-## CurseForge Summary
-
-ScriptCore by ECHO Labs is a JSON-first campaign authoring framework for standalone modpack creators and ECHO addon stacks.
-
-## Main Features
-
-- JSON-first campaign authoring.
-- Missions, lore, scans, and world states.
-- Safe condition/action flows.
-
-## CurseForge Asset Files
-
-- Brand sheet: `../../../publishing/curseforge/ai-generated-v4/echoscriptcore/brand-sheet.png`
-- Feature overview portrait: `../../../publishing/curseforge/ai-generated-v4/echoscriptcore/features-portrait.png`
-- Feature overview landscape: `../../../publishing/curseforge/ai-generated-v4/echoscriptcore/features-landscape.png`
-
-<!-- CURSEFORGE_README_END -->
----
-
-## Existing Developer Notes
-
 # ECHO: ScriptCore
 
-ScriptCore by ECHO Labs is a JSON-first campaign authoring framework for standalone modpack creators and ECHO addon stacks.
+Provides `scriptcore.actions`, `scriptcore.commands`, `scriptcore.conditions`, `scriptcore.definitions`, `scriptcore.examples`, `scriptcore.migrations`, `scriptcore.registry`, `scriptcore.runtime_state`, `scriptcore.ui_bridge`, `scriptcore.validation` for the ECHO module graph.
 
-## Standalone Use
+## Module Identity
 
-ScriptCore can run with only ECHO Core. It loads safe JSON definitions from `config/echo/scripts`, validates them, exposes a registry/API, generates examples, and provides `/echo scriptcore` diagnostics without requiring Ashfall or optional UI/runtime addons.
+| Field | Value |
+| --- | --- |
+| Module ID | `echoscriptcore` |
+| Version | `1.0.0` |
+| Type | `addon` |
+| Kind | `addon` |
+| Role | `developer_tool` |
+| Side | `common` |
+| Trust | `official` |
 
-## Integration Rules
+## Runtime Targets
 
-- Ashfall is content, not a ScriptCore dependency.
-- Optional integrations are adapter driven and must degrade to diagnostics when unavailable.
-- ScriptCore 1.0.0 never executes JavaScript, Groovy, Lua, shell commands, reflection targets from JSON, or class names from JSON.
-- Other packs should use their own namespaces and pack folders.
+| Runtime | Status |
+| --- | --- |
+| ECHO native | Supported through `.echo-addon` packaging. |
+| Minecraft/NeoForge | Supported through `-neoforge.jar` packaging. |
+| ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-## 1.0.0 Status
+Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
-Release grade: integration polish. The addon provides loader, registry, validation, commands, docs, examples, DataCore-backed runtime state, runtime migration tools, Terminal diagnostics, and a trusted ScreenCore/NetCore UI bridge for previewing and executing preloaded JSON actions.
+## Dependencies
+
+Required modules: `echoadaptercore`, `echocore`
+
+Optional modules: `echocreatorcore`, `echodatacore`, `echoholomap`, `echoindex`, `echolens`, `echomissioncore`, `echonetcore`, `echoscreencore`, `echosoundcore`, `echoterminal`, `echotutorialcore`, `echoweathercore`, `echoworldcore`
+
+Provides: `scriptcore.actions`, `scriptcore.commands`, `scriptcore.conditions`, `scriptcore.definitions`, `scriptcore.examples`, `scriptcore.migrations`, `scriptcore.registry`, `scriptcore.runtime_state`, `scriptcore.ui_bridge`, `scriptcore.validation`
+
+Consumes: `echo.core`
+
+## Consumed By Editions
+
+- Ashfall Native Edition consumes the `.echo-addon` artifact.
+- Ashfall NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+
+## Generated Release Files
+
+| File | Requirement |
+| --- | --- |
+| `echoscriptcore-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoscriptcore-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echoscriptcore-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoscriptcore-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
+| `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
+| `echo-addon-package.json` | Required in `.echo-addon` packages. |
+
+The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.
+
+## Descriptor Files
+
+- ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
+
+## Build And Release
+
+Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
+
+```sh
+node scripts/generate-module-release.mjs --module echoscriptcore
+```
+
+Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.
+
+## More Detail
+
+- [Artifact contract](../../docs/module-artifact-contract.md)
+- [Module artifact notes](docs/artifacts.md)
