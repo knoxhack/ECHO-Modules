@@ -65,3 +65,26 @@ test('fails by default when runtime jars are missing', async () => {
     /missing neoforge runtime jar, standalone runtime jar, echo-addon runtime jar/u,
   )
 })
+
+test('can emit runtime-named archives from source when build outputs are absent', async () => {
+  const repoRoot = await makeRepo()
+  await fs.rm(path.join(repoRoot, 'addons', 'echosample', 'build'), { recursive: true, force: true })
+
+  const release = await generateModuleRelease({
+    repoRoot,
+    releaseId: 'source-packaged-test',
+    modules: ['echosample'],
+    packageFromSource: true,
+  })
+
+  const artifacts = release.modules[0].artifacts
+  assert.deepEqual(artifacts.map((artifact) => artifact.filename).sort(), [
+    'echosample-1.2.3-neoforge.jar',
+    'echosample-1.2.3-sources.jar',
+    'echosample-1.2.3-standalone.jar',
+    'echosample-1.2.3.echo-addon',
+  ])
+  assert.equal(artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'source-packaged')
+  assert.equal(artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'source-packaged')
+  assert.equal(artifacts.find((artifact) => artifact.kind === 'echo-addon').buildMode, 'source-packaged')
+})

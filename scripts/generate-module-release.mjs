@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { deflateRawSync } from 'node:zlib'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
 const DESCRIPTOR_PATH = 'src/main/resources/META-INF/echo.mod.json'
@@ -109,33 +110,34 @@ async function writeStoredZip(entries, outputPath) {
   for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
     const name = Buffer.from(normalizeZipPath(entry.name), 'utf8')
     const data = Buffer.isBuffer(entry.data) ? entry.data : Buffer.from(entry.data)
+    const compressed = deflateRawSync(data, { level: 9 })
     const crc = crc32(data)
     const localHeader = Buffer.concat([
       u32(0x04034b50),
       u16(20),
       u16(0x0800),
-      u16(0),
+      u16(8),
       u16(now.time),
       u16(now.day),
       u32(crc),
-      u32(data.length),
+      u32(compressed.length),
       u32(data.length),
       u16(name.length),
       u16(0),
       name,
     ])
-    localParts.push(localHeader, data)
+    localParts.push(localHeader, compressed)
 
     centralParts.push(Buffer.concat([
       u32(0x02014b50),
       u16(20),
       u16(20),
       u16(0x0800),
-      u16(0),
+      u16(8),
       u16(now.time),
       u16(now.day),
       u32(crc),
-      u32(data.length),
+      u32(compressed.length),
       u32(data.length),
       u16(name.length),
       u16(0),
@@ -146,7 +148,7 @@ async function writeStoredZip(entries, outputPath) {
       u32(offset),
       name,
     ]))
-    offset += localHeader.length + data.length
+    offset += localHeader.length + compressed.length
   }
 
   const central = Buffer.concat(centralParts)
@@ -216,7 +218,44 @@ async function buildSourcesJar(moduleDir, outputPath) {
   await writeStoredZip(entries, outputPath)
 }
 
-async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorPath, runtimeJarPath, outputPath }) {
+async function sourceEntries(moduleDir, descriptorPath, neoForgeToml = null) {
+  const entries = [
+    { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
+  ]
+  if (neoForgeToml) {
+    entries.push({ name: 'META-INF/neoforge.mods.toml', data: await fs.readFile(neoForgeToml.absolute) })
+  }
+  const sourceRoots = [
+    { root: path.join(moduleDir, 'src', 'main', 'java'), prefix: 'src/main/java' },
+    { root: path.join(moduleDir, 'src', 'main', 'kotlin'), prefix: 'src/main/kotlin' },
+    { root: path.join(moduleDir, 'src', 'main', 'resources'), prefix: 'src/main/resources' },
+  ]
+  for (const sourceRoot of sourceRoots) {
+    for (const file of await listFiles(sourceRoot.root, sourceRoot.root)) {
+      entries.push({
+        name: normalizeZipPath(path.join(sourceRoot.prefix, file.archivePath)),
+        data: await fs.readFile(file.absolute),
+      })
+    }
+  }
+  return entries
+}
+
+async function buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoForgeToml, outputPath, runtimeTarget }) {
+  const entries = await sourceEntries(moduleDir, descriptorPath, runtimeTarget === 'neoforge' ? neoForgeToml : null)
+  entries.push({
+    name: 'META-INF/echo-artifact-build.json',
+    data: `${JSON.stringify({
+      schemaVersion: 1,
+      runtimeTarget,
+      buildMode: 'source-packaged',
+      note: 'This artifact was packaged from checked-in module source/resources because no compiled runtime jar was present in build/libs.',
+    }, null, 2)}\n`,
+  })
+  await writeStoredZip(entries, outputPath)
+}
+
+async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorPath, runtimeJarPath, outputPath, packageFromSource }) {
   const runtimeJarName = `${moduleId}-${version}-runtime.jar`
   const packageJson = {
     schemaVersion: 1,
@@ -224,7 +263,8 @@ async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorP
     version,
     runtime: 'echo-native',
     descriptor: 'META-INF/echo.mod.json',
-    runtimeJar: `lib/${runtimeJarName}`,
+    runtimeJar: runtimeJarPath ? `lib/${runtimeJarName}` : null,
+    buildMode: runtimeJarPath ? 'compiled-runtime' : 'source-packaged',
   }
   const entries = [
     { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
@@ -232,6 +272,12 @@ async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorP
   ]
   if (runtimeJarPath) {
     entries.push({ name: `lib/${runtimeJarName}`, data: await fs.readFile(runtimeJarPath) })
+  } else if (packageFromSource) {
+    for (const entry of await sourceEntries(moduleDir, descriptorPath)) {
+      if (entry.name !== 'META-INF/echo.mod.json') {
+        entries.push(entry)
+      }
+    }
   }
   const readmePath = path.join(moduleDir, 'README.md')
   if (await fileExists(readmePath)) {
@@ -257,7 +303,7 @@ async function writeMetadataFiles({ moduleOutDir, descriptorPath, neoForgeToml, 
   }
 }
 
-async function generateModule({ moduleDir, outputRoot, allowMissingRuntime }) {
+async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, packageFromSource }) {
   const descriptorPath = path.join(moduleDir, DESCRIPTOR_PATH)
   const descriptor = await readJson(descriptorPath)
   const moduleId = descriptor.id ?? path.basename(moduleDir)
@@ -274,35 +320,67 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime }) {
 
   if (neoForgeToml) {
     const sourceJar = await findRuntimeJar(moduleDir, moduleId, version, 'neoforge')
-    if (!sourceJar && !allowMissingRuntime) {
+    if (!sourceJar && !allowMissingRuntime && !packageFromSource) {
       missing.push('neoforge runtime jar')
-    } else if (sourceJar) {
-      artifacts.push(await copyFileWithRecord(
-        sourceJar,
-        path.join(moduleOutDir, `${moduleId}-${version}-neoforge.jar`),
-        'neoforge',
-        ['META-INF/echo.mod.json', 'META-INF/neoforge.mods.toml'],
-      ))
+    } else if (sourceJar || packageFromSource) {
+      const outputPath = path.join(moduleOutDir, `${moduleId}-${version}-neoforge.jar`)
+      if (sourceJar) {
+        artifacts.push(await copyFileWithRecord(
+          sourceJar,
+          outputPath,
+          'neoforge',
+          ['META-INF/echo.mod.json', 'META-INF/neoforge.mods.toml'],
+        ))
+      } else {
+        await buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoForgeToml, outputPath, runtimeTarget: 'neoforge' })
+        const stat = await fs.stat(outputPath)
+        artifacts.push({
+          kind: 'neoforge',
+          filename: path.basename(outputPath),
+          sha256: await sha256File(outputPath),
+          size: stat.size,
+          downloadUrl: '',
+          runtimeTarget: 'neoforge',
+          buildMode: 'source-packaged',
+          contains: ['META-INF/echo.mod.json', 'META-INF/neoforge.mods.toml'],
+        })
+      }
     }
   }
 
   if (descriptor.standalone !== false) {
     const sourceJar = await findRuntimeJar(moduleDir, moduleId, version, 'standalone')
-    if (!sourceJar && !allowMissingRuntime) {
+    if (!sourceJar && !allowMissingRuntime && !packageFromSource) {
       missing.push('standalone runtime jar')
-    } else if (sourceJar) {
-      artifacts.push(await copyFileWithRecord(
-        sourceJar,
-        path.join(moduleOutDir, `${moduleId}-${version}-standalone.jar`),
-        'standalone',
-        ['META-INF/echo.mod.json'],
-      ))
+    } else if (sourceJar || packageFromSource) {
+      const outputPath = path.join(moduleOutDir, `${moduleId}-${version}-standalone.jar`)
+      if (sourceJar) {
+        artifacts.push(await copyFileWithRecord(
+          sourceJar,
+          outputPath,
+          'standalone',
+          ['META-INF/echo.mod.json'],
+        ))
+      } else {
+        await buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoForgeToml: null, outputPath, runtimeTarget: 'standalone' })
+        const stat = await fs.stat(outputPath)
+        artifacts.push({
+          kind: 'standalone',
+          filename: path.basename(outputPath),
+          sha256: await sha256File(outputPath),
+          size: stat.size,
+          downloadUrl: '',
+          runtimeTarget: 'standalone',
+          buildMode: 'source-packaged',
+          contains: ['META-INF/echo.mod.json'],
+        })
+      }
     }
   }
 
   let echoAddonPackage = null
   if (descriptor.access?.nativeEntrypoint || descriptor.standalone !== false) {
-    if (!runtimeJarPath && !allowMissingRuntime) {
+    if (!runtimeJarPath && !allowMissingRuntime && !packageFromSource) {
       missing.push('echo-addon runtime jar')
     } else {
       const echoAddonPath = path.join(moduleOutDir, `${moduleId}-${version}.echo-addon`)
@@ -313,6 +391,7 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime }) {
         descriptorPath,
         runtimeJarPath,
         outputPath: echoAddonPath,
+        packageFromSource,
       })
       const stat = await fs.stat(echoAddonPath)
       artifacts.push({
@@ -322,6 +401,7 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime }) {
         size: stat.size,
         downloadUrl: '',
         runtimeTarget: 'echo-native',
+        buildMode: runtimeJarPath ? 'compiled-runtime' : 'source-packaged',
         contains: ['META-INF/echo.mod.json', 'echo-addon-package.json'],
       })
     }
@@ -378,6 +458,7 @@ function parseArgs(argv) {
     modules: [],
     outDir: DEFAULT_OUT_DIR,
     allowMissingRuntime: false,
+    packageFromSource: false,
     repoRoot: process.cwd(),
     releaseId: null,
   }
@@ -388,6 +469,10 @@ function parseArgs(argv) {
     else if (arg === '--repo-root') options.repoRoot = argv[++index]
     else if (arg === '--release-id') options.releaseId = argv[++index]
     else if (arg === '--allow-missing-runtime') options.allowMissingRuntime = true
+    else if (arg === '--package-from-source') {
+      options.packageFromSource = true
+      options.allowMissingRuntime = true
+    }
     else if (arg === '--help') options.help = true
     else throw new Error(`Unknown argument: ${arg}`)
   }
@@ -410,6 +495,7 @@ export async function generateModuleRelease(options = {}) {
       moduleDir,
       outputRoot,
       allowMissingRuntime: Boolean(options.allowMissingRuntime),
+      packageFromSource: Boolean(options.packageFromSource),
     }))
   }
 
@@ -437,6 +523,7 @@ Options:
   --out <dir>                Output directory relative to repo root. Default: ${DEFAULT_OUT_DIR}
   --release-id <id>          Release id to write into echo-release.json.
   --allow-missing-runtime    Allow metadata/source outputs when built runtime jars are missing.
+  --package-from-source      Emit runtime-named archives from module source/resources when compiled jars are missing.
   --repo-root <path>         Repository root, mostly for tests.
 `)
 }

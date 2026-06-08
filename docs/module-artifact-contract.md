@@ -48,9 +48,12 @@ Useful options:
 node scripts/generate-module-release.mjs --module echocore
 node scripts/generate-module-release.mjs --module echocore --module echoadaptercore
 node scripts/generate-module-release.mjs --allow-missing-runtime
+node scripts/generate-module-release.mjs --package-from-source
 ```
 
 Use `--allow-missing-runtime` only for metadata/source dry runs while the module build graph is being prepared; do not upload those outputs as player-facing runtime releases.
+
+Use `--package-from-source` to create the visible per-module artifact set from checked-in source/resources when compiled jars are not available. Those artifacts are marked with `buildMode: "source-packaged"` in `echo-release.json`; replace them with compiled runtime jars before treating a release as player-ready.
 
 ## Edition Consumption
 
