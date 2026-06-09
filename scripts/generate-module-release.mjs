@@ -255,7 +255,18 @@ async function buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoFor
   await writeStoredZip(entries, outputPath)
 }
 
-async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorPath, runtimeJarPath, outputPath, packageFromSource }) {
+function packageDependencies(descriptor) {
+  return (descriptor.requires ?? []).map((dependency) => {
+    if (typeof dependency === 'string') return { id: dependency, version: '*' }
+    return {
+      ...dependency,
+      id: dependency.id,
+      version: dependency.version ?? '*',
+    }
+  }).filter((dependency) => dependency.id)
+}
+
+async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptor, descriptorPath, runtimeJarPath, outputPath, packageFromSource }) {
   const runtimeJarName = `${moduleId}-${version}-runtime.jar`
   const packageJson = {
     schemaVersion: 'echo.addon.package.v1',
@@ -266,7 +277,7 @@ async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorP
       githubRepo: 'ECHO-Modules',
     },
     targets: ['native', 'neoforge', 'standalone'],
-    dependencies: [],
+    dependencies: packageDependencies(descriptor),
     artifacts: {
       native: `${moduleId}-${version}.echo-addon`,
       neoforge: `${moduleId}-${version}-neoforge.jar`,
@@ -400,6 +411,7 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
         moduleDir,
         moduleId,
         version,
+        descriptor,
         descriptorPath,
         runtimeJarPath,
         outputPath: echoAddonPath,

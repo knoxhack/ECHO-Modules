@@ -118,7 +118,7 @@ async function makeFixtureRepo() {
     name: 'ECHO Fixture',
     version: '1.2.3',
     standalone: true,
-    requires: [],
+    requires: ['echocore'],
     optional: [],
     access: { nativeEntrypoint: 'dev.echo.fixture.FixtureModule' },
   }, null, 2)}\n`)
@@ -157,7 +157,20 @@ async function verifyReleaseDir(releaseDir) {
     const echoAddon = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}.echo-addon`))
     assert.ok(echoAddon.entries.has('META-INF/echo.mod.json'), 'echo-addon must embed descriptor')
     assert.ok(echoAddon.entries.has('echo-addon-package.json'), 'echo-addon must embed package manifest')
-    assert.equal(echoAddon.json('echo-addon-package.json').schemaVersion, 'echo.addon.package.v1')
+    const packageManifest = echoAddon.json('echo-addon-package.json')
+    assert.equal(packageManifest.schemaVersion, 'echo.addon.package.v1')
+    assert.ok(Array.isArray(packageManifest.dependencies), 'package manifest dependencies must be an array')
+    for (const dependency of packageManifest.dependencies) {
+      assert.ok(dependency.id, 'package manifest dependency must include id')
+      assert.ok(dependency.version, 'package manifest dependency must include version')
+    }
+    if (moduleRecord.requires.length > 0) {
+      assert.deepEqual(
+        packageManifest.dependencies.map((dependency) => dependency.id).sort(),
+        moduleRecord.requires.slice().sort(),
+        'package manifest dependencies must mirror module requires',
+      )
+    }
 
     const neoforge = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-neoforge.jar`))
     assert.ok(neoforge.entries.has('META-INF/echo.mod.json'), 'NeoForge jar must embed descriptor')
