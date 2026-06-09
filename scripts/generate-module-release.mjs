@@ -316,6 +316,25 @@ async function writeJson(filePath, value) {
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
 }
 
+function releaseProvenance() {
+  const repository = process.env.GITHUB_REPOSITORY || 'knoxhack/ECHO-Modules'
+  return {
+    sourceRepo: `https://github.com/${repository}`,
+    commitSha: process.env.GITHUB_SHA || '',
+    workflow: process.env.GITHUB_WORKFLOW || '',
+    workflowRef: process.env.GITHUB_WORKFLOW_REF || '',
+    runId: process.env.GITHUB_RUN_ID || '',
+    runAttempt: process.env.GITHUB_RUN_ATTEMPT || '',
+    refName: process.env.GITHUB_REF_NAME || '',
+    eventName: process.env.GITHUB_EVENT_NAME || '',
+    generatedBy: 'scripts/generate-module-release.mjs',
+    attestation: {
+      action: 'actions/attest@v4',
+      subjectChecksums: 'checksums.sha256',
+    },
+  }
+}
+
 async function writeMetadataFiles({ moduleOutDir, descriptorPath, neoForgeToml, echoAddonPackage }) {
   await fs.mkdir(path.join(moduleOutDir, 'META-INF'), { recursive: true })
   await fs.copyFile(descriptorPath, path.join(moduleOutDir, 'META-INF', 'echo.mod.json'))
@@ -529,6 +548,7 @@ export async function generateModuleRelease(options = {}) {
     releaseId: options.releaseId ?? `modules-${new Date().toISOString().replace(/[:.]/g, '-')}`,
     generatedAt: new Date().toISOString(),
     sourceRepo: 'https://github.com/knoxhack/ECHO-Modules',
+    provenance: releaseProvenance(),
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)

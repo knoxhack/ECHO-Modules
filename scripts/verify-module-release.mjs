@@ -138,6 +138,9 @@ async function verifyReleaseDir(releaseDir) {
   const release = await readJson(path.join(releaseDir, 'echo-release.json'))
   assert.equal(release.schemaVersion, 1)
   assert.ok(Array.isArray(release.modules) && release.modules.length > 0, 'release manifest must include modules')
+  assert.equal(release.provenance?.generatedBy, 'scripts/generate-module-release.mjs', 'release manifest must record generator provenance')
+  assert.equal(release.provenance?.attestation?.action, 'actions/attest@v4', 'release manifest must record attestation action')
+  assert.equal(release.provenance?.attestation?.subjectChecksums, 'checksums.sha256', 'release manifest must record checksum attestation subject')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.sha256')), 'checksums.sha256 must exist')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.txt')), 'checksums.txt compatibility copy must exist')
 

@@ -38,6 +38,9 @@ test('generates per-module release artifacts and metadata', async () => {
   })
 
   assert.equal(release.releaseId, 'test-release')
+  assert.equal(release.provenance.generatedBy, 'scripts/generate-module-release.mjs')
+  assert.equal(release.provenance.attestation.action, 'actions/attest@v4')
+  assert.equal(release.provenance.attestation.subjectChecksums, 'checksums.sha256')
   assert.equal(release.modules.length, 1)
   const moduleRecord = release.modules[0]
   assert.equal(moduleRecord.moduleId, 'echosample')
