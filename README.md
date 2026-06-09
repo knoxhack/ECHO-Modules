@@ -30,6 +30,8 @@ Run commands from the repository root.
 
 Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, and `echo-addon-package.json` where applicable.
 
+Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
+
 ## Docs Index
 
 - [docs/module-artifact-contract.md](docs/module-artifact-contract.md)

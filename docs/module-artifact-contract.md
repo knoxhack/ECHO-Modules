@@ -38,7 +38,7 @@ Use the repository release generator from `knoxhack/ECHO-Modules`:
 node scripts/generate-module-release.mjs
 ```
 
-The generator writes `dist/echo-module-release/` with per-module folders, `echo-release.json`, and `checksums.txt`.
+The generator writes `dist/echo-module-release/` with per-module folders, `echo-release.json`, canonical `checksums.sha256`, and a `checksums.txt` compatibility copy. `echo-release.json` uses `schemaVersion: "echo.module.release.v1"` so Release Index imports can validate it without reshaping.
 
 By default it is strict: runtime artifacts are only emitted from existing built jars under `addons/<module>/build/libs`, and the command fails if a required runtime jar is missing. This prevents publishing placeholder runnable jars.
 

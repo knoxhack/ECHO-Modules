@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { deflateRawSync } from 'node:zlib'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
+const MODULE_RELEASE_SCHEMA_VERSION = 'echo.module.release.v1'
 const DESCRIPTOR_PATH = 'src/main/resources/META-INF/echo.mod.json'
 const NEOFORGE_TOML_PATHS = [
   'src/main/resources/META-INF/neoforge.mods.toml',
@@ -555,7 +556,7 @@ export async function generateModuleRelease(options = {}) {
   }
 
   const release = {
-    schemaVersion: 1,
+    schemaVersion: MODULE_RELEASE_SCHEMA_VERSION,
     releaseId: options.releaseId ?? `modules-${new Date().toISOString().replace(/[:.]/g, '-')}`,
     generatedAt: new Date().toISOString(),
     sourceRepo: 'https://github.com/knoxhack/ECHO-Modules',

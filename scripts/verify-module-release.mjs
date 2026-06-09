@@ -136,7 +136,7 @@ function expectedArtifactNames(moduleId, version) {
 
 async function verifyReleaseDir(releaseDir) {
   const release = await readJson(path.join(releaseDir, 'echo-release.json'))
-  assert.equal(release.schemaVersion, 1)
+  assert.equal(release.schemaVersion, 'echo.module.release.v1')
   assert.ok(Array.isArray(release.modules) && release.modules.length > 0, 'release manifest must include modules')
   assert.equal(release.provenance?.generatedBy, 'scripts/generate-module-release.mjs', 'release manifest must record generator provenance')
   assert.equal(release.provenance?.attestation?.action, 'actions/attest@v4', 'release manifest must record attestation action')
