@@ -47,6 +47,9 @@ test('generates per-module release artifacts and metadata', async () => {
     'echosample-1.2.3-standalone.jar',
     'echosample-1.2.3.echo-addon',
   ])
+  assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'compiled-runtime')
+  assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'compiled-runtime')
+  assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'echo-addon').buildMode, 'compiled-runtime')
 
   const outputDir = path.join(repoRoot, 'dist', 'echo-module-release', 'echosample')
   await fs.access(path.join(outputDir, 'META-INF', 'echo.mod.json'))

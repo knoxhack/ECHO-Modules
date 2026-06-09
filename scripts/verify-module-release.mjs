@@ -152,6 +152,12 @@ async function verifyReleaseDir(releaseDir) {
       const artifactPath = path.join(moduleDir, artifact.filename)
       assert.equal(await sha256File(artifactPath), artifact.sha256, `${artifact.filename} manifest sha256 mismatch`)
       assert.equal(checksums.get(`${moduleRecord.moduleId}/${artifact.filename}`), artifact.sha256, `${artifact.filename} checksum row missing`)
+      if (artifact.kind !== 'sources') {
+        assert.ok(
+          artifact.buildMode === 'compiled-runtime' || artifact.buildMode === 'source-packaged',
+          `${artifact.filename} must declare compiled-runtime or source-packaged buildMode`,
+        )
+      }
     }
 
     const echoAddon = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}.echo-addon`))

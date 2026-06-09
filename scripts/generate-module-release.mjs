@@ -79,6 +79,7 @@ async function copyFileWithRecord(sourcePath, outputPath, kind, contains = []) {
     size: stat.size,
     downloadUrl: '',
     runtimeTarget: kind === 'echo-addon' ? 'echo-native' : kind,
+    buildMode: 'compiled-runtime',
     contains,
   }
 }
