@@ -10,7 +10,7 @@
   "publisher": "KnoxHack / ECHO Labs",
   "channel": "alpha",
   "official": false,
-  "trustLevel": "community",
+  "trustLevel": "trusted",
   "standalone": true,
   "clientOnly": false,
   "serverOnly": false,
@@ -69,8 +69,8 @@
     "player.data",
     "resources.data",
     "world.write",
-    "screens.client",
-    "render.client"
+    "ui.screens",
+    "ui.overlays"
   ],
   "assets": [
     "assets/echogalacticcore",
@@ -78,6 +78,24 @@
   ],
   "transforms": [],
   "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "data",
+        "items",
+        "machines",
+        "networking",
+        "power",
+        "rendering",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
     "nativeEntrypoint": "com.knoxhack.echogalacticcore.EchoGalacticCoreNativeModule",
     "nativeClasspath": [],
     "notes": "Unofficial ECHO Platform port/fork of Galacticraft Legacy. Production code must use ASDK typed services and must not depend on echo-native-loader, NeoForge, Forge, or legacy activateNative(Map) surfaces."

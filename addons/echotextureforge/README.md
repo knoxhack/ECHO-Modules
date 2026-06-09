@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-Optional modules: `echomodpackcommandcenter`, `echorendercore`, `echoscreencore`, `echothemecore`
+Optional modules: `echorendercore`, `echoscreencore`, `echothemecore`
 
 Provides: `asset.textureforge`
 

@@ -145,10 +145,9 @@ public class EchoIndexClient {
 
     private static void onIndexOverlayRender(Object event) {
         if (nativeLoaderActive()) {
-            EchoNativeLoadStatus status;
             NATIVE_INDEX_OVERLAY_RENDER.set(event);
             try {
-                status = EchoNativeClientRouteRegistries.get().renderGuiLayer("client_overlay", "index.inventory_overlay_render", Map.of(
+                EchoNativeClientRouteRegistries.get().renderGuiLayer("client_overlay", "index.inventory_overlay_render", Map.of(
                         "source", "native_loader_gui_layer",
                         "forwardedFrom", "native_client_bridge",
                         "eventType", "container_foreground_render",
@@ -158,9 +157,6 @@ public class EchoIndexClient {
                 ));
             } finally {
                 NATIVE_INDEX_OVERLAY_RENDER.remove();
-            }
-            if (status != EchoNativeLoadStatus.MUTATED) {
-                IndexOverlay.onRender(event);
             }
             return;
         }
@@ -398,9 +394,7 @@ public class EchoIndexClient {
                             "transitionSource", "index_route_catalog_fallback",
                             "screenBridge", "classic_index"
                     ));
-            if (nativeLoaderActive()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED
-                    && lifecycleStatus != EchoNativeLoadStatus.UNSUPPORTED) {
+            if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
                 return false;
             }
             minecraft.setScreen(new IndexCatalogScreen());
@@ -483,9 +477,7 @@ public class EchoIndexClient {
                         "recipeMode", mode.name(),
                         "itemId", IndexService.itemId(stack.getItem()).toString()
                 ));
-        if (nativeLoaderActive()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED
-                && lifecycleStatus != EchoNativeLoadStatus.UNSUPPORTED) {
+        if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
             return false;
         }
         minecraft.setScreen(new IndexRecipeScreen(stack.copy(),

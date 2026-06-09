@@ -899,9 +899,7 @@ public final class EchoHoloMapClient {
                         "targetScreenClass", HoloMapFullScreenMapScreen.class.getName(),
                         "transitionSource", "holomap_route_open",
                         "screenBridge", "classic_fullscreen"));
-        if (nativeLoaderActive()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED
-                && lifecycleStatus != EchoNativeLoadStatus.UNSUPPORTED) {
+        if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
             return false;
         }
         minecraft.setScreen(new HoloMapFullScreenMapScreen());

@@ -579,6 +579,18 @@ public class EchoTerminalClient {
             return false;
         }
         if (nativeLoaderActive()) {
+            EchoNativeLoadStatus lifecycleStatus = publishNativeScreenLifecycle(
+                    "open",
+                    "terminal.open",
+                    EchoNativeTerminalScreen.class.getName(),
+                    Map.of(
+                            "targetScreenClass", EchoNativeTerminalScreen.class.getName(),
+                            "transitionSource", "terminal_route_open",
+                            "screenBridge", "native_terminal"
+                    ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
             minecraft.setScreen(new EchoNativeTerminalScreen());
             return true;
         }
@@ -594,9 +606,7 @@ public class EchoTerminalClient {
                         "transitionSource", "terminal_route_open",
                         "screenBridge", "terminal_screencore"
                 ));
-        if (nativeLoaderActive()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED
-                && lifecycleStatus != EchoNativeLoadStatus.UNSUPPORTED) {
+        if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
             return false;
         }
         minecraft.setScreen(EchoTerminalScreens.create(

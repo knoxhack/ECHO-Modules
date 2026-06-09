@@ -21,7 +21,6 @@
     "echonetcore"
   ],
   "optional": [
-    "echomodpackcommandcenter",
     "echorendercore",
     "echoscreencore",
     "echothemecore"
@@ -58,6 +57,7 @@
         "ui_screens"
       ],
       "runtimes": [
+        "neoforge",
         "echo_native",
         "echo_runtime_standalone"
       ],
