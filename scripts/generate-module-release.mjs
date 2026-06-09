@@ -102,6 +102,17 @@ async function listFiles(root, base = root) {
   return files
 }
 
+async function releaseChecksumRows(outputRoot) {
+  const files = (await listFiles(outputRoot, outputRoot))
+    .filter((file) => file.archivePath !== 'checksums.sha256' && file.archivePath !== 'checksums.txt')
+    .sort((a, b) => a.archivePath.localeCompare(b.archivePath))
+  const rows = []
+  for (const file of files) {
+    rows.push(`${await sha256File(file.absolute)}  ${file.archivePath}`)
+  }
+  return rows.join('\n') + '\n'
+}
+
 async function writeStoredZip(entries, outputPath) {
   const now = dosDateTime()
   const localParts = []
@@ -552,7 +563,7 @@ export async function generateModuleRelease(options = {}) {
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)
-  const checksums = modules.flatMap((moduleRecord) => moduleRecord.artifacts.map((artifact) => `${artifact.sha256}  ${moduleRecord.moduleId}/${artifact.filename}`)).join('\n') + '\n'
+  const checksums = await releaseChecksumRows(outputRoot)
   await fs.writeFile(path.join(outputRoot, 'checksums.sha256'), checksums, 'utf8')
   await fs.writeFile(path.join(outputRoot, 'checksums.txt'), checksums, 'utf8')
   return release

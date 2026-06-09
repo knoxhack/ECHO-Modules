@@ -110,6 +110,6 @@ jobs:
             git tag "$TAG"
             git push origin "$TAG"
           fi
-          mapfile -t FILES < <(find dist/echo-module-release -type f | sort)
+          mapfile -t FILES < <(find dist/echo-module-release -type f ! -name checksums.txt | sort)
           gh release create "$TAG" "${FILES[@]}" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag || \
             gh release upload "$TAG" "${FILES[@]}" --clobber

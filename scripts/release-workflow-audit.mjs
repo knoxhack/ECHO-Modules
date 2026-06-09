@@ -30,6 +30,7 @@ requireText('player_ready=true requires compiled runtime jars or module-local Gr
 requireText('ARGS+=(--package-from-source)', 'development visibility source-packaging mode')
 requireText('gh release create "$TAG"', 'GitHub release creation')
 requireText('gh release upload "$TAG"', 'GitHub release upload fallback')
+requireText('! -name checksums.txt', 'checksum compatibility copy excluded from release upload')
 
 if (errors.length) {
   console.error(errors.join('\n'))

@@ -145,11 +145,29 @@ async function verifyReleaseDir(releaseDir) {
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.txt')), 'checksums.txt compatibility copy must exist')
 
   const checksums = parseChecksums(await fs.readFile(path.join(releaseDir, 'checksums.sha256'), 'utf8'))
+  assert.equal(checksums.get('echo-release.json'), await sha256File(path.join(releaseDir, 'echo-release.json')), 'echo-release.json checksum row missing')
   for (const moduleRecord of release.modules) {
     const moduleDir = path.join(releaseDir, moduleRecord.moduleId)
     assert.deepEqual(moduleRecord.artifacts.map((artifact) => artifact.filename).sort(), expectedArtifactNames(moduleRecord.moduleId, moduleRecord.version))
     assert.ok(await fileExists(path.join(moduleDir, 'META-INF', 'echo.mod.json')), `${moduleRecord.moduleId} descriptor sidecar missing`)
     assert.ok(await fileExists(path.join(moduleDir, 'echo-addon-package.json')), `${moduleRecord.moduleId} package sidecar missing`)
+    assert.equal(
+      checksums.get(`${moduleRecord.moduleId}/META-INF/echo.mod.json`),
+      await sha256File(path.join(moduleDir, 'META-INF', 'echo.mod.json')),
+      `${moduleRecord.moduleId} descriptor sidecar checksum row missing`,
+    )
+    assert.equal(
+      checksums.get(`${moduleRecord.moduleId}/echo-addon-package.json`),
+      await sha256File(path.join(moduleDir, 'echo-addon-package.json')),
+      `${moduleRecord.moduleId} package sidecar checksum row missing`,
+    )
+    if (await fileExists(path.join(moduleDir, 'META-INF', 'neoforge.mods.toml'))) {
+      assert.equal(
+        checksums.get(`${moduleRecord.moduleId}/META-INF/neoforge.mods.toml`),
+        await sha256File(path.join(moduleDir, 'META-INF', 'neoforge.mods.toml')),
+        `${moduleRecord.moduleId} NeoForge TOML sidecar checksum row missing`,
+      )
+    }
 
     for (const artifact of moduleRecord.artifacts) {
       const artifactPath = path.join(moduleDir, artifact.filename)
