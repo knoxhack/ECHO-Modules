@@ -1,0 +1,3676 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
+  "generatedAt": "2026-06-09T08:21:20.616Z",
+  "moduleCount": 95,
+  "modules": [
+    {
+      "id": "echoadaptercore",
+      "name": "ECHO: AdapterCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoadaptercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoadaptercore",
+      "requires": [
+        "echocore",
+        "echoplatformcore"
+      ],
+      "optional": [],
+      "provides": [
+        "adapter.neoforge",
+        "adapter.echo_native",
+        "adapter.echo_runtime_standalone",
+        "echo.native.registry",
+        "echo.native.lifecycle",
+        "echo.native.events",
+        "echo.native.commands",
+        "echo.native.config",
+        "echo.native.network",
+        "echo.native.resources",
+        "echo.native.capabilities",
+        "echo.native.attachments",
+        "echo.native.worldgen",
+        "echo.native.render",
+        "echo.native.screens",
+        "echo.native.save_data"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoaddonapi",
+      "name": "ECHO Add-on API",
+      "version": "0.1.0",
+      "kind": "public_api",
+      "role": "sdk_spine",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoaddonapi/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoaddonapi",
+      "requires": [],
+      "optional": [],
+      "provides": [
+        "echo.sdk.public_api"
+      ],
+      "consumes": [],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echoaetherworks",
+      "name": "ECHO: AetherWorks",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoaetherworks/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoaetherworks",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore"
+      ],
+      "optional": [
+        "echocursecore",
+        "echorelictech",
+        "echoritualcore",
+        "echospellcore"
+      ],
+      "provides": [
+        "arcana.aetherworks",
+        "arcana.aether_machines",
+        "arcana.aether_storage"
+      ],
+      "consumes": [
+        "arcana.aether",
+        "arcana.core",
+        "echo.core"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echoagentcore",
+      "name": "ECHO: AgentCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "ai_agent_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoagentcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoagentcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore",
+        "echometadatacore",
+        "echomodulegraph",
+        "echohealthcore"
+      ],
+      "optional": [
+        "echobridgecore",
+        "echoreportcore"
+      ],
+      "provides": [
+        "ai.tasks",
+        "ai.task_queue",
+        "ai.prompt_bundle",
+        "ai.next_phase_prompt",
+        "ai.run_report",
+        "ai.safe_commands"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack",
+        "runtime.health"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoagriculturereclamation",
+      "name": "ECHO: Agriculture Reclamation",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "survival",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoagriculturereclamation/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoagriculturereclamation",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echologisticsnetwork",
+        "echopowergrid",
+        "echoterminal",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore"
+      ],
+      "provides": [
+        "agriculture.reclamation",
+        "agriculture.greenhouse",
+        "agriculture.hydroponics",
+        "agriculture.ecology"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoarcanacore",
+      "name": "ECHO: Arcana Core",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "foundation",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoarcanacore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoarcanacore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echonetcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "arcana.core",
+        "arcana.aether",
+        "arcana.providers"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoarcaneindex",
+      "name": "ECHO: Arcane Index",
+      "version": "1.0.0",
+      "kind": "ui_pack",
+      "role": "arcane_index",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoarcaneindex/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoarcaneindex",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore",
+        "echoindex"
+      ],
+      "optional": [
+        "echomissioncore"
+      ],
+      "provides": [
+        "arcana.index",
+        "arcana.knowledge",
+        "arcana.reference"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core",
+        "index.recipes"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoarmory",
+      "name": "ECHO: Armory",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "combat",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoarmory/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoarmory",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoindex",
+        "echologisticsnetwork",
+        "echopowergrid",
+        "echoterminal",
+        "echothemecore"
+      ],
+      "provides": [
+        "armory.bench",
+        "armory.gear",
+        "armory.loadouts",
+        "armory.repair",
+        "armory.upgrades"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoashfallprotocol",
+      "name": "ECHO: Ashfall Protocol",
+      "version": "1.0.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoashfallprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoashfallprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echoblockworks",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echonpcore",
+        "echopresencelink",
+        "echorendercore",
+        "echoruntimeguard",
+        "echosoundcore",
+        "echoterminal",
+        "echothemecore",
+        "echowiki",
+        "echoworldcore"
+      ],
+      "provides": [
+        "ashfall.content",
+        "ashfall.missions",
+        "ashfall.protocol",
+        "ashfall.survival",
+        "ashfall.world"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoassetcore",
+      "name": "ECHO: AssetCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "asset_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoassetcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoassetcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "assets.registry",
+        "assets.validation",
+        "textureforge.prompts",
+        "textureforge.reports"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoatmospherecore",
+      "name": "ECHO: AtmosphereCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "atmosphere_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoatmospherecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoatmospherecore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "atmosphere.fog",
+        "atmosphere.hooks",
+        "atmosphere.profiles",
+        "atmosphere.sky"
+      ],
+      "consumes": [
+        "assets.registry",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echobasegrid",
+      "name": "ECHO: Base Grid",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "base_grid",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echobasegrid/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echobasegrid",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echoscreencore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoterminal"
+      ],
+      "provides": [
+        "basegrid.claims",
+        "basegrid.commands",
+        "basegrid.permissions",
+        "basegrid.screens"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echobiomecore",
+      "name": "ECHO: BiomeCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "biome_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echobiomecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echobiomecore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "biome.ambience",
+        "biome.hazards",
+        "biome.holomap_layers",
+        "biome.profiles"
+      ],
+      "consumes": [
+        "assets.registry",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoblackboxprotocol",
+      "name": "ECHO: Blackbox Protocol",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoblackboxprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoblackboxprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoindex",
+        "echomissioncore",
+        "echonexusprotocol",
+        "echoorbitalremnants",
+        "echosoundcore",
+        "echostationfall",
+        "echoterminal"
+      ],
+      "provides": [
+        "blackbox.archive",
+        "blackbox.evidence",
+        "blackbox.memory",
+        "blackbox.mystery",
+        "blackbox.protocol",
+        "blackbox.story"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoblockworks",
+      "name": "ECHO Blockworks",
+      "version": "1.0.0",
+      "kind": "content_pack",
+      "role": "content",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoblockworks/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoblockworks",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echoindex",
+        "echomissioncore",
+        "echorendercore"
+      ],
+      "provides": [
+        "blockworks.blocks",
+        "blockworks.builder_catalog",
+        "blockworks.palette_kits",
+        "blockworks.pattern_cutter",
+        "blockworks.worldgen"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echobridgecore",
+      "name": "ECHO: BridgeCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "bridge_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "dev",
+      "standalone": true,
+      "descriptorPath": "addons/echobridgecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echobridgecore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echovalidationcore",
+        "echohealthcore",
+        "echoagentcore"
+      ],
+      "optional": [
+        "echocodexcore"
+      ],
+      "provides": [
+        "bridge.codex",
+        "bridge.cyberdex",
+        "bridge.streaming_logs",
+        "bridge.safe_actions",
+        "bridge.confirmations",
+        "bridge.heartbeat"
+      ],
+      "consumes": [
+        "platform.contracts",
+        "runtime.health",
+        "ai.prompt_bundle"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocameracore",
+      "name": "ECHO: CameraCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "camera_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocameracore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocameracore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "camera.profiles",
+        "camera.safety",
+        "camera.screenshot_mode",
+        "camera.shake"
+      ],
+      "consumes": [
+        "assets.registry",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocinematiccore",
+      "name": "ECHO: CinematicCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "cinematic_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocinematiccore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocinematiccore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "cinematic.pacing",
+        "cinematic.screenshot_mode",
+        "cinematic.sequences",
+        "cinematic.triggers"
+      ],
+      "consumes": [
+        "assets.registry",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocodexcore",
+      "name": "ECHO: CodexCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "codex_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocodexcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocodexcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "codex.archive",
+        "codex.discovery",
+        "codex.search"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocombatcore",
+      "name": "ECHO: CombatCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "combat_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocombatcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocombatcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "combat.armor_profiles",
+        "combat.damage",
+        "combat.telemetry",
+        "combat.weapon_traits"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocommunitybridge",
+      "name": "ECHO: Community Bridge",
+      "version": "1.0.0",
+      "kind": "service",
+      "role": "utility",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocommunitybridge/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocommunitybridge",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "signalos"
+      ],
+      "provides": [
+        "community.discord_relay",
+        "community.server_events",
+        "community.server_status",
+        "launcher.server_status_bridge"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocontentcore",
+      "name": "ECHO: ContentCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "content_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocontentcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocontentcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "content.availability",
+        "content.gates",
+        "content.ownership",
+        "content.references"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoconvoyprotocol",
+      "name": "ECHO: Convoy Protocol",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "tech",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoconvoyprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoconvoyprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echologisticsnetwork",
+        "echopowergrid",
+        "echoterminal"
+      ],
+      "provides": [
+        "convoy.cargo",
+        "convoy.depots",
+        "convoy.fuel",
+        "convoy.routes",
+        "convoy.vehicles"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocore",
+      "name": "ECHO: Core",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "foundation",
+      "channel": "stable",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocore",
+      "requires": [],
+      "optional": [],
+      "provides": [
+        "echo.core",
+        "echo.services",
+        "echo.runtime_modules",
+        "echo.spine",
+        "echo.config",
+        "echo.missions",
+        "echo.network",
+        "echo.index",
+        "echo.world",
+        "echo.map",
+        "echo.factions",
+        "echo.diagnostics"
+      ],
+      "consumes": [],
+      "apiStability": "stable"
+    },
+    {
+      "id": "echocreatorcore",
+      "name": "ECHO: CreatorCore",
+      "version": "1.0.0",
+      "kind": "tooling",
+      "role": "developer_tool",
+      "channel": "experimental",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocreatorcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocreatorcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echonpcore",
+        "echoscreencore",
+        "echoscriptcore",
+        "echosoundcore",
+        "echoterminal",
+        "echotextureforge",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore",
+        "echowiki",
+        "echoworldcore"
+      ],
+      "provides": [
+        "creator.adapters",
+        "creator.codex_studio",
+        "creator.dashboard",
+        "creator.drafts",
+        "creator.validation"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echocreaturecore",
+      "name": "ECHO: CreatureCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "creature_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocreaturecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocreaturecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echosocialcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "creature.ai_profiles",
+        "creature.archetypes",
+        "creature.scan_metadata"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echocursecore",
+      "name": "ECHO: CurseCore",
+      "version": "1.0.0",
+      "kind": "content_pack",
+      "role": "curse_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocursecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocursecore",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore"
+      ],
+      "optional": [
+        "echoarcaneindex",
+        "echogrimoire",
+        "echolens",
+        "echomissioncore",
+        "echoritualcore",
+        "echospellcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "curse.cleansing",
+        "curse.contracts",
+        "curse.diagnostics",
+        "curse.persistence",
+        "curse.stages"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echodatacore",
+      "name": "ECHO: DataCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echodatacore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echodatacore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [],
+      "provides": [
+        "echo.data"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "stable"
+    },
+    {
+      "id": "echodifficultycore",
+      "name": "ECHO: DifficultyCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "difficulty_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echodifficultycore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echodifficultycore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echopackcore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "difficulty.adaptive",
+        "difficulty.profiles",
+        "difficulty.telemetry"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "pack.profile",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoeconomycore",
+      "name": "ECHO: EconomyCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "economy_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoeconomycore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoeconomycore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echosocialcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "economy.barter",
+        "economy.currencies",
+        "economy.faction_shops",
+        "economy.trade_validation"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoencountercore",
+      "name": "ECHO: EncounterCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "encounter_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoencountercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoencountercore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "encounter.boss_gates",
+        "encounter.definitions",
+        "encounter.faction_patrols"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoeventcore",
+      "name": "ECHO: EventCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "event_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoeventcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoeventcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echopackcore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "event.scheduler",
+        "event.validation",
+        "event.world_events"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "pack.profile",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echofamiliarcore",
+      "name": "ECHO: FamiliarCore",
+      "version": "1.0.0",
+      "kind": "content_pack",
+      "role": "familiar_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echofamiliarcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echofamiliarcore",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore"
+      ],
+      "optional": [
+        "echocursecore",
+        "echorelictech",
+        "echoritualcore",
+        "echospellcore"
+      ],
+      "provides": [
+        "familiar.bonds",
+        "familiar.commands",
+        "familiar.companions",
+        "familiar.registry",
+        "familiar.upgrades"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core"
+      ],
+      "apiStability": "scaffold"
+    },
+    {
+      "id": "echogalacticcore",
+      "name": "ECHO: GalacticCore",
+      "version": "0.1.0-native-alpha",
+      "kind": "addon",
+      "role": "space_exploration",
+      "channel": "alpha",
+      "official": false,
+      "trustLevel": "trusted",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echogalacticcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echogalacticcore",
+      "requires": [
+        "echoaddonapi",
+        "echoadaptercore"
+      ],
+      "optional": [
+        "echopackcore",
+        "echoindex",
+        "echolens",
+        "echoholomap",
+        "echoscreencore",
+        "echoashfallprotocol",
+        "echoterminal",
+        "echosoundcore",
+        "echorendercore",
+        "echoatmospherecore",
+        "echopowercore",
+        "echomachinecore",
+        "echovehiclecore"
+      ],
+      "provides": [
+        "galacticcore.content",
+        "galacticcore.celestial_routes",
+        "galacticcore.life_support",
+        "galacticcore.rockets",
+        "galacticcore.legacy_parity_map"
+      ],
+      "consumes": [
+        "platform.contracts",
+        "echo.sdk.public_api",
+        "adapter.echo_native",
+        "echo.native.registry",
+        "echo.native.lifecycle",
+        "echo.native.events",
+        "echo.native.commands",
+        "echo.native.config",
+        "echo.native.network",
+        "echo.native.resources",
+        "echo.native.capabilities",
+        "echo.native.attachments",
+        "echo.native.worldgen",
+        "echo.native.render",
+        "echo.native.screens",
+        "echo.native.save_data"
+      ],
+      "apiStability": "BETA"
+    },
+    {
+      "id": "echogrimoire",
+      "name": "ECHO: Grimoire",
+      "version": "1.0.0",
+      "kind": "content_pack",
+      "role": "grimoire",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echogrimoire/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echogrimoire",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore",
+        "echoterminal"
+      ],
+      "optional": [
+        "echoarcaneindex",
+        "echoindex",
+        "echomissioncore"
+      ],
+      "provides": [
+        "grimoire.archive",
+        "grimoire.lore",
+        "grimoire.progression_records",
+        "grimoire.terminal"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core",
+        "terminal.surface"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoguidecore",
+      "name": "ECHO: GuideCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "guide_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoguidecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoguidecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "guide.pages",
+        "guide.search",
+        "guide.unlock_visibility"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echohealthcore",
+      "name": "ECHO: HealthCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "health",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echohealthcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echohealthcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "runtime.health"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoholomap",
+      "name": "ECHO: HoloMap",
+      "version": "1.0.0",
+      "kind": "ui_pack",
+      "role": "map",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoholomap/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoholomap",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echolens",
+        "echomissioncore",
+        "echoterminal",
+        "echothemecore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "holomap.layers"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echohudcore",
+      "name": "ECHO: HUDCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "hud_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echohudcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echohudcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "hud.compass_indicators",
+        "hud.hazard_meters",
+        "hud.mission_tracker",
+        "hud.safe_area",
+        "hud.widgets"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoindex",
+      "name": "ECHO: Index",
+      "version": "1.0.0",
+      "kind": "ui_pack",
+      "role": "index",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoindex/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoindex",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echolens",
+        "echomissioncore",
+        "echoterminal",
+        "echothemecore",
+        "echowiki"
+      ],
+      "provides": [
+        "index.recipes",
+        "index.inventory_overlay",
+        "echoindex:inventory_overlay"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoindustrialnexus",
+      "name": "ECHO: Industrial Nexus",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "tech",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoindustrialnexus/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoindustrialnexus",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echologisticsnetwork",
+        "echomultiblockcore",
+        "echopowergrid",
+        "echoterminal"
+      ],
+      "provides": [
+        "industrial.factories",
+        "industrial.machines",
+        "industrial.multiblocks",
+        "industrial.salvage",
+        "industrial.thermal_flux"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoinputcore",
+      "name": "ECHO: InputCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "input_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoinputcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoinputcore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "input.contexts",
+        "input.controller_ready",
+        "input.keybind_registry",
+        "input.radial_menus"
+      ],
+      "consumes": [
+        "assets.registry",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echolens",
+      "name": "ECHO: Lens",
+      "version": "1.0.0",
+      "kind": "ui_pack",
+      "role": "scanner",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echolens/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echolens",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echomissioncore",
+        "echothemecore"
+      ],
+      "provides": [
+        "lens.scanners"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echologisticscore",
+      "name": "ECHO: LogisticsCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "logistics_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echologisticscore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echologisticscore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "logistics.convoy_bindings",
+        "logistics.deliveries",
+        "logistics.routing",
+        "logistics.storage"
+      ],
+      "consumes": [
+        "assets.registry",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echologisticsnetwork",
+      "name": "ECHO: Logistics Network",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "tech",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echologisticsnetwork/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echologisticsnetwork",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoarmory",
+        "echoconvoyprotocol",
+        "echoholomap",
+        "echopowergrid",
+        "echoterminal",
+        "echothemecore"
+      ],
+      "provides": [
+        "logistics.couriers",
+        "logistics.dashboards",
+        "logistics.depots",
+        "logistics.endpoints",
+        "logistics.requests"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echolootcore",
+      "name": "ECHO: LootCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "loot_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echolootcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echolootcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echosocialcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "loot.anti_duplication",
+        "loot.mission_reward_pools",
+        "loot.pools"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echolorecore",
+      "name": "ECHO: LoreCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "lore_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echolorecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echolorecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "lore.audio_logs",
+        "lore.blackbox_entries",
+        "lore.entries",
+        "lore.environmental_storytelling"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echomachinecore",
+      "name": "ECHO: MachineCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "machine_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echomachinecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echomachinecore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echorecipecore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "machine.automation",
+        "machine.diagnostics",
+        "machine.profiles",
+        "machine.recipes"
+      ],
+      "consumes": [
+        "assets.registry",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echometadatacore",
+      "name": "ECHO: MetadataCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "metadata_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echometadatacore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echometadatacore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore",
+        "echopackcore"
+      ],
+      "optional": [],
+      "provides": [
+        "metadata.manifest",
+        "metadata.ai",
+        "metadata.migration"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack",
+        "pack.profile"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echomissioncore",
+      "name": "ECHO: MissionCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "mission",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echomissioncore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echomissioncore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoindex",
+        "echoterminal",
+        "echotutorialcore"
+      ],
+      "provides": [
+        "missions.objectives",
+        "missions.routes"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echomodulegraph",
+      "name": "ECHO: ModuleGraph",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "module_graph",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echomodulegraph/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echomodulegraph",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore",
+        "echopackcore",
+        "echometadatacore"
+      ],
+      "optional": [],
+      "provides": [
+        "module.graph",
+        "module.scanner",
+        "feature.graph",
+        "dependency.resolver"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack",
+        "pack.profile",
+        "metadata.manifest"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echomultiblockcore",
+      "name": "ECHO: MultiblockCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "tech",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echomultiblockcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echomultiblockcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echopowergrid",
+        "echorendercore",
+        "echoruntimeguard",
+        "echoterminal",
+        "echothemecore"
+      ],
+      "provides": [
+        "multiblock.automation",
+        "multiblock.build_assist",
+        "multiblock.definitions",
+        "multiblock.facility_runtime",
+        "multiblock.progression",
+        "multiblock.validation"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echonetcore",
+      "name": "ECHO: NetCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echonetcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echonetcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [],
+      "provides": [
+        "echo.net"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "stable"
+    },
+    {
+      "id": "echonexusprotocol",
+      "name": "ECHO: Nexus Protocol",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echonexusprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echonexusprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echoorbitalremnants",
+        "echorendercore",
+        "echosoundcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "nexus.content",
+        "nexus.endings",
+        "nexus.field_telemetry",
+        "nexus.machines",
+        "nexus.progression",
+        "nexus.reality_field"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echonotificationcore",
+      "name": "ECHO: NotificationCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "notification_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echonotificationcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echonotificationcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "notifications.mission_updates",
+        "notifications.system_alerts",
+        "notifications.toasts",
+        "notifications.tutorial_hints"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echonpcore",
+      "name": "ECHO: NPCore",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "utility",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echonpcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echonpcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echomissioncore",
+        "echorendercore",
+        "echoscreencore",
+        "echoterminal",
+        "echoworldcore"
+      ],
+      "provides": [
+        "npc.dialogue",
+        "npc.profiles",
+        "npc.screens",
+        "npc.services",
+        "npc.trades",
+        "npc.villager_replacement"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echoorbitalremnants",
+      "name": "ECHO: Orbital Remnants",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoorbitalremnants/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoorbitalremnants",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echomissioncore",
+        "echorendercore",
+        "echosoundcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "orbital.content",
+        "orbital.factions",
+        "orbital.routes",
+        "orbital.survival",
+        "orbital.surveys",
+        "orbital.terminal_records"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echopackcore",
+      "name": "ECHO: PackCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "packos",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echopackcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echopackcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echoplatformcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "pack.profile",
+        "pack.repair"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoplatformcore",
+      "name": "ECHO: PlatformCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoplatformcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoplatformcore",
+      "requires": [
+        "echocore"
+      ],
+      "optional": [],
+      "provides": [
+        "platform.contracts"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoplayercore",
+      "name": "ECHO: PlayerCore",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "utility",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoplayercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoplayercore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echorendercore",
+        "echoruntimeguard",
+        "echoterminal",
+        "echoworldcore"
+      ],
+      "provides": [
+        "player.back",
+        "player.cooldowns",
+        "player.homes",
+        "player.random_teleport",
+        "player.spawn",
+        "player.tpa",
+        "player.warps"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echopowercore",
+      "name": "ECHO: PowerCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "power_contracts",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echopowercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echopowercore",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "power.diagnostics",
+        "power.networks",
+        "power.storage",
+        "power.transfer"
+      ],
+      "consumes": [
+        "assets.registry",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echopowergrid",
+      "name": "ECHO: PowerGrid",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "tech",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echopowergrid/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echopowergrid",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindustrialnexus",
+        "echolens",
+        "echomultiblockcore",
+        "echorendercore",
+        "echoruntimeguard",
+        "echoterminal",
+        "echothemecore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "powergrid.blocks",
+        "powergrid.energy_api",
+        "powergrid.generators",
+        "powergrid.grid_status",
+        "powergrid.storage",
+        "powergrid.transmission"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echopresencelink",
+      "name": "ECHO: Presence Link",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "presence_link",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "client",
+      "standalone": true,
+      "descriptorPath": "addons/echopresencelink/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echopresencelink",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echoashfallprotocol",
+        "echocommunitybridge",
+        "echoterminal",
+        "signalos"
+      ],
+      "provides": [
+        "presence.discord_rpc",
+        "presence.privacy",
+        "presence.providers",
+        "presence.status_commands"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoprimecore",
+      "name": "ECHO: Prime Core",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "pack_root",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoprimecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoprimecore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echoterminal",
+        "echothemecore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "prime.content",
+        "prime.integrations",
+        "prime.missions",
+        "prime.onboarding",
+        "prime.routes",
+        "prime.survival",
+        "prime.world_signals"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoprogressioncore",
+      "name": "ECHO: ProgressionCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "progression_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoprogressioncore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoprogressioncore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echorecipecore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "progression.feature_unlocks",
+        "progression.gates",
+        "progression.objectives",
+        "progression.recipe_unlocks",
+        "progression.server_objectives",
+        "progression.team_objectives",
+        "progression.ui_surface_unlocks",
+        "progression.unlock_graph",
+        "progression.world_event_unlocks"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoquestdirector",
+      "name": "ECHO: QuestDirector",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "quest_director",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoquestdirector/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoquestdirector",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echopackcore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "questdirector.campaign_pressure",
+        "questdirector.mission_selection",
+        "questdirector.recommendations",
+        "questdirector.reminders",
+        "questdirector.route_pacing",
+        "questdirector.signals",
+        "questdirector.world_event_pacing"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "pack.profile",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echorecipecore",
+      "name": "ECHO: RecipeCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "recipe_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echorecipecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echorecipecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "index.recipe_backend",
+        "recipes.backend",
+        "recipes.machine_views",
+        "recipes.search",
+        "recipes.usage_graph"
+      ],
+      "consumes": [
+        "content.gates",
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echorecovery",
+      "name": "ECHO: Recovery",
+      "version": "1.3.0",
+      "kind": "addon",
+      "role": "recovery",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echorecovery/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echorecovery",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoarmory",
+        "echoashfallprotocol",
+        "echoblackboxprotocol",
+        "echoconvoyprotocol",
+        "echodatacore",
+        "echohealthcore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echologisticsnetwork",
+        "echomissioncore",
+        "echomodulegraph",
+        "echonexusprotocol",
+        "echopackcore",
+        "echoplayercore",
+        "echoplatformcore",
+        "echopowergrid",
+        "echorelictech",
+        "echorendercore",
+        "echoruntimeguard",
+        "echosoundcore",
+        "echoterminal",
+        "echothemecore",
+        "echotutorialcore",
+        "echovalidationcore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "recovery.commands",
+        "recovery.compass",
+        "recovery.field_caches",
+        "recovery.graves",
+        "recovery.plans",
+        "recovery.rules",
+        "recovery.safe_modes"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echorelictech",
+      "name": "ECHO: RelicTech",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echorelictech/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echorelictech",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echoarcanacore",
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echonexusprotocol",
+        "echopowergrid",
+        "echosoundcore",
+        "echoterminal",
+        "echoworldcore"
+      ],
+      "provides": [
+        "relictech.analysis",
+        "relictech.containment",
+        "relictech.instability",
+        "relictech.relics",
+        "relictech.research",
+        "relictech.vaults"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echorendercore",
+      "name": "ECHO: RenderCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "render_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echorendercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echorendercore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echoruntimeguard",
+        "echoscreencore",
+        "echothemecore"
+      ],
+      "provides": [
+        "render.animation_profiles",
+        "render.creator_exports",
+        "render.diagnostics",
+        "render.particle_profiles",
+        "render.preview",
+        "render.profiles",
+        "render.screen_chrome",
+        "render.validation"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoreportcore",
+      "name": "ECHO: ReportCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "report_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoreportcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoreportcore",
+      "requires": [
+        "echocore",
+        "echoplatformcore",
+        "echoadaptercore",
+        "echoschemacore",
+        "echovalidationcore",
+        "echopackcore",
+        "echomodulegraph",
+        "echohealthcore",
+        "echoagentcore",
+        "echoassetcore"
+      ],
+      "optional": [],
+      "provides": [
+        "reports.contracts",
+        "commandcenter.reports",
+        "launcher.status",
+        "support_bundles.manifest",
+        "release.readiness"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "adapter.neoforge",
+        "schema.registry",
+        "validation.pack",
+        "pack.profile",
+        "pack.repair",
+        "module.graph",
+        "feature.graph",
+        "runtime.health",
+        "ai.task_queue"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoriftworlds",
+      "name": "ECHO: RiftWorlds",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoriftworlds/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoriftworlds",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore"
+      ],
+      "optional": [
+        "echocursecore",
+        "echoholomap",
+        "echolens",
+        "echoritualcore"
+      ],
+      "provides": [
+        "riftworlds.arcana_provider",
+        "riftworlds.dimensional_hazards",
+        "riftworlds.pocket_rifts",
+        "riftworlds.rift_cracks",
+        "riftworlds.ruins"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core"
+      ],
+      "apiStability": "scaffold"
+    },
+    {
+      "id": "echoritualcore",
+      "name": "ECHO: RitualCore",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoritualcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoritualcore",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore"
+      ],
+      "optional": [
+        "echoarcaneindex",
+        "echogrimoire",
+        "echoholomap",
+        "echolens",
+        "echomissioncore",
+        "echorelictech",
+        "echoterminal"
+      ],
+      "provides": [
+        "ritual.altar",
+        "ritual.diagnostics",
+        "ritual.events",
+        "ritual.integrations",
+        "ritual.pedestals",
+        "ritual.structure_validation"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoruntimeguard",
+      "name": "ECHO RuntimeGuard",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "foundation",
+      "channel": "stable",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoruntimeguard/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoruntimeguard",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echolens",
+        "echomultiblockcore",
+        "echoterminal",
+        "echothemecore"
+      ],
+      "provides": [
+        "runtime.budgets",
+        "runtime.diagnostics",
+        "runtime.health",
+        "runtime.network_budget",
+        "runtime.particle_budget",
+        "runtime.performance_profiles",
+        "runtime.smart_ticks"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "stable"
+    },
+    {
+      "id": "echoschemacore",
+      "name": "ECHO: SchemaCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoschemacore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoschemacore",
+      "requires": [
+        "echocore",
+        "echoplatformcore"
+      ],
+      "optional": [],
+      "provides": [
+        "schema.registry"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoscreencore",
+      "name": "ECHO: ScreenCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "ui",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoscreencore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoscreencore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echonetcore",
+        "echorendercore",
+        "echothemecore"
+      ],
+      "provides": [
+        "screen.actions",
+        "screen.bindings",
+        "screen.components",
+        "screen.contracts",
+        "screen.layouts",
+        "screen.markup",
+        "screen.theme_bridge"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoscriptcore",
+      "name": "ECHO: ScriptCore",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "developer_tool",
+      "channel": "experimental",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoscriptcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoscriptcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore"
+      ],
+      "optional": [
+        "echocreatorcore",
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echonetcore",
+        "echoscreencore",
+        "echosoundcore",
+        "echoterminal",
+        "echotutorialcore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "scriptcore.actions",
+        "scriptcore.commands",
+        "scriptcore.conditions",
+        "scriptcore.definitions",
+        "scriptcore.examples",
+        "scriptcore.migrations",
+        "scriptcore.registry",
+        "scriptcore.runtime_state",
+        "scriptcore.ui_bridge",
+        "scriptcore.validation"
+      ],
+      "consumes": [
+        "echo.core"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "signalos",
+      "name": "SignalOS",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echosignalos/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echosignalos",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoindex",
+        "echomissioncore",
+        "echorendercore",
+        "echoscreencore",
+        "echoterminal"
+      ],
+      "provides": [
+        "signalos.archives",
+        "signalos.chapters",
+        "signalos.data_drives",
+        "signalos.missions",
+        "signalos.net",
+        "signalos.terminal"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echosocialcore",
+      "name": "ECHO: SocialCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "social_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echosocialcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echosocialcore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "social.dialogue_trees",
+        "social.factions",
+        "social.npc_profiles",
+        "social.reputation",
+        "social.villager_replacement_plan"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echosoundcore",
+      "name": "ECHO: SoundCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "sound_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echosoundcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echosoundcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoarmory",
+        "echoblackboxprotocol",
+        "echoconvoyprotocol",
+        "echoholomap",
+        "echoindustrialnexus",
+        "echolens",
+        "echologisticsnetwork",
+        "echomissioncore",
+        "echonexusprotocol",
+        "echopowergrid",
+        "echorendercore",
+        "echoruntimeguard",
+        "signalos",
+        "echostationfall",
+        "echoterminal",
+        "echothemecore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "sound.adaptive_music",
+        "sound.ambience",
+        "sound.audio_profiles",
+        "sound.diagnostics",
+        "sound.network_actions",
+        "sound.service",
+        "sound.stingers",
+        "sound.ui_cues"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echospawncore",
+      "name": "ECHO: SpawnCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "spawn_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echospawncore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echospawncore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echosocialcore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "spawn.difficulty_scaling",
+        "spawn.faction_rules",
+        "spawn.hazard_rules",
+        "spawn.poi_rules",
+        "spawn.profiles",
+        "spawn.weather_rules"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "social.factions",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echospellcore",
+      "name": "ECHO: SpellCore",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echospellcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echospellcore",
+      "requires": [
+        "echoadaptercore",
+        "echoarcanacore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoarcaneindex",
+        "echocursecore",
+        "echogrimoire",
+        "echolens",
+        "echomissioncore",
+        "echoritualcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "spell.aether_costs",
+        "spell.cooldowns",
+        "spell.deck",
+        "spell.definitions",
+        "spell.focus",
+        "spell.hud_diagnostics",
+        "spell.projectiles",
+        "spell.runtime_hooks"
+      ],
+      "consumes": [
+        "arcana.core",
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echostationfall",
+      "name": "ECHO: Stationfall",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echostationfall/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echostationfall",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoblackboxprotocol",
+        "echoholomap",
+        "echoindex",
+        "echosoundcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "stationfall.ambience",
+        "stationfall.logs",
+        "stationfall.routes",
+        "stationfall.story",
+        "stationfall.suits"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echostatuscore",
+      "name": "ECHO: StatusCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "status_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echostatuscore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echostatuscore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "status.effects",
+        "status.exposure",
+        "status.resistance"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echostructurecore",
+      "name": "ECHO: StructureCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "structure_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echostructurecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echostructurecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoprogressioncore",
+        "echoschemacore",
+        "echosocialcore",
+        "echovalidationcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echolens",
+        "echoworldcore"
+      ],
+      "provides": [
+        "structures.discovery_references",
+        "structures.poi_metadata",
+        "structures.profiles"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "social.factions",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoterminal",
+      "name": "ECHO: Terminal",
+      "version": "1.0.0",
+      "kind": "ui_pack",
+      "role": "terminal_surface",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoterminal/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoterminal",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echothemecore",
+        "signalos"
+      ],
+      "provides": [
+        "terminal.surface"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "pack.profile"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echotextureforge",
+      "name": "ECHO: TextureForge",
+      "version": "1.0.0",
+      "kind": "tooling",
+      "role": "asset_tooling",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echotextureforge/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echotextureforge",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echorendercore",
+        "echoscreencore",
+        "echothemecore"
+      ],
+      "provides": [
+        "asset.textureforge"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echothemecore",
+      "name": "ECHO: ThemeCore",
+      "version": "1.3.0",
+      "kind": "library",
+      "role": "theme_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echothemecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echothemecore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoblockworks",
+        "echoholomap",
+        "echolens",
+        "echorendercore",
+        "echoruntimeguard",
+        "echoscreencore",
+        "signalos",
+        "echosoundcore",
+        "echoterminal"
+      ],
+      "provides": [
+        "theme.asset_kits",
+        "theme.block_palettes",
+        "theme.echo_platform",
+        "theme.cyberglass",
+        "theme.render_profiles",
+        "theme.tokens",
+        "theme.ui_skins"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "stable"
+    },
+    {
+      "id": "echotutorialcore",
+      "name": "ECHO: TutorialCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "tutorial_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echotutorialcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echotutorialcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echopowergrid",
+        "echosoundcore",
+        "echoterminal",
+        "echothemecore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "tutorial.cards",
+        "tutorial.flows",
+        "tutorial.hints",
+        "tutorial.onboarding",
+        "tutorial.tooltips"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echovalidationcore",
+      "name": "ECHO: ValidationCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "platform",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echovalidationcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echovalidationcore",
+      "requires": [
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore"
+      ],
+      "optional": [],
+      "provides": [
+        "validation.pack"
+      ],
+      "consumes": [
+        "echo.core",
+        "platform.contracts",
+        "schema.registry"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echovehiclecore",
+      "name": "ECHO: VehicleCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "vehicle_core",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echovehiclecore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echovehiclecore",
+      "requires": [
+        "echoadaptercore",
+        "echocontentcore",
+        "echocore",
+        "echoplatformcore",
+        "echoschemacore",
+        "echovalidationcore"
+      ],
+      "optional": [
+        "echocameracore",
+        "echoinputcore",
+        "echorendercore",
+        "echosoundcore"
+      ],
+      "provides": [
+        "vehicle.fuel",
+        "vehicle.hooks",
+        "vehicle.profiles",
+        "vehicle.storage"
+      ],
+      "consumes": [
+        "content.references",
+        "echo.core",
+        "platform.contracts",
+        "schema.registry",
+        "validation.pack"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echoweathercore",
+      "name": "ECHO: WeatherCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "world",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoweathercore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoweathercore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echosoundcore",
+        "echoterminal",
+        "echoworldcore"
+      ],
+      "provides": [
+        "weather.countermeasures",
+        "weather.events",
+        "weather.forecasts",
+        "weather.shelters",
+        "weather.warnings"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "echowiki",
+      "name": "ECHO: Wiki",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "ui/ux",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echowiki/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echowiki",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echopowergrid",
+        "echorelictech",
+        "echoscreencore",
+        "echoterminal",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "wiki.articles",
+        "wiki.collections",
+        "wiki.guide_books",
+        "wiki.search",
+        "wiki.survival_codex"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "experimental"
+    },
+    {
+      "id": "echoworldcore",
+      "name": "ECHO: WorldCore",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "world",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoworldcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoworldcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echoterminal"
+      ],
+      "provides": [
+        "world.hazards",
+        "world.regions"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta"
+    },
+    {
+      "id": "signalosexample",
+      "name": "SignalOS Example Addon",
+      "version": "1.0.0",
+      "kind": "addon",
+      "role": "developer_tool",
+      "channel": "beta",
+      "official": false,
+      "trustLevel": "sandboxed",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/signalosexample/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/signalosexample",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "signalos"
+      ],
+      "optional": [
+        "echoindex",
+        "echoterminal"
+      ],
+      "provides": [
+        "signalos.example_content"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "signalos.archives",
+        "signalos.data_drives",
+        "signalos.missions"
+      ],
+      "apiStability": "internal"
+    }
+  ]
+}

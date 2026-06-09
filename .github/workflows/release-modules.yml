@@ -1,0 +1,115 @@
+name: Release Modules
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: "Optional module id under addons/. Leave empty to release all discoverable modules."
+        required: false
+        type: string
+      release_id:
+        description: "Release id to write into echo-release.json."
+        required: false
+        type: string
+      player_ready:
+        description: "Require compiled runtime jars instead of source-packaged visibility artifacts."
+        required: false
+        default: false
+        type: boolean
+  push:
+    tags:
+      - "modules-v*"
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release-modules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build selected or all modules when local Gradle wrappers exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          MODULE="${{ github.event.inputs.module || '' }}"
+          PLAYER_READY="${{ github.event.inputs.player_ready || 'false' }}"
+          BUILT=0
+          if [ -n "$MODULE" ]; then
+            if [ -x "addons/$MODULE/gradlew" ]; then
+              (cd "addons/$MODULE" && ./gradlew build)
+              BUILT=1
+            elif [ -f "addons/$MODULE/build.gradle" ]; then
+              echo "No local Gradle wrapper for addons/$MODULE; release generator will require existing build/libs or source-packaging mode."
+            else
+              echo "No local build file found for addons/$MODULE."
+            fi
+          else
+            while IFS= read -r wrapper; do
+              module_dir="$(dirname "$wrapper")"
+              echo "Building ${module_dir}"
+              (cd "$module_dir" && ./gradlew build)
+              BUILT=$((BUILT + 1))
+            done < <(find addons -mindepth 2 -maxdepth 2 -name gradlew -perm -111 | sort)
+            if [ "$BUILT" -eq 0 ]; then
+              echo "No module-local Gradle wrappers found; release generator will use existing build/libs or source-packaging mode."
+            fi
+          fi
+          if [ "$PLAYER_READY" = "true" ] && [ "$BUILT" -eq 0 ] && ! find addons -path '*/build/libs/*.jar' -type f | grep -q .; then
+            echo "player_ready=true requires compiled runtime jars or module-local Gradle wrappers." >&2
+            exit 1
+          fi
+
+      - name: Generate module release artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARGS=(--out dist/echo-module-release)
+          if [ -n "${{ github.event.inputs.module || '' }}" ]; then
+            ARGS+=(--module "${{ github.event.inputs.module }}")
+          fi
+          if [ -n "${{ github.event.inputs.release_id || '' }}" ]; then
+            ARGS+=(--release-id "${{ github.event.inputs.release_id }}")
+          fi
+          if [ "${{ github.event.inputs.player_ready || 'false' }}" != "true" ]; then
+            ARGS+=(--package-from-source)
+          fi
+          node scripts/generate-module-release.mjs "${ARGS[@]}"
+
+      - name: Verify module release artifacts
+        run: node scripts/verify-module-release.mjs --release-dir dist/echo-module-release
+
+      - name: Attest module release artifacts
+        uses: actions/attest@v4
+        with:
+          subject-checksums: dist/echo-module-release/checksums.sha256
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.release_id || '' }}"
+            if [ -z "$TAG" ]; then
+              TAG="modules-$(date -u +%Y%m%d%H%M%S)"
+            fi
+          fi
+          if ! git rev-parse "$TAG" >/dev/null 2>&1; then
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi
+          mapfile -t FILES < <(find dist/echo-module-release -type f | sort)
+          gh release create "$TAG" "${FILES[@]}" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag || \
+            gh release upload "$TAG" "${FILES[@]}" --clobber

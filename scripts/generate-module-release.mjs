@@ -258,9 +258,21 @@ async function buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoFor
 async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptorPath, runtimeJarPath, outputPath, packageFromSource }) {
   const runtimeJarName = `${moduleId}-${version}-runtime.jar`
   const packageJson = {
-    schemaVersion: 1,
-    moduleId,
+    schemaVersion: 'echo.addon.package.v1',
+    id: moduleId,
     version,
+    publisher: {
+      githubOwner: 'knoxhack',
+      githubRepo: 'ECHO-Modules',
+    },
+    targets: ['native', 'neoforge', 'standalone'],
+    dependencies: [],
+    artifacts: {
+      native: `${moduleId}-${version}.echo-addon`,
+      neoforge: `${moduleId}-${version}-neoforge.jar`,
+      standalone: `${moduleId}-${version}-standalone.jar`,
+      sources: `${moduleId}-${version}-sources.jar`,
+    },
     runtime: 'echo-native',
     descriptor: 'META-INF/echo.mod.json',
     runtimeJar: runtimeJarPath ? `lib/${runtimeJarName}` : null,
@@ -507,11 +519,9 @@ export async function generateModuleRelease(options = {}) {
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)
-  await fs.writeFile(
-    path.join(outputRoot, 'checksums.txt'),
-    modules.flatMap((moduleRecord) => moduleRecord.artifacts.map((artifact) => `${artifact.sha256}  ${moduleRecord.moduleId}/${artifact.filename}`)).join('\n') + '\n',
-    'utf8',
-  )
+  const checksums = modules.flatMap((moduleRecord) => moduleRecord.artifacts.map((artifact) => `${artifact.sha256}  ${moduleRecord.moduleId}/${artifact.filename}`)).join('\n') + '\n'
+  await fs.writeFile(path.join(outputRoot, 'checksums.sha256'), checksums, 'utf8')
+  await fs.writeFile(path.join(outputRoot, 'checksums.txt'), checksums, 'utf8')
   return release
 }
 

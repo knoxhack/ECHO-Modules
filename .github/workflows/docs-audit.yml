@@ -12,4 +12,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: node scripts/generate-module-release.test.mjs
+      - run: node scripts/verify-module-release.mjs --skip-real
+      - run: node scripts/release-workflow-audit.mjs
+      - run: node scripts/validate-module-graph.mjs
       - run: node scripts/docs-audit.mjs

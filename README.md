@@ -22,7 +22,9 @@ Public is recommended if the launcher or external developers must download modul
 
 Run commands from the repository root.
 
-- `No build command is currently tracked in this repo.`
+- `node scripts/generate-module-release.mjs --module echoarmory --package-from-source`
+- `node scripts/verify-module-release.mjs`
+- `node scripts/release-workflow-audit.mjs`
 
 ## Artifact Ownership
 
