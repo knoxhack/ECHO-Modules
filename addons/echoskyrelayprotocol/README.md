@@ -54,6 +54,16 @@ Source-packaged artifacts are allowed only for visibility review. Player-facing
 releases must use compiled runtime artifacts with checksums, Release Index
 entries, and Launcher install/update/repair/rollback evidence.
 
+## Validation
+
+```text
+node addons/echoskyrelayprotocol/scripts/validate-skyrelay-contract.mjs --module-root addons/echoskyrelayprotocol
+node addons/echoskyrelayprotocol/scripts/smoke-skyrelay-gameplay-route.mjs --module-root addons/echoskyrelayprotocol
+```
+
+The gameplay route smoke validates the first 30 minutes, first 2 hours, and
+Signal Crown route contracts. It does not replace a visible in-game playthrough.
+
 ## Phase Plan
 
 The canonical 10-phase, 5-subphase implementation plan is maintained at:
@@ -61,4 +71,3 @@ The canonical 10-phase, 5-subphase implementation plan is maintained at:
 ```text
 docs/SKY_RELAY_FULL_EXPERIENCE_PLAN.md
 ```
-
