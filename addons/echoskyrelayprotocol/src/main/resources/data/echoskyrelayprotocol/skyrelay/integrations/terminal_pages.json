@@ -1,0 +1,10 @@
+{
+  "schema": "echo.skyrelay.terminal_pages.v1",
+  "module": "echoterminal",
+  "pages": [
+    { "id": "relay_status", "title": "Relay Status", "purpose": "Shows power stability, attached fragments, shield coverage, and next repair." },
+    { "id": "mission_log", "title": "Mission Log", "purpose": "Tracks Sky Relay chapters and route objectives." },
+    { "id": "storm_forecast", "title": "Storm Forecast", "purpose": "Shows incoming storm windows, exposure risk, and storm output opportunities." },
+    { "id": "fragment_registry", "title": "Fragment Registry", "purpose": "Lists scanned fragments, anchor gates, docking status, and HoloMap links." }
+  ]
+}

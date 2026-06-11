@@ -1,0 +1,367 @@
+plugins {
+    id 'base'
+}
+
+def ashfallRuntimeModules = [
+        'echocore',
+        'echoplatformcore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoscreencore',
+        'echorendercore',
+        'echoruntimeguard',
+        'echolens',
+        'echopresencelink',
+        'echoterminal',
+        'echoblockworks',
+        'echoashfallprotocol',
+]
+
+def ashfallRequiredReleaseModules = [
+        'echocore',
+        'echoplatformcore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoruntimeguard',
+        'echolens',
+        'echopresencelink',
+        'echoterminal',
+        'echoblockworks',
+        'echoashfallprotocol',
+]
+
+def openlandsRuntimeModules = [
+        'echocore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoblockworks',
+        'echoopenlandsprotocol',
+]
+
+def openlandsRequiredReleaseModules = [
+        'echoopenlandsprotocol',
+]
+
+def skyRelayRuntimeModules = [
+        'echocore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoruntimeguard',
+        'echolens',
+        'echoterminal',
+        'echoholomap',
+        'echopowergrid',
+        'echoweathercore',
+        'echorecovery',
+        'echologisticsnetwork',
+        'echoskyrelayprotocol',
+]
+
+def skyRelayRequiredReleaseModules = [
+        'echoskyrelayprotocol',
+]
+
+def echoSharedModuleProperties = [
+        minecraft_version      : '26.1.2',
+        minecraft_version_range: '[26.1.2,26.2)',
+        neo_version            : '26.1.2.29-beta',
+]
+
+gradle.beforeProject { project ->
+    def propertiesFile = new File(project.projectDir, 'gradle.properties')
+    if (propertiesFile.isFile()) {
+        def moduleProperties = new Properties()
+        propertiesFile.withInputStream { moduleProperties.load(it) }
+        moduleProperties.each { key, value ->
+            if (!project.hasProperty(String.valueOf(key))) {
+                project.extensions.extraProperties.set(String.valueOf(key), value)
+            }
+        }
+    }
+    echoSharedModuleProperties.each { key, value ->
+        if (!project.hasProperty(String.valueOf(key))) {
+            project.extensions.extraProperties.set(String.valueOf(key), value)
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url = uri('https://maven.neoforged.net/releases') }
+        maven { url = uri('https://libraries.minecraft.net') }
+    }
+}
+
+subprojects {
+    plugins.withType(JavaPlugin).configureEach {
+        java {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(25)
+            }
+        }
+        tasks.withType(JavaCompile).configureEach {
+            options.encoding = 'UTF-8'
+            options.incremental = false
+        }
+    }
+}
+
+[
+        'echo-native-contracts',
+        'echo-native-diagnostics',
+        'echo-native-packos',
+        'echo-native-loader',
+].each { nativeProjectName ->
+    project(":${nativeProjectName}") {
+        apply plugin: 'java-library'
+    }
+}
+
+project(':echo-native-diagnostics') {
+    dependencies {
+        api project(':echo-native-contracts')
+    }
+}
+
+project(':echo-native-packos') {
+    dependencies {
+        api project(':echo-native-contracts')
+        implementation project(':echo-native-diagnostics')
+    }
+}
+
+project(':echo-native-loader') {
+    dependencies {
+        api project(':echo-native-contracts')
+        implementation project(':echo-native-diagnostics')
+        implementation project(':echo-native-packos')
+    }
+}
+
+tasks.register('buildEchoWorkspace') {
+    group = 'build'
+    description = 'Builds the Ashfall runtime module closure used by Native, NeoForge, and Standalone release staging.'
+    dependsOn ashfallRuntimeModules.collect { ":${it}:jar" }
+}
+
+tasks.register('compileEchoNativeM17LooseEntrypoints') {
+    group = 'verification'
+    description = 'Compiles the Ashfall runtime module closure for Native Loader loose-entrypoint smoke gates.'
+    dependsOn ashfallRuntimeModules.collect { ":${it}:compileJava" }
+}
+
+tasks.register('generateCoreModuleIntegrationAudit', Exec) {
+    group = 'verification'
+    description = 'Generates the descriptor-derived Native Loader core module integration audit consumed by native load-state smoke gates.'
+    commandLine 'node', 'scripts/generate-core-module-integration-audit.mjs'
+}
+
+tasks.register('validateReleaseArtifacts') {
+    group = 'verification'
+    description = 'Verifies required Ashfall modules emit compiled runtime jars under addons/<module>/build/libs.'
+    dependsOn tasks.named('buildEchoWorkspace')
+    doLast {
+        def missing = []
+        ashfallRequiredReleaseModules.each { moduleId ->
+            def libsDir = file("addons/${moduleId}/build/libs")
+            def jars = libsDir.isDirectory()
+                    ? libsDir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') && !it.name.contains('-sources') && !it.name.contains('-javadoc') }
+                    : []
+            if (jars.empty) {
+                missing.add("${moduleId} (${libsDir})")
+            }
+        }
+        if (!missing.empty) {
+            throw new GradleException("Missing compiled Ashfall module runtime jar(s): ${missing.join(', ')}")
+        }
+    }
+}
+
+tasks.register('generateAshfallRequiredModuleRelease', Exec) {
+    group = 'release'
+    description = 'Generates strict release artifacts for the Ashfall required module closure after compiled jars exist.'
+    dependsOn tasks.named('validateReleaseArtifacts')
+    commandLine 'node',
+            'scripts/generate-module-release.mjs',
+            '--release-id',
+            'modules-v0.1.0-alpha',
+            '--out',
+            'dist/echo-module-release',
+            '--module',
+            'echocore',
+            '--module',
+            'echoplatformcore',
+            '--module',
+            'echoadaptercore',
+            '--module',
+            'echonetcore',
+            '--module',
+            'echoruntimeguard',
+            '--module',
+            'echolens',
+            '--module',
+            'echopresencelink',
+            '--module',
+            'echoterminal',
+            '--module',
+            'echoblockworks',
+            '--module',
+            'echoashfallprotocol'
+    doLast {
+        def releaseManifest = file('dist/echo-module-release/echo-release.json')
+        if (!releaseManifest.isFile()) {
+            throw new GradleException("Ashfall module release manifest was not generated: ${releaseManifest}")
+        }
+
+        def release = new groovy.json.JsonSlurper().parse(releaseManifest)
+        def generatedModules = release.modules.collect { it.moduleId }
+        if (generatedModules != ashfallRequiredReleaseModules) {
+            throw new GradleException("Ashfall module release generated ${generatedModules}, expected ${ashfallRequiredReleaseModules}")
+        }
+
+        release.modules.each { moduleRecord ->
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            if (runtimeArtifacts.empty) {
+                throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
+            }
+            def sourcePackaged = runtimeArtifacts.findAll { it.buildMode != 'compiled-runtime' }
+            if (!sourcePackaged.empty) {
+                def names = sourcePackaged.collect { "${it.filename}:${it.buildMode}" }
+                throw new GradleException("${moduleRecord.moduleId} has non-compiled runtime artifacts: ${names}")
+            }
+        }
+    }
+}
+
+tasks.register('buildOpenlandsWorkspace') {
+    group = 'build'
+    description = 'Builds the Openlands runtime module closure used by Native, NeoForge, and Standalone release staging.'
+    dependsOn openlandsRuntimeModules.collect { ":${it}:jar" }
+}
+
+tasks.register('validateOpenlandsReleaseArtifacts') {
+    group = 'verification'
+    description = 'Verifies required Openlands modules emit compiled runtime jars under addons/<module>/build/libs.'
+    dependsOn tasks.named('buildOpenlandsWorkspace')
+    doLast {
+        def missing = []
+        openlandsRequiredReleaseModules.each { moduleId ->
+            def libsDir = file("addons/${moduleId}/build/libs")
+            def jars = libsDir.isDirectory()
+                    ? libsDir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') && !it.name.contains('-sources') && !it.name.contains('-javadoc') }
+                    : []
+            if (jars.empty) {
+                missing.add("${moduleId} (${libsDir})")
+            }
+        }
+        if (!missing.empty) {
+            throw new GradleException("Missing compiled Openlands module runtime jar(s): ${missing.join(', ')}")
+        }
+    }
+}
+
+tasks.register('generateOpenlandsModuleRelease', Exec) {
+    group = 'release'
+    description = 'Generates strict compiled release artifacts for Openlands after compiled jars exist.'
+    dependsOn tasks.named('validateOpenlandsReleaseArtifacts')
+    commandLine 'node',
+            'scripts/generate-module-release.mjs',
+            '--release-id',
+            'openlands-0.1.0-compiled',
+            '--out',
+            'dist/echo-module-release',
+            '--module',
+            'echoopenlandsprotocol'
+    doLast {
+        def releaseManifest = file('dist/echo-module-release/echo-release.json')
+        if (!releaseManifest.isFile()) {
+            throw new GradleException("Openlands module release manifest was not generated: ${releaseManifest}")
+        }
+
+        def release = new groovy.json.JsonSlurper().parse(releaseManifest)
+        def generatedModules = release.modules.collect { it.moduleId }
+        if (generatedModules != openlandsRequiredReleaseModules) {
+            throw new GradleException("Openlands module release generated ${generatedModules}, expected ${openlandsRequiredReleaseModules}")
+        }
+
+        release.modules.each { moduleRecord ->
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            if (runtimeArtifacts.empty) {
+                throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
+            }
+            def sourcePackaged = runtimeArtifacts.findAll { it.buildMode != 'compiled-runtime' }
+            if (!sourcePackaged.empty) {
+                def names = sourcePackaged.collect { "${it.filename}:${it.buildMode}" }
+                throw new GradleException("${moduleRecord.moduleId} has non-compiled runtime artifacts: ${names}")
+            }
+        }
+    }
+}
+
+tasks.register('buildSkyRelayWorkspace') {
+    group = 'build'
+    description = 'Builds the Sky Relay runtime module closure used by Native, NeoForge, and Standalone release staging.'
+    dependsOn skyRelayRuntimeModules
+            .findAll { moduleId -> findProject(":${moduleId}") != null }
+            .collect { ":${it}:jar" }
+}
+
+tasks.register('validateSkyRelayReleaseArtifacts') {
+    group = 'verification'
+    description = 'Verifies required Sky Relay modules emit compiled runtime jars under addons/<module>/build/libs.'
+    dependsOn tasks.named('buildSkyRelayWorkspace')
+    doLast {
+        def missing = []
+        skyRelayRequiredReleaseModules.each { moduleId ->
+            def libsDir = file("addons/${moduleId}/build/libs")
+            def jars = libsDir.isDirectory()
+                    ? libsDir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') && !it.name.contains('-sources') && !it.name.contains('-javadoc') }
+                    : []
+            if (jars.empty) {
+                missing.add("${moduleId} (${libsDir})")
+            }
+        }
+        if (!missing.empty) {
+            throw new GradleException("Missing compiled Sky Relay module runtime jar(s): ${missing.join(', ')}")
+        }
+    }
+}
+
+tasks.register('generateSkyRelayModuleRelease', Exec) {
+    group = 'release'
+    description = 'Generates strict compiled release artifacts for Sky Relay after compiled jars exist.'
+    dependsOn tasks.named('validateSkyRelayReleaseArtifacts')
+    commandLine 'node',
+            'scripts/generate-module-release.mjs',
+            '--release-id',
+            'sky-relay-0.1.0-alpha',
+            '--out',
+            'dist/echo-module-release',
+            '--module',
+            'echoskyrelayprotocol'
+    doLast {
+        def releaseManifest = file('dist/echo-module-release/echo-release.json')
+        if (!releaseManifest.isFile()) {
+            throw new GradleException("Sky Relay module release manifest was not generated: ${releaseManifest}")
+        }
+
+        def release = new groovy.json.JsonSlurper().parse(releaseManifest)
+        def generatedModules = release.modules.collect { it.moduleId }
+        if (generatedModules != skyRelayRequiredReleaseModules) {
+            throw new GradleException("Sky Relay module release generated ${generatedModules}, expected ${skyRelayRequiredReleaseModules}")
+        }
+
+        release.modules.each { moduleRecord ->
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            if (runtimeArtifacts.empty) {
+                throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
+            }
+            def sourcePackaged = runtimeArtifacts.findAll { it.buildMode != 'compiled-runtime' }
+            if (!sourcePackaged.empty) {
+                def names = sourcePackaged.collect { "${it.filename}:${it.buildMode}" }
+                throw new GradleException("${moduleRecord.moduleId} has non-compiled runtime artifacts: ${names}")
+            }
+        }
+    }
+}

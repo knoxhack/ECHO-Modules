@@ -1,0 +1,10 @@
+{
+  "schema": "echo.skyrelay.weather_routes.v1",
+  "module": "echoweathercore",
+  "routes": [
+    { "id": "incoming_storm_warning", "event": "storm_warning", "output": "terminal_page:storm_forecast" },
+    { "id": "collector_output_window", "event": "severe_storm", "output": "item:static_filament" },
+    { "id": "shield_failure_risk", "event": "brownout_during_storm", "output": "holomap_layer:shield_coverage" },
+    { "id": "orbital_static_front", "event": "endgame_static_front", "output": "item:echo_crystal_charge" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "echo.skyrelay.route.v1",
+  "id": "first_2_hours",
+  "targetDurationMinutes": 120,
+  "steps": [
+    { "id": "stabilize_food", "chapterId": "water_problem", "objective": "Stabilize early food production.", "proof": "fragment:hydroponics_deck" },
+    { "id": "build_condenser", "chapterId": "water_problem", "objective": "Build Atmospheric Condenser.", "proof": "block:atmospheric_condenser" },
+    { "id": "attach_salvage_yard", "chapterId": "salvage_expansion", "objective": "Attach Aero Salvage Yard.", "proof": "fragment:aero_salvage_yard" },
+    { "id": "process_relay_plates", "chapterId": "salvage_expansion", "objective": "Process scrap into Relay Alloy Plates.", "proof": "item:relay_alloy_plate" },
+    { "id": "build_shield_pylon", "chapterId": "storm_warning", "objective": "Build Storm Shield Pylon.", "proof": "block:storm_shield_pylon" },
+    { "id": "attach_solar_wing", "chapterId": "solar_recovery", "objective": "Attach Solar Wing.", "proof": "fragment:solar_wing" },
+    { "id": "start_logistics_route", "chapterId": "network_routing", "objective": "Build first logistics route.", "proof": "integration:logistics_first_route" },
+    { "id": "unlock_weather_mast", "chapterId": "weather_control", "objective": "Unlock Weather Mast.", "proof": "fragment:weather_mast" },
+    { "id": "survive_severe_storm", "chapterId": "storm_warning", "objective": "Survive a severe storm.", "proof": "weather:severe_storm_survived" },
+    { "id": "craft_platform_core", "chapterId": "machine_restoration", "objective": "Craft first Stabilized Platform Core.", "proof": "item:stabilized_platform_core" }
+  ]
+}

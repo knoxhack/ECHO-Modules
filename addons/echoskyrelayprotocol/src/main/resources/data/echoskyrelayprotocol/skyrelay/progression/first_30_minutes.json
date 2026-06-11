@@ -1,0 +1,19 @@
+{
+  "schema": "echo.skyrelay.route.v1",
+  "id": "first_30_minutes",
+  "targetDurationMinutes": 30,
+  "steps": [
+    { "id": "wake_at_core", "chapterId": "awakening", "objective": "Wake beside the Damaged Relay Core.", "proof": "block_seen:damaged_relay_core" },
+    { "id": "open_terminal", "chapterId": "awakening", "objective": "Open Terminal and read relay status.", "proof": "terminal_page:relay_status" },
+    { "id": "scan_relay_core", "chapterId": "awakening", "objective": "Scan the Damaged Relay Core with Lens.", "proof": "lens_scan:damaged_relay_core" },
+    { "id": "repair_hand_crank", "chapterId": "power_critical", "objective": "Repair hand-crank power path.", "proof": "power:hand_crank_online" },
+    { "id": "charge_small_battery", "chapterId": "power_critical", "objective": "Charge the first Small Battery Bank.", "proof": "power:small_battery_bank_stable" },
+    { "id": "claim_anchor_key", "chapterId": "first_anchor", "objective": "Claim the Relay Anchor Key.", "proof": "item:relay_anchor_key" },
+    { "id": "reveal_hydroponics", "chapterId": "first_anchor", "objective": "Reveal Hydroponics Deck on HoloMap.", "proof": "holomap:hydroponics_deck" },
+    { "id": "attach_hydroponics", "chapterId": "first_anchor", "objective": "Attach Hydroponics Deck.", "proof": "fragment:hydroponics_deck" },
+    { "id": "place_hydroponic_tray", "chapterId": "water_problem", "objective": "Place first hydroponic tray.", "proof": "external_block:hydroponic_tray" },
+    { "id": "open_seed_capsule", "chapterId": "water_problem", "objective": "Open first recovered seed capsule.", "proof": "item:recovered_seed_capsule" },
+    { "id": "receive_forecast", "chapterId": "storm_warning", "objective": "Receive first storm forecast.", "proof": "terminal_page:storm_forecast" },
+    { "id": "build_basic_shelter", "chapterId": "storm_warning", "objective": "Build basic storm shelter.", "proof": "block:pressure_bulkhead" }
+  ]
+}

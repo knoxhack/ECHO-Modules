@@ -1,0 +1,15 @@
+{
+  "schema": "echo.skyrelay.fragment_catalog.v1",
+  "namespace": "echoskyrelayprotocol",
+  "fragments": [
+    { "id": "starter_relay", "name": "Starter Relay", "tier": 0, "gate": "spawn_platform", "stormRisk": "low" },
+    { "id": "hydroponics_deck", "name": "Hydroponics Deck", "tier": 1, "gate": "relay_anchor_key", "stormRisk": "medium" },
+    { "id": "aero_salvage_yard", "name": "Aero Salvage Yard", "tier": 1, "gate": "sky_fragment_chart", "stormRisk": "medium" },
+    { "id": "solar_wing", "name": "Solar Wing", "tier": 1, "gate": "charged_relay_coil", "stormRisk": "high" },
+    { "id": "weather_mast", "name": "Weather Mast", "tier": 2, "gate": "signal_calibration_chip", "stormRisk": "high" },
+    { "id": "machine_bay", "name": "Machine Bay", "tier": 2, "gate": "stabilized_platform_core", "stormRisk": "medium" },
+    { "id": "logistics_spur", "name": "Logistics Spur", "tier": 2, "gate": "logistics_route_proof", "stormRisk": "medium" },
+    { "id": "orbital_debris_dock", "name": "Orbital Debris Dock", "tier": 3, "gate": "fragment_access_cipher", "stormRisk": "extreme" },
+    { "id": "signal_crown", "name": "Signal Crown", "tier": 4, "gate": "endgame_restoration_sequence", "stormRisk": "extreme" }
+  ]
+}

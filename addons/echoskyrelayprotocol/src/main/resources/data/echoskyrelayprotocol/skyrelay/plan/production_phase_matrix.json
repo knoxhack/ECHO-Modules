@@ -1,0 +1,127 @@
+{
+  "schema": "echo.skyrelay.production_phase_matrix.v1",
+  "packId": "sky-relay",
+  "moduleId": "echoskyrelayprotocol",
+  "phases": [
+    {
+      "id": "repo_foundation",
+      "phase": 1,
+      "name": "Repo Foundation",
+      "subphases": [
+        "Audit dirty repos, especially ECHO-Modules and ECHO-Release-Index.",
+        "Create branch feature/sky-relay-protocol.",
+        "Reserve Sky Relay edition repository names.",
+        "Add docs/SKY_RELAY_FULL_EXPERIENCE_PLAN.md.",
+        "Define alpha release naming."
+      ]
+    },
+    {
+      "id": "protocol_module",
+      "phase": 2,
+      "name": "Protocol Module",
+      "subphases": [
+        "Create addons/echoskyrelayprotocol.",
+        "Add build.gradle, gradle.properties, and README.md.",
+        "Add EchoSkyRelayProtocol and EchoSkyRelayNativeModule.",
+        "Add META-INF/echo.mod.json.",
+        "Wire settings.gradle and root build.gradle."
+      ]
+    },
+    {
+      "id": "identity_metadata",
+      "phase": 3,
+      "name": "Identity And Metadata",
+      "subphases": [
+        "Set module name ECHO: Sky Relay Protocol.",
+        "Set pack role official_pack.",
+        "Provide Sky Relay namespaces.",
+        "Declare Terminal, Lens, HoloMap, Weather, Power, Recovery, and Logistics dependencies.",
+        "Add Release Index metadata later as warning until real artifacts exist."
+      ]
+    },
+    {
+      "id": "core_blocks",
+      "phase": 4,
+      "name": "Core Blocks",
+      "subphases": [
+        "Add start and progression blocks.",
+        "Add survival blocks.",
+        "Add network blocks.",
+        "Add loot and recovery blocks.",
+        "Add endgame blocks."
+      ]
+    },
+    {
+      "id": "core_items",
+      "phase": 5,
+      "name": "Core Items",
+      "subphases": [
+        "Add progression items.",
+        "Add repair items.",
+        "Add survival items.",
+        "Add gated items.",
+        "Add rare and endgame items."
+      ]
+    },
+    {
+      "id": "fragments_world_loop",
+      "phase": 6,
+      "name": "Fragments And World Loop",
+      "subphases": [
+        "Define starter_relay.",
+        "Define early fragments.",
+        "Define midgame fragments.",
+        "Define late fragments.",
+        "Add anchor rules, power cost, scan requirement, and storm risk per fragment."
+      ]
+    },
+    {
+      "id": "player_progression",
+      "phase": 7,
+      "name": "Player Progression",
+      "subphases": [
+        "Implement awakening chapter.",
+        "Implement power_critical chapter.",
+        "Implement first_anchor chapter.",
+        "Implement storm_warning chapter.",
+        "Implement signal_crown chapter."
+      ]
+    },
+    {
+      "id": "systems_integration",
+      "phase": 8,
+      "name": "Systems Integration",
+      "subphases": [
+        "Add Terminal pages.",
+        "Add Lens scan profiles.",
+        "Add HoloMap layers.",
+        "Add Weather bindings.",
+        "Add Recovery binding for void_recovery_cache."
+      ]
+    },
+    {
+      "id": "editions_launcher",
+      "phase": 9,
+      "name": "Editions And Launcher",
+      "subphases": [
+        "Create Native edition repo and manifest.",
+        "Create NeoForge edition repo and manifest.",
+        "Create Standalone edition repo and manifest.",
+        "Add Launcher pack card.",
+        "Test Launcher install, update, repair, rollback, and deep links."
+      ]
+    },
+    {
+      "id": "release_public_alpha",
+      "phase": 10,
+      "name": "Release And Public Alpha",
+      "subphases": [
+        "Build compiled module artifacts.",
+        "Generate echo-release.json.",
+        "Publish draft GitHub releases.",
+        "Add Release Index warning entries.",
+        "Promote to public alpha after verification."
+      ]
+    }
+  ]
+}

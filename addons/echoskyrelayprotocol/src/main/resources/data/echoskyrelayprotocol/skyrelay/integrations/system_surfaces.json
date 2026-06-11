@@ -1,0 +1,13 @@
+{
+  "schema": "echo.skyrelay.system_surfaces.v1",
+  "namespace": "echoskyrelayprotocol",
+  "surfaces": [
+    { "module": "echoterminal", "surface": "terminal.pages", "skyRelayUse": "relay status, missions, storm forecast, fragment registry" },
+    { "module": "echolens", "surface": "lens.scan_profiles", "skyRelayUse": "relay core, anchors, crates, storm devices, locked fragments" },
+    { "module": "echoholomap", "surface": "holomap.layers", "skyRelayUse": "fragment reveal, power grid, shield coverage, logistics" },
+    { "module": "echoweathercore", "surface": "weather.events", "skyRelayUse": "storms, shield failures, storm output collection" },
+    { "module": "echopowergrid", "surface": "power.grid", "skyRelayUse": "brownouts, batteries, substations, platform power stability" },
+    { "module": "echorecovery", "surface": "recovery.void_cache", "skyRelayUse": "void_recovery_cache after void death" },
+    { "module": "echologisticsnetwork", "surface": "logistics.routes", "skyRelayUse": "route rewards and late-game network restoration" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "echo.skyrelay.lens_scan_profiles.v1",
+  "module": "echolens",
+  "profiles": [
+    { "id": "damaged_relay_core", "target": "damaged_relay_core", "unlocks": "relay_status and operator_badge" },
+    { "id": "relay_anchor_node", "target": "relay_anchor_node", "unlocks": "anchor validation state" },
+    { "id": "aero_salvage_crate", "target": "aero_salvage_crate", "unlocks": "salvage table and fragment chart hints" },
+    { "id": "storm_device", "target": "storm_shield_pylon", "unlocks": "storm output and shield diagnostics" },
+    { "id": "locked_fragment", "target": "fragment_docking_clamp", "unlocks": "fragment access cipher requirement" }
+  ]
+}

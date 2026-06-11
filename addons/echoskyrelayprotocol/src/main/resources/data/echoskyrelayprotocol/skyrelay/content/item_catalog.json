@@ -1,0 +1,22 @@
+{
+  "schema": "echo.skyrelay.item_catalog.v1",
+  "namespace": "echoskyrelayprotocol",
+  "items": [
+    { "id": "operator_badge", "name": "Operator Badge", "phase": "5.1", "role": "player_identity_token" },
+    { "id": "relay_anchor_key", "name": "Relay Anchor Key", "phase": "5.1", "role": "early_anchor_unlock" },
+    { "id": "sky_fragment_chart", "name": "Sky Fragment Chart", "phase": "5.1", "role": "fragment_candidate_reveal" },
+    { "id": "charged_relay_coil", "name": "Charged Relay Coil", "phase": "5.2", "role": "relay_machinery_repair" },
+    { "id": "relay_alloy_plate", "name": "Relay Alloy Plate", "phase": "5.2", "role": "main_construction_material" },
+    { "id": "signal_calibration_chip", "name": "Signal Calibration Chip", "phase": "5.2", "role": "scan_holomap_upgrade" },
+    { "id": "atmospheric_filter", "name": "Atmospheric Filter", "phase": "5.3", "role": "condenser_shelter_component" },
+    { "id": "stormproof_wrap", "name": "Stormproof Wrap", "phase": "5.3", "role": "temporary_exposure_protection" },
+    { "id": "relay_firmware_shard", "name": "Relay Firmware Shard", "phase": "5.3", "role": "terminal_mission_unlock" },
+    { "id": "stabilized_platform_core", "name": "Stabilized Platform Core", "phase": "5.4", "role": "large_fragment_requirement" },
+    { "id": "fragment_access_cipher", "name": "Fragment Access Cipher", "phase": "5.4", "role": "locked_fragment_access" },
+    { "id": "static_filament", "name": "Static Filament", "phase": "5.5", "role": "rare_storm_output" },
+    { "id": "orbital_alloy_scrap", "name": "Orbital Alloy Scrap", "phase": "5.5", "role": "late_game_orbital_material" },
+    { "id": "satellite_lens", "name": "Satellite Lens", "phase": "5.5", "role": "weather_holomap_upgrade" },
+    { "id": "echo_crystal_charge", "name": "Echo Crystal Charge", "phase": "5.5", "role": "signal_crown_power_component" },
+    { "id": "sky_relay_badge", "name": "Sky Relay Badge", "phase": "5.5", "role": "completion_trophy" }
+  ]
+}

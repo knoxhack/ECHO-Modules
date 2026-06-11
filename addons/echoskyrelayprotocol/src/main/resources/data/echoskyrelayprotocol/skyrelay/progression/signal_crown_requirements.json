@@ -1,0 +1,13 @@
+{
+  "schema": "echo.skyrelay.signal_crown_requirements.v1",
+  "id": "signal_crown",
+  "requirements": [
+    { "id": "stabilized_platform_cores", "requiredCount": 5, "proof": "item:stabilized_platform_core" },
+    { "id": "relay_signal_array", "requiredCount": 1, "proof": "block:relay_signal_array" },
+    { "id": "storm_shield_network", "requiredCount": 1, "proof": "integration:shield_network_online" },
+    { "id": "automated_logistics_route", "requiredCount": 1, "proof": "integration:logistics_automated_route" },
+    { "id": "orbital_alloy_components", "requiredCount": 3, "proof": "item:orbital_alloy_scrap" },
+    { "id": "terminal_restoration_sequence", "requiredCount": 1, "proof": "terminal:final_restoration_sequence" }
+  ],
+  "reward": "sky_relay_badge"
+}

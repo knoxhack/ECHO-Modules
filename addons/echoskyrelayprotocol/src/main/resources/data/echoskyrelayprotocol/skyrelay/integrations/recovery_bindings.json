@@ -1,0 +1,7 @@
+{
+  "schema": "echo.skyrelay.recovery_bindings.v1",
+  "module": "echorecovery",
+  "bindings": [
+    { "id": "void_recovery_cache", "trigger": "void_death", "targetBlock": "void_recovery_cache" }
+  ]
+}

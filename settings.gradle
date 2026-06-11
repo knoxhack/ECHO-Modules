@@ -1,0 +1,61 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = uri('https://maven.neoforged.net/releases') }
+    }
+}
+
+rootProject.name = 'echo-modules'
+
+def includeAddon = { String name ->
+    include ":${name}"
+    project(":${name}").projectDir = file("addons/${name}")
+}
+
+def defaultAddons = [
+        'echocore',
+        'echoplatformcore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoscreencore',
+        'echorendercore',
+        'echoruntimeguard',
+        'echolens',
+        'echopresencelink',
+        'echoterminal',
+        'echoblockworks',
+        'echoashfallprotocol',
+        'echoopenlandsprotocol',
+        'echoskyrelayprotocol',
+]
+
+def discoverDescriptorBackedAddons = {
+    def addonsDir = file('addons')
+    if (!addonsDir.isDirectory()) {
+        return []
+    }
+    addonsDir.listFiles()
+            .findAll { it.isDirectory() && new File(it, 'src/main/resources/META-INF/echo.mod.json').isFile() }
+            .collect { it.name }
+            .sort()
+}
+
+def requestedAddonSet = String.valueOf(gradle.startParameter.projectProperties.getOrDefault('echoAddonSet', 'ashfall'))
+def selectedAddons = requestedAddonSet in ['all', 'beta']
+        ? discoverDescriptorBackedAddons()
+        : defaultAddons
+selectedAddons.each(includeAddon)
+
+def includeNativePlatformProject = { String name ->
+    include ":${name}"
+    project(":${name}").projectDir = file("../ECHO-Native-Platform/${name}")
+}
+
+[
+        'echo-native-contracts',
+        'echo-native-diagnostics',
+        'echo-native-packos',
+        'echo-native-loader',
+        'echo-native-testkit',
+].each(includeNativePlatformProject)

@@ -1,0 +1,59 @@
+{
+  "schema": "echo.skyrelay.assets.v1",
+  "namespace": "echoskyrelayprotocol",
+  "status": "planned_placeholder_coverage",
+  "legalRule": "All final textures, models, audio, names, and silhouettes must be original ECHO/Sky Relay work.",
+  "publicReleaseAllowedWithPlaceholders": false,
+  "requiredRoots": [
+    "textures/block",
+    "textures/item",
+    "models/block",
+    "models/item",
+    "blockstates",
+    "lang/en_us.json",
+    "sounds.json"
+  ],
+  "placeholderPolicy": {
+    "allowedBeforePublicAlpha": true,
+    "style": "flat_signal_panel_swatches_with_original_echo_skyrelay_marks",
+    "mustBeOriginal": true,
+    "replacementGate": "public_alpha_art_review",
+    "notes": "This is a coverage contract, not approval to ship placeholder art publicly."
+  },
+  "mvpCoverage": {
+    "blockIds": [
+      "damaged_relay_core",
+      "relay_anchor_node",
+      "fragment_docking_clamp",
+      "atmospheric_condenser",
+      "storm_shield_pylon",
+      "pressure_bulkhead",
+      "sky_fragment_beacon",
+      "relay_signal_array",
+      "relay_marker_light",
+      "aero_salvage_crate",
+      "void_recovery_cache",
+      "skybridge_projector",
+      "signal_crown_interface",
+      "storm_output_collector"
+    ],
+    "itemIds": [
+      "operator_badge",
+      "relay_anchor_key",
+      "sky_fragment_chart",
+      "charged_relay_coil",
+      "relay_alloy_plate",
+      "signal_calibration_chip",
+      "atmospheric_filter",
+      "stormproof_wrap",
+      "relay_firmware_shard",
+      "stabilized_platform_core",
+      "fragment_access_cipher",
+      "static_filament",
+      "orbital_alloy_scrap",
+      "satellite_lens",
+      "echo_crystal_charge",
+      "sky_relay_badge"
+    ]
+  }
+}

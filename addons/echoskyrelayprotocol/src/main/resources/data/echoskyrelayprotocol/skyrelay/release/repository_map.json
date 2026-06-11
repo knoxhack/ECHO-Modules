@@ -1,0 +1,22 @@
+{
+  "schema": "echo.skyrelay.repository_map.v1",
+  "packId": "sky-relay",
+  "moduleId": "echoskyrelayprotocol",
+  "repositories": {
+    "moduleSource": "knoxhack/ECHO-Modules",
+    "nativeEdition": "knoxhack/ECHO-Sky-Relay-Native-Edition",
+    "neoForgeEdition": "knoxhack/ECHO-Sky-Relay-NeoForge-Edition",
+    "standaloneEdition": "knoxhack/ECHO-Sky-Relay-Standalone-Edition",
+    "launcher": "knoxhack/ECHO-Launcher",
+    "releaseIndex": "knoxhack/ECHO-Release-Index",
+    "website": "knoxhack/ECHO-Platform-Website",
+    "sdk": "knoxhack/ECHO-SDK"
+  },
+  "releaseIds": {
+    "module": "sky-relay-0.1.0-alpha",
+    "native": "sky-relay-native-0.1.0-alpha",
+    "neoforge": "sky-relay-neoforge-0.1.0-alpha",
+    "standalone": "sky-relay-standalone-0.1.0-alpha"
+  },
+  "promotionGate": "warning_until_compiled_artifacts_checksums_launcher_e2e_and_playthrough_evidence_exist"
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "echo.skyrelay.block_catalog.v1",
+  "namespace": "echoskyrelayprotocol",
+  "blocks": [
+    { "id": "damaged_relay_core", "name": "Damaged Relay Core", "phase": "4.1", "role": "starting_objective" },
+    { "id": "relay_anchor_node", "name": "Relay Anchor Node", "phase": "4.1", "role": "fragment_anchor_validation" },
+    { "id": "fragment_docking_clamp", "name": "Fragment Docking Clamp", "phase": "4.1", "role": "physical_fragment_connector" },
+    { "id": "atmospheric_condenser", "name": "Atmospheric Condenser", "phase": "4.2", "role": "dirty_water_generation" },
+    { "id": "storm_shield_pylon", "name": "Storm Shield Pylon", "phase": "4.2", "role": "storm_safety_field" },
+    { "id": "pressure_bulkhead", "name": "Pressure Bulkhead", "phase": "4.2", "role": "storm_shelter_boundary" },
+    { "id": "sky_fragment_beacon", "name": "Sky Fragment Beacon", "phase": "4.3", "role": "holomap_fragment_reveal" },
+    { "id": "relay_signal_array", "name": "Relay Signal Array", "phase": "4.3", "role": "network_restoration" },
+    { "id": "relay_marker_light", "name": "Relay Marker Light", "phase": "4.3", "role": "platform_status_visual" },
+    { "id": "aero_salvage_crate", "name": "Aero Salvage Crate", "phase": "4.4", "role": "salvage_loot_source" },
+    { "id": "void_recovery_cache", "name": "Void Recovery Cache", "phase": "4.4", "role": "void_death_recovery" },
+    { "id": "skybridge_projector", "name": "Skybridge Projector", "phase": "4.5", "role": "late_game_route_bridge" },
+    { "id": "signal_crown_interface", "name": "Signal Crown Interface", "phase": "4.5", "role": "endgame_console" },
+    { "id": "storm_output_collector", "name": "Storm Output Collector", "phase": "4.5", "role": "storm_rare_resource_collector" }
+  ]
+}

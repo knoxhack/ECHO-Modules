@@ -1,0 +1,96 @@
+{
+  "schema": "echo.skyrelay.anchor_rules.v1",
+  "namespace": "echoskyrelayprotocol",
+  "rules": [
+    {
+      "fragmentId": "starter_relay",
+      "tier": 0,
+      "anchorItem": "operator_badge",
+      "stablePowerRequired": 0,
+      "scanRequirement": "spawn_signature",
+      "stormRisk": "low",
+      "dockingBlock": "damaged_relay_core",
+      "unlockChapter": "awakening"
+    },
+    {
+      "fragmentId": "hydroponics_deck",
+      "tier": 1,
+      "anchorItem": "relay_anchor_key",
+      "stablePowerRequired": 12,
+      "scanRequirement": "lens_scan:damaged_relay_core",
+      "stormRisk": "medium",
+      "dockingBlock": "relay_anchor_node",
+      "unlockChapter": "first_anchor"
+    },
+    {
+      "fragmentId": "aero_salvage_yard",
+      "tier": 1,
+      "anchorItem": "sky_fragment_chart",
+      "stablePowerRequired": 18,
+      "scanRequirement": "lens_scan:aero_salvage_crate",
+      "stormRisk": "medium",
+      "dockingBlock": "fragment_docking_clamp",
+      "unlockChapter": "salvage_expansion"
+    },
+    {
+      "fragmentId": "solar_wing",
+      "tier": 1,
+      "anchorItem": "charged_relay_coil",
+      "stablePowerRequired": 24,
+      "scanRequirement": "holomap:solar_signature",
+      "stormRisk": "high",
+      "dockingBlock": "fragment_docking_clamp",
+      "unlockChapter": "solar_recovery"
+    },
+    {
+      "fragmentId": "weather_mast",
+      "tier": 2,
+      "anchorItem": "signal_calibration_chip",
+      "stablePowerRequired": 36,
+      "scanRequirement": "lens_scan:storm_shield_pylon",
+      "stormRisk": "high",
+      "dockingBlock": "relay_signal_array",
+      "unlockChapter": "weather_control"
+    },
+    {
+      "fragmentId": "machine_bay",
+      "tier": 2,
+      "anchorItem": "stabilized_platform_core",
+      "stablePowerRequired": 48,
+      "scanRequirement": "terminal:machine_bay_authorization",
+      "stormRisk": "medium",
+      "dockingBlock": "relay_anchor_node",
+      "unlockChapter": "machine_restoration"
+    },
+    {
+      "fragmentId": "logistics_spur",
+      "tier": 2,
+      "anchorItem": "relay_firmware_shard",
+      "stablePowerRequired": 42,
+      "scanRequirement": "logistics:first_route_manifest",
+      "stormRisk": "medium",
+      "dockingBlock": "fragment_docking_clamp",
+      "unlockChapter": "network_routing"
+    },
+    {
+      "fragmentId": "orbital_debris_dock",
+      "tier": 3,
+      "anchorItem": "fragment_access_cipher",
+      "stablePowerRequired": 64,
+      "scanRequirement": "holomap:orbital_debris_layer",
+      "stormRisk": "extreme",
+      "dockingBlock": "skybridge_projector",
+      "unlockChapter": "orbital_reach"
+    },
+    {
+      "fragmentId": "signal_crown",
+      "tier": 4,
+      "anchorItem": "echo_crystal_charge",
+      "stablePowerRequired": 96,
+      "scanRequirement": "terminal:final_restoration_sequence",
+      "stormRisk": "extreme",
+      "dockingBlock": "signal_crown_interface",
+      "unlockChapter": "signal_crown"
+    }
+  ]
+}

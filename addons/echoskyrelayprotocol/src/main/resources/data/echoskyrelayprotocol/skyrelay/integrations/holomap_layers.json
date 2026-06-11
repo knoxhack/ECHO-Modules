@@ -1,0 +1,10 @@
+{
+  "schema": "echo.skyrelay.holomap_layers.v1",
+  "module": "echoholomap",
+  "layers": [
+    { "id": "nearby_fragments", "title": "Nearby Fragments", "purpose": "Shows scanned drift platforms and anchor candidates." },
+    { "id": "power_grid", "title": "Power Grid", "purpose": "Shows generators, batteries, substations, and brownout risk." },
+    { "id": "shield_coverage", "title": "Shield Coverage", "purpose": "Shows protected shelter zones and exposed machinery." },
+    { "id": "logistics_routes", "title": "Logistics Routes", "purpose": "Shows drone routes, supply requests, and reward relays." }
+  ]
+}
