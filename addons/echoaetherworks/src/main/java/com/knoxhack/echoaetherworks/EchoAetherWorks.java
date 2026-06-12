@@ -60,7 +60,7 @@ public final class EchoAetherWorks {
             if (EchoRuntimeModules.isLoaded("echomachinecore")) {
                 registerMachineCoreIntegration();
             }
-            LOGGER.info("ECHO: AetherWorks scaffold registered with Arcana Core.");
+            LOGGER.info("ECHO: AetherWorks beta module registered with Arcana Core.");
         });
     }
 

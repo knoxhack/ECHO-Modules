@@ -52,7 +52,7 @@ public final class EchoRiftWorlds {
                 }
             });
             ArcanaCoreServices.registerProvider(RiftWorldsArcanaProvider.INSTANCE);
-            LOGGER.info("ECHO: RiftWorlds scaffold registered with Arcana Core.");
+            LOGGER.info("ECHO: RiftWorlds beta module registered with Arcana Core.");
         });
     }
 

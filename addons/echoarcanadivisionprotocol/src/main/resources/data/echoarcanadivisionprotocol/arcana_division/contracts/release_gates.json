@@ -1,14 +1,17 @@
 {
   "schema": "echo.arcana_division.release_gates.v1",
-  "channel": "arcana-alpha",
-  "requiredBeforeAlpha": [
+  "channel": "beta",
+  "apiStability": "beta",
+  "requiredBeforeBeta": [
     "All seven Foundation modules load before Arcana Division.",
-    "Arcana Division descriptor requires Foundations and echoarcanacore.",
-    "Arcana component modules are optional at launcher level but must validate when enabled.",
+    "Arcana Division descriptor requires Foundations, all eight Arcana component modules, and the launcher support modules used by the beta editions.",
+    "Arcana beta pack manifests pin exactly 24 playable/runtime module requirements.",
     "Ashfall profile no longer acts as the ownership source for Arcana routing.",
-    "No Arcana content requires Openlands or Ashfall."
+    "No Arcana content requires Openlands or Ashfall.",
+    "Native, NeoForge, and Standalone beta edition artifacts are checksum-backed before catalog approval."
   ],
   "evidence": [
+    "scripts/validate-arcana-division-beta.mjs",
     "scripts/validate-foundations-split.mjs",
     "addons/echoarcanadivisionprotocol/src/main/resources/data/echoarcanadivisionprotocol/arcana_division/contracts/module_ownership.json",
     "addons/echoarcanadivisionprotocol/src/main/resources/data/echoarcanadivisionprotocol/arcana_division/contracts/bootstrap_profile_routes.json"

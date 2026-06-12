@@ -2,13 +2,13 @@
   "schema": "echo.mod.v1",
   "id": "echoarcanadivisionprotocol",
   "name": "ECHO: Arcana Division Protocol",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "addon",
   "kind": "pack_root",
   "role": "official_pack",
   "entrypoint": "com.knoxhack.echoarcanadivisionprotocol.EchoArcanaDivisionProtocol",
   "publisher": "KnoxHack",
-  "channel": "arcana-alpha",
+  "channel": "beta",
   "official": true,
   "trustLevel": "official",
   "standalone": true,
@@ -26,9 +26,7 @@
     "echoworldstarter",
     "echocommonloot",
     "echocreatureroles",
-    "echoarcanacore"
-  ],
-  "optional": [
+    "echoarcanacore",
     "echoaetherworks",
     "echocursecore",
     "echofamiliarcore",
@@ -40,8 +38,10 @@
     "echoindex",
     "echolens",
     "echoterminal",
-    "echothemecore"
+    "echothemecore",
+    "echomissioncore"
   ],
+  "optional": [],
   "provides": [
     "arcana_division.protocol",
     "arcana_division.research",
@@ -118,7 +118,7 @@
     "requiresConfirmationForWriteActions": true,
     "notes": "Arcana Division owns magical research, rituals, familiars, curses, rifts, and anomaly containment. It consumes Foundations for baseline survival and must not depend on Openlands or Ashfall."
   },
-  "apiStability": "alpha",
+  "apiStability": "beta",
   "ai": {
     "requiresHumanReview": true,
     "recommendedAgentLanes": [

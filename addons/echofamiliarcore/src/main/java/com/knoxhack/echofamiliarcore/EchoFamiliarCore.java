@@ -59,7 +59,7 @@ public final class EchoFamiliarCore {
                 }
             });
             ArcanaCoreServices.registerProvider(FamiliarCoreArcanaProvider.INSTANCE);
-            LOGGER.info("ECHO: FamiliarCore scaffold registered with Arcana Core.");
+            LOGGER.info("ECHO: FamiliarCore beta module registered with Arcana Core.");
         });
     }
 

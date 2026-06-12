@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
-  "generatedAt": "2026-06-11T22:22:49.015Z",
+  "generatedAt": "2026-06-12T08:55:25.859Z",
   "moduleCount": 105,
   "modules": [
     {
@@ -100,7 +100,7 @@
         "arcana.core",
         "echo.core"
       ],
-      "apiStability": "experimental"
+      "apiStability": "beta"
     },
     {
       "id": "echoagentcore",
@@ -226,10 +226,10 @@
     {
       "id": "echoarcanadivisionprotocol",
       "name": "ECHO: Arcana Division Protocol",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "kind": "pack_root",
       "role": "official_pack",
-      "channel": "arcana-alpha",
+      "channel": "beta",
       "official": true,
       "trustLevel": "official",
       "side": "common",
@@ -247,9 +247,7 @@
         "echoworldstarter",
         "echocommonloot",
         "echocreatureroles",
-        "echoarcanacore"
-      ],
-      "optional": [
+        "echoarcanacore",
         "echoaetherworks",
         "echocursecore",
         "echofamiliarcore",
@@ -261,8 +259,10 @@
         "echoindex",
         "echolens",
         "echoterminal",
-        "echothemecore"
+        "echothemecore",
+        "echomissioncore"
       ],
+      "optional": [],
       "provides": [
         "arcana_division.protocol",
         "arcana_division.research",
@@ -288,7 +288,7 @@
         "arcana.aether",
         "arcana.providers"
       ],
-      "apiStability": "alpha"
+      "apiStability": "beta"
     },
     {
       "id": "echoarcaneindex",
@@ -1382,7 +1382,7 @@
         "arcana.core",
         "echo.core"
       ],
-      "apiStability": "scaffold"
+      "apiStability": "beta"
     },
     {
       "id": "echofoundationcore",
@@ -3052,7 +3052,7 @@
         "arcana.core",
         "echo.core"
       ],
-      "apiStability": "scaffold"
+      "apiStability": "beta"
     },
     {
       "id": "echoritualcore",
