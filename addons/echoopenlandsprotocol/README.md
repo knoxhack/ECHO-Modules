@@ -269,7 +269,7 @@ node addons/echoopenlandsprotocol/scripts/generate-openlands-public-alpha-eviden
 node addons/echoopenlandsprotocol/scripts/validate-openlands-public-alpha-evidence-intake.mjs --module-root addons/echoopenlandsprotocol --workspace-root C:/Development/Github --release-root dist/echo-module-release
 ```
 
-This writes `openlands-public-alpha-evidence-intake.json` and `openlands-public-alpha-evidence-intake.md` beside the readiness report. It maps every active readiness blocker to impacted phases, exact evidence target files, required proof, and validation commands without clearing any release gate.
+This writes `openlands-public-alpha-evidence-intake.json` and `openlands-public-alpha-evidence-intake.md` beside the readiness report. It maps every active readiness blocker to impacted phases, exact evidence target files, required proof, and validation commands without clearing any release gate. The intake also includes `phaseHandoff`, which groups active blockers, owner hints, proof requirements, handoff files, and validation commands by production phase.
 
 Generate and validate the Public Alpha approval packet template for the final distribution approval handoff:
 

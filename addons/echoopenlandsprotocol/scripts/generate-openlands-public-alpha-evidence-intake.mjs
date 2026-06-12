@@ -368,6 +368,56 @@ function blockerDefinitions({ workspaceRoot, releaseRoot }) {
   ]
 }
 
+function unique(values) {
+  return [...new Set((values ?? []).filter(Boolean))]
+}
+
+function compactEvidenceTarget(evidenceTarget) {
+  return {
+    id: evidenceTarget.id,
+    label: evidenceTarget.label,
+    path: evidenceTarget.path,
+    required: evidenceTarget.required === true,
+    present: evidenceTarget.present === true,
+    status: evidenceTarget.summary?.status ?? null,
+    templateOnly: evidenceTarget.summary?.templateOnly ?? null,
+    purpose: evidenceTarget.purpose,
+  }
+}
+
+function buildPhaseHandoff({ readinessReport, intakeItems }) {
+  const itemByBlocker = new Map(intakeItems.map((item) => [item.blockerId, item]))
+  return (readinessReport.phaseReadiness?.phases ?? []).map((phase) => {
+    const activeBlockers = phase.activeBlockers ?? []
+    const blockerRequirements = activeBlockers
+      .map((blockerId) => itemByBlocker.get(blockerId))
+      .filter(Boolean)
+      .map((item) => ({
+        blockerId: item.blockerId,
+        displayName: item.displayName,
+        ownerHint: item.ownerHint,
+        clearsChecks: item.clearsChecks ?? [],
+        proofRequired: item.proofRequired ?? [],
+        evidenceTargets: (item.evidenceTargets ?? []).map(compactEvidenceTarget),
+        validationCommands: item.validationCommands ?? [],
+      }))
+    return {
+      id: phase.id,
+      order: phase.order,
+      displayName: phase.displayName,
+      status: phase.status,
+      readyForPublicAlpha: phase.readyForPublicAlpha,
+      blockingChecks: phase.blockingChecks ?? [],
+      activeBlockers,
+      ownerHints: unique(blockerRequirements.map((requirement) => requirement.ownerHint)),
+      nextEvidence: phase.nextEvidence ?? [],
+      handoffArtifacts: phase.handoffArtifacts ?? [],
+      blockerRequirements,
+      validationCommands: unique(blockerRequirements.flatMap((requirement) => requirement.validationCommands ?? [])),
+    }
+  })
+}
+
 export function buildEvidenceIntake({ moduleRoot, workspaceRoot, releaseRoot, readinessReportPath, outputPath, markdownPath, dryRun }) {
   if (!fileExists(readinessReportPath)) throw new Error(`readiness report not found: ${readinessReportPath}`)
   const readinessReport = readJson(readinessReportPath)
@@ -389,6 +439,7 @@ export function buildEvidenceIntake({ moduleRoot, workspaceRoot, releaseRoot, re
     }
   })
   const activeItems = intakeItems.filter((item) => item.active)
+  const phaseHandoff = buildPhaseHandoff({ readinessReport, intakeItems })
 
   return {
     schema: SCHEMA,
@@ -417,6 +468,7 @@ export function buildEvidenceIntake({ moduleRoot, workspaceRoot, releaseRoot, re
       activeBlockers: phase.activeBlockers ?? [],
       handoffArtifactCount: (phase.handoffArtifacts ?? []).length,
     })),
+    phaseHandoff,
     releasePublication: {
       manifestStatus: readinessReport.releasePublication?.manifestStatus ?? 'missing',
       manifestSource: readinessReport.releasePublication?.manifestSource ?? 'missing',
@@ -464,6 +516,51 @@ export function renderEvidenceIntakeMarkdown(intake) {
     lines.push('')
     lines.push('Validation commands:')
     for (const command of item.validationCommands) lines.push(`- ${command}`)
+    lines.push('')
+  }
+  lines.push('## Phase Handoff')
+  lines.push('')
+  for (const phase of intake.phaseHandoff ?? []) {
+    lines.push(`### ${phase.order}. ${phase.displayName}`)
+    lines.push('')
+    lines.push(`Status: ${phase.status}`)
+    lines.push(`Ready for Public Alpha: ${phase.readyForPublicAlpha}`)
+    lines.push(`Active blockers: ${phase.activeBlockers.length === 0 ? 'none' : phase.activeBlockers.join(', ')}`)
+    if ((phase.ownerHints ?? []).length > 0) lines.push(`Owner hints: ${phase.ownerHints.join(', ')}`)
+    lines.push('')
+    lines.push('Next evidence:')
+    if ((phase.nextEvidence ?? []).length === 0) {
+      lines.push('- none')
+    } else {
+      for (const evidence of phase.nextEvidence ?? []) lines.push(`- ${evidence}`)
+    }
+    lines.push('')
+    lines.push('Proof requirements:')
+    if ((phase.blockerRequirements ?? []).length === 0) {
+      lines.push('- none')
+    } else {
+      for (const requirement of phase.blockerRequirements ?? []) {
+        lines.push(`- ${requirement.displayName} (${requirement.blockerId})`)
+        for (const proof of requirement.proofRequired ?? []) lines.push(`  - ${proof}`)
+      }
+    }
+    lines.push('')
+    lines.push('Handoff files:')
+    if ((phase.handoffArtifacts ?? []).length === 0) {
+      lines.push('- none')
+    } else {
+      for (const artifact of phase.handoffArtifacts ?? []) {
+        const state = artifact.present ? 'present' : 'expected'
+        lines.push(`- ${artifact.label}: ${artifact.path} (${state})`)
+      }
+    }
+    lines.push('')
+    lines.push('Validation commands:')
+    if ((phase.validationCommands ?? []).length === 0) {
+      lines.push('- none')
+    } else {
+      for (const command of phase.validationCommands ?? []) lines.push(`- ${command}`)
+    }
     lines.push('')
   }
   lines.push('## Next Validation')

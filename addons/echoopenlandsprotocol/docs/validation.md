@@ -252,6 +252,10 @@ node addons/echoopenlandsprotocol/scripts/generate-openlands-public-alpha-eviden
 node addons/echoopenlandsprotocol/scripts/validate-openlands-public-alpha-evidence-intake.mjs --module-root addons/echoopenlandsprotocol --workspace-root C:/Development/Github --release-root dist/echo-module-release
 ```
 
+The generated JSON includes `phaseHandoff`, a phase-by-phase view of active
+blockers, owner hints, proof requirements, handoff files, and validation
+commands.
+
 Generate and validate the Public Alpha approval packet template:
 
 ```text

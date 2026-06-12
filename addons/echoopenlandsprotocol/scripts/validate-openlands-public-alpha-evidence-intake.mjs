@@ -120,6 +120,8 @@ export function validate({ moduleRoot, workspaceRoot, releaseRoot, reportPath, r
   assert(errors, sameSet(report.blockers, readinessReport.blockers ?? []), 'evidence intake blockers mismatch readiness report')
   assert(errors, report.blockerCount === (readinessReport.blockers ?? []).length, 'evidence intake blocker count mismatch')
   assert(errors, sameSet(activeItems.map((item) => item.blockerId), readinessReport.blockers ?? []), 'active evidence intake items must cover every readiness blocker')
+  assert(errors, Array.isArray(report.phaseHandoff), 'evidence intake phaseHandoff must be an array')
+  assert(errors, (report.phaseHandoff ?? []).length === (readinessReport.phaseReadiness?.phases ?? []).length, 'evidence intake phaseHandoff phase count mismatch')
   assert(errors, sameJson(stable(report), stable(expected)), 'evidence intake report stale against generator dry-run')
 
   for (const item of report.intakeItems ?? []) {
@@ -133,6 +135,25 @@ export function validate({ moduleRoot, workspaceRoot, releaseRoot, reportPath, r
       if (typeof evidenceTarget.path === 'string' && evidenceTarget.path.length > 0) {
         assert(errors, evidenceTarget.present === fileExists(evidenceTarget.path), `${item.blockerId} evidence target ${evidenceTarget.id} present flag mismatch`)
       }
+    }
+  }
+
+  for (const phase of report.phaseHandoff ?? []) {
+    const readinessPhase = (readinessReport.phaseReadiness?.phases ?? []).find((entry) => entry.id === phase.id)
+    assert(errors, readinessPhase !== undefined, `phaseHandoff unknown phase ${phase.id}`)
+    if (!readinessPhase) continue
+    assert(errors, phase.order === readinessPhase.order, `phaseHandoff ${phase.id} order mismatch`)
+    assert(errors, phase.displayName === readinessPhase.displayName, `phaseHandoff ${phase.id} displayName mismatch`)
+    assert(errors, sameSet(phase.activeBlockers, readinessPhase.activeBlockers ?? []), `phaseHandoff ${phase.id} activeBlockers mismatch`)
+    const blockerRequirements = phase.blockerRequirements ?? []
+    assert(errors, sameSet(blockerRequirements.map((requirement) => requirement.blockerId), readinessPhase.activeBlockers ?? []), `phaseHandoff ${phase.id} requirements must cover active blockers`)
+    if ((readinessPhase.activeBlockers ?? []).length > 0) {
+      assert(errors, (phase.validationCommands ?? []).length > 0, `phaseHandoff ${phase.id} validationCommands must be non-empty when blocked`)
+    }
+    for (const requirement of blockerRequirements) {
+      assert(errors, Array.isArray(requirement.proofRequired) && requirement.proofRequired.length > 0, `phaseHandoff ${phase.id} ${requirement.blockerId} proofRequired missing`)
+      assert(errors, Array.isArray(requirement.evidenceTargets) && requirement.evidenceTargets.length > 0, `phaseHandoff ${phase.id} ${requirement.blockerId} evidenceTargets missing`)
+      assert(errors, Array.isArray(requirement.validationCommands) && requirement.validationCommands.length > 0, `phaseHandoff ${phase.id} ${requirement.blockerId} validationCommands missing`)
     }
   }
 
