@@ -1,0 +1,53 @@
+{
+  "schema": "echo.foundation.station_catalog.v1",
+  "stations": [
+    {
+      "id": "echostationcore:handcrafting",
+      "role": "crafting_surface",
+      "placement": "inventory",
+      "note": "No block placement; baseline emergency recipes."
+    },
+    {
+      "id": "field_bench",
+      "role": "crafting_surface",
+      "placement": "placed",
+      "note": "Renamed from echostationcore:field_bench; shared early recipe surface."
+    },
+    {
+      "id": "field_crate",
+      "role": "storage",
+      "placement": "placed",
+      "note": "Renamed from echostationcore:field_crate; shared small storage."
+    },
+    {
+      "id": "echostationcore:kiln",
+      "role": "heat_processing",
+      "placement": "placed",
+      "note": "Shared ceramic/glass/echomaterialcore:charcoal_lump processing."
+    },
+    {
+      "id": "forge_hearth",
+      "role": "metal_processing",
+      "placement": "placed",
+      "note": "Renamed from echostationcore:forge_hearth; shared primitive metal processing."
+    },
+    {
+      "id": "echostationcore:loom",
+      "role": "fiber_processing",
+      "placement": "placed",
+      "note": "Shared fiber and cloth surface."
+    },
+    {
+      "id": "echostationcore:cookpot",
+      "role": "food_processing",
+      "placement": "placed",
+      "note": "Shared meal surface."
+    },
+    {
+      "id": "echostationcore:mason_table",
+      "role": "stone_processing",
+      "placement": "placed",
+      "note": "Shared block refinement surface."
+    }
+  ]
+}

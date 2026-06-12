@@ -197,10 +197,10 @@ public class ModItems {
     public static final EchoBackendRegistryEntry<Item> CONTAMINATED_GOLD = register("contaminated_gold",
             com.knoxhack.echoashfallprotocol.item.ContaminatedItem::new, new Item.Properties().stacksTo(16),
             AshfallTooltip.of("contaminated"));
-    public static final EchoBackendRegistryEntry<Item> CONTAMINATED_REDSTONE = register("contaminated_redstone",
+    public static final EchoBackendRegistryEntry<Item> CHARGED_ASH_CIRCUIT = register("charged_ash_circuit",
             com.knoxhack.echoashfallprotocol.item.ContaminatedItem::new, new Item.Properties().stacksTo(16),
             AshfallTooltip.of("contaminated"));
-    public static final EchoBackendRegistryEntry<Item> CONTAMINATED_LAPIS = register("contaminated_lapis",
+    public static final EchoBackendRegistryEntry<Item> BLUE_ASH_SALT = register("blue_ash_salt",
             com.knoxhack.echoashfallprotocol.item.ContaminatedItem::new, new Item.Properties().stacksTo(16),
             AshfallTooltip.of("contaminated"));
 
@@ -304,14 +304,14 @@ public class ModItems {
             AshfallTooltip.of("rare_tech_schematic"));
 
     // === v1.2 "FIRST LIGHT" — WILDERNESS TIER TOOLS ===
-    public static final EchoBackendRegistryEntry<Item> BONE_KNIFE = register("bone_knife",
-            BoneKnifeItem::new, new Item.Properties().durability(60), AshfallTooltip.of("bone_knife"));
-    public static final EchoBackendRegistryEntry<Item> CRUDE_SPEAR = register("crude_spear",
-            CrudeSpearItem::new, new Item.Properties().durability(80), AshfallTooltip.of("crude_spear"));
-    public static final EchoBackendRegistryEntry<Item> FIBER_ROPE = registerSimpleItem("fiber_rope");
-    public static final EchoBackendRegistryEntry<Item> PLANT_FIBER = registerSimpleItem("plant_fiber");
-    public static final EchoBackendRegistryEntry<Item> ANIMAL_BONE = registerSimpleItem("animal_bone");
-    public static final EchoBackendRegistryEntry<Item> ANIMAL_HIDE = registerSimpleItem("animal_hide");
+    public static final EchoBackendRegistryEntry<Item> ASHBONE_SHIV = register("ashbone_shiv",
+            AshboneShivItem::new, new Item.Properties().durability(60), AshfallTooltip.of("ashbone_shiv"));
+    public static final EchoBackendRegistryEntry<Item> SCAVENGER_SPEAR = register("scavenger_spear",
+            ScavengerSpearItem::new, new Item.Properties().durability(80), AshfallTooltip.of("scavenger_spear"));
+    public static final EchoBackendRegistryEntry<Item> SOOTCORD_BINDING = registerSimpleItem("sootcord_binding");
+    public static final EchoBackendRegistryEntry<Item> ASHGRASS_FIBER = registerSimpleItem("ashgrass_fiber");
+    public static final EchoBackendRegistryEntry<Item> ASHBONE_SHARD = registerSimpleItem("ashbone_shard");
+    public static final EchoBackendRegistryEntry<Item> SCORCHED_HIDE_STRIP = registerSimpleItem("scorched_hide_strip");
     public static final EchoBackendRegistryEntry<Item> WILD_BERRY = register("wild_berry",
             props -> new Item(props), new Item.Properties().stacksTo(64)
                     .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.3f).build()));
@@ -447,7 +447,7 @@ public class ModItems {
                     new String[]{"ECHO Field Analysis - Resource Substrate Protocol",
                             "Traditional ore seams are no longer a reliable survival input. Gridfall heat, chemical weather, fallout, and cryogenic shock redistributed useful traces through the upper crust.",
                             "Feed mined substrate directly into the Substrate Grinder. Wasteland stone carries iron and carbon; industrial aggregate preserves copper and wire; crash slag hides recoverable scrap.",
-                            "Toxic slagstone, irradiated shale, cryogenic fractured stone, riftstone, and Nexus cracked soil all require more power, but return rarer traces and controlled byproducts.",
+                            "Toxic slagstone, irradiated shale, cryogenic fractured stone, nexus_scar_stone, and Nexus cracked soil all require more power, but return rarer traces and controlled byproducts.",
                             "Do not call the output clean. It is sorted contamination. That is still better than starving beside a wall of unusable rock.",
                             "Sort the trace output, then feed shards and dust back into the Grinder or onward into the Refiner. Common stone remains filler; biome stone is now a resource stream."}), new Item.Properties().rarity(net.minecraft.world.item.Rarity.UNCOMMON),
                     AshfallTooltip.of("data_log:technical_manual"));

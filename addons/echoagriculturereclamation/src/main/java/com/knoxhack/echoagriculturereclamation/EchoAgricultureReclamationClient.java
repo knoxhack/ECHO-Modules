@@ -2,7 +2,7 @@ package com.knoxhack.echoagriculturereclamation;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoagriculturereclamation.client.HydroponicTrayRenderer;
 import com.knoxhack.echoagriculturereclamation.client.HydroponicTrayScreen;
 import com.knoxhack.echoagriculturereclamation.client.PollinatorDroneRenderer;

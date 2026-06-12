@@ -36,7 +36,7 @@ import com.knoxhack.echoashfallprotocol.integration.AshfallPresenceIntegration;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteRegistrar;
 import com.knoxhack.echoashfallprotocol.network.DroneCommandPacket;
 import com.knoxhack.echoashfallprotocol.registry.ModMenuTypes;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalNativeSessionBridge;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreenProvider;

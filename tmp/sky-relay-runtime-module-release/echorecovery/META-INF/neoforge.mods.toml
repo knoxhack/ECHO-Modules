@@ -1,0 +1,263 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echorecovery"
+version="1.3.0"
+displayName="ECHO: Recovery"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Standalone-first death recovery for the ECHO ecosystem."
+description='''
+ECHO Recovery provides graves, death caches, recovery compasses, and grave keys.
+Works standalone with ECHO Core + NetCore. Optionally integrates with Terminal,
+ThemeCore, HoloMap, MissionCore, TutorialCore, SoundCore, WorldCore, WeatherCore,
+RuntimeGuard, Index, Lens, Armory, Logistics, Convoy, PowerGrid,
+RelicTech, Nexus, Blackbox, Ashfall, RenderCore, DataCore, and PlayerCore.
+'''
+
+[[dependencies.echorecovery]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echonetcore"
+type="required"
+reason="Provides shared packet registration and network contracts."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoplatformcore"
+type="optional"
+reason="Provides optional platform identity and feature contracts for recovery planning."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echovalidationcore"
+type="optional"
+reason="Provides optional diagnostics for recovery recommendations and safe-mode reports."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echopackcore"
+type="optional"
+reason="Provides optional PackOS profiles for recovery plans and variant switching."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echohealthcore"
+type="optional"
+reason="Provides optional runtime health reports for recovery recommendations."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echomodulegraph"
+type="optional"
+reason="Provides optional module graph context for missing-module and load-plan recovery."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoterminal"
+type="optional"
+reason="Registers Graves / Recovery / Field Recovery Terminal pages."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echothemecore"
+type="optional"
+reason="Enables grave theme tokens and UI theming."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echomissioncore"
+type="optional"
+reason="Publishes recovery objectives and mission progress hooks."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echotutorialcore"
+type="optional"
+reason="Shows first-death and recovery tool guidance cards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echosoundcore"
+type="optional"
+reason="Adds contextual recovery sound profile hooks."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoworldcore"
+type="optional"
+reason="Adds hazard-aware placement and region warnings."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoruntimeguard"
+type="optional"
+reason="Reports recovery diagnostics and stale grave state."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoholomap"
+type="optional"
+reason="Adds personal grave waypoints and deathpoint lifecycle updates."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoindex"
+type="optional"
+reason="Indexes recovery tools, rules, presets, and grave concepts."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoweathercore"
+type="optional"
+reason="Allows storms to annotate recovery signal quality."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echolens"
+type="optional"
+reason="Adds server-safe Lens scans for graves and field caches."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoarmory"
+type="optional"
+reason="Preserves armory equipment metadata through recovery storage."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echologisticsnetwork"
+type="optional"
+reason="Enables optional depot delivery hooks for recoverable caches."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoconvoyprotocol"
+type="optional"
+reason="Enables convoy recovery mission hooks for field caches."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echopowergrid"
+type="optional"
+reason="Enables powered recovery beacon hooks when available."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echorelictech"
+type="optional"
+reason="Preserves soulbound relic behavior and relic metadata."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echonexusprotocol"
+type="optional"
+reason="Adds Nexus corruption annotations for field recovery."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoblackboxprotocol"
+type="optional"
+reason="Publishes death evidence records for Blackbox archive surfaces."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoashfallprotocol"
+type="optional"
+reason="Activates Field Recovery Cache naming, visuals, and hazards."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echorendercore"
+type="optional"
+reason="Adds visual profile hooks for recovery UI and cache showcases."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echodatacore"
+type="optional"
+reason="Records recovery counters and death/recovery events."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echorecovery]]
+modId="echoplayercore"
+type="optional"
+reason="Coordinates death recovery with player travel and cooldown services."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

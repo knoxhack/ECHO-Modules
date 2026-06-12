@@ -21,7 +21,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public class IndustrialMultiblockControllerBlockEntity extends MultiblockControllerBlockEntity implements MenuProvider {
    private static final Map<Identifier, String> LOGISTICS_LOADOUTS = Map.of(

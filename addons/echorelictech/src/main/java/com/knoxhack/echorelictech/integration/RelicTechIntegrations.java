@@ -1,7 +1,7 @@
 package com.knoxhack.echorelictech.integration;
 
 import com.knoxhack.echorelictech.EchoRelicTech;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class RelicTechIntegrations {
     private RelicTechIntegrations() {}

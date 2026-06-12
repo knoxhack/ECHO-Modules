@@ -66,6 +66,7 @@ dependencies {
 
     def terminalProject = rootProject.findProject(":echoterminal")
     if (terminalProject != null) {
+        compileOnly terminalProject
         if (providers.gradleProperty("echoRuntimeGuardIncludeOptionalRuntime").map { it.toBoolean() }.orElse(false).get()) {
             localRuntime project(":echoterminal")
         }

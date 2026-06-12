@@ -116,9 +116,11 @@ dependencies {
     compileOnly project(":echoterminal")
     compileOnly project(":echorendercore")
     compileOnly project(":echomachinecore")
+    compileOnly project(":echoassetcore")
     localRuntime project(":echoterminal")
     localRuntime project(":echorendercore")
     localRuntime project(":echomachinecore")
+    localRuntime project(":echoassetcore")
 
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

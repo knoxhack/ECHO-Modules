@@ -2,8 +2,8 @@ package com.knoxhack.echoweathercore.integration.worldcore;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
 import com.knoxhack.echoweathercore.EchoWeatherCore;
 import com.knoxhack.echoweathercore.api.weather.ActiveWeatherEvent;
 import com.knoxhack.echoweathercore.api.weather.WeatherSeverity;

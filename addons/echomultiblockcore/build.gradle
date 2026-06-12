@@ -65,7 +65,9 @@ dependencies {
     compileOnly project(":echo-native-contracts")
     implementation project(":echonetcore")
     compileOnly project(":echomachinecore")
+    compileOnly project(":echoassetcore")
     localRuntime project(":echomachinecore")
+    localRuntime project(":echoassetcore")
     if (providers.gradleProperty("echoMultiblockIncludeOptionalRuntime").map { it.toBoolean() }.orElse(false).get()) {
         [":echoterminal", ":echoholomap", ":echolens", ":echorendercore"].each { optionalPath ->
             def optionalProject = rootProject.findProject(optionalPath)

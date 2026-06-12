@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal.client.screencore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoScreenRegistry;
 import com.knoxhack.echoscreencore.api.EchoScreens;

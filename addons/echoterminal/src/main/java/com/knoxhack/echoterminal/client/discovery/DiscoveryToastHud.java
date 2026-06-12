@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal.client.discovery;
 
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
 import com.knoxhack.echoterminal.api.TerminalUi;
 import com.knoxhack.echoterminal.api.TerminalVisualAssets;
 import com.knoxhack.echoterminal.client.hud.TerminalHudNotice;

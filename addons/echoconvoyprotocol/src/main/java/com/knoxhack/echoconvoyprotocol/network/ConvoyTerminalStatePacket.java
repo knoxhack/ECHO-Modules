@@ -9,7 +9,7 @@ import com.knoxhack.echoconvoyprotocol.content.ConvoyRouteDefinition;
 import com.knoxhack.echoconvoyprotocol.entity.ConvoyVehicleEntity;
 import com.knoxhack.echoconvoyprotocol.progress.ConvoyProgress;
 import com.knoxhack.echoconvoyprotocol.service.ConvoyRouteService;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

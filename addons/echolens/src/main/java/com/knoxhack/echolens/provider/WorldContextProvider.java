@@ -1,7 +1,7 @@
 package com.knoxhack.echolens.provider;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.WorldContextSnapshot;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.WorldContextSnapshot;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.api.IntegrationLensProvider;
 import com.knoxhack.echolens.api.LensContext;

@@ -33,8 +33,8 @@ public final class EchoMissionCoreTruthBridge {
         // Bridge MissionRuntimeBus events to the truth layer via reflection
         // to avoid a compile-time dependency on echocore's mission API.
         try {
-            Class<?> busClass = Class.forName("com.knoxhack.echocore.api.mission.MissionRuntimeBus");
-            Class<?> eventClass = Class.forName("com.knoxhack.echocore.api.mission.MissionRuntimeEvent");
+            Class<?> busClass = Class.forName("com.echoplatform.echocore.api.mission.MissionRuntimeBus");
+            Class<?> eventClass = Class.forName("com.echoplatform.echocore.api.mission.MissionRuntimeEvent");
 
             busClass.getMethod("register", java.util.function.Consumer.class)
                     .invoke(null, (java.util.function.Consumer<Object>) event -> {

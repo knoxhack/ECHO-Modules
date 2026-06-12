@@ -1,10 +1,10 @@
 package com.knoxhack.echoindex;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindex.command.IndexCommands;
 import com.knoxhack.echoindex.content.IndexReloaders;
 import com.knoxhack.echoindex.event.IndexEvents;

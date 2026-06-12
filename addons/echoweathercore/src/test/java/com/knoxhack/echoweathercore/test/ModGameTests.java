@@ -1,6 +1,6 @@
 package com.knoxhack.echoweathercore.test;
 
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
 import com.knoxhack.echoweathercore.EchoWeatherCore;
 import com.knoxhack.echoweathercore.api.WeatherCoreApi;
 import com.knoxhack.echoweathercore.api.weather.WeatherEffectModifiers;

@@ -1,0 +1,860 @@
+{
+  "schema": "echo.openlands.systems.runtime_execution_harness_plan.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the concrete real-runtime harness responsibilities required to turn runtime_execution_acceptance scenarios into passing Native, Standalone, and NeoForge reports. This is a harness plan, not preflight evidence.",
+  "sourceContracts": {
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json",
+    "runtimeAdapterLoadPlan": "systems/runtime_adapter_load_plan.json",
+    "playableRuntimeContract": "systems/playable_runtime_contract.json",
+    "firstHourPlaytest": "playtests/mvp_first_hour_acceptance.json",
+    "waystoneContract": "waystones/waystone_contract.json",
+    "homesteadAlpha": "systems/homestead_alpha.json",
+    "builderUxAlpha": "systems/builder_ux_alpha.json",
+    "creatureRoster": "creatures/mvp_creatures.json",
+    "launcherExecutionAcceptance": "systems/launcher_execution_acceptance.json",
+    "finalReleaseReviewAcceptance": "systems/final_release_review_acceptance.json",
+    "distributionApprovalAcceptance": "systems/distribution_approval_acceptance.json"
+  },
+  "editionHarnesses": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "driverKind": "echo_native_runtime_harness",
+      "entryPoint": "scripts/run-runtime-execution-harness.mjs",
+      "requiredReport": "evidence/native-runtime-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "runtimeArtifactRoot": "evidence/runtime-execution/native",
+      "mustBootWith": [
+        "EchoOpenlandsNativeModule.describeNativeSurfaces",
+        "OpenlandsFirstHourRuntime",
+        "native registry handles"
+      ]
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "driverKind": "neoforge_runtime_harness",
+      "entryPoint": "scripts/run-runtime-execution-harness.mjs",
+      "requiredReport": "evidence/neoforge-runtime-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "runtimeArtifactRoot": "evidence/runtime-execution/neoforge",
+      "mustBootWith": [
+        "generated Echo-to-NeoForge id map",
+        "OpenlandsFirstHourRuntime",
+        "NeoForge data generation output"
+      ]
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "driverKind": "standalone_runtime_harness",
+      "entryPoint": "scripts/run-runtime-execution-harness.mjs",
+      "requiredReport": "evidence/standalone-runtime-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "runtimeArtifactRoot": "evidence/runtime-execution/standalone",
+      "mustBootWith": [
+        "standalone block and item runtime",
+        "OpenlandsFirstHourRuntime",
+        "standalone save and worldgen services"
+      ]
+    }
+  ],
+  "driverSurfaces": [
+    {
+      "id": "world_driver",
+      "requiredMethods": [
+        "createStandardWorld(seed)",
+        "waitForFirstInteractiveFrame()",
+        "captureSpawnContext()",
+        "placeBlock(id, position)",
+        "breakBlock(position)",
+        "exitToMenuAndReload(saveId)"
+      ],
+      "mustCapture": [
+        "seed",
+        "spawnPosition",
+        "hotbarInventoryState",
+        "blockPlaceBreakSample",
+        "hardcoreMeterSnapshot"
+      ]
+    },
+    {
+      "id": "worldgen_driver",
+      "requiredMethods": [
+        "sweepSeeds(seedList)",
+        "measureStarterResourceDistances()",
+        "findNearestLandmark(type)",
+        "sampleBiomePalette(biomeId)",
+        "captureHoloMapHints(regionId)"
+      ],
+      "mustCapture": [
+        "starterResourceDistances",
+        "visibleLandmarkDistance",
+        "biomePaletteSample",
+        "oldRoadSegmentSample"
+      ]
+    },
+    {
+      "id": "shelter_driver",
+      "requiredMethods": [
+        "buildMinimalShelter(templateId)",
+        "calculateShelterScore()",
+        "attemptSleep()",
+        "captureHostileDistance()"
+      ],
+      "mustCapture": [
+        "placedBlocks",
+        "roofCoverage",
+        "wallEnclosure",
+        "bedrollPosition",
+        "lightOrFirePosition",
+        "sleepMilestoneAllowed"
+      ]
+    },
+    {
+      "id": "route_driver",
+      "requiredMethods": [
+        "runFirstHourRoute(routeId)",
+        "collectItem(id)",
+        "craftRecipe(id)",
+        "openStation(id)",
+        "captureTutorialPrompts()"
+      ],
+      "mustCapture": [
+        "routeStepTimeline",
+        "tutorialPromptIds",
+        "craftedRecipeIds",
+        "visitedLandmarkIds"
+      ]
+    },
+    {
+      "id": "save_load_driver",
+      "requiredMethods": [
+        "saveWorld(label)",
+        "captureSnapshot(snapshotId)",
+        "reloadWorld(saveId)",
+        "compareRoundTripFields(fieldIds)"
+      ],
+      "mustCapture": [
+        "saveId",
+        "beforeSnapshot",
+        "afterReloadSnapshot",
+        "roundTripFields"
+      ]
+    },
+    {
+      "id": "creature_driver",
+      "requiredMethods": [
+        "forceBiomeCreatureSpawn(creatureId, biomeId)",
+        "sampleAiState(creatureId)",
+        "sampleDropTable(creatureId)",
+        "sampleSoundEvent(creatureId)"
+      ],
+      "mustCapture": [
+        "creatureId",
+        "biomeId",
+        "spawnPosition",
+        "aiStateSample",
+        "dropTableSample",
+        "soundEventSample"
+      ]
+    },
+    {
+      "id": "waystone_driver",
+      "requiredMethods": [
+        "advanceWaystoneState(waystoneId, targetState)",
+        "consumeRepairInputs(waystoneId)",
+        "bindRoute(originId, destinationId)",
+        "attemptFastTravel(routeId, actorId)",
+        "captureWaystoneSnapshot(waystoneId)"
+      ],
+      "mustCapture": [
+        "waystoneId",
+        "stateTimeline",
+        "repairInputsConsumed",
+        "contributors",
+        "linkedRouteIds",
+        "permissionDecision",
+        "travelResult"
+      ]
+    },
+    {
+      "id": "homestead_driver",
+      "requiredMethods": [
+        "advanceCropGrowth(cropId, ticks)",
+        "applyWateringSample(cropId)",
+        "applyCompostSample(cropId)",
+        "cookMeal(recipeId)",
+        "sampleAnimalPen(penId)",
+        "sampleTraderDemand(traderId)"
+      ],
+      "mustCapture": [
+        "cropGrowthSamples",
+        "wateringSamples",
+        "compostSamples",
+        "cookpotMealSamples",
+        "animalPenSamples",
+        "traderDemandSamples"
+      ]
+    },
+    {
+      "id": "builder_storage_driver",
+      "requiredMethods": [
+        "cycleHammerShape(shapeId)",
+        "placeScaffold(position)",
+        "quickStack(containerId)",
+        "quickDeposit(containerId)",
+        "sortInventory(containerId)",
+        "craftFromNearbyStorage(recipeId)",
+        "verifyPermissionDenied(actionId)"
+      ],
+      "mustCapture": [
+        "hammerCycleSamples",
+        "scaffoldPlacementSamples",
+        "quickStackTransaction",
+        "quickDepositTransaction",
+        "sortTransaction",
+        "craftFromStorageTransaction",
+        "permissionDenialSamples"
+      ]
+    },
+    {
+      "id": "distribution_driver",
+      "requiredMethods": [
+        "publishArtifact(artifactId)",
+        "downloadArtifact(url)",
+        "verifySha256(file)",
+        "verifySize(file)",
+        "captureReleaseIndexEntry(artifactId)"
+      ],
+      "mustCapture": [
+        "artifactUrl",
+        "sha256",
+        "sizeBytes",
+        "releaseIndexEntry",
+        "downloadVerification"
+      ]
+    },
+    {
+      "id": "launcher_driver",
+      "requiredMethods": [
+        "installEdition(packId)",
+        "updateEdition(packId)",
+        "repairEdition(packId)",
+        "rollbackEdition(packId)",
+        "verifyWorldAndConfigPreservation()"
+      ],
+      "mustCapture": [
+        "installRun",
+        "updateRun",
+        "repairRun",
+        "rollbackRun",
+        "worldPreservationCheck",
+        "configPreservationCheck"
+      ]
+    },
+    {
+      "id": "review_driver",
+      "requiredMethods": [
+        "recordReviewer(name)",
+        "recordReviewDate(date)",
+        "hashAssetManifest()",
+        "hashLegalAudit()",
+        "attachApprovedExceptions()",
+        "countRemainingPlaceholders()"
+      ],
+      "mustCapture": [
+        "reviewer",
+        "reviewDate",
+        "assetManifestHash",
+        "legalAuditHash",
+        "approvedExceptions",
+        "remainingPlaceholderCount"
+      ]
+    }
+  ],
+  "scenarioBindings": [
+    {
+      "id": "fresh_standard_world_starts",
+      "suiteId": "first_hour_world_runtime",
+      "gateIds": [
+        "real_mvp_runtime_playtest"
+      ],
+      "driverSurfaceIds": [
+        "world_driver"
+      ],
+      "inputFixtureRefs": [
+        "config/game_modes.json",
+        "systems/playable_runtime_contract.json"
+      ],
+      "actions": [
+        "create_new_openlands_standard_world",
+        "wait_for_first_interactive_frame",
+        "inspect_player_hud",
+        "place_and_break_branchwood_planks",
+        "exit_to_menu_and_reload"
+      ],
+      "assertions": [
+        "runtime_reports_openlands_runtime_ready",
+        "hunger_mode_is_gentle",
+        "stamina_hydration_spoilage_temperature_meters_absent",
+        "hotbar_and_inventory_are_available",
+        "block_place_break_roundtrip_succeeds",
+        "reloaded_world_remains_openlands_standard"
+      ],
+      "requiredSavedArtifacts": [
+        "first-frame-screenshot.png",
+        "standard-hud-state.json",
+        "place-break-reload-log.json"
+      ]
+    },
+    {
+      "id": "starter_spawn_seed_sweep",
+      "suiteId": "first_hour_world_runtime",
+      "gateIds": [
+        "real_worldgen_spawn_execution"
+      ],
+      "driverSurfaceIds": [
+        "world_driver",
+        "worldgen_driver"
+      ],
+      "inputFixtureRefs": [
+        "biomes/mvp_biomes.json",
+        "structures/mvp_landmarks.json",
+        "systems/playable_runtime_contract.json"
+      ],
+      "actions": [
+        "generate_minimum_seed_samples",
+        "record_spawn_position",
+        "scan_64_block_radius_for_wood_stone_fiber_food_water",
+        "scan_128_block_radius_for_cave_road_or_ruin_hook",
+        "scan_16_block_radius_for_hostiles"
+      ],
+      "assertions": [
+        "all_required_starter_resources_found",
+        "visible_exploration_hook_found",
+        "nearest_hostile_distance_is_at_least_16_blocks",
+        "failed_seed_regenerates_or_rejects_starter_area"
+      ],
+      "requiredSavedArtifacts": [
+        "seed-sweep-summary.json",
+        "spawn-distance-samples.json",
+        "starter-area-map.png"
+      ]
+    },
+    {
+      "id": "minimal_shelter_sleep",
+      "suiteId": "first_hour_world_runtime",
+      "gateIds": [
+        "real_adapter_shelter_execution"
+      ],
+      "driverSurfaceIds": [
+        "world_driver",
+        "shelter_driver"
+      ],
+      "inputFixtureRefs": [
+        "progression/first_hour_route.json",
+        "systems/playable_runtime_contract.json"
+      ],
+      "actions": [
+        "place_branchwood_wall_shell",
+        "place_thatch_or_plank_roof",
+        "place_door_bedroll_and_light",
+        "request_shelter_score",
+        "sleep_until_morning"
+      ],
+      "assertions": [
+        "shelter_score_is_at_least_55",
+        "sleep_milestone_allowed",
+        "shelter_does_not_require_perfect_enclosure",
+        "bedroll_spawn_is_set"
+      ],
+      "requiredSavedArtifacts": [
+        "shelter-layout.json",
+        "shelter-score-breakdown.json",
+        "sleep-milestone-log.json"
+      ]
+    },
+    {
+      "id": "first_hour_route_walkthrough",
+      "suiteId": "first_hour_world_runtime",
+      "gateIds": [
+        "real_first_hour_playtest",
+        "real_mvp_runtime_playtest"
+      ],
+      "driverSurfaceIds": [
+        "route_driver",
+        "world_driver",
+        "waystone_driver"
+      ],
+      "inputFixtureRefs": [
+        "progression/first_hour_route.json",
+        "playtests/mvp_first_hour_acceptance.json",
+        "tutorials/first_hour_prompts.json"
+      ],
+      "actions": [
+        "gather_starter_materials",
+        "craft_first_tools",
+        "craft_campfire_torches_workbench_and_bedroll",
+        "build_and_sleep_in_shelter",
+        "discover_cave_road_or_ruin",
+        "repair_first_waystone_to_required_mvp_state",
+        "reveal_local_holomap_region"
+      ],
+      "assertions": [
+        "route_steps_complete_in_order",
+        "discovery_tutorials_fire_once",
+        "all_crafted_recipe_ids_resolve",
+        "first_waystone_updates_holomap",
+        "no_hardcore_meter_blocks_progress"
+      ],
+      "requiredSavedArtifacts": [
+        "first-hour-route-timeline.json",
+        "tutorial-trigger-log.json",
+        "first-waystone-holomap-before-after.json"
+      ]
+    },
+    {
+      "id": "first_hour_save_reload_roundtrip",
+      "suiteId": "first_hour_world_runtime",
+      "gateIds": [
+        "real_save_load_execution"
+      ],
+      "driverSurfaceIds": [
+        "save_load_driver",
+        "route_driver"
+      ],
+      "inputFixtureRefs": [
+        "playtests/mvp_first_hour_acceptance.json",
+        "systems/playable_runtime_contract.json"
+      ],
+      "actions": [
+        "capture_snapshot_after_first_shelter_sleep",
+        "save_exit_reload",
+        "compare_required_first_hour_fields",
+        "capture_snapshot_after_first_waystone_repair",
+        "runtime_restart_reload",
+        "compare_required_waystone_and_holomap_fields"
+      ],
+      "assertions": [
+        "inventory_hotbar_placed_blocks_and_chests_roundtrip",
+        "bedroll_spawn_campfire_state_and_shelter_score_roundtrip",
+        "waystone_state_and_holomap_region_discovery_roundtrip",
+        "missing_field_fails_the_report"
+      ],
+      "requiredSavedArtifacts": [
+        "first-hour-before-save.json",
+        "first-hour-after-reload.json",
+        "first-hour-roundtrip-diff.json"
+      ]
+    },
+    {
+      "id": "biome_landmark_seed_sweep",
+      "suiteId": "world_creature_runtime",
+      "gateIds": [
+        "real_worldgen_spawn_execution"
+      ],
+      "driverSurfaceIds": [
+        "worldgen_driver"
+      ],
+      "inputFixtureRefs": [
+        "biomes/mvp_biomes.json",
+        "structures/mvp_landmarks.json",
+        "holomap/mvp_regions.json"
+      ],
+      "actions": [
+        "generate_region_seed_samples",
+        "visit_meadows_woodlands_stonehills_and_marshlands",
+        "record_landmark_instances",
+        "record_holomap_layers_and_hints"
+      ],
+      "assertions": [
+        "all_four_mvp_biomes_generate",
+        "landmark_frequency_stays_inside_contract",
+        "old_road_and_ruin_hints_appear_on_holomap",
+        "biome_palettes_use_registered_blocks"
+      ],
+      "requiredSavedArtifacts": [
+        "biome-seed-sweep.json",
+        "landmark-placement-samples.json",
+        "holomap-region-samples.json"
+      ]
+    },
+    {
+      "id": "creature_spawn_ai_drop_sound_sweep",
+      "suiteId": "world_creature_runtime",
+      "gateIds": [
+        "real_creature_runtime_execution"
+      ],
+      "driverSurfaceIds": [
+        "creature_driver"
+      ],
+      "inputFixtureRefs": [
+        "creatures/mvp_creatures.json",
+        "loot/mvp_loot.json",
+        "sounds/mvp_sound_contract.json"
+      ],
+      "actions": [
+        "sample_spawn_tables_for_each_creature",
+        "tick_each_creature_ai_state",
+        "sample_drop_tables",
+        "trigger_creature_sound_events"
+      ],
+      "assertions": [
+        "all_ten_creature_ids_spawn_or_are_directly_spawnable",
+        "passive_neutral_and_hostile_ai_states_tick_without_error",
+        "drops_resolve_to_known_items",
+        "sound_events_resolve_to_openlands_keys"
+      ],
+      "requiredSavedArtifacts": [
+        "creature-spawn-sweep.json",
+        "creature-ai-drop-sound-samples.json"
+      ]
+    },
+    {
+      "id": "waystone_repair_state_roundtrip",
+      "suiteId": "waystone_runtime",
+      "gateIds": [
+        "real_waystone_save_load_execution"
+      ],
+      "driverSurfaceIds": [
+        "waystone_driver",
+        "save_load_driver"
+      ],
+      "inputFixtureRefs": [
+        "waystones/waystone_contract.json",
+        "recipes/mvp_recipes.json",
+        "playtests/mvp_first_hour_acceptance.json"
+      ],
+      "actions": [
+        "discover_broken_waystone",
+        "clear_debris",
+        "repair_stone",
+        "install_fittings",
+        "charge_with_core_and_glow_crystal",
+        "bind_route",
+        "save_exit_reload"
+      ],
+      "assertions": [
+        "state_timeline_matches_contract_order",
+        "repair_inputs_are_consumed_once",
+        "contributors_are_recorded",
+        "state_persists_after_reload",
+        "holomap_reveal_persists_after_reload"
+      ],
+      "requiredSavedArtifacts": [
+        "waystone-state-timeline.json",
+        "waystone-before-reload.json",
+        "waystone-after-reload.json"
+      ]
+    },
+    {
+      "id": "two_active_waystones_fast_travel",
+      "suiteId": "waystone_runtime",
+      "gateIds": [
+        "real_fast_travel_execution"
+      ],
+      "driverSurfaceIds": [
+        "waystone_driver"
+      ],
+      "inputFixtureRefs": [
+        "waystones/waystone_contract.json",
+        "systems/coop_and_smp.json"
+      ],
+      "actions": [
+        "activate_two_waystones",
+        "bind_route_between_waystones",
+        "set_public_travel_permission",
+        "attempt_travel_as_owner_group_and_public_player",
+        "attempt_travel_with_only_one_active_waystone"
+      ],
+      "assertions": [
+        "two_active_waystones_unlock_travel",
+        "one_active_waystone_does_not_unlock_travel",
+        "permission_decisions_match_owner_group_public_flags",
+        "travel_result_preserves_inventory_and_destination_state"
+      ],
+      "requiredSavedArtifacts": [
+        "fast-travel-route-record.json",
+        "waystone-permission-decisions.json"
+      ]
+    },
+    {
+      "id": "old_road_holomap_route_reveal",
+      "suiteId": "waystone_runtime",
+      "gateIds": [
+        "real_fast_travel_execution",
+        "real_waystone_save_load_execution"
+      ],
+      "driverSurfaceIds": [
+        "worldgen_driver",
+        "waystone_driver",
+        "save_load_driver"
+      ],
+      "inputFixtureRefs": [
+        "structures/mvp_landmarks.json",
+        "holomap/mvp_regions.json",
+        "waystones/waystone_contract.json"
+      ],
+      "actions": [
+        "walk_old_road_segment",
+        "collect_region_rubbing",
+        "bind_route_on_map_table",
+        "restore_waystone",
+        "reload_world"
+      ],
+      "assertions": [
+        "old_road_segment_records_on_holomap",
+        "route_binding_links_waystone_ids",
+        "nearby_hints_remain_visible_after_reload"
+      ],
+      "requiredSavedArtifacts": [
+        "old-road-walk-log.json",
+        "holomap-route-reveal-diff.json"
+      ]
+    },
+    {
+      "id": "relaxed_homestead_growth_and_cookpot",
+      "suiteId": "alpha_runtime",
+      "gateIds": [
+        "real_homestead_runtime_execution"
+      ],
+      "driverSurfaceIds": [
+        "homestead_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/homestead_alpha.json",
+        "items/mvp_items.json",
+        "recipes/mvp_recipes.json"
+      ],
+      "actions": [
+        "plant_grain_root_crop_and_berry",
+        "advance_unwatered_standard_crop",
+        "water_and_compost_crop",
+        "cook_three_ingredient_stew",
+        "save_exit_reload"
+      ],
+      "assertions": [
+        "unwatered_standard_crop_pauses_without_death",
+        "watered_composted_crop_advances",
+        "cookpot_requires_ingredients_and_time",
+        "crop_and_cookpot_state_roundtrip"
+      ],
+      "requiredSavedArtifacts": [
+        "homestead-growth-samples.json",
+        "echostationcore:cookpot-meal-samples.json"
+      ]
+    },
+    {
+      "id": "animal_pen_and_trader_surplus",
+      "suiteId": "alpha_runtime",
+      "gateIds": [
+        "real_homestead_runtime_execution"
+      ],
+      "driverSurfaceIds": [
+        "homestead_driver",
+        "creature_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/homestead_alpha.json",
+        "creatures/mvp_creatures.json"
+      ],
+      "actions": [
+        "create_small_animal_pen",
+        "assign_allowed_creature",
+        "produce_surplus_food_or_material",
+        "open_trader_demand",
+        "complete_surplus_trade"
+      ],
+      "assertions": [
+        "pen_accepts_only_allowed_creatures",
+        "surplus_items_resolve_to_known_items",
+        "trader_demand_does_not_require_hardcore_upkeep"
+      ],
+      "requiredSavedArtifacts": [
+        "animal-pen-samples.json",
+        "trader-surplus-demand-samples.json"
+      ]
+    },
+    {
+      "id": "builder_hammer_scaffold_inventory_storage",
+      "suiteId": "alpha_runtime",
+      "gateIds": [
+        "real_builder_ux_execution"
+      ],
+      "driverSurfaceIds": [
+        "builder_storage_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/builder_ux_alpha.json",
+        "systems/coop_and_smp.json"
+      ],
+      "actions": [
+        "cycle_hammer_shape_variants",
+        "place_and_expire_scaffold",
+        "quick_stack_to_named_chest",
+        "quick_deposit_matching_items",
+        "sort_inventory",
+        "craft_from_nearby_storage",
+        "repeat_commands_without_permission"
+      ],
+      "assertions": [
+        "hammer_variants_do_not_mutate_inventory_incorrectly",
+        "scaffold_has_temporary_behavior",
+        "storage_transactions_are_server_authoritative",
+        "permission_denials_do_not_desync_items"
+      ],
+      "requiredSavedArtifacts": [
+        "builder-hammer-scaffold-samples.json",
+        "storage-transaction-log.json",
+        "permission-denial-log.json"
+      ]
+    },
+    {
+      "id": "artifact_upload_download_hash",
+      "suiteId": "launcher_distribution_runtime",
+      "gateIds": [
+        "uploaded_release_artifacts"
+      ],
+      "driverSurfaceIds": [
+        "distribution_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/distribution_alpha_gates.json"
+      ],
+      "actions": [
+        "upload_native_standalone_neoforge_and_sources_artifacts",
+        "publish_release_index_entries",
+        "download_each_artifact_from_index",
+        "verify_sha256_and_size"
+      ],
+      "assertions": [
+        "all_required_artifact_urls_are_present",
+        "downloaded_sha256_matches_index",
+        "downloaded_size_matches_index",
+        "release_index_state_can_advance_from_warning_only_after_all_checks"
+      ],
+      "requiredSavedArtifacts": [
+        "artifact-publication-report.json",
+        "download-verification-report.json",
+        "release-index-entry-snapshot.json"
+      ]
+    },
+    {
+      "id": "launcher_install_update_repair_rollback",
+      "suiteId": "launcher_distribution_runtime",
+      "gateIds": [
+        "real_launcher_install_update_repair_rollback"
+      ],
+      "driverSurfaceIds": [
+        "launcher_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "systems/distribution_alpha_gates.json"
+      ],
+      "actions": [
+        "fresh_install_each_edition_from_launcher",
+        "update_from_previous_manifest",
+        "corrupt_and_repair_artifact",
+        "rollback_to_previous_manifest",
+        "verify_world_and_config_preservation"
+      ],
+      "assertions": [
+        "install_downloads_required_artifacts",
+        "update_preserves_worlds_and_configs",
+        "repair_restores_hashes",
+        "rollback_preserves_worlds",
+        "launcher_logs_include_success_for_each_flow"
+      ],
+      "requiredSavedArtifacts": [
+        "launcher-install-log.json",
+        "launcher-update-log.json",
+        "launcher-repair-log.json",
+        "launcher-rollback-log.json",
+        "world-config-preservation.json"
+      ]
+    },
+    {
+      "id": "final_owned_asset_review",
+      "suiteId": "final_asset_release_review",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "review_driver"
+      ],
+      "inputFixtureRefs": [
+        "assets/echoopenlandsprotocol/asset_manifest.json",
+        "systems/legal_content_audit.json"
+      ],
+      "actions": [
+        "review_all_block_textures_models_and_blockstates",
+        "review_all_item_icons_and_models",
+        "compare_placeholder_manifest_to_final_assets",
+        "record_human_review_signature"
+      ],
+      "assertions": [
+        "all_public_assets_are_openlands_owned",
+        "remaining_placeholder_count_is_zero_for_public_release",
+        "no_copied_textures_or_silhouettes_are_approved"
+      ],
+      "requiredSavedArtifacts": [
+        "asset-review-report.json",
+        "asset-manifest-hash.txt",
+        "approved-exceptions.json"
+      ]
+    },
+    {
+      "id": "final_sound_and_branding_review",
+      "suiteId": "final_asset_release_review",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "review_driver"
+      ],
+      "inputFixtureRefs": [
+        "sounds/mvp_sound_contract.json",
+        "assets/echoopenlandsprotocol/sounds.json",
+        "config/content_policy.json"
+      ],
+      "actions": [
+        "review_all_sound_events_and_audio_sources",
+        "review_launcher_and_pack_public_text",
+        "scan_generated_runtime_output",
+        "record_human_review_signature"
+      ],
+      "assertions": [
+        "all_public_audio_is_openlands_owned_or_licensed",
+        "public_text_uses_openlands_identity_only",
+        "no_minecraft_branding_or_copied_recipe_identity_ships"
+      ],
+      "requiredSavedArtifacts": [
+        "audio-source-review.json",
+        "branding-scan-report.json",
+        "generated-output-audit.json"
+      ]
+    }
+  ],
+  "reportAssemblyRules": {
+    "scenarioResultSource": "scenarioBindings",
+    "allActionsMustRun": true,
+    "allAssertionsMustPassForScenarioPass": true,
+    "allRequiredSavedArtifactsMustExistForScenarioPass": true,
+    "gateClearsOnlyWhenEveryMappedScenarioPasses": true,
+    "blockedHarnessDoesNotClearRuntimeGates": true,
+    "publicAlphaReadyRequiresRuntimeLauncherFinalReviewAndDistributionApproval": true
+  }
+}

@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.event;
 
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeResult;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.data.SaveMigrationHandler;
 import java.util.Map;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.knoxhack.echomultiblockcore.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echomultiblockcore.Config;
 import com.knoxhack.echomultiblockcore.api.RobotPoseSnapshot;
 import com.knoxhack.echonetcore.api.EchoNetSend;

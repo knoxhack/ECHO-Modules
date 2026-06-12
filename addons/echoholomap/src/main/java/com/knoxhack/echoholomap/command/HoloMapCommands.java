@@ -1,7 +1,7 @@
 package com.knoxhack.echoholomap.command;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.HoloMapIds;

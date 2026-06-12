@@ -1,14 +1,14 @@
 package com.knoxhack.echoritualcore.integration.missioncore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.IMissionRegistry;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.MissionRewardClaimMode;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
-import com.knoxhack.echocore.api.mission.RewardDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.IMissionRegistry;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echoritualcore.EchoRitualCore;
 import com.knoxhack.echoritualcore.api.RitualCoreApi;
 import com.knoxhack.echoritualcore.api.RitualCoreEvents;

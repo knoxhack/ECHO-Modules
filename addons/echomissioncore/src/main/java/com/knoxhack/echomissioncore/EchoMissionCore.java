@@ -1,7 +1,7 @@
 package com.knoxhack.echomissioncore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echomissioncore.command.MissionCoreCommands;
 import com.knoxhack.echomissioncore.content.MissionCoreReloaders;
 import com.knoxhack.echomissioncore.integration.MissionCoreDiagnostics;

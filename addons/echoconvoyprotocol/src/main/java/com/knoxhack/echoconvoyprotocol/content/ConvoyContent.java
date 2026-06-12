@@ -2,7 +2,7 @@ package com.knoxhack.echoconvoyprotocol.content;
 
 import com.knoxhack.echoconvoyprotocol.EchoConvoyProtocol;
 import com.knoxhack.echoconvoyprotocol.registry.ModItems;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;

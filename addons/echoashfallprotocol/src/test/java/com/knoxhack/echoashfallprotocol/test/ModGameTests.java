@@ -1,23 +1,23 @@
 package com.knoxhack.echoashfallprotocol.test;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoFactionContract;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.IStructureDiscoveryService;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.IMissionService;
-import com.knoxhack.echocore.api.mission.IObjectiveView;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.MissionRewardClaimMode;
-import com.knoxhack.echocore.api.mission.MissionStatus;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.IStructureDiscoveryService;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IMissionService;
+import com.echoplatform.echocore.api.mission.IObjectiveView;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
+import com.echoplatform.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockEntitySnapshot;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockRef;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockState;
@@ -3196,7 +3196,7 @@ public final class ModGameTests {
                 ModBlocks.IRRADIATED_SHALE.get().asItem(),
                 ModBlocks.CRYOGENIC_FRACTURED_STONE.get().asItem(),
                 ModBlocks.NEXUS_CRACKED_SOIL.get().asItem(),
-                ModBlocks.RIFTSTONE.get().asItem()
+                ModBlocks.NEXUS_SCAR_STONE.get().asItem()
         );
         List<Item> legacyInputs = List.of(
                 ModItems.IRON_SHARD.get(),
@@ -3995,8 +3995,8 @@ public final class ModGameTests {
         assertNativeMissionTerminal(helper, serverPlayer, "secure_sleep_shelter");
 
         startNativeMissionIfNeeded(helper, serverPlayer, "assemble_wasteland_field_kit");
-        serverPlayer.getInventory().add(new ItemStack(ModItems.BONE_KNIFE.get()));
-        serverPlayer.getInventory().add(new ItemStack(ModItems.CRUDE_SPEAR.get()));
+        serverPlayer.getInventory().add(new ItemStack(ModItems.ASHBONE_SHIV.get()));
+        serverPlayer.getInventory().add(new ItemStack(ModItems.SCAVENGER_SPEAR.get()));
         serverPlayer.getInventory().add(new ItemStack(ModItems.HIDE_WRAP.get()));
         AshfallAdapterCoreEarlyEventRuntime.itemObtained(
                 serverPlayer,
@@ -5598,16 +5598,16 @@ public final class ModGameTests {
         assertRewardAtLeast(helper, requireMission(helper, "plant_mutated_sapling"), Items.CAULDRON, 1);
         assertRewardAtLeast(helper, requireMission(helper, "plant_mutated_sapling"), ModItems.SCRAP_PLASTIC.get(), 8);
         assertRewardAtLeast(helper, requireMission(helper, "craft_scrap_knife"), ModItems.SCRAP_WIRE.get(), 4);
-        assertRewardAtLeast(helper, requireMission(helper, "secure_sleep_shelter"), ModItems.ANIMAL_BONE.get(), 2);
-        assertRewardAtLeast(helper, requireMission(helper, "secure_sleep_shelter"), ModItems.ANIMAL_HIDE.get(), 4);
+        assertRewardAtLeast(helper, requireMission(helper, "secure_sleep_shelter"), ModItems.ASHBONE_SHARD.get(), 2);
+        assertRewardAtLeast(helper, requireMission(helper, "secure_sleep_shelter"), ModItems.SCORCHED_HIDE_STRIP.get(), 4);
         assertRewardAtLeast(helper, requireMission(helper, "secure_sleep_shelter"), Items.STICK, 3);
-        assertRecipeContains(helper, "bone_knife", "minecraft:stick");
-        assertRecipeOmits(helper, "bone_knife", "echoashfallprotocol:scrap_metal");
-        assertRecipeContains(helper, "crude_spear", "minecraft:stick");
-        assertRecipeOmits(helper, "crude_spear", "echoashfallprotocol:scrap_metal");
+        assertRecipeContains(helper, "ashbone_shiv", "minecraft:stick");
+        assertRecipeOmits(helper, "ashbone_shiv", "echoashfallprotocol:scrap_metal");
+        assertRecipeContains(helper, "scavenger_spear", "minecraft:stick");
+        assertRecipeOmits(helper, "scavenger_spear", "echoashfallprotocol:scrap_metal");
         Mission fieldKit = requireMission(helper, "assemble_wasteland_field_kit");
-        assertRequiredCount(helper, fieldKit, ModItems.BONE_KNIFE.get(), 1);
-        assertRequiredCount(helper, fieldKit, ModItems.CRUDE_SPEAR.get(), 1);
+        assertRequiredCount(helper, fieldKit, ModItems.ASHBONE_SHIV.get(), 1);
+        assertRequiredCount(helper, fieldKit, ModItems.SCAVENGER_SPEAR.get(), 1);
         assertRequiredCount(helper, fieldKit, ModItems.HIDE_WRAP.get(), 1);
         assertRewardAtLeast(helper, fieldKit, ModItems.FILTER_CARTRIDGE_BASIC.get(), 1);
         assertRewardAtLeast(helper, fieldKit, ModItems.SCHEMATIC_FRAGMENT.get(), 1);

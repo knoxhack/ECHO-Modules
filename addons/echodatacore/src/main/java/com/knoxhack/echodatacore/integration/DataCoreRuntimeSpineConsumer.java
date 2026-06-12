@@ -1,9 +1,9 @@
 package com.knoxhack.echodatacore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
-import com.knoxhack.echocore.api.IDataView;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.IDataView;
 import com.knoxhack.echodatacore.DataCoreBuiltinKeys;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -48,7 +48,7 @@ public final class DataCoreRuntimeSpineConsumer {
         }
     }
 
-    private static void increment(IDataView view, com.knoxhack.echocore.api.IDataKey<Long> key) {
+    private static void increment(IDataView view, com.echoplatform.echocore.api.IDataKey<Long> key) {
         if (view == null || key == null) {
             return;
         }

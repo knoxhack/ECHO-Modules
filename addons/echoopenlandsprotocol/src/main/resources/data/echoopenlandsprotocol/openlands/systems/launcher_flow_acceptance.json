@@ -1,0 +1,324 @@
+{
+  "schema": "echo.openlands.systems.launcher_flow_acceptance.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "sourceContracts": {
+    "distribution": "systems/distribution_alpha_gates.json",
+    "runtimeAdapterLoadPlan": "systems/runtime_adapter_load_plan.json",
+    "playtestFixture": "playtests/mvp_first_hour_acceptance.json",
+    "releaseIndexAddon": "ECHO-Release-Index/addons/echoopenlandsprotocol.json",
+    "releaseIndexModpacks": [
+      "ECHO-Release-Index/modpacks/openlands-native.json",
+      "ECHO-Release-Index/modpacks/openlands-neoforge.json",
+      "ECHO-Release-Index/modpacks/openlands-standalone.json"
+    ]
+  },
+  "editionMatrix": [
+    {
+      "id": "native",
+      "runtimeTarget": "echo_native",
+      "packId": "openlands-native-edition",
+      "editionRepo": "ECHO-Openlands-Native-Edition",
+      "releaseManifest": "release-manifest.template.json",
+      "releaseIndexEntry": "modpacks/openlands-native.json",
+      "artifactFamily": "echo-addon",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "launcherProfileKind": "echo-native-loader",
+      "requiredDescriptors": [
+        "META-INF/echo.mod.json"
+      ]
+    },
+    {
+      "id": "neoforge",
+      "runtimeTarget": "neoforge",
+      "packId": "openlands-neoforge-edition",
+      "editionRepo": "ECHO-Openlands-NeoForge-Edition",
+      "releaseManifest": "release-manifest.template.json",
+      "releaseIndexEntry": "modpacks/openlands-neoforge.json",
+      "artifactFamily": "neoforge",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "launcherProfileKind": "neoforge",
+      "requiredDescriptors": [
+        "META-INF/echo.mod.json",
+        "META-INF/neoforge.mods.toml"
+      ]
+    },
+    {
+      "id": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "packId": "openlands-standalone-edition",
+      "editionRepo": "ECHO-Openlands-Standalone-Edition",
+      "releaseManifest": "release-manifest.template.json",
+      "releaseIndexEntry": "modpacks/openlands-standalone.json",
+      "artifactFamily": "standalone",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "launcherProfileKind": "echo-standalone-runtime",
+      "requiredDescriptors": [
+        "META-INF/echo.mod.json"
+      ]
+    }
+  ],
+  "artifactVerification": {
+    "requiredBeforePublicAlpha": [
+      {
+        "id": "native",
+        "file": "echoopenlandsprotocol-0.1.0.echo-addon",
+        "role": "runtime_module",
+        "mustHaveIndexFields": [
+          "url",
+          "sha256",
+          "size",
+          "moduleId",
+          "version",
+          "runtimeTarget"
+        ]
+      },
+      {
+        "id": "standalone",
+        "file": "echoopenlandsprotocol-0.1.0-standalone.jar",
+        "role": "runtime_module",
+        "mustHaveIndexFields": [
+          "url",
+          "sha256",
+          "size",
+          "moduleId",
+          "version",
+          "runtimeTarget"
+        ]
+      },
+      {
+        "id": "neoforge",
+        "file": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+        "role": "runtime_module",
+        "mustHaveIndexFields": [
+          "url",
+          "sha256",
+          "size",
+          "moduleId",
+          "version",
+          "runtimeTarget"
+        ]
+      },
+      {
+        "id": "sources",
+        "file": "echoopenlandsprotocol-0.1.0-sources.jar",
+        "role": "traceability",
+        "mustHaveIndexFields": [
+          "url",
+          "sha256",
+          "size",
+          "moduleId",
+          "version"
+        ]
+      }
+    ],
+    "currentIndexStateAllowed": "warning",
+    "approvedStateRequiresArtifacts": true
+  },
+  "requiredLauncherFlows": [
+    {
+      "id": "install",
+      "displayName": "Fresh Install",
+      "appliesTo": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "preconditions": [
+        "selected_edition_present_in_launcher_channel",
+        "module_requirement_graph_resolves",
+        "artifact_index_metadata_present_before_public_alpha",
+        "selected_runtime_available"
+      ],
+      "mustVerify": [
+        "manifest_download",
+        "artifact_download",
+        "sha256_match",
+        "runtime_start",
+        "openlands_standard_selected"
+      ],
+      "additionalAssertions": [
+        "descriptor_id_is_echoopenlandsprotocol",
+        "descriptor_version_is_0.1.0",
+        "descriptor_runtime_target_matches_edition",
+        "required_descriptors_exist",
+        "adapter_ready_signal_reported"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": false,
+        "mustCreateWorld": true,
+        "mustPreserveWorlds": false
+      },
+      "evidenceAttachment": "launcher-install-report.json"
+    },
+    {
+      "id": "update",
+      "displayName": "Artifact Update",
+      "appliesTo": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "preconditions": [
+        "previous_manifest_installed",
+        "new_manifest_available",
+        "changed_artifact_has_new_sha256",
+        "unchanged_artifacts_have_same_sha256"
+      ],
+      "mustVerify": [
+        "old_manifest_detected",
+        "changed_artifact_downloaded",
+        "unchanged_artifacts_reused",
+        "save_preserved",
+        "config_preserved"
+      ],
+      "additionalAssertions": [
+        "openlands_standard_remains_default",
+        "runtime_evidence_contract_path_unchanged_or_migrated",
+        "waystone_schema_readable_after_update",
+        "holomap_schema_readable_after_update"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      },
+      "evidenceAttachment": "launcher-update-report.json"
+    },
+    {
+      "id": "repair",
+      "displayName": "Repair Corrupt Install",
+      "appliesTo": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "preconditions": [
+        "installed_manifest_available",
+        "one_required_artifact_missing_or_corrupt",
+        "release_index_has_repair_metadata"
+      ],
+      "mustVerify": [
+        "missing_artifact_detected",
+        "corrupt_artifact_detected",
+        "sha256_restored",
+        "pack_launches_after_repair"
+      ],
+      "additionalAssertions": [
+        "descriptor_revalidated_after_repair",
+        "no_world_files_deleted",
+        "openlands_standard_config_preserved",
+        "adapter_ready_signal_reported_after_repair"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      },
+      "evidenceAttachment": "launcher-repair-report.json"
+    },
+    {
+      "id": "rollback",
+      "displayName": "Rollback To Previous Manifest",
+      "appliesTo": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "preconditions": [
+        "previous_manifest_available",
+        "previous_artifacts_available",
+        "world_schema_compatibility_checked",
+        "user_confirmed_schema_warning_when_needed"
+      ],
+      "mustVerify": [
+        "previous_manifest_available",
+        "previous_artifacts_available",
+        "worlds_preserved",
+        "schema_warning_if_needed"
+      ],
+      "additionalAssertions": [
+        "rollback_does_not_delete_worlds",
+        "rollback_does_not_delete_config",
+        "waystone_schema_warning_visible_if_newer_world_detected",
+        "launcher_can_return_to_current_manifest_after_test"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      },
+      "evidenceAttachment": "launcher-rollback-report.json"
+    }
+  ],
+  "statePreservation": {
+    "configFiles": [
+      "openlands_standard.json",
+      "selected_mode",
+      "user_keybinds",
+      "launcher_profile_selection"
+    ],
+    "firstHourSaveFields": [
+      "inventory",
+      "hotbar",
+      "placedBlocks",
+      "chestContents",
+      "bedrollSpawn",
+      "campfireLitState",
+      "shelterScore",
+      "waystoneState",
+      "holomapRegionDiscovery"
+    ],
+    "waystoneFields": [
+      "waystoneId",
+      "regionId",
+      "customName",
+      "state",
+      "ownerPlayerId",
+      "ownerGroupId",
+      "isPublicTravel",
+      "canPublicRename",
+      "repairContributorIds",
+      "linkedRouteIds",
+      "lastActivatedAt"
+    ],
+    "holomapFields": [
+      "regionId",
+      "displayName",
+      "seedSalt",
+      "biomeType",
+      "discoveredAt",
+      "nearbyHints",
+      "restoredWaystones",
+      "playerMarkers",
+      "oldRoadSegments"
+    ]
+  },
+  "failurePolicies": [
+    {
+      "condition": "missing_sha256",
+      "action": "keep_release_index_warning"
+    },
+    {
+      "condition": "launcher_flow_missing",
+      "action": "block_public_alpha"
+    },
+    {
+      "condition": "world_preservation_failed",
+      "action": "block_update_repair_rollback"
+    },
+    {
+      "condition": "runtime_start_failed",
+      "action": "hide_edition_from_public_launcher"
+    }
+  ],
+  "releaseEvidence": [
+    "native_standalone_neoforge_artifacts_uploaded_with_sha256",
+    "launcher_install_update_repair_rollback_pass"
+  ]
+}

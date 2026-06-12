@@ -1,0 +1,56 @@
+{
+  "schema": "echo.foundation.station_recipe_contracts.v1",
+  "contracts": [
+    {
+      "station": "echostationcore:handcrafting",
+      "accepts": [
+        "emergency_tools",
+        "simple_materials"
+      ]
+    },
+    {
+      "station": "field_bench",
+      "accepts": [
+        "baseline_tools",
+        "baseline_blocks",
+        "simple_stations"
+      ]
+    },
+    {
+      "station": "echostationcore:kiln",
+      "accepts": [
+        "ceramics",
+        "glass",
+        "echomaterialcore:charcoal_lump"
+      ]
+    },
+    {
+      "station": "forge_hearth",
+      "accepts": [
+        "raw_metal_to_bar",
+        "metal_tool_heads"
+      ]
+    },
+    {
+      "station": "echostationcore:loom",
+      "accepts": [
+        "bindings",
+        "cloth",
+        "packs"
+      ]
+    },
+    {
+      "station": "echostationcore:cookpot",
+      "accepts": [
+        "simple_meals"
+      ]
+    },
+    {
+      "station": "echostationcore:mason_table",
+      "accepts": [
+        "stone_blocks",
+        "road_materials"
+      ]
+    }
+  ]
+}

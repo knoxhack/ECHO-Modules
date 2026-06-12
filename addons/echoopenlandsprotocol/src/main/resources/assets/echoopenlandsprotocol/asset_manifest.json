@@ -1,0 +1,127 @@
+{
+  "schema": "echo.openlands.assets.v1",
+  "namespace": "echoopenlandsprotocol",
+  "status": "owned_openlands_coverage_after_foundation_split",
+  "legalRule": "All final textures, models, audio, names, and silhouettes must be original ECHO/Openlands work.",
+  "publicReleaseAllowedWithPlaceholders": false,
+  "requiredRoots": [
+    "textures/block",
+    "textures/item",
+    "models/block",
+    "models/item",
+    "blockstates",
+    "lang/en_us.json",
+    "sounds.json"
+  ],
+  "placeholderPolicy": {
+    "allowedBeforePublicAlpha": true,
+    "style": "flat_color_swatches_with_echoopenlands_diagonal_mark",
+    "mustBeOriginal": true,
+    "mustNotBorrowFrom": [
+      "Minecraft resource packs",
+      "Minecraft screenshots",
+      "Minecraft model silhouettes",
+      "third-party copyrighted packs without explicit license"
+    ],
+    "replacementGate": "public_alpha_art_review",
+    "notes": "This manifest is a coverage contract. It proves every MVP id has an Echo-owned placeholder plan; it does not approve placeholder art for public release."
+  },
+  "pathTemplates": {
+    "blockstate": "blockstates/{id}.json",
+    "blockModel": "models/block/{id}.json",
+    "blockTexture": "textures/block/{texture}.png",
+    "itemModel": "models/item/{id}.json",
+    "itemTexture": "textures/item/{texture}.png"
+  },
+  "modelRules": {
+    "block": {
+      "cube_all": "Use one generated Echo-owned texture on all faces.",
+      "cube_grass": "Use generated Echo-owned side/top/bottom color bands; no vanilla grass layout copy.",
+      "orientable": "Use Openlands log/post banding with original ring and bark shapes.",
+      "utility": "Use simplified Echo silhouettes until final art pass."
+    },
+    "item": {
+      "generated": "Use original flat icon silhouette and palette from Openlands material family.",
+      "tool": "Use original tool proportions; avoid recognizable vanilla pick/axe silhouettes.",
+      "handheld": "Use original handheld pose and proportions."
+    }
+  },
+  "mvpCoverage": {
+    "blockIds": [
+      "meadow_grass_block",
+      "forest_soil",
+      "dry_soil",
+      "mud",
+      "limestone",
+      "granite",
+      "shale",
+      "deepstone",
+      "glow_crystal_cluster",
+      "pine_log",
+      "pine_planks",
+      "pine_beam",
+      "pine_post",
+      "thatch_roof",
+      "fieldstone_bricks",
+      "brick_block",
+      "glass_block",
+      "shelf",
+      "sign",
+      "lantern",
+      "map_table",
+      "old_road_block",
+      "old_road_marker",
+      "broken_waystone",
+      "restored_waystone",
+      "waystone_plinth"
+    ],
+    "itemIds": [
+      "soil_clump",
+      "glow_crystal",
+      "berries",
+      "mushroom",
+      "raw_meat",
+      "cooked_meat",
+      "grain",
+      "root_crop",
+      "fish",
+      "stew_bowl",
+      "small_pack",
+      "repair_kit",
+      "cupral_fitting",
+      "waystone_core",
+      "region_rubbing",
+      "old_road_token",
+      "route_binding",
+      "compost",
+      "scaffold_bundle",
+      "wooden_bowl"
+    ]
+  },
+  "mvpAssetFamilies": [
+    "terrain_blocks",
+    "stone_blocks",
+    "ore_blocks",
+    "wood_families",
+    "utility_blocks",
+    "raw_material_items",
+    "metal_items",
+    "food_items",
+    "tool_items",
+    "waystone_items",
+    "creature_sounds",
+    "biome_ambience",
+    "ui_stingers"
+  ],
+  "adapterNotes": {
+    "echo_native": "Use Echo asset IDs directly from this namespace.",
+    "echo_runtime_standalone": "Bake or stream assets through the standalone runtime asset graph.",
+    "neoforge": "Generate pack-compatible resource locations without exposing copied Minecraft content."
+  },
+  "foundationAssetDependencies": {
+    "echomaterialcore": "Generic materials, blocks, and metal progression assets.",
+    "echotoolcore": "Baseline tool assets.",
+    "echostationcore": "Baseline station assets.",
+    "echoworldstarter": "Starter shelter, light, campfire, and bedroll assets."
+  }
+}

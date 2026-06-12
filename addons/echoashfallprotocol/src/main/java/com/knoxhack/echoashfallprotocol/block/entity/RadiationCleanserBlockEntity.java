@@ -56,8 +56,8 @@ public class RadiationCleanserBlockEntity extends BlockEntity implements MenuPro
         // Contaminated iron -> iron ingot
         DECONTAMINATION_MAP.put(ModItems.CONTAMINATED_IRON.get(), Items.IRON_INGOT);
         DECONTAMINATION_MAP.put(ModItems.CONTAMINATED_GOLD.get(), Items.GOLD_INGOT);
-        DECONTAMINATION_MAP.put(ModItems.CONTAMINATED_REDSTONE.get(), Items.REDSTONE);
-        DECONTAMINATION_MAP.put(ModItems.CONTAMINATED_LAPIS.get(), Items.LAPIS_LAZULI);
+        DECONTAMINATION_MAP.put(ModItems.CHARGED_ASH_CIRCUIT.get(), Items.REDSTONE);
+        DECONTAMINATION_MAP.put(ModItems.BLUE_ASH_SALT.get(), Items.LAPIS_LAZULI);
     }
 
     public static java.util.Map<Item, Item> getDecontaminationMap() {

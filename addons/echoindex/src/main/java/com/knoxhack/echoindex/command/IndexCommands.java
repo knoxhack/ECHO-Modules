@@ -2,9 +2,9 @@ package com.knoxhack.echoindex.command;
 
 import com.knoxhack.echo.adaptercore.EchoBackendCommandEventBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.index.IndexCategory;
-import com.knoxhack.echocore.api.index.IndexEntry;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexCategory;
+import com.echoplatform.echocore.api.index.IndexEntry;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.service.IndexDiscoveryStore;

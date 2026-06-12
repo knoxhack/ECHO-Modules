@@ -1,6 +1,6 @@
 package com.knoxhack.echonetcore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echonetcore.config.EchoNetCoreConfig;
 import com.knoxhack.echonetcore.service.NetCoreNetworkService;
 import com.mojang.logging.LogUtils;

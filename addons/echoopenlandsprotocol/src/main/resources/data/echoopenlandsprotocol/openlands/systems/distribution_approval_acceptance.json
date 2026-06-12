@@ -1,0 +1,307 @@
+{
+  "schema": "echo.openlands.systems.distribution_approval_acceptance.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the real Public Alpha distribution approval evidence required after local artifacts, preflight reports, runtime execution, launcher execution, final review, and Release Index publication are complete.",
+  "sourceContracts": {
+    "distribution": "systems/distribution_alpha_gates.json",
+    "launcherFlow": "systems/launcher_flow_acceptance.json",
+    "launcherExecution": "systems/launcher_execution_acceptance.json",
+    "runtimeExecution": "systems/runtime_execution_acceptance.json",
+    "finalReleaseReview": "systems/final_release_review_acceptance.json",
+    "releasePublication": "systems/release_publication_manifest_contract.json",
+    "launchRoadmap": "progression/launch_roadmap.json",
+    "releaseIndex": "dist/echo-module-release/echo-release.json"
+  },
+  "reportContract": {
+    "schema": "echo.openlands.edition.distribution_approval_report.v1",
+    "allowedReportStatus": [
+      "passed",
+      "failed",
+      "blocked"
+    ],
+    "requiredReportFields": [
+      "schema",
+      "status",
+      "generatedAt",
+      "edition",
+      "runtimeTarget",
+      "moduleId",
+      "moduleVersion",
+      "releaseId",
+      "approvalRun",
+      "approvalResults",
+      "clearedDistributionGates",
+      "remainingDistributionGates",
+      "publicAlphaReady"
+    ],
+    "requiredApprovalFields": [
+      "id",
+      "gateIds",
+      "status",
+      "checklist",
+      "evidenceRefs",
+      "savedArtifacts"
+    ],
+    "allowedApprovalStatus": [
+      "passed",
+      "failed",
+      "blocked",
+      "skipped"
+    ],
+    "requiredChecklistFields": [
+      "id",
+      "status"
+    ],
+    "allowedChecklistStatus": [
+      "passed",
+      "failed",
+      "blocked",
+      "skipped"
+    ],
+    "passRules": [
+      "Every approval area must be status passed for its edition.",
+      "Every checklist item in every passed approval area must be status passed.",
+      "clearedDistributionGates must include only gates backed by passing approval areas.",
+      "publicAlphaReady may be true only when artifact URLs are published, downloads verify by sha256 and size, edition manifests are indexed, runtime and launcher gates are cleared, final review is passed, co-op session evidence exists, and distribution approval is signed."
+    ]
+  },
+  "editionReports": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "requiredReport": "evidence/native-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "requiredReport": "evidence/neoforge-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "requiredReport": "evidence/standalone-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar"
+    }
+  ],
+  "distributionGates": [
+    {
+      "id": "release_index_artifact_urls_published",
+      "clearsEvidence": [
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256"
+      ],
+      "mustCapture": [
+        "artifactUrl",
+        "artifactSha256",
+        "artifactSize",
+        "releaseIndexEntry",
+        "releaseIndexCommit"
+      ]
+    },
+    {
+      "id": "release_index_download_hash_verified",
+      "clearsEvidence": [
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256"
+      ],
+      "mustCapture": [
+        "downloadUrl",
+        "downloadedSha256",
+        "downloadedSize",
+        "expectedSha256",
+        "expectedSize"
+      ]
+    },
+    {
+      "id": "edition_pack_manifests_indexed",
+      "clearsEvidence": [
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256"
+      ],
+      "mustCapture": [
+        "nativePackManifestEntry",
+        "neoforgePackManifestEntry",
+        "standalonePackManifestEntry",
+        "moduleRequirementGraph",
+        "launcherChannel"
+      ]
+    },
+    {
+      "id": "public_alpha_coop_session_tested",
+      "clearsEvidence": [
+        "launcher_install_update_repair_rollback_pass",
+        "first_hour_runtime_playtest_pass",
+        "waystone_state_save_load_pass"
+      ],
+      "mustCapture": [
+        "hostRuntimeTarget",
+        "playerCount",
+        "sessionDurationMinutes",
+        "sharedWaystoneState",
+        "storagePermissionSample",
+        "disconnectReconnectResult"
+      ]
+    },
+    {
+      "id": "public_alpha_distribution_approved",
+      "clearsEvidence": [
+        "openlands_contract_validator_pass",
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256",
+        "launcher_install_update_repair_rollback_pass",
+        "first_hour_runtime_playtest_pass",
+        "waystone_state_save_load_pass",
+        "legal_content_audit_pass"
+      ],
+      "mustCapture": [
+        "approver",
+        "approvalDate",
+        "readinessReportHash",
+        "runtimeExecutionReportHashes",
+        "launcherExecutionReportHashes",
+        "finalReleaseReviewReportHashes",
+        "approvedReleaseIndexState"
+      ]
+    }
+  ],
+  "approvalAreas": [
+    {
+      "id": "artifact_publication",
+      "displayName": "Artifact Publication",
+      "gateIds": [
+        "release_index_artifact_urls_published",
+        "release_index_download_hash_verified"
+      ],
+      "inputFixtureRefs": [
+        "systems/distribution_alpha_gates.json",
+        "dist/echo-module-release/echo-release.json"
+      ],
+      "checklist": [
+        "all_required_artifacts_have_download_urls",
+        "downloaded_artifacts_match_sha256",
+        "downloaded_artifacts_match_size",
+        "sources_artifact_is_published",
+        "release_index_state_is_ready_for_approval"
+      ],
+      "requiredSavedArtifacts": [
+        "artifact-publication-report.json",
+        "download-verification-report.json",
+        "release-index-diff.json"
+      ]
+    },
+    {
+      "id": "edition_manifest_indexing",
+      "displayName": "Edition Manifest Indexing",
+      "gateIds": [
+        "edition_pack_manifests_indexed"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "ECHO-Openlands-Native-Edition/release-manifest.template.json",
+        "ECHO-Openlands-NeoForge-Edition/release-manifest.template.json",
+        "ECHO-Openlands-Standalone-Edition/release-manifest.template.json"
+      ],
+      "checklist": [
+        "native_manifest_is_indexed",
+        "neoforge_manifest_is_indexed",
+        "standalone_manifest_is_indexed",
+        "module_requirements_resolve_for_each_manifest",
+        "launcher_channel_lists_all_three_editions"
+      ],
+      "requiredSavedArtifacts": [
+        "edition-manifest-index-report.json",
+        "module-requirement-resolution.json",
+        "launcher-channel-listing.json"
+      ]
+    },
+    {
+      "id": "runtime_launcher_final_review_dependency",
+      "displayName": "Runtime Launcher And Final Review Dependency",
+      "gateIds": [
+        "public_alpha_distribution_approved"
+      ],
+      "inputFixtureRefs": [
+        "systems/runtime_execution_acceptance.json",
+        "systems/launcher_execution_acceptance.json",
+        "systems/final_release_review_acceptance.json"
+      ],
+      "checklist": [
+        "runtime_execution_reports_pass_for_all_editions",
+        "launcher_execution_reports_pass_for_all_editions",
+        "final_release_review_reports_pass_for_all_editions",
+        "release_readiness_report_has_no_blockers",
+        "approved_release_index_state_is_recorded"
+      ],
+      "requiredSavedArtifacts": [
+        "dependency-gate-summary.json",
+        "release-readiness-hash.txt",
+        "approval-input-report-index.json"
+      ]
+    },
+    {
+      "id": "coop_public_alpha_session",
+      "displayName": "Co-op Public Alpha Session",
+      "gateIds": [
+        "public_alpha_coop_session_tested"
+      ],
+      "inputFixtureRefs": [
+        "systems/coop_and_smp.json",
+        "playtests/mvp_first_hour_acceptance.json",
+        "waystones/waystone_contract.json"
+      ],
+      "checklist": [
+        "one_to_eight_player_session_starts",
+        "shared_waystone_state_stays_consistent",
+        "storage_permissions_are_enforced",
+        "disconnect_reconnect_preserves_player_state",
+        "session_logs_have_no_authority_desync"
+      ],
+      "requiredSavedArtifacts": [
+        "coop-session-report.json",
+        "coop-waystone-state-log.json",
+        "coop-permission-transaction-log.json"
+      ]
+    },
+    {
+      "id": "public_alpha_approval",
+      "displayName": "Public Alpha Approval",
+      "gateIds": [
+        "public_alpha_distribution_approved"
+      ],
+      "inputFixtureRefs": [
+        "progression/launch_roadmap.json",
+        "progression/production_phase_matrix.json",
+        "dist/echo-module-release/echoopenlandsprotocol/openlands-release-readiness-report.json"
+      ],
+      "checklist": [
+        "mvp_scope_matches_launch_roadmap",
+        "hardlands_remains_optional",
+        "all_public_alpha_evidence_ids_are_present",
+        "approver_signature_is_recorded",
+        "rollback_plan_is_attached"
+      ],
+      "requiredSavedArtifacts": [
+        "public-alpha-approval.md",
+        "rollback-plan-snapshot.md",
+        "approved-readiness-report.json",
+        "approved-readiness-report-by-phase.md"
+      ]
+    }
+  ],
+  "publicAlphaClearance": {
+    "requiresEveryEditionReport": true,
+    "requiresEveryDistributionGateCleared": true,
+    "requiresUploadedArtifactUrls": true,
+    "requiresReleaseIndexApproval": true,
+    "requiresCoopSessionEvidence": true,
+    "requiresRuntimeLauncherAndFinalReviewPass": true,
+    "preflightReportsDoNotClearDistributionGates": true
+  }
+}

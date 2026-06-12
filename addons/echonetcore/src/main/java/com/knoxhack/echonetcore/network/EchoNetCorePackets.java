@@ -1,9 +1,9 @@
 package com.knoxhack.echonetcore.network;
 
-import com.knoxhack.echocore.api.EchoFactionDataService;
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
-import com.knoxhack.echocore.api.network.EchoPacketDirection;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoFactionDataService;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.EchoPacketDirection;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.EchoNetCore;
 import com.knoxhack.echonetcore.api.EchoClientSyncRegistry;
 import com.knoxhack.echonetcore.api.EchoDebugCommandRegistry;

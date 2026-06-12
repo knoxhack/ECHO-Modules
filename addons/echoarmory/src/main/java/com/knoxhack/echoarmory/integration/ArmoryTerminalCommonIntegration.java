@@ -1,6 +1,6 @@
 package com.knoxhack.echoarmory.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoarmory.EchoArmory;
 import com.knoxhack.echoarmory.content.ArmoryContent;
 import com.knoxhack.echoarmory.content.ArmoryLoadoutDefinition;

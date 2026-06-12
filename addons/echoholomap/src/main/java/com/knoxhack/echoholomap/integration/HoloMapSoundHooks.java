@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoholomap.HoloMapIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;

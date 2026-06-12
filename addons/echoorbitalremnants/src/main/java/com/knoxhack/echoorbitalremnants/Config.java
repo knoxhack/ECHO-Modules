@@ -1,13 +1,13 @@
 package com.knoxhack.echoorbitalremnants;
 
-import com.knoxhack.echocore.api.config.EchoConfigCategory;
-import com.knoxhack.echocore.api.config.EchoConfigEntry;
-import com.knoxhack.echocore.api.config.EchoConfigModule;
-import com.knoxhack.echocore.api.config.EchoConfigProvider;
-import com.knoxhack.echocore.api.config.EchoConfigRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.config.EchoConfigCategory;
+import com.echoplatform.echocore.api.config.EchoConfigEntry;
+import com.echoplatform.echocore.api.config.EchoConfigModule;
+import com.echoplatform.echocore.api.config.EchoConfigProvider;
+import com.echoplatform.echocore.api.config.EchoConfigRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
 import java.util.List;
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public class Config {
     private static final EchoNativeConfigSpec.Builder BUILDER = new EchoNativeConfigSpec.Builder();

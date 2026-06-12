@@ -1,0 +1,167 @@
+{
+  "schema": "echo.foundation.module_contracts.v1",
+  "rule": "Foundations owns baseline survival; experiences own only their unique fantasy, systems, and pressure.",
+  "dependencyRule": "Experiences depend on Foundations. Experiences never depend on each other.",
+  "modules": [
+    {
+      "id": "echofoundationcore",
+      "role": "foundation_contracts",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "provides": [
+        "foundation.core",
+        "foundation.ownership",
+        "foundation.aliases",
+        "foundation.legal_identity",
+        "foundation.registry_contracts"
+      ],
+      "consumes": [],
+      "summary": "Shared survival/content ownership, dependency, alias, and legal identity contracts."
+    },
+    {
+      "id": "echomaterialcore",
+      "role": "foundation_materials",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore"
+      ],
+      "provides": [
+        "foundation.materials",
+        "foundation.generic_blocks",
+        "foundation.generic_items",
+        "foundation.material_tags"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.aliases",
+        "foundation.legal_identity"
+      ],
+      "summary": "Baseline raw materials, refined materials, generic building blocks, and material tags."
+    },
+    {
+      "id": "echotoolcore",
+      "role": "foundation_tools",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore"
+      ],
+      "provides": [
+        "foundation.tools",
+        "foundation.tool_roles",
+        "foundation.tool_progression"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.material_tags"
+      ],
+      "summary": "Baseline hand tools, tool role tags, and survival tool progression."
+    },
+    {
+      "id": "echostationcore",
+      "role": "foundation_stations",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore"
+      ],
+      "provides": [
+        "foundation.stations",
+        "foundation.station_roles",
+        "foundation.shared_recipe_surfaces"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools"
+      ],
+      "summary": "Baseline crafting/storage/processing stations and recipe surface contracts."
+    },
+    {
+      "id": "echoworldstarter",
+      "role": "foundation_world_starter",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore"
+      ],
+      "provides": [
+        "foundation.spawn_safety",
+        "foundation.first_hour",
+        "foundation.shelter_rules",
+        "foundation.starter_items"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools",
+        "foundation.stations"
+      ],
+      "summary": "Spawn safety, first-hour survival route, starter shelter, and early light contracts."
+    },
+    {
+      "id": "echocommonloot",
+      "role": "foundation_common_loot",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore"
+      ],
+      "provides": [
+        "foundation.common_loot",
+        "foundation.block_drops",
+        "foundation.starter_caches"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools",
+        "foundation.stations"
+      ],
+      "summary": "Generic loot pools, baseline block drops, and starter cache contracts."
+    },
+    {
+      "id": "echocreatureroles",
+      "role": "foundation_creature_roles",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore"
+      ],
+      "provides": [
+        "foundation.creature_roles",
+        "foundation.spawn_roles",
+        "foundation.ai_pressure_roles"
+      ],
+      "consumes": [
+        "foundation.core"
+      ],
+      "summary": "Shared creature role taxonomy for experience-specific mobs."
+    }
+  ],
+  "experiencePromises": {
+    "echoopenlandsprotocol": "Calm exploration, homesteading, old roads, and restored waystones.",
+    "echoashfallprotocol": "Harsh volcanic survival focused on shelter, filtration, heat control, and scarcity.",
+    "echoarcanadivisionprotocol": "Magical research, rituals, familiars, curses, rifts, and anomaly containment."
+  }
+}

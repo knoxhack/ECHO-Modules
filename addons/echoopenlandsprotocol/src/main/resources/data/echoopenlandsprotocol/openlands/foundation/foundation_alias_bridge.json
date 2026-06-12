@@ -1,0 +1,72 @@
+{
+  "schema": "echo.openlands.foundation_alias_bridge.v1",
+  "status": "canonical-owner-moved",
+  "rule": "These Openlands IDs remain only as save-safe compatibility aliases. New content, tags, recipes, and display surfaces must use the Foundation canonical IDs.",
+  "canonicalOwnerModules": [
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles"
+  ],
+  "aliases": [
+    {
+      "legacyId": "echoopenlandsprotocol:workbench",
+      "canonicalId": "echostationcore:field_bench",
+      "owner": "echostationcore",
+      "reason": "Shared baseline crafting station."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:chest",
+      "canonicalId": "echostationcore:field_crate",
+      "owner": "echostationcore",
+      "reason": "Shared baseline storage station."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:torch",
+      "canonicalId": "echoworldstarter:pitchlight",
+      "owner": "echoworldstarter",
+      "reason": "Shared early light source."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:torch_bundle",
+      "canonicalId": "echoworldstarter:pitchlight_bundle",
+      "owner": "echoworldstarter",
+      "reason": "Shared early light bundle."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:copper_ingot",
+      "canonicalId": "echomaterialcore:cupral_bar",
+      "owner": "echomaterialcore",
+      "reason": "Shared metal progression with ECHO public identity."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:iron_ingot",
+      "canonicalId": "echomaterialcore:ferrite_bar",
+      "owner": "echomaterialcore",
+      "reason": "Shared metal progression with ECHO public identity."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:crude_pick",
+      "canonicalId": "echotoolcore:crude_breaker",
+      "owner": "echotoolcore",
+      "reason": "Shared baseline breaker role."
+    },
+    {
+      "legacyId": "echoopenlandsprotocol:copper_fitting",
+      "canonicalId": "echoopenlandsprotocol:cupral_fitting",
+      "owner": "echoopenlandsprotocol",
+      "reason": "Openlands waystone component renamed to avoid vanilla-adjacent copper public identity."
+    }
+  ],
+  "cleanupGate": {
+    "safeToRemoveLegacyDefinitionsWhen": [
+      "All Openlands recipes resolve Foundation tags or canonical Foundation IDs.",
+      "Generated gameplay catalog no longer treats aliases as Openlands-owned content.",
+      "Save migration tests prove old worlds remap legacy IDs to canonical IDs.",
+      "Launcher dependency repair installs all Foundation modules before Openlands."
+    ]
+  }
+}

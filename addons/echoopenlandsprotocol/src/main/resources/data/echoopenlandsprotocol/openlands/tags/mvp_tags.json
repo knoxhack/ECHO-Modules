@@ -1,0 +1,158 @@
+{
+  "schema": "echo.openlands.tags.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "blockTags": {
+    "openlands:natural_ground": [
+      "meadow_grass_block",
+      "forest_soil",
+      "dry_soil",
+      "mud"
+    ],
+    "openlands:soil": [
+      "meadow_grass_block",
+      "forest_soil",
+      "dry_soil"
+    ],
+    "openlands:mud": [
+      "mud"
+    ],
+    "openlands:water_edge": [
+      "mud",
+      "echomaterialcore:sand",
+      "echomaterialcore:clay",
+      "echomaterialcore:gravel"
+    ],
+    "openlands:stone": [
+      "limestone",
+      "granite",
+      "shale",
+      "deepstone",
+      "fieldstone_bricks",
+      "brick_block",
+      "echomaterialcore:fieldstone"
+    ],
+    "openlands:ore": [
+      "glow_crystal_cluster"
+    ],
+    "openlands:log": [
+      "pine_log",
+      "echomaterialcore:branchwood_log"
+    ],
+    "openlands:planks": [
+      "pine_planks",
+      "echomaterialcore:branchwood_planks"
+    ],
+    "openlands:beam": [
+      "pine_beam",
+      "echomaterialcore:branchwood_beam"
+    ],
+    "openlands:post": [
+      "pine_post",
+      "echomaterialcore:branchwood_post"
+    ],
+    "openlands:wood_family": [
+      "pine_log",
+      "pine_planks",
+      "pine_beam",
+      "pine_post",
+      "echomaterialcore:branchwood_log",
+      "echomaterialcore:branchwood_planks",
+      "echomaterialcore:branchwood_beam",
+      "echomaterialcore:branchwood_post"
+    ],
+    "openlands:shelter_roof": [
+      "pine_planks",
+      "echomaterialcore:branchwood_planks",
+      "echomaterialcore:wooden_slab",
+      "echomaterialcore:wooden_stairs",
+      "thatch_roof",
+      "fieldstone_bricks",
+      "brick_block"
+    ],
+    "openlands:shelter_wall": [
+      "pine_planks",
+      "pine_log",
+      "echomaterialcore:branchwood_planks",
+      "echomaterialcore:branchwood_log",
+      "echomaterialcore:fieldstone",
+      "limestone",
+      "fieldstone_bricks",
+      "brick_block"
+    ],
+    "openlands:station": [
+      "map_table"
+    ],
+    "openlands:waystone": [
+      "broken_waystone",
+      "restored_waystone",
+      "waystone_plinth"
+    ],
+    "openlands:old_road": [
+      "old_road_block",
+      "old_road_marker"
+    ]
+  },
+  "itemTags": {
+    "openlands:food": [
+      "berries",
+      "mushroom",
+      "raw_meat",
+      "cooked_meat",
+      "grain",
+      "root_crop",
+      "fish",
+      "stew_bowl"
+    ],
+    "openlands:waystone_repair": [
+      "repair_kit",
+      "cupral_fitting",
+      "waystone_core",
+      "region_rubbing",
+      "old_road_token",
+      "route_binding",
+      "glow_crystal"
+    ],
+    "openlands:builder_ux": [
+      "echotoolcore:field_hammer",
+      "scaffold_bundle"
+    ]
+  },
+  "foundationBlockTagRefs": {
+    "foundation:natural_ground": [
+      "foundation:earth",
+      "foundation:stone"
+    ],
+    "foundation:building_wood": [
+      "foundation:wood"
+    ],
+    "foundation:stations": [
+      "foundation:crafting_surface",
+      "foundation:storage",
+      "foundation:heat_processing"
+    ]
+  },
+  "foundationItemTagRefs": {
+    "foundation:raw_material": [
+      "foundation:wood",
+      "foundation:stone",
+      "foundation:fiber",
+      "foundation:earth",
+      "foundation:fuel"
+    ],
+    "foundation:tools": [
+      "foundation:tools"
+    ],
+    "foundation:breakers": [
+      "foundation:tool_role/breaker"
+    ],
+    "foundation:metals": [
+      "foundation:metal/raw",
+      "foundation:metal/bar"
+    ]
+  }
+}

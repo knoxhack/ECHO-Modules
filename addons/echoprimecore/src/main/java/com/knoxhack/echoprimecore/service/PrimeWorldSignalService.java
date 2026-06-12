@@ -1,6 +1,6 @@
 package com.knoxhack.echoprimecore.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.progression.PrimePlayerData;
 import com.knoxhack.echoprimecore.progression.PrimeProgressionService;

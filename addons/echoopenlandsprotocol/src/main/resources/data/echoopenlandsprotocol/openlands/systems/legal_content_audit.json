@@ -1,0 +1,146 @@
+{
+  "schema": "echo.openlands.systems.legal_content_audit.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "policySource": "config/content_policy.json",
+  "assetManifest": "assets/echoopenlandsprotocol/asset_manifest.json",
+  "publicTextSources": [
+    "assets/echoopenlandsprotocol/lang/en_us.json",
+    "blocks/mvp_blocks.json displayName fields",
+    "items/mvp_items.json displayName fields",
+    "biomes/mvp_biomes.json displayName fields",
+    "structures/mvp_landmarks.json displayName fields",
+    "creatures/mvp_creatures.json displayName fields"
+  ],
+  "auditScope": {
+    "mustCheck": [
+      "public_pack_text",
+      "block_display_names",
+      "item_display_names",
+      "biome_display_names",
+      "structure_display_names",
+      "creature_display_names",
+      "canonical_echo_ids",
+      "texture_model_sound_paths",
+      "recipe_identity",
+      "generated_neoforge_output"
+    ],
+    "internalPolicyDocsMayMention": [
+      "Minecraft",
+      "NeoForge"
+    ],
+    "reason": "Internal policy and adapter documentation may name compatibility targets and prohibited sources; public pack text and content identity must not."
+  },
+  "forbiddenPublicTerms": [
+    "minecraft",
+    "mojang",
+    "creeper",
+    "enderman",
+    "endermen",
+    "ender",
+    "nether",
+    "redstone",
+    "villager",
+    "piglin",
+    "ghast",
+    "shulker",
+    "elytra",
+    "wither",
+    "warden",
+    "skeleton",
+    "zombie",
+    "blaze",
+    "slime",
+    "bedrock",
+    "diamond pickaxe",
+    "crafting table"
+  ],
+  "allowedGenericTerms": [
+    "block",
+    "echomaterialcore:brick",
+    "echostationcore:field_crate",
+    "echomaterialcore:clay",
+    "copper",
+    "door",
+    "echostationcore:forge_hearth",
+    "glass",
+    "echomaterialcore:gravel",
+    "iron",
+    "echomaterialcore:ladder",
+    "lantern",
+    "log",
+    "ore",
+    "pick",
+    "echomaterialcore:sand",
+    "shelf",
+    "sign",
+    "stone",
+    "echoworldstarter:pitchlight",
+    "echostationcore:field_bench"
+  ],
+  "canonicalIdRules": {
+    "namespace": "echoopenlandsprotocol",
+    "idPrefixesAllowed": [
+      "echoopenlandsprotocol:",
+      "openlands:"
+    ],
+    "sourceOfTruth": "Echo ids in common data files",
+    "neoforgeRule": "NeoForge ResourceLocations may be generated from Echo ids but must not become the source of truth."
+  },
+  "assetRules": {
+    "currentStatus": "owned_openlands_coverage_after_foundation_split",
+    "publicReleaseAllowedWithPlaceholders": false,
+    "placeholderPolicy": "Every MVP block and item must have explicit Echo-owned placeholder coverage in asset_manifest.json during development; final public assets still require human art/legal review.",
+    "forbiddenSources": [
+      "Minecraft textures",
+      "Minecraft sounds",
+      "Minecraft model silhouettes",
+      "copied vanilla resource pack files",
+      "third-party copyrighted assets without explicit license"
+    ],
+    "requiredRoots": [
+      "textures/block",
+      "textures/item",
+      "models/block",
+      "models/item",
+      "blockstates",
+      "lang/en_us.json",
+      "sounds.json"
+    ]
+  },
+  "recipeIdentityRules": {
+    "source": "recipes/mvp_recipes.json",
+    "mustUse": [
+      "explicit ingredient lists",
+      "Openlands stations",
+      "Openlands unlocks",
+      "Openlands parity notes"
+    ],
+    "mustNotUse": [
+      "copied vanilla recipe shape as product identity",
+      "Minecraft recipe names",
+      "Minecraft advancement ids"
+    ]
+  },
+  "releaseEvidence": [
+    "legal_policy_accepted",
+    "missing_asset_policy_applied",
+    "legal_content_audit_pass"
+  ],
+  "publicAlphaGate": {
+    "allowedBeforeFinalAssets": "warning_only",
+    "requiresHumanReview": true,
+    "requiresNoForbiddenPublicTerms": true,
+    "requiresNoBorrowedAssets": true,
+    "requiresGeneratedOutputAudit": [
+      "echo_native",
+      "echo_runtime_standalone",
+      "neoforge"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "echo.foundation.metal_progression.v1",
+  "tiers": [
+    {
+      "tier": 1,
+      "metal": "cupral",
+      "vein": "cupral_vein",
+      "raw": "cupral_chunk",
+      "bar": "cupral_bar"
+    },
+    {
+      "tier": 2,
+      "metal": "tinveil",
+      "vein": "tinveil_vein",
+      "raw": "tinveil_chunk",
+      "bar": "tinveil_bar"
+    },
+    {
+      "tier": 2,
+      "metal": "bronze",
+      "blend": [
+        "cupral_bar",
+        "tinveil_bar"
+      ],
+      "bar": "bronze_cast"
+    },
+    {
+      "tier": 3,
+      "metal": "ferrite",
+      "vein": "ferrite_vein",
+      "raw": "ferrite_chunk",
+      "bar": "ferrite_bar"
+    }
+  ]
+}

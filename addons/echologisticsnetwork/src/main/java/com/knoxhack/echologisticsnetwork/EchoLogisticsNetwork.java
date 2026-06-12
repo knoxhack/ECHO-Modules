@@ -12,7 +12,7 @@ import com.knoxhack.echologisticsnetwork.registry.ModDataComponents;
 import com.knoxhack.echologisticsnetwork.registry.ModEntities;
 import com.knoxhack.echologisticsnetwork.registry.ModItems;
 import com.knoxhack.echologisticsnetwork.registry.ModMenus;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 

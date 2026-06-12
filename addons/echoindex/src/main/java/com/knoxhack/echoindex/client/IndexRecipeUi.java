@@ -1,12 +1,12 @@
 package com.knoxhack.echoindex.client;
 
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexMachineLayout;
-import com.knoxhack.echocore.api.index.IndexMachineLayoutGauge;
-import com.knoxhack.echocore.api.index.IndexMachineLayoutSlot;
-import com.knoxhack.echocore.api.index.IndexMachineLayoutTemplates;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexMachineLayout;
+import com.echoplatform.echocore.api.index.IndexMachineLayoutGauge;
+import com.echoplatform.echocore.api.index.IndexMachineLayoutSlot;
+import com.echoplatform.echocore.api.index.IndexMachineLayoutTemplates;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.network.IndexRecipeQueryPacket;
 import com.knoxhack.echoindex.service.IndexIngredientNeed;

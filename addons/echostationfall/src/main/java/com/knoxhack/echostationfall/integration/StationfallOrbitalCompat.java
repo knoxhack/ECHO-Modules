@@ -1,6 +1,6 @@
 package com.knoxhack.echostationfall.integration;
 
-import com.knoxhack.echocore.api.EchoIntegrations;
+import com.echoplatform.echocore.api.EchoIntegrations;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;

@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.knoxhack.echocommunitybridge.CommunityBridgeAdapterCoreContracts;
 import com.knoxhack.echocommunitybridge.EchoCommunityBridge;
 import com.knoxhack.echocommunitybridge.config.CommunityBridgeConfig;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.time.Instant;
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -1,0 +1,81 @@
+{
+  "schema": "echo.openlands.progression.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "playerPromise": "Openlands extends the Foundation first-hour route with the first waystone milestone.",
+  "defaultMode": "openlands_standard",
+  "firstHour": [
+    {
+      "step": 7,
+      "id": "first_waystone",
+      "targetTimeMinutes": "45-60",
+      "requirements": [
+        "find broken waystone site",
+        "clear debris",
+        "apply initial stone repair",
+        "create or collect region rubbing"
+      ],
+      "successMetric": "First waystone reaches at least debris_cleared or stone_repaired in MVP acceptance."
+    }
+  ],
+  "shelterScore": {
+    "minimumForSleepMilestone": 55,
+    "idealScore": 100,
+    "components": [
+      {
+        "id": "roof_coverage",
+        "maxPoints": 25,
+        "forgivingRule": "Counts natural rock, thatch_roof, slabs, stairs, and planks within echoworldstarter:bedroll radius."
+      },
+      {
+        "id": "wall_enclosure",
+        "maxPoints": 25,
+        "forgivingRule": "Partial enclosure counts; caves and ruins can contribute."
+      },
+      {
+        "id": "entry_closure",
+        "maxPoints": 15,
+        "forgivingRule": "Door, trapdoor, fence gate later, or narrow natural choke point."
+      },
+      {
+        "id": "bedroll_present",
+        "maxPoints": 15,
+        "forgivingRule": "Any placed echoworldstarter:bedroll within 8 blocks."
+      },
+      {
+        "id": "light_or_fire",
+        "maxPoints": 10,
+        "forgivingRule": "Torch, lantern, or echoworldstarter:campfire within 12 blocks."
+      },
+      {
+        "id": "hostile_distance",
+        "maxPoints": 10,
+        "forgivingRule": "No hostile within 16 blocks at check time; failed check can retry after a short cooldown."
+      }
+    ]
+  },
+  "saveLoadAcceptance": [
+    "inventory",
+    "hotbar",
+    "placedBlocks",
+    "chestContents",
+    "bedrollSpawn",
+    "campfireLitState",
+    "shelterScore",
+    "waystoneState",
+    "holomapRegionDiscovery"
+  ],
+  "foundationRoute": "echoworldstarter:foundation/starter/first_hour_route",
+  "foundationMovedSteps": [
+    "safe_spawn",
+    "first_gathering",
+    "first_tools",
+    "first_shelter",
+    "sleep_and_recover",
+    "first_exploration_hook"
+  ]
+}

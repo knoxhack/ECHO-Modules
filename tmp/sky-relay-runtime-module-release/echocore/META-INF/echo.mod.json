@@ -1,0 +1,75 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocore",
+  "name": "ECHO: Core",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "foundation",
+  "entrypoint": "com.knoxhack.echocore.EchoCore",
+  "publisher": "KnoxHack",
+  "channel": "stable",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [],
+  "optional": [],
+  "provides": [
+    "echo.core",
+    "echo.services",
+    "echo.runtime_modules",
+    "echo.spine",
+    "echo.config",
+    "echo.missions",
+    "echo.network",
+    "echo.index",
+    "echo.world",
+    "echo.map",
+    "echo.factions",
+    "echo.diagnostics"
+  ],
+  "consumes": [],
+  "gameModes": [
+    "ashfall",
+    "echo_prime",
+    "arcana_division"
+  ],
+  "permissions": [],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "maps",
+        "missions",
+        "networking",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echocore.EchoCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": false,
+    "notes": "Foundation contracts and no-op/in-memory defaults shared by first-party ECHO modules."
+  },
+  "apiStability": "stable",
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "platform_agent",
+      "diagnostics_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

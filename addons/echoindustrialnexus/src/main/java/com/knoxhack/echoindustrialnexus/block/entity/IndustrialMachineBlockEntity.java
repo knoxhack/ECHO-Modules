@@ -45,6 +45,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import org.jspecify.annotations.Nullable;
 
 public class IndustrialMachineBlockEntity extends BaseContainerBlockEntity implements ThermalFluxStorage, WorldlyContainer {
@@ -166,7 +168,7 @@ public class IndustrialMachineBlockEntity extends BaseContainerBlockEntity imple
          IndustrialMachineBlockEntity.this.setChanged();
       }
    );
-   private final Object fluidHandler = EchoBackendFluidBridge.createFluidHandler(new MachineFluidHandler());
+   private final ResourceHandler<FluidResource> fluidHandler = EchoBackendFluidBridge.createFluidHandler(new MachineFluidHandler());
 
    public IndustrialMachineBlockEntity(BlockPos worldPosition, BlockState blockState) {
       super((BlockEntityType)ModBlockEntities.INDUSTRIAL_MACHINE.get(), worldPosition, blockState);
@@ -584,7 +586,7 @@ public class IndustrialMachineBlockEntity extends BaseContainerBlockEntity imple
       return this.fillInputFluid(fluidId, amount);
    }
 
-   public Object fluidHandler(Direction direction) {
+   public ResourceHandler<FluidResource> fluidHandler(Direction direction) {
       return this.kind().usesFluidHandling() ? this.fluidHandler : null;
    }
 

@@ -8,7 +8,7 @@ import com.knoxhack.echo.creatorcore.api.CreatorDiagnostic;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.resources.Identifier;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 abstract class ModPresenceCreatorAdapter implements CreatorAdapter {
     private final Identifier id;

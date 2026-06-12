@@ -1,7 +1,7 @@
 package com.knoxhack.echoindustrialnexus;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindustrialnexus.integration.IndustrialCoreIntegration;
 import com.knoxhack.echoindustrialnexus.integration.IndustrialIndexProvider;
 import com.knoxhack.echoindustrialnexus.event.IndustrialMultiblockMissionEvents;

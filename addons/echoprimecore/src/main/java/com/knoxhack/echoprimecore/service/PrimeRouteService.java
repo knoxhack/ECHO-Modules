@@ -1,7 +1,7 @@
 package com.knoxhack.echoprimecore.service;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.prime.PrimeRouteRegistry;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.prime.PrimeRouteRegistry;
 import com.knoxhack.echoprimecore.integration.PrimeIntegrationLoader;
 import java.util.List;
 import net.minecraft.resources.Identifier;

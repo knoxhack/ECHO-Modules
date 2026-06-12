@@ -6,7 +6,7 @@ import com.knoxhack.echoblackboxprotocol.progression.BlackboxProgress;
 import com.knoxhack.echoblackboxprotocol.progression.MemoryType;
 import com.knoxhack.echoblackboxprotocol.registry.ModBlocks;
 import com.knoxhack.echoblackboxprotocol.registry.ModItems;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionDefinition;

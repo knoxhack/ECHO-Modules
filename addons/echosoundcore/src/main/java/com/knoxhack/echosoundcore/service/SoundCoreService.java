@@ -1,8 +1,8 @@
 package com.knoxhack.echosoundcore.service;
 
-import com.knoxhack.echocore.api.ISoundService;
-import com.knoxhack.echocore.api.SoundServiceDiagnostics;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.ISoundService;
+import com.echoplatform.echocore.api.SoundServiceDiagnostics;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echosoundcore.EchoSoundCore;
 import com.knoxhack.echosoundcore.data.SoundCoreDataReloadListener;

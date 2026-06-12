@@ -2,9 +2,9 @@ package com.knoxhack.echospellcore.api;
 
 import com.knoxhack.echoarcanacore.api.AetherSignalType;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echospellcore.EchoSpellCore;
 import com.knoxhack.echospellcore.entity.SpellProjectileEntity;

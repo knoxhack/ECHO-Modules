@@ -1,6 +1,6 @@
 package com.knoxhack.echonetcore.service;
 
-import com.knoxhack.echocore.api.network.IPacketRegistrar;
+import com.echoplatform.echocore.api.network.IPacketRegistrar;
 import com.knoxhack.echonetcore.api.EchoNetPayloads;
 
 public final class NetCorePacketRegistrar implements IPacketRegistrar {

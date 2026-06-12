@@ -2,7 +2,7 @@ package com.knoxhack.echo.npcore.client.screencore;
 
 import com.knoxhack.echo.npcore.config.EchoNpcCoreConfig;
 import com.knoxhack.echo.npcore.network.EchoNpcScreenState;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoDataProvider;
 import com.knoxhack.echoscreencore.api.EchoScreenRegistry;

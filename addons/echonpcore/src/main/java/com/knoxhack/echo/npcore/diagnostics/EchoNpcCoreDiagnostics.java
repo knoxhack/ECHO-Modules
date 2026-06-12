@@ -12,8 +12,8 @@ import com.knoxhack.echo.npcore.registry.ModItems;
 import com.knoxhack.echo.npcore.service.EchoNpcServiceManager;
 import com.knoxhack.echo.npcore.trade.EchoNpcTradeManager;
 import com.knoxhack.echo.npcore.visual.EchoNpcVisualProfileManager;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.List;
 
 public final class EchoNpcCoreDiagnostics {

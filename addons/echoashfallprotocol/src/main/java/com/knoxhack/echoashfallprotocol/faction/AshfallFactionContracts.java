@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionContract;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import java.util.ArrayList;
 import java.util.Arrays;

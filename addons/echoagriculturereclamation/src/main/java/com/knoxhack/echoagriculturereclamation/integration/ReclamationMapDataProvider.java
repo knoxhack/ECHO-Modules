@@ -1,10 +1,10 @@
 package com.knoxhack.echoagriculturereclamation.integration;
 
-import com.knoxhack.echocore.api.EchoMapLayer;
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.EchoMapLayer;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation;
 import com.knoxhack.echoagriculturereclamation.api.ReclamationFieldQuery;
 import com.knoxhack.echoagriculturereclamation.api.ReclamationFieldSnapshot;

@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.api.HoloMapPrecision;
 import com.knoxhack.echoholomap.api.HoloMapZonePattern;
@@ -826,7 +826,7 @@ public final class HoloMapRenderer {
             case ROUTE -> 60;
             case CRASH_SITE, BASE_OUTPOST -> 45;
             case REGION, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN -> 30;
-            case GENERIC -> 10;
+            case GENERIC, STRUCTURE, FACTION -> 10;
         };
         if (marker.precision() == HoloMapPrecision.VIRTUAL) {
             score -= 25;

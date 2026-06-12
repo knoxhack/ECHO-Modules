@@ -11,7 +11,7 @@ import com.knoxhack.echoashfallprotocol.registry.ModBlocks;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import com.knoxhack.echoashfallprotocol.world.NexusCampaignData;
 import com.knoxhack.echoashfallprotocol.world.NexusWorldData;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import java.util.List;
 import java.util.Locale;

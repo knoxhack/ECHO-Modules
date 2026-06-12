@@ -1,6 +1,6 @@
 package com.knoxhack.echoscreencore.client.test;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.component.EchoComponentFactory;
 import com.knoxhack.echoscreencore.api.layout.EchoMeasureResult;

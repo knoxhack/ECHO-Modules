@@ -1,10 +1,10 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionActionResult;
-import com.knoxhack.echocore.api.EchoFactionContract;
-import com.knoxhack.echocore.api.EchoFactionContractState;
-import com.knoxhack.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionActionResult;
+import com.echoplatform.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionContractState;
+import com.echoplatform.echocore.api.EchoFactionProfile;
 import com.knoxhack.echoashfallprotocol.echo.EchoIntel;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.research.ResearchData;

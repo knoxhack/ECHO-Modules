@@ -1,7 +1,7 @@
 package com.knoxhack.echonexusprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoHandoffs;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoHandoffs;
 import com.knoxhack.echonexusprotocol.Config;
 import com.knoxhack.echonexusprotocol.data.NexusPlayerData;
 import java.util.Locale;

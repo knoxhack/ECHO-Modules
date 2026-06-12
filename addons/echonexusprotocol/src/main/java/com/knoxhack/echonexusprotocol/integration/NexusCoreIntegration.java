@@ -1,13 +1,13 @@
 package com.knoxhack.echonexusprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.NexusCampaignService;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker.Severity;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.NexusCampaignService;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker.Severity;
 import com.knoxhack.echonexusprotocol.EchoNexusProtocol;
 import com.knoxhack.echonexusprotocol.data.NexusPlayerData;
 import com.knoxhack.echonexusprotocol.world.NexusWorldData;

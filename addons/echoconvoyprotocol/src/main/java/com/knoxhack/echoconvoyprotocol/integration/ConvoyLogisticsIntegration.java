@@ -5,7 +5,7 @@ import com.knoxhack.echoconvoyprotocol.content.ConvoyRouteDefinition;
 import com.knoxhack.echoconvoyprotocol.entity.ConvoyVehicleEntity;
 import com.knoxhack.echoconvoyprotocol.registry.ModBlocks;
 import com.knoxhack.echoconvoyprotocol.registry.ModItems;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echomultiblockcore.api.MultiblockRuntime;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

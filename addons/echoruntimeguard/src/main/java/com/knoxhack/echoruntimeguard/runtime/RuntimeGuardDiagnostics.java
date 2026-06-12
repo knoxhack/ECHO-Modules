@@ -1,6 +1,6 @@
 package com.knoxhack.echoruntimeguard.runtime;
 
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
 import com.knoxhack.echoruntimeguard.EchoRuntimeGuard;
 import com.knoxhack.echoruntimeguard.RuntimeGuardConfig;
 import com.knoxhack.echoruntimeguard.api.NetworkSnapshot;

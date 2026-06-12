@@ -20,7 +20,6 @@ ECHO 1.6.0 is a playable UI polish pass. Status labels continue to describe publ
 | `echolens` | Lens by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echologisticsnetwork` | Logistics Network by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echomissioncore` | MissionCore by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
-| `echomodpackcommandcenter` | Command Center by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echomultiblockcore` | MultiblockCore by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echonetcore` | NetCore by ECHO Labs | Stable | Yes | No | No | No | Stable | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x compatibility polish |
 | `echonexusprotocol` | Nexus Protocol by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |

@@ -2,34 +2,34 @@ package com.knoxhack.echomissioncore.test;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.IDataKey;
-import com.knoxhack.echocore.api.WorldDiscoverySource;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldRegionType;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.MissionActionView;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.MissionRewardClaimMode;
-import com.knoxhack.echocore.api.mission.MissionRuntimeBus;
-import com.knoxhack.echocore.api.mission.MissionRuntimeEvent;
-import com.knoxhack.echocore.api.mission.MissionStatus;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
-import com.knoxhack.echocore.api.mission.RewardDefinition;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.WorldDiscoverySource;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.MissionActionView;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
+import com.echoplatform.echocore.api.mission.MissionRuntimeBus;
+import com.echoplatform.echocore.api.mission.MissionRuntimeEvent;
+import com.echoplatform.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echomissioncore.content.MissionCoreJsonReloadListener;
 import com.knoxhack.echomissioncore.integration.MissionCoreRuntimeSpineConsumer;
@@ -160,7 +160,7 @@ public final class ModGameTests {
         MissionDefinition parsed = MissionCoreJsonReloadListener.parseMissionForTests(id("json_metadata"), JsonParser.parseString("""
                 {"chapter":"echomissioncore:json_chapter","kind":"side","terminal_route_phase":"7","terminal_route_anchor":"echomissioncore:anchor","terminal_intel_archives":"echomissioncore:archive/log","terminal_intel_discoveries":"echomissioncore:discovery/cache","terminal_intel_factions":"echomissioncore:faction/test","terminal_intel_pois":"echomissioncore:structure/test","metadata":{"terminal_route_order":"77","terminal_intel_routes":"echomissioncore:test_route"},"rewards":[{"item":"minecraft:emerald","mode":"immediate","xp":25,"reputation":3}]}
                 """).getAsJsonObject());
-        helper.assertTrue(parsed.kind() == com.knoxhack.echocore.api.mission.MissionKind.SIDE_OP,
+        helper.assertTrue(parsed.kind() == com.echoplatform.echocore.api.mission.MissionKind.SIDE_OP,
                 "Mission JSON should accept side as a side-op alias");
         helper.assertTrue("7".equals(parsed.metadata().get("terminal_route_phase")),
                 "Mission JSON should copy Terminal route metadata");
@@ -201,7 +201,7 @@ public final class ModGameTests {
         service.registerChapter("gametest", new MissionChapterDefinition(chapterId, "Repeatable", "Repeatable tests", 0, 0x55FFDD));
         service.registerMission("gametest", MissionDefinition.builder(missionId, chapterId)
                 .text("Repeat", "Complete this more than once.", "GameTest")
-                .repeatPolicy(com.knoxhack.echocore.api.mission.MissionRepeatPolicy.REPEATABLE)
+                .repeatPolicy(com.echoplatform.echocore.api.mission.MissionRepeatPolicy.REPEATABLE)
                 .objective(ObjectiveDefinition.simple(objectiveId, MissionObjectiveType.CUSTOM, "Repeat", "", ItemStack.EMPTY, 1))
                 .build());
 

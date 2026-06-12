@@ -2,7 +2,7 @@ package com.knoxhack.echoprimecore.progression;
 
 import com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoprimecore.config.PrimeConfig;
 import com.knoxhack.echoprimecore.registry.ModItems;
 import net.minecraft.ChatFormatting;

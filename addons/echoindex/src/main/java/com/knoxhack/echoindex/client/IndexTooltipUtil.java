@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.client;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindex.EchoIndexClient;
 import java.util.ArrayList;
 import java.util.List;

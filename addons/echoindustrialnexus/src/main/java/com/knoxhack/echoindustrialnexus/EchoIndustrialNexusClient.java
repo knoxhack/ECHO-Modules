@@ -3,7 +3,7 @@ package com.knoxhack.echoindustrialnexus;
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echocore.client.model.EchoMobFamily;
 import com.knoxhack.echocore.client.model.EchoMobFamilyRenderer;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindustrialnexus.client.IndustrialMachineScreen;
 import com.knoxhack.echoindustrialnexus.client.IndustrialMultiblockControllerScreen;
 import com.knoxhack.echoindustrialnexus.registry.ModEntities;

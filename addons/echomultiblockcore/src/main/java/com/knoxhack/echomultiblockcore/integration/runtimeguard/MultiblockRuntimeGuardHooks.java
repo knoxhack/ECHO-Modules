@@ -1,6 +1,6 @@
 package com.knoxhack.echomultiblockcore.integration.runtimeguard;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echomultiblockcore.EchoMultiblockCore;
 import com.knoxhack.echomultiblockcore.block.entity.MultiblockControllerBlockEntity;
 import java.lang.reflect.Method;

@@ -1,7 +1,7 @@
 package com.knoxhack.echosoundcore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echosoundcore.client.config.SoundCoreConfig;
 import com.knoxhack.echosoundcore.command.SoundCoreCommands;
 import com.knoxhack.echosoundcore.data.SoundCoreDataReloadListener;

@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.server;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echotutorialcore.data.TutorialPlayerData;
 import java.util.Locale;
 import net.minecraft.core.registries.BuiltInRegistries;

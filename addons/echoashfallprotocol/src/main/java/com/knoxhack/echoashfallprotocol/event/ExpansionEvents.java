@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.event;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.faction.AshfallBiomeFactions;
 import com.knoxhack.echoashfallprotocol.faction.AshfallFactionContractProgression;
 import com.knoxhack.echoashfallprotocol.faction.AshfallFactionMap;

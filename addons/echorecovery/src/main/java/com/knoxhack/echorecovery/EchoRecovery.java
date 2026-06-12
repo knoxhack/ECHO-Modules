@@ -1,8 +1,8 @@
 package com.knoxhack.echorecovery;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echorecovery.command.GravesCommand;
 import com.knoxhack.echorecovery.content.RecoveryReloaders;
 import com.knoxhack.echorecovery.data.RecoveryWorldData;

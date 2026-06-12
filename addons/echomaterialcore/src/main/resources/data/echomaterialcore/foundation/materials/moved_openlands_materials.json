@@ -1,0 +1,1163 @@
+{
+  "schema": "echo.foundation.moved_openlands_materials.v1",
+  "movedOrder": 1,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echomaterialcore",
+  "blocks": [
+    {
+      "id": "echomaterialcore:sand",
+      "displayName": "Sand",
+      "category": "terrain",
+      "hardness": 0.5,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echomaterialcore:sand",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:glass_input"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:sand",
+      "biomePlacement": [
+        "echoopenlandsprotocol:meadows",
+        "echoopenlandsprotocol:marshlands"
+      ],
+      "notes": "Used by the echostationcore:kiln to make glass.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:sand"
+    },
+    {
+      "id": "echomaterialcore:clay",
+      "displayName": "Clay",
+      "category": "terrain",
+      "hardness": 0.6,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echomaterialcore:clay_lump",
+          "count": 4
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "echostationcore:kiln_input",
+        "openlands:marsh_resource"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:clay",
+      "biomePlacement": [
+        "echoopenlandsprotocol:marshlands"
+      ],
+      "notes": "Primary echomaterialcore:clay-age resource for bricks, echostationcore:kiln work, and pottery later.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:clay"
+    },
+    {
+      "id": "echomaterialcore:gravel",
+      "displayName": "Gravel",
+      "category": "terrain",
+      "hardness": 0.7,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echomaterialcore:gravel",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [
+        {
+          "item": "echomaterialcore:flint_shard",
+          "chance": 0.22,
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:flint_source"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:gravel",
+      "biomePlacement": [
+        "echoopenlandsprotocol:stonehills",
+        "echoopenlandsprotocol:marshlands"
+      ],
+      "notes": "Early source of flint shards.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:gravel"
+    },
+    {
+      "id": "echomaterialcore:fieldstone",
+      "displayName": "Fieldstone",
+      "category": "stone",
+      "hardness": 1.25,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 2
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:starter_stone",
+        "openlands:building"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:fieldstone",
+      "biomePlacement": [
+        "echoopenlandsprotocol:meadows",
+        "echoopenlandsprotocol:stonehills"
+      ],
+      "plannedVariants": [
+        "slab",
+        "stairs",
+        "wall",
+        "bricks"
+      ],
+      "notes": "Starter stone for tools, campfires, and basic building.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:fieldstone"
+    },
+    {
+      "id": "echomaterialcore:cupral_vein",
+      "displayName": "Cupral Vein",
+      "category": "ore",
+      "hardness": 1.55,
+      "tool": "echotoolcore:crude_breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:ore",
+        "openlands:copper",
+        "openlands:waystone_progression"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:cupral_vein",
+      "spawnLayer": "shallow_cave",
+      "reward": "first_metal_progression",
+      "notes": "First metal ore, used for copper fittings and lantern parts.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_ore"
+    },
+    {
+      "id": "echomaterialcore:tinveil_vein",
+      "displayName": "Tinveil Vein",
+      "category": "ore",
+      "hardness": 1.6,
+      "tool": "echotoolcore:crude_breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:tinveil_chunk",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:ore",
+        "openlands:tin",
+        "openlands:bronze_input"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:tinveil_vein",
+      "spawnLayer": "shallow_cave",
+      "reward": "bronze_progression",
+      "notes": "Pairs with copper to unlock bronze tools.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:tin_ore"
+    },
+    {
+      "id": "echomaterialcore:ferrite_vein",
+      "displayName": "Ferrite Vein",
+      "category": "ore",
+      "hardness": 2.15,
+      "tool": "echotoolcore:bronze_breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:ferrite_chunk",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:ore",
+        "openlands:iron",
+        "openlands:midgame"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:ferrite_vein",
+      "spawnLayer": "mid_cave",
+      "reward": "iron_progression",
+      "notes": "Midgame ore for deeper cave access.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:iron_ore"
+    },
+    {
+      "id": "echomaterialcore:branchwood_log",
+      "displayName": "Branchwood Log",
+      "category": "wood",
+      "hardness": 1.8,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:branchwood_log",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:branchwood",
+        "openlands:fuel"
+      ],
+      "model": "log_axis",
+      "texture": "block/echomaterialcore:branchwood_log",
+      "biomePlacement": [
+        "echoopenlandsprotocol:meadows",
+        "echoopenlandsprotocol:woodlands"
+      ],
+      "notes": "Primary starter tree material.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_log"
+    },
+    {
+      "id": "echomaterialcore:branchwood_planks",
+      "displayName": "Branchwood Planks",
+      "category": "wood",
+      "hardness": 1.4,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:branchwood_planks",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:branchwood",
+        "openlands:building"
+      ],
+      "model": "cube_all",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:branchwood_planks",
+      "notes": "Basic building and station recipe input.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_planks"
+    },
+    {
+      "id": "echomaterialcore:branchwood_beam",
+      "displayName": "Branchwood Beam",
+      "category": "wood_shape",
+      "hardness": 1.45,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:branchwood_beam",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:shape_beam",
+        "openlands:shelter_frame"
+      ],
+      "model": "beam_axis",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:branchwood_beam",
+      "notes": "Structural horizontal piece used by builder hammer cycling.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_beam"
+    },
+    {
+      "id": "echomaterialcore:branchwood_post",
+      "displayName": "Branchwood Post",
+      "category": "wood_shape",
+      "hardness": 1.45,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:branchwood_post",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:shape_post",
+        "openlands:shelter_frame"
+      ],
+      "model": "post",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:branchwood_post",
+      "notes": "Vertical structural piece used by builder hammer cycling.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_post"
+    },
+    {
+      "id": "echomaterialcore:wooden_slab",
+      "displayName": "Wooden Slab",
+      "category": "building_shape",
+      "hardness": 1.2,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:wooden_slab",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:shape_slab",
+        "openlands:hammer_cycle"
+      ],
+      "model": "slab",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:wooden_slab",
+      "notes": "Generic MVP slab. Later splits by wood family.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_slab"
+    },
+    {
+      "id": "echomaterialcore:wooden_stairs",
+      "displayName": "Wooden Stairs",
+      "category": "building_shape",
+      "hardness": 1.2,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:wooden_stairs",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:shape_stairs",
+        "openlands:hammer_cycle"
+      ],
+      "model": "stairs",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:wooden_stairs",
+      "notes": "Generic MVP stairs. Later splits by wood family.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_stairs"
+    },
+    {
+      "id": "echomaterialcore:wooden_fence",
+      "displayName": "Wooden Fence",
+      "category": "building_shape",
+      "hardness": 1.2,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:wooden_fence",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:fence",
+        "openlands:farm_protection"
+      ],
+      "model": "fence",
+      "texture": "block/echomaterialcore:branchwood_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:wooden_fence",
+      "notes": "Early farm and animal pen boundary.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_fence"
+    },
+    {
+      "id": "echomaterialcore:wooden_door",
+      "displayName": "Wooden Door",
+      "category": "utility",
+      "hardness": 1.1,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:wooden_door",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:door",
+        "openlands:shelter_component"
+      ],
+      "model": "door",
+      "texture": "block/echomaterialcore:wooden_door",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:wooden_door",
+      "shelterScore": 2,
+      "notes": "Shelter score door flag.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_door"
+    },
+    {
+      "id": "echomaterialcore:wooden_trapdoor",
+      "displayName": "Wooden Trapdoor",
+      "category": "utility",
+      "hardness": 1,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:wooden_trapdoor",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:trapdoor",
+        "openlands:building"
+      ],
+      "model": "trapdoor",
+      "texture": "block/echomaterialcore:wooden_trapdoor",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:wooden_trapdoor",
+      "notes": "Hatches, lofts, and compact builds.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_trapdoor"
+    },
+    {
+      "id": "echomaterialcore:ladder",
+      "displayName": "Ladder",
+      "category": "utility",
+      "hardness": 0.7,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:ladder",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "echomaterialcore:ladder",
+        "openlands:climbable",
+        "openlands:cave_utility"
+      ],
+      "model": "echomaterialcore:ladder",
+      "texture": "block/echomaterialcore:ladder",
+      "recipeSource": "echoopenlandsprotocol:recipe/echomaterialcore:ladder",
+      "notes": "Climbable path for caves and starter builds.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:ladder"
+    }
+  ],
+  "items": [
+    {
+      "id": "echomaterialcore:branchwood_stick",
+      "displayName": "Branchwood Stick",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:raw_material",
+        "openlands:stick",
+        "openlands:wood_family/branchwood"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:branchwood_stick",
+      "recipeRefs": [
+        "openlands:hand_strip_twigs",
+        "echostationcore:field_bench_planks_to_sticks"
+      ],
+      "notes": "Starter handle for crude tools, torches, signs, and repair kits.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_stick"
+    },
+    {
+      "id": "echomaterialcore:fieldstone_piece",
+      "displayName": "Fieldstone Piece",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:raw_material",
+        "openlands:stone_piece"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:fieldstone_piece",
+      "recipeRefs": [
+        "openlands:loose_stone_pickup",
+        "echomaterialcore:fieldstone_to_pieces"
+      ],
+      "notes": "Early stone resource for crude picks, campfires, waystone patching, and masonry.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:fieldstone_piece"
+    },
+    {
+      "id": "echomaterialcore:reed_fiber",
+      "displayName": "Reed Fiber",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:raw_material",
+        "openlands:fiber",
+        "openlands:binding"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:reed_fiber",
+      "recipeRefs": [
+        "openlands:harvest_reeds",
+        "echomaterialcore:fiber_binding"
+      ],
+      "notes": "Starter binding used in all first-hour echostationcore:handcrafting.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:reed_fiber"
+    },
+    {
+      "id": "echomaterialcore:fiber_binding",
+      "displayName": "Fiber Binding",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:binding",
+        "openlands:crafted_material"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:fiber_binding",
+      "recipeRefs": [
+        "echomaterialcore:fiber_binding"
+      ],
+      "notes": "Crafted cordage that keeps crude recipes readable without copying classic grid identities.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:fiber_binding"
+    },
+    {
+      "id": "echomaterialcore:flint_shard",
+      "displayName": "Flint Shard",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:raw_material",
+        "openlands:sharp_edge"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:flint_shard",
+      "recipeRefs": [
+        "echomaterialcore:gravel_sift",
+        "echotoolcore:flint_knife"
+      ],
+      "notes": "Sharp-edge material for knife and early cutting actions.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:flint_shard"
+    },
+    {
+      "id": "echomaterialcore:clay_lump",
+      "displayName": "Clay Lump",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:raw_material",
+        "echomaterialcore:clay"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:clay_lump",
+      "recipeRefs": [
+        "openlands:dig_clay",
+        "echomaterialcore:kiln_brick"
+      ],
+      "notes": "Marsh and riverbank resource for bricks, pottery, and later cookware.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:raw_clay"
+    },
+    {
+      "id": "echomaterialcore:brick",
+      "displayName": "Brick",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "echostationcore:kiln_output",
+        "openlands:masonry"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:brick",
+      "recipeRefs": [
+        "echomaterialcore:kiln_brick",
+        "echomaterialcore:brick_block"
+      ],
+      "notes": "Kiln output used for durable building blocks and later ovens.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:brick"
+    },
+    {
+      "id": "echomaterialcore:glass_pane",
+      "displayName": "Glass Pane",
+      "stackSize": 64,
+      "useType": "building_material",
+      "tags": [
+        "echostationcore:kiln_output",
+        "openlands:transparent"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:glass_pane",
+      "recipeRefs": [
+        "echomaterialcore:kiln_glass",
+        "openlands:lantern"
+      ],
+      "notes": "Gentle progression reward for lighting, windows, and lantern crafting.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:glass_pane"
+    },
+    {
+      "id": "echomaterialcore:hide_strip",
+      "displayName": "Hide Strip",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:creature_drop",
+        "openlands:soft_material"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:hide_strip",
+      "recipeRefs": [
+        "openlands:small_pack",
+        "echoworldstarter:bedroll"
+      ],
+      "notes": "Creature drop for comfort, storage, and repair items.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:hide"
+    },
+    {
+      "id": "echomaterialcore:bone_shard",
+      "displayName": "Bone Shard",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:creature_drop",
+        "openlands:tool_part"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:bone_shard",
+      "recipeRefs": [
+        "echomaterialcore:bone_shard_tool_part",
+        "openlands:repair_kit"
+      ],
+      "notes": "Secondary tool and repair ingredient from wildlife and ruins.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bone"
+    },
+    {
+      "id": "echomaterialcore:pitch_resin",
+      "displayName": "Pitch Resin",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:adhesive",
+        "openlands:firestarter"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:pitch_resin",
+      "recipeRefs": [
+        "openlands:collect_pitch",
+        "echoworldstarter:pitchlight_bundle"
+      ],
+      "notes": "Sticky fuel for torches and waterproofed later recipes.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:pitch"
+    },
+    {
+      "id": "echomaterialcore:resin",
+      "displayName": "Resin",
+      "stackSize": 64,
+      "useType": "crafting_material",
+      "tags": [
+        "openlands:tree_product",
+        "openlands:adhesive"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:resin",
+      "recipeRefs": [
+        "openlands:collect_resin",
+        "openlands:repair_kit"
+      ],
+      "notes": "Woodland tree product used for repairs, bindings, and light sources.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:resin"
+    },
+    {
+      "id": "echomaterialcore:charcoal_lump",
+      "displayName": "Charcoal Lump",
+      "stackSize": 64,
+      "useType": "fuel",
+      "tags": [
+        "openlands:fuel",
+        "echostationcore:kiln_output"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:charcoal_lump",
+      "recipeRefs": [
+        "echomaterialcore:kiln_charcoal",
+        "echostationcore:forge_hearth_ore_chunk"
+      ],
+      "notes": "Primary early echostationcore:forge_hearth fuel; intentionally produced in the echostationcore:kiln instead of relying on a copied furnace identity.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:charcoal"
+    },
+    {
+      "id": "echomaterialcore:cupral_chunk",
+      "displayName": "Cupral Chunk",
+      "stackSize": 64,
+      "useType": "ore_chunk",
+      "tags": [
+        "foundation:metal/raw",
+        "openlands:metal/copper"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:cupral_chunk",
+      "recipeRefs": [
+        "openlands:mine_copper_ore",
+        "echomaterialcore:forge_cupral_bar"
+      ],
+      "notes": "Low-tier ore output; Native and Standalone should not expose inherited Minecraft ore names.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_ore_chunk"
+    },
+    {
+      "id": "echomaterialcore:cupral_bar",
+      "displayName": "Cupral Bar",
+      "stackSize": 64,
+      "useType": "metal_ingot",
+      "tags": [
+        "foundation:metal/bar",
+        "openlands:metal/copper"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:cupral_bar",
+      "recipeRefs": [
+        "echomaterialcore:forge_cupral_bar",
+        "echotoolcore:cupral_breaker",
+        "openlands:cupral_fitting"
+      ],
+      "notes": "First refined metal for mining and waystone fittings.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_ingot"
+    },
+    {
+      "id": "echomaterialcore:tinveil_chunk",
+      "displayName": "Tinveil Chunk",
+      "stackSize": 64,
+      "useType": "ore_chunk",
+      "tags": [
+        "foundation:metal/raw",
+        "openlands:metal/tin"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:tinveil_chunk",
+      "recipeRefs": [
+        "openlands:mine_tin_ore",
+        "echomaterialcore:forge_tinveil_bar"
+      ],
+      "notes": "Stonehills and shallow cave ore used to unlock bronze.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:tin_ore_chunk"
+    },
+    {
+      "id": "echomaterialcore:tinveil_bar",
+      "displayName": "Tinveil Bar",
+      "stackSize": 64,
+      "useType": "metal_ingot",
+      "tags": [
+        "foundation:metal/bar",
+        "openlands:metal/tin"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:tinveil_bar",
+      "recipeRefs": [
+        "echomaterialcore:forge_tinveil_bar",
+        "echomaterialcore:forge_bronze_cast"
+      ],
+      "notes": "Blend metal for bronze progression.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:tin_ingot"
+    },
+    {
+      "id": "echomaterialcore:bronze_cast",
+      "displayName": "Bronze Cast",
+      "stackSize": 64,
+      "useType": "metal_ingot",
+      "tags": [
+        "foundation:metal/bar",
+        "openlands:metal/bronze"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:bronze_cast",
+      "recipeRefs": [
+        "echomaterialcore:forge_bronze_cast",
+        "echotoolcore:bronze_breaker"
+      ],
+      "notes": "Mid-tier tool metal with better durability but no hardcore upkeep loop.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bronze_ingot"
+    },
+    {
+      "id": "echomaterialcore:ferrite_chunk",
+      "displayName": "Ferrite Chunk",
+      "stackSize": 64,
+      "useType": "ore_chunk",
+      "tags": [
+        "foundation:metal/raw",
+        "openlands:metal/iron"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:ferrite_chunk",
+      "recipeRefs": [
+        "openlands:mine_iron_ore",
+        "echomaterialcore:forge_ferrite_bar"
+      ],
+      "notes": "Deeper ore reward for cave and old mine exploration.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:iron_ore_chunk"
+    },
+    {
+      "id": "echomaterialcore:ferrite_bar",
+      "displayName": "Ferrite Bar",
+      "stackSize": 64,
+      "useType": "metal_ingot",
+      "tags": [
+        "foundation:metal/bar",
+        "openlands:metal/iron"
+      ],
+      "model": "generated",
+      "texture": "echomaterialcore:ferrite_bar",
+      "recipeRefs": [
+        "echomaterialcore:forge_ferrite_bar",
+        "echotoolcore:ferrite_breaker"
+      ],
+      "notes": "Late-MVP durable metal tier.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:iron_ingot"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "echomaterialcore:fiber_binding",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": 3
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "discover:echomaterialcore:reed_fiber"
+      ],
+      "parityNotes": "Can be crafted in all runtimes with the same output count.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:fiber_binding"
+    },
+    {
+      "id": "echomaterialcore:branchwood_planks",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "block": "echomaterialcore:branchwood_log",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echomaterialcore:branchwood_planks",
+          "count": 4
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:block/echomaterialcore:branchwood_log"
+      ],
+      "parityNotes": "Wood conversion has the same 1:4 ratio in all runtimes.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:branchwood_planks"
+    },
+    {
+      "id": "echomaterialcore:wooden_beam",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 2
+        }
+      ],
+      "outputs": [
+        {
+          "tagOutput": "openlands:beam_variant_from_input",
+          "count": 2
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Adapter chooses echomaterialcore:branchwood_beam or pine_beam from input family.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_beam"
+    },
+    {
+      "id": "echomaterialcore:wooden_post",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/log",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "tagOutput": "openlands:post_variant_from_input",
+          "count": 2
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/log"
+      ],
+      "parityNotes": "Posts are structural/decorative supports for shelter scoring.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_post"
+    },
+    {
+      "id": "echomaterialcore:wooden_slab",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 3
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echomaterialcore:wooden_slab",
+          "count": 6
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Generic MVP slab; family-specific slabs can replace later without breaking progression.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_slab"
+    },
+    {
+      "id": "echomaterialcore:wooden_stairs",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 6
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echomaterialcore:wooden_stairs",
+          "count": 4
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Builder UX hammer may rotate/cycle orientation.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_stairs"
+    },
+    {
+      "id": "echomaterialcore:wooden_door",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 6
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echomaterialcore:wooden_door",
+          "count": 1
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks",
+        "craft:echomaterialcore:fiber_binding"
+      ],
+      "parityNotes": "Door presence contributes to shelter score.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_door"
+    },
+    {
+      "id": "echomaterialcore:wooden_trapdoor",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 4
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echomaterialcore:wooden_trapdoor",
+          "count": 2
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Usable as compact shelter closure.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_trapdoor"
+    },
+    {
+      "id": "echomaterialcore:kiln_brick",
+      "station": "echostationcore:kiln",
+      "inputs": [
+        {
+          "item": "echomaterialcore:clay_lump",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:brick",
+          "count": 1
+        }
+      ],
+      "timeTicks": 160,
+      "unlockedBy": [
+        "place:block/echostationcore:kiln"
+      ],
+      "parityNotes": "Timed process should survive save/load.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln_brick"
+    },
+    {
+      "id": "echomaterialcore:kiln_glass",
+      "station": "echostationcore:kiln",
+      "inputs": [
+        {
+          "block": "echomaterialcore:sand",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:glass_pane",
+          "count": 1
+        }
+      ],
+      "timeTicks": 160,
+      "unlockedBy": [
+        "place:block/echostationcore:kiln",
+        "obtain:block/echomaterialcore:sand"
+      ],
+      "parityNotes": "MVP output item can craft glass_block and lanterns.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln_glass"
+    },
+    {
+      "id": "echomaterialcore:kiln_charcoal",
+      "station": "echostationcore:kiln",
+      "inputs": [
+        {
+          "tag": "foundation:wood/log",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 2
+        }
+      ],
+      "timeTicks": 120,
+      "unlockedBy": [
+        "place:block/echostationcore:kiln"
+      ],
+      "parityNotes": "Primary fuel loop.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln_charcoal"
+    },
+    {
+      "id": "echomaterialcore:forge_cupral_bar",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:cupral_bar",
+          "count": 1
+        }
+      ],
+      "timeTicks": 180,
+      "unlockedBy": [
+        "place:block/echostationcore:forge_hearth",
+        "obtain:item/echomaterialcore:cupral_chunk"
+      ],
+      "parityNotes": "Ore chunk processing.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge_copper_ingot"
+    },
+    {
+      "id": "echomaterialcore:forge_tinveil_bar",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:tinveil_chunk",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:tinveil_bar",
+          "count": 1
+        }
+      ],
+      "timeTicks": 180,
+      "unlockedBy": [
+        "place:block/echostationcore:forge_hearth",
+        "obtain:item/echomaterialcore:tinveil_chunk"
+      ],
+      "parityNotes": "Tin is the bridge to bronze.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge_tin_ingot"
+    },
+    {
+      "id": "echomaterialcore:forge_bronze_cast",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:cupral_bar",
+          "count": 3
+        },
+        {
+          "item": "echomaterialcore:tinveil_bar",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:bronze_cast",
+          "count": 4
+        }
+      ],
+      "timeTicks": 240,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:tinveil_bar",
+        "obtain:item/echomaterialcore:cupral_bar"
+      ],
+      "parityNotes": "Metal blend recipe.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge_bronze_ingot"
+    },
+    {
+      "id": "echomaterialcore:forge_ferrite_bar",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:ferrite_chunk",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 2
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echomaterialcore:ferrite_bar",
+          "count": 1
+        }
+      ],
+      "timeTicks": 240,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:ferrite_chunk"
+      ],
+      "parityNotes": "Deeper cave tier.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge_iron_ingot"
+    }
+  ]
+}

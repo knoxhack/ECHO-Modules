@@ -1,14 +1,14 @@
 package com.knoxhack.echoarcanacore;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
 import com.knoxhack.echoarcanacore.integration.ArcanaCoreMissionIntegration;
 import com.knoxhack.echoarcanacore.service.PersistentAetherService;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
 public final class EchoArcanaCore {

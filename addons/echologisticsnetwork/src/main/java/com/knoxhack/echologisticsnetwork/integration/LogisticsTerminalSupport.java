@@ -5,7 +5,7 @@ import com.knoxhack.echologisticsnetwork.block.entity.LogisticsBlockEntity;
 import com.knoxhack.echologisticsnetwork.content.LoadoutPreset;
 import com.knoxhack.echologisticsnetwork.content.LogisticsContent;
 import com.knoxhack.echologisticsnetwork.service.LogisticsNetworkService;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;

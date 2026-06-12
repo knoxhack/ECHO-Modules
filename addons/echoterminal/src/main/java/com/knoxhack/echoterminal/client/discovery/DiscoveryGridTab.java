@@ -1,10 +1,10 @@
 package com.knoxhack.echoterminal.client.discovery;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoResolvedDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoResolvedDiscoveryEntry;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.api.TerminalRenderContext;
 import com.knoxhack.echoterminal.api.ClientTerminalTab;

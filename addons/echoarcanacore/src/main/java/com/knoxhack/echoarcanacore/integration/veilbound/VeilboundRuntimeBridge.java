@@ -1,9 +1,9 @@
 package com.knoxhack.echoarcanacore.integration.veilbound;
 
 import com.mojang.datafixers.util.Pair;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoarcanacore.EchoArcanaCore;
 import com.knoxhack.echoarcanacore.api.VeilboundRuntimeSnapshot;
 import java.lang.reflect.InvocationTargetException;
@@ -30,7 +30,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class VeilboundRuntimeBridge {
     private static final String PLAYER_DATA_CLASS = "com.knoxhack.arcanaveil.data.ArcanaPlayerData";

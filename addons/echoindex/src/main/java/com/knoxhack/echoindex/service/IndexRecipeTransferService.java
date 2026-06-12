@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 import java.util.Optional;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;

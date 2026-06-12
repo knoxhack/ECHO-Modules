@@ -1,10 +1,10 @@
 package com.knoxhack.echonetcore.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketDebugEvent;
-import com.knoxhack.echocore.api.network.EchoPacketDirection;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
-import com.knoxhack.echocore.api.network.PacketDebugHook;
-import com.knoxhack.echocore.api.network.PacketDebugHooks;
+import com.echoplatform.echocore.api.network.EchoPacketDebugEvent;
+import com.echoplatform.echocore.api.network.EchoPacketDirection;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.PacketDebugHook;
+import com.echoplatform.echocore.api.network.PacketDebugHooks;
 import com.knoxhack.echonetcore.EchoNetCore;
 import com.knoxhack.echonetcore.config.EchoNetCoreConfig;
 import java.util.Collections;

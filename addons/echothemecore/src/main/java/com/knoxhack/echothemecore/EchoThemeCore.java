@@ -1,8 +1,8 @@
 package com.knoxhack.echothemecore;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echothemecore.command.ThemeCoreCommands;
 import com.knoxhack.echothemecore.config.ThemeCoreConfig;
 import com.knoxhack.echothemecore.content.ThemeRegistry;

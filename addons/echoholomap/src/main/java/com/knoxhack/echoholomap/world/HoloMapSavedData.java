@@ -1,7 +1,7 @@
 package com.knoxhack.echoholomap.world;
 
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.EchoHoloMap;
 import com.knoxhack.echoholomap.HoloMapIds;
 import com.knoxhack.echoholomap.integration.HoloMapMissionHooks;

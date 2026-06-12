@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.echo;
 
 import com.knoxhack.echoashfallprotocol.endgame.PostNexusData;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.world.entity.player.Player;

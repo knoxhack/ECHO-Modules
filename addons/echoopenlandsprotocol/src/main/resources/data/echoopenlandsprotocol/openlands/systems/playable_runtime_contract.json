@@ -1,0 +1,444 @@
+{
+  "schema": "echo.openlands.systems.playable_runtime_contract.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "sourceContracts": {
+    "gameModes": "config/game_modes.json",
+    "firstHourRoute": "progression/first_hour_route.json",
+    "playtestFixture": "playtests/mvp_first_hour_acceptance.json",
+    "waystones": "waystones/waystone_contract.json",
+    "holomap": "holomap/mvp_regions.json",
+    "homesteadAlpha": "systems/homestead_alpha.json",
+    "builderUxAlpha": "systems/builder_ux_alpha.json",
+    "coopSmp": "systems/coop_and_smp.json",
+    "runtimeAdapterLoadPlan": "systems/runtime_adapter_load_plan.json"
+  },
+  "runtimeCore": {
+    "package": "com.knoxhack.echoopenlandsprotocol.runtime",
+    "entrypointClass": "OpenlandsFirstHourRuntime",
+    "requiredClasses": [
+      "OpenlandsFirstHourRuntime",
+      "OpenlandsFirstHourStep",
+      "OpenlandsStandardRules",
+      "OpenlandsStarterSpawnGuarantees",
+      "OpenlandsStarterSpawnSnapshot",
+      "OpenlandsStarterSpawnResult",
+      "OpenlandsShelterScoring",
+      "OpenlandsShelterSnapshot",
+      "OpenlandsShelterScore",
+      "OpenlandsWaystoneRuntime",
+      "OpenlandsWaystoneState",
+      "OpenlandsWaystoneTransition",
+      "OpenlandsCropGrowthSnapshot",
+      "OpenlandsCropGrowthResult",
+      "OpenlandsHomesteadRuntime",
+      "OpenlandsBuilderActionSnapshot",
+      "OpenlandsBuilderActionResult",
+      "OpenlandsBuilderUxRuntime"
+    ],
+    "adapterManifestMethod": "adapterBindingManifest",
+    "compileScope": "pure_java_no_platform_classes"
+  },
+  "firstHourRuntimeHooks": [
+    {
+      "id": "standard_mode_rules",
+      "method": "OpenlandsFirstHourRuntime.standardRules",
+      "inputs": [],
+      "outputs": [
+        "modeId",
+        "hunger",
+        "stamina",
+        "hydration",
+        "foodSpoilage",
+        "temperatureDamage",
+        "deathPack",
+        "hostileIntensity",
+        "hardcoreMetersOff"
+      ],
+      "requiredEvidence": [
+        "standard_mode_relaxed",
+        "hardcore_meters_default_off"
+      ]
+    },
+    {
+      "id": "starter_spawn_guarantees",
+      "method": "OpenlandsFirstHourRuntime.validateStarterSpawn",
+      "inputs": [
+        "biomeId",
+        "starterResourceRadiusBlocks",
+        "visibleLandmarkDistanceBlocks",
+        "nearestHostileDistanceBlocks",
+        "hasWoodSource",
+        "hasLooseStone",
+        "hasFiberSource",
+        "hasStarterFood",
+        "hasWaterOrWellHint",
+        "hasExplorationHook"
+      ],
+      "outputs": [
+        "accepted",
+        "satisfied",
+        "missing",
+        "failurePolicy"
+      ],
+      "requiredEvidence": [
+        "starter_spawn_guarantees_bound"
+      ]
+    },
+    {
+      "id": "shelter_score",
+      "method": "OpenlandsFirstHourRuntime.scoreShelter",
+      "inputs": [
+        "roofCoverage",
+        "wallEnclosure",
+        "entryClosed",
+        "bedrollPresent",
+        "lightOrFirePresent",
+        "nearestHostileDistanceBlocks"
+      ],
+      "outputs": [
+        "total",
+        "sleepMilestoneAllowed",
+        "componentScores",
+        "missingImprovements"
+      ],
+      "requiredEvidence": [
+        "shelter_score_bound"
+      ]
+    },
+    {
+      "id": "waystone_state_machine",
+      "method": "OpenlandsFirstHourRuntime.advanceWaystone",
+      "inputs": [
+        "currentState",
+        "availableInputs"
+      ],
+      "outputs": [
+        "before",
+        "after",
+        "accepted",
+        "reason",
+        "consumedInputs"
+      ],
+      "requiredEvidence": [
+        "waystone_state_persistence_ready",
+        "waystone_state_save_load_pass"
+      ]
+    },
+    {
+      "id": "first_hour_route",
+      "method": "OpenlandsFirstHourRuntime.firstHourStepIds",
+      "inputs": [],
+      "outputs": [
+        "safe_spawn",
+        "first_gathering",
+        "first_tools",
+        "first_shelter",
+        "sleep_and_recover",
+        "first_exploration_hook",
+        "first_waystone"
+      ],
+      "requiredEvidence": [
+        "tutorial_triggers_bound",
+        "first_hour_save_load_ready"
+      ]
+    },
+    {
+      "id": "homestead_crop_growth",
+      "method": "OpenlandsFirstHourRuntime.advanceCrop",
+      "inputs": [
+        "cropId",
+        "currentStage",
+        "elapsedMinutes",
+        "watered",
+        "composted",
+        "hardlands"
+      ],
+      "outputs": [
+        "cropId",
+        "beforeStage",
+        "afterStage",
+        "harvestReady",
+        "paused",
+        "failed",
+        "reason",
+        "growthMultiplier"
+      ],
+      "requiredEvidence": [
+        "homestead_state_bound",
+        "hardcore_meters_default_off"
+      ]
+    },
+    {
+      "id": "cookpot_meal_ready",
+      "method": "OpenlandsFirstHourRuntime.cookpotMealReady",
+      "inputs": [
+        "ingredientCount",
+        "elapsedCookTicks",
+        "outputAlreadyReady"
+      ],
+      "outputs": [
+        "ready"
+      ],
+      "requiredEvidence": [
+        "homestead_state_bound"
+      ]
+    },
+    {
+      "id": "builder_ux_action",
+      "method": "OpenlandsFirstHourRuntime.validateBuilderAction",
+      "inputs": [
+        "commandId",
+        "playerCanEdit",
+        "targetSupported",
+        "variantExists",
+        "hasRequiredItemOrCreative",
+        "containerPermission",
+        "serverAuthoritative",
+        "chunkLoaded"
+      ],
+      "outputs": [
+        "commandId",
+        "accepted",
+        "reason",
+        "serverAuthoritativeRequired",
+        "inventoryMutation"
+      ],
+      "requiredEvidence": [
+        "builder_ux_bound",
+        "multiplayer_permissions_bound"
+      ]
+    },
+    {
+      "id": "adapter_ready_signal",
+      "method": "OpenlandsFirstHourRuntime.adapterBindingManifest",
+      "inputs": [],
+      "outputs": [
+        "moduleId",
+        "packId",
+        "version",
+        "runtimeCorePackage",
+        "standardRules",
+        "firstHourStepIds",
+        "shelterMinimumForSleepMilestone",
+        "starterSpawnAllowedBiomes",
+        "waystoneStateOrder",
+        "waystoneRequiredInputsByState",
+        "activeStonesRequiredForFastTravel",
+        "homesteadRuntime",
+        "builderUxRuntime",
+        "callableHooks"
+      ],
+      "requiredEvidence": [
+        "adapter_ready_signal"
+      ]
+    }
+  ],
+  "starterSpawnRules": {
+    "allowedStarterBiomes": [
+      "meadows",
+      "woodlands"
+    ],
+    "guaranteedResourceRadiusBlocks": 64,
+    "visibleLandmarkRadiusBlocks": 128,
+    "minimumHostileClearRadiusBlocks": 16,
+    "requiredResourceSignals": [
+      "wood_source_found",
+      "loose_stone_found",
+      "fiber_source_found",
+      "starter_food_found",
+      "water_or_well_hint_found",
+      "cave_road_or_ruin_hook_found"
+    ],
+    "failurePolicy": "reject_seed_or_regenerate_starter_area"
+  },
+  "shelterScoring": {
+    "minimumForSleepMilestone": 55,
+    "idealScore": 100,
+    "components": [
+      {
+        "id": "roof_coverage",
+        "maxPoints": 25,
+        "runtimeInput": "roofCoverage"
+      },
+      {
+        "id": "wall_enclosure",
+        "maxPoints": 25,
+        "runtimeInput": "wallEnclosure"
+      },
+      {
+        "id": "entry_closure",
+        "maxPoints": 15,
+        "runtimeInput": "entryClosed"
+      },
+      {
+        "id": "bedroll_present",
+        "maxPoints": 15,
+        "runtimeInput": "bedrollPresent"
+      },
+      {
+        "id": "light_or_fire",
+        "maxPoints": 10,
+        "runtimeInput": "lightOrFirePresent"
+      },
+      {
+        "id": "hostile_distance",
+        "maxPoints": 10,
+        "runtimeInput": "nearestHostileDistanceBlocks"
+      }
+    ]
+  },
+  "waystoneTransitions": {
+    "stateOrder": [
+      "undiscovered",
+      "discovered",
+      "debris_cleared",
+      "stone_repaired",
+      "fitted",
+      "charged",
+      "bound",
+      "active"
+    ],
+    "requiredInputsByState": {
+      "undiscovered": {},
+      "discovered": {},
+      "debris_cleared": {
+        "fieldstone_piece": 8
+      },
+      "stone_repaired": {
+        "repair_kit": 1
+      },
+      "fitted": {
+        "copper_fitting": 4
+      },
+      "charged": {
+        "waystone_core": 1,
+        "glow_crystal": 1
+      },
+      "bound": {
+        "route_binding": 1
+      },
+      "active": {}
+    },
+    "alternateInputs": [
+      {
+        "state": "debris_cleared",
+        "insteadOf": {
+          "fieldstone_piece": 8
+        },
+        "accept": {
+          "limestone": 1
+        }
+      }
+    ],
+    "activeStonesRequiredForFastTravel": 2
+  },
+  "saveLoadSnapshot": {
+    "requiredFields": [
+      "inventory",
+      "hotbar",
+      "placedBlocks",
+      "chestContents",
+      "bedrollSpawn",
+      "campfireLitState",
+      "shelterScore",
+      "waystoneState",
+      "holomapRegionDiscovery"
+    ],
+    "adapterPersistenceKeyPrefix": "openlands.first_hour",
+    "mustRoundTripThrough": [
+      "fresh_world_save",
+      "menu_exit_reload",
+      "runtime_restart_reload"
+    ]
+  },
+  "adapterBindings": [
+    {
+      "runtimeTarget": "echo_native",
+      "editionRepo": "ECHO-Openlands-Native-Edition",
+      "artifactFamily": "echo-addon",
+      "mustCallHooks": [
+        "standard_mode_rules",
+        "starter_spawn_guarantees",
+        "shelter_score",
+        "waystone_state_machine",
+        "homestead_crop_growth",
+        "cookpot_meal_ready",
+        "builder_ux_action",
+        "first_hour_route",
+        "adapter_ready_signal"
+      ],
+      "evidenceAttachment": "openlands-native-runtime-core-report.json"
+    },
+    {
+      "runtimeTarget": "echo_runtime_standalone",
+      "editionRepo": "ECHO-Openlands-Standalone-Edition",
+      "artifactFamily": "standalone",
+      "mustCallHooks": [
+        "standard_mode_rules",
+        "starter_spawn_guarantees",
+        "shelter_score",
+        "waystone_state_machine",
+        "homestead_crop_growth",
+        "cookpot_meal_ready",
+        "builder_ux_action",
+        "first_hour_route",
+        "adapter_ready_signal"
+      ],
+      "evidenceAttachment": "openlands-standalone-runtime-core-report.json"
+    },
+    {
+      "runtimeTarget": "neoforge",
+      "editionRepo": "ECHO-Openlands-NeoForge-Edition",
+      "artifactFamily": "neoforge",
+      "mustCallHooks": [
+        "standard_mode_rules",
+        "starter_spawn_guarantees",
+        "shelter_score",
+        "waystone_state_machine",
+        "homestead_crop_growth",
+        "cookpot_meal_ready",
+        "builder_ux_action",
+        "first_hour_route",
+        "adapter_ready_signal"
+      ],
+      "evidenceAttachment": "openlands-neoforge-runtime-core-report.json"
+    }
+  ],
+  "smokeHarness": {
+    "mustCompileClasses": true,
+    "requiredScenarioIds": [
+      "safe_spawn",
+      "first_gathering",
+      "first_tools",
+      "first_shelter",
+      "sleep_and_recover",
+      "first_exploration_hook",
+      "first_waystone"
+    ],
+    "mustProve": [
+      "standard_rules_keep_hardcore_meters_off",
+      "valid_starter_spawn_is_accepted",
+      "invalid_starter_spawn_reports_missing_signals",
+      "forgiving_shelter_score_reaches_sleep_threshold",
+      "weak_shelter_score_does_not_reach_sleep_threshold",
+      "waystone_advances_to_active_with_required_inputs",
+      "two_active_waystones_unlock_fast_travel",
+      "standard_crop_pauses_without_dying",
+      "watered_composted_crop_advances",
+      "cookpot_requires_three_ingredients_and_cook_time",
+      "builder_hammer_requires_server_validation",
+      "storage_commands_require_permission_and_server_authority"
+    ],
+    "releaseEvidence": [
+      "runtime_smoke_test_ready",
+      "first_hour_runtime_playtest_pass",
+      "waystone_state_save_load_pass"
+    ]
+  }
+}

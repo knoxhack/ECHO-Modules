@@ -1,8 +1,8 @@
 package com.knoxhack.echoashfallprotocol.entity.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoNpcRole;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoNpcRole;
 import com.knoxhack.echoashfallprotocol.faction.AshfallBiomeFactions;
 import com.knoxhack.echoashfallprotocol.faction.AshfallFactionMap;
 import com.knoxhack.echoashfallprotocol.faction.FactionNpcDialogueService;

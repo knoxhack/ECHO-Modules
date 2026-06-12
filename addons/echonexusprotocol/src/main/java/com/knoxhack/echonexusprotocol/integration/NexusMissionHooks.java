@@ -1,8 +1,8 @@
 package com.knoxhack.echonexusprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echonexusprotocol.EchoNexusProtocol;
 import com.knoxhack.echonexusprotocol.block.NexusMachineBlock;
 import net.minecraft.resources.Identifier;

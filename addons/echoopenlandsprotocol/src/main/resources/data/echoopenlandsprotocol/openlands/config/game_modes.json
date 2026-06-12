@@ -1,0 +1,85 @@
+{
+  "schema": "echo.openlands.game_modes.v1",
+  "defaultMode": "openlands_standard",
+  "modes": [
+    {
+      "id": "openlands_standard",
+      "displayName": "Openlands Standard",
+      "summary": "Relaxed survival sandbox with gentle hunger, recoverable death, moderate hostiles, and no hardcore meters.",
+      "rules": {
+        "health": true,
+        "hunger": "gentle",
+        "naturalHealingRequiresFood": true,
+        "stamina": false,
+        "hydration": false,
+        "foodSpoilage": false,
+        "temperatureDamage": false,
+        "weatherDamage": false,
+        "deathPack": "recoverable",
+        "hostiles": "moderate",
+        "waystoneTravel": "requires_two_active_waystones"
+      }
+    },
+    {
+      "id": "openlands_peaceful",
+      "displayName": "Openlands Peaceful",
+      "summary": "Building and exploration with hostile creatures disabled.",
+      "rules": {
+        "inherits": "openlands_standard",
+        "hunger": "optional",
+        "hostiles": "disabled"
+      }
+    },
+    {
+      "id": "openlands_explorer",
+      "displayName": "Openlands Explorer",
+      "summary": "Discovery-focused mode with hunger disabled and hostile creatures still present.",
+      "rules": {
+        "inherits": "openlands_standard",
+        "hunger": "disabled",
+        "hostiles": "moderate",
+        "mapRevealRadiusMultiplier": 1.25
+      }
+    },
+    {
+      "id": "openlands_builder_survival",
+      "displayName": "Builder Survival",
+      "summary": "Survival with easier gathering and safer nights for long building sessions.",
+      "rules": {
+        "inherits": "openlands_standard",
+        "resourceYieldMultiplier": 1.5,
+        "hostiles": "gentle",
+        "nightSpawnMultiplier": 0.5
+      }
+    },
+    {
+      "id": "openlands_creative",
+      "displayName": "Openlands Creative",
+      "summary": "Creative catalog, flight, no survival rules, and world controls.",
+      "rules": {
+        "health": false,
+        "hunger": "disabled",
+        "hostiles": "optional",
+        "creativeCatalog": true,
+        "flight": true,
+        "timeControls": true,
+        "weatherControls": true
+      }
+    },
+    {
+      "id": "openlands_hardlands",
+      "displayName": "Hardlands",
+      "summary": "Optional hard mode for players who want harsher survival pressure.",
+      "rules": {
+        "inherits": "openlands_standard",
+        "hunger": "normal",
+        "stamina": true,
+        "temperatureDamage": true,
+        "weatherDamage": "heavy_storms_only",
+        "foodSpoilage": true,
+        "hostiles": "strong",
+        "oreScarcityMultiplier": 0.75
+      }
+    }
+  ]
+}

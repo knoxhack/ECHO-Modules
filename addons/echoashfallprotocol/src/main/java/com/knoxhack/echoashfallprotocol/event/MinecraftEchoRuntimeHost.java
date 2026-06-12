@@ -57,9 +57,9 @@ import com.knoxhack.echoashfallprotocol.world.POIScannerService;
 import com.knoxhack.echoashfallprotocol.world.StartingDropPodData;
 import com.knoxhack.echoashfallprotocol.worldgen.ProceduralStructureGenerator;
 import com.knoxhack.echoashfallprotocol.worldgen.StructureType;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echonetcore.network.EchoSyncPayload;
 import com.knoxhack.echonetcore.network.EchoSyncType;
@@ -2388,7 +2388,7 @@ public class MinecraftEchoRuntimeHost implements EchoNativeRuntimeHost {
                 || MinecraftEchoRuntimeHost.countItem(player, ModItems.WILD_BERRY.get()) >= 12) {
             changed |= recordMission(player, MissionObjectiveType.CUSTOM, "ashfall:ration_buffer", 1, payload);
         }
-        if (MinecraftEchoRuntimeHost.hasAll(player, ModItems.BONE_KNIFE.get(), ModItems.CRUDE_SPEAR.get(), ModItems.HIDE_WRAP.get())) {
+        if (MinecraftEchoRuntimeHost.hasAll(player, ModItems.ASHBONE_SHIV.get(), ModItems.SCAVENGER_SPEAR.get(), ModItems.HIDE_WRAP.get())) {
             changed |= recordMission(player, MissionObjectiveType.CUSTOM, "ashfall:wasteland_field_kit", 1, payload);
         }
         return changed;

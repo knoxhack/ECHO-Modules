@@ -14,9 +14,9 @@ import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationContext
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePlayerRef;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePosition;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeResult;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.IObjectiveView;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.IObjectiveView;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.echo.EchoMessages;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
@@ -959,7 +959,7 @@ public final class AshfallAdapterCoreEarlyEventRuntime {
                 || countItem(player, ModItems.WILD_BERRY.get()) >= 12) {
             changed |= recordMission(player, MissionObjectiveType.CUSTOM, "ashfall:ration_buffer", 1, payload);
         }
-        if (hasAll(player, ModItems.BONE_KNIFE.get(), ModItems.CRUDE_SPEAR.get(), ModItems.HIDE_WRAP.get())) {
+        if (hasAll(player, ModItems.ASHBONE_SHIV.get(), ModItems.SCAVENGER_SPEAR.get(), ModItems.HIDE_WRAP.get())) {
             changed |= recordMission(player, MissionObjectiveType.CUSTOM, "ashfall:wasteland_field_kit", 1, payload);
         }
         return changed;

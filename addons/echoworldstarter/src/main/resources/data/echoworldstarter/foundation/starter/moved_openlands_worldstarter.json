@@ -1,0 +1,322 @@
+{
+  "schema": "echo.foundation.moved_openlands_worldstarter.v1",
+  "movedOrder": 4,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echoworldstarter",
+  "blocks": [
+    {
+      "id": "echoworldstarter:bedroll_block",
+      "displayName": "Bedroll",
+      "category": "rest",
+      "hardness": 0.4,
+      "tool": "hand",
+      "drops": [
+        {
+          "item": "echoworldstarter:bedroll",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:rest",
+        "openlands:spawn_point",
+        "openlands:shelter_component"
+      ],
+      "model": "echoworldstarter:bedroll",
+      "texture": "block/echoworldstarter:bedroll_block",
+      "recipeSource": "echoopenlandsprotocol:recipe/echoworldstarter:bedroll",
+      "shelterScore": 2,
+      "notes": "Sleep and respawn point for the first milestone.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bedroll_block"
+    },
+    {
+      "id": "echoworldstarter:campfire",
+      "displayName": "Campfire",
+      "category": "survival",
+      "hardness": 0.7,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:heat_source",
+        "openlands:light",
+        "openlands:cooking_basic",
+        "openlands:shelter_component"
+      ],
+      "model": "echoworldstarter:campfire",
+      "texture": "block/echoworldstarter:campfire",
+      "recipeSource": "echoopenlandsprotocol:recipe/echoworldstarter:campfire",
+      "light": 12,
+      "shelterScore": 2,
+      "notes": "Warmth, light, simple cooking, and first shelter score.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:campfire"
+    },
+    {
+      "id": "echoworldstarter:pitchlight",
+      "displayName": "Pitchlight",
+      "category": "light",
+      "hardness": 0.1,
+      "tool": "hand",
+      "drops": [
+        {
+          "item": "echoworldstarter:pitchlight_bundle",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:light",
+        "openlands:starter_light"
+      ],
+      "model": "echoworldstarter:pitchlight",
+      "texture": "block/echoworldstarter:pitchlight",
+      "recipeSource": "echoopenlandsprotocol:recipe/echoworldstarter:pitchlight_bundle",
+      "light": 10,
+      "notes": "Starter wall/floor light. Item form is echoworldstarter:pitchlight bundle.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:torch"
+    }
+  ],
+  "items": [
+    {
+      "id": "echoworldstarter:bedroll",
+      "displayName": "Bedroll",
+      "stackSize": 1,
+      "useType": "placeable",
+      "tags": [
+        "openlands:utility",
+        "openlands:spawn_point",
+        "openlands:shelter_score"
+      ],
+      "model": "generated",
+      "texture": "echoworldstarter:bedroll",
+      "recipeRefs": [
+        "echoworldstarter:bedroll"
+      ],
+      "placesBlock": "echoworldstarter:bedroll_block",
+      "notes": "Relaxed respawn anchor; death recovery uses pack placement, not inventory loss pressure.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bedroll"
+    },
+    {
+      "id": "echoworldstarter:pitchlight_bundle",
+      "displayName": "Pitchlight Bundle",
+      "stackSize": 64,
+      "useType": "placeable_bundle",
+      "tags": [
+        "openlands:utility",
+        "openlands:light_source"
+      ],
+      "model": "generated",
+      "texture": "echoworldstarter:pitchlight_bundle",
+      "recipeRefs": [
+        "echoworldstarter:pitchlight_bundle"
+      ],
+      "placesBlock": "echoworldstarter:pitchlight",
+      "notes": "Crafting output places individual torches; bundle naming avoids direct copied identity.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:torch_bundle"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "echoworldstarter:pitchlight_bundle",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:pitch_resin",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echoworldstarter:pitchlight_bundle",
+          "count": 4
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "discover:echomaterialcore:pitch_resin",
+        "discover:echomaterialcore:branchwood_stick"
+      ],
+      "parityNotes": "Output places the Openlands echoworldstarter:pitchlight block.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:torch_bundle",
+      "displayName": "Pitchlight Bundle"
+    },
+    {
+      "id": "echoworldstarter:campfire",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 4
+        },
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 4
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echoworldstarter:campfire",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "discover:echomaterialcore:fieldstone_piece",
+        "discover:echomaterialcore:branchwood_stick"
+      ],
+      "parityNotes": "Campfire supports lit/unlit save state.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:campfire"
+    },
+    {
+      "id": "echoworldstarter:bedroll",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": 4
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echoworldstarter:bedroll",
+          "count": 1
+        }
+      ],
+      "timeTicks": 30,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:hide_strip",
+        "discover:shelter_score"
+      ],
+      "parityNotes": "Places echoworldstarter:bedroll_block and sets recoverable spawn.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bedroll"
+    }
+  ],
+  "firstHourSteps": [
+    {
+      "step": 1,
+      "id": "safe_spawn",
+      "targetTimeMinutes": "0-2",
+      "requirements": [
+        "spawn on safe ground",
+        "starter resources in guaranteed radius",
+        "visible exploration hook nearby"
+      ],
+      "successMetric": "Player can gather stick, stone, fiber, and food without combat."
+    },
+    {
+      "step": 2,
+      "id": "first_gathering",
+      "targetTimeMinutes": "2-8",
+      "requirements": [
+        "collect echomaterialcore:branchwood_stick",
+        "collect echomaterialcore:fieldstone_piece",
+        "collect echomaterialcore:reed_fiber or equivalent fiber",
+        "collect starter food"
+      ],
+      "successMetric": "Discovery prompts fire once and do not repeat as spam."
+    },
+    {
+      "step": 3,
+      "id": "first_tools",
+      "targetTimeMinutes": "8-15",
+      "requirements": [
+        "craft echomaterialcore:fiber_binding",
+        "craft echotoolcore:crude_cutter",
+        "craft echotoolcore:crude_breaker or echotoolcore:crude_digger",
+        "craft echoworldstarter:pitchlight_bundle if echomaterialcore:pitch_resin found"
+      ],
+      "successMetric": "Player understands wood, stone, and light basics."
+    },
+    {
+      "step": 4,
+      "id": "first_shelter",
+      "targetTimeMinutes": "15-30",
+      "requirements": [
+        "place walls or natural enclosure",
+        "place roof or overhead cover",
+        "place a echoworldstarter:bedroll",
+        "place light or echoworldstarter:campfire"
+      ],
+      "successMetric": "Shelter score reaches minimum without requiring a perfect box."
+    },
+    {
+      "step": 5,
+      "id": "sleep_and_recover",
+      "targetTimeMinutes": "30-35",
+      "requirements": [
+        "sleep in echoworldstarter:bedroll",
+        "set spawn",
+        "confirm recoverable death pack is enabled"
+      ],
+      "successMetric": "Milestone completes when minimum shelter score is reached, not perfect construction."
+    },
+    {
+      "step": 6,
+      "id": "first_exploration_hook",
+      "targetTimeMinutes": "35-45",
+      "requirements": [
+        "discover road marker, cave mouth, tiny camp, ruined well, or ruin silhouette",
+        "unlock region or road hint"
+      ],
+      "successMetric": "HoloMap or fallback map data records the point of interest."
+    }
+  ],
+  "shelterScore": {
+    "minimumForSleepMilestone": 55,
+    "idealScore": 100,
+    "components": [
+      {
+        "id": "roof_coverage",
+        "maxPoints": 25,
+        "forgivingRule": "Counts natural rock, thatch_roof, slabs, stairs, and planks within echoworldstarter:bedroll radius."
+      },
+      {
+        "id": "wall_enclosure",
+        "maxPoints": 25,
+        "forgivingRule": "Partial enclosure counts; caves and ruins can contribute."
+      },
+      {
+        "id": "entry_closure",
+        "maxPoints": 15,
+        "forgivingRule": "Door, trapdoor, fence gate later, or narrow natural choke point."
+      },
+      {
+        "id": "bedroll_present",
+        "maxPoints": 15,
+        "forgivingRule": "Any placed echoworldstarter:bedroll within 8 blocks."
+      },
+      {
+        "id": "light_or_fire",
+        "maxPoints": 10,
+        "forgivingRule": "Torch, lantern, or echoworldstarter:campfire within 12 blocks."
+      },
+      {
+        "id": "hostile_distance",
+        "maxPoints": 10,
+        "forgivingRule": "No hostile within 16 blocks at check time; failed check can retry after a short cooldown."
+      }
+    ]
+  }
+}

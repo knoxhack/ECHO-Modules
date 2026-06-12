@@ -4,7 +4,7 @@ import com.knoxhack.echorelictech.config.RelicTechConfig;
 import com.knoxhack.echorelictech.integration.nexus.RelicTechNexusIntegration;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class RelicInstabilityManager {
 

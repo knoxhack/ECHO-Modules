@@ -1,6 +1,6 @@
 package com.knoxhack.echorecovery.client.screen;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echocore.client.ui.EchoCyberGlassUi;
 import com.knoxhack.echorecovery.config.RecoveryConfig;
 import com.knoxhack.echorecovery.menu.GraveMenu;

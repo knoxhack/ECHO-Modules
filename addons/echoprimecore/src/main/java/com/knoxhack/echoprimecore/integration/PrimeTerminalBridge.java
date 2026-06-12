@@ -1,7 +1,7 @@
 package com.knoxhack.echoprimecore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
 
 public final class PrimeTerminalBridge {
     private PrimeTerminalBridge() {

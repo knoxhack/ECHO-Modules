@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public final class EchoCommunityBridgeNativeModule implements EchoNativeSurfaceModuleEntrypoint {
+    private static final String MODULE_ID = "echocommunitybridge";
+
     public Map<String, Object> describeNativeSurfaces(Map<String, String> context) {
         Map<String, Object> referenceProbe = CommunityBridgeAdapterCoreContracts.referenceProbe();
         boolean probePassed = CommunityBridgeAdapterCoreContracts.referenceProbePassed(referenceProbe);
@@ -15,7 +17,7 @@ public final class EchoCommunityBridgeNativeModule implements EchoNativeSurfaceM
         result.put("activationStage", "community_bridge_native_contract_active");
         result.put("adapterCoreUsed", true);
         result.put("nativeAdapterCodeExecuted", true);
-        result.put("moduleId", EchoCommunityBridge.MODID);
+        result.put("moduleId", MODULE_ID);
         result.put("packId", context.getOrDefault("packId", "unknown"));
         result.put("registeredFeatureContracts", CommunityBridgeAdapterCoreContracts.CONTRACT_IDS);
         result.put("logicalRegistrationCount", CommunityBridgeAdapterCoreContracts.CONTRACT_IDS.size());

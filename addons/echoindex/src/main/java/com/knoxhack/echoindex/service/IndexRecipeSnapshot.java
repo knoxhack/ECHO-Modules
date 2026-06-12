@@ -1,9 +1,9 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexRecipeCategory;
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IndexRecipeCategory;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;

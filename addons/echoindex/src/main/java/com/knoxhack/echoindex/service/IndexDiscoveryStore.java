@@ -1,8 +1,8 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.index.IndexEntry;
-import com.knoxhack.echocore.api.index.IndexEntryState;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.index.IndexEntry;
+import com.echoplatform.echocore.api.index.IndexEntryState;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.EchoIndex;
 import java.util.LinkedHashSet;

@@ -171,7 +171,7 @@ public final class AshfallAdapterCoreMachinePowerRuntimeVerifier {
         require(recipes, "stoneGrinderByproductCount", 1);
         require(recipes, "toxicGrinderOutput", "coal_dust");
         require(recipes, "toxicGrinderOutputCount", 2);
-        require(recipes, "toxicGrinderByproduct", "contaminated_redstone");
+        require(recipes, "toxicGrinderByproduct", "charged_ash_circuit");
         require(recipes, "toxicGrinderByproductCount", 1);
         require(recipes, "minecraftRuntimeAccessed", false);
         require(recipes, "minecraftRegistryMutated", false);
@@ -181,7 +181,7 @@ public final class AshfallAdapterCoreMachinePowerRuntimeVerifier {
         require(byproductChance, "standaloneDuplicateGameplaySystem", false);
         require(byproductChance, "status", "PASS");
         require(byproductChance, "recipeInput", "toxic_slagstone");
-        require(byproductChance, "recipeByproduct", "contaminated_redstone");
+        require(byproductChance, "recipeByproduct", "charged_ash_circuit");
         require(byproductChance, "recipeBatches", 4);
         require(byproductChance, "byproductSuccesses", 2);
         require(byproductChance, "byproductSkipped", 2);

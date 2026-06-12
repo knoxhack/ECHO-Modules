@@ -3,7 +3,7 @@ package com.knoxhack.echopresencelink.presence;
 import com.knoxhack.echopresencelink.api.EchoPresenceButton;
 import com.knoxhack.echopresencelink.api.EchoPresenceContext;
 import com.knoxhack.echopresencelink.config.PresenceLinkConfig;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

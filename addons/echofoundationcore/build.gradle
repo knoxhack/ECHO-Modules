@@ -1,0 +1,52 @@
+
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net/releases' }
+}
+
+neoForge {
+    version = project.findProperty('neoForgeVersion') ?: '21.1.194'
+}
+
+def compileOnlyIfIncluded = { String projectPath ->
+    if (project.findProject(projectPath) != null) {
+        dependencies.add('compileOnly', project(projectPath))
+    }
+}
+
+dependencies {
+    implementation project(':echocore')
+    implementation project(':echonetcore')
+
+    compileOnly project(':echo-native-contracts')
+    compileOnlyIfIncluded(':echoadaptercore')
+}
+
+processResources {
+    def props = [
+        minecraft_version: project.findProperty('minecraftVersion') ?: '1.21.1',
+        minecraft_version_range: project.findProperty('minecraftVersionRange') ?: '[1.21.1,1.22)',
+        neo_version: project.findProperty('neoForgeVersion') ?: '21.1.194',
+        neo_version_range: project.findProperty('neoForgeVersionRange') ?: '[21.1,)',
+        loader_version_range: project.findProperty('loaderVersionRange') ?: '[4,)',
+        mod_id: mod_id,
+        mod_name: mod_name,
+        mod_license: mod_license,
+        mod_version: mod_version,
+        mod_group_id: mod_group_id,
+        mod_authors: mod_authors,
+        mod_description: mod_description
+    ]
+    inputs.properties props
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand props
+    }
+}

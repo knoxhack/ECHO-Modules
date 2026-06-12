@@ -1,15 +1,15 @@
 package com.knoxhack.echoworldcore.integration;
 
-import com.knoxhack.echocore.api.EchoMapLayer;
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.EchoMapLayer;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldRegionType;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.service.WorldRegionService;
 import java.util.ArrayList;
@@ -186,6 +186,7 @@ public enum WorldCoreMapDataProvider implements IMapDataProvider {
             case NEXUS_SCAR, ANOMALY_ZONE -> IMapMarker.MarkerKind.NEXUS_ANOMALY;
             case TOXIC_SWAMP, RADIATION_ZONE, CRYOGENIC_RUINS -> IMapMarker.MarkerKind.HAZARD;
             case RUINED_CITY -> IMapMarker.MarkerKind.REGION;
+            case CUSTOM -> IMapMarker.MarkerKind.REGION;
         };
     }
 

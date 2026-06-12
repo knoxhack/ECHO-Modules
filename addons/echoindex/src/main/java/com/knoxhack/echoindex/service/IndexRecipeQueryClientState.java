@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

@@ -430,8 +430,8 @@ final class AshfallNativeGameplayBootstrap {
         mission.put("objectiveType", "custom");
         mission.put("objectiveTarget", TENTH_OBJECTIVE_TARGET);
         mission.put("requiredItems", List.of(
-                "echoashfallprotocol:bone_knife",
-                "echoashfallprotocol:crude_spear",
+                "echoashfallprotocol:ashbone_shiv",
+                "echoashfallprotocol:scavenger_spear",
                 "echoashfallprotocol:hide_wrap"));
         mission.put("runtimeEvents", List.of("player.inventory_changed", "player.craft_item", "ashfall.inventory_predicate"));
         mission.put("terminalAction", "turn_in");
@@ -1396,8 +1396,8 @@ final class AshfallNativeGameplayBootstrap {
         hook.put("objectiveId", TENTH_OBJECTIVE_ID);
         hook.put("target", TENTH_OBJECTIVE_TARGET);
         hook.put("requiredItems", List.of(
-                "echoashfallprotocol:bone_knife",
-                "echoashfallprotocol:crude_spear",
+                "echoashfallprotocol:ashbone_shiv",
+                "echoashfallprotocol:scavenger_spear",
                 "echoashfallprotocol:hide_wrap"));
         hook.put("worldRegion", CRASH_REGION_ID);
         hook.put("hazardContext", CRASH_HAZARD_ID);
@@ -1407,7 +1407,7 @@ final class AshfallNativeGameplayBootstrap {
         hook.put("standaloneDuplicateGameplaySystem", false);
         hook.put("liveGameplayHookVerified", false);
         hook.put("gameplayHookEvidence", true);
-        hook.put("summary", "Wasteland Field Kit has native MissionCore JSON data preserving the Bone Knife, Crude Spear, and Hide Wrap completion contract while replacing deprecated primitive-craft aliases.");
+        hook.put("summary", "Wasteland Field Kit has native MissionCore JSON data preserving the Ashbone Shiv, Scavenger Spear, and Hide Wrap completion contract while replacing deprecated primitive-craft aliases.");
         return hook;
     }
 
@@ -2316,10 +2316,10 @@ final class AshfallNativeGameplayBootstrap {
         require(tenthMission, "nativeProvider", "echomissioncore", diagnostics);
         Object requiredItems = tenthMission.get("requiredItems");
         if (!(requiredItems instanceof List<?> list)
-                || !list.contains("echoashfallprotocol:bone_knife")
-                || !list.contains("echoashfallprotocol:crude_spear")
+                || !list.contains("echoashfallprotocol:ashbone_shiv")
+                || !list.contains("echoashfallprotocol:scavenger_spear")
                 || !list.contains("echoashfallprotocol:hide_wrap")) {
-            diagnostics.add("Expected Wasteland Field Kit requirements for Bone Knife, Crude Spear, and Hide Wrap.");
+            diagnostics.add("Expected Wasteland Field Kit requirements for Ashbone Shiv, Scavenger Spear, and Hide Wrap.");
         }
         require(eleventhMission, "id", ELEVENTH_MISSION_ID, diagnostics);
         require(eleventhMission, "chapterId", FIRST_CHAPTER_ID, diagnostics);

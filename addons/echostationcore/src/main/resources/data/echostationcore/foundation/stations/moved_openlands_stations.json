@@ -1,0 +1,353 @@
+{
+  "schema": "echo.foundation.moved_openlands_stations.v1",
+  "movedOrder": 3,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echostationcore",
+  "blocks": [
+    {
+      "id": "echostationcore:field_crate",
+      "displayName": "Field Crate",
+      "category": "storage",
+      "hardness": 1.2,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echostationcore:field_crate",
+          "count": 1,
+          "preserveContents": true
+        }
+      ],
+      "tags": [
+        "openlands:container",
+        "openlands:quick_stack_target"
+      ],
+      "model": "container_chest",
+      "texture": "block/echostationcore:field_crate",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:field_crate",
+      "slots": 27,
+      "notes": "MVP named container and quick-stack target.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:chest"
+    },
+    {
+      "id": "echostationcore:field_bench",
+      "displayName": "Field Bench",
+      "category": "station",
+      "hardness": 1.25,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echostationcore:field_bench",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "openlands:crafting",
+        "openlands:nearby_storage_enabled"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/echostationcore:field_bench",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:field_bench",
+      "unlocks": [
+        "building_parts",
+        "storage",
+        "starter_weapons"
+      ],
+      "notes": "First station and base crafting anchor.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:workbench"
+    },
+    {
+      "id": "echostationcore:kiln",
+      "displayName": "Kiln",
+      "category": "station",
+      "hardness": 1.6,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echostationcore:kiln",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "echostationcore:kiln",
+        "echomaterialcore:clay_age"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/echostationcore:kiln",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:kiln",
+      "processes": [
+        "raw_clay_to_brick",
+        "sand_to_glass",
+        "log_to_charcoal"
+      ],
+      "notes": "Clay-age processing station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln"
+    },
+    {
+      "id": "echostationcore:forge_hearth",
+      "displayName": "Forge Hearth",
+      "category": "station",
+      "hardness": 1.8,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echostationcore:forge_hearth",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "echostationcore:forge_hearth",
+        "openlands:metal_age"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/echostationcore:forge_hearth",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:forge_hearth",
+      "processes": [
+        "ore_chunks_to_ingots",
+        "bronze_alloy",
+        "tools",
+        "cupral_fitting"
+      ],
+      "notes": "Metal progression station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge"
+    },
+    {
+      "id": "echostationcore:loom",
+      "displayName": "Loom",
+      "category": "station",
+      "hardness": 1.1,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echostationcore:loom",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "openlands:fiber",
+        "openlands:homestead"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/echostationcore:loom",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:loom",
+      "processes": [
+        "echoworldstarter:bedroll",
+        "small_pack",
+        "cloth_later"
+      ],
+      "notes": "Fiber and comfort station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:loom"
+    },
+    {
+      "id": "echostationcore:cookpot",
+      "displayName": "Cookpot",
+      "category": "station",
+      "hardness": 0.85,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echostationcore:cookpot",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "openlands:cooking",
+        "openlands:homestead"
+      ],
+      "model": "echostationcore:cookpot",
+      "texture": "block/echostationcore:cookpot",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:cookpot",
+      "processes": [
+        "stew_bowl",
+        "cooked_meals"
+      ],
+      "notes": "Gentle food upgrade station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:cookpot"
+    },
+    {
+      "id": "echostationcore:mason_table",
+      "displayName": "Mason Table",
+      "category": "station",
+      "hardness": 1.3,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echostationcore:mason_table",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "openlands:stone_shapes",
+        "openlands:building"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/echostationcore:mason_table",
+      "recipeSource": "echoopenlandsprotocol:recipe/echostationcore:mason_table",
+      "processes": [
+        "stone_slabs",
+        "stone_stairs",
+        "fieldstone_bricks"
+      ],
+      "notes": "Stone shaping and polished building station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:mason_table"
+    }
+  ],
+  "stations": [
+    {
+      "id": "echostationcore:handcrafting",
+      "displayName": "Handcrafting",
+      "requiresBlock": null,
+      "grid": "freeform_small",
+      "notes": "Immediate player crafting with explicit ingredient lists, not copied grid silhouettes.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:handcrafting"
+    },
+    {
+      "id": "echostationcore:field_bench",
+      "displayName": "Field Bench",
+      "requiresBlock": "echostationcore:field_bench",
+      "grid": "freeform_medium",
+      "notes": "Core builder station for wood shaping and storage.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:workbench"
+    },
+    {
+      "id": "echostationcore:kiln",
+      "displayName": "Kiln",
+      "requiresBlock": "echostationcore:kiln",
+      "process": "heated_batch",
+      "notes": "Turns echomaterialcore:clay, echomaterialcore:sand, and logs into durable construction materials.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln"
+    },
+    {
+      "id": "echostationcore:forge_hearth",
+      "displayName": "Forge Hearth",
+      "requiresBlock": "echostationcore:forge_hearth",
+      "process": "heated_metalwork",
+      "notes": "Smelts ore chunks and crafts metal tools/components.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge"
+    },
+    {
+      "id": "echostationcore:cookpot",
+      "displayName": "Cookpot",
+      "requiresBlock": "echostationcore:cookpot",
+      "process": "meal_batch",
+      "notes": "Produces comfort meals without survival pressure.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:cookpot"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "echostationcore:field_bench",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "block": "echomaterialcore:branchwood_planks",
+          "count": 4
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echostationcore:field_bench",
+          "count": 1
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "obtain:block/echomaterialcore:branchwood_planks"
+      ],
+      "parityNotes": "Primary station unlock.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:workbench",
+      "displayName": "Field Bench"
+    },
+    {
+      "id": "echostationcore:field_crate",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 8
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echostationcore:field_crate",
+          "count": 1
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Chest contents must be save/load validated.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:chest",
+      "displayName": "Field Crate"
+    },
+    {
+      "id": "echostationcore:kiln",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "block": "echomaterialcore:fieldstone",
+          "count": 8
+        },
+        {
+          "item": "echomaterialcore:clay_lump",
+          "count": 4
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echostationcore:kiln",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:clay_lump",
+        "mine:block/echomaterialcore:fieldstone"
+      ],
+      "parityNotes": "Station for bricks, glass, and echomaterialcore:charcoal_lump.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:kiln"
+    },
+    {
+      "id": "echostationcore:forge_hearth",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "block": "fieldstone_bricks",
+          "count": 6
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 4
+        },
+        {
+          "item": "echomaterialcore:cupral_bar",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "echostationcore:forge_hearth",
+          "count": 1
+        }
+      ],
+      "timeTicks": 60,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:cupral_bar",
+        "craft:block/fieldstone_bricks"
+      ],
+      "parityNotes": "Metalwork station.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:forge",
+      "displayName": "Forge Hearth"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 package com.knoxhack.echorecovery.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echorecovery.EchoRecovery;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

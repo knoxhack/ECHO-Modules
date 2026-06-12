@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.integration;
 
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
 import com.knoxhack.echotutorialcore.EchoTutorialCore;
 import com.knoxhack.echotutorialcore.data.TutorialPlayerData;
 import java.util.ArrayList;

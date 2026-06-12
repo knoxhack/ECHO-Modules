@@ -206,7 +206,7 @@ public class OreGrinderBlockEntity extends BlockEntity implements MenuProvider, 
         if (input == ModBlocks.CRYOGENIC_FRACTURED_STONE.get().asItem()) {
             return ParticleTypes.SNOWFLAKE;
         }
-        if (input == ModBlocks.NEXUS_CRACKED_SOIL.get().asItem() || input == ModBlocks.RIFTSTONE.get().asItem()) {
+        if (input == ModBlocks.NEXUS_CRACKED_SOIL.get().asItem() || input == ModBlocks.NEXUS_SCAR_STONE.get().asItem()) {
             return ParticleTypes.PORTAL;
         }
         if (input == ModBlocks.ASH_STONE.get().asItem() || input == ModBlocks.DEEP_ASH.get().asItem()) {
@@ -220,7 +220,7 @@ public class OreGrinderBlockEntity extends BlockEntity implements MenuProvider, 
         if (input == ModBlocks.CRYOGENIC_FRACTURED_STONE.get().asItem()) {
             return 1.35F;
         }
-        if (input == ModBlocks.NEXUS_CRACKED_SOIL.get().asItem() || input == ModBlocks.RIFTSTONE.get().asItem()) {
+        if (input == ModBlocks.NEXUS_CRACKED_SOIL.get().asItem() || input == ModBlocks.NEXUS_SCAR_STONE.get().asItem()) {
             return 0.72F;
         }
         if (input == ModBlocks.IRRADIATED_CRUST.get().asItem()
@@ -338,7 +338,7 @@ public class OreGrinderBlockEntity extends BlockEntity implements MenuProvider, 
         register(recipes, ModBlocks.WASTELAND_TRACE_RUBBLE.get().asItem(), 2, ModItems.IRON_SHARD.get(), 2, ModItems.COPPER_SHARD.get(), 1, 0.30f, 90, 260);
         register(recipes, ModBlocks.SCRAP_ORE.get().asItem(), 2, ModItems.SCRAP_METAL.get(), 3, ModItems.IRON_SHARD.get(), 1, 0.35f, 90, 240);
         register(recipes, ModBlocks.RUBBLE.get().asItem(), 3, Items.GRAVEL, 4, ModItems.SCRAP_METAL.get(), 1, 0.15f, 80, 200);
-        register(recipes, ModBlocks.SCATTERED_BONES.get().asItem(), 1, ModItems.ANIMAL_BONE.get(), 3, Items.BONE_MEAL, 1, 0.25f, 80, 180);
+        register(recipes, ModBlocks.SCATTERED_BONES.get().asItem(), 1, ModItems.ASHBONE_SHARD.get(), 3, Items.BONE_MEAL, 1, 0.25f, 80, 180);
         register(recipes, ModBlocks.CONCRETE_RUBBLE.get().asItem(), 3, Items.GRAVEL, 4, ModItems.SCRAP_METAL.get(), 1, 0.20f, 90, 220);
         register(recipes, ModBlocks.CONCRETE_CHUNK.get().asItem(), 2, Items.GRAVEL, 4, ModItems.SCRAP_METAL.get(), 1, 0.30f, 100, 240);
         register(recipes, ModBlocks.INDUSTRIAL_AGGREGATE.get().asItem(), 2, ModItems.COPPER_SHARD.get(), 2, ModItems.SCRAP_WIRE.get(), 1, 0.30f, 110, 300);
@@ -346,12 +346,12 @@ public class OreGrinderBlockEntity extends BlockEntity implements MenuProvider, 
         register(recipes, ModBlocks.CRASH_SLAG.get().asItem(), 2, ModItems.SCRAP_METAL.get(), 2, ModItems.IRON_SHARD.get(), 1, 0.35f, 110, 320);
         register(recipes, ModBlocks.ASH_STONE.get().asItem(), 3, ModItems.COAL_DUST.get(), 2, ModItems.ASH.get(), 1, 0.35f, 100, 240);
         register(recipes, ModBlocks.DEEP_ASH.get().asItem(), 2, Items.SAND, 2, ModItems.COAL_DUST.get(), 1, 0.25f, 90, 220);
-        register(recipes, ModBlocks.TOXIC_SLAGSTONE.get().asItem(), 2, ModItems.COAL_DUST.get(), 2, ModItems.CONTAMINATED_REDSTONE.get(), 1, 0.25f, 120, 350);
+        register(recipes, ModBlocks.TOXIC_SLAGSTONE.get().asItem(), 2, ModItems.COAL_DUST.get(), 2, ModItems.CHARGED_ASH_CIRCUIT.get(), 1, 0.25f, 120, 350);
         register(recipes, ModBlocks.IRRADIATED_CRUST.get().asItem(), 3, ModItems.URANIUM_SHARD.get(), 1, ModBlocks.FALLOUT_DUST_ITEM.get(), 1, 0.35f, 120, 360);
         register(recipes, ModBlocks.IRRADIATED_SHALE.get().asItem(), 2, ModItems.URANIUM_SHARD.get(), 1, ModItems.CRYSTAL_DUST.get(), 1, 0.30f, 140, 420);
         register(recipes, ModBlocks.CRYOGENIC_FRACTURED_STONE.get().asItem(), 2, ModItems.CRYSTAL_DUST.get(), 1, ModItems.SCRAP_CIRCUIT.get(), 1, 0.25f, 140, 400);
         register(recipes, ModBlocks.NEXUS_CRACKED_SOIL.get().asItem(), 3, ModItems.CRYSTAL_DUST.get(), 2, ModItems.GEM_FRAGMENT.get(), 1, 0.15f, 160, 500);
-        register(recipes, ModBlocks.RIFTSTONE.get().asItem(), 2, ModItems.GEM_FRAGMENT.get(), 1, ModItems.CRYSTAL_DUST.get(), 1, 0.35f, 180, 650);
+        register(recipes, ModBlocks.NEXUS_SCAR_STONE.get().asItem(), 2, ModItems.GEM_FRAGMENT.get(), 1, ModItems.CRYSTAL_DUST.get(), 1, 0.35f, 180, 650);
 
         return Collections.unmodifiableMap(recipes);
     }
@@ -416,7 +416,7 @@ public class OreGrinderBlockEntity extends BlockEntity implements MenuProvider, 
                 return "Hazard substrate";
             }
             if (input == ModBlocks.NEXUS_CRACKED_SOIL.get().asItem()
-                    || input == ModBlocks.RIFTSTONE.get().asItem()) {
+                    || input == ModBlocks.NEXUS_SCAR_STONE.get().asItem()) {
                 return "Anomaly substrate";
             }
             return "Trace substrate";

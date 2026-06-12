@@ -1,0 +1,116 @@
+{
+  "schema": "echo.openlands.systems.distribution_alpha_gates.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "artifactTargets": [
+    {
+      "id": "native",
+      "file": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "editionRepo": "ECHO-Openlands-Native-Edition",
+      "requiredForPublicAlpha": true
+    },
+    {
+      "id": "standalone",
+      "file": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "editionRepo": "ECHO-Openlands-Standalone-Edition",
+      "requiredForPublicAlpha": true
+    },
+    {
+      "id": "neoforge",
+      "file": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "editionRepo": "ECHO-Openlands-NeoForge-Edition",
+      "requiredForPublicAlpha": true
+    },
+    {
+      "id": "sources",
+      "file": "echoopenlandsprotocol-0.1.0-sources.jar",
+      "editionRepo": "ECHO-Modules",
+      "requiredForPublicAlpha": true
+    }
+  ],
+  "releaseIndexStates": {
+    "currentAllowedState": "warning",
+    "approvedRequires": [
+      "all_artifact_targets_uploaded",
+      "all_artifacts_have_sha256",
+      "pack_manifest_indexed_for_each_edition",
+      "launcher_install_update_repair_rollback_pass",
+      "native_standalone_neoforge_parity_pass",
+      "legal_content_audit_pass"
+    ]
+  },
+  "launcherGates": [
+    {
+      "id": "install",
+      "description": "Fresh install from launcher channel downloads the selected edition and all module artifacts.",
+      "mustVerify": [
+        "manifest_download",
+        "artifact_download",
+        "sha256_match",
+        "runtime_start",
+        "openlands_standard_selected"
+      ]
+    },
+    {
+      "id": "update",
+      "description": "Launcher replaces only changed Openlands module artifacts.",
+      "mustVerify": [
+        "old_manifest_detected",
+        "changed_artifact_downloaded",
+        "unchanged_artifacts_reused",
+        "save_preserved",
+        "config_preserved"
+      ]
+    },
+    {
+      "id": "repair",
+      "description": "Launcher restores missing or corrupt Openlands files from indexed release metadata.",
+      "mustVerify": [
+        "missing_artifact_detected",
+        "corrupt_artifact_detected",
+        "sha256_restored",
+        "pack_launches_after_repair"
+      ]
+    },
+    {
+      "id": "rollback",
+      "description": "Launcher returns to previous manifest without deleting worlds.",
+      "mustVerify": [
+        "previous_manifest_available",
+        "previous_artifacts_available",
+        "worlds_preserved",
+        "schema_warning_if_needed"
+      ]
+    }
+  ],
+  "publicAlphaMinimum": {
+    "biomes": 4,
+    "blocks": {
+      "min": 50,
+      "target": 70
+    },
+    "items": {
+      "min": 45,
+      "target": 60
+    },
+    "creatures": 10,
+    "requiredLoops": [
+      "spawn_gather_tool_shelter_sleep",
+      "first_cave_or_old_road",
+      "kiln_and_forge_progression",
+      "first_waystone_repair",
+      "map_reveal",
+      "save_load"
+    ],
+    "coOp": {
+      "targetPlayers": "1-8",
+      "mvpRequirement": "state_schema_ready",
+      "publicAlphaRequirement": "dedicated_server_or_hosted_session_tested"
+    }
+  }
+}

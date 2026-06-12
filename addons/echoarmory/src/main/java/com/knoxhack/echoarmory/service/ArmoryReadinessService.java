@@ -12,7 +12,7 @@ import com.knoxhack.echoarmory.data.EquipmentTier;
 import com.knoxhack.echoarmory.item.ArmoryData;
 import com.knoxhack.echoarmory.registry.ModDataComponents;
 import com.knoxhack.echoarmory.registry.ModItems;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.LinkedHashSet;

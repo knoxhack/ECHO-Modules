@@ -1,7 +1,7 @@
 package com.knoxhack.echomissioncore.integration;
 
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echomissioncore.service.MissionCoreService;
 import java.util.ArrayList;

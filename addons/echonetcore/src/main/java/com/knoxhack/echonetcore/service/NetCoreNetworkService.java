@@ -1,9 +1,9 @@
 package com.knoxhack.echonetcore.service;
 
-import com.knoxhack.echocore.api.network.INetworkBridge;
-import com.knoxhack.echocore.api.network.INetworkService;
-import com.knoxhack.echocore.api.network.IPacketRegistrar;
-import com.knoxhack.echocore.api.network.PacketDebugHooks;
+import com.echoplatform.echocore.api.network.INetworkBridge;
+import com.echoplatform.echocore.api.network.INetworkService;
+import com.echoplatform.echocore.api.network.IPacketRegistrar;
+import com.echoplatform.echocore.api.network.PacketDebugHooks;
 import com.knoxhack.echonetcore.network.EchoNetDebug;
 
 public final class NetCoreNetworkService implements INetworkService {

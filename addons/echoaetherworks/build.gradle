@@ -39,11 +39,13 @@ dependencies {
     implementation project(":echoadaptercore")
     implementation project(":echoarcanacore")
     compileOnly project(":echomachinecore")
+    compileOnly project(":echoassetcore")
     compileOnly project(":echospellcore")
     compileOnly project(":echocursecore")
     compileOnly project(":echorelictech")
     compileOnly project(":echoritualcore")
     localRuntime project(":echomachinecore")
+    localRuntime project(":echoassetcore")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

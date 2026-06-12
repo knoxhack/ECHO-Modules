@@ -1,0 +1,90 @@
+{
+  "schema": "echo.standalone.required_system_module_activation.v1",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "status": "PASS",
+  "activationCount": 8,
+  "executableCount": 8,
+  "allExecutable": true,
+  "modules": [
+    {
+      "moduleId": "echoagentcore",
+      "runtimeStatus": "runtime-tooling-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echoagentcore:command/safe_command", "echoagentcore:data/prompt_bundle", "echoagentcore:data/task_queue", "echoagentcore:diagnostic/run_report"],
+      "runtimeDomains": ["commands", "data", "diagnostics"]
+    },
+    {
+      "moduleId": "echobridgecore",
+      "runtimeStatus": "runtime-dev-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echobridgecore:command/safe_action", "echobridgecore:data/session_state_contract", "echobridgecore:diagnostic/safe_action_gate", "echobridgecore:network/heartbeat", "echobridgecore:networking/local_transport_heartbeat"],
+      "runtimeDomains": ["commands", "data", "diagnostics", "networking"]
+    },
+    {
+      "moduleId": "echocore",
+      "runtimeStatus": "runtime-active",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echocore:data/data_bus", "echocore:data/service_registry", "echocore:diagnostic/core_diagnostics"],
+      "runtimeDomains": ["data", "diagnostics"]
+    },
+    {
+      "moduleId": "echometadatacore",
+      "runtimeStatus": "runtime-tooling-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echometadatacore:data/ai_metadata", "echometadatacore:data/module_manifest", "echometadatacore:diagnostic/metadata_validation", "echometadatacore:pack/metadata_scan"],
+      "runtimeDomains": ["data", "diagnostics", "packs"]
+    },
+    {
+      "moduleId": "echomodulegraph",
+      "runtimeStatus": "runtime-tooling-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echomodulegraph:data/module_graph", "echomodulegraph:diagnostic/graph_validation"],
+      "runtimeDomains": ["data", "diagnostics"]
+    },
+    {
+      "moduleId": "echoreportcore",
+      "runtimeStatus": "runtime-tooling-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["echoreportcore:data/release_readiness", "echoreportcore:diagnostic/support_bundle"],
+      "runtimeDomains": ["data", "diagnostics"]
+    },
+    {
+      "moduleId": "signalos",
+      "runtimeStatus": "runtime-active",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["signalos:archive/field_cache", "signalos:chapter/cache_handoff", "signalos:data_drive/handoff_drive", "signalos:mission/secure_cache", "signalos:save/story_state", "signalos:signal/secure_cache", "signalos:story_flag/cache_secured", "signalos:ui/terminal"],
+      "runtimeDomains": ["items", "missions", "saves", "story", "ui_screens"]
+    },
+    {
+      "moduleId": "signalosexample",
+      "runtimeStatus": "runtime-dev-only",
+      "descriptorLoaded": true,
+      "adapterCoreUsed": true,
+      "standaloneRuntimeCodeExecuted": true,
+      "allRuntimeAliasesResolved": true,
+      "contractIds": ["signalosexample:data_drive/arcane_codex_demo"],
+      "runtimeDomains": ["items"]
+    }
+  ]
+}

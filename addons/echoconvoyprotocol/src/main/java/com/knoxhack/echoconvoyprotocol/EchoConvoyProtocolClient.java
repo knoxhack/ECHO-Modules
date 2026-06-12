@@ -10,7 +10,7 @@ import com.knoxhack.echoconvoyprotocol.entity.ConvoyVehicleEntity;
 import com.knoxhack.echoconvoyprotocol.entity.ConvoyVehicleKind;
 import com.knoxhack.echoconvoyprotocol.registry.ModEntities;
 import com.knoxhack.echoconvoyprotocol.registry.ModMenus;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class EchoConvoyProtocolClient {

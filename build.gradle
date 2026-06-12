@@ -104,6 +104,13 @@ subprojects {
             options.encoding = 'UTF-8'
             options.incremental = false
         }
+        tasks.withType(Test).configureEach {
+            failOnNoDiscoveredTests = false
+        }
+        sourceSets.named('test') {
+            compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+            runtimeClasspath += output + compileClasspath + sourceSets.main.runtimeClasspath
+        }
     }
 }
 
@@ -112,6 +119,7 @@ subprojects {
         'echo-native-diagnostics',
         'echo-native-packos',
         'echo-native-loader',
+        'echo-native-testkit',
 ].each { nativeProjectName ->
     project(":${nativeProjectName}") {
         apply plugin: 'java-library'
@@ -136,6 +144,12 @@ project(':echo-native-loader') {
         api project(':echo-native-contracts')
         implementation project(':echo-native-diagnostics')
         implementation project(':echo-native-packos')
+    }
+}
+
+project(':echo-native-testkit') {
+    dependencies {
+        api project(':echo-native-contracts')
     }
 }
 

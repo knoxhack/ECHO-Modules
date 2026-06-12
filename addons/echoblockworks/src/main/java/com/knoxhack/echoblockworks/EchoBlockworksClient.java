@@ -1,6 +1,6 @@
 package com.knoxhack.echoblockworks;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoblockworks.client.BlockworksTableScreen;
 import com.knoxhack.echoblockworks.registry.ModMenus;
 import java.util.List;

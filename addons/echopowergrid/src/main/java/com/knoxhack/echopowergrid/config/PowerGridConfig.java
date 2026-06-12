@@ -1,6 +1,6 @@
 package com.knoxhack.echopowergrid.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class PowerGridConfig {
     public static final EchoNativeConfigSpec SPEC;

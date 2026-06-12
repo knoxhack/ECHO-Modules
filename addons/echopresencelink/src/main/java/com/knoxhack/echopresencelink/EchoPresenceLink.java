@@ -1,8 +1,8 @@
 package com.knoxhack.echopresencelink;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echopresencelink.api.EchoPresenceRegistry;
 import com.knoxhack.echopresencelink.integration.PresenceLinkSignalOsIntegration;
 import com.knoxhack.echopresencelink.presence.CoreEchoPresenceProvider;

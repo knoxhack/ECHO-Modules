@@ -53,7 +53,6 @@ This index is generated from `addons/<module>/gradle.properties` and `META-INF/e
 | [echomachinecore](../addons/echomachinecore/README.md) | 1.0.0 | yes | yes | yes |
 | [echometadatacore](../addons/echometadatacore/README.md) | 1.0.0 | yes | yes | yes |
 | [echomissioncore](../addons/echomissioncore/README.md) | 1.0.0 | yes | yes | yes |
-| [echomodpackcommandcenter](../addons/echomodpackcommandcenter/README.md) | 1.0.0 | yes | yes | yes |
 | [echomodulegraph](../addons/echomodulegraph/README.md) | 1.0.0 | yes | yes | yes |
 | [echomultiblockcore](../addons/echomultiblockcore/README.md) | 1.0.0 | yes | yes | yes |
 | [echonetcore](../addons/echonetcore/README.md) | 1.0.0 | yes | yes | yes |

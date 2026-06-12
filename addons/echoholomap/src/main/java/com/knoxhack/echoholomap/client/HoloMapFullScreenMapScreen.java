@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echocore.client.ui.EchoCyberGlassUi;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoholomap.EchoHoloMapClient;
@@ -932,7 +932,7 @@ public final class HoloMapFullScreenMapScreen extends Screen {
         return switch (marker.kind()) {
             case MISSION, ROUTE -> "Missions";
             case HAZARD, REGION, CRASH_SITE -> "Hazards/Regions";
-            case BASE_OUTPOST, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN, GENERIC -> "Other";
+            case BASE_OUTPOST, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN, GENERIC, STRUCTURE, FACTION -> "Other";
         };
     }
 

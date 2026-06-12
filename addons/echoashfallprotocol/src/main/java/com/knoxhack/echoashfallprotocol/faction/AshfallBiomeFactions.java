@@ -1,12 +1,12 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDialogueTree;
-import com.knoxhack.echocore.api.EchoFactionAction;
-import com.knoxhack.echocore.api.EchoFactionContract;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoFactionPoiAffinity;
-import com.knoxhack.echocore.api.EchoNpcRole;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDialogueTree;
+import com.echoplatform.echocore.api.EchoFactionAction;
+import com.echoplatform.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoFactionPoiAffinity;
+import com.echoplatform.echocore.api.EchoNpcRole;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import java.util.List;
 import net.minecraft.resources.Identifier;

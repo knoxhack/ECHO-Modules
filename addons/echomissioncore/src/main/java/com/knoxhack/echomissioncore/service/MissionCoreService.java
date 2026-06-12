@@ -1,21 +1,21 @@
 package com.knoxhack.echomissioncore.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.IMissionService;
-import com.knoxhack.echocore.api.mission.IObjectiveView;
-import com.knoxhack.echocore.api.mission.IRewardView;
-import com.knoxhack.echocore.api.mission.MissionActionView;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.MissionRepeatPolicy;
-import com.knoxhack.echocore.api.mission.MissionRewardClaimMode;
-import com.knoxhack.echocore.api.mission.MissionRuntimeBus;
-import com.knoxhack.echocore.api.mission.MissionRuntimeEvent;
-import com.knoxhack.echocore.api.mission.MissionStatus;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
-import com.knoxhack.echocore.api.mission.RewardDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IMissionService;
+import com.echoplatform.echocore.api.mission.IObjectiveView;
+import com.echoplatform.echocore.api.mission.IRewardView;
+import com.echoplatform.echocore.api.mission.MissionActionView;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.MissionRepeatPolicy;
+import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
+import com.echoplatform.echocore.api.mission.MissionRuntimeBus;
+import com.echoplatform.echocore.api.mission.MissionRuntimeEvent;
+import com.echoplatform.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echomissioncore.storage.MissionPlayerData;
 import java.util.ArrayList;
@@ -696,7 +696,8 @@ public final class MissionCoreService implements IMissionService {
     }
 
     private static boolean isTerminalStatusComplete(MissionStatus status) {
-        return status == MissionStatus.COMPLETED || status == MissionStatus.CLAIMABLE || status == MissionStatus.CLAIMED;
+        return status == MissionStatus.COMPLETED || status == MissionStatus.COMPLETE
+                || status == MissionStatus.CLAIMABLE || status == MissionStatus.CLAIMED;
     }
 
     private List<IObjectiveView> objectiveViews(Player player, MissionDefinition definition) {
@@ -791,11 +792,12 @@ public final class MissionCoreService implements IMissionService {
     private static String label(MissionStatus status) {
         return switch (status) {
             case LOCKED -> "Locked";
-            case UNLOCKED -> "Available";
+            case UNLOCKED, AVAILABLE -> "Available";
             case ACTIVE -> "Active";
-            case COMPLETED -> "Completed";
+            case COMPLETED, COMPLETE -> "Completed";
             case CLAIMABLE -> "Reward Ready";
             case CLAIMED -> "Claimed";
+            case FAILED -> "Failed";
             case VIEW_ONLY -> "View Only";
         };
     }
@@ -803,11 +805,12 @@ public final class MissionCoreService implements IMissionService {
     private static String actionHint(MissionStatus status, MissionDefinition definition, boolean completeNow) {
         return switch (status) {
             case LOCKED -> unlockReason(definition);
-            case UNLOCKED -> completeNow ? "Turn in the completed objective." : "Track this objective.";
+            case UNLOCKED, AVAILABLE -> completeNow ? "Turn in the completed objective." : "Track this objective.";
             case ACTIVE -> completeNow ? "Turn in the completed objective." : definition.objectives().isEmpty() ? definition.briefing() : definition.objectives().get(0).label();
-            case COMPLETED -> "Mission complete.";
+            case COMPLETED, COMPLETE -> "Mission complete.";
             case CLAIMABLE -> "Claim the pending reward cache.";
             case CLAIMED -> "Reward claimed.";
+            case FAILED -> "Mission failed.";
             case VIEW_ONLY -> definition.briefing();
         };
     }

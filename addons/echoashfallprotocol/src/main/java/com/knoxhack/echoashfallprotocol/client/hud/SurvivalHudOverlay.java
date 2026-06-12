@@ -14,7 +14,7 @@ import com.knoxhack.echoashfallprotocol.survival.ColdData;
 import com.knoxhack.echoashfallprotocol.survival.MutationData;
 import com.knoxhack.echoashfallprotocol.survival.MutationManager;
 import com.knoxhack.echoashfallprotocol.survival.SurvivalData;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoterminal.client.hud.TerminalHudNotice;
 import com.knoxhack.echoterminal.client.hud.TerminalHudNoticeSurface;
 import net.minecraft.client.Minecraft;

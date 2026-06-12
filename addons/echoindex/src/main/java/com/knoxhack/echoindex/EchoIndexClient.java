@@ -2,7 +2,7 @@ package com.knoxhack.echoindex;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindex.client.IndexCatalogScreen;
 import com.knoxhack.echoindex.client.IndexHotkeys;
 import com.knoxhack.echoindex.client.IndexNativeSessionBridge;

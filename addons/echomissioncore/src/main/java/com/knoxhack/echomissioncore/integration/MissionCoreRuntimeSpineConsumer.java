@@ -1,8 +1,8 @@
 package com.knoxhack.echomissioncore.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echomissioncore.service.MissionCoreService;
 import java.util.LinkedHashMap;
 import java.util.Map;

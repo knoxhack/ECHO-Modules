@@ -1,6 +1,6 @@
 package com.knoxhack.echosoundcore.client.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class SoundCoreConfig {
     public static final EchoNativeConfigSpec CLIENT_SPEC;

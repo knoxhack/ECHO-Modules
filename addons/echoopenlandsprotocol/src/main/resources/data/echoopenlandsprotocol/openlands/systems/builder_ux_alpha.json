@@ -1,0 +1,177 @@
+{
+  "schema": "echo.openlands.systems.builder_ux_alpha.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "intent": "Openlands should feel smoother than a baseline block sandbox by reducing repetitive inventory friction without becoming an automation game.",
+  "tools": [
+    {
+      "id": "echotoolcore:field_hammer",
+      "item": "echotoolcore:field_hammer",
+      "primaryAction": "shape_cycle",
+      "secondaryAction": "rotate_block",
+      "sneakAction": "copy_variant",
+      "supportedBlocks": [
+        "echomaterialcore:wooden_slab",
+        "echomaterialcore:wooden_stairs",
+        "echomaterialcore:wooden_fence",
+        "echomaterialcore:branchwood_beam",
+        "echomaterialcore:branchwood_post",
+        "pine_beam",
+        "pine_post",
+        "fieldstone_bricks",
+        "thatch_roof"
+      ],
+      "clientPreview": {
+        "outline": true,
+        "ghostVariant": true,
+        "showOnlyWhenHoldingTool": true
+      },
+      "serverValidation": [
+        "player_can_edit_block",
+        "target_block_in_supported_set",
+        "variant_exists_for_runtime",
+        "inventory_or_creative_has_required_item_if_converting"
+      ],
+      "storedFields": [
+        "lastSelectedShape",
+        "lastCopiedVariant",
+        "clientPreviewEnabled"
+      ]
+    }
+  ],
+  "temporaryBlocks": [
+    {
+      "id": "scaffold_bundle",
+      "item": "scaffold_bundle",
+      "placement": "temporary_column_or_bridge",
+      "breakRule": "returns_to_player_if_not_destroyed_by_explosion_or_admin_clear",
+      "fallRule": "no_falling_physics_in_standard",
+      "maxChainPlacement": 16,
+      "allowedUseCases": [
+        "roof_building",
+        "tower_repair",
+        "bridge_repair",
+        "waystone_plinth_access"
+      ],
+      "storedFields": [
+        "ownerPlayerId",
+        "placedAt",
+        "temporaryBlockGroupId"
+      ]
+    }
+  ],
+  "inventoryCommands": [
+    {
+      "id": "quick_stack",
+      "displayName": "Quick Stack",
+      "scope": "nearby_storage",
+      "radiusBlocks": 8,
+      "eligibleContainers": [
+        "echostationcore:field_crate",
+        "shelf"
+      ],
+      "behavior": "Move matching item stacks from player inventory into nearby containers that already contain the item.",
+      "exclusions": [
+        "hotbar_locked_slots",
+        "equipped_items",
+        "quest_or_waystone_bound_items"
+      ],
+      "multiplayerValidation": [
+        "container_permission",
+        "chunk_loaded",
+        "server_authoritative_transfer"
+      ]
+    },
+    {
+      "id": "quick_deposit",
+      "displayName": "Quick Deposit",
+      "scope": "target_container",
+      "radiusBlocks": 5,
+      "eligibleContainers": [
+        "echostationcore:field_crate",
+        "shelf"
+      ],
+      "behavior": "Move all non-locked inventory stacks into the targeted container until full.",
+      "exclusions": [
+        "hotbar_locked_slots",
+        "tools_in_active_preset",
+        "echoworldstarter:bedroll",
+        "waystone_core",
+        "route_binding"
+      ],
+      "multiplayerValidation": [
+        "container_permission",
+        "server_authoritative_transfer"
+      ]
+    },
+    {
+      "id": "sort_inventory",
+      "displayName": "Sort Inventory",
+      "scope": "player_or_container",
+      "behavior": "Stable sort by category, tag priority, display name, and ID.",
+      "sortOrder": [
+        "tools",
+        "food",
+        "waystone_repair",
+        "raw_material",
+        "ingot",
+        "building_blocks",
+        "misc"
+      ],
+      "runtimeRequirement": "Sorting must be deterministic across Native, Standalone, and NeoForge."
+    },
+    {
+      "id": "craft_from_nearby_storage",
+      "displayName": "Craft From Nearby Storage",
+      "scope": "station_radius",
+      "radiusBlocks": 8,
+      "eligibleStations": [
+        "echostationcore:field_bench",
+        "echostationcore:kiln",
+        "echostationcore:forge_hearth",
+        "echostationcore:loom",
+        "echostationcore:cookpot",
+        "echostationcore:mason_table",
+        "map_table"
+      ],
+      "eligibleContainers": [
+        "echostationcore:field_crate",
+        "shelf"
+      ],
+      "behavior": "Recipes may reserve ingredients from nearby permitted storage and consume them only when crafting starts.",
+      "storedFields": [
+        "reservationId",
+        "recipeId",
+        "containerIds",
+        "reservedStacks",
+        "expiresAt"
+      ]
+    },
+    {
+      "id": "named_chests",
+      "displayName": "Named Chests",
+      "scope": "container_metadata",
+      "behavior": "Players may set a short container label visible in storage UI, map hints, and quick-stack summaries.",
+      "limits": {
+        "maxCharacters": 32,
+        "allowColorCodes": false,
+        "filterControlCharacters": true
+      },
+      "storedFields": [
+        "containerId",
+        "customName",
+        "lastRenamedBy"
+      ]
+    }
+  ],
+  "acceptance": [
+    "Hammer actions never delete a block without server validation.",
+    "Quick stack and quick deposit must be reversible through normal inventory movement, not hidden automation.",
+    "Craft-from-storage must not duplicate items when save/load happens mid-craft.",
+    "Sorting order must be deterministic across all runtime targets."
+  ]
+}

@@ -1,10 +1,10 @@
 package com.knoxhack.echoterminal.network;
 
-import com.knoxhack.echocore.api.config.EchoConfigCategorySnapshot;
-import com.knoxhack.echocore.api.config.EchoConfigEntrySnapshot;
-import com.knoxhack.echocore.api.config.EchoConfigModuleSnapshot;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
-import com.knoxhack.echocore.api.config.EchoConfigValueKind;
+import com.echoplatform.echocore.api.config.EchoConfigCategorySnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigEntrySnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigModuleSnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.config.EchoConfigValueKind;
 import com.knoxhack.echoterminal.EchoTerminal;
 import java.util.ArrayList;
 import java.util.List;

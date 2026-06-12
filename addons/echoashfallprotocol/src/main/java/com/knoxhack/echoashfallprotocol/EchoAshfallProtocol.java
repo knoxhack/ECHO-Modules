@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echocore.command.EchoCommandRegistry;
 import com.knoxhack.echoashfallprotocol.command.CompanionDroneCommands;
 import com.knoxhack.echoashfallprotocol.entity.drone.CompanionDroneStateStore;

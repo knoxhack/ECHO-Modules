@@ -1,8 +1,8 @@
 package com.knoxhack.echo.npcore.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionActionResult;
-import com.knoxhack.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionActionResult;
+import com.echoplatform.echocore.api.EchoFactionProfile;
 import java.util.Optional;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;

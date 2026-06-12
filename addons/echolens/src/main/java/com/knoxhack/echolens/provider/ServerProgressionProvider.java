@@ -1,6 +1,6 @@
 package com.knoxhack.echolens.provider;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.api.LensContext;
 import com.knoxhack.echolens.api.LensDataCategory;

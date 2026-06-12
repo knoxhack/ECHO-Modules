@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.network.HoloMapSnapshotPacket;
 import com.knoxhack.echoholomap.waypoint.HoloMapWaypoint;
 import com.knoxhack.echoholomap.waypoint.HoloMapWaypoint.Scope;
@@ -132,7 +132,7 @@ public final class HoloMapGlyphRenderer {
                 case ORBITAL_SCAN -> drawOrbital(graphics, x, y, color, size);
                 case NEXUS_ANOMALY -> drawAnomaly(graphics, x, y, color, size);
                 case DRONE_SCAN -> drawDrone(graphics, x, y, color, size);
-                case REGION, GENERIC -> drawGeneric(graphics, x, y, color, size);
+                case REGION, GENERIC, STRUCTURE, FACTION -> drawGeneric(graphics, x, y, color, size);
             }
         }
     }

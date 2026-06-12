@@ -56,8 +56,8 @@ public class IsotopeRefinerBlockEntity extends BlockEntity implements MenuProvid
 
     private static final Map<Item, Item[]> REFINER_RECIPES = Map.of(
             Items.IRON_INGOT, new Item[]{Items.GOLD_INGOT, ModItems.CONTAMINATED_GOLD.get()},
-            Items.COPPER_INGOT, new Item[]{Items.REDSTONE, ModItems.CONTAMINATED_REDSTONE.get()},
-            Items.COAL, new Item[]{Items.LAPIS_LAZULI, ModItems.CONTAMINATED_LAPIS.get()}
+            Items.COPPER_INGOT, new Item[]{Items.REDSTONE, ModItems.CHARGED_ASH_CIRCUIT.get()},
+            Items.COAL, new Item[]{Items.LAPIS_LAZULI, ModItems.BLUE_ASH_SALT.get()}
     );
 
     public static Map<Item, Item[]> getRefinerRecipes() {

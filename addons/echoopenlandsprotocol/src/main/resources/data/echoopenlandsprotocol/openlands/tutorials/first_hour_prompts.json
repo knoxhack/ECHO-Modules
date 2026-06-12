@@ -1,0 +1,122 @@
+{
+  "schema": "echo.openlands.tutorials.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "deliveryRules": {
+    "triggerStyle": "discovery_only",
+    "repeatPolicy": "never_repeat_completed_prompt",
+    "muteRespect": true,
+    "noVisibleFeatureDescriptions": "Prompts should guide immediate action, not advertise systems."
+  },
+  "prompts": [
+    {
+      "id": "first_stick",
+      "trigger": "obtain:item/echomaterialcore:branchwood_stick",
+      "priority": 10,
+      "title": "A Handle",
+      "body": "A stick can become a handle. Find stone and fiber to bind a crude tool.",
+      "actions": [
+        "highlightNearby:echomaterialcore:fieldstone_piece",
+        "highlightNearby:echomaterialcore:reed_fiber"
+      ]
+    },
+    {
+      "id": "first_stone",
+      "trigger": "obtain:item/echomaterialcore:fieldstone_piece",
+      "priority": 10,
+      "title": "Stone Edge",
+      "body": "Stone pieces can shape a crude axe, pick, or echoworldstarter:campfire ring.",
+      "actions": [
+        "unlockRecipe:echotoolcore:crude_cutter",
+        "unlockRecipe:echotoolcore:crude_breaker",
+        "unlockRecipe:echoworldstarter:campfire"
+      ]
+    },
+    {
+      "id": "first_fiber",
+      "trigger": "obtain:item/echomaterialcore:reed_fiber",
+      "priority": 10,
+      "title": "Binding",
+      "body": "Twist fiber into binding before making tools.",
+      "actions": [
+        "unlockRecipe:echomaterialcore:fiber_binding"
+      ]
+    },
+    {
+      "id": "first_tool_craft",
+      "trigger": "craft:any/echotoolcore:crude_cutter,echotoolcore:crude_breaker,echotoolcore:crude_digger,echotoolcore:flint_knife",
+      "priority": 9,
+      "title": "First Tool",
+      "body": "Use tools to gather wood, stone, echomaterialcore:clay, and shelter materials faster.",
+      "actions": [
+        "setObjective:first_shelter"
+      ]
+    },
+    {
+      "id": "first_campfire",
+      "trigger": "place:block/echoworldstarter:campfire",
+      "priority": 8,
+      "title": "Warm Light",
+      "body": "A echoworldstarter:campfire helps a shelter feel safe and can cook simple food.",
+      "actions": [
+        "incrementShelterScore:light_or_fire"
+      ]
+    },
+    {
+      "id": "first_shelter_score",
+      "trigger": "shelterScore>=35",
+      "priority": 8,
+      "title": "Almost Shelter",
+      "body": "A echoworldstarter:bedroll and a little more cover will make this safe enough to sleep.",
+      "actions": [
+        "highlightMissingShelterParts"
+      ]
+    },
+    {
+      "id": "first_shelter_complete",
+      "trigger": "shelterScore>=55",
+      "priority": 8,
+      "title": "Shelter Ready",
+      "body": "This shelter is good enough. Rest at a echoworldstarter:bedroll to set your return point.",
+      "actions": [
+        "setObjective:sleep_in_bedroll"
+      ]
+    },
+    {
+      "id": "first_old_road_marker",
+      "trigger": "discover:block/old_road_marker",
+      "priority": 7,
+      "title": "Old Road",
+      "body": "Old road markers can point toward ruins and broken waystones.",
+      "actions": [
+        "holomap:addHint/old_road_segment"
+      ]
+    },
+    {
+      "id": "first_waystone_found",
+      "trigger": "discover:block/broken_waystone",
+      "priority": 7,
+      "title": "Broken Waystone",
+      "body": "Clear debris and repair the stone shell to wake the route.",
+      "actions": [
+        "setObjective:repair_first_waystone",
+        "unlockRecipe:region_rubbing"
+      ]
+    },
+    {
+      "id": "first_waystone_active",
+      "trigger": "waystoneState:active",
+      "priority": 6,
+      "title": "Route Opened",
+      "body": "The restored stone reveals nearby places and can link with another active stone.",
+      "actions": [
+        "holomap:revealRadius",
+        "setObjective:find_second_waystone"
+      ]
+    }
+  ]
+}

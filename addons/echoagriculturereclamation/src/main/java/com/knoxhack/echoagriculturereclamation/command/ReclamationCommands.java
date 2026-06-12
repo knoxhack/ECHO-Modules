@@ -114,7 +114,7 @@ public final class ReclamationCommands {
    }
 
    private static boolean loaded(String modId) {
-      return com.knoxhack.echocore.api.EchoRuntimeModules.isLoaded(modId);
+      return com.echoplatform.echocore.api.EchoRuntimeModules.isLoaded(modId);
    }
 
    private static String pos(net.minecraft.core.BlockPos pos) {

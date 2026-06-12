@@ -1,0 +1,91 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echotoolcore",
+  "name": "ECHO Tool Core",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "foundation_tools",
+  "entrypoint": "com.knoxhack.echotoolcore.EchoToolCore",
+  "publisher": "KnoxHack",
+  "channel": "foundation-dev",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Baseline hand tools, tool role tags, and survival tool progression.",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore"
+  ],
+  "optional": [],
+  "provides": [
+    "foundation.tools",
+    "foundation.tool_roles",
+    "foundation.tool_progression"
+  ],
+  "consumes": [
+    "foundation.core",
+    "foundation.materials",
+    "foundation.material_tags"
+  ],
+  "gameModes": [
+    "foundation_dev",
+    "openlands_standard",
+    "ashfall_survival",
+    "arcana_division"
+  ],
+  "permissions": [
+    "registry:foundation",
+    "data:foundation",
+    "launcher:dependency"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "items",
+        "loot",
+        "progression",
+        "recipes",
+        "saves",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": false,
+    "notes": "ECHO Foundations data-first backbone module. Experience packs consume these contracts and must not re-own baseline survival content."
+  },
+  "apiStability": "alpha",
+  "dependencyPolicy": {
+    "experiencesDependOnFoundation": true,
+    "foundationModulesMayDependOnEarlierFoundationModules": true,
+    "experiencesMayDependOnEachOther": false
+  },
+  "ai": {
+    "readable": true,
+    "callableActions": false,
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

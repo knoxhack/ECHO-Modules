@@ -1,14 +1,14 @@
 package com.knoxhack.echoarmory.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoHazardTelemetryService;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoRouteRecordService;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoHazardTelemetryService;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoRouteRecordService;
 import com.knoxhack.echoarmory.EchoArmory;
 import com.knoxhack.echoarmory.content.ArmoryContent;
 import com.knoxhack.echoarmory.content.ArmoryLoadoutDefinition;

@@ -84,8 +84,8 @@ public class WaterPurifierBlockEntity extends BlockEntity implements MenuProvide
     private static final Map<Item, Item> CONTAMINATED_PURIFY = Map.of(
             ModItems.CONTAMINATED_IRON.get(), Items.IRON_INGOT,
             ModItems.CONTAMINATED_GOLD.get(), Items.GOLD_INGOT,
-            ModItems.CONTAMINATED_REDSTONE.get(), Items.REDSTONE,
-            ModItems.CONTAMINATED_LAPIS.get(), Items.LAPIS_LAZULI
+            ModItems.CHARGED_ASH_CIRCUIT.get(), Items.REDSTONE,
+            ModItems.BLUE_ASH_SALT.get(), Items.LAPIS_LAZULI
     );
 
     public static Map<Item, Item> getContaminatedPurify() {
@@ -330,8 +330,8 @@ public class WaterPurifierBlockEntity extends BlockEntity implements MenuProvide
             return stack.is(ModItems.DIRTY_WATER_BOTTLE.get()) ||
                    stack.is(ModItems.CONTAMINATED_IRON.get()) ||
                    stack.is(ModItems.CONTAMINATED_GOLD.get()) ||
-                   stack.is(ModItems.CONTAMINATED_REDSTONE.get()) ||
-                   stack.is(ModItems.CONTAMINATED_LAPIS.get());
+                   stack.is(ModItems.CHARGED_ASH_CIRCUIT.get()) ||
+                   stack.is(ModItems.BLUE_ASH_SALT.get());
         }
         if (slot == FILTER_SLOT) {
             return stack.is(ModItems.FILTER_CARTRIDGE_BASIC.get()) ||

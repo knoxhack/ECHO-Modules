@@ -13,7 +13,7 @@ import com.knoxhack.echoarmory.data.InstalledModules;
 import com.knoxhack.echoarmory.data.InstabilityState;
 import com.knoxhack.echoarmory.registry.ModDataComponents;
 import com.knoxhack.echoarmory.registry.ModItems;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

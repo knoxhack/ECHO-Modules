@@ -1,16 +1,16 @@
 package com.knoxhack.echoarcaneindex.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.index.IIndexContentProvider;
-import com.knoxhack.echocore.api.index.IIndexRegistry;
-import com.knoxhack.echocore.api.index.IndexBuildContext;
-import com.knoxhack.echocore.api.index.IndexCategory;
-import com.knoxhack.echocore.api.index.IndexContentBuilder;
-import com.knoxhack.echocore.api.index.IndexContentSnapshot;
-import com.knoxhack.echocore.api.index.IndexEntry;
-import com.knoxhack.echocore.api.index.IndexEntryState;
-import com.knoxhack.echocore.api.index.IndexRelation;
-import com.knoxhack.echocore.api.index.IndexVisibility;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.index.IIndexContentProvider;
+import com.echoplatform.echocore.api.index.IIndexRegistry;
+import com.echoplatform.echocore.api.index.IndexBuildContext;
+import com.echoplatform.echocore.api.index.IndexCategory;
+import com.echoplatform.echocore.api.index.IndexContentBuilder;
+import com.echoplatform.echocore.api.index.IndexContentSnapshot;
+import com.echoplatform.echocore.api.index.IndexEntry;
+import com.echoplatform.echocore.api.index.IndexEntryState;
+import com.echoplatform.echocore.api.index.IndexRelation;
+import com.echoplatform.echocore.api.index.IndexVisibility;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
 import com.knoxhack.echoarcanacore.api.ArcaneRelicDefinition;
 import com.knoxhack.echoarcanacore.api.CurseDefinition;
@@ -27,7 +27,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public enum ArcaneIndexProvider implements IIndexContentProvider {
     INSTANCE;

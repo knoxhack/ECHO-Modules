@@ -13,7 +13,7 @@ import com.knoxhack.echoashfallprotocol.registry.ModAttachments;
 import com.knoxhack.echoashfallprotocol.registry.ModBlocks;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import com.knoxhack.echoashfallprotocol.world.StartingDropPodData;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -690,8 +690,8 @@ public class SurvivalTickHandler {
                     || hasBedNearPlayer(player, 16);
             boolean tool = player.getInventory().contains(new ItemStack(Items.WOODEN_SWORD))
                     || player.getInventory().contains(new ItemStack(ModItems.SCRAP_KNIFE.get()))
-                    || player.getInventory().contains(new ItemStack(ModItems.BONE_KNIFE.get()))
-                    || player.getInventory().contains(new ItemStack(ModItems.CRUDE_SPEAR.get()));
+                    || player.getInventory().contains(new ItemStack(ModItems.ASHBONE_SHIV.get()))
+                    || player.getInventory().contains(new ItemStack(ModItems.SCAVENGER_SPEAR.get()));
             return new OpeningBasics(mask, cleanWaterHandled, shelter, tool);
         }
 

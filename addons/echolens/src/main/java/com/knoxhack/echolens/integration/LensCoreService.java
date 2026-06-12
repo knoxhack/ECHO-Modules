@@ -1,6 +1,6 @@
 package com.knoxhack.echolens.integration;
 
-import com.knoxhack.echocore.api.ILensService;
+import com.echoplatform.echocore.api.ILensService;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.api.LensScanMode;
 import java.util.Comparator;

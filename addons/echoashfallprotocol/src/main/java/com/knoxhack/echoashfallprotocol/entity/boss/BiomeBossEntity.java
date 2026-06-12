@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.entity.boss;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.boss.BossHudSync;
 import com.knoxhack.echoashfallprotocol.faction.AshfallFactionMap;
 import com.knoxhack.echoashfallprotocol.guardian.BiomeGuardianProfile;

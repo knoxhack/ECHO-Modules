@@ -12,7 +12,7 @@ import com.knoxhack.echoblackboxprotocol.registry.ModMenus;
 import com.knoxhack.echoblackboxprotocol.registry.ModRecipes;
 import com.knoxhack.echoblackboxprotocol.registry.ModWorldgen;
 import com.mojang.logging.LogUtils;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
 public class EchoBlackboxProtocol {

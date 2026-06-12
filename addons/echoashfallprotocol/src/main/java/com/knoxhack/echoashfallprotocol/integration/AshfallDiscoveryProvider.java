@@ -1,9 +1,9 @@
 package com.knoxhack.echoashfallprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.event.EnvironmentalEventData;

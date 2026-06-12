@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
-  "generatedAt": "2026-06-09T08:21:20.616Z",
-  "moduleCount": 95,
+  "generatedAt": "2026-06-11T22:22:49.015Z",
+  "moduleCount": 105,
   "modules": [
     {
       "id": "echoadaptercore",
@@ -224,6 +224,73 @@
       "apiStability": "beta"
     },
     {
+      "id": "echoarcanadivisionprotocol",
+      "name": "ECHO: Arcana Division Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "arcana-alpha",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoarcanadivisionprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoarcanadivisionprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore",
+        "echoworldstarter",
+        "echocommonloot",
+        "echocreatureroles",
+        "echoarcanacore"
+      ],
+      "optional": [
+        "echoaetherworks",
+        "echocursecore",
+        "echofamiliarcore",
+        "echogrimoire",
+        "echoriftworlds",
+        "echoritualcore",
+        "echospellcore",
+        "echoholomap",
+        "echoindex",
+        "echolens",
+        "echoterminal",
+        "echothemecore"
+      ],
+      "provides": [
+        "arcana_division.protocol",
+        "arcana_division.research",
+        "arcana_division.rituals",
+        "arcana_division.spells",
+        "arcana_division.familiars",
+        "arcana_division.curses",
+        "arcana_division.rifts",
+        "arcana_division.anomaly_containment",
+        "arcana_division.release_readiness"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "foundation.common_loot",
+        "foundation.creature_roles",
+        "foundation.first_hour",
+        "foundation.materials",
+        "foundation.spawn_safety",
+        "foundation.stations",
+        "foundation.tools",
+        "arcana.core",
+        "arcana.aether",
+        "arcana.providers"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echoarcaneindex",
       "name": "ECHO: Arcane Index",
       "version": "1.0.0",
@@ -312,7 +379,14 @@
         "echoadaptercore",
         "echoblockworks",
         "echocore",
-        "echonetcore"
+        "echofoundationcore",
+        "echomaterialcore",
+        "echonetcore",
+        "echotoolcore",
+        "echostationcore",
+        "echoworldstarter",
+        "echocommonloot",
+        "echocreatureroles"
       ],
       "optional": [
         "echodatacore",
@@ -339,7 +413,14 @@
       ],
       "consumes": [
         "echo.core",
-        "echo.net"
+        "echo.net",
+        "foundation.common_loot",
+        "foundation.creature_roles",
+        "foundation.first_hour",
+        "foundation.materials",
+        "foundation.spawn_safety",
+        "foundation.stations",
+        "foundation.tools"
       ],
       "apiStability": "beta"
     },
@@ -755,6 +836,42 @@
       "apiStability": "beta"
     },
     {
+      "id": "echocommonloot",
+      "name": "ECHO Common Loot",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_common_loot",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocommonloot/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocommonloot",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.common_loot",
+        "foundation.block_drops",
+        "foundation.starter_caches"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools",
+        "foundation.stations"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echocommunitybridge",
       "name": "ECHO: Community Bridge",
       "version": "1.0.0",
@@ -976,6 +1093,36 @@
         "validation.pack"
       ],
       "apiStability": "beta"
+    },
+    {
+      "id": "echocreatureroles",
+      "name": "ECHO Creature Roles",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_creature_roles",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echocreatureroles/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echocreatureroles",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.creature_roles",
+        "foundation.spawn_roles",
+        "foundation.ai_pressure_roles"
+      ],
+      "consumes": [
+        "foundation.core"
+      ],
+      "apiStability": "alpha"
     },
     {
       "id": "echocursecore",
@@ -1236,6 +1383,35 @@
         "echo.core"
       ],
       "apiStability": "scaffold"
+    },
+    {
+      "id": "echofoundationcore",
+      "name": "ECHO Foundation Core",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_contracts",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echofoundationcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echofoundationcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.core",
+        "foundation.ownership",
+        "foundation.aliases",
+        "foundation.legal_identity",
+        "foundation.registry_contracts"
+      ],
+      "consumes": [],
+      "apiStability": "alpha"
     },
     {
       "id": "echogalacticcore",
@@ -1817,6 +1993,39 @@
       "apiStability": "beta"
     },
     {
+      "id": "echomaterialcore",
+      "name": "ECHO Material Core",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_materials",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echomaterialcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echomaterialcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.materials",
+        "foundation.generic_blocks",
+        "foundation.generic_items",
+        "foundation.material_tags"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.aliases",
+        "foundation.legal_identity"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echometadatacore",
       "name": "ECHO: MetadataCore",
       "version": "1.0.0",
@@ -2113,6 +2322,90 @@
         "echo.net"
       ],
       "apiStability": "experimental"
+    },
+    {
+      "id": "echoopenlandsprotocol",
+      "name": "ECHO: Openlands Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "alpha",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoopenlandsprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoopenlandsprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echoassetcore",
+        "echobiomecore",
+        "echocontentcore",
+        "echocore",
+        "echocreaturecore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echonetcore",
+        "echotoolcore",
+        "echostationcore",
+        "echoworldstarter",
+        "echocommonloot",
+        "echocreatureroles",
+        "echoprogressioncore",
+        "echorecipecore",
+        "echostructurecore",
+        "echoworldcore"
+      ],
+      "optional": [
+        "echoagriculturereclamation",
+        "echoblockworks",
+        "echoeconomycore",
+        "echohealthcore",
+        "echoholomap",
+        "echoindex",
+        "echolootcore",
+        "echonpcore",
+        "echoplayercore",
+        "echorecovery",
+        "echoscreencore",
+        "echosoundcore",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore"
+      ],
+      "provides": [
+        "openlands.blocks",
+        "openlands.creatures",
+        "openlands.first_waystone",
+        "openlands.first_hour",
+        "openlands.index",
+        "openlands.items",
+        "openlands.playtests",
+        "openlands.progression",
+        "openlands.recipes",
+        "openlands.runtime_core",
+        "openlands.systems",
+        "openlands.waystones",
+        "openlands.world"
+      ],
+      "consumes": [
+        "assets.registry",
+        "biome.profiles",
+        "content.references",
+        "echo.core",
+        "echo.net",
+        "foundation.common_loot",
+        "foundation.creature_roles",
+        "foundation.first_hour",
+        "foundation.materials",
+        "foundation.spawn_safety",
+        "foundation.stations",
+        "foundation.tools",
+        "progression.unlock_graph",
+        "recipes.backend",
+        "world.regions"
+      ],
+      "apiStability": "alpha"
     },
     {
       "id": "echoorbitalremnants",
@@ -2996,6 +3289,75 @@
       "apiStability": "beta"
     },
     {
+      "id": "echoskyrelayprotocol",
+      "name": "ECHO: Sky Relay Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "alpha",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoskyrelayprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoskyrelayprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echoruntimeguard"
+      ],
+      "optional": [
+        "echoagriculturereclamation",
+        "echoeconomycore",
+        "echogalacticcore",
+        "echoholomap",
+        "echoindex",
+        "echoindustrialnexus",
+        "echolens",
+        "echologisticsnetwork",
+        "echomissioncore",
+        "echomultiblockcore",
+        "echoorbitalremnants",
+        "echopowergrid",
+        "echoprogressioncore",
+        "echorecipecore",
+        "echorecovery",
+        "echosocialcore",
+        "echoterminal",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "provides": [
+        "skyrelay.anchors",
+        "skyrelay.content",
+        "skyrelay.fragments",
+        "skyrelay.holomap_layers",
+        "skyrelay.lens_profiles",
+        "skyrelay.missions",
+        "skyrelay.release_readiness",
+        "skyrelay.resources",
+        "skyrelay.terminal",
+        "skyrelay.weather_routes"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "holomap.layers",
+        "lens.scan_profiles",
+        "logistics.routes",
+        "power.grid",
+        "progression.unlock_graph",
+        "recipes.backend",
+        "recovery.void_cache",
+        "terminal.pages",
+        "weather.events"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echosocialcore",
       "name": "ECHO: SocialCore",
       "version": "1.0.0",
@@ -3174,6 +3536,40 @@
         "echo.net"
       ],
       "apiStability": "beta"
+    },
+    {
+      "id": "echostationcore",
+      "name": "ECHO Station Core",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_stations",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echostationcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echostationcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.stations",
+        "foundation.station_roles",
+        "foundation.shared_recipe_surfaces"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools"
+      ],
+      "apiStability": "alpha"
     },
     {
       "id": "echostationfall",
@@ -3406,6 +3802,39 @@
       "apiStability": "stable"
     },
     {
+      "id": "echotoolcore",
+      "name": "ECHO Tool Core",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_tools",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echotoolcore/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echotoolcore",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.tools",
+        "foundation.tool_roles",
+        "foundation.tool_progression"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.material_tags"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echotutorialcore",
       "name": "ECHO: TutorialCore",
       "version": "1.0.0",
@@ -3636,6 +4065,43 @@
         "echo.net"
       ],
       "apiStability": "beta"
+    },
+    {
+      "id": "echoworldstarter",
+      "name": "ECHO World Starter",
+      "version": "0.1.0",
+      "kind": "library",
+      "role": "foundation_world_starter",
+      "channel": "foundation-dev",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echoworldstarter/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echoworldstarter",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore"
+      ],
+      "optional": [],
+      "provides": [
+        "foundation.spawn_safety",
+        "foundation.first_hour",
+        "foundation.shelter_rules",
+        "foundation.starter_items"
+      ],
+      "consumes": [
+        "foundation.core",
+        "foundation.materials",
+        "foundation.tools",
+        "foundation.stations"
+      ],
+      "apiStability": "alpha"
     },
     {
       "id": "signalosexample",

@@ -14,7 +14,7 @@ import com.knoxhack.echoarmory.registry.ModDataComponents;
 import com.knoxhack.echoarmory.registry.ModEntities;
 import com.knoxhack.echoarmory.registry.ModItems;
 import com.knoxhack.echoarmory.registry.ModMenus;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 

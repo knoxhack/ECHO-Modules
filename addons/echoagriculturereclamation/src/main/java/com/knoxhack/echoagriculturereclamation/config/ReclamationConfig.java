@@ -2,7 +2,7 @@ package com.knoxhack.echoagriculturereclamation.config;
 
 import com.knoxhack.echoagriculturereclamation.content.ReclamationMachineRules;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationProgressionRules;
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class ReclamationConfig {
    private static final EchoNativeConfigSpec.Builder BUILDER = new EchoNativeConfigSpec.Builder();

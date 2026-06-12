@@ -1,0 +1,348 @@
+{
+  "schema": "echo.openlands.systems.final_release_review_harness_plan.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the concrete human-review and artifact-inspection harness responsibilities required to turn final_release_review_acceptance review areas into passing Native, Standalone, and NeoForge final review reports. This is a harness plan, not final release approval.",
+  "sourceContracts": {
+    "finalReleaseReviewAcceptance": "systems/final_release_review_acceptance.json",
+    "legalContentAudit": "systems/legal_content_audit.json",
+    "contentPolicy": "config/content_policy.json",
+    "assetManifest": "assets/echoopenlandsprotocol/asset_manifest.json",
+    "soundContract": "sounds/mvp_sound_contract.json",
+    "runtimeAdapterLoadPlan": "systems/runtime_adapter_load_plan.json",
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json",
+    "runtimeExecutionHarnessPlan": "systems/runtime_execution_harness_plan.json",
+    "launcherExecutionHarnessPlan": "systems/launcher_execution_harness_plan.json",
+    "distributionApprovalAcceptance": "systems/distribution_approval_acceptance.json"
+  },
+  "editionHarnesses": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "driverKind": "echo_native_final_release_review_harness",
+      "entryPoint": "scripts/run-final-release-review-harness.mjs",
+      "requiredReport": "evidence/native-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "reviewArtifactRoot": "evidence/final-review/native"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "driverKind": "neoforge_final_release_review_harness",
+      "entryPoint": "scripts/run-final-release-review-harness.mjs",
+      "requiredReport": "evidence/neoforge-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "reviewArtifactRoot": "evidence/final-review/neoforge"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "driverKind": "standalone_final_release_review_harness",
+      "entryPoint": "scripts/run-final-release-review-harness.mjs",
+      "requiredReport": "evidence/standalone-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "reviewArtifactRoot": "evidence/final-review/standalone"
+    }
+  ],
+  "driverSurfaces": [
+    {
+      "id": "reviewer_identity_driver",
+      "requiredMethods": [
+        "recordReviewer(name)",
+        "recordReviewDate(date)",
+        "captureReviewRunId()",
+        "captureReviewHost()",
+        "attachReviewerRole(role)"
+      ],
+      "mustCapture": [
+        "reviewer",
+        "reviewDate",
+        "reviewRunId",
+        "reviewHost",
+        "reviewerRole"
+      ]
+    },
+    {
+      "id": "public_text_policy_driver",
+      "requiredMethods": [
+        "scanPublicTextForForbiddenTerms()",
+        "inspectLanguageBundle(path)",
+        "inspectLauncherCopy(edition)",
+        "inspectPackDescriptors(artifact)",
+        "recordAllowedAdapterMetadataExceptions()"
+      ],
+      "mustCapture": [
+        "forbiddenTermScanResult",
+        "publicTextFindings",
+        "launcherCopyFindings",
+        "descriptorBrandingFindings",
+        "approvedExceptions"
+      ]
+    },
+    {
+      "id": "asset_manifest_driver",
+      "requiredMethods": [
+        "hashAssetManifest()",
+        "enumerateAssetManifestEntries()",
+        "compareManifestToFiles()",
+        "countRemainingPlaceholders()",
+        "classifyLicenseSource()"
+      ],
+      "mustCapture": [
+        "assetManifestHash",
+        "assetManifestEntries",
+        "missingAssetList",
+        "remainingPlaceholderCount",
+        "licenseSourceSummary"
+      ]
+    },
+    {
+      "id": "legal_audit_driver",
+      "requiredMethods": [
+        "hashLegalAudit()",
+        "runBorrowedAssetScan()",
+        "runCopiedSilhouetteScan()",
+        "runRecipeIdentityScan()",
+        "attachLegalAuditExceptions()"
+      ],
+      "mustCapture": [
+        "legalAuditHash",
+        "borrowedAssetScanResult",
+        "copiedSilhouetteScanResult",
+        "recipeIdentityScanResult",
+        "approvedExceptions"
+      ]
+    },
+    {
+      "id": "block_render_review_driver",
+      "requiredMethods": [
+        "renderBlockSampleGrid()",
+        "inspectBlockTextures()",
+        "inspectBlockModels()",
+        "inspectBlockstates()",
+        "saveBlockRenderSampleIndex()"
+      ],
+      "mustCapture": [
+        "textureReview",
+        "modelReview",
+        "blockstateReview",
+        "blockRenderSamples",
+        "blockPlaceholderCount"
+      ]
+    },
+    {
+      "id": "item_render_review_driver",
+      "requiredMethods": [
+        "renderItemSampleGrid()",
+        "inspectItemIcons()",
+        "inspectItemModels()",
+        "inspectToolSilhouettes()",
+        "saveItemRenderSampleIndex()"
+      ],
+      "mustCapture": [
+        "itemIconReview",
+        "itemModelReview",
+        "toolSilhouetteReview",
+        "itemRenderSamples",
+        "itemPlaceholderCount"
+      ]
+    },
+    {
+      "id": "audio_source_review_driver",
+      "requiredMethods": [
+        "enumerateSoundEvents()",
+        "verifySoundEventKeys()",
+        "inspectAudioSourceManifest()",
+        "verifyAudioLicenseBundle()",
+        "sampleCreatureAndBiomeSounds()"
+      ],
+      "mustCapture": [
+        "soundReview",
+        "soundEventSourceManifest",
+        "audioLicenseBundle",
+        "creatureSoundTemplateReview",
+        "biomeAmbienceReview"
+      ]
+    },
+    {
+      "id": "generated_output_audit_driver",
+      "requiredMethods": [
+        "hashModuleArtifact()",
+        "inspectArtifactEntries()",
+        "scanGeneratedRuntimeOutput()",
+        "verifyCompiledArtifactsContainReviewedAssets()",
+        "recordAdapterMetadataExceptions()"
+      ],
+      "mustCapture": [
+        "moduleArtifactSha256",
+        "artifactEntryScan",
+        "generatedOutputReview",
+        "compiledArtifactAssetPresence",
+        "adapterMetadataExceptions"
+      ]
+    }
+  ],
+  "reviewAreaBindings": [
+    {
+      "id": "public_identity_and_branding",
+      "gateIds": [
+        "final_asset_legal_review"
+      ],
+      "driverSurfaceIds": [
+        "reviewer_identity_driver",
+        "public_text_policy_driver",
+        "legal_audit_driver"
+      ],
+      "inputFixtureRefs": [
+        "config/content_policy.json",
+        "systems/legal_content_audit.json",
+        "assets/echoopenlandsprotocol/lang/en_us.json"
+      ],
+      "checklist": [
+        "public_pack_name_is_openlands",
+        "public_text_contains_no_forbidden_terms",
+        "ids_keep_echoopenlandsprotocol_namespace",
+        "launcher_copy_uses_openlands_identity_only",
+        "compatibility_target_names_appear_only_in_internal_docs"
+      ],
+      "requiredSavedArtifacts": [
+        "public-identity-review.md",
+        "forbidden-term-scan.json",
+        "branding-exceptions.json"
+      ]
+    },
+    {
+      "id": "block_textures_models_and_blockstates",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "asset_manifest_driver",
+        "legal_audit_driver",
+        "block_render_review_driver",
+        "generated_output_audit_driver"
+      ],
+      "inputFixtureRefs": [
+        "assets/echoopenlandsprotocol/asset_manifest.json",
+        "blocks/mvp_blocks.json"
+      ],
+      "checklist": [
+        "all_mvp_block_textures_are_original_or_licensed",
+        "all_mvp_block_models_are_original_or_licensed",
+        "all_mvp_blockstates_render_expected_models",
+        "no_copied_texture_or_silhouette_is_present",
+        "remaining_placeholder_blocks_are_zero_for_public_release"
+      ],
+      "requiredSavedArtifacts": [
+        "block-asset-review.md",
+        "block-placeholder-count.json",
+        "block-render-sample-index.json"
+      ]
+    },
+    {
+      "id": "item_icons_models_and_tools",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "asset_manifest_driver",
+        "legal_audit_driver",
+        "item_render_review_driver",
+        "generated_output_audit_driver"
+      ],
+      "inputFixtureRefs": [
+        "assets/echoopenlandsprotocol/asset_manifest.json",
+        "items/mvp_items.json"
+      ],
+      "checklist": [
+        "all_mvp_item_icons_are_original_or_licensed",
+        "all_mvp_item_models_are_original_or_licensed",
+        "tool_silhouettes_are_openlands_specific",
+        "food_material_and_waystone_icons_are_distinct",
+        "remaining_placeholder_items_are_zero_for_public_release"
+      ],
+      "requiredSavedArtifacts": [
+        "item-asset-review.md",
+        "item-placeholder-count.json",
+        "item-render-sample-index.json"
+      ]
+    },
+    {
+      "id": "audio_sources_and_sound_events",
+      "gateIds": [
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "audio_source_review_driver",
+        "generated_output_audit_driver"
+      ],
+      "inputFixtureRefs": [
+        "sounds/mvp_sound_contract.json",
+        "assets/echoopenlandsprotocol/sounds.json"
+      ],
+      "checklist": [
+        "all_public_audio_is_original_or_licensed",
+        "sound_event_keys_match_openlands_contract",
+        "creature_sound_templates_have_public_sources",
+        "biome_ambience_has_public_sources",
+        "no_borrowed_vanilla_audio_is_present"
+      ],
+      "requiredSavedArtifacts": [
+        "audio-source-review.md",
+        "sound-event-source-manifest.json",
+        "audio-license-bundle.json"
+      ]
+    },
+    {
+      "id": "generated_runtime_outputs",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "driverSurfaceIds": [
+        "public_text_policy_driver",
+        "legal_audit_driver",
+        "generated_output_audit_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/runtime_adapter_load_plan.json",
+        "systems/cross_platform_parity.json",
+        "systems/legal_content_audit.json"
+      ],
+      "checklist": [
+        "native_generated_output_uses_echo_ids",
+        "standalone_generated_output_uses_echo_ids",
+        "neoforge_generated_output_keeps_echo_data_as_source_of_truth",
+        "runtime_descriptors_contain_only_allowed_adapter_metadata",
+        "compiled_artifacts_contain_final_reviewed_assets"
+      ],
+      "requiredSavedArtifacts": [
+        "generated-output-review.md",
+        "artifact-entry-scan.json",
+        "adapter-metadata-exceptions.json"
+      ]
+    }
+  ],
+  "reportAssemblyRules": {
+    "reviewResultSource": "reviewAreaBindings",
+    "allChecklistItemsMustPassForAreaPass": true,
+    "allRequiredSavedArtifactsMustExistForAreaPass": true,
+    "allRequiredDriverCapturesMustExist": true,
+    "allInputFixturesMustBeHashed": true,
+    "gateClearsOnlyWhenEveryMappedReviewAreaPasses": true,
+    "blockedHarnessDoesNotClearFinalReviewGates": true,
+    "preflightReportsDoNotClearFinalReviewGates": true,
+    "publicReleaseReadyRequiresReviewerDateAndApprovedAssets": true,
+    "publicAlphaReadyRequiresRuntimeLauncherFinalReviewAndDistributionApproval": true
+  }
+}

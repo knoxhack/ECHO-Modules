@@ -58,6 +58,10 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+dependencies {
+    api project(":echo-native-contracts")
+}
+
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
             minecraft_version      : minecraft_version,

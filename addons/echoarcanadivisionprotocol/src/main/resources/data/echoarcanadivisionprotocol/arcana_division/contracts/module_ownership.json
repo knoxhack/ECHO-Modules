@@ -1,0 +1,52 @@
+{
+  "schema": "echo.arcana_division.module_ownership.v1",
+  "promise": "Magical research, rituals, familiars, curses, rifts, and anomaly containment.",
+  "foundationDependencyRule": "Arcana Division consumes Foundation baseline survival and never depends on Openlands or Ashfall.",
+  "ownedModules": {
+    "echoarcanacore": [
+      "arcana.core",
+      "arcana.aether",
+      "arcana.providers"
+    ],
+    "echoaetherworks": [
+      "arcana.aetherworks",
+      "arcana.aether_machines",
+      "arcana.aether_storage"
+    ],
+    "echocursecore": [
+      "arcana.curses",
+      "arcana.curse_progression"
+    ],
+    "echofamiliarcore": [
+      "arcana.familiars",
+      "arcana.companions"
+    ],
+    "echogrimoire": [
+      "arcana.grimoire",
+      "arcana.knowledge"
+    ],
+    "echoriftworlds": [
+      "arcana.rifts",
+      "arcana.pocket_worlds"
+    ],
+    "echoritualcore": [
+      "arcana.rituals",
+      "arcana.altars",
+      "arcana.offerings"
+    ],
+    "echospellcore": [
+      "arcana.spells",
+      "arcana.cast_patterns"
+    ]
+  },
+  "movedFromAshfallProfile": [
+    "echoaetherworks",
+    "echoarcanacore",
+    "echocursecore",
+    "echofamiliarcore",
+    "echogrimoire",
+    "echoriftworlds",
+    "echoritualcore",
+    "echospellcore"
+  ]
+}

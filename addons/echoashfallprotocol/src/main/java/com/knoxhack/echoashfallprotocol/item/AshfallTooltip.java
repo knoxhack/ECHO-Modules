@@ -65,7 +65,7 @@ public record AshfallTooltip(String id, List<Component> templateLines) implement
             case "battery_basic" -> battery(tooltip, components, 2_000);
             case "battery_advanced" -> battery(tooltip, components, 10_000);
             case "battery_elite" -> battery(tooltip, components, 50_000);
-            case "bone_knife" -> {
+            case "ashbone_shiv" -> {
                 tooltip.accept(literal("Damage: ~3.0", 0xCCCCCC));
                 tooltip.accept(literal("Primitive blade carved from animal bone.", 0xAAAAAA));
                 tooltip.accept(literal("Better than bare fists.", 0x888888));
@@ -78,7 +78,7 @@ public record AshfallTooltip(String id, List<Component> templateLines) implement
                 tooltip.accept(literal("[CONTAMINATED] Toxic material", 0xFF4444));
                 tooltip.accept(literal("Purify in Water Purifier or Atmospheric Scrubber", 0xAAAAAA));
             }
-            case "crude_spear" -> {
+            case "scavenger_spear" -> {
                 tooltip.accept(literal("Damage: 5.0", 0xCCCCCC));
                 tooltip.accept(literal("Extended reach from scrap and bone.", 0xAAAAAA));
                 tooltip.accept(literal("Cobbled together from the ruins.", 0x888888));

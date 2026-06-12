@@ -1,8 +1,8 @@
 package com.knoxhack.echoarcanacore.integration.veilbound;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoarcanacore.EchoArcanaCore;
 import com.knoxhack.echoarcanacore.api.VeilboundRuntimeSnapshot;
 import com.knoxhack.echolens.api.LensContext;
@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class ArcanaVeilboundLensIntegration {
     private static final AtomicBoolean REGISTERED = new AtomicBoolean(false);

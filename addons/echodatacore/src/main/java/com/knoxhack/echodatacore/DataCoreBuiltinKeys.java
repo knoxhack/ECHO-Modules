@@ -1,8 +1,8 @@
 package com.knoxhack.echodatacore;
 
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IDataKey;
 import net.minecraft.resources.Identifier;
 
 public final class DataCoreBuiltinKeys {

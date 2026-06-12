@@ -1,0 +1,113 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echoweathercore"
+version="1.0.0"
+displayName="ECHO: WeatherCore"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the shared weather, atmospheric hazard, storm forecasting, and environmental event system for the ECHO/Ashfall ecosystem."
+description='''
+The world is unstable. Read the sky.
+
+ECHO WeatherCore provides ruined-world weather, atmospheric hazards, storm
+forecasting, route pressure, cinematic environmental events, scanner interference,
+HoloMap distortion, PowerGrid instability hooks, drone weather warnings,
+faction patrol behavior hooks, and data-driven weather profiles for the ECHO
+ecosystem. Weather changes expedition decisions, not just annoys the player.
+'''
+
+[[dependencies.echoweathercore]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echoterminal"
+type="optional"
+reason="Exposes weather forecasts and alerts in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echoholomap"
+type="optional"
+reason="Provides weather overlay markers and route risk on the ECHO HoloMap when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.echoweathercore]]
+modId="echolens"
+type="optional"
+reason="Provides atmosphere scan rows for the ECHO Lens when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echopowergrid"
+type="optional"
+reason="Reports weather-driven power instability and solar/battery modifiers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echosoundcore"
+type="optional"
+reason="Plays weather ambience, warning stingers, and storm audio cues when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.echoweathercore]]
+modId="echoworldcore"
+type="optional"
+reason="Uses region and biome info for weather scope and routing when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echomissioncore"
+type="optional"
+reason="Provides weather-driven mission hooks and field ops scaffolds when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echonexusprotocol"
+type="optional"
+reason="Responds to Nexus path state for weather corruption and reality tear events when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echoweathercore]]
+modId="echoruntimeguard"
+type="optional"
+reason="Respects tick budgets and profiling hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

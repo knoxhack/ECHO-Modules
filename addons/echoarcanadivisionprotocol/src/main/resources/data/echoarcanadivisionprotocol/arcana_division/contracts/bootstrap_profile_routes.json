@@ -1,0 +1,84 @@
+{
+  "schema": "echo.arcana_division.bootstrap_profile_routes.v1",
+  "sourceSplitFrom": "addons/echoashfallprotocol/src/main/java/com/knoxhack/echoashfallprotocol/EchoAshfallBootstrapProductProfile.java",
+  "canonicalOwner": "echoarcanadivisionprotocol",
+  "classOverrides": {
+    "echoaetherworks": "com.knoxhack.echoaetherworks.EchoAetherWorksNativeModule",
+    "echoarcanacore": "com.knoxhack.echoarcanacore.EchoArcanaCoreNativeModule",
+    "echoarcaneindex": "com.knoxhack.echoarcaneindex.EchoArcaneIndexNativeModule",
+    "echocursecore": "com.knoxhack.echocursecore.EchoCurseCoreNativeModule",
+    "echofamiliarcore": "com.knoxhack.echofamiliarcore.EchoFamiliarCoreNativeModule",
+    "echogrimoire": "com.knoxhack.echogrimoire.EchoGrimoireNativeModule",
+    "echoriftworlds": "com.knoxhack.echoriftworlds.EchoRiftWorldsNativeModule",
+    "echoritualcore": "com.knoxhack.echoritualcore.EchoRitualCoreNativeModule",
+    "echospellcore": "com.knoxhack.echospellcore.EchoSpellCoreNativeModule"
+  },
+  "actionRoutes": [
+    {
+      "module": "echospellcore",
+      "paintRecipe": "arcana_node",
+      "itemInputs": [
+        "echospellcore:signal_focus",
+        "echospellcore:aether_catalyst"
+      ],
+      "result": "Spell Core resolves a field cast and places a focus node."
+    },
+    {
+      "module": "echoritualcore",
+      "paintRecipe": "arcana_node",
+      "itemInputs": [
+        "echoritualcore:ritual_focus",
+        "echoritualcore:stability_seal"
+      ],
+      "result": "Ritual Core resolves a field ritual and places a focus node."
+    }
+  ],
+  "serviceClasses": {
+    "echoarcanacore": [
+      "com.knoxhack.echoarcanacore.integration.ArcanaCoreMissionIntegration",
+      "com.knoxhack.echoarcanacore.integration.veilbound.ArcanaVeilboundLensIntegration"
+    ],
+    "echospellcore": [
+      "com.knoxhack.echospellcore.integration.terminal.SpellCoreTerminalIntegration",
+      "com.knoxhack.echospellcore.integration.lens.SpellCoreLensIntegration",
+      "com.knoxhack.echospellcore.integration.missioncore.SpellCoreMissionCoreIntegration"
+    ]
+  },
+  "worldPaintRecipes": [
+    {
+      "id": "arcana_node",
+      "placements": [
+        {
+          "offset": [0, -1, 0],
+          "block": "echoarcanadivisionprotocol:ritual_floor",
+          "fallback": "minecraft:amethyst_block"
+        },
+        {
+          "offset": [0, 0, 0],
+          "block": "echoaetherworks:aether_cell",
+          "fallback": "minecraft:enchanting_table"
+        },
+        {
+          "offset": [1, 0, 0],
+          "block": "echoritualcore:offering_pedestal",
+          "fallback": "minecraft:lectern"
+        },
+        {
+          "offset": [-1, 0, 0],
+          "block": "echospellcore:signal_focus",
+          "fallback": "minecraft:lapis_block"
+        },
+        {
+          "offset": [0, 1, 0],
+          "block": "echoarcanadivisionprotocol:aether_spire",
+          "fallback": "minecraft:end_rod"
+        }
+      ]
+    }
+  ],
+  "ashfallAllowedAfterSplit": [
+    "Optional compatibility discovery.",
+    "Save-safe bridge references recorded in arcana_division_bridge.json.",
+    "No ownership of Arcana route, reward, paint, service, or class override tables."
+  ]
+}

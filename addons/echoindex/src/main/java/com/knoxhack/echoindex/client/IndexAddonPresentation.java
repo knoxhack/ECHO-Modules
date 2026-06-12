@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.client;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;

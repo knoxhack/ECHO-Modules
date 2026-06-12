@@ -1,0 +1,129 @@
+{
+  "schema": "echo.openlands.holomap.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "regionDataContract": {
+    "storedFields": [
+      "regionId",
+      "displayName",
+      "seedSalt",
+      "biomeType",
+      "discoveredAt",
+      "nearbyHints",
+      "restoredWaystones",
+      "playerMarkers",
+      "oldRoadSegments"
+    ],
+    "fallbackIfHoloMapMissing": "Persist data through Echo Index/progression state and expose simple text/map markers when HoloMap is absent."
+  },
+  "layers": [
+    {
+      "id": "region_names",
+      "displayName": "Region Names",
+      "visibleByDefault": true,
+      "source": "waystone_or_region_discovery"
+    },
+    {
+      "id": "old_roads",
+      "displayName": "Old Roads",
+      "visibleByDefault": true,
+      "source": "old_road_block_and_marker_discovery"
+    },
+    {
+      "id": "waystones",
+      "displayName": "Waystones",
+      "visibleByDefault": true,
+      "source": "waystone_state_machine"
+    },
+    {
+      "id": "nearby_hints",
+      "displayName": "Nearby Hints",
+      "visibleByDefault": true,
+      "source": "active_waystone_reveal"
+    },
+    {
+      "id": "player_markers",
+      "displayName": "Player Markers",
+      "visibleByDefault": true,
+      "source": "player_created"
+    }
+  ],
+  "starterRegionNamePools": {
+    "meadows": [
+      "Amber Field",
+      "Willow Reach",
+      "Lowbell Meadow",
+      "Sunmere"
+    ],
+    "woodlands": [
+      "Branchdeep",
+      "Pineward",
+      "Mossgate",
+      "Greenhollow"
+    ],
+    "stonehills": [
+      "Greycrest",
+      "Limewatch",
+      "Copperfold",
+      "Shale Rise"
+    ],
+    "marshlands": [
+      "Reedfen",
+      "Claywater",
+      "Mistlow",
+      "Fenroad"
+    ]
+  },
+  "hintTypes": [
+    {
+      "id": "cave_mouth",
+      "displayName": "Cave Mouth",
+      "icon": "cave",
+      "revealSources": [
+        "waystone_active",
+        "watchtower_climbed",
+        "road_marker"
+      ]
+    },
+    {
+      "id": "old_mine",
+      "displayName": "Old Mine",
+      "icon": "pick",
+      "revealSources": [
+        "waystone_active",
+        "region_rubbing"
+      ]
+    },
+    {
+      "id": "ruin",
+      "displayName": "Ruin",
+      "icon": "ruins",
+      "revealSources": [
+        "waystone_active",
+        "road_marker"
+      ]
+    },
+    {
+      "id": "resource_patch",
+      "displayName": "Resource Patch",
+      "icon": "resource",
+      "revealSources": [
+        "waystone_active",
+        "player_marker"
+      ]
+    },
+    {
+      "id": "road_segment",
+      "displayName": "Old Road Segment",
+      "icon": "road",
+      "revealSources": [
+        "walked_old_road",
+        "old_road_token"
+      ]
+    }
+  ]
+}

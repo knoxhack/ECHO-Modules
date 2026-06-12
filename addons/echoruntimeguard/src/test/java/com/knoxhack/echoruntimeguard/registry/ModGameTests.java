@@ -1,8 +1,8 @@
 package com.knoxhack.echoruntimeguard.registry;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
 import com.knoxhack.echoruntimeguard.EchoRuntimeGuard;
 import com.knoxhack.echoruntimeguard.api.DirtyReason;
 import com.knoxhack.echoruntimeguard.api.NetworkPriority;

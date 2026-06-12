@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.boss;
 
 import com.knoxhack.echoashfallprotocol.network.BossNavigationPacket;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;

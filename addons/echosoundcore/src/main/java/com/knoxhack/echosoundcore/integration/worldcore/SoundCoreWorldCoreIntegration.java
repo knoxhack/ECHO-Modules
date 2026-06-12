@@ -1,9 +1,9 @@
 package com.knoxhack.echosoundcore.integration.worldcore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldRegionInstance;
 import com.knoxhack.echosoundcore.EchoSoundCore;
 import java.util.LinkedHashMap;
 import java.util.Map;

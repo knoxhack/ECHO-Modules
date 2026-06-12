@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.integration;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.HoloMapIds;
@@ -1086,7 +1086,7 @@ public final class HoloMapTerminalClientIntegration {
                 case ROUTE -> 60;
                 case CRASH_SITE, BASE_OUTPOST -> 45;
                 case REGION, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN -> 30;
-                case GENERIC -> 10;
+                case GENERIC, STRUCTURE, FACTION -> 10;
             };
             if (marker.precision() == HoloMapPrecision.VIRTUAL) {
                 score -= 25;
@@ -1355,7 +1355,7 @@ public final class HoloMapTerminalClientIntegration {
                 case ORBITAL_SCAN -> 0xFFA58BFF;
                 case NEXUS_ANOMALY -> 0xFFFF8FEA;
                 case DRONE_SCAN -> 0xFF7CF7D4;
-                case REGION, GENERIC -> TerminalUi.text(context);
+                case REGION, GENERIC, STRUCTURE, FACTION -> TerminalUi.text(context);
             };
         }
 

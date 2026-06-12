@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echoholomap.EchoHoloMap;
 import com.knoxhack.echoholomap.integration.HoloMapMissionHooks;

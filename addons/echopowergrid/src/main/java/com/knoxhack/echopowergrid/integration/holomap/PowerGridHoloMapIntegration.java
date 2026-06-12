@@ -1,6 +1,6 @@
 package com.knoxhack.echopowergrid.integration.holomap;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echopowergrid.EchoPowerGrid;
 
 public final class PowerGridHoloMapIntegration {

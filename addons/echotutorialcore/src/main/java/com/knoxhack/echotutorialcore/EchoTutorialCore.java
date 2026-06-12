@@ -12,8 +12,8 @@ import com.knoxhack.echotutorialcore.network.TutorialNetworking;
 import com.knoxhack.echotutorialcore.server.TutorialEventHandler;
 import com.knoxhack.echotutorialcore.server.TutorialHintManager;
 import com.mojang.logging.LogUtils;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoOptionalServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoOptionalServices;
 import org.slf4j.Logger;
 
 public class EchoTutorialCore {

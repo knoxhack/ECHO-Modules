@@ -1,6 +1,6 @@
 package com.knoxhack.echologisticsnetwork.block.entity;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echologisticsnetwork.Config;
 import com.knoxhack.echologisticsnetwork.block.LogisticsBlock;
 import com.knoxhack.echologisticsnetwork.block.LogisticsBlock.LogisticsKind;

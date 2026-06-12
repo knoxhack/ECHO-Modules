@@ -1,14 +1,14 @@
 package com.knoxhack.echoprimecore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoMapLayer;
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
-import com.knoxhack.echocore.api.prime.PrimeHoloMapRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoMapLayer;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.prime.PrimeHoloMapRegistry;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.PrimeIds;
 import com.knoxhack.echoprimecore.progression.PrimePlayerData;

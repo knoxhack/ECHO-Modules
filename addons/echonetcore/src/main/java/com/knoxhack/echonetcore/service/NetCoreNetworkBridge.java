@@ -1,8 +1,8 @@
 package com.knoxhack.echonetcore.service;
 
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
-import com.knoxhack.echocore.api.network.INetworkBridge;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.INetworkBridge;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echonetcore.network.DiscoveryToastPacket;
 import com.knoxhack.echonetcore.network.EchoFactionSyncPacket;

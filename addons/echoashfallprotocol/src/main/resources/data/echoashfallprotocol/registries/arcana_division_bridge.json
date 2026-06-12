@@ -1,0 +1,28 @@
+{
+  "schema": "echo.ashfall.arcana_division_bridge.v1",
+  "status": "ownership-moved",
+  "canonicalOwner": "echoarcanadivisionprotocol",
+  "rule": "Ashfall may discover or integrate optional Arcana modules, but Arcana Division owns their experience promise, routing, release gates, and content progression.",
+  "movedModules": [
+    "echoaetherworks",
+    "echoarcanacore",
+    "echocursecore",
+    "echofamiliarcore",
+    "echogrimoire",
+    "echoriftworlds",
+    "echoritualcore",
+    "echospellcore"
+  ],
+  "ashfallAllowedInteraction": [
+    "optional runtime discovery",
+    "cross-pack compatibility hints",
+    "non-owning bridge providers",
+    "save-safe legacy route compatibility"
+  ],
+  "ashfallForbiddenInteraction": [
+    "owning Arcana release gates",
+    "requiring Arcana modules for Ashfall launch",
+    "presenting ritual, spell, rift, familiar, curse, or aether systems as Ashfall-only progression",
+    "depending on Arcana Division as an experience module"
+  ]
+}

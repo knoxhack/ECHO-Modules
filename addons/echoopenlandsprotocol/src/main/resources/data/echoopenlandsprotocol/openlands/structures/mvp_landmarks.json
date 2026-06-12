@@ -1,0 +1,206 @@
+{
+  "schema": "echo.openlands.structures.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "placementContract": {
+    "starterHintDistanceBlocks": "64-128",
+    "avoidSpawnCollisionRadiusBlocks": 16,
+    "landmarksMustExposeSilhouette": true,
+    "landmarksMustUseOriginalBlocks": true
+  },
+  "landmarks": [
+    {
+      "id": "ruined_well",
+      "displayName": "Ruined Well",
+      "footprint": {
+        "width": 5,
+        "depth": 5,
+        "height": 4
+      },
+      "preferredBiomes": [
+        "meadows",
+        "marshlands"
+      ],
+      "blocks": [
+        "echomaterialcore:fieldstone",
+        "limestone",
+        "old_road_marker",
+        "echomaterialcore:gravel"
+      ],
+      "lootTable": "ruined_well_cache",
+      "holoMapHint": "water_or_old_settlement",
+      "tutorialHook": "first_landmark_seen",
+      "notes": "Starter-readable landmark with low danger and optional region rubbing."
+    },
+    {
+      "id": "road_marker",
+      "displayName": "Road Marker",
+      "footprint": {
+        "width": 3,
+        "depth": 3,
+        "height": 3
+      },
+      "preferredBiomes": [
+        "meadows",
+        "stonehills",
+        "woodlands"
+      ],
+      "blocks": [
+        "old_road_marker",
+        "old_road_block",
+        "echomaterialcore:fieldstone"
+      ],
+      "lootTable": null,
+      "holoMapHint": "old_road_segment",
+      "tutorialHook": "first_old_road_marker",
+      "notes": "Physical breadcrumb toward waystone gameplay."
+    },
+    {
+      "id": "tiny_camp",
+      "displayName": "Tiny Camp",
+      "footprint": {
+        "width": 7,
+        "depth": 7,
+        "height": 4
+      },
+      "preferredBiomes": [
+        "meadows",
+        "woodlands"
+      ],
+      "blocks": [
+        "echoworldstarter:campfire",
+        "echostationcore:field_crate",
+        "echomaterialcore:branchwood_log",
+        "echomaterialcore:branchwood_planks",
+        "thatch_roof"
+      ],
+      "lootTable": "tiny_camp_supply",
+      "holoMapHint": "traveler_cache",
+      "tutorialHook": "first_camp_discovered",
+      "notes": "Safe-feeling supply point. Campfire starts unlit 70 percent of the time."
+    },
+    {
+      "id": "watchtower",
+      "displayName": "Watchtower",
+      "footprint": {
+        "width": 7,
+        "depth": 7,
+        "height": 12
+      },
+      "preferredBiomes": [
+        "woodlands",
+        "stonehills"
+      ],
+      "blocks": [
+        "pine_log",
+        "pine_planks",
+        "echomaterialcore:ladder",
+        "echoworldstarter:pitchlight",
+        "old_road_marker"
+      ],
+      "lootTable": "tiny_camp_supply",
+      "holoMapHint": "vantage_point",
+      "tutorialHook": "first_vantage_point",
+      "notes": "Vertical exploration tutorial and map reveal bonus when climbed."
+    },
+    {
+      "id": "old_mine",
+      "displayName": "Old Mine",
+      "footprint": {
+        "width": 9,
+        "depth": 11,
+        "height": 6
+      },
+      "preferredBiomes": [
+        "stonehills"
+      ],
+      "blocks": [
+        "echomaterialcore:fieldstone",
+        "shale",
+        "echomaterialcore:branchwood_beam",
+        "echoworldstarter:pitchlight",
+        "echostationcore:field_crate"
+      ],
+      "lootTable": "old_mine_cache",
+      "holoMapHint": "ore_and_cave",
+      "tutorialHook": "first_cave_or_mine",
+      "notes": "First ore landmark. MVP should keep first chamber visible and not trap players."
+    },
+    {
+      "id": "broken_bridge",
+      "displayName": "Broken Bridge",
+      "footprint": {
+        "width": 11,
+        "depth": 5,
+        "height": 5
+      },
+      "preferredBiomes": [
+        "marshlands",
+        "stonehills"
+      ],
+      "blocks": [
+        "old_road_block",
+        "echomaterialcore:branchwood_beam",
+        "echomaterialcore:fieldstone",
+        "mud"
+      ],
+      "lootTable": null,
+      "holoMapHint": "interrupted_road",
+      "tutorialHook": "first_broken_bridge",
+      "notes": "Road restoration fantasy without requiring hard survival systems."
+    },
+    {
+      "id": "cellar_entrance",
+      "displayName": "Cellar Entrance",
+      "footprint": {
+        "width": 7,
+        "depth": 7,
+        "height": 5
+      },
+      "preferredBiomes": [
+        "woodlands",
+        "marshlands"
+      ],
+      "blocks": [
+        "fieldstone_bricks",
+        "echomaterialcore:wooden_door",
+        "echomaterialcore:ladder",
+        "echoworldstarter:pitchlight"
+      ],
+      "lootTable": "tiny_camp_supply",
+      "holoMapHint": "underground_room",
+      "tutorialHook": "first_shelter_like_ruin",
+      "notes": "Teaches enclosure and light without forcing perfect shelter construction."
+    },
+    {
+      "id": "broken_waystone_site",
+      "displayName": "Broken Waystone Site",
+      "footprint": {
+        "width": 9,
+        "depth": 9,
+        "height": 6
+      },
+      "preferredBiomes": [
+        "meadows",
+        "woodlands",
+        "stonehills",
+        "marshlands"
+      ],
+      "blocks": [
+        "broken_waystone",
+        "waystone_plinth",
+        "old_road_block",
+        "old_road_marker",
+        "echomaterialcore:fieldstone"
+      ],
+      "lootTable": "broken_waystone_cache",
+      "holoMapHint": "broken_waystone",
+      "tutorialHook": "first_waystone_found",
+      "notes": "MVP restoration target. At least one generated within the first region ring."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 
 public enum IndexRecipeSourceKind {
     VANILLA,

@@ -7,7 +7,7 @@ import com.knoxhack.echologisticsnetwork.client.LogisticsScreen;
 import com.knoxhack.echologisticsnetwork.entity.CourierDroneEntity;
 import com.knoxhack.echologisticsnetwork.registry.ModEntities;
 import com.knoxhack.echologisticsnetwork.registry.ModMenus;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class EchoLogisticsNetworkClient {

@@ -3,7 +3,7 @@ package com.knoxhack.echoashfallprotocol.client.screen;
 import java.util.function.IntSupplier;
 
 import com.knoxhack.echoashfallprotocol.Config;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echocore.client.ui.EchoNativeHubScreen;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;

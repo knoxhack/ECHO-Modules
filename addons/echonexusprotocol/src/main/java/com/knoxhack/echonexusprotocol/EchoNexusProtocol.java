@@ -1,7 +1,7 @@
 package com.knoxhack.echonexusprotocol;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echonexusprotocol.command.NexusCommandHandler;
 import com.knoxhack.echonexusprotocol.event.NexusArmorEvents;
 import com.knoxhack.echonexusprotocol.event.NexusWorldEvents;

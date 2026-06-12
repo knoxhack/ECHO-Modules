@@ -1,6 +1,6 @@
 package com.knoxhack.echotextureforge.client.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class TextureForgeThemeCoreBridge {
     private TextureForgeThemeCoreBridge() {

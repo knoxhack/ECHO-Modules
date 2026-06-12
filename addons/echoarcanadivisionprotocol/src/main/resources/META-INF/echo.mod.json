@@ -1,0 +1,134 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoarcanadivisionprotocol",
+  "name": "ECHO: Arcana Division Protocol",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "pack_root",
+  "role": "official_pack",
+  "entrypoint": "com.knoxhack.echoarcanadivisionprotocol.EchoArcanaDivisionProtocol",
+  "publisher": "KnoxHack",
+  "channel": "arcana-alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echoarcanacore"
+  ],
+  "optional": [
+    "echoaetherworks",
+    "echocursecore",
+    "echofamiliarcore",
+    "echogrimoire",
+    "echoriftworlds",
+    "echoritualcore",
+    "echospellcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echoterminal",
+    "echothemecore"
+  ],
+  "provides": [
+    "arcana_division.protocol",
+    "arcana_division.research",
+    "arcana_division.rituals",
+    "arcana_division.spells",
+    "arcana_division.familiars",
+    "arcana_division.curses",
+    "arcana_division.rifts",
+    "arcana_division.anomaly_containment",
+    "arcana_division.release_readiness"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net",
+    "foundation.common_loot",
+    "foundation.creature_roles",
+    "foundation.first_hour",
+    "foundation.materials",
+    "foundation.spawn_safety",
+    "foundation.stations",
+    "foundation.tools",
+    "arcana.core",
+    "arcana.aether",
+    "arcana.providers"
+  ],
+  "gameModes": [
+    "arcana_division",
+    "arcana_research",
+    "arcana_containment"
+  ],
+  "permissions": [
+    "content.blocks",
+    "content.creatures",
+    "content.items",
+    "content.recipes",
+    "content.structures",
+    "data.world",
+    "gameplay.content",
+    "pack.root",
+    "save.profile",
+    "world.anomaly_state"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "anomalies",
+        "blocks",
+        "creatures",
+        "data",
+        "familiar",
+        "index",
+        "items",
+        "loot",
+        "missions",
+        "progression",
+        "recipes",
+        "rifts",
+        "rituals",
+        "saves",
+        "spells",
+        "structures",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echoarcanadivisionprotocol.EchoArcanaDivisionProtocol",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Arcana Division owns magical research, rituals, familiars, curses, rifts, and anomaly containment. It consumes Foundations for baseline survival and must not depend on Openlands or Ashfall."
+  },
+  "apiStability": "alpha",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "content_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

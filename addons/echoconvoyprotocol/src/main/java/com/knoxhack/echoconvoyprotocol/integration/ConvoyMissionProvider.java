@@ -11,7 +11,7 @@ import com.knoxhack.echoconvoyprotocol.progress.ConvoyProgress;
 import com.knoxhack.echoconvoyprotocol.registry.ModBlocks;
 import com.knoxhack.echoconvoyprotocol.registry.ModItems;
 import com.knoxhack.echoconvoyprotocol.service.ConvoyRouteService;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.api.TerminalVisualAssets;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;

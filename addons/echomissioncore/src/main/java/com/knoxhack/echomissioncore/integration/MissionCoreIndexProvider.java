@@ -1,12 +1,12 @@
 package com.knoxhack.echomissioncore.integration;
 
-import com.knoxhack.echocore.api.index.IIndexContentProvider;
-import com.knoxhack.echocore.api.index.IndexBuildContext;
-import com.knoxhack.echocore.api.index.IndexContentSnapshot;
-import com.knoxhack.echocore.api.index.IndexSourceFact;
-import com.knoxhack.echocore.api.index.IndexSourceKind;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.RewardDefinition;
+import com.echoplatform.echocore.api.index.IIndexContentProvider;
+import com.echoplatform.echocore.api.index.IndexBuildContext;
+import com.echoplatform.echocore.api.index.IndexContentSnapshot;
+import com.echoplatform.echocore.api.index.IndexSourceFact;
+import com.echoplatform.echocore.api.index.IndexSourceKind;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echomissioncore.service.MissionCoreService;
 import java.util.ArrayList;

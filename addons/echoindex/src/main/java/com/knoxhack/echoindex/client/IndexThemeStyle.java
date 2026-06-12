@@ -87,7 +87,7 @@ final class IndexThemeStyle {
     }
 
     static Optional<Identifier> texture(String token) {
-        return EchoCyberGlassUi.texture(token);
+        return Optional.of(EchoCyberGlassUi.texture(token));
     }
 
     static void icon(GuiGraphicsExtractor graphics, int x, int y, int size) {

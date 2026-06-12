@@ -1,7 +1,7 @@
 package com.knoxhack.echoprimecore.progression;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.PrimeIds;
 import net.minecraft.ChatFormatting;

@@ -1,0 +1,218 @@
+{
+  "schema": "echo.openlands.systems.homestead_alpha.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "defaultModeRule": "Homestead systems should reward care and planning without punishing casual players. Crops do not die in Openlands Standard.",
+  "crops": [
+    {
+      "id": "grain",
+      "displayName": "Grain",
+      "seedItem": "grain",
+      "harvestItem": "grain",
+      "preferredSoils": [
+        "meadow_grass_block",
+        "forest_soil",
+        "dry_soil"
+      ],
+      "growthStages": 5,
+      "baseGrowthMinutes": 24,
+      "wateringEffect": "speeds_growth_25_percent",
+      "compostEffect": "speeds_growth_35_percent_for_one_cycle",
+      "standardFailure": "pauses_when_unwatered",
+      "hardlandsFailure": "withers_after_repeated_neglect",
+      "uses": [
+        "stew_bowl",
+        "trader_surplus",
+        "animal_feed_later"
+      ]
+    },
+    {
+      "id": "root_crop",
+      "displayName": "Root Crop",
+      "seedItem": "root_crop",
+      "harvestItem": "root_crop",
+      "preferredSoils": [
+        "forest_soil",
+        "dry_soil"
+      ],
+      "growthStages": 4,
+      "baseGrowthMinutes": 20,
+      "wateringEffect": "speeds_growth_20_percent",
+      "compostEffect": "adds_bonus_harvest_chance",
+      "standardFailure": "pauses_when_unwatered",
+      "hardlandsFailure": "reduced_yield_after_neglect",
+      "uses": [
+        "stew_bowl",
+        "starter_food",
+        "trader_surplus"
+      ]
+    },
+    {
+      "id": "berries",
+      "displayName": "Berry Bush",
+      "seedItem": "berries",
+      "harvestItem": "berries",
+      "preferredSoils": [
+        "meadow_grass_block",
+        "forest_soil"
+      ],
+      "growthStages": 3,
+      "baseGrowthMinutes": 18,
+      "wateringEffect": "optional_small_speed_bonus",
+      "compostEffect": "adds_second_harvest_roll",
+      "standardFailure": "none",
+      "hardlandsFailure": "pauses_when_unwatered",
+      "uses": [
+        "starter_food",
+        "stew_bowl",
+        "trader_surplus"
+      ]
+    }
+  ],
+  "soilCare": {
+    "watering": {
+      "standardRequired": false,
+      "hardlandsRequired": true,
+      "validWaterSources": [
+        "nearby_water",
+        "rain",
+        "watering_can_later"
+      ],
+      "storedFields": [
+        "lastWateredAt",
+        "waterBonusExpiresAt",
+        "hardlandsDryTicks"
+      ]
+    },
+    "compost": {
+      "item": "compost",
+      "inputs": [
+        "soil_clump",
+        "berries",
+        "mushroom",
+        "grain",
+        "root_crop"
+      ],
+      "standardRequired": false,
+      "effect": "one_growth_cycle_bonus",
+      "storedFields": [
+        "compostedAt",
+        "bonusConsumed"
+      ]
+    }
+  },
+  "cookpotMeals": [
+    {
+      "id": "stew_bowl",
+      "displayName": "Stew Bowl",
+      "station": "echostationcore:cookpot",
+      "baseContainer": "wooden_bowl",
+      "ingredientSlots": 3,
+      "validIngredientsTag": "openlands:food",
+      "standardResult": {
+        "item": "stew_bowl",
+        "hunger": 8,
+        "comfort": 4,
+        "spoilage": false
+      },
+      "saveFields": [
+        "cookStartTick",
+        "ingredients",
+        "remainingCookTicks",
+        "outputReady"
+      ]
+    }
+  ],
+  "animalPens": [
+    {
+      "id": "hare_pen",
+      "creature": "hare",
+      "minimumFenceArea": 16,
+      "comfortBlocks": [
+        "meadow_grass_block",
+        "forest_soil"
+      ],
+      "feedItems": [
+        "berries",
+        "grain"
+      ],
+      "output": "ambient_life",
+      "standardRule": "No breeding pressure in MVP; pens are decoration and light resource routing."
+    },
+    {
+      "id": "goat_pen",
+      "creature": "goat",
+      "minimumFenceArea": 24,
+      "comfortBlocks": [
+        "dry_soil",
+        "echomaterialcore:fieldstone"
+      ],
+      "feedItems": [
+        "grain",
+        "root_crop"
+      ],
+      "output": "future_milk_or_fiber",
+      "standardRule": "No upkeep death; neglected animals stop producing instead."
+    },
+    {
+      "id": "marsh_hen_pen",
+      "creature": "marsh_hen",
+      "minimumFenceArea": 16,
+      "comfortBlocks": [
+        "mud",
+        "echomaterialcore:clay"
+      ],
+      "feedItems": [
+        "grain",
+        "echomaterialcore:reed_fiber"
+      ],
+      "output": "future_eggs",
+      "standardRule": "Production pauses without comfort; animals do not die in Standard."
+    }
+  ],
+  "traderSurplus": {
+    "enabledWhen": "one_active_waystone_or_discovered_tiny_camp",
+    "demandPools": [
+      {
+        "id": "starter_food_surplus",
+        "acceptedItems": [
+          "berries",
+          "grain",
+          "root_crop",
+          "cooked_meat",
+          "stew_bowl"
+        ],
+        "rewardTypes": [
+          "repair_kit",
+          "echoopenlandsprotocol:cupral_fitting",
+          "region_hint"
+        ]
+      },
+      {
+        "id": "building_supply_surplus",
+        "acceptedItems": [
+          "echomaterialcore:brick",
+          "echomaterialcore:glass_pane",
+          "echomaterialcore:charcoal_lump",
+          "echomaterialcore:fieldstone_piece"
+        ],
+        "rewardTypes": [
+          "old_road_token",
+          "waystone_hint",
+          "decor_variant_unlock"
+        ]
+      }
+    ],
+    "storedFields": [
+      "traderId",
+      "regionId",
+      "demandPoolId",
+      "expiresAt",
+      "completedOfferIds"
+    ]
+  }
+}

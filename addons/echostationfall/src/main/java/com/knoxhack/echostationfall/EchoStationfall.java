@@ -1,7 +1,7 @@
 package com.knoxhack.echostationfall;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echostationfall.event.ModTooltipEvents;
 import com.knoxhack.echostationfall.event.StationfallEvents;
 import com.knoxhack.echostationfall.integration.StationfallCoreIntegration;

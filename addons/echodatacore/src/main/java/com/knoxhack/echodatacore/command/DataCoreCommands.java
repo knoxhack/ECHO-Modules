@@ -1,11 +1,11 @@
 package com.knoxhack.echodatacore.command;
 
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.DataKeyMetadata;
-import com.knoxhack.echocore.api.DataServiceDiagnostics;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IDataKey;
-import com.knoxhack.echocore.api.IDataService;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.DataKeyMetadata;
+import com.echoplatform.echocore.api.DataServiceDiagnostics;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.IDataService;
 import com.knoxhack.echodatacore.Config;
 import com.knoxhack.echodatacore.DataCoreDataService;
 import com.knoxhack.echodatacore.legacy.DataCoreLegacyAdapters;

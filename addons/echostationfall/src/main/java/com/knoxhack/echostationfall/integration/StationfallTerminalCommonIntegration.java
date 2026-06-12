@@ -1,7 +1,7 @@
 package com.knoxhack.echostationfall.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echostationfall.EchoStationfall;
 import com.knoxhack.echostationfall.progression.SignalPanicState;
 import com.knoxhack.echostationfall.progression.StationLore;

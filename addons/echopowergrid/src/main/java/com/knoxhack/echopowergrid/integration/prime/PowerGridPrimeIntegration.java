@@ -1,14 +1,14 @@
 package com.knoxhack.echopowergrid.integration.prime;
 
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegration;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegrations;
-import com.knoxhack.echocore.api.prime.PrimeHoloMapRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIndexRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIntegrationContext;
-import com.knoxhack.echocore.api.prime.PrimeLensRegistry;
-import com.knoxhack.echocore.api.prime.PrimeMissionRegistry;
-import com.knoxhack.echocore.api.prime.PrimeRouteRegistry;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegration;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegrations;
+import com.echoplatform.echocore.api.prime.PrimeHoloMapRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIndexRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIntegrationContext;
+import com.echoplatform.echocore.api.prime.PrimeLensRegistry;
+import com.echoplatform.echocore.api.prime.PrimeMissionRegistry;
+import com.echoplatform.echocore.api.prime.PrimeRouteRegistry;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
 import com.knoxhack.echopowergrid.EchoPowerGrid;
 import java.util.List;
 import net.minecraft.resources.Identifier;

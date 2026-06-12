@@ -1,6 +1,6 @@
 package com.knoxhack.echodatacore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echodatacore.integration.DataCoreDiagnostics;
 import com.knoxhack.echodatacore.integration.DataCoreIndexProvider;
 import com.knoxhack.echodatacore.integration.DataCoreRuntimeSpineConsumer;

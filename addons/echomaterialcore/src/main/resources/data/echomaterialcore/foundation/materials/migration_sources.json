@@ -1,0 +1,120 @@
+{
+  "schema": "echo.foundation.material_migration_sources.v1",
+  "sourceExperience": "echoopenlandsprotocol",
+  "sourceIds": [
+    {
+      "from": "echomaterialcore:cupral_vein",
+      "to": "echomaterialcore:cupral_vein",
+      "action": "alias",
+      "reason": "Copper public identity replaced by cupral."
+    },
+    {
+      "from": "echomaterialcore:cupral_chunk",
+      "to": "echomaterialcore:cupral_chunk",
+      "action": "alias",
+      "reason": "Copper public identity replaced by cupral."
+    },
+    {
+      "from": "echomaterialcore:cupral_bar",
+      "to": "echomaterialcore:cupral_bar",
+      "action": "alias",
+      "reason": "Copper ingot replaced by cupral bar."
+    },
+    {
+      "from": "echomaterialcore:tinveil_vein",
+      "to": "echomaterialcore:tinveil_vein",
+      "action": "alias",
+      "reason": "Tin public identity replaced by tinveil."
+    },
+    {
+      "from": "echomaterialcore:tinveil_chunk",
+      "to": "echomaterialcore:tinveil_chunk",
+      "action": "alias",
+      "reason": "Tin public identity replaced by tinveil."
+    },
+    {
+      "from": "echomaterialcore:tinveil_bar",
+      "to": "echomaterialcore:tinveil_bar",
+      "action": "alias",
+      "reason": "Tin ingot replaced by tinveil bar."
+    },
+    {
+      "from": "echomaterialcore:bronze_cast",
+      "to": "echomaterialcore:bronze_cast",
+      "action": "alias",
+      "reason": "Bronze ingot replaced by bronze cast."
+    },
+    {
+      "from": "echomaterialcore:ferrite_vein",
+      "to": "echomaterialcore:ferrite_vein",
+      "action": "alias",
+      "reason": "Iron public identity replaced by ferrite."
+    },
+    {
+      "from": "echomaterialcore:ferrite_chunk",
+      "to": "echomaterialcore:ferrite_chunk",
+      "action": "alias",
+      "reason": "Iron public identity replaced by ferrite."
+    },
+    {
+      "from": "echomaterialcore:ferrite_bar",
+      "to": "echomaterialcore:ferrite_bar",
+      "action": "alias",
+      "reason": "Iron ingot replaced by ferrite bar."
+    },
+    {
+      "from": "echomaterialcore:clay_lump",
+      "to": "echomaterialcore:clay_lump",
+      "action": "alias",
+      "reason": "Generic clay item belongs in Material Core."
+    },
+    {
+      "from": "echomaterialcore:charcoal_lump",
+      "to": "echomaterialcore:charcoal_lump",
+      "action": "alias",
+      "reason": "Generic fuel item belongs in Material Core."
+    },
+    {
+      "from": "echomaterialcore:pitch_resin",
+      "to": "echomaterialcore:pitch_resin",
+      "action": "alias",
+      "reason": "Generic adhesive/fuel item belongs in Material Core."
+    },
+    {
+      "from": "echomaterialcore:bone_shard",
+      "to": "echomaterialcore:bone_shard",
+      "action": "alias",
+      "reason": "Generic creature material belongs in Material Core."
+    },
+    {
+      "from": "echomaterialcore:hide_strip",
+      "to": "echomaterialcore:hide_strip",
+      "action": "alias",
+      "reason": "Generic creature material belongs in Material Core."
+    },
+    {
+      "from": "echoashfallprotocol:animal_bone",
+      "to": "echomaterialcore:bone_shard",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline creature material."
+    },
+    {
+      "from": "echoashfallprotocol:animal_hide",
+      "to": "echomaterialcore:hide_strip",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline creature material."
+    },
+    {
+      "from": "echoashfallprotocol:plant_fiber",
+      "to": "echomaterialcore:reed_fiber",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline fiber material."
+    },
+    {
+      "from": "echoashfallprotocol:fiber_rope",
+      "to": "echomaterialcore:fiber_binding",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline binding material."
+    }
+  ]
+}

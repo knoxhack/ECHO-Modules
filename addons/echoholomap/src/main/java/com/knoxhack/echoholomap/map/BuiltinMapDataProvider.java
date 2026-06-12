@@ -1,20 +1,20 @@
 package com.knoxhack.echoholomap.map;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldRegionType;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.HoloMapIds;
 import com.knoxhack.echoholomap.platform.HoloMapModuleAccess;
@@ -342,7 +342,7 @@ public final class BuiltinMapDataProvider implements IMapDataProvider {
             case SECURE_OUTPOST -> IMapMarker.MarkerKind.BASE_OUTPOST;
             case NEXUS_SCAR, ANOMALY_ZONE -> IMapMarker.MarkerKind.NEXUS_ANOMALY;
             case TOXIC_SWAMP, RADIATION_ZONE, CRYOGENIC_RUINS -> IMapMarker.MarkerKind.HAZARD;
-            case RUINED_CITY -> IMapMarker.MarkerKind.REGION;
+            case RUINED_CITY, CUSTOM -> IMapMarker.MarkerKind.REGION;
         };
     }
 

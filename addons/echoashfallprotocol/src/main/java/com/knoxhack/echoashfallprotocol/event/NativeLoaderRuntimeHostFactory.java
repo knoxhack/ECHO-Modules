@@ -45,7 +45,7 @@ public final class NativeLoaderRuntimeHostFactory {
             "echoashfallprotocol:ash_layer",
             "echoashfallprotocol:echo_cache",
             "echoashfallprotocol:relay_station",
-            "echoashfallprotocol:map_table",
+            "echoashfallprotocol:survey_table",
             "echoashfallprotocol:scrap_dynamo",
             "echoashfallprotocol:power_node",
             "minecraft:barrel",

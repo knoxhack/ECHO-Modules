@@ -1,7 +1,7 @@
 package com.knoxhack.echopowergrid.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echopowergrid.EchoPowerGrid;
 import net.minecraft.world.entity.player.Player;
 

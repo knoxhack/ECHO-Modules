@@ -1,0 +1,153 @@
+{
+  "schema": "echo.foundation.moved_openlands_loot.v1",
+  "movedOrder": 5,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echocommonloot",
+  "blockDrops": [
+    {
+      "block": "echomaterialcore:gravel",
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "block": "echomaterialcore:gravel",
+          "count": 1
+        }
+      ],
+      "bonusChance": [
+        {
+          "item": "echomaterialcore:flint_shard",
+          "chance": 0.18
+        }
+      ]
+    },
+    {
+      "block": "echomaterialcore:clay",
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echomaterialcore:clay_lump",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "block": "echomaterialcore:fieldstone",
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "block": "echomaterialcore:cupral_vein",
+      "tool": "foundation:tool_role/breaker:cupral_or_better",
+      "drops": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "count": 2
+        }
+      ],
+      "bonusChance": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "chance": 0.25
+        }
+      ]
+    },
+    {
+      "block": "echomaterialcore:tinveil_vein",
+      "tool": "foundation:tool_role/breaker:cupral_or_better",
+      "drops": [
+        {
+          "item": "echomaterialcore:tinveil_chunk",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "block": "echomaterialcore:ferrite_vein",
+      "tool": "foundation:tool_role/breaker:bronze_or_better",
+      "drops": [
+        {
+          "item": "echomaterialcore:ferrite_chunk",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "chestTables": [
+    {
+      "id": "ruined_storage",
+      "rolls": "2-4",
+      "entries": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": "2-6",
+          "weight": 6
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": "2-5",
+          "weight": 5
+        },
+        {
+          "item": "region_rubbing",
+          "count": "1",
+          "weight": 1
+        }
+      ],
+      "legacyOpenlandsId": "echoopenlandsprotocol:ruined_well_cache"
+    },
+    {
+      "id": "starter_cache",
+      "rolls": "3-5",
+      "entries": [
+        {
+          "item": "berries",
+          "count": "2-6",
+          "weight": 6
+        },
+        {
+          "item": "echoworldstarter:pitchlight_bundle",
+          "count": "1-2",
+          "weight": 4
+        },
+        {
+          "item": "repair_kit",
+          "count": "1",
+          "weight": 1
+        }
+      ],
+      "legacyOpenlandsId": "echoopenlandsprotocol:tiny_camp_supply"
+    },
+    {
+      "id": "material_scrap",
+      "rolls": "3-6",
+      "entries": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "count": "2-5",
+          "weight": 5
+        },
+        {
+          "item": "echomaterialcore:tinveil_chunk",
+          "count": "1-4",
+          "weight": 4
+        },
+        {
+          "item": "cupral_fitting",
+          "count": "1-2",
+          "weight": 2
+        },
+        {
+          "item": "old_road_token",
+          "count": "1",
+          "weight": 1
+        }
+      ],
+      "legacyOpenlandsId": "echoopenlandsprotocol:old_mine_cache"
+    }
+  ]
+}

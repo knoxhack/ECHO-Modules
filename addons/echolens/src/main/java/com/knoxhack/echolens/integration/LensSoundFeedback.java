@@ -1,6 +1,6 @@
 package com.knoxhack.echolens.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.network.LensServerScanStatus;
 import net.minecraft.resources.Identifier;

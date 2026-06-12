@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echoindex.service.IndexDiscoveryStore;
 import com.knoxhack.echoindex.service.IndexRecipeSnapshotCodec;

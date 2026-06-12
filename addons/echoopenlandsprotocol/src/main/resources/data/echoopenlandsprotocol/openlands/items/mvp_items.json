@@ -1,0 +1,413 @@
+{
+  "schema": "echo.openlands.items.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "defaults": {
+    "modelRoot": "assets/echoopenlandsprotocol/models/item",
+    "textureRoot": "assets/echoopenlandsprotocol/textures/item",
+    "legalRule": "Openlands items must use original names, icons, models, audio, and recipes. Do not use Minecraft item names or copied silhouettes."
+  },
+  "items": [
+    {
+      "id": "soil_clump",
+      "displayName": "Soil Clump",
+      "stackSize": 64,
+      "useType": "farming_material",
+      "tags": [
+        "openlands:raw_material",
+        "openlands:soil_amendment",
+        "openlands:farming"
+      ],
+      "model": "generated",
+      "texture": "soil_clump",
+      "recipeRefs": [
+        "openlands:dig_meadow_grass_block",
+        "openlands:compost_from_plant_matter"
+      ],
+      "notes": "Gentle farming material from meadow grass; used later for compost and planter recipes."
+    },
+    {
+      "id": "glow_crystal",
+      "displayName": "Glow Crystal",
+      "stackSize": 64,
+      "useType": "energy_component",
+      "tags": [
+        "openlands:crystal",
+        "openlands:waystone_charge"
+      ],
+      "model": "generated",
+      "texture": "glow_crystal",
+      "recipeRefs": [
+        "openlands:mine_glow_crystal_cluster",
+        "openlands:waystone_core"
+      ],
+      "notes": "Non-electrical magical light/charge component for waystones and lantern variants."
+    },
+    {
+      "id": "berries",
+      "displayName": "Berries",
+      "stackSize": 64,
+      "useType": "food",
+      "tags": [
+        "openlands:food",
+        "openlands:starter_food",
+        "openlands:forage"
+      ],
+      "model": "generated",
+      "texture": "berries",
+      "recipeRefs": [
+        "openlands:forage_berries",
+        "openlands:stew_bowl"
+      ],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Common safe food; default hunger is gentle and never punishes the player with spoilage."
+    },
+    {
+      "id": "mushroom",
+      "displayName": "Mushroom",
+      "stackSize": 64,
+      "useType": "food",
+      "tags": [
+        "openlands:food",
+        "openlands:forage"
+      ],
+      "model": "generated",
+      "texture": "mushroom",
+      "recipeRefs": [
+        "openlands:forage_mushroom",
+        "openlands:stew_bowl"
+      ],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Woodland ingredient and echostationcore:cookpot food."
+    },
+    {
+      "id": "raw_meat",
+      "displayName": "Raw Meat",
+      "stackSize": 64,
+      "useType": "food_ingredient",
+      "tags": [
+        "openlands:food",
+        "openlands:raw_meat"
+      ],
+      "model": "generated",
+      "texture": "raw_meat",
+      "recipeRefs": [
+        "openlands:creature_meat_drop",
+        "openlands:cooked_meat"
+      ],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 0,
+        "saturation": "low",
+        "defaultRisk": "none",
+        "hardlandsRisk": "minor_queasy"
+      },
+      "notes": "Edible in emergency on relaxed modes, but best cooked."
+    },
+    {
+      "id": "cooked_meat",
+      "displayName": "Cooked Meat",
+      "stackSize": 64,
+      "useType": "food",
+      "tags": [
+        "openlands:food",
+        "openlands:cooked_food"
+      ],
+      "model": "generated",
+      "texture": "cooked_meat",
+      "recipeRefs": [
+        "echoworldstarter:campfire_cooked_meat"
+      ],
+      "nutrition": {
+        "hunger": 6,
+        "comfort": 2,
+        "saturation": "medium",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Reliable early meal."
+    },
+    {
+      "id": "grain",
+      "displayName": "Grain",
+      "stackSize": 64,
+      "useType": "food_ingredient",
+      "tags": [
+        "openlands:food",
+        "openlands:crop",
+        "openlands:farming"
+      ],
+      "model": "generated",
+      "texture": "grain",
+      "recipeRefs": [
+        "openlands:harvest_grain",
+        "openlands:stew_bowl"
+      ],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Starter farm crop and trader surplus item."
+    },
+    {
+      "id": "root_crop",
+      "displayName": "Root Crop",
+      "stackSize": 64,
+      "useType": "food",
+      "tags": [
+        "openlands:food",
+        "openlands:crop",
+        "openlands:farming"
+      ],
+      "model": "generated",
+      "texture": "root_crop",
+      "recipeRefs": [
+        "openlands:harvest_root_crop",
+        "openlands:stew_bowl"
+      ],
+      "nutrition": {
+        "hunger": 3,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Easy farm food for relaxed survival."
+    },
+    {
+      "id": "fish",
+      "displayName": "Fish",
+      "stackSize": 64,
+      "useType": "food_ingredient",
+      "tags": [
+        "openlands:food",
+        "openlands:fish"
+      ],
+      "model": "generated",
+      "texture": "fish",
+      "recipeRefs": [
+        "openlands:catch_fish",
+        "echoworldstarter:campfire_fish"
+      ],
+      "nutrition": {
+        "hunger": 3,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Water-adjacent starter food."
+    },
+    {
+      "id": "stew_bowl",
+      "displayName": "Stew Bowl",
+      "stackSize": 16,
+      "useType": "food",
+      "tags": [
+        "openlands:food",
+        "echostationcore:cookpot_meal",
+        "openlands:comfort_food"
+      ],
+      "model": "generated",
+      "texture": "stew_bowl",
+      "recipeRefs": [
+        "openlands:stew_bowl"
+      ],
+      "nutrition": {
+        "hunger": 8,
+        "comfort": 4,
+        "saturation": "high",
+        "hardlandsOnlySpoilage": false
+      },
+      "notes": "Soft survival reward for building a echostationcore:cookpot, intentionally generous."
+    },
+    {
+      "id": "small_pack",
+      "displayName": "Small Pack",
+      "stackSize": 1,
+      "useType": "equipment",
+      "tags": [
+        "openlands:utility",
+        "openlands:inventory"
+      ],
+      "model": "generated",
+      "texture": "small_pack",
+      "recipeRefs": [
+        "openlands:small_pack"
+      ],
+      "equipment": {
+        "slot": "back",
+        "storageSlots": 9,
+        "deathRecovery": "kept_in_death_pack"
+      },
+      "notes": "Small quality-of-life storage upgrade for explorers."
+    },
+    {
+      "id": "repair_kit",
+      "displayName": "Repair Kit",
+      "stackSize": 16,
+      "useType": "repair_component",
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:tool_repair"
+      ],
+      "model": "generated",
+      "texture": "repair_kit",
+      "recipeRefs": [
+        "openlands:repair_kit"
+      ],
+      "notes": "Used for waystones, tools, and later settlement maintenance."
+    },
+    {
+      "id": "cupral_fitting",
+      "displayName": "Cupral Fitting",
+      "stackSize": 64,
+      "useType": "waystone_component",
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:metal/copper"
+      ],
+      "model": "generated",
+      "texture": "cupral_fitting",
+      "recipeRefs": [
+        "openlands:cupral_fitting",
+        "openlands:waystone_core"
+      ],
+      "notes": "Metal bracket and conduit piece for fitting a repaired waystone.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_fitting"
+    },
+    {
+      "id": "waystone_core",
+      "displayName": "Waystone Core",
+      "stackSize": 1,
+      "useType": "waystone_component",
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:map_table_output"
+      ],
+      "model": "generated",
+      "texture": "waystone_core",
+      "recipeRefs": [
+        "openlands:waystone_core"
+      ],
+      "notes": "Final crafted activation part before binding a route."
+    },
+    {
+      "id": "region_rubbing",
+      "displayName": "Region Rubbing",
+      "stackSize": 16,
+      "useType": "map_record",
+      "tags": [
+        "openlands:utility",
+        "openlands:holomap",
+        "openlands:map_table_output"
+      ],
+      "model": "generated",
+      "texture": "region_rubbing",
+      "recipeRefs": [
+        "openlands:region_rubbing"
+      ],
+      "notes": "Physical discovery record created at a marker, ruin, or broken waystone."
+    },
+    {
+      "id": "old_road_token",
+      "displayName": "Old Road Token",
+      "stackSize": 64,
+      "useType": "route_record",
+      "tags": [
+        "openlands:utility",
+        "openlands:old_road",
+        "openlands:holomap"
+      ],
+      "model": "generated",
+      "texture": "old_road_token",
+      "recipeRefs": [
+        "openlands:old_road_token",
+        "openlands:route_binding"
+      ],
+      "notes": "Exploration proof used to bind roads between restored waystones."
+    },
+    {
+      "id": "route_binding",
+      "displayName": "Route Binding",
+      "stackSize": 1,
+      "useType": "map_record",
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_binding",
+        "openlands:map_table_output"
+      ],
+      "model": "generated",
+      "texture": "route_binding",
+      "recipeRefs": [
+        "openlands:route_binding"
+      ],
+      "notes": "Map-table output consumed by the bound and active waystone states."
+    },
+    {
+      "id": "compost",
+      "displayName": "Compost",
+      "stackSize": 64,
+      "useType": "farming_material",
+      "tags": [
+        "openlands:farming",
+        "openlands:soil_amendment"
+      ],
+      "model": "generated",
+      "texture": "compost",
+      "recipeRefs": [
+        "openlands:compost_from_plant_matter"
+      ],
+      "notes": "Gentle farming accelerator; never required for crop survival in Standard."
+    },
+    {
+      "id": "scaffold_bundle",
+      "displayName": "Scaffold Bundle",
+      "stackSize": 64,
+      "useType": "placeable_bundle",
+      "tags": [
+        "openlands:builder_ux",
+        "openlands:temporary_block"
+      ],
+      "model": "generated",
+      "texture": "scaffold_bundle",
+      "recipeRefs": [
+        "openlands:scaffold_bundle"
+      ],
+      "notes": "Reusable builder helper for roofs and high walls."
+    },
+    {
+      "id": "wooden_bowl",
+      "displayName": "Wooden Bowl",
+      "stackSize": 16,
+      "useType": "container",
+      "tags": [
+        "openlands:cookware",
+        "openlands:container"
+      ],
+      "model": "generated",
+      "texture": "wooden_bowl",
+      "recipeRefs": [
+        "openlands:wooden_bowl",
+        "openlands:stew_bowl"
+      ],
+      "notes": "Cookpot container returned after eating where supported."
+    }
+  ]
+}

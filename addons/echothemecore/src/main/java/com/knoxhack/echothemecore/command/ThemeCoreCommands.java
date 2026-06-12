@@ -1,6 +1,6 @@
 package com.knoxhack.echothemecore.command;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeRenderPreset;
 import com.knoxhack.echothemecore.api.ThemeVisualSettings;
@@ -256,7 +256,7 @@ public final class ThemeCoreCommands {
         return source.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER);
     }
 
-    private static String flag(com.knoxhack.echocore.api.config.EchoNativeConfigSpec.BooleanValue value) {
+    private static String flag(com.echoplatform.echocore.api.config.EchoNativeConfigSpec.BooleanValue value) {
         return String.valueOf(ThemeCoreConfig.bool(value));
     }
 

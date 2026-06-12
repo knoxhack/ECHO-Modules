@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "echo.addon.package.v1",
+  "id": "echorecovery",
+  "version": "1.3.0",
+  "publisher": {
+    "githubOwner": "knoxhack",
+    "githubRepo": "ECHO-Modules"
+  },
+  "targets": [
+    "native",
+    "neoforge",
+    "standalone"
+  ],
+  "dependencies": [
+    {
+      "id": "echoadaptercore",
+      "version": "*"
+    },
+    {
+      "id": "echocore",
+      "version": "*"
+    },
+    {
+      "id": "echonetcore",
+      "version": "*"
+    }
+  ],
+  "artifacts": {
+    "native": "echorecovery-1.3.0.echo-addon",
+    "neoforge": "echorecovery-1.3.0-neoforge.jar",
+    "standalone": "echorecovery-1.3.0-standalone.jar",
+    "sources": "echorecovery-1.3.0-sources.jar"
+  },
+  "runtime": "echo-native",
+  "descriptor": "META-INF/echo.mod.json",
+  "runtimeJar": "lib/echorecovery-1.3.0-runtime.jar",
+  "buildMode": "compiled-runtime"
+}

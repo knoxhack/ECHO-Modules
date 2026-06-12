@@ -2,7 +2,7 @@ package com.knoxhack.echobasegrid.network;
 
 import com.knoxhack.echobasegrid.api.ClaimActionResult;
 import com.knoxhack.echobasegrid.service.BaseGridClaimService;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetPayloads;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echonetcore.api.EchoPayloadContext;

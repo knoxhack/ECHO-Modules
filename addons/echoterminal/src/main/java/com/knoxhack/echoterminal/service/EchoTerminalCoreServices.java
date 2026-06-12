@@ -1,8 +1,8 @@
 package com.knoxhack.echoterminal.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.TerminalPlacementService;
-import com.knoxhack.echocore.api.TerminalRewardService;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.TerminalPlacementService;
+import com.echoplatform.echocore.api.TerminalRewardService;
 import com.knoxhack.echoterminal.block.entity.EchoTerminalBlockEntity;
 import com.knoxhack.echoterminal.registry.ModBlocks;
 import java.util.List;

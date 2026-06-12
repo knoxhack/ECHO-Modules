@@ -2,7 +2,7 @@ package com.knoxhack.echobasegrid;
 
 import com.knoxhack.echobasegrid.client.BaseGridActions;
 import com.knoxhack.echobasegrid.client.BaseGridDataProviders;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class EchoBaseGridClient {
     public EchoBaseGridClient(Object container) {

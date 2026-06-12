@@ -1,6 +1,6 @@
 package com.knoxhack.echoweathercore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class WeatherCoreConfig {
     public static final EchoNativeConfigSpec SERVER_SPEC;

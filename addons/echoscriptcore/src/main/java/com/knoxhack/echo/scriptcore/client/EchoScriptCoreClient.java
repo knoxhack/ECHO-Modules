@@ -1,7 +1,7 @@
 package com.knoxhack.echo.scriptcore.client;
 
 import com.knoxhack.echo.scriptcore.EchoScriptCore;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class EchoScriptCoreClient {
     public EchoScriptCoreClient() {

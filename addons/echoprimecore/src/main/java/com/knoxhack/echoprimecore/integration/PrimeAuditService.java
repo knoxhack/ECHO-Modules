@@ -1,8 +1,8 @@
 package com.knoxhack.echoprimecore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.prime.PrimeAuditRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.prime.PrimeAuditRegistry;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import java.util.ArrayList;
 import java.util.List;

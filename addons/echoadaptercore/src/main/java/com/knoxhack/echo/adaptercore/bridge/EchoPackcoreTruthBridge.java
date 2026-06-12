@@ -22,8 +22,8 @@ public final class EchoPackcoreTruthBridge {
         registered = true;
 
         try {
-            Class<?> busClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineBus");
-            Class<?> eventClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineEvent");
+            Class<?> busClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineBus");
+            Class<?> eventClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineEvent");
 
             busClass.getMethod("register", java.util.function.Consumer.class)
                     .invoke(null, (java.util.function.Consumer<Object>) event -> {

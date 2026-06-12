@@ -1,8 +1,8 @@
 package com.knoxhack.echoworldcore.world;
 
-import com.knoxhack.echocore.api.WorldDiscoverySource;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.WorldDiscoverySource;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -1,12 +1,12 @@
 package com.knoxhack.echoindustrialnexus.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoRouteRecordService;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoRouteRecordService;
 import com.knoxhack.echoindustrialnexus.EchoIndustrialNexus;
 import com.knoxhack.echoindustrialnexus.progress.IndustrialProgress;
 import java.util.ArrayList;

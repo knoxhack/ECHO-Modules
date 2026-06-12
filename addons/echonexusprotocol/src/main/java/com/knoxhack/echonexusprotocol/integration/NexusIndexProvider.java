@@ -1,16 +1,16 @@
 package com.knoxhack.echonexusprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.index.IIndexContentProvider;
-import com.knoxhack.echocore.api.index.IndexBuildContext;
-import com.knoxhack.echocore.api.index.IndexContentSnapshot;
-import com.knoxhack.echocore.api.index.IndexMachineLayout;
-import com.knoxhack.echocore.api.index.IndexMachineLayoutGauge;
-import com.knoxhack.echocore.api.index.IndexMachineLayoutSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeCategory;
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.index.IIndexContentProvider;
+import com.echoplatform.echocore.api.index.IndexBuildContext;
+import com.echoplatform.echocore.api.index.IndexContentSnapshot;
+import com.echoplatform.echocore.api.index.IndexMachineLayout;
+import com.echoplatform.echocore.api.index.IndexMachineLayoutGauge;
+import com.echoplatform.echocore.api.index.IndexMachineLayoutSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeCategory;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.knoxhack.echo.adaptercore.EchoBackendRegistryEntry;
 import com.knoxhack.echonexusprotocol.EchoNexusProtocol;
 import com.knoxhack.echonexusprotocol.block.NexusMachineBlock;

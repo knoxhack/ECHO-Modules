@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
 
 public final class ModFluids {
    private static final Object FLUID_TYPES = EchoBackendFluidBridge.createFluidTypeRegistry(EchoIndustrialNexus.MODID);
@@ -43,7 +44,7 @@ public final class ModFluids {
       EchoBackendFluidBridge.registerEventBus(FLUIDS, eventBus);
    }
 
-   public static Object resourceFor(int fluidId) {
+   public static FluidResource resourceFor(int fluidId) {
       IndustrialFluid fluid = byId(fluidId);
       return fluid == null ? EchoBackendFluidBridge.emptyFluidResource() : EchoBackendFluidBridge.fluidResourceOf(fluid.source().get());
    }

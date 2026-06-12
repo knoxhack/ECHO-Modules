@@ -1,7 +1,7 @@
 package com.knoxhack.echowiki.test;
 
 import com.google.gson.JsonParser;
-import com.knoxhack.echocore.api.index.IndexContentSnapshot;
+import com.echoplatform.echocore.api.index.IndexContentSnapshot;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.component.EchoComponentFactory;
 import com.knoxhack.echoscreencore.api.style.EchoStyle;

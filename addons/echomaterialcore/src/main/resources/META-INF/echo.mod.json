@@ -1,0 +1,91 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomaterialcore",
+  "name": "ECHO Material Core",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "foundation_materials",
+  "entrypoint": "com.knoxhack.echomaterialcore.EchoMaterialCore",
+  "publisher": "KnoxHack",
+  "channel": "foundation-dev",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Baseline raw materials, refined materials, generic building blocks, and material tags.",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "echofoundationcore"
+  ],
+  "optional": [],
+  "provides": [
+    "foundation.materials",
+    "foundation.generic_blocks",
+    "foundation.generic_items",
+    "foundation.material_tags"
+  ],
+  "consumes": [
+    "foundation.core",
+    "foundation.aliases",
+    "foundation.legal_identity"
+  ],
+  "gameModes": [
+    "foundation_dev",
+    "openlands_standard",
+    "ashfall_survival",
+    "arcana_division"
+  ],
+  "permissions": [
+    "registry:foundation",
+    "data:foundation",
+    "launcher:dependency"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "items",
+        "loot",
+        "progression",
+        "recipes",
+        "saves",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": false,
+    "notes": "ECHO Foundations data-first backbone module. Experience packs consume these contracts and must not re-own baseline survival content."
+  },
+  "apiStability": "alpha",
+  "dependencyPolicy": {
+    "experiencesDependOnFoundation": true,
+    "foundationModulesMayDependOnEarlierFoundationModules": true,
+    "experiencesMayDependOnEachOther": false
+  },
+  "ai": {
+    "readable": true,
+    "callableActions": false,
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

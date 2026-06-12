@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class IndustrialPowerGridBridge {
    private static final String POWERGRID_MODID = "echopowergrid";

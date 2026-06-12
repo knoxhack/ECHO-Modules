@@ -103,8 +103,8 @@ public final class EchoJeiRecipeCatalog {
                 note("Filter has a 15% chance to be consumed.")));
         recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/contaminated_iron", ModItems.CONTAMINATED_IRON.get(), Items.IRON_INGOT, filters, 60));
         recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/contaminated_gold", ModItems.CONTAMINATED_GOLD.get(), Items.GOLD_INGOT, filters, 60));
-        recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/contaminated_redstone", ModItems.CONTAMINATED_REDSTONE.get(), Items.REDSTONE, filters, 60));
-        recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/contaminated_lapis", ModItems.CONTAMINATED_LAPIS.get(), Items.LAPIS_LAZULI, filters, 60));
+        recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/charged_ash_circuit", ModItems.CHARGED_ASH_CIRCUIT.get(), Items.REDSTONE, filters, 60));
+        recipes.add(cleanse(EchoJeiRecipeTypes.WATER_PURIFIER, "water_purifier/blue_ash_salt", ModItems.BLUE_ASH_SALT.get(), Items.LAPIS_LAZULI, filters, 60));
         return recipes;
     }
 
@@ -203,8 +203,8 @@ public final class EchoJeiRecipeCatalog {
     private static List<EchoJeiRecipe> isotopeRefiner() {
         return List.of(
                 isotope("iron", Items.IRON_INGOT, Items.GOLD_INGOT, ModItems.CONTAMINATED_GOLD.get()),
-                isotope("copper", Items.COPPER_INGOT, Items.REDSTONE, ModItems.CONTAMINATED_REDSTONE.get()),
-                isotope("coal", Items.COAL, Items.LAPIS_LAZULI, ModItems.CONTAMINATED_LAPIS.get())
+                isotope("copper", Items.COPPER_INGOT, Items.REDSTONE, ModItems.CHARGED_ASH_CIRCUIT.get()),
+                isotope("coal", Items.COAL, Items.LAPIS_LAZULI, ModItems.BLUE_ASH_SALT.get())
         );
     }
 
@@ -212,8 +212,8 @@ public final class EchoJeiRecipeCatalog {
         return List.of(
                 radiation("iron", ModItems.CONTAMINATED_IRON.get(), Items.IRON_INGOT),
                 radiation("gold", ModItems.CONTAMINATED_GOLD.get(), Items.GOLD_INGOT),
-                radiation("redstone", ModItems.CONTAMINATED_REDSTONE.get(), Items.REDSTONE),
-                radiation("lapis", ModItems.CONTAMINATED_LAPIS.get(), Items.LAPIS_LAZULI)
+                radiation("redstone", ModItems.CHARGED_ASH_CIRCUIT.get(), Items.REDSTONE),
+                radiation("lapis", ModItems.BLUE_ASH_SALT.get(), Items.LAPIS_LAZULI)
         );
     }
 

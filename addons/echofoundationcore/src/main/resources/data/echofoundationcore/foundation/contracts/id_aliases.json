@@ -1,0 +1,221 @@
+{
+  "schema": "echo.foundation.id_aliases.v1",
+  "aliases": [
+    {
+      "from": "echoopenlandsprotocol:workbench",
+      "to": "echostationcore:field_bench",
+      "action": "alias",
+      "reason": "Vanilla-adjacent name; shared crafting station."
+    },
+    {
+      "from": "echoopenlandsprotocol:chest",
+      "to": "echostationcore:field_crate",
+      "action": "alias",
+      "reason": "Vanilla-adjacent name; shared storage station."
+    },
+    {
+      "from": "echoopenlandsprotocol:torch",
+      "to": "echoworldstarter:pitchlight",
+      "action": "alias",
+      "reason": "Vanilla-adjacent name; shared early light item/block."
+    },
+    {
+      "from": "echoopenlandsprotocol:torch_bundle",
+      "to": "echoworldstarter:pitchlight_bundle",
+      "action": "alias",
+      "reason": "Bundle follows pitchlight public identity."
+    },
+    {
+      "from": "echoopenlandsprotocol:copper_ore",
+      "to": "echomaterialcore:cupral_vein",
+      "action": "alias",
+      "reason": "Copper public identity replaced by cupral."
+    },
+    {
+      "from": "echoopenlandsprotocol:copper_ore_chunk",
+      "to": "echomaterialcore:cupral_chunk",
+      "action": "alias",
+      "reason": "Copper public identity replaced by cupral."
+    },
+    {
+      "from": "echoopenlandsprotocol:copper_ingot",
+      "to": "echomaterialcore:cupral_bar",
+      "action": "alias",
+      "reason": "Copper ingot replaced by cupral bar."
+    },
+    {
+      "from": "echoopenlandsprotocol:tin_ore",
+      "to": "echomaterialcore:tinveil_vein",
+      "action": "alias",
+      "reason": "Tin public identity replaced by tinveil."
+    },
+    {
+      "from": "echoopenlandsprotocol:tin_ore_chunk",
+      "to": "echomaterialcore:tinveil_chunk",
+      "action": "alias",
+      "reason": "Tin public identity replaced by tinveil."
+    },
+    {
+      "from": "echoopenlandsprotocol:tin_ingot",
+      "to": "echomaterialcore:tinveil_bar",
+      "action": "alias",
+      "reason": "Tin ingot replaced by tinveil bar."
+    },
+    {
+      "from": "echoopenlandsprotocol:bronze_ingot",
+      "to": "echomaterialcore:bronze_cast",
+      "action": "alias",
+      "reason": "Bronze ingot replaced by bronze cast."
+    },
+    {
+      "from": "echoopenlandsprotocol:iron_ore",
+      "to": "echomaterialcore:ferrite_vein",
+      "action": "alias",
+      "reason": "Iron public identity replaced by ferrite."
+    },
+    {
+      "from": "echoopenlandsprotocol:iron_ore_chunk",
+      "to": "echomaterialcore:ferrite_chunk",
+      "action": "alias",
+      "reason": "Iron public identity replaced by ferrite."
+    },
+    {
+      "from": "echoopenlandsprotocol:iron_ingot",
+      "to": "echomaterialcore:ferrite_bar",
+      "action": "alias",
+      "reason": "Iron ingot replaced by ferrite bar."
+    },
+    {
+      "from": "echoopenlandsprotocol:crude_axe",
+      "to": "echotoolcore:crude_cutter",
+      "action": "alias",
+      "reason": "Tool role name avoids vanilla axe identity."
+    },
+    {
+      "from": "echoopenlandsprotocol:crude_pick",
+      "to": "echotoolcore:crude_breaker",
+      "action": "alias",
+      "reason": "Tool role name avoids vanilla pick identity."
+    },
+    {
+      "from": "echoopenlandsprotocol:crude_spade",
+      "to": "echotoolcore:crude_digger",
+      "action": "alias",
+      "reason": "Tool role name avoids vanilla shovel/spade identity."
+    },
+    {
+      "from": "echoopenlandsprotocol:wooden_hammer",
+      "to": "echotoolcore:field_hammer",
+      "action": "alias",
+      "reason": "Generic hammer belongs in Foundation tool set."
+    },
+    {
+      "from": "echoopenlandsprotocol:copper_pick",
+      "to": "echotoolcore:cupral_breaker",
+      "action": "alias",
+      "reason": "Tool progression tied to cupral."
+    },
+    {
+      "from": "echoopenlandsprotocol:bronze_pick",
+      "to": "echotoolcore:bronze_breaker",
+      "action": "alias",
+      "reason": "Tool progression tied to bronze cast."
+    },
+    {
+      "from": "echoopenlandsprotocol:iron_pick",
+      "to": "echotoolcore:ferrite_breaker",
+      "action": "alias",
+      "reason": "Tool progression tied to ferrite."
+    },
+    {
+      "from": "echoopenlandsprotocol:raw_clay",
+      "to": "echomaterialcore:clay_lump",
+      "action": "alias",
+      "reason": "Generic clay item belongs in Material Core."
+    },
+    {
+      "from": "echoopenlandsprotocol:charcoal",
+      "to": "echomaterialcore:charcoal_lump",
+      "action": "alias",
+      "reason": "Generic fuel item belongs in Material Core."
+    },
+    {
+      "from": "echoopenlandsprotocol:pitch",
+      "to": "echomaterialcore:pitch_resin",
+      "action": "alias",
+      "reason": "Generic adhesive/fuel item belongs in Material Core."
+    },
+    {
+      "from": "echoopenlandsprotocol:bone",
+      "to": "echomaterialcore:bone_shard",
+      "action": "alias",
+      "reason": "Generic creature material belongs in Material Core."
+    },
+    {
+      "from": "echoopenlandsprotocol:hide",
+      "to": "echomaterialcore:hide_strip",
+      "action": "alias",
+      "reason": "Generic creature material belongs in Material Core."
+    },
+    {
+      "from": "echoopenlandsprotocol:forge",
+      "to": "echostationcore:forge_hearth",
+      "action": "alias",
+      "reason": "Shared processing station with distinct ECHO identity."
+    },
+    {
+      "from": "echoashfallprotocol:animal_bone",
+      "to": "echomaterialcore:bone_shard",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline creature material."
+    },
+    {
+      "from": "echoashfallprotocol:animal_hide",
+      "to": "echomaterialcore:hide_strip",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline creature material."
+    },
+    {
+      "from": "echoashfallprotocol:plant_fiber",
+      "to": "echomaterialcore:reed_fiber",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline fiber material."
+    },
+    {
+      "from": "echoashfallprotocol:fiber_rope",
+      "to": "echomaterialcore:fiber_binding",
+      "action": "alias-or-tag",
+      "reason": "Ashfall duplicate baseline binding material."
+    },
+    {
+      "from": "echoashfallprotocol:map_table",
+      "to": "echoashfallprotocol:survey_table",
+      "action": "rename-needed",
+      "reason": "Map table is Openlands fantasy; Ashfall needs survey/evac identity."
+    },
+    {
+      "from": "echoashfallprotocol:riftstone",
+      "to": "echoarcanadivisionprotocol:nexus_scar_stone",
+      "action": "move-or-rename",
+      "reason": "Rift identity belongs to Arcana unless Ashfall makes it geological."
+    },
+    {
+      "from": "echoashfallprotocol:contaminated_redstone",
+      "to": "echoashfallprotocol:charged_ash_circuit",
+      "action": "blocked-rename",
+      "reason": "Vanilla public identity leak."
+    },
+    {
+      "from": "echoashfallprotocol:contaminated_lapis",
+      "to": "echoashfallprotocol:blue_ash_salt",
+      "action": "blocked-rename",
+      "reason": "Vanilla public identity leak."
+    },
+    {
+      "from": "echoopenlandsprotocol:copper_fitting",
+      "to": "echoopenlandsprotocol:cupral_fitting",
+      "action": "alias",
+      "reason": "Openlands waystone fitting renamed to avoid vanilla-adjacent copper public identity."
+    }
+  ]
+}

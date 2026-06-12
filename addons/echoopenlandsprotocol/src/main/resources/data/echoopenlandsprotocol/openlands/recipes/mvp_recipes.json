@@ -1,0 +1,279 @@
+{
+  "schema": "echo.openlands.recipes.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "stations": [
+    {
+      "id": "map_table",
+      "displayName": "Map Table",
+      "requiresBlock": "map_table",
+      "process": "route_recording",
+      "notes": "Consumes discovered road/region records to bind waystone routes."
+    }
+  ],
+  "recipes": [
+    {
+      "id": "pine_planks",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "block": "pine_log",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "pine_planks",
+          "count": 4
+        }
+      ],
+      "timeTicks": 10,
+      "unlockedBy": [
+        "obtain:block/pine_log"
+      ],
+      "parityNotes": "Pine shares the wood family behavior but keeps separate visuals."
+    },
+    {
+      "id": "shelf",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 4
+        }
+      ],
+      "outputs": [
+        {
+          "block": "shelf",
+          "count": 2
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "craft:echostationcore:field_crate"
+      ],
+      "parityNotes": "Decorative/light storage MVP block."
+    },
+    {
+      "id": "map_table",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "tag": "foundation:wood/planks",
+          "count": 6
+        },
+        {
+          "item": "cupral_fitting",
+          "count": 1
+        },
+        {
+          "item": "region_rubbing",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "block": "map_table",
+          "count": 1
+        }
+      ],
+      "timeTicks": 30,
+      "unlockedBy": [
+        "obtain:item/region_rubbing"
+      ],
+      "parityNotes": "HoloMap integration is optional but route data must serialize everywhere."
+    },
+    {
+      "id": "cupral_fitting",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:cupral_bar",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "cupral_fitting",
+          "count": 4
+        }
+      ],
+      "timeTicks": 80,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:cupral_bar"
+      ],
+      "parityNotes": "Waystone fitting and lantern component.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_fitting"
+    },
+    {
+      "id": "campfire_cooked_meat",
+      "station": "echostationcore:cookpot",
+      "inputs": [
+        {
+          "item": "raw_meat",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "cooked_meat",
+          "count": 1
+        }
+      ],
+      "timeTicks": 100,
+      "unlockedBy": [
+        "place:block/echoworldstarter:campfire"
+      ],
+      "parityNotes": "Cookpot and echoworldstarter:campfire adapters may share a heat processor; outputs must match."
+    },
+    {
+      "id": "stew_bowl",
+      "station": "echostationcore:cookpot",
+      "inputs": [
+        {
+          "item": "wooden_bowl",
+          "count": 1
+        },
+        {
+          "tag": "openlands:food",
+          "count": 3
+        }
+      ],
+      "outputs": [
+        {
+          "item": "stew_bowl",
+          "count": 1
+        }
+      ],
+      "timeTicks": 140,
+      "unlockedBy": [
+        "place:block/echostationcore:cookpot"
+      ],
+      "parityNotes": "Any three food ingredients produce a comfort stew in Standard."
+    },
+    {
+      "id": "region_rubbing",
+      "station": "map_table",
+      "inputs": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": 1
+        },
+        {
+          "context": "discovered_region_marker",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "region_rubbing",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "discover:old_road_marker"
+      ],
+      "parityNotes": "Context input is a discovered marker/waystone/ruin, not inventory-only."
+    },
+    {
+      "id": "old_road_token",
+      "station": "map_table",
+      "inputs": [
+        {
+          "context": "walked_old_road_segment",
+          "count": 1
+        },
+        {
+          "item": "region_rubbing",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "old_road_token",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "discover:old_road_block"
+      ],
+      "parityNotes": "Records discovered old-road segments for HoloMap."
+    },
+    {
+      "id": "waystone_core",
+      "station": "map_table",
+      "inputs": [
+        {
+          "item": "glow_crystal",
+          "count": 1
+        },
+        {
+          "item": "cupral_fitting",
+          "count": 4
+        },
+        {
+          "item": "region_rubbing",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "waystone_core",
+          "count": 1
+        }
+      ],
+      "timeTicks": 80,
+      "unlockedBy": [
+        "repair_state:stone_repaired",
+        "obtain:item/glow_crystal"
+      ],
+      "parityNotes": "Consumed when moving a waystone from fitted to charged."
+    },
+    {
+      "id": "route_binding",
+      "station": "map_table",
+      "inputs": [
+        {
+          "item": "old_road_token",
+          "count": 2
+        },
+        {
+          "item": "region_rubbing",
+          "count": 1
+        },
+        {
+          "context": "two_discovered_waystones",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "route_binding",
+          "count": 1
+        }
+      ],
+      "timeTicks": 100,
+      "unlockedBy": [
+        "waystone:two_discovered"
+      ],
+      "parityNotes": "Unlocks fast travel only after two active stones."
+    }
+  ],
+  "foundationStations": [
+    "echostationcore:handcrafting",
+    "echostationcore:field_bench",
+    "echostationcore:kiln",
+    "echostationcore:forge_hearth",
+    "echostationcore:cookpot"
+  ]
+}

@@ -1,6 +1,6 @@
 package com.knoxhack.echorelictech.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class RelicTechConfig {
     public static final EchoNativeConfigSpec SPEC;

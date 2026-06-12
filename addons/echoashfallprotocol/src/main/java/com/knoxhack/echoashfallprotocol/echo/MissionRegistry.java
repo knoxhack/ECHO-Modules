@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.echo;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.faction.AshfallFactionMap;
 import com.knoxhack.echoashfallprotocol.item.GasMaskItem;
 import com.knoxhack.echoashfallprotocol.item.DataLogItem;
@@ -63,7 +63,7 @@ public class MissionRegistry {
                 "[ECHO-7] Anchor the pod route first. Craft and place an Ash Campfire near the crash site, then keep storage, light, and ECHO objectives at the outpost.",
                 "Anchor Pod Outpost",
                 "[ECHO-7] Pod outpost anchored. Keep storage, light, and early machines near this position until water and power are stable.",
-                List.of(new ItemStack(Items.TORCH, 16), new ItemStack(Items.CHEST, 1), new ItemStack(ModItems.CLEAN_WATER_BOTTLE.get(), 1), new ItemStack(ModItems.BANDAGE.get(), 2), new ItemStack(ModItems.SCRAP_METAL.get(), 4), new ItemStack(ModItems.PLANT_FIBER.get(), 4)),
+                List.of(new ItemStack(Items.TORCH, 16), new ItemStack(Items.CHEST, 1), new ItemStack(ModItems.CLEAN_WATER_BOTTLE.get(), 1), new ItemStack(ModItems.BANDAGE.get(), 2), new ItemStack(ModItems.SCRAP_METAL.get(), 4), new ItemStack(ModItems.ASHGRASS_FIBER.get(), 4)),
                 player -> hasBlockNearPlayer(player, "ash_campfire"),
                 Collections.emptyList(),
                 null,
@@ -160,7 +160,7 @@ public class MissionRegistry {
                 "[ECHO-7] Confirm a food buffer before leaving the crash outpost. Starter rations qualify; wild berries extend the margin.",
                 "Confirm Food Buffer + Turn In",
                 "[ECHO-7] Food buffer logged. Mutated sapling recovered from the supply scan; plant it near the pod before expanding the route.",
-                List.of(new ItemStack(ModItems.PLANT_FIBER.get(), 6), new ItemStack(ModItems.WILD_BERRY.get(), 4), new ItemStack(ModBlocks.MUTATED_SAPLING_ITEM.get(), 1)),
+                List.of(new ItemStack(ModItems.ASHGRASS_FIBER.get(), 6), new ItemStack(ModItems.WILD_BERRY.get(), 4), new ItemStack(ModBlocks.MUTATED_SAPLING_ITEM.get(), 1)),
                 player -> hasWastelandFood(player),
                 Collections.emptyList(),
                 null,
@@ -175,7 +175,7 @@ public class MissionRegistry {
                 "[ECHO-7] Renewable material source required. Plant the Mutated Sapling near shelter before the first route expands.",
                 "Plant Mutated Sapling",
                 "[ECHO-7] Growth anchor detected. Rain Collector parts released; claim the cauldron and scrap plastic before water reserves collapse.",
-                List.of(new ItemStack(Items.BONE_MEAL, 4), new ItemStack(ModItems.PLANT_FIBER.get(), 6), new ItemStack(Items.CAULDRON, 1), new ItemStack(ModItems.SCRAP_PLASTIC.get(), 8)),
+                List.of(new ItemStack(Items.BONE_MEAL, 4), new ItemStack(ModItems.ASHGRASS_FIBER.get(), 6), new ItemStack(Items.CAULDRON, 1), new ItemStack(ModItems.SCRAP_PLASTIC.get(), 8)),
                 player -> hasBlockNearPlayer(player, "mutated_sapling"),
                 Collections.emptyList(),
                 null,
@@ -226,7 +226,7 @@ public class MissionRegistry {
                 "[ECHO-7] Night movement is optional if shelter exists. Carry or place the bunk and keep it near your crash outpost.",
                 "Secure Sleep Shelter",
                 "[ECHO-7] Rest point confirmed. Organic tool materials released; build a field kit before scouting so scrap can stay reserved for machines.",
-                List.of(new ItemStack(Items.TORCH, 12), new ItemStack(ModItems.EMERGENCY_RATION.get(), 2), new ItemStack(ModItems.ANIMAL_BONE.get(), 2), new ItemStack(ModItems.ANIMAL_HIDE.get(), 4), new ItemStack(Items.STICK, 3)),
+                List.of(new ItemStack(Items.TORCH, 12), new ItemStack(ModItems.EMERGENCY_RATION.get(), 2), new ItemStack(ModItems.ASHBONE_SHARD.get(), 2), new ItemStack(ModItems.SCORCHED_HIDE_STRIP.get(), 4), new ItemStack(Items.STICK, 3)),
                 player -> hasAnyBed(player) || QuestData.get(player).hasVisitedLocation("special", "shelter:slept"),
                 Collections.emptyList(),
                 null,
@@ -238,23 +238,23 @@ public class MissionRegistry {
         ));
         phase05.add(new Mission(
                 "assemble_wasteland_field_kit",
-                "[ECHO-7] Stop spending recovered metal on every emergency. Assemble a Bone Knife, Crude Spear, and Hide Wrap so scrap stays in the machine chain.",
+                "[ECHO-7] Stop spending recovered metal on every emergency. Assemble a Ashbone Shiv, Scavenger Spear, and Hide Wrap so scrap stays in the machine chain.",
                 "Assemble Wasteland Field Kit",
                 "[ECHO-7] Field kit confirmed. Bone handles close work, the spear keeps distance, and hide buys breathing margin; fabrication can claim the metal now.",
                 List.of(
-                        new ItemStack(ModItems.FIBER_ROPE.get(), 4),
+                        new ItemStack(ModItems.SOOTCORD_BINDING.get(), 4),
                         new ItemStack(ModItems.BANDAGE.get(), 3),
                         new ItemStack(ModItems.CLEAN_WATER_BOTTLE.get(), 1),
                         new ItemStack(ModItems.STIM_PACK.get(), 1),
                         new ItemStack(ModItems.FILTER_CARTRIDGE_BASIC.get(), 1),
                         new ItemStack(ModItems.SCHEMATIC_FRAGMENT.get(), 1)
                 ),
-                player -> player.getInventory().contains(new ItemStack(ModItems.BONE_KNIFE.get()))
-                        && player.getInventory().contains(new ItemStack(ModItems.CRUDE_SPEAR.get()))
+                player -> player.getInventory().contains(new ItemStack(ModItems.ASHBONE_SHIV.get()))
+                        && player.getInventory().contains(new ItemStack(ModItems.SCAVENGER_SPEAR.get()))
                         && player.getInventory().contains(new ItemStack(ModItems.HIDE_WRAP.get())),
                 List.of(
-                        new ItemStack(ModItems.BONE_KNIFE.get(), 1),
-                        new ItemStack(ModItems.CRUDE_SPEAR.get(), 1),
+                        new ItemStack(ModItems.ASHBONE_SHIV.get(), 1),
+                        new ItemStack(ModItems.SCAVENGER_SPEAR.get(), 1),
                         new ItemStack(ModItems.HIDE_WRAP.get(), 1)
                 ),
                 null,
@@ -266,33 +266,33 @@ public class MissionRegistry {
         ));
         phase05.add(new Mission(
                 "craft_bone_knife",
-                "[ECHO-7] Metal reserves are exhausted. Improvise with organic materials. Craft a Bone Knife and report back.",
-                "Craft Bone Knife + Turn In",
+                "[ECHO-7] Metal reserves are exhausted. Improvise with organic materials. Craft a Ashbone Shiv and report back.",
+                "Craft Ashbone Shiv + Turn In",
                 "[ECHO-7] Primitive blade accepted. Continue assembling wilderness-grade survival tools.",
-                List.of(new ItemStack(ModItems.FIBER_ROPE.get(), 4), new ItemStack(ModItems.BANDAGE.get(), 1)),
-                player -> player.getInventory().contains(new ItemStack(ModItems.BONE_KNIFE.get())),
-                List.of(new ItemStack(ModItems.BONE_KNIFE.get(), 1)),
+                List.of(new ItemStack(ModItems.SOOTCORD_BINDING.get(), 4), new ItemStack(ModItems.BANDAGE.get(), 1)),
+                player -> player.getInventory().contains(new ItemStack(ModItems.ASHBONE_SHIV.get())),
+                List.of(new ItemStack(ModItems.ASHBONE_SHIV.get(), 1)),
                 null,
                 Mission.MissionCategory.SURVIVAL,
                 Mission.Difficulty.EASY,
                 List.of("secure_sleep_shelter"),
                 true,
-                "bone_knife"
+                "ashbone_shiv"
         ));
         phase05.add(new Mission(
                 "craft_crude_spear",
-                "[ECHO-7] Hostile lifeforms detected nearby. Craft a Crude Spear for first-night defense.",
-                "Craft Crude Spear + Turn In",
+                "[ECHO-7] Hostile lifeforms detected nearby. Craft a Scavenger Spear for first-night defense.",
+                "Craft Scavenger Spear + Turn In",
                 "[ECHO-7] Spear frame confirmed. Keep moving and avoid prolonged combat.",
                 List.of(new ItemStack(ModItems.BANDAGE.get(), 2), new ItemStack(ModItems.CLEAN_WATER_BOTTLE.get(), 1)),
-                player -> player.getInventory().contains(new ItemStack(ModItems.CRUDE_SPEAR.get())),
-                List.of(new ItemStack(ModItems.CRUDE_SPEAR.get(), 1)),
+                player -> player.getInventory().contains(new ItemStack(ModItems.SCAVENGER_SPEAR.get())),
+                List.of(new ItemStack(ModItems.SCAVENGER_SPEAR.get(), 1)),
                 null,
                 Mission.MissionCategory.COMBAT,
                 Mission.Difficulty.EASY,
                 List.of("craft_bone_knife"),
                 true,
-                "crude_spear"
+                "scavenger_spear"
         ));
         phase05.add(new Mission(
                 "craft_hide_wrap",
@@ -749,7 +749,7 @@ public class MissionRegistry {
         // Mission 3: Contact Crashbreak Salvage
         phase25.add(new Mission(
                 "contact_crashbreak_salvage",
-                "[ECHO-7] Crashbreak salvage channels are local and opportunistic. Right-click a contact near wreckage, a trade counter, or a route map table.",
+                "[ECHO-7] Crashbreak salvage channels are local and opportunistic. Right-click a contact near wreckage, a trade counter, or a route survey table.",
                 "Contact Crashbreak Salvage",
                 "[ECHO-7] Crashbreak channel open. Wreck routes, salvage contracts, and exploration leads are now on your map.",
                 List.of(new ItemStack(ModItems.SCRAP_METAL.get(), 12), new ItemStack(ModItems.SCRAP_WIRE.get(), 6), new ItemStack(Items.EMERALD, 2)),

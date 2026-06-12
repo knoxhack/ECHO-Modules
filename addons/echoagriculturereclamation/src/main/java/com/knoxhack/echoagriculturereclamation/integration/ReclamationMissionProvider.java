@@ -1,6 +1,6 @@
 package com.knoxhack.echoagriculturereclamation.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionDefinition;

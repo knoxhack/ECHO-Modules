@@ -1,8 +1,8 @@
 package com.knoxhack.echoblockworks.integration;
 
 import com.knoxhack.echoblockworks.EchoBlockworks;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.world.entity.player.Player;
 

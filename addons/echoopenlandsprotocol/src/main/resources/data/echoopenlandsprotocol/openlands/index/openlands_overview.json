@@ -1,0 +1,78 @@
+{
+  "schema": "echo.openlands.index.v1",
+  "namespace": "echoopenlandsprotocol",
+  "packId": "echoopenlandsprotocol",
+  "publicName": "Openlands",
+  "shortDescription": "Relaxed building, farming, exploration, old roads, and waystone restoration for the ECHO platform.",
+  "positioning": {
+    "officialPack": 2,
+    "defaultExperience": "Openlands Standard",
+    "coreFantasy": "Build a homestead, follow old roads, restore waystones, and uncover quiet regions without hardcore upkeep pressure.",
+    "notACloneRule": "Do not use Minecraft branding, names, copied recipes as identity, copied textures, copied mob silhouettes, or borrowed audio."
+  },
+  "indexCategories": [
+    {
+      "id": "getting_started",
+      "displayName": "Getting Started",
+      "entries": [
+        "first_spawn",
+        "starter_resources",
+        "first_tools",
+        "first_shelter"
+      ]
+    },
+    {
+      "id": "building",
+      "displayName": "Building",
+      "entries": [
+        "branchwood_family",
+        "pine_family",
+        "shelter_score",
+        "builder_hammer",
+        "storage"
+      ]
+    },
+    {
+      "id": "crafting",
+      "displayName": "Crafting",
+      "entries": [
+        "echostationcore:handcrafting",
+        "echostationcore:field_bench",
+        "echostationcore:kiln",
+        "echostationcore:forge_hearth",
+        "echostationcore:cookpot",
+        "map_table"
+      ]
+    },
+    {
+      "id": "world",
+      "displayName": "World",
+      "entries": [
+        "meadows",
+        "woodlands",
+        "stonehills",
+        "marshlands",
+        "landmarks"
+      ]
+    },
+    {
+      "id": "old_roads",
+      "displayName": "Old Roads",
+      "entries": [
+        "old_road_markers",
+        "region_rubbings",
+        "waystone_repair",
+        "fast_travel"
+      ]
+    }
+  ],
+  "mvpAcceptance": [
+    "Player can spawn in a safe start area.",
+    "Player can gather wood, stone, fiber, and food without combat.",
+    "Player can craft first tools, echoworldstarter:campfire, echostationcore:field_bench, shelter pieces, and echoworldstarter:bedroll.",
+    "Player can sleep in a forgiving shelter and set a return point.",
+    "Player can discover at least one road/ruin/cave hook.",
+    "Player can progress a broken waystone through at least stone_repaired.",
+    "Player inventory, hotbar, placed blocks, echostationcore:field_crate contents, echoworldstarter:bedroll spawn, echoworldstarter:campfire state, shelter score, and waystone state survive save/load."
+  ]
+}

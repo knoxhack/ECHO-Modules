@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "echo.module.release.v1",
+  "releaseId": "sky-relay-0.1.0-alpha",
+  "generatedAt": "2026-06-11T12:01:06.485Z",
+  "sourceRepo": "https://github.com/knoxhack/ECHO-Modules",
+  "provenance": {
+    "sourceRepo": "https://github.com/knoxhack/ECHO-Modules",
+    "commitSha": "ea45c08c611abbb2331ec3a3e0ebda91c51ca1ee",
+    "workflow": "",
+    "workflowRef": "",
+    "runId": "",
+    "runAttempt": "",
+    "refName": "feature/sky-relay-protocol",
+    "eventName": "manual-local-release-refresh",
+    "generatedBy": "scripts/generate-module-release.mjs",
+    "attestation": {
+      "action": "actions/attest@v4",
+      "subjectChecksums": "checksums.sha256"
+    }
+  },
+  "modules": [
+    {
+      "moduleId": "echoskyrelayprotocol",
+      "version": "0.1.0",
+      "descriptor": {
+        "path": "META-INF/echo.mod.json",
+        "sha256": "962016438bc55e6aa0416b19a4426eaea8ac9e1b787879d71492f0f507d7f514"
+      },
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echoruntimeguard"
+      ],
+      "optional": [
+        "echoagriculturereclamation",
+        "echoeconomycore",
+        "echogalacticcore",
+        "echoholomap",
+        "echoindex",
+        "echoindustrialnexus",
+        "echolens",
+        "echologisticsnetwork",
+        "echomissioncore",
+        "echomultiblockcore",
+        "echoorbitalremnants",
+        "echopowergrid",
+        "echoprogressioncore",
+        "echorecipecore",
+        "echorecovery",
+        "echosocialcore",
+        "echoterminal",
+        "echothemecore",
+        "echotutorialcore",
+        "echoweathercore",
+        "echoworldcore"
+      ],
+      "artifacts": [
+        {
+          "kind": "neoforge",
+          "filename": "echoskyrelayprotocol-0.1.0-neoforge.jar",
+          "sha256": "461bab4a6a7208bf108a11c2b812b0987935ba30700b41a61c97c5000c8525d1",
+          "size": 53302,
+          "downloadUrl": "",
+          "runtimeTarget": "neoforge",
+          "buildMode": "compiled-runtime",
+          "contains": [
+            "META-INF/echo.mod.json",
+            "META-INF/neoforge.mods.toml"
+          ]
+        },
+        {
+          "kind": "standalone",
+          "filename": "echoskyrelayprotocol-0.1.0-standalone.jar",
+          "sha256": "461bab4a6a7208bf108a11c2b812b0987935ba30700b41a61c97c5000c8525d1",
+          "size": 53302,
+          "downloadUrl": "",
+          "runtimeTarget": "standalone",
+          "buildMode": "compiled-runtime",
+          "contains": [
+            "META-INF/echo.mod.json"
+          ]
+        },
+        {
+          "kind": "echo-addon",
+          "filename": "echoskyrelayprotocol-0.1.0.echo-addon",
+          "sha256": "707e487f650dd973699960ca6e193a5bb085f05e0237236909ae8ffa73be33bf",
+          "size": 47935,
+          "downloadUrl": "",
+          "runtimeTarget": "echo-native",
+          "buildMode": "compiled-runtime",
+          "contains": [
+            "META-INF/echo.mod.json",
+            "echo-addon-package.json"
+          ]
+        },
+        {
+          "kind": "sources",
+          "filename": "echoskyrelayprotocol-0.1.0-sources.jar",
+          "sha256": "fc5da7ed657df7a2ae6d654615fbe41ca537ac0561613a22fdb3fd5a9ce33140",
+          "size": 29517,
+          "downloadUrl": "",
+          "runtimeTarget": "sources",
+          "contains": [
+            "META-INF/echo.mod.json"
+          ]
+        }
+      ]
+    }
+  ]
+}

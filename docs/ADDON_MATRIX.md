@@ -78,47 +78,46 @@
 
 
 
-The authoritative launcher-facing module matrix now lives in `metadata/modules/`. Use `metadata/modules/index.json` for machine-readable status and `docs/release_pages/` for public page drafts. Ashfall remains Official ECHO Pack #1 and is described in `metadata/official_packs/ashfall.json`.
+The authoritative launcher-facing module matrix now lives in `metadata/modules/index.json`, generated from addon descriptors. Use each module descriptor for public metadata source-of-truth. Ashfall remains Official ECHO Pack #1 and is described in `metadata/official_packs/ashfall.json`.
 
 ## 1.3.5 Public Launch Launcher Metadata Matrix
 
-| Module | Category | Status | Required deps | Optional integrations | Standalone | Ashfall required | Release page |
+| Module | Category | Status | Required deps | Optional integrations | Standalone | Ashfall required | Descriptor |
 |---|---|---:|---|---|---:|---:|---|
-| `echoagriculturereclamation` | Survival | Beta | echocore, echonetcore | echoweathercore, echopowergrid, echologisticsnetwork, echoindex, echolens, echoterminal | Yes | No | docs/release_pages/echoagriculturereclamation.md |
-| `echoarmory` | Combat | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echologisticsnetwork, echopowergrid | Yes | No | docs/release_pages/echoarmory.md |
-| `echoashfallprotocol` | Official Pack | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echoholomap, echolens, echothemecore, echoworldcore, echosoundcore, echodatacore, echoruntimeguard | No | Yes | docs/release_pages/echoashfallprotocol.md |
-| `echoblackboxprotocol` | Story | Beta | echocore, echonetcore | echostationfall, echonexusprotocol, echoterminal, echoindex, echosoundcore, echomissioncore | Yes | No | docs/release_pages/echoblackboxprotocol.md |
-| `echoblockworks` | Content | Beta | echocore, echonetcore | echoindex, echoterminal, echothemecore | Yes | No | docs/release_pages/echoblockworks.md |
-| `echoconvoyprotocol` | Tech | Beta | echocore, echonetcore | echoholomap, echologisticsnetwork, echopowergrid, echoterminal, echoindex | Yes | No | docs/release_pages/echoconvoyprotocol.md |
-| `echocore` | Foundation | Stable | none | echonetcore, echodatacore, echoruntimeguard | No | No | docs/release_pages/echocore.md |
-| `echodatacore` | Foundation | Stable | echocore, echonetcore | echoruntimeguard | No | No | docs/release_pages/echodatacore.md |
-| `echograves` | Utility | Internal | none | echorecovery | No | No | docs/release_pages/echograves.md |
-| `echoholomap` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echomissioncore, echolens, echoworldcore, echoruntimeguard | Yes | No | docs/release_pages/echoholomap.md |
-| `echoindex` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echomissioncore, echolens, echoholomap, echowiki | Yes | No | docs/release_pages/echoindex.md |
-| `echoindustrialnexus` | Tech | Beta | echocore, echonetcore | echopowergrid, echomultiblockcore, echologisticsnetwork, echoindex, echolens, echoterminal | Yes | No | docs/release_pages/echoindustrialnexus.md |
-| `echolens` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echodatacore | Yes | No | docs/release_pages/echolens.md |
-| `echologisticsnetwork` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoholomap, echoconvoyprotocol, echopowergrid, echoarmory | Yes | No | docs/release_pages/echologisticsnetwork.md |
-| `echomissioncore` | Foundation | Beta | echocore, echonetcore | echodatacore, echoterminal, echoindex, echotutorialcore | Yes | No | docs/release_pages/echomissioncore.md |
-| `echomodpackcommandcenter` | Developer Tool | Beta | none | echocore, echotextureforge | Yes | No | docs/release_pages/echomodpackcommandcenter.md |
-| `echomultiblockcore` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echoholomap, echopowergrid | Yes | No | docs/release_pages/echomultiblockcore.md |
-| `echonetcore` | Foundation | Stable | echocore, echonetcore | echoruntimeguard | No | No | docs/release_pages/echonetcore.md |
-| `echonexusprotocol` | Story | Beta | echocore, echonetcore | echoholomap, echolens, echosoundcore, echomissioncore, echoterminal, echoindex | Yes | No | docs/release_pages/echonexusprotocol.md |
-| `echoorbitalremnants` | Story | Beta | echocore, echonetcore | echoholomap, echosoundcore, echoterminal, echoindex, echomissioncore | Yes | No | docs/release_pages/echoorbitalremnants.md |
-| `echoplayercore` | Utility | Beta | echocore, echonetcore | echoworldcore, echoholomap, echoruntimeguard | Yes | No | docs/release_pages/echoplayercore.md |
-| `echopowergrid` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoholomap, echomultiblockcore, echoruntimeguard | Yes | No | docs/release_pages/echopowergrid.md |
-| `echorecovery` | Survival | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echoholomap, echolens, echoruntimeguard, echorendercore | Yes | No | docs/release_pages/echorecovery.md |
-| `echorelictech` | Story | Experimental | echocore, echonetcore | echoindex, echolens, echomissioncore, echoterminal, echonexusprotocol | Yes | No | docs/release_pages/echorelictech.md |
-| `echorendercore` | Developer Tool | Beta | echocore, echonetcore | echothemecore, echoscreencore, echoruntimeguard | No | No | docs/release_pages/echorendercore.md |
-| `echoruntimeguard` | Foundation | Stable | echocore, echonetcore | echodatacore | No | No | docs/release_pages/echoruntimeguard.md |
-| `echoscreencore` | UI/UX | Beta | echocore, echonetcore | echothemecore | Yes | No | docs/release_pages/echoscreencore.md |
-| `echosoundcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoweathercore, echostationfall | Yes | No | docs/release_pages/echosoundcore.md |
-| `echostationfall` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echosoundcore, echoholomap, echoblackboxprotocol | Yes | No | docs/release_pages/echostationfall.md |
-| `echoterminal` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echolens, signalos, echodatacore | Yes | No | docs/release_pages/echoterminal.md |
-| `echotextureforge` | Developer Tool | Experimental | echocore, echonetcore | echothemecore, echoscreencore, echomodpackcommandcenter | No | No | docs/release_pages/echotextureforge.md |
-| `echothemecore` | UI/UX | Stable | echocore, echonetcore | echoscreencore | Yes | No | docs/release_pages/echothemecore.md |
-| `echotutorialcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echomissioncore | Yes | No | docs/release_pages/echotutorialcore.md |
-| `echoweathercore` | World | Beta | echocore, echonetcore | echoworldcore, echoholomap, echosoundcore, echoterminal, echoindex | Yes | No | docs/release_pages/echoweathercore.md |
-| `echowiki` | UI/UX | Experimental | echocore, echonetcore | echoscreencore, echothemecore, echoindex, echoterminal | Yes | No | docs/release_pages/echowiki.md |
-| `echoworldcore` | World | Beta | echocore, echonetcore | echoholomap, echoindex, echolens, echodatacore, echoruntimeguard | Yes | No | docs/release_pages/echoworldcore.md |
-| `signalos` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echodatacore | Yes | No | docs/release_pages/signalos.md |
-| `signalosexample` | Developer Tool | Internal | echocore, echonetcore, signalos | echoterminal, echoindex | No | No | docs/release_pages/signalosexample.md |
+| `echoagriculturereclamation` | Survival | Beta | echocore, echonetcore | echoweathercore, echopowergrid, echologisticsnetwork, echoindex, echolens, echoterminal | Yes | No | addons/echoagriculturereclamation/src/main/resources/META-INF/echo.mod.json |
+| `echoarmory` | Combat | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echologisticsnetwork, echopowergrid | Yes | No | addons/echoarmory/src/main/resources/META-INF/echo.mod.json |
+| `echoashfallprotocol` | Official Pack | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echoholomap, echolens, echothemecore, echoworldcore, echosoundcore, echodatacore, echoruntimeguard | No | Yes | addons/echoashfallprotocol/src/main/resources/META-INF/echo.mod.json |
+| `echoblackboxprotocol` | Story | Beta | echocore, echonetcore | echostationfall, echonexusprotocol, echoterminal, echoindex, echosoundcore, echomissioncore | Yes | No | addons/echoblackboxprotocol/src/main/resources/META-INF/echo.mod.json |
+| `echoblockworks` | Content | Beta | echocore, echonetcore | echoindex, echoterminal, echothemecore | Yes | No | addons/echoblockworks/src/main/resources/META-INF/echo.mod.json |
+| `echoconvoyprotocol` | Tech | Beta | echocore, echonetcore | echoholomap, echologisticsnetwork, echopowergrid, echoterminal, echoindex | Yes | No | addons/echoconvoyprotocol/src/main/resources/META-INF/echo.mod.json |
+| `echocore` | Foundation | Stable | none | echonetcore, echodatacore, echoruntimeguard | No | No | addons/echocore/src/main/resources/META-INF/echo.mod.json |
+| `echodatacore` | Foundation | Stable | echocore, echonetcore | echoruntimeguard | No | No | addons/echodatacore/src/main/resources/META-INF/echo.mod.json |
+| `echograves` | Utility | Internal | none | echorecovery | No | No | addons/echograves/src/main/resources/META-INF/echo.mod.json |
+| `echoholomap` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echomissioncore, echolens, echoworldcore, echoruntimeguard | Yes | No | addons/echoholomap/src/main/resources/META-INF/echo.mod.json |
+| `echoindex` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echomissioncore, echolens, echoholomap, echowiki | Yes | No | addons/echoindex/src/main/resources/META-INF/echo.mod.json |
+| `echoindustrialnexus` | Tech | Beta | echocore, echonetcore | echopowergrid, echomultiblockcore, echologisticsnetwork, echoindex, echolens, echoterminal | Yes | No | addons/echoindustrialnexus/src/main/resources/META-INF/echo.mod.json |
+| `echolens` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echodatacore | Yes | No | addons/echolens/src/main/resources/META-INF/echo.mod.json |
+| `echologisticsnetwork` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoholomap, echoconvoyprotocol, echopowergrid, echoarmory | Yes | No | addons/echologisticsnetwork/src/main/resources/META-INF/echo.mod.json |
+| `echomissioncore` | Foundation | Beta | echocore, echonetcore | echodatacore, echoterminal, echoindex, echotutorialcore | Yes | No | addons/echomissioncore/src/main/resources/META-INF/echo.mod.json |
+| `echomultiblockcore` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echoholomap, echopowergrid | Yes | No | addons/echomultiblockcore/src/main/resources/META-INF/echo.mod.json |
+| `echonetcore` | Foundation | Stable | echocore, echonetcore | echoruntimeguard | No | No | addons/echonetcore/src/main/resources/META-INF/echo.mod.json |
+| `echonexusprotocol` | Story | Beta | echocore, echonetcore | echoholomap, echolens, echosoundcore, echomissioncore, echoterminal, echoindex | Yes | No | addons/echonexusprotocol/src/main/resources/META-INF/echo.mod.json |
+| `echoorbitalremnants` | Story | Beta | echocore, echonetcore | echoholomap, echosoundcore, echoterminal, echoindex, echomissioncore | Yes | No | addons/echoorbitalremnants/src/main/resources/META-INF/echo.mod.json |
+| `echoplayercore` | Utility | Beta | echocore, echonetcore | echoworldcore, echoholomap, echoruntimeguard | Yes | No | addons/echoplayercore/src/main/resources/META-INF/echo.mod.json |
+| `echopowergrid` | Tech | Beta | echocore, echonetcore | echothemecore, echoterminal, echoholomap, echomultiblockcore, echoruntimeguard | Yes | No | addons/echopowergrid/src/main/resources/META-INF/echo.mod.json |
+| `echorecovery` | Survival | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echoholomap, echolens, echoruntimeguard, echorendercore | Yes | No | addons/echorecovery/src/main/resources/META-INF/echo.mod.json |
+| `echorelictech` | Story | Experimental | echocore, echonetcore | echoindex, echolens, echomissioncore, echoterminal, echonexusprotocol | Yes | No | addons/echorelictech/src/main/resources/META-INF/echo.mod.json |
+| `echorendercore` | Developer Tool | Beta | echocore, echonetcore | echothemecore, echoscreencore, echoruntimeguard | No | No | addons/echorendercore/src/main/resources/META-INF/echo.mod.json |
+| `echoruntimeguard` | Foundation | Stable | echocore, echonetcore | echodatacore | No | No | addons/echoruntimeguard/src/main/resources/META-INF/echo.mod.json |
+| `echoscreencore` | UI/UX | Beta | echocore, echonetcore | echothemecore | Yes | No | addons/echoscreencore/src/main/resources/META-INF/echo.mod.json |
+| `echosoundcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoweathercore, echostationfall | Yes | No | addons/echosoundcore/src/main/resources/META-INF/echo.mod.json |
+| `echostationfall` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echosoundcore, echoholomap, echoblackboxprotocol | Yes | No | addons/echostationfall/src/main/resources/META-INF/echo.mod.json |
+| `echoterminal` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echolens, signalos, echodatacore | Yes | No | addons/echoterminal/src/main/resources/META-INF/echo.mod.json |
+| `echotextureforge` | Developer Tool | Experimental | echocore, echonetcore | echothemecore, echoscreencore | No | No | addons/echotextureforge/src/main/resources/META-INF/echo.mod.json |
+| `echothemecore` | UI/UX | Stable | echocore, echonetcore | echoscreencore | Yes | No | addons/echothemecore/src/main/resources/META-INF/echo.mod.json |
+| `echotutorialcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echomissioncore | Yes | No | addons/echotutorialcore/src/main/resources/META-INF/echo.mod.json |
+| `echoweathercore` | World | Beta | echocore, echonetcore | echoworldcore, echoholomap, echosoundcore, echoterminal, echoindex | Yes | No | addons/echoweathercore/src/main/resources/META-INF/echo.mod.json |
+| `echowiki` | UI/UX | Experimental | echocore, echonetcore | echoscreencore, echothemecore, echoindex, echoterminal | Yes | No | addons/echowiki/src/main/resources/META-INF/echo.mod.json |
+| `echoworldcore` | World | Beta | echocore, echonetcore | echoholomap, echoindex, echolens, echodatacore, echoruntimeguard | Yes | No | addons/echoworldcore/src/main/resources/META-INF/echo.mod.json |
+| `signalos` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echodatacore | Yes | No | addons/signalos/src/main/resources/META-INF/echo.mod.json |
+| `signalosexample` | Developer Tool | Internal | echocore, echonetcore, signalos | echoterminal, echoindex | No | No | addons/signalosexample/src/main/resources/META-INF/echo.mod.json |

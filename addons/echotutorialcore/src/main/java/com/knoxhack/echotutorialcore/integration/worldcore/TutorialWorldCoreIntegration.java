@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.integration.worldcore;
 
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
 import com.knoxhack.echotutorialcore.EchoTutorialCore;
 import com.knoxhack.echotutorialcore.api.TutorialCoreApi;
 import com.knoxhack.echotutorialcore.config.TutorialConfig;

@@ -1,7 +1,7 @@
 package com.knoxhack.echologisticsnetwork.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echologisticsnetwork.Config;
 import com.knoxhack.echologisticsnetwork.block.LogisticsBlock;
 import com.knoxhack.echologisticsnetwork.block.LogisticsBlock.LogisticsKind;

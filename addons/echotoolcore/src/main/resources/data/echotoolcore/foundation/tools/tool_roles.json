@@ -1,0 +1,50 @@
+{
+  "schema": "echo.foundation.tool_roles.v1",
+  "roles": {
+    "cutter": {
+      "replaces": [
+        "axe"
+      ],
+      "verbs": [
+        "cut",
+        "strip",
+        "harvest_wood"
+      ]
+    },
+    "breaker": {
+      "replaces": [
+        "pick"
+      ],
+      "verbs": [
+        "break_stone",
+        "mine_veins",
+        "salvage"
+      ]
+    },
+    "digger": {
+      "replaces": [
+        "spade"
+      ],
+      "verbs": [
+        "dig_soil",
+        "shape_ground"
+      ]
+    },
+    "knife": {
+      "replaces": [],
+      "verbs": [
+        "cut_fiber",
+        "prepare_hide",
+        "small_harvest"
+      ]
+    },
+    "hammer": {
+      "replaces": [],
+      "verbs": [
+        "shape_blocks",
+        "repair",
+        "assemble"
+      ]
+    }
+  }
+}

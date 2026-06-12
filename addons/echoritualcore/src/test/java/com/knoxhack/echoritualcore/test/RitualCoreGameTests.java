@@ -2,7 +2,7 @@ package com.knoxhack.echoritualcore.test;
 
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
 import com.knoxhack.echoarcanacore.api.RitualFamily;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoritualcore.EchoRitualCore;
 import com.knoxhack.echoritualcore.api.RitualCoreApi;
 import com.knoxhack.echoritualcore.block.entity.OfferingPedestalBlockEntity;

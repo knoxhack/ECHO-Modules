@@ -1,9 +1,9 @@
 package com.knoxhack.echowiki;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echowiki.command.GuideBookCommands;
 import com.knoxhack.echowiki.content.GuideBookRegistry;
 import com.knoxhack.echowiki.content.WikiContentRegistry;

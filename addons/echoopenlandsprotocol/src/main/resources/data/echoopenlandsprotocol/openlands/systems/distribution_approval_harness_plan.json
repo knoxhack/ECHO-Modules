@@ -1,0 +1,374 @@
+{
+  "schema": "echo.openlands.systems.distribution_approval_harness_plan.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the concrete Release Index, launcher-channel, co-op session, dependency-gate, and approval-signoff harness responsibilities required to turn distribution_approval_acceptance areas into passing Native, Standalone, and NeoForge distribution approval reports. This is a harness plan, not approval by itself.",
+  "sourceContracts": {
+    "distributionApprovalAcceptance": "systems/distribution_approval_acceptance.json",
+    "distribution": "systems/distribution_alpha_gates.json",
+    "releasePublication": "systems/release_publication_manifest_contract.json",
+    "releaseIndex": "dist/echo-module-release/echo-release.json",
+    "launcherFlowAcceptance": "systems/launcher_flow_acceptance.json",
+    "launcherExecutionAcceptance": "systems/launcher_execution_acceptance.json",
+    "launcherExecutionHarnessPlan": "systems/launcher_execution_harness_plan.json",
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json",
+    "runtimeExecutionHarnessPlan": "systems/runtime_execution_harness_plan.json",
+    "finalReleaseReviewAcceptance": "systems/final_release_review_acceptance.json",
+    "finalReleaseReviewHarnessPlan": "systems/final_release_review_harness_plan.json",
+    "coopSmp": "systems/coop_and_smp.json",
+    "firstHourPlaytest": "playtests/mvp_first_hour_acceptance.json",
+    "waystoneContract": "waystones/waystone_contract.json",
+    "launchRoadmap": "progression/launch_roadmap.json",
+    "productionPhaseMatrix": "progression/production_phase_matrix.json"
+  },
+  "editionHarnesses": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "driverKind": "echo_native_distribution_approval_harness",
+      "entryPoint": "scripts/run-distribution-approval-harness.mjs",
+      "requiredReport": "evidence/native-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "approvalArtifactRoot": "evidence/distribution-approval/native"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "driverKind": "neoforge_distribution_approval_harness",
+      "entryPoint": "scripts/run-distribution-approval-harness.mjs",
+      "requiredReport": "evidence/neoforge-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "approvalArtifactRoot": "evidence/distribution-approval/neoforge"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "driverKind": "standalone_distribution_approval_harness",
+      "entryPoint": "scripts/run-distribution-approval-harness.mjs",
+      "requiredReport": "evidence/standalone-distribution-approval-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "approvalArtifactRoot": "evidence/distribution-approval/standalone"
+    }
+  ],
+  "driverSurfaces": [
+    {
+      "id": "release_index_publication_driver",
+      "requiredMethods": [
+        "openReleaseIndex(path)",
+        "publishArtifactUrl(artifactId, url)",
+        "recordReleaseIndexCommit(commitId)",
+        "captureReleaseIndexDiff(before, after)",
+        "markReleaseIndexState(state)"
+      ],
+      "mustCapture": [
+        "releaseIndexEntry",
+        "releaseIndexCommit",
+        "artifactUrl",
+        "artifactSha256",
+        "artifactSize",
+        "releaseIndexDiff"
+      ]
+    },
+    {
+      "id": "artifact_download_verification_driver",
+      "requiredMethods": [
+        "downloadArtifact(url)",
+        "calculateSha256(path)",
+        "measureArtifactSize(path)",
+        "compareAgainstReleaseIndex(entryId)",
+        "writeDownloadVerificationReport()"
+      ],
+      "mustCapture": [
+        "downloadUrl",
+        "downloadedSha256",
+        "downloadedSize",
+        "expectedSha256",
+        "expectedSize",
+        "downloadVerificationReport"
+      ]
+    },
+    {
+      "id": "edition_manifest_index_driver",
+      "requiredMethods": [
+        "indexEditionManifest(editionId)",
+        "resolveModuleRequirementGraph(manifestId)",
+        "captureLauncherChannelListing(channelId)",
+        "verifyAllEditionProfilesVisible()",
+        "writeManifestIndexReport()"
+      ],
+      "mustCapture": [
+        "nativePackManifestEntry",
+        "neoforgePackManifestEntry",
+        "standalonePackManifestEntry",
+        "moduleRequirementGraph",
+        "launcherChannel",
+        "launcherChannelListing"
+      ]
+    },
+    {
+      "id": "dependency_gate_driver",
+      "requiredMethods": [
+        "loadRuntimeExecutionReports()",
+        "loadLauncherExecutionReports()",
+        "loadFinalReleaseReviewReports()",
+        "hashApprovalInputReports()",
+        "verifyNoReadinessBlockers()"
+      ],
+      "mustCapture": [
+        "runtimeExecutionReportHashes",
+        "launcherExecutionReportHashes",
+        "finalReleaseReviewReportHashes",
+        "approvalInputReportIndex",
+        "readinessReportHash",
+        "remainingReadinessBlockers"
+      ]
+    },
+    {
+      "id": "coop_session_driver",
+      "requiredMethods": [
+        "startCoopSession(playerCount)",
+        "restoreSharedWaystone()",
+        "runStoragePermissionTransactions()",
+        "disconnectAndReconnectPlayer(playerId)",
+        "captureAuthorityDesyncLog()"
+      ],
+      "mustCapture": [
+        "hostRuntimeTarget",
+        "playerCount",
+        "sessionDurationMinutes",
+        "sharedWaystoneState",
+        "storagePermissionSample",
+        "disconnectReconnectResult",
+        "authorityDesyncLog"
+      ]
+    },
+    {
+      "id": "approval_signature_driver",
+      "requiredMethods": [
+        "recordApprover(name)",
+        "recordApprovalDate(date)",
+        "captureApprovedReleaseIndexState()",
+        "attachApprovalMemo(path)",
+        "writeApprovalRunRecord()"
+      ],
+      "mustCapture": [
+        "approver",
+        "approvalDate",
+        "approvedReleaseIndexState",
+        "publicAlphaApprovalMemo",
+        "approvalRun"
+      ]
+    },
+    {
+      "id": "roadmap_scope_driver",
+      "requiredMethods": [
+        "loadLaunchRoadmap()",
+        "loadProductionPhaseMatrix()",
+        "verifyMvpScope()",
+        "verifyHardlandsOptional()",
+        "writeScopeApprovalSummary()"
+      ],
+      "mustCapture": [
+        "mvpScopeSummary",
+        "hardlandsOptionalCheck",
+        "productionCheckpointSummary",
+        "publicAlphaEvidenceIds"
+      ]
+    },
+    {
+      "id": "rollback_plan_driver",
+      "requiredMethods": [
+        "loadRollbackDocs()",
+        "verifyLauncherRollbackEvidence()",
+        "snapshotRollbackPlan()",
+        "attachRollbackPlanToApproval()"
+      ],
+      "mustCapture": [
+        "rollbackPlanSnapshot",
+        "launcherRollbackEvidence",
+        "rollbackAttachment"
+      ]
+    },
+    {
+      "id": "report_artifact_driver",
+      "requiredMethods": [
+        "hashInputFixture(path)",
+        "writeSavedArtifact(name, payload)",
+        "verifySavedArtifactExists(name)",
+        "attachEvidenceRef(areaId, ref)",
+        "assembleDistributionApprovalReport()"
+      ],
+      "mustCapture": [
+        "inputFixtureHashes",
+        "savedArtifactPaths",
+        "evidenceRefs",
+        "approvalAreaStatus",
+        "distributionApprovalReport"
+      ]
+    }
+  ],
+  "approvalAreaBindings": [
+    {
+      "id": "artifact_publication",
+      "gateIds": [
+        "release_index_artifact_urls_published",
+        "release_index_download_hash_verified"
+      ],
+      "driverSurfaceIds": [
+        "release_index_publication_driver",
+        "artifact_download_verification_driver",
+        "report_artifact_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/distribution_alpha_gates.json",
+        "dist/echo-module-release/echo-release.json"
+      ],
+      "checklist": [
+        "all_required_artifacts_have_download_urls",
+        "downloaded_artifacts_match_sha256",
+        "downloaded_artifacts_match_size",
+        "sources_artifact_is_published",
+        "release_index_state_is_ready_for_approval"
+      ],
+      "requiredSavedArtifacts": [
+        "artifact-publication-report.json",
+        "download-verification-report.json",
+        "release-index-diff.json"
+      ]
+    },
+    {
+      "id": "edition_manifest_indexing",
+      "gateIds": [
+        "edition_pack_manifests_indexed"
+      ],
+      "driverSurfaceIds": [
+        "edition_manifest_index_driver",
+        "report_artifact_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "ECHO-Openlands-Native-Edition/release-manifest.template.json",
+        "ECHO-Openlands-NeoForge-Edition/release-manifest.template.json",
+        "ECHO-Openlands-Standalone-Edition/release-manifest.template.json"
+      ],
+      "checklist": [
+        "native_manifest_is_indexed",
+        "neoforge_manifest_is_indexed",
+        "standalone_manifest_is_indexed",
+        "module_requirements_resolve_for_each_manifest",
+        "launcher_channel_lists_all_three_editions"
+      ],
+      "requiredSavedArtifacts": [
+        "edition-manifest-index-report.json",
+        "module-requirement-resolution.json",
+        "launcher-channel-listing.json"
+      ]
+    },
+    {
+      "id": "runtime_launcher_final_review_dependency",
+      "gateIds": [
+        "public_alpha_distribution_approved"
+      ],
+      "driverSurfaceIds": [
+        "dependency_gate_driver",
+        "approval_signature_driver",
+        "report_artifact_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/runtime_execution_acceptance.json",
+        "systems/launcher_execution_acceptance.json",
+        "systems/final_release_review_acceptance.json"
+      ],
+      "checklist": [
+        "runtime_execution_reports_pass_for_all_editions",
+        "launcher_execution_reports_pass_for_all_editions",
+        "final_release_review_reports_pass_for_all_editions",
+        "release_readiness_report_has_no_blockers",
+        "approved_release_index_state_is_recorded"
+      ],
+      "requiredSavedArtifacts": [
+        "dependency-gate-summary.json",
+        "release-readiness-hash.txt",
+        "approval-input-report-index.json"
+      ]
+    },
+    {
+      "id": "coop_public_alpha_session",
+      "gateIds": [
+        "public_alpha_coop_session_tested"
+      ],
+      "driverSurfaceIds": [
+        "coop_session_driver",
+        "report_artifact_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/coop_and_smp.json",
+        "playtests/mvp_first_hour_acceptance.json",
+        "waystones/waystone_contract.json"
+      ],
+      "checklist": [
+        "one_to_eight_player_session_starts",
+        "shared_waystone_state_stays_consistent",
+        "storage_permissions_are_enforced",
+        "disconnect_reconnect_preserves_player_state",
+        "session_logs_have_no_authority_desync"
+      ],
+      "requiredSavedArtifacts": [
+        "coop-session-report.json",
+        "coop-waystone-state-log.json",
+        "coop-permission-transaction-log.json"
+      ]
+    },
+    {
+      "id": "public_alpha_approval",
+      "gateIds": [
+        "public_alpha_distribution_approved"
+      ],
+      "driverSurfaceIds": [
+        "roadmap_scope_driver",
+        "rollback_plan_driver",
+        "approval_signature_driver",
+        "report_artifact_driver"
+      ],
+      "inputFixtureRefs": [
+        "progression/launch_roadmap.json",
+        "progression/production_phase_matrix.json",
+        "dist/echo-module-release/echoopenlandsprotocol/openlands-release-readiness-report.json"
+      ],
+      "checklist": [
+        "mvp_scope_matches_launch_roadmap",
+        "hardlands_remains_optional",
+        "all_public_alpha_evidence_ids_are_present",
+        "approver_signature_is_recorded",
+        "rollback_plan_is_attached"
+      ],
+      "requiredSavedArtifacts": [
+        "public-alpha-approval.md",
+        "rollback-plan-snapshot.md",
+        "approved-readiness-report.json",
+        "approved-readiness-report-by-phase.md"
+      ]
+    }
+  ],
+  "reportAssemblyRules": {
+    "approvalResultSource": "approvalAreaBindings",
+    "allChecklistItemsMustPassForAreaPass": true,
+    "allRequiredSavedArtifactsMustExistForAreaPass": true,
+    "allRequiredDriverCapturesMustExist": true,
+    "allInputFixturesMustBeHashed": true,
+    "allDependencyReportsMustPass": true,
+    "gateClearsOnlyWhenEveryMappedApprovalAreaPasses": true,
+    "blockedHarnessDoesNotClearDistributionGates": true,
+    "preflightReportsDoNotClearDistributionGates": true,
+    "publicAlphaReadyRequiresApprovalSignatureAndReadyReleaseIndex": true,
+    "publicAlphaReadyRequiresRuntimeLauncherFinalReviewAndDistributionApproval": true
+  }
+}

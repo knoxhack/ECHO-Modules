@@ -74,7 +74,6 @@
 | echomachinecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
 | echometadatacore | addon | yes | yes | yes | none | ready |
 | echomissioncore | addon | yes | yes | yes | none | ready |
-| echomodpackcommandcenter | tooling | yes | yes | yes | missing_neoforge.mods.toml | blocked |
 | echomodulegraph | addon | yes | yes | yes | none | ready |
 | echomultiblockcore | addon | yes | yes | yes | none | ready |
 | echonexusprotocol | addon | yes | yes | yes | none | ready |

@@ -2,7 +2,7 @@ package com.knoxhack.echologisticsnetwork.integration;
 
 import com.knoxhack.echologisticsnetwork.EchoLogisticsNetwork;
 import com.knoxhack.echologisticsnetwork.service.LogisticsNetworkService;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.api.TerminalActionRegistry;
 import com.knoxhack.echoterminal.api.TerminalArchiveEntry;
 import com.knoxhack.echoterminal.api.TerminalArchiveRegistry;

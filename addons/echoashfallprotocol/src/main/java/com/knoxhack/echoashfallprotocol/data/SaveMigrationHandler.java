@@ -1,11 +1,11 @@
 package com.knoxhack.echoashfallprotocol.data;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionDataService;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionStatus;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
-import com.knoxhack.echocore.api.mission.RewardDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionDataService;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.echo.AshfallMissionRoute;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;

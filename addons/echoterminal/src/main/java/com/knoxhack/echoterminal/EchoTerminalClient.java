@@ -2,7 +2,7 @@ package com.knoxhack.echoterminal;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoterminal.api.TerminalTabRegistry;
 import com.knoxhack.echoterminal.client.BuiltinTerminalTabs;
 import com.knoxhack.echoterminal.client.TerminalEventHandler;

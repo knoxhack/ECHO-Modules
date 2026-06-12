@@ -19,7 +19,6 @@ Cell values: Required, Recommended, Optional, Not Needed, Experimental, or Offic
 | `echolens` | Optional | Recommended | Recommended | Not Needed | Recommended | Recommended | Optional | Recommended | Optional | Optional | Optional | Recommended |
 | `echologisticsnetwork` | Optional | Recommended | Optional | Optional | Optional | Optional | Optional | Optional | Recommended | Optional | Recommended | Recommended |
 | `echomissioncore` | Optional | Optional | Optional | Not Needed | Recommended | Recommended | Optional | Optional | Optional | Optional | Recommended | Recommended |
-| `echomodpackcommandcenter` | Optional | Optional | Optional | Not Needed | Optional | Optional | Optional | Optional | Optional | Not Needed | Optional | Not Needed |
 | `echomultiblockcore` | Optional | Recommended | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Recommended |
 | `echonetcore` | Required | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Optional | Recommended | Recommended |
 | `echonexusprotocol` | Optional | Optional | Recommended | Not Needed | Recommended | Optional | Optional | Recommended | Recommended | Optional | Optional | Recommended |

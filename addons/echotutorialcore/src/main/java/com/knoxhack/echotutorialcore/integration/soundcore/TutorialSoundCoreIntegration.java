@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.integration.soundcore;
 
-import com.knoxhack.echocore.api.EchoOptionalServices;
+import com.echoplatform.echocore.api.EchoOptionalServices;
 import com.knoxhack.echotutorialcore.EchoTutorialCore;
 import com.knoxhack.echotutorialcore.api.TutorialHintType;
 import com.knoxhack.echotutorialcore.config.TutorialConfig;

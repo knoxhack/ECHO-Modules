@@ -1,0 +1,93 @@
+{
+  "schema": "echo.openlands.sounds.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "soundFamilies": [
+    {
+      "id": "ambience.meadows.day",
+      "category": "ambience",
+      "loop": true,
+      "intensity": "soft",
+      "assetKey": "openlands:ambience.meadows.day"
+    },
+    {
+      "id": "ambience.woodlands.day",
+      "category": "ambience",
+      "loop": true,
+      "intensity": "soft",
+      "assetKey": "openlands:ambience.woodlands.day"
+    },
+    {
+      "id": "ambience.stonehills.day",
+      "category": "ambience",
+      "loop": true,
+      "intensity": "light_wind",
+      "assetKey": "openlands:ambience.stonehills.day"
+    },
+    {
+      "id": "ambience.marshlands.fog",
+      "category": "ambience",
+      "loop": true,
+      "intensity": "mist_low",
+      "assetKey": "openlands:ambience.marshlands.fog"
+    },
+    {
+      "id": "station.echostationcore:kiln.work",
+      "category": "block",
+      "loop": true,
+      "intensity": "warm_low",
+      "assetKey": "openlands:block.echostationcore:kiln.work"
+    },
+    {
+      "id": "station.echostationcore:forge_hearth.work",
+      "category": "block",
+      "loop": true,
+      "intensity": "metal_heat",
+      "assetKey": "openlands:block.echostationcore:forge_hearth.work"
+    },
+    {
+      "id": "waystone.repair",
+      "category": "block",
+      "loop": false,
+      "intensity": "soft_stone_chime",
+      "assetKey": "openlands:block.waystone.repair"
+    },
+    {
+      "id": "waystone.activate",
+      "category": "block",
+      "loop": false,
+      "intensity": "bright_chime",
+      "assetKey": "openlands:block.waystone.activate"
+    },
+    {
+      "id": "ui.holomap.reveal",
+      "category": "ui",
+      "loop": false,
+      "intensity": "subtle",
+      "assetKey": "openlands:ui.holomap.reveal"
+    },
+    {
+      "id": "tutorial.objective_complete",
+      "category": "ui",
+      "loop": false,
+      "intensity": "subtle",
+      "assetKey": "openlands:ui.objective.complete"
+    }
+  ],
+  "creatureSoundTemplate": {
+    "requiredEvents": [
+      "ambient",
+      "hurt",
+      "death"
+    ],
+    "optionalEvents": [
+      "warn",
+      "charge"
+    ],
+    "naming": "openlands:creature.<creature_id>.<event>"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "agent": "agent-73-echoprimecore-story-parity",
+  "referenceBehavior": "story_flag_persistence",
+  "moduleReference": {
+    "moduleId": "echoprimecore",
+    "featureAudited": "Prime story flag persistence and mission state",
+    "contentIds": ["echoprimecore:story_flag/prime_route_unlocked", "echoprimecore:mission/prime_route"]
+  },
+  "adapterCoreContract": [
+    "echoprimecore:story_flag/prime_route_unlocked",
+    "echoprimecore:mission/prime_route"
+  ],
+  "echoNativeImplemented": [
+    "EchoPrimeCoreNativeModule uses EchoNativeStoryRuntimeBridge",
+    "EchoPrimeCoreNativeModule starts echoprimecore:mission/prime_route from echonexusprotocol:signal/nexus_handoff",
+    "EchoPrimeCoreNativeModule unlocks echostationfall:chapter/stationfall_route from echoprimecore:story_flag/prime_route_unlocked",
+    "EchoPrimeCoreNativeModule reports serviceCodeExecuted=true"
+  ],
+  "standaloneImplemented": [
+    "EchoStandaloneStoryRuntime.openSignalOsTerminal",
+    "EchoStandaloneStoryRuntime.readDataDrive",
+    "EchoStandaloneStoryRuntime.startStoryMission",
+    "EchoStandaloneStoryRuntime.unlockChapter",
+    "EchoStandaloneStoryRuntime.save/load"
+  ],
+  "parityPassed": [
+    "Reference behavior -> AdapterCore content ids -> Echo Native Loader backend evidence -> Echo Standalone Runtime execution -> focused parity smoke",
+    "Prime route flag persisted before save/load",
+    "Prime route mission state survived save/load",
+    "Stationfall route chapter progression survived save/load"
+  ],
+  "blockers": []
+}

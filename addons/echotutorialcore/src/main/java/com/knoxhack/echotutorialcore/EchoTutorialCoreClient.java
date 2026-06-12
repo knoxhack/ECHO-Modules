@@ -1,7 +1,7 @@
 package com.knoxhack.echotutorialcore;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public class EchoTutorialCoreClient {
     public EchoTutorialCoreClient(Object modEventBus) {

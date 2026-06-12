@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.api.HoloMapPrecision;
@@ -433,7 +433,7 @@ public final class HoloMapMiniMapOverlay {
         }
     }
 
-    private static boolean booleanConfig(com.knoxhack.echocore.api.config.EchoNativeConfigSpec.BooleanValue value,
+    private static boolean booleanConfig(com.echoplatform.echocore.api.config.EchoNativeConfigSpec.BooleanValue value,
             boolean fallback) {
         try {
             return value.get();

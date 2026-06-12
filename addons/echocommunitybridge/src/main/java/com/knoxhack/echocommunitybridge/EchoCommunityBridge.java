@@ -1,7 +1,7 @@
 package com.knoxhack.echocommunitybridge;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echocommunitybridge.command.CommunityBridgeCommands;
 import com.knoxhack.echocommunitybridge.discord.DiscordGatewayClient;
 import com.knoxhack.echocommunitybridge.discord.DiscordMessageQueue;

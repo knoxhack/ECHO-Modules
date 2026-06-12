@@ -1,9 +1,9 @@
 package com.knoxhack.echoterminal.network;
 
-import com.knoxhack.echocore.api.config.EchoConfigApplyResult;
-import com.knoxhack.echocore.api.config.EchoConfigRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.config.EchoConfigApplyResult;
+import com.echoplatform.echocore.api.config.EchoConfigRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetPayloads;
 import com.knoxhack.echonetcore.api.EchoPayloadContext;
 import com.knoxhack.echonetcore.api.EchoPayloadRegistrar;

@@ -1,0 +1,40 @@
+{
+  "schema": "echo.foundation.legal_identity.v1",
+  "blockedPublicTerms": [
+    "minecraft",
+    "vanilla",
+    "workbench",
+    "chest",
+    "torch",
+    "copper",
+    "iron",
+    "redstone",
+    "lapis",
+    "diamond",
+    "emerald",
+    "nether",
+    "ender",
+    "enchanting_table",
+    "lectern",
+    "amethyst",
+    "shulker"
+  ],
+  "watchTerms": [
+    "pick",
+    "axe",
+    "shovel",
+    "sword",
+    "ore",
+    "ingot",
+    "furnace",
+    "anvil",
+    "map",
+    "beacon"
+  ],
+  "requiredRules": [
+    "Public display names must use ECHO fantasy names, not vanilla-adjacent names.",
+    "Old IDs may remain only through explicit save-safe aliases.",
+    "Recipes and tags should point at foundation roles instead of old experience-local IDs.",
+    "Experience modules may add fantasy-specific variants but must not re-own baseline survival primitives."
+  ]
+}

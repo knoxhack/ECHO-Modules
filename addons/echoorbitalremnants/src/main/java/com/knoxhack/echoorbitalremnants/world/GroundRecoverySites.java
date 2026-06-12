@@ -1,8 +1,8 @@
 package com.knoxhack.echoorbitalremnants.world;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
 import com.knoxhack.echoorbitalremnants.EchoOrbitalRemnants;
 import com.knoxhack.echoorbitalremnants.registry.ModBlocks;
 import com.knoxhack.echoorbitalremnants.registry.ModItems;

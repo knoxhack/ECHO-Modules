@@ -1,0 +1,70 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as Official ECHO Pack #2 and the relaxed sandbox companion to Ashfall."
+description='''
+ECHO: Openlands Protocol provides the Openlands relaxed building, farming,
+old-road, waystone, and exploration content contract. NeoForge is a compatibility
+target; Echo data IDs remain the source of truth for Native and Standalone parity.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and pack-root services."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared sync and multiplayer contracts for waystone and world state."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoadaptercore"
+type="required"
+reason="Keeps Openlands parity routed through Echo contracts instead of runtime-specific code."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoworldcore"
+type="required"
+reason="Provides region and landmark contracts for roads, waystones, and map reveal."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echorecipecore"
+type="required"
+reason="Provides the Openlands recipe backend and recipe parity tests."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+

@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import java.util.List;
 import java.util.Locale;

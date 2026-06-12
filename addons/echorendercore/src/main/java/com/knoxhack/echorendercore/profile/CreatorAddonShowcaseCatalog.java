@@ -22,7 +22,6 @@ public final class CreatorAddonShowcaseCatalog {
          integrated("echolens", "Lens", "holo_display", "debug inspection target and effect audit overlay", "v13_terminal_hud", "stable overlay required", "Verify lens debug targets and fallback visuals."),
          integrated("echologisticsnetwork", "Logistics Network", "motion_particles", "network node routing pulses", "v13_orbit_particles", "stable particles required", "Verify route particle resolver metadata."),
          noSurface("echomissioncore", "Mission Core", "Mission service integration only."),
-         noSurface("echomodpackcommandcenter", "Modpack Command Center", "External pack orchestration has no live render host."),
          integrated("echomultiblockcore", "Multiblock Core", "machines_blocks", "anchor and named-part authoring coverage", "v13_neon_cube_core", "stable anchors required", "Verify multiblock anchors and block mask eligibility."),
          noSurface("echonetcore", "Net Core", "Network service integration only."),
          integrated("echonexusprotocol", "Nexus Protocol", "global_atmosphere", "global field and nexus bloom target", "v13_advanced_bloom", "fullscreen fallback allowed, stable required", "Verify global atmosphere profile routing."),

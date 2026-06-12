@@ -1,9 +1,9 @@
 package com.knoxhack.echoworldcore.integration;
 
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
-import com.knoxhack.echocore.api.WorldCoreValidationIssue;
-import com.knoxhack.echocore.api.WorldCoreValidationReport;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.WorldCoreValidationIssue;
+import com.echoplatform.echocore.api.WorldCoreValidationReport;
 import com.knoxhack.echoworldcore.Config;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.service.WorldRegionService;

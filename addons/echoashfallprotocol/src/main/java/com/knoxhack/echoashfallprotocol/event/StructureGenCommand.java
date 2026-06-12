@@ -363,7 +363,7 @@ public class StructureGenCommand {
         // Floor and ceiling
         for (int x = -6; x <= 6; x++) {
             for (int z = -6; z <= 6; z++) {
-                level.setBlockAndUpdate(center.offset(x, -3, z), ModBlocks.RIFTSTONE.get().defaultBlockState());
+                level.setBlockAndUpdate(center.offset(x, -3, z), ModBlocks.NEXUS_SCAR_STONE.get().defaultBlockState());
                 level.setBlockAndUpdate(center.offset(x, 3, z), ModBlocks.RUSTED_METAL_SHEET.get().defaultBlockState());
             }
         }
@@ -409,10 +409,10 @@ public class StructureGenCommand {
             }
         }
 
-        // Reactor chamber floor - riftstone (melted/reinforced)
+        // Reactor chamber floor - nexus_scar_stone (melted/reinforced)
         for (int x = -10; x <= 10; x++) {
             for (int z = -10; z <= 10; z++) {
-                level.setBlockAndUpdate(center.offset(x, -8, z), ModBlocks.RIFTSTONE.get().defaultBlockState());
+                level.setBlockAndUpdate(center.offset(x, -8, z), ModBlocks.NEXUS_SCAR_STONE.get().defaultBlockState());
             }
         }
 

@@ -1,6 +1,6 @@
 package com.knoxhack.echorelictech;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public class EchoRelicTechClient {
     public EchoRelicTechClient(Object modEventBus) {

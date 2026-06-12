@@ -1,7 +1,7 @@
 package com.knoxhack.echopresencelink.presence;
 
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
 import com.knoxhack.echopresencelink.EchoPresenceLink;
 import com.knoxhack.echopresencelink.config.PresenceLinkConfig;
 import java.util.ArrayList;

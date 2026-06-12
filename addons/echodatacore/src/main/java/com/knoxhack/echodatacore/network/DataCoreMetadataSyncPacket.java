@@ -1,8 +1,8 @@
 package com.knoxhack.echodatacore.network;
 
-import com.knoxhack.echocore.api.DataKeyMetadata;
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.DataValueKind;
+import com.echoplatform.echocore.api.DataKeyMetadata;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.DataValueKind;
 import com.knoxhack.echodatacore.EchoDataCore;
 import java.util.ArrayList;
 import java.util.List;

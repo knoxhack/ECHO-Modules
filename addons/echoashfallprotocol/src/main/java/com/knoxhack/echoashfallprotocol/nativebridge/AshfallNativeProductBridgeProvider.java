@@ -88,7 +88,7 @@ public final class AshfallNativeProductBridgeProvider implements NativeLoaderPro
             "echoashfallprotocol:scrap_press",
             "echoashfallprotocol:factory_controller",
             "echoashfallprotocol:relay_scanner_lens",
-            "echoashfallprotocol:map_table",
+            "echoashfallprotocol:survey_table",
             "echoashfallprotocol:nexus_crystal"
     );
     private static final List<String> ASHFALL_NATIVE_MODULE_CREATIVE_FALLBACK_ITEM_IDS = List.of(
@@ -105,7 +105,7 @@ public final class AshfallNativeProductBridgeProvider implements NativeLoaderPro
             "echoashfallprotocol:scrap_press",
             "echoashfallprotocol:factory_controller",
             "echoashfallprotocol:relay_scanner_lens",
-            "echoashfallprotocol:map_table",
+            "echoashfallprotocol:survey_table",
             "echoashfallprotocol:nexus_crystal",
             "echoterminal:echo_terminal",
             "echoterminal:echo_terminal_remote"

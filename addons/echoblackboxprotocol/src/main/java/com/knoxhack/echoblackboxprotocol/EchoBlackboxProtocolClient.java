@@ -39,7 +39,7 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public class EchoBlackboxProtocolClient {
    public EchoBlackboxProtocolClient() {

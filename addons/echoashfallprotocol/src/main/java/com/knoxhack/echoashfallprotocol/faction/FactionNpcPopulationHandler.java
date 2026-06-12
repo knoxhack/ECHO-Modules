@@ -1,9 +1,9 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoNpcRole;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoNpcRole;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.entity.ModEntities;
 import com.knoxhack.echoashfallprotocol.entity.faction.FactionNpcEntity;

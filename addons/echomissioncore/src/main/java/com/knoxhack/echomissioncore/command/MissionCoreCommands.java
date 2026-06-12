@@ -1,7 +1,7 @@
 package com.knoxhack.echomissioncore.command;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echomissioncore.service.MissionCoreService;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
@@ -107,15 +107,15 @@ public final class MissionCoreCommands {
         }
         int active = 0;
         for (var m : missions) {
-            if (m.status() == com.knoxhack.echocore.api.mission.MissionStatus.ACTIVE
-                    || m.status() == com.knoxhack.echocore.api.mission.MissionStatus.CLAIMABLE) {
+            if (m.status() == com.echoplatform.echocore.api.mission.MissionStatus.ACTIVE
+                    || m.status() == com.echoplatform.echocore.api.mission.MissionStatus.CLAIMABLE) {
                 active++;
             }
         }
         tell(player, "Your missions (" + missions.size() + " total, " + active + " active/claimable):");
         for (var m : missions) {
             String label = m.definition() == null ? m.id().toString() : m.definition().title();
-            String progress = m.status() == com.knoxhack.echocore.api.mission.MissionStatus.ACTIVE
+            String progress = m.status() == com.echoplatform.echocore.api.mission.MissionStatus.ACTIVE
                     ? " [" + Math.round(m.progress() * 100f) + "%]" : "";
             tell(player, "  - " + label + " [" + m.status().name().toLowerCase() + "]" + progress);
         }

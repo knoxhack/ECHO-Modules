@@ -4,7 +4,7 @@ import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echobasegrid.config.BaseGridConfig;
 import com.knoxhack.echobasegrid.command.BaseGridCommands;
 import com.knoxhack.echobasegrid.network.BaseGridNetwork;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

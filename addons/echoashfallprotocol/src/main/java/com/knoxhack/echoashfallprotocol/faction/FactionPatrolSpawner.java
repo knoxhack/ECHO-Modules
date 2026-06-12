@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.entity.ModEntities;
 import com.knoxhack.echoashfallprotocol.entity.faction.FactionNpcEntity;
 import com.knoxhack.echoashfallprotocol.registry.ModAttachments;

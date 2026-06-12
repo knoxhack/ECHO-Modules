@@ -1,6 +1,6 @@
 package com.knoxhack.echopresencelink.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 import com.knoxhack.echopresencelink.api.PresenceSanitizer;
 
 public final class PresenceLinkConfig {

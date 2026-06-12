@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.echo;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.Config;
 import com.knoxhack.echoashfallprotocol.event.EnvironmentalEventHandler;
 import com.knoxhack.echoashfallprotocol.event.EnvironmentalEventType;

@@ -1,7 +1,7 @@
 package com.knoxhack.echomultiblockcore.client;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoThemeToken;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoThemeToken;
 import com.knoxhack.echocore.client.ui.EchoCyberGlassUi;
 import com.knoxhack.echomultiblockcore.api.MultiblockState;
 import com.knoxhack.echomultiblockcore.menu.MultiblockControllerMenu;

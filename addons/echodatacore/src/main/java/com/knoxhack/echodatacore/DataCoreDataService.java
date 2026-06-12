@@ -1,18 +1,18 @@
 package com.knoxhack.echodatacore;
 
-import com.knoxhack.echocore.api.DataChangeMessage;
-import com.knoxhack.echocore.api.DataChangeKind;
-import com.knoxhack.echocore.api.DataKeyMetadata;
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.DataServiceDiagnostics;
-import com.knoxhack.echocore.api.DataValueKind;
-import com.knoxhack.echocore.api.EchoDataBus;
-import com.knoxhack.echocore.api.IDataKey;
-import com.knoxhack.echocore.api.IDataService;
-import com.knoxhack.echocore.api.IDataSyncBridge;
-import com.knoxhack.echocore.api.IPlayerDataView;
-import com.knoxhack.echocore.api.ITeamDataView;
-import com.knoxhack.echocore.api.IWorldDataView;
+import com.echoplatform.echocore.api.DataChangeMessage;
+import com.echoplatform.echocore.api.DataChangeKind;
+import com.echoplatform.echocore.api.DataKeyMetadata;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.DataServiceDiagnostics;
+import com.echoplatform.echocore.api.DataValueKind;
+import com.echoplatform.echocore.api.EchoDataBus;
+import com.echoplatform.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.IDataService;
+import com.echoplatform.echocore.api.IDataSyncBridge;
+import com.echoplatform.echocore.api.IPlayerDataView;
+import com.echoplatform.echocore.api.ITeamDataView;
+import com.echoplatform.echocore.api.IWorldDataView;
 import com.knoxhack.echodatacore.legacy.DataCoreLegacyAdapters;
 import com.knoxhack.echodatacore.network.DataCoreMetadataSyncPacket;
 import com.knoxhack.echodatacore.network.DataCoreSyncPacket;
@@ -239,6 +239,7 @@ public final class DataCoreDataService implements IDataService {
             case PLAYER -> clientPlayerValues;
             case WORLD -> clientWorldValues;
             case TEAM -> clientTeamValues;
+            case GLOBAL -> clientWorldValues;
         };
         Map<Identifier, String> snapshot = new LinkedHashMap<>();
         source.getOrDefault(ownerId == null ? "" : ownerId, Map.of())
@@ -305,6 +306,7 @@ public final class DataCoreDataService implements IDataService {
             case PLAYER -> clientPlayerValues;
             case WORLD -> clientWorldValues;
             case TEAM -> clientTeamValues;
+            case GLOBAL -> clientWorldValues;
         };
         Map<Identifier, CompoundTag> ownerValues = target.computeIfAbsent(packet.ownerId(), ignored -> new ConcurrentHashMap<>());
         if (packet.fullSnapshot()) {
@@ -406,6 +408,7 @@ public final class DataCoreDataService implements IDataService {
             case PLAYER -> clientPlayerValues;
             case WORLD -> clientWorldValues;
             case TEAM -> clientTeamValues;
+            case GLOBAL -> clientWorldValues;
         };
         Map<Identifier, CompoundTag> values = source.get(ownerId);
         if (values == null) {

@@ -1,7 +1,7 @@
 package com.knoxhack.echorecovery.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
 import com.knoxhack.echorecovery.EchoRecovery;
 import com.knoxhack.echorecovery.config.RecoveryConfig;
 import com.knoxhack.echorecovery.data.RecoveryWorldData;

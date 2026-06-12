@@ -35,8 +35,8 @@ public class ModPoiTypes {
     public static final EchoBackendRegistryEntry<PoiType> TRADE_COUNTER_POI = registerPoi(
             "trade_counter_poi", ModBlocks.TRADE_COUNTER, 1, 1
     );
-    public static final EchoBackendRegistryEntry<PoiType> MAP_TABLE_POI = registerPoi(
-            "map_table_poi", ModBlocks.MAP_TABLE, 1, 1
+    public static final EchoBackendRegistryEntry<PoiType> SURVEY_TABLE_POI = registerPoi(
+            "survey_table_poi", ModBlocks.SURVEY_TABLE, 1, 1
     );
 
     // === SPOREBOUND POIs ===

@@ -1,8 +1,8 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
-import com.knoxhack.echocore.api.index.IndexMachineLayout;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IndexMachineLayout;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.resources.Identifier;

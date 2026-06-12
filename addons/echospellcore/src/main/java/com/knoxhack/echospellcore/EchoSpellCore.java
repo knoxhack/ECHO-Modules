@@ -1,8 +1,8 @@
 package com.knoxhack.echospellcore;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echospellcore.integration.SpellCoreIntegrations;
 import com.knoxhack.echospellcore.network.ModNetwork;
 import com.knoxhack.echospellcore.registry.ModEntities;

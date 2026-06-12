@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.world;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.echo.Mission;
 import com.knoxhack.echoashfallprotocol.echo.MissionRegistry;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;

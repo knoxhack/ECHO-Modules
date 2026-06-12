@@ -314,8 +314,8 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 item("hazmat_boots", "hazard_gear", "HazmatArmorItem"),
                 item("contaminated_iron", "hazard_resource", "ContaminatedItem"),
                 item("contaminated_gold", "hazard_resource", "ContaminatedItem"),
-                item("contaminated_redstone", "hazard_resource", "ContaminatedItem"),
-                item("contaminated_lapis", "hazard_resource", "ContaminatedItem"),
+                item("charged_ash_circuit", "hazard_resource", "ContaminatedItem"),
+                item("blue_ash_salt", "hazard_resource", "ContaminatedItem"),
                 item("alloy_blade", "weapon", "AlloyBladeItem"),
                 item("alloy_hammer", "weapon", "AlloyHammerItem"),
                 item("nexus_blade", "weapon", "NexusBladeItem"),
@@ -328,8 +328,8 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 item("return_beacon", "recovery_fast_travel", "ReturnBeaconItem"),
                 item("scout_drone_item", "drone", "ScoutDroneItem"),
                 item("rare_tech_schematic", "research_progression", "RareTechSchematicItem"),
-                item("bone_knife", "weapon", "BoneKnifeItem"),
-                item("crude_spear", "weapon", "CrudeSpearItem"),
+                item("ashbone_shiv", "weapon", "AshboneShivItem"),
+                item("scavenger_spear", "weapon", "ScavengerSpearItem"),
                 item("hide_wrap", "survival_gear", "HideWrapItem"),
                 item("bandage", "medical_hazard", "BandageItem"),
                 item("stim_pack", "medical_hazard", "StimPackItem"),
@@ -343,7 +343,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 block("emergency_bunk", "survival_starting_pod", "EmergencyBunkBlock"),
                 block("weapon_rack", "npc_profession_station", "ProfessionBlock"),
                 block("trade_counter", "npc_profession_station", "ProfessionBlock"),
-                block("map_table", "holomap_navigation", "ProfessionBlock"),
+                block("survey_table", "holomap_navigation", "ProfessionBlock"),
                 block("bio_processing_station", "machine_station", "ProfessionBlock"),
                 block("spore_garden", "machine_station", "ProfessionBlock"),
                 block("acidic_sludge", "hazard_terrain", "AcidicSludgeBlock"),
@@ -408,8 +408,8 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 itemConstructor("gas_mask", "GasMaskItem"),
                 itemConstructor("contaminated_iron", "ContaminatedItem"),
                 itemConstructor("contaminated_gold", "ContaminatedItem"),
-                itemConstructor("contaminated_redstone", "ContaminatedItem"),
-                itemConstructor("contaminated_lapis", "ContaminatedItem"),
+                itemConstructor("charged_ash_circuit", "ContaminatedItem"),
+                itemConstructor("blue_ash_salt", "ContaminatedItem"),
                 itemConstructor("alloy_blade", "AlloyBladeItem"),
                 itemConstructor("alloy_hammer", "AlloyHammerItem"),
                 itemConstructor("nexus_blade", "NexusBladeItem"),
@@ -422,8 +422,8 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 itemConstructor("return_beacon", "ReturnBeaconItem"),
                 itemConstructor("scout_drone_item", "ScoutDroneItem"),
                 itemConstructor("rare_tech_schematic", "RareTechSchematicItem"),
-                itemConstructor("bone_knife", "BoneKnifeItem"),
-                itemConstructor("crude_spear", "CrudeSpearItem"),
+                itemConstructor("ashbone_shiv", "AshboneShivItem"),
+                itemConstructor("scavenger_spear", "ScavengerSpearItem"),
                 itemConstructor("hide_wrap", "HideWrapItem"),
                 itemConstructor("bandage", "BandageItem"),
                 itemConstructor("stim_pack", "StimPackItem"),
@@ -455,7 +455,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 blockConstructor("ash_layer", "runtime:world.level.block.SnowLayerBlock"),
                 blockConstructor("weapon_rack", "ProfessionBlock"),
                 blockConstructor("trade_counter", "ProfessionBlock"),
-                blockConstructor("map_table", "ProfessionBlock"),
+                blockConstructor("survey_table", "ProfessionBlock"),
                 blockConstructor("bio_processing_station", "ProfessionBlock"),
                 blockConstructor("spore_garden", "ProfessionBlock"),
                 blockConstructor("echo_cache", "EchoContainerBlock"),
@@ -471,17 +471,11 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
     public Map<String, String> nativeModuleClassOverrides() {
         return Map.ofEntries(
                 Map.entry("echoagriculturereclamation", "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamationNativeModule"),
-                Map.entry("echoaetherworks", "com.knoxhack.echoaetherworks.EchoAetherWorksNativeModule"),
-                Map.entry("echoarcanacore", "com.knoxhack.echoarcanacore.EchoArcanaCoreNativeModule"),
-                Map.entry("echoarcaneindex", "com.knoxhack.echoarcaneindex.EchoArcaneIndexNativeModule"),
                 Map.entry("echoarmory", "com.knoxhack.echoarmory.EchoArmoryNativeModule"),
                 Map.entry("echoblackboxprotocol", "com.knoxhack.echoblackboxprotocol.EchoBlackboxProtocolNativeModule"),
                 Map.entry("echoblockworks", "com.knoxhack.echoblockworks.EchoBlockworksNativeModule"),
                 Map.entry("echoconvoyprotocol", "com.knoxhack.echoconvoyprotocol.EchoConvoyProtocolNativeModule"),
-                Map.entry("echocursecore", "com.knoxhack.echocursecore.EchoCurseCoreNativeModule"),
                 Map.entry("echodatacore", "com.knoxhack.echodatacore.EchoDataCoreNativeModule"),
-                Map.entry("echofamiliarcore", "com.knoxhack.echofamiliarcore.EchoFamiliarCoreNativeModule"),
-                Map.entry("echogrimoire", "com.knoxhack.echogrimoire.EchoGrimoireNativeModule"),
                 Map.entry("echoholomap", "com.knoxhack.echoholomap.EchoHoloMapNativeModule"),
                 Map.entry("echoindex", "com.knoxhack.echoindex.EchoIndexNativeModule"),
                 Map.entry("echoindustrialnexus", "com.knoxhack.echoindustrialnexus.EchoIndustrialNexusNativeModule"),
@@ -494,10 +488,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 Map.entry("echopowergrid", "com.knoxhack.echopowergrid.EchoPowerGridNativeModule"),
                 Map.entry("echorecovery", "com.knoxhack.echorecovery.EchoRecoveryNativeModule"),
                 Map.entry("echorelictech", "com.knoxhack.echorelictech.EchoRelicTechNativeModule"),
-                Map.entry("echoriftworlds", "com.knoxhack.echoriftworlds.EchoRiftWorldsNativeModule"),
-                Map.entry("echoritualcore", "com.knoxhack.echoritualcore.EchoRitualCoreNativeModule"),
                 Map.entry("echoscreencore", "com.knoxhack.echoscreencore.EchoScreenCoreNativeModule"),
-                Map.entry("echospellcore", "com.knoxhack.echospellcore.EchoSpellCoreNativeModule"),
                 Map.entry("echostationfall", "com.knoxhack.echostationfall.EchoStationfallNativeModule"),
                 Map.entry("echoterminal", "com.knoxhack.echoterminal.EchoTerminalNativeModule"),
                 Map.entry("echoweathercore", "com.knoxhack.echoweathercore.EchoWeatherCoreNativeModule"),
@@ -696,34 +687,6 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         "Stationfall block restored station power and control routing."
                 ),
                 new NativeModuleActionRoute(
-                        "echospellcore",
-                        "arcana_node",
-                        List.of(
-                                "echospellcore:signal_focus", "minecraft:amethyst_shard",
-                                "echospellcore:aether_catalyst", "minecraft:ender_pearl"
-                        ),
-                        List.of(
-                                "echospellcore:signal_focus", "minecraft:amethyst_shard",
-                                "echospellcore:aether_catalyst", "minecraft:ender_pearl"
-                        ),
-                        "Spell Core resolved a field cast and placed a focus node.",
-                        "Spell Core block resolved a field ritual effect."
-                ),
-                new NativeModuleActionRoute(
-                        "echoritualcore",
-                        "arcana_node",
-                        List.of(
-                                "echoritualcore:ritual_focus", "minecraft:amethyst_shard",
-                                "echoritualcore:stability_seal", "minecraft:ender_pearl"
-                        ),
-                        List.of(
-                                "echoritualcore:ritual_focus", "minecraft:amethyst_shard",
-                                "echoritualcore:stability_seal", "minecraft:ender_pearl"
-                        ),
-                        "Ritual Core resolved a field ritual and placed a focus node.",
-                        "Ritual Core block resolved a field ritual effect."
-                ),
-                new NativeModuleActionRoute(
                         "echologisticsnetwork",
                         "logistics_depot",
                         List.of(
@@ -769,15 +732,6 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         "com.knoxhack.echoagriculturereclamation.integration.ReclamationTerminalCommonIntegration",
                         "com.knoxhack.echoagriculturereclamation.integration.ReclamationLensIntegration",
                         "com.knoxhack.echoagriculturereclamation.integration.ReclamationLogisticsIntegration"
-                )),
-                Map.entry("echoarcanacore", List.of(
-                        "com.knoxhack.echoarcanacore.integration.ArcanaCoreMissionIntegration",
-                        "com.knoxhack.echoarcanacore.integration.veilbound.ArcanaVeilboundLensIntegration"
-                )),
-                Map.entry("echospellcore", List.of(
-                        "com.knoxhack.echospellcore.integration.terminal.SpellCoreTerminalIntegration",
-                        "com.knoxhack.echospellcore.integration.lens.SpellCoreLensIntegration",
-                        "com.knoxhack.echospellcore.integration.missioncore.SpellCoreMissionCoreIntegration"
                 )),
                 Map.entry("echorelictech", List.of(
                         "com.knoxhack.echorelictech.integration.terminal.RelicTechTerminalCommonIntegration",
@@ -1063,7 +1017,6 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 recipe("armory_station", armoryStationPaint()),
                 recipe("relic_seal", relicSealPaint()),
                 recipe("station_node", stationNodePaint()),
-                recipe("arcana_node", arcanaNodePaint()),
                 recipe("logistics_depot", logisticsDepotPaint())
         );
     }
@@ -1079,11 +1032,11 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         List.of(reward(id("field_manual"), 1, "echoterminal:echo_terminal_remote", 1)),
                         List.of(), "", false,
                         List.of(
-                                product(0, 0, 0, "map_table", id("relay_station")),
+                                product(0, 0, 0, "survey_table", id("relay_station")),
                                 product(1, 0, 0, "relay_station", id("power_node"))
                         ),
                         List.of(), "", "",
-                        "{product} map item placed a map table and relay waypoint."),
+                        "{product} route item placed a survey table and relay waypoint."),
                 field("survival", "", "runWaterPurifierScenario", false,
                         List.of(
                                 reward(id("clean_water_bottle"), 1, id("field_manual"), 1),
@@ -1161,9 +1114,9 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 field("route", "", "", false,
                         List.of(reward(id("field_manual"), 1, "echoterminal:echo_terminal_remote", 1)),
                         List.of(), "", false,
-                        List.of(product(0, 1, 0, "map_table", id("relay_station"))),
+                        List.of(product(0, 1, 0, "survey_table", id("relay_station"))),
                         List.of(), "", "",
-                        "{product} map table refreshed waypoint and recovery-route data."),
+                        "{product} survey table refreshed waypoint and recovery-route data."),
                 field("survival", "", "runWaterPurifierScenario", false,
                         List.of(reward(id("clean_water_bottle"), 1, id("field_manual"), 1)),
                         List.of(), "", false,
@@ -1492,16 +1445,6 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
         return List.copyOf(placements);
     }
 
-    private static List<NativeWorldPaintPlacement> arcanaNodePaint() {
-        return List.of(
-                block(0, -1, 0, "minecraft:amethyst_block"),
-                block(0, 0, 0, "echoaetherworks:aether_cell", "minecraft:enchanting_table"),
-                block(1, 0, 0, "echoritualcore:offering_pedestal", "minecraft:lectern"),
-                block(-1, 0, 0, "echospellcore:signal_focus", "minecraft:lapis_block"),
-                block(0, 1, 0, "minecraft:end_rod", "minecraft:torch")
-        );
-    }
-
     private static List<NativeWorldPaintPlacement> logisticsDepotPaint() {
         return List.of(
                 block(0, -1, 0, "echoblockworks:charred_concrete_cracked", "minecraft:polished_deepslate"),
@@ -1752,27 +1695,22 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
 
     @Override
     public List<String> nativeArcanaModuleNamespaces() {
-        return List.of(
-                "echoaetherworks",
-                "echocursecore",
-                "echofamiliarcore",
-                "echoriftworlds"
-        );
+        return List.of();
     }
 
     @Override
     public List<String> nativeArcanaPlacementHints() {
-        return List.of("aether", "curse", "spirit", "rift", "cell", "pocket");
+        return List.of();
     }
 
     @Override
     public List<String> nativeArcanaRewardItemHints() {
-        return List.of("aether", "curse", "spirit", "rift", "charm", "core", "sample");
+        return List.of();
     }
 
     @Override
     public List<String> nativeArcanaFallbackItemIds() {
-        return List.of("minecraft:amethyst_shard", "minecraft:ender_pearl");
+        return List.of();
     }
 
     @Override
@@ -1804,7 +1742,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "scanner",
                 "cache",
                 "crate",
-                "map_table",
+                "survey_table",
                 "purifier",
                 "cleanser",
                 "dynamo",
@@ -1947,7 +1885,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
         return List.of(
                 id("echo_cache"),
                 id("relay_station"),
-                id("map_table"),
+                id("survey_table"),
                 id("scrap_dynamo"),
                 id("power_node")
         );
@@ -2016,7 +1954,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         List.of(new NativeRewardGrant(id("scrap_metal"), 2, id("ash"), 1))
                 ),
                 new NativeRewardRule(
-                        List.of("relay", "map_table"),
+                        List.of("relay", "survey_table"),
                         List.of(new NativeRewardGrant(id("relay_scanner_lens"), 1))
                 )
         );
@@ -2076,7 +2014,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         "contaminant_condenser"
                 )),
                 new NativeBlockActionRule("stationary_scanner", List.of("signal_scanner", "stationary_scanner")),
-                new NativeBlockActionRule("map_table", List.of("map_table")),
+                new NativeBlockActionRule("survey_table", List.of("survey_table")),
                 new NativeBlockActionRule("campaign_core", List.of("nexus_core"))
         );
     }
@@ -2114,7 +2052,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "clean_water_bottle",
                 80,
                 List.of("filter_cartridge_advanced"),
-                List.of("contaminated_iron", "contaminated_gold", "contaminated_redstone", "contaminated_lapis"),
+                List.of("contaminated_iron", "contaminated_gold", "charged_ash_circuit", "blue_ash_salt"),
                 4_000,
                 400,
                 2_000,

@@ -1,7 +1,7 @@
 package com.knoxhack.echonetcore.api;
 
-import com.knoxhack.echocore.api.network.EchoPacketDirection;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketDirection;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.network.EchoNetDebug;
 import java.util.Collection;
 import java.util.Optional;

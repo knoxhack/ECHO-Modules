@@ -1,0 +1,197 @@
+{
+  "schema": "echo.openlands.systems.release_publication_manifest_contract.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the publication manifest required to turn local Openlands artifacts with hashes and sizes into Release Index entries with public download URLs, download verification, and approval evidence.",
+  "sourceContracts": {
+    "distribution": "systems/distribution_alpha_gates.json",
+    "distributionApproval": "systems/distribution_approval_acceptance.json",
+    "distributionApprovalHarnessPlan": "systems/distribution_approval_harness_plan.json",
+    "launcherFlow": "systems/launcher_flow_acceptance.json",
+    "releaseIndex": "dist/echo-module-release/echo-release.json",
+    "readinessReport": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-readiness-report.json"
+  },
+  "manifestPaths": {
+    "blockedTemplate": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-manifest.template.json",
+    "verifiedManifest": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-manifest.verified.json",
+    "verificationArtifacts": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-verification-artifacts",
+    "approvedManifest": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-manifest.json"
+  },
+  "approvalContract": {
+    "schema": "echo.openlands.release_publication_approval.v1",
+    "requiredTopLevelFields": [
+      "schema",
+      "moduleId",
+      "moduleVersion",
+      "releaseId",
+      "approver",
+      "approvedAt",
+      "releaseIndexPatch",
+      "distributionApproval",
+      "checklist"
+    ],
+    "requiredChecklistIds": [
+      "all_public_downloads_verified",
+      "release_index_patch_reviewed",
+      "distribution_approval_signoff_recorded",
+      "rollback_plan_attached"
+    ],
+    "requiredDistributionApprovalFields": [
+      "signoffId",
+      "approver",
+      "approvedAt",
+      "reports"
+    ],
+    "requiredDistributionApprovalReportFields": [
+      "edition",
+      "path",
+      "sha256"
+    ],
+    "requiredDistributionApprovalReportEditions": [
+      "native",
+      "neoforge",
+      "standalone"
+    ]
+  },
+  "reportContract": {
+    "schema": "echo.openlands.release_publication_manifest.v1",
+    "requiredTopLevelFields": [
+      "schema",
+      "status",
+      "generatedAt",
+      "moduleId",
+      "moduleVersion",
+      "releaseId",
+      "releaseIndexPath",
+      "sourceContracts",
+      "artifactPublications",
+      "releaseIndexPatchRules",
+      "blockedBy",
+      "nextSteps"
+    ],
+    "allowedStatus": [
+      "template_blocked",
+      "urls_pending",
+      "uploaded_unverified",
+      "verified",
+      "approved",
+      "failed"
+    ],
+    "requiredArtifactPublicationFields": [
+      "id",
+      "file",
+      "kind",
+      "runtimeTarget",
+      "requiredForPublicAlpha",
+      "sha256",
+      "size",
+      "downloadUrl",
+      "urlStatus",
+      "uploadProvider",
+      "storageKey",
+      "publishedAt",
+      "downloadVerification",
+      "releaseIndexPatch"
+    ],
+    "allowedUrlStatus": [
+      "missing_url",
+      "url_recorded",
+      "download_verified",
+      "approved"
+    ],
+    "requiredDownloadVerificationFields": [
+      "downloadAttempted",
+      "downloadedSha256",
+      "downloadedSize",
+      "sha256Matches",
+      "sizeMatches",
+      "verifiedAt",
+      "verificationArtifact"
+    ]
+  },
+  "artifactTargets": [
+    {
+      "id": "native",
+      "file": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "kind": "echo-addon",
+      "runtimeTarget": "echo_native",
+      "requiredForPublicAlpha": true,
+      "releaseIndexArtifactKind": "echo-addon"
+    },
+    {
+      "id": "standalone",
+      "file": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "kind": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "requiredForPublicAlpha": true,
+      "releaseIndexArtifactKind": "standalone"
+    },
+    {
+      "id": "neoforge",
+      "file": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "kind": "neoforge",
+      "runtimeTarget": "neoforge",
+      "requiredForPublicAlpha": true,
+      "releaseIndexArtifactKind": "neoforge"
+    },
+    {
+      "id": "sources",
+      "file": "echoopenlandsprotocol-0.1.0-sources.jar",
+      "kind": "sources",
+      "runtimeTarget": "sources",
+      "requiredForPublicAlpha": true,
+      "releaseIndexArtifactKind": "sources"
+    }
+  ],
+  "releaseIndexPatchRules": {
+    "patchTarget": "modules[].artifacts[].downloadUrl",
+    "publicDownloadUrlProtocol": "https:",
+    "publicDownloadUrlHostRules": [
+      "Host must be a public DNS name or public IP address.",
+      "Localhost, single-label placeholder hosts, private IP ranges, link-local ranges, carrier-grade NAT, reserved documentation ranges, and internal/local/test/example hostnames are not valid public artifact evidence."
+    ],
+    "matchBy": [
+      "moduleId",
+      "version",
+      "filename",
+      "sha256",
+      "size"
+    ],
+    "allArtifactUrlsRequired": true,
+    "downloadVerificationRequired": true,
+    "releaseIndexCommitRequired": true,
+    "distributionApprovalRequired": true,
+    "blockedTemplateDoesNotPatchReleaseIndex": true,
+    "warningStateRequiredUntilApproved": true
+  },
+  "blockedTemplateRules": {
+    "status": "template_blocked",
+    "downloadUrlMustBeEmpty": true,
+    "urlStatus": "missing_url",
+    "requiredBlockedBy": [
+      "release_index_download_urls_missing",
+      "download_verification_missing",
+      "release_index_patch_not_approved"
+    ],
+    "requiredNextSteps": [
+      "Upload all four Openlands artifacts to the approved publication location.",
+      "Record public download URLs for Native, Standalone, NeoForge, and sources artifacts.",
+      "Download each public URL and verify sha256 and size against the Release Index.",
+      "Patch echo-release.json only after every artifact publication verifies.",
+      "Attach the verified publication manifest to distribution approval evidence."
+    ]
+  },
+  "clearingRules": [
+    "A template_blocked manifest must keep every downloadUrl empty and every urlStatus as missing_url.",
+    "Any recorded public downloadUrl must use public HTTPS and reject localhost, private, link-local, reserved, documentation-only, and placeholder hostnames.",
+    "urls_pending may record storage keys or provider details, but it cannot patch echo-release.json.",
+    "uploaded_unverified requires non-empty URLs for all four artifacts, but cannot clear release_index_download_hash_verified until downloads match sha256 and size.",
+    "verified requires every artifact download verification to pass and must include a verification artifact path for each artifact.",
+    "approved requires the verified manifest, a recorded Release Index commit or patch id, and distribution approval signoff."
+  ]
+}

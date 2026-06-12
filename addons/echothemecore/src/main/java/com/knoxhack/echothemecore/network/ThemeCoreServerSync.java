@@ -1,6 +1,6 @@
 package com.knoxhack.echothemecore.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echothemecore.EchoThemeCore;
 import com.knoxhack.echothemecore.config.ThemeCoreConfig;

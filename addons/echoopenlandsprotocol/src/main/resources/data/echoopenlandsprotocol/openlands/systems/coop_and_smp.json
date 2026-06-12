@@ -1,0 +1,137 @@
+{
+  "schema": "echo.openlands.systems.coop_and_smp.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "targetPlayers": {
+    "mvp": "1",
+    "publicAlpha": "1-8",
+    "oneDotZero": "1-32 depending on runtime host"
+  },
+  "sharedState": [
+    {
+      "id": "waystones",
+      "storedFields": [
+        "waystoneId",
+        "regionId",
+        "customName",
+        "state",
+        "ownerPlayerId",
+        "ownerGroupId",
+        "isPublicTravel",
+        "canPublicRename",
+        "repairContributorIds",
+        "linkedRouteIds"
+      ],
+      "conflictResolution": "server_authoritative_last_valid_state",
+      "offlineBehavior": "contributors persist by stable player id"
+    },
+    {
+      "id": "containers",
+      "storedFields": [
+        "containerId",
+        "customName",
+        "ownerPlayerId",
+        "groupId",
+        "permissionMode",
+        "inventoryStacks"
+      ],
+      "conflictResolution": "slot_transaction_lock",
+      "offlineBehavior": "containers remain world-owned if owner is offline"
+    },
+    {
+      "id": "homestead_claims",
+      "storedFields": [
+        "claimId",
+        "regionId",
+        "ownerPlayerId",
+        "groupId",
+        "bounds",
+        "permissions"
+      ],
+      "conflictResolution": "claim_creation_rejects_overlap",
+      "offlineBehavior": "trusted group members retain edit access"
+    },
+    {
+      "id": "holomap_markers",
+      "storedFields": [
+        "markerId",
+        "regionId",
+        "position",
+        "createdBy",
+        "visibility",
+        "label"
+      ],
+      "conflictResolution": "marker_owner_or_group_can_edit",
+      "offlineBehavior": "public markers remain visible"
+    }
+  ],
+  "permissions": {
+    "modes": [
+      "private",
+      "group",
+      "public"
+    ],
+    "defaults": {
+      "waystoneRepair": "public",
+      "waystoneRename": "owner_or_group",
+      "waystoneTravel": "public_after_active",
+      "containerOpen": "owner_or_group",
+      "containerQuickStack": "owner_or_group",
+      "homesteadBuild": "owner_or_group",
+      "holomapMarkerCreate": "public",
+      "holomapMarkerEdit": "owner_or_group"
+    }
+  },
+  "networkEvents": [
+    {
+      "id": "openlands_waystone_state_changed",
+      "direction": "server_to_clients_tracking_region",
+      "payloadFields": [
+        "waystoneId",
+        "oldState",
+        "newState",
+        "regionId"
+      ]
+    },
+    {
+      "id": "openlands_shelter_score_updated",
+      "direction": "server_to_player",
+      "payloadFields": [
+        "playerId",
+        "shelterId",
+        "score",
+        "missingComponents"
+      ]
+    },
+    {
+      "id": "openlands_storage_transaction",
+      "direction": "client_request_server_response",
+      "payloadFields": [
+        "transactionId",
+        "containerId",
+        "operation",
+        "stackDelta"
+      ]
+    },
+    {
+      "id": "openlands_holomap_marker_changed",
+      "direction": "server_to_clients_with_visibility",
+      "payloadFields": [
+        "markerId",
+        "regionId",
+        "visibility",
+        "label"
+      ]
+    }
+  ],
+  "acceptance": [
+    "No client may directly set active waystone state.",
+    "Storage actions must be transaction based to avoid duplication.",
+    "Public waystone travel must not grant edit permission.",
+    "Co-op state must serialize in Native, Standalone, and NeoForge saves."
+  ]
+}

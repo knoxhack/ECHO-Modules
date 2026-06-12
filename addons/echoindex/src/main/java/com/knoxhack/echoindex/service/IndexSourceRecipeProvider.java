@@ -1,11 +1,11 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IIndexRecipeProvider;
-import com.knoxhack.echocore.api.index.IndexRecipeCategory;
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexSourceFact;
-import com.knoxhack.echocore.api.index.IndexSourceKind;
+import com.echoplatform.echocore.api.index.IIndexRecipeProvider;
+import com.echoplatform.echocore.api.index.IndexRecipeCategory;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexSourceFact;
+import com.echoplatform.echocore.api.index.IndexSourceKind;
 import com.knoxhack.echoindex.EchoIndex;
 import java.util.ArrayList;
 import java.util.Collection;

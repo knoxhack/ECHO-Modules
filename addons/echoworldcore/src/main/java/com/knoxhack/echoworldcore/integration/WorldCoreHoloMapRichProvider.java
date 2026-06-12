@@ -1,9 +1,9 @@
 package com.knoxhack.echoworldcore.integration;
 
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldRegionType;
 import com.knoxhack.echoholomap.api.HoloMapPrecision;
 import com.knoxhack.echoholomap.api.HoloMapQuery;
 import com.knoxhack.echoholomap.api.HoloMapZoneData;
@@ -149,6 +149,7 @@ public enum WorldCoreHoloMapRichProvider implements IHoloMapDataProvider {
             case SECURE_OUTPOST -> 68;
             case CRASH_ZONE -> 64;
             case RUINED_CITY -> 58;
+            case CUSTOM -> 50;
         };
     }
 
@@ -161,6 +162,7 @@ public enum WorldCoreHoloMapRichProvider implements IHoloMapDataProvider {
             case CRASH_ZONE -> 0xFFFFA05B;
             case RUINED_CITY -> 0xFF80F0A0;
             case TOXIC_SWAMP, RADIATION_ZONE, CRYOGENIC_RUINS -> 0xFFFF5C7A;
+            case CUSTOM -> 0xFF9DA7B3;
         };
     }
 

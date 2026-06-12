@@ -5,7 +5,7 @@ import com.knoxhack.echoashfallprotocol.registry.ModAttachments;
 import com.knoxhack.echoashfallprotocol.registry.ModBlocks;
 import com.knoxhack.echoashfallprotocol.world.NexusWorldData;
 import com.knoxhack.echo.adaptercore.EchoValueIOSerializable;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

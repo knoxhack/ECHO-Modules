@@ -1509,7 +1509,7 @@ final class AshfallAdapterCoreMachinePowerRuntime {
         runtime.add(RuntimeNode.machine("ore_grinder", "OreGrinderBlockEntity", 1, 0, 0, 2_000, 128,
                 2, 80, "toxic_slagstone", 0, "coal_dust", 2)
                 .withOutputCount(2)
-                .withByproduct("contaminated_redstone", 1, 0.25F)
+                .withByproduct("charged_ash_circuit", 1, 0.25F)
                 .withByproductCount(1));
 
         int scrapInsertAnySide = runtime.insertItemFromSide("scrap_press", "scrap_metal", 9, "NORTH", false);
@@ -1521,7 +1521,7 @@ final class AshfallAdapterCoreMachinePowerRuntime {
         int grinderInvalidInsert = runtime.insertItemFromSide("ore_grinder", "scrap_metal", 1, "SOUTH", false);
         int grinderSideProductExtract = runtime.extractOutputItemFromSide("ore_grinder", "coal_dust", 1, "NORTH", true);
         int grinderBottomProductExtract = runtime.extractOutputItemFromSide("ore_grinder", "coal_dust", 2, "DOWN", false);
-        int grinderBottomByproductExtract = runtime.extractOutputItemFromSide("ore_grinder", "contaminated_redstone", 1, "DOWN", false);
+        int grinderBottomByproductExtract = runtime.extractOutputItemFromSide("ore_grinder", "charged_ash_circuit", 1, "DOWN", false);
 
         RuntimeNode press = runtime.nodes.get("scrap_press");
         RuntimeNode grinder = runtime.nodes.get("ore_grinder");

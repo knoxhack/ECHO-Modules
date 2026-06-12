@@ -6,7 +6,7 @@ import com.knoxhack.echorecovery.api.RecoveryIntegrations;
 import com.knoxhack.echorecovery.data.RecoveryWorldData;
 import net.minecraft.server.level.ServerPlayer;
 
-public enum RecoveryCoreService implements com.knoxhack.echocore.api.EchoRecoveryService {
+public enum RecoveryCoreService implements com.echoplatform.echocore.api.EchoRecoveryService {
     INSTANCE;
 
     @Override

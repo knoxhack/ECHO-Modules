@@ -1,11 +1,11 @@
 package com.knoxhack.echoworldcore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.WorldRegionDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.WorldRegionDefinition;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.service.WorldRegionService;
 import java.util.List;
@@ -50,7 +50,7 @@ public final class WorldCoreDiscoveryProvider implements EchoDiscoveryProvider {
                 definition.sortOrder());
     }
 
-    private static int accent(com.knoxhack.echocore.api.WorldRegionType type) {
+    private static int accent(com.echoplatform.echocore.api.WorldRegionType type) {
         return switch (type) {
             case CRASH_ZONE -> 0xFFFFB35C;
             case RUINED_CITY -> 0xFF9DA7B3;
@@ -61,6 +61,7 @@ public final class WorldCoreDiscoveryProvider implements EchoDiscoveryProvider {
             case ORBITAL_DEBRIS_FIELD -> 0xFF66E8FF;
             case CONVOY_ROUTE -> 0xFFFFD166;
             case SECURE_OUTPOST -> 0xFF92F7A6;
+            case CUSTOM -> 0xFF9DA7B3;
         };
     }
 }

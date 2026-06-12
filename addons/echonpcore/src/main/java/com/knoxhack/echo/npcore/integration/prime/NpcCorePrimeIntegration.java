@@ -1,13 +1,13 @@
 package com.knoxhack.echo.npcore.integration.prime;
 
 import com.knoxhack.echo.npcore.EchoNpcCore;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegration;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegrations;
-import com.knoxhack.echocore.api.prime.PrimeIndexRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIntegrationContext;
-import com.knoxhack.echocore.api.prime.PrimeMissionRegistry;
-import com.knoxhack.echocore.api.prime.PrimeRouteRegistry;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegration;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegrations;
+import com.echoplatform.echocore.api.prime.PrimeIndexRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIntegrationContext;
+import com.echoplatform.echocore.api.prime.PrimeMissionRegistry;
+import com.echoplatform.echocore.api.prime.PrimeRouteRegistry;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
 import java.util.List;
 import net.minecraft.resources.Identifier;
 

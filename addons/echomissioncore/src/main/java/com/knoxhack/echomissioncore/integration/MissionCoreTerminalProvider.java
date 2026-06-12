@@ -1,14 +1,14 @@
 package com.knoxhack.echomissioncore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.IObjectiveView;
-import com.knoxhack.echocore.api.mission.IRewardView;
-import com.knoxhack.echocore.api.mission.MissionActionView;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IObjectiveView;
+import com.echoplatform.echocore.api.mission.IRewardView;
+import com.echoplatform.echocore.api.mission.MissionActionView;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.MissionStatus;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;
@@ -335,11 +335,11 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
     private static TerminalMissionStatus status(MissionStatus status) {
         return switch (status) {
             case LOCKED -> TerminalMissionStatus.LOCKED;
-            case UNLOCKED, ACTIVE -> TerminalMissionStatus.UNLOCKED;
-            case COMPLETED -> TerminalMissionStatus.COMPLETED;
+            case UNLOCKED, AVAILABLE, ACTIVE -> TerminalMissionStatus.UNLOCKED;
+            case COMPLETED, COMPLETE -> TerminalMissionStatus.COMPLETED;
             case CLAIMABLE -> TerminalMissionStatus.CLAIMABLE;
             case CLAIMED -> TerminalMissionStatus.CLAIMED;
-            case VIEW_ONLY -> TerminalMissionStatus.VIEW_ONLY;
+            case FAILED, VIEW_ONLY -> TerminalMissionStatus.VIEW_ONLY;
         };
     }
 

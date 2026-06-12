@@ -1,6 +1,6 @@
 package com.knoxhack.echomissioncore.storage;
 
-import com.knoxhack.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.MissionStatus;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import java.util.Collections;
 import java.util.HashMap;

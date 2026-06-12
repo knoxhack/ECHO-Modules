@@ -7,7 +7,7 @@ import com.knoxhack.echobasegrid.api.ClaimRecord;
 import com.knoxhack.echobasegrid.data.BaseGridSavedData;
 import com.knoxhack.echobasegrid.network.BaseGridNetwork;
 import com.knoxhack.echobasegrid.service.BaseGridClaimService;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.api.HoloMapChunkActionResult;
 import com.knoxhack.echoholomap.api.HoloMapChunkSelection;
 import com.knoxhack.echoholomap.api.HoloMapLayerData;

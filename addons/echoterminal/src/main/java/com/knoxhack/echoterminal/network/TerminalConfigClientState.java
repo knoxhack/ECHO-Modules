@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal.network;
 
-import com.knoxhack.echocore.api.config.EchoConfigModuleSnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigModuleSnapshot;
 import java.util.List;
 import java.util.Optional;
 

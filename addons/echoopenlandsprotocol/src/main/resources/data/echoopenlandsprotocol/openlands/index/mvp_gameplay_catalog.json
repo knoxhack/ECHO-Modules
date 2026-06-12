@@ -1,0 +1,2435 @@
+{
+  "schema": "echo.openlands.gameplay_catalog.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "generatedFrom": [
+    "blocks/mvp_blocks.json",
+    "items/mvp_items.json",
+    "recipes/mvp_recipes.json",
+    "loot/mvp_loot.json",
+    "progression/first_hour_route.json",
+    "progression/launch_roadmap.json"
+  ],
+  "designRules": [
+    "Every MVP block and item must have an acquisition path, gameplay role, player use, progression stage, and runtime parity note.",
+    "Openlands Standard stays relaxed: food, shelter, and farming entries must avoid hardcore upkeep pressure.",
+    "Echo IDs remain the source of truth across Native, Standalone, and NeoForge adapters."
+  ],
+  "firstHourPromise": "Openlands extends the Foundation first-hour route with the first waystone milestone.",
+  "roadmapDefaultRule": "Openlands Standard remains the relaxed default through MVP, Public Alpha, 1.0, and later updates.",
+  "counts": {
+    "blocks": 26,
+    "items": 20,
+    "recipes": 10
+  },
+  "roleCoverage": {
+    "blocks": [
+      "building_palette",
+      "crafting_station",
+      "homestead",
+      "lighting",
+      "mining_progression",
+      "mvp_content",
+      "old_road_discovery",
+      "shelter_score",
+      "stone_and_masonry",
+      "storage",
+      "terrain_foundation",
+      "waystone_progression",
+      "wood_building_family",
+      "world_resource"
+    ],
+    "items": [
+      "builder_quality_of_life",
+      "equipment",
+      "food_and_comfort",
+      "homestead",
+      "mvp_content",
+      "raw_material",
+      "tool_progression",
+      "waystone_and_map_progression"
+    ],
+    "progressionStages": [
+      "builder_quality_of_life",
+      "first_hour",
+      "first_hour_materials",
+      "first_shelter",
+      "homestead",
+      "homestead_and_building",
+      "midgame_caves",
+      "mvp_building",
+      "old_roads",
+      "waystone_network"
+    ]
+  },
+  "blockEntries": [
+    {
+      "id": "meadow_grass_block",
+      "namespacedId": "echoopenlandsprotocol:meadow_grass_block",
+      "displayName": "Meadow Grass Block",
+      "category": "terrain",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "terrain_foundation",
+        "homestead"
+      ],
+      "acquisition": [
+        "biome:meadows"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/digger"
+      ],
+      "tool": "foundation:tool_role/digger",
+      "hardness": 0.55,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:soil_clump",
+          "count": 1,
+          "fallback": "echoopenlandsprotocol:meadow_grass_block"
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:terrain",
+        "openlands:farmable",
+        "openlands:starter_surface"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "meadows"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Safe starter surface. Supports grass regrowth and beginner crop placement."
+    },
+    {
+      "id": "forest_soil",
+      "namespacedId": "echoopenlandsprotocol:forest_soil",
+      "displayName": "Forest Soil",
+      "category": "terrain",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "terrain_foundation",
+        "homestead"
+      ],
+      "acquisition": [
+        "biome:woodlands",
+        "loot:block:forest_soil"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/digger"
+      ],
+      "tool": "foundation:tool_role/digger",
+      "hardness": 0.6,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:forest_soil",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:terrain",
+        "openlands:farmable",
+        "openlands:tree_growth_bonus"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "woodlands"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Darker soil with tree growth bonus and mushroom placement support."
+    },
+    {
+      "id": "dry_soil",
+      "namespacedId": "echoopenlandsprotocol:dry_soil",
+      "displayName": "Dry Soil",
+      "category": "terrain",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "terrain_foundation"
+      ],
+      "acquisition": [
+        "biome:stonehills",
+        "loot:block:meadow_grass_block"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/digger"
+      ],
+      "tool": "foundation:tool_role/digger",
+      "hardness": 0.65,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:dry_soil",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:terrain",
+        "openlands:dry"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "stonehills"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Low-yield soil for early dry slopes. Compost and watering improve it later."
+    },
+    {
+      "id": "mud",
+      "namespacedId": "echoopenlandsprotocol:mud",
+      "displayName": "Mud",
+      "category": "terrain",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "terrain_foundation"
+      ],
+      "acquisition": [
+        "biome:marshlands"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/digger",
+        "movement modifier 0.88"
+      ],
+      "tool": "foundation:tool_role/digger",
+      "hardness": 0.45,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:mud",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:terrain",
+        "openlands:wet",
+        "openlands:movement_slow"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "marshlands"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Marsh terrain that gently slows movement without becoming a harsh penalty."
+    },
+    {
+      "id": "limestone",
+      "namespacedId": "echoopenlandsprotocol:limestone",
+      "displayName": "Limestone",
+      "category": "stone",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "stone_and_masonry",
+        "building_palette"
+      ],
+      "acquisition": [
+        "biome:stonehills"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.1,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:limestone",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "openlands:waystone_repair_material"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "stonehills"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": [
+          "slab",
+          "stairs",
+          "wall",
+          "bricks"
+        ]
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Pale building stone and valid waystone repair material."
+    },
+    {
+      "id": "granite",
+      "namespacedId": "echoopenlandsprotocol:granite",
+      "displayName": "Granite",
+      "category": "stone",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "stone_and_masonry",
+        "building_palette"
+      ],
+      "acquisition": [
+        "biome:stonehills"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.7,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:granite",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "openlands:durable"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "stonehills"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": [
+          "slab",
+          "stairs",
+          "wall",
+          "polished"
+        ]
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Durable decorative stone for midgame building."
+    },
+    {
+      "id": "shale",
+      "namespacedId": "echoopenlandsprotocol:shale",
+      "displayName": "Shale",
+      "category": "stone",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "stone_and_masonry",
+        "building_palette"
+      ],
+      "acquisition": [
+        "biome:stonehills"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:shale",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:stone",
+        "openlands:roof_style"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "stonehills"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": [
+          "slab",
+          "roof",
+          "thin_tile"
+        ]
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Layered stone family intended for roofs and compact masonry."
+    },
+    {
+      "id": "deepstone",
+      "namespacedId": "echoopenlandsprotocol:deepstone",
+      "displayName": "Deepstone",
+      "category": "stone",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "stone_and_masonry",
+        "building_palette"
+      ],
+      "acquisition": [
+        "biome:deep_caves"
+      ],
+      "playerUse": [
+        "break with echotoolcore:ferrite_breaker"
+      ],
+      "tool": "echotoolcore:ferrite_breaker",
+      "hardness": 2.4,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:deepstone",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:stone",
+        "openlands:deep_cave",
+        "openlands:late_building"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "deep_caves"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": [
+          "bricks",
+          "slab",
+          "stairs",
+          "polished"
+        ]
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Late durable cave stone. Not required for the first-hour loop."
+    },
+    {
+      "id": "glow_crystal_cluster",
+      "namespacedId": "echoopenlandsprotocol:glow_crystal_cluster",
+      "displayName": "Glow Crystal Cluster",
+      "category": "ore",
+      "progressionStage": "midgame_caves",
+      "gameplayRoles": [
+        "world_resource",
+        "stone_and_masonry",
+        "mining_progression"
+      ],
+      "acquisition": [
+        "cave_layer:deep_cave"
+      ],
+      "playerUse": [
+        "break with echotoolcore:ferrite_breaker"
+      ],
+      "tool": "echotoolcore:ferrite_breaker",
+      "hardness": 1.85,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:glow_crystal",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:crystal",
+        "openlands:waystone_charge",
+        "openlands:light_source"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": "deep_cave"
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Needed for the charged stage of restored waystones."
+    },
+    {
+      "id": "pine_log",
+      "namespacedId": "echoopenlandsprotocol:pine_log",
+      "displayName": "Pine Log",
+      "category": "wood",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "world_resource",
+        "wood_building_family"
+      ],
+      "acquisition": [
+        "biome:woodlands"
+      ],
+      "playerUse": [
+        "break with axe"
+      ],
+      "tool": "axe",
+      "hardness": 1.9,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_log",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [
+        {
+          "item": "echomaterialcore:resin",
+          "chance": 0.16,
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:fuel",
+        "echomaterialcore:resin_source"
+      ],
+      "worldPlacement": {
+        "biomes": [
+          "woodlands"
+        ],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [
+          "pine_planks"
+        ],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Darker wood with echomaterialcore:resin chance."
+    },
+    {
+      "id": "pine_planks",
+      "namespacedId": "echoopenlandsprotocol:pine_planks",
+      "displayName": "Pine Planks",
+      "category": "wood",
+      "progressionStage": "first_hour",
+      "gameplayRoles": [
+        "wood_building_family",
+        "building_palette"
+      ],
+      "acquisition": [
+        "recipe:pine_planks"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via pine_planks"
+      ],
+      "tool": "axe",
+      "hardness": 1.45,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_planks",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:building"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "pine_planks",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Darker alternate building wood."
+    },
+    {
+      "id": "pine_beam",
+      "namespacedId": "echoopenlandsprotocol:pine_beam",
+      "displayName": "Pine Beam",
+      "category": "wood_shape",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "wood_building_family"
+      ],
+      "acquisition": [
+        "recipe:pine_beam"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via pine_beam"
+      ],
+      "tool": "axe",
+      "hardness": 1.5,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_beam",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:shape_beam"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "pine_beam",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Pine structural beam."
+    },
+    {
+      "id": "pine_post",
+      "namespacedId": "echoopenlandsprotocol:pine_post",
+      "displayName": "Pine Post",
+      "category": "wood_shape",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "wood_building_family"
+      ],
+      "acquisition": [
+        "recipe:pine_post"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via pine_post"
+      ],
+      "tool": "axe",
+      "hardness": 1.5,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_post",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:shape_post"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "pine_post",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Pine vertical post."
+    },
+    {
+      "id": "thatch_roof",
+      "namespacedId": "echoopenlandsprotocol:thatch_roof",
+      "displayName": "Thatch Roof",
+      "category": "roof",
+      "progressionStage": "first_shelter",
+      "gameplayRoles": [
+        "shelter_score"
+      ],
+      "acquisition": [
+        "recipe:thatch_roof"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via thatch_roof",
+        "adds 2 shelter score"
+      ],
+      "tool": "axe",
+      "hardness": 0.8,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:thatch_roof",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:roof",
+        "openlands:shelter_roof",
+        "openlands:reed_family"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "thatch_roof",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 2,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Cheap starter roof piece with strong shelter contribution."
+    },
+    {
+      "id": "fieldstone_bricks",
+      "namespacedId": "fieldstone_bricks",
+      "displayName": "Fieldstone Bricks",
+      "category": "building",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "stone_and_masonry",
+        "building_palette"
+      ],
+      "acquisition": [
+        "recipe:fieldstone_bricks"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "craft via fieldstone_bricks"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.45,
+      "drops": [
+        {
+          "item": "echomaterialcore:fieldstone_bricks",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "echostationcore:mason_table_output"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "fieldstone_bricks",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "First polished masonry block."
+    },
+    {
+      "id": "brick_block",
+      "namespacedId": "brick_block",
+      "displayName": "Brick Block",
+      "category": "building",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "building_palette"
+      ],
+      "acquisition": [
+        "recipe:brick_block"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "craft via brick_block"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.35,
+      "drops": [
+        {
+          "item": "echomaterialcore:brick_block",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "echomaterialcore:brick",
+        "openlands:building",
+        "echostationcore:kiln_output"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "brick_block",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Clay-age building material."
+    },
+    {
+      "id": "glass_block",
+      "namespacedId": "echoopenlandsprotocol:glass_block",
+      "displayName": "Glass Block",
+      "category": "building",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "building_palette"
+      ],
+      "acquisition": [
+        "recipe:glass_block"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "craft via glass_block"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 0.3,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:glass_block",
+          "count": 1,
+          "requiresGentleTool": true
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:glass",
+        "openlands:transparent",
+        "echostationcore:kiln_output"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "glass_block",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Window and lantern crafting material."
+    },
+    {
+      "id": "shelf",
+      "namespacedId": "echoopenlandsprotocol:shelf",
+      "displayName": "Shelf",
+      "category": "storage",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "storage"
+      ],
+      "acquisition": [
+        "recipe:shelf"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via shelf"
+      ],
+      "tool": "axe",
+      "hardness": 0.9,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:shelf",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:storage",
+        "openlands:decor"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "shelf",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Light storage/decor target for starter homes."
+    },
+    {
+      "id": "sign",
+      "namespacedId": "echoopenlandsprotocol:sign",
+      "displayName": "Sign",
+      "category": "utility",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "mvp_content"
+      ],
+      "acquisition": [
+        "recipe:sign"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via sign"
+      ],
+      "tool": "axe",
+      "hardness": 0.65,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:sign",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:sign",
+        "openlands:label"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "sign",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Named echostationcore:field_crate labels, road markers, and server town signage."
+    },
+    {
+      "id": "lantern",
+      "namespacedId": "echoopenlandsprotocol:lantern",
+      "displayName": "Lantern",
+      "category": "light",
+      "progressionStage": "mvp_building",
+      "gameplayRoles": [
+        "lighting"
+      ],
+      "acquisition": [
+        "recipe:lantern"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "craft via lantern",
+        "emits light 14"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 0.55,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:lantern",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:light",
+        "openlands:copper_age"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "lantern",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 14,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Brighter copper-age lighting."
+    },
+    {
+      "id": "map_table",
+      "namespacedId": "echoopenlandsprotocol:map_table",
+      "displayName": "Map Table",
+      "category": "station",
+      "progressionStage": "homestead_and_building",
+      "gameplayRoles": [
+        "stone_and_masonry",
+        "crafting_station"
+      ],
+      "acquisition": [
+        "recipe:map_table"
+      ],
+      "playerUse": [
+        "break with axe",
+        "craft via map_table",
+        "station processes: region_rubbing, waystone_core, route_binding"
+      ],
+      "tool": "axe",
+      "hardness": 1.2,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:map_table",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:station",
+        "openlands:map",
+        "openlands:waystone_binding"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "map_table",
+        "consumedByRecipes": [],
+        "stationProcesses": [
+          "region_rubbing",
+          "waystone_core",
+          "route_binding"
+        ]
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Map reveal, route binding, and waystone activation station."
+    },
+    {
+      "id": "old_road_block",
+      "namespacedId": "echoopenlandsprotocol:old_road_block",
+      "displayName": "Old Road Block",
+      "category": "road",
+      "progressionStage": "old_roads",
+      "gameplayRoles": [
+        "old_road_discovery"
+      ],
+      "acquisition": [
+        "structure:old_road_segments"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:old_road_block",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:road",
+        "openlands:old_roads",
+        "openlands:movement_path"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [
+          "old_road_segments"
+        ],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Generated road segment and player-restoration material."
+    },
+    {
+      "id": "old_road_marker",
+      "namespacedId": "echoopenlandsprotocol:old_road_marker",
+      "displayName": "Old Road Marker",
+      "category": "road",
+      "progressionStage": "old_roads",
+      "gameplayRoles": [
+        "old_road_discovery"
+      ],
+      "acquisition": [
+        "structure:roadside_markers",
+        "structure:ruin_edges"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.15,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:old_road_marker",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:road",
+        "openlands:landmark",
+        "openlands:map_hint"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [
+          "roadside_markers",
+          "ruin_edges"
+        ],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Points toward roads, ruins, bridges, or waystones."
+    },
+    {
+      "id": "broken_waystone",
+      "namespacedId": "echoopenlandsprotocol:broken_waystone",
+      "displayName": "Broken Waystone",
+      "category": "waystone",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "stone_and_masonry",
+        "waystone_progression"
+      ],
+      "acquisition": [
+        "structure:roadside_waystones",
+        "structure:region_borders",
+        "structure:small_ruins",
+        "waystone_state_machine"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.8,
+      "drops": [],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:waystone",
+        "openlands:generated_landmark",
+        "openlands:repairable"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [
+          "roadside_waystones",
+          "region_borders",
+          "small_ruins"
+        ],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": "echoopenlandsprotocol:waystones/waystone_contract",
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Generated repair target. Should not be freely crafted in MVP."
+    },
+    {
+      "id": "restored_waystone",
+      "namespacedId": "echoopenlandsprotocol:restored_waystone",
+      "displayName": "Restored Waystone",
+      "category": "waystone",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "stone_and_masonry",
+        "waystone_progression"
+      ],
+      "acquisition": [
+        "waystone_state_machine"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "effects: map_reveal, region_name, nearby_hints, trader_attraction, route_link"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 2,
+      "drops": [],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:waystone",
+        "openlands:map_reveal",
+        "openlands:travel_node"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": null,
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": "echoopenlandsprotocol:waystones/waystone_contract",
+        "effects": [
+          "map_reveal",
+          "region_name",
+          "nearby_hints",
+          "trader_attraction",
+          "route_link"
+        ],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Active waystone state after repair. Shared in multiplayer."
+    },
+    {
+      "id": "waystone_plinth",
+      "namespacedId": "echoopenlandsprotocol:waystone_plinth",
+      "displayName": "Waystone Plinth",
+      "category": "waystone",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "stone_and_masonry",
+        "building_palette",
+        "waystone_progression"
+      ],
+      "acquisition": [
+        "recipe:waystone_plinth"
+      ],
+      "playerUse": [
+        "break with foundation:tool_role/breaker",
+        "craft via waystone_plinth"
+      ],
+      "tool": "foundation:tool_role/breaker",
+      "hardness": 1.6,
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:waystone_plinth",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [],
+      "tags": [
+        "openlands:waystone",
+        "openlands:decor",
+        "openlands:route_building"
+      ],
+      "worldPlacement": {
+        "biomes": [],
+        "structures": [],
+        "spawnLayer": null
+      },
+      "crafting": {
+        "recipeSource": "waystone_plinth",
+        "consumedByRecipes": [],
+        "stationProcesses": []
+      },
+      "systems": {
+        "shelterScore": 0,
+        "light": 0,
+        "storageSlots": 0,
+        "stateMachine": null,
+        "effects": [],
+        "plannedVariants": []
+      },
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo block id and map runtime-specific handles back to it.",
+      "designNote": "Player-built plaza and route decoration block; not a travel node by itself."
+    }
+  ],
+  "itemEntries": [
+    {
+      "id": "soil_clump",
+      "displayName": "Soil Clump",
+      "useType": "farming_material",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "raw_material",
+        "homestead"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:dig_meadow_grass_block",
+        "recipe_or_discovery:compost_from_plant_matter",
+        "block:meadow_grass_block"
+      ],
+      "playerUse": [
+        "recipe refs: dig_meadow_grass_block, compost_from_plant_matter"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:raw_material",
+        "openlands:soil_amendment",
+        "openlands:farming"
+      ],
+      "recipeRefs": [
+        "dig_meadow_grass_block",
+        "compost_from_plant_matter"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Gentle farming material from meadow grass; used later for compost and planter recipes."
+    },
+    {
+      "id": "glow_crystal",
+      "displayName": "Glow Crystal",
+      "useType": "energy_component",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:mine_glow_crystal_cluster",
+        "recipe_or_discovery:waystone_core",
+        "block:glow_crystal_cluster",
+        "loot:block:glow_crystal_cluster",
+        "creature:hollow_stalker",
+        "cache:broken_waystone_cache",
+        "cache:ruined_well_cache"
+      ],
+      "playerUse": [
+        "recipe refs: mine_glow_crystal_cluster, waystone_core"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:crystal",
+        "openlands:waystone_charge"
+      ],
+      "recipeRefs": [
+        "mine_glow_crystal_cluster",
+        "waystone_core"
+      ],
+      "consumedByRecipes": [
+        "waystone_core"
+      ],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Non-electrical magical light/charge component for waystones and lantern variants."
+    },
+    {
+      "id": "berries",
+      "displayName": "Berries",
+      "useType": "food",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:forage_berries",
+        "recipe_or_discovery:stew_bowl",
+        "cache:tiny_camp_supply"
+      ],
+      "playerUse": [
+        "food: hunger 2, comfort 1, saturation low",
+        "recipe refs: forage_berries, stew_bowl"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:starter_food",
+        "openlands:forage"
+      ],
+      "recipeRefs": [
+        "forage_berries",
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Common safe food; default hunger is gentle and never punishes the player with spoilage."
+    },
+    {
+      "id": "mushroom",
+      "displayName": "Mushroom",
+      "useType": "food",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:forage_mushroom",
+        "recipe_or_discovery:stew_bowl",
+        "loot:block:forest_soil"
+      ],
+      "playerUse": [
+        "food: hunger 2, comfort 1, saturation low",
+        "recipe refs: forage_mushroom, stew_bowl"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:forage"
+      ],
+      "recipeRefs": [
+        "forage_mushroom",
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Woodland ingredient and echostationcore:cookpot food."
+    },
+    {
+      "id": "raw_meat",
+      "displayName": "Raw Meat",
+      "useType": "food_ingredient",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:creature_meat_drop",
+        "recipe_or_discovery:cooked_meat",
+        "creature:hare",
+        "creature:deer",
+        "creature:boar",
+        "creature:goat",
+        "creature:marsh_hen",
+        "creature:bristleback"
+      ],
+      "playerUse": [
+        "food: hunger 2, comfort 0, saturation low",
+        "recipe refs: creature_meat_drop, cooked_meat"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:raw_meat"
+      ],
+      "recipeRefs": [
+        "creature_meat_drop",
+        "cooked_meat"
+      ],
+      "consumedByRecipes": [
+        "campfire_cooked_meat"
+      ],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 0,
+        "saturation": "low",
+        "defaultRisk": "none",
+        "hardlandsRisk": "minor_queasy"
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Edible in emergency on relaxed modes, but best cooked."
+    },
+    {
+      "id": "cooked_meat",
+      "displayName": "Cooked Meat",
+      "useType": "food",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:campfire_cooked_meat",
+        "recipe:campfire_cooked_meat"
+      ],
+      "playerUse": [
+        "food: hunger 6, comfort 2, saturation medium",
+        "recipe refs: campfire_cooked_meat"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:cooked_food"
+      ],
+      "recipeRefs": [
+        "campfire_cooked_meat"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 6,
+        "comfort": 2,
+        "saturation": "medium",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Reliable early meal."
+    },
+    {
+      "id": "grain",
+      "displayName": "Grain",
+      "useType": "food_ingredient",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort",
+        "homestead"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:harvest_grain",
+        "recipe_or_discovery:stew_bowl"
+      ],
+      "playerUse": [
+        "food: hunger 2, comfort 1, saturation low",
+        "recipe refs: harvest_grain, stew_bowl"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:crop",
+        "openlands:farming"
+      ],
+      "recipeRefs": [
+        "harvest_grain",
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 2,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Starter farm crop and trader surplus item."
+    },
+    {
+      "id": "root_crop",
+      "displayName": "Root Crop",
+      "useType": "food",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort",
+        "homestead"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:harvest_root_crop",
+        "recipe_or_discovery:stew_bowl"
+      ],
+      "playerUse": [
+        "food: hunger 3, comfort 1, saturation low",
+        "recipe refs: harvest_root_crop, stew_bowl"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:crop",
+        "openlands:farming"
+      ],
+      "recipeRefs": [
+        "harvest_root_crop",
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 3,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Easy farm food for relaxed survival."
+    },
+    {
+      "id": "fish",
+      "displayName": "Fish",
+      "useType": "food_ingredient",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:catch_fish",
+        "recipe_or_discovery:campfire_fish",
+        "creature:fish"
+      ],
+      "playerUse": [
+        "food: hunger 3, comfort 1, saturation low",
+        "recipe refs: catch_fish, campfire_fish"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:food",
+        "openlands:fish"
+      ],
+      "recipeRefs": [
+        "catch_fish",
+        "campfire_fish"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 3,
+        "comfort": 1,
+        "saturation": "low",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Water-adjacent starter food."
+    },
+    {
+      "id": "stew_bowl",
+      "displayName": "Stew Bowl",
+      "useType": "food",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "food_and_comfort"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:stew_bowl",
+        "recipe:stew_bowl"
+      ],
+      "playerUse": [
+        "food: hunger 8, comfort 4, saturation high",
+        "recipe refs: stew_bowl"
+      ],
+      "stackSize": 16,
+      "tags": [
+        "openlands:food",
+        "echostationcore:cookpot_meal",
+        "openlands:comfort_food"
+      ],
+      "recipeRefs": [
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": {
+        "hunger": 8,
+        "comfort": 4,
+        "saturation": "high",
+        "hardlandsOnlySpoilage": false
+      },
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Soft survival reward for building a echostationcore:cookpot, intentionally generous."
+    },
+    {
+      "id": "small_pack",
+      "displayName": "Small Pack",
+      "useType": "equipment",
+      "progressionStage": "builder_quality_of_life",
+      "gameplayRoles": [
+        "equipment"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:small_pack",
+        "cache:tiny_camp_supply"
+      ],
+      "playerUse": [
+        "equipment back with 9 storage slots",
+        "recipe refs: small_pack"
+      ],
+      "stackSize": 1,
+      "tags": [
+        "openlands:utility",
+        "openlands:inventory"
+      ],
+      "recipeRefs": [
+        "small_pack"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": {
+        "slot": "back",
+        "storageSlots": 9,
+        "deathRecovery": "kept_in_death_pack"
+      },
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Small quality-of-life storage upgrade for explorers."
+    },
+    {
+      "id": "repair_kit",
+      "displayName": "Repair Kit",
+      "useType": "repair_component",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "tool_progression",
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:repair_kit"
+      ],
+      "playerUse": [
+        "recipe refs: repair_kit"
+      ],
+      "stackSize": 16,
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:tool_repair"
+      ],
+      "recipeRefs": [
+        "repair_kit"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Used for waystones, tools, and later settlement maintenance."
+    },
+    {
+      "id": "cupral_fitting",
+      "displayName": "Cupral Fitting",
+      "useType": "waystone_component",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:cupral_fitting",
+        "recipe_or_discovery:waystone_core",
+        "recipe:cupral_fitting",
+        "cache:broken_waystone_cache",
+        "cache:old_mine_cache"
+      ],
+      "playerUse": [
+        "recipe refs: cupral_fitting, waystone_core"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:metal/copper"
+      ],
+      "recipeRefs": [
+        "cupral_fitting",
+        "waystone_core"
+      ],
+      "consumedByRecipes": [
+        "map_table",
+        "waystone_core"
+      ],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Metal bracket and conduit piece for fitting a repaired waystone."
+    },
+    {
+      "id": "waystone_core",
+      "displayName": "Waystone Core",
+      "useType": "waystone_component",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:waystone_core",
+        "recipe:waystone_core"
+      ],
+      "playerUse": [
+        "recipe refs: waystone_core"
+      ],
+      "stackSize": 1,
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_repair",
+        "openlands:map_table_output"
+      ],
+      "recipeRefs": [
+        "waystone_core"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Final crafted activation part before binding a route."
+    },
+    {
+      "id": "region_rubbing",
+      "displayName": "Region Rubbing",
+      "useType": "map_record",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:region_rubbing",
+        "recipe:region_rubbing",
+        "cache:broken_waystone_cache"
+      ],
+      "playerUse": [
+        "recipe refs: region_rubbing"
+      ],
+      "stackSize": 16,
+      "tags": [
+        "openlands:utility",
+        "openlands:holomap",
+        "openlands:map_table_output"
+      ],
+      "recipeRefs": [
+        "region_rubbing"
+      ],
+      "consumedByRecipes": [
+        "map_table",
+        "old_road_token",
+        "waystone_core",
+        "route_binding"
+      ],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Physical discovery record created at a marker, ruin, or broken waystone."
+    },
+    {
+      "id": "old_road_token",
+      "displayName": "Old Road Token",
+      "useType": "route_record",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:old_road_token",
+        "recipe_or_discovery:route_binding",
+        "recipe:old_road_token"
+      ],
+      "playerUse": [
+        "recipe refs: old_road_token, route_binding"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:utility",
+        "openlands:old_road",
+        "openlands:holomap"
+      ],
+      "recipeRefs": [
+        "old_road_token",
+        "route_binding"
+      ],
+      "consumedByRecipes": [
+        "route_binding"
+      ],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Exploration proof used to bind roads between restored waystones."
+    },
+    {
+      "id": "route_binding",
+      "displayName": "Route Binding",
+      "useType": "map_record",
+      "progressionStage": "waystone_network",
+      "gameplayRoles": [
+        "waystone_and_map_progression"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:route_binding",
+        "recipe:route_binding"
+      ],
+      "playerUse": [
+        "recipe refs: route_binding"
+      ],
+      "stackSize": 1,
+      "tags": [
+        "openlands:utility",
+        "openlands:waystone_binding",
+        "openlands:map_table_output"
+      ],
+      "recipeRefs": [
+        "route_binding"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Map-table output consumed by the bound and active waystone states."
+    },
+    {
+      "id": "compost",
+      "displayName": "Compost",
+      "useType": "farming_material",
+      "progressionStage": "homestead",
+      "gameplayRoles": [
+        "homestead"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:compost_from_plant_matter"
+      ],
+      "playerUse": [
+        "recipe refs: compost_from_plant_matter"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:farming",
+        "openlands:soil_amendment"
+      ],
+      "recipeRefs": [
+        "compost_from_plant_matter"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Gentle farming accelerator; never required for crop survival in Standard."
+    },
+    {
+      "id": "scaffold_bundle",
+      "displayName": "Scaffold Bundle",
+      "useType": "placeable_bundle",
+      "progressionStage": "builder_quality_of_life",
+      "gameplayRoles": [
+        "builder_quality_of_life"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:scaffold_bundle"
+      ],
+      "playerUse": [
+        "recipe refs: scaffold_bundle"
+      ],
+      "stackSize": 64,
+      "tags": [
+        "openlands:builder_ux",
+        "openlands:temporary_block"
+      ],
+      "recipeRefs": [
+        "scaffold_bundle"
+      ],
+      "consumedByRecipes": [],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Reusable builder helper for roofs and high walls."
+    },
+    {
+      "id": "wooden_bowl",
+      "displayName": "Wooden Bowl",
+      "useType": "container",
+      "progressionStage": "first_hour_materials",
+      "gameplayRoles": [
+        "mvp_content"
+      ],
+      "acquisition": [
+        "recipe_or_discovery:wooden_bowl",
+        "recipe_or_discovery:stew_bowl"
+      ],
+      "playerUse": [
+        "recipe refs: wooden_bowl, stew_bowl"
+      ],
+      "stackSize": 16,
+      "tags": [
+        "openlands:cookware",
+        "openlands:container"
+      ],
+      "recipeRefs": [
+        "wooden_bowl",
+        "stew_bowl"
+      ],
+      "consumedByRecipes": [
+        "stew_bowl"
+      ],
+      "nutrition": null,
+      "toolStats": null,
+      "equipment": null,
+      "placesBlock": null,
+      "runtimeParity": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "runtimeNote": "Adapters must preserve this Echo item id and map runtime-specific handles back to it.",
+      "designNote": "Cookpot container returned after eating where supported."
+    }
+  ]
+}

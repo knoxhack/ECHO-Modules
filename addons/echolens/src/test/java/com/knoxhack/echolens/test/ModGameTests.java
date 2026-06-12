@@ -1,20 +1,20 @@
 package com.knoxhack.echolens.test;
 
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.ILensService;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.IStructureDiscoveryService;
-import com.knoxhack.echocore.api.config.EchoConfigRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.IMissionService;
-import com.knoxhack.echocore.api.mission.InMemoryMissionRegistry;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.ILensService;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.IStructureDiscoveryService;
+import com.echoplatform.echocore.api.config.EchoConfigRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IMissionService;
+import com.echoplatform.echocore.api.mission.InMemoryMissionRegistry;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.api.ILensInspectionService;
 import com.knoxhack.echolens.api.LensAccessPolicy;
@@ -267,7 +267,7 @@ public final class ModGameTests {
         helper.assertTrue(EchoAddonRegistry.isRegistered("lens"), "Lens should register an ECHO addon chapter.");
         helper.assertTrue(EchoServiceRegistry.find(ILensInspectionService.class).isPresent(),
                 "Lens inspection service should be registered in ECHO Core.");
-        ILensService lensService = com.knoxhack.echocore.api.EchoCoreServices.lensService();
+        ILensService lensService = com.echoplatform.echocore.api.EchoCoreServices.lensService();
         helper.assertTrue(lensService.available(), "Core Lens service should report availability.");
         helper.assertTrue(lensService.scanTypes().contains(id("scan/compact"))
                         && lensService.scanTypes().contains(id("scan/expanded"))

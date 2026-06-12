@@ -1,6 +1,6 @@
 package com.knoxhack.echoorbitalremnants.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoorbitalremnants.progression.EchoTerminalProgress;
 import com.knoxhack.echoorbitalremnants.progression.FactionStanding;
 import net.minecraft.resources.Identifier;

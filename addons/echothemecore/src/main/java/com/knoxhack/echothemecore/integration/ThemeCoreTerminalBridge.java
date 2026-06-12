@@ -5,7 +5,7 @@ import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeColors;
 import com.knoxhack.echothemecore.api.EchoThemeTextureKey;
 import com.knoxhack.echothemecore.content.ThemeRegistry;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import net.minecraft.resources.Identifier;
 
 public final class ThemeCoreTerminalBridge {

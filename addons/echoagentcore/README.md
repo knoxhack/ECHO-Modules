@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echoplatformcore`, `echoschemacore`, `echovalidationcore`, `echometadatacore`, `echomodulegraph`, `echohealthcore`
 
-Optional modules: `echobridgecore`, `echoreportcore`, `echomodpackcommandcenter`
+Optional modules: `echobridgecore`, `echoreportcore`
 
 Provides: `ai.tasks`, `ai.task_queue`, `ai.prompt_bundle`, `ai.next_phase_prompt`, `ai.run_report`, `ai.safe_commands`
 

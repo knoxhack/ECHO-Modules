@@ -1,7 +1,7 @@
 package com.knoxhack.echorecovery.test;
 
 import com.google.gson.JsonParser;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echorecovery.api.RecoveryGraveSnapshot;
 import com.knoxhack.echorecovery.api.RecoveryIntegrations;
 import com.knoxhack.echorecovery.EchoRecovery;

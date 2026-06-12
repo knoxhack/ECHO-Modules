@@ -1,7 +1,7 @@
 package com.knoxhack.signalos.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
 import com.knoxhack.signalos.SignalOS;
 import com.knoxhack.signalos.api.SignalOsActionResult;
 import com.knoxhack.signalos.network.SignalOsActionPacket;

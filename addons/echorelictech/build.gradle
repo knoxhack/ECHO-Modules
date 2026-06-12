@@ -48,7 +48,9 @@ dependencies {
     optionalProject(":echoterminal", "compileOnly")
     optionalProject(":echolens", "compileOnly")
     compileOnly project(":echomachinecore")
+    compileOnly project(":echoassetcore")
     localRuntime project(":echomachinecore")
+    localRuntime project(":echoassetcore")
 }
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

@@ -141,7 +141,7 @@ public class EchoTerminalProgress {
         orbitalContact = true;
         launchSiteTracked = true;
         save(player);
-        OrbitalMissionHooks.record(player, "earth_calibration", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "action", "orbital_contact");
+        OrbitalMissionHooks.record(player, "earth_calibration", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "action", "orbital_contact");
         AshfallCompat.mirrorMilestone(player, "orbital_contact", "Orbital contact calibrated",
                 "A surviving uplink answered from above ruined Earth. " + OrbitalLore.TAGLINE);
     }
@@ -180,8 +180,8 @@ public class EchoTerminalProgress {
         launchSiteTracked = true;
         launchPrepared = true;
         save(player);
-        OrbitalMissionHooks.record(player, "launch_chain", 0, com.knoxhack.echocore.api.mission.MissionObjectiveType.BUILD_MULTIBLOCK, 1, "action", "launch_systems");
-        OrbitalMissionHooks.record(player, "launch_chain", 1, com.knoxhack.echocore.api.mission.MissionObjectiveType.DRIVE_VEHICLE, 1, "action", "rocket_assembly");
+        OrbitalMissionHooks.record(player, "launch_chain", 0, com.echoplatform.echocore.api.mission.MissionObjectiveType.BUILD_MULTIBLOCK, 1, "action", "launch_systems");
+        OrbitalMissionHooks.record(player, "launch_chain", 1, com.echoplatform.echocore.api.mission.MissionObjectiveType.DRIVE_VEHICLE, 1, "action", "rocket_assembly");
         AshfallCompat.mirrorMilestone(player, "launch_prepared", "Launch chain prepared",
                 "The staged Emergency Rocket cleared readiness, countdown, and ascent. Orbit may object.");
     }
@@ -194,7 +194,7 @@ public class EchoTerminalProgress {
         stationCoordinatesRecovered = true;
         orbitalRemnantStanding = FactionStanding.CONTACTED;
         save(player);
-        OrbitalMissionHooks.record(player, "low_orbit", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "low_orbit");
+        OrbitalMissionHooks.record(player, "low_orbit", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "low_orbit");
         AshfallCompat.mirrorMilestone(player, "low_orbit_reached", "Low Earth Orbit reached",
                 "Station debris confirms the pod's fall path. " + OrbitalLore.POD_TRUTH);
     }
@@ -206,7 +206,7 @@ public class EchoTerminalProgress {
         echoMemoryFragments = Math.max(echoMemoryFragments, 1);
         orbitalRemnantStanding = FactionStanding.CONTACTED;
         save(player);
-        OrbitalMissionHooks.record(player, "low_orbit", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "action", "scan_orbit");
+        OrbitalMissionHooks.record(player, "low_orbit", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "action", "scan_orbit");
         AshfallCompat.mirrorMilestone(player, "station_coordinates", "Station coordinates recovered",
                 "Orbital debris telemetry resolved a Station ECHO approach hidden behind years of Gridfall noise.");
     }
@@ -217,7 +217,7 @@ public class EchoTerminalProgress {
         echoMemoryFragments = Math.max(echoMemoryFragments, 2);
         orbitalRemnantStanding = FactionStanding.TRUSTED;
         save(player);
-        OrbitalMissionHooks.record(player, "station_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 3, "machine", "life_support");
+        OrbitalMissionHooks.record(player, "station_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 3, "machine", "life_support");
         AshfallCompat.mirrorMilestone(player, "station_life_support", "Station life support restored",
                 "Station pressure loops reinitialized. " + OrbitalLore.ECHO7_TRUTH);
     }
@@ -229,7 +229,7 @@ public class EchoTerminalProgress {
         echoMemoryFragments = Math.max(echoMemoryFragments, 3);
         nexusChoirStanding = FactionStanding.CONTACTED;
         save(player);
-        OrbitalMissionHooks.record(player, "deep_space_protocol", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "route", "deep_space_protocol");
+        OrbitalMissionHooks.record(player, "deep_space_protocol", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "route", "deep_space_protocol");
         AshfallCompat.mirrorMilestone(player, "deep_space_protocol", "Deep Space Protocol unlocked",
                 "The anomaly belt is reachable. " + OrbitalLore.GRIDFALL_ORIGIN);
     }
@@ -267,7 +267,7 @@ public class EchoTerminalProgress {
         lunarSignalInvestigated = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 3);
         save(player);
-        OrbitalMissionHooks.record(player, "lunar_signal", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "lunar_signal");
+        OrbitalMissionHooks.record(player, "lunar_signal", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "lunar_signal");
         AshfallCompat.mirrorMilestone(player, "lunar_signal", "Lunar Signal investigated",
                 "Helium-3 telemetry from the Lunar Scar Zone proves Nexus contamination crossed the route before Earth fell silent.");
     }
@@ -279,7 +279,7 @@ public class EchoTerminalProgress {
         voidSalvagerStanding = FactionStanding.CONTACTED;
         echoMemoryFragments = Math.max(echoMemoryFragments, 3);
         save(player);
-        OrbitalMissionHooks.record(player, "mars_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "mars");
+        OrbitalMissionHooks.record(player, "mars_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "mars");
         AshfallCompat.mirrorMilestone(player, "mars_route", "Mars transfer route unlocked",
                 "Lunar Helium-3 resolved a transfer window to the Mars Ash Basin, where pressure records did not end cleanly.");
     }
@@ -290,7 +290,7 @@ public class EchoTerminalProgress {
         voidSalvagerStanding = FactionStanding.TRUSTED;
         echoMemoryFragments = Math.max(echoMemoryFragments, 4);
         save(player);
-        OrbitalMissionHooks.record(player, "mars_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "mars_ash_basin");
+        OrbitalMissionHooks.record(player, "mars_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "mars_ash_basin");
         AshfallCompat.mirrorMilestone(player, "mars_ash_basin", "Mars Ash Basin reached",
                 "The buried habitat confirms the route failed outward, not inward. Someone tried to leave.");
     }
@@ -301,7 +301,7 @@ public class EchoTerminalProgress {
         europaRouteUnlocked = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 4);
         save(player);
-        OrbitalMissionHooks.record(player, "europa_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "europa");
+        OrbitalMissionHooks.record(player, "europa_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "europa");
         AshfallCompat.mirrorMilestone(player, "europa_route", "Europa route unlocked",
                 "Martian silica traces triangulate a frozen lab under the Europa Cryo Ocean.");
     }
@@ -311,7 +311,7 @@ public class EchoTerminalProgress {
         europaCryoOceanVisited = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 5);
         save(player);
-        OrbitalMissionHooks.record(player, "europa_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "europa_cryo_ocean");
+        OrbitalMissionHooks.record(player, "europa_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "europa_cryo_ocean");
         AshfallCompat.mirrorMilestone(player, "europa_cryo_ocean", "Europa Cryo Ocean reached",
                 "The sub-ice lab preserved a deep-space ping under frozen signal glass.");
     }
@@ -322,7 +322,7 @@ public class EchoTerminalProgress {
         saturnRouteUnlocked = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 6);
         save(player);
-        OrbitalMissionHooks.record(player, "saturn_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "saturn");
+        OrbitalMissionHooks.record(player, "saturn_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "saturn");
         AshfallCompat.mirrorMilestone(player, "saturn_route", "Saturn route unlocked",
                 "Europa thermal telemetry resolved a relay path into the Saturn Ring Graveyard.");
     }
@@ -332,7 +332,7 @@ public class EchoTerminalProgress {
         saturnRingGraveyardVisited = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 6);
         save(player);
-        OrbitalMissionHooks.record(player, "saturn_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "saturn_ring_graveyard");
+        OrbitalMissionHooks.record(player, "saturn_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "saturn_ring_graveyard");
         AshfallCompat.mirrorMilestone(player, "saturn_ring_graveyard", "Saturn Ring Graveyard reached",
                 "Broken relay ribs in the rings still carry Titan descent instructions.");
     }
@@ -343,7 +343,7 @@ public class EchoTerminalProgress {
         titanRouteUnlocked = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 7);
         save(player);
-        OrbitalMissionHooks.record(player, "titan_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "titan");
+        OrbitalMissionHooks.record(player, "titan_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "route", "titan");
         AshfallCompat.mirrorMilestone(player, "titan_route", "Titan route unlocked",
                 "Saturn relay lenses resolved a methane-shelf descent vector.");
     }
@@ -353,7 +353,7 @@ public class EchoTerminalProgress {
         titanMethaneShelfVisited = true;
         echoMemoryFragments = Math.max(echoMemoryFragments, 7);
         save(player);
-        OrbitalMissionHooks.record(player, "titan_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "titan_methane_shelf");
+        OrbitalMissionHooks.record(player, "titan_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "titan_methane_shelf");
         AshfallCompat.mirrorMilestone(player, "titan_methane_shelf", "Titan Methane Shelf reached",
                 "The last outer-system shelf points straight at the Nexus quarantine belt.");
     }
@@ -364,7 +364,7 @@ public class EchoTerminalProgress {
         echoMemoryFragments = Math.max(echoMemoryFragments, 6);
         nexusChoirStanding = FactionStanding.CONTACTED;
         save(player);
-        OrbitalMissionHooks.record(player, "deep_space_protocol", com.knoxhack.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "nexus_anomaly_belt");
+        OrbitalMissionHooks.record(player, "deep_space_protocol", com.echoplatform.echocore.api.mission.MissionObjectiveType.ENTER_REGION, 1, "region", "nexus_anomaly_belt");
         AshfallCompat.mirrorMilestone(player, "nexus_anomaly_belt", "Nexus Anomaly Belt entered",
                 "Folded station fragments expose ECHO-0 beyond the old Earth network. The quarantine finally has a voice.");
     }
@@ -376,7 +376,7 @@ public class EchoTerminalProgress {
         echoMemoryFragments = Math.max(echoMemoryFragments, 7);
         nexusChoirStanding = FactionStanding.TRUSTED;
         save(player);
-        OrbitalMissionHooks.record(player, "echo_zero", com.knoxhack.echocore.api.mission.MissionObjectiveType.UNLOCK_RESEARCH, 1, "action", "echo_zero_resolved");
+        OrbitalMissionHooks.record(player, "echo_zero", com.echoplatform.echocore.api.mission.MissionObjectiveType.UNLOCK_RESEARCH, 1, "action", "echo_zero_resolved");
         AshfallCompat.mirrorMilestone(player, "echo_zero_resolved", "ECHO-0 resolved",
                 "The quarantine is broken. Nexus anchor stabilization can begin before the old silence reorganizes.");
     }
@@ -410,7 +410,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.ORBIT_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Orbit survey", orbitSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -437,7 +437,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.MOON_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Lunar survey", moonSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -465,7 +465,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.MARS_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Mars survey", marsSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -492,7 +492,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.EUROPA_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Europa survey", europaSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -519,7 +519,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.SATURN_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Saturn survey", saturnSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -547,7 +547,7 @@ public class EchoTerminalProgress {
             grantSurveyAdvancement(player, ModAdvancements.TITAN_SURVEY_COMPLETE);
         }
         save(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Titan survey", titanSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -577,7 +577,7 @@ public class EchoTerminalProgress {
         }
         save(player);
         sealFinalNetwork(player);
-        OrbitalMissionHooks.record(player, "survey_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
+        OrbitalMissionHooks.record(player, "survey_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.COMPLETE_ORBITAL_SCAN, 1, "region", siteId);
         return new SurveyResult("Nexus stabilization", nexusSurveyScans, 3, newlyComplete, false, false, true);
     }
 
@@ -601,7 +601,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "station_network", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "station_network", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Station Network", stationRelayRepairs, 3, newlyComplete, false, true);
     }
 
@@ -624,7 +624,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "mars_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "mars_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Helium Extractor Network", lunarExtractorRepairs, 3, newlyComplete, false, true);
     }
 
@@ -648,7 +648,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "europa_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "europa_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Mars Habitat Pressure", marsPressureRepairs, 3, newlyComplete, false, true);
     }
 
@@ -672,7 +672,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "saturn_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "saturn_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Europa Thermal Array", europaArrayRepairs, 3, newlyComplete, false, true);
     }
 
@@ -695,7 +695,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "titan_route", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "titan_route", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Saturn Ring Relays", saturnRelayRepairs, 3, newlyComplete, false, true);
     }
 
@@ -719,7 +719,7 @@ public class EchoTerminalProgress {
         }
         grantMidGameMastery(player);
         save(player);
-        OrbitalMissionHooks.record(player, "deep_space_protocol", com.knoxhack.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
+        OrbitalMissionHooks.record(player, "deep_space_protocol", com.echoplatform.echocore.api.mission.MissionObjectiveType.REPAIR_MACHINE, 1, "machine", siteId);
         return new RouteObjectiveResult("Titan Methane Pumps", titanPumpRepairs, 3, newlyComplete, false, true);
     }
 
@@ -782,7 +782,7 @@ public class EchoTerminalProgress {
         }
         save(player);
         sealFinalNetwork(player);
-        OrbitalMissionHooks.record(player, "faction_contract", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "faction", completedId);
+        OrbitalMissionHooks.record(player, "faction_contract", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "faction", completedId);
         return new ContractResult(true, contractDisplay(completedId), completedFactionContractCount(), false, false);
     }
 
@@ -800,7 +800,7 @@ public class EchoTerminalProgress {
             ModAdvancements.grantManual(serverPlayer, ModAdvancements.ORBITAL_REMNANTS_COMPLETE, "complete");
         }
         save(player);
-        OrbitalMissionHooks.record(player, "final_seal", com.knoxhack.echocore.api.mission.MissionObjectiveType.UNLOCK_RESEARCH, 1, "action", "final_network_seal");
+        OrbitalMissionHooks.record(player, "final_seal", com.echoplatform.echocore.api.mission.MissionObjectiveType.UNLOCK_RESEARCH, 1, "action", "final_network_seal");
         AshfallCompat.mirrorMilestone(player, "orbital_remnants_complete", "Orbital Remnants arc complete",
                 "ECHO-0 is resolved, the post-ECHO-0 survey network is stabilized, and orbit no longer commands Earth from quarantine.");
         return true;
@@ -931,7 +931,7 @@ public class EchoTerminalProgress {
                 + completedOutpostCharterCount() + "/3.";
         save(player);
         boolean sealed = finalReadyBeforeSave && sealFinalNetwork(player);
-        OrbitalMissionHooks.record(player, "faction_contract", com.knoxhack.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "faction", faction.contractId());
+        OrbitalMissionHooks.record(player, "faction_contract", com.echoplatform.echocore.api.mission.MissionObjectiveType.ESTABLISH_ROUTE, 1, "faction", faction.contractId());
         return new OutpostCharterResult(true, sealed, sealed ? lastTerminalReport
                 : OrbitalOutpostProfiles.contractTitle(faction) + " complete. Tier I outpost support "
                 + completedOutpostCharterCount() + "/3.");

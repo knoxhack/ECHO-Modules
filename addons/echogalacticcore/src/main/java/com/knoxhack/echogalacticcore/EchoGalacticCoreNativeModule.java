@@ -30,6 +30,13 @@ public final class EchoGalacticCoreNativeModule implements EchoNativeModuleEntry
 
     @Override
     public void registerServices(EchoNativeModuleLoadContext context) {
+        context.registerService(
+                "module." + GalacticCoreIds.MOD_ID + ".native.surface.module.entrypoint",
+                this,
+                "lifecycle",
+                "diagnostics",
+                "native_entrypoint"
+        );
         GalacticCoreServices.registerModuleServices(context);
         GalacticCoreServices.phase(context, "register_services");
     }

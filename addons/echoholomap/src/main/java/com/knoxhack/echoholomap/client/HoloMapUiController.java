@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoholomap.network.HoloMapChunkActionPacket;
 import com.knoxhack.echoholomap.network.HoloMapClientState;
@@ -1037,7 +1037,7 @@ public final class HoloMapUiController {
         return switch (marker.kind()) {
             case MISSION, ROUTE -> "Missions";
             case HAZARD, REGION, CRASH_SITE -> "Hazards/Regions";
-            case BASE_OUTPOST, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN, GENERIC -> "Other";
+            case BASE_OUTPOST, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN, GENERIC, STRUCTURE, FACTION -> "Other";
         };
     }
 
@@ -1096,7 +1096,7 @@ public final class HoloMapUiController {
             case ORBITAL_SCAN -> "Scan";
             case NEXUS_ANOMALY -> "Nexus";
             case DRONE_SCAN -> "Drone";
-            case GENERIC -> "Marker";
+            case GENERIC, STRUCTURE, FACTION -> "Marker";
         };
     }
 

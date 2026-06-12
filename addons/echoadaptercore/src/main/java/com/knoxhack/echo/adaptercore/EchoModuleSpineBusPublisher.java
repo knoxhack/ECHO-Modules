@@ -61,8 +61,8 @@ public final class EchoModuleSpineBusPublisher {
             int amount,
             Map<String, String> context) {
         try {
-            Class<?> busClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineBus");
-            Class<?> eventClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineEvent");
+            Class<?> busClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineBus");
+            Class<?> eventClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineEvent");
 
             Object event = eventClass
                     .getMethod("of", String.class, String.class, String.class, String.class, int.class, Map.class)

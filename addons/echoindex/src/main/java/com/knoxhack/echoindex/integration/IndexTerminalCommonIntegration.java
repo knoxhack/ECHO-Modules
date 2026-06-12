@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoindex.service.IndexService;
 import com.knoxhack.echoterminal.api.recipe.TerminalRecipeRegistry;
 import java.util.concurrent.atomic.AtomicBoolean;

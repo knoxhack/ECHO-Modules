@@ -1,0 +1,16 @@
+{
+  "schema": "echo.foundation.release_channels.v1",
+  "channels": [
+    "foundation-dev",
+    "foundation-stable",
+    "openlands-alpha",
+    "ashfall-alpha",
+    "arcana-alpha"
+  ],
+  "launcherRules": [
+    "Installing any experience must install all seven Foundation modules.",
+    "Launcher must validate Foundation modules before experience launch.",
+    "Repair must install or re-enable missing Foundation modules before launch.",
+    "Foundation-stable is required before an experience can move from alpha to beta."
+  ]
+}

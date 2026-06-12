@@ -1,0 +1,89 @@
+{
+  "schema": "echo.foundation.tool_catalog.v1",
+  "tools": [
+    {
+      "id": "crude_cutter",
+      "role": "cutter",
+      "tier": 0,
+      "inputs": [
+        "foundation:stick",
+        "foundation:sharp_stone",
+        "foundation:binding"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:crude_axe"
+    },
+    {
+      "id": "crude_breaker",
+      "role": "breaker",
+      "tier": 0,
+      "inputs": [
+        "foundation:stick",
+        "foundation:stone_piece",
+        "foundation:binding"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:crude_pick"
+    },
+    {
+      "id": "crude_digger",
+      "role": "digger",
+      "tier": 0,
+      "inputs": [
+        "foundation:stick",
+        "foundation:stone_piece",
+        "foundation:binding"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:crude_spade"
+    },
+    {
+      "id": "echotoolcore:flint_knife",
+      "role": "knife",
+      "tier": 0,
+      "inputs": [
+        "foundation:sharp_stone",
+        "foundation:binding"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:flint_knife"
+    },
+    {
+      "id": "field_hammer",
+      "role": "hammer",
+      "tier": 1,
+      "inputs": [
+        "foundation:stick",
+        "foundation:stone_piece",
+        "foundation:binding"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:wooden_hammer"
+    },
+    {
+      "id": "cupral_breaker",
+      "role": "breaker",
+      "tier": 1,
+      "inputs": [
+        "foundation:metal/cupral/bar",
+        "foundation:stick"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:copper_pick"
+    },
+    {
+      "id": "bronze_breaker",
+      "role": "breaker",
+      "tier": 2,
+      "inputs": [
+        "foundation:metal/bronze/bar",
+        "foundation:stick"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:bronze_pick"
+    },
+    {
+      "id": "ferrite_breaker",
+      "role": "breaker",
+      "tier": 3,
+      "inputs": [
+        "foundation:metal/ferrite/bar",
+        "foundation:stick"
+      ],
+      "oldOpenlandsId": "echoopenlandsprotocol:iron_pick"
+    }
+  ]
+}

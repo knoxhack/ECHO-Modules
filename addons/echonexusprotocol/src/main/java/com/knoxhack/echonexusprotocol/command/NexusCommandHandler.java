@@ -1,6 +1,6 @@
 package com.knoxhack.echonexusprotocol.command;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echonexusprotocol.data.NexusPlayerData;
 import com.knoxhack.echonexusprotocol.integration.NexusProgression;
 import com.knoxhack.echonexusprotocol.world.NexusWorldData;

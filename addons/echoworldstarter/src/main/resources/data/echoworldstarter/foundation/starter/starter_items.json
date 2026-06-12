@@ -1,0 +1,30 @@
+{
+  "schema": "echo.foundation.starter_items.v1",
+  "items": [
+    {
+      "id": "echoworldstarter:campfire",
+      "role": "warmth_and_cooking",
+      "oldOpenlandsId": "echoopenlandsprotocol:campfire"
+    },
+    {
+      "id": "pitchlight",
+      "role": "early_light",
+      "oldOpenlandsId": "echoopenlandsprotocol:torch"
+    },
+    {
+      "id": "pitchlight_bundle",
+      "role": "early_light_bundle",
+      "oldOpenlandsId": "echoopenlandsprotocol:torch_bundle"
+    },
+    {
+      "id": "echoworldstarter:bedroll",
+      "role": "starter_rest",
+      "oldOpenlandsId": "echoopenlandsprotocol:bedroll"
+    },
+    {
+      "id": "echoworldstarter:bedroll_block",
+      "role": "placed_starter_rest",
+      "oldOpenlandsId": "echoopenlandsprotocol:bedroll_block"
+    }
+  ]
+}

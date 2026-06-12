@@ -1,8 +1,8 @@
 package com.knoxhack.echosoundcore.integration.mission;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionRuntimeBus;
-import com.knoxhack.echocore.api.mission.MissionRuntimeEvent;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionRuntimeBus;
+import com.echoplatform.echocore.api.mission.MissionRuntimeEvent;
 import com.knoxhack.echosoundcore.EchoSoundCore;
 import com.knoxhack.echosoundcore.registry.SoundCoreSounds;
 import net.minecraft.resources.Identifier;

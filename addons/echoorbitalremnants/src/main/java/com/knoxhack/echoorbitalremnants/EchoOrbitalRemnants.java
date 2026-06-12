@@ -17,7 +17,7 @@ import com.knoxhack.echoorbitalremnants.integration.OrbitalTerminalCommonIntegra
 import com.knoxhack.echoorbitalremnants.network.ModNetworking;
 import com.knoxhack.echoorbitalremnants.item.ModTooltipEvents;
 import com.knoxhack.echoorbitalremnants.suit.SuitEvents;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;

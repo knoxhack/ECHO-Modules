@@ -1,7 +1,7 @@
 package com.knoxhack.echothemecore.service;
 
-import com.knoxhack.echocore.api.EchoThemeToken;
-import com.knoxhack.echocore.api.IThemeService;
+import com.echoplatform.echocore.api.EchoThemeToken;
+import com.echoplatform.echocore.api.IThemeService;
 import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeColorKey;
 import com.knoxhack.echothemecore.api.EchoThemeTextureKey;

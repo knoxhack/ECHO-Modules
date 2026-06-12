@@ -106,7 +106,7 @@ public class ProceduralStructureGenerator {
             Map.entry("city_ruin_stalker", new GuardianSiteTheme(
                     GuardianEntranceForm.SUBWAY_STAIR, GuardianDescentForm.STAIR_TUNNEL, 6, 0.34f,
                     ModBlocks.CRACKED_ASPHALT::get, ModBlocks.CONCRETE_RUBBLE::get,
-                    ModBlocks.RIFTSTONE::get, ModBlocks.CABLE_BUNDLE::get, ModBlocks.POWER_NODE::get,
+                    ModBlocks.NEXUS_SCAR_STONE::get, ModBlocks.CABLE_BUNDLE::get, ModBlocks.POWER_NODE::get,
                     ModBlocks.SIGNAL_SCANNER::get, ModBlocks.REBAR_BLOCK::get)),
             Map.entry("industrial_juggernaut", new GuardianSiteTheme(
                     GuardianEntranceForm.FREIGHT_LIFT, GuardianDescentForm.LIFT_SHAFT, 6, 0.38f,
@@ -125,7 +125,7 @@ public class ProceduralStructureGenerator {
                     ModBlocks.POWER_NODE::get, ModBlocks.DROP_POD_GLASS::get)),
             Map.entry("radiation_behemoth", new GuardianSiteTheme(
                     GuardianEntranceForm.REACTOR_HATCH, GuardianDescentForm.LADDER_SHAFT, 6, 0.36f,
-                    ModBlocks.IRRADIATED_SHALE::get, ModBlocks.RIFTSTONE::get,
+                    ModBlocks.IRRADIATED_SHALE::get, ModBlocks.NEXUS_SCAR_STONE::get,
                     ModBlocks.IRRADIATED_CRUST::get, ModBlocks.RADIATION_BLOCK::get, ModBlocks.POWER_NODE::get,
                     ModBlocks.ISOTOPE_REFINER::get, ModBlocks.REBAR_BLOCK::get)),
             Map.entry("cryogenic_overseer", new GuardianSiteTheme(
@@ -135,7 +135,7 @@ public class ProceduralStructureGenerator {
                     ModBlocks.ATMOSPHERIC_SCRUBBER::get, ModBlocks.BLUE_ICE_CRYSTAL::get)),
             Map.entry("nexus_scar_avatar", new GuardianSiteTheme(
                     GuardianEntranceForm.NEXUS_BREACH, GuardianDescentForm.BREACH_SHAFT, 7, 0.44f,
-                    ModBlocks.NEXUS_CRACKED_SOIL::get, ModBlocks.RIFTSTONE::get,
+                    ModBlocks.NEXUS_CRACKED_SOIL::get, ModBlocks.NEXUS_SCAR_STONE::get,
                     ModBlocks.ENERGIZED_FISSURE::get, ModBlocks.ECHO_CRYSTAL::get, ModBlocks.POWER_NODE::get,
                     ModBlocks.NEXUS_CORE::get, ModBlocks.CRYSTALLINE_SYNTHESIZER::get))
     );
@@ -714,7 +714,7 @@ public class ProceduralStructureGenerator {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof net.minecraft.world.Container cache) {
                 cache.setItem(0, new ItemStack(Items.STICK, 8));
-                cache.setItem(1, new ItemStack(ModItems.PLANT_FIBER.get(), 8));
+                cache.setItem(1, new ItemStack(ModItems.ASHGRASS_FIBER.get(), 8));
                 cache.setItem(2, new ItemStack(ModItems.ASH.get(), 6));
                 cache.setItem(3, new ItemStack(Items.GLASS_BOTTLE, 3));
                 cache.setItem(4, new ItemStack(ModItems.SCRAP_METAL.get(), 6));
@@ -2382,7 +2382,7 @@ public class ProceduralStructureGenerator {
             return ModBlocks.HAND_RECYCLER.get().defaultBlockState();
         }
         if (block == Blocks.LECTERN) {
-            return ModBlocks.MAP_TABLE.get().defaultBlockState();
+            return ModBlocks.SURVEY_TABLE.get().defaultBlockState();
         }
         if (block == Blocks.WHITE_BED || block == Blocks.RED_BED || block == Blocks.BLUE_BED || block == Blocks.GREEN_BED
                 || block == Blocks.OAK_STAIRS || block == Blocks.OAK_TRAPDOOR) {
@@ -2407,7 +2407,7 @@ public class ProceduralStructureGenerator {
             return ModBlocks.RUSTED_METAL_SHEET.get().defaultBlockState();
         }
         if (block == Blocks.OBSIDIAN || block == Blocks.CRYING_OBSIDIAN || block == Blocks.AMETHYST_BLOCK) {
-            return ModBlocks.RIFTSTONE.get().defaultBlockState();
+            return ModBlocks.NEXUS_SCAR_STONE.get().defaultBlockState();
         }
         return ModBlocks.ASH_STONE.get().defaultBlockState();
     }

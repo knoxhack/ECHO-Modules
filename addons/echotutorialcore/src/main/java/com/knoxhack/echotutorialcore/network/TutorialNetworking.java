@@ -1,7 +1,7 @@
 package com.knoxhack.echotutorialcore.network;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetPayloads;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echonetcore.api.EchoPayloadContext;

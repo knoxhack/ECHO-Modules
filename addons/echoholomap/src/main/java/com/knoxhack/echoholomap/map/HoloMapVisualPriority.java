@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.map;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.Config;
 
 public final class HoloMapVisualPriority {
@@ -27,7 +27,7 @@ public final class HoloMapVisualPriority {
             case NEXUS_ANOMALY -> 6;
             case DRONE_SCAN -> 7;
             case REGION -> 8;
-            case GENERIC -> 9;
+            case GENERIC, STRUCTURE, FACTION -> 9;
         };
     }
 

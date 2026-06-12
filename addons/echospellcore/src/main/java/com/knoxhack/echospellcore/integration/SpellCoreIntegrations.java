@@ -1,6 +1,6 @@
 package com.knoxhack.echospellcore.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echospellcore.EchoSpellCore;
 
 public final class SpellCoreIntegrations {

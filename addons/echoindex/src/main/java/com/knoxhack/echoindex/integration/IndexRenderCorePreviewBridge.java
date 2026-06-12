@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.integration;
 
-import com.knoxhack.echocore.api.index.IndexEntry;
+import com.echoplatform.echocore.api.index.IndexEntry;
 import com.knoxhack.echorendercore.profile.ProfileValidationReport;
 import com.knoxhack.echorendercore.profile.RenderCoreProfiles;
 import com.knoxhack.echorendercore.profile.VisualProfile;

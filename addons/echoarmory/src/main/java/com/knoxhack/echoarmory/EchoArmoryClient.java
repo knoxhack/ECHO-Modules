@@ -7,7 +7,7 @@ import com.knoxhack.echoarmory.client.ArmoryProjectileRenderer;
 import com.knoxhack.echoarmory.entity.ArmoryProjectileEntity;
 import com.knoxhack.echoarmory.registry.ModEntities;
 import com.knoxhack.echoarmory.registry.ModMenus;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 public class EchoArmoryClient {

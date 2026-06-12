@@ -1,12 +1,12 @@
 package com.knoxhack.echonetcore.test;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.network.EchoPacketDirection;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
-import com.knoxhack.echocore.api.network.NoOpNetworkService;
-import com.knoxhack.echocore.api.network.PacketDebugHook;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.network.EchoPacketDirection;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.NoOpNetworkService;
+import com.echoplatform.echocore.api.network.PacketDebugHook;
 import com.knoxhack.echonetcore.EchoNetCore;
 import com.knoxhack.echonetcore.api.EchoClientSyncRegistry;
 import com.knoxhack.echonetcore.api.EchoRateLimitPolicy;

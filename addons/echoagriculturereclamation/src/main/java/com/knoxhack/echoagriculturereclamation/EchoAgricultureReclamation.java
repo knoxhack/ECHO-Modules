@@ -2,7 +2,7 @@ package com.knoxhack.echoagriculturereclamation;
 
 import com.knoxhack.echo.adaptercore.EchoBackendCommandEventBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoagriculturereclamation.command.ReclamationCommands;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationReloaders;
 import com.knoxhack.echoagriculturereclamation.integration.ReclamationCoreIntegration;

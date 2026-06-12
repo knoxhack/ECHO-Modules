@@ -1,6 +1,6 @@
 package com.knoxhack.echoprimecore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class PrimeConfig {
     public static final EchoNativeConfigSpec SPEC;

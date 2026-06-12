@@ -2,7 +2,7 @@ package com.knoxhack.echostationfall.registry;
 
 import com.knoxhack.echo.adaptercore.EchoBackendRegistryBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendRegistryEntry;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echostationfall.EchoStationfall;
 import com.knoxhack.echostationfall.integration.StationfallSuitState;
 import com.knoxhack.echostationfall.progression.*;

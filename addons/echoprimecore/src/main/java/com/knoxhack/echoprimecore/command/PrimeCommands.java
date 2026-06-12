@@ -1,12 +1,12 @@
 package com.knoxhack.echoprimecore.command;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegrations;
-import com.knoxhack.echocore.api.prime.PrimeHoloMapRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIndexRegistry;
-import com.knoxhack.echocore.api.prime.PrimeLensRegistry;
-import com.knoxhack.echocore.api.prime.PrimeRouteRegistry;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegrations;
+import com.echoplatform.echocore.api.prime.PrimeHoloMapRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIndexRegistry;
+import com.echoplatform.echocore.api.prime.PrimeLensRegistry;
+import com.echoplatform.echocore.api.prime.PrimeRouteRegistry;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.integration.PrimeIntegrationLoader;
 import com.knoxhack.echoprimecore.integration.PrimeIntegrationRegistry;

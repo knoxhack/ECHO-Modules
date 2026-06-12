@@ -1,7 +1,7 @@
 package com.knoxhack.echocursecore.integration;
 
 import com.knoxhack.echocursecore.EchoCurseCore;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class CurseCoreIntegrations {
     private CurseCoreIntegrations() {

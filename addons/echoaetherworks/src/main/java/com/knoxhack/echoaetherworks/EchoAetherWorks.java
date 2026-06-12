@@ -8,11 +8,11 @@ import com.knoxhack.echoaetherworks.registry.ModCreativeTabs;
 import com.knoxhack.echoaetherworks.registry.ModItems;
 import com.knoxhack.echoaetherworks.registry.ModMenus;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
 public final class EchoAetherWorks {

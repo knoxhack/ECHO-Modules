@@ -6,7 +6,7 @@ import com.knoxhack.echoterminal.api.mission.TerminalMissionActions;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class BlackboxTerminalCommonIntegration {
    private static final AtomicBoolean REGISTERED = new AtomicBoolean(false);

@@ -3,7 +3,7 @@ package com.knoxhack.echoashfallprotocol.block;
 import com.knoxhack.echoashfallprotocol.block.entity.NexusCoreBlockEntity;
 import com.knoxhack.echoashfallprotocol.echo.EchoMessages;
 import com.knoxhack.echoashfallprotocol.endgame.NexusAccessRules;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,6 @@
 package com.knoxhack.echoscreencore.client.render;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoscreencore.EchoScreenCoreMod;
 import com.knoxhack.echoscreencore.api.theme.EchoAccessibilitySettings;
 import com.knoxhack.echoscreencore.api.theme.EchoThemeTokenSnapshot;

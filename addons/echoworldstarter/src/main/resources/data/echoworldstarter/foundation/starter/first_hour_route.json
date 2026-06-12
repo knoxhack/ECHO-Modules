@@ -1,0 +1,42 @@
+{
+  "schema": "echo.foundation.first_hour_route.v1",
+  "sourceMovedFrom": "echoopenlandsprotocol:openlands/progression/first_hour_route.json",
+  "steps": [
+    {
+      "id": "spawn_safety_check",
+      "order": 0,
+      "goal": "Validate landing area, nearby hazard envelope, and starter resource radius."
+    },
+    {
+      "id": "collect_loose_materials",
+      "order": 1,
+      "goal": "Collect branchwood, echomaterialcore:fieldstone pieces, fiber, and flint."
+    },
+    {
+      "id": "make_first_tool",
+      "order": 2,
+      "goal": "Craft crude cutter/breaker/digger using tool role contracts."
+    },
+    {
+      "id": "make_pitchlight",
+      "order": 3,
+      "goal": "Craft early light from echomaterialcore:pitch_resin echomaterialcore:resin and branchwood stick."
+    },
+    {
+      "id": "make_field_bench",
+      "order": 4,
+      "goal": "Place field bench as the first shared station."
+    },
+    {
+      "id": "make_shelter_marker",
+      "order": 5,
+      "goal": "Build a minimal shelter footprint and calculate starter shelter score."
+    },
+    {
+      "id": "claim_starter_cache",
+      "order": 6,
+      "goal": "Award starter cache only after shelter and station checks pass."
+    }
+  ],
+  "experienceExtensionPoint": "Experiences append step 7+ with their own fantasy goal, such as Openlands first waystone or Ashfall first sealed shelter."
+}

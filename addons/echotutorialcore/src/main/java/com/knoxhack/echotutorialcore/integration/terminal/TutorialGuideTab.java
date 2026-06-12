@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.integration.terminal;
 
-import com.knoxhack.echocore.api.EchoOptionalServices;
+import com.echoplatform.echocore.api.EchoOptionalServices;
 import com.knoxhack.echoterminal.api.ClientTerminalTab;
 import com.knoxhack.echoterminal.api.TerminalRenderContext;
 import com.knoxhack.echoterminal.api.TerminalTabChrome;

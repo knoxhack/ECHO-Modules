@@ -1,22 +1,22 @@
 package com.knoxhack.echoarcanacore.integration.veilbound;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoMapLayer;
-import com.knoxhack.echocore.api.EchoMapMarker;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.mission.IMissionRegistry;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
-import com.knoxhack.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoMapLayer;
+import com.echoplatform.echocore.api.EchoMapMarker;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.mission.IMissionRegistry;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.knoxhack.echoarcanacore.EchoArcanaCore;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
 import com.knoxhack.echoarcanacore.api.ArcanaProviderInterfaces;
@@ -36,7 +36,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class ArcanaVeilboundBridgeIntegration {
     public static final Identifier PROVIDER_ID = EchoArcanaCore.id("veilbound_bridge");

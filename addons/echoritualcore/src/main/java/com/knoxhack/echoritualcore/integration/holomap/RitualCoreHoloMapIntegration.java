@@ -1,6 +1,6 @@
 package com.knoxhack.echoritualcore.integration.holomap;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoritualcore.EchoRitualCore;
 import java.util.concurrent.atomic.AtomicBoolean;
 

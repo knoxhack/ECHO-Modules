@@ -1,7 +1,7 @@
 package com.knoxhack.echonetcore.network;
 
 import com.knoxhack.echocore.EchoCore;
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
 import com.knoxhack.echonetcore.EchoNetCore;
 import com.knoxhack.echonetcore.api.EchoPayloadCodecs;
 import net.minecraft.network.FriendlyByteBuf;

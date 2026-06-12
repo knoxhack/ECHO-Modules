@@ -1,13 +1,13 @@
 package com.knoxhack.echoorbitalremnants.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoPackMode;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoPackMode;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoorbitalremnants.EchoOrbitalRemnants;
 import com.knoxhack.echoorbitalremnants.lore.OrbitalLore;
 import com.knoxhack.echoorbitalremnants.progression.EchoTerminalProgress;

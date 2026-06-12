@@ -2,8 +2,8 @@ package com.knoxhack.echofamiliarcore.api;
 
 import com.knoxhack.echoarcanacore.api.AetherSignalType;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echofamiliarcore.EchoFamiliarCore;
 import com.knoxhack.echofamiliarcore.entity.ArcanaFamiliarEntity;
 import java.util.Map;

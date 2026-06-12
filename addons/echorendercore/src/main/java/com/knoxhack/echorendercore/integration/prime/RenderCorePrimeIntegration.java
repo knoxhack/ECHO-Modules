@@ -1,10 +1,10 @@
 package com.knoxhack.echorendercore.integration.prime;
 
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegration;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegrations;
-import com.knoxhack.echocore.api.prime.PrimeAuditRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIntegrationContext;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegration;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegrations;
+import com.echoplatform.echocore.api.prime.PrimeAuditRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIntegrationContext;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
 import com.knoxhack.echorendercore.EchoRenderCore;
 import net.minecraft.resources.Identifier;
 

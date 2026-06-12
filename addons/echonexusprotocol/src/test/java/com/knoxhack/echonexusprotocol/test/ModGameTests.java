@@ -1,7 +1,7 @@
 package com.knoxhack.echonexusprotocol.test;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoHandoffs;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoHandoffs;
 import com.knoxhack.echo.machinecore.EchoMachineKind;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeRegistry;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeSnapshot;

@@ -1,13 +1,13 @@
 package com.knoxhack.echoindex.test;
 
-import com.knoxhack.echocore.api.index.IIndexContentProvider;
-import com.knoxhack.echocore.api.index.IIndexRecipeProvider;
-import com.knoxhack.echocore.api.index.IndexBuildContext;
-import com.knoxhack.echocore.api.index.IndexContentSnapshot;
-import com.knoxhack.echocore.api.index.IndexRecipeCategory;
-import com.knoxhack.echocore.api.index.IndexRecipeSlot;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IIndexContentProvider;
+import com.echoplatform.echocore.api.index.IIndexRecipeProvider;
+import com.echoplatform.echocore.api.index.IndexBuildContext;
+import com.echoplatform.echocore.api.index.IndexContentSnapshot;
+import com.echoplatform.echocore.api.index.IndexRecipeCategory;
+import com.echoplatform.echocore.api.index.IndexRecipeSlot;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.integration.IndexTerminalImportRecipeProvider;
 import com.knoxhack.echoindex.integration.IndexTerminalRecipeProvider;

@@ -46,7 +46,7 @@ public class FeralHuman extends Monster {
     protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean wasRecentlyHit) {
         super.dropCustomDeathLoot(level, damageSource, wasRecentlyHit);
         level.addFreshEntity(new ItemEntity(level, this.getX(), this.getY(), this.getZ(),
-                new ItemStack(ModItems.ANIMAL_HIDE.get(), 1 + this.random.nextInt(2))));
+                new ItemStack(ModItems.SCORCHED_HIDE_STRIP.get(), 1 + this.random.nextInt(2))));
         if (this.random.nextFloat() < 0.5f) {
             level.addFreshEntity(new ItemEntity(level, this.getX(), this.getY(), this.getZ(),
                     new ItemStack(ModItems.SCRAP_METAL.get(), 1)));

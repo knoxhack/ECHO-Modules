@@ -1,0 +1,70 @@
+{
+  "schema": "echo.foundation.loot_pool_catalog.v1",
+  "pools": [
+    {
+      "id": "starter_cache",
+      "family": "starter",
+      "entries": [
+        "echomaterialcore:branchwood_stick",
+        "echomaterialcore:fieldstone_piece",
+        "echomaterialcore:reed_fiber",
+        "pitch_resin",
+        "echomaterialcore:flint_shard"
+      ],
+      "note": "First earned Foundation cache."
+    },
+    {
+      "id": "traveler_pack",
+      "family": "starter",
+      "entries": [
+        "echomaterialcore:fiber_binding",
+        "hide_strip",
+        "bone_shard",
+        "charcoal_lump"
+      ],
+      "note": "Small generic supply pack."
+    },
+    {
+      "id": "ruined_storage",
+      "family": "ruin",
+      "entries": [
+        "echomaterialcore:brick",
+        "echomaterialcore:glass_pane",
+        "echomaterialcore:fieldstone_piece",
+        "echomaterialcore:reed_fiber"
+      ],
+      "note": "Renamed from ruined_well_cache."
+    },
+    {
+      "id": "material_scrap",
+      "family": "salvage",
+      "entries": [
+        "cupral_chunk",
+        "tinveil_chunk",
+        "ferrite_chunk",
+        "charcoal_lump"
+      ],
+      "note": "Generic metal/material salvage pool."
+    },
+    {
+      "id": "generic_block_drops",
+      "family": "block_drop",
+      "entries": [
+        "clay_lump",
+        "echomaterialcore:fieldstone_piece",
+        "echomaterialcore:flint_shard"
+      ],
+      "note": "Baseline block drop table hook."
+    },
+    {
+      "id": "generic_ore_chunk_drops",
+      "family": "block_drop",
+      "entries": [
+        "cupral_chunk",
+        "tinveil_chunk",
+        "ferrite_chunk"
+      ],
+      "note": "Baseline ore vein drop hook."
+    }
+  ]
+}

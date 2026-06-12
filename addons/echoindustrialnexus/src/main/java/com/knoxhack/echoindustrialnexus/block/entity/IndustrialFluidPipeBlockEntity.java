@@ -17,6 +17,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
 
 public class IndustrialFluidPipeBlockEntity extends BlockEntity {
    private int fluidId;
@@ -31,7 +33,7 @@ public class IndustrialFluidPipeBlockEntity extends BlockEntity {
          IndustrialFluidPipeBlockEntity.this.setChanged();
       }
    );
-   private final Object fluidHandler = EchoBackendFluidBridge.createFluidHandler(new PipeFluidHandler());
+   private final ResourceHandler<FluidResource> fluidHandler = EchoBackendFluidBridge.createFluidHandler(new PipeFluidHandler());
 
    public IndustrialFluidPipeBlockEntity(BlockPos pos, BlockState state) {
       super((BlockEntityType)ModBlockEntities.FLUID_PIPE.get(), pos, state);
@@ -47,7 +49,7 @@ public class IndustrialFluidPipeBlockEntity extends BlockEntity {
       pipeEntity.tickLeak(level, pos, tier);
    }
 
-   public Object fluidHandler(Direction direction) {
+   public ResourceHandler<FluidResource> fluidHandler(Direction direction) {
       return this.fluidHandler;
    }
 

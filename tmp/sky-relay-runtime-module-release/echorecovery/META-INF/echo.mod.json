@@ -1,0 +1,113 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echorecovery",
+  "name": "ECHO: Recovery",
+  "version": "1.3.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "recovery",
+  "entrypoint": "com.knoxhack.echorecovery.EchoRecovery",
+  "publisher": "Knoxhack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoarmory",
+    "echoashfallprotocol",
+    "echoblackboxprotocol",
+    "echoconvoyprotocol",
+    "echodatacore",
+    "echohealthcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echologisticsnetwork",
+    "echomissioncore",
+    "echomodulegraph",
+    "echonexusprotocol",
+    "echopackcore",
+    "echoplayercore",
+    "echoplatformcore",
+    "echopowergrid",
+    "echorelictech",
+    "echorendercore",
+    "echoruntimeguard",
+    "echosoundcore",
+    "echoterminal",
+    "echothemecore",
+    "echotutorialcore",
+    "echovalidationcore",
+    "echoweathercore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "recovery.commands",
+    "recovery.compass",
+    "recovery.field_caches",
+    "recovery.graves",
+    "recovery.plans",
+    "recovery.rules",
+    "recovery.safe_modes"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "all"
+  ],
+  "permissions": [
+    "network.payloads",
+    "player.data",
+    "server.commands",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "commands",
+        "diagnostics",
+        "items",
+        "networking",
+        "player",
+        "saves",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echorecovery.EchoRecoveryNativeModule",
+    "nativeClasspath": [],
+    "notes": "Death recovery, grave, compass, field cache, and recovery plan layer. Repair and recovery planning remain non-destructive and integrations stay optional."
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echorecovery/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

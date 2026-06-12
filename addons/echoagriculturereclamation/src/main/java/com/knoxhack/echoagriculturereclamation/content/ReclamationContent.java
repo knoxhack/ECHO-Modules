@@ -2,7 +2,7 @@ package com.knoxhack.echoagriculturereclamation.content;
 
 import com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation;
 import com.knoxhack.echoagriculturereclamation.config.ReclamationConfig;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal.network;
 
-import com.knoxhack.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
 import com.knoxhack.echoterminal.EchoTerminal;
 import java.util.Locale;
 import net.minecraft.network.RegistryFriendlyByteBuf;

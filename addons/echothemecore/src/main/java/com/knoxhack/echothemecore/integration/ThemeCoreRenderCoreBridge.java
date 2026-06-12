@@ -5,7 +5,7 @@ import com.knoxhack.echothemecore.api.EchoThemeApi;
 import com.knoxhack.echothemecore.api.EchoThemeRenderColorKey;
 import com.knoxhack.echothemecore.api.EchoThemeRenderIntensityKey;
 import com.knoxhack.echothemecore.api.EchoThemeRenderProfile;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 

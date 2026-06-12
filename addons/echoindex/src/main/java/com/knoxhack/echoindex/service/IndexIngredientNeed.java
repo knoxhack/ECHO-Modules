@@ -1,6 +1,6 @@
 package com.knoxhack.echoindex.service;
 
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import java.util.List;
 import net.minecraft.world.item.ItemStack;
 

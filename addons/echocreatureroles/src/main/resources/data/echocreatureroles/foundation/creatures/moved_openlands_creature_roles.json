@@ -1,0 +1,88 @@
+{
+  "schema": "echo.foundation.moved_openlands_creature_roles.v1",
+  "movedOrder": 6,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echocreatureroles",
+  "sourceCategories": [
+    {
+      "openlandsCategory": "aquatic_passive",
+      "foundationRole": "echocreatureroles:aquatic_passive"
+    },
+    {
+      "openlandsCategory": "hostile_large",
+      "foundationRole": "echocreatureroles:hostile_large"
+    },
+    {
+      "openlandsCategory": "hostile_rare",
+      "foundationRole": "echocreatureroles:night_stalker"
+    },
+    {
+      "openlandsCategory": "hostile_small",
+      "foundationRole": "echocreatureroles:hostile_small"
+    },
+    {
+      "openlandsCategory": "neutral",
+      "foundationRole": "echocreatureroles:territorial_medium"
+    },
+    {
+      "openlandsCategory": "passive_large",
+      "foundationRole": "echocreatureroles:passive_large"
+    },
+    {
+      "openlandsCategory": "passive_small",
+      "foundationRole": "echocreatureroles:passive_small"
+    }
+  ],
+  "openlandsCreatureMappings": [
+    {
+      "creature": "echoopenlandsprotocol:hare",
+      "legacyCategory": "passive_small",
+      "foundationRole": "echocreatureroles:passive_small"
+    },
+    {
+      "creature": "echoopenlandsprotocol:deer",
+      "legacyCategory": "passive_large",
+      "foundationRole": "echocreatureroles:passive_large"
+    },
+    {
+      "creature": "echoopenlandsprotocol:boar",
+      "legacyCategory": "neutral",
+      "foundationRole": "echocreatureroles:territorial_medium"
+    },
+    {
+      "creature": "echoopenlandsprotocol:goat",
+      "legacyCategory": "passive_large",
+      "foundationRole": "echocreatureroles:passive_large"
+    },
+    {
+      "creature": "echoopenlandsprotocol:marsh_hen",
+      "legacyCategory": "passive_small",
+      "foundationRole": "echocreatureroles:passive_small"
+    },
+    {
+      "creature": "echoopenlandsprotocol:fish",
+      "legacyCategory": "aquatic_passive",
+      "foundationRole": "echocreatureroles:aquatic_passive"
+    },
+    {
+      "creature": "echoopenlandsprotocol:greyling",
+      "legacyCategory": "hostile_small",
+      "foundationRole": "echocreatureroles:hostile_small"
+    },
+    {
+      "creature": "echoopenlandsprotocol:bristleback",
+      "legacyCategory": "hostile_large",
+      "foundationRole": "echocreatureroles:hostile_large"
+    },
+    {
+      "creature": "echoopenlandsprotocol:hollow_stalker",
+      "legacyCategory": "hostile_rare",
+      "foundationRole": "echocreatureroles:night_stalker"
+    },
+    {
+      "creature": "echoopenlandsprotocol:mire_leech",
+      "legacyCategory": "hostile_small",
+      "foundationRole": "echocreatureroles:hostile_small"
+    }
+  ]
+}

@@ -14,12 +14,12 @@ import com.knoxhack.echo.scriptcore.model.EchoHoloMapLayerDefinition;
 import com.knoxhack.echo.scriptcore.model.EchoHoloMapMarkerDefinition;
 import com.knoxhack.echo.scriptcore.runtime.ScriptCoreRuntimeStateService;
 import com.knoxhack.echo.scriptcore.validation.EchoScriptKnownTypes;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoIntegrations;
-import com.knoxhack.echocore.api.IMapDataProvider;
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoIntegrations;
+import com.echoplatform.echocore.api.IMapDataProvider;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.mission.MissionStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -172,7 +172,7 @@ final class MissionCoreAdapter extends BaseScriptAdapter {
             case "start_mission", "unlock_mission" -> EchoCoreServices.startMission(player, action.mission().get());
             case "complete_mission" -> EchoCoreServices.completeMission(player, action.mission().get());
             case "complete_objective" -> EchoCoreServices.recordMissionObjective(player,
-                    com.knoxhack.echocore.api.mission.MissionObjectiveType.CUSTOM,
+                    com.echoplatform.echocore.api.mission.MissionObjectiveType.CUSTOM,
                     action.mission().get(), 1, java.util.Map.of("scriptcore_objective", action.objective().orElse("")));
             default -> false;
         };

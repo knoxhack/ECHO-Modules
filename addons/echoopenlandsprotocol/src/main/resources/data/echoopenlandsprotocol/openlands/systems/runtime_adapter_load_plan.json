@@ -1,0 +1,750 @@
+{
+  "schema": "echo.openlands.systems.runtime_adapter_load_plan.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeTargets": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "sourceOfTruth": {
+    "descriptor": "META-INF/echo.mod.json",
+    "commonDataRoot": "data/echoopenlandsprotocol/openlands",
+    "assetsRoot": "assets/echoopenlandsprotocol",
+    "javaContract": "com.knoxhack.echoopenlandsprotocol.contract.OpenlandsRuntimeContracts",
+    "releaseIndexStateBeforeArtifacts": "warning"
+  },
+  "phases": [
+    {
+      "id": "discover",
+      "order": 10,
+      "gate": "module_descriptor",
+      "description": "Find the selected Openlands artifact, read its descriptor, verify official identity, and accept the active runtime target."
+    },
+    {
+      "id": "load_data",
+      "order": 20,
+      "gate": "canonical_json",
+      "description": "Load Echo-owned JSON contracts from common data paths before any runtime-specific objects are registered."
+    },
+    {
+      "id": "register_content",
+      "order": 30,
+      "gate": "registry_surface",
+      "description": "Register blocks, items, recipes, tags, loot tables, and station surfaces from Echo IDs."
+    },
+    {
+      "id": "bind_worldgen",
+      "order": 40,
+      "gate": "world_surface",
+      "description": "Bind starter biomes, landmark pools, creature spawns, ambience, and first-hour spawn guarantees."
+    },
+    {
+      "id": "bind_gameplay_state",
+      "order": 50,
+      "gate": "state_surface",
+      "description": "Bind first-hour progression, save/load fields, shelter scoring, waystones, HoloMap, co-op state, builder UX, homestead, and sounds."
+    },
+    {
+      "id": "ready",
+      "order": 60,
+      "gate": "runtime_ready",
+      "description": "Expose Openlands as playable only after smoke checks and relaxed Standard-mode checks pass."
+    },
+    {
+      "id": "release_gate",
+      "order": 70,
+      "gate": "public_alpha_release",
+      "description": "Promote only after local validation, published artifacts, launcher flows, runtime parity, playtest evidence, waystone reload evidence, and legal review."
+    }
+  ],
+  "loadSteps": [
+    {
+      "id": "discover_module_descriptor",
+      "phase": "discover",
+      "summary": "Read META-INF/echo.mod.json, verify id echoopenlandsprotocol, version 0.1.0, official pack_root role, and active runtime target.",
+      "resourceIds": [
+        "META-INF/echo.mod.json"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "descriptor_resolved",
+        "module_identity_verified",
+        "runtime_target_accepted",
+        "source_root_mounted"
+      ],
+      "successSignal": "openlands_descriptor_loaded",
+      "failurePolicy": "Do not load any registry data when descriptor identity or runtime target is wrong."
+    },
+    {
+      "id": "load_standard_mode_and_policy",
+      "phase": "load_data",
+      "summary": "Load relaxed Standard config, Hardlands overlay policy, and original-content policy before exposing pack UI.",
+      "resourceIds": [
+        "config/game_modes",
+        "config/content_policy"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "standard_mode_relaxed",
+        "hardlands_optional",
+        "legal_policy_accepted"
+      ],
+      "successSignal": "openlands_standard_config_loaded",
+      "failurePolicy": "Start in disabled-pack state instead of accidentally enabling harsh survival rules."
+    },
+    {
+      "id": "load_core_registry_payloads",
+      "phase": "load_data",
+      "summary": "Parse block, item, recipe, loot, tag, and conformance payloads before runtime-specific object creation.",
+      "resourceIds": [
+        "blocks/mvp_blocks",
+        "items/mvp_items",
+        "recipes/mvp_recipes",
+        "loot/mvp_loot",
+        "tags/mvp_tags",
+        "conformance/openlands_mvp_registry"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "registry_json_parsed",
+        "runtime_parity_declared",
+        "minimum_content_counts_met",
+        "registry_ids_resolved"
+      ],
+      "successSignal": "openlands_core_registries_loaded",
+      "failurePolicy": "Stop before partial block, item, or recipe registration can reach a save."
+    },
+    {
+      "id": "load_world_and_system_payloads",
+      "phase": "load_data",
+      "summary": "Parse biomes, landmarks, creatures, waystones, first-hour route, production phase matrix, playtest fixtures, tutorials, index gameplay catalog, HoloMap, sounds, runtime execution acceptance, and all system contracts.",
+      "resourceIds": [
+        "biomes/mvp_biomes",
+        "structures/mvp_landmarks",
+        "creatures/mvp_creatures",
+        "waystones/waystone_contract",
+        "progression/first_hour_route",
+        "progression/production_phase_matrix",
+        "playtests/mvp_first_hour_acceptance",
+        "tutorials/first_hour_prompts",
+        "index/openlands_overview",
+        "index/mvp_gameplay_catalog",
+        "holomap/mvp_regions",
+        "sounds/mvp_sound_contract",
+        "systems/homestead_alpha",
+        "systems/builder_ux_alpha",
+        "systems/cross_platform_parity",
+        "systems/playable_runtime_contract",
+        "systems/runtime_adapter_load_plan",
+        "systems/runtime_execution_acceptance",
+        "systems/runtime_execution_harness_plan",
+        "systems/harness_driver_manifest_contract",
+        "systems/legal_content_audit",
+        "systems/launcher_flow_acceptance",
+        "systems/launcher_execution_acceptance",
+        "systems/launcher_execution_harness_plan",
+        "systems/final_release_review_acceptance",
+        "systems/final_release_review_harness_plan",
+        "systems/distribution_approval_acceptance",
+        "systems/distribution_approval_harness_plan",
+        "systems/release_publication_manifest_contract",
+        "systems/distribution_alpha_gates",
+        "systems/coop_and_smp"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "registry_json_parsed",
+        "runtime_parity_declared",
+        "registry_ids_resolved"
+      ],
+      "successSignal": "openlands_world_and_system_contracts_loaded",
+      "failurePolicy": "Keep world creation disabled until all required world and system payloads parse."
+    },
+    {
+      "id": "register_blocks_items_tags_and_loot",
+      "phase": "register_content",
+      "summary": "Register MVP blocks, items, canonical tags, block drops, creature drops, and structure loot using Echo IDs.",
+      "resourceIds": [
+        "blocks/mvp_blocks",
+        "items/mvp_items",
+        "tags/mvp_tags",
+        "loot/mvp_loot"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "block_ids_registered",
+        "item_ids_registered",
+        "tag_ids_registered",
+        "canonical_echo_ids_retained",
+        "loot_tables_bound"
+      ],
+      "successSignal": "openlands_content_ids_registered",
+      "failurePolicy": "Fail adapter startup for missing content ids rather than silently substituting unrelated content."
+    },
+    {
+      "id": "register_recipes_and_station_surfaces",
+      "phase": "register_content",
+      "summary": "Bind echostationcore:handcrafting, echostationcore:field_bench, echostationcore:kiln, echostationcore:forge_hearth, echostationcore:cookpot, map-table, echostationcore:loom, and mason-table recipe surfaces.",
+      "resourceIds": [
+        "recipes/mvp_recipes"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "recipe_ids_registered",
+        "station_surfaces_bound",
+        "canonical_echo_ids_retained"
+      ],
+      "successSignal": "openlands_recipe_stations_registered",
+      "failurePolicy": "Keep station UI closed when assigned recipes cannot be registered."
+    },
+    {
+      "id": "bind_biomes_structures_creatures_and_spawn",
+      "phase": "bind_worldgen",
+      "summary": "Bind starter biomes, landmarks, creature spawns, ambience, and guaranteed first-hour resources.",
+      "resourceIds": [
+        "biomes/mvp_biomes",
+        "structures/mvp_landmarks",
+        "creatures/mvp_creatures",
+        "loot/mvp_loot"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "biome_palettes_bound",
+        "spawn_tables_bound",
+        "landmark_pools_bound",
+        "starter_spawn_guarantees_bound"
+      ],
+      "successSignal": "openlands_worldgen_bound",
+      "failurePolicy": "Reject invalid starter seeds or disable world creation until spawn guarantees pass."
+    },
+    {
+      "id": "bind_first_hour_shelter_and_save_load",
+      "phase": "bind_gameplay_state",
+      "summary": "Bind discovery prompts, shared runtime-core shelter scoring, sleeping milestone, echoworldstarter:bedroll spawn, echoworldstarter:campfire state, inventory, hotbar, chests, route save fields, and playtest checkpoints.",
+      "resourceIds": [
+        "progression/first_hour_route",
+        "playtests/mvp_first_hour_acceptance",
+        "tutorials/first_hour_prompts",
+        "systems/playable_runtime_contract",
+        "conformance/openlands_mvp_registry"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "tutorial_triggers_bound",
+        "shelter_score_bound",
+        "first_hour_save_load_ready"
+      ],
+      "successSignal": "openlands_first_hour_state_bound",
+      "failurePolicy": "Block Public Alpha if a fresh save cannot complete and reload the first-hour loop."
+    },
+    {
+      "id": "bind_waystones_holomap_and_multiplayer_state",
+      "phase": "bind_gameplay_state",
+      "summary": "Bind shared runtime-core waystone repair progression, HoloMap reveal data, old road segments, contributors, ownership, and public-travel permissions.",
+      "resourceIds": [
+        "waystones/waystone_contract",
+        "holomap/mvp_regions",
+        "systems/playable_runtime_contract",
+        "systems/coop_and_smp"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "waystone_state_persistence_ready",
+        "holomap_region_persistence_ready",
+        "multiplayer_permissions_bound"
+      ],
+      "successSignal": "openlands_waystone_network_bound",
+      "failurePolicy": "Disable fast travel and keep release state at warning until persistence passes."
+    },
+    {
+      "id": "bind_homestead_builder_and_audio",
+      "phase": "bind_gameplay_state",
+      "summary": "Bind relaxed homestead systems, builder UX commands, and Openlands sound events without enabling hardcore Standard rules.",
+      "resourceIds": [
+        "systems/homestead_alpha",
+        "systems/builder_ux_alpha",
+        "systems/playable_runtime_contract",
+        "sounds/mvp_sound_contract",
+        "assets/sounds.json"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "homestead_state_bound",
+        "builder_ux_bound",
+        "sound_events_bound",
+        "missing_asset_policy_applied"
+      ],
+      "successSignal": "openlands_alpha_surfaces_bound",
+      "failurePolicy": "Disable affected alpha surfaces rather than corrupting inventory, saves, or legal asset policy."
+    },
+    {
+      "id": "report_runtime_ready",
+      "phase": "ready",
+      "summary": "Expose adapter-ready metadata after smoke checks prove Standard starts, interaction works, and hardcore meters are off.",
+      "resourceIds": [
+        "systems/cross_platform_parity",
+        "systems/playable_runtime_contract",
+        "systems/runtime_adapter_load_plan"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "adapter_ready_signal",
+        "runtime_smoke_test_ready",
+        "hardcore_meters_default_off"
+      ],
+      "successSignal": "openlands_runtime_ready",
+      "failurePolicy": "Keep the pack disabled in the runtime menu until smoke checks pass."
+    },
+    {
+      "id": "approve_public_alpha_release",
+      "phase": "release_gate",
+      "summary": "Promote only after contract validation, uploaded artifacts, launcher flows, parity playtests, waystone reload, and legal audit pass.",
+      "resourceIds": [
+        "systems/distribution_alpha_gates",
+        "systems/legal_content_audit",
+        "systems/launcher_flow_acceptance",
+        "systems/launcher_execution_acceptance",
+        "systems/launcher_execution_harness_plan",
+        "systems/final_release_review_acceptance",
+        "systems/final_release_review_harness_plan",
+        "systems/distribution_approval_acceptance",
+        "systems/distribution_approval_harness_plan",
+        "systems/release_publication_manifest_contract",
+        "systems/runtime_execution_harness_plan",
+        "systems/harness_driver_manifest_contract",
+        "progression/launch_roadmap",
+        "playtests/mvp_first_hour_acceptance"
+      ],
+      "runtimeTargets": [
+        "echo_native",
+        "echo_runtime_standalone",
+        "neoforge"
+      ],
+      "requiredEvidence": [
+        "openlands_contract_validator_pass",
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256",
+        "launcher_install_update_repair_rollback_pass",
+        "first_hour_runtime_playtest_pass",
+        "waystone_state_save_load_pass",
+        "legal_content_audit_pass"
+      ],
+      "successSignal": "openlands_public_alpha_release_approved",
+      "failurePolicy": "Release Index must stay warning and launcher must not offer public install."
+    }
+  ],
+  "runtimeEvidenceRequirements": [
+    {
+      "id": "descriptor_resolved",
+      "category": "discovery",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Descriptor file is parsed from the selected artifact before registry data is read.",
+      "failureAction": "Stop loading and report the missing or unreadable descriptor."
+    },
+    {
+      "id": "module_identity_verified",
+      "category": "discovery",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Module id, version, official flag, role, kind, and pack id match the Openlands contract.",
+      "failureAction": "Reject the artifact as the wrong module or wrong version."
+    },
+    {
+      "id": "runtime_target_accepted",
+      "category": "discovery",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Active runtime is echo_native, echo_runtime_standalone, or neoforge and is declared by descriptor and contract.",
+      "failureAction": "Reject the artifact for this runtime family."
+    },
+    {
+      "id": "source_root_mounted",
+      "category": "discovery",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Common data root and asset root resolve with Echo-owned paths.",
+      "failureAction": "Stop before registration and report the missing root."
+    },
+    {
+      "id": "standard_mode_relaxed",
+      "category": "config",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "openlands_standard has gentle hunger, no stamina, no hydration, no spoilage, no temperature damage, and recoverable death pack.",
+      "failureAction": "Refuse to start a Standard world with harder default rules."
+    },
+    {
+      "id": "hardlands_optional",
+      "category": "config",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Only openlands_hardlands enables harsher survival systems.",
+      "failureAction": "Disable invalid overlays until config is repaired."
+    },
+    {
+      "id": "legal_policy_accepted",
+      "category": "config",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Original names, assets, recipes, silhouettes, and branding policy is loaded before public UI text is exposed.",
+      "failureAction": "Block release promotion until legal/content review passes."
+    },
+    {
+      "id": "registry_json_parsed",
+      "category": "data",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "All required registry and system JSON files parse with schema fields intact.",
+      "failureAction": "Stop loading and report malformed resources."
+    },
+    {
+      "id": "runtime_parity_declared",
+      "category": "data",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Core payloads declare echo_native, echo_runtime_standalone, and neoforge parity.",
+      "failureAction": "Keep release index state at warning until parity declarations are repaired."
+    },
+    {
+      "id": "minimum_content_counts_met",
+      "category": "data",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "MVP counts meet at least 50 blocks, 45 items, 35 recipes, 4 biomes, 10 creatures, and required system contracts.",
+      "failureAction": "Do not ship Public Alpha."
+    },
+    {
+      "id": "registry_ids_resolved",
+      "category": "data",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Every recipe, loot, tag, biome, spawn, structure, sound, and system reference resolves.",
+      "failureAction": "Stop before partial registries reach a save."
+    },
+    {
+      "id": "block_ids_registered",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Every block in the conformance fixture resolves in the runtime registry.",
+      "failureAction": "Fail adapter startup for missing block registrations."
+    },
+    {
+      "id": "item_ids_registered",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Every item in the conformance fixture resolves in the runtime registry.",
+      "failureAction": "Fail adapter startup for missing item registrations."
+    },
+    {
+      "id": "recipe_ids_registered",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Every recipe resolves against the correct station id.",
+      "failureAction": "Keep affected crafting screens closed."
+    },
+    {
+      "id": "tag_ids_registered",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Block and item tags resolve only to known Openlands ids.",
+      "failureAction": "Stop registration and report invalid tag membership."
+    },
+    {
+      "id": "canonical_echo_ids_retained",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Runtime ids map back to Echo ids without replacing the source of truth.",
+      "failureAction": "Reject generated runtime output until id mapping is corrected."
+    },
+    {
+      "id": "loot_tables_bound",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Block, creature, and structure drops resolve without null entries.",
+      "failureAction": "Disable affected loot and fail parity validation."
+    },
+    {
+      "id": "station_surfaces_bound",
+      "category": "registration",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Each station exposes only recipes assigned to its station id.",
+      "failureAction": "Fail station smoke checks."
+    },
+    {
+      "id": "biome_palettes_bound",
+      "category": "worldgen",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Starter biome palettes use only registered Openlands blocks.",
+      "failureAction": "Disable Openlands world creation until repaired."
+    },
+    {
+      "id": "spawn_tables_bound",
+      "category": "worldgen",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Creature spawns reference registered creatures and valid biomes.",
+      "failureAction": "Suppress invalid spawns and fail parity validation."
+    },
+    {
+      "id": "landmark_pools_bound",
+      "category": "worldgen",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Landmarks resolve all block palettes and include HoloMap/tutorial hooks.",
+      "failureAction": "Disable invalid landmarks and keep release at warning."
+    },
+    {
+      "id": "starter_spawn_guarantees_bound",
+      "category": "worldgen",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Starter area includes trees, loose stones, fiber, berries, water, and one cave, road, or ruin hint.",
+      "failureAction": "Reject the seed or regenerate the starter area."
+    },
+    {
+      "id": "tutorial_triggers_bound",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Discovery prompts fire once for starter resources, first tools, echoworldstarter:campfire, shelter, route, and waystone events.",
+      "failureAction": "Fail first-hour playtest evidence."
+    },
+    {
+      "id": "shelter_score_bound",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Shelter score accepts roof, walls, door, echoworldstarter:bedroll, light/fire, and hostile distance with a forgiving threshold.",
+      "failureAction": "Fail first-hour milestone."
+    },
+    {
+      "id": "first_hour_save_load_ready",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Inventory, hotbar, placed blocks, chests, echoworldstarter:bedroll, echoworldstarter:campfire, shelter, waystone, and HoloMap fields survive reload.",
+      "failureAction": "Block Public Alpha."
+    },
+    {
+      "id": "waystone_state_persistence_ready",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Waystone state persists from undiscovered to active, including contributors, route ids, names, and permissions.",
+      "failureAction": "Disable fast travel and fail waystone parity tests."
+    },
+    {
+      "id": "holomap_region_persistence_ready",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Restored waystones reveal region data, hints, old roads, and player markers after reload.",
+      "failureAction": "Fail map reveal promotion."
+    },
+    {
+      "id": "multiplayer_permissions_bound",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Owner, group, public, contributor, rename, and public-travel permissions persist for shared state.",
+      "failureAction": "Disable public travel and co-op promotion."
+    },
+    {
+      "id": "homestead_state_bound",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Crops, compost, watering, echostationcore:cookpot meals, animal pens, and trader surplus bind without Standard-mode spoilage or death-by-neglect.",
+      "failureAction": "Keep homestead alpha disabled."
+    },
+    {
+      "id": "builder_ux_bound",
+      "category": "gameplay_state",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Hammer cycling, scaffold, quick stack, quick deposit, sorting, named chests, and craft-from-storage do not desync inventory.",
+      "failureAction": "Disable affected builder command and fail UX parity tests."
+    },
+    {
+      "id": "sound_events_bound",
+      "category": "assets",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Creature, ambience, block, station, waystone, and UI sound keys resolve in assets/echoopenlandsprotocol/sounds.json.",
+      "failureAction": "Mute missing events and fail asset validation."
+    },
+    {
+      "id": "missing_asset_policy_applied",
+      "category": "assets",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Missing textures, models, blockstates, and sounds use explicit placeholder policy, never borrowed assets.",
+      "failureAction": "Fail legal/content audit."
+    },
+    {
+      "id": "adapter_ready_signal",
+      "category": "ready",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Ready signal includes module id, pack id, version, runtime target, and load step ids.",
+      "failureAction": "Keep runtime at disabled-pack state."
+    },
+    {
+      "id": "runtime_smoke_test_ready",
+      "category": "ready",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Fresh Openlands Standard world reaches first interactive frame and supports spawn, hotbar, inventory, block place/break, and menu exit.",
+      "failureAction": "Block release promotion."
+    },
+    {
+      "id": "hardcore_meters_default_off",
+      "category": "ready",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Fresh and loaded Standard worlds do not expose stamina, hydration, spoilage, or temperature damage.",
+      "failureAction": "Reject Standard config load."
+    },
+    {
+      "id": "openlands_contract_validator_pass",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "validate-openlands-contract.mjs exits with no errors and required artifacts exist.",
+      "failureAction": "Do not promote Release Index entries beyond warning."
+    },
+    {
+      "id": "native_standalone_neoforge_artifacts_uploaded_with_sha256",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Native, Standalone, NeoForge, and sources artifacts are uploaded and indexed with matching sha256 values.",
+      "failureAction": "Keep pack manifests disabled for public download."
+    },
+    {
+      "id": "launcher_install_update_repair_rollback_pass",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Launcher validates install, update, repair, rollback, hash checks, config preservation, and save preservation.",
+      "failureAction": "Keep launcher channel state at warning."
+    },
+    {
+      "id": "first_hour_runtime_playtest_pass",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Each runtime proves spawn, gather, craft, shelter, sleep, explore, restore waystone, reveal map, save, and reload.",
+      "failureAction": "Do not ship Public Alpha."
+    },
+    {
+      "id": "waystone_state_save_load_pass",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "Waystone route binding, HoloMap reveal, contributors, two-stone travel unlock, and permissions survive reload.",
+      "failureAction": "Disable fast travel and block release."
+    },
+    {
+      "id": "legal_content_audit_pass",
+      "category": "release",
+      "requiredForPublicAlpha": true,
+      "successCriteria": "No Minecraft names, copied assets, copied silhouettes, copied recipe identity, or Minecraft branding ships.",
+      "failureAction": "Block public release until issues are removed."
+    }
+  ],
+  "adapterResponsibilities": {
+    "echo_native": [
+      "Load common JSON directly through Echo content contracts.",
+      "Call OpenlandsFirstHourRuntime hooks for Standard rules, starter spawn validation, shelter scoring, waystone transitions, and adapter readiness.",
+      "Register Native block, item, recipe, worldgen, save, HoloMap, and sound surfaces from Echo ids.",
+      "Return adapterBootstrapStepIds and requiredRuntimeEvidence through the Native module description.",
+      "Keep Standard mode relaxed even when optional Hardlands data is present."
+    ],
+    "echo_runtime_standalone": [
+      "Load common JSON without Minecraft classes or Minecraft resource identifiers.",
+      "Call OpenlandsFirstHourRuntime hooks for Standard rules, starter spawn validation, shelter scoring, waystone transitions, and adapter readiness.",
+      "Provide standalone block, item, worldgen, inventory, shelter, waystone, HoloMap, and co-op state surfaces.",
+      "Persist FIRST_HOUR_SAVE_LOAD_FIELDS and waystone multiplayer state using Echo schema keys.",
+      "Report runtime smoke evidence from the standalone first-frame test."
+    ],
+    "neoforge": [
+      "Convert Echo ids to NeoForge ResourceLocations only at adapter output time.",
+      "Call OpenlandsFirstHourRuntime hooks for Standard rules, starter spawn validation, shelter scoring, waystone transitions, and adapter readiness.",
+      "Generate runtime data from common registries while keeping Echo ids as the authoritative ids.",
+      "Use neoforge.mods.toml only as the NeoForge artifact descriptor, not as the source of common identity.",
+      "Prove no Minecraft-owned names, textures, silhouettes, or branding are introduced by generated resources."
+    ]
+  },
+  "acceptanceGates": [
+    {
+      "id": "developer_boot",
+      "requiresPhases": [
+        "discover",
+        "load_data",
+        "register_content"
+      ],
+      "requiresEvidence": [
+        "descriptor_resolved",
+        "module_identity_verified",
+        "registry_json_parsed",
+        "registry_ids_resolved",
+        "block_ids_registered",
+        "item_ids_registered",
+        "recipe_ids_registered"
+      ]
+    },
+    {
+      "id": "playable_mvp",
+      "requiresPhases": [
+        "discover",
+        "load_data",
+        "register_content",
+        "bind_worldgen",
+        "bind_gameplay_state",
+        "ready"
+      ],
+      "requiresEvidence": [
+        "starter_spawn_guarantees_bound",
+        "first_hour_save_load_ready",
+        "waystone_state_persistence_ready",
+        "holomap_region_persistence_ready",
+        "runtime_smoke_test_ready",
+        "hardcore_meters_default_off"
+      ]
+    },
+    {
+      "id": "public_alpha",
+      "requiresPhases": [
+        "discover",
+        "load_data",
+        "register_content",
+        "bind_worldgen",
+        "bind_gameplay_state",
+        "ready",
+        "release_gate"
+      ],
+      "requiresEvidence": [
+        "openlands_contract_validator_pass",
+        "native_standalone_neoforge_artifacts_uploaded_with_sha256",
+        "launcher_install_update_repair_rollback_pass",
+        "first_hour_runtime_playtest_pass",
+        "waystone_state_save_load_pass",
+        "legal_content_audit_pass"
+      ]
+    }
+  ]
+}

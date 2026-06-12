@@ -1,9 +1,9 @@
 package com.knoxhack.echoprimecore.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.prime.EchoPrimeIntegrations;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.prime.EchoPrimeIntegrations;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import net.minecraft.world.entity.player.Player;
 

@@ -1,13 +1,13 @@
 package com.knoxhack.echoagriculturereclamation.integration;
 
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
-import com.knoxhack.echocore.api.EchoRecoveryService;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoRouteRecordService;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.EchoRecoveryService;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoRouteRecordService;
 import com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationContent;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationMetrics;

@@ -1,7 +1,7 @@
 package com.knoxhack.echostationfall.registry;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoHandoffs;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoHandoffs;
 import com.knoxhack.echostationfall.EchoStationfall;
 import com.knoxhack.echostationfall.integration.StationfallTerminalCommonIntegration;
 import com.knoxhack.echostationfall.progression.SignalPanicState;

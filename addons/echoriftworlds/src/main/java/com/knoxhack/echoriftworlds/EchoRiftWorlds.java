@@ -2,8 +2,8 @@ package com.knoxhack.echoriftworlds;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echoriftworlds.integration.RiftWorldsArcanaProvider;
 import com.knoxhack.echoriftworlds.registry.ModBlocks;
 import com.knoxhack.echoriftworlds.registry.ModCreativeTabs;

@@ -1,7 +1,7 @@
 package com.knoxhack.echoholomap.map;
 
-import com.knoxhack.echocore.api.EchoMapLayer;
-import com.knoxhack.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.EchoMapLayer;
+import com.echoplatform.echocore.api.IMapLayer;
 import com.knoxhack.echoholomap.HoloMapIds;
 import java.util.List;
 import net.minecraft.resources.Identifier;

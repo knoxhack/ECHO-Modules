@@ -1,6 +1,6 @@
 package com.knoxhack.echo.scriptcore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class ScriptCoreConfig {
     public static final EchoNativeConfigSpec COMMON_SPEC;

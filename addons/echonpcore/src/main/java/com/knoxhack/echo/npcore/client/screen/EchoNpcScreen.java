@@ -1,6 +1,6 @@
 package com.knoxhack.echo.npcore.client.screen;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echocore.client.ui.EchoCyberGlassUi;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echo.npcore.network.CloseNpcInteractionPacket;

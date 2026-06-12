@@ -1,7 +1,7 @@
 package com.knoxhack.echoashfallprotocol.integration;
 
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.lang.reflect.Method;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

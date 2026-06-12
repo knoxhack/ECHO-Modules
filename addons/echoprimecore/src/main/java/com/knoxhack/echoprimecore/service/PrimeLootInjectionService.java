@@ -1,6 +1,6 @@
 package com.knoxhack.echoprimecore.service;
 
-import com.knoxhack.echocore.api.prime.PrimeLootRegistry;
+import com.echoplatform.echocore.api.prime.PrimeLootRegistry;
 import com.knoxhack.echoprimecore.integration.PrimeIntegrationLoader;
 import java.util.List;
 import java.util.Map;

@@ -1,12 +1,12 @@
 package com.knoxhack.echodatacore.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.IDataKey;
-import com.knoxhack.echocore.api.IDataView;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.IDataView;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldRegionInstance;
 import com.knoxhack.echodatacore.DataCoreBuiltinKeys;
 import java.util.stream.Collectors;
 import net.minecraft.resources.Identifier;

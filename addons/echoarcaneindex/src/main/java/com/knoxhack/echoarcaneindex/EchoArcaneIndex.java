@@ -1,13 +1,13 @@
 package com.knoxhack.echoarcaneindex;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echoarcaneindex.integration.ArcaneIndexMissionIntegration;
 import com.knoxhack.echoarcaneindex.integration.ArcaneIndexProvider;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
 public final class EchoArcaneIndex {

@@ -1,0 +1,20 @@
+{
+  "schema": "echo.openlands.content_policy.v1",
+  "packId": "openlands",
+  "namespace": "echoopenlandsprotocol",
+  "publicPositioning": "Relaxed original ECHO survival sandbox.",
+  "forbidden": [
+    "Minecraft names in public pack text",
+    "Minecraft textures or sounds",
+    "Copied Minecraft mob silhouettes",
+    "Minecraft branding in UI or marketing",
+    "NeoForge-only IDs as source-of-truth content IDs"
+  ],
+  "required": [
+    "Original item and block names",
+    "Original textures and sounds",
+    "Echo data IDs as canonical IDs",
+    "Runtime parity notes for Native, Standalone, and NeoForge",
+    "Gentle default gameplay with Hardlands kept optional"
+  ]
+}

@@ -32,6 +32,7 @@ import dev.echo.nativeplatform.contracts.EchoNativeCommandService;
 import dev.echo.nativeplatform.contracts.EchoNativeConfigService;
 import dev.echo.nativeplatform.contracts.EchoNativeEventService;
 import dev.echo.nativeplatform.contracts.EchoNativeLifecycleService;
+import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 import dev.echo.nativeplatform.contracts.EchoNativeNetworkService;
 import dev.echo.nativeplatform.contracts.EchoNativeRegistryService;
@@ -179,6 +180,12 @@ public final class GalacticCoreServices {
     }
 
     public static void phase(EchoNativeModuleLoadContext context, String phase) {
+        context.recordMutation(
+                "lifecycle",
+                "native_lifecycle_callback_executed",
+                phase,
+                EchoNativeLoadStatus.MUTATED
+        );
         GalacticCoreNativeMutations.service(context, "echo.native.lifecycle", EchoNativeLifecycleService.class)
                 .ifPresent(lifecycle -> GalacticCoreNativeMutations.record(
                         context,

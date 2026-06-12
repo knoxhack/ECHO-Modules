@@ -1,0 +1,536 @@
+{
+  "schema": "echo.openlands.playtests.first_hour_acceptance.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "defaultMode": "openlands_standard",
+  "sourceContracts": {
+    "route": "progression/first_hour_route.json",
+    "tutorials": "tutorials/first_hour_prompts.json",
+    "waystones": "waystones/waystone_contract.json",
+    "holomap": "holomap/mvp_regions.json",
+    "conformance": "conformance/openlands_mvp_registry.json"
+  },
+  "requiredRouteSteps": [
+    "safe_spawn",
+    "first_gathering",
+    "first_tools",
+    "first_shelter",
+    "sleep_and_recover",
+    "first_exploration_hook",
+    "first_waystone"
+  ],
+  "acceptanceScenarios": [
+    {
+      "id": "safe_spawn",
+      "routeStep": "safe_spawn",
+      "targetTimeMinutes": "0-2",
+      "setup": {
+        "allowedStarterBiomes": [
+          "meadows",
+          "woodlands"
+        ],
+        "guaranteedRadiusBlocks": 64,
+        "visibleLandmarkRadiusBlocks": 128,
+        "minimumHostileClearRadiusBlocks": 16
+      },
+      "requires": {
+        "blocks": [
+          "meadow_grass_block",
+          "forest_soil",
+          "echomaterialcore:branchwood_log",
+          "old_road_marker"
+        ],
+        "items": [
+          "echomaterialcore:branchwood_stick",
+          "echomaterialcore:fieldstone_piece",
+          "echomaterialcore:reed_fiber",
+          "berries"
+        ],
+        "landmarks": [
+          "road_marker",
+          "ruined_well",
+          "tiny_camp",
+          "broken_waystone_site"
+        ],
+        "biomes": [
+          "meadows",
+          "woodlands"
+        ],
+        "creaturesAllowed": [
+          "hare",
+          "deer"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "spawn_player",
+          "assertions": [
+            "spawn_on_solid_safe_ground",
+            "spawn_not_inside_block",
+            "spawn_not_in_liquid",
+            "hostiles_outside_minimum_clear_radius"
+          ]
+        },
+        {
+          "id": "scan_starter_resources",
+          "assertions": [
+            "wood_source_found",
+            "loose_stone_found",
+            "fiber_source_found",
+            "starter_food_found",
+            "water_or_well_hint_found"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "starter_spawn_guarantees_bound"
+      ]
+    },
+    {
+      "id": "first_gathering",
+      "routeStep": "first_gathering",
+      "targetTimeMinutes": "2-8",
+      "requires": {
+        "items": [
+          "echomaterialcore:branchwood_stick",
+          "echomaterialcore:fieldstone_piece",
+          "echomaterialcore:reed_fiber",
+          "berries",
+          "echomaterialcore:flint_shard"
+        ],
+        "tutorialPrompts": [
+          "first_stick",
+          "first_stone",
+          "first_fiber"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "collect_starter_items",
+          "assertions": [
+            "inventory_contains_branchwood_stick",
+            "inventory_contains_fieldstone_piece",
+            "inventory_contains_reed_fiber",
+            "inventory_contains_food"
+          ]
+        },
+        {
+          "id": "verify_discovery_prompts",
+          "assertions": [
+            "prompt_fires_once_per_discovery",
+            "prompt_does_not_repeat_after_reload"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "tutorial_triggers_bound"
+      ]
+    },
+    {
+      "id": "first_tools",
+      "routeStep": "first_tools",
+      "targetTimeMinutes": "8-15",
+      "requires": {
+        "items": [
+          "echomaterialcore:branchwood_stick",
+          "echomaterialcore:fieldstone_piece",
+          "echomaterialcore:reed_fiber",
+          "echomaterialcore:fiber_binding",
+          "echotoolcore:crude_cutter",
+          "echotoolcore:crude_breaker",
+          "echotoolcore:crude_digger",
+          "echotoolcore:flint_knife",
+          "echoworldstarter:pitchlight_bundle",
+          "echomaterialcore:pitch_resin"
+        ],
+        "recipes": [
+          "echomaterialcore:fiber_binding",
+          "echotoolcore:crude_cutter",
+          "echotoolcore:crude_breaker",
+          "echotoolcore:crude_digger",
+          "echotoolcore:flint_knife",
+          "echoworldstarter:pitchlight_bundle"
+        ],
+        "tutorialPrompts": [
+          "first_tool_craft"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "craft_starter_tools",
+          "assertions": [
+            "fiber_binding_recipe_available_after_reed_fiber",
+            "crude_axe_recipe_available_after_binding_and_stone",
+            "crude_pick_or_spade_available_after_binding_and_stone",
+            "crafted_tool_enters_hotbar_or_inventory"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "recipe_ids_registered",
+        "station_surfaces_bound"
+      ]
+    },
+    {
+      "id": "first_shelter",
+      "routeStep": "first_shelter",
+      "targetTimeMinutes": "15-30",
+      "requires": {
+        "blocks": [
+          "echomaterialcore:branchwood_planks",
+          "echomaterialcore:wooden_door",
+          "echoworldstarter:bedroll_block",
+          "echoworldstarter:campfire",
+          "echoworldstarter:pitchlight",
+          "thatch_roof",
+          "echostationcore:field_crate"
+        ],
+        "items": [
+          "echoworldstarter:bedroll",
+          "echomaterialcore:hide_strip",
+          "echomaterialcore:reed_fiber",
+          "echomaterialcore:branchwood_stick",
+          "echomaterialcore:fiber_binding"
+        ],
+        "recipes": [
+          "echoworldstarter:campfire",
+          "echostationcore:field_bench",
+          "echomaterialcore:branchwood_planks",
+          "echomaterialcore:wooden_door",
+          "echostationcore:field_crate",
+          "echoworldstarter:bedroll"
+        ]
+      },
+      "shelterScoreMinimum": 55,
+      "shelterComponents": [
+        "roof_coverage",
+        "wall_enclosure",
+        "entry_closure",
+        "bedroll_present",
+        "light_or_fire",
+        "hostile_distance"
+      ],
+      "runtimeActions": [
+        {
+          "id": "build_forgiving_shelter",
+          "assertions": [
+            "partial_roof_counts",
+            "partial_enclosure_counts",
+            "bedroll_counts_within_radius",
+            "torch_or_campfire_counts",
+            "score_reaches_sleep_minimum"
+          ]
+        },
+        {
+          "id": "place_storage_and_fire",
+          "assertions": [
+            "chest_opens_and_accepts_items",
+            "campfire_lit_state_is_serializable"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "shelter_score_bound",
+        "first_hour_save_load_ready"
+      ]
+    },
+    {
+      "id": "sleep_and_recover",
+      "routeStep": "sleep_and_recover",
+      "targetTimeMinutes": "30-35",
+      "requires": {
+        "blocks": [
+          "echoworldstarter:bedroll_block",
+          "echoworldstarter:campfire",
+          "echostationcore:field_crate"
+        ],
+        "items": [
+          "small_pack"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "sleep_at_minimum_shelter_score",
+          "assertions": [
+            "sleep_allowed_at_or_above_minimum_score",
+            "sleep_does_not_require_perfect_enclosure",
+            "bedroll_spawn_set"
+          ]
+        },
+        {
+          "id": "verify_recoverable_death_pack",
+          "assertions": [
+            "death_pack_enabled_in_standard",
+            "death_pack_location_persists_after_reload"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "standard_mode_relaxed",
+        "first_hour_save_load_ready"
+      ]
+    },
+    {
+      "id": "first_exploration_hook",
+      "routeStep": "first_exploration_hook",
+      "targetTimeMinutes": "35-45",
+      "requires": {
+        "landmarks": [
+          "road_marker",
+          "old_mine",
+          "ruined_well",
+          "tiny_camp",
+          "cellar_entrance",
+          "broken_waystone_site"
+        ],
+        "blocks": [
+          "old_road_block",
+          "old_road_marker",
+          "echomaterialcore:fieldstone",
+          "echomaterialcore:cupral_vein",
+          "echomaterialcore:tinveil_vein"
+        ],
+        "holomapLayers": [
+          "region_names",
+          "old_roads",
+          "waystones",
+          "nearby_hints"
+        ],
+        "hintTypes": [
+          "cave_mouth",
+          "old_mine",
+          "ruin",
+          "road_segment"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "discover_nearby_hook",
+          "assertions": [
+            "landmark_discovery_writes_holomap_or_fallback_state",
+            "old_road_marker_writes_old_road_segment",
+            "region_hint_is_visible_after_discovery"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "landmark_pools_bound",
+        "holomap_region_persistence_ready"
+      ]
+    },
+    {
+      "id": "first_waystone",
+      "routeStep": "first_waystone",
+      "targetTimeMinutes": "45-60",
+      "requires": {
+        "landmarks": [
+          "broken_waystone_site"
+        ],
+        "blocks": [
+          "broken_waystone",
+          "waystone_plinth",
+          "old_road_block",
+          "old_road_marker"
+        ],
+        "items": [
+          "echomaterialcore:fieldstone_piece",
+          "repair_kit",
+          "region_rubbing"
+        ],
+        "recipes": [
+          "region_rubbing"
+        ],
+        "waystoneStates": [
+          "undiscovered",
+          "discovered",
+          "debris_cleared",
+          "stone_repaired"
+        ]
+      },
+      "runtimeActions": [
+        {
+          "id": "restore_first_waystone_shell",
+          "assertions": [
+            "interact_moves_undiscovered_to_discovered",
+            "fieldstone_or_limestone_repairs_debris",
+            "repair_kit_moves_to_stone_repaired_when_available",
+            "waystone_state_persists_after_reload"
+          ]
+        },
+        {
+          "id": "record_region_rubbing",
+          "assertions": [
+            "region_rubbing_recipe_available_after_marker_discovery",
+            "region_rubbing_persists_in_inventory_or_storage"
+          ]
+        }
+      ],
+      "successEvidence": [
+        "waystone_state_persistence_ready",
+        "waystone_state_save_load_pass"
+      ]
+    }
+  ],
+  "saveLoadCheckpoints": [
+    {
+      "id": "after_first_shelter_sleep",
+      "afterScenario": "sleep_and_recover",
+      "mustPersist": [
+        "inventory",
+        "hotbar",
+        "placedBlocks",
+        "chestContents",
+        "bedrollSpawn",
+        "campfireLitState",
+        "shelterScore",
+        "waystoneState",
+        "holomapRegionDiscovery"
+      ],
+      "sampleInventoryItems": [
+        "echotoolcore:crude_cutter",
+        "echotoolcore:crude_breaker",
+        "berries",
+        "echoworldstarter:pitchlight_bundle",
+        "echoworldstarter:bedroll"
+      ],
+      "samplePlacedBlocks": [
+        "echoworldstarter:bedroll_block",
+        "echoworldstarter:campfire",
+        "echostationcore:field_crate",
+        "echomaterialcore:branchwood_planks",
+        "echomaterialcore:wooden_door"
+      ],
+      "requiredAssertions": [
+        "hotbar_order_preserved",
+        "chest_contents_preserved",
+        "bedroll_spawn_preserved",
+        "campfire_lit_state_preserved",
+        "shelter_score_recomputed_or_serialized_consistently"
+      ]
+    },
+    {
+      "id": "after_first_waystone_repair",
+      "afterScenario": "first_waystone",
+      "mustPersist": [
+        "inventory",
+        "hotbar",
+        "placedBlocks",
+        "waystoneState",
+        "holomapRegionDiscovery"
+      ],
+      "sampleInventoryItems": [
+        "region_rubbing",
+        "echomaterialcore:fieldstone_piece"
+      ],
+      "samplePlacedBlocks": [
+        "broken_waystone",
+        "waystone_plinth",
+        "old_road_marker"
+      ],
+      "requiredAssertions": [
+        "waystone_state_not_reset_to_undiscovered",
+        "repair_contributors_preserved_when_multiplayer_enabled",
+        "region_hint_preserved",
+        "old_road_segment_preserved"
+      ]
+    }
+  ],
+  "waystonePublicAlphaScenario": {
+    "id": "two_active_waystones_unlock_travel",
+    "requiresStates": [
+      "undiscovered",
+      "discovered",
+      "debris_cleared",
+      "stone_repaired",
+      "fitted",
+      "charged",
+      "bound",
+      "active"
+    ],
+    "requiresItems": [
+      "repair_kit",
+      "echoopenlandsprotocol:cupral_fitting",
+      "glow_crystal",
+      "waystone_core",
+      "route_binding",
+      "old_road_token",
+      "region_rubbing"
+    ],
+    "requiresRecipes": [
+      "echoopenlandsprotocol:cupral_fitting",
+      "waystone_core",
+      "route_binding",
+      "old_road_token",
+      "region_rubbing"
+    ],
+    "requiresBlocks": [
+      "broken_waystone",
+      "restored_waystone",
+      "waystone_plinth",
+      "map_table"
+    ],
+    "expectedEffects": [
+      "charged_reveals_local_radius",
+      "active_reveals_wide_radius",
+      "active_marks_one_to_three_hints",
+      "two_active_stones_unlock_fast_travel",
+      "public_travel_permission_respected"
+    ],
+    "mustPersist": [
+      "waystoneId",
+      "regionId",
+      "customName",
+      "state",
+      "ownerPlayerId",
+      "ownerGroupId",
+      "isPublicTravel",
+      "canPublicRename",
+      "repairContributorIds",
+      "linkedRouteIds",
+      "lastActivatedAt"
+    ],
+    "successEvidence": [
+      "waystone_state_persistence_ready",
+      "holomap_region_persistence_ready",
+      "multiplayer_permissions_bound",
+      "waystone_state_save_load_pass"
+    ]
+  },
+  "holomapAcceptance": {
+    "mustPersistFields": [
+      "regionId",
+      "displayName",
+      "seedSalt",
+      "biomeType",
+      "discoveredAt",
+      "nearbyHints",
+      "restoredWaystones",
+      "playerMarkers",
+      "oldRoadSegments"
+    ],
+    "requiredLayers": [
+      "region_names",
+      "old_roads",
+      "waystones",
+      "nearby_hints",
+      "player_markers"
+    ],
+    "requiredHintTypes": [
+      "cave_mouth",
+      "old_mine",
+      "ruin",
+      "resource_patch",
+      "road_segment"
+    ],
+    "fallbackRequired": true
+  },
+  "releaseEvidence": [
+    "first_hour_runtime_playtest_pass",
+    "waystone_state_save_load_pass"
+  ]
+}

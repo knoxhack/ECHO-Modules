@@ -1,13 +1,13 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoFactionAction;
-import com.knoxhack.echocore.api.EchoFactionActionHandlerService;
-import com.knoxhack.echocore.api.EchoFactionActionResult;
-import com.knoxhack.echocore.api.EchoFactionContract;
-import com.knoxhack.echocore.api.EchoFactionContractState;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoFactionPoiAffinity;
-import com.knoxhack.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoFactionAction;
+import com.echoplatform.echocore.api.EchoFactionActionHandlerService;
+import com.echoplatform.echocore.api.EchoFactionActionResult;
+import com.echoplatform.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionContractState;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoFactionPoiAffinity;
+import com.echoplatform.echocore.api.EchoFactionProfile;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.world.ExplorationSiteRegistry;
@@ -84,7 +84,7 @@ public final class AshfallFactionInteractionHandler implements EchoFactionAction
     public EchoFactionActionResult handle(ServerPlayer player, Identifier factionId, Identifier actionId,
             String roleId, Identifier targetId) {
         Identifier canonicalFaction = AshfallFactionMap.canonicalOrDefault(factionId);
-        EchoFactionProfile profile = com.knoxhack.echocore.api.EchoCoreServices.factionProfile(player, canonicalFaction)
+        EchoFactionProfile profile = com.echoplatform.echocore.api.EchoCoreServices.factionProfile(player, canonicalFaction)
                 .orElse(null);
         if (profile == null) {
             return EchoFactionActionResult.failure("Unknown Faction", "This contact is not registered with Echo Core.");
@@ -98,7 +98,7 @@ public final class AshfallFactionInteractionHandler implements EchoFactionAction
         String path = actionId == null ? "" : actionId.getPath();
         if (path.endsWith("_talk")) {
             String voice = roleVoice(definition, roleId);
-            com.knoxhack.echocore.api.EchoCoreServices.rememberFactionNpc(player, canonicalFaction, voice);
+            com.echoplatform.echocore.api.EchoCoreServices.rememberFactionNpc(player, canonicalFaction, voice);
             return EchoFactionActionResult.info(definition.shortName() + " Dialogue", voice);
         }
 
@@ -113,7 +113,7 @@ public final class AshfallFactionInteractionHandler implements EchoFactionAction
                         definition.shortName() + " services require standing " + required + ".");
             }
             EchoFactionActionResult result = AshfallFactionServices.perform(player, profile, roleId);
-            com.knoxhack.echocore.api.EchoCoreServices.rememberFactionNpc(player, canonicalFaction, result.message());
+            com.echoplatform.echocore.api.EchoCoreServices.rememberFactionNpc(player, canonicalFaction, result.message());
             return result;
         }
 

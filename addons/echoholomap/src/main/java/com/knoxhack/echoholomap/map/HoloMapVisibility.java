@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.map;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 
 public final class HoloMapVisibility {
     public static final double AUTO_FIELD_RADIUS_BLOCKS = 192.0D;
@@ -17,7 +17,7 @@ public final class HoloMapVisibility {
     public static boolean markerCanGenerateField(IMapMarker.MarkerKind kind) {
         return switch (kind == null ? IMapMarker.MarkerKind.GENERIC : kind) {
             case HAZARD, REGION, CRASH_SITE, ORBITAL_SCAN, NEXUS_ANOMALY, DRONE_SCAN -> true;
-            case MISSION, ROUTE, BASE_OUTPOST, GENERIC -> false;
+            case MISSION, ROUTE, BASE_OUTPOST, GENERIC, STRUCTURE, FACTION -> false;
         };
     }
 

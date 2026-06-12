@@ -1,9 +1,9 @@
 package com.knoxhack.echo.npcore.data;
 
 import com.knoxhack.echo.npcore.EchoNpcCore;
-import com.knoxhack.echocore.api.DataScope;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.DataScope;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IDataKey;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;

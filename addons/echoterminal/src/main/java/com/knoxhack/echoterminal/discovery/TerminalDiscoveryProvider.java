@@ -1,12 +1,12 @@
 package com.knoxhack.echoterminal.discovery;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoRouteRecord;
 import com.knoxhack.echoterminal.api.TerminalContact;
 import com.knoxhack.echoterminal.api.TerminalContactRegistry;
 import com.knoxhack.echoterminal.api.TerminalVisualAssets;

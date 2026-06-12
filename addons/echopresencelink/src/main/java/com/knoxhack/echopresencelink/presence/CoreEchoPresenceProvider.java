@@ -1,15 +1,15 @@
 package com.knoxhack.echopresencelink.presence;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionProfile;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoPackMode;
-import com.knoxhack.echocore.api.WorldContextSnapshot;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoPackMode;
+import com.echoplatform.echocore.api.WorldContextSnapshot;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionStatus;
 import com.knoxhack.echopresencelink.EchoPresenceLink;
 import com.knoxhack.echopresencelink.api.EchoPresenceContext;
 import com.knoxhack.echopresencelink.api.EchoPresenceProvider;

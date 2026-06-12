@@ -1,6 +1,6 @@
 package com.knoxhack.echoindustrialnexus.progress;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoindustrialnexus.block.IndustrialFluxDuctBlock;
 import com.knoxhack.echoindustrialnexus.block.IndustrialItemDuctBlock;
 import com.knoxhack.echoindustrialnexus.block.IndustrialMachineBlock;

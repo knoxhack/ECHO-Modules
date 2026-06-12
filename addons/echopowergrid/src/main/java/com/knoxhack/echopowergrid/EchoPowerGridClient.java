@@ -1,6 +1,6 @@
 package com.knoxhack.echopowergrid;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echopowergrid.client.screen.PowerNodeScreen;
 import com.knoxhack.echopowergrid.client.screen.SubstationScreen;
 import com.knoxhack.echopowergrid.registry.ModMenus;

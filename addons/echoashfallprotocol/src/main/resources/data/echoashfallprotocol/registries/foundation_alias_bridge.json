@@ -1,0 +1,111 @@
+{
+  "schema": "echo.ashfall.foundation_alias_bridge.v1",
+  "status": "canonical-owner-moved",
+  "rule": "Ashfall keeps old IDs only as save/runtime compatibility bridges. New Ashfall content should resolve Foundation canonical IDs or Ashfall-specific renamed IDs.",
+  "foundationAliases": [
+    {
+      "legacyId": "echoashfallprotocol:animal_bone",
+      "canonicalId": "echomaterialcore:bone_shard",
+      "owner": "echomaterialcore"
+    },
+    {
+      "legacyId": "echoashfallprotocol:animal_hide",
+      "canonicalId": "echomaterialcore:hide_strip",
+      "owner": "echomaterialcore"
+    },
+    {
+      "legacyId": "echoashfallprotocol:plant_fiber",
+      "canonicalId": "echomaterialcore:reed_fiber",
+      "owner": "echomaterialcore"
+    },
+    {
+      "legacyId": "echoashfallprotocol:fiber_rope",
+      "canonicalId": "echomaterialcore:fiber_binding",
+      "owner": "echomaterialcore"
+    }
+  ],
+  "ashfallVariantAliases": [
+    {
+      "legacyId": "echoashfallprotocol:animal_bone",
+      "canonicalId": "echoashfallprotocol:ashbone_shard",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall active content now uses a local ash-wasteland ecology variant; Foundation keeps the generic bone shard."
+    },
+    {
+      "legacyId": "echoashfallprotocol:animal_hide",
+      "canonicalId": "echoashfallprotocol:scorched_hide_strip",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall active content now uses a heat-scarred local hide variant; Foundation keeps the generic hide strip."
+    },
+    {
+      "legacyId": "echoashfallprotocol:plant_fiber",
+      "canonicalId": "echoashfallprotocol:ashgrass_fiber",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall foraging produces ashgrass fiber instead of the Foundation generic fiber."
+    },
+    {
+      "legacyId": "echoashfallprotocol:fiber_rope",
+      "canonicalId": "echoashfallprotocol:sootcord_binding",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall utility bindings are sootcord variants instead of the Foundation generic binding."
+    },
+    {
+      "legacyId": "echoashfallprotocol:bone_knife",
+      "canonicalId": "echoashfallprotocol:ashbone_shiv",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall keeps a unique ashbone emergency blade while Foundation owns generic primitive tool roles."
+    },
+    {
+      "legacyId": "echoashfallprotocol:crude_spear",
+      "canonicalId": "echoashfallprotocol:scavenger_spear",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall keeps a scavenger survival spear while Foundation owns generic primitive tool roles."
+    }
+  ],
+  "legacyMissionAliases": [
+    {
+      "legacyMissionId": "echoashfallprotocol:craft_bone_knife",
+      "replacementMissionId": "echoashfallprotocol:assemble_wasteland_field_kit",
+      "activeItemId": "echoashfallprotocol:ashbone_shiv"
+    },
+    {
+      "legacyMissionId": "echoashfallprotocol:craft_crude_spear",
+      "replacementMissionId": "echoashfallprotocol:assemble_wasteland_field_kit",
+      "activeItemId": "echoashfallprotocol:scavenger_spear"
+    }
+  ],
+  "ashfallRenames": [
+    {
+      "legacyId": "echoashfallprotocol:map_table",
+      "canonicalId": "echoashfallprotocol:survey_table",
+      "owner": "echoashfallprotocol",
+      "reason": "Ashfall navigation identity should be survey/evac focused, not Openlands map-table focused."
+    },
+    {
+      "legacyId": "echoashfallprotocol:contaminated_redstone",
+      "canonicalId": "echoashfallprotocol:charged_ash_circuit",
+      "owner": "echoashfallprotocol",
+      "reason": "Blocked vanilla-adjacent public identity."
+    },
+    {
+      "legacyId": "echoashfallprotocol:contaminated_lapis",
+      "canonicalId": "echoashfallprotocol:blue_ash_salt",
+      "owner": "echoashfallprotocol",
+      "reason": "Blocked vanilla-adjacent public identity."
+    },
+    {
+      "legacyId": "echoashfallprotocol:riftstone",
+      "canonicalId": "echoarcanadivisionprotocol:nexus_scar_stone",
+      "owner": "echoarcanadivisionprotocol",
+      "reason": "Rift identity is owned by Arcana Division unless Ashfall keeps a purely geological scar-stone variant."
+    }
+  ],
+  "cleanupGate": {
+    "safeToRemoveLegacyDefinitionsWhen": [
+      "Ashfall registry constants expose renamed IDs or explicit legacy aliases.",
+      "Loot, worldgen, tags, POIs, and native bridge outputs resolve renamed IDs.",
+      "Save migration tests prove existing Ashfall worlds keep loading.",
+      "Arcana Division owns spell, ritual, rift, familiar, curse, and aether routing."
+    ]
+  }
+}

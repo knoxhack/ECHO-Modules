@@ -1,15 +1,15 @@
 package com.knoxhack.signalos.content;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoChapterCapability;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoFactionProfile;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoModuleInfo;
-import com.knoxhack.echocore.api.EchoProfile;
-import com.knoxhack.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoChapterCapability;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoModuleInfo;
+import com.echoplatform.echocore.api.EchoProfile;
+import com.echoplatform.echocore.api.EchoRouteRecord;
 import com.knoxhack.signalos.SignalOS;
 import com.knoxhack.signalos.api.SignalOsApi;
 import com.knoxhack.signalos.api.SignalOsApp;

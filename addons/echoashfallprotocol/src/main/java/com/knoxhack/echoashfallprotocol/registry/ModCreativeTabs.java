@@ -68,8 +68,8 @@ public class ModCreativeTabs {
                         // Tools & Weapons
                         output.accept(ModItems.PORTABLE_SIGNAL_SCANNER.get());
                         output.accept(ModItems.SCRAP_KNIFE.get());
-                        output.accept(ModItems.BONE_KNIFE.get());
-                        output.accept(ModItems.CRUDE_SPEAR.get());
+                        output.accept(ModItems.ASHBONE_SHIV.get());
+                        output.accept(ModItems.SCAVENGER_SPEAR.get());
                         output.accept(ModItems.ALLOY_BLADE.get());
                         output.accept(ModItems.ALLOY_HAMMER.get());
                         output.accept(ModItems.NEXUS_BLADE.get());
@@ -103,10 +103,10 @@ public class ModCreativeTabs {
                         output.accept(ModItems.SCHEMATIC_FRAGMENT_MEDICAL.get());
                         output.accept(ModItems.SCHEMATIC_FRAGMENT_ENERGY.get());
                         output.accept(ModItems.WILD_BERRY.get());
-                        output.accept(ModItems.FIBER_ROPE.get());
-                        output.accept(ModItems.PLANT_FIBER.get());
-                        output.accept(ModItems.ANIMAL_BONE.get());
-                        output.accept(ModItems.ANIMAL_HIDE.get());
+                        output.accept(ModItems.SOOTCORD_BINDING.get());
+                        output.accept(ModItems.ASHGRASS_FIBER.get());
+                        output.accept(ModItems.ASHBONE_SHARD.get());
+                        output.accept(ModItems.SCORCHED_HIDE_STRIP.get());
 
                         // Mob Spawn Eggs
                         output.accept(ModItems.RAD_ZOMBIE_SPAWN_EGG.get());
@@ -271,8 +271,8 @@ public class ModCreativeTabs {
                         // Contaminated Resources
                         output.accept(ModItems.CONTAMINATED_IRON.get());
                         output.accept(ModItems.CONTAMINATED_GOLD.get());
-                        output.accept(ModItems.CONTAMINATED_REDSTONE.get());
-                        output.accept(ModItems.CONTAMINATED_LAPIS.get());
+                        output.accept(ModItems.CHARGED_ASH_CIRCUIT.get());
+                        output.accept(ModItems.BLUE_ASH_SALT.get());
 
                         // Endgame
                         output.accept(ModItems.NEXUS_CRYSTAL.get());
@@ -291,7 +291,7 @@ public class ModCreativeTabs {
                         output.accept(ModBlocks.WEAPON_RACK_ITEM.get());
                         output.accept(ModBlocks.SUPPLY_CRATE_ITEM.get());
                         output.accept(ModBlocks.TRADE_COUNTER_ITEM.get());
-                        output.accept(ModBlocks.MAP_TABLE_ITEM.get());
+                        output.accept(ModBlocks.SURVEY_TABLE_ITEM.get());
                         output.accept(ModBlocks.BIO_PROCESSING_STATION_ITEM.get());
                         output.accept(ModBlocks.SPORE_GARDEN_ITEM.get());
 
@@ -415,7 +415,7 @@ public class ModCreativeTabs {
                 ModBlocks.SCRAP_PRESS_ITEM::get,
                 ModBlocks.FACTORY_CONTROLLER_ITEM::get,
                 ModItems.RELAY_SCANNER_LENS::get,
-                ModBlocks.MAP_TABLE_ITEM::get,
+                ModBlocks.SURVEY_TABLE_ITEM::get,
                 ModItems.NEXUS_CRYSTAL::get
         );
     }

@@ -1,7 +1,7 @@
 package com.knoxhack.echorecovery.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
 import com.knoxhack.echorecovery.EchoRecovery;
 import java.util.List;
 import net.minecraft.resources.Identifier;

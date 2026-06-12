@@ -1,6 +1,6 @@
 package com.knoxhack.echoruntimeguard.runtime;
 
-import com.knoxhack.echocore.api.IRuntimeBudgetService;
+import com.echoplatform.echocore.api.IRuntimeBudgetService;
 import com.knoxhack.echoruntimeguard.RuntimeGuardConfig;
 import com.knoxhack.echoruntimeguard.api.ProfilerEntry;
 import com.knoxhack.echoruntimeguard.api.RuntimeGuardBudgetCategories;

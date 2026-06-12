@@ -1,9 +1,9 @@
 package com.knoxhack.signalos.service;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.TerminalPlacementService;
-import com.knoxhack.echocore.api.TerminalRewardService;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.TerminalPlacementService;
+import com.echoplatform.echocore.api.TerminalRewardService;
 import com.knoxhack.signalos.SignalOS;
 import com.knoxhack.signalos.api.SignalOsDriveFileSystem;
 import com.knoxhack.signalos.api.SignalOsDriveData;

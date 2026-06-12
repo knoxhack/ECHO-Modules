@@ -1,6 +1,6 @@
 package com.knoxhack.echoblockworks;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoblockworks.integration.BlockworksCoreIntegration;
 import com.knoxhack.echoblockworks.integration.BlockworksIndexProvider;
 import com.knoxhack.echoblockworks.integration.BlockworksMissionCoreIntegration;

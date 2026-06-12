@@ -1,10 +1,10 @@
 package com.knoxhack.echodatacore.legacy;
 
-import com.knoxhack.echocore.api.DataKeyMetadata;
-import com.knoxhack.echocore.api.DataValueKind;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IDataKey;
-import com.knoxhack.echocore.api.IDataService;
+import com.echoplatform.echocore.api.DataKeyMetadata;
+import com.echoplatform.echocore.api.DataValueKind;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IDataKey;
+import com.echoplatform.echocore.api.IDataService;
 import com.knoxhack.echodatacore.DataCoreDataService;
 import com.knoxhack.echodatacore.EchoDataCore;
 import com.mojang.serialization.Codec;

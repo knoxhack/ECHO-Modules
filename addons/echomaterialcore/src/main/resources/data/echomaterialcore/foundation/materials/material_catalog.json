@@ -1,0 +1,229 @@
+{
+  "schema": "echo.foundation.material_catalog.v1",
+  "blocks": [
+    {
+      "id": "echomaterialcore:fieldstone",
+      "family": "stone",
+      "tag": "foundation:stone/basic",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:clay",
+      "family": "earth",
+      "tag": "foundation:earth/echomaterialcore:clay",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:gravel",
+      "family": "earth",
+      "tag": "foundation:earth/echomaterialcore:gravel",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:sand",
+      "family": "earth",
+      "tag": "foundation:earth/echomaterialcore:sand",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:branchwood_log",
+      "family": "wood",
+      "tag": "foundation:wood/log",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:branchwood_planks",
+      "family": "wood",
+      "tag": "foundation:wood/planks",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:branchwood_beam",
+      "family": "wood",
+      "tag": "foundation:wood/beam",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:branchwood_post",
+      "family": "wood",
+      "tag": "foundation:wood/post",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:wooden_slab",
+      "family": "wood",
+      "tag": "foundation:wood/slab",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:wooden_stairs",
+      "family": "wood",
+      "tag": "foundation:wood/stairs",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:wooden_fence",
+      "family": "wood",
+      "tag": "foundation:wood/fence",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:wooden_door",
+      "family": "wood",
+      "tag": "foundation:wood/door",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:wooden_trapdoor",
+      "family": "wood",
+      "tag": "foundation:wood/trapdoor",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:ladder",
+      "family": "wood",
+      "tag": "foundation:utility/echomaterialcore:ladder",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "cupral_vein",
+      "family": "ore",
+      "tag": "foundation:metal/cupral/vein",
+      "source": "Renamed from copper_ore"
+    },
+    {
+      "id": "tinveil_vein",
+      "family": "ore",
+      "tag": "foundation:metal/tinveil/vein",
+      "source": "Renamed from tin_ore"
+    },
+    {
+      "id": "ferrite_vein",
+      "family": "ore",
+      "tag": "foundation:metal/ferrite/vein",
+      "source": "Renamed from iron_ore"
+    }
+  ],
+  "items": [
+    {
+      "id": "echomaterialcore:branchwood_stick",
+      "family": "wood",
+      "tag": "foundation:stick",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:fieldstone_piece",
+      "family": "stone",
+      "tag": "foundation:stone_piece",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:reed_fiber",
+      "family": "fiber",
+      "tag": "foundation:fiber",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:fiber_binding",
+      "family": "fiber",
+      "tag": "foundation:binding",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:flint_shard",
+      "family": "stone",
+      "tag": "foundation:sharp_stone",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "clay_lump",
+      "family": "earth",
+      "tag": "foundation:echomaterialcore:clay/raw",
+      "source": "Renamed from raw_clay"
+    },
+    {
+      "id": "echomaterialcore:brick",
+      "family": "ceramic",
+      "tag": "foundation:ceramic/echomaterialcore:brick",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "echomaterialcore:glass_pane",
+      "family": "glass",
+      "tag": "foundation:glass/pane",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "hide_strip",
+      "family": "creature",
+      "tag": "foundation:echomaterialcore:hide_strip",
+      "source": "Renamed from hide"
+    },
+    {
+      "id": "bone_shard",
+      "family": "creature",
+      "tag": "foundation:echomaterialcore:bone_shard",
+      "source": "Renamed from bone"
+    },
+    {
+      "id": "pitch_resin",
+      "family": "echomaterialcore:resin",
+      "tag": "foundation:echomaterialcore:pitch_resin",
+      "source": "Renamed from pitch"
+    },
+    {
+      "id": "echomaterialcore:resin",
+      "family": "echomaterialcore:resin",
+      "tag": "foundation:echomaterialcore:resin",
+      "source": "Openlands generic"
+    },
+    {
+      "id": "charcoal_lump",
+      "family": "fuel",
+      "tag": "foundation:fuel/echomaterialcore:charcoal_lump",
+      "source": "Renamed from charcoal"
+    },
+    {
+      "id": "cupral_chunk",
+      "family": "metal",
+      "tag": "foundation:metal/cupral/raw",
+      "source": "Renamed from copper_ore_chunk"
+    },
+    {
+      "id": "cupral_bar",
+      "family": "metal",
+      "tag": "foundation:metal/cupral/bar",
+      "source": "Renamed from copper_ingot"
+    },
+    {
+      "id": "tinveil_chunk",
+      "family": "metal",
+      "tag": "foundation:metal/tinveil/raw",
+      "source": "Renamed from tin_ore_chunk"
+    },
+    {
+      "id": "tinveil_bar",
+      "family": "metal",
+      "tag": "foundation:metal/tinveil/bar",
+      "source": "Renamed from tin_ingot"
+    },
+    {
+      "id": "bronze_cast",
+      "family": "metal",
+      "tag": "foundation:metal/bronze/bar",
+      "source": "Renamed from bronze_ingot"
+    },
+    {
+      "id": "ferrite_chunk",
+      "family": "metal",
+      "tag": "foundation:metal/ferrite/raw",
+      "source": "Renamed from iron_ore_chunk"
+    },
+    {
+      "id": "ferrite_bar",
+      "family": "metal",
+      "tag": "foundation:metal/ferrite/bar",
+      "source": "Renamed from iron_ingot"
+    }
+  ]
+}

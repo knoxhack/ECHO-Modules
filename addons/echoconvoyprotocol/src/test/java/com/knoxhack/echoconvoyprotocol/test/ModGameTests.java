@@ -32,15 +32,15 @@ import com.knoxhack.echoconvoyprotocol.registry.ModItems;
 import com.knoxhack.echoconvoyprotocol.service.ConvoyRouteService;
 import com.knoxhack.echoconvoyprotocol.task.ConvoyMultiblockTasks;
 import com.knoxhack.echoconvoyprotocol.upgrade.ConvoyUpgradeSlot;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.config.EchoConfigRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.config.EchoConfigRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
 import com.knoxhack.echomultiblockcore.api.AutomationIngredient;
 import com.knoxhack.echomultiblockcore.api.AutomationEffectHandlers;
 import com.knoxhack.echomultiblockcore.api.AutomationEffectInvocation;
@@ -537,7 +537,7 @@ public final class ModGameTests {
 
    private static void coreWiring(GameTestHelper helper) {
       ConvoyCoreIntegration.registerAddonChapter();
-      helper.assertTrue(com.knoxhack.echocore.api.EchoAddonRegistry.isRegistered(ConvoyCoreIntegration.CHAPTER_ID),
+      helper.assertTrue(com.echoplatform.echocore.api.EchoAddonRegistry.isRegistered(ConvoyCoreIntegration.CHAPTER_ID),
          "Convoy should register as an ECHO addon chapter");
       helper.succeed();
    }

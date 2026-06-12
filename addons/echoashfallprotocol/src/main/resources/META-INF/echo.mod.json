@@ -19,7 +19,14 @@
     "echoadaptercore",
     "echoblockworks",
     "echocore",
-    "echonetcore"
+    "echofoundationcore",
+    "echomaterialcore",
+    "echonetcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles"
   ],
   "optional": [
     "echodatacore",
@@ -46,7 +53,14 @@
   ],
   "consumes": [
     "echo.core",
-    "echo.net"
+    "echo.net",
+    "foundation.common_loot",
+    "foundation.creature_roles",
+    "foundation.first_hour",
+    "foundation.materials",
+    "foundation.spawn_safety",
+    "foundation.stations",
+    "foundation.tools"
   ],
   "gameModes": [
     "ashfall_survival"

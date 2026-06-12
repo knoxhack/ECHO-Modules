@@ -82,30 +82,30 @@ import com.knoxhack.echoterminal.network.TerminalActionPacket;
 import com.knoxhack.echoterminal.player.TerminalPlayerData;
 import com.knoxhack.echoterminal.registry.ModBlocks;
 import com.knoxhack.echoterminal.service.EchoTerminalCoreServices;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoResolvedDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigApplyResult;
-import com.knoxhack.echocore.api.config.EchoConfigCategory;
-import com.knoxhack.echocore.api.config.EchoConfigEntry;
-import com.knoxhack.echocore.api.config.EchoConfigEntrySnapshot;
-import com.knoxhack.echocore.api.config.EchoConfigModule;
-import com.knoxhack.echocore.api.config.EchoConfigModuleSnapshot;
-import com.knoxhack.echocore.api.config.EchoConfigProvider;
-import com.knoxhack.echocore.api.config.EchoConfigRegistry;
-import com.knoxhack.echocore.api.config.EchoConfigSide;
-import com.knoxhack.echocore.api.config.EchoConfigValueKind;
-import com.knoxhack.echocore.api.network.EchoDiscoveryToast;
-import com.knoxhack.echocore.api.network.EchoPacketDirection;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoResolvedDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigApplyResult;
+import com.echoplatform.echocore.api.config.EchoConfigCategory;
+import com.echoplatform.echocore.api.config.EchoConfigEntry;
+import com.echoplatform.echocore.api.config.EchoConfigEntrySnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigModule;
+import com.echoplatform.echocore.api.config.EchoConfigModuleSnapshot;
+import com.echoplatform.echocore.api.config.EchoConfigProvider;
+import com.echoplatform.echocore.api.config.EchoConfigRegistry;
+import com.echoplatform.echocore.api.config.EchoConfigSide;
+import com.echoplatform.echocore.api.config.EchoConfigValueKind;
+import com.echoplatform.echocore.api.network.EchoDiscoveryToast;
+import com.echoplatform.echocore.api.network.EchoPacketDirection;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echocore.discovery.EchoDiscoveryData;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echonetcore.config.EchoNetCoreConfig;
@@ -1894,7 +1894,7 @@ public final class ModGameTests {
         EchoDiscoveryEntry checked = discoveryEntry("checked_guardian", EchoDiscoveryCategory.GUARDIAN,
                 "Checked Guardian", 30);
 
-        EchoCoreServices.registerDiscoveryProvider(new com.knoxhack.echocore.api.EchoDiscoveryProvider() {
+        EchoCoreServices.registerDiscoveryProvider(new com.echoplatform.echocore.api.EchoDiscoveryProvider() {
             @Override
             public List<EchoDiscoveryEntry> entries(Player player) {
                 return List.of(locked, discovered, checked);

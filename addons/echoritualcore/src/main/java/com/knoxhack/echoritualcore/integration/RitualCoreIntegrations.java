@@ -1,7 +1,7 @@
 package com.knoxhack.echoritualcore.integration;
 
 import com.knoxhack.echoritualcore.EchoRitualCore;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class RitualCoreIntegrations {
     private RitualCoreIntegrations() {

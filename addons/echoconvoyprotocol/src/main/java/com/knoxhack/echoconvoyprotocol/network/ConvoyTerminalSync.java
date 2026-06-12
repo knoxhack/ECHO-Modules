@@ -1,7 +1,7 @@
 package com.knoxhack.echoconvoyprotocol.network;
 
 import com.knoxhack.echoconvoyprotocol.EchoConvoyProtocol;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import net.minecraft.server.level.ServerPlayer;
 

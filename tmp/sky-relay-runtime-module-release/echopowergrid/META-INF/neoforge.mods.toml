@@ -1,0 +1,105 @@
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="echopowergrid"
+version="1.0.0"
+displayName="ECHO: PowerGrid"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Built as the shared power generation, storage, transfer, and grid infrastructure for the ECHO/Ashfall ecosystem."
+description='''
+Restore the grid. Power the signal.
+
+ECHO PowerGrid provides the shared first-party power generation, storage, cable,
+substation, overload, brownout, and facility power system for the full ECHO/Ashfall
+ecosystem. It is the energy backbone for terminals, signal towers, industrial
+machines, multiblock facilities, convoy depots, orbital launchpads, agriculture
+domes, blackbox archives, nexus stabilizers, and armory fabricators.
+'''
+
+[[dependencies.echopowergrid]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.29-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="minecraft"
+type="required"
+versionRange="[26.1.2,26.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and service APIs."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echonetcore"
+type="required"
+reason="Provides shared ECHO packet registration and Terminal dashboard sync."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echoterminal"
+type="optional"
+reason="Exposes the synced PowerGrid dashboard tab and addon guide in the ECHO Terminal when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echolens"
+type="optional"
+reason="Provides power node scan data to the ECHO Lens when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echoholomap"
+type="optional"
+reason="Displays loaded PowerGrid networks as a HoloMap layer and network markers when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echomultiblockcore"
+type="optional"
+reason="Registers PowerGrid as a MultiblockCore power provider for echo:power_input capability costs."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echoindustrialnexus"
+type="optional"
+reason="Powers Industrial Nexus multiblock automation through shared MultiblockCore capability costs."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echoworldcore"
+type="optional"
+reason="Uses region and weather info for solar panels and grid events when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.echopowergrid]]
+modId="echoruntimeguard"
+type="optional"
+reason="Respects tick budgets and profiling hooks when present."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"

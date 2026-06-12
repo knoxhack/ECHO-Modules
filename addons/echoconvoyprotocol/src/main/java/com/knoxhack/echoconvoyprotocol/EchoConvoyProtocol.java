@@ -19,8 +19,8 @@ import com.knoxhack.echoconvoyprotocol.registry.ModItems;
 import com.knoxhack.echoconvoyprotocol.registry.ModMenus;
 import com.knoxhack.echoconvoyprotocol.registry.ModRecipes;
 import com.knoxhack.echoconvoyprotocol.task.ConvoyMultiblockTasks;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 

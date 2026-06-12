@@ -1,0 +1,241 @@
+{
+  "schema": "echo.openlands.systems.harness_driver_manifest_contract.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the exact edition-owned driver manifest each Native, NeoForge, and Standalone Openlands harness must provide before blocked runtime, launcher, final-review, or distribution reports can become real execution evidence.",
+  "sourceContracts": {
+    "runtimeExecutionHarnessPlan": "systems/runtime_execution_harness_plan.json",
+    "launcherExecutionHarnessPlan": "systems/launcher_execution_harness_plan.json",
+    "finalReleaseReviewHarnessPlan": "systems/final_release_review_harness_plan.json",
+    "distributionApprovalHarnessPlan": "systems/distribution_approval_harness_plan.json",
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json",
+    "launcherExecutionAcceptance": "systems/launcher_execution_acceptance.json",
+    "finalReleaseReviewAcceptance": "systems/final_release_review_acceptance.json",
+    "distributionApprovalAcceptance": "systems/distribution_approval_acceptance.json"
+  },
+  "reportContract": {
+    "schema": "echo.openlands.edition.harness_driver_manifest.v1",
+    "requiredTopLevelFields": [
+      "schema",
+      "edition",
+      "runtimeTarget",
+      "moduleId",
+      "moduleVersion",
+      "generatedAt",
+      "status",
+      "sourceContracts",
+      "harnessFamilies",
+      "availableDriverSurfaces",
+      "missingDriverSurfaces",
+      "blockedBy",
+      "nextSteps"
+    ],
+    "allowedStatus": [
+      "template_blocked",
+      "implementation_partial",
+      "implementation_ready",
+      "execution_passed",
+      "execution_failed"
+    ],
+    "availableDriverSurfaceFields": [
+      "id",
+      "harnessFamily",
+      "implementationState",
+      "adapterClassOrEntrypoint",
+      "driverVersion",
+      "adapterCommit",
+      "methodsImplemented",
+      "capturesImplemented",
+      "evidenceRoot",
+      "notes"
+    ],
+    "familyFields": [
+      "id",
+      "plan",
+      "bindingKey",
+      "requiredReport",
+      "requiredDriverSurfaceIds",
+      "requiredBindingIds",
+      "availableDriverSurfaceIds",
+      "missingDriverSurfaceIds",
+      "status",
+      "blockedBy"
+    ]
+  },
+  "editionManifestTemplates": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "path": "evidence/native-harness-driver-manifest.template.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "path": "evidence/neoforge-harness-driver-manifest.template.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "path": "evidence/standalone-harness-driver-manifest.template.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar"
+    }
+  ],
+  "harnessFamilies": [
+    {
+      "id": "runtime",
+      "plan": "systems/runtime_execution_harness_plan.json",
+      "bindingKey": "scenarioBindings",
+      "bindingLabel": "runtime scenarios",
+      "requiredReportPattern": "evidence/{edition}-runtime-execution-report.json",
+      "readinessBlocker": "runtime_execution_gates_not_cleared",
+      "driverMissingBlocker": "real_runtime_harness_drivers_missing",
+      "requiredDriverSurfaceIds": [
+        "world_driver",
+        "worldgen_driver",
+        "shelter_driver",
+        "route_driver",
+        "save_load_driver",
+        "creature_driver",
+        "waystone_driver",
+        "homestead_driver",
+        "builder_storage_driver",
+        "distribution_driver",
+        "launcher_driver",
+        "review_driver"
+      ],
+      "requiredBindingIds": [
+        "fresh_standard_world_starts",
+        "starter_spawn_seed_sweep",
+        "minimal_shelter_sleep",
+        "first_hour_route_walkthrough",
+        "first_hour_save_reload_roundtrip",
+        "biome_landmark_seed_sweep",
+        "creature_spawn_ai_drop_sound_sweep",
+        "waystone_repair_state_roundtrip",
+        "two_active_waystones_fast_travel",
+        "old_road_holomap_route_reveal",
+        "relaxed_homestead_growth_and_cookpot",
+        "animal_pen_and_trader_surplus",
+        "builder_hammer_scaffold_inventory_storage",
+        "artifact_upload_download_hash",
+        "launcher_install_update_repair_rollback",
+        "final_owned_asset_review",
+        "final_sound_and_branding_review"
+      ]
+    },
+    {
+      "id": "launcher",
+      "plan": "systems/launcher_execution_harness_plan.json",
+      "bindingKey": "flowBindings",
+      "bindingLabel": "launcher flows",
+      "requiredReportPattern": "evidence/{edition}-launcher-execution-report.json",
+      "readinessBlocker": "real_launcher_install_update_repair_rollback_missing",
+      "driverMissingBlocker": "real_launcher_harness_drivers_missing",
+      "requiredDriverSurfaceIds": [
+        "launcher_channel_driver",
+        "manifest_driver",
+        "artifact_cache_driver",
+        "descriptor_driver",
+        "world_lifecycle_driver",
+        "state_preservation_driver",
+        "repair_driver",
+        "rollback_driver",
+        "launcher_log_driver"
+      ],
+      "requiredBindingIds": [
+        "install",
+        "update",
+        "repair",
+        "rollback"
+      ]
+    },
+    {
+      "id": "finalReview",
+      "plan": "systems/final_release_review_harness_plan.json",
+      "bindingKey": "reviewAreaBindings",
+      "bindingLabel": "final review areas",
+      "requiredReportPattern": "evidence/{edition}-final-release-review-report.json",
+      "readinessBlocker": "final_asset_legal_review_missing",
+      "driverMissingBlocker": "final_review_harness_drivers_missing",
+      "requiredDriverSurfaceIds": [
+        "reviewer_identity_driver",
+        "public_text_policy_driver",
+        "asset_manifest_driver",
+        "legal_audit_driver",
+        "block_render_review_driver",
+        "item_render_review_driver",
+        "audio_source_review_driver",
+        "generated_output_audit_driver"
+      ],
+      "requiredBindingIds": [
+        "public_identity_and_branding",
+        "block_textures_models_and_blockstates",
+        "item_icons_models_and_tools",
+        "audio_sources_and_sound_events",
+        "generated_runtime_outputs"
+      ]
+    },
+    {
+      "id": "distributionApproval",
+      "plan": "systems/distribution_approval_harness_plan.json",
+      "bindingKey": "approvalAreaBindings",
+      "bindingLabel": "distribution approval areas",
+      "requiredReportPattern": "evidence/{edition}-distribution-approval-report.json",
+      "readinessBlocker": "distribution_approval_missing",
+      "driverMissingBlocker": "distribution_approval_harness_drivers_missing",
+      "requiredDriverSurfaceIds": [
+        "release_index_publication_driver",
+        "artifact_download_verification_driver",
+        "edition_manifest_index_driver",
+        "dependency_gate_driver",
+        "coop_session_driver",
+        "approval_signature_driver",
+        "roadmap_scope_driver",
+        "rollback_plan_driver",
+        "report_artifact_driver"
+      ],
+      "requiredBindingIds": [
+        "artifact_publication",
+        "edition_manifest_indexing",
+        "runtime_launcher_final_review_dependency",
+        "coop_public_alpha_session",
+        "public_alpha_approval"
+      ]
+    }
+  ],
+  "clearingRules": [
+    "A template_blocked manifest must list every required driver surface as missing and must not clear any runtime, launcher, final-review, or distribution gate.",
+    "implementation_partial is allowed only when at least one driver surface has adapterClassOrEntrypoint, driverVersion, adapterCommit, methodsImplemented, capturesImplemented, and evidenceRoot.",
+    "implementation_ready requires every family to have zero missing driver surfaces and every available driver surface to declare all required methods and captures from its harness plan.",
+    "execution_passed requires real harness execution reports, not only a manifest; every mapped scenario, flow, review area, or approval area must pass and attach required saved artifacts.",
+    "The runner may attach a manifest to blocked reports, but blocked harness reports must continue to include real_harness_execution_not_run until drivers actually execute."
+  ],
+  "blockedTemplateRules": {
+    "availableDriverSurfacesMustBeEmpty": true,
+    "missingDriverSurfacesMustMatchAllRequiredSurfaces": true,
+    "familyStatus": "template_blocked",
+    "requiredBlockedBy": [
+      "real_runtime_harness_drivers_missing",
+      "real_launcher_harness_drivers_missing",
+      "final_review_harness_drivers_missing",
+      "distribution_approval_harness_drivers_missing",
+      "real_harness_execution_not_run"
+    ],
+    "requiredNextSteps": [
+      "Implement runtime-specific driver surfaces.",
+      "Record adapter entrypoints, driver versions, and adapter commits.",
+      "Attach required captures and saved artifacts from each harness plan.",
+      "Run real harness execution and replace blocked reports only after every mapped binding passes."
+    ]
+  }
+}

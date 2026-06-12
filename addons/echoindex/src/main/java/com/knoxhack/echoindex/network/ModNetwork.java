@@ -4,7 +4,7 @@ import com.knoxhack.echonetcore.api.EchoNetPayloads;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echonetcore.api.EchoPayloadContext;
 import com.knoxhack.echonetcore.api.EchoPayloadRegistrar;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 import com.knoxhack.echoindex.integration.IndexLensMissionBridge;
 import com.knoxhack.echoindex.integration.IndexMissionHooks;
 import com.knoxhack.echoindex.service.IndexDiscoveryStore;

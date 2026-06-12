@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.knoxhack.echocore.api.index.IndexSourceKind;
+import com.echoplatform.echocore.api.index.IndexSourceKind;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.service.IndexService;
 import com.knoxhack.echoindex.service.IndexSourceRecipeProvider;

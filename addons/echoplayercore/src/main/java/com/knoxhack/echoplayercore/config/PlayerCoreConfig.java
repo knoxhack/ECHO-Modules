@@ -1,6 +1,6 @@
 package com.knoxhack.echoplayercore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 import java.util.List;
 
 public final class PlayerCoreConfig {

@@ -5,7 +5,7 @@ import com.knoxhack.echo.adaptercore.EchoNativeWeatherScheduleBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeWeatherScheduleTickBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeWeatherStateApplyBridge;
 import com.knoxhack.echo.adaptercore.EchoWorldContracts;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
 import com.knoxhack.echoweathercore.EchoWeatherCore;
 import com.knoxhack.echoweathercore.api.weather.ActiveWeatherEvent;
 import com.knoxhack.echoweathercore.api.weather.WeatherPhase;

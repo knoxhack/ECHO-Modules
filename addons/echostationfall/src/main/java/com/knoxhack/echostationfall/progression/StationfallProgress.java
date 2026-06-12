@@ -1,8 +1,8 @@
 package com.knoxhack.echostationfall.progression;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoHandoffs;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoHandoffs;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echostationfall.integration.StationfallMissionHooks;
 import com.knoxhack.echostationfall.integration.StationfallOrbitalCompat;
 import java.util.EnumMap;

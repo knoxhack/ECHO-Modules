@@ -139,7 +139,7 @@ public class DroneCombatAI {
             }
             
             // Also consider player reputation with that faction
-            int reputation = com.knoxhack.echocore.api.EchoCoreServices.factionProfile(owner, mobFaction)
+            int reputation = com.echoplatform.echocore.api.EchoCoreServices.factionProfile(owner, mobFaction)
                     .map(profile -> profile.reputation())
                     .orElse(0);
             if (reputation < 0) {

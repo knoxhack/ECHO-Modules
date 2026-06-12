@@ -1,7 +1,7 @@
 package com.knoxhack.echoagriculturereclamation.integration;
 
 import com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoterminal.api.TerminalActionRegistry;
 import com.knoxhack.echoterminal.api.TerminalArchiveEntry;
 import com.knoxhack.echoterminal.api.TerminalArchiveRegistry;

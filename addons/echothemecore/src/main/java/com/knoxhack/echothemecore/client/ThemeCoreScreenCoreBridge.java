@@ -4,7 +4,7 @@ import com.knoxhack.echothemecore.EchoThemeCore;
 import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeTextureKey;
 import com.knoxhack.echothemecore.content.ThemeRegistry;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.lang.reflect.Proxy;
 import java.util.LinkedHashMap;
 import java.util.List;

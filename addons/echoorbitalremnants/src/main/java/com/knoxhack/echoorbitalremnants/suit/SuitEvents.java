@@ -1,7 +1,7 @@
 package com.knoxhack.echoorbitalremnants.suit;
 
 import com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echoorbitalremnants.Config;
 import com.knoxhack.echoorbitalremnants.network.OrbitalEventVisualPayload;

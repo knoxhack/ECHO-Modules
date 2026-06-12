@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "echo.addon.package.v1",
+  "id": "echonetcore",
+  "version": "1.0.0",
+  "publisher": {
+    "githubOwner": "knoxhack",
+    "githubRepo": "ECHO-Modules"
+  },
+  "targets": [
+    "native",
+    "neoforge",
+    "standalone"
+  ],
+  "dependencies": [
+    {
+      "id": "echoadaptercore",
+      "version": "*"
+    },
+    {
+      "id": "echocore",
+      "version": "*"
+    }
+  ],
+  "artifacts": {
+    "native": "echonetcore-1.0.0.echo-addon",
+    "neoforge": "echonetcore-1.0.0-neoforge.jar",
+    "standalone": "echonetcore-1.0.0-standalone.jar",
+    "sources": "echonetcore-1.0.0-sources.jar"
+  },
+  "runtime": "echo-native",
+  "descriptor": "META-INF/echo.mod.json",
+  "runtimeJar": "lib/echonetcore-1.0.0-runtime.jar",
+  "buildMode": "compiled-runtime"
+}

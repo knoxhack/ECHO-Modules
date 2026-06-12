@@ -1,6 +1,6 @@
 package com.knoxhack.echocursecore.network;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echocursecore.EchoCurseCore;
 import com.knoxhack.echonetcore.api.EchoNetPayloads;
 import com.knoxhack.echonetcore.api.EchoNetSend;

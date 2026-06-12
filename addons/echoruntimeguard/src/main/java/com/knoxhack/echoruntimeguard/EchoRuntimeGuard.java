@@ -1,10 +1,10 @@
 package com.knoxhack.echoruntimeguard;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
 import com.knoxhack.echoruntimeguard.command.RuntimeGuardCommands;
 import com.knoxhack.echoruntimeguard.runtime.BlockEntitySleepService;
 import com.knoxhack.echoruntimeguard.runtime.EntityAiGuardService;

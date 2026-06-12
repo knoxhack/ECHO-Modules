@@ -1,7 +1,7 @@
 package com.knoxhack.echoorbitalremnants.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import com.knoxhack.echoorbitalremnants.entity.OrbitalFactionNpcEntity;
 import com.knoxhack.echoorbitalremnants.item.FactionPledgeItem;

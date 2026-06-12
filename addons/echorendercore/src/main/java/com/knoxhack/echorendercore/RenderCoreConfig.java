@@ -1,6 +1,6 @@
 package com.knoxhack.echorendercore;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class RenderCoreConfig {
    public enum AdvancedFxMode {

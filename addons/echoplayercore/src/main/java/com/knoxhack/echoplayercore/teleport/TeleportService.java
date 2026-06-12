@@ -1,6 +1,6 @@
 package com.knoxhack.echoplayercore.teleport;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoplayercore.config.PlayerCoreConfig;
 import com.knoxhack.echoplayercore.data.PlayerCoreSavedData;
 import com.knoxhack.echoplayercore.data.TeleportLocation;
@@ -125,8 +125,8 @@ public final class TeleportService {
         if (player != null && PlayerCoreConfig.rtpAvoidHighRadiation()) {
             if (EchoRuntimeModules.isLoaded("echoworldcore")) {
                 try {
-                    com.knoxhack.echocore.api.WorldHazardSnapshot snapshot =
-                            com.knoxhack.echocore.api.EchoCoreServices.hazardService().hazardSnapshot(player);
+                    com.echoplatform.echocore.api.WorldHazardSnapshot snapshot =
+                            com.echoplatform.echocore.api.EchoCoreServices.hazardService().hazardSnapshot(player);
                     if (snapshot != null && !snapshot.safeZone()) {
                         return false;
                     }

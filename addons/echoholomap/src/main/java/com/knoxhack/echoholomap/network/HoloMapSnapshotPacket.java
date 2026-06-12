@@ -1,7 +1,7 @@
 package com.knoxhack.echoholomap.network;
 
-import com.knoxhack.echocore.api.IMapLayer;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapLayer;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echonetcore.api.EchoPayloadCodecs;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.EchoHoloMap;

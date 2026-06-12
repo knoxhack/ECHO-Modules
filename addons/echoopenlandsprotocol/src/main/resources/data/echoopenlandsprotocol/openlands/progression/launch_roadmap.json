@@ -1,0 +1,123 @@
+{
+  "schema": "echo.openlands.progression.launch_roadmap.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "defaultRule": "Openlands Standard remains the relaxed default through MVP, Public Alpha, 1.0, and later updates.",
+  "phases": [
+    {
+      "id": "mvp",
+      "displayName": "MVP",
+      "target": "First playable Openlands foundation",
+      "scope": {
+        "biomes": 4,
+        "blocks": "50-70",
+        "items": "45-60",
+        "players": "1",
+        "coreLoops": [
+          "spawn_gather_tool_shelter_sleep",
+          "first_cave_or_old_road",
+          "first_waystone_repair",
+          "map_reveal",
+          "save_load"
+        ]
+      },
+      "requiredEvidence": [
+        "openlands_contract_validator_pass",
+        "compiled_runtime_artifacts_exist",
+        "launcher_flow_preflight_pass",
+        "first_hour_route_playtest",
+        "waystone_state_save_load_test",
+        "legal_content_audit"
+      ]
+    },
+    {
+      "id": "public_alpha",
+      "displayName": "Public Alpha",
+      "target": "Feature-complete enough for external testing",
+      "scope": {
+        "biomes": "8-10",
+        "blocks": "150+",
+        "items": "120+",
+        "players": "1-8 co-op",
+        "coreLoops": [
+          "homestead_farming",
+          "animal_pens",
+          "trader_surplus",
+          "ruin_exploration",
+          "creative_mode",
+          "launcher_install_update_repair_rollback"
+        ]
+      },
+      "requiredEvidence": [
+        "approved_release_index_entries",
+        "all_artifacts_have_sha256",
+        "runtime_parity_matrix_pass",
+        "co_op_state_test_pass",
+        "website_and_launcher_preview_approved"
+      ]
+    },
+    {
+      "id": "one_dot_zero",
+      "displayName": "1.0",
+      "target": "Full Openlands official launch",
+      "scope": {
+        "biomes": "full_region_set",
+        "blocks": "complete_builder_palette",
+        "items": "complete_survival_builder_progression",
+        "players": "SMP supported where runtime supports servers",
+        "coreLoops": [
+          "full_waystone_network",
+          "old_road_restoration",
+          "settlements",
+          "traders",
+          "deep_caves",
+          "creative_tools",
+          "server_multiplayer"
+        ]
+      },
+      "requiredEvidence": [
+        "native_neoforge_standalone_parity_certified",
+        "launcher_public_release_enabled",
+        "standalone_runtime_playable",
+        "neoforge_adapter_playable",
+        "native_runtime_playable",
+        "content_rights_review_complete"
+      ]
+    },
+    {
+      "id": "post_launch",
+      "displayName": "Post Launch",
+      "target": "Stable expansion without breaking parity",
+      "scope": {
+        "biomes": "seasonal_and_regional_expansions",
+        "blocks": "new_families_without_id_breakage",
+        "items": "new_tools_foods_decor_without_migration_loss",
+        "players": "runtime_specific_scaling",
+        "coreLoops": [
+          "new_regions",
+          "new_trader_routes",
+          "settlement_improvements",
+          "builder_palette_expansions",
+          "modder_api"
+        ]
+      },
+      "requiredEvidence": [
+        "migration_maps_for_changed_ids",
+        "save_compatibility_tests",
+        "parity_validator_updated",
+        "release_notes_for_runtime_differences"
+      ]
+    }
+  ],
+  "nonNegotiableInvariants": [
+    "Echo data IDs remain source of truth.",
+    "Hardlands remains optional.",
+    "No Minecraft branding, textures, sounds, copied mob silhouettes, or copied recipe identity.",
+    "Native, Standalone, and NeoForge releases cannot be approved unless parity differences are documented.",
+    "Launcher repair and rollback must work before public release."
+  ]
+}

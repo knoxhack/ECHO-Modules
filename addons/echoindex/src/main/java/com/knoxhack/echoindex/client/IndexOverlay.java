@@ -1,7 +1,7 @@
 package com.knoxhack.echoindex.client;
 
-import com.knoxhack.echocore.api.index.IndexRecipeView;
-import com.knoxhack.echocore.api.index.IndexSlotRole;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.knoxhack.echocore.client.ui.EchoCyberGlassUi;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.EchoIndexClient;

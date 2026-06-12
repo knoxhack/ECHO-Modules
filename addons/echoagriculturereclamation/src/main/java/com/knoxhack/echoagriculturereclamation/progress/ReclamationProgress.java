@@ -1,6 +1,6 @@
 package com.knoxhack.echoagriculturereclamation.progress;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoagriculturereclamation.content.CropSpec;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationContent;
 import com.knoxhack.echoagriculturereclamation.content.ReclamationMetrics;

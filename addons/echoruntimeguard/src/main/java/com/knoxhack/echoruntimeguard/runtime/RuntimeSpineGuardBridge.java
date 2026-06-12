@@ -1,7 +1,7 @@
 package com.knoxhack.echoruntimeguard.runtime;
 
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
 import com.knoxhack.echoruntimeguard.EchoRuntimeGuard;
 import com.knoxhack.echoruntimeguard.api.RuntimeWorkType;
 import net.minecraft.resources.Identifier;

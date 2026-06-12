@@ -3,7 +3,7 @@ package com.knoxhack.echoholomap.integration;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeRegistry;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeSnapshot;
 import com.knoxhack.echo.machinecore.EchoMachineUiBridge;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.EchoHoloMap;
 import com.knoxhack.echoholomap.HoloMapIds;
 import com.knoxhack.echoholomap.api.HoloMapLayerData;

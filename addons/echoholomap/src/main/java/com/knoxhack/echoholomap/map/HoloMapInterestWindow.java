@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.map;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.api.HoloMapMarkerData;
 import com.knoxhack.echoholomap.api.HoloMapOverlayData;

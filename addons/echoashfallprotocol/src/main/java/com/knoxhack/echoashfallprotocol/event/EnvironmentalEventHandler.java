@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.event;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.Config;
 import com.knoxhack.echoashfallprotocol.entity.ModEntities;
 import com.knoxhack.echoashfallprotocol.gameplay.DifficultyProfile;
@@ -15,7 +15,7 @@ import com.knoxhack.echoashfallprotocol.survival.ColdData;
 import com.knoxhack.echoashfallprotocol.survival.HazardZoneManager;
 import com.knoxhack.echoashfallprotocol.survival.SurvivalData;
 import com.knoxhack.echoashfallprotocol.world.NexusWorldData;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echonetcore.api.EchoNetSend;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

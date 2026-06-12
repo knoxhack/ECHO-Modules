@@ -1,0 +1,101 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echopowergrid",
+  "name": "ECHO: PowerGrid",
+  "version": "1.0.0",
+  "type": "addon",
+  "kind": "addon",
+  "role": "tech",
+  "entrypoint": "com.knoxhack.echopowergrid.EchoPowerGrid",
+  "publisher": "KnoxHack",
+  "channel": "beta",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore"
+  ],
+  "optional": [
+    "echoholomap",
+    "echoindustrialnexus",
+    "echolens",
+    "echomultiblockcore",
+    "echorendercore",
+    "echoruntimeguard",
+    "echoterminal",
+    "echothemecore",
+    "echoworldcore"
+  ],
+  "provides": [
+    "powergrid.blocks",
+    "powergrid.energy_api",
+    "powergrid.generators",
+    "powergrid.grid_status",
+    "powergrid.storage",
+    "powergrid.transmission"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net"
+  ],
+  "gameModes": [
+    "ashfall_survival",
+    "tech_survival"
+  ],
+  "permissions": [
+    "network.payloads",
+    "server.commands",
+    "world.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "commands",
+        "data",
+        "items",
+        "networking",
+        "saves",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "notes": "PowerGrid owns concrete EP generation, storage, transfer, command, menu, and block runtime behavior. Terminal, Lens, RuntimeGuard, MultiblockCore, IndustrialNexus, HoloMap, ThemeCore, RenderCore, and WorldCore integrations remain optional.",
+    "nativeEntrypoint": "com.knoxhack.echopowergrid.EchoPowerGridNativeModule",
+    "nativeClasspath": []
+  },
+  "apiStability": "beta",
+  "ai": {
+    "safeEditZones": [
+      "src/main/java/com/knoxhack/echopowergrid/**",
+      "src/main/resources/**",
+      "docs/**"
+    ],
+    "protectedFiles": [
+      "build.gradle",
+      "gradle.properties",
+      "README.md",
+      "FEATURE_MATRIX.md",
+      "SMOKE_TEST.md"
+    ],
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

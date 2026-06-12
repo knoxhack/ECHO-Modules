@@ -1,7 +1,7 @@
 package com.knoxhack.echorecovery.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
 import com.knoxhack.echorecovery.api.RecoveryIntegrations;
 import java.util.Optional;
 

@@ -1,10 +1,6 @@
 package com.knoxhack.echo.adaptercore;
 
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.Event;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-
+import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
 /**
@@ -14,29 +10,30 @@ public final class EchoBackendLifecycleBridge {
     private EchoBackendLifecycleBridge() {
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public static void registerModListener(Object eventBus, Consumer<?> listener) {
-        if (eventBus instanceof IEventBus bus) {
-            bus.addListener((Consumer) listener);
+        if (eventBus != null && listener != null) {
+            invokeOneArgument(eventBus, "addListener", listener);
         }
     }
 
     public static void registerGameEventListener(Object listener) {
-        if (listener != null) {
-            NeoForge.EVENT_BUS.register(listener);
+        Object eventBus = neoForgeEventBus();
+        if (eventBus != null && listener != null) {
+            invokeOneArgument(eventBus, "register", listener);
         }
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public static void registerGameEventHandler(Consumer<?> listener) {
-        if (listener != null) {
-            NeoForge.EVENT_BUS.addListener((Consumer) listener);
+        Object eventBus = neoForgeEventBus();
+        if (eventBus != null && listener != null) {
+            invokeOneArgument(eventBus, "addListener", listener);
         }
     }
 
     public static void postGameEvent(Object event) {
-        if (event instanceof Event liveEvent) {
-            NeoForge.EVENT_BUS.post(liveEvent);
+        Object eventBus = neoForgeEventBus();
+        if (eventBus != null && event != null) {
+            invokeOneArgument(eventBus, "post", event);
         }
     }
 
@@ -44,10 +41,33 @@ public final class EchoBackendLifecycleBridge {
         if (work == null) {
             return;
         }
-        if (event instanceof FMLCommonSetupEvent setupEvent) {
-            setupEvent.enqueueWork(work);
-        } else {
-            work.run();
+        if (event != null && invokeOneArgument(event, "enqueueWork", work)) {
+            return;
         }
+        work.run();
+    }
+
+    private static Object neoForgeEventBus() {
+        try {
+            Class<?> neoForge = Class.forName("net.neoforged.neoforge.common.NeoForge");
+            return neoForge.getField("EVENT_BUS").get(null);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            return null;
+        }
+    }
+
+    private static boolean invokeOneArgument(Object target, String methodName, Object argument) {
+        for (Method method : target.getClass().getMethods()) {
+            if (!method.getName().equals(methodName) || method.getParameterCount() != 1) {
+                continue;
+            }
+            try {
+                method.invoke(target, argument);
+                return true;
+            } catch (ReflectiveOperationException | RuntimeException ignored) {
+                // Try the next overload; standalone runtime may not have the backend-specific type.
+            }
+        }
+        return false;
     }
 }

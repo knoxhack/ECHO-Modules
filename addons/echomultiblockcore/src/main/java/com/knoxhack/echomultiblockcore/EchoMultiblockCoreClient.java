@@ -2,7 +2,7 @@ package com.knoxhack.echomultiblockcore;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echomultiblockcore.client.MultiblockControllerScreen;
 import com.knoxhack.echomultiblockcore.client.MultiblockCrateScreen;
 import com.knoxhack.echomultiblockcore.client.MultiblockPreviewRenderer;

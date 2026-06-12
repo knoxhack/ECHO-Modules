@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echotutorialcore.EchoTutorialCore;
 
 public final class TutorialIntegrations {

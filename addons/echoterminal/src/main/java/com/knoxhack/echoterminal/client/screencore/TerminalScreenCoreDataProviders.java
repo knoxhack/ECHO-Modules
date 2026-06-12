@@ -1,16 +1,16 @@
 package com.knoxhack.echoterminal.client.screencore;
 
-import com.knoxhack.echocore.api.DataServiceDiagnostics;
-import com.knoxhack.echocore.api.EchoAddonChapter;
-import com.knoxhack.echocore.api.EchoAddonRegistry;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoFactionProfile;
-import com.knoxhack.echocore.api.EchoHazardTelemetry;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.EchoResolvedDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.DataServiceDiagnostics;
+import com.echoplatform.echocore.api.EchoAddonChapter;
+import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoHazardTelemetry;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoResolvedDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoRouteRecord;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoScreenRegistry;
 import com.knoxhack.echoscreencore.api.action.EchoActionRegistry;
@@ -2320,7 +2320,7 @@ public final class TerminalScreenCoreDataProviders {
         if (path.size() > 1 && "categories".equals(path.get(1))) {
             List<Map<String, Object>> categories = new ArrayList<>();
             categories.add(row("id", "all", "label", "ALL"));
-            java.util.Arrays.stream(com.knoxhack.echocore.api.EchoDiscoveryCategory.values())
+            java.util.Arrays.stream(com.echoplatform.echocore.api.EchoDiscoveryCategory.values())
                     .map(category -> row("id", category.name(), "label", category.displayName()))
                     .forEach(categories::add);
             return categories;

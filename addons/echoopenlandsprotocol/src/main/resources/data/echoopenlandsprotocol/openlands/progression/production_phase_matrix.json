@@ -1,0 +1,2693 @@
+{
+  "schema": "echo.openlands.progression.production_phase_matrix.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "generatedFrom": [
+    "README.md",
+    "META-INF/echo.mod.json",
+    "config/game_modes.json",
+    "config/content_policy.json",
+    "blocks/mvp_blocks.json",
+    "items/mvp_items.json",
+    "recipes/mvp_recipes.json",
+    "biomes/mvp_biomes.json",
+    "structures/mvp_landmarks.json",
+    "creatures/mvp_creatures.json",
+    "waystones/waystone_contract.json",
+    "systems/playable_runtime_contract.json",
+    "systems/runtime_adapter_load_plan.json",
+    "systems/runtime_execution_acceptance.json",
+    "systems/runtime_execution_harness_plan.json",
+    "systems/harness_driver_manifest_contract.json",
+    "systems/launcher_execution_acceptance.json",
+    "systems/launcher_execution_harness_plan.json",
+    "systems/final_release_review_acceptance.json",
+    "systems/final_release_review_harness_plan.json",
+    "systems/distribution_approval_acceptance.json",
+    "systems/distribution_approval_harness_plan.json",
+    "systems/release_publication_manifest_contract.json",
+    "systems/distribution_alpha_gates.json",
+    "progression/first_hour_route.json",
+    "progression/launch_roadmap.json",
+    "index/mvp_gameplay_catalog.json"
+  ],
+  "designRules": [
+    "The production matrix must keep all ten production phases plus the final launch phase visible as 55 checkable subphases.",
+    "Openlands Standard remains relaxed; blocked runtime work must not be reclassified as complete.",
+    "Every checkpoint must list concrete module, edition, artifact, or runtime-gate evidence.",
+    "Echo-owned data IDs remain the source of truth for Native, Standalone, and NeoForge adapters."
+  ],
+  "launchRoadmapDefaultRule": "Openlands Standard remains the relaxed default through MVP, Public Alpha, 1.0, and later updates.",
+  "counts": {
+    "phases": 11,
+    "checkpoints": 55,
+    "moduleEvidence": 128,
+    "editionEvidence": 87,
+    "artifactEvidence": 7,
+    "runtimeGates": 15,
+    "presentEvidence": 237,
+    "missingEvidence": 0
+  },
+  "currentRegistryCounts": {
+    "blocks": 53,
+    "items": 50,
+    "recipes": 40,
+    "biomes": 4,
+    "structures": 8,
+    "creatures": 10
+  },
+  "currentStateSummary": {
+    "contractReady": 36,
+    "preflightReady": 6,
+    "runtimeExecutionPending": 11,
+    "releaseBlocked": 4,
+    "futureScope": 2
+  },
+  "phases": [
+    {
+      "id": "phase_01_product_contract",
+      "order": 1,
+      "displayName": "Product Contract",
+      "objective": "Locks Openlands identity, relaxed default rules, legal boundaries, modes, and MVP player promise.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "official_pack_identity",
+          "order": 1,
+          "title": "Official ECHO Pack #2 identity",
+          "requirement": "Lock namespace echoopenlandsprotocol, public name Openlands, and target identity: relaxed building, farming, exploration, old roads, and waystones.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "README.md",
+              "proves": "Public module identity and relaxed product positioning.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/META-INF/echo.mod.json",
+              "proves": "Official pack descriptor, namespace, version, runtime targets, and provided contracts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/index/openlands_overview.json",
+              "proves": "Openlands public name, official pack position, and index categories.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Descriptor id is echoopenlandsprotocol.",
+            "Overview publicName is Openlands.",
+            "Positioning includes old roads and waystones."
+          ]
+        },
+        {
+          "id": "standard_relaxed_default",
+          "order": 2,
+          "title": "Relaxed Standard config",
+          "requirement": "Define openlands_standard.json behavior: gentle hunger, no stamina, no hydration, no food spoilage, no temperature damage, recoverable death pack, and moderate hostiles.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/config/game_modes.json",
+              "proves": "Openlands Standard default and disabled hardcore meters.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/playable_runtime_contract.json",
+              "proves": "Runtime hooks that prove Standard rules and hardcore meters off.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsStandardRules.java",
+              "proves": "Pure Java relaxed rule contract used by adapters.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Default mode remains openlands_standard.",
+            "Hardcore meters are disabled outside Hardlands.",
+            "Death recovery remains recoverable."
+          ]
+        },
+        {
+          "id": "mode_overlays",
+          "order": 3,
+          "title": "Mode overlays",
+          "requirement": "Define peaceful, explorer, builder_survival, creative, and hardlands as config overlays; only hardlands enables harsher systems.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/config/game_modes.json",
+              "proves": "Mode overlay list and per-mode hardcore flag settings.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/META-INF/echo.mod.json",
+              "proves": "Declared gameModes exposed to runtime adapters.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Six Openlands modes are declared.",
+            "Only hardlands enables any hardcore meter.",
+            "Creative and Builder Survival remain non-hardcore."
+          ]
+        },
+        {
+          "id": "legal_content_bible",
+          "order": 4,
+          "title": "Original content boundary",
+          "requirement": "Keep Openlands free of Minecraft names, copied mob silhouettes, copied recipes as identity, copied textures, borrowed audio, and Minecraft branding.",
+          "currentState": "preflight_ready_human_review_required",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/config/content_policy.json",
+              "proves": "Public naming, asset, recipe, and branding policy.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/legal_content_audit.json",
+              "proves": "Machine-readable legal audit scope and forbidden terms.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/final_release_review_acceptance.json",
+              "proves": "Final human art/audio/legal review schema and blocked report contract.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/final_release_review_harness_plan.json",
+              "proves": "Final review harness plan with exact review areas, drivers, captures, and saved artifacts.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-legal-content-audit.json",
+              "proves": "Edition legal preflight scans public names, ids, artifacts, and descriptors.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-legal-content-audit.json",
+              "proves": "Edition legal preflight scans public names, ids, artifacts, and descriptors.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-legal-content-audit.json",
+              "proves": "Edition legal preflight scans public names, ids, artifacts, and descriptors.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-final-release-review-report.json",
+              "proves": "Edition final release review blocked report until human review passes.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-final-release-review-report.json",
+              "proves": "Edition final release review blocked report until human review passes.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-final-release-review-report.json",
+              "proves": "Edition final release review blocked report until human review passes.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "final_asset_legal_review",
+              "proves": "Final human art/audio/legal approval is still required before public release.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "No forbidden public terms appear in validated Openlands text.",
+            "Placeholder assets are marked non-final.",
+            "Public release remains blocked until human review."
+          ]
+        },
+        {
+          "id": "mvp_player_promise",
+          "order": 5,
+          "title": "MVP player promise",
+          "requirement": "Freeze the route: spawn, gather, build shelter, sleep, explore, restore first waystone, reveal map.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/first_hour_route.json",
+              "proves": "Canonical first-hour route and player promise.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/playtests/mvp_first_hour_acceptance.json",
+              "proves": "Machine-readable first-hour acceptance fixture.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/index/openlands_overview.json",
+              "proves": "Player-facing MVP acceptance list.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Route includes safe spawn, first gathering, tools, shelter, sleep, exploration hook, and waystone.",
+            "Save/load fields are part of the promise."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_02_repo_and_artifact_setup",
+      "order": 2,
+      "displayName": "Repo And Artifact Setup",
+      "objective": "Creates addon structure, edition repos, manifests, docs, and artifact layout for all target runtimes.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "addon_module_scaffold",
+          "order": 1,
+          "title": "Addon module scaffold",
+          "requirement": "Create ECHO-Modules/addons/echoopenlandsprotocol with README, build.gradle, docs, resources, and templates.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "README.md",
+              "proves": "Module overview and validation commands.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "build.gradle",
+              "proves": "Module build wiring.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "docs/artifacts.md",
+              "proves": "Artifact policy and release gate documentation.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources",
+              "proves": "Common resource root.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/templates",
+              "proves": "Runtime-specific template root.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Module root exists under addons/echoopenlandsprotocol.",
+            "Common resources and templates are present."
+          ]
+        },
+        {
+          "id": "echo_descriptor",
+          "order": 2,
+          "title": "Echo descriptor",
+          "requirement": "Add META-INF/echo.mod.json declaring echo_native, echo_runtime_standalone, and neoforge with version 0.1.0.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/META-INF/echo.mod.json",
+              "proves": "Canonical descriptor for the common addon.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/contract/OpenlandsRuntimeContracts.java",
+              "proves": "Java adapter contract exposes runtime targets and artifact targets.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Descriptor version is 0.1.0.",
+            "All three runtime targets are declared.",
+            "Openlands provides index, systems, world, recipes, blocks, items, and waystones."
+          ]
+        },
+        {
+          "id": "neoforge_template",
+          "order": 3,
+          "title": "NeoForge template",
+          "requirement": "Add neoforge.mods.toml only for the NeoForge artifact family while keeping common IDs in Echo-owned files.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/templates/META-INF/neoforge.mods.toml",
+              "proves": "NeoForge-only descriptor template.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/META-INF/echo.mod.json",
+              "proves": "Echo-owned common descriptor remains source of truth.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "NeoForge template exists under templates.",
+            "Common ids remain in Echo descriptor and data."
+          ]
+        },
+        {
+          "id": "edition_repos",
+          "order": 4,
+          "title": "Edition repositories",
+          "requirement": "Create thin Native, NeoForge, and Standalone edition repos.",
+          "currentState": "preflight_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/README.md",
+              "proves": "Thin edition repo root exists and describes its target runtime.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/README.md",
+              "proves": "Thin edition repo root exists and describes its target runtime.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/README.md",
+              "proves": "Thin edition repo root exists and describes its target runtime.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/release-manifest.template.json",
+              "proves": "Edition release manifest template exists.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/release-manifest.template.json",
+              "proves": "Edition release manifest template exists.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/release-manifest.template.json",
+              "proves": "Edition release manifest template exists.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Native edition repo exists.",
+            "NeoForge edition repo exists.",
+            "Standalone edition repo exists.",
+            "Edition repos stay thin and point back to Echo data."
+          ]
+        },
+        {
+          "id": "edition_docs",
+          "order": 5,
+          "title": "Edition docs and rollback flow",
+          "requirement": "Each edition repo gets install, update, rollback, troubleshooting, and module requirements documentation.",
+          "currentState": "preflight_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/docs/install.md",
+              "proves": "Edition install flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/docs/install.md",
+              "proves": "Edition install flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/docs/install.md",
+              "proves": "Edition install flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/docs/update-flow.md",
+              "proves": "Edition update flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/docs/update-flow.md",
+              "proves": "Edition update flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/docs/update-flow.md",
+              "proves": "Edition update flow documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/docs/rollback.md",
+              "proves": "Edition rollback documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/docs/rollback.md",
+              "proves": "Edition rollback documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/docs/rollback.md",
+              "proves": "Edition rollback documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/docs/troubleshooting.md",
+              "proves": "Edition troubleshooting documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/docs/troubleshooting.md",
+              "proves": "Edition troubleshooting documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/docs/troubleshooting.md",
+              "proves": "Edition troubleshooting documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/docs/module-requirements.md",
+              "proves": "Edition module requirements documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/docs/module-requirements.md",
+              "proves": "Edition module requirements documentation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/docs/module-requirements.md",
+              "proves": "Edition module requirements documentation.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "All required edition docs exist for each runtime target.",
+            "Rollback and troubleshooting are present before public alpha."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_03_data_and_schema_layout",
+      "order": 3,
+      "displayName": "Data And Schema Layout",
+      "objective": "Defines content roots, asset roots, required fields, and conformance fixtures for cross-runtime parity.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "content_roots",
+          "order": 1,
+          "title": "Content roots",
+          "requirement": "Add content roots for blocks, items, recipes, loot, tags, biomes, structures, creatures, waystones, progression, tutorials, index, holomap, and sounds.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json",
+              "proves": "Required content root fixture.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/contract/OpenlandsRuntimeContracts.java",
+              "proves": "REQUIRED_CONTENT_ROOTS adapter contract.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Every required content root exists on disk.",
+            "Runtime contract lists the same roots."
+          ]
+        },
+        {
+          "id": "asset_roots",
+          "order": 2,
+          "title": "Asset roots",
+          "requirement": "Add textures, models, blockstates, lang, and sounds asset roots.",
+          "currentState": "placeholder_ready_final_art_blocked",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/assets/echoopenlandsprotocol/asset_manifest.json",
+              "proves": "Owned placeholder coverage policy and manifest.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/final_release_review_acceptance.json",
+              "proves": "Final art/audio review schema and blocked report contract.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/final_release_review_harness_plan.json",
+              "proves": "Final art/audio review harness plan with asset, block, item, audio, and generated-output drivers.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/assets/echoopenlandsprotocol/lang/en_us.json",
+              "proves": "Language strings for MVP content.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/assets/echoopenlandsprotocol/sounds.json",
+              "proves": "Sound event manifest.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-final-release-review-report.json",
+              "proves": "Edition final art/audio review blocked report until final assets pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-final-release-review-report.json",
+              "proves": "Edition final art/audio review blocked report until final assets pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-final-release-review-report.json",
+              "proves": "Edition final art/audio review blocked report until final assets pass.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "final_art_audio_pass",
+              "proves": "Final public art and audio must replace placeholders before release.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Every MVP block and item has placeholder asset coverage.",
+            "Public release remains blocked until final art/audio review."
+          ]
+        },
+        {
+          "id": "block_schema_fields",
+          "order": 3,
+          "title": "Block schema fields",
+          "requirement": "Require id, displayName, hardness, tool, drops, tags, model, texture, and runtimeParity for every block.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Canonical block registry.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json",
+              "proves": "Block conformance IDs and required content counts.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "All block entries include required fields.",
+            "Current MVP block count is 53."
+          ]
+        },
+        {
+          "id": "item_schema_fields",
+          "order": 4,
+          "title": "Item schema fields",
+          "requirement": "Require id, displayName, stackSize, useType, tags, model, texture, recipeRefs, and runtimeParity for every item.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Canonical item registry.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json",
+              "proves": "Item conformance IDs and required content counts.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "All item entries include required fields.",
+            "Current MVP item count is 50."
+          ]
+        },
+        {
+          "id": "conformance_fixture",
+          "order": 5,
+          "title": "Cross-runtime conformance fixture",
+          "requirement": "Add openlands_mvp_registry.json listing every MVP block, item, recipe, biome, creature, and system expected on Native, Standalone, and NeoForge.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json",
+              "proves": "Canonical conformance fixture.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/cross_platform_parity.json",
+              "proves": "Parity surfaces and test fixture list.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-registry-parity-report.json",
+              "proves": "Edition registry parity reports generated from the same fixture.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-registry-parity-report.json",
+              "proves": "Edition registry parity reports generated from the same fixture.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-registry-parity-report.json",
+              "proves": "Edition registry parity reports generated from the same fixture.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Conformance fixture includes blocks, items, recipes, biomes, creatures, and system contracts.",
+            "Edition reports use the same expected counts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_04_mvp_block_registry",
+      "order": 4,
+      "displayName": "MVP Block Registry",
+      "objective": "Defines terrain, stone, ore, wood, utility, old-road, and waystone blocks for the MVP loop.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "terrain_blocks",
+          "order": 1,
+          "title": "Terrain blocks",
+          "requirement": "Define meadow_grass_block, forest_soil, dry_soil, mud, echomaterialcore:sand, echomaterialcore:clay, and echomaterialcore:gravel with tools, drops, textures, lang keys, and biome placement.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Terrain block registry entries and placement metadata.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Terrain block IDs exist.",
+            "Terrain drops and biome placement resolve."
+          ]
+        },
+        {
+          "id": "stone_blocks",
+          "order": 2,
+          "title": "Stone and masonry blocks",
+          "requirement": "Define echomaterialcore:fieldstone, limestone, granite, shale, deepstone, and planned slab/stair/wall/echomaterialcore:brick variants.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Stone, masonry, and planned variant metadata.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Stone block IDs exist.",
+            "Building palette variants are represented or planned."
+          ]
+        },
+        {
+          "id": "ore_blocks",
+          "order": 3,
+          "title": "Ore blocks",
+          "requirement": "Define echomaterialcore:cupral_vein, echomaterialcore:tinveil_vein, echomaterialcore:ferrite_vein, and glow_crystal_cluster with pick tiers, drops, spawn layers, and reward behavior.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Ore block entries.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/loot/mvp_loot.json",
+              "proves": "Ore drop tables.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Ore blocks exist.",
+            "Required tool tiers and drops resolve.",
+            "Ore placement supports first-metal progression."
+          ]
+        },
+        {
+          "id": "wood_blocks",
+          "order": 4,
+          "title": "Wood families",
+          "requirement": "Define branchwood and pine logs, planks, beams, and posts sharing openlands wood-family tags.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Branchwood and pine block families.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/tags/mvp_tags.json",
+              "proves": "openlands:wood_family tag membership.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Branchwood and pine families exist.",
+            "Wood-family tags resolve."
+          ]
+        },
+        {
+          "id": "utility_blocks",
+          "order": 5,
+          "title": "Utility and station blocks",
+          "requirement": "Define doors, trapdoors, ladders, storage, signs, echoworldstarter:bedroll, lights, echostationcore:field_bench, echostationcore:kiln, echostationcore:forge_hearth, echostationcore:loom, echostationcore:cookpot, mason table, and map table.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Utility and station block entries.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Station recipe assignments.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-crafting-station-report.json",
+              "proves": "Edition station preflight coverage.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-crafting-station-report.json",
+              "proves": "Edition station preflight coverage.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-crafting-station-report.json",
+              "proves": "Edition station preflight coverage.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Station blocks exist.",
+            "Crafting station recipes are assigned.",
+            "Edition station reports prove compiled artifact coverage."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_05_mvp_item_registry",
+      "order": 5,
+      "displayName": "MVP Item Registry",
+      "objective": "Defines raw materials, metals, food, tools, utility, and waystone items for early progression.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "raw_material_items",
+          "order": 1,
+          "title": "Raw materials",
+          "requirement": "Define branchwood sticks, stone pieces, reed fiber, flint, echomaterialcore:clay, echomaterialcore:hide_strip, echomaterialcore:bone_shard, echomaterialcore:pitch_resin, echomaterialcore:resin, and echomaterialcore:charcoal_lump.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Raw material item registry entries.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Starter raw materials exist.",
+            "Raw material acquisition appears in gameplay catalog."
+          ]
+        },
+        {
+          "id": "metal_items",
+          "order": 2,
+          "title": "Metals and crystals",
+          "requirement": "Define ore chunks, copper, tin, bronze, iron ingots, and glow crystal.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Metal and crystal item registry entries.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Forge processing recipes.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Metal progression items exist.",
+            "Copper plus tin unlocks bronze."
+          ]
+        },
+        {
+          "id": "food_items",
+          "order": 3,
+          "title": "Gentle food loop",
+          "requirement": "Define berries, mushroom, meat, grain, root crop, fish, and stew with non-punishing hunger values.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Food item entries and nutrition.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/homestead_alpha.json",
+              "proves": "Relaxed crops and echostationcore:cookpot meals.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Food exists without spoilage pressure.",
+            "Homestead food loop remains relaxed in Standard."
+          ]
+        },
+        {
+          "id": "tool_items",
+          "order": 4,
+          "title": "Tool progression",
+          "requirement": "Define crude, flint, wooden, copper, bronze, and iron tools for starter gathering and mining tiers.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Tool item registry entries and stats.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Tool crafting recipes.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Starter tools exist.",
+            "Metal picks exist.",
+            "Tool tiers match ore requirements."
+          ]
+        },
+        {
+          "id": "utility_waystone_items",
+          "order": 5,
+          "title": "Utility and waystone items",
+          "requirement": "Define echoworldstarter:bedroll, pack, echoworldstarter:pitchlight bundle, repair kit, copper fitting, waystone core, region rubbing, and old road token.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+              "proves": "Utility and waystone item entries.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Waystone repair inputs and route items.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Waystone repair inputs exist.",
+            "Map and road items exist.",
+            "Utility items support first-hour recovery."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_06_crafting_and_stations",
+      "order": 6,
+      "displayName": "Crafting And Stations",
+      "objective": "Builds echostationcore:handcrafting, echostationcore:field_bench, echostationcore:kiln, echostationcore:forge_hearth, echostationcore:cookpot, and map-table recipe systems.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "handcrafting_recipes",
+          "order": 1,
+          "title": "Handcrafting recipes",
+          "requirement": "Define crude tools, flint knife, echoworldstarter:pitchlight bundle, echoworldstarter:campfire, and basic fiber binding.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Handcrafting recipe group.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Handcrafting recipes exist.",
+            "Starter tools and echoworldstarter:campfire are craftable without a station."
+          ]
+        },
+        {
+          "id": "workbench_recipes",
+          "order": 2,
+          "title": "Workbench recipes",
+          "requirement": "Define wood processing, building pieces, storage, signs, hammer, and starter combat/hunting tools.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Workbench recipe group.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Workbench recipes exist.",
+            "Builder palette unlocks from starter wood."
+          ]
+        },
+        {
+          "id": "kiln_recipes",
+          "order": 3,
+          "title": "Kiln recipes",
+          "requirement": "Define raw echomaterialcore:clay to echomaterialcore:brick, echomaterialcore:sand to glass, log to echomaterialcore:charcoal_lump, and pottery hooks.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Kiln recipe group.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Kiln recipes exist.",
+            "Brick, glass, and echomaterialcore:charcoal_lump processing are represented."
+          ]
+        },
+        {
+          "id": "forge_recipes",
+          "order": 4,
+          "title": "Forge recipes",
+          "requirement": "Define ore chunk processing, bronze alloying, metal tools, copper fitting, and lantern frame support.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Forge recipe group.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Forge recipes exist.",
+            "Copper, tin, bronze, and iron progression resolves."
+          ]
+        },
+        {
+          "id": "map_table_recipes",
+          "order": 5,
+          "title": "Map table recipes",
+          "requirement": "Define region rubbing, waystone core, route binding, and restored-waystone activation records.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Map-table route and waystone recipes.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Waystone state machine consumes map-table outputs.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Map-table recipes exist.",
+            "Route binding feeds the waystone active-state path."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_07_first_hour_gameplay",
+      "order": 7,
+      "displayName": "First-Hour Gameplay",
+      "objective": "Designs relaxed early gameplay: spawn safety, discovery prompts, shelter scoring, sleep milestone, and save/load acceptance.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "starter_spawn_generator",
+          "order": 1,
+          "title": "Starter spawn guarantees",
+          "requirement": "Guarantee nearby trees, loose stones, fiber, berries, water, and a cave, road, or ruin hook.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/playable_runtime_contract.json",
+              "proves": "Starter spawn validation contract.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsStarterSpawnGuarantees.java",
+              "proves": "Pure Java starter spawn validation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-worldgen-exploration-report.json",
+              "proves": "Edition worldgen preflight coverage.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-worldgen-exploration-report.json",
+              "proves": "Edition worldgen preflight coverage.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-worldgen-exploration-report.json",
+              "proves": "Edition worldgen preflight coverage.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_worldgen_spawn_execution",
+              "proves": "Each adapter still needs live worldgen execution evidence.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Valid starter spawn passes the shared runtime core.",
+            "Invalid starter spawn reports missing signals.",
+            "Real adapters still need live execution."
+          ]
+        },
+        {
+          "id": "discovery_tutorials",
+          "order": 2,
+          "title": "Discovery tutorial prompts",
+          "requirement": "Trigger prompts only on discovery: first stick, first stone, first fiber, first tool craft, echoworldstarter:campfire, and shelter score.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/tutorials/first_hour_prompts.json",
+              "proves": "Discovery-only tutorial prompt rules.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/first_hour_route.json",
+              "proves": "Route hooks that trigger tutorials.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Prompts are discovery-based.",
+            "Prompt IDs referenced by route steps resolve."
+          ]
+        },
+        {
+          "id": "shelter_score",
+          "order": 3,
+          "title": "Forgiving shelter score",
+          "requirement": "Calculate roof, walls, door, echoworldstarter:bedroll, light/fire, and hostile distance without requiring perfect construction.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/playable_runtime_contract.json",
+              "proves": "Shelter scoring components and minimum score.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsShelterScoring.java",
+              "proves": "Pure Java shelter scoring implementation.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_adapter_shelter_execution",
+              "proves": "Each adapter still needs live placed-block shelter checks.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Shelter score minimum remains forgiving.",
+            "Shared runtime core allows sleep at minimum score.",
+            "Adapters still need live block-state evidence."
+          ]
+        },
+        {
+          "id": "sleep_milestone",
+          "order": 4,
+          "title": "Sleep milestone",
+          "requirement": "Complete the first milestone when the player sleeps in a good-enough shelter, not when every block is perfect.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/first_hour_route.json",
+              "proves": "Sleep-and-recover route step.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/playtests/mvp_first_hour_acceptance.json",
+              "proves": "First-hour shelter acceptance scenario.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-first-hour-playtest-report.json",
+              "proves": "Edition first-hour preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-first-hour-playtest-report.json",
+              "proves": "Edition first-hour preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-first-hour-playtest-report.json",
+              "proves": "Edition first-hour preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_first_hour_playtest",
+              "proves": "Each adapter still needs live first-hour playtest execution.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Sleep milestone is tied to relaxed shelter threshold.",
+            "Preflight reports align route and scenarios.",
+            "Live runtime playtest remains required."
+          ]
+        },
+        {
+          "id": "first_hour_save_load",
+          "order": 5,
+          "title": "First-hour save/load",
+          "requirement": "Persist inventory, hotbar, placed blocks, echostationcore:field_crate contents, echoworldstarter:bedroll spawn, echoworldstarter:campfire state, shelter score, and route state.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/playtests/mvp_first_hour_acceptance.json",
+              "proves": "Save/load checkpoints.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/playable_runtime_contract.json",
+              "proves": "Save/load snapshot fields.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-first-hour-playtest-report.json",
+              "proves": "Edition first-hour save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-first-hour-playtest-report.json",
+              "proves": "Edition first-hour save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-first-hour-playtest-report.json",
+              "proves": "Edition first-hour save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_save_load_execution",
+              "proves": "Each adapter still needs live save/reload execution evidence.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "All required first-hour save fields are declared.",
+            "Edition preflights prove fixture alignment.",
+            "Real save/load remains a Public Alpha blocker."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_08_worldgen_and_exploration",
+      "order": 8,
+      "displayName": "Worldgen And Exploration",
+      "objective": "Adds starter biomes, resources, landmarks, ambience, creature spawns, and HoloMap discovery.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "mvp_biomes",
+          "order": 1,
+          "title": "MVP biomes",
+          "requirement": "Define Meadows, Woodlands, Stonehills, and Marshlands with palettes, resources, spawn tables, ambience, and landmark frequency.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/biomes/mvp_biomes.json",
+              "proves": "Four MVP biome definitions.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-worldgen-exploration-report.json",
+              "proves": "Edition biome/worldgen preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-worldgen-exploration-report.json",
+              "proves": "Edition biome/worldgen preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-worldgen-exploration-report.json",
+              "proves": "Edition biome/worldgen preflight report.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Current MVP biome count is 4.",
+            "Biome palettes, resources, spawns, and ambience resolve."
+          ]
+        },
+        {
+          "id": "biome_resource_identity",
+          "order": 2,
+          "title": "Biome resource identity",
+          "requirement": "Make Meadows starter-safe, Woodlands echomaterialcore:resin/mushroom-rich, Stonehills mineral-rich, and Marshlands reed/echomaterialcore:clay-rich.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/biomes/mvp_biomes.json",
+              "proves": "Biome resource sets and spawn tables.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/creatures/mvp_creatures.json",
+              "proves": "Creature biome references.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Each biome has a distinct resource role.",
+            "Starter biomes support safe first-hour gathering."
+          ]
+        },
+        {
+          "id": "landmarks",
+          "order": 3,
+          "title": "Exploration landmarks",
+          "requirement": "Generate ruined wells, road markers, tiny camps, watchtowers, old mines, broken bridges, cellar entrances, and waystones.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/structures/mvp_landmarks.json",
+              "proves": "Landmark definitions.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-worldgen-exploration-report.json",
+              "proves": "Edition landmark preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-worldgen-exploration-report.json",
+              "proves": "Edition landmark preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-worldgen-exploration-report.json",
+              "proves": "Edition landmark preflight report.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Current MVP landmark count is 8.",
+            "Landmark blocks and HoloMap hints resolve."
+          ]
+        },
+        {
+          "id": "creature_spawns_and_ambience",
+          "order": 4,
+          "title": "Creature spawns and ambience",
+          "requirement": "Bind passive, neutral, and moderate hostile creatures with sound keys and safe starter distances.",
+          "currentState": "preflight_ready_runtime_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/creatures/mvp_creatures.json",
+              "proves": "Creature spawn, AI, drops, and sounds.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/sounds/mvp_sound_contract.json",
+              "proves": "Creature and ambience sound contract.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_creature_runtime_execution",
+              "proves": "Adapters still need live creature spawn/AI/drop tests.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Current MVP creature count is 10.",
+            "Creature sound keys resolve.",
+            "Live runtime creature behavior remains required."
+          ]
+        },
+        {
+          "id": "holomap_region_data",
+          "order": 5,
+          "title": "HoloMap region discovery",
+          "requirement": "Store discovered region name, biome type, nearby hints, restored waystones, player markers, and old road segments.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/holomap/mvp_regions.json",
+              "proves": "HoloMap region and layer contracts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/playtests/mvp_first_hour_acceptance.json",
+              "proves": "HoloMap first-waystone acceptance.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "HoloMap layers and hint types exist.",
+            "Waystone reveal fields are included in save/load acceptance."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_09_waystones_and_old_roads",
+      "order": 9,
+      "displayName": "Waystones And Old Roads",
+      "objective": "Implements old roads, waystone repair progression, map reveal, fast travel, and multiplayer permissions.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "old_road_blocks",
+          "order": 1,
+          "title": "Old road blocks",
+          "requirement": "Add old_road_block, old_road_marker, broken_waystone, restored_waystone, and waystone_plinth.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+              "proves": "Old road and waystone block entries.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Waystone block contract.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Old road and waystone blocks exist.",
+            "Block IDs appear in waystone contract."
+          ]
+        },
+        {
+          "id": "waystone_state_machine",
+          "order": 2,
+          "title": "Waystone state machine",
+          "requirement": "Implement undiscovered -> discovered -> debris_cleared -> stone_repaired -> fitted -> charged -> bound -> active.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Canonical state machine order.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsWaystoneRuntime.java",
+              "proves": "Pure Java waystone transition implementation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-waystone-save-load-report.json",
+              "proves": "Edition waystone save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-waystone-save-load-report.json",
+              "proves": "Edition waystone save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-waystone-save-load-report.json",
+              "proves": "Edition waystone save/load preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_waystone_save_load_execution",
+              "proves": "Adapters still need live waystone save/load execution.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "State order has eight states.",
+            "Shared runtime can advance to active.",
+            "Live adapter persistence remains required."
+          ]
+        },
+        {
+          "id": "repair_inputs",
+          "order": 3,
+          "title": "Repair inputs",
+          "requirement": "Require echomaterialcore:fieldstone or limestone, repair kit, copper fitting, glow crystal, and map-table route binding.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Waystone repair input map.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+              "proves": "Waystone component and route recipes.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Repair inputs resolve to known blocks/items.",
+            "Route binding is produced by map table."
+          ]
+        },
+        {
+          "id": "active_waystone_effects",
+          "order": 4,
+          "title": "Active waystone effects",
+          "requirement": "Reveal map radius, name region, mark nearby hints, attract trader visits, and unlock fast travel after two active stones.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Active waystone effects and fast-travel threshold.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/holomap/mvp_regions.json",
+              "proves": "HoloMap reveal data.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_fast_travel_execution",
+              "proves": "Adapters still need live route binding and travel tests.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Fast travel requires two active stones.",
+            "HoloMap reveal fields exist.",
+            "Real travel execution remains required."
+          ]
+        },
+        {
+          "id": "multiplayer_permissions",
+          "order": 5,
+          "title": "Multiplayer waystone permissions",
+          "requirement": "Store owner/group/public flags, contributors, linked route IDs, rename permission, and public-travel state.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/waystones/waystone_contract.json",
+              "proves": "Waystone multiplayer state fields.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/coop_and_smp.json",
+              "proves": "Shared state, permissions, and network event policy.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Permission fields exist.",
+            "Co-op/SMP contract defines authority and mutation events."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase_10_alpha_systems_and_distribution",
+      "order": 10,
+      "displayName": "Alpha Systems And Distribution",
+      "objective": "Expands homestead, creatures, builder UX, artifacts, release validation, repair, rollback, and parity tests.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "homestead_systems",
+          "order": 1,
+          "title": "Homestead systems",
+          "requirement": "Add grain, root crops, berries, compost, simple watering, echostationcore:cookpot meals, animal pens, and trader surplus demand.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/homestead_alpha.json",
+              "proves": "Homestead alpha contracts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsHomesteadRuntime.java",
+              "proves": "Pure Java crop and echostationcore:cookpot runtime helpers.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-alpha-systems-report.json",
+              "proves": "Edition alpha-systems preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-alpha-systems-report.json",
+              "proves": "Edition alpha-systems preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-alpha-systems-report.json",
+              "proves": "Edition alpha-systems preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_homestead_runtime_execution",
+              "proves": "Adapters still need live crop, echostationcore:cookpot, pen, and trader execution.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Homestead contracts exist.",
+            "Standard mode remains relaxed.",
+            "Live adapter execution remains required."
+          ]
+        },
+        {
+          "id": "creature_roster",
+          "order": 2,
+          "title": "Creature roster",
+          "requirement": "Add hare, deer, boar, goat, marsh hen, fish, greyling, bristleback, hollow stalker, and mire leech with spawn rules, drops, sounds, and AI hints.",
+          "currentState": "preflight_ready_runtime_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/creatures/mvp_creatures.json",
+              "proves": "MVP creature roster.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/loot/mvp_loot.json",
+              "proves": "Creature drops.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-creature-roster-report.json",
+              "proves": "Edition creature roster preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_creature_runtime_execution",
+              "proves": "Adapters still need live creature tests.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Ten creature definitions exist.",
+            "Drops and sounds resolve.",
+            "Live AI/spawn execution remains required."
+          ]
+        },
+        {
+          "id": "builder_ux",
+          "order": 3,
+          "title": "Builder UX",
+          "requirement": "Add hammer shape cycling, scaffold, quick stack, quick deposit, sorting, named chests, and craft from nearby storage.",
+          "currentState": "runtime_core_ready_adapter_execution_pending",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/builder_ux_alpha.json",
+              "proves": "Builder UX commands and storage behavior.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/runtime/OpenlandsBuilderUxRuntime.java",
+              "proves": "Pure Java builder action validation.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-alpha-systems-report.json",
+              "proves": "Edition builder UX preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-alpha-systems-report.json",
+              "proves": "Edition builder UX preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-alpha-systems-report.json",
+              "proves": "Edition builder UX preflight report.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_builder_ux_execution",
+              "proves": "Adapters still need live inventory/storage mutation tests.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Builder commands exist.",
+            "Server authority and permissions are modeled.",
+            "Live UX execution remains required."
+          ]
+        },
+        {
+          "id": "artifact_outputs",
+          "order": 4,
+          "title": "Runtime artifacts",
+          "requirement": "Produce .echo-addon, standalone jar, NeoForge jar, and sources jar artifacts for version 0.1.0.",
+          "currentState": "local_artifacts_ready_upload_blocked",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/echoopenlandsprotocol-0.1.0.echo-addon",
+              "proves": "Local Native echo-addon artifact.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/echoopenlandsprotocol-0.1.0-standalone.jar",
+              "proves": "Local Standalone artifact.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/echoopenlandsprotocol-0.1.0-neoforge.jar",
+              "proves": "Local NeoForge artifact.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/echoopenlandsprotocol-0.1.0-sources.jar",
+              "proves": "Local sources artifact.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "uploaded_release_artifacts",
+              "proves": "Artifacts still need uploaded URLs and approved Release Index entries.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Local artifact files exist.",
+            "Release upload remains blocked until URLs and checksums are approved."
+          ]
+        },
+        {
+          "id": "release_validation",
+          "order": 5,
+          "title": "Release validation",
+          "requirement": "Release only after launcher install, update, repair, rollback, Release Index validation, and parity tests pass for all three editions.",
+          "currentState": "preflight_ready_real_launcher_blocked",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/distribution_alpha_gates.json",
+              "proves": "Distribution gate contract.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/launcher_flow_acceptance.json",
+              "proves": "Launcher flow acceptance fixture.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/runtime_execution_acceptance.json",
+              "proves": "Real runtime execution report schema for clearing Public Alpha gates.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/runtime_execution_harness_plan.json",
+              "proves": "Real runtime harness driver plan for actions, assertions, captures, and saved artifacts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/generate-openlands-local-runtime-rehearsal-report.mjs",
+              "proves": "Local runtime rehearsal generator for pure-runtime scenario mapping, fixture checks, and saved artifacts without clearing real adapter gates.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/validate-openlands-local-runtime-rehearsal-report.mjs",
+              "proves": "Validator for local runtime rehearsal reports across all runtime execution scenarios.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/harness_driver_manifest_contract.json",
+              "proves": "Edition-owned driver manifest contract listing required, available, and missing real harness driver surfaces.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/generate-openlands-harness-driver-manifest.mjs",
+              "proves": "Generator that derives edition harness driver manifests from the source contract and optional implemented driver declarations.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/validate-openlands-harness-driver-manifest.mjs",
+              "proves": "Validator for template, partial, and ready harness driver manifests before harness runners consume them.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-harness-driver-manifest.template.json",
+              "proves": "Edition driver manifest template records missing runtime, launcher, final-review, and distribution harness drivers.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-harness-driver-manifest.template.json",
+              "proves": "Edition driver manifest template records missing runtime, launcher, final-review, and distribution harness drivers.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-harness-driver-manifest.template.json",
+              "proves": "Edition driver manifest template records missing runtime, launcher, final-review, and distribution harness drivers.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/launcher_execution_acceptance.json",
+              "proves": "Real launcher execution report schema for install, update, repair, rollback, and preservation gates.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/launcher_execution_harness_plan.json",
+              "proves": "Real launcher harness driver plan for install, update, repair, rollback, and preservation flows.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/final_release_review_harness_plan.json",
+              "proves": "Real final review harness driver plan for public identity, assets, audio, and generated runtime output review.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/distribution_approval_acceptance.json",
+              "proves": "Real distribution approval report schema for uploads, indexed manifests, co-op session, and approval signature.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/distribution_approval_harness_plan.json",
+              "proves": "Real distribution approval harness driver plan for Release Index publication, artifact verification, manifest indexing, co-op evidence, dependency gates, rollback, and approval signoff.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/release_publication_manifest_contract.json",
+              "proves": "Publication manifest contract for public download URLs, download verification, Release Index patching, and approval handoff.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/verify-openlands-release-publication-downloads.mjs",
+              "proves": "Public artifact download verifier that downloads uploaded URLs, checks SHA-256 and size, and writes a verified publication manifest without approving Release Index patches.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/approve-openlands-release-publication.mjs",
+              "proves": "Guarded publication approval tool that requires verified downloads, approval/signoff JSON, and explicit Release Index patch intent before writing an approved manifest.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/generate-openlands-release-publication-rehearsal-report.mjs",
+              "proves": "Module-level release publication rehearsal generator for local artifact download-back verification and Release Index patch-preview evidence without publishing public URLs.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/validate-openlands-release-publication-rehearsal-report.mjs",
+              "proves": "Validator for the module-level release publication rehearsal report and saved local download-back artifacts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/generate-openlands-edition-manifest-index-preview.mjs",
+              "proves": "Module-level edition manifest index preview generator for three modpack entries, module requirement resolution, and launcher channel listing saved artifacts without clearing distribution gates.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/validate-openlands-edition-manifest-index-preview.mjs",
+              "proves": "Validator for the module-level edition manifest index preview and saved manifest indexing artifacts.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/generate-openlands-local-launcher-rehearsal-report.mjs",
+              "proves": "Local launcher rehearsal generator for cache, update, repair, rollback, and preservation mechanics without clearing real launcher gates.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "scripts/validate-openlands-local-launcher-rehearsal-report.mjs",
+              "proves": "Validator for local launcher rehearsal reports and saved install/update/repair/rollback artifacts.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-manifest.template.json",
+              "proves": "Blocked publication manifest template generated from local artifact hashes and sizes.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/openlands-release-publication-rehearsal-report.json",
+              "proves": "Local publication rehearsal report proving local download-back hashes and Release Index patch previews without clearing public URL blockers.",
+              "present": true
+            },
+            {
+              "kind": "artifact_file",
+              "path": "dist/echo-module-release/echoopenlandsprotocol/openlands-edition-manifest-index-preview.json",
+              "proves": "Edition manifest index preview proving the three edition manifests, module requirement graph, and launcher channel listing without clearing distribution gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-local-runtime-rehearsal-report.json",
+              "proves": "Edition local runtime rehearsal proves all runtime execution scenarios are mapped to fixtures, pure runtime hooks, and saved preflight artifacts without clearing real adapter gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-local-runtime-rehearsal-report.json",
+              "proves": "Edition local runtime rehearsal proves all runtime execution scenarios are mapped to fixtures, pure runtime hooks, and saved preflight artifacts without clearing real adapter gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-local-runtime-rehearsal-report.json",
+              "proves": "Edition local runtime rehearsal proves all runtime execution scenarios are mapped to fixtures, pure runtime hooks, and saved preflight artifacts without clearing real adapter gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-launcher-flow-report.json",
+              "proves": "Edition launcher-flow preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-launcher-flow-report.json",
+              "proves": "Edition launcher-flow preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-launcher-flow-report.json",
+              "proves": "Edition launcher-flow preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-launcher-execution-report.json",
+              "proves": "Edition launcher execution blocked report until real launcher runs pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-launcher-execution-report.json",
+              "proves": "Edition launcher execution blocked report until real launcher runs pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-launcher-execution-report.json",
+              "proves": "Edition launcher execution blocked report until real launcher runs pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-local-launcher-rehearsal-report.json",
+              "proves": "Edition local launcher rehearsal proves cache, update, repair, rollback, and state preservation mechanics without clearing real launcher gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-local-launcher-rehearsal-report.json",
+              "proves": "Edition local launcher rehearsal proves cache, update, repair, rollback, and state preservation mechanics without clearing real launcher gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-local-launcher-rehearsal-report.json",
+              "proves": "Edition local launcher rehearsal proves cache, update, repair, rollback, and state preservation mechanics without clearing real launcher gates.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-distribution-roadmap-report.json",
+              "proves": "Edition distribution/roadmap preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-distribution-roadmap-report.json",
+              "proves": "Edition distribution/roadmap preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-distribution-roadmap-report.json",
+              "proves": "Edition distribution/roadmap preflight report.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "native",
+              "path": "ECHO-Openlands-Native-Edition/evidence/native-distribution-approval-report.json",
+              "proves": "Edition distribution approval blocked report until Release Index and Public Alpha approval pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "neoforge",
+              "path": "ECHO-Openlands-NeoForge-Edition/evidence/neoforge-distribution-approval-report.json",
+              "proves": "Edition distribution approval blocked report until Release Index and Public Alpha approval pass.",
+              "present": true
+            },
+            {
+              "kind": "edition_file",
+              "edition": "standalone",
+              "path": "ECHO-Openlands-Standalone-Edition/evidence/standalone-distribution-approval-report.json",
+              "proves": "Edition distribution approval blocked report until Release Index and Public Alpha approval pass.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_launcher_install_update_repair_rollback",
+              "proves": "Real launcher execution is still required before Public Alpha.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Launcher flow preflight reports exist.",
+            "Release Index remains warning until real execution and upload evidence exist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final_launch_phase_openlands_1_0_roadmap",
+      "order": 11,
+      "displayName": "Final Launch Phase",
+      "objective": "Freezes the relaxed default, ships MVP, expands Public Alpha, launches 1.0, and preserves parity.",
+      "checkpointCount": 5,
+      "checkpoints": [
+        {
+          "id": "freeze_relaxed_default",
+          "order": 1,
+          "title": "Freeze relaxed default",
+          "requirement": "Freeze Openlands Standard as the default and keep Hardlands optional.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/config/game_modes.json",
+              "proves": "Default mode and Hardlands optional overlay.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/launch_roadmap.json",
+              "proves": "Default rule stays relaxed through every roadmap phase.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Launch roadmap defaultRule preserves Standard.",
+            "Hardlands remains optional."
+          ]
+        },
+        {
+          "id": "ship_mvp_scope",
+          "order": 2,
+          "title": "Ship MVP scope",
+          "requirement": "Ship MVP with 4 biomes, 50-70 blocks, 45-60 items, shelter loop, first cave/road, first waystone, and save/load.",
+          "currentState": "mvp_contract_ready_real_runtime_blocked",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/launch_roadmap.json",
+              "proves": "MVP scope and required evidence.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/index/mvp_gameplay_catalog.json",
+              "proves": "Every MVP block and item explained for player-facing guide/index.",
+              "present": true
+            },
+            {
+              "kind": "runtime_gate",
+              "id": "real_mvp_runtime_playtest",
+              "proves": "MVP ship still requires live runtime playtest evidence.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Current counts: 4 biomes, 53 blocks, 50 items, 40 recipes.",
+            "Real runtime playtest remains required."
+          ]
+        },
+        {
+          "id": "public_alpha_scope",
+          "order": 3,
+          "title": "Public Alpha expansion",
+          "requirement": "Expand Public Alpha to 8-10 biomes, 150+ blocks, 120+ items, farming, ruins, Creative mode, and 1-8 co-op.",
+          "currentState": "roadmap_contract_future_scope",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/launch_roadmap.json",
+              "proves": "Public Alpha scope.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/distribution_alpha_gates.json",
+              "proves": "Public Alpha minimum gates.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Public Alpha target scope is documented.",
+            "Current MVP does not claim Public Alpha content counts are complete."
+          ]
+        },
+        {
+          "id": "one_dot_zero_scope",
+          "order": 4,
+          "title": "1.0 scope",
+          "requirement": "Launch 1.0 with full waystone network, old road restoration, traders, settlements, deep caves, Creative tools, and SMP support.",
+          "currentState": "roadmap_contract_future_scope",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/progression/launch_roadmap.json",
+              "proves": "1.0 target scope.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/coop_and_smp.json",
+              "proves": "Co-op and SMP state contract.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "1.0 target scope is documented.",
+            "SMP support remains runtime-dependent."
+          ]
+        },
+        {
+          "id": "parity_source_of_truth",
+          "order": 5,
+          "title": "Parity source of truth",
+          "requirement": "Maintain Native, NeoForge, and Standalone parity by treating Echo data IDs as source of truth and adapters as output targets.",
+          "currentState": "contract_ready",
+          "runtimeParity": [
+            "echo_native",
+            "echo_runtime_standalone",
+            "neoforge"
+          ],
+          "evidence": [
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/systems/cross_platform_parity.json",
+              "proves": "Parity surfaces and adapter responsibilities.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json",
+              "proves": "Canonical registry ID fixture.",
+              "present": true
+            },
+            {
+              "kind": "module_file",
+              "path": "src/main/java/com/knoxhack/echoopenlandsprotocol/contract/OpenlandsRuntimeContracts.java",
+              "proves": "Runtime contract exposes common IDs and artifact targets.",
+              "present": true
+            }
+          ],
+          "acceptance": [
+            "Echo data IDs remain canonical.",
+            "Adapters are output targets.",
+            "Runtime differences must be documented before promotion."
+          ]
+        }
+      ]
+    }
+  ]
+}

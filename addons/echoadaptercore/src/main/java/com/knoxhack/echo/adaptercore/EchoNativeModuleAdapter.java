@@ -236,7 +236,7 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
             String id = string(contract);
             if (!id.isBlank()) {
                 context.registerService(
-                        "feature." + normalized(id),
+                        "feature." + normalized(context.descriptor().id()) + "." + normalized(id),
                         Map.of("kind", "feature_contract", "id", id),
                         "features",
                         "contracts"

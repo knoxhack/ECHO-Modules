@@ -1,7 +1,7 @@
 package com.knoxhack.echoterminal.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeSpineBus;
-import com.knoxhack.echocore.api.EchoRuntimeSpineEvent;
+import com.echoplatform.echocore.api.EchoRuntimeSpineBus;
+import com.echoplatform.echocore.api.EchoRuntimeSpineEvent;
 import com.knoxhack.echoterminal.EchoTerminal;
 import java.util.LinkedHashMap;
 import java.util.Locale;

@@ -157,7 +157,7 @@ final class AshfallNativeMachineRecipeCatalog {
         recipes.add(recipe("wasteland_trace_rubble", 2, "iron_shard", 2, "copper_shard", 1, 0.30f, 90, 260));
         recipes.add(recipe("scrap_ore", 2, "scrap_metal", 3, "iron_shard", 1, 0.35f, 90, 240));
         recipes.add(recipe("rubble", 3, "gravel", 4, "scrap_metal", 1, 0.15f, 80, 200));
-        recipes.add(recipe("scattered_bones", 1, "animal_bone", 3, "bone_meal", 1, 0.25f, 80, 180));
+        recipes.add(recipe("scattered_bones", 1, "ashbone_shard", 3, "bone_meal", 1, 0.25f, 80, 180));
         recipes.add(recipe("concrete_rubble", 3, "gravel", 4, "scrap_metal", 1, 0.20f, 90, 220));
         recipes.add(recipe("concrete_chunk", 2, "gravel", 4, "scrap_metal", 1, 0.30f, 100, 240));
         recipes.add(recipe("industrial_aggregate", 2, "copper_shard", 2, "scrap_wire", 1, 0.30f, 110, 300));
@@ -165,12 +165,12 @@ final class AshfallNativeMachineRecipeCatalog {
         recipes.add(recipe("crash_slag", 2, "scrap_metal", 2, "iron_shard", 1, 0.35f, 110, 320));
         recipes.add(recipe("ash_stone", 3, "coal_dust", 2, "ash", 1, 0.35f, 100, 240));
         recipes.add(recipe("deep_ash", 2, "sand", 2, "coal_dust", 1, 0.25f, 90, 220));
-        recipes.add(recipe("toxic_slagstone", 2, "coal_dust", 2, "contaminated_redstone", 1, 0.25f, 120, 350));
+        recipes.add(recipe("toxic_slagstone", 2, "coal_dust", 2, "charged_ash_circuit", 1, 0.25f, 120, 350));
         recipes.add(recipe("irradiated_crust", 3, "uranium_shard", 1, "fallout_dust", 1, 0.35f, 120, 360));
         recipes.add(recipe("irradiated_shale", 2, "uranium_shard", 1, "crystal_dust", 1, 0.30f, 140, 420));
         recipes.add(recipe("cryogenic_fractured_stone", 2, "crystal_dust", 1, "scrap_circuit", 1, 0.25f, 140, 400));
         recipes.add(recipe("nexus_cracked_soil", 3, "crystal_dust", 2, "gem_fragment", 1, 0.15f, 160, 500));
-        recipes.add(recipe("riftstone", 2, "gem_fragment", 1, "crystal_dust", 1, 0.35f, 180, 650));
+        recipes.add(recipe("nexus_scar_stone", 2, "gem_fragment", 1, "crystal_dust", 1, 0.35f, 180, 650));
         return List.copyOf(recipes);
     }
 

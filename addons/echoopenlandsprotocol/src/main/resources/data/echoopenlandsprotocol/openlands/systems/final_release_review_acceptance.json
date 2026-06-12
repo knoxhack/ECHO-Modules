@@ -1,0 +1,267 @@
+{
+  "schema": "echo.openlands.systems.final_release_review_acceptance.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the final human review evidence required before Openlands can ship public assets, audio, branding, and generated runtime outputs. Legal/content preflight reports are required but do not approve public release.",
+  "sourceContracts": {
+    "legalContentAudit": "systems/legal_content_audit.json",
+    "contentPolicy": "config/content_policy.json",
+    "assetManifest": "assets/echoopenlandsprotocol/asset_manifest.json",
+    "soundContract": "sounds/mvp_sound_contract.json",
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json"
+  },
+  "reportContract": {
+    "schema": "echo.openlands.edition.final_release_review_report.v1",
+    "allowedReportStatus": [
+      "passed",
+      "failed",
+      "blocked"
+    ],
+    "requiredReportFields": [
+      "schema",
+      "status",
+      "generatedAt",
+      "edition",
+      "runtimeTarget",
+      "moduleId",
+      "moduleVersion",
+      "moduleArtifact",
+      "moduleArtifactSha256",
+      "assetManifestHash",
+      "legalAuditHash",
+      "reviewer",
+      "reviewDate",
+      "reviewResults",
+      "clearedFinalReviewGates",
+      "remainingFinalReviewGates",
+      "publicReleaseReady"
+    ],
+    "requiredReviewFields": [
+      "id",
+      "gateIds",
+      "status",
+      "checklist",
+      "findings",
+      "savedArtifacts"
+    ],
+    "allowedReviewStatus": [
+      "passed",
+      "failed",
+      "blocked",
+      "skipped"
+    ],
+    "requiredChecklistFields": [
+      "id",
+      "status"
+    ],
+    "allowedChecklistStatus": [
+      "passed",
+      "failed",
+      "blocked",
+      "skipped"
+    ],
+    "passRules": [
+      "Every review area must be status passed for its edition.",
+      "Every checklist item in every passed review area must be status passed.",
+      "clearedFinalReviewGates must include only gates backed by passing review areas.",
+      "publicReleaseReady may be true only when final asset/legal review and final art/audio gates are cleared, reviewer is named, reviewDate is recorded, and placeholder assets are replaced or explicitly approved for non-public-only contexts."
+    ]
+  },
+  "editionReports": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "requiredReport": "evidence/native-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "requiredReport": "evidence/neoforge-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "requiredReport": "evidence/standalone-final-release-review-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar"
+    }
+  ],
+  "finalReviewGates": [
+    {
+      "id": "final_asset_legal_review",
+      "clearsRuntimeGate": "final_asset_legal_review",
+      "clearsEvidence": [
+        "legal_content_audit_pass",
+        "missing_asset_policy_applied"
+      ],
+      "mustCapture": [
+        "reviewer",
+        "reviewDate",
+        "assetManifestHash",
+        "legalAuditHash",
+        "forbiddenTermScanResult",
+        "borrowedAssetScanResult",
+        "approvedExceptions",
+        "remainingPlaceholderCount"
+      ]
+    },
+    {
+      "id": "final_art_audio_pass",
+      "clearsRuntimeGate": "final_art_audio_pass",
+      "clearsEvidence": [
+        "legal_content_audit_pass",
+        "sound_events_bound",
+        "missing_asset_policy_applied"
+      ],
+      "mustCapture": [
+        "textureReview",
+        "modelReview",
+        "blockstateReview",
+        "itemIconReview",
+        "soundReview",
+        "brandingReview",
+        "generatedOutputReview",
+        "remainingPlaceholderCount"
+      ]
+    }
+  ],
+  "reviewAreas": [
+    {
+      "id": "public_identity_and_branding",
+      "displayName": "Public Identity And Branding",
+      "gateIds": [
+        "final_asset_legal_review"
+      ],
+      "inputFixtureRefs": [
+        "config/content_policy.json",
+        "systems/legal_content_audit.json",
+        "assets/echoopenlandsprotocol/lang/en_us.json"
+      ],
+      "checklist": [
+        "public_pack_name_is_openlands",
+        "public_text_contains_no_forbidden_terms",
+        "ids_keep_echoopenlandsprotocol_namespace",
+        "launcher_copy_uses_openlands_identity_only",
+        "compatibility_target_names_appear_only_in_internal_docs"
+      ],
+      "requiredSavedArtifacts": [
+        "public-identity-review.md",
+        "forbidden-term-scan.json",
+        "branding-exceptions.json"
+      ]
+    },
+    {
+      "id": "block_textures_models_and_blockstates",
+      "displayName": "Block Textures Models And Blockstates",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "inputFixtureRefs": [
+        "assets/echoopenlandsprotocol/asset_manifest.json",
+        "blocks/mvp_blocks.json"
+      ],
+      "checklist": [
+        "all_mvp_block_textures_are_original_or_licensed",
+        "all_mvp_block_models_are_original_or_licensed",
+        "all_mvp_blockstates_render_expected_models",
+        "no_copied_texture_or_silhouette_is_present",
+        "remaining_placeholder_blocks_are_zero_for_public_release"
+      ],
+      "requiredSavedArtifacts": [
+        "block-asset-review.md",
+        "block-placeholder-count.json",
+        "block-render-sample-index.json"
+      ]
+    },
+    {
+      "id": "item_icons_models_and_tools",
+      "displayName": "Item Icons Models And Tools",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "inputFixtureRefs": [
+        "assets/echoopenlandsprotocol/asset_manifest.json",
+        "items/mvp_items.json"
+      ],
+      "checklist": [
+        "all_mvp_item_icons_are_original_or_licensed",
+        "all_mvp_item_models_are_original_or_licensed",
+        "tool_silhouettes_are_openlands_specific",
+        "food_material_and_waystone_icons_are_distinct",
+        "remaining_placeholder_items_are_zero_for_public_release"
+      ],
+      "requiredSavedArtifacts": [
+        "item-asset-review.md",
+        "item-placeholder-count.json",
+        "item-render-sample-index.json"
+      ]
+    },
+    {
+      "id": "audio_sources_and_sound_events",
+      "displayName": "Audio Sources And Sound Events",
+      "gateIds": [
+        "final_art_audio_pass"
+      ],
+      "inputFixtureRefs": [
+        "sounds/mvp_sound_contract.json",
+        "assets/echoopenlandsprotocol/sounds.json"
+      ],
+      "checklist": [
+        "all_public_audio_is_original_or_licensed",
+        "sound_event_keys_match_openlands_contract",
+        "creature_sound_templates_have_public_sources",
+        "biome_ambience_has_public_sources",
+        "no_borrowed_vanilla_audio_is_present"
+      ],
+      "requiredSavedArtifacts": [
+        "audio-source-review.md",
+        "sound-event-source-manifest.json",
+        "audio-license-bundle.json"
+      ]
+    },
+    {
+      "id": "generated_runtime_outputs",
+      "displayName": "Generated Runtime Outputs",
+      "gateIds": [
+        "final_asset_legal_review",
+        "final_art_audio_pass"
+      ],
+      "inputFixtureRefs": [
+        "systems/runtime_adapter_load_plan.json",
+        "systems/cross_platform_parity.json",
+        "systems/legal_content_audit.json"
+      ],
+      "checklist": [
+        "native_generated_output_uses_echo_ids",
+        "standalone_generated_output_uses_echo_ids",
+        "neoforge_generated_output_keeps_echo_data_as_source_of_truth",
+        "runtime_descriptors_contain_only_allowed_adapter_metadata",
+        "compiled_artifacts_contain_final_reviewed_assets"
+      ],
+      "requiredSavedArtifacts": [
+        "generated-output-review.md",
+        "artifact-entry-scan.json",
+        "adapter-metadata-exceptions.json"
+      ]
+    }
+  ],
+  "publicReleaseClearance": {
+    "requiresEveryEditionReport": true,
+    "requiresEveryFinalReviewGateCleared": true,
+    "requiresLegalPreflightReport": true,
+    "requiresNoPlaceholdersForPublicRelease": true,
+    "requiresReviewerAndReviewDate": true,
+    "preflightReportsDoNotClearFinalReviewGates": true
+  }
+}

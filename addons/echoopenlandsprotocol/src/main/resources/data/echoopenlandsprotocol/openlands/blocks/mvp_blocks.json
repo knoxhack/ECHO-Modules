@@ -1,0 +1,645 @@
+{
+  "schema": "echo.openlands.blocks.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "blocks": [
+    {
+      "id": "echoopenlandsprotocol:meadow_grass_block",
+      "displayName": "Meadow Grass Block",
+      "category": "terrain",
+      "hardness": 0.55,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:soil_clump",
+          "count": 1,
+          "fallback": "echoopenlandsprotocol:meadow_grass_block"
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:farmable",
+        "openlands:starter_surface"
+      ],
+      "model": "cube_grass",
+      "texture": "block/meadow_grass_block",
+      "biomePlacement": [
+        "echoopenlandsprotocol:meadows"
+      ],
+      "notes": "Safe starter surface. Supports grass regrowth and beginner crop placement."
+    },
+    {
+      "id": "echoopenlandsprotocol:forest_soil",
+      "displayName": "Forest Soil",
+      "category": "terrain",
+      "hardness": 0.6,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:forest_soil",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:farmable",
+        "openlands:tree_growth_bonus"
+      ],
+      "model": "cube_all",
+      "texture": "block/forest_soil",
+      "biomePlacement": [
+        "echoopenlandsprotocol:woodlands"
+      ],
+      "notes": "Darker soil with tree growth bonus and mushroom placement support."
+    },
+    {
+      "id": "echoopenlandsprotocol:dry_soil",
+      "displayName": "Dry Soil",
+      "category": "terrain",
+      "hardness": 0.65,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:dry_soil",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:dry"
+      ],
+      "model": "cube_all",
+      "texture": "block/dry_soil",
+      "biomePlacement": [
+        "echoopenlandsprotocol:stonehills"
+      ],
+      "notes": "Low-yield soil for early dry slopes. Compost and watering improve it later."
+    },
+    {
+      "id": "echoopenlandsprotocol:mud",
+      "displayName": "Mud",
+      "category": "terrain",
+      "hardness": 0.45,
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:mud",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:terrain",
+        "openlands:wet",
+        "openlands:movement_slow"
+      ],
+      "model": "cube_all",
+      "texture": "block/mud",
+      "biomePlacement": [
+        "echoopenlandsprotocol:marshlands"
+      ],
+      "movementModifier": 0.88,
+      "notes": "Marsh terrain that gently slows movement without becoming a harsh penalty."
+    },
+    {
+      "id": "echoopenlandsprotocol:limestone",
+      "displayName": "Limestone",
+      "category": "stone",
+      "hardness": 1.1,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:limestone",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "openlands:waystone_repair_material"
+      ],
+      "model": "cube_all",
+      "texture": "block/limestone",
+      "biomePlacement": [
+        "echoopenlandsprotocol:stonehills"
+      ],
+      "plannedVariants": [
+        "slab",
+        "stairs",
+        "wall",
+        "bricks"
+      ],
+      "notes": "Pale building stone and valid waystone repair material."
+    },
+    {
+      "id": "echoopenlandsprotocol:granite",
+      "displayName": "Granite",
+      "category": "stone",
+      "hardness": 1.7,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:granite",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "openlands:durable"
+      ],
+      "model": "cube_all",
+      "texture": "block/granite",
+      "biomePlacement": [
+        "echoopenlandsprotocol:stonehills"
+      ],
+      "plannedVariants": [
+        "slab",
+        "stairs",
+        "wall",
+        "polished"
+      ],
+      "notes": "Durable decorative stone for midgame building."
+    },
+    {
+      "id": "echoopenlandsprotocol:shale",
+      "displayName": "Shale",
+      "category": "stone",
+      "hardness": 1,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:shale",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:roof_style"
+      ],
+      "model": "cube_all",
+      "texture": "block/shale",
+      "biomePlacement": [
+        "echoopenlandsprotocol:stonehills"
+      ],
+      "plannedVariants": [
+        "slab",
+        "roof",
+        "thin_tile"
+      ],
+      "notes": "Layered stone family intended for roofs and compact masonry."
+    },
+    {
+      "id": "echoopenlandsprotocol:deepstone",
+      "displayName": "Deepstone",
+      "category": "stone",
+      "hardness": 2.4,
+      "tool": "echotoolcore:ferrite_breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:deepstone",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:deep_cave",
+        "openlands:late_building"
+      ],
+      "model": "cube_all",
+      "texture": "block/deepstone",
+      "biomePlacement": [
+        "echoopenlandsprotocol:deep_caves"
+      ],
+      "plannedVariants": [
+        "bricks",
+        "slab",
+        "stairs",
+        "polished"
+      ],
+      "notes": "Late durable cave stone. Not required for the first-hour loop."
+    },
+    {
+      "id": "echoopenlandsprotocol:glow_crystal_cluster",
+      "displayName": "Glow Crystal Cluster",
+      "category": "ore",
+      "hardness": 1.85,
+      "tool": "echotoolcore:ferrite_breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:glow_crystal",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:crystal",
+        "openlands:waystone_charge",
+        "openlands:light_source"
+      ],
+      "model": "cross_or_cluster",
+      "texture": "block/glow_crystal_cluster",
+      "spawnLayer": "deep_cave",
+      "reward": "waystone_charge",
+      "notes": "Needed for the charged stage of restored waystones."
+    },
+    {
+      "id": "echoopenlandsprotocol:pine_log",
+      "displayName": "Pine Log",
+      "category": "wood",
+      "hardness": 1.9,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_log",
+          "count": 1
+        }
+      ],
+      "bonusDrops": [
+        {
+          "item": "echomaterialcore:resin",
+          "chance": 0.16,
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:fuel",
+        "echomaterialcore:resin_source"
+      ],
+      "model": "log_axis",
+      "texture": "block/pine_log",
+      "biomePlacement": [
+        "echoopenlandsprotocol:woodlands"
+      ],
+      "notes": "Darker wood with echomaterialcore:resin chance."
+    },
+    {
+      "id": "echoopenlandsprotocol:pine_planks",
+      "displayName": "Pine Planks",
+      "category": "wood",
+      "hardness": 1.45,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_planks",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:building"
+      ],
+      "model": "cube_all",
+      "texture": "block/pine_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/pine_planks",
+      "notes": "Darker alternate building wood."
+    },
+    {
+      "id": "echoopenlandsprotocol:pine_beam",
+      "displayName": "Pine Beam",
+      "category": "wood_shape",
+      "hardness": 1.5,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_beam",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:shape_beam"
+      ],
+      "model": "beam_axis",
+      "texture": "block/pine_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/pine_beam",
+      "notes": "Pine structural beam."
+    },
+    {
+      "id": "echoopenlandsprotocol:pine_post",
+      "displayName": "Pine Post",
+      "category": "wood_shape",
+      "hardness": 1.5,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:pine_post",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:wood_family",
+        "openlands:pine",
+        "openlands:shape_post"
+      ],
+      "model": "post",
+      "texture": "block/pine_planks",
+      "recipeSource": "echoopenlandsprotocol:recipe/pine_post",
+      "notes": "Pine vertical post."
+    },
+    {
+      "id": "echoopenlandsprotocol:thatch_roof",
+      "displayName": "Thatch Roof",
+      "category": "roof",
+      "hardness": 0.8,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:thatch_roof",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:roof",
+        "openlands:shelter_roof",
+        "openlands:reed_family"
+      ],
+      "model": "roof_slope",
+      "texture": "block/thatch_roof",
+      "recipeSource": "echoopenlandsprotocol:recipe/thatch_roof",
+      "shelterScore": 2,
+      "notes": "Cheap starter roof piece with strong shelter contribution."
+    },
+    {
+      "id": "fieldstone_bricks",
+      "displayName": "Fieldstone Bricks",
+      "category": "building",
+      "hardness": 1.45,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:fieldstone_bricks",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:stone",
+        "openlands:building",
+        "echostationcore:mason_table_output"
+      ],
+      "model": "cube_all",
+      "texture": "block/fieldstone_bricks",
+      "recipeSource": "echoopenlandsprotocol:recipe/fieldstone_bricks",
+      "notes": "First polished masonry block."
+    },
+    {
+      "id": "brick_block",
+      "displayName": "Brick Block",
+      "category": "building",
+      "hardness": 1.35,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echomaterialcore:brick_block",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "echomaterialcore:brick",
+        "openlands:building",
+        "echostationcore:kiln_output"
+      ],
+      "model": "cube_all",
+      "texture": "block/brick_block",
+      "recipeSource": "echoopenlandsprotocol:recipe/brick_block",
+      "notes": "Clay-age building material."
+    },
+    {
+      "id": "echoopenlandsprotocol:glass_block",
+      "displayName": "Glass Block",
+      "category": "building",
+      "hardness": 0.3,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:glass_block",
+          "count": 1,
+          "requiresGentleTool": true
+        }
+      ],
+      "tags": [
+        "openlands:glass",
+        "openlands:transparent",
+        "echostationcore:kiln_output"
+      ],
+      "model": "cube_all_transparent",
+      "texture": "block/glass_block",
+      "recipeSource": "echoopenlandsprotocol:recipe/glass_block",
+      "notes": "Window and lantern crafting material."
+    },
+    {
+      "id": "echoopenlandsprotocol:shelf",
+      "displayName": "Shelf",
+      "category": "storage",
+      "hardness": 0.9,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:shelf",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:storage",
+        "openlands:decor"
+      ],
+      "model": "shelf",
+      "texture": "block/shelf",
+      "recipeSource": "echoopenlandsprotocol:recipe/shelf",
+      "notes": "Light storage/decor target for starter homes."
+    },
+    {
+      "id": "echoopenlandsprotocol:sign",
+      "displayName": "Sign",
+      "category": "utility",
+      "hardness": 0.65,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:sign",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:sign",
+        "openlands:label"
+      ],
+      "model": "sign",
+      "texture": "block/sign",
+      "recipeSource": "echoopenlandsprotocol:recipe/sign",
+      "notes": "Named echostationcore:field_crate labels, road markers, and server town signage."
+    },
+    {
+      "id": "echoopenlandsprotocol:lantern",
+      "displayName": "Lantern",
+      "category": "light",
+      "hardness": 0.55,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:lantern",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:light",
+        "openlands:copper_age"
+      ],
+      "model": "lantern",
+      "texture": "block/lantern",
+      "recipeSource": "echoopenlandsprotocol:recipe/lantern",
+      "light": 14,
+      "notes": "Brighter copper-age lighting."
+    },
+    {
+      "id": "echoopenlandsprotocol:map_table",
+      "displayName": "Map Table",
+      "category": "station",
+      "hardness": 1.2,
+      "tool": "axe",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:map_table",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:station",
+        "openlands:map",
+        "openlands:waystone_binding"
+      ],
+      "model": "cube_orientable",
+      "texture": "block/map_table",
+      "recipeSource": "echoopenlandsprotocol:recipe/map_table",
+      "processes": [
+        "region_rubbing",
+        "waystone_core",
+        "route_binding"
+      ],
+      "notes": "Map reveal, route binding, and waystone activation station."
+    },
+    {
+      "id": "echoopenlandsprotocol:old_road_block",
+      "displayName": "Old Road Block",
+      "category": "road",
+      "hardness": 1,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:old_road_block",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:road",
+        "openlands:old_roads",
+        "openlands:movement_path"
+      ],
+      "model": "cube_all",
+      "texture": "block/old_road_block",
+      "structurePlacement": [
+        "old_road_segments"
+      ],
+      "notes": "Generated road segment and player-restoration material."
+    },
+    {
+      "id": "echoopenlandsprotocol:old_road_marker",
+      "displayName": "Old Road Marker",
+      "category": "road",
+      "hardness": 1.15,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:old_road_marker",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:road",
+        "openlands:landmark",
+        "openlands:map_hint"
+      ],
+      "model": "marker",
+      "texture": "block/old_road_marker",
+      "structurePlacement": [
+        "roadside_markers",
+        "ruin_edges"
+      ],
+      "notes": "Points toward roads, ruins, bridges, or waystones."
+    },
+    {
+      "id": "echoopenlandsprotocol:broken_waystone",
+      "displayName": "Broken Waystone",
+      "category": "waystone",
+      "hardness": 1.8,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [],
+      "tags": [
+        "openlands:waystone",
+        "openlands:generated_landmark",
+        "openlands:repairable"
+      ],
+      "model": "waystone_broken",
+      "texture": "block/broken_waystone",
+      "structurePlacement": [
+        "roadside_waystones",
+        "region_borders",
+        "small_ruins"
+      ],
+      "stateMachine": "echoopenlandsprotocol:waystones/waystone_contract",
+      "notes": "Generated repair target. Should not be freely crafted in MVP."
+    },
+    {
+      "id": "echoopenlandsprotocol:restored_waystone",
+      "displayName": "Restored Waystone",
+      "category": "waystone",
+      "hardness": 2,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [],
+      "tags": [
+        "openlands:waystone",
+        "openlands:map_reveal",
+        "openlands:travel_node"
+      ],
+      "model": "waystone_restored",
+      "texture": "block/restored_waystone",
+      "stateMachine": "echoopenlandsprotocol:waystones/waystone_contract",
+      "effects": [
+        "map_reveal",
+        "region_name",
+        "nearby_hints",
+        "trader_attraction",
+        "route_link"
+      ],
+      "notes": "Active waystone state after repair. Shared in multiplayer."
+    },
+    {
+      "id": "echoopenlandsprotocol:waystone_plinth",
+      "displayName": "Waystone Plinth",
+      "category": "waystone",
+      "hardness": 1.6,
+      "tool": "foundation:tool_role/breaker",
+      "drops": [
+        {
+          "item": "echoopenlandsprotocol:waystone_plinth",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "openlands:waystone",
+        "openlands:decor",
+        "openlands:route_building"
+      ],
+      "model": "plinth",
+      "texture": "block/waystone_plinth",
+      "recipeSource": "echoopenlandsprotocol:recipe/waystone_plinth",
+      "notes": "Player-built plaza and route decoration block; not a travel node by itself."
+    }
+  ]
+}

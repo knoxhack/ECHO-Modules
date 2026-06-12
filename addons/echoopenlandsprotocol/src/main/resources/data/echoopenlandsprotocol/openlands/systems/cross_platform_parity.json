@@ -1,0 +1,199 @@
+{
+  "schema": "echo.openlands.systems.cross_platform_parity.v1",
+  "namespace": "echoopenlandsprotocol",
+  "sourceOfTruth": "data/echoopenlandsprotocol/openlands",
+  "runtimeTargets": [
+    {
+      "id": "echo_native",
+      "editionRepo": "ECHO-Openlands-Native-Edition",
+      "artifactFamily": "echo-addon",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "requiredDescriptor": "META-INF/echo.mod.json",
+      "adapterResponsibilities": [
+        "load_common_json_registries",
+        "register_blocks_items_recipes",
+        "bind_worldgen_and_biomes",
+        "persist_waystone_and_holomap_state",
+        "honor_openlands_standard_config"
+      ]
+    },
+    {
+      "id": "echo_runtime_standalone",
+      "editionRepo": "ECHO-Openlands-Standalone-Edition",
+      "artifactFamily": "standalone",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "requiredDescriptor": "META-INF/echo.mod.json",
+      "adapterResponsibilities": [
+        "load_common_json_registries_without_minecraft_classes",
+        "provide_standalone_block_and_item_runtime",
+        "provide_standalone_worldgen",
+        "persist_inventory_shelter_waystone_holomap_state",
+        "honor_openlands_standard_config"
+      ]
+    },
+    {
+      "id": "neoforge",
+      "editionRepo": "ECHO-Openlands-NeoForge-Edition",
+      "artifactFamily": "neoforge",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "requiredDescriptor": "META-INF/echo.mod.json",
+      "additionalDescriptor": "META-INF/neoforge.mods.toml",
+      "adapterResponsibilities": [
+        "convert_echo_ids_to_neoforge_resource_locations",
+        "generate_neoforge_data_from_common_registries",
+        "avoid_minecraft_asset_or_name_source_of_truth",
+        "persist_waystone_and_holomap_state",
+        "honor_openlands_standard_config"
+      ]
+    }
+  ],
+  "paritySurfaces": [
+    {
+      "id": "registry_ids",
+      "mustMatch": [
+        "blocks",
+        "items",
+        "recipes",
+        "biomes",
+        "structures",
+        "creatures",
+        "waystones"
+      ],
+      "allowedRuntimeDifference": "resource_location_format_only"
+    },
+    {
+      "id": "first_hour_save_load",
+      "mustMatch": [
+        "inventory",
+        "hotbar",
+        "placed_blocks",
+        "chest_contents",
+        "bedroll_spawn",
+        "campfire_lit_state",
+        "shelter_score",
+        "waystone_state",
+        "holomap_region_discovery"
+      ],
+      "allowedRuntimeDifference": "ui_layout"
+    },
+    {
+      "id": "standard_mode_rules",
+      "mustMatch": [
+        "gentle_hunger",
+        "no_stamina",
+        "no_hydration",
+        "no_food_spoilage",
+        "no_temperature_damage",
+        "recoverable_death_pack",
+        "moderate_hostiles"
+      ],
+      "allowedRuntimeDifference": "difficulty_label_copy"
+    },
+    {
+      "id": "waystone_state_machine",
+      "mustMatch": [
+        "undiscovered",
+        "discovered",
+        "debris_cleared",
+        "stone_repaired",
+        "fitted",
+        "charged",
+        "bound",
+        "active"
+      ],
+      "allowedRuntimeDifference": "animation_and_audio_timing"
+    }
+  ],
+  "testFixtures": [
+    {
+      "id": "openlands_mvp_registry",
+      "path": "conformance/openlands_mvp_registry.json",
+      "purpose": "Defines exact MVP block, item, recipe, biome, and creature IDs."
+    },
+    {
+      "id": "first_hour_route",
+      "path": "progression/first_hour_route.json",
+      "purpose": "Defines spawn, shelter, save/load, exploration, and first waystone acceptance."
+    },
+    {
+      "id": "mvp_first_hour_acceptance",
+      "path": "playtests/mvp_first_hour_acceptance.json",
+      "purpose": "Defines exact first-hour, save/load, HoloMap, and waystone playtest assertions for Native, Standalone, and NeoForge."
+    },
+    {
+      "id": "playable_runtime_contract",
+      "path": "systems/playable_runtime_contract.json",
+      "purpose": "Defines the shared Java first-hour hooks that all adapters must call for Standard rules, starter spawn guarantees, shelter scoring, and waystone transitions."
+    },
+    {
+      "id": "runtime_execution_acceptance",
+      "path": "systems/runtime_execution_acceptance.json",
+      "purpose": "Defines the real Native, Standalone, and NeoForge runtime execution report schema and scenarios required to clear Public Alpha runtime gates."
+    },
+    {
+      "id": "runtime_execution_harness_plan",
+      "path": "systems/runtime_execution_harness_plan.json",
+      "purpose": "Defines exact runtime harness driver surfaces, scenario bindings, actions, assertions, captures, and saved artifacts for replacing blocked runtime reports with real execution evidence."
+    },
+    {
+      "id": "harness_driver_manifest_contract",
+      "path": "systems/harness_driver_manifest_contract.json",
+      "purpose": "Defines the edition-owned driver manifest template, required driver surface ids, missing-driver blocker rules, and real-execution promotion rules for Native, Standalone, and NeoForge harnesses."
+    },
+    {
+      "id": "launcher_execution_acceptance",
+      "path": "systems/launcher_execution_acceptance.json",
+      "purpose": "Defines the real Native, Standalone, and NeoForge launcher execution report schema and flows required to clear install, update, repair, rollback, and world/config preservation gates."
+    },
+    {
+      "id": "launcher_execution_harness_plan",
+      "path": "systems/launcher_execution_harness_plan.json",
+      "purpose": "Defines exact launcher harness driver surfaces, flow bindings, preconditions, actions, assertions, world-state policies, captures, and saved artifacts for replacing blocked launcher reports with real execution evidence."
+    },
+    {
+      "id": "final_release_review_acceptance",
+      "path": "systems/final_release_review_acceptance.json",
+      "purpose": "Defines the final human art, audio, branding, generated-output, and legal signoff report schema required before public release."
+    },
+    {
+      "id": "final_release_review_harness_plan",
+      "path": "systems/final_release_review_harness_plan.json",
+      "purpose": "Defines exact final-review harness driver surfaces, review-area bindings, checklist inputs, captures, and saved artifacts for turning blocked final review reports into real release evidence."
+    },
+    {
+      "id": "distribution_approval_acceptance",
+      "path": "systems/distribution_approval_acceptance.json",
+      "purpose": "Defines the real Release Index publication, artifact download verification, co-op session, and Public Alpha approval report schema required before distribution approval."
+    },
+    {
+      "id": "distribution_approval_harness_plan",
+      "path": "systems/distribution_approval_harness_plan.json",
+      "purpose": "Defines exact distribution approval harness driver surfaces, approval-area bindings, dependency checks, co-op captures, approval signatures, and saved artifacts for turning blocked approval reports into real release evidence."
+    },
+    {
+      "id": "release_publication_manifest_contract",
+      "path": "systems/release_publication_manifest_contract.json",
+      "purpose": "Defines exact public artifact URL, download verification, Release Index patch, and approval handoff requirements before artifact URL blockers can clear."
+    },
+    {
+      "id": "waystone_contract",
+      "path": "waystones/waystone_contract.json",
+      "purpose": "Defines waystone repair, reveal, fast-travel, and multiplayer state."
+    },
+    {
+      "id": "openlands_standard",
+      "path": "config/game_modes.json",
+      "purpose": "Locks relaxed default mode and keeps Hardlands optional."
+    },
+    {
+      "id": "legal_content_audit",
+      "path": "systems/legal_content_audit.json",
+      "purpose": "Defines public naming, asset, recipe identity, and generated-output audit rules for all runtime targets."
+    },
+    {
+      "id": "launcher_flow_acceptance",
+      "path": "systems/launcher_flow_acceptance.json",
+      "purpose": "Defines launcher install, update, repair, rollback, artifact hash, and state preservation evidence for all runtime targets."
+    }
+  ]
+}

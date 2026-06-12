@@ -1,8 +1,8 @@
 package com.knoxhack.echoorbitalremnants.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoorbitalremnants.EchoOrbitalRemnants;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;

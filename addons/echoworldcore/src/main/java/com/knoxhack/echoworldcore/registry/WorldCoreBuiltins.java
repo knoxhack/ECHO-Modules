@@ -1,6 +1,6 @@
 package com.knoxhack.echoworldcore.registry;
 
-import com.knoxhack.echocore.api.WorldHazardDefinition;
+import com.echoplatform.echocore.api.WorldHazardDefinition;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.service.WorldRegionService;
 import net.minecraft.resources.Identifier;

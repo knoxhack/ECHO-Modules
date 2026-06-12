@@ -7,11 +7,18 @@ plugins {
 
 version = mod_version
 group = mod_group_id
+def echoEnableJeiCompat = providers.gradleProperty('echoEnableJeiCompat')
+        .map { it.toBoolean() }
+        .orElse(false)
+        .get()
 
 sourceSets.main.resources {
     srcDir('src/generated/resources')
     exclude("**/*.bbmodel")
     exclude("src/generated/**/.cache")
+}
+if (!echoEnableJeiCompat) {
+    sourceSets.main.java.exclude 'com/knoxhack/echoashfallprotocol/compat/jei/**'
 }
 if (rootProject.findProject(':echomachinecore') == null) {
     sourceSets.main.java.exclude 'com/knoxhack/echoashfallprotocol/integration/AshfallMachineCoreAdapter.java'
@@ -109,12 +116,23 @@ dependencies {
         }
     }
 
+    [
+            ':echofoundationcore',
+            ':echomaterialcore',
+            ':echotoolcore',
+            ':echostationcore',
+            ':echoworldstarter',
+            ':echocommonloot',
+            ':echocreatureroles',
+    ].each { compileOnlyIfIncluded(it); localRuntimeIfIncluded(it) }
+
     compileOnlyIfIncluded(':echoadaptercore')
     compileOnlyIfIncluded(':echoterminal')
     compileOnlyIfIncluded(':echolens')
     compileOnlyIfIncluded(':echorendercore')
     compileOnlyIfIncluded(':echopresencelink')
     compileOnlyIfIncluded(':echomachinecore')
+    compileOnlyIfIncluded(':echoassetcore')
 
     [
             ':echoadaptercore',
@@ -135,10 +153,16 @@ dependencies {
             ':echoindex',
             ':echowiki',
             ':echomachinecore',
+            ':echoassetcore',
     ].each { localRuntimeIfIncluded(it) }
 
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    if (echoEnableJeiCompat) {
+        if (!project.hasProperty('jei_version')) {
+            throw new GradleException('Set jei_version when enabling Ashfall JEI compat with -PechoEnableJeiCompat=true.')
+        }
+        compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+        localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    }
     localRuntime "org.jline:jline-reader:3.20.0"
     localRuntime "org.jline:jline-terminal:3.20.0"
 }

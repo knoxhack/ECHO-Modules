@@ -1,0 +1,281 @@
+{
+  "schema": "echo.openlands.biomes.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "spawnSafetyContract": {
+    "maximumUnsafeSpawnAttempts": 64,
+    "starterRadiusBlocks": 96,
+    "guarantees": [
+      "at least one wood source within 32 blocks",
+      "at least two loose stone nodes within 32 blocks",
+      "at least one fiber or reed patch within 48 blocks",
+      "at least one berries or mushroom source within 48 blocks",
+      "water within 96 blocks",
+      "one cave mouth, road fragment, or ruin silhouette within 128 blocks"
+    ]
+  },
+  "biomes": [
+    {
+      "id": "meadows",
+      "displayName": "Meadows",
+      "temperature": "mild",
+      "humidity": "normal",
+      "terrainProfile": "rolling_lowland",
+      "blockPalette": {
+        "surface": "meadow_grass_block",
+        "subsurface": "dry_soil",
+        "stone": "echomaterialcore:fieldstone",
+        "waterEdge": [
+          "echomaterialcore:sand",
+          "echomaterialcore:gravel",
+          "echomaterialcore:clay"
+        ]
+      },
+      "resourceSet": [
+        "berries",
+        "echomaterialcore:branchwood_log",
+        "echomaterialcore:reed_fiber",
+        "echomaterialcore:fieldstone_piece",
+        "echomaterialcore:sand",
+        "echomaterialcore:gravel"
+      ],
+      "spawnTable": [
+        {
+          "creature": "hare",
+          "weight": 12,
+          "group": "2-4"
+        },
+        {
+          "creature": "deer",
+          "weight": 5,
+          "group": "1-3"
+        },
+        {
+          "creature": "boar",
+          "weight": 2,
+          "group": "1-2"
+        },
+        {
+          "creature": "greyling",
+          "weight": 1,
+          "conditions": [
+            "night",
+            "distance_from_spawn>96"
+          ]
+        }
+      ],
+      "ambience": {
+        "day": "openlands:ambience.meadows.day",
+        "night": "openlands:ambience.meadows.night",
+        "musicHint": "soft_open_field"
+      },
+      "landmarkFrequency": {
+        "ruined_well": "common",
+        "road_marker": "common",
+        "tiny_camp": "uncommon",
+        "broken_waystone": "rare"
+      },
+      "firstHourRole": "Most forgiving starter biome with food, wood, and readable shelter locations."
+    },
+    {
+      "id": "woodlands",
+      "displayName": "Woodlands",
+      "temperature": "mild",
+      "humidity": "damp",
+      "terrainProfile": "dense_low_hills",
+      "blockPalette": {
+        "surface": "forest_soil",
+        "subsurface": "dry_soil",
+        "stone": [
+          "echomaterialcore:fieldstone",
+          "shale"
+        ],
+        "treeFamilies": [
+          "branchwood",
+          "pine"
+        ]
+      },
+      "resourceSet": [
+        "echomaterialcore:branchwood_log",
+        "pine_log",
+        "echomaterialcore:resin",
+        "mushroom",
+        "berries",
+        "echomaterialcore:fieldstone_piece"
+      ],
+      "spawnTable": [
+        {
+          "creature": "deer",
+          "weight": 8,
+          "group": "1-3"
+        },
+        {
+          "creature": "boar",
+          "weight": 4,
+          "group": "1-2"
+        },
+        {
+          "creature": "hare",
+          "weight": 5,
+          "group": "1-3"
+        },
+        {
+          "creature": "hollow_stalker",
+          "weight": 1,
+          "conditions": [
+            "night",
+            "near_ruin"
+          ]
+        }
+      ],
+      "ambience": {
+        "day": "openlands:ambience.woodlands.day",
+        "night": "openlands:ambience.woodlands.night",
+        "musicHint": "warm_canopy"
+      },
+      "landmarkFrequency": {
+        "tiny_camp": "common",
+        "watchtower": "uncommon",
+        "cellar_entrance": "uncommon",
+        "broken_waystone": "rare"
+      },
+      "firstHourRole": "Slightly denser start with excellent wood and echomaterialcore:resin access."
+    },
+    {
+      "id": "stonehills",
+      "displayName": "Stonehills",
+      "temperature": "cool",
+      "humidity": "dry",
+      "terrainProfile": "broken_hills",
+      "blockPalette": {
+        "surface": [
+          "dry_soil",
+          "echomaterialcore:fieldstone"
+        ],
+        "subsurface": [
+          "echomaterialcore:fieldstone",
+          "limestone",
+          "granite"
+        ],
+        "deep": [
+          "shale",
+          "deepstone"
+        ]
+      },
+      "resourceSet": [
+        "echomaterialcore:fieldstone_piece",
+        "echomaterialcore:cupral_vein",
+        "echomaterialcore:tinveil_vein",
+        "limestone",
+        "cave_mouth",
+        "old_mine"
+      ],
+      "spawnTable": [
+        {
+          "creature": "goat",
+          "weight": 8,
+          "group": "2-4"
+        },
+        {
+          "creature": "bristleback",
+          "weight": 2,
+          "group": "1"
+        },
+        {
+          "creature": "greyling",
+          "weight": 2,
+          "conditions": [
+            "cave_mouth",
+            "night"
+          ]
+        }
+      ],
+      "ambience": {
+        "day": "openlands:ambience.stonehills.day",
+        "night": "openlands:ambience.stonehills.night",
+        "musicHint": "wind_and_stone"
+      },
+      "landmarkFrequency": {
+        "old_mine": "common",
+        "road_marker": "uncommon",
+        "broken_bridge": "uncommon",
+        "broken_waystone": "rare"
+      },
+      "firstHourRole": "Best early mining biome; not the safest spawn, but always paired with reachable food/water by spawn safety."
+    },
+    {
+      "id": "marshlands",
+      "displayName": "Marshlands",
+      "temperature": "mild",
+      "humidity": "wet",
+      "terrainProfile": "flat_channels",
+      "blockPalette": {
+        "surface": [
+          "mud",
+          "forest_soil"
+        ],
+        "waterEdge": [
+          "echomaterialcore:clay",
+          "echomaterialcore:sand",
+          "reed_patch"
+        ],
+        "stone": [
+          "shale",
+          "echomaterialcore:fieldstone"
+        ]
+      },
+      "resourceSet": [
+        "echomaterialcore:reed_fiber",
+        "echomaterialcore:clay_lump",
+        "mud",
+        "fish",
+        "mushroom",
+        "echomaterialcore:gravel"
+      ],
+      "spawnTable": [
+        {
+          "creature": "marsh_hen",
+          "weight": 10,
+          "group": "2-5"
+        },
+        {
+          "creature": "fish",
+          "weight": 10,
+          "group": "3-8"
+        },
+        {
+          "creature": "mire_leech",
+          "weight": 3,
+          "conditions": [
+            "water",
+            "night_or_deep_marsh"
+          ]
+        },
+        {
+          "creature": "greyling",
+          "weight": 1,
+          "conditions": [
+            "night"
+          ]
+        }
+      ],
+      "ambience": {
+        "day": "openlands:ambience.marshlands.day",
+        "night": "openlands:ambience.marshlands.night",
+        "fog": "openlands:ambience.marshlands.fog",
+        "musicHint": "reeds_and_mist"
+      },
+      "landmarkFrequency": {
+        "broken_bridge": "common",
+        "ruined_well": "uncommon",
+        "cellar_entrance": "uncommon",
+        "broken_waystone": "rare"
+      },
+      "firstHourRole": "Great echomaterialcore:clay and fiber access, with fog ambience and soft danger from leeches."
+    }
+  ]
+}

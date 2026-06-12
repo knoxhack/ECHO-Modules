@@ -1,8 +1,8 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoFactionActionResult;
-import com.knoxhack.echocore.api.EchoFactionDefinition;
-import com.knoxhack.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoFactionActionResult;
+import com.echoplatform.echocore.api.EchoFactionDefinition;
+import com.echoplatform.echocore.api.EchoFactionProfile;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import com.knoxhack.echoashfallprotocol.research.ResearchData;
 import net.minecraft.network.chat.Component;

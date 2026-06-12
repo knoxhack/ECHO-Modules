@@ -1,6 +1,6 @@
 package com.knoxhack.echo.npcore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 import java.util.Locale;
 
 public final class EchoNpcCoreConfig {

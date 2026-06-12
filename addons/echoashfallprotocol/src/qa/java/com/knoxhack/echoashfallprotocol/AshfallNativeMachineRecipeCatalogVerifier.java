@@ -30,7 +30,7 @@ public final class AshfallNativeMachineRecipeCatalogVerifier {
         require(execution, "status", "PASS");
         require(execution, "executedRecipeCount", 3);
         require(execution, "stoneGrinderByproduct", "flint");
-        require(execution, "toxicGrinderByproduct", "contaminated_redstone");
+        require(execution, "toxicGrinderByproduct", "charged_ash_circuit");
         System.out.println("Ashfall native machine recipe catalog verifier PASS");
     }
 

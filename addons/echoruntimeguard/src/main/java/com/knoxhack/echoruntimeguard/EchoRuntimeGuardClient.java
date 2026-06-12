@@ -1,7 +1,7 @@
 package com.knoxhack.echoruntimeguard;
 
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoruntimeguard.client.ClientFpsMonitor;
 
 public final class EchoRuntimeGuardClient {

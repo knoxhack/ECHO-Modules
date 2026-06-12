@@ -7,10 +7,19 @@ plugins {
 
 version = mod_version
 group = mod_group_id
+def echoEnableJeiCompat = providers.gradleProperty('echoEnableJeiCompat')
+        .map { it.toBoolean() }
+        .orElse(false)
+        .get()
 
 base { archivesName = mod_id }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+if (!echoEnableJeiCompat) {
+    sourceSets.main.java.exclude 'com/knoxhack/echonexusprotocol/compat/jei/NexusJeiCategory.java'
+    sourceSets.main.java.exclude 'com/knoxhack/echonexusprotocol/compat/jei/NexusJeiPlugin.java'
+    sourceSets.main.java.exclude 'com/knoxhack/echonexusprotocol/compat/jei/NexusJeiRecipeTypes.java'
+}
 
 repositories {
     maven {
@@ -56,12 +65,19 @@ dependencies {
     compileOnly project(':echoterminal')
     compileOnly project(':echorendercore')
     compileOnly project(":echomachinecore")
+    compileOnly project(":echoassetcore")
     localRuntime project(':echoterminal')
     localRuntime project(':echorendercore')
     localRuntime project(':echoorbitalremnants')
     localRuntime project(":echomachinecore")
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    localRuntime project(":echoassetcore")
+    if (echoEnableJeiCompat) {
+        if (!project.hasProperty('jei_version')) {
+            throw new GradleException('Set jei_version when enabling Nexus JEI compat with -PechoEnableJeiCompat=true.')
+        }
+        compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+        localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    }
 }
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

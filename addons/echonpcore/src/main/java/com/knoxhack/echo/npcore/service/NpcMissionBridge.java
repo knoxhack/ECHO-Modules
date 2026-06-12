@@ -1,10 +1,10 @@
 package com.knoxhack.echo.npcore.service;
 
 import com.knoxhack.echo.npcore.EchoNpcCore;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.IMissionProgressView;
-import com.knoxhack.echocore.api.mission.IMissionService;
-import com.knoxhack.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IMissionService;
+import com.echoplatform.echocore.api.mission.MissionStatus;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -66,8 +66,8 @@ public final class NpcMissionBridge {
             return false;
         }
         return switch (status) {
-            case ACTIVE, COMPLETED, CLAIMABLE, CLAIMED, VIEW_ONLY -> true;
-            case LOCKED, UNLOCKED -> false;
+            case ACTIVE, COMPLETED, COMPLETE, CLAIMABLE, CLAIMED, VIEW_ONLY -> true;
+            case LOCKED, UNLOCKED, AVAILABLE, FAILED -> false;
         };
     }
 

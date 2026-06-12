@@ -1,7 +1,7 @@
 package com.knoxhack.echoplayercore.integration;
 
 import com.knoxhack.echoplayercore.EchoPlayerCore;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 
 public final class PlayerCoreIntegrations {
     private PlayerCoreIntegrations() {

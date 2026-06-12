@@ -1,10 +1,10 @@
 package com.knoxhack.echoindex.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.index.IndexCategory;
-import com.knoxhack.echocore.api.index.IndexEntry;
-import com.knoxhack.echocore.api.index.IndexEntryState;
-import com.knoxhack.echocore.api.index.IndexRecipeView;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.index.IndexCategory;
+import com.echoplatform.echocore.api.index.IndexEntry;
+import com.echoplatform.echocore.api.index.IndexEntryState;
+import com.echoplatform.echocore.api.index.IndexRecipeView;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.EchoIndexClient;
 import com.knoxhack.echoindex.IndexIds;

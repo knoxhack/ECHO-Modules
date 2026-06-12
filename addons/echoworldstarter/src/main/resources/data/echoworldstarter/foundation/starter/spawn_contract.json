@@ -1,0 +1,23 @@
+{
+  "schema": "echo.foundation.spawn_contract.v1",
+  "starterRadiusBlocks": 96,
+  "requiredNearbyTags": [
+    "foundation:wood",
+    "foundation:stone",
+    "foundation:fiber"
+  ],
+  "blockedImmediateHazards": [
+    "lava",
+    "void_drop",
+    "unavoidable_hostile_cluster",
+    "instant_storm_exposure"
+  ],
+  "shelterScore": {
+    "minimumForStarterCache": 3,
+    "roof": 1,
+    "wallsOrNaturalCover": 1,
+    "light": 1,
+    "bedroll": 1,
+    "temperatureOrExposureMitigation": 1
+  }
+}

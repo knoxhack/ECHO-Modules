@@ -29,7 +29,7 @@ public final class AshfallRecipeInfoCatalog {
         add(entries, new ItemStack(ModBlocks.WATER_PURIFIER_ITEM.get()),
                 Component.literal("Stable-base water loop. Build with 3 Machine Casings, 2 Scrap Plastic, 1 Filtration Membrane, and 1 Circuit Board, then feed dirty water and filters."));
         add(entries, new ItemStack(ModItems.FILTER_CARTRIDGE_BASIC.get()),
-                Component.literal("Basic filters have three early recipes: Scrap Plastic + Ash + Scrap Wire, String, or Plant Fiber + extra Ash. Rarely recovered from toxic salvage and scavengers."));
+                Component.literal("Basic filters have three early recipes: Scrap Plastic + Ash + Scrap Wire, String, or Ashgrass Fiber + extra Ash. Rarely recovered from toxic salvage and scavengers."));
         add(entries, new ItemStack(ModItems.RAD_AWAY.get()), Component.translatable("jei.EchoAshfallProtocol.rad_away.info"));
         add(entries, new ItemStack(ModItems.BASIC_BATTERY.get()), Component.translatable("jei.EchoAshfallProtocol.battery.info"));
         add(entries, new ItemStack(ModItems.ADVANCED_BATTERY.get()), Component.translatable("jei.EchoAshfallProtocol.battery.info"));

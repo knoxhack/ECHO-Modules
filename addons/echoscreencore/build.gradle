@@ -35,7 +35,14 @@ dependencies {
     implementation project(":echocore")
     compileOnly project(":echoadaptercore")
 
-    localRuntime project(":echothemecore")
+    def localRuntimeIfIncluded = { projectPath ->
+        def optionalProject = rootProject.findProject(projectPath)
+        if (optionalProject != null) {
+            localRuntime optionalProject
+        }
+    }
+
+    localRuntimeIfIncluded(":echothemecore")
 
     localRuntime project(":echorendercore")
 }

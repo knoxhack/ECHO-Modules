@@ -19,7 +19,7 @@ import com.knoxhack.echo.scriptcore.model.EchoWorldStateDefinition;
 import com.knoxhack.echo.scriptcore.registry.EchoScriptRegistry;
 import com.knoxhack.echo.scriptcore.util.EchoJson;
 import com.knoxhack.echo.scriptcore.validation.EchoScriptKnownTypes;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;

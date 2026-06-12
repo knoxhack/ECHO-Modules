@@ -1,8 +1,8 @@
 package com.knoxhack.echoworldcore.integration;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldRegionInstance;
 import com.knoxhack.echoterminal.api.TerminalAddonGuide;
 import com.knoxhack.echoterminal.api.TerminalAddonInfo;
 import com.knoxhack.echoterminal.api.TerminalAddonInfoProvider;

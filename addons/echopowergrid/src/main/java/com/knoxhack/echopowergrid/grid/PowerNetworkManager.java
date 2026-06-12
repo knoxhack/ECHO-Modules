@@ -1,8 +1,8 @@
 package com.knoxhack.echopowergrid.grid;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.ISoundService;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.ISoundService;
 import com.knoxhack.echopowergrid.EchoPowerGrid;
 import com.knoxhack.echopowergrid.api.EchoEnergyStorage;
 import com.knoxhack.echopowergrid.api.EchoGridState;

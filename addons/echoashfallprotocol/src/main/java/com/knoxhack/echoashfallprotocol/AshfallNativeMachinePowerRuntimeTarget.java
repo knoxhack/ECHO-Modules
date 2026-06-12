@@ -404,7 +404,7 @@ final class AshfallNativeMachinePowerRuntimeTarget {
         require(recipeCatalogRuntime, "stoneGrinderByproductCount", 1, diagnostics);
         require(recipeCatalogRuntime, "toxicGrinderOutput", "coal_dust", diagnostics);
         require(recipeCatalogRuntime, "toxicGrinderOutputCount", 2, diagnostics);
-        require(recipeCatalogRuntime, "toxicGrinderByproduct", "contaminated_redstone", diagnostics);
+        require(recipeCatalogRuntime, "toxicGrinderByproduct", "charged_ash_circuit", diagnostics);
         require(recipeCatalogRuntime, "toxicGrinderByproductCount", 1, diagnostics);
         require(recipeCatalogRuntime, "minecraftRuntimeAccessed", false, diagnostics);
         require(recipeCatalogRuntime, "minecraftRegistryMutated", false, diagnostics);
@@ -412,7 +412,7 @@ final class AshfallNativeMachinePowerRuntimeTarget {
         require(byproductChanceRuntime, "standaloneDuplicateGameplaySystem", false, diagnostics);
         require(byproductChanceRuntime, "status", "PASS", diagnostics);
         require(byproductChanceRuntime, "recipeInput", "toxic_slagstone", diagnostics);
-        require(byproductChanceRuntime, "recipeByproduct", "contaminated_redstone", diagnostics);
+        require(byproductChanceRuntime, "recipeByproduct", "charged_ash_circuit", diagnostics);
         require(byproductChanceRuntime, "recipeBatches", 4, diagnostics);
         require(byproductChanceRuntime, "byproductSuccesses", 2, diagnostics);
         require(byproductChanceRuntime, "byproductSkipped", 2, diagnostics);

@@ -30,20 +30,20 @@ import com.knoxhack.echologisticsnetwork.item.LogisticsToolItem;
 import com.knoxhack.echologisticsnetwork.menu.LogisticsMenu;
 import com.knoxhack.echologisticsnetwork.api.LogisticsNetworkStatus;
 import com.knoxhack.echologisticsnetwork.service.LogisticsNetworkService;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiscoveryCategory;
-import com.knoxhack.echocore.api.EchoDiscoveryEntry;
-import com.knoxhack.echocore.api.EchoDiscoveryProvider;
-import com.knoxhack.echocore.api.EchoDiscoveryState;
-import com.knoxhack.echocore.api.EchoRouteRecord;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.TerminalRewardService;
-import com.knoxhack.echocore.api.mission.InMemoryMissionRegistry;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
-import com.knoxhack.echocore.api.mission.MissionHookTargets;
-import com.knoxhack.echocore.api.mission.MissionKind;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiscoveryCategory;
+import com.echoplatform.echocore.api.EchoDiscoveryEntry;
+import com.echoplatform.echocore.api.EchoDiscoveryProvider;
+import com.echoplatform.echocore.api.EchoDiscoveryState;
+import com.echoplatform.echocore.api.EchoRouteRecord;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.TerminalRewardService;
+import com.echoplatform.echocore.api.mission.InMemoryMissionRegistry;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.mission.MissionHookTargets;
+import com.echoplatform.echocore.api.mission.MissionKind;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoterminal.api.TerminalActionRegistry;
 import io.netty.channel.embedded.EmbeddedChannel;
 import java.util.List;
@@ -742,7 +742,7 @@ public final class ModGameTests {
 
    private static void coreWiring(GameTestHelper helper) {
       LogisticsCoreIntegration.registerAddonChapter();
-      helper.assertTrue(com.knoxhack.echocore.api.EchoAddonRegistry.isRegistered(LogisticsCoreIntegration.CHAPTER_ID),
+      helper.assertTrue(com.echoplatform.echocore.api.EchoAddonRegistry.isRegistered(LogisticsCoreIntegration.CHAPTER_ID),
          "Logistics should register as an ECHO addon chapter");
       helper.succeed();
    }

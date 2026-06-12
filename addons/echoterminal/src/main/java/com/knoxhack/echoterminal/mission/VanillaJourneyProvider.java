@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal.mission;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;

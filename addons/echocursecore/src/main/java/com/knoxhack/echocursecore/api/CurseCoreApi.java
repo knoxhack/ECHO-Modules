@@ -1,7 +1,7 @@
 package com.knoxhack.echocursecore.api;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echocursecore.EchoCurseCore;
 import com.knoxhack.echocursecore.network.CurseCoreNetwork;
 import java.util.LinkedHashMap;

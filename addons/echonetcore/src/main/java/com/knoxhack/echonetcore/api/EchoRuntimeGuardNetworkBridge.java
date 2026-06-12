@@ -1,6 +1,6 @@
 package com.knoxhack.echonetcore.api;
 
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import java.lang.reflect.Method;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
@@ -88,6 +88,7 @@ public final class EchoRuntimeGuardNetworkBridge {
             case CLIENTBOUND_SYNC -> "BACKGROUND_SYNC";
             case DEBUG_DEV -> "DEBUG";
             case OPTIONAL_ADDON -> "BACKGROUND_SYNC";
+            default -> "BACKGROUND_SYNC";
         });
     }
 

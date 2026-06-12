@@ -1,12 +1,12 @@
 package com.knoxhack.echoworldcore.event;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldCoreValidationReport;
-import com.knoxhack.echocore.api.WorldRegionDefinition;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldDiscoverySource;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldCoreValidationReport;
+import com.echoplatform.echocore.api.WorldRegionDefinition;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldDiscoverySource;
 import com.knoxhack.echoworldcore.Config;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.service.WorldRegionService;
@@ -204,7 +204,7 @@ public final class WorldCoreCommandHandler {
         tell(player, "WorldCore validation issues: warnings=" + report.warningCount()
                 + ", errors=" + report.errorCount() + ".", ChatFormatting.YELLOW);
         for (var issue : report.issues()) {
-            ChatFormatting color = issue.severity() == com.knoxhack.echocore.api.WorldCoreValidationIssue.Severity.ERROR
+            ChatFormatting color = issue.severity() == com.echoplatform.echocore.api.WorldCoreValidationIssue.Severity.ERROR
                     ? ChatFormatting.RED
                     : ChatFormatting.GRAY;
             tell(player, " - [" + issue.category() + "/" + issue.severity() + "] " + issue.message(), color);

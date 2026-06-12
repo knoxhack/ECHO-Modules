@@ -69,6 +69,12 @@ dependencies {
             compileOnly optionalProject
         }
     }
+    def localRuntimeIfIncluded = { projectPath ->
+        def optionalProject = rootProject.findProject(projectPath)
+        if (optionalProject != null) {
+            localRuntime optionalProject
+        }
+    }
     implementation project(":echocore")
     implementation project(":echonetcore")
     compileOnly project(":echo-native-contracts")
@@ -76,9 +82,9 @@ dependencies {
     implementation project(":echoadaptercore")
     compileOnly project(":echorendercore")
     compileOnly project(":echoscreencore")
-    localRuntime project(":echorendercore")
-    localRuntime project(":echoscreencore")
-    localRuntime project(":echothemecore")
+    localRuntimeIfIncluded(":echorendercore")
+    localRuntimeIfIncluded(":echoscreencore")
+    localRuntimeIfIncluded(":echothemecore")
     localRuntime "org.jline:jline-reader:3.20.0"
     localRuntime "org.jline:jline-terminal:3.20.0"
 }

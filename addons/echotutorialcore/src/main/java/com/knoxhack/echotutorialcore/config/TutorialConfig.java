@@ -1,6 +1,6 @@
 package com.knoxhack.echotutorialcore.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class TutorialConfig {
     public static final EchoNativeConfigSpec COMMON_SPEC;

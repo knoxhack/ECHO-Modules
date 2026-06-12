@@ -1,7 +1,7 @@
 package com.knoxhack.echoblackboxprotocol.test;
 
-import com.knoxhack.echocore.api.EchoHandoffs;
-import com.knoxhack.echocore.api.EchoProgressLedger;
+import com.echoplatform.echocore.api.EchoHandoffs;
+import com.echoplatform.echocore.api.EchoProgressLedger;
 import com.knoxhack.echoblackboxprotocol.EchoBlackboxProtocol;
 import com.knoxhack.echoblackboxprotocol.block.BlackboxMachineBlock;
 import com.knoxhack.echoblackboxprotocol.entity.BlackboxBossEntity;

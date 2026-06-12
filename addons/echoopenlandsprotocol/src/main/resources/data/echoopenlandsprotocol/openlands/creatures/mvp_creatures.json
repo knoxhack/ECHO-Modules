@@ -1,0 +1,361 @@
+{
+  "schema": "echo.openlands.creatures.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "globalRules": {
+    "defaultHostility": "moderate",
+    "avoidHardcorePressure": true,
+    "noCopiedSilhouettes": true,
+    "despawnPolicy": "runtime_default_safe",
+    "soundNamespace": "echoopenlandsprotocol"
+  },
+  "creatures": [
+    {
+      "id": "hare",
+      "displayName": "Hare",
+      "category": "echocreatureroles:passive_small",
+      "biomes": [
+        "meadows",
+        "woodlands"
+      ],
+      "spawnRules": {
+        "time": "day",
+        "light": "bright",
+        "group": "2-4",
+        "surfaceTags": [
+          "openlands:natural_ground"
+        ]
+      },
+      "ai": [
+        "wander_short",
+        "flee_player_fast",
+        "nibble_grass",
+        "avoid_hostiles"
+      ],
+      "health": 4,
+      "damage": 0,
+      "drops": "hare",
+      "sounds": {
+        "ambient": "openlands:creature.hare.ambient",
+        "hurt": "openlands:creature.hare.hurt",
+        "death": "openlands:creature.hare.death"
+      },
+      "notes": "Readable starter wildlife, not a food grind.",
+      "legacyCategory": "passive_small",
+      "foundationRole": "echocreatureroles:passive_small"
+    },
+    {
+      "id": "deer",
+      "displayName": "Deer",
+      "category": "echocreatureroles:passive_large",
+      "biomes": [
+        "meadows",
+        "woodlands"
+      ],
+      "spawnRules": {
+        "time": "day",
+        "group": "1-3",
+        "surfaceTags": [
+          "openlands:natural_ground"
+        ],
+        "avoidDistanceFromPlayer": 12
+      },
+      "ai": [
+        "graze",
+        "wander_herd",
+        "flee_player",
+        "alert_nearby_deer"
+      ],
+      "health": 14,
+      "damage": 0,
+      "drops": "deer",
+      "sounds": {
+        "ambient": "openlands:creature.deer.ambient",
+        "hurt": "openlands:creature.deer.hurt",
+        "death": "openlands:creature.deer.death"
+      },
+      "notes": "Peaceful movement and world life.",
+      "legacyCategory": "passive_large",
+      "foundationRole": "echocreatureroles:passive_large"
+    },
+    {
+      "id": "boar",
+      "displayName": "Boar",
+      "category": "echocreatureroles:territorial_medium",
+      "biomes": [
+        "meadows",
+        "woodlands"
+      ],
+      "spawnRules": {
+        "time": "day_or_dusk",
+        "group": "1-2",
+        "surfaceTags": [
+          "openlands:natural_ground"
+        ],
+        "minimumSpawnDistanceFromWorldSpawn": 48
+      },
+      "ai": [
+        "root_soil",
+        "wander",
+        "warn_if_crowded",
+        "charge_if_attacked"
+      ],
+      "health": 18,
+      "damage": 4,
+      "drops": "boar",
+      "sounds": {
+        "ambient": "openlands:creature.boar.ambient",
+        "hurt": "openlands:creature.boar.hurt",
+        "death": "openlands:creature.boar.death",
+        "warn": "openlands:creature.boar.warn"
+      },
+      "notes": "Teaches neutral creature respect without making starts hostile.",
+      "legacyCategory": "neutral",
+      "foundationRole": "echocreatureroles:territorial_medium"
+    },
+    {
+      "id": "goat",
+      "displayName": "Goat",
+      "category": "echocreatureroles:passive_large",
+      "biomes": [
+        "stonehills"
+      ],
+      "spawnRules": {
+        "time": "day",
+        "group": "2-4",
+        "surfaceTags": [
+          "openlands:stone",
+          "openlands:natural_ground"
+        ],
+        "slopePreference": "high"
+      },
+      "ai": [
+        "climb",
+        "graze",
+        "wander_herd",
+        "short_hop"
+      ],
+      "health": 12,
+      "damage": 0,
+      "drops": "goat",
+      "sounds": {
+        "ambient": "openlands:creature.goat.ambient",
+        "hurt": "openlands:creature.goat.hurt",
+        "death": "openlands:creature.goat.death"
+      },
+      "notes": "Stonehills life and later animal pen candidate.",
+      "legacyCategory": "passive_large",
+      "foundationRole": "echocreatureroles:passive_large"
+    },
+    {
+      "id": "marsh_hen",
+      "displayName": "Marsh Hen",
+      "category": "echocreatureroles:passive_small",
+      "biomes": [
+        "marshlands"
+      ],
+      "spawnRules": {
+        "time": "day",
+        "group": "2-5",
+        "surfaceTags": [
+          "openlands:mud",
+          "openlands:water_edge"
+        ]
+      },
+      "ai": [
+        "peck_reeds",
+        "wander_near_water",
+        "flee_player",
+        "short_flutter"
+      ],
+      "health": 6,
+      "damage": 0,
+      "drops": "marsh_hen",
+      "sounds": {
+        "ambient": "openlands:creature.marsh_hen.ambient",
+        "hurt": "openlands:creature.marsh_hen.hurt",
+        "death": "openlands:creature.marsh_hen.death"
+      },
+      "notes": "Marsh identity creature, not copied poultry.",
+      "legacyCategory": "passive_small",
+      "foundationRole": "echocreatureroles:passive_small"
+    },
+    {
+      "id": "fish",
+      "displayName": "Fish",
+      "category": "echocreatureroles:aquatic_passive",
+      "biomes": [
+        "meadows",
+        "marshlands"
+      ],
+      "spawnRules": {
+        "time": "any",
+        "group": "3-8",
+        "fluid": "water",
+        "minimumDepth": 2
+      },
+      "ai": [
+        "school",
+        "avoid_player",
+        "seek_water_depth"
+      ],
+      "health": 3,
+      "damage": 0,
+      "drops": "fish",
+      "sounds": {
+        "ambient": "openlands:creature.fish.ambient",
+        "hurt": "openlands:creature.fish.hurt",
+        "death": "openlands:creature.fish.death"
+      },
+      "notes": "Generic fish for starter food and ambience.",
+      "legacyCategory": "aquatic_passive",
+      "foundationRole": "echocreatureroles:aquatic_passive"
+    },
+    {
+      "id": "greyling",
+      "displayName": "Greyling",
+      "category": "echocreatureroles:hostile_small",
+      "biomes": [
+        "meadows",
+        "woodlands",
+        "stonehills",
+        "marshlands"
+      ],
+      "spawnRules": {
+        "time": "night",
+        "group": "1-3",
+        "minimumDistanceFromWorldSpawn": 96,
+        "surfaceTags": [
+          "openlands:natural_ground",
+          "openlands:stone"
+        ]
+      },
+      "ai": [
+        "stalk_from_distance",
+        "retreat_from_firelight",
+        "melee_swipe",
+        "avoid_large_groups"
+      ],
+      "health": 10,
+      "damage": 3,
+      "drops": "greyling",
+      "sounds": {
+        "ambient": "openlands:creature.greyling.ambient",
+        "hurt": "openlands:creature.greyling.hurt",
+        "death": "openlands:creature.greyling.death",
+        "warn": "openlands:creature.greyling.warn"
+      },
+      "notes": "Default hostile baseline. Moderate and readable; firelight discourages camping grief.",
+      "legacyCategory": "hostile_small",
+      "foundationRole": "echocreatureroles:hostile_small"
+    },
+    {
+      "id": "bristleback",
+      "displayName": "Bristleback",
+      "category": "echocreatureroles:hostile_large",
+      "biomes": [
+        "stonehills",
+        "woodlands"
+      ],
+      "spawnRules": {
+        "time": "dusk_or_night",
+        "group": "1",
+        "minimumDistanceFromWorldSpawn": 160,
+        "surfaceTags": [
+          "openlands:natural_ground",
+          "openlands:stone"
+        ]
+      },
+      "ai": [
+        "territorial_patrol",
+        "warning_display",
+        "short_charge",
+        "break_tall_grass"
+      ],
+      "health": 28,
+      "damage": 6,
+      "drops": "bristleback",
+      "sounds": {
+        "ambient": "openlands:creature.bristleback.ambient",
+        "hurt": "openlands:creature.bristleback.hurt",
+        "death": "openlands:creature.bristleback.death",
+        "charge": "openlands:creature.bristleback.charge"
+      },
+      "notes": "Avoidable threat near stonehills and ruins.",
+      "legacyCategory": "hostile_large",
+      "foundationRole": "echocreatureroles:hostile_large"
+    },
+    {
+      "id": "hollow_stalker",
+      "displayName": "Hollow Stalker",
+      "category": "echocreatureroles:night_stalker",
+      "biomes": [
+        "woodlands",
+        "stonehills"
+      ],
+      "spawnRules": {
+        "time": "night",
+        "group": "1",
+        "conditions": [
+          "near_ruin",
+          "low_light"
+        ],
+        "minimumDistanceFromWorldSpawn": 192
+      },
+      "ai": [
+        "hold_shadow_distance",
+        "approach_when_unseen",
+        "retreat_from_lantern",
+        "single_strike_then_reposition"
+      ],
+      "health": 20,
+      "damage": 5,
+      "drops": "hollow_stalker",
+      "sounds": {
+        "ambient": "openlands:creature.hollow_stalker.ambient",
+        "hurt": "openlands:creature.hollow_stalker.hurt",
+        "death": "openlands:creature.hollow_stalker.death",
+        "warn": "openlands:creature.hollow_stalker.warn"
+      },
+      "notes": "Rare spooky ruin pressure; not part of the first-night default threat budget.",
+      "legacyCategory": "hostile_rare",
+      "foundationRole": "echocreatureroles:night_stalker"
+    },
+    {
+      "id": "mire_leech",
+      "displayName": "Mire Leech",
+      "category": "echocreatureroles:hostile_small",
+      "biomes": [
+        "marshlands"
+      ],
+      "spawnRules": {
+        "time": "night_or_fog",
+        "group": "1-3",
+        "fluidOrMud": true,
+        "minimumDistanceFromWorldSpawn": 96
+      },
+      "ai": [
+        "hide_in_mud",
+        "lunge_short",
+        "detach_after_hit",
+        "avoid_campfire_radius"
+      ],
+      "health": 6,
+      "damage": 2,
+      "drops": "mire_leech",
+      "sounds": {
+        "ambient": "openlands:creature.mire_leech.ambient",
+        "hurt": "openlands:creature.mire_leech.hurt",
+        "death": "openlands:creature.mire_leech.death"
+      },
+      "notes": "Marsh hazard tuned to annoy and teach caution, not punish.",
+      "legacyCategory": "hostile_small",
+      "foundationRole": "echocreatureroles:hostile_small"
+    }
+  ],
+  "foundationRoleSource": "echocreatureroles:creature_role_catalog"
+}

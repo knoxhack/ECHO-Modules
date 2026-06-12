@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoashfallprotocol.network.FactionDialogueOpenPacket;
 import com.knoxhack.echoashfallprotocol.network.FactionNpcActionPacket;

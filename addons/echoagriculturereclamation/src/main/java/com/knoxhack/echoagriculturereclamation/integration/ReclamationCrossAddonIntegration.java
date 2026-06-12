@@ -1,8 +1,8 @@
 package com.knoxhack.echoagriculturereclamation.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionProfile;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoagriculturereclamation.config.ReclamationConfig;
 import com.knoxhack.echoagriculturereclamation.content.CropCategory;
 import com.knoxhack.echoagriculturereclamation.content.CropSpec;

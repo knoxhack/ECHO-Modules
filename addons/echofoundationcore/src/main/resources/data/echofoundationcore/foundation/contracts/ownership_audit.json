@@ -1,0 +1,226 @@
+{
+  "schema": "echo.foundation.content_ownership_audit.v1",
+  "sourceExperience": "echoopenlandsprotocol",
+  "frozenSource": {
+    "status": "frozen-for-extraction",
+    "reason": "Openlands contains the most complete baseline survival slice and is the extraction source for Foundation content.",
+    "sourceFiles": [
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/blocks/mvp_blocks.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/items/mvp_items.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/recipes/mvp_recipes.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/tags/mvp_tags.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/loot/mvp_loot.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/creatures/mvp_creatures.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/progression/first_hour_route.json",
+      "addons/echoopenlandsprotocol/src/main/resources/data/echoopenlandsprotocol/openlands/conformance/openlands_mvp_registry.json"
+    ]
+  },
+  "foundationModules": {
+    "echofoundationcore": {
+      "owns": [
+        "ownership taxonomy",
+        "dependency rule",
+        "save-safe alias contract",
+        "blocked/watch legal term lists",
+        "shared registry schemas"
+      ]
+    },
+    "echomaterialcore": {
+      "owns": [
+        "branchwood_stick",
+        "fieldstone_piece",
+        "reed_fiber",
+        "fiber_binding",
+        "flint_shard",
+        "clay_lump",
+        "brick",
+        "glass_pane",
+        "hide_strip",
+        "bone_shard",
+        "pitch_resin",
+        "resin",
+        "charcoal_lump",
+        "cupral_vein",
+        "cupral_chunk",
+        "cupral_bar",
+        "tinveil_vein",
+        "tinveil_chunk",
+        "tinveil_bar",
+        "bronze_cast",
+        "ferrite_vein",
+        "ferrite_chunk",
+        "ferrite_bar",
+        "fieldstone",
+        "clay",
+        "gravel",
+        "sand",
+        "branchwood_log",
+        "branchwood_planks",
+        "branchwood_beam",
+        "branchwood_post",
+        "wooden_slab",
+        "wooden_stairs",
+        "wooden_fence",
+        "wooden_door",
+        "wooden_trapdoor",
+        "ladder"
+      ]
+    },
+    "echotoolcore": {
+      "owns": [
+        "crude_cutter",
+        "crude_breaker",
+        "crude_digger",
+        "flint_knife",
+        "field_hammer",
+        "cupral_breaker",
+        "bronze_breaker",
+        "ferrite_breaker"
+      ]
+    },
+    "echostationcore": {
+      "owns": [
+        "handcrafting",
+        "field_bench",
+        "field_crate",
+        "kiln",
+        "forge_hearth",
+        "loom",
+        "cookpot",
+        "mason_table"
+      ]
+    },
+    "echoworldstarter": {
+      "owns": [
+        "first_hour_steps_1_6",
+        "spawn_safety_rules",
+        "campfire",
+        "pitchlight",
+        "pitchlight_bundle",
+        "bedroll",
+        "bedroll_block",
+        "starter_shelter_score"
+      ]
+    },
+    "echocommonloot": {
+      "owns": [
+        "starter_cache",
+        "traveler_pack",
+        "ruined_storage",
+        "material_scrap",
+        "generic_block_drops",
+        "generic_ore_chunk_drops"
+      ]
+    },
+    "echocreatureroles": {
+      "owns": [
+        "passive_small",
+        "passive_large",
+        "neutral_forager",
+        "territorial_medium",
+        "hostile_small",
+        "hostile_large",
+        "aquatic_passive",
+        "night_stalker"
+      ]
+    }
+  },
+  "openlandsOnly": [
+    "meadow_grass_block",
+    "forest_soil",
+    "dry_soil",
+    "mud",
+    "limestone",
+    "granite",
+    "shale",
+    "deepstone",
+    "pine_log",
+    "pine_planks",
+    "pine_beam",
+    "pine_post",
+    "thatch_roof",
+    "fieldstone_bricks",
+    "brick_block",
+    "glass_block",
+    "shelf",
+    "sign",
+    "lantern",
+    "map_table",
+    "glow_crystal_cluster",
+    "glow_crystal",
+    "meadows",
+    "woodlands",
+    "stonehills",
+    "marshlands",
+    "old_road_block",
+    "old_road_marker",
+    "broken_waystone",
+    "restored_waystone",
+    "waystone_plinth",
+    "waystone_core",
+    "region_rubbing",
+    "old_road_token",
+    "route_binding",
+    "berries",
+    "mushroom",
+    "raw_meat",
+    "cooked_meat",
+    "grain",
+    "root_crop",
+    "fish",
+    "stew_bowl",
+    "compost",
+    "scaffold_bundle",
+    "wooden_bowl",
+    "small_pack",
+    "repair_kit",
+    "copper_fitting"
+  ],
+  "ashfallFindings": {
+    "baselineDuplicates": [
+      "animal_bone",
+      "animal_hide",
+      "plant_fiber",
+      "fiber_rope",
+      "bone_knife",
+      "scrap_knife",
+      "crude_spear"
+    ],
+    "renameNeeded": [
+      "map_table",
+      "riftstone",
+      "contaminated_redstone",
+      "contaminated_lapis"
+    ],
+    "ashfallOnly": [
+      "storms",
+      "heat",
+      "ash_exposure",
+      "scarcity",
+      "shelters",
+      "filtration",
+      "atmospheric_scrubbers",
+      "distillation",
+      "black_rain",
+      "ash_soil",
+      "scoria",
+      "basalt",
+      "sulfur",
+      "emberglass"
+    ]
+  },
+  "arcanaSplit": {
+    "misplacedInAshfallProfile": [
+      "echoaetherworks",
+      "echoarcanacore",
+      "echoarcaneindex",
+      "echocursecore",
+      "echofamiliarcore",
+      "echogrimoire",
+      "echoriftworlds",
+      "echoritualcore",
+      "echospellcore"
+    ],
+    "newOwner": "echoarcanadivisionprotocol"
+  }
+}

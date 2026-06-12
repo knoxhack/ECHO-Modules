@@ -1,16 +1,16 @@
 package com.knoxhack.echoprimecore.integration;
 
-import com.knoxhack.echocore.api.prime.PrimeAuditRegistry;
-import com.knoxhack.echocore.api.prime.PrimeHoloMapRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIndexRegistry;
-import com.knoxhack.echocore.api.prime.PrimeIntegrationContext;
-import com.knoxhack.echocore.api.prime.PrimeLensRegistry;
-import com.knoxhack.echocore.api.prime.PrimeLootRegistry;
-import com.knoxhack.echocore.api.prime.PrimeMissionRegistry;
-import com.knoxhack.echocore.api.prime.PrimeProgressionRegistry;
-import com.knoxhack.echocore.api.prime.PrimeRouteRegistry;
-import com.knoxhack.echocore.api.prime.PrimeTerminalRegistry;
-import com.knoxhack.echocore.api.prime.PrimeWorldRegistry;
+import com.echoplatform.echocore.api.prime.PrimeAuditRegistry;
+import com.echoplatform.echocore.api.prime.PrimeHoloMapRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIndexRegistry;
+import com.echoplatform.echocore.api.prime.PrimeIntegrationContext;
+import com.echoplatform.echocore.api.prime.PrimeLensRegistry;
+import com.echoplatform.echocore.api.prime.PrimeLootRegistry;
+import com.echoplatform.echocore.api.prime.PrimeMissionRegistry;
+import com.echoplatform.echocore.api.prime.PrimeProgressionRegistry;
+import com.echoplatform.echocore.api.prime.PrimeRouteRegistry;
+import com.echoplatform.echocore.api.prime.PrimeTerminalRegistry;
+import com.echoplatform.echocore.api.prime.PrimeWorldRegistry;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.PrimeIds;
 import java.util.List;

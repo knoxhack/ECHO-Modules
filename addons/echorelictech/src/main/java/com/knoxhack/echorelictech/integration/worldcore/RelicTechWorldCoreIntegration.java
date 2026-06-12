@@ -1,8 +1,8 @@
 package com.knoxhack.echorelictech.integration.worldcore;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.WorldHazardSnapshot;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.WorldHazardSnapshot;
 import com.knoxhack.echorelictech.EchoRelicTech;
 import java.util.List;
 import net.minecraft.core.BlockPos;

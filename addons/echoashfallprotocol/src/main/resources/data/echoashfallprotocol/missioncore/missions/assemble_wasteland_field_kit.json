@@ -6,11 +6,11 @@
   "phaseOrder": 1,
   "order": 0,
   "title": "Assemble Wasteland Field Kit",
-  "briefing": "[ECHO-7] Stop spending recovered metal on every emergency. Assemble a Bone Knife, Crude Spear, and Hide Wrap so scrap stays in the machine chain.",
-  "fieldGuide": "Mirrors the NeoForge Ashfall field-kit bridge while replacing the deprecated Bone Knife, Crude Spear, and Hide Wrap mission aliases with one explicit three-tool objective.",
+  "briefing": "[ECHO-7] Stop spending recovered metal on every emergency. Assemble a Ashbone Shiv, Scavenger Spear, and Hide Wrap so scrap stays in the machine chain.",
+  "fieldGuide": "Mirrors the NeoForge Ashfall field-kit bridge while replacing the deprecated Ashbone Shiv, Scavenger Spear, and Hide Wrap mission aliases with one explicit three-tool objective.",
   "category": "survival",
   "difficulty": "normal",
-  "icon": "echoashfallprotocol:bone_knife",
+  "icon": "echoashfallprotocol:ashbone_shiv",
   "kind": "main",
   "prerequisites": [
     "echoashfallprotocol:secure_sleep_shelter"
@@ -60,14 +60,14 @@
     {
       "id": "echoashfallprotocol:assemble_wasteland_field_kit/confirm_field_kit",
       "type": "custom",
-      "label": "Confirm Bone Knife, Crude Spear, and Hide Wrap",
+      "label": "Confirm Ashbone Shiv, Scavenger Spear, and Hide Wrap",
       "detail": "Carry all three non-metal survival tools before the route moves into machine salvage.",
-      "icon": "echoashfallprotocol:bone_knife",
+      "icon": "echoashfallprotocol:ashbone_shiv",
       "target": "ashfall:wasteland_field_kit",
       "required": 1,
       "criteria": {
         "predicate": "inventory_all",
-        "required_items": "echoashfallprotocol:bone_knife,echoashfallprotocol:crude_spear,echoashfallprotocol:hide_wrap",
+        "required_items": "echoashfallprotocol:ashbone_shiv,echoashfallprotocol:scavenger_spear,echoashfallprotocol:hide_wrap",
         "events": "player.inventory_changed,player.craft_item,ashfall.inventory_predicate",
         "region": "echoashfallprotocol:crash_zone_wasteland",
         "hazard": "echoworldcore:hazard/salvage_debris"
@@ -76,14 +76,14 @@
   ],
   "requirements": [
     {
-      "item": "echoashfallprotocol:bone_knife",
+      "item": "echoashfallprotocol:ashbone_shiv",
       "count": 1,
-      "label": "Bone Knife"
+      "label": "Ashbone Shiv"
     },
     {
-      "item": "echoashfallprotocol:crude_spear",
+      "item": "echoashfallprotocol:scavenger_spear",
       "count": 1,
-      "label": "Crude Spear"
+      "label": "Scavenger Spear"
     },
     {
       "item": "echoashfallprotocol:hide_wrap",
@@ -94,9 +94,9 @@
   "rewards": [
     {
       "id": "echoashfallprotocol:assemble_wasteland_field_kit/reward_rope",
-      "item": "echoashfallprotocol:fiber_rope",
+      "item": "echoashfallprotocol:sootcord_binding",
       "count": 4,
-      "label": "Fiber Rope",
+      "label": "Sootcord Binding",
       "detail": "Primitive utility material for the next route stretch."
     },
     {

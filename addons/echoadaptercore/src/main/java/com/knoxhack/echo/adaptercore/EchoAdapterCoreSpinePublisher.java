@@ -199,8 +199,8 @@ public final class EchoAdapterCoreSpinePublisher {
             // Resolved at runtime to avoid compile-time dependency on echocore.
             // EchoRuntimeSpineEvent.of(String, Identifier, ServerPlayer, Identifier, int, Map)
             try {
-                Class<?> busClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineBus");
-                Class<?> eventClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineEvent");
+                Class<?> busClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineBus");
+                Class<?> eventClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineEvent");
                 Class<?> identifierClass = Class.forName("net.minecraft.resources.Identifier");
 
                 String sourceModule = String.valueOf(payload.getOrDefault("sourceModule", "unknown"));
@@ -232,7 +232,7 @@ public final class EchoAdapterCoreSpinePublisher {
 
         private static int registeredConsumerCount() {
             try {
-                Class<?> busClass = Class.forName("com.knoxhack.echocore.api.EchoRuntimeSpineBus");
+                Class<?> busClass = Class.forName("com.echoplatform.echocore.api.EchoRuntimeSpineBus");
                 java.lang.reflect.Field listenersField = busClass.getDeclaredField("LISTENERS");
                 listenersField.setAccessible(true);
                 java.util.List<?> listeners = (java.util.List<?>) listenersField.get(null);

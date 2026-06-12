@@ -1,7 +1,7 @@
 package com.knoxhack.echorelictech.block;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echorelictech.EchoRelicTech;
 import com.knoxhack.echorelictech.block.entity.NullBatteryDockBlockEntity;
 import com.knoxhack.echorelictech.config.RelicTechConfig;

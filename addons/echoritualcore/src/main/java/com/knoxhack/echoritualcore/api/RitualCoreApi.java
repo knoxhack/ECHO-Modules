@@ -1,6 +1,6 @@
 package com.knoxhack.echoritualcore.api;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoritualcore.EchoRitualCore;
 import com.knoxhack.echoritualcore.block.entity.BasicAltarBlockEntity;
 import com.knoxhack.echoritualcore.registry.ModItems;
@@ -171,9 +171,9 @@ public final class RitualCoreApi {
     }
 
     public static void recordMission(ServerPlayer player, Identifier target, Identifier ritualId, String action) {
-        com.knoxhack.echocore.api.EchoCoreServices.recordMissionObjective(
+        com.echoplatform.echocore.api.EchoCoreServices.recordMissionObjective(
                 player,
-                com.knoxhack.echocore.api.mission.MissionObjectiveType.CUSTOM,
+                com.echoplatform.echocore.api.mission.MissionObjectiveType.CUSTOM,
                 target,
                 1,
                 Map.of("source", EchoRitualCore.MODID, "ritual", ritualId.toString(), "action", action));

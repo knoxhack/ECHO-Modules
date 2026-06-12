@@ -505,13 +505,13 @@ public class ModBlocks {
     public static final EchoBackendRegistryEntry<BlockItem> CRASH_SLAG_ITEM = registerSimpleBlockItem("crash_slag", CRASH_SLAG);
 
     // === BIOME OVERHAUL VISUAL BLOCKS ===
-    public static final EchoBackendRegistryEntry<Block> RIFTSTONE = registerSimpleBlock("riftstone",
+    public static final EchoBackendRegistryEntry<Block> NEXUS_SCAR_STONE = registerSimpleBlock("nexus_scar_stone",
             p -> p.mapColor(MapColor.COLOR_PURPLE)
                     .strength(1.6f, 6.0f)
                     .sound(SoundType.DEEPSLATE)
                     .requiresCorrectToolForDrops()
                     .lightLevel(s -> 1));
-    public static final EchoBackendRegistryEntry<BlockItem> RIFTSTONE_ITEM = registerSimpleBlockItem("riftstone", RIFTSTONE);
+    public static final EchoBackendRegistryEntry<BlockItem> NEXUS_SCAR_STONE_ITEM = registerSimpleBlockItem("nexus_scar_stone", NEXUS_SCAR_STONE);
 
     public static final EchoBackendRegistryEntry<Block> ECHO_CRYSTAL = registerSimpleBlock("echo_crystal",
             p -> p.mapColor(MapColor.COLOR_PURPLE)
@@ -1027,9 +1027,9 @@ public class ModBlocks {
             MapColor.COLOR_YELLOW, SoundType.WOOD);
     public static final EchoBackendRegistryEntry<BlockItem> TRADE_COUNTER_ITEM = registerSimpleBlockItem("trade_counter", TRADE_COUNTER);
 
-    public static final EchoBackendRegistryEntry<Block> MAP_TABLE = registerSimpleProfessionBlock("map_table",
+    public static final EchoBackendRegistryEntry<Block> SURVEY_TABLE = registerSimpleProfessionBlock("survey_table",
             MapColor.COLOR_BROWN, SoundType.WOOD);
-    public static final EchoBackendRegistryEntry<BlockItem> MAP_TABLE_ITEM = registerSimpleBlockItem("map_table", MAP_TABLE);
+    public static final EchoBackendRegistryEntry<BlockItem> SURVEY_TABLE_ITEM = registerSimpleBlockItem("survey_table", SURVEY_TABLE);
 
     // Sporebound workstations
     public static final EchoBackendRegistryEntry<Block> BIO_PROCESSING_STATION = registerSimpleProfessionBlock("bio_processing_station",

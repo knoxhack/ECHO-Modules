@@ -1,0 +1,53 @@
+{
+  "schema": "echo.foundation.creature_role_catalog.v1",
+  "roles": [
+    {
+      "id": "passive_small",
+      "pressure": "low",
+      "behavior": "forage",
+      "note": "Small low-threat ambient animals."
+    },
+    {
+      "id": "passive_large",
+      "pressure": "low",
+      "behavior": "graze",
+      "note": "Large low-threat animals used for presence and resources."
+    },
+    {
+      "id": "neutral_forager",
+      "pressure": "medium",
+      "behavior": "forage",
+      "note": "Creatures that ignore players until disturbed."
+    },
+    {
+      "id": "territorial_medium",
+      "pressure": "medium",
+      "behavior": "defend_area",
+      "note": "Mid-size animals that guard an area or resource."
+    },
+    {
+      "id": "hostile_small",
+      "pressure": "medium",
+      "behavior": "attack",
+      "note": "Small direct threats."
+    },
+    {
+      "id": "hostile_large",
+      "pressure": "high",
+      "behavior": "attack",
+      "note": "Large direct threats and regional pressure."
+    },
+    {
+      "id": "aquatic_passive",
+      "pressure": "low",
+      "behavior": "swim",
+      "note": "Passive water creatures."
+    },
+    {
+      "id": "night_stalker",
+      "pressure": "high",
+      "behavior": "hunt_at_night",
+      "note": "Night pressure role shared by survival experiences."
+    }
+  ]
+}

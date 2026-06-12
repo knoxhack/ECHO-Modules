@@ -1,6 +1,6 @@
 package com.knoxhack.echosoundcore.api;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echosoundcore.EchoSoundCore;
 import com.knoxhack.echosoundcore.SoundCoreAudioPriority;
 import com.knoxhack.echosoundcore.SoundCoreCombatIntensity;

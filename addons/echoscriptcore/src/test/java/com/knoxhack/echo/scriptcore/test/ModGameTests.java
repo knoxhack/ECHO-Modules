@@ -17,11 +17,11 @@ import com.knoxhack.echo.scriptcore.client.screencore.ScriptCoreScreenCoreClient
 import com.knoxhack.echo.scriptcore.client.terminal.ScriptCoreTerminalTab;
 import com.knoxhack.echo.scriptcore.config.ScriptCoreConfig;
 import com.knoxhack.echo.scriptcore.runtime.ScriptCoreRuntimeStateService;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IDataService;
-import com.knoxhack.echocore.api.NoOpDataService;
-import com.knoxhack.echocore.api.mission.MissionChapterDefinition;
-import com.knoxhack.echocore.api.mission.MissionDefinition;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IDataService;
+import com.echoplatform.echocore.api.NoOpDataService;
+import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
+import com.echoplatform.echocore.api.mission.MissionDefinition;
 import com.knoxhack.echodatacore.DataCoreDataService;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.action.EchoActionContext;

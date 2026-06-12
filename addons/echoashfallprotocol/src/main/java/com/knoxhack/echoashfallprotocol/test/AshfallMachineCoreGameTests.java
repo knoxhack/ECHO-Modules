@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.test;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echo.machinecore.EchoMachineProfile;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeRegistry;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeSnapshot;
@@ -971,11 +971,7 @@ public final class AshfallMachineCoreGameTests {
 
     private static void registerMachineCoreIndexForTest(GameTestHelper helper) {
         Object indexService = indexServiceForTest(helper);
-        if (indexService instanceof com.knoxhack.echocore.api.index.IIndexService service) {
-            EchoCoreServices.registerIndexService(service);
-        } else {
-            helper.assertTrue(false, "IndexService.INSTANCE should implement the EchoCore index service API.");
-        }
+        EchoCoreServices.registerIndexService(indexService);
         try {
             Class.forName("com.knoxhack.echoindex.integration.MachineCoreIndexIntegration")
                     .getMethod("register")

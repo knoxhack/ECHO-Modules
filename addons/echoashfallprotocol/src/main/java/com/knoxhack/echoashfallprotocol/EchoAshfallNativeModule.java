@@ -30,7 +30,6 @@ import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeHardeni
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeMutationEvidence;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeSurfaceConsumers;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeUiHudHandoff;
-import com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs;
 import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
@@ -132,7 +131,7 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 .register("block", "echoashfallprotocol:irradiated_shale", "Ashfall irradiated shale biome substrate.")
                 .register("block", "echoashfallprotocol:cryogenic_fractured_stone", "Ashfall cryogenic fractured stone biome substrate.")
                 .register("block", "echoashfallprotocol:crash_slag", "Ashfall crash-zone slag biome substrate.")
-                .register("block", "echoashfallprotocol:riftstone", "Ashfall nexus-scar riftstone feature block.")
+                .register("block", "echoashfallprotocol:nexus_scar_stone", "Ashfall nexus-scar nexus_scar_stone feature block.")
                 .register("block", "echoashfallprotocol:echo_crystal", "Ashfall nexus crystal feature block.")
                 .register("block", "echoashfallprotocol:energized_fissure", "Ashfall energized fissure feature block.")
                 .register("block", "echoashfallprotocol:scorched_ash", "Ashfall crash-zone scorched ash surface block.")
@@ -824,7 +823,7 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 "wasteland_tall_grass",
                 "water_purifier",
                 "bio_processing_station",
-                "map_table",
+                "survey_table",
                 "spore_garden",
                 "trade_counter",
                 "weapon_rack",
@@ -885,14 +884,33 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
             String iconItem,
             List<String> itemIds
     ) {
+        List<String> registryBackedItemIds = registeredNativeModuleCreativeTabRegistryBackedItems();
+        List<String> featuredItemIds = registeredNativeModuleCreativeTabFeaturedItems();
+        List<String> sourceNamespaces = registeredNativeModuleCreativeTabNamespaces();
+        boolean sourceResolved = itemIds != null
+                && !itemIds.isEmpty()
+                && !registryBackedItemIds.isEmpty()
+                && !featuredItemIds.isEmpty();
         Map<String, Object> properties = new LinkedHashMap<>(creativeTabProperties(titleKey, iconItem, itemIds));
         properties.put("surfaceIds", nativeModulesCreativeTabSurfaceIds());
         properties.put("nativeCreativeTabSurfaceIdsDeclared", true);
-        properties.put("featuredItemIds", registeredNativeModuleCreativeTabFeaturedItems());
-        properties.put("sourceNamespaces", registeredNativeModuleCreativeTabNamespaces());
-        properties.put("nativeCreativeTabSourceBacked", !registeredNativeModuleCreativeTabItems().isEmpty());
+        properties.put("registryBackedItemIds", registryBackedItemIds);
+        properties.put("featuredItemIds", featuredItemIds);
+        properties.put("sourceNamespaces", sourceNamespaces);
+        properties.put("nativeCreativeTabSourceBacked", sourceResolved);
+        properties.put("nativeCreativeTabSourceResolvedFromRuntime", sourceResolved);
+        properties.put("nativeCreativeTabFallbackPopulationUsed", !sourceResolved);
+        properties.put("nativeCreativeTabFallbackOnlyEvidence", !sourceResolved);
+        properties.put("releaseCreativeTabSourceTrusted", sourceResolved);
+        properties.put("nativeCreativeTabPopulationMode", sourceResolved
+                ? "registered_native_module_item_ids"
+                : "fallback_native_module_item_ids_pre_minecraft");
         properties.put("nativeCreativeTabPopulationOwnerClass",
                 "com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs");
+        properties.put("nativeCreativeTabPopulationOwnerMember", "nativeLoaderRegistryBackedCreativeItemIds");
+        properties.put("nativeCreativeTabFullPopulationOwnerMember", "nativeModuleCreativeItemIds");
+        properties.put("nativeCreativeTabFeaturedOwnerMember", "nativeModuleCreativeFeaturedItemIds");
+        properties.put("nativeCreativeTabNamespaceOwnerMember", "nativeModuleCreativeNamespaces");
         return Map.copyOf(properties);
     }
 
@@ -927,34 +945,39 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
     }
 
     private static List<String> registeredNativeModuleCreativeTabItems() {
-        try {
-            return nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeItemIds());
-        } catch (LinkageError ignored) {
-            return List.of();
-        }
+        return nativeCreativeTabMethodValues("nativeModuleCreativeItemIds");
+    }
+
+    private static List<String> registeredNativeModuleCreativeTabRegistryBackedItems() {
+        return nativeCreativeTabMethodValues("nativeLoaderRegistryBackedCreativeItemIds");
     }
 
     private static List<String> registeredNativeModuleCreativeTabFeaturedItems() {
-        try {
-            return nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeFeaturedItemIds());
-        } catch (LinkageError ignored) {
-            return List.of();
-        }
+        return nativeCreativeTabMethodValues("nativeModuleCreativeFeaturedItemIds");
     }
 
     private static List<String> registeredNativeModuleCreativeTabNamespaces() {
+        return nativeCreativeTabMethodValues("nativeModuleCreativeNamespaces");
+    }
+
+    private static List<String> nativeCreativeTabMethodValues(String methodName) {
         try {
-            return nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeNamespaces());
-        } catch (LinkageError ignored) {
+            Class<?> creativeTabsClass = Class.forName(
+                    "com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs",
+                    false,
+                    EchoAshfallNativeModule.class.getClassLoader()
+            );
+            return nativeCreativeTabList(creativeTabsClass.getMethod(methodName).invoke(null));
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException ignored) {
             return List.of();
         }
     }
 
-    private static List<String> nativeCreativeTabList(List<String> values) {
-        if (values == null) {
+    private static List<String> nativeCreativeTabList(Object values) {
+        if (!(values instanceof List<?> list)) {
             return List.of();
         }
-        return values.stream()
+        return list.stream()
                 .map(String::valueOf)
                 .filter(item -> !item.isBlank())
                 .toList();
@@ -975,10 +998,30 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 "echoashfallprotocol:scrap_press",
                 "echoashfallprotocol:factory_controller",
                 "echoashfallprotocol:relay_scanner_lens",
-                "echoashfallprotocol:map_table",
+                "echoashfallprotocol:survey_table",
                 "echoashfallprotocol:nexus_crystal",
                 "echoterminal:echo_terminal",
                 "echoterminal:echo_terminal_remote"
+        );
+    }
+
+    private static List<String> fallbackNativeModulesCreativeFeaturedItems() {
+        return List.of(
+                "echoashfallprotocol:field_manual",
+                "echoashfallprotocol:portable_signal_scanner",
+                "echoashfallprotocol:gas_mask",
+                "echoashfallprotocol:filter_cartridge_basic",
+                "echoashfallprotocol:basic_battery",
+                "echoashfallprotocol:energy_cell",
+                "echoashfallprotocol:hand_recycler",
+                "echoashfallprotocol:water_purifier",
+                "echoashfallprotocol:micro_generator",
+                "echoashfallprotocol:signal_scanner",
+                "echoashfallprotocol:scrap_press",
+                "echoashfallprotocol:factory_controller",
+                "echoashfallprotocol:relay_scanner_lens",
+                "echoashfallprotocol:survey_table",
+                "echoashfallprotocol:nexus_crystal"
         );
     }
 

@@ -1,8 +1,8 @@
 package com.knoxhack.echoprimecore.progression;
 
 import com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.knoxhack.echoprimecore.EchoPrimeCore;
 import com.knoxhack.echoprimecore.registry.ModItems;
 import com.knoxhack.echoprimecore.world.PrimeRelayPostGenerator;

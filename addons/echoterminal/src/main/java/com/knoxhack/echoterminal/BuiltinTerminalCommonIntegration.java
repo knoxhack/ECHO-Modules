@@ -1,6 +1,6 @@
 package com.knoxhack.echoterminal;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoterminal.api.TerminalActionRegistry;
 import com.knoxhack.echoterminal.discovery.TerminalDiscoveryProvider;
 import com.knoxhack.echoterminal.integration.TerminalRuntimeSpineBridge;

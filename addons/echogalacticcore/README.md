@@ -13,6 +13,7 @@ Provides `galacticcore.content`, `galacticcore.celestial_routes`, `galacticcore.
 | Role | `space_exploration` |
 | Side | `common` |
 | Trust | `community` |
+| Public label | Unofficial ECHO Platform port/fork of Galacticraft Legacy |
 
 ## Runtime Targets
 

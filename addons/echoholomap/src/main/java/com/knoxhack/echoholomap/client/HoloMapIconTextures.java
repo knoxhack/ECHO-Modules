@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.EchoHoloMap;
 import com.knoxhack.echoholomap.network.HoloMapSnapshotPacket;
 import com.knoxhack.echoholomap.waypoint.HoloMapWaypoint;
@@ -66,7 +66,7 @@ final class HoloMapIconTextures {
             case NEXUS_ANOMALY -> NEXUS_ANOMALY;
             case DRONE_SCAN -> DRONE_SCAN;
             case REGION -> REGION;
-            case GENERIC -> GENERIC;
+            case GENERIC, STRUCTURE, FACTION -> GENERIC;
         };
     }
 

@@ -3,7 +3,7 @@ package com.knoxhack.echothemecore.client;
 import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.config.ThemeCoreConfig;
 import com.knoxhack.echothemecore.content.ThemeRegistry;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;

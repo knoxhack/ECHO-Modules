@@ -1,6 +1,6 @@
 package com.knoxhack.echoorbitalremnants.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoorbitalremnants.progression.EchoTerminalProgress;
 import com.knoxhack.echoorbitalremnants.progression.EmergencyRocketStatus;
 import com.knoxhack.echoorbitalremnants.progression.LaunchReadiness;
@@ -298,7 +298,7 @@ public final class OrbitalMissionProvider implements TerminalMissionProvider {
     }
 
     private static boolean standaloneOrbital(Player player) {
-        return EchoCoreServices.packMode(player) == com.knoxhack.echocore.api.EchoPackMode.ORBITAL_STANDALONE;
+        return EchoCoreServices.packMode(player) == com.echoplatform.echocore.api.EchoPackMode.ORBITAL_STANDALONE;
     }
 
     private static boolean isAvailable(Player player, EchoTerminalProgress progress, OrbitalMission mission) {

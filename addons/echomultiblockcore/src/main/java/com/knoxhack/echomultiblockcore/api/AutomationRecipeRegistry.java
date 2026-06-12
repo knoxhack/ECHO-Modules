@@ -1,7 +1,7 @@
 package com.knoxhack.echomultiblockcore.api;
 
 import com.knoxhack.echomultiblockcore.EchoMultiblockCore;
-import com.knoxhack.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;

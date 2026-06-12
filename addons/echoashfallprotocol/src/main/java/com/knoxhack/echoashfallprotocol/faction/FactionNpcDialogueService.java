@@ -1,13 +1,13 @@
 package com.knoxhack.echoashfallprotocol.faction;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoFactionAction;
-import com.knoxhack.echocore.api.EchoFactionActionResult;
-import com.knoxhack.echocore.api.EchoFactionContract;
-import com.knoxhack.echocore.api.EchoFactionContractState;
-import com.knoxhack.echocore.api.EchoFactionInteractionSnapshot;
-import com.knoxhack.echocore.api.EchoFactionProfile;
-import com.knoxhack.echocore.api.network.EchoPacketKind;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoFactionAction;
+import com.echoplatform.echocore.api.EchoFactionActionResult;
+import com.echoplatform.echocore.api.EchoFactionContract;
+import com.echoplatform.echocore.api.EchoFactionContractState;
+import com.echoplatform.echocore.api.EchoFactionInteractionSnapshot;
+import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.network.EchoPacketKind;
 import com.knoxhack.echoashfallprotocol.entity.faction.FactionNpcEntity;
 import com.knoxhack.echoashfallprotocol.event.AshfallAdapterCoreExplorationRuntime;
 import com.knoxhack.echoashfallprotocol.network.FactionDialogueOpenPacket;

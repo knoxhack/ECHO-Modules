@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echoplatformcore`, `echovalidationcore`, `echohealthcore`, `echoagentcore`
 
-Optional modules: `echomodpackcommandcenter`, `echocodexcore`
+Optional modules: `echocodexcore`
 
 Provides: `bridge.codex`, `bridge.cyberdex`, `bridge.streaming_logs`, `bridge.safe_actions`, `bridge.confirmations`, `bridge.heartbeat`
 

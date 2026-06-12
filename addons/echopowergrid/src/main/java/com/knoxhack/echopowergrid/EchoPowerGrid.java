@@ -1,6 +1,6 @@
 package com.knoxhack.echopowergrid;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echopowergrid.commands.EchoPowerCommands;
 import com.knoxhack.echopowergrid.grid.PowerNetworkManager;
 import com.knoxhack.echopowergrid.integration.PowerGridCoreIntegration;

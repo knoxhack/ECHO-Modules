@@ -90,11 +90,11 @@ public final class EchoBackendFluidBridge {
                 new BaseFlowingFluid.Properties(() -> (FluidType) type.get(), source, flowing)));
     }
 
-    public static Object emptyFluidResource() {
+    public static FluidResource emptyFluidResource() {
         return FluidResource.EMPTY;
     }
 
-    public static Object fluidResourceOf(Fluid fluid) {
+    public static FluidResource fluidResourceOf(Fluid fluid) {
         return fluid == null ? FluidResource.EMPTY : FluidResource.of(fluid);
     }
 
@@ -106,7 +106,7 @@ public final class EchoBackendFluidBridge {
         return resource instanceof FluidResource fluidResource ? fluidResource.getFluid() : null;
     }
 
-    public static Object createFluidHandler(EchoFluidHandlerDelegate delegate) {
+    public static ResourceHandler<FluidResource> createFluidHandler(EchoFluidHandlerDelegate delegate) {
         return new DelegatingFluidHandler(delegate);
     }
 

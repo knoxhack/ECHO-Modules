@@ -1,7 +1,7 @@
 package com.knoxhack.echoarmory.integration;
 
 import com.knoxhack.echoarmory.EchoArmory;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package com.knoxhack.echoashfallprotocol.integration;
 
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.IRegionService;
-import com.knoxhack.echocore.api.WorldRegionDefinition;
-import com.knoxhack.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.IRegionService;
+import com.echoplatform.echocore.api.WorldRegionDefinition;
+import com.echoplatform.echocore.api.WorldRegionType;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import java.util.List;
 import net.minecraft.resources.Identifier;

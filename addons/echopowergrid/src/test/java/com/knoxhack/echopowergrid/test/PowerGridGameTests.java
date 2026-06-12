@@ -24,7 +24,7 @@ import com.knoxhack.echopowergrid.integration.PowerGridMachineCoreRuntimeProvide
 import com.knoxhack.echopowergrid.menu.PowerNodeMenu;
 import com.knoxhack.echopowergrid.network.PowerGridNetworkSummaryPacket;
 import com.knoxhack.echopowergrid.registry.ModBlocks;
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;

@@ -1,6 +1,6 @@
 package com.knoxhack.echocommunitybridge.config;
 
-import com.knoxhack.echocore.api.config.EchoNativeConfigSpec;
+import com.echoplatform.echocore.api.config.EchoNativeConfigSpec;
 
 public final class CommunityBridgeConfig {
     private static final EchoNativeConfigSpec.Builder BUILDER = new EchoNativeConfigSpec.Builder();

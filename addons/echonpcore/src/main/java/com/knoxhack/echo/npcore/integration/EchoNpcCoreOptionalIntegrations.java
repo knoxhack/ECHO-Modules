@@ -2,8 +2,8 @@ package com.knoxhack.echo.npcore.integration;
 
 import com.knoxhack.echo.npcore.EchoNpcCore;
 import com.knoxhack.echo.npcore.integration.holomap.NpcMapDataProvider;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.atomic.AtomicBoolean;
 

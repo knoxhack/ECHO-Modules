@@ -1,0 +1,466 @@
+{
+  "schema": "echo.openlands.systems.launcher_execution_harness_plan.v1",
+  "namespace": "echoopenlandsprotocol",
+  "version": "0.1.0",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "purpose": "Defines the concrete ECHO Launcher harness responsibilities required to turn launcher_execution_acceptance flows into passing Native, Standalone, and NeoForge launcher reports. This is a harness plan, not preflight evidence.",
+  "sourceContracts": {
+    "launcherExecutionAcceptance": "systems/launcher_execution_acceptance.json",
+    "launcherFlowAcceptance": "systems/launcher_flow_acceptance.json",
+    "distribution": "systems/distribution_alpha_gates.json",
+    "runtimeAdapterLoadPlan": "systems/runtime_adapter_load_plan.json",
+    "runtimeExecutionAcceptance": "systems/runtime_execution_acceptance.json",
+    "runtimeExecutionHarnessPlan": "systems/runtime_execution_harness_plan.json",
+    "playtestFixture": "playtests/mvp_first_hour_acceptance.json",
+    "waystoneContract": "waystones/waystone_contract.json"
+  },
+  "editionHarnesses": [
+    {
+      "edition": "native",
+      "runtimeTarget": "echo_native",
+      "repo": "ECHO-Openlands-Native-Edition",
+      "driverKind": "echo_launcher_native_profile_harness",
+      "entryPoint": "scripts/run-launcher-execution-harness.mjs",
+      "requiredReport": "evidence/native-launcher-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0.echo-addon",
+      "launcherProfileKind": "echo_native",
+      "launcherArtifactRoot": "evidence/launcher-execution/native"
+    },
+    {
+      "edition": "neoforge",
+      "runtimeTarget": "neoforge",
+      "repo": "ECHO-Openlands-NeoForge-Edition",
+      "driverKind": "echo_launcher_neoforge_profile_harness",
+      "entryPoint": "scripts/run-launcher-execution-harness.mjs",
+      "requiredReport": "evidence/neoforge-launcher-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+      "launcherProfileKind": "neoforge",
+      "launcherArtifactRoot": "evidence/launcher-execution/neoforge"
+    },
+    {
+      "edition": "standalone",
+      "runtimeTarget": "echo_runtime_standalone",
+      "repo": "ECHO-Openlands-Standalone-Edition",
+      "driverKind": "echo_launcher_standalone_profile_harness",
+      "entryPoint": "scripts/run-launcher-execution-harness.mjs",
+      "requiredReport": "evidence/standalone-launcher-execution-report.json",
+      "artifactPattern": "echoopenlandsprotocol-0.1.0-standalone.jar",
+      "launcherProfileKind": "echo_runtime_standalone",
+      "launcherArtifactRoot": "evidence/launcher-execution/standalone"
+    }
+  ],
+  "driverSurfaces": [
+    {
+      "id": "launcher_channel_driver",
+      "requiredMethods": [
+        "openChannel(channelId)",
+        "listEditionProfiles()",
+        "selectEditionProfile(packId)",
+        "captureChannelListing()"
+      ],
+      "mustCapture": [
+        "launcherChannel",
+        "selectedEdition",
+        "launcherChannelListing",
+        "profileSelectionLog"
+      ]
+    },
+    {
+      "id": "manifest_driver",
+      "requiredMethods": [
+        "downloadReleaseManifest(packId)",
+        "resolveModuleRequirementGraph(manifestId)",
+        "compareManifestVersions(previousManifestId, newManifestId)",
+        "selectPreviousManifest(packId)",
+        "captureManifestSnapshot(manifestId)"
+      ],
+      "mustCapture": [
+        "resolvedManifestId",
+        "previousManifestId",
+        "newManifestId",
+        "currentManifestId",
+        "moduleRequirementGraph",
+        "schemaCompatibilityDecision"
+      ]
+    },
+    {
+      "id": "artifact_cache_driver",
+      "requiredMethods": [
+        "downloadArtifact(url)",
+        "verifyArtifactSha256(path, expectedSha256)",
+        "verifyArtifactSize(path, expectedSize)",
+        "reuseCachedArtifact(sha256)",
+        "deleteOrCorruptArtifact(path)",
+        "captureCacheState()"
+      ],
+      "mustCapture": [
+        "downloadedArtifactPath",
+        "downloadedArtifactSha256",
+        "changedArtifactSha256",
+        "reusedArtifactSha256",
+        "corruptedArtifactPath",
+        "corruptSha256",
+        "restoredSha256",
+        "rollbackArtifactSha256"
+      ]
+    },
+    {
+      "id": "descriptor_driver",
+      "requiredMethods": [
+        "inspectArtifactDescriptor(path)",
+        "verifyEchoDescriptor(moduleId, version, runtimeTarget)",
+        "verifyNeoForgeDescriptorWhenPresent(path)",
+        "captureDescriptorSummary(path)"
+      ],
+      "mustCapture": [
+        "descriptorId",
+        "descriptorVersion",
+        "descriptorRuntimeTarget",
+        "descriptorValidationResult"
+      ]
+    },
+    {
+      "id": "world_lifecycle_driver",
+      "requiredMethods": [
+        "createNewStandardWorld(label)",
+        "loadExistingWorld(worldId)",
+        "launchSelectedProfile(worldId)",
+        "waitForRuntimeReadySignal(signalId)",
+        "captureWorldSummary(worldId)"
+      ],
+      "mustCapture": [
+        "firstWorldId",
+        "openlandsRuntimeReadySignal",
+        "launchAfterRepairResult",
+        "returnToCurrentManifestResult",
+        "freshWorldSummary"
+      ]
+    },
+    {
+      "id": "state_preservation_driver",
+      "requiredMethods": [
+        "hashWorldDirectory(worldId)",
+        "hashOpenlandsStandardConfig(profileId)",
+        "hashUserKeybinds(profileId)",
+        "captureBedrollSpawn(worldId)",
+        "captureWaystoneState(worldId)",
+        "captureHoloMapDiscovery(worldId)",
+        "countDeletedWorldEntries(before, after)"
+      ],
+      "mustCapture": [
+        "beforeUpdateSaveHash",
+        "afterUpdateSaveHash",
+        "afterUpdateConfigHash",
+        "worldDirectoryHashBeforeRepair",
+        "worldDirectoryHashAfterRepair",
+        "worldDirectoryHashBeforeRollback",
+        "worldDirectoryHashAfterRollback",
+        "openlandsStandardConfigHash",
+        "userKeybindHash",
+        "bedrollSpawnSnapshot",
+        "waystoneStateSnapshot",
+        "holomapDiscoverySnapshot",
+        "rollbackWorldDeletionCount",
+        "repairWorldDeletionCount"
+      ]
+    },
+    {
+      "id": "repair_driver",
+      "requiredMethods": [
+        "startRepairFlow(packId)",
+        "detectMissingOrCorruptArtifact()",
+        "redownloadArtifactFromIndex(artifactId)",
+        "verifyRestoredArtifact(artifactId)",
+        "captureRepairReport()"
+      ],
+      "mustCapture": [
+        "repairDownloadUrl",
+        "repairDetectionResult",
+        "repairHashReport",
+        "repairPreservationReport"
+      ]
+    },
+    {
+      "id": "rollback_driver",
+      "requiredMethods": [
+        "displaySchemaWarningWhenNeeded(worldId, targetManifestId)",
+        "confirmRollbackDecision(decisionId)",
+        "downloadOrReusePreviousArtifacts(manifestId)",
+        "launchOrBlockWorldBySchemaDecision(worldId)",
+        "returnToCurrentManifest(packId)"
+      ],
+      "mustCapture": [
+        "schemaCompatibilityDecision",
+        "previousManifestId",
+        "rollbackArtifactSha256",
+        "returnToCurrentManifestResult"
+      ]
+    },
+    {
+      "id": "launcher_log_driver",
+      "requiredMethods": [
+        "captureLauncherLog(flowId)",
+        "captureManifestJson(flowId)",
+        "captureHashReport(flowId)",
+        "capturePreservationDiff(flowId)",
+        "attachFlowArtifacts(flowId)"
+      ],
+      "mustCapture": [
+        "launcher-install-log.txt",
+        "launcher-update-log.txt",
+        "launcher-repair-log.txt",
+        "launcher-rollback-log.txt",
+        "world-preservation-diff.json",
+        "config-preservation-diff.json"
+      ]
+    }
+  ],
+  "flowBindings": [
+    {
+      "id": "install",
+      "gateIds": [
+        "real_launcher_fresh_install"
+      ],
+      "driverSurfaceIds": [
+        "launcher_channel_driver",
+        "manifest_driver",
+        "artifact_cache_driver",
+        "descriptor_driver",
+        "world_lifecycle_driver",
+        "launcher_log_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "systems/distribution_alpha_gates.json",
+        "META-INF/echo.mod.json"
+      ],
+      "preconditions": [
+        "selected_edition_present_in_launcher_channel",
+        "module_requirement_graph_resolves",
+        "artifact_index_metadata_present_before_public_alpha",
+        "selected_runtime_available"
+      ],
+      "plannedActions": [
+        "open_echo_launcher_public_alpha_channel",
+        "select_openlands_edition_profile",
+        "download_release_manifest_from_index",
+        "resolve_module_requirement_graph",
+        "download_required_module_artifact_to_launcher_cache",
+        "verify_artifact_sha256_and_size_against_index",
+        "verify_required_descriptors_inside_artifact",
+        "create_new_openlands_standard_world",
+        "wait_for_openlands_runtime_ready_signal",
+        "capture_launcher_install_log_manifest_and_world_id"
+      ],
+      "assertions": [
+        "manifest_download_succeeds",
+        "artifact_download_succeeds",
+        "sha256_and_size_match_release_index",
+        "descriptor_id_version_and_runtime_target_match_edition",
+        "openlands_standard_is_selected_by_default",
+        "runtime_reports_openlands_runtime_ready",
+        "fresh_world_is_created_without_hardcore_meters"
+      ],
+      "requiredSavedArtifacts": [
+        "launcher-install-log.txt",
+        "install-manifest.json",
+        "artifact-hash.txt",
+        "fresh-world-summary.json"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": false,
+        "mustCreateWorld": true,
+        "mustPreserveWorlds": false
+      }
+    },
+    {
+      "id": "update",
+      "gateIds": [
+        "real_launcher_artifact_update"
+      ],
+      "driverSurfaceIds": [
+        "manifest_driver",
+        "artifact_cache_driver",
+        "world_lifecycle_driver",
+        "state_preservation_driver",
+        "launcher_log_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "systems/distribution_alpha_gates.json",
+        "playtests/mvp_first_hour_acceptance.json"
+      ],
+      "preconditions": [
+        "previous_manifest_installed",
+        "new_manifest_available",
+        "changed_artifact_has_new_sha256",
+        "unchanged_artifacts_have_same_sha256"
+      ],
+      "plannedActions": [
+        "install_previous_openlands_manifest",
+        "create_or_load_first_hour_acceptance_world",
+        "capture_pre_update_world_and_config_hashes",
+        "switch_launcher_to_new_manifest",
+        "download_only_changed_artifacts",
+        "reuse_unchanged_artifacts_from_cache",
+        "verify_new_artifact_sha256_and_size",
+        "launch_updated_openlands_standard_world",
+        "compare_required_save_load_fields_after_update",
+        "capture_update_log_manifest_and_preservation_report"
+      ],
+      "assertions": [
+        "old_manifest_is_detected",
+        "changed_artifact_is_downloaded_once",
+        "unchanged_artifacts_are_reused",
+        "save_world_directory_is_preserved",
+        "openlands_standard_config_is_preserved",
+        "waystone_and_holomap_schema_remain_readable",
+        "launcher_logs_include_successful_update_marker"
+      ],
+      "requiredSavedArtifacts": [
+        "launcher-update-log.txt",
+        "previous-manifest.json",
+        "updated-manifest.json",
+        "world-preservation-diff.json",
+        "config-preservation-diff.json"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      }
+    },
+    {
+      "id": "repair",
+      "gateIds": [
+        "real_launcher_repair_corrupt_install"
+      ],
+      "driverSurfaceIds": [
+        "artifact_cache_driver",
+        "repair_driver",
+        "descriptor_driver",
+        "world_lifecycle_driver",
+        "state_preservation_driver",
+        "launcher_log_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "systems/distribution_alpha_gates.json",
+        "systems/runtime_adapter_load_plan.json"
+      ],
+      "preconditions": [
+        "installed_manifest_available",
+        "one_required_artifact_missing_or_corrupt",
+        "release_index_has_repair_metadata"
+      ],
+      "plannedActions": [
+        "install_current_openlands_manifest",
+        "create_or_load_first_hour_acceptance_world",
+        "capture_pre_repair_world_and_config_hashes",
+        "delete_or_corrupt_required_module_artifact",
+        "start_launcher_repair_flow",
+        "detect_missing_or_corrupt_artifact",
+        "redownload_artifact_from_release_index",
+        "verify_restored_artifact_sha256_and_size",
+        "launch_repaired_openlands_standard_world",
+        "compare_world_and_config_hashes_after_repair"
+      ],
+      "assertions": [
+        "missing_or_corrupt_artifact_is_detected",
+        "repair_restores_expected_sha256",
+        "descriptor_revalidates_after_repair",
+        "pack_launches_after_repair",
+        "no_world_files_are_deleted",
+        "openlands_standard_config_is_preserved",
+        "adapter_ready_signal_reports_after_repair"
+      ],
+      "requiredSavedArtifacts": [
+        "launcher-repair-log.txt",
+        "corruption-record.json",
+        "repair-manifest.json",
+        "repair-hash-report.json",
+        "repair-preservation-report.json"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      }
+    },
+    {
+      "id": "rollback",
+      "gateIds": [
+        "real_launcher_manifest_rollback",
+        "real_launcher_world_config_preservation"
+      ],
+      "driverSurfaceIds": [
+        "manifest_driver",
+        "artifact_cache_driver",
+        "rollback_driver",
+        "world_lifecycle_driver",
+        "state_preservation_driver",
+        "launcher_log_driver"
+      ],
+      "inputFixtureRefs": [
+        "systems/launcher_flow_acceptance.json",
+        "systems/distribution_alpha_gates.json",
+        "playtests/mvp_first_hour_acceptance.json",
+        "waystones/waystone_contract.json"
+      ],
+      "preconditions": [
+        "previous_manifest_available",
+        "previous_artifacts_available",
+        "world_schema_compatibility_checked",
+        "user_confirmed_schema_warning_when_needed"
+      ],
+      "plannedActions": [
+        "install_current_openlands_manifest",
+        "create_or_load_first_hour_acceptance_world",
+        "capture_pre_rollback_world_config_waystone_and_holomap_hashes",
+        "select_previous_manifest_in_launcher",
+        "display_schema_warning_when_world_is_newer_than_target_manifest",
+        "download_or_reuse_previous_manifest_artifacts",
+        "verify_previous_artifact_sha256_and_size",
+        "launch_or_block_world_according_to_schema_decision",
+        "verify_worlds_and_configs_are_not_deleted",
+        "return_launcher_to_current_manifest_after_test"
+      ],
+      "assertions": [
+        "previous_manifest_is_available",
+        "previous_artifacts_are_available",
+        "schema_warning_is_visible_when_needed",
+        "rollback_does_not_delete_worlds",
+        "rollback_does_not_delete_config",
+        "bedroll_waystone_and_holomap_snapshots_are_preserved_or_blocked_with_warning",
+        "launcher_can_return_to_current_manifest_after_test"
+      ],
+      "requiredSavedArtifacts": [
+        "launcher-rollback-log.txt",
+        "rollback-manifest.json",
+        "schema-compatibility-decision.json",
+        "rollback-preservation-report.json",
+        "return-to-current-manifest-report.json"
+      ],
+      "worldStatePolicy": {
+        "requiresExistingWorld": true,
+        "mustCreateWorld": false,
+        "mustPreserveWorlds": true
+      }
+    }
+  ],
+  "reportAssemblyRules": {
+    "flowResultSource": "flowBindings",
+    "allPreconditionsMustBeSatisfied": true,
+    "allPlannedActionsMustRun": true,
+    "allAssertionsMustPassForFlowPass": true,
+    "allRequiredSavedArtifactsMustExistForFlowPass": true,
+    "worldStatePolicyMustMatchAcceptance": true,
+    "gateClearsOnlyWhenOwningFlowPasses": true,
+    "blockedHarnessDoesNotClearLauncherGates": true,
+    "publicAlphaReadyRequiresRuntimeLauncherFinalReviewAndDistributionApproval": true
+  }
+}

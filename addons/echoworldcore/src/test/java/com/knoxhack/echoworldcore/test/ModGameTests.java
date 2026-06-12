@@ -2,18 +2,18 @@ package com.knoxhack.echoworldcore.test;
 
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.knoxhack.echocore.api.EchoWorldRuntimeBus;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoServiceRegistry;
-import com.knoxhack.echocore.api.IMapMarker;
-import com.knoxhack.echocore.api.NoOpWorldService;
-import com.knoxhack.echocore.api.WorldDiscoverySource;
-import com.knoxhack.echocore.api.WorldHazardDefinition;
-import com.knoxhack.echocore.api.WorldMarker;
-import com.knoxhack.echocore.api.WorldMarkerType;
-import com.knoxhack.echocore.api.WorldRegionDefinition;
-import com.knoxhack.echocore.api.WorldRegionInstance;
-import com.knoxhack.echocore.api.WorldRegionType;
+import com.echoplatform.echocore.api.EchoWorldRuntimeBus;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoServiceRegistry;
+import com.echoplatform.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.NoOpWorldService;
+import com.echoplatform.echocore.api.WorldDiscoverySource;
+import com.echoplatform.echocore.api.WorldHazardDefinition;
+import com.echoplatform.echocore.api.WorldMarker;
+import com.echoplatform.echocore.api.WorldMarkerType;
+import com.echoplatform.echocore.api.WorldRegionDefinition;
+import com.echoplatform.echocore.api.WorldRegionInstance;
+import com.echoplatform.echocore.api.WorldRegionType;
 import com.knoxhack.echoworldcore.EchoWorldCore;
 import com.knoxhack.echoworldcore.content.WorldCoreJsonReloadListener;
 import com.knoxhack.echoworldcore.event.WorldCoreEvents;
@@ -535,8 +535,8 @@ public final class ModGameTests {
         EchoWorldRuntimeBus.fireRegionScanned(new EchoWorldRuntimeBus.RegionScanned(null, region, worldMarker));
         EchoWorldRuntimeBus.fireMarkerRevealed(new EchoWorldRuntimeBus.MarkerRevealed(null, worldMarker));
         EchoWorldRuntimeBus.fireHazardChanged(new EchoWorldRuntimeBus.HazardChanged(
-                null, com.knoxhack.echocore.api.WorldHazardSnapshot.nominal(),
-                new com.knoxhack.echocore.api.WorldHazardSnapshot(java.util.List.of(regionId),
+                null, com.echoplatform.echocore.api.WorldHazardSnapshot.nominal(),
+                new com.echoplatform.echocore.api.WorldHazardSnapshot(java.util.List.of(regionId),
                         java.util.List.of(id("hazard/test")), 25, false, "test")));
         helper.assertTrue(entered.get() == 1 && exited.get() == 1 && discovered.get() == 1 && scanned.get() == 1
                 && marker.get() == 1 && hazard.get() == 1, "Runtime bus should deliver each world event");
@@ -889,7 +889,7 @@ public final class ModGameTests {
                 false));
         ServerPlayer weatherPlayer = helper.makeMockServerPlayerInLevel();
         weatherPlayer.setHealth(20.0F);
-        var weatherTick = service.applyHazardTick(weatherPlayer, new com.knoxhack.echocore.api.WorldHazardSnapshot(
+        var weatherTick = service.applyHazardTick(weatherPlayer, new com.echoplatform.echocore.api.WorldHazardSnapshot(
                 List.of(regionId),
                 List.of(weatherHazardId),
                 50,
@@ -1333,68 +1333,68 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    private static com.knoxhack.echocore.api.mission.IMissionService missionServiceForRegion(
+    private static com.echoplatform.echocore.api.mission.IMissionService missionServiceForRegion(
             Identifier missionId,
             Identifier regionId,
             String difficulty,
             AtomicInteger starts) {
-        com.knoxhack.echocore.api.mission.InMemoryMissionRegistry registry =
-                new com.knoxhack.echocore.api.mission.InMemoryMissionRegistry();
-        registry.registerMission("gametest", com.knoxhack.echocore.api.mission.MissionDefinition
+        com.echoplatform.echocore.api.mission.InMemoryMissionRegistry registry =
+                new com.echoplatform.echocore.api.mission.InMemoryMissionRegistry();
+        registry.registerMission("gametest", com.echoplatform.echocore.api.mission.MissionDefinition
                 .builder(missionId, id("chapter/worldcore_region"))
                 .category("gametest", difficulty)
                 .metadata("worldRegion", regionId.toString())
                 .build());
-        return new com.knoxhack.echocore.api.mission.IMissionService() {
+        return new com.echoplatform.echocore.api.mission.IMissionService() {
             @Override
             public boolean available() {
                 return true;
             }
 
             @Override
-            public void registerChapter(String source, com.knoxhack.echocore.api.mission.MissionChapterDefinition chapter) {
+            public void registerChapter(String source, com.echoplatform.echocore.api.mission.MissionChapterDefinition chapter) {
                 registry.registerChapter(source, chapter);
             }
 
             @Override
-            public void registerMission(String source, com.knoxhack.echocore.api.mission.MissionDefinition mission) {
+            public void registerMission(String source, com.echoplatform.echocore.api.mission.MissionDefinition mission) {
                 registry.registerMission(source, mission);
             }
 
             @Override
-            public java.util.Optional<com.knoxhack.echocore.api.mission.MissionChapterDefinition> chapter(Identifier chapterId) {
+            public java.util.Optional<com.echoplatform.echocore.api.mission.MissionChapterDefinition> chapter(Identifier chapterId) {
                 return registry.chapter(chapterId);
             }
 
             @Override
-            public java.util.Optional<com.knoxhack.echocore.api.mission.MissionDefinition> missionDefinition(Identifier requestedMissionId) {
+            public java.util.Optional<com.echoplatform.echocore.api.mission.MissionDefinition> missionDefinition(Identifier requestedMissionId) {
                 return registry.missionDefinition(requestedMissionId);
             }
 
             @Override
-            public List<com.knoxhack.echocore.api.mission.MissionChapterDefinition> chapters() {
+            public List<com.echoplatform.echocore.api.mission.MissionChapterDefinition> chapters() {
                 return registry.chapters();
             }
 
             @Override
-            public List<com.knoxhack.echocore.api.mission.MissionDefinition> missionDefinitions() {
+            public List<com.echoplatform.echocore.api.mission.MissionDefinition> missionDefinitions() {
                 return registry.missionDefinitions();
             }
 
             @Override
-            public List<com.knoxhack.echocore.api.mission.IMissionProgressView> missions(net.minecraft.world.entity.player.Player player) {
+            public List<com.echoplatform.echocore.api.mission.IMissionProgressView> missions(net.minecraft.world.entity.player.Player player) {
                 return List.of();
             }
 
             @Override
-            public List<com.knoxhack.echocore.api.mission.IMissionProgressView> missions(
+            public List<com.echoplatform.echocore.api.mission.IMissionProgressView> missions(
                     net.minecraft.world.entity.player.Player player,
                     Identifier chapterId) {
                 return List.of();
             }
 
             @Override
-            public java.util.Optional<com.knoxhack.echocore.api.mission.IMissionProgressView> mission(
+            public java.util.Optional<com.echoplatform.echocore.api.mission.IMissionProgressView> mission(
                     net.minecraft.world.entity.player.Player player,
                     Identifier requestedMissionId) {
                 return java.util.Optional.empty();
@@ -1426,7 +1426,7 @@ public final class ModGameTests {
 
             @Override
             public boolean recordObjective(ServerPlayer player,
-                    com.knoxhack.echocore.api.mission.MissionObjectiveType type,
+                    com.echoplatform.echocore.api.mission.MissionObjectiveType type,
                     Identifier target,
                     int amount,
                     Map<String, String> context) {

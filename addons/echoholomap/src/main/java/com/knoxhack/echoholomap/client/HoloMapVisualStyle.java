@@ -1,6 +1,6 @@
 package com.knoxhack.echoholomap.client;
 
-import com.knoxhack.echocore.api.IMapMarker;
+import com.echoplatform.echocore.api.IMapMarker;
 import com.knoxhack.echoholomap.Config;
 import com.knoxhack.echoholomap.network.HoloMapSnapshotPacket;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +36,7 @@ public final class HoloMapVisualStyle {
             case ORBITAL_SCAN -> 0xFFA58BFF;
             case NEXUS_ANOMALY -> HoloMapThemeCoreStyle.color(player, "accent", 0xFFFF8FEA);
             case DRONE_SCAN -> 0xFF7CF7D4;
-            case REGION, GENERIC -> text(player);
+            case REGION, GENERIC, STRUCTURE, FACTION -> text(player);
         };
     }
 
@@ -138,7 +138,7 @@ public final class HoloMapVisualStyle {
         }
     }
 
-    public static boolean booleanConfig(com.knoxhack.echocore.api.config.EchoNativeConfigSpec.BooleanValue value,
+    public static boolean booleanConfig(com.echoplatform.echocore.api.config.EchoNativeConfigSpec.BooleanValue value,
             boolean fallback) {
         try {
             return value.get();

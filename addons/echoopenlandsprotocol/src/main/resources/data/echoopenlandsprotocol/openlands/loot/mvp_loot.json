@@ -1,0 +1,301 @@
+{
+  "schema": "echo.openlands.loot.v1",
+  "namespace": "echoopenlandsprotocol",
+  "runtimeParity": [
+    "echo_native",
+    "echo_runtime_standalone",
+    "neoforge"
+  ],
+  "rules": {
+    "defaultDeath": "recoverable_death_pack",
+    "defaultHostileDropRate": "moderate",
+    "hardlandsOverrides": "May reduce food drops and increase hostile risk without changing item IDs."
+  },
+  "blockDrops": [
+    {
+      "block": "meadow_grass_block",
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "block": "dry_soil",
+          "count": 1
+        }
+      ],
+      "bonusChance": [
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "chance": 0.08,
+          "conditions": [
+            "biome:meadows"
+          ]
+        }
+      ]
+    },
+    {
+      "block": "forest_soil",
+      "tool": "foundation:tool_role/digger",
+      "drops": [
+        {
+          "block": "forest_soil",
+          "count": 1
+        }
+      ],
+      "bonusChance": [
+        {
+          "item": "mushroom",
+          "chance": 0.06,
+          "conditions": [
+            "biome:woodlands"
+          ]
+        }
+      ]
+    },
+    {
+      "block": "glow_crystal_cluster",
+      "tool": "foundation:tool_role/breaker:ferrite_or_better",
+      "drops": [
+        {
+          "item": "glow_crystal",
+          "count": 2
+        }
+      ],
+      "bonusChance": [
+        {
+          "item": "glow_crystal",
+          "chance": 0.35
+        }
+      ]
+    }
+  ],
+  "creatureDrops": [
+    {
+      "creature": "hare",
+      "drops": [
+        {
+          "item": "raw_meat",
+          "count": "0-1"
+        },
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "0-1"
+        }
+      ],
+      "notes": "Low reward to avoid turning starter meadows into a hunting grind."
+    },
+    {
+      "creature": "deer",
+      "drops": [
+        {
+          "item": "raw_meat",
+          "count": "2-4"
+        },
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "1-2"
+        },
+        {
+          "item": "echomaterialcore:bone_shard",
+          "count": "0-2"
+        }
+      ]
+    },
+    {
+      "creature": "boar",
+      "drops": [
+        {
+          "item": "raw_meat",
+          "count": "1-3"
+        },
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "0-1"
+        },
+        {
+          "item": "echomaterialcore:bone_shard",
+          "count": "0-1"
+        }
+      ]
+    },
+    {
+      "creature": "goat",
+      "drops": [
+        {
+          "item": "raw_meat",
+          "count": "1-2"
+        },
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "0-1"
+        }
+      ]
+    },
+    {
+      "creature": "marsh_hen",
+      "drops": [
+        {
+          "item": "raw_meat",
+          "count": "0-1"
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": "0-2"
+        }
+      ]
+    },
+    {
+      "creature": "fish",
+      "drops": [
+        {
+          "item": "fish",
+          "count": "1"
+        }
+      ]
+    },
+    {
+      "creature": "greyling",
+      "drops": [
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "0-1"
+        },
+        {
+          "item": "echomaterialcore:bone_shard",
+          "count": "0-1"
+        }
+      ]
+    },
+    {
+      "creature": "bristleback",
+      "drops": [
+        {
+          "item": "echomaterialcore:hide_strip",
+          "count": "1-2"
+        },
+        {
+          "item": "echomaterialcore:bone_shard",
+          "count": "1-2"
+        },
+        {
+          "item": "raw_meat",
+          "count": "1-2"
+        }
+      ]
+    },
+    {
+      "creature": "hollow_stalker",
+      "drops": [
+        {
+          "item": "glow_crystal",
+          "count": "0-1",
+          "chance": 0.2
+        },
+        {
+          "item": "echomaterialcore:bone_shard",
+          "count": "0-2"
+        }
+      ]
+    },
+    {
+      "creature": "mire_leech",
+      "drops": [
+        {
+          "item": "echomaterialcore:resin",
+          "count": "0-1",
+          "chance": 0.25
+        }
+      ]
+    }
+  ],
+  "chestTables": [
+    {
+      "id": "broken_waystone_cache",
+      "rolls": "2-4",
+      "entries": [
+        {
+          "item": "region_rubbing",
+          "count": "1",
+          "weight": 4
+        },
+        {
+          "item": "cupral_fitting",
+          "count": "1-2",
+          "weight": 3
+        },
+        {
+          "item": "glow_crystal",
+          "count": "1",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "ruined_well_cache",
+      "rolls": "2-3",
+      "entries": [
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": "2-5",
+          "weight": 4
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": "1-3",
+          "weight": 3
+        },
+        {
+          "item": "glow_crystal",
+          "count": "0-1",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "tiny_camp_supply",
+      "rolls": "2-4",
+      "entries": [
+        {
+          "item": "berries",
+          "count": "1-3",
+          "weight": 4
+        },
+        {
+          "item": "echomaterialcore:charcoal_lump",
+          "count": "1-2",
+          "weight": 3
+        },
+        {
+          "item": "small_pack",
+          "count": "0-1",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "old_mine_cache",
+      "rolls": "2-4",
+      "entries": [
+        {
+          "item": "echomaterialcore:cupral_chunk",
+          "count": "1-3",
+          "weight": 4
+        },
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": "2-4",
+          "weight": 3
+        },
+        {
+          "item": "cupral_fitting",
+          "count": "0-1",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "foundationLootParents": {
+    "starterCache": "echocommonloot:starter_cache",
+    "ruinedStorage": "echocommonloot:ruined_storage",
+    "materialScrap": "echocommonloot:material_scrap",
+    "genericBlockDrops": "echocommonloot:generic_block_drops"
+  }
+}

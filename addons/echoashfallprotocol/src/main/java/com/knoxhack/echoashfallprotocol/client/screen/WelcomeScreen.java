@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;

@@ -1,9 +1,9 @@
 package com.knoxhack.echodatacore.integration;
 
-import com.knoxhack.echocore.api.DataServiceDiagnostics;
-import com.knoxhack.echocore.api.EchoCoreServices;
-import com.knoxhack.echocore.api.EchoDiagnosticBlocker;
-import com.knoxhack.echocore.api.EchoDiagnosticService;
+import com.echoplatform.echocore.api.DataServiceDiagnostics;
+import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoDiagnosticBlocker;
+import com.echoplatform.echocore.api.EchoDiagnosticService;
 import com.knoxhack.echodatacore.DataCoreDataService;
 import com.knoxhack.echodatacore.EchoDataCore;
 import java.util.ArrayList;

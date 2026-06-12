@@ -2,7 +2,7 @@ package com.knoxhack.echoterminal.client.screencore;
 
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoScreens;
-import com.knoxhack.echocore.api.EchoRuntimeModules;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.EchoTerminalClient;
 import com.knoxhack.echoterminal.api.TerminalNavigationProfiles;

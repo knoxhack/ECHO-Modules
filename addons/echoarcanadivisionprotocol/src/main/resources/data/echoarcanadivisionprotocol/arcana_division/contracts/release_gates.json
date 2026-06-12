@@ -1,0 +1,16 @@
+{
+  "schema": "echo.arcana_division.release_gates.v1",
+  "channel": "arcana-alpha",
+  "requiredBeforeAlpha": [
+    "All seven Foundation modules load before Arcana Division.",
+    "Arcana Division descriptor requires Foundations and echoarcanacore.",
+    "Arcana component modules are optional at launcher level but must validate when enabled.",
+    "Ashfall profile no longer acts as the ownership source for Arcana routing.",
+    "No Arcana content requires Openlands or Ashfall."
+  ],
+  "evidence": [
+    "scripts/validate-foundations-split.mjs",
+    "addons/echoarcanadivisionprotocol/src/main/resources/data/echoarcanadivisionprotocol/arcana_division/contracts/module_ownership.json",
+    "addons/echoarcanadivisionprotocol/src/main/resources/data/echoarcanadivisionprotocol/arcana_division/contracts/bootstrap_profile_routes.json"
+  ]
+}

@@ -18,11 +18,11 @@ This folder contains NBT structure files for Ashfall faction hubs.
 
 ### Crashbreak Salvage Yard (`crashbreak_salvage/`)
 - **Theme:** Converted train station, market stalls, scrap metal
-- **Key Blocks:** Trade Counter (profession block), Map Table (profession block)
+- **Key Blocks:** Trade Counter (profession block), Survey Table (profession block)
 - **Building Types:**
   - `market_plaza.nbt` - Central town center with trading posts
   - `warehouse.nbt` - Storage building with Trade Counter
-  - `workshop.nbt` - Crafting area with Map Table
+  - `workshop.nbt` - Crafting area with Survey Table
   - `living_quarters.nbt` - NPC housing
   - `street_plaza.nbt` - Open market areas
 
@@ -63,7 +63,7 @@ Place entity markers (armor stands) where you want faction NPCs to spawn:
 
 Make sure to place the profession blocks in your NBT files:
 - Radwarden: `echoashfallprotocol:weapon_rack`, `echoashfallprotocol:supply_crate`
-- Crashbreak: `echoashfallprotocol:trade_counter`, `echoashfallprotocol:map_table`
+- Crashbreak: `echoashfallprotocol:trade_counter`, `echoashfallprotocol:survey_table`
 - Sporebound: `echoashfallprotocol:bio_processing_station`, `echoashfallprotocol:spore_garden`
 
 Villagers will automatically pathfind and claim these blocks to gain the corresponding profession.

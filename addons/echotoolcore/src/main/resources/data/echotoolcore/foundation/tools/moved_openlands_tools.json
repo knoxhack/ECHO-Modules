@@ -1,0 +1,487 @@
+{
+  "schema": "echo.foundation.moved_openlands_tools.v1",
+  "movedOrder": 2,
+  "source": "echoopenlandsprotocol",
+  "canonicalOwner": "echotoolcore",
+  "items": [
+    {
+      "id": "echotoolcore:crude_cutter",
+      "displayName": "Crude Cutter",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "openlands:axe",
+        "openlands:tier/crude"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:crude_cutter",
+      "recipeRefs": [
+        "echotoolcore:crude_cutter"
+      ],
+      "toolStats": {
+        "toolClass": "axe",
+        "tier": "crude",
+        "speed": 2,
+        "durability": 96,
+        "repairsWith": "echomaterialcore:fiber_binding"
+      },
+      "notes": "First tree tool; weak but not frustrating.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_axe"
+    },
+    {
+      "id": "echotoolcore:crude_breaker",
+      "displayName": "Crude Breaker",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "foundation:tool_role/breaker",
+        "openlands:tier/crude"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:crude_breaker",
+      "recipeRefs": [
+        "echotoolcore:crude_breaker"
+      ],
+      "toolStats": {
+        "toolClass": "foundation:tool_role/breaker",
+        "tier": "crude",
+        "speed": 1.8,
+        "durability": 96,
+        "mines": [
+          "echomaterialcore:fieldstone",
+          "limestone",
+          "shale"
+        ]
+      },
+      "notes": "Starts the cave loop without metal gating.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_pick"
+    },
+    {
+      "id": "echotoolcore:crude_digger",
+      "displayName": "Crude Digger",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "openlands:spade",
+        "openlands:tier/crude"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:crude_digger",
+      "recipeRefs": [
+        "echotoolcore:crude_digger"
+      ],
+      "toolStats": {
+        "toolClass": "foundation:tool_role/digger",
+        "tier": "crude",
+        "speed": 2,
+        "durability": 96,
+        "mines": [
+          "forest_soil",
+          "dry_soil",
+          "echomaterialcore:sand",
+          "echomaterialcore:clay",
+          "echomaterialcore:gravel",
+          "mud"
+        ]
+      },
+      "notes": "Early digging and echomaterialcore:clay collection tool.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_spade"
+    },
+    {
+      "id": "echotoolcore:flint_knife",
+      "displayName": "Flint Knife",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "openlands:knife",
+        "openlands:tier/crude"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:flint_knife",
+      "recipeRefs": [
+        "echotoolcore:flint_knife"
+      ],
+      "toolStats": {
+        "toolClass": "knife",
+        "tier": "crude",
+        "speed": 2.2,
+        "durability": 80,
+        "uses": [
+          "fiber_harvest",
+          "hide_cutting",
+          "starter_combat"
+        ]
+      },
+      "notes": "Starter utility blade.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:flint_knife"
+    },
+    {
+      "id": "echotoolcore:field_hammer",
+      "displayName": "Field Hammer",
+      "stackSize": 1,
+      "useType": "builder_tool",
+      "tags": [
+        "foundation:tools",
+        "openlands:builder_ux",
+        "openlands:hammer"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:field_hammer",
+      "recipeRefs": [
+        "echotoolcore:field_hammer"
+      ],
+      "toolStats": {
+        "toolClass": "hammer",
+        "tier": "wood",
+        "durability": 192,
+        "actions": [
+          "shape_cycle",
+          "rotate_block",
+          "copy_variant"
+        ]
+      },
+      "notes": "Builder-first UX tool for slabs, stairs, posts, beams, and wall variants.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_hammer"
+    },
+    {
+      "id": "echotoolcore:cupral_breaker",
+      "displayName": "Cupral Breaker",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "foundation:tool_role/breaker",
+        "openlands:tier/copper"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:cupral_breaker",
+      "recipeRefs": [
+        "echotoolcore:cupral_breaker"
+      ],
+      "toolStats": {
+        "toolClass": "foundation:tool_role/breaker",
+        "tier": "copper",
+        "speed": 3.2,
+        "durability": 192,
+        "mines": [
+          "echomaterialcore:cupral_vein",
+          "echomaterialcore:tinveil_vein"
+        ]
+      },
+      "notes": "First metal pick and waystone repair enabler.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_pick"
+    },
+    {
+      "id": "echotoolcore:bronze_breaker",
+      "displayName": "Bronze Breaker",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "foundation:tool_role/breaker",
+        "openlands:tier/bronze"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:bronze_breaker",
+      "recipeRefs": [
+        "echotoolcore:bronze_breaker"
+      ],
+      "toolStats": {
+        "toolClass": "foundation:tool_role/breaker",
+        "tier": "bronze",
+        "speed": 4,
+        "durability": 320,
+        "mines": [
+          "echomaterialcore:ferrite_vein",
+          "deepstone"
+        ]
+      },
+      "notes": "Exploration tier for old mines and deeper caves.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bronze_pick"
+    },
+    {
+      "id": "echotoolcore:ferrite_breaker",
+      "displayName": "Ferrite Breaker",
+      "stackSize": 1,
+      "useType": "tool",
+      "tags": [
+        "foundation:tools",
+        "foundation:tool_role/breaker",
+        "openlands:tier/iron"
+      ],
+      "model": "handheld",
+      "texture": "echotoolcore:ferrite_breaker",
+      "recipeRefs": [
+        "echotoolcore:ferrite_breaker"
+      ],
+      "toolStats": {
+        "toolClass": "foundation:tool_role/breaker",
+        "tier": "iron",
+        "speed": 5,
+        "durability": 512,
+        "mines": [
+          "glow_crystal_cluster",
+          "deepstone"
+        ]
+      },
+      "notes": "MVP high-tier mining tool.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:iron_pick"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "echotoolcore:crude_cutter",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:crude_cutter",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "discover:echomaterialcore:fieldstone_piece",
+        "craft:echomaterialcore:fiber_binding"
+      ],
+      "parityNotes": "Native and Standalone may show a freeform assembly preview; NeoForge adapter maps to shaped or shapeless backend data.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_axe",
+      "displayName": "Crude Cutter"
+    },
+    {
+      "id": "echotoolcore:crude_breaker",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 3
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:crude_breaker",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "craft:echomaterialcore:fiber_binding",
+        "discover:echomaterialcore:fieldstone_piece"
+      ],
+      "parityNotes": "The pick unlocks stone and shallow ore discovery.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_pick",
+      "displayName": "Crude Breaker"
+    },
+    {
+      "id": "echotoolcore:crude_digger",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fieldstone_piece",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:crude_digger",
+          "count": 1
+        }
+      ],
+      "timeTicks": 40,
+      "unlockedBy": [
+        "craft:echomaterialcore:fiber_binding",
+        "discover:echomaterialcore:fieldstone_piece"
+      ],
+      "parityNotes": "Starter digging tool.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:crude_spade",
+      "displayName": "Crude Digger"
+    },
+    {
+      "id": "echotoolcore:flint_knife",
+      "station": "echostationcore:handcrafting",
+      "inputs": [
+        {
+          "item": "echomaterialcore:flint_shard",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 1
+        },
+        {
+          "item": "echomaterialcore:reed_fiber",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:flint_knife",
+          "count": 1
+        }
+      ],
+      "timeTicks": 30,
+      "unlockedBy": [
+        "discover:echomaterialcore:flint_shard"
+      ],
+      "parityNotes": "Unlocks faster reed/fiber harvest where supported.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:flint_knife"
+    },
+    {
+      "id": "echotoolcore:field_hammer",
+      "station": "echostationcore:field_bench",
+      "inputs": [
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "tag": "foundation:wood/planks",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:field_hammer",
+          "count": 1
+        }
+      ],
+      "timeTicks": 20,
+      "unlockedBy": [
+        "obtain:tag/foundation:wood/planks"
+      ],
+      "parityNotes": "Unlocks shape cycling and rotation.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:wooden_hammer",
+      "displayName": "Field Hammer"
+    },
+    {
+      "id": "echotoolcore:cupral_breaker",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:cupral_bar",
+          "count": 3
+        },
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:cupral_breaker",
+          "count": 1
+        }
+      ],
+      "timeTicks": 120,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:cupral_bar"
+      ],
+      "parityNotes": "First metal pick.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:copper_pick",
+      "displayName": "Cupral Breaker"
+    },
+    {
+      "id": "echotoolcore:bronze_breaker",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:bronze_cast",
+          "count": 3
+        },
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:bronze_breaker",
+          "count": 1
+        }
+      ],
+      "timeTicks": 140,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:bronze_cast"
+      ],
+      "parityNotes": "Unlocks deepstone and iron ore.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:bronze_pick",
+      "displayName": "Bronze Breaker"
+    },
+    {
+      "id": "echotoolcore:ferrite_breaker",
+      "station": "echostationcore:forge_hearth",
+      "inputs": [
+        {
+          "item": "echomaterialcore:ferrite_bar",
+          "count": 3
+        },
+        {
+          "item": "echomaterialcore:branchwood_stick",
+          "count": 2
+        },
+        {
+          "item": "echomaterialcore:fiber_binding",
+          "count": 1
+        }
+      ],
+      "outputs": [
+        {
+          "item": "echotoolcore:ferrite_breaker",
+          "count": 1
+        }
+      ],
+      "timeTicks": 160,
+      "unlockedBy": [
+        "obtain:item/echomaterialcore:ferrite_bar"
+      ],
+      "parityNotes": "MVP high-tier mining.",
+      "legacyOpenlandsId": "echoopenlandsprotocol:iron_pick",
+      "displayName": "Ferrite Breaker"
+    }
+  ]
+}
