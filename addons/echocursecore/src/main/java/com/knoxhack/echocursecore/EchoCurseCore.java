@@ -12,13 +12,16 @@ import com.knoxhack.echocursecore.registry.ModItems;
 import com.knoxhack.echocursecore.registry.ModMenus;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoCurseCore.MODID)
 public final class EchoCurseCore {
     public static final String MODID = "echocursecore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoCurseCore(Object modEventBus) {
+    public EchoCurseCore(IEventBus modEventBus) {
         ModItems.register(modEventBus);
         ModMenus.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
@@ -71,4 +74,5 @@ public final class EchoCurseCore {
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
+
 }

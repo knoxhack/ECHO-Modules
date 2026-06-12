@@ -12,14 +12,17 @@ import com.echoplatform.echocore.api.EchoAddonChapter;
 import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
+@Mod(EchoAetherWorks.MODID)
 public final class EchoAetherWorks {
     public static final String MODID = "echoaetherworks";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoAetherWorks(Object modEventBus) {
+    public EchoAetherWorks(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);

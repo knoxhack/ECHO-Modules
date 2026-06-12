@@ -17,10 +17,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.Rotation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoCurseCore.MODID)
 public final class CurseCoreGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoCurseCore.MODID);
@@ -34,8 +38,17 @@ public final class CurseCoreGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(CurseCoreGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, CURSE_PROVIDER_REGISTERS.getId(),
+                () -> CurseCoreGameTests::curseProviderRegisters);
+        event.register(Registries.TEST_FUNCTION, CURSE_LIFECYCLE.getId(), () -> CurseCoreGameTests::curseLifecycle);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("cursecore_first_slice"));
         register(event, environment, "curse_provider_registers", CURSE_PROVIDER_REGISTERS.getId());

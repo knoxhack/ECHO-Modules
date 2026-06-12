@@ -17,13 +17,16 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoRelicTech.MODID)
 public class EchoRelicTech {
     public static final String MODID = "echorelictech";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoRelicTech(Object modEventBus) {
+    public EchoRelicTech(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);
@@ -109,4 +112,5 @@ public class EchoRelicTech {
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
+
 }

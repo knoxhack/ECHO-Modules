@@ -20,10 +20,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoRiftWorlds.MODID)
 public final class RiftWorldsGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoRiftWorlds.MODID);
@@ -35,8 +39,16 @@ public final class RiftWorldsGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(RiftWorldsGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, RIFT_CRACK.getId(),
+                () -> RiftWorldsGameTests::riftCrackAndPocketEncounter);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("riftworlds_first_slice"));
         register(event, environment, "rift_crack_and_pocket_encounter", RIFT_CRACK.getId());

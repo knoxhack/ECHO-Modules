@@ -11,13 +11,16 @@ import com.knoxhack.echoritualcore.registry.ModItems;
 import com.knoxhack.echoritualcore.registry.ModMenus;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoRitualCore.MODID)
 public final class EchoRitualCore {
     public static final String MODID = "echoritualcore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoRitualCore(Object modEventBus) {
+    public EchoRitualCore(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);
@@ -62,4 +65,5 @@ public final class EchoRitualCore {
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
+
 }

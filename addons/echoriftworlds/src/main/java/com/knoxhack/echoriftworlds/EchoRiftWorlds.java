@@ -10,13 +10,16 @@ import com.knoxhack.echoriftworlds.registry.ModCreativeTabs;
 import com.knoxhack.echoriftworlds.registry.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoRiftWorlds.MODID)
 public final class EchoRiftWorlds {
     public static final String MODID = "echoriftworlds";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoRiftWorlds(Object modEventBus) {
+    public EchoRiftWorlds(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
@@ -59,4 +62,5 @@ public final class EchoRiftWorlds {
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
+
 }

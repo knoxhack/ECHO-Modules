@@ -1,6 +1,7 @@
 package com.knoxhack.echo.adaptercore;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
@@ -54,7 +55,7 @@ public final class EchoBackendRegistryBridge {
     public static <T extends Block> EchoBackendRegistryEntry<T> registerBlock(Object registry, String id,
             Function<BlockBehaviour.Properties, ? extends T> factory,
             UnaryOperator<BlockBehaviour.Properties> properties) {
-        return register(registry, id, () -> factory.apply(blockProperties(properties)));
+        return register(registry, id, () -> factory.apply(blockProperties(registry, id, properties)));
     }
 
     public static EchoBackendRegistryEntry<Block> registerSimpleBlock(Object registry, String id,
@@ -70,7 +71,7 @@ public final class EchoBackendRegistryBridge {
     public static <T extends Item> EchoBackendRegistryEntry<T> registerItem(Object registry, String id,
             Function<Item.Properties, ? extends T> factory,
             UnaryOperator<Item.Properties> properties) {
-        return register(registry, id, () -> factory.apply(itemProperties(properties)));
+        return register(registry, id, () -> factory.apply(itemProperties(registry, id, properties)));
     }
 
     public static EchoBackendRegistryEntry<Item> registerSimpleItem(Object registry, String id,
@@ -79,7 +80,10 @@ public final class EchoBackendRegistryBridge {
     }
 
     public static EchoBackendRegistryEntry<BlockItem> registerSimpleBlockItem(Object registry, EchoBackendRegistryEntry<? extends Block> block) {
-        return register(registry, block.id().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+        return register(registry, block.id().getPath(), () -> new BlockItem(block.get(),
+                new Item.Properties()
+                        .setId(ResourceKey.create(Registries.ITEM, block.id()))
+                        .useBlockDescriptionPrefix()));
     }
 
     @SuppressWarnings("rawtypes")
@@ -103,13 +107,23 @@ public final class EchoBackendRegistryBridge {
         return holder instanceof EchoBackendRegistryEntry<?> entry ? entry : new EchoBackendRegistryEntry<>(holder);
     }
 
-    private static BlockBehaviour.Properties blockProperties(UnaryOperator<BlockBehaviour.Properties> properties) {
-        BlockBehaviour.Properties base = BlockBehaviour.Properties.of();
+    private static BlockBehaviour.Properties blockProperties(Object registry, String id,
+            UnaryOperator<BlockBehaviour.Properties> properties) {
+        BlockBehaviour.Properties base = BlockBehaviour.Properties.of()
+                .setId(ResourceKey.create(Registries.BLOCK, id(registry, id)));
         return properties == null ? base : properties.apply(base);
     }
 
-    private static Item.Properties itemProperties(UnaryOperator<Item.Properties> properties) {
-        Item.Properties base = new Item.Properties();
+    private static Item.Properties itemProperties(Object registry, String id, UnaryOperator<Item.Properties> properties) {
+        Item.Properties base = new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id(registry, id)));
         return properties == null ? base : properties.apply(base);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private static Identifier id(Object registry, String path) {
+        if (registry instanceof DeferredRegister deferredRegister) {
+            return Identifier.fromNamespaceAndPath(deferredRegister.getNamespace(), path);
+        }
+        return Identifier.parse(path);
     }
 }

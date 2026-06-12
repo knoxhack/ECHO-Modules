@@ -7,15 +7,18 @@ import com.knoxhack.echoarcanacore.api.ArcanaCoreServices;
 import com.knoxhack.echoarcanacore.integration.ArcanaCoreMissionIntegration;
 import com.knoxhack.echoarcanacore.service.PersistentAetherService;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import net.minecraft.resources.Identifier;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import org.slf4j.Logger;
 
+@Mod(EchoArcanaCore.MODID)
 public final class EchoArcanaCore {
     public static final String MODID = "echoarcanacore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoArcanaCore(Object modEventBus) {
+    public EchoArcanaCore(IEventBus modEventBus) {
         com.knoxhack.echoarcanacore.integration.prime.ArcanaCorePrimeIntegration.register();
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
     }

@@ -49,6 +49,9 @@ processResources {
         mod_description: mod_description
     ]
     inputs.properties props
+    from("src/main/templates") {
+        expand props
+    }
     filesMatching('META-INF/neoforge.mods.toml') {
         expand props
     }

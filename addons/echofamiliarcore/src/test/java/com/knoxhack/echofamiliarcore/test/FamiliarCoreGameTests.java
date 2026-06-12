@@ -23,10 +23,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Rotation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoFamiliarCore.MODID)
 public final class FamiliarCoreGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoFamiliarCore.MODID);
@@ -38,8 +42,15 @@ public final class FamiliarCoreGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(FamiliarCoreGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, STARTER_BONDS.getId(), () -> FamiliarCoreGameTests::starterBonds);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("familiarcore_first_slice"));
         register(event, environment, "starter_familiar_bonds_persist_and_tick", STARTER_BONDS.getId());

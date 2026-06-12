@@ -28,10 +28,14 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoSpellCore.MODID)
 public final class SpellCoreGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoSpellCore.MODID);
@@ -61,8 +65,29 @@ public final class SpellCoreGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(SpellCoreGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, SPELL_PROVIDER_REGISTERS.getId(),
+                () -> SpellCoreGameTests::spellProviderRegisters);
+        event.register(Registries.TEST_FUNCTION, SIGNAL_FOCUS_CYCLES_SPELL.getId(),
+                () -> SpellCoreGameTests::signalFocusCyclesSpell);
+        event.register(Registries.TEST_FUNCTION, STARTER_SPELL_CASTS.getId(), () -> SpellCoreGameTests::starterSpellCasts);
+        event.register(Registries.TEST_FUNCTION, ASH_VEIL_APPLIES_EFFECT.getId(), () -> SpellCoreGameTests::ashVeilAppliesEffect);
+        event.register(Registries.TEST_FUNCTION, SPELL_DECK_LOADOUT.getId(), () -> SpellCoreGameTests::spellDeckLoadout);
+        event.register(Registries.TEST_FUNCTION, PROJECTILE_SPAWNS.getId(),
+                () -> SpellCoreGameTests::aetherBoltSpawnsProjectile);
+        event.register(Registries.TEST_FUNCTION, MODIFIER_SOCKETS.getId(),
+                () -> SpellCoreGameTests::spellDeckModifierSockets);
+        event.register(Registries.TEST_FUNCTION, ITEM_SOCKET_MENU.getId(),
+                () -> SpellCoreGameTests::spellDeckItemSocketMenuPersists);
+        event.register(Registries.TEST_FUNCTION, EXPANDED_SCHOOLS.getId(), () -> SpellCoreGameTests::expandedSchoolSpellsCast);
+        event.register(Registries.TEST_FUNCTION, FORBIDDEN_SCHOOLS.getId(), () -> SpellCoreGameTests::forbiddenSchoolSpellsCast);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("spellcore_first_slice"));
         register(event, environment, "spell_provider_registers", SPELL_PROVIDER_REGISTERS.getId());

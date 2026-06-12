@@ -1,10 +1,12 @@
 package com.knoxhack.echoarcanadivisionprotocol;
 
 import java.util.List;
+import net.neoforged.fml.common.Mod;
 
 /**
  * Data-first pack root for Arcana Division ownership contracts.
  */
+@Mod(EchoArcanaDivisionProtocol.MODID)
 public final class EchoArcanaDivisionProtocol {
     public static final String MODID = "echoarcanadivisionprotocol";
     public static final List<String> FOUNDATION_MODULES = List.of(

@@ -11,13 +11,16 @@ import com.knoxhack.echospellcore.registry.ModItems;
 import com.knoxhack.echospellcore.registry.ModMenus;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoSpellCore.MODID)
 public final class EchoSpellCore {
     public static final String MODID = "echospellcore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoSpellCore(Object modEventBus) {
+    public EchoSpellCore(IEventBus modEventBus) {
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModMenus.register(modEventBus);
@@ -62,4 +65,5 @@ public final class EchoSpellCore {
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
+
 }

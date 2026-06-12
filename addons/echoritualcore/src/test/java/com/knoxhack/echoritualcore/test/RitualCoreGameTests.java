@@ -28,11 +28,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Rotation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoRitualCore.MODID)
 public final class RitualCoreGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoRitualCore.MODID);
@@ -55,8 +59,25 @@ public final class RitualCoreGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(RitualCoreGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, BASIC_ALTAR_PLACES.getId(), () -> RitualCoreGameTests::basicAltarPlaces);
+        event.register(Registries.TEST_FUNCTION, RITUAL_PROVIDER_REGISTERS.getId(),
+                () -> RitualCoreGameTests::ritualProviderRegisters);
+        event.register(Registries.TEST_FUNCTION, RELICTECH_DATA_CONTRACT.getId(),
+                () -> RitualCoreGameTests::relictechDataContract);
+        event.register(Registries.TEST_FUNCTION, STRUCTURE_VALIDATOR_RECOGNIZES_ARRAY.getId(),
+                () -> RitualCoreGameTests::structureValidatorRecognizesArray);
+        event.register(Registries.TEST_FUNCTION, PEDESTAL_STORES_INPUT.getId(),
+                () -> RitualCoreGameTests::pedestalStoresInput);
+        event.register(Registries.TEST_FUNCTION, NON_RELICTECH_RITUALS_COMPLETE.getId(),
+                () -> RitualCoreGameTests::nonRelictechRitualsComplete);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("ritualcore_hardening"));
         register(event, environment, "basic_altar_places", BASIC_ALTAR_PLACES.getId());

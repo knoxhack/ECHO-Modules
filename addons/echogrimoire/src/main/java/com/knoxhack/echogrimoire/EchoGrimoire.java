@@ -7,13 +7,16 @@ import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echogrimoire.integration.GrimoireMissionIntegration;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoGrimoire.MODID)
 public final class EchoGrimoire {
     public static final String MODID = "echogrimoire";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoGrimoire(Object modEventBus) {
+    public EchoGrimoire(IEventBus modEventBus) {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
     }
 

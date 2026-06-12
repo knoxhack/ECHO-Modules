@@ -34,10 +34,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoRelicTech.MODID)
 public final class RelicTechGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoRelicTech.MODID);
@@ -68,8 +72,31 @@ public final class RelicTechGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(RelicTechGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, RELIC_ANALYZER_PLACES.getId(), () -> RelicTechGameTests::relicAnalyzerPlaces);
+        event.register(Registries.TEST_FUNCTION, CONTAINMENT_LOCKER_PLACES.getId(),
+                () -> RelicTechGameTests::containmentLockerPlaces);
+        event.register(Registries.TEST_FUNCTION, PHASE_ANCHOR_HAS_DATA.getId(), () -> RelicTechGameTests::phaseAnchorHasData);
+        event.register(Registries.TEST_FUNCTION, NULL_BATTERY_STORES_CHARGE.getId(),
+                () -> RelicTechGameTests::nullBatteryStoresCharge);
+        event.register(Registries.TEST_FUNCTION, INSTABILITY_SAVED_DATA.getId(), () -> RelicTechGameTests::instabilitySavedData);
+        event.register(Registries.TEST_FUNCTION, RELIC_API_CREATES_IDENTIFIED_STACK.getId(),
+                () -> RelicTechGameTests::relicApiCreatesIdentifiedStack);
+        event.register(Registries.TEST_FUNCTION, STARTER_RELICS_CREATE_STACKS.getId(),
+                () -> RelicTechGameTests::starterRelicsCreateStacks);
+        event.register(Registries.TEST_FUNCTION, WORKBENCH_ACTION_CONDITION_GATES.getId(),
+                () -> RelicTechGameTests::workbenchActionConditionGates);
+        event.register(Registries.TEST_FUNCTION, CONTAINMENT_LOCKER_FLAGS_AND_CLEARS.getId(),
+                () -> RelicTechGameTests::containmentLockerFlagsAndClears);
+        event.register(Registries.TEST_FUNCTION, MACHINECORE_RUNTIME.getId(),
+                () -> RelicTechGameTests::relicTechMachineCoreRuntimeSnapshotContract);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("relictech_hardening"));
         register(event, environment, "relic_analyzer_places", RELIC_ANALYZER_PLACES.getId());

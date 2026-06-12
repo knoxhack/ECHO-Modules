@@ -14,18 +14,22 @@ import com.knoxhack.echofamiliarcore.registry.ModMenus;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.slf4j.Logger;
 
+@Mod(EchoFamiliarCore.MODID)
 public final class EchoFamiliarCore {
     public static final String MODID = "echofamiliarcore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoFamiliarCore(Object modEventBus) {
+    public EchoFamiliarCore(IEventBus modEventBus) {
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModMenus.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
+        modEventBus.addListener((EntityAttributeCreationEvent event) -> ModEntities.registerAttributes(event));
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onPlayerTick);
     }

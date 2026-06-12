@@ -1,13 +1,17 @@
 package com.knoxhack.echoaetherworks.integration;
 
+import com.knoxhack.echo.machinecore.EchoMachineId;
 import com.knoxhack.echo.machinecore.EchoMachineProfile;
+import com.knoxhack.echo.machinecore.EchoMachineRecipeBinding;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeProvider;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeRegistry;
 import com.knoxhack.echo.machinecore.EchoMachineRuntimeSnapshot;
 import com.knoxhack.echoaetherworks.EchoAetherWorks;
 import com.knoxhack.echoaetherworks.block.entity.AetherStorageBlockEntity;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.core.BlockPos;
@@ -57,9 +61,71 @@ public final class AetherWorksMachineCoreRuntimeProvider implements EchoMachineR
 
     @Override
     public List<EchoMachineProfile> profiles(Player player) {
-        return machines(player).stream()
-                .map(AetherWorksMachineCoreAdapter::profile)
-                .toList();
+        Map<EchoMachineId, EchoMachineProfile> profiles = new LinkedHashMap<>();
+        for (AetherStorageBlockEntity machine : machines(player)) {
+            EchoMachineProfile profile = AetherWorksMachineCoreAdapter.profile(machine);
+            profiles.merge(profile.id(), profile, AetherWorksMachineCoreRuntimeProvider::mergeProfiles);
+        }
+        return List.copyOf(profiles.values());
+    }
+
+    private static EchoMachineProfile mergeProfiles(EchoMachineProfile first, EchoMachineProfile second) {
+        EchoMachineProfile representative = profileScore(second) > profileScore(first) ? second : first;
+        return new EchoMachineProfile(
+                representative.id(),
+                representative.kind(),
+                representative.defaultState(),
+                representative.ownerModule(),
+                representative.machineBlockReference(),
+                mergeRecipeBindings(first.recipeBindings(), second.recipeBindings()),
+                representative.upgradeSlots(),
+                representative.maintenanceProfile(),
+                representative.failureStates(),
+                representative.automationHooks(),
+                representative.integrationRefs(),
+                representative.diagnostics(),
+                representative.attributes()
+        );
+    }
+
+    private static int profileScore(EchoMachineProfile profile) {
+        int score = 0;
+        for (EchoMachineRecipeBinding binding : profile.recipeBindings()) {
+            if (binding == null) {
+                continue;
+            }
+            score += binding.attributes().containsKey("aetherCost") ? 4 : binding.hasRecipe() ? 1 : 0;
+        }
+        score += profile.defaultState().degraded() ? 0 : 1;
+        return score;
+    }
+
+    private static List<EchoMachineRecipeBinding> mergeRecipeBindings(List<EchoMachineRecipeBinding> first,
+                                                                      List<EchoMachineRecipeBinding> second) {
+        Map<String, EchoMachineRecipeBinding> bindings = new LinkedHashMap<>();
+        addRecipeBindings(bindings, first);
+        addRecipeBindings(bindings, second);
+        return List.copyOf(bindings.values());
+    }
+
+    private static void addRecipeBindings(Map<String, EchoMachineRecipeBinding> bindings,
+                                          List<EchoMachineRecipeBinding> source) {
+        for (EchoMachineRecipeBinding binding : source) {
+            if (binding == null) {
+                continue;
+            }
+            bindings.putIfAbsent(recipeBindingKey(binding), binding);
+        }
+    }
+
+    private static String recipeBindingKey(EchoMachineRecipeBinding binding) {
+        if (binding.recipeId() != null) {
+            return binding.recipeId().value();
+        }
+        if (binding.recipeReference() != null) {
+            return binding.recipeReference().referenceId();
+        }
+        return binding.recipeSlot() + binding.attributes().toString();
     }
 
     private static List<AetherStorageBlockEntity> machines(Player player) {

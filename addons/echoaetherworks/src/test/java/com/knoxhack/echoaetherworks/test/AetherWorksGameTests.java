@@ -37,10 +37,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoAetherWorks.MODID)
 public final class AetherWorksGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoAetherWorks.MODID);
@@ -55,8 +59,17 @@ public final class AetherWorksGameTests {
 
     public static void register(IEventBus eventBus) {
         TEST_FUNCTIONS.register(eventBus);
+        eventBus.addListener(AetherWorksGameTests::registerTests);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, CONDENSER_NETWORK.getId(), () -> AetherWorksGameTests::condenserFeedsCellAndPlayer);
+        event.register(Registries.TEST_FUNCTION, MACHINECORE_RUNTIME.getId(),
+                () -> AetherWorksGameTests::aetherWorksMachineCoreRuntimeSnapshotContract);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         Holder<TestEnvironmentDefinition<?>> environment = event.registerEnvironment(id("aetherworks_first_slice"));
         register(event, environment, "condenser_feeds_cell_and_player", CONDENSER_NETWORK.getId());
