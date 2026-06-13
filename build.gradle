@@ -63,6 +63,11 @@ def skyRelayRequiredReleaseModules = [
 
 def galacticSurveyRuntimeModules = [
         'echocore',
+        'echoplatformcore',
+        'echoschemacore',
+        'echovalidationcore',
+        'echocontentcore',
+        'echorecipecore',
         'echoaddonapi',
         'echoadaptercore',
         'echonetcore',
@@ -84,6 +89,11 @@ def galacticSurveyRuntimeModules = [
 
 def galacticSurveyRequiredReleaseModules = [
         'echocore',
+        'echoplatformcore',
+        'echoschemacore',
+        'echovalidationcore',
+        'echocontentcore',
+        'echorecipecore',
         'echoaddonapi',
         'echoadaptercore',
         'echonetcore',

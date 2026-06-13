@@ -140,6 +140,6 @@ Status values:
 
 ## Release Evidence Notes
 
-- On June 13, 2026, `.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain` generated 18 strict compiled runtime records for the Galactic Survey module closure.
+- On June 13, 2026, `.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain` generated 23 strict compiled runtime records for the Galactic Survey module closure, including Foundation dependencies required by Galactic modules.
 - `node scripts\verify-module-release.mjs --release-dir dist\echo-module-release` verified the generated `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, sources, sidecars, package manifests, and checksums.
 - Rows still marked `blocked-with-reason` must keep that status until their own compiled release task and verifier evidence exists.
