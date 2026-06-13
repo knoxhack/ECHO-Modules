@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.runtime_play_audit.v1",
-  "generatedAt": "2026-06-13T21:47:13.215Z",
+  "generatedAt": "2026-06-13T21:51:54.018Z",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "echoRoot": "C:/Development/Github",
   "successStandard": "Actual player-facing runtime proof. Static source, descriptor metadata, class-loads, and contract-only evidence are not enough.",
@@ -12,8 +12,8 @@
   "summary": {
     "runtimeRowCount": 396,
     "resultCounts": {
-      "pass": 3,
-      "partial": 393,
+      "pass": 11,
+      "partial": 385,
       "fail": 0
     },
     "resultCountsByRuntime": {
@@ -25,10 +25,11 @@
         "pass": 3
       },
       "standalone": {
-        "partial": 132
+        "partial": 124,
+        "pass": 8
       }
     },
-    "failingRuntimeRowCount": 393,
+    "failingRuntimeRowCount": 385,
     "packAcceptance": {
       "packLaneCount": 15,
       "resultCounts": {
@@ -129,11 +130,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -379,7 +379,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -389,7 +389,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -770,11 +770,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -1179,7 +1178,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -1189,8 +1188,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -1237,7 +1236,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoadaptercore",
         "missing standalone strict-play blockItems evidence for echoadaptercore",
-        "missing standalone strict-play saveNetwork evidence for echoadaptercore",
         "missing standalone strict-play ui evidence for echoadaptercore",
         "missing standalone strict-play worldgen evidence for echoadaptercore",
         "pack acceptance missing or failing for Arcana-Division Standalone",
@@ -1399,11 +1397,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -1685,7 +1682,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -1695,8 +1692,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -1714,7 +1711,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoaddonapi",
-        "missing standalone strict-play saveNetwork evidence for echoaddonapi",
         "missing standalone strict-play ui evidence for echoaddonapi",
         "missing standalone strict-play worldgen evidence for echoaddonapi",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -1874,11 +1870,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -2161,7 +2156,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -2171,8 +2166,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -2191,7 +2186,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoaetherworks",
         "missing standalone strict-play blockItems evidence for echoaetherworks",
-        "missing standalone strict-play saveNetwork evidence for echoaetherworks",
         "missing standalone strict-play ui evidence for echoaetherworks",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -2280,11 +2274,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -2526,7 +2519,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -2536,18 +2529,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoagentcore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echoagriculturereclamation",
@@ -2653,11 +2644,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -2911,8 +2901,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -2921,8 +2911,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -2933,9 +2923,7 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoagriculturereclamation",
         "missing standalone strict-play blockItems evidence for echoagriculturereclamation",
-        "missing standalone strict-play saveNetwork evidence for echoagriculturereclamation",
-        "missing standalone strict-play ui evidence for echoagriculturereclamation",
-        "missing standalone strict-play worldgen evidence for echoagriculturereclamation"
+        "missing standalone strict-play ui evidence for echoagriculturereclamation"
       ]
     },
     {
@@ -3078,11 +3066,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -3357,7 +3344,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -3367,8 +3354,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -3386,7 +3373,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoarcanacore",
-        "missing standalone strict-play saveNetwork evidence for echoarcanacore",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
     },
@@ -3498,11 +3484,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -3758,7 +3743,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -3768,7 +3753,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -3877,11 +3862,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -4126,7 +4110,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -4136,8 +4120,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -4249,11 +4233,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -4504,7 +4487,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -4514,8 +4497,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -4525,7 +4508,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoarmory",
-        "missing standalone strict-play saveNetwork evidence for echoarmory",
         "missing standalone strict-play ui evidence for echoarmory"
       ]
     },
@@ -4694,11 +4676,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -4981,7 +4962,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
             "worldgen"
@@ -4991,8 +4972,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -5009,7 +4990,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoashfallprotocol",
         "pack acceptance missing or failing for Ashfall Standalone"
       ]
     },
@@ -5150,11 +5130,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -5426,7 +5405,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -5436,8 +5415,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -5454,7 +5433,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoassetcore",
         "pack acceptance missing or failing for Openlands Standalone"
       ]
     },
@@ -5545,11 +5523,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -5793,7 +5770,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -5803,7 +5780,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -5906,11 +5883,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -6154,7 +6130,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -6164,8 +6140,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -6174,7 +6150,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoatmospherecore",
         "missing standalone strict-play worldgen evidence for echoatmospherecore"
       ]
     },
@@ -6269,11 +6244,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -6519,7 +6493,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -6529,7 +6503,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -6645,11 +6619,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -6901,7 +6874,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -6911,8 +6884,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -6923,7 +6896,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echobasegrid",
         "missing standalone strict-play blockItems evidence for echobasegrid",
-        "missing standalone strict-play saveNetwork evidence for echobasegrid",
         "missing standalone strict-play ui evidence for echobasegrid",
         "missing standalone strict-play worldgen evidence for echobasegrid"
       ]
@@ -7077,11 +7049,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -7358,8 +7329,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -7368,8 +7339,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -7386,9 +7357,7 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echobiomecore",
         "missing standalone strict-play ui evidence for echobiomecore",
-        "missing standalone strict-play worldgen evidence for echobiomecore",
         "pack acceptance missing or failing for Openlands Standalone"
       ]
     },
@@ -7498,11 +7467,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -7757,7 +7725,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -7767,8 +7735,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -7779,7 +7747,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoblackboxprotocol",
         "missing standalone strict-play blockItems evidence for echoblackboxprotocol",
-        "missing standalone strict-play saveNetwork evidence for echoblackboxprotocol",
         "missing standalone strict-play ui evidence for echoblackboxprotocol",
         "missing standalone strict-play worldgen evidence for echoblackboxprotocol"
       ]
@@ -8140,11 +8107,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -8541,8 +8507,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -8551,8 +8517,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -8600,7 +8566,6 @@
         "missing standalone strict-play actions evidence for echoblockworks",
         "missing standalone strict-play blockItems evidence for echoblockworks",
         "missing standalone strict-play ui evidence for echoblockworks",
-        "missing standalone strict-play worldgen evidence for echoblockworks",
         "pack acceptance missing or failing for Arcana-Division Standalone",
         "pack acceptance missing or failing for Ashfall Standalone",
         "pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -8692,11 +8657,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -8938,7 +8902,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -8948,7 +8912,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -9049,11 +9013,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -9296,7 +9259,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -9306,18 +9269,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echobridgecore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echocameracore",
@@ -9408,11 +9369,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -9657,7 +9617,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -9667,8 +9627,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -9677,7 +9637,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echocameracore",
         "missing standalone strict-play ui evidence for echocameracore"
       ]
     },
@@ -9765,11 +9724,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -10011,7 +9969,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -10021,7 +9979,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -10122,11 +10080,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -10369,7 +10326,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -10379,8 +10336,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -10481,11 +10438,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -10730,7 +10686,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -10740,8 +10696,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -10750,7 +10706,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echocodexcore",
         "missing standalone strict-play ui evidence for echocodexcore"
       ]
     },
@@ -10843,11 +10798,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -11092,7 +11046,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -11102,8 +11056,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -11112,8 +11066,7 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play blockItems evidence for echocombatcore",
-        "missing standalone strict-play saveNetwork evidence for echocombatcore"
+        "missing standalone strict-play blockItems evidence for echocombatcore"
       ]
     },
     {
@@ -11315,11 +11268,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -11628,7 +11580,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -11638,7 +11590,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -11763,11 +11715,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -12013,7 +11964,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -12023,8 +11974,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -12033,7 +11984,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echocommunitybridge",
         "missing standalone strict-play ui evidence for echocommunitybridge"
       ]
     },
@@ -12188,11 +12138,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -12470,7 +12419,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -12480,8 +12429,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -12499,7 +12448,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echocontentcore",
-        "missing standalone strict-play saveNetwork evidence for echocontentcore",
         "missing standalone strict-play worldgen evidence for echocontentcore",
         "pack acceptance missing or failing for Openlands Standalone"
       ]
@@ -12612,11 +12560,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -12872,7 +12819,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -12882,8 +12829,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -12894,7 +12841,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoconvoyprotocol",
         "missing standalone strict-play blockItems evidence for echoconvoyprotocol",
-        "missing standalone strict-play saveNetwork evidence for echoconvoyprotocol",
         "missing standalone strict-play ui evidence for echoconvoyprotocol",
         "missing standalone strict-play worldgen evidence for echoconvoyprotocol"
       ]
@@ -13258,11 +13204,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -13664,7 +13609,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -13674,8 +13619,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -13722,7 +13667,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echocore",
         "missing standalone strict-play blockItems evidence for echocore",
-        "missing standalone strict-play saveNetwork evidence for echocore",
         "missing standalone strict-play ui evidence for echocore",
         "missing standalone strict-play worldgen evidence for echocore",
         "pack acceptance missing or failing for Arcana-Division Standalone",
@@ -13821,11 +13765,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -14070,7 +14013,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -14080,8 +14023,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -14090,7 +14033,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echocreatorcore",
         "missing standalone strict-play ui evidence for echocreatorcore"
       ]
     },
@@ -14240,11 +14182,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -14523,7 +14464,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -14533,8 +14474,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -14552,7 +14493,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echocreaturecore",
-        "missing standalone strict-play saveNetwork evidence for echocreaturecore",
         "missing standalone strict-play ui evidence for echocreaturecore",
         "missing standalone strict-play worldgen evidence for echocreaturecore",
         "pack acceptance missing or failing for Openlands Standalone"
@@ -14757,11 +14697,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -15070,7 +15009,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -15080,7 +15019,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -15198,11 +15137,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -15444,7 +15382,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -15454,7 +15392,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -15620,11 +15558,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -15905,7 +15842,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -15915,8 +15852,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -15934,7 +15871,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echocursecore",
-        "missing standalone strict-play saveNetwork evidence for echocursecore",
         "missing standalone strict-play ui evidence for echocursecore",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -16026,11 +15962,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -16274,7 +16209,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -16284,8 +16219,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -16294,7 +16229,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echodatacore",
         "missing standalone strict-play worldgen evidence for echodatacore"
       ]
     },
@@ -16376,11 +16310,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -16617,7 +16550,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -16627,7 +16560,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -16724,11 +16657,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -16970,7 +16902,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -16980,18 +16912,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echodifficultycore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echodisastercore",
@@ -17080,11 +17010,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -17328,7 +17257,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -17338,7 +17267,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -17441,11 +17370,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -17689,7 +17617,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -17699,8 +17627,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -17709,8 +17637,7 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play blockItems evidence for echoeconomycore",
-        "missing standalone strict-play saveNetwork evidence for echoeconomycore"
+        "missing standalone strict-play blockItems evidence for echoeconomycore"
       ]
     },
     {
@@ -17804,11 +17731,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -18055,7 +17981,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -18065,8 +17991,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -18077,7 +18003,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoencountercore",
         "missing standalone strict-play blockItems evidence for echoencountercore",
-        "missing standalone strict-play saveNetwork evidence for echoencountercore",
         "missing standalone strict-play worldgen evidence for echoencountercore"
       ]
     },
@@ -18168,11 +18093,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -18416,7 +18340,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -18426,7 +18350,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -18532,11 +18456,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -18782,7 +18705,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -18792,8 +18715,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -18803,7 +18726,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echoeventcore",
-        "missing standalone strict-play saveNetwork evidence for echoeventcore",
         "missing standalone strict-play worldgen evidence for echoeventcore"
       ]
     },
@@ -18897,11 +18819,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -19147,7 +19068,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -19157,7 +19078,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -19264,11 +19185,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -19514,7 +19434,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -19524,7 +19444,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -19688,11 +19608,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -19971,7 +19890,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -19981,8 +19900,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -20000,7 +19919,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echofamiliarcore",
-        "missing standalone strict-play saveNetwork evidence for echofamiliarcore",
         "missing standalone strict-play ui evidence for echofamiliarcore",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -20204,11 +20122,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -20517,7 +20434,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -20527,7 +20444,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -20728,11 +20645,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -21022,7 +20938,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -21032,8 +20948,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -21052,7 +20968,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echogalacticcore",
         "missing standalone strict-play blockItems evidence for echogalacticcore",
-        "missing standalone strict-play saveNetwork evidence for echogalacticcore",
         "missing standalone strict-play ui evidence for echogalacticcore",
         "missing standalone strict-play worldgen evidence for echogalacticcore",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -21225,11 +21140,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -21519,7 +21433,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -21529,7 +21443,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -21701,11 +21615,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -21982,7 +21895,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -21992,8 +21905,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -22010,7 +21923,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echogrimoire",
         "missing standalone strict-play ui evidence for echogrimoire",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -22101,11 +22013,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -22348,7 +22259,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -22358,8 +22269,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -22458,11 +22369,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -22706,7 +22616,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -22716,7 +22626,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -22816,11 +22726,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -23062,7 +22971,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -23072,18 +22981,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echohealthcore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echoholomap",
@@ -23434,11 +23341,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -23832,7 +23738,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -23842,8 +23748,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -24244,11 +24150,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -24642,7 +24547,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -24652,8 +24557,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -25062,11 +24967,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -25463,7 +25367,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -25473,8 +25377,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -25637,11 +25541,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -25898,7 +25801,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -25908,8 +25811,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -25920,7 +25823,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoindustrialnexus",
         "missing standalone strict-play blockItems evidence for echoindustrialnexus",
-        "missing standalone strict-play saveNetwork evidence for echoindustrialnexus",
         "missing standalone strict-play ui evidence for echoindustrialnexus",
         "missing standalone strict-play worldgen evidence for echoindustrialnexus"
       ]
@@ -26011,11 +25913,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -26258,7 +26159,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -26268,8 +26169,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -26636,11 +26537,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -27038,7 +26938,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -27048,8 +26948,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -27193,11 +27093,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -27442,7 +27341,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -27452,7 +27351,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -27560,11 +27459,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -27811,7 +27709,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -27821,8 +27719,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -27832,8 +27730,7 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echologisticscore",
-        "missing standalone strict-play blockItems evidence for echologisticscore",
-        "missing standalone strict-play saveNetwork evidence for echologisticscore"
+        "missing standalone strict-play blockItems evidence for echologisticscore"
       ]
     },
     {
@@ -27994,11 +27891,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -28283,7 +28179,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -28293,8 +28189,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -28313,7 +28209,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echologisticsnetwork",
         "missing standalone strict-play blockItems evidence for echologisticsnetwork",
-        "missing standalone strict-play saveNetwork evidence for echologisticsnetwork",
         "missing standalone strict-play ui evidence for echologisticsnetwork",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
       ]
@@ -28410,11 +28305,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -28661,7 +28555,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -28671,8 +28565,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -28682,8 +28576,7 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echolootcore",
-        "missing standalone strict-play blockItems evidence for echolootcore",
-        "missing standalone strict-play saveNetwork evidence for echolootcore"
+        "missing standalone strict-play blockItems evidence for echolootcore"
       ]
     },
     {
@@ -28777,11 +28670,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -29027,7 +28919,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -29037,8 +28929,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -29047,7 +28939,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echolorecore",
         "missing standalone strict-play ui evidence for echolorecore"
       ]
     },
@@ -29147,11 +29038,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -29395,7 +29285,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -29405,8 +29295,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -29416,8 +29306,7 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echomachinecore",
-        "missing standalone strict-play blockItems evidence for echomachinecore",
-        "missing standalone strict-play saveNetwork evidence for echomachinecore"
+        "missing standalone strict-play blockItems evidence for echomachinecore"
       ]
     },
     {
@@ -29621,11 +29510,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -29935,7 +29823,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -29945,7 +29833,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -30063,11 +29951,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -30309,7 +30196,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -30319,18 +30206,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echometadatacore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echomigrationcore",
@@ -30416,11 +30301,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -30662,7 +30546,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -30672,7 +30556,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -30882,11 +30766,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -31193,7 +31076,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -31203,8 +31086,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -31229,7 +31112,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echomissioncore",
-        "missing standalone strict-play saveNetwork evidence for echomissioncore",
         "missing standalone strict-play worldgen evidence for echomissioncore",
         "pack acceptance missing or failing for Arcana-Division Standalone",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -31322,11 +31204,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -31570,7 +31451,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -31580,8 +31461,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -31590,7 +31471,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echomodulegraph",
         "missing standalone strict-play ui evidence for echomodulegraph"
       ]
     },
@@ -31695,11 +31575,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -31951,7 +31830,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -31961,8 +31840,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -31972,7 +31851,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echomultiblockcore",
-        "missing standalone strict-play saveNetwork evidence for echomultiblockcore",
         "missing standalone strict-play ui evidence for echomultiblockcore",
         "missing standalone strict-play worldgen evidence for echomultiblockcore"
       ]
@@ -32319,11 +32197,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -32715,7 +32592,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -32725,8 +32602,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -32771,7 +32648,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echonetcore",
         "missing standalone strict-play ui evidence for echonetcore",
         "pack acceptance missing or failing for Arcana-Division Standalone",
         "pack acceptance missing or failing for Ashfall Standalone",
@@ -32892,11 +32768,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -33154,7 +33029,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -33164,8 +33039,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -33176,7 +33051,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echonexusprotocol",
         "missing standalone strict-play blockItems evidence for echonexusprotocol",
-        "missing standalone strict-play saveNetwork evidence for echonexusprotocol",
         "missing standalone strict-play ui evidence for echonexusprotocol",
         "missing standalone strict-play worldgen evidence for echonexusprotocol"
       ]
@@ -33271,11 +33145,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -33519,7 +33392,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -33529,8 +33402,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -33646,11 +33519,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -33904,7 +33776,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -33914,8 +33786,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -33926,7 +33798,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echonpcore",
         "missing standalone strict-play blockItems evidence for echonpcore",
-        "missing standalone strict-play saveNetwork evidence for echonpcore",
         "missing standalone strict-play ui evidence for echonpcore",
         "missing standalone strict-play worldgen evidence for echonpcore"
       ]
@@ -34094,11 +33965,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -34386,7 +34256,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -34396,7 +34266,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -34585,11 +34455,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -34876,7 +34745,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -34886,8 +34755,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -34906,7 +34775,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoorbitalremnants",
         "missing standalone strict-play blockItems evidence for echoorbitalremnants",
-        "missing standalone strict-play saveNetwork evidence for echoorbitalremnants",
         "missing standalone strict-play ui evidence for echoorbitalremnants",
         "missing standalone strict-play worldgen evidence for echoorbitalremnants",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -35001,11 +34869,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -35250,7 +35117,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -35260,8 +35127,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -35270,7 +35137,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echopackcore",
         "missing standalone strict-play ui evidence for echopackcore"
       ]
     },
@@ -35358,11 +35224,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -35604,7 +35469,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -35614,7 +35479,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -35766,11 +35631,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -36043,7 +35907,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -36053,8 +35917,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -36071,7 +35935,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoplatformcore",
         "pack acceptance missing or failing for Ashfall Standalone"
       ]
     },
@@ -36164,11 +36027,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -36413,7 +36275,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -36423,8 +36285,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -36433,7 +36295,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoplayercore",
         "missing standalone strict-play worldgen evidence for echoplayercore"
       ]
     },
@@ -36521,11 +36382,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -36767,7 +36627,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -36777,7 +36637,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -36879,11 +36739,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -37127,7 +36986,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -37137,7 +36996,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -37243,11 +37102,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -37488,7 +37346,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -37498,8 +37356,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -37509,8 +37367,7 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echopowercore",
-        "missing standalone strict-play blockItems evidence for echopowercore",
-        "missing standalone strict-play saveNetwork evidence for echopowercore"
+        "missing standalone strict-play blockItems evidence for echopowercore"
       ]
     },
     {
@@ -37674,11 +37531,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -37965,7 +37821,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -37975,8 +37831,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -37995,7 +37851,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echopowergrid",
         "missing standalone strict-play blockItems evidence for echopowergrid",
-        "missing standalone strict-play saveNetwork evidence for echopowergrid",
         "missing standalone strict-play ui evidence for echopowergrid",
         "missing standalone strict-play worldgen evidence for echopowergrid",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -38108,11 +37963,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -38375,7 +38229,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -38385,8 +38239,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -38395,7 +38249,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echopresencelink",
         "missing standalone strict-play ui evidence for echopresencelink"
       ]
     },
@@ -38500,11 +38353,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -38756,7 +38608,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -38766,8 +38618,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -38778,7 +38630,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoprimecore",
         "missing standalone strict-play blockItems evidence for echoprimecore",
-        "missing standalone strict-play saveNetwork evidence for echoprimecore",
         "missing standalone strict-play worldgen evidence for echoprimecore"
       ]
     },
@@ -38982,11 +38833,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -39296,7 +39146,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -39306,8 +39156,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -39332,7 +39182,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echoprogressioncore",
-        "missing standalone strict-play saveNetwork evidence for echoprogressioncore",
         "missing standalone strict-play ui evidence for echoprogressioncore",
         "missing standalone strict-play worldgen evidence for echoprogressioncore",
         "pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -39429,11 +39278,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -39679,7 +39527,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -39689,8 +39537,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -39700,7 +39548,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echoquestdirector",
-        "missing standalone strict-play saveNetwork evidence for echoquestdirector",
         "missing standalone strict-play worldgen evidence for echoquestdirector"
       ]
     },
@@ -39858,11 +39705,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -40145,7 +39991,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -40155,8 +40001,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -40175,7 +40021,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echorecipecore",
         "missing standalone strict-play blockItems evidence for echorecipecore",
-        "missing standalone strict-play saveNetwork evidence for echorecipecore",
         "missing standalone strict-play ui evidence for echorecipecore",
         "pack acceptance missing or failing for Openlands Standalone"
       ]
@@ -40285,11 +40130,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -40543,7 +40387,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -40553,8 +40397,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -40564,7 +40408,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echorecovery",
-        "missing standalone strict-play saveNetwork evidence for echorecovery",
         "missing standalone strict-play ui evidence for echorecovery",
         "missing standalone strict-play worldgen evidence for echorecovery"
       ]
@@ -40673,11 +40516,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -40931,7 +40773,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -40941,8 +40783,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -40953,7 +40795,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echorelictech",
         "missing standalone strict-play blockItems evidence for echorelictech",
-        "missing standalone strict-play saveNetwork evidence for echorelictech",
         "missing standalone strict-play ui evidence for echorelictech",
         "missing standalone strict-play worldgen evidence for echorelictech"
       ]
@@ -41052,11 +40893,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -41304,7 +41144,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -41314,8 +41154,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -41325,7 +41165,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echorendercore",
-        "missing standalone strict-play saveNetwork evidence for echorendercore",
         "missing standalone strict-play ui evidence for echorendercore"
       ]
     },
@@ -41413,11 +41252,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -41659,7 +41497,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -41669,18 +41507,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoreportcore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echoriftworlds",
@@ -41830,11 +41666,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -42114,8 +41949,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -42124,8 +41959,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -42144,8 +41979,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echoriftworlds",
         "missing standalone strict-play blockItems evidence for echoriftworlds",
-        "missing standalone strict-play saveNetwork evidence for echoriftworlds",
-        "missing standalone strict-play worldgen evidence for echoriftworlds",
         "pack acceptance missing or failing for Arcana-Division Standalone"
       ]
     },
@@ -42303,11 +42136,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -42590,7 +42422,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -42600,8 +42432,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -42619,7 +42451,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoritualcore",
-        "missing standalone strict-play saveNetwork evidence for echoritualcore",
         "missing standalone strict-play ui evidence for echoritualcore",
         "missing standalone strict-play worldgen evidence for echoritualcore",
         "pack acceptance missing or failing for Arcana-Division Standalone"
@@ -42717,11 +42548,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -42968,7 +42798,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -42978,7 +42808,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -43209,11 +43039,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -43538,7 +43367,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -43548,8 +43377,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -43574,7 +43403,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoruntimeguard",
-        "missing standalone strict-play saveNetwork evidence for echoruntimeguard",
         "missing standalone strict-play ui evidence for echoruntimeguard",
         "missing standalone strict-play worldgen evidence for echoruntimeguard",
         "pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -43665,11 +43493,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -43911,7 +43738,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -43921,18 +43748,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echoschemacore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echoscreencore",
@@ -44283,11 +44108,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -44681,7 +44505,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
             "worldgen"
@@ -44691,8 +44515,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -44839,11 +44663,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -45092,7 +44915,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -45102,8 +44925,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -45113,7 +44936,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echoscriptcore",
-        "missing standalone strict-play saveNetwork evidence for echoscriptcore",
         "missing standalone strict-play ui evidence for echoscriptcore",
         "missing standalone strict-play worldgen evidence for echoscriptcore"
       ]
@@ -45210,11 +45032,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -45461,7 +45282,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -45471,7 +45292,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -45574,11 +45395,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -45821,7 +45641,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -45831,7 +45651,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -45933,11 +45753,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -46181,7 +46000,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -46191,7 +46010,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -46302,11 +46121,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -46555,7 +46373,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -46565,7 +46383,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -46670,11 +46488,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -46918,7 +46735,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -46928,7 +46745,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -47111,11 +46928,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -47405,7 +47221,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -47415,7 +47231,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -47533,11 +47349,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -47783,7 +47598,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -47793,8 +47608,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -47804,8 +47619,7 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echosocialcore",
-        "missing standalone strict-play blockItems evidence for echosocialcore",
-        "missing standalone strict-play saveNetwork evidence for echosocialcore"
+        "missing standalone strict-play blockItems evidence for echosocialcore"
       ]
     },
     {
@@ -47957,11 +47771,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -48241,7 +48054,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -48251,8 +48064,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -48269,7 +48082,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echosoundcore",
         "missing standalone strict-play ui evidence for echosoundcore",
         "missing standalone strict-play worldgen evidence for echosoundcore",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -48365,11 +48177,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -48615,8 +48426,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -48625,8 +48436,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -48635,9 +48446,7 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play blockItems evidence for echospawncore",
-        "missing standalone strict-play saveNetwork evidence for echospawncore",
-        "missing standalone strict-play worldgen evidence for echospawncore"
+        "missing standalone strict-play blockItems evidence for echospawncore"
       ]
     },
     {
@@ -48794,11 +48603,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -49081,7 +48889,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -49091,8 +48899,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -49110,7 +48918,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echospellcore",
-        "missing standalone strict-play saveNetwork evidence for echospellcore",
         "missing standalone strict-play ui evidence for echospellcore",
         "missing standalone strict-play worldgen evidence for echospellcore",
         "pack acceptance missing or failing for Arcana-Division Standalone"
@@ -49313,11 +49120,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -49625,7 +49431,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -49635,7 +49441,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -49773,11 +49579,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -50031,7 +49836,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -50041,8 +49846,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -50053,7 +49858,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for echostationfall",
         "missing standalone strict-play blockItems evidence for echostationfall",
-        "missing standalone strict-play saveNetwork evidence for echostationfall",
         "missing standalone strict-play ui evidence for echostationfall",
         "missing standalone strict-play worldgen evidence for echostationfall"
       ]
@@ -50145,11 +49949,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -50393,7 +50196,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -50403,8 +50206,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -50413,7 +50216,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echostatuscore",
         "missing standalone strict-play worldgen evidence for echostatuscore"
       ]
     },
@@ -50560,11 +50362,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -50841,7 +50642,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -50851,8 +50652,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -50869,7 +50670,6 @@
       ],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echostructurecore",
         "missing standalone strict-play ui evidence for echostructurecore",
         "missing standalone strict-play worldgen evidence for echostructurecore",
         "pack acceptance missing or failing for Openlands Standalone"
@@ -50967,11 +50767,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -51218,7 +51017,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -51228,7 +51027,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -51329,11 +51128,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -51575,7 +51373,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -51585,7 +51383,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -51960,11 +51758,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -52364,7 +52161,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
             "worldgen"
@@ -52374,8 +52171,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -52523,11 +52320,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -52776,7 +52572,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -52786,7 +52582,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -52892,11 +52688,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -53141,7 +52936,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -53151,8 +52946,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -53161,7 +52956,6 @@
       "packAcceptance": [],
       "result": "partial",
       "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echotextureforge",
         "missing standalone strict-play ui evidence for echotextureforge"
       ]
     },
@@ -53512,11 +53306,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -53909,7 +53702,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -53919,8 +53712,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -54170,11 +53963,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -54482,7 +54274,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -54492,7 +54284,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -54623,11 +54415,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -54877,7 +54668,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -54887,8 +54678,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -54898,7 +54689,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play actions evidence for echotutorialcore",
-        "missing standalone strict-play saveNetwork evidence for echotutorialcore",
         "missing standalone strict-play ui evidence for echotutorialcore",
         "missing standalone strict-play worldgen evidence for echotutorialcore"
       ]
@@ -54987,11 +54777,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -55233,7 +55022,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -55243,18 +55032,16 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
         }
       ],
       "packAcceptance": [],
-      "result": "partial",
-      "blockers": [
-        "missing standalone strict-play saveNetwork evidence for echovalidationcore"
-      ]
+      "result": "pass",
+      "blockers": []
     },
     {
       "moduleId": "echovehiclecore",
@@ -55401,11 +55188,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -55683,7 +55469,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -55693,8 +55479,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -55712,7 +55498,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echovehiclecore",
-        "missing standalone strict-play saveNetwork evidence for echovehiclecore",
         "missing standalone strict-play worldgen evidence for echovehiclecore",
         "pack acceptance missing or failing for Galactic-Survey Standalone"
       ]
@@ -55822,11 +55607,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -56080,7 +55864,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -56090,8 +55874,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -56101,7 +55885,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play blockItems evidence for echoweathercore",
-        "missing standalone strict-play saveNetwork evidence for echoweathercore",
         "missing standalone strict-play ui evidence for echoweathercore",
         "missing standalone strict-play worldgen evidence for echoweathercore"
       ]
@@ -56206,11 +55989,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -56460,7 +56242,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -56470,8 +56252,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -56825,11 +56607,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -57218,8 +56999,8 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "worldgen"
           ]
@@ -57228,8 +57009,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -57275,7 +57056,6 @@
       "result": "partial",
       "blockers": [
         "missing standalone strict-play ui evidence for echoworldcore",
-        "missing standalone strict-play worldgen evidence for echoworldcore",
         "pack acceptance missing or failing for Arcana-Division Standalone",
         "pack acceptance missing or failing for Ashfall Standalone",
         "pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -57480,11 +57260,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -57792,7 +57571,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -57802,7 +57581,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"
@@ -57939,11 +57718,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -58196,7 +57974,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -58206,8 +57984,8 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
-          "moduleCovered": false,
+          "status": "PASS",
+          "moduleCovered": true,
           "requiredFor": [
             "saveNetwork"
           ]
@@ -58218,7 +57996,6 @@
       "blockers": [
         "missing standalone strict-play actions evidence for signalos",
         "missing standalone strict-play blockItems evidence for signalos",
-        "missing standalone strict-play saveNetwork evidence for signalos",
         "missing standalone strict-play ui evidence for signalos"
       ]
     },
@@ -58317,11 +58094,10 @@
           "key": "nativeFullCatalogPlay",
           "path": "ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": true,
           "requiredFor": [
-            "lifecycle",
-            "content"
+            "lifecycle"
           ]
         },
         {
@@ -58570,7 +58346,7 @@
           "key": "standaloneWorldgenPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "worldgen"
@@ -58580,7 +58356,7 @@
           "key": "standaloneSaveReloadPlay",
           "path": "ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
           "found": true,
-          "status": "PARTIAL",
+          "status": "PASS",
           "moduleCovered": false,
           "requiredFor": [
             "saveNetwork"

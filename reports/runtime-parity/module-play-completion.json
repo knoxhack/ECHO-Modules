@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.play_completion.v1",
-  "generatedAt": "2026-06-13T21:47:13.215Z",
+  "generatedAt": "2026-06-13T21:51:54.018Z",
   "modules": [
     {
       "moduleId": "echoaccessibilitycore",
@@ -81,7 +81,6 @@
         "echo_native: pack acceptance missing or failing for Sky-Relay Native",
         "standalone: missing standalone strict-play actions evidence for echoadaptercore",
         "standalone: missing standalone strict-play blockItems evidence for echoadaptercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoadaptercore",
         "standalone: missing standalone strict-play ui evidence for echoadaptercore",
         "standalone: missing standalone strict-play worldgen evidence for echoadaptercore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
@@ -124,7 +123,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoaddonapi",
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play blockItems evidence for echoaddonapi",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoaddonapi",
         "standalone: missing standalone strict-play ui evidence for echoaddonapi",
         "standalone: missing standalone strict-play worldgen evidence for echoaddonapi",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -165,7 +163,6 @@
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play actions evidence for echoaetherworks",
         "standalone: missing standalone strict-play blockItems evidence for echoaetherworks",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoaetherworks",
         "standalone: missing standalone strict-play ui evidence for echoaetherworks",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -179,7 +176,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -187,8 +184,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echoagentcore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echoagentcore",
         "echo_native: missing echo_native strict-play content evidence for echoagentcore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echoagentcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoagentcore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echoagentcore"
       ]
     },
     {
@@ -227,9 +223,7 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoagriculturereclamation",
         "standalone: missing standalone strict-play actions evidence for echoagriculturereclamation",
         "standalone: missing standalone strict-play blockItems evidence for echoagriculturereclamation",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoagriculturereclamation",
-        "standalone: missing standalone strict-play ui evidence for echoagriculturereclamation",
-        "standalone: missing standalone strict-play worldgen evidence for echoagriculturereclamation"
+        "standalone: missing standalone strict-play ui evidence for echoagriculturereclamation"
       ]
     },
     {
@@ -256,7 +250,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoarcanacore",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play blockItems evidence for echoarcanacore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoarcanacore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
     },
@@ -359,7 +352,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoarmory",
         "echo_native: missing echo_native strict-play ui evidence for echoarmory",
         "standalone: missing standalone strict-play blockItems evidence for echoarmory",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoarmory",
         "standalone: missing standalone strict-play ui evidence for echoarmory"
       ]
     },
@@ -397,7 +389,6 @@
         "neoforge: missing neoforge strict-play worldgen evidence for echoashfallprotocol",
         "neoforge: pack acceptance missing or failing for Ashfall NeoForge",
         "echo_native: pack acceptance missing or failing for Ashfall Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoashfallprotocol",
         "standalone: pack acceptance missing or failing for Ashfall Standalone"
       ]
     },
@@ -420,7 +411,6 @@
         "neoforge: pack acceptance missing or failing for Openlands NeoForge",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoassetcore",
         "echo_native: pack acceptance missing or failing for Openlands Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoassetcore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
       ]
     },
@@ -472,7 +462,6 @@
         "echo_native: missing echo_native strict-play content evidence for echoatmospherecore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoatmospherecore",
         "echo_native: missing echo_native strict-play worldgen evidence for echoatmospherecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoatmospherecore",
         "standalone: missing standalone strict-play worldgen evidence for echoatmospherecore"
       ]
     },
@@ -539,7 +528,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echobasegrid",
         "standalone: missing standalone strict-play actions evidence for echobasegrid",
         "standalone: missing standalone strict-play blockItems evidence for echobasegrid",
-        "standalone: missing standalone strict-play saveNetwork evidence for echobasegrid",
         "standalone: missing standalone strict-play ui evidence for echobasegrid",
         "standalone: missing standalone strict-play worldgen evidence for echobasegrid"
       ]
@@ -570,9 +558,7 @@
         "neoforge: pack acceptance missing or failing for Openlands NeoForge",
         "echo_native: missing echo_native strict-play ui evidence for echobiomecore",
         "echo_native: pack acceptance missing or failing for Openlands Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echobiomecore",
         "standalone: missing standalone strict-play ui evidence for echobiomecore",
-        "standalone: missing standalone strict-play worldgen evidence for echobiomecore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
       ]
     },
@@ -613,7 +599,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoblackboxprotocol",
         "standalone: missing standalone strict-play actions evidence for echoblackboxprotocol",
         "standalone: missing standalone strict-play blockItems evidence for echoblackboxprotocol",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoblackboxprotocol",
         "standalone: missing standalone strict-play ui evidence for echoblackboxprotocol",
         "standalone: missing standalone strict-play worldgen evidence for echoblackboxprotocol"
       ]
@@ -660,7 +645,6 @@
         "standalone: missing standalone strict-play actions evidence for echoblockworks",
         "standalone: missing standalone strict-play blockItems evidence for echoblockworks",
         "standalone: missing standalone strict-play ui evidence for echoblockworks",
-        "standalone: missing standalone strict-play worldgen evidence for echoblockworks",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
         "standalone: pack acceptance missing or failing for Ashfall Standalone",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -701,7 +685,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -709,8 +693,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echobridgecore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echobridgecore",
         "echo_native: missing echo_native strict-play content evidence for echobridgecore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echobridgecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echobridgecore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echobridgecore"
       ]
     },
     {
@@ -735,7 +718,6 @@
         "echo_native: missing echo_native strict-play content evidence for echocameracore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocameracore",
         "echo_native: missing echo_native strict-play ui evidence for echocameracore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocameracore",
         "standalone: missing standalone strict-play ui evidence for echocameracore"
       ]
     },
@@ -806,7 +788,6 @@
         "echo_native: missing echo_native strict-play content evidence for echocodexcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocodexcore",
         "echo_native: missing echo_native strict-play ui evidence for echocodexcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocodexcore",
         "standalone: missing standalone strict-play ui evidence for echocodexcore"
       ]
     },
@@ -832,8 +813,7 @@
         "echo_native: missing echo_native strict-play blockItems evidence for echocombatcore",
         "echo_native: missing echo_native strict-play content evidence for echocombatcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocombatcore",
-        "standalone: missing standalone strict-play blockItems evidence for echocombatcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocombatcore"
+        "standalone: missing standalone strict-play blockItems evidence for echocombatcore"
       ]
     },
     {
@@ -899,7 +879,6 @@
         "echo_native: missing echo_native strict-play content evidence for echocommunitybridge",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocommunitybridge",
         "echo_native: missing echo_native strict-play ui evidence for echocommunitybridge",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocommunitybridge",
         "standalone: missing standalone strict-play ui evidence for echocommunitybridge"
       ]
     },
@@ -931,7 +910,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocontentcore",
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "standalone: missing standalone strict-play blockItems evidence for echocontentcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocontentcore",
         "standalone: missing standalone strict-play worldgen evidence for echocontentcore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
       ]
@@ -974,7 +952,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoconvoyprotocol",
         "standalone: missing standalone strict-play actions evidence for echoconvoyprotocol",
         "standalone: missing standalone strict-play blockItems evidence for echoconvoyprotocol",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoconvoyprotocol",
         "standalone: missing standalone strict-play ui evidence for echoconvoyprotocol",
         "standalone: missing standalone strict-play worldgen evidence for echoconvoyprotocol"
       ]
@@ -1026,7 +1003,6 @@
         "echo_native: pack acceptance missing or failing for Sky-Relay Native",
         "standalone: missing standalone strict-play actions evidence for echocore",
         "standalone: missing standalone strict-play blockItems evidence for echocore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocore",
         "standalone: missing standalone strict-play ui evidence for echocore",
         "standalone: missing standalone strict-play worldgen evidence for echocore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
@@ -1058,7 +1034,6 @@
         "echo_native: missing echo_native strict-play content evidence for echocreatorcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echocreatorcore",
         "echo_native: missing echo_native strict-play ui evidence for echocreatorcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocreatorcore",
         "standalone: missing standalone strict-play ui evidence for echocreatorcore"
       ]
     },
@@ -1092,7 +1067,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echocreaturecore",
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "standalone: missing standalone strict-play blockItems evidence for echocreaturecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocreaturecore",
         "standalone: missing standalone strict-play ui evidence for echocreaturecore",
         "standalone: missing standalone strict-play worldgen evidence for echocreaturecore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
@@ -1192,7 +1166,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echocursecore",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play blockItems evidence for echocursecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echocursecore",
         "standalone: missing standalone strict-play ui evidence for echocursecore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -1218,7 +1191,6 @@
         "echo_native: missing echo_native strict-play content evidence for echodatacore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echodatacore",
         "echo_native: missing echo_native strict-play worldgen evidence for echodatacore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echodatacore",
         "standalone: missing standalone strict-play worldgen evidence for echodatacore"
       ]
     },
@@ -1246,7 +1218,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -1254,8 +1226,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echodifficultycore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echodifficultycore",
         "echo_native: missing echo_native strict-play content evidence for echodifficultycore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echodifficultycore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echodifficultycore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echodifficultycore"
       ]
     },
     {
@@ -1306,8 +1277,7 @@
         "echo_native: missing echo_native strict-play blockItems evidence for echoeconomycore",
         "echo_native: missing echo_native strict-play content evidence for echoeconomycore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoeconomycore",
-        "standalone: missing standalone strict-play blockItems evidence for echoeconomycore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoeconomycore"
+        "standalone: missing standalone strict-play blockItems evidence for echoeconomycore"
       ]
     },
     {
@@ -1338,7 +1308,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoencountercore",
         "standalone: missing standalone strict-play actions evidence for echoencountercore",
         "standalone: missing standalone strict-play blockItems evidence for echoencountercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoencountercore",
         "standalone: missing standalone strict-play worldgen evidence for echoencountercore"
       ]
     },
@@ -1394,7 +1363,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoeventcore",
         "echo_native: missing echo_native strict-play worldgen evidence for echoeventcore",
         "standalone: missing standalone strict-play actions evidence for echoeventcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoeventcore",
         "standalone: missing standalone strict-play worldgen evidence for echoeventcore"
       ]
     },
@@ -1489,7 +1457,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echofamiliarcore",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play blockItems evidence for echofamiliarcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echofamiliarcore",
         "standalone: missing standalone strict-play ui evidence for echofamiliarcore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -1577,7 +1544,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play actions evidence for echogalacticcore",
         "standalone: missing standalone strict-play blockItems evidence for echogalacticcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echogalacticcore",
         "standalone: missing standalone strict-play ui evidence for echogalacticcore",
         "standalone: missing standalone strict-play worldgen evidence for echogalacticcore",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -1659,7 +1625,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echogrimoire",
         "echo_native: missing echo_native strict-play ui evidence for echogrimoire",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echogrimoire",
         "standalone: missing standalone strict-play ui evidence for echogrimoire",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
@@ -1722,7 +1687,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -1730,8 +1695,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echohealthcore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echohealthcore",
         "echo_native: missing echo_native strict-play content evidence for echohealthcore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echohealthcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echohealthcore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echohealthcore"
       ]
     },
     {
@@ -1907,7 +1871,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoindustrialnexus",
         "standalone: missing standalone strict-play actions evidence for echoindustrialnexus",
         "standalone: missing standalone strict-play blockItems evidence for echoindustrialnexus",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoindustrialnexus",
         "standalone: missing standalone strict-play ui evidence for echoindustrialnexus",
         "standalone: missing standalone strict-play worldgen evidence for echoindustrialnexus"
       ]
@@ -2039,8 +2002,7 @@
         "echo_native: missing echo_native strict-play content evidence for echologisticscore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echologisticscore",
         "standalone: missing standalone strict-play actions evidence for echologisticscore",
-        "standalone: missing standalone strict-play blockItems evidence for echologisticscore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echologisticscore"
+        "standalone: missing standalone strict-play blockItems evidence for echologisticscore"
       ]
     },
     {
@@ -2080,7 +2042,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play actions evidence for echologisticsnetwork",
         "standalone: missing standalone strict-play blockItems evidence for echologisticsnetwork",
-        "standalone: missing standalone strict-play saveNetwork evidence for echologisticsnetwork",
         "standalone: missing standalone strict-play ui evidence for echologisticsnetwork",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
       ]
@@ -2111,8 +2072,7 @@
         "echo_native: missing echo_native strict-play content evidence for echolootcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echolootcore",
         "standalone: missing standalone strict-play actions evidence for echolootcore",
-        "standalone: missing standalone strict-play blockItems evidence for echolootcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echolootcore"
+        "standalone: missing standalone strict-play blockItems evidence for echolootcore"
       ]
     },
     {
@@ -2138,7 +2098,6 @@
         "echo_native: missing echo_native strict-play content evidence for echolorecore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echolorecore",
         "echo_native: missing echo_native strict-play ui evidence for echolorecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echolorecore",
         "standalone: missing standalone strict-play ui evidence for echolorecore"
       ]
     },
@@ -2166,8 +2125,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echomachinecore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echomachinecore",
         "standalone: missing standalone strict-play actions evidence for echomachinecore",
-        "standalone: missing standalone strict-play blockItems evidence for echomachinecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echomachinecore"
+        "standalone: missing standalone strict-play blockItems evidence for echomachinecore"
       ]
     },
     {
@@ -2220,7 +2178,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -2228,8 +2186,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echometadatacore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echometadatacore",
         "echo_native: missing echo_native strict-play content evidence for echometadatacore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echometadatacore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echometadatacore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echometadatacore"
       ]
     },
     {
@@ -2285,7 +2242,6 @@
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play actions evidence for echomissioncore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echomissioncore",
         "standalone: missing standalone strict-play worldgen evidence for echomissioncore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -2312,7 +2268,6 @@
         "echo_native: missing echo_native strict-play content evidence for echomodulegraph",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echomodulegraph",
         "echo_native: missing echo_native strict-play ui evidence for echomodulegraph",
-        "standalone: missing standalone strict-play saveNetwork evidence for echomodulegraph",
         "standalone: missing standalone strict-play ui evidence for echomodulegraph"
       ]
     },
@@ -2348,7 +2303,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echomultiblockcore",
         "echo_native: missing echo_native strict-play worldgen evidence for echomultiblockcore",
         "standalone: missing standalone strict-play blockItems evidence for echomultiblockcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echomultiblockcore",
         "standalone: missing standalone strict-play ui evidence for echomultiblockcore",
         "standalone: missing standalone strict-play worldgen evidence for echomultiblockcore"
       ]
@@ -2385,7 +2339,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "echo_native: pack acceptance missing or failing for Sky-Relay Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echonetcore",
         "standalone: missing standalone strict-play ui evidence for echonetcore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
         "standalone: pack acceptance missing or failing for Ashfall Standalone",
@@ -2434,7 +2387,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echonexusprotocol",
         "standalone: missing standalone strict-play actions evidence for echonexusprotocol",
         "standalone: missing standalone strict-play blockItems evidence for echonexusprotocol",
-        "standalone: missing standalone strict-play saveNetwork evidence for echonexusprotocol",
         "standalone: missing standalone strict-play ui evidence for echonexusprotocol",
         "standalone: missing standalone strict-play worldgen evidence for echonexusprotocol"
       ]
@@ -2500,7 +2452,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echonpcore",
         "standalone: missing standalone strict-play actions evidence for echonpcore",
         "standalone: missing standalone strict-play blockItems evidence for echonpcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echonpcore",
         "standalone: missing standalone strict-play ui evidence for echonpcore",
         "standalone: missing standalone strict-play worldgen evidence for echonpcore"
       ]
@@ -2594,7 +2545,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play actions evidence for echoorbitalremnants",
         "standalone: missing standalone strict-play blockItems evidence for echoorbitalremnants",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoorbitalremnants",
         "standalone: missing standalone strict-play ui evidence for echoorbitalremnants",
         "standalone: missing standalone strict-play worldgen evidence for echoorbitalremnants",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -2622,7 +2572,6 @@
         "echo_native: missing echo_native strict-play content evidence for echopackcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echopackcore",
         "echo_native: missing echo_native strict-play ui evidence for echopackcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echopackcore",
         "standalone: missing standalone strict-play ui evidence for echopackcore"
       ]
     },
@@ -2669,7 +2618,6 @@
         "echo_native: missing echo_native strict-play content evidence for echoplatformcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoplatformcore",
         "echo_native: pack acceptance missing or failing for Ashfall Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoplatformcore",
         "standalone: pack acceptance missing or failing for Ashfall Standalone"
       ]
     },
@@ -2695,7 +2643,6 @@
         "echo_native: missing echo_native strict-play content evidence for echoplayercore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoplayercore",
         "echo_native: missing echo_native strict-play worldgen evidence for echoplayercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoplayercore",
         "standalone: missing standalone strict-play worldgen evidence for echoplayercore"
       ]
     },
@@ -2770,8 +2717,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echopowercore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echopowercore",
         "standalone: missing standalone strict-play actions evidence for echopowercore",
-        "standalone: missing standalone strict-play blockItems evidence for echopowercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echopowercore"
+        "standalone: missing standalone strict-play blockItems evidence for echopowercore"
       ]
     },
     {
@@ -2814,7 +2760,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play actions evidence for echopowergrid",
         "standalone: missing standalone strict-play blockItems evidence for echopowergrid",
-        "standalone: missing standalone strict-play saveNetwork evidence for echopowergrid",
         "standalone: missing standalone strict-play ui evidence for echopowergrid",
         "standalone: missing standalone strict-play worldgen evidence for echopowergrid",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -2844,7 +2789,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echopresencelink",
         "echo_native: missing echo_native strict-play ui evidence for echopresencelink",
         "echo_native: pack acceptance missing or failing for Ashfall Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echopresencelink",
         "standalone: missing standalone strict-play ui evidence for echopresencelink"
       ]
     },
@@ -2881,7 +2825,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoprimecore",
         "standalone: missing standalone strict-play actions evidence for echoprimecore",
         "standalone: missing standalone strict-play blockItems evidence for echoprimecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoprimecore",
         "standalone: missing standalone strict-play worldgen evidence for echoprimecore"
       ]
     },
@@ -2919,7 +2862,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "standalone: missing standalone strict-play actions evidence for echoprogressioncore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoprogressioncore",
         "standalone: missing standalone strict-play ui evidence for echoprogressioncore",
         "standalone: missing standalone strict-play worldgen evidence for echoprogressioncore",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -2951,7 +2893,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echoquestdirector",
         "echo_native: missing echo_native strict-play worldgen evidence for echoquestdirector",
         "standalone: missing standalone strict-play actions evidence for echoquestdirector",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoquestdirector",
         "standalone: missing standalone strict-play worldgen evidence for echoquestdirector"
       ]
     },
@@ -2990,7 +2931,6 @@
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "standalone: missing standalone strict-play actions evidence for echorecipecore",
         "standalone: missing standalone strict-play blockItems evidence for echorecipecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echorecipecore",
         "standalone: missing standalone strict-play ui evidence for echorecipecore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
       ]
@@ -3029,7 +2969,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echorecovery",
         "echo_native: missing echo_native strict-play worldgen evidence for echorecovery",
         "standalone: missing standalone strict-play blockItems evidence for echorecovery",
-        "standalone: missing standalone strict-play saveNetwork evidence for echorecovery",
         "standalone: missing standalone strict-play ui evidence for echorecovery",
         "standalone: missing standalone strict-play worldgen evidence for echorecovery"
       ]
@@ -3070,7 +3009,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echorelictech",
         "standalone: missing standalone strict-play actions evidence for echorelictech",
         "standalone: missing standalone strict-play blockItems evidence for echorelictech",
-        "standalone: missing standalone strict-play saveNetwork evidence for echorelictech",
         "standalone: missing standalone strict-play ui evidence for echorelictech",
         "standalone: missing standalone strict-play worldgen evidence for echorelictech"
       ]
@@ -3102,7 +3040,6 @@
         "echo_native: missing echo_native strict-play saveNetwork evidence for echorendercore",
         "echo_native: missing echo_native strict-play ui evidence for echorendercore",
         "standalone: missing standalone strict-play blockItems evidence for echorendercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echorendercore",
         "standalone: missing standalone strict-play ui evidence for echorendercore"
       ]
     },
@@ -3115,7 +3052,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -3123,8 +3060,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echoreportcore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echoreportcore",
         "echo_native: missing echo_native strict-play content evidence for echoreportcore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echoreportcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoreportcore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echoreportcore"
       ]
     },
     {
@@ -3159,8 +3095,6 @@
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play actions evidence for echoriftworlds",
         "standalone: missing standalone strict-play blockItems evidence for echoriftworlds",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoriftworlds",
-        "standalone: missing standalone strict-play worldgen evidence for echoriftworlds",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
       ]
     },
@@ -3198,7 +3132,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echoritualcore",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play blockItems evidence for echoritualcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoritualcore",
         "standalone: missing standalone strict-play ui evidence for echoritualcore",
         "standalone: missing standalone strict-play worldgen evidence for echoritualcore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
@@ -3271,7 +3204,6 @@
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "echo_native: pack acceptance missing or failing for Sky-Relay Native",
         "standalone: missing standalone strict-play blockItems evidence for echoruntimeguard",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoruntimeguard",
         "standalone: missing standalone strict-play ui evidence for echoruntimeguard",
         "standalone: missing standalone strict-play worldgen evidence for echoruntimeguard",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -3287,7 +3219,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -3295,8 +3227,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echoschemacore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echoschemacore",
         "echo_native: missing echo_native strict-play content evidence for echoschemacore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echoschemacore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoschemacore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echoschemacore"
       ]
     },
     {
@@ -3370,7 +3301,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echoscriptcore",
         "echo_native: missing echo_native strict-play worldgen evidence for echoscriptcore",
         "standalone: missing standalone strict-play actions evidence for echoscriptcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoscriptcore",
         "standalone: missing standalone strict-play ui evidence for echoscriptcore",
         "standalone: missing standalone strict-play worldgen evidence for echoscriptcore"
       ]
@@ -3597,8 +3527,7 @@
         "echo_native: missing echo_native strict-play content evidence for echosocialcore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echosocialcore",
         "standalone: missing standalone strict-play actions evidence for echosocialcore",
-        "standalone: missing standalone strict-play blockItems evidence for echosocialcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echosocialcore"
+        "standalone: missing standalone strict-play blockItems evidence for echosocialcore"
       ]
     },
     {
@@ -3630,7 +3559,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echosoundcore",
         "echo_native: missing echo_native strict-play worldgen evidence for echosoundcore",
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echosoundcore",
         "standalone: missing standalone strict-play ui evidence for echosoundcore",
         "standalone: missing standalone strict-play worldgen evidence for echosoundcore",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
@@ -3660,9 +3588,7 @@
         "echo_native: missing echo_native strict-play content evidence for echospawncore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echospawncore",
         "echo_native: missing echo_native strict-play worldgen evidence for echospawncore",
-        "standalone: missing standalone strict-play blockItems evidence for echospawncore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echospawncore",
-        "standalone: missing standalone strict-play worldgen evidence for echospawncore"
+        "standalone: missing standalone strict-play blockItems evidence for echospawncore"
       ]
     },
     {
@@ -3699,7 +3625,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echospellcore",
         "echo_native: pack acceptance missing or failing for Arcana-Division Native",
         "standalone: missing standalone strict-play blockItems evidence for echospellcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echospellcore",
         "standalone: missing standalone strict-play ui evidence for echospellcore",
         "standalone: missing standalone strict-play worldgen evidence for echospellcore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone"
@@ -3780,7 +3705,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echostationfall",
         "standalone: missing standalone strict-play actions evidence for echostationfall",
         "standalone: missing standalone strict-play blockItems evidence for echostationfall",
-        "standalone: missing standalone strict-play saveNetwork evidence for echostationfall",
         "standalone: missing standalone strict-play ui evidence for echostationfall",
         "standalone: missing standalone strict-play worldgen evidence for echostationfall"
       ]
@@ -3806,7 +3730,6 @@
         "echo_native: missing echo_native strict-play content evidence for echostatuscore",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echostatuscore",
         "echo_native: missing echo_native strict-play worldgen evidence for echostatuscore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echostatuscore",
         "standalone: missing standalone strict-play worldgen evidence for echostatuscore"
       ]
     },
@@ -3836,7 +3759,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echostructurecore",
         "echo_native: missing echo_native strict-play worldgen evidence for echostructurecore",
         "echo_native: pack acceptance missing or failing for Openlands Native",
-        "standalone: missing standalone strict-play saveNetwork evidence for echostructurecore",
         "standalone: missing standalone strict-play ui evidence for echostructurecore",
         "standalone: missing standalone strict-play worldgen evidence for echostructurecore",
         "standalone: pack acceptance missing or failing for Openlands Standalone"
@@ -4002,7 +3924,6 @@
         "echo_native: missing echo_native strict-play content evidence for echotextureforge",
         "echo_native: missing echo_native strict-play saveNetwork evidence for echotextureforge",
         "echo_native: missing echo_native strict-play ui evidence for echotextureforge",
-        "standalone: missing standalone strict-play saveNetwork evidence for echotextureforge",
         "standalone: missing standalone strict-play ui evidence for echotextureforge"
       ]
     },
@@ -4117,7 +4038,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echotutorialcore",
         "echo_native: missing echo_native strict-play worldgen evidence for echotutorialcore",
         "standalone: missing standalone strict-play actions evidence for echotutorialcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echotutorialcore",
         "standalone: missing standalone strict-play ui evidence for echotutorialcore",
         "standalone: missing standalone strict-play worldgen evidence for echotutorialcore"
       ]
@@ -4131,7 +4051,7 @@
       "runtimeResults": {
         "neoforge": "partial",
         "echo_native": "partial",
-        "standalone": "partial"
+        "standalone": "pass"
       },
       "complete": false,
       "blockers": [
@@ -4139,8 +4059,7 @@
         "neoforge: missing neoforge strict-play lifecycle evidence for echovalidationcore",
         "neoforge: missing neoforge strict-play saveNetwork evidence for echovalidationcore",
         "echo_native: missing echo_native strict-play content evidence for echovalidationcore",
-        "echo_native: missing echo_native strict-play saveNetwork evidence for echovalidationcore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echovalidationcore"
+        "echo_native: missing echo_native strict-play saveNetwork evidence for echovalidationcore"
       ]
     },
     {
@@ -4171,7 +4090,6 @@
         "echo_native: missing echo_native strict-play worldgen evidence for echovehiclecore",
         "echo_native: pack acceptance missing or failing for Galactic-Survey Native",
         "standalone: missing standalone strict-play blockItems evidence for echovehiclecore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echovehiclecore",
         "standalone: missing standalone strict-play worldgen evidence for echovehiclecore",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone"
       ]
@@ -4210,7 +4128,6 @@
         "echo_native: missing echo_native strict-play ui evidence for echoweathercore",
         "echo_native: missing echo_native strict-play worldgen evidence for echoweathercore",
         "standalone: missing standalone strict-play blockItems evidence for echoweathercore",
-        "standalone: missing standalone strict-play saveNetwork evidence for echoweathercore",
         "standalone: missing standalone strict-play ui evidence for echoweathercore",
         "standalone: missing standalone strict-play worldgen evidence for echoweathercore"
       ]
@@ -4280,7 +4197,6 @@
         "echo_native: pack acceptance missing or failing for Openlands Native",
         "echo_native: pack acceptance missing or failing for Sky-Relay Native",
         "standalone: missing standalone strict-play ui evidence for echoworldcore",
-        "standalone: missing standalone strict-play worldgen evidence for echoworldcore",
         "standalone: pack acceptance missing or failing for Arcana-Division Standalone",
         "standalone: pack acceptance missing or failing for Ashfall Standalone",
         "standalone: pack acceptance missing or failing for Galactic-Survey Standalone",
@@ -4361,7 +4277,6 @@
         "echo_native: missing echo_native strict-play ui evidence for signalos",
         "standalone: missing standalone strict-play actions evidence for signalos",
         "standalone: missing standalone strict-play blockItems evidence for signalos",
-        "standalone: missing standalone strict-play saveNetwork evidence for signalos",
         "standalone: missing standalone strict-play ui evidence for signalos"
       ]
     },

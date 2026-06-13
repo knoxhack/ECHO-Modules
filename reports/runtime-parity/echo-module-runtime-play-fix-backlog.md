@@ -1,10 +1,10 @@
 # ECHO Runtime Play Fix Backlog
 
-Generated: 2026-06-13T21:47:13.215Z
+Generated: 2026-06-13T21:51:54.018Z
 
-- Items: 42
-- By category: module_coverage: 20, pack_acceptance: 15, runtime_evidence: 7
-- By owner: ECHO-Arcana-Division-Native-Edition: 1, ECHO-Arcana-Division-NeoForge-Edition: 1, ECHO-Arcana-Division-Standalone-Edition: 1, ECHO-Ashfall-Native-Edition: 1, ECHO-Ashfall-NeoForge-Edition: 1, ECHO-Ashfall-Standalone-Edition: 1, ECHO-Galactic-Survey-Native-Edition: 1, ECHO-Galactic-Survey-NeoForge-Edition: 1, ECHO-Galactic-Survey-Standalone-Edition: 1, ECHO-Modules: 11, ECHO-Native-Platform: 7, ECHO-Openlands-Native-Edition: 1, ECHO-Openlands-NeoForge-Edition: 1, ECHO-Openlands-Standalone-Edition: 1, ECHO-Sky-Relay-Native-Edition: 1, ECHO-Sky-Relay-NeoForge-Edition: 1, ECHO-Sky-Relay-Standalone-Edition: 1, ECHO-Standalone-Runtime: 9
+- Items: 39
+- By category: module_coverage: 20, pack_acceptance: 15, runtime_evidence: 4
+- By owner: ECHO-Arcana-Division-Native-Edition: 1, ECHO-Arcana-Division-NeoForge-Edition: 1, ECHO-Arcana-Division-Standalone-Edition: 1, ECHO-Ashfall-Native-Edition: 1, ECHO-Ashfall-NeoForge-Edition: 1, ECHO-Ashfall-Standalone-Edition: 1, ECHO-Galactic-Survey-Native-Edition: 1, ECHO-Galactic-Survey-NeoForge-Edition: 1, ECHO-Galactic-Survey-Standalone-Edition: 1, ECHO-Modules: 11, ECHO-Native-Platform: 6, ECHO-Openlands-Native-Edition: 1, ECHO-Openlands-NeoForge-Edition: 1, ECHO-Openlands-Standalone-Edition: 1, ECHO-Sky-Relay-Native-Edition: 1, ECHO-Sky-Relay-NeoForge-Edition: 1, ECHO-Sky-Relay-Standalone-Edition: 1, ECHO-Standalone-Runtime: 7
 
 ## P0
 
@@ -298,18 +298,6 @@ Generated: 2026-06-13T21:47:13.215Z
 - First blocker: 60 module(s) still lack PASS echo_native worldgen evidence.
 - Recommended fix: Expand Native strict-play worldgen evidence to cover every module that declares the related feature bucket.
 
-### PLAY-EVIDENCE-ECHO-NATIVE-NATIVEFULLCATALOGPLAY - Produce PASS echo_native evidence for nativeFullCatalogPlay
-
-- Owner: ECHO-Native-Platform
-- Category: runtime_evidence
-- Runtime: echo_native
-- Required proof: lifecycle, content
-- Affected modules: all
-- Evidence: `ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json`
-- Modules: echoaccessibilitycore, echoadaptercore, echoaddonapi, echoaetherworks, echoagentcore, echoagriculturereclamation, echoarcanacore, echoarcanadivisionprotocol, echoarcaneindex, echoarmory, echoashfallprotocol, echoassetcore, echoassetpipeline, echoatmospherecore, echobalancecore, echobasegrid, echobiomecore, echoblackboxprotocol, echoblockworks, echoblueprintcore, echobridgecore, echocameracore, echocapabilitycore, echocinematiccore, echocodexcore, echocombatcore, echocommonloot, echocommunitybridge, echocontentcore, echoconvoyprotocol, echocore, echocreatorcore, echocreaturecore, echocreatureroles, echocurationcore, echocursecore, echodatacore, echodependencydoctor, echodifficultycore, echodisastercore, +92 more
-- First blocker: All bridgeable modules load from packaged Native artifacts, but this is not full player-facing content/action/UI proof.
-- Recommended fix: Expand Native Loader typed host smokes so this report reaches PASS with module-level UI/content/action/world/save evidence, then rerun generateNativeStrictPlayEvidence.
-
 ### PLAY-PACK-OPENLANDS-NATIVE - Complete Openlands Native acceptance evidence
 
 - Owner: ECHO-Openlands-Native-Edition
@@ -426,9 +414,9 @@ Generated: 2026-06-13T21:47:13.215Z
 - Category: module_coverage
 - Runtime: standalone
 - Required proof: saveNetwork
-- Affected modules: 116
-- Modules: echoaccessibilitycore, echoadaptercore, echoaddonapi, echoaetherworks, echoagentcore, echoagriculturereclamation, echoarcanacore, echoarcanadivisionprotocol, echoarmory, echoashfallprotocol, echoassetcore, echoassetpipeline, echoatmospherecore, echobalancecore, echobasegrid, echobiomecore, echoblackboxprotocol, echoblueprintcore, echobridgecore, echocameracore, echocapabilitycore, echocodexcore, echocombatcore, echocommonloot, echocommunitybridge, echocontentcore, echoconvoyprotocol, echocore, echocreatorcore, echocreaturecore, echocreatureroles, echocurationcore, echocursecore, echodatacore, echodifficultycore, echodisastercore, echoeconomycore, echoencountercore, echoequipmentcore, echoeventcore, +76 more
-- First blocker: 116 module(s) still lack PASS standalone saveNetwork evidence.
+- Affected modules: 37
+- Modules: echoaccessibilitycore, echoarcanadivisionprotocol, echoassetpipeline, echobalancecore, echoblueprintcore, echocapabilitycore, echocommonloot, echocreatureroles, echocurationcore, echodisastercore, echoequipmentcore, echoexpeditioncore, echofactioncore, echofoundationcore, echogalacticsurveyprotocol, echohazardcore, echolocalizationcore, echomaterialcore, echomigrationcore, echoopenlandsprotocol, echopackdiff, echoplaytestcore, echopolicycore, echoruincore, echoseasoncore, echoserveropscore, echosessioncore, echosettlementcore, echoskillcore, echoskyrelayprotocol, echostationcore, echosupplycore, echotelemetrycore, echoterritorycore, echotoolcore, echoworldstarter, signalosexample
+- First blocker: 37 module(s) still lack PASS standalone saveNetwork evidence.
 - Recommended fix: Expand Standalone strict-play saveNetwork evidence to cover every module that declares the related feature bucket.
 
 ### PLAY-COVERAGE-STANDALONE-UI - Expand standalone ui proof to every expected module
@@ -448,31 +436,8 @@ Generated: 2026-06-13T21:47:13.215Z
 - Category: module_coverage
 - Runtime: standalone
 - Required proof: worldgen
-- Affected modules: 64
-- Modules: echoadaptercore, echoaddonapi, echoagriculturereclamation, echoarcanadivisionprotocol, echoatmospherecore, echobasegrid, echobiomecore, echoblackboxprotocol, echoblockworks, echocommonloot, echocontentcore, echoconvoyprotocol, echocore, echocreaturecore, echocreatureroles, echodatacore, echodisastercore, echoencountercore, echoeventcore, echoexpeditioncore, echofoundationcore, echogalacticcore, echogalacticsurveyprotocol, echohazardcore, echoholomap, echohudcore, echoindustrialnexus, echolens, echomaterialcore, echomissioncore, echomultiblockcore, echonexusprotocol, echonpcore, echoopenlandsprotocol, echoorbitalremnants, echoplayercore, echopowergrid, echoprimecore, echoprogressioncore, echoquestdirector, +24 more
-- First blocker: 64 module(s) still lack PASS standalone worldgen evidence.
+- Affected modules: 58
+- Modules: echoadaptercore, echoaddonapi, echoarcanadivisionprotocol, echoatmospherecore, echobasegrid, echoblackboxprotocol, echocommonloot, echocontentcore, echoconvoyprotocol, echocore, echocreaturecore, echocreatureroles, echodatacore, echodisastercore, echoencountercore, echoeventcore, echoexpeditioncore, echofoundationcore, echogalacticcore, echogalacticsurveyprotocol, echohazardcore, echoholomap, echohudcore, echoindustrialnexus, echolens, echomaterialcore, echomissioncore, echomultiblockcore, echonexusprotocol, echonpcore, echoopenlandsprotocol, echoorbitalremnants, echoplayercore, echopowergrid, echoprimecore, echoprogressioncore, echoquestdirector, echorecovery, echorelictech, echoritualcore, +18 more
+- First blocker: 58 module(s) still lack PASS standalone worldgen evidence.
 - Recommended fix: Expand Standalone strict-play worldgen evidence to cover every module that declares the related feature bucket.
-
-### PLAY-EVIDENCE-STANDALONE-STANDALONESAVERELOADPLAY - Produce PASS standalone evidence for standaloneSaveReloadPlay
-
-- Owner: ECHO-Standalone-Runtime
-- Category: runtime_evidence
-- Runtime: standalone
-- Required proof: saveNetwork
-- Affected modules: 0
-- Evidence: `ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json`
-- First blocker: Save/continue proof exists, but it is not module-specific and cannot satisfy strict-play module rows yet.
-- Recommended fix: Expand Standalone runtime/client smokes so this report reaches PASS with module-level controller, voxel/content, action, worldgen, and save/reload evidence, then rerun generateStandaloneStrictPlayEvidence.
-
-### PLAY-EVIDENCE-STANDALONE-STANDALONEWORLDGENPLAY - Produce PASS standalone evidence for standaloneWorldgenPlay
-
-- Owner: ECHO-Standalone-Runtime
-- Category: runtime_evidence
-- Runtime: standalone
-- Required proof: worldgen
-- Affected modules: 4
-- Evidence: `ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json`
-- Modules: echoashfallprotocol, echoruntimehost, echoscreencore, echoterminal
-- First blocker: Current worldgen proof is client-world-interaction scoped; full terrain/datapack generation evidence is still required for every worldgen module.
-- Recommended fix: Expand Standalone runtime/client smokes so this report reaches PASS with module-level controller, voxel/content, action, worldgen, and save/reload evidence, then rerun generateStandaloneStrictPlayEvidence.
 

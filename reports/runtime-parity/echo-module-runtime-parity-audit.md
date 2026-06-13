@@ -1,6 +1,6 @@
 # ECHO Module Runtime Parity Audit
 
-Generated: 2026-06-13T21:47:13.215Z
+Generated: 2026-06-13T21:52:54.226Z
 
 ## Summary
 
@@ -43,7 +43,7 @@ Generated: 2026-06-13T21:47:13.215Z
 - No descriptor main entrypoint source mismatch was found.
 - Native Loader has UI/resource/network host bridge code, but visible client routes must be accepted by live host evidence before they pass this audit.
 - Standalone has surface renderers, but Native activation surface projection is treated as headless until standalone UI/runtime controller evidence proves player-visible behavior.
-- Preferred pack module sets differ across lanes for: Ashfall.
+- Preferred pack module sets are aligned across lanes for every product.
 
 ## Runtime Result Counts
 
@@ -57,21 +57,21 @@ Generated: 2026-06-13T21:47:13.215Z
 
 | Repo | Family | Modules | Missing visible surfaces | Missing content baseline |
 | --- | --- | ---: | --- | --- |
-| ECHO-Arcana-Division-Native-Edition | echo-addon | 28 |  |  |
-| ECHO-Arcana-Division-NeoForge-Edition | neoforge | 28 |  |  |
-| ECHO-Arcana-Division-Standalone-Edition | standalone | 28 |  |  |
-| ECHO-Ashfall-Native-Edition | echo-addon | 16 |  |  |
-| ECHO-Ashfall-NeoForge-Edition | neoforge | 14 |  |  |
-| ECHO-Ashfall-Standalone-Edition | standalone | 14 |  |  |
-| ECHO-Galactic-Survey-Native-Edition | echo-addon | 23 |  |  |
-| ECHO-Galactic-Survey-NeoForge-Edition | neoforge | 23 |  |  |
-| ECHO-Galactic-Survey-Standalone-Edition | standalone | 23 |  |  |
-| ECHO-Openlands-Native-Edition | echo-addon | 27 |  |  |
-| ECHO-Openlands-NeoForge-Edition | neoforge | 27 |  |  |
-| ECHO-Openlands-Standalone-Edition | standalone | 27 |  |  |
-| ECHO-Sky-Relay-Native-Edition | echo-addon | 14 |  |  |
-| ECHO-Sky-Relay-NeoForge-Edition | neoforge | 14 |  |  |
-| ECHO-Sky-Relay-Standalone-Edition | standalone | 14 |  |  |
+| ECHO-Arcana-Division-Native-Edition | echo-addon | 39 |  |  |
+| ECHO-Arcana-Division-NeoForge-Edition | neoforge | 39 |  |  |
+| ECHO-Arcana-Division-Standalone-Edition | standalone | 39 |  |  |
+| ECHO-Ashfall-Native-Edition | echo-addon | 46 |  |  |
+| ECHO-Ashfall-NeoForge-Edition | neoforge | 46 |  |  |
+| ECHO-Ashfall-Standalone-Edition | standalone | 46 |  |  |
+| ECHO-Galactic-Survey-Native-Edition | echo-addon | 42 |  |  |
+| ECHO-Galactic-Survey-NeoForge-Edition | neoforge | 42 |  |  |
+| ECHO-Galactic-Survey-Standalone-Edition | standalone | 42 |  |  |
+| ECHO-Openlands-Native-Edition | echo-addon | 42 |  |  |
+| ECHO-Openlands-NeoForge-Edition | neoforge | 42 |  |  |
+| ECHO-Openlands-Standalone-Edition | standalone | 42 |  |  |
+| ECHO-Sky-Relay-Native-Edition | echo-addon | 43 |  |  |
+| ECHO-Sky-Relay-NeoForge-Edition | neoforge | 43 |  |  |
+| ECHO-Sky-Relay-Standalone-Edition | standalone | 43 |  |  |
 
 ## Docs Index Drift
 

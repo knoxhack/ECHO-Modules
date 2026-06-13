@@ -241,9 +241,22 @@ tasks.register('generateRuntimeParityAudit', Exec) {
     commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs'
 }
 
+tasks.register('checkOfficialPackModuleSelections', Exec) {
+    group = 'verification'
+    description = 'Verifies official pack module selections are synchronized across pack lanes and Release Index entries.'
+    commandLine 'node', 'scripts/sync-official-pack-module-selections.mjs', '--check'
+}
+
+tasks.register('syncOfficialPackModuleSelections', Exec) {
+    group = 'release'
+    description = 'Synchronizes official pack module selections across pack lanes and Release Index entries.'
+    commandLine 'node', 'scripts/sync-official-pack-module-selections.mjs', '--write'
+}
+
 tasks.register('generateStrictPlayEvidence', Exec) {
     group = 'verification'
     description = 'Refreshes NeoForge, Native, Standalone, and pack-lane strict-play evidence consumed by the runtime parity audit.'
+    dependsOn tasks.named('checkOfficialPackModuleSelections')
     commandLine 'node', 'scripts/generate-strict-play-evidence.mjs'
 }
 

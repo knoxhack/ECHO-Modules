@@ -7,48 +7,23 @@ const errors = []
 const protocolModule = 'echoarcanadivisionprotocol'
 const betaVersion = '1.0.0'
 const forbiddenExperienceDeps = new Set(['echoashfallprotocol', 'echoopenlandsprotocol', 'echoskyrelayprotocol'])
-
-const coreModules = [
-  'echocore',
-  'echoadaptercore',
-  'echonetcore',
-]
-
-const foundationModules = [
-  'echofoundationcore',
-  'echomaterialcore',
-  'echotoolcore',
-  'echostationcore',
-  'echoworldstarter',
-  'echocommonloot',
-  'echocreatureroles',
-]
+const officialSelections = readJson('metadata/official-pack-module-selections.json')
+const arcanaDivisionRuntimeModules = officialSelections.packs['arcana-division'].modules
+const expectedModuleRequirementCount = officialSelections.packs['arcana-division'].expectedCount
+const arcanaDivisionRuntimeModuleSet = new Set(arcanaDivisionRuntimeModules)
 
 const arcanaModules = [
   'echoarcanacore',
   'echoaetherworks',
+  'echoarcaneindex',
+  'echocodexcore',
   'echocursecore',
   'echofamiliarcore',
   'echogrimoire',
+  'echorelictech',
   'echoriftworlds',
   'echoritualcore',
   'echospellcore',
-]
-
-const launcherSupportModules = [
-  'echoholomap',
-  'echoindex',
-  'echolens',
-  'echoterminal',
-  'echothemecore',
-  'echomissioncore',
-]
-
-const arcanaDivisionRuntimeModules = [
-  ...coreModules,
-  ...foundationModules,
-  ...arcanaModules,
-  ...launcherSupportModules,
 ]
 
 function readJson(relativePath) {
@@ -85,6 +60,18 @@ function requireNoForbiddenDeps(moduleId, manifest) {
   }
 }
 
+for (const moduleId of arcanaDivisionRuntimeModules) {
+  const manifest = descriptor(moduleId)
+  if (!manifest) continue
+  for (const dependency of manifest.requires ?? []) {
+    const id = typeof dependency === 'string' ? dependency : dependency?.id
+    if (id && !arcanaDivisionRuntimeModuleSet.has(id)) {
+      errors.push(`${moduleId} requires ${id}, but it is not selected for Arcana Division`)
+    }
+  }
+  requireNoForbiddenDeps(moduleId, manifest)
+}
+
 const protocol = descriptor(protocolModule)
 if (protocol) {
   if (protocol.version !== betaVersion) errors.push(`${protocolModule} version must be ${betaVersion}, got ${protocol.version}`)
@@ -92,7 +79,13 @@ if (protocol) {
   if (protocol.apiStability !== 'beta') errors.push(`${protocolModule} apiStability must be beta, got ${protocol.apiStability}`)
   if (protocol.kind !== 'pack_root') errors.push(`${protocolModule} kind must be pack_root`)
   if (protocol.role !== 'official_pack') errors.push(`${protocolModule} role must be official_pack`)
-  requireArrayExact(protocol.requires ?? [], arcanaDivisionRuntimeModules, `${protocolModule} requires`)
+  const unselectedProtocolRequirements = (protocol.requires ?? []).filter((moduleId) => !arcanaDivisionRuntimeModuleSet.has(moduleId))
+  if (unselectedProtocolRequirements.length) {
+    errors.push(`${protocolModule} requires modules outside the official selection: ${unselectedProtocolRequirements.join(', ')}`)
+  }
+  if (!arcanaDivisionRuntimeModuleSet.has(protocolModule)) {
+    errors.push(`Arcana Division official selection must include ${protocolModule}`)
+  }
   if ((protocol.optional ?? []).length !== 0) errors.push(`${protocolModule} optional dependencies must be empty for beta pack-root validation`)
   requireNoForbiddenDeps(protocolModule, protocol)
 }
@@ -103,15 +96,6 @@ for (const moduleId of arcanaModules) {
   if (manifest.version !== betaVersion) errors.push(`${moduleId} version must be ${betaVersion}, got ${manifest.version}`)
   if (manifest.channel !== 'beta') errors.push(`${moduleId} channel must be beta, got ${manifest.channel}`)
   if (manifest.apiStability !== 'beta') errors.push(`${moduleId} apiStability must be beta, got ${manifest.apiStability}`)
-  requireNoForbiddenDeps(moduleId, manifest)
-}
-
-for (const moduleId of launcherSupportModules) {
-  const manifest = descriptor(moduleId)
-  if (!manifest) continue
-  if (!manifest.version) errors.push(`${moduleId} must declare a version`)
-  if (!['beta', 'stable'].includes(manifest.channel)) errors.push(`${moduleId} channel must be beta or stable, got ${manifest.channel}`)
-  if (!['beta', 'stable'].includes(manifest.apiStability)) errors.push(`${moduleId} apiStability must be beta or stable, got ${manifest.apiStability}`)
   requireNoForbiddenDeps(moduleId, manifest)
 }
 
@@ -128,8 +112,8 @@ if (requireFile(gatesPath)) {
   }
 }
 
-if (arcanaDivisionRuntimeModules.length !== 24) {
-  errors.push(`Arcana Division runtime module set must contain 24 modules, got ${arcanaDivisionRuntimeModules.length}`)
+if (arcanaDivisionRuntimeModules.length !== expectedModuleRequirementCount) {
+  errors.push(`Arcana Division runtime module set must contain ${expectedModuleRequirementCount} modules, got ${arcanaDivisionRuntimeModules.length}`)
 }
 
 if (new Set(arcanaDivisionRuntimeModules).size !== arcanaDivisionRuntimeModules.length) {

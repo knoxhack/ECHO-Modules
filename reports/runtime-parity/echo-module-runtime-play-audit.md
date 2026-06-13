@@ -1,9 +1,9 @@
 # ECHO Module Runtime Play Audit
 
-- Generated: 2026-06-13T21:47:13.215Z
+- Generated: 2026-06-13T21:51:54.018Z
 - Strict-play would fail: YES
-- Passing rows: 3
-- Partial rows: 393
+- Passing rows: 11
+- Partial rows: 385
 - Failing rows: 0
 - Pack acceptance pass: 0/15
 
@@ -15,7 +15,7 @@
 | neoforge | neoforgeGameTestResults | PARTIAL | yes | 45 | `reports/runtime-parity/neoforge-module-gametest-results.json` |
 | neoforge | neoforgeRegistryContentResults | PARTIAL | yes | 93 | `reports/runtime-parity/neoforge-registry-content-results.json` |
 | neoforge | neoforgeClientUiResults | PARTIAL | yes | 85 | `reports/runtime-parity/neoforge-client-ui-results.json` |
-| echo_native | nativeFullCatalogPlay | PARTIAL | yes | 132 | `build/native-full-catalog-play/native-full-catalog-play.json` |
+| echo_native | nativeFullCatalogPlay | PASS | yes | 132 | `build/native-full-catalog-play/native-full-catalog-play.json` |
 | echo_native | nativeAllBridgeableArtifactLoadState | PASS | yes | 132 | `build/native-all-bridgeable-module-artifact-load-state/native-all-bridgeable-module-artifact-load-state.json` |
 | echo_native | nativeUiSurfaces | PASS | yes | 10 | `build/native-ui-surfaces/native-ui-surfaces.json` |
 | echo_native | nativeAgent5UiBridgeContract | PASS | yes | 10 | `build/agent5/ui-bridge-contract/agent5-ui-bridge-contract.json` |
@@ -36,8 +36,8 @@
 | standalone | standaloneBlockActionMutations | PASS | yes | 4 | `reports/echo/standalone/block-action-mutations.json` |
 | standalone | standaloneClientWorldInteractionSmoke | PASS | yes | 4 | `reports/echo/standalone/client-world-interaction-smoke.json` |
 | standalone | standaloneClientHeldItemOverlaySmoke | PASS | yes | 3 | `reports/echo/standalone/client-held-item-overlay-smoke.json` |
-| standalone | standaloneWorldgenPlay | PARTIAL | yes | 4 | `reports/echo/standalone/worldgen-play.json` |
-| standalone | standaloneSaveReloadPlay | PARTIAL | yes | 0 | `reports/echo/standalone/save-reload-play.json` |
+| standalone | standaloneWorldgenPlay | PASS | yes | 10 | `reports/echo/standalone/worldgen-play.json` |
+| standalone | standaloneSaveReloadPlay | PASS | yes | 94 | `reports/echo/standalone/save-reload-play.json` |
 
 ## Pack Acceptance
 
@@ -77,7 +77,6 @@
 | echoaetherworks | standalone | partial | missing standalone strict-play actions evidence for echoaetherworks |
 | echoagentcore | neoforge | partial | missing neoforge strict-play content evidence for echoagentcore |
 | echoagentcore | echo_native | partial | missing echo_native strict-play content evidence for echoagentcore |
-| echoagentcore | standalone | partial | missing standalone strict-play saveNetwork evidence for echoagentcore |
 | echoagriculturereclamation | neoforge | partial | missing neoforge strict-play actions evidence for echoagriculturereclamation |
 | echoagriculturereclamation | echo_native | partial | missing echo_native strict-play actions evidence for echoagriculturereclamation |
 | echoagriculturereclamation | standalone | partial | missing standalone strict-play actions evidence for echoagriculturereclamation |
@@ -95,16 +94,16 @@
 | echoarmory | standalone | partial | missing standalone strict-play blockItems evidence for echoarmory |
 | echoashfallprotocol | neoforge | partial | missing neoforge strict-play actions evidence for echoashfallprotocol |
 | echoashfallprotocol | echo_native | partial | pack acceptance missing or failing for Ashfall Native |
-| echoashfallprotocol | standalone | partial | missing standalone strict-play saveNetwork evidence for echoashfallprotocol |
+| echoashfallprotocol | standalone | partial | pack acceptance missing or failing for Ashfall Standalone |
 | echoassetcore | neoforge | partial | missing neoforge strict-play content evidence for echoassetcore |
 | echoassetcore | echo_native | partial | missing echo_native strict-play saveNetwork evidence for echoassetcore |
-| echoassetcore | standalone | partial | missing standalone strict-play saveNetwork evidence for echoassetcore |
+| echoassetcore | standalone | partial | pack acceptance missing or failing for Openlands Standalone |
 | echoassetpipeline | neoforge | partial | missing neoforge strict-play content evidence for echoassetpipeline |
 | echoassetpipeline | echo_native | partial | missing echo_native strict-play content evidence for echoassetpipeline |
 | echoassetpipeline | standalone | partial | missing standalone strict-play content evidence for echoassetpipeline |
 | echoatmospherecore | neoforge | partial | missing neoforge strict-play content evidence for echoatmospherecore |
 | echoatmospherecore | echo_native | partial | missing echo_native strict-play content evidence for echoatmospherecore |
-| echoatmospherecore | standalone | partial | missing standalone strict-play saveNetwork evidence for echoatmospherecore |
+| echoatmospherecore | standalone | partial | missing standalone strict-play worldgen evidence for echoatmospherecore |
 | echobalancecore | neoforge | partial | missing neoforge strict-play blockItems evidence for echobalancecore |
 | echobalancecore | echo_native | partial | missing echo_native strict-play blockItems evidence for echobalancecore |
 | echobalancecore | standalone | partial | missing standalone strict-play blockItems evidence for echobalancecore |
@@ -113,7 +112,7 @@
 | echobasegrid | standalone | partial | missing standalone strict-play actions evidence for echobasegrid |
 | echobiomecore | neoforge | partial | missing neoforge strict-play content evidence for echobiomecore |
 | echobiomecore | echo_native | partial | missing echo_native strict-play ui evidence for echobiomecore |
-| echobiomecore | standalone | partial | missing standalone strict-play saveNetwork evidence for echobiomecore |
+| echobiomecore | standalone | partial | missing standalone strict-play ui evidence for echobiomecore |
 | echoblackboxprotocol | neoforge | partial | missing neoforge strict-play actions evidence for echoblackboxprotocol |
 | echoblackboxprotocol | echo_native | partial | missing echo_native strict-play actions evidence for echoblackboxprotocol |
 | echoblackboxprotocol | standalone | partial | missing standalone strict-play actions evidence for echoblackboxprotocol |
@@ -125,10 +124,9 @@
 | echoblueprintcore | standalone | partial | missing standalone strict-play content evidence for echoblueprintcore |
 | echobridgecore | neoforge | partial | missing neoforge strict-play content evidence for echobridgecore |
 | echobridgecore | echo_native | partial | missing echo_native strict-play content evidence for echobridgecore |
-| echobridgecore | standalone | partial | missing standalone strict-play saveNetwork evidence for echobridgecore |
 | echocameracore | neoforge | partial | missing neoforge strict-play content evidence for echocameracore |
 | echocameracore | echo_native | partial | missing echo_native strict-play content evidence for echocameracore |
-| echocameracore | standalone | partial | missing standalone strict-play saveNetwork evidence for echocameracore |
+| echocameracore | standalone | partial | missing standalone strict-play ui evidence for echocameracore |
 | echocapabilitycore | neoforge | partial | missing neoforge strict-play content evidence for echocapabilitycore |
 | echocapabilitycore | echo_native | partial | missing echo_native strict-play content evidence for echocapabilitycore |
 | echocapabilitycore | standalone | partial | missing standalone strict-play content evidence for echocapabilitycore |
@@ -137,10 +135,12 @@
 | echocinematiccore | standalone | partial | missing standalone strict-play ui evidence for echocinematiccore |
 | echocodexcore | neoforge | partial | missing neoforge strict-play content evidence for echocodexcore |
 | echocodexcore | echo_native | partial | missing echo_native strict-play content evidence for echocodexcore |
-| echocodexcore | standalone | partial | missing standalone strict-play saveNetwork evidence for echocodexcore |
+| echocodexcore | standalone | partial | missing standalone strict-play ui evidence for echocodexcore |
 | echocombatcore | neoforge | partial | missing neoforge strict-play blockItems evidence for echocombatcore |
 | echocombatcore | echo_native | partial | missing echo_native strict-play blockItems evidence for echocombatcore |
 | echocombatcore | standalone | partial | missing standalone strict-play blockItems evidence for echocombatcore |
 | echocommonloot | neoforge | partial | missing neoforge strict-play blockItems evidence for echocommonloot |
 | echocommonloot | echo_native | partial | missing echo_native strict-play blockItems evidence for echocommonloot |
+| echocommonloot | standalone | partial | missing standalone strict-play blockItems evidence for echocommonloot |
+| echocommunitybridge | neoforge | partial | missing neoforge strict-play content evidence for echocommunitybridge |
 

@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.feature_contracts.v1",
-  "generatedAt": "2026-06-13T21:47:13.215Z",
+  "generatedAt": "2026-06-13T21:52:54.226Z",
   "modules": [
     {
       "moduleId": "echoaccessibilitycore",
@@ -913,7 +913,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation",
         "native": "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamationNativeModule"
@@ -1213,7 +1238,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoarcanadivisionprotocol.EchoArcanaDivisionProtocol",
         "native": "com.knoxhack.echoarcanadivisionprotocol.EchoArcanaDivisionNativeModule"
@@ -1450,7 +1488,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoarcaneindex.EchoArcaneIndex",
         "native": "com.knoxhack.echoarcaneindex.EchoArcaneIndexNativeModule"
@@ -1564,7 +1615,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoarmory.EchoArmory",
         "native": "com.knoxhack.echoarmory.EchoArmoryNativeModule"
@@ -2044,6 +2108,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -2053,6 +2129,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -2203,7 +2291,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.atmospherecore.EchoAtmosphereCore",
         "native": "com.knoxhack.echo.atmospherecore.EchoAtmosphereCoreNativeModule"
@@ -2740,7 +2853,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoblackboxprotocol.EchoBlackboxProtocol",
         "native": "com.knoxhack.echoblackboxprotocol.EchoBlackboxProtocolNativeModule"
@@ -3380,7 +3506,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.cameracore.EchoCameraCore",
         "native": "com.knoxhack.echo.cameracore.EchoCameraCoreNativeModule"
@@ -3624,7 +3775,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.codexcore.EchoCodexCore",
         "native": "com.knoxhack.echo.codexcore.EchoCodexCoreNativeModule"
@@ -3837,6 +4001,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -3846,6 +4034,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -4120,6 +4320,42 @@
       ],
       "requiredPacks": [
         {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -4129,6 +4365,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -4303,7 +4551,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoconvoyprotocol.EchoConvoyProtocol",
         "native": "com.knoxhack.echoconvoyprotocol.EchoConvoyProtocolNativeModule"
@@ -5075,6 +5336,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -5084,6 +5369,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -5484,7 +5781,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echodatacore.EchoDataCore",
         "native": "com.knoxhack.echodatacore.EchoDataCoreNativeModule"
@@ -5759,7 +6069,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.economycore.EchoEconomyCore",
         "native": "com.knoxhack.echo.economycore.EchoEconomyCoreNativeModule"
@@ -6488,6 +6823,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -6497,6 +6856,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -7557,7 +7928,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.healthcore.EchoHealthCore",
         "native": "com.knoxhack.echo.healthcore.EchoHealthCoreNativeModule"
@@ -8294,7 +8678,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoindustrialnexus.EchoIndustrialNexus",
         "native": "com.knoxhack.echoindustrialnexus.EchoIndustrialNexusNativeModule"
@@ -8554,7 +8963,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.inputcore.EchoInputCore",
         "native": "com.knoxhack.echo.inputcore.EchoInputCoreNativeModule"
@@ -9108,6 +9530,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
           "product": "Galactic-Survey",
           "lane": "Native"
         },
@@ -9117,6 +9551,18 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -9345,7 +9791,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.lootcore.EchoLootCore",
         "native": "com.knoxhack.echo.lootcore.EchoLootCoreNativeModule"
@@ -9574,7 +10033,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.machinecore.EchoMachineCore",
         "native": "com.knoxhack.echo.machinecore.EchoMachineCoreNativeModule"
@@ -9743,6 +10215,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -9752,6 +10248,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -10070,6 +10578,18 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
           "product": "Galactic-Survey",
           "lane": "Native"
         },
@@ -10079,6 +10599,30 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -10284,7 +10828,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echomultiblockcore.EchoMultiblockCore",
         "native": "com.knoxhack.echomultiblockcore.EchoMultiblockCoreNativeModule"
@@ -10632,7 +11201,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echonexusprotocol.EchoNexusProtocol",
         "native": "com.knoxhack.echonexusprotocol.EchoNexusProtocolNativeModule"
@@ -11007,7 +11589,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.npcore.EchoNpcCore",
         "native": "com.knoxhack.echo.npcore.EchoNpcCoreNativeModule"
@@ -11482,6 +12077,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
           "product": "Galactic-Survey",
           "lane": "Native"
         },
@@ -11491,6 +12098,18 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -11901,6 +12520,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
           "product": "Ashfall",
           "lane": "Native"
         },
@@ -11910,6 +12541,42 @@
         },
         {
           "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -11978,7 +12645,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoplayercore.EchoPlayerCore",
         "native": "com.knoxhack.echoplayercore.EchoPlayerCoreNativeModule"
@@ -12229,7 +12909,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.powercore.EchoPowerCore",
         "native": "com.knoxhack.echo.powercore.EchoPowerCoreNativeModule"
@@ -12337,6 +13030,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
           "product": "Galactic-Survey",
           "lane": "Native"
         },
@@ -12346,6 +13051,18 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -12592,12 +13309,7 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [
-        {
-          "product": "Ashfall",
-          "lane": "Native"
-        }
-      ],
+      "requiredPacks": [],
       "entrypoints": {
         "main": "com.knoxhack.echopresencelink.EchoPresenceLink",
         "native": "com.knoxhack.echopresencelink.EchoPresenceLinkNativeModule"
@@ -12929,6 +13641,18 @@
         {
           "product": "Openlands",
           "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
         }
       ],
       "entrypoints": {
@@ -13182,6 +13906,18 @@
       ],
       "requiredPacks": [
         {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -13191,6 +13927,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -13382,7 +14130,44 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echorecovery.EchoRecovery",
         "native": "com.knoxhack.echorecovery.EchoRecoveryNativeModule"
@@ -13606,7 +14391,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echorelictech.EchoRelicTech",
         "native": "com.knoxhack.echorelictech.EchoRelicTechNativeModule"
@@ -13812,7 +14622,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echorendercore.EchoRenderCore",
         "native": "com.knoxhack.echorendercore.EchoRenderCoreNativeModule"
@@ -14489,8 +15312,28 @@
       ],
       "requiredPacks": [
         {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
           "product": "Ashfall",
           "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
         },
         {
           "product": "Galactic-Survey",
@@ -14502,6 +15345,18 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
           "lane": "Standalone"
         },
         {
@@ -14672,7 +15527,68 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.schemacore.EchoSchemaCore",
         "native": "com.knoxhack.echo.schemacore.EchoSchemaCoreNativeModule"
@@ -15898,7 +16814,32 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.socialcore.EchoSocialCore",
         "native": "com.knoxhack.echo.socialcore.EchoSocialCoreNativeModule"
@@ -16000,6 +16941,30 @@
       ],
       "requiredPacks": [
         {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
           "product": "Galactic-Survey",
           "lane": "Native"
         },
@@ -16009,6 +16974,30 @@
         },
         {
           "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -16479,6 +17468,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -16488,6 +17501,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -16622,7 +17647,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echostationfall.EchoStationfall",
         "native": "com.knoxhack.echostationfall.EchoStationfallNativeModule"
@@ -17976,6 +19014,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -17985,6 +19047,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -18119,7 +19193,68 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echotutorialcore.EchoTutorialCore",
         "native": "com.knoxhack.echotutorialcore.EchoTutorialCoreNativeModule"
@@ -18270,7 +19405,68 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Arcana-Division",
+          "lane": "Native"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Arcana-Division",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echo.validationcore.EchoValidationCore",
         "native": "com.knoxhack.echo.validationcore.EchoValidationCoreNativeModule"
@@ -18467,7 +19663,44 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Native"
+        },
+        {
+          "product": "Openlands",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echoweathercore.EchoWeatherCore",
         "native": "com.knoxhack.echoweathercore.EchoWeatherCoreNativeModule"
@@ -18690,7 +19923,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.echowiki.EchoWiki",
         "native": "com.knoxhack.echowiki.EchoWikiNativeModule"
@@ -19017,6 +20263,30 @@
           "lane": "Standalone"
         },
         {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Native"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Galactic-Survey",
+          "lane": "Standalone"
+        },
+        {
           "product": "Openlands",
           "lane": "Native"
         },
@@ -19026,6 +20296,18 @@
         },
         {
           "product": "Openlands",
+          "lane": "Standalone"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "Native"
+        },
+        {
+          "product": "Sky-Relay",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Sky-Relay",
           "lane": "Standalone"
         }
       ],
@@ -19160,7 +20442,20 @@
         "echo_native",
         "echo_runtime_standalone"
       ],
-      "requiredPacks": [],
+      "requiredPacks": [
+        {
+          "product": "Ashfall",
+          "lane": "Native"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "NeoForge"
+        },
+        {
+          "product": "Ashfall",
+          "lane": "Standalone"
+        }
+      ],
       "entrypoints": {
         "main": "com.knoxhack.signalos.SignalOS",
         "native": "com.knoxhack.signalos.EchoSignalOsNativeModule"

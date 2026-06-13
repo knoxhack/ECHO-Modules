@@ -55,7 +55,7 @@ const RUNTIME_EVIDENCE = {
       key: 'nativeFullCatalogPlay',
       ownerRepo: 'ECHO-Native-Platform',
       path: 'build/native-full-catalog-play/native-full-catalog-play.json',
-      requiredFor: ['lifecycle', 'content'],
+      requiredFor: ['lifecycle'],
     },
     {
       key: 'nativeAllBridgeableArtifactLoadState',

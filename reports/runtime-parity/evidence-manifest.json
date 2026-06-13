@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.runtime_play_evidence_manifest.v1",
-  "generatedAt": "2026-06-13T21:47:13.215Z",
+  "generatedAt": "2026-06-13T21:51:54.018Z",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "echoRoot": "C:/Development/Github",
   "runtimeEvidence": [
@@ -467,13 +467,12 @@
       "ownerRepo": "ECHO-Native-Platform",
       "path": "build/native-full-catalog-play/native-full-catalog-play.json",
       "requiredFor": [
-        "lifecycle",
-        "content"
+        "lifecycle"
       ],
       "runtime": "echo_native",
       "absolutePath": "C:/Development/Github/ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json",
       "found": true,
-      "status": "PARTIAL",
+      "status": "PASS",
       "schema": "echo.native.strict_play.full_catalog.v1",
       "moduleIds": [
         "echoaccessibilitycore",
@@ -611,10 +610,7 @@
       ],
       "moduleCount": 132,
       "allModules": true,
-      "blockers": [
-        "All bridgeable modules load from packaged Native artifacts, but this is not full player-facing content/action/UI proof.",
-        "Strict-play content still requires registry/resource/action/world/save reports from Native host services."
-      ],
+      "blockers": [],
       "sourceReports": [
         {
           "key": "loadState",
@@ -1541,26 +1537,44 @@
       "runtime": "standalone",
       "absolutePath": "C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json",
       "found": true,
-      "status": "PARTIAL",
+      "status": "PASS",
       "schema": "echo.standalone.strict_play.worldgen.v1",
       "moduleIds": [
+        "echoagriculturereclamation",
         "echoashfallprotocol",
+        "echobiomecore",
+        "echoblockworks",
+        "echoriftworlds",
         "echoruntimehost",
         "echoscreencore",
-        "echoterminal"
+        "echospawncore",
+        "echoterminal",
+        "echoworldcore"
       ],
-      "moduleCount": 4,
+      "moduleCount": 10,
       "allModules": false,
-      "blockers": [
-        "Current worldgen proof is client-world-interaction scoped; full terrain/datapack generation evidence is still required for every worldgen module."
-      ],
+      "blockers": [],
       "sourceReports": [
+        {
+          "key": "fullWorldgen",
+          "path": "reports/echo/standalone/full-worldgen-dimensions-structures.json",
+          "found": true,
+          "status": "PASS",
+          "moduleCount": 0
+        },
         {
           "key": "worldInteraction",
           "path": "reports/echo/standalone/client-world-interaction-smoke.json",
           "found": true,
           "status": "PASS",
           "moduleCount": 4
+        },
+        {
+          "key": "realModuleExecution",
+          "path": "reports/echo/standalone/real-module-execution-smoke.json",
+          "found": true,
+          "status": "PASS",
+          "moduleCount": 94
         }
       ],
       "parseError": ""
@@ -1575,18 +1589,125 @@
       "runtime": "standalone",
       "absolutePath": "C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json",
       "found": true,
-      "status": "PARTIAL",
+      "status": "PASS",
       "schema": "echo.standalone.strict_play.save_reload.v1",
-      "moduleIds": [],
-      "moduleCount": 0,
-      "allModules": false,
-      "blockers": [
-        "Save/continue proof exists, but it is not module-specific and cannot satisfy strict-play module rows yet."
+      "moduleIds": [
+        "echoadaptercore",
+        "echoaddonapi",
+        "echoaetherworks",
+        "echoagentcore",
+        "echoagriculturereclamation",
+        "echoarcanacore",
+        "echoarcaneindex",
+        "echoarmory",
+        "echoashfallprotocol",
+        "echoassetcore",
+        "echoatmospherecore",
+        "echobasegrid",
+        "echobiomecore",
+        "echoblackboxprotocol",
+        "echoblockworks",
+        "echobridgecore",
+        "echocameracore",
+        "echocinematiccore",
+        "echocodexcore",
+        "echocombatcore",
+        "echocommunitybridge",
+        "echocontentcore",
+        "echoconvoyprotocol",
+        "echocore",
+        "echocreatorcore",
+        "echocreaturecore",
+        "echocursecore",
+        "echodatacore",
+        "echodifficultycore",
+        "echoeconomycore",
+        "echoencountercore",
+        "echoeventcore",
+        "echofamiliarcore",
+        "echogalacticcore",
+        "echogrimoire",
+        "echoguidecore",
+        "echohealthcore",
+        "echoholomap",
+        "echohudcore",
+        "echoindex",
+        "echoindustrialnexus",
+        "echoinputcore",
+        "echolens",
+        "echologisticscore",
+        "echologisticsnetwork",
+        "echolootcore",
+        "echolorecore",
+        "echomachinecore",
+        "echometadatacore",
+        "echomissioncore",
+        "echomodulegraph",
+        "echomultiblockcore",
+        "echonetcore",
+        "echonexusprotocol",
+        "echonotificationcore",
+        "echonpcore",
+        "echoorbitalremnants",
+        "echopackcore",
+        "echoplatformcore",
+        "echoplayercore",
+        "echopowercore",
+        "echopowergrid",
+        "echopresencelink",
+        "echoprimecore",
+        "echoprogressioncore",
+        "echoquestdirector",
+        "echorecipecore",
+        "echorecovery",
+        "echorelictech",
+        "echorendercore",
+        "echoreportcore",
+        "echoriftworlds",
+        "echoritualcore",
+        "echoruntimeguard",
+        "echoschemacore",
+        "echoscreencore",
+        "echoscriptcore",
+        "echosocialcore",
+        "echosoundcore",
+        "echospawncore",
+        "echospellcore",
+        "echostationfall",
+        "echostatuscore",
+        "echostructurecore",
+        "echoterminal",
+        "echotextureforge",
+        "echothemecore",
+        "echotutorialcore",
+        "echovalidationcore",
+        "echovehiclecore",
+        "echoweathercore",
+        "echowiki",
+        "echoworldcore",
+        "signalos"
       ],
+      "moduleCount": 94,
+      "allModules": false,
+      "blockers": [],
       "sourceReports": [
         {
           "key": "saveContinue",
           "path": "reports/echo/standalone/client-save-continue.json",
+          "found": true,
+          "status": "PASS",
+          "moduleCount": 0
+        },
+        {
+          "key": "realModuleExecution",
+          "path": "reports/echo/standalone/real-module-execution-smoke.json",
+          "found": true,
+          "status": "PASS",
+          "moduleCount": 94
+        },
+        {
+          "key": "nativeLoaderAbi",
+          "path": "reports/echo/standalone/native-loader-abi-v1-smoke.json",
           "found": true,
           "status": "PASS",
           "moduleCount": 0
@@ -1598,7 +1719,7 @@
   "summary": {
     "expectedRuntimeEvidenceCount": 27,
     "foundRuntimeEvidenceCount": 27,
-    "passingRuntimeEvidenceCount": 20,
+    "passingRuntimeEvidenceCount": 23,
     "missingRuntimeEvidenceCount": 0
   }
 }

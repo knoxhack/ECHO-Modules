@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { promises as fs } from 'node:fs'
+import fsSync, { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { deflateRawSync } from 'node:zlib'
@@ -11,35 +11,10 @@ const NEOFORGE_VERSION = '26.1.2'
 const MODULE_RELEASE_ID = 'modules-arcana-division-1.0.0-beta'
 const DEFAULT_MODULE_RELEASE_DIR = 'dist/arcana-division-module-release'
 
-const coreModules = ['echocore', 'echoadaptercore', 'echonetcore']
-const foundationModules = [
-  'echofoundationcore',
-  'echomaterialcore',
-  'echotoolcore',
-  'echostationcore',
-  'echoworldstarter',
-  'echocommonloot',
-  'echocreatureroles',
-]
-const arcanaModules = [
-  'echoarcanacore',
-  'echoaetherworks',
-  'echocursecore',
-  'echofamiliarcore',
-  'echogrimoire',
-  'echoriftworlds',
-  'echoritualcore',
-  'echospellcore',
-]
-const launcherSupportModules = [
-  'echoholomap',
-  'echoindex',
-  'echolens',
-  'echoterminal',
-  'echothemecore',
-  'echomissioncore',
-]
-const runtimeModuleIds = [...coreModules, ...foundationModules, ...arcanaModules, ...launcherSupportModules]
+const selectionPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'metadata', 'official-pack-module-selections.json')
+const officialSelections = JSON.parse(fsSync.readFileSync(selectionPath, 'utf8'))
+const runtimeModuleIds = officialSelections.packs['arcana-division'].modules
+const expectedModuleRequirementCount = officialSelections.packs['arcana-division'].expectedCount
 const protocolModuleId = 'echoarcanadivisionprotocol'
 
 const editions = [
@@ -282,21 +257,13 @@ function packManifestBase(edition, moduleRequirements, files, artifact) {
     moduleArtifactFamily: edition.moduleArtifactFamily,
     moduleReleaseId: MODULE_RELEASE_ID,
     moduleRequirements,
-    requiredArtifacts: [
-      ...moduleRequirements.map((requirement) => ({
-        id: requirement.id,
-        kind: 'module',
-        version: requirement.version,
-        artifactFamily: requirement.artifactFamily,
-      })),
-      {
-        id: protocolModuleId,
-        kind: 'module',
-        version: VERSION,
-        role: 'pack_root',
-        artifactFamily: edition.moduleArtifactFamily,
-      },
-    ],
+    requiredArtifacts: moduleRequirements.map((requirement) => ({
+      id: requirement.id,
+      kind: 'module',
+      version: requirement.version,
+      role: requirement.id === protocolModuleId ? 'pack_root' : undefined,
+      artifactFamily: requirement.artifactFamily,
+    })).map((artifact) => Object.fromEntries(Object.entries(artifact).filter(([, value]) => value !== undefined))),
     modules: files.map((file) => file.moduleId),
     files,
     changelog: [
@@ -413,7 +380,7 @@ const expected = {
   version: '${VERSION}',
   channel: '${CHANNEL}',
   target: '${edition.target}',
-  moduleRequirements: 24,
+  moduleRequirements: ${expectedModuleRequirementCount},
 }
 
 async function sha256(filePath) {
@@ -435,7 +402,7 @@ if (manifest.pack !== expected.packId) errors.push('pack id mismatch')
 if (manifest.version !== expected.version) errors.push('manifest version mismatch')
 if (manifest.channel !== expected.channel) errors.push('manifest channel mismatch')
 if (manifest.target !== expected.target) errors.push('manifest target mismatch')
-if ((manifest.moduleRequirements ?? []).length !== expected.moduleRequirements) errors.push('moduleRequirements must contain 24 entries')
+if ((manifest.moduleRequirements ?? []).length !== expected.moduleRequirements) errors.push(\`moduleRequirements must contain \${expected.moduleRequirements} entries\`)
 if (!manifest.files?.some((file) => file.moduleId === 'echoarcanadivisionprotocol')) errors.push('pack root protocol artifact is missing from files')
 if (release.id !== expected.packId) errors.push('release id mismatch')
 if (release.releaseTag !== '${edition.releaseTag}') errors.push('release tag mismatch')
@@ -470,15 +437,13 @@ async function buildEdition({ edition, repoRoot, moduleReleaseDir, release }) {
 
   const manifestFiles = []
   const moduleRequirements = []
-  const allFileModuleIds = [...runtimeModuleIds, protocolModuleId]
+  const allFileModuleIds = runtimeModuleIds
   for (const moduleId of allFileModuleIds) {
     const module = byModule.get(moduleId)
     if (!module) throw new Error(`${MODULE_RELEASE_ID} is missing ${moduleId}`)
     const artifact = artifactFor(module, edition.moduleArtifactFamily)
     const source = path.join(moduleReleaseDir, moduleId, artifact.filename)
-    const installPath = moduleId === protocolModuleId
-      ? `pack-root/${artifact.filename}`
-      : `${edition.installPathPrefix}/${artifact.filename}`
+    const installPath = `${edition.installPathPrefix}/${artifact.filename}`
     stagingFiles.push({ name: installPath, data: await fs.readFile(source) })
     manifestFiles.push({
       path: installPath,
@@ -489,20 +454,18 @@ async function buildEdition({ edition, repoRoot, moduleReleaseDir, release }) {
       moduleId,
       side: 'both',
     })
-    if (moduleId !== protocolModuleId) {
-      moduleRequirements.push({
-        id: moduleId,
-        version: module.version,
-        artifactFamily: edition.moduleArtifactFamily,
-        artifactName: artifact.filename,
-        assetName: artifact.filename,
-        path: installPath,
-        sha256: artifact.sha256,
-        size: artifact.size,
-        required: true,
-        side: 'both',
-      })
-    }
+    moduleRequirements.push({
+      id: moduleId,
+      version: module.version,
+      artifactFamily: edition.moduleArtifactFamily,
+      artifactName: artifact.filename,
+      assetName: artifact.filename,
+      path: installPath,
+      sha256: artifact.sha256,
+      size: artifact.size,
+      required: true,
+      side: 'both',
+    })
   }
 
   stagingFiles.push({
