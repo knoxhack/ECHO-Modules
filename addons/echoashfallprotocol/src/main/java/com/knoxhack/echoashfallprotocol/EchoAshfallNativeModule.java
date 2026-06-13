@@ -30,6 +30,7 @@ import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeHardeni
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeMutationEvidence;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeSurfaceConsumers;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeUiHudHandoff;
+import com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs;
 import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
@@ -945,42 +946,19 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
     }
 
     private static List<String> registeredNativeModuleCreativeTabItems() {
-        return nativeCreativeTabMethodValues("nativeModuleCreativeItemIds");
+        return ModCreativeTabs.nativeModuleCreativeItemIds();
     }
 
     private static List<String> registeredNativeModuleCreativeTabRegistryBackedItems() {
-        return nativeCreativeTabMethodValues("nativeLoaderRegistryBackedCreativeItemIds");
+        return ModCreativeTabs.nativeLoaderRegistryBackedCreativeItemIds();
     }
 
     private static List<String> registeredNativeModuleCreativeTabFeaturedItems() {
-        return nativeCreativeTabMethodValues("nativeModuleCreativeFeaturedItemIds");
+        return ModCreativeTabs.nativeModuleCreativeFeaturedItemIds();
     }
 
     private static List<String> registeredNativeModuleCreativeTabNamespaces() {
-        return nativeCreativeTabMethodValues("nativeModuleCreativeNamespaces");
-    }
-
-    private static List<String> nativeCreativeTabMethodValues(String methodName) {
-        try {
-            Class<?> creativeTabsClass = Class.forName(
-                    "com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs",
-                    false,
-                    EchoAshfallNativeModule.class.getClassLoader()
-            );
-            return nativeCreativeTabList(creativeTabsClass.getMethod(methodName).invoke(null));
-        } catch (ReflectiveOperationException | LinkageError | RuntimeException ignored) {
-            return List.of();
-        }
-    }
-
-    private static List<String> nativeCreativeTabList(Object values) {
-        if (!(values instanceof List<?> list)) {
-            return List.of();
-        }
-        return list.stream()
-                .map(String::valueOf)
-                .filter(item -> !item.isBlank())
-                .toList();
+        return ModCreativeTabs.nativeModuleCreativeNamespaces();
     }
 
     private static List<String> fallbackNativeModulesCreativeTabItems() {
