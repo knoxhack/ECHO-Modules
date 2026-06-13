@@ -1,9 +1,30 @@
 import assert from 'node:assert/strict'
+import { spawnSync } from 'node:child_process'
 import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { test } from 'node:test'
 import { generateModuleRelease } from './generate-module-release.mjs'
+
+function runJar(args, options = {}) {
+  const result = spawnSync('jar', args, { encoding: 'utf8', ...options })
+  if (result.status !== 0) {
+    throw new Error(`jar ${args.join(' ')} failed: ${result.stderr || result.stdout}`)
+  }
+  return result.stdout
+}
+
+async function writeFixtureRuntimeJar(jarPath) {
+  const jarRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-module-jar-'))
+  await fs.mkdir(path.join(jarRoot, 'dev', 'echo', 'sample'), { recursive: true })
+  await fs.writeFile(path.join(jarRoot, 'dev', 'echo', 'sample', 'Compiled.class'), 'compiled fixture')
+  await fs.mkdir(path.dirname(jarPath), { recursive: true })
+  runJar(['cf', jarPath, '-C', jarRoot, '.'])
+}
+
+function jarEntries(jarPath) {
+  return new Set(runJar(['tf', jarPath]).split(/\r?\n/u).filter(Boolean))
+}
 
 async function makeRepo() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-modules-release-'))
@@ -25,7 +46,7 @@ async function makeRepo() {
       nativeEntrypoint: 'dev.echo.sample.SampleModule',
     },
   }, null, 2))
-  await fs.writeFile(path.join(moduleDir, 'build/libs/echosample-1.2.3.jar'), 'compiled jar placeholder')
+  await writeFixtureRuntimeJar(path.join(moduleDir, 'build/libs/echosample-1.2.3.jar'))
   return root
 }
 
@@ -61,6 +82,15 @@ test('generates per-module release artifacts and metadata', async () => {
   await fs.access(path.join(outputDir, 'echo-addon-package.json'))
   await fs.access(path.join(repoRoot, 'dist', 'echo-module-release', 'echo-release.json'))
   await fs.access(path.join(repoRoot, 'dist', 'echo-module-release', 'checksums.txt'))
+
+  const neoforgeEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-neoforge.jar'))
+  assert.ok(neoforgeEntries.has('META-INF/echo.mod.json'))
+  assert.ok(neoforgeEntries.has('META-INF/neoforge.mods.toml'))
+  assert.ok(neoforgeEntries.has('dev/echo/sample/Compiled.class'))
+
+  const standaloneEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-standalone.jar'))
+  assert.ok(standaloneEntries.has('META-INF/echo.mod.json'))
+  assert.ok(standaloneEntries.has('dev/echo/sample/Compiled.class'))
 })
 
 test('fails by default when runtime jars are missing', async () => {

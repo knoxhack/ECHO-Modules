@@ -42,6 +42,16 @@ The generator writes `dist/echo-module-release/` with per-module folders, `echo-
 
 By default it is strict: runtime artifacts are only emitted from existing built jars under `addons/<module>/build/libs`, and the command fails if a required runtime jar is missing. This prevents publishing placeholder runnable jars.
 
+Compiled runtime jars are not copied blindly. The generator opens each compiled NeoForge and standalone jar, preserves its compiled entries, overlays the required public metadata, then writes and checksums the final artifact:
+
+| Runtime artifact | Required embedded metadata |
+| --- | --- |
+| `<module>-<version>-neoforge.jar` | `META-INF/echo.mod.json`, `META-INF/neoforge.mods.toml` |
+| `<module>-<version>-standalone.jar` | `META-INF/echo.mod.json` |
+| `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, optional `lib/<module>-<version>-runtime.jar` |
+
+Run `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release` after generation. The verifier opens every archive, checks sidecars, validates package dependencies, confirms manifest and checksum agreement, and rejects metadata-only claims.
+
 Useful options:
 
 ```sh
@@ -54,6 +64,17 @@ node scripts/generate-module-release.mjs --package-from-source
 Use `--allow-missing-runtime` only for metadata/source dry runs while the module build graph is being prepared; do not upload those outputs as player-facing runtime releases.
 
 Use `--package-from-source` to create the visible per-module artifact set from checked-in source/resources when compiled jars are not available. Those artifacts are marked with `buildMode: "source-packaged"` in `echo-release.json`; replace them with compiled runtime jars before treating a release as player-ready.
+
+## Galactic Survey Release Gate
+
+The Galactic Survey module closure is the current strict compiled release lane:
+
+```powershell
+.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain
+node scripts\verify-module-release.mjs --release-dir dist\echo-module-release
+```
+
+As of June 13, 2026, this gate generates and verifies 18 compiled runtime module records for `galactic-survey-0.1.0-alpha`. The Release Index may only promote those records after the generated artifacts are attached to a source-owned release with checksums and provenance.
 
 ## Edition Consumption
 

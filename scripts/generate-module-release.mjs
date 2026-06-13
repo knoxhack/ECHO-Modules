@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { deflateRawSync } from 'node:zlib'
+import { constants as zlibConstants, deflateRawSync, inflateRawSync } from 'node:zlib'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
 const MODULE_RELEASE_SCHEMA_VERSION = 'echo.module.release.v1'
@@ -69,9 +69,68 @@ async function sha256File(filePath) {
   return createHash('sha256').update(await fs.readFile(filePath)).digest('hex')
 }
 
-async function copyFileWithRecord(sourcePath, outputPath, kind, contains = []) {
-  await fs.mkdir(path.dirname(outputPath), { recursive: true })
-  await fs.copyFile(sourcePath, outputPath)
+function readZipEntries(buffer) {
+  let eocd = -1
+  const minimum = Math.max(0, buffer.length - 65557)
+  for (let offset = buffer.length - 22; offset >= minimum; offset -= 1) {
+    if (buffer.readUInt32LE(offset) === 0x06054b50) {
+      eocd = offset
+      break
+    }
+  }
+  if (eocd < 0) throw new Error('ZIP end-of-central-directory record not found.')
+  const entryCount = buffer.readUInt16LE(eocd + 10)
+  const centralDirOffset = buffer.readUInt32LE(eocd + 16)
+  const entries = []
+  let cursor = centralDirOffset
+  for (let index = 0; index < entryCount; index += 1) {
+    if (buffer.readUInt32LE(cursor) !== 0x02014b50) {
+      throw new Error('Invalid ZIP central directory entry.')
+    }
+    const method = buffer.readUInt16LE(cursor + 10)
+    const compressedSize = buffer.readUInt32LE(cursor + 20)
+    const uncompressedSize = buffer.readUInt32LE(cursor + 24)
+    const nameLength = buffer.readUInt16LE(cursor + 28)
+    const extraLength = buffer.readUInt16LE(cursor + 30)
+    const commentLength = buffer.readUInt16LE(cursor + 32)
+    const localHeaderOffset = buffer.readUInt32LE(cursor + 42)
+    const name = normalizeZipPath(buffer.subarray(cursor + 46, cursor + 46 + nameLength).toString('utf8'))
+    entries.push({ name, method, compressedSize, uncompressedSize, localHeaderOffset })
+    cursor += 46 + nameLength + extraLength + commentLength
+  }
+  return entries
+}
+
+function readZipEntry(buffer, entry) {
+  const cursor = entry.localHeaderOffset
+  if (buffer.readUInt32LE(cursor) !== 0x04034b50) {
+    throw new Error(`Invalid ZIP local header for ${entry.name}.`)
+  }
+  const nameLength = buffer.readUInt16LE(cursor + 26)
+  const extraLength = buffer.readUInt16LE(cursor + 28)
+  const dataStart = cursor + 30 + nameLength + extraLength
+  const compressed = buffer.subarray(dataStart, dataStart + entry.compressedSize)
+  if (entry.method === 0) return compressed
+  if (entry.method === 8) return inflateRawSync(compressed, { finishFlush: zlibConstants.Z_SYNC_FLUSH })
+  throw new Error(`Unsupported ZIP compression method ${entry.method} for ${entry.name}.`)
+}
+
+async function copyJarWithOverlaysAndRecord(sourcePath, outputPath, kind, contains, overlays) {
+  const sourceBuffer = await fs.readFile(sourcePath)
+  const files = new Map()
+  for (const entry of readZipEntries(sourceBuffer)) {
+    if (!entry.name.endsWith('/')) {
+      files.set(entry.name, readZipEntry(sourceBuffer, entry))
+    }
+  }
+  for (const overlay of overlays) {
+    files.set(normalizeZipPath(overlay.name), Buffer.isBuffer(overlay.data) ? overlay.data : Buffer.from(overlay.data))
+  }
+
+  await writeStoredZip(
+    [...files.entries()].map(([name, data]) => ({ name, data })),
+    outputPath,
+  )
   const stat = await fs.stat(outputPath)
   return {
     kind,
@@ -380,11 +439,15 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
     } else if (sourceJar || packageFromSource) {
       const outputPath = path.join(moduleOutDir, `${moduleId}-${version}-neoforge.jar`)
       if (sourceJar) {
-        artifacts.push(await copyFileWithRecord(
+        artifacts.push(await copyJarWithOverlaysAndRecord(
           sourceJar,
           outputPath,
           'neoforge',
           ['META-INF/echo.mod.json', 'META-INF/neoforge.mods.toml'],
+          [
+            { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
+            { name: 'META-INF/neoforge.mods.toml', data: await fs.readFile(neoForgeToml.absolute) },
+          ],
         ))
       } else {
         await buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoForgeToml, outputPath, runtimeTarget: 'neoforge' })
@@ -410,11 +473,14 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
     } else if (sourceJar || packageFromSource) {
       const outputPath = path.join(moduleOutDir, `${moduleId}-${version}-standalone.jar`)
       if (sourceJar) {
-        artifacts.push(await copyFileWithRecord(
+        artifacts.push(await copyJarWithOverlaysAndRecord(
           sourceJar,
           outputPath,
           'standalone',
           ['META-INF/echo.mod.json'],
+          [
+            { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
+          ],
         ))
       } else {
         await buildSourcePackagedRuntimeJar({ moduleDir, descriptorPath, neoForgeToml: null, outputPath, runtimeTarget: 'standalone' })

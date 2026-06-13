@@ -22,13 +22,16 @@ Public is recommended if the launcher or external developers must download modul
 
 Run commands from the repository root.
 
-- `node scripts/generate-module-release.mjs --module echoarmory --package-from-source`
-- `node scripts/verify-module-release.mjs`
+- `.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain`
+- `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release`
+- `node scripts/generate-module-release.mjs --module echoarmory`
 - `node scripts/release-workflow-audit.mjs`
 
 ## Artifact Ownership
 
 Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, and `echo-addon-package.json` where applicable.
+
+Strict player-facing releases are generated from compiled runtime jars. During release generation, compiled NeoForge and standalone jars are rewritten with the required descriptor sidecars before checksum calculation. `scripts/verify-module-release.mjs` opens every produced archive and rejects missing descriptors, missing NeoForge TOML, source-packaged runtime outputs, or checksum drift before the artifacts can be imported by the Release Index.
 
 Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
 

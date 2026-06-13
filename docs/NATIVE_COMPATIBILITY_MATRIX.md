@@ -30,7 +30,7 @@ Status values:
 | Module | Role | NeoForge | Native | Standalone | Blocking Issues | Status |
 |---|---|:---:|:---:|:---:|---|---|
 | echocore | core | yes | yes | yes | none | ready-native |
-| echonetcore | core | yes | yes | partial | direct_sourceSet_output_reference | blocked-with-reason |
+| echonetcore | core | yes | yes | yes | none | ready-native |
 | echo-native-platform | runtime | no | yes | yes | none | ready-native |
 | echoadaptercore | addon | yes | yes | yes | none | ready-native |
 | echoaddonapi | api | yes | yes | yes | none | ready-native |
@@ -73,9 +73,9 @@ Status values:
 | echoindex | addon | yes | yes | yes | none | ready-native |
 | echoindustrialnexus | addon | yes | yes | yes | none | ready-native |
 | echoinputcore | addon | yes | yes | yes | none | ready-native |
-| echolens | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echolens | addon | yes | yes | yes | none | ready-native |
 | echologisticscore | addon | yes | yes | yes | none | ready-native |
-| echologisticsnetwork | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echologisticsnetwork | addon | yes | yes | yes | none | ready-native |
 | echolootcore | addon | yes | yes | yes | none | ready-native |
 | echolorecore | addon | yes | yes | yes | none | ready-native |
 | echomachinecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
@@ -91,7 +91,7 @@ Status values:
 | echoplatformcore | addon | yes | yes | yes | none | ready-native |
 | echoplayercore | addon | yes | yes | yes | none | ready-native |
 | echopowercore | addon | yes | yes | yes | none | ready-native |
-| echopowergrid | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echopowergrid | addon | yes | yes | yes | none | ready-native |
 | echopresencelink | addon | yes | yes | yes | none | ready-native |
 | echoprimecore | addon | yes | yes | yes | none | ready-native |
 | echoprogressioncore | addon | yes | yes | yes | none | ready-native |
@@ -103,7 +103,7 @@ Status values:
 | echoreportcore | addon | yes | yes | yes | none | ready-native |
 | echoriftworlds | addon | yes | yes | yes | none | ready-native |
 | echoritualcore | addon | yes | yes | yes | none | ready-native |
-| echoruntimeguard | addon | yes | yes | partial | local_build_output_classpath_fallback, direct_sourceSet_output_reference | blocked-with-reason |
+| echoruntimeguard | addon | yes | yes | yes | none | ready-native |
 | echoschemacore | addon | yes | yes | yes | none | ready-native |
 | echoscreencore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
 | echoscriptcore | addon | yes | yes | yes | none | ready-native |
@@ -115,7 +115,7 @@ Status values:
 | echostationfall | addon | yes | yes | yes | none | ready-native |
 | echostatuscore | addon | yes | yes | yes | none | ready-native |
 | echostructurecore | addon | yes | yes | yes | none | ready-native |
-| echoterminal | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echoterminal | addon | yes | yes | yes | none | ready-native |
 | echotextureforge | addon | yes | yes | yes | none | ready-native |
 | echothemecore | addon | yes | yes | yes | none | ready-native |
 | echotutorialcore | addon | yes | yes | yes | none | ready-native |
@@ -137,3 +137,9 @@ Status values:
 - Addons in `blocked-with-reason` status may still run under `NEOFORGE_BRIDGE` but are not yet validated for `NATIVE` lane.
 - Standalone lane is best-effort for core services; complex addons should use `NATIVE` or `NEOFORGE_BRIDGE`.
 - Always back up saves before switching runtime lanes.
+
+## Release Evidence Notes
+
+- On June 13, 2026, `.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain` generated 18 strict compiled runtime records for the Galactic Survey module closure.
+- `node scripts\verify-module-release.mjs --release-dir dist\echo-module-release` verified the generated `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, sources, sidecars, package manifests, and checksums.
+- Rows still marked `blocked-with-reason` must keep that status until their own compiled release task and verifier evidence exists.
