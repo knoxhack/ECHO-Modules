@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoaccessibilitycore",
+  "name": "ECHO: AccessibilityCore",
+  "phase": 3,
+  "role": "accessibility_core",
+  "status": "contract-first",
+  "summary": "Readable HUD scale, reduced motion, contrast themes, captions, prompt remaps, and narration metadata contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echothemecore",
+      "echoscreencore",
+      "echoinputcore",
+      "echosoundcore"
+    ],
+    "optional": [
+      "echolocalizationcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "accessibility.settings",
+      "accessibility.validation",
+      "accessibility.narration_metadata"
+    ],
+    "consumes": [
+      "theme.tokens",
+      "screen.surface",
+      "input.bindings",
+      "sound.audio_profiles"
+    ],
+    "adapterDomains": [
+      "data",
+      "ui_screens",
+      "input",
+      "audio"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.accessibilitycore.EchoAccessibilityCoreNativeModule"
+  },
+  "mvpContracts": [
+    "accessibility_settings_contract",
+    "validation_checks",
+    "caption_metadata",
+    "prompt_remaps"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

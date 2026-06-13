@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoterritorycore",
+  "name": "ECHO: TerritoryCore",
+  "phase": 4,
+  "role": "territory_core",
+  "status": "contract-first",
+  "summary": "Region control, claims, contested zones, faction ownership, map overlays, and server rule contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echofactioncore",
+      "echoholomap",
+      "echoworldcore",
+      "echopolicycore"
+    ],
+    "optional": [
+      "echoserveropscore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "territory.claims",
+      "territory.control",
+      "territory.map_overlays",
+      "territory.server_rules"
+    ],
+    "consumes": [
+      "faction.registry",
+      "holomap.layers",
+      "world.regions",
+      "policy.manifest"
+    ],
+    "adapterDomains": [
+      "data",
+      "worldgen",
+      "maps"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.territorycore.EchoTerritoryCoreNativeModule"
+  },
+  "mvpContracts": [
+    "region_control_contract",
+    "claim_contract",
+    "contested_zone_contract",
+    "map_overlay_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

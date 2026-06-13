@@ -1,0 +1,77 @@
+{
+  "id": "openlands_official",
+  "name": "Openlands Official Bundle",
+  "version": "1.0.0",
+  "description": "Openlands protocol plus Foundation, world, progression, recipe, content, and exploration support modules.",
+  "modules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echoopenlandsprotocol",
+    "echoassetcore",
+    "echobiomecore",
+    "echocontentcore",
+    "echocreaturecore",
+    "echoprogressioncore",
+    "echorecipecore",
+    "echostructurecore",
+    "echoworldcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echotutorialcore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echoopenlandsprotocol"
+  ],
+  "optionalModules": [
+    "echoassetcore",
+    "echobiomecore",
+    "echocontentcore",
+    "echocreaturecore",
+    "echoprogressioncore",
+    "echorecipecore",
+    "echostructurecore",
+    "echoworldcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echotutorialcore"
+  ],
+  "bestFor": [
+    "Openlands",
+    "Calm exploration",
+    "Homesteading"
+  ],
+  "packStyles": [
+    "openlands",
+    "official_pack"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Openlands Official",
+    "accent": "#7bcf6b",
+    "description": "Openlands protocol plus Foundation, world, progression, recipe, content, and exploration support modules.",
+    "status": "Ready",
+    "style": "openlands"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

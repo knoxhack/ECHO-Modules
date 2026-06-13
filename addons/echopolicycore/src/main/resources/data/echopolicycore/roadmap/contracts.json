@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echopolicycore",
+  "name": "ECHO: PolicyCore",
+  "phase": 1,
+  "role": "policy_core",
+  "status": "contract-first",
+  "summary": "Trust, permissions, write-action approval, server-rule, blocked-module, content-flag, and creator-governance policy contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echovalidationcore",
+      "echoreportcore",
+      "echometadatacore"
+    ],
+    "optional": [
+      "echocapabilitycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "policy.manifest",
+      "policy.validation",
+      "policy.runtime_hooks",
+      "policy.trust_metadata"
+    ],
+    "consumes": [
+      "validation.pack",
+      "reports.contracts",
+      "metadata.manifest"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs",
+      "permissions"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.policycore.EchoPolicyCoreNativeModule"
+  },
+  "mvpContracts": [
+    "policy_manifest",
+    "launcher_validation",
+    "studio_validation",
+    "runtime_enforcement_hooks",
+    "blocked_module_rules"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

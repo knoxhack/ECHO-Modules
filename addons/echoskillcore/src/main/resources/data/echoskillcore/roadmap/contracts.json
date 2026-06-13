@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoskillcore",
+  "name": "ECHO: SkillCore",
+  "phase": 4,
+  "role": "skill_core",
+  "status": "contract-first",
+  "summary": "Skills, mastery tracks, passive unlocks, and progression gate contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoprogressioncore",
+      "echoplayercore",
+      "echomissioncore"
+    ],
+    "optional": [
+      "echoequipmentcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "skill.tracks",
+      "skill.mastery",
+      "skill.passive_unlocks",
+      "skill.progression_gates"
+    ],
+    "consumes": [
+      "progression.unlock_graph",
+      "player.profile",
+      "mission.objectives"
+    ],
+    "adapterDomains": [
+      "data",
+      "saves"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.skillcore.EchoSkillCoreNativeModule"
+  },
+  "mvpContracts": [
+    "skill_track_contract",
+    "mastery_contract",
+    "passive_unlocks",
+    "progression_gates"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

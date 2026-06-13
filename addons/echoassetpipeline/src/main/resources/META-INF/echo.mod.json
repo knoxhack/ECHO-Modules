@@ -1,0 +1,93 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoassetpipeline",
+  "name": "ECHO: AssetPipeline",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "asset_pipeline",
+  "entrypoint": "com.knoxhack.echo.assetpipeline.EchoAssetPipeline",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Asset import, naming validation, thumbnails, texture and sound manifests, and missing asset report contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echoassetcore",
+    "echotextureforge",
+    "echosoundcore"
+  ],
+  "optional": [
+    "echoreportcore"
+  ],
+  "provides": [
+    "assetpipeline.audit",
+    "assetpipeline.thumbnails",
+    "assetpipeline.manifests"
+  ],
+  "consumes": [
+    "assets.registry",
+    "assets.validation",
+    "asset.textureforge",
+    "sound.service"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "assets.read",
+    "assets.write",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "assets",
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.assetpipeline.EchoAssetPipelineNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 2,
+    "status": "contract-first",
+    "mvpContracts": [
+      "asset_audit",
+      "preview_thumbnail_manifest",
+      "missing_asset_report"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

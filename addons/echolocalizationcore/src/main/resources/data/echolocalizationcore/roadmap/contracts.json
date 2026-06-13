@@ -1,0 +1,49 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echolocalizationcore",
+  "name": "ECHO: LocalizationCore",
+  "phase": 2,
+  "role": "localization_core",
+  "status": "contract-first",
+  "summary": "Translation validation, fallback text, missing-key reports, language-pack exports, and Studio localization workflow contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoschemacore",
+      "echoreportcore"
+    ],
+    "optional": [
+      "echocreatorcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "localization.validation",
+      "localization.fallbacks",
+      "localization.language_pack_overlay"
+    ],
+    "consumes": [
+      "schema.registry",
+      "reports.contracts"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.localizationcore.EchoLocalizationCoreNativeModule"
+  },
+  "mvpContracts": [
+    "missing_key_report",
+    "fallback_text_contract",
+    "language_pack_overlay_support"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

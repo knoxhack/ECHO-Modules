@@ -1,0 +1,90 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echolocalizationcore",
+  "name": "ECHO: LocalizationCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "localization_core",
+  "entrypoint": "com.knoxhack.echo.localizationcore.EchoLocalizationCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Translation validation, fallback text, missing-key reports, language-pack exports, and Studio localization workflow contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echoschemacore",
+    "echoreportcore"
+  ],
+  "optional": [
+    "echocreatorcore"
+  ],
+  "provides": [
+    "localization.validation",
+    "localization.fallbacks",
+    "localization.language_pack_overlay"
+  ],
+  "consumes": [
+    "schema.registry",
+    "reports.contracts"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "localization.read",
+    "localization.write",
+    "reports.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.localizationcore.EchoLocalizationCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 2,
+    "status": "contract-first",
+    "mvpContracts": [
+      "missing_key_report",
+      "fallback_text_contract",
+      "language_pack_overlay_support"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

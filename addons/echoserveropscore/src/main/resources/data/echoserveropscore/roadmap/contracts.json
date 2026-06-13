@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoserveropscore",
+  "name": "ECHO: ServerOpsCore",
+  "phase": 5,
+  "role": "server_ops_core",
+  "status": "contract-first",
+  "summary": "Moderation, backups, announcements, support bundles, and player report contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echopolicycore",
+      "echoreportcore",
+      "echotelemetrycore",
+      "echonetcore"
+    ],
+    "optional": [
+      "echoterritorycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "serverops.moderation",
+      "serverops.backups",
+      "serverops.announcements",
+      "serverops.player_reports"
+    ],
+    "consumes": [
+      "policy.manifest",
+      "reports.contracts",
+      "telemetry.local_bundle",
+      "echo.net"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "networking"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.serveropscore.EchoServerOpsCoreNativeModule"
+  },
+  "mvpContracts": [
+    "moderation_contract",
+    "backup_contract",
+    "announcement_contract",
+    "player_report_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

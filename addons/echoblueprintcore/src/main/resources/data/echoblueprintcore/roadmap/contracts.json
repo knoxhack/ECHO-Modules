@@ -1,0 +1,50 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoblueprintcore",
+  "name": "ECHO: BlueprintCore",
+  "phase": 2,
+  "role": "blueprint_core",
+  "status": "contract-first",
+  "summary": "Reusable authoring blueprints for common content types and Studio template generation.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoschemacore",
+      "echocreatorcore",
+      "echocontentcore"
+    ],
+    "optional": [
+      "echolocalizationcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "blueprint.schemas",
+      "blueprint.templates",
+      "blueprint.studio_generation"
+    ],
+    "consumes": [
+      "schema.registry",
+      "creator.validation",
+      "content.references"
+    ],
+    "adapterDomains": [
+      "data",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.blueprintcore.EchoBlueprintCoreNativeModule"
+  },
+  "mvpContracts": [
+    "blueprint_schema",
+    "studio_template_generation",
+    "content_type_blueprints"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echocurationcore",
+  "name": "ECHO: CurationCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "curation_core",
+  "entrypoint": "com.knoxhack.echo.curationcore.EchoCurationCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Launcher and Studio recommendations for module fit, bundle previews, dependency explanations, and readiness badges.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echocapabilitycore",
+    "echodependencydoctor",
+    "echometadatacore"
+  ],
+  "optional": [
+    "echoreportcore"
+  ],
+  "provides": [
+    "curation.recommendations",
+    "curation.bundle_previews",
+    "curation.readiness_badges"
+  ],
+  "consumes": [
+    "capability.registry",
+    "dependency.explanations",
+    "metadata.manifest"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "curation.read",
+    "reports.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.curationcore.EchoCurationCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 3,
+    "status": "contract-first",
+    "mvpContracts": [
+      "recommended_modules_report",
+      "bundle_preview_contract",
+      "readiness_badges"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

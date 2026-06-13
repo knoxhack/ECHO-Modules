@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoexpeditioncore",
+  "name": "ECHO: ExpeditionCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "expedition_core",
+  "entrypoint": "com.knoxhack.echo.expeditioncore.EchoExpeditionCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Route preparation, risk budgets, extraction loops, and travel contract surfaces.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echosessioncore",
+    "echohazardcore",
+    "echomissioncore",
+    "echoworldcore"
+  ],
+  "optional": [
+    "echosupplycore"
+  ],
+  "provides": [
+    "expedition.routes",
+    "expedition.risk_budget",
+    "expedition.extraction",
+    "expedition.travel_contracts"
+  ],
+  "consumes": [
+    "session.snapshot",
+    "hazard.registry",
+    "mission.objectives",
+    "world.regions"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "expedition.read",
+    "expedition.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.expeditioncore.EchoExpeditionCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 5,
+    "status": "contract-first",
+    "mvpContracts": [
+      "route_prep_contract",
+      "risk_budget_contract",
+      "extraction_loop_contract",
+      "travel_contract"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

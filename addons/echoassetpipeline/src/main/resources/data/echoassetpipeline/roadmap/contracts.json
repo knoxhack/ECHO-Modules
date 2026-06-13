@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoassetpipeline",
+  "name": "ECHO: AssetPipeline",
+  "phase": 2,
+  "role": "asset_pipeline",
+  "status": "contract-first",
+  "summary": "Asset import, naming validation, thumbnails, texture and sound manifests, and missing asset report contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoassetcore",
+      "echotextureforge",
+      "echosoundcore"
+    ],
+    "optional": [
+      "echoreportcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "assetpipeline.audit",
+      "assetpipeline.thumbnails",
+      "assetpipeline.manifests"
+    ],
+    "consumes": [
+      "assets.registry",
+      "assets.validation",
+      "asset.textureforge",
+      "sound.service"
+    ],
+    "adapterDomains": [
+      "assets",
+      "data",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.assetpipeline.EchoAssetPipelineNativeModule"
+  },
+  "mvpContracts": [
+    "asset_audit",
+    "preview_thumbnail_manifest",
+    "missing_asset_report"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

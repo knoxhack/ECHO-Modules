@@ -1,0 +1,91 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoblueprintcore",
+  "name": "ECHO: BlueprintCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "blueprint_core",
+  "entrypoint": "com.knoxhack.echo.blueprintcore.EchoBlueprintCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Reusable authoring blueprints for common content types and Studio template generation.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echoschemacore",
+    "echocreatorcore",
+    "echocontentcore"
+  ],
+  "optional": [
+    "echolocalizationcore"
+  ],
+  "provides": [
+    "blueprint.schemas",
+    "blueprint.templates",
+    "blueprint.studio_generation"
+  ],
+  "consumes": [
+    "schema.registry",
+    "creator.validation",
+    "content.references"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "blueprints.read",
+    "blueprints.write",
+    "creator.exports"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.blueprintcore.EchoBlueprintCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 2,
+    "status": "contract-first",
+    "mvpContracts": [
+      "blueprint_schema",
+      "studio_template_generation",
+      "content_type_blueprints"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

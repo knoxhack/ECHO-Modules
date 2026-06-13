@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echobalancecore",
+  "name": "ECHO: BalanceCore",
+  "phase": 2,
+  "role": "balance_core",
+  "status": "contract-first",
+  "summary": "Balance tables and audits for recipes, progression pacing, combat stats, economy, loot, energy, and survival pressure.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echorecipecore",
+      "echolootcore",
+      "echoeconomycore",
+      "echoprogressioncore"
+    ],
+    "optional": [
+      "echoreportcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "balance.tables",
+      "balance.audits",
+      "balance.recommended_ranges"
+    ],
+    "consumes": [
+      "recipes.backend",
+      "loot.tables",
+      "economy.pricing",
+      "progression.unlock_graph"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.balancecore.EchoBalanceCoreNativeModule"
+  },
+  "mvpContracts": [
+    "balance_report",
+    "warning_ranges",
+    "recommended_ranges"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

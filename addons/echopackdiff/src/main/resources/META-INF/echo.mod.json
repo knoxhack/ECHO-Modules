@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echopackdiff",
+  "name": "ECHO: PackDiff",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "pack_diff",
+  "entrypoint": "com.knoxhack.echo.packdiff.EchoPackDiff",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Explains differences between pack or module versions across gameplay, dependencies, migrations, and renamed content.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echomigrationcore",
+    "echometadatacore",
+    "echoreportcore"
+  ],
+  "optional": [
+    "echodependencydoctor"
+  ],
+  "provides": [
+    "packdiff.json",
+    "packdiff.markdown",
+    "packdiff.changelog"
+  ],
+  "consumes": [
+    "migration.manifest",
+    "metadata.manifest",
+    "reports.contracts"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "pack.read",
+    "reports.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.packdiff.EchoPackDiffNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 2,
+    "status": "contract-first",
+    "mvpContracts": [
+      "markdown_changelog",
+      "json_changelog",
+      "dependency_diff",
+      "migration_diff"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

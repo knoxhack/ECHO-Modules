@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echodependencydoctor",
+  "name": "ECHO: DependencyDoctor",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "dependency_doctor",
+  "entrypoint": "com.knoxhack.echo.dependencydoctor.EchoDependencyDoctor",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Human-readable explanations for broken module graphs, conflicts, version gaps, missing artifacts, and bad optional integrations.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echomodulegraph",
+    "echocapabilitycore",
+    "echoreportcore"
+  ],
+  "optional": [
+    "echopolicycore"
+  ],
+  "provides": [
+    "dependency.explanations",
+    "dependency.launch_report",
+    "dependency.conflict_diagnostics",
+    "dependency.artifact_diagnostics"
+  ],
+  "consumes": [
+    "module.graph",
+    "feature.graph",
+    "capability.registry",
+    "reports.contracts"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "dependency.read",
+    "diagnostics.write",
+    "pack.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.dependencydoctor.EchoDependencyDoctorNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 1,
+    "status": "contract-first",
+    "mvpContracts": [
+      "why_pack_wont_launch_report",
+      "conflict_explanations",
+      "missing_artifact_report",
+      "optional_integration_diagnostics"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

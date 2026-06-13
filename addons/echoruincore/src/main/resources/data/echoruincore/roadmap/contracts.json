@@ -1,0 +1,53 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoruincore",
+  "name": "ECHO: RuinCore",
+  "phase": 5,
+  "role": "ruin_core",
+  "status": "contract-first",
+  "summary": "Ruins, archaeology, salvage sites, and restoration state contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echostructurecore",
+      "echolootcore",
+      "echoworldcore"
+    ],
+    "optional": [
+      "echoexpeditioncore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "ruin.registry",
+      "ruin.archaeology",
+      "ruin.salvage_sites",
+      "ruin.restoration_state"
+    ],
+    "consumes": [
+      "structures.poi_metadata",
+      "loot.tables",
+      "world.regions"
+    ],
+    "adapterDomains": [
+      "data",
+      "structures",
+      "worldgen"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.ruincore.EchoRuinCoreNativeModule"
+  },
+  "mvpContracts": [
+    "ruin_registry",
+    "archaeology_contract",
+    "salvage_site_contract",
+    "restoration_state_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

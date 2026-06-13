@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echodisastercore",
+  "name": "ECHO: DisasterCore",
+  "phase": 5,
+  "role": "disaster_core",
+  "status": "contract-first",
+  "summary": "Blackouts, earthquakes, station failures, storm disasters, and recovery event contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echohazardcore",
+      "echoweathercore",
+      "echosessioncore",
+      "echoworldcore"
+    ],
+    "optional": [
+      "echosupplycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "disaster.events",
+      "disaster.recovery",
+      "disaster.station_failures",
+      "disaster.world_impacts"
+    ],
+    "consumes": [
+      "hazard.registry",
+      "weather.events",
+      "session.snapshot",
+      "world.regions"
+    ],
+    "adapterDomains": [
+      "data",
+      "worldgen",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.disastercore.EchoDisasterCoreNativeModule"
+  },
+  "mvpContracts": [
+    "disaster_event_contract",
+    "recovery_event_contract",
+    "station_failure_contract",
+    "storm_disaster_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

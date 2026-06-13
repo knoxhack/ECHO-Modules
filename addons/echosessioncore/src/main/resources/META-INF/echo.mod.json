@@ -1,0 +1,96 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echosessioncore",
+  "name": "ECHO: SessionCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "session_core",
+  "entrypoint": "com.knoxhack.echo.sessioncore.EchoSessionCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Shared player session memory for onboarding, objectives, route history, hazards, deaths, and pack phase.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echodatacore",
+    "echomissioncore",
+    "echoplayercore"
+  ],
+  "optional": [
+    "echoterminal",
+    "echoholomap",
+    "echolens",
+    "echotutorialcore"
+  ],
+  "provides": [
+    "session.snapshot",
+    "session.objective_state",
+    "session.route_history",
+    "session.pack_phase"
+  ],
+  "consumes": [
+    "data.contracts",
+    "mission.objectives",
+    "player.profile"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "session.read",
+    "session.write",
+    "saves.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "saves"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.sessioncore.EchoSessionCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 3,
+    "status": "contract-first",
+    "mvpContracts": [
+      "session_snapshot_api",
+      "current_objective_state",
+      "recent_death_state",
+      "active_hazard_state"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

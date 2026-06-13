@@ -1,0 +1,53 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echodependencydoctor",
+  "name": "ECHO: DependencyDoctor",
+  "phase": 1,
+  "role": "dependency_doctor",
+  "status": "contract-first",
+  "summary": "Human-readable explanations for broken module graphs, conflicts, version gaps, missing artifacts, and bad optional integrations.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echomodulegraph",
+      "echocapabilitycore",
+      "echoreportcore"
+    ],
+    "optional": [
+      "echopolicycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "dependency.explanations",
+      "dependency.launch_report",
+      "dependency.conflict_diagnostics",
+      "dependency.artifact_diagnostics"
+    ],
+    "consumes": [
+      "module.graph",
+      "feature.graph",
+      "capability.registry",
+      "reports.contracts"
+    ],
+    "adapterDomains": [
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.dependencydoctor.EchoDependencyDoctorNativeModule"
+  },
+  "mvpContracts": [
+    "why_pack_wont_launch_report",
+    "conflict_explanations",
+    "missing_artifact_report",
+    "optional_integration_diagnostics"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

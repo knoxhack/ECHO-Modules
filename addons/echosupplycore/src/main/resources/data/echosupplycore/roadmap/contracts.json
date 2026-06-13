@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echosupplycore",
+  "name": "ECHO: SupplyCore",
+  "phase": 5,
+  "role": "supply_core",
+  "status": "contract-first",
+  "summary": "Scarcity, shortages, stockpiles, rationing, and supply pressure contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echologisticscore",
+      "echoeconomycore",
+      "echolootcore"
+    ],
+    "optional": [
+      "echosettlementcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "supply.scarcity",
+      "supply.stockpiles",
+      "supply.rationing",
+      "supply.pressure"
+    ],
+    "consumes": [
+      "logistics.routes",
+      "economy.pricing",
+      "loot.tables"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.supplycore.EchoSupplyCoreNativeModule"
+  },
+  "mvpContracts": [
+    "scarcity_contract",
+    "stockpile_contract",
+    "rationing_contract",
+    "supply_pressure_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

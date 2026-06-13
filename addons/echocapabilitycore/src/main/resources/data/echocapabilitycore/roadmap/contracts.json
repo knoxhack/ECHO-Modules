@@ -1,0 +1,51 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echocapabilitycore",
+  "name": "ECHO: CapabilityCore",
+  "phase": 1,
+  "role": "capability_core",
+  "status": "contract-first",
+  "summary": "Runtime capability negotiation over descriptor provides and consumes so optional integrations are clean, inspectable, and fallback-safe.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echomodulegraph",
+      "echoplatformcore"
+    ],
+    "optional": [
+      "echoreportcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "capability.registry",
+      "capability.negotiation",
+      "capability.missing_diagnostics",
+      "capability.fallbacks"
+    ],
+    "consumes": [
+      "module.graph",
+      "feature.graph",
+      "platform.contracts"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.capabilitycore.EchoCapabilityCoreNativeModule"
+  },
+  "mvpContracts": [
+    "capability_registry",
+    "missing_capability_diagnostics",
+    "graceful_fallback_api"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

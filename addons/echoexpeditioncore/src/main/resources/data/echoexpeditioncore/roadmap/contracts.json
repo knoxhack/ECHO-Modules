@@ -1,0 +1,54 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoexpeditioncore",
+  "name": "ECHO: ExpeditionCore",
+  "phase": 5,
+  "role": "expedition_core",
+  "status": "contract-first",
+  "summary": "Route preparation, risk budgets, extraction loops, and travel contract surfaces.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echosessioncore",
+      "echohazardcore",
+      "echomissioncore",
+      "echoworldcore"
+    ],
+    "optional": [
+      "echosupplycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "expedition.routes",
+      "expedition.risk_budget",
+      "expedition.extraction",
+      "expedition.travel_contracts"
+    ],
+    "consumes": [
+      "session.snapshot",
+      "hazard.registry",
+      "mission.objectives",
+      "world.regions"
+    ],
+    "adapterDomains": [
+      "data",
+      "worldgen"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.expeditioncore.EchoExpeditionCoreNativeModule"
+  },
+  "mvpContracts": [
+    "route_prep_contract",
+    "risk_budget_contract",
+    "extraction_loop_contract",
+    "travel_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

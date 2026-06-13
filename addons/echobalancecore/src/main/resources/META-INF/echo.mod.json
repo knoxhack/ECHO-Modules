@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echobalancecore",
+  "name": "ECHO: BalanceCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "balance_core",
+  "entrypoint": "com.knoxhack.echo.balancecore.EchoBalanceCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Balance tables and audits for recipes, progression pacing, combat stats, economy, loot, energy, and survival pressure.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echorecipecore",
+    "echolootcore",
+    "echoeconomycore",
+    "echoprogressioncore"
+  ],
+  "optional": [
+    "echoreportcore"
+  ],
+  "provides": [
+    "balance.tables",
+    "balance.audits",
+    "balance.recommended_ranges"
+  ],
+  "consumes": [
+    "recipes.backend",
+    "loot.tables",
+    "economy.pricing",
+    "progression.unlock_graph"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "balance.read",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.balancecore.EchoBalanceCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 2,
+    "status": "contract-first",
+    "mvpContracts": [
+      "balance_report",
+      "warning_ranges",
+      "recommended_ranges"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

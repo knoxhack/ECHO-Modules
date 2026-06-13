@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoseasoncore",
+  "name": "ECHO: SeasonCore",
+  "phase": 5,
+  "role": "season_core",
+  "status": "contract-first",
+  "summary": "Rotating objectives, seasonal loot, timed modifiers, and live event contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echomissioncore",
+      "echolootcore",
+      "echopolicycore"
+    ],
+    "optional": [
+      "echotelemetrycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "season.objectives",
+      "season.loot",
+      "season.timed_modifiers",
+      "season.live_events"
+    ],
+    "consumes": [
+      "mission.objectives",
+      "loot.tables",
+      "policy.manifest"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.seasoncore.EchoSeasonCoreNativeModule"
+  },
+  "mvpContracts": [
+    "rotating_objectives_contract",
+    "seasonal_loot_contract",
+    "timed_modifier_contract",
+    "live_event_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

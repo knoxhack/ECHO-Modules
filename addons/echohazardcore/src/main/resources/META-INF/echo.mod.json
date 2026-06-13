@@ -1,0 +1,94 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echohazardcore",
+  "name": "ECHO: HazardCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "hazard_core",
+  "entrypoint": "com.knoxhack.echo.hazardcore.EchoHazardCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Generic hazards for heat, cold, radiation, oxygen, pressure, corruption, disease, and storm exposure.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echostatuscore",
+    "echohealthcore",
+    "echoweathercore",
+    "echoworldcore"
+  ],
+  "optional": [
+    "echosessioncore"
+  ],
+  "provides": [
+    "hazard.registry",
+    "hazard.exposure",
+    "hazard.resistance",
+    "hazard.world_hooks"
+  ],
+  "consumes": [
+    "status.exposure",
+    "health.damage_model",
+    "weather.events",
+    "world.hazards"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "hazard.read",
+    "hazard.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.hazardcore.EchoHazardCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 4,
+    "status": "contract-first",
+    "mvpContracts": [
+      "hazard_registry",
+      "exposure_contract",
+      "resistance_contract",
+      "world_hazard_hooks"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

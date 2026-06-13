@@ -1,0 +1,62 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoplaytestcore",
+  "name": "ECHO: PlaytestCore",
+  "phase": 1,
+  "role": "playtest_core",
+  "status": "contract-first",
+  "summary": "Automated gameplay evidence runner for release readiness, session proof, save/load, install, update, repair, and rollback checks.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoreportcore",
+      "echovalidationcore",
+      "echomodulegraph",
+      "echoruntimeguard"
+    ],
+    "optional": [
+      "echomigrationcore",
+      "echopolicycore",
+      "echotelemetrycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "playtest.scenarios",
+      "playtest.evidence_runner",
+      "playtest.release_readiness",
+      "playtest.session_proofs"
+    ],
+    "consumes": [
+      "reports.contracts",
+      "release.readiness",
+      "validation.pack",
+      "module.graph",
+      "runtime.guard"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.playtestcore.EchoPlaytestCoreNativeModule"
+  },
+  "mvpContracts": [
+    "json_scenario_definitions",
+    "first_30_minutes_run",
+    "two_hour_run",
+    "completion_path",
+    "save_load_proof",
+    "crash_free_session",
+    "install_update_repair_rollback_proof",
+    "release_readiness_report"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

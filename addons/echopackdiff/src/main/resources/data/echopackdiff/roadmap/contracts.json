@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echopackdiff",
+  "name": "ECHO: PackDiff",
+  "phase": 2,
+  "role": "pack_diff",
+  "status": "contract-first",
+  "summary": "Explains differences between pack or module versions across gameplay, dependencies, migrations, and renamed content.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echomigrationcore",
+      "echometadatacore",
+      "echoreportcore"
+    ],
+    "optional": [
+      "echodependencydoctor"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "packdiff.json",
+      "packdiff.markdown",
+      "packdiff.changelog"
+    ],
+    "consumes": [
+      "migration.manifest",
+      "metadata.manifest",
+      "reports.contracts"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.packdiff.EchoPackDiffNativeModule"
+  },
+  "mvpContracts": [
+    "markdown_changelog",
+    "json_changelog",
+    "dependency_diff",
+    "migration_diff"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

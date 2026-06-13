@@ -1,0 +1,95 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echosettlementcore",
+  "name": "ECHO: SettlementCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "settlement_core",
+  "entrypoint": "com.knoxhack.echo.settlementcore.EchoSettlementCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Bases, shelters, NPC jobs, storage needs, defense score, comfort, and logistics request contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echobasegrid",
+    "echonpcore",
+    "echologisticscore",
+    "echoworldcore"
+  ],
+  "optional": [
+    "echofactioncore"
+  ],
+  "provides": [
+    "settlement.registry",
+    "settlement.jobs",
+    "settlement.defense_score",
+    "settlement.logistics_requests"
+  ],
+  "consumes": [
+    "basegrid.claims",
+    "npc.profiles",
+    "logistics.routes",
+    "world.regions"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "settlement.read",
+    "settlement.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "entities",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.settlementcore.EchoSettlementCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 4,
+    "status": "contract-first",
+    "mvpContracts": [
+      "settlement_snapshot",
+      "npc_job_contract",
+      "defense_score_contract",
+      "logistics_request_contract"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

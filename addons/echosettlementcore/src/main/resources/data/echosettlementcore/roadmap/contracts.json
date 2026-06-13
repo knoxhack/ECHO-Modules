@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echosettlementcore",
+  "name": "ECHO: SettlementCore",
+  "phase": 4,
+  "role": "settlement_core",
+  "status": "contract-first",
+  "summary": "Bases, shelters, NPC jobs, storage needs, defense score, comfort, and logistics request contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echobasegrid",
+      "echonpcore",
+      "echologisticscore",
+      "echoworldcore"
+    ],
+    "optional": [
+      "echofactioncore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "settlement.registry",
+      "settlement.jobs",
+      "settlement.defense_score",
+      "settlement.logistics_requests"
+    ],
+    "consumes": [
+      "basegrid.claims",
+      "npc.profiles",
+      "logistics.routes",
+      "world.regions"
+    ],
+    "adapterDomains": [
+      "data",
+      "entities",
+      "worldgen"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.settlementcore.EchoSettlementCoreNativeModule"
+  },
+  "mvpContracts": [
+    "settlement_snapshot",
+    "npc_job_contract",
+    "defense_score_contract",
+    "logistics_request_contract"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

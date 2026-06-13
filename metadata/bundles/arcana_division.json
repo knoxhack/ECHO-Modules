@@ -1,0 +1,81 @@
+{
+  "id": "arcana_division",
+  "name": "Arcana Division Bundle",
+  "version": "1.0.0",
+  "description": "Arcana Division protocol, Foundation, Arcana systems, and launcher support modules.",
+  "modules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echoarcanacore",
+    "echoarcanadivisionprotocol",
+    "echoaetherworks",
+    "echocursecore",
+    "echofamiliarcore",
+    "echogrimoire",
+    "echoriftworlds",
+    "echoritualcore",
+    "echospellcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echoterminal",
+    "echothemecore",
+    "echomissioncore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echoarcanacore",
+    "echoarcanadivisionprotocol"
+  ],
+  "optionalModules": [
+    "echoaetherworks",
+    "echocursecore",
+    "echofamiliarcore",
+    "echogrimoire",
+    "echoriftworlds",
+    "echoritualcore",
+    "echospellcore",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echoterminal",
+    "echothemecore",
+    "echomissioncore"
+  ],
+  "bestFor": [
+    "Arcana Division",
+    "Magic research",
+    "Anomaly containment"
+  ],
+  "packStyles": [
+    "arcana_division",
+    "official_pack"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Arcana Division",
+    "accent": "#b98cff",
+    "description": "Arcana Division protocol, Foundation, Arcana systems, and launcher support modules.",
+    "status": "Ready",
+    "style": "arcana_division"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

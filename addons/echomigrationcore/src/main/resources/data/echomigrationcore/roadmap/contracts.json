@@ -1,0 +1,54 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echomigrationcore",
+  "name": "ECHO: MigrationCore",
+  "phase": 1,
+  "role": "migration_core",
+  "status": "contract-first",
+  "summary": "Versioned save, data-key, renamed-ID, removed-module, deprecated-content, and rollback compatibility migration contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echodatacore",
+      "echoschemacore",
+      "echovalidationcore"
+    ],
+    "optional": [
+      "echoreportcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "migration.manifest",
+      "migration.dry_run",
+      "migration.rollback_report",
+      "migration.id_aliases"
+    ],
+    "consumes": [
+      "data.contracts",
+      "schema.registry",
+      "validation.pack"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "saves"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.migrationcore.EchoMigrationCoreNativeModule"
+  },
+  "mvpContracts": [
+    "migration_manifest",
+    "dry_run_report",
+    "rollback_compatibility_report",
+    "renamed_id_map",
+    "removed_module_notes"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echomigrationcore",
+  "name": "ECHO: MigrationCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "migration_core",
+  "entrypoint": "com.knoxhack.echo.migrationcore.EchoMigrationCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Versioned save, data-key, renamed-ID, removed-module, deprecated-content, and rollback compatibility migration contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echodatacore",
+    "echoschemacore",
+    "echovalidationcore"
+  ],
+  "optional": [
+    "echoreportcore"
+  ],
+  "provides": [
+    "migration.manifest",
+    "migration.dry_run",
+    "migration.rollback_report",
+    "migration.id_aliases"
+  ],
+  "consumes": [
+    "data.contracts",
+    "schema.registry",
+    "validation.pack"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "migration.read",
+    "migration.write",
+    "saves.read",
+    "diagnostics.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "saves"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.migrationcore.EchoMigrationCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 1,
+    "status": "contract-first",
+    "mvpContracts": [
+      "migration_manifest",
+      "dry_run_report",
+      "rollback_compatibility_report",
+      "renamed_id_map",
+      "removed_module_notes"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

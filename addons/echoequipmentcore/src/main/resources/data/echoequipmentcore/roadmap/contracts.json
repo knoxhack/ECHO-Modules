@@ -1,0 +1,52 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echoequipmentcore",
+  "name": "ECHO: EquipmentCore",
+  "phase": 4,
+  "role": "equipment_core",
+  "status": "contract-first",
+  "summary": "Gear slots, durability rules, upgrades, modifiers, and loadout validation contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echoarmory",
+      "echocombatcore",
+      "echotoolcore"
+    ],
+    "optional": [
+      "echoaccessibilitycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "equipment.slots",
+      "equipment.durability",
+      "equipment.upgrades",
+      "equipment.loadout_validation"
+    ],
+    "consumes": [
+      "armory.gear",
+      "combat.stats",
+      "foundation.tools"
+    ],
+    "adapterDomains": [
+      "data",
+      "items"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.equipmentcore.EchoEquipmentCoreNativeModule"
+  },
+  "mvpContracts": [
+    "gear_slot_contract",
+    "durability_rules",
+    "upgrade_modifiers",
+    "loadout_validation"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

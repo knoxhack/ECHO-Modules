@@ -1,0 +1,54 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echohazardcore",
+  "name": "ECHO: HazardCore",
+  "phase": 4,
+  "role": "hazard_core",
+  "status": "contract-first",
+  "summary": "Generic hazards for heat, cold, radiation, oxygen, pressure, corruption, disease, and storm exposure.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echostatuscore",
+      "echohealthcore",
+      "echoweathercore",
+      "echoworldcore"
+    ],
+    "optional": [
+      "echosessioncore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "hazard.registry",
+      "hazard.exposure",
+      "hazard.resistance",
+      "hazard.world_hooks"
+    ],
+    "consumes": [
+      "status.exposure",
+      "health.damage_model",
+      "weather.events",
+      "world.hazards"
+    ],
+    "adapterDomains": [
+      "data",
+      "worldgen"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.hazardcore.EchoHazardCoreNativeModule"
+  },
+  "mvpContracts": [
+    "hazard_registry",
+    "exposure_contract",
+    "resistance_contract",
+    "world_hazard_hooks"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

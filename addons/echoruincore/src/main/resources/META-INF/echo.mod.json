@@ -1,0 +1,93 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoruincore",
+  "name": "ECHO: RuinCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "ruin_core",
+  "entrypoint": "com.knoxhack.echo.ruincore.EchoRuinCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Ruins, archaeology, salvage sites, and restoration state contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echostructurecore",
+    "echolootcore",
+    "echoworldcore"
+  ],
+  "optional": [
+    "echoexpeditioncore"
+  ],
+  "provides": [
+    "ruin.registry",
+    "ruin.archaeology",
+    "ruin.salvage_sites",
+    "ruin.restoration_state"
+  ],
+  "consumes": [
+    "structures.poi_metadata",
+    "loot.tables",
+    "world.regions"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "ruins.read",
+    "ruins.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "structures",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.ruincore.EchoRuinCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 5,
+    "status": "contract-first",
+    "mvpContracts": [
+      "ruin_registry",
+      "archaeology_contract",
+      "salvage_site_contract",
+      "restoration_state_contract"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

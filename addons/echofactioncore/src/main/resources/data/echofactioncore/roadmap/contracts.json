@@ -1,0 +1,53 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echofactioncore",
+  "name": "ECHO: FactionCore",
+  "phase": 4,
+  "role": "faction_core",
+  "status": "contract-first",
+  "summary": "Factions, reputation, standings, vendors, hostility, alliances, territory hooks, and mission consequence contracts.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echomissioncore",
+      "echoeconomycore",
+      "echosocialcore"
+    ],
+    "optional": [
+      "echoterritorycore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "faction.registry",
+      "faction.reputation",
+      "faction.standings",
+      "faction.mission_consequences"
+    ],
+    "consumes": [
+      "mission.objectives",
+      "economy.pricing",
+      "social.factions",
+      "social.reputation"
+    ],
+    "adapterDomains": [
+      "data",
+      "entities"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.factioncore.EchoFactionCoreNativeModule"
+  },
+  "mvpContracts": [
+    "faction_registry",
+    "reputation_state",
+    "standing_rules",
+    "mission_consequence_hooks"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

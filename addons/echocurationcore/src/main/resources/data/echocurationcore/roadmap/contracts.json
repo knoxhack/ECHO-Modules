@@ -1,0 +1,51 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echocurationcore",
+  "name": "ECHO: CurationCore",
+  "phase": 3,
+  "role": "curation_core",
+  "status": "contract-first",
+  "summary": "Launcher and Studio recommendations for module fit, bundle previews, dependency explanations, and readiness badges.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echocapabilitycore",
+      "echodependencydoctor",
+      "echometadatacore"
+    ],
+    "optional": [
+      "echoreportcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "curation.recommendations",
+      "curation.bundle_previews",
+      "curation.readiness_badges"
+    ],
+    "consumes": [
+      "capability.registry",
+      "dependency.explanations",
+      "metadata.manifest"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics",
+      "packs"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.curationcore.EchoCurationCoreNativeModule"
+  },
+  "mvpContracts": [
+    "recommended_modules_report",
+    "bundle_preview_contract",
+    "readiness_badges"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

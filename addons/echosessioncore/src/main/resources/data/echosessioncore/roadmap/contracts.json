@@ -1,0 +1,55 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echosessioncore",
+  "name": "ECHO: SessionCore",
+  "phase": 3,
+  "role": "session_core",
+  "status": "contract-first",
+  "summary": "Shared player session memory for onboarding, objectives, route history, hazards, deaths, and pack phase.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echodatacore",
+      "echomissioncore",
+      "echoplayercore"
+    ],
+    "optional": [
+      "echoterminal",
+      "echoholomap",
+      "echolens",
+      "echotutorialcore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "session.snapshot",
+      "session.objective_state",
+      "session.route_history",
+      "session.pack_phase"
+    ],
+    "consumes": [
+      "data.contracts",
+      "mission.objectives",
+      "player.profile"
+    ],
+    "adapterDomains": [
+      "data",
+      "saves"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.sessioncore.EchoSessionCoreNativeModule"
+  },
+  "mvpContracts": [
+    "session_snapshot_api",
+    "current_objective_state",
+    "recent_death_state",
+    "active_hazard_state"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

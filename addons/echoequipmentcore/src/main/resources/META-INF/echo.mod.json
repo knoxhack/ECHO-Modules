@@ -1,0 +1,92 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoequipmentcore",
+  "name": "ECHO: EquipmentCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "equipment_core",
+  "entrypoint": "com.knoxhack.echo.equipmentcore.EchoEquipmentCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Gear slots, durability rules, upgrades, modifiers, and loadout validation contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echoarmory",
+    "echocombatcore",
+    "echotoolcore"
+  ],
+  "optional": [
+    "echoaccessibilitycore"
+  ],
+  "provides": [
+    "equipment.slots",
+    "equipment.durability",
+    "equipment.upgrades",
+    "equipment.loadout_validation"
+  ],
+  "consumes": [
+    "armory.gear",
+    "combat.stats",
+    "foundation.tools"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "equipment.read",
+    "equipment.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "items"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.equipmentcore.EchoEquipmentCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 4,
+    "status": "contract-first",
+    "mvpContracts": [
+      "gear_slot_contract",
+      "durability_rules",
+      "upgrade_modifiers",
+      "loadout_validation"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

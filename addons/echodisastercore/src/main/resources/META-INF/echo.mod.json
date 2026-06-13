@@ -1,0 +1,95 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echodisastercore",
+  "name": "ECHO: DisasterCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "library",
+  "role": "disaster_core",
+  "entrypoint": "com.knoxhack.echo.disastercore.EchoDisasterCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Blackouts, earthquakes, station failures, storm disasters, and recovery event contracts.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echohazardcore",
+    "echoweathercore",
+    "echosessioncore",
+    "echoworldcore"
+  ],
+  "optional": [
+    "echosupplycore"
+  ],
+  "provides": [
+    "disaster.events",
+    "disaster.recovery",
+    "disaster.station_failures",
+    "disaster.world_impacts"
+  ],
+  "consumes": [
+    "hazard.registry",
+    "weather.events",
+    "session.snapshot",
+    "world.regions"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "disaster.read",
+    "disaster.write"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "worldgen",
+        "diagnostics"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.disastercore.EchoDisasterCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 5,
+    "status": "contract-first",
+    "mvpContracts": [
+      "disaster_event_contract",
+      "recovery_event_contract",
+      "station_failure_contract",
+      "storm_disaster_contract"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

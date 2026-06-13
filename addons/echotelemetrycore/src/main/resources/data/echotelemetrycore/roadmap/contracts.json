@@ -1,0 +1,50 @@
+{
+  "schema": "echo.platform_roadmap.module_contract.v1",
+  "id": "echotelemetrycore",
+  "name": "ECHO: TelemetryCore",
+  "phase": 3,
+  "role": "telemetry_core",
+  "status": "contract-first",
+  "summary": "Privacy-safe local and session metrics for crashes, install health, progression checkpoints, and module load failures.",
+  "dependencies": {
+    "requires": [
+      "echocore",
+      "echoadaptercore",
+      "echopolicycore",
+      "echoreportcore",
+      "echoplaytestcore"
+    ],
+    "optional": [
+      "echosessioncore"
+    ]
+  },
+  "surfaces": {
+    "provides": [
+      "telemetry.local_bundle",
+      "telemetry.privacy_policy",
+      "telemetry.qa_metrics"
+    ],
+    "consumes": [
+      "policy.manifest",
+      "reports.contracts",
+      "playtest.session_proofs"
+    ],
+    "adapterDomains": [
+      "data",
+      "diagnostics"
+    ],
+    "nativeEntrypoint": "com.knoxhack.echo.telemetrycore.EchoTelemetryCoreNativeModule"
+  },
+  "mvpContracts": [
+    "opt_in_local_telemetry_bundle",
+    "privacy_safe_metrics",
+    "qa_support_export"
+  ],
+  "probeAssertions": [
+    "native entrypoint activates",
+    "logical registration count equals descriptor provides count",
+    "registryMutated remains false",
+    "transformsPerformed remains false"
+  ],
+  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+}

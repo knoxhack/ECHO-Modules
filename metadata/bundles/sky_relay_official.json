@@ -1,0 +1,61 @@
+{
+  "id": "sky_relay_official",
+  "name": "Sky Relay Official Bundle",
+  "version": "1.0.0",
+  "description": "Sky Relay protocol with power, weather, recovery, route, and logistics support.",
+  "modules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echoruntimeguard",
+    "echoskyrelayprotocol",
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echopowergrid",
+    "echoweathercore",
+    "echorecovery",
+    "echologisticsnetwork",
+    "echomissioncore",
+    "echoterminal",
+    "echothemecore"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echoadaptercore",
+    "echonetcore",
+    "echoruntimeguard",
+    "echoskyrelayprotocol"
+  ],
+  "optionalModules": [
+    "echoholomap",
+    "echoindex",
+    "echolens",
+    "echopowergrid",
+    "echoweathercore",
+    "echorecovery",
+    "echologisticsnetwork",
+    "echomissioncore",
+    "echoterminal",
+    "echothemecore"
+  ],
+  "bestFor": [
+    "Sky Relay",
+    "Storm routes",
+    "Restoration loops"
+  ],
+  "packStyles": [
+    "sky_relay",
+    "official_pack"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Sky Relay Official",
+    "accent": "#6aa6ff",
+    "description": "Sky Relay protocol with power, weather, recovery, route, and logistics support.",
+    "status": "Ready",
+    "style": "sky_relay"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

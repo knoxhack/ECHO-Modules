@@ -1,0 +1,62 @@
+{
+  "id": "creator_tooling",
+  "name": "Creator Tooling Bundle",
+  "version": "1.0.0",
+  "description": "Authoring, validation, asset, localization, diff, balance, and roadmap tooling for pack creators.",
+  "modules": [
+    "echocore",
+    "echoadaptercore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echocreatorcore",
+    "echoreportcore",
+    "echoassetcore",
+    "echotextureforge",
+    "echosoundcore",
+    "echoblueprintcore",
+    "echobalancecore",
+    "echopackdiff",
+    "echoassetpipeline",
+    "echolocalizationcore",
+    "echocurationcore",
+    "echodependencydoctor"
+  ],
+  "requiredModules": [
+    "echocore",
+    "echoadaptercore",
+    "echoschemacore",
+    "echovalidationcore",
+    "echocreatorcore",
+    "echoreportcore"
+  ],
+  "optionalModules": [
+    "echoassetcore",
+    "echotextureforge",
+    "echosoundcore",
+    "echoblueprintcore",
+    "echobalancecore",
+    "echopackdiff",
+    "echoassetpipeline",
+    "echolocalizationcore",
+    "echocurationcore",
+    "echodependencydoctor"
+  ],
+  "bestFor": [
+    "Creator packs",
+    "Studio workflows",
+    "Release QA"
+  ],
+  "packStyles": [
+    "creator_tooling"
+  ],
+  "difficulty": "normal",
+  "launcherCard": {
+    "title": "Creator Tooling",
+    "accent": "#f0b85a",
+    "description": "Authoring, validation, asset, localization, diff, balance, and roadmap tooling for pack creators.",
+    "status": "Ready",
+    "style": "creator_tooling"
+  },
+  "docsPath": "docs/MODULE_BUNDLES.md",
+  "recommendedWith": []
+}

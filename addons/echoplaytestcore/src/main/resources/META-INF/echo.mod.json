@@ -1,0 +1,104 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echoplaytestcore",
+  "name": "ECHO: PlaytestCore",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "tooling",
+  "role": "playtest_core",
+  "entrypoint": "com.knoxhack.echo.playtestcore.EchoPlaytestCore",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "summary": "Automated gameplay evidence runner for release readiness, session proof, save/load, install, update, repair, and rollback checks.",
+  "requires": [
+    "echocore",
+    "echoadaptercore",
+    "echoreportcore",
+    "echovalidationcore",
+    "echomodulegraph",
+    "echoruntimeguard"
+  ],
+  "optional": [
+    "echomigrationcore",
+    "echopolicycore",
+    "echotelemetrycore"
+  ],
+  "provides": [
+    "playtest.scenarios",
+    "playtest.evidence_runner",
+    "playtest.release_readiness",
+    "playtest.session_proofs"
+  ],
+  "consumes": [
+    "reports.contracts",
+    "release.readiness",
+    "validation.pack",
+    "module.graph",
+    "runtime.guard"
+  ],
+  "gameModes": [
+    "ashfall",
+    "openlands_standard",
+    "skyrelay_restoration",
+    "arcana_division",
+    "dev_tools"
+  ],
+  "permissions": [
+    "playtest.read",
+    "playtest.write",
+    "reports.write",
+    "pack.read"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "data",
+        "diagnostics",
+        "packs"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echo.playtestcore.EchoPlaytestCoreNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+  },
+  "apiStability": "alpha",
+  "roadmap": {
+    "phase": 1,
+    "status": "contract-first",
+    "mvpContracts": [
+      "json_scenario_definitions",
+      "first_30_minutes_run",
+      "two_hour_run",
+      "completion_path",
+      "save_load_proof",
+      "crash_free_session",
+      "install_update_repair_rollback_proof",
+      "release_readiness_report"
+    ]
+  },
+  "ai": {
+    "requiresHumanReview": false,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}
