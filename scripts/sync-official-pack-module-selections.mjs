@@ -309,25 +309,22 @@ function validateSelections(selectionSource, descriptors) {
     if (ownRoot && !selected.has(ownRoot)) {
       errors.push(`${packKey} is missing its root module ${ownRoot}`)
     }
-    const echoAddonApiRequiredBy = []
     for (const moduleId of modules) {
       const descriptor = descriptors.get(moduleId)
       if (!descriptor) continue
       for (const requiredId of descriptor.requires ?? []) {
         const normalizedRequiredId = String(requiredId).toLowerCase()
+        if (normalizedRequiredId === 'echoaddonapi') {
+          errors.push(`${packKey} selects ${moduleId}, but echoaddonapi is SDK/API-only and cannot be a runtime dependency`)
+          continue
+        }
         if (!selected.has(normalizedRequiredId)) {
           errors.push(`${packKey} selects ${moduleId}, but is missing required dependency ${normalizedRequiredId}`)
         }
-        if (normalizedRequiredId === 'echoaddonapi' && moduleId !== 'echoaddonapi') {
-          echoAddonApiRequiredBy.push(moduleId)
-        }
       }
     }
-    if (selected.has('echoaddonapi') && echoAddonApiRequiredBy.length === 0) {
-      errors.push(`${packKey} includes echoaddonapi, but no selected module requires it`)
-    }
-    if (!selected.has('echoaddonapi') && echoAddonApiRequiredBy.length > 0) {
-      errors.push(`${packKey} is missing echoaddonapi required by ${echoAddonApiRequiredBy.join(', ')}`)
+    if (selected.has('echoaddonapi')) {
+      errors.push(`${packKey} includes SDK/API-only echoaddonapi as a player-facing runtime module`)
     }
   }
 }

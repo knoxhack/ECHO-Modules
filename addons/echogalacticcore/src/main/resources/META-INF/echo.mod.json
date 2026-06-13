@@ -16,7 +16,6 @@
   "serverOnly": false,
   "side": "common",
   "requires": [
-    "echoaddonapi",
     "echoadaptercore"
   ],
   "optional": [
@@ -43,7 +42,6 @@
   ],
   "consumes": [
     "platform.contracts",
-    "echo.sdk.public_api",
     "adapter.echo_native",
     "echo.native.registry",
     "echo.native.lifecycle",

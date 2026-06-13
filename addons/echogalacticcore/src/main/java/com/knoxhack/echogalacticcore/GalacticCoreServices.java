@@ -199,7 +199,6 @@ public final class GalacticCoreServices {
     }
 
     public static void resolveDependencies(EchoNativeModuleLoadContext context) {
-        context.resolveDependency("echoaddonapi");
         context.resolveDependency("echoadaptercore");
         GalacticCoreIds.OPTIONAL_INTEGRATIONS.forEach(context::resolveDependency);
     }

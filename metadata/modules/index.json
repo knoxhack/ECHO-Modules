@@ -1829,7 +1829,6 @@
       "descriptorPath": "addons/echogalacticcore/src/main/resources/META-INF/echo.mod.json",
       "moduleDir": "addons/echogalacticcore",
       "requires": [
-        "echoaddonapi",
         "echoadaptercore"
       ],
       "optional": [
@@ -1856,7 +1855,6 @@
       ],
       "consumes": [
         "platform.contracts",
-        "echo.sdk.public_api",
         "adapter.echo_native",
         "echo.native.registry",
         "echo.native.lifecycle",

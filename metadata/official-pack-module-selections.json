@@ -4,7 +4,7 @@
     "basis": "Purpose-based module selection from module descriptors and overviews.",
     "foundationPolicy": "Foundation modules are selected in every official pack.",
     "dependencyPolicy": "Required descriptor dependencies must be present; optional descriptor dependencies are not pulled automatically.",
-    "echoaddonapiPolicy": "echoaddonapi is selected only when a selected module requires it. Currently this is Galactic Survey through echogalacticcore.",
+    "echoaddonapiPolicy": "echoaddonapi is SDK/API-only and must not be selected as a player-facing pack module.",
     "lanePolicy": "Native, NeoForge, and Standalone editions use identical module IDs for a pack. Only artifact family, artifact names, and install paths differ by lane."
   },
   "packs": {
@@ -204,10 +204,9 @@
     },
     "galactic-survey": {
       "displayName": "Galactic Survey",
-      "expectedCount": 42,
+      "expectedCount": 41,
       "modules": [
         "echoadaptercore",
-        "echoaddonapi",
         "echoassetcore",
         "echoatmospherecore",
         "echoblockworks",

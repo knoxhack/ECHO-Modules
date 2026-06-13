@@ -1308,7 +1308,7 @@ class EchoGalacticCoreNativeModuleTest {
 
         EchoNativeSdkTestkit.ModuleFixture fixture = env.moduleFixture(
                 GalacticCoreIds.NATIVE_ENTRYPOINT,
-                List.of("echoaddonapi", "echoadaptercore"),
+                List.of("echoadaptercore"),
                 GalacticCoreIds.OPTIONAL_INTEGRATIONS,
                 List.of("galacticcore.content", "galacticcore.rockets", "galacticcore.life_support")
         );
@@ -1327,7 +1327,7 @@ class EchoGalacticCoreNativeModuleTest {
                 "space_exploration",
                 GalacticCoreIds.NATIVE_ENTRYPOINT,
                 EchoNativeRuntimeSide.COMMON,
-                List.of("echoaddonapi", "echoadaptercore"),
+                List.of("echoadaptercore"),
                 GalacticCoreIds.OPTIONAL_INTEGRATIONS,
                 List.of("galacticcore.content", "galacticcore.rockets", "galacticcore.life_support"),
                 Path.of("src/main/resources/META-INF/echo.mod.json"),

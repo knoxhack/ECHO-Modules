@@ -32,14 +32,6 @@ ordering="NONE"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="echoaddonapi"
-type="required"
-reason="Provides the public ECHO add-on API consumed by GalacticCore contracts."
-versionRange="[0.1.0,)"
-ordering="AFTER"
-side="BOTH"
-
-[[dependencies.${mod_id}]]
 modId="echoadaptercore"
 type="required"
 reason="Provides cross-runtime adapter service access for ECHO modules."

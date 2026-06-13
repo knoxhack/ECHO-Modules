@@ -50,7 +50,7 @@ sourceSets.main.resources.srcDir generateModMetadata
 
 dependencies {
     api project(':echo-native-contracts')
-    api project(':echoaddonapi')
+    compileOnly project(':echoaddonapi')
     api project(':echoadaptercore')
 
     testImplementation project(':echo-native-testkit')
