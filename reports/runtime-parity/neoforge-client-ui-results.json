@@ -97,6 +97,15 @@
   ],
   "moduleCount": 85,
   "allModules": false,
+  "sourceReports": [
+    {
+      "key": "clientUi",
+      "path": "reports/neoforge-strict-play/neoforge-client-ui-results.json",
+      "found": false,
+      "status": "MISSING",
+      "moduleCount": 0
+    }
+  ],
   "modules": [
     {
       "moduleId": "echoaccessibilitycore",
@@ -5260,7 +5269,8 @@
   "saveEvidence": [],
   "networkEvidence": [],
   "blockers": [
+    "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected.",
     "UI source/surface contracts exist, but no live NeoForge client route, screenshot, or interaction proof was ingested.",
-    "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected."
+    "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
   ]
 }

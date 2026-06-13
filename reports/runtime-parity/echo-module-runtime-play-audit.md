@@ -1,9 +1,9 @@
 # ECHO Module Runtime Play Audit
 
-- Generated: 2026-06-13T21:51:54.018Z
+- Generated: 2026-06-13T21:59:52.812Z
 - Strict-play would fail: YES
-- Passing rows: 11
-- Partial rows: 385
+- Passing rows: 6
+- Partial rows: 390
 - Failing rows: 0
 - Pack acceptance pass: 0/15
 
@@ -97,7 +97,7 @@
 | echoashfallprotocol | standalone | partial | pack acceptance missing or failing for Ashfall Standalone |
 | echoassetcore | neoforge | partial | missing neoforge strict-play content evidence for echoassetcore |
 | echoassetcore | echo_native | partial | missing echo_native strict-play saveNetwork evidence for echoassetcore |
-| echoassetcore | standalone | partial | pack acceptance missing or failing for Openlands Standalone |
+| echoassetcore | standalone | partial | pack acceptance missing or failing for Galactic-Survey Standalone |
 | echoassetpipeline | neoforge | partial | missing neoforge strict-play content evidence for echoassetpipeline |
 | echoassetpipeline | echo_native | partial | missing echo_native strict-play content evidence for echoassetpipeline |
 | echoassetpipeline | standalone | partial | missing standalone strict-play content evidence for echoassetpipeline |

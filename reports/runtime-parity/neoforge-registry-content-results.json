@@ -107,6 +107,15 @@
   ],
   "moduleCount": 93,
   "allModules": false,
+  "sourceReports": [
+    {
+      "key": "registryContent",
+      "path": "reports/neoforge-strict-play/neoforge-registry-content-results.json",
+      "found": false,
+      "status": "MISSING",
+      "moduleCount": 0
+    }
+  ],
   "modules": [
     {
       "moduleId": "echoadaptercore",
@@ -5599,6 +5608,7 @@
   "networkEvidence": [],
   "blockers": [
     "Registry/content source signals exist, but no runtime NeoForge registry/datapack/worldgen dump was ingested.",
-    "Strict-play requires runtime content registration evidence."
+    "Strict-play requires runtime content registration evidence.",
+    "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-registry-content-results.json"
   ]
 }

@@ -60,6 +60,15 @@
   ],
   "moduleCount": 45,
   "allModules": false,
+  "sourceReports": [
+    {
+      "key": "gameTests",
+      "path": "reports/neoforge-strict-play/neoforge-gametest-results.json",
+      "found": false,
+      "status": "MISSING",
+      "moduleCount": 0
+    }
+  ],
   "modules": [
     {
       "moduleId": "echoaetherworks",
@@ -3526,6 +3535,7 @@
   "networkEvidence": [],
   "blockers": [
     "GameTest sources are indexed, but no executed NeoForge GameTest result artifact was ingested.",
-    "Strict-play requires pass/fail execution results for module GameTests."
+    "Strict-play requires pass/fail execution results for module GameTests.",
+    "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-gametest-results.json"
   ]
 }

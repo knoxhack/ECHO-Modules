@@ -784,12 +784,13 @@ function reportStatus(report) {
 }
 
 function checkPassed(value) {
-  if (value === true) return true
-  if (typeof value === 'string') return normalizedPassStatus(value) === 'PASS'
+  if (value === true || typeof value === 'string') return false
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false
-  return value.passed === true
+  const evidence = array(value.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0)
+  const passSignal = value.passed === true
     || value.pass === true
     || normalizedPassStatus(value.status ?? value.result ?? value.state) === 'PASS'
+  return passSignal && evidence.length > 0
 }
 
 function checkDetail(value) {
@@ -797,8 +798,10 @@ function checkDetail(value) {
     return { status: checkPassed(value) ? 'PASS' : 'MISSING', evidence: [] }
   }
   return {
-    status: normalizedPassStatus(value.status ?? value.result ?? value.state) || (checkPassed(value) ? 'PASS' : 'MISSING'),
-    evidence: array(value.evidence).filter((item) => typeof item === 'string'),
+    status: checkPassed(value)
+      ? 'PASS'
+      : (normalizedPassStatus(value.status ?? value.result ?? value.state) === 'PASS' ? 'PENDING_EVIDENCE' : (normalizedPassStatus(value.status ?? value.result ?? value.state) || 'MISSING')),
+    evidence: array(value.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0),
     notes: string(value.notes),
     owner: string(value.owner),
   }

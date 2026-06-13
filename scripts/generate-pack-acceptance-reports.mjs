@@ -129,15 +129,18 @@ function acceptanceReportFor({ generatedAt, manifest, existing, reportPath }) {
 function normalizeCheck(value, description) {
   const current = object(value)
   const status = normalizeStatus(current.status ?? current.result ?? current.state ?? value)
-  const passed = current.passed === true || current.pass === true || value === true || status === 'PASS'
+  const evidence = array(current.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0)
+  const passSignal = current.passed === true || current.pass === true || value === true || status === 'PASS'
+  const passed = passSignal && evidence.length > 0
   return {
-    status: passed ? 'PASS' : (status || 'PENDING'),
+    status: passed ? 'PASS' : (passSignal ? 'PENDING_EVIDENCE' : (status || 'PENDING')),
     passed,
     description,
-    evidence: array(current.evidence).filter((item) => typeof item === 'string'),
+    evidence,
     notes: string(current.notes),
     owner: string(current.owner),
     verifiedAt: string(current.verifiedAt),
+    blockers: passed ? [] : (passSignal ? ['PASS check is missing evidence references.'] : []),
   }
 }
 
@@ -147,6 +150,7 @@ function checkSummary(checks) {
     requiredCheckCount: values.length,
     passedCheckCount: values.filter((check) => check.passed).length,
     failedCheckCount: values.filter((check) => check.status === 'FAIL').length,
+    missingEvidenceCount: values.filter((check) => check.status === 'PENDING_EVIDENCE').length,
     pendingCheckCount: values.filter((check) => !check.passed && check.status !== 'FAIL').length,
   }
 }
@@ -223,7 +227,7 @@ function normalizeStatus(value) {
   const normalized = string(value).trim().toUpperCase()
   if (['PASS', 'PASSED', 'SUCCESS', 'OK', 'TRUE'].includes(normalized)) return 'PASS'
   if (['FAIL', 'FAILED', 'ERROR', 'FALSE'].includes(normalized)) return 'FAIL'
-  if (['PENDING', 'TODO', 'NOT_RUN', ''].includes(normalized)) return 'PENDING'
+  if (['PENDING', 'PENDING_EVIDENCE', 'TODO', 'NOT_RUN', ''].includes(normalized)) return normalized || 'PENDING'
   if (['PARTIAL', 'WARN', 'WARNING'].includes(normalized)) return 'PARTIAL'
   return normalized
 }

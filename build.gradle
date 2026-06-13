@@ -241,6 +241,18 @@ tasks.register('generateRuntimeParityAudit', Exec) {
     commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs'
 }
 
+tasks.register('testGenerateNeoForgeRuntimeEvidence', Exec) {
+    group = 'verification'
+    description = 'Tests NeoForge strict-play evidence ingestion for executed GameTest, client UI, registry, and live play reports.'
+    commandLine 'node', 'scripts/test-generate-neoforge-runtime-evidence.mjs'
+}
+
+tasks.register('testGeneratePackAcceptanceReports', Exec) {
+    group = 'verification'
+    description = 'Tests pack acceptance report generation and evidence-backed PASS gating.'
+    commandLine 'node', 'scripts/test-generate-pack-acceptance-reports.mjs'
+}
+
 tasks.register('checkOfficialPackModuleSelections', Exec) {
     group = 'verification'
     description = 'Verifies official pack module selections are synchronized across pack lanes and Release Index entries.'

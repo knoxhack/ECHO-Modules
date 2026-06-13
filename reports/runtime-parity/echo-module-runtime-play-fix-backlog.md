@@ -1,6 +1,6 @@
 # ECHO Runtime Play Fix Backlog
 
-Generated: 2026-06-13T21:51:54.018Z
+Generated: 2026-06-13T21:59:52.812Z
 
 - Items: 39
 - By category: module_coverage: 20, pack_acceptance: 15, runtime_evidence: 4
@@ -14,7 +14,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: echo_native
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 28
+- Affected modules: 39
 - Evidence: `C:/Development/Github/ECHO-Arcana-Division-Native-Edition/reports/pack-acceptance/arcana-division-native-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Arcana-Division Native manual acceptance matrix and update C:/Development/Github/ECHO-Arcana-Division-Native-Edition/reports/pack-acceptance/arcana-division-native-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -25,7 +25,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: neoforge
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 28
+- Affected modules: 39
 - Evidence: `C:/Development/Github/ECHO-Arcana-Division-NeoForge-Edition/reports/pack-acceptance/arcana-division-neoforge-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Arcana-Division NeoForge manual acceptance matrix and update C:/Development/Github/ECHO-Arcana-Division-NeoForge-Edition/reports/pack-acceptance/arcana-division-neoforge-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -36,7 +36,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: standalone
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 28
+- Affected modules: 39
 - Evidence: `C:/Development/Github/ECHO-Arcana-Division-Standalone-Edition/reports/pack-acceptance/arcana-division-standalone-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Arcana-Division Standalone manual acceptance matrix and update C:/Development/Github/ECHO-Arcana-Division-Standalone-Edition/reports/pack-acceptance/arcana-division-standalone-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -47,7 +47,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: echo_native
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 16
+- Affected modules: 46
 - Evidence: `C:/Development/Github/ECHO-Ashfall-Native-Edition/reports/pack-acceptance/ashfall-native-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Ashfall Native manual acceptance matrix and update C:/Development/Github/ECHO-Ashfall-Native-Edition/reports/pack-acceptance/ashfall-native-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -58,7 +58,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: neoforge
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 14
+- Affected modules: 46
 - Evidence: `C:/Development/Github/ECHO-Ashfall-NeoForge-Edition/reports/pack-acceptance/ashfall-neoforge-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Ashfall NeoForge manual acceptance matrix and update C:/Development/Github/ECHO-Ashfall-NeoForge-Edition/reports/pack-acceptance/ashfall-neoforge-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -69,7 +69,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: standalone
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 14
+- Affected modules: 46
 - Evidence: `C:/Development/Github/ECHO-Ashfall-Standalone-Edition/reports/pack-acceptance/ashfall-standalone-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Ashfall Standalone manual acceptance matrix and update C:/Development/Github/ECHO-Ashfall-Standalone-Edition/reports/pack-acceptance/ashfall-standalone-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -80,7 +80,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: echo_native
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 23
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Galactic-Survey-Native-Edition/reports/pack-acceptance/galactic-survey-native-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Galactic-Survey Native manual acceptance matrix and update C:/Development/Github/ECHO-Galactic-Survey-Native-Edition/reports/pack-acceptance/galactic-survey-native-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -91,7 +91,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: neoforge
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 23
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Galactic-Survey-NeoForge-Edition/reports/pack-acceptance/galactic-survey-neoforge-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Galactic-Survey NeoForge manual acceptance matrix and update C:/Development/Github/ECHO-Galactic-Survey-NeoForge-Edition/reports/pack-acceptance/galactic-survey-neoforge-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -102,7 +102,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: standalone
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 23
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Galactic-Survey-Standalone-Edition/reports/pack-acceptance/galactic-survey-standalone-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Galactic-Survey Standalone manual acceptance matrix and update C:/Development/Github/ECHO-Galactic-Survey-Standalone-Edition/reports/pack-acceptance/galactic-survey-standalone-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -304,7 +304,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: echo_native
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 27
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Openlands-Native-Edition/reports/pack-acceptance/openlands-native-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Openlands Native manual acceptance matrix and update C:/Development/Github/ECHO-Openlands-Native-Edition/reports/pack-acceptance/openlands-native-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -315,7 +315,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: neoforge
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 27
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Openlands-NeoForge-Edition/reports/pack-acceptance/openlands-neoforge-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Openlands NeoForge manual acceptance matrix and update C:/Development/Github/ECHO-Openlands-NeoForge-Edition/reports/pack-acceptance/openlands-neoforge-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -326,7 +326,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: standalone
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 27
+- Affected modules: 42
 - Evidence: `C:/Development/Github/ECHO-Openlands-Standalone-Edition/reports/pack-acceptance/openlands-standalone-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Openlands Standalone manual acceptance matrix and update C:/Development/Github/ECHO-Openlands-Standalone-Edition/reports/pack-acceptance/openlands-standalone-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -337,7 +337,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: echo_native
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 14
+- Affected modules: 43
 - Evidence: `C:/Development/Github/ECHO-Sky-Relay-Native-Edition/reports/pack-acceptance/sky-relay-native-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Sky-Relay Native manual acceptance matrix and update C:/Development/Github/ECHO-Sky-Relay-Native-Edition/reports/pack-acceptance/sky-relay-native-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -348,7 +348,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: neoforge
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 14
+- Affected modules: 43
 - Evidence: `C:/Development/Github/ECHO-Sky-Relay-NeoForge-Edition/reports/pack-acceptance/sky-relay-neoforge-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Sky-Relay NeoForge manual acceptance matrix and update C:/Development/Github/ECHO-Sky-Relay-NeoForge-Edition/reports/pack-acceptance/sky-relay-neoforge-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.
@@ -359,7 +359,7 @@ Generated: 2026-06-13T21:51:54.018Z
 - Category: pack_acceptance
 - Runtime: standalone
 - Required proof: installLaunchSucceeds, freshSessionStarts, hudAppears, inventoryOverlayAndIndexRespond, terminalExecutesAction, holoMapOpens, lensScans, screenCoreScreensRenderAndHandleInput, blockPlaceUseBreakWorks, blockActionMutatesState, worldgenAppears, saveReloadPreservesState, trustedMutationsReported
-- Affected modules: 14
+- Affected modules: 43
 - Evidence: `C:/Development/Github/ECHO-Sky-Relay-Standalone-Edition/reports/pack-acceptance/sky-relay-standalone-acceptance.json`
 - First blocker: pack acceptance report status is PENDING
 - Recommended fix: Run the Sky-Relay Standalone manual acceptance matrix and update C:/Development/Github/ECHO-Sky-Relay-Standalone-Edition/reports/pack-acceptance/sky-relay-standalone-acceptance.json with PASS checks plus logs/screenshots/save/runtime report evidence.

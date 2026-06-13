@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.runtime_play_fix_backlog.v1",
-  "generatedAt": "2026-06-13T21:51:54.018Z",
+  "generatedAt": "2026-06-13T21:59:52.812Z",
   "successStandard": "Every item represents missing PASS player-functional proof; partial/source/metadata-only evidence remains backlog work.",
   "summary": {
     "itemCount": 39,
@@ -60,7 +60,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 28,
+      "affectedModuleCount": 39,
       "evidencePath": "C:/Development/Github/ECHO-Arcana-Division-Native-Edition/reports/pack-acceptance/arcana-division-native-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -106,7 +106,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 28,
+      "affectedModuleCount": 39,
       "evidencePath": "C:/Development/Github/ECHO-Arcana-Division-NeoForge-Edition/reports/pack-acceptance/arcana-division-neoforge-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -152,7 +152,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 28,
+      "affectedModuleCount": 39,
       "evidencePath": "C:/Development/Github/ECHO-Arcana-Division-Standalone-Edition/reports/pack-acceptance/arcana-division-standalone-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -198,7 +198,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 16,
+      "affectedModuleCount": 46,
       "evidencePath": "C:/Development/Github/ECHO-Ashfall-Native-Edition/reports/pack-acceptance/ashfall-native-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -244,7 +244,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 14,
+      "affectedModuleCount": 46,
       "evidencePath": "C:/Development/Github/ECHO-Ashfall-NeoForge-Edition/reports/pack-acceptance/ashfall-neoforge-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -290,7 +290,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 14,
+      "affectedModuleCount": 46,
       "evidencePath": "C:/Development/Github/ECHO-Ashfall-Standalone-Edition/reports/pack-acceptance/ashfall-standalone-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -336,7 +336,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 23,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Galactic-Survey-Native-Edition/reports/pack-acceptance/galactic-survey-native-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -382,7 +382,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 23,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Galactic-Survey-NeoForge-Edition/reports/pack-acceptance/galactic-survey-neoforge-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -428,7 +428,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 23,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Galactic-Survey-Standalone-Edition/reports/pack-acceptance/galactic-survey-standalone-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -1348,7 +1348,8 @@
       "blockers": [
         "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected.",
         "UI source/surface contracts exist, but no live NeoForge client route, screenshot, or interaction proof was ingested.",
-        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-client-ui-results.json"
+        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-client-ui-results.json",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
       ],
       "recommendedFix": "Run or implement executed NeoForge GameTest/live client evidence, then replace PARTIAL source-contract reports with PASS reports that include moduleIds and trusted gameplay mutations."
     },
@@ -1420,7 +1421,8 @@
       "blockers": [
         "GameTest sources are indexed, but no executed NeoForge GameTest result artifact was ingested.",
         "Strict-play requires pass/fail execution results for module GameTests.",
-        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-module-gametest-results.json"
+        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-module-gametest-results.json",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-gametest-results.json"
       ],
       "recommendedFix": "Run or implement executed NeoForge GameTest/live client evidence, then replace PARTIAL source-contract reports with PASS reports that include moduleIds and trusted gameplay mutations."
     },
@@ -1582,7 +1584,8 @@
       "blockers": [
         "NeoForge source/compiled contract evidence exists, but no live NeoForge client/server session proof was ingested.",
         "Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference.",
-        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-play-evidence.json"
+        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-play-evidence.json",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
       ],
       "recommendedFix": "Run or implement executed NeoForge GameTest/live client evidence, then replace PARTIAL source-contract reports with PASS reports that include moduleIds and trusted gameplay mutations."
     },
@@ -1701,7 +1704,8 @@
       "blockers": [
         "Registry/content source signals exist, but no runtime NeoForge registry/datapack/worldgen dump was ingested.",
         "Strict-play requires runtime content registration evidence.",
-        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-registry-content-results.json"
+        "evidence report status is PARTIAL: ECHO-Modules/reports/runtime-parity/neoforge-registry-content-results.json",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-registry-content-results.json"
       ],
       "recommendedFix": "Run or implement executed NeoForge GameTest/live client evidence, then replace PARTIAL source-contract reports with PASS reports that include moduleIds and trusted gameplay mutations."
     },
@@ -2329,7 +2333,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 27,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Openlands-Native-Edition/reports/pack-acceptance/openlands-native-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -2375,7 +2379,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 27,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Openlands-NeoForge-Edition/reports/pack-acceptance/openlands-neoforge-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -2421,7 +2425,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 27,
+      "affectedModuleCount": 42,
       "evidencePath": "C:/Development/Github/ECHO-Openlands-Standalone-Edition/reports/pack-acceptance/openlands-standalone-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -2467,7 +2471,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 14,
+      "affectedModuleCount": 43,
       "evidencePath": "C:/Development/Github/ECHO-Sky-Relay-Native-Edition/reports/pack-acceptance/sky-relay-native-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -2513,7 +2517,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 14,
+      "affectedModuleCount": 43,
       "evidencePath": "C:/Development/Github/ECHO-Sky-Relay-NeoForge-Edition/reports/pack-acceptance/sky-relay-neoforge-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",
@@ -2559,7 +2563,7 @@
         "trustedMutationsReported"
       ],
       "modules": [],
-      "affectedModuleCount": 14,
+      "affectedModuleCount": 43,
       "evidencePath": "C:/Development/Github/ECHO-Sky-Relay-Standalone-Edition/reports/pack-acceptance/sky-relay-standalone-acceptance.json",
       "blockers": [
         "pack acceptance report status is PENDING",

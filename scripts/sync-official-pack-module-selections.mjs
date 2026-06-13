@@ -453,8 +453,14 @@ async function refreshArtifactMetadata(manifest, repoRoot) {
 }
 
 async function updatePackSnapshots(repoRoot, packKey, laneKey, selection, descriptors) {
-  const releaseAssetsRoot = path.join(repoRoot, 'release-assets')
-  const packFiles = await walkFiles(releaseAssetsRoot, (file) => file.endsWith('.pack.json'))
+  const snapshotRoots = [
+    path.join(repoRoot, 'release-assets'),
+    path.join(repoRoot, 'dist')
+  ]
+  const packFiles = []
+  for (const snapshotRoot of snapshotRoots) {
+    packFiles.push(...await walkFiles(snapshotRoot, (file) => file.endsWith('.pack.json')))
+  }
   const changedDirs = new Set()
   for (const file of packFiles) {
     const manifest = await readJson(file)

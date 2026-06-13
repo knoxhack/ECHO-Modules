@@ -7,6 +7,13 @@ const DESCRIPTOR_PATH = path.join('src', 'main', 'resources', 'META-INF', 'echo.
 const DEFAULT_OUT_DIR = path.join('reports', 'runtime-parity')
 const GENERATED_AT = '1970-01-01T00:00:00Z'
 
+const STRICT_PLAY_INPUTS = {
+  livePlay: 'reports/neoforge-strict-play/neoforge-live-play-evidence.json',
+  gameTests: 'reports/neoforge-strict-play/neoforge-gametest-results.json',
+  registryContent: 'reports/neoforge-strict-play/neoforge-registry-content-results.json',
+  clientUi: 'reports/neoforge-strict-play/neoforge-client-ui-results.json',
+}
+
 const FEATURE_ORDER = [
   'gui',
   'hud',
@@ -47,6 +54,7 @@ export async function generateNeoForgeRuntimeEvidence({
   const normalizedRoot = path.resolve(repoRoot)
   const normalizedOutDir = path.resolve(normalizedRoot, outDir)
   const modules = await discoverModules(normalizedRoot)
+  const strictPlayInputs = await readStrictPlayInputs(normalizedRoot)
   const rows = []
   const loadedModuleIds = []
   const gameTestModuleIds = []
@@ -137,11 +145,12 @@ export async function generateNeoForgeRuntimeEvidence({
   const strictPlayPaths = await writeStrictPlayPlaceholders({
     report,
     outDir: normalizedOutDir,
+    strictPlayInputs,
   })
   return { report, path: output, strictPlayPaths }
 }
 
-async function writeStrictPlayPlaceholders({ report, outDir }) {
+async function writeStrictPlayPlaceholders({ report, outDir, strictPlayInputs }) {
   const lifecycleRows = report.modules.filter((module) => module.lifecycleVerified)
   const gameTestRows = report.modules.filter((module) => module.gameTests?.testNames?.length > 0)
   const registryRows = report.modules.filter((module) =>
@@ -156,7 +165,9 @@ async function writeStrictPlayPlaceholders({ report, outDir }) {
       strictPlayReport({
         schema: 'echo.neoforge.strict_play_evidence.v1',
         source: report,
-        evidenceKind: 'source-contract-not-live-play',
+        input: strictPlayInputs.livePlay,
+        fallbackEvidenceKind: 'source-contract-not-live-play',
+        passEvidenceKind: 'executed-neoforge-live-play-proof',
         requiredFor: ['lifecycle', 'content', 'ui', 'actions', 'blockItems', 'worldgen', 'saveNetwork'],
         moduleIds: lifecycleRows.map((module) => module.moduleId),
         modules: lifecycleRows,
@@ -171,7 +182,9 @@ async function writeStrictPlayPlaceholders({ report, outDir }) {
       strictPlayReport({
         schema: 'echo.neoforge.gametest_results.v1',
         source: report,
-        evidenceKind: 'gametest-source-index-not-execution-results',
+        input: strictPlayInputs.gameTests,
+        fallbackEvidenceKind: 'gametest-source-index-not-execution-results',
+        passEvidenceKind: 'executed-neoforge-gametest-results',
         requiredFor: ['lifecycle', 'actions', 'blockItems', 'saveNetwork'],
         moduleIds: gameTestRows.map((module) => module.moduleId),
         modules: gameTestRows,
@@ -186,7 +199,9 @@ async function writeStrictPlayPlaceholders({ report, outDir }) {
       strictPlayReport({
         schema: 'echo.neoforge.registry_content_results.v1',
         source: report,
-        evidenceKind: 'registry-source-contract-not-runtime-registry-dump',
+        input: strictPlayInputs.registryContent,
+        fallbackEvidenceKind: 'registry-source-contract-not-runtime-registry-dump',
+        passEvidenceKind: 'executed-neoforge-runtime-registry-content-proof',
         requiredFor: ['content', 'blockItems', 'worldgen'],
         moduleIds: registryRows.map((module) => module.moduleId),
         modules: registryRows,
@@ -201,7 +216,9 @@ async function writeStrictPlayPlaceholders({ report, outDir }) {
       strictPlayReport({
         schema: 'echo.neoforge.client_ui_results.v1',
         source: report,
-        evidenceKind: 'ui-source-contract-not-live-client-route',
+        input: strictPlayInputs.clientUi,
+        fallbackEvidenceKind: 'ui-source-contract-not-live-client-route',
+        passEvidenceKind: 'executed-neoforge-client-ui-proof',
         requiredFor: ['ui'],
         moduleIds: uiRows.map((module) => module.moduleId),
         modules: uiRows,
@@ -222,31 +239,95 @@ async function writeStrictPlayPlaceholders({ report, outDir }) {
   return paths
 }
 
-function strictPlayReport({ schema, source, evidenceKind, requiredFor, moduleIds, modules, blockers }) {
+function strictPlayReport({
+  schema,
+  source,
+  input,
+  fallbackEvidenceKind,
+  passEvidenceKind,
+  requiredFor,
+  moduleIds,
+  modules,
+  blockers,
+}) {
+  const inputModuleIds = moduleIdsFromReport(input?.report)
+  const inputStatus = reportStatus(input?.report)
+  const inputPass = input?.found && inputStatus === 'PASS' && inputModuleIds.length > 0
+  const coveredModuleIds = inputPass ? inputModuleIds : unique(moduleIds)
+  const coveredModules = modulesForIds(source.modules, coveredModuleIds)
+  const inputBlockers = inputPass ? [] : strictPlayInputBlockers(input, inputStatus, inputModuleIds)
   return {
     schema,
     generatedAt: source.generatedAt,
-    status: 'PARTIAL',
+    status: inputPass ? 'PASS' : 'PARTIAL',
     runtime: 'neoforge',
-    evidenceKind,
+    evidenceKind: inputPass ? passEvidenceKind : fallbackEvidenceKind,
     sourceEvidencePath: 'reports/runtime-parity/neoforge-runtime-evidence.json',
     requiredFor,
-    moduleIds: unique(moduleIds),
-    moduleCount: unique(moduleIds).length,
-    allModules: false,
-    modules: modules.map((module) => ({
+    moduleIds: coveredModuleIds,
+    moduleCount: coveredModuleIds.length,
+    allModules: inputPass ? reportCoversAllModules(input.report, source.moduleIds.length) : false,
+    sourceReports: [
+      {
+        key: input?.key ?? 'unknown',
+        path: input?.relativePath ?? '',
+        found: input?.found ?? false,
+        status: inputStatus,
+        moduleCount: inputModuleIds.length,
+      },
+    ],
+    modules: coveredModules.map((module) => ({
       moduleId: module.moduleId,
       name: module.name,
       expectedFeatures: module.expectedFeatures,
       gameTests: module.gameTests,
       featureProofs: module.featureProofs,
     })),
-    trustedMutations: [],
-    visibleRoutes: [],
-    saveEvidence: [],
-    networkEvidence: [],
-    blockers,
+    trustedMutations: inputPass ? array(input.report?.trustedMutations) : [],
+    visibleRoutes: inputPass ? array(input.report?.visibleRoutes) : [],
+    saveEvidence: inputPass ? array(input.report?.saveEvidence) : [],
+    networkEvidence: inputPass ? array(input.report?.networkEvidence) : [],
+    blockers: inputPass ? [] : uniquePreserveOrder([...inputBlockers, ...blockers]),
   }
+}
+
+async function readStrictPlayInputs(repoRoot) {
+  const entries = {}
+  for (const [key, relativePath] of Object.entries(STRICT_PLAY_INPUTS)) {
+    entries[key] = await readOptionalReport(repoRoot, key, relativePath)
+  }
+  return entries
+}
+
+async function readOptionalReport(repoRoot, key, relativePath) {
+  const absolutePath = path.join(repoRoot, relativePath)
+  if (!(await exists(absolutePath))) {
+    return { key, relativePath, found: false, report: null }
+  }
+  try {
+    return { key, relativePath, found: true, report: await readJson(absolutePath) }
+  } catch (error) {
+    return { key, relativePath, found: true, report: { parseError: error.message } }
+  }
+}
+
+function strictPlayInputBlockers(input, inputStatus, moduleIds) {
+  if (!input?.found) {
+    return [`missing executed NeoForge strict-play input: ${input?.relativePath ?? 'unknown'}`]
+  }
+  if (input.report?.parseError) {
+    return [`executed NeoForge strict-play input parse error: ${input.report.parseError}`]
+  }
+  const blockers = []
+  if (inputStatus !== 'PASS') blockers.push(`executed NeoForge strict-play input status is ${inputStatus || 'unknown'}: ${input.relativePath}`)
+  if (moduleIds.length === 0) blockers.push(`executed NeoForge strict-play input did not publish moduleIds: ${input.relativePath}`)
+  blockers.push(...array(input.report?.blockers).filter((item) => typeof item === 'string'))
+  return blockers
+}
+
+function modulesForIds(modules, moduleIds) {
+  const byId = new Map(modules.map((module) => [module.moduleId, module]))
+  return moduleIds.map((moduleId) => byId.get(moduleId)).filter(Boolean)
 }
 
 async function discoverModules(repoRoot) {
@@ -377,6 +458,40 @@ function featureProofsFor(module, lifecycleVerified) {
   }
 }
 
+function reportStatus(report) {
+  if (!report) return 'MISSING'
+  if (report.parseError) return 'PARSE_ERROR'
+  const value = string(report.status ?? report.result ?? report.summary?.status).trim().toUpperCase()
+  if (['PASS', 'PASSED', 'SUCCESS', 'OK'].includes(value)) return 'PASS'
+  if (['FAIL', 'FAILED', 'ERROR', 'SKIPPED'].includes(value)) return value
+  if (['PARTIAL', 'WARN', 'WARNING'].includes(value)) return 'PARTIAL'
+  return value || 'MISSING'
+}
+
+function moduleIdsFromReport(report) {
+  if (!report || report.parseError) return []
+  const values = [
+    ...array(report.moduleIds),
+    ...array(report.modules).map((item) => typeof item === 'string' ? item : item?.moduleId ?? item?.id),
+    ...array(report.rows).map((item) => item?.moduleId ?? item?.id),
+    ...array(report.results).map((item) => item?.moduleId ?? item?.id),
+    ...Object.keys(object(report.runtimeStatuses)),
+    ...Object.keys(object(report.lifecycles)),
+    ...array(report.passedModuleIds),
+    ...array(report.verifiedModuleIds),
+    ...array(report.loadedModuleIds),
+    ...array(report.lifecycleModuleIds),
+  ]
+  return unique(values.filter((value) => typeof value === 'string' && value.trim()))
+}
+
+function reportCoversAllModules(report, expectedCount) {
+  if (!report || report.parseError) return false
+  if (report.allModules === true || report.coversAllModules === true) return true
+  const moduleIds = moduleIdsFromReport(report)
+  return expectedCount > 0 && moduleIds.length >= expectedCount
+}
+
 function inferExpectedFeatures(moduleId, descriptor, sourceText, resourcePaths) {
   const access = object(descriptor.access)
   const adapterCore = object(access.adapterCore)
@@ -474,6 +589,10 @@ function object(value) {
   return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
 }
 
+function array(value) {
+  return Array.isArray(value) ? value : []
+}
+
 function string(value) {
   return typeof value === 'string' ? value : ''
 }
@@ -486,6 +605,10 @@ function cleanList(value) {
 
 function unique(values) {
   return [...new Set(values)].sort()
+}
+
+function uniquePreserveOrder(values) {
+  return [...new Set(values)]
 }
 
 function normalizePath(value) {

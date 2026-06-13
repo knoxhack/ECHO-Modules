@@ -6,7 +6,12 @@ const errors = []
 
 const protocolModule = 'echoarcanadivisionprotocol'
 const betaVersion = '1.0.0'
-const forbiddenExperienceDeps = new Set(['echoashfallprotocol', 'echoopenlandsprotocol', 'echoskyrelayprotocol'])
+const forbiddenExperienceDeps = new Set([
+  'echoashfallprotocol',
+  'echoopenlandsprotocol',
+  'echoskyrelayprotocol',
+  'echogalacticsurveyprotocol',
+])
 const officialSelections = readJson('metadata/official-pack-module-selections.json')
 const arcanaDivisionRuntimeModules = officialSelections.packs['arcana-division'].modules
 const expectedModuleRequirementCount = officialSelections.packs['arcana-division'].expectedCount
@@ -20,7 +25,6 @@ const arcanaModules = [
   'echocursecore',
   'echofamiliarcore',
   'echogrimoire',
-  'echorelictech',
   'echoriftworlds',
   'echoritualcore',
   'echospellcore',

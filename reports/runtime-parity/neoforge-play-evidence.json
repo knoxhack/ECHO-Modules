@@ -150,6 +150,15 @@
   ],
   "moduleCount": 132,
   "allModules": false,
+  "sourceReports": [
+    {
+      "key": "livePlay",
+      "path": "reports/neoforge-strict-play/neoforge-live-play-evidence.json",
+      "found": false,
+      "status": "MISSING",
+      "moduleCount": 0
+    }
+  ],
   "modules": [
     {
       "moduleId": "echoaccessibilitycore",
@@ -7051,6 +7060,7 @@
   "networkEvidence": [],
   "blockers": [
     "NeoForge source/compiled contract evidence exists, but no live NeoForge client/server session proof was ingested.",
-    "Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference."
+    "Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference.",
+    "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
   ]
 }

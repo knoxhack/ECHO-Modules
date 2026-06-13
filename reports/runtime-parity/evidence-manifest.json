@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.runtime_play_evidence_manifest.v1",
-  "generatedAt": "2026-06-13T21:51:54.018Z",
+  "generatedAt": "2026-06-13T21:59:52.812Z",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "echoRoot": "C:/Development/Github",
   "runtimeEvidence": [
@@ -160,9 +160,18 @@
       "allModules": true,
       "blockers": [
         "NeoForge source/compiled contract evidence exists, but no live NeoForge client/server session proof was ingested.",
-        "Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference."
+        "Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference.",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
       ],
-      "sourceReports": [],
+      "sourceReports": [
+        {
+          "key": "livePlay",
+          "path": "reports/neoforge-strict-play/neoforge-live-play-evidence.json",
+          "found": false,
+          "status": "MISSING",
+          "moduleCount": 0
+        }
+      ],
       "parseError": ""
     },
     {
@@ -231,9 +240,18 @@
       "allModules": false,
       "blockers": [
         "GameTest sources are indexed, but no executed NeoForge GameTest result artifact was ingested.",
-        "Strict-play requires pass/fail execution results for module GameTests."
+        "Strict-play requires pass/fail execution results for module GameTests.",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-gametest-results.json"
       ],
-      "sourceReports": [],
+      "sourceReports": [
+        {
+          "key": "gameTests",
+          "path": "reports/neoforge-strict-play/neoforge-gametest-results.json",
+          "found": false,
+          "status": "MISSING",
+          "moduleCount": 0
+        }
+      ],
       "parseError": ""
     },
     {
@@ -349,9 +367,18 @@
       "allModules": false,
       "blockers": [
         "Registry/content source signals exist, but no runtime NeoForge registry/datapack/worldgen dump was ingested.",
-        "Strict-play requires runtime content registration evidence."
+        "Strict-play requires runtime content registration evidence.",
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-registry-content-results.json"
       ],
-      "sourceReports": [],
+      "sourceReports": [
+        {
+          "key": "registryContent",
+          "path": "reports/neoforge-strict-play/neoforge-registry-content-results.json",
+          "found": false,
+          "status": "MISSING",
+          "moduleCount": 0
+        }
+      ],
       "parseError": ""
     },
     {
@@ -456,10 +483,19 @@
       "moduleCount": 85,
       "allModules": false,
       "blockers": [
+        "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected.",
         "UI source/surface contracts exist, but no live NeoForge client route, screenshot, or interaction proof was ingested.",
-        "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected."
+        "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
       ],
-      "sourceReports": [],
+      "sourceReports": [
+        {
+          "key": "clientUi",
+          "path": "reports/neoforge-strict-play/neoforge-client-ui-results.json",
+          "found": false,
+          "status": "MISSING",
+          "moduleCount": 0
+        }
+      ],
       "parseError": ""
     },
     {
