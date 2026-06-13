@@ -1,6 +1,6 @@
 # ECHO Module Runtime Play Audit
 
-- Generated: 2026-06-13T21:59:52.812Z
+- Generated: 2026-06-13T22:00:42.064Z
 - Strict-play would fail: YES
 - Passing rows: 6
 - Partial rows: 390
