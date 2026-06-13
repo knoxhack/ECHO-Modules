@@ -74,7 +74,15 @@ The Galactic Survey module closure is the current strict compiled release lane:
 node scripts\verify-module-release.mjs --release-dir dist\echo-module-release
 ```
 
-As of June 13, 2026, this gate generates and verifies 18 compiled runtime module records for `galactic-survey-0.1.0-alpha`. The Release Index may only promote those records after the generated artifacts are attached to a source-owned release with checksums and provenance.
+As of June 13, 2026, this gate generates and verifies 18 compiled runtime module records for `galactic-survey-0.1.0-alpha`. The source-owned GitHub release must be produced by the `Release Modules` workflow:
+
+```powershell
+gh workflow run release-modules.yml `
+  -f release_id=galactic-survey-0.1.0-alpha `
+  -f player_ready=true
+```
+
+The Release Index may only promote those records after the workflow attaches the generated artifacts, checksum file, and attestation/provenance to the source-owned release.
 
 ## Edition Consumption
 
