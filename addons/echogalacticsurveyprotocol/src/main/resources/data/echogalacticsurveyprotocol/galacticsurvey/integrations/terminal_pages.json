@@ -1,0 +1,25 @@
+{
+  "schema": "echo.galactic_survey.terminal_pages.v1",
+  "pages": [
+    {
+      "id": "survey_network",
+      "title": "Survey Network",
+      "purpose": "Shows network state, probe queue, sector unlocks, and route objectives."
+    },
+    {
+      "id": "probe_control",
+      "title": "Probe Control",
+      "purpose": "Launches probes, reports scan confidence, and lists recovery state."
+    },
+    {
+      "id": "route_planner",
+      "title": "Route Planner",
+      "purpose": "Shows fuel quality, return margin, depot coverage, and route risk."
+    },
+    {
+      "id": "salvage_log",
+      "title": "Salvage Log",
+      "purpose": "Tracks wreck hazards, recovered parts, and upgrade pressure."
+    }
+  ]
+}

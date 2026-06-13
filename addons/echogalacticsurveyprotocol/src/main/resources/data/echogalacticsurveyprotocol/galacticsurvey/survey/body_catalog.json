@@ -1,0 +1,40 @@
+{
+  "schema": "echo.galactic_survey.body_catalog.v1",
+  "bodies": [
+    {
+      "id": "barren_moon_kg_01a",
+      "sectorId": "near_sector_01",
+      "type": "barren_moon",
+      "catalogReward": "item:catalog_badge",
+      "scanConfidenceRequired": "partial"
+    },
+    {
+      "id": "ice_body_kg_01b",
+      "sectorId": "outer_sector_02",
+      "type": "ice_body",
+      "catalogReward": "holomap_layer:fuel_range",
+      "scanConfidenceRequired": "confirmed"
+    },
+    {
+      "id": "planet_candidate_ks_02",
+      "sectorId": "outer_sector_02",
+      "type": "planet_candidate",
+      "catalogReward": "mission:catalog_local_bodies",
+      "scanConfidenceRequired": "partial"
+    },
+    {
+      "id": "tidal_locked_rock_ks_03",
+      "sectorId": "derelict_corridor_03",
+      "type": "rocky_body",
+      "catalogReward": "item:stellar_chart_fragment",
+      "scanConfidenceRequired": "confirmed"
+    },
+    {
+      "id": "deep_sector_beacon_ks_04",
+      "sectorId": "deep_sector_04",
+      "type": "deep_sector_beacon",
+      "catalogReward": "item:galactic_survey_badge",
+      "scanConfidenceRequired": "resolved"
+    }
+  ]
+}

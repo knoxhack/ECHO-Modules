@@ -1,0 +1,44 @@
+{
+  "schema": "echo.galactic_survey.probe_catalog.v1",
+  "probes": [
+    {
+      "id": "starter_probe",
+      "itemId": "starter_probe",
+      "rangeSectors": 1,
+      "scanTier": "trace",
+      "bestUse": "near-sector signal discovery",
+      "unlockProof": "item:starter_probe"
+    },
+    {
+      "id": "long_range_probe",
+      "itemId": "long_range_probe",
+      "rangeSectors": 3,
+      "scanTier": "partial",
+      "bestUse": "deep-sector route scouting",
+      "unlockProof": "item:long_range_probe"
+    },
+    {
+      "id": "salvage_mapper_probe",
+      "itemId": "long_range_probe",
+      "rangeSectors": 2,
+      "scanTier": "confirmed",
+      "bestUse": "derelict and debris belt classification",
+      "unlockProof": "salvage:derelict_relay_osprey"
+    },
+    {
+      "id": "anomaly_lens_probe",
+      "itemId": "deep_space_lens",
+      "rangeSectors": 3,
+      "scanTier": "resolved",
+      "bestUse": "rare anomaly classification",
+      "unlockProof": "item:deep_space_lens"
+    }
+  ],
+  "scanConfidenceTiers": [
+    "unknown",
+    "trace",
+    "partial",
+    "confirmed",
+    "resolved"
+  ]
+}

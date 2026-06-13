@@ -61,6 +61,30 @@ def skyRelayRequiredReleaseModules = [
         'echoskyrelayprotocol',
 ]
 
+def galacticSurveyRuntimeModules = [
+        'echocore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoruntimeguard',
+        'echoterminal',
+        'echoindex',
+        'echolens',
+        'echoholomap',
+        'echomissioncore',
+        'echopowergrid',
+        'echologisticsnetwork',
+        'echoprogressioncore',
+        'echosoundcore',
+        'echogalacticcore',
+        'echoorbitalremnants',
+        'echovehiclecore',
+        'echogalacticsurveyprotocol',
+]
+
+def galacticSurveyRequiredReleaseModules = [
+        'echogalacticsurveyprotocol',
+]
+
 def echoSharedModuleProperties = [
         minecraft_version      : '26.1.2',
         minecraft_version_range: '[26.1.2,26.2)',
@@ -364,6 +388,73 @@ tasks.register('generateSkyRelayModuleRelease', Exec) {
         def generatedModules = release.modules.collect { it.moduleId }
         if (generatedModules != skyRelayRequiredReleaseModules) {
             throw new GradleException("Sky Relay module release generated ${generatedModules}, expected ${skyRelayRequiredReleaseModules}")
+        }
+
+        release.modules.each { moduleRecord ->
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            if (runtimeArtifacts.empty) {
+                throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
+            }
+            def sourcePackaged = runtimeArtifacts.findAll { it.buildMode != 'compiled-runtime' }
+            if (!sourcePackaged.empty) {
+                def names = sourcePackaged.collect { "${it.filename}:${it.buildMode}" }
+                throw new GradleException("${moduleRecord.moduleId} has non-compiled runtime artifacts: ${names}")
+            }
+        }
+    }
+}
+
+tasks.register('buildGalacticSurveyWorkspace') {
+    group = 'build'
+    description = 'Builds the Galactic Survey runtime module closure used by Native, NeoForge, and Standalone release staging.'
+    dependsOn galacticSurveyRuntimeModules
+            .findAll { moduleId -> findProject(":${moduleId}") != null }
+            .collect { ":${it}:jar" }
+}
+
+tasks.register('validateGalacticSurveyReleaseArtifacts') {
+    group = 'verification'
+    description = 'Verifies required Galactic Survey modules emit compiled runtime jars under addons/<module>/build/libs.'
+    dependsOn tasks.named('buildGalacticSurveyWorkspace')
+    doLast {
+        def missing = []
+        galacticSurveyRequiredReleaseModules.each { moduleId ->
+            def libsDir = file("addons/${moduleId}/build/libs")
+            def jars = libsDir.isDirectory()
+                    ? libsDir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') && !it.name.contains('-sources') && !it.name.contains('-javadoc') }
+                    : []
+            if (jars.empty) {
+                missing.add("${moduleId} (${libsDir})")
+            }
+        }
+        if (!missing.empty) {
+            throw new GradleException("Missing Galactic Survey module runtime jar(s): ${missing.join(', ')}")
+        }
+    }
+}
+
+tasks.register('generateGalacticSurveyModuleRelease', Exec) {
+    group = 'release'
+    description = 'Generates strict compiled release artifacts for Galactic Survey after compiled jars exist.'
+    dependsOn tasks.named('validateGalacticSurveyReleaseArtifacts')
+    commandLine 'node',
+            'scripts/generate-module-release.mjs',
+            '--release-id',
+            'galactic-survey-0.1.0-alpha',
+            '--out',
+            'dist/echo-module-release',
+            '--module',
+            'echogalacticsurveyprotocol'
+    doLast {
+        def releaseManifest = file('dist/echo-module-release/echo-release.json')
+        if (!releaseManifest.isFile()) {
+            throw new GradleException("Galactic Survey module release manifest was not generated: ${releaseManifest}")
+        }
+
+        def release = new groovy.json.JsonSlurper().parse(releaseManifest)
+        def generatedModules = release.modules.collect { it.moduleId }
+        if (generatedModules != galacticSurveyRequiredReleaseModules) {
+            throw new GradleException("Galactic Survey module release generated ${generatedModules}, expected ${galacticSurveyRequiredReleaseModules}")
         }
 
         release.modules.each { moduleRecord ->

@@ -1,0 +1,125 @@
+{
+  "schema": "echo.galactic_survey.production_phase_matrix.v1",
+  "phases": [
+    {
+      "id": "identity_scope",
+      "title": "Identity, Scope, And Ownership Lock",
+      "exitCriteria": "Pack promise, boundaries, module ownership, non-goals, and release gates are locked.",
+      "subphases": [
+        "core_promise",
+        "pack_identity",
+        "module_boundary",
+        "release_non_goals",
+        "evidence_policy"
+      ]
+    },
+    {
+      "id": "protocol_scaffold",
+      "title": "Protocol Scaffold And Pack Spine",
+      "exitCriteria": "echogalacticsurveyprotocol loads with starter outpost, Terminal, HoloMap, Index, and save-state surfaces.",
+      "subphases": [
+        "module_create",
+        "descriptor_contract",
+        "native_surface",
+        "starter_outpost_state",
+        "save_contract"
+      ]
+    },
+    {
+      "id": "survey_data_contracts",
+      "title": "Survey Data Contracts And Seed Content",
+      "exitCriteria": "Sectors, bodies, probes, routes, discoveries, salvage, loot, and depots validate cleanly.",
+      "subphases": [
+        "sector_schema",
+        "body_schema",
+        "probe_schema",
+        "route_schema",
+        "salvage_depot_schema"
+      ]
+    },
+    {
+      "id": "first_30_minute_slice",
+      "title": "First 30-Minute Vertical Slice",
+      "exitCriteria": "Opening loop plays from outpost wake to first fuel-canister route objective.",
+      "subphases": [
+        "outpost_wake",
+        "network_offline_terminal",
+        "relay_repair",
+        "starter_probe_launch",
+        "first_catalog_unlock"
+      ]
+    },
+    {
+      "id": "probe_first_loop",
+      "title": "Probe Launch, Scan Confidence, And Recovery Loop",
+      "exitCriteria": "Probe launches produce imperfect but useful sector decisions across 3-5 launches.",
+      "subphases": [
+        "probe_crafting",
+        "launch_queue",
+        "confidence_tiers",
+        "probe_recovery",
+        "probe_upgrade_path"
+      ]
+    },
+    {
+      "id": "holomap_main_character",
+      "title": "HoloMap Sector, Route, And Catalog Overlays",
+      "exitCriteria": "Map shows unknowns, scan cones, fuel range, route risk, depots, and catalog state.",
+      "subphases": [
+        "sector_grid",
+        "scan_cones",
+        "route_risk",
+        "depot_coverage",
+        "catalog_overlay"
+      ]
+    },
+    {
+      "id": "catalog_missions_certification",
+      "title": "Catalog, Missions, And Certification Progression",
+      "exitCriteria": "Cataloging bodies, anomalies, wrecks, and routes unlocks missions, badges, and map layers.",
+      "subphases": [
+        "index_entries",
+        "mission_chain",
+        "certification_badges",
+        "catalog_rewards",
+        "atlas_progress"
+      ]
+    },
+    {
+      "id": "fuel_routes_depots",
+      "title": "Fuel Routes, Logistics, And Remote Depots",
+      "exitCriteria": "Fuel range, fuel quality, return safety, cargo, and one remote depot alter route decisions.",
+      "subphases": [
+        "fuel_mixer",
+        "route_planner",
+        "return_margin",
+        "remote_depot",
+        "probe_recovery_network"
+      ]
+    },
+    {
+      "id": "orbital_salvage_upgrades",
+      "title": "Orbital Salvage, Hazards, And Upgrade Pressure",
+      "exitCriteria": "At least one wreck is playable, readable, risky, and rewards a meaningful probe or route upgrade.",
+      "subphases": [
+        "hazard_preview",
+        "lens_identification",
+        "loot_tables",
+        "upgrade_rewards",
+        "salvage_revisit_pressure"
+      ]
+    },
+    {
+      "id": "editions_release_gate",
+      "title": "Full Arc, Edition Packaging, And Release Gate",
+      "exitCriteria": "Native, NeoForge, Standalone, Launcher, first-30, first-2-hour, and Survey Array evidence all pass.",
+      "subphases": [
+        "native_manifest",
+        "neoforge_manifest",
+        "standalone_manifest",
+        "launcher_flows",
+        "release_index_gate"
+      ]
+    }
+  ]
+}

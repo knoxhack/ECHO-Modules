@@ -1,0 +1,35 @@
+{
+  "schema": "echo.galactic_survey.sound_events.v1",
+  "events": [
+    {
+      "id": "telemetry_ping_low",
+      "type": "telemetry",
+      "purpose": "Starter probe trace signal."
+    },
+    {
+      "id": "telemetry_ping_confirmed",
+      "type": "telemetry",
+      "purpose": "Confirmed scan return."
+    },
+    {
+      "id": "deep_space_ambience",
+      "type": "ambience",
+      "purpose": "Lonely survey map and route planning ambience."
+    },
+    {
+      "id": "route_margin_warning",
+      "type": "alert",
+      "purpose": "Marginal or unsafe return route warning."
+    },
+    {
+      "id": "salvage_hazard_alert",
+      "type": "alert",
+      "purpose": "Unstable orbit, radiation, or signal interference warning."
+    },
+    {
+      "id": "catalog_entry_confirmed",
+      "type": "confirmation",
+      "purpose": "Index entry and certification progress cue."
+    }
+  ]
+}

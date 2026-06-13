@@ -1,0 +1,60 @@
+{
+  "schema": "echo.galactic_survey.salvage_sites.v1",
+  "sites": [
+    {
+      "id": "fallen_orbital_fragment",
+      "sectorId": "near_sector_01",
+      "hazardTier": 0,
+      "hazards": [
+        "signal_interference"
+      ],
+      "lootTable": "starter_fragment_salvage",
+      "requiredPreparation": "lens_scan:fallen_orbital_fragment"
+    },
+    {
+      "id": "debris_belt_cinder_ring",
+      "sectorId": "outer_sector_02",
+      "hazardTier": 1,
+      "hazards": [
+        "unstable_orbit",
+        "hull_hazards"
+      ],
+      "lootTable": "derelict_relay_loot",
+      "requiredPreparation": "item:navigation_core"
+    },
+    {
+      "id": "derelict_relay_osprey",
+      "sectorId": "outer_sector_02",
+      "hazardTier": 1,
+      "hazards": [
+        "signal_interference",
+        "power_surge"
+      ],
+      "lootTable": "derelict_relay_loot",
+      "requiredPreparation": "holomap_layer:derelict_beacons"
+    },
+    {
+      "id": "lost_survey_craft_lysander",
+      "sectorId": "derelict_corridor_03",
+      "hazardTier": 2,
+      "hazards": [
+        "radiation",
+        "navigation_drift"
+      ],
+      "lootTable": "radiation_wreck_loot",
+      "requiredPreparation": "item:radiation_shielding"
+    },
+    {
+      "id": "unstable_orbital_platform_ariadne",
+      "sectorId": "derelict_corridor_03",
+      "hazardTier": 3,
+      "hazards": [
+        "unstable_orbit",
+        "radiation",
+        "signal_interference"
+      ],
+      "lootTable": "radiation_wreck_loot",
+      "requiredPreparation": "item:route_stabilizer"
+    }
+  ]
+}

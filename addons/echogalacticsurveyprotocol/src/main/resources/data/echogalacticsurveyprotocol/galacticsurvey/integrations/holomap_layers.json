@@ -1,0 +1,40 @@
+{
+  "schema": "echo.galactic_survey.holomap_layers.v1",
+  "layers": [
+    {
+      "id": "sector_grid",
+      "title": "Sector Grid",
+      "purpose": "Shows known sectors and locked deep-space adjacency."
+    },
+    {
+      "id": "scan_cones",
+      "title": "Scan Cones",
+      "purpose": "Shows probe coverage, confidence, and unresolved signal arcs."
+    },
+    {
+      "id": "fuel_range",
+      "title": "Fuel Range",
+      "purpose": "Shows outbound, return-safe, marginal, and unsafe travel bands."
+    },
+    {
+      "id": "orbital_layers",
+      "title": "Orbital Layers",
+      "purpose": "Shows debris belts, orbital platforms, and salvage altitude bands."
+    },
+    {
+      "id": "derelict_beacons",
+      "title": "Derelict Beacons",
+      "purpose": "Shows wreck signatures and hazard preview status."
+    },
+    {
+      "id": "depot_coverage",
+      "title": "Depot Coverage",
+      "purpose": "Shows remote depot reach, fuel cache state, and probe recovery coverage."
+    },
+    {
+      "id": "catalog_overlay",
+      "title": "Catalog Overlay",
+      "purpose": "Shows cataloged bodies, missing discovery classes, and atlas completion."
+    }
+  ]
+}

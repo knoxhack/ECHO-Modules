@@ -1,0 +1,55 @@
+{
+  "schema": "echo.galactic_survey.block_catalog.v1",
+  "blocks": [
+    {
+      "id": "survey_terminal",
+      "phase": "first_30_minute_slice",
+      "purpose": "Ship and outpost console for survey network state, probe queue, route objectives, and release evidence."
+    },
+    {
+      "id": "probe_launcher",
+      "phase": "first_30_minute_slice",
+      "purpose": "Starter launch surface for probe-first exploration."
+    },
+    {
+      "id": "fuel_mixer",
+      "phase": "fuel_routes_depots",
+      "purpose": "Creates route fuel and exposes fuel quality as a planning variable."
+    },
+    {
+      "id": "signal_dish",
+      "phase": "probe_first_loop",
+      "purpose": "Receives telemetry pings and improves sector scan confidence."
+    },
+    {
+      "id": "navigation_table",
+      "phase": "fuel_routes_depots",
+      "purpose": "Shows route risk, fuel range, return margin, and depot coverage."
+    },
+    {
+      "id": "orbital_salvage_crate",
+      "phase": "orbital_salvage_upgrades",
+      "purpose": "Readable salvage container for wreck rewards and hazard prep."
+    },
+    {
+      "id": "remote_depot_anchor",
+      "phase": "fuel_routes_depots",
+      "purpose": "Establishes remote fuel, cargo, and probe recovery coverage."
+    },
+    {
+      "id": "survey_beacon_pylon",
+      "phase": "catalog_missions_certification",
+      "purpose": "Marks confirmed survey route objectives and catalog milestones."
+    },
+    {
+      "id": "route_stabilizer_station",
+      "phase": "orbital_salvage_upgrades",
+      "purpose": "Consumes salvage upgrades to make marginal routes safer."
+    },
+    {
+      "id": "survey_array_console",
+      "phase": "editions_release_gate",
+      "purpose": "Endgame restoration surface for publishing a complete sector atlas."
+    }
+  ]
+}

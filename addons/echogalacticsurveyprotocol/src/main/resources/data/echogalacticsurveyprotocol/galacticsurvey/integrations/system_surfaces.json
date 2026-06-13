@@ -1,0 +1,53 @@
+{
+  "schema": "echo.galactic_survey.system_surfaces.v1",
+  "surfaces": [
+    {
+      "module": "echogalacticcore",
+      "role": "Owns sectors, celestial bodies, scan data, and catalog primitives."
+    },
+    {
+      "module": "echoorbitalremnants",
+      "role": "Owns derelicts, debris fields, salvage events, and wreck hazard hooks."
+    },
+    {
+      "module": "echovehiclecore",
+      "role": "Owns probes, survey craft, shuttle handling, and recovery contracts."
+    },
+    {
+      "module": "echoholomap",
+      "role": "Owns sector map rendering, route overlays, orbital layers, and catalog overlays."
+    },
+    {
+      "module": "echoterminal",
+      "role": "Owns ship and survey console pages."
+    },
+    {
+      "module": "echoindex",
+      "role": "Owns catalog entries, discovery state, and atlas publication."
+    },
+    {
+      "module": "echolens",
+      "role": "Owns local scans and salvage identification."
+    },
+    {
+      "module": "echomissioncore",
+      "role": "Owns route objectives, survey contracts, and first circuit missions."
+    },
+    {
+      "module": "echopowergrid",
+      "role": "Owns relay repair, probe charging, station power, and launcher readiness."
+    },
+    {
+      "module": "echologisticsnetwork",
+      "role": "Owns fuel, cargo, probe recovery, and remote depot routing."
+    },
+    {
+      "module": "echoprogressioncore",
+      "role": "Owns certification tiers, sector unlocks, and badge progression."
+    },
+    {
+      "module": "echosoundcore",
+      "role": "Owns telemetry pings, deep-space ambience, and alert tones."
+    }
+  ]
+}

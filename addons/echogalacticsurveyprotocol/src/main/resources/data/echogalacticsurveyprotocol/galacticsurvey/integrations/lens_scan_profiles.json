@@ -1,0 +1,30 @@
+{
+  "schema": "echo.galactic_survey.lens_scan_profiles.v1",
+  "profiles": [
+    {
+      "id": "fallen_orbital_fragment",
+      "target": "orbital_salvage_crate",
+      "unlocks": "burned_navigation_core and first salvage catalog proof"
+    },
+    {
+      "id": "derelict_relay_osprey",
+      "target": "signal_dish",
+      "unlocks": "derelict relay classification and route beacon data"
+    },
+    {
+      "id": "fuel_mixer_diagnostics",
+      "target": "fuel_mixer",
+      "unlocks": "fuel quality and safe return margin"
+    },
+    {
+      "id": "remote_depot_anchor",
+      "target": "remote_depot_anchor",
+      "unlocks": "depot inventory and probe recovery range"
+    },
+    {
+      "id": "survey_array_console",
+      "target": "survey_array_console",
+      "unlocks": "final restoration sequence and atlas publication"
+    }
+  ]
+}

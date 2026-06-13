@@ -1,0 +1,41 @@
+{
+  "schema": "echo.galactic_survey.route_catalog.v1",
+  "routes": [
+    {
+      "id": "outpost_to_near_sector_01",
+      "origin": "quiet_survey_outpost",
+      "destination": "near_sector_01",
+      "fuelCost": 1,
+      "returnMargin": "safe",
+      "requiredProof": "item:fuel_canister",
+      "unlocks": "mission:first_survey_hop"
+    },
+    {
+      "id": "near_sector_01_survey_hop",
+      "origin": "quiet_survey_outpost",
+      "destination": "near_sector_01",
+      "fuelCost": 2,
+      "returnMargin": "safe",
+      "requiredProof": "item:navigation_core",
+      "unlocks": "mission:first_survey_circuit"
+    },
+    {
+      "id": "cinder_ring_depot_route",
+      "origin": "near_sector_01",
+      "destination": "outer_sector_02",
+      "fuelCost": 3,
+      "returnMargin": "marginal",
+      "requiredProof": "depot:cinder_ring_remote_depot",
+      "unlocks": "holomap_layer:depot_coverage"
+    },
+    {
+      "id": "deep_sector_beacon_route",
+      "origin": "derelict_corridor_03",
+      "destination": "deep_sector_04",
+      "fuelCost": 5,
+      "returnMargin": "unsafe_without_depot",
+      "requiredProof": "item:route_stabilizer",
+      "unlocks": "discovery:deep_sector_beacon_ks_04"
+    }
+  ]
+}

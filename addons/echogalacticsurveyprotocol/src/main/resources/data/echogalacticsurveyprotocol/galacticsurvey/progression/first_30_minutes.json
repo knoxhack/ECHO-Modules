@@ -1,0 +1,79 @@
+{
+  "schema": "echo.galactic_survey.route.v1",
+  "id": "first_30_minutes",
+  "targetDurationMinutes": 30,
+  "steps": [
+    {
+      "id": "wake_at_outpost",
+      "chapterId": "outpost_wake",
+      "objective": "Wake at the quiet survey outpost.",
+      "proof": "block_seen:survey_terminal"
+    },
+    {
+      "id": "open_survey_terminal",
+      "chapterId": "network_offline",
+      "objective": "Open Terminal and see Survey Network Offline.",
+      "proof": "terminal_page:survey_network"
+    },
+    {
+      "id": "repair_small_relay",
+      "chapterId": "relay_repair",
+      "objective": "Repair the small power relay.",
+      "proof": "power:small_relay_online"
+    },
+    {
+      "id": "claim_starter_probe",
+      "chapterId": "first_probe_launch",
+      "objective": "Claim or craft a starter probe.",
+      "proof": "item:starter_probe"
+    },
+    {
+      "id": "charge_probe_launcher",
+      "chapterId": "first_probe_launch",
+      "objective": "Bring the probe launcher online.",
+      "proof": "block:probe_launcher"
+    },
+    {
+      "id": "launch_near_sector_probe",
+      "chapterId": "first_probe_launch",
+      "objective": "Launch probe to near_sector_01.",
+      "proof": "probe:starter_probe"
+    },
+    {
+      "id": "reveal_partial_signals",
+      "chapterId": "partial_map_reveal",
+      "objective": "Reveal partial signals on HoloMap.",
+      "proof": "holomap_layer:scan_cones"
+    },
+    {
+      "id": "lens_scan_orbital_fragment",
+      "chapterId": "first_salvage",
+      "objective": "Scan a fallen orbital fragment with Lens.",
+      "proof": "lens_scan:fallen_orbital_fragment"
+    },
+    {
+      "id": "recover_burned_core",
+      "chapterId": "first_salvage",
+      "objective": "Recover a burned navigation core.",
+      "proof": "item:burned_navigation_core"
+    },
+    {
+      "id": "catalog_first_body",
+      "chapterId": "first_catalog_entry",
+      "objective": "Catalog the first moon/body in Index.",
+      "proof": "discovery:barren_moon_kg_01a"
+    },
+    {
+      "id": "unlock_route_objective",
+      "chapterId": "fuel_route_prep",
+      "objective": "Unlock the first short survey hop objective.",
+      "proof": "mission:first_survey_hop"
+    },
+    {
+      "id": "prepare_fuel_canister",
+      "chapterId": "fuel_route_prep",
+      "objective": "Build or fill a fuel canister.",
+      "proof": "item:fuel_canister"
+    }
+  ]
+}

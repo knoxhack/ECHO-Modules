@@ -1,0 +1,37 @@
+{
+  "schema": "echo.galactic_survey.survey_array_requirements.v1",
+  "id": "survey_array",
+  "reward": "galactic_survey_badge",
+  "requirements": [
+    {
+      "id": "survey_array_console",
+      "requiredCount": 1,
+      "proof": "block:survey_array_console"
+    },
+    {
+      "id": "complete_sector_atlas",
+      "requiredCount": 1,
+      "proof": "catalog:complete_sector_atlas"
+    },
+    {
+      "id": "deep_sector_beacon",
+      "requiredCount": 1,
+      "proof": "discovery:deep_sector_beacon_ks_04"
+    },
+    {
+      "id": "remote_depot_network",
+      "requiredCount": 1,
+      "proof": "depot:cinder_ring_remote_depot"
+    },
+    {
+      "id": "advanced_probe_network",
+      "requiredCount": 1,
+      "proof": "item:long_range_probe"
+    },
+    {
+      "id": "array_key_recovered",
+      "requiredCount": 1,
+      "proof": "item:survey_array_key"
+    }
+  ]
+}

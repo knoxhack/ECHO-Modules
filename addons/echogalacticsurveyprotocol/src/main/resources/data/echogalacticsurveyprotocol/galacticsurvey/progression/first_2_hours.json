@@ -1,0 +1,67 @@
+{
+  "schema": "echo.galactic_survey.route.v1",
+  "id": "first_2_hours",
+  "targetDurationMinutes": 120,
+  "steps": [
+    {
+      "id": "launch_probe_batch",
+      "chapterId": "first_probe_launch",
+      "objective": "Launch 3-5 probes into local sectors.",
+      "proof": "probe:starter_probe"
+    },
+    {
+      "id": "catalog_local_moon",
+      "chapterId": "first_catalog_entry",
+      "objective": "Catalog a local barren moon.",
+      "proof": "discovery:barren_moon_kg_01a"
+    },
+    {
+      "id": "catalog_planet_candidate",
+      "chapterId": "first_catalog_entry",
+      "objective": "Catalog a planet candidate.",
+      "proof": "discovery:planet_candidate_ks_02"
+    },
+    {
+      "id": "catalog_anomaly",
+      "chapterId": "partial_map_reveal",
+      "objective": "Catalog a signal anomaly.",
+      "proof": "discovery:signal_anomaly_veil_trace"
+    },
+    {
+      "id": "recover_derelict_salvage",
+      "chapterId": "hazard_salvage",
+      "objective": "Recover salvage from one orbital wreck.",
+      "proof": "salvage:derelict_relay_osprey"
+    },
+    {
+      "id": "build_basic_fuel_route",
+      "chapterId": "survey_circuit",
+      "objective": "Build a basic fuel-safe route.",
+      "proof": "route:near_sector_01_survey_hop"
+    },
+    {
+      "id": "unlock_better_probe",
+      "chapterId": "survey_circuit",
+      "objective": "Unlock a better probe chassis.",
+      "proof": "item:long_range_probe"
+    },
+    {
+      "id": "establish_remote_depot",
+      "chapterId": "remote_depot",
+      "objective": "Establish one remote depot.",
+      "proof": "depot:cinder_ring_remote_depot"
+    },
+    {
+      "id": "complete_first_survey_circuit",
+      "chapterId": "survey_circuit",
+      "objective": "Complete a first survey circuit.",
+      "proof": "mission:first_survey_circuit"
+    },
+    {
+      "id": "earn_first_badge",
+      "chapterId": "first_catalog_entry",
+      "objective": "Earn the first catalog rank badge.",
+      "proof": "item:catalog_badge"
+    }
+  ]
+}

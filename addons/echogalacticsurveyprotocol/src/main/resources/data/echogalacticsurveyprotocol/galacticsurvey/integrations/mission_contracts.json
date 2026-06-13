@@ -1,0 +1,35 @@
+{
+  "schema": "echo.galactic_survey.mission_contracts.v1",
+  "missions": [
+    {
+      "id": "first_survey_hop",
+      "title": "Prepare First Survey Hop",
+      "proof": "item:fuel_canister"
+    },
+    {
+      "id": "first_survey_circuit",
+      "title": "Complete First Survey Circuit",
+      "proof": "route:near_sector_01_survey_hop"
+    },
+    {
+      "id": "catalog_local_bodies",
+      "title": "Catalog Local Bodies",
+      "proof": "discovery:barren_moon_kg_01a"
+    },
+    {
+      "id": "recover_orbital_wreck",
+      "title": "Recover Orbital Wreck",
+      "proof": "salvage:derelict_relay_osprey"
+    },
+    {
+      "id": "establish_remote_depot",
+      "title": "Establish Remote Depot",
+      "proof": "depot:cinder_ring_remote_depot"
+    },
+    {
+      "id": "restore_survey_array",
+      "title": "Restore Galactic Survey Array",
+      "proof": "block:survey_array_console"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "echo.galactic_survey.assets.v1",
+  "namespace": "echogalacticsurveyprotocol",
+  "status": "planned_placeholder_coverage",
+  "legalRule": "All final textures, models, audio, names, and silhouettes must be original ECHO/Galactic Survey work.",
+  "publicReleaseAllowedWithPlaceholders": false,
+  "requiredRoots": [
+    "textures/block",
+    "textures/item",
+    "models/block",
+    "models/item",
+    "blockstates",
+    "lang/en_us.json",
+    "sounds.json"
+  ],
+  "placeholderPolicy": {
+    "allowedBeforePublicAlpha": true,
+    "style": "flat_survey_console_swatches_with_original_echo_galactic_marks",
+    "mustBeOriginal": true,
+    "replacementGate": "public_alpha_art_review",
+    "notes": "This is a coverage contract, not approval to ship placeholder art publicly."
+  },
+  "mvpCoverage": {
+    "blockIds": [
+      "survey_terminal",
+      "probe_launcher",
+      "fuel_mixer",
+      "signal_dish",
+      "navigation_table",
+      "orbital_salvage_crate",
+      "remote_depot_anchor",
+      "survey_beacon_pylon",
+      "route_stabilizer_station",
+      "survey_array_console"
+    ],
+    "itemIds": [
+      "starter_probe",
+      "survey_beacon",
+      "fuel_canister",
+      "navigation_core",
+      "burned_navigation_core",
+      "orbital_scrap",
+      "catalog_badge",
+      "long_range_probe",
+      "radiation_shielding",
+      "route_stabilizer",
+      "deep_space_lens",
+      "stellar_chart_fragment",
+      "survey_array_key",
+      "depot_manifest",
+      "fuel_quality_sample",
+      "galactic_survey_badge"
+    ]
+  }
+}

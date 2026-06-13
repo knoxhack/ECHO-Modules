@@ -1,0 +1,68 @@
+{
+  "schema": "echo.galactic_survey.discovery_catalog.v1",
+  "discoveries": [
+    {
+      "id": "barren_moon_kg_01a",
+      "category": "moon",
+      "sectorId": "near_sector_01",
+      "proof": "index:barren_moon_kg_01a",
+      "reward": "item:catalog_badge"
+    },
+    {
+      "id": "ice_body_kg_01b",
+      "category": "body",
+      "sectorId": "outer_sector_02",
+      "proof": "index:ice_body_kg_01b",
+      "reward": "holomap_layer:fuel_range"
+    },
+    {
+      "id": "planet_candidate_ks_02",
+      "category": "planet",
+      "sectorId": "outer_sector_02",
+      "proof": "index:planet_candidate_ks_02",
+      "reward": "mission:catalog_local_bodies"
+    },
+    {
+      "id": "signal_anomaly_veil_trace",
+      "category": "anomaly",
+      "sectorId": "near_sector_01",
+      "proof": "lens_scan:fallen_orbital_fragment",
+      "reward": "item:stellar_chart_fragment"
+    },
+    {
+      "id": "debris_belt_cinder_ring",
+      "category": "debris_belt",
+      "sectorId": "outer_sector_02",
+      "proof": "holomap_layer:orbital_layers",
+      "reward": "item:orbital_scrap"
+    },
+    {
+      "id": "derelict_relay_osprey",
+      "category": "derelict",
+      "sectorId": "outer_sector_02",
+      "proof": "salvage:derelict_relay_osprey",
+      "reward": "item:long_range_probe"
+    },
+    {
+      "id": "lost_survey_craft_lysander",
+      "category": "lost_survey_craft",
+      "sectorId": "derelict_corridor_03",
+      "proof": "salvage:lost_survey_craft_lysander",
+      "reward": "item:deep_space_lens"
+    },
+    {
+      "id": "unstable_orbital_platform_ariadne",
+      "category": "unstable_platform",
+      "sectorId": "derelict_corridor_03",
+      "proof": "salvage:unstable_orbital_platform_ariadne",
+      "reward": "item:survey_array_key"
+    },
+    {
+      "id": "deep_sector_beacon_ks_04",
+      "category": "deep_sector_beacon",
+      "sectorId": "deep_sector_04",
+      "proof": "route:deep_sector_beacon_route",
+      "reward": "item:galactic_survey_badge"
+    }
+  ]
+}

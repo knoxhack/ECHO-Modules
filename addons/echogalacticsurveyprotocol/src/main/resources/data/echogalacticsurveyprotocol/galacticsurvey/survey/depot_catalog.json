@@ -1,0 +1,23 @@
+{
+  "schema": "echo.galactic_survey.depot_catalog.v1",
+  "depots": [
+    {
+      "id": "outpost_fuel_cache",
+      "sectorId": "near_sector_01",
+      "capacity": 4,
+      "unlocks": "route:outpost_to_near_sector_01"
+    },
+    {
+      "id": "cinder_ring_remote_depot",
+      "sectorId": "outer_sector_02",
+      "capacity": 8,
+      "unlocks": "route:cinder_ring_depot_route"
+    },
+    {
+      "id": "derelict_corridor_recovery_cache",
+      "sectorId": "derelict_corridor_03",
+      "capacity": 6,
+      "unlocks": "route:deep_sector_beacon_route"
+    }
+  ]
+}

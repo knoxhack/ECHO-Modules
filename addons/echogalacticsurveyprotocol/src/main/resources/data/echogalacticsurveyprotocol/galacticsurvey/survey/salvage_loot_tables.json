@@ -1,0 +1,31 @@
+{
+  "schema": "echo.galactic_survey.salvage_loot_tables.v1",
+  "lootTables": [
+    {
+      "id": "starter_fragment_salvage",
+      "entries": [
+        "item:burned_navigation_core",
+        "item:orbital_scrap",
+        "item:fuel_quality_sample"
+      ]
+    },
+    {
+      "id": "derelict_relay_loot",
+      "entries": [
+        "item:navigation_core",
+        "item:long_range_probe",
+        "item:stellar_chart_fragment",
+        "item:orbital_scrap"
+      ]
+    },
+    {
+      "id": "radiation_wreck_loot",
+      "entries": [
+        "item:radiation_shielding",
+        "item:route_stabilizer",
+        "item:deep_space_lens",
+        "item:survey_array_key"
+      ]
+    }
+  ]
+}

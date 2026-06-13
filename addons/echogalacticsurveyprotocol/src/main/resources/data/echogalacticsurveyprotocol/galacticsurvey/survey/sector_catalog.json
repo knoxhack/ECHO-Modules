@@ -1,0 +1,37 @@
+{
+  "schema": "echo.galactic_survey.sector_catalog.v1",
+  "sectors": [
+    {
+      "id": "near_sector_01",
+      "name": "Near Sector 01",
+      "tier": 0,
+      "unlockProof": "probe:starter_probe",
+      "signalDensity": "low",
+      "notes": "First probe target with one moon, one orbital fragment, and incomplete anomaly data."
+    },
+    {
+      "id": "outer_sector_02",
+      "name": "Outer Sector 02",
+      "tier": 1,
+      "unlockProof": "route:near_sector_01_survey_hop",
+      "signalDensity": "medium",
+      "notes": "First fuel-route expansion sector with ice body and debris belt."
+    },
+    {
+      "id": "derelict_corridor_03",
+      "name": "Derelict Corridor 03",
+      "tier": 2,
+      "unlockProof": "depot:cinder_ring_remote_depot",
+      "signalDensity": "high",
+      "notes": "Hazard-heavy corridor containing derelicts and a lost survey craft."
+    },
+    {
+      "id": "deep_sector_04",
+      "name": "Deep Sector 04",
+      "tier": 3,
+      "unlockProof": "item:survey_array_key",
+      "signalDensity": "rare",
+      "notes": "Endgame beacon region for Survey Array restoration."
+    }
+  ]
+}

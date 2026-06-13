@@ -1,0 +1,37 @@
+{
+  "schema": "echo.galactic_survey.repository_map.v1",
+  "repositories": [
+    {
+      "role": "module_source",
+      "name": "knoxhack/ECHO-Modules",
+      "path": "addons/echogalacticsurveyprotocol"
+    },
+    {
+      "role": "native_edition",
+      "name": "knoxhack/ECHO-Galactic-Survey-Native-Edition",
+      "path": null
+    },
+    {
+      "role": "neoforge_edition",
+      "name": "knoxhack/ECHO-Galactic-Survey-NeoForge-Edition",
+      "path": null
+    },
+    {
+      "role": "standalone_edition",
+      "name": "knoxhack/ECHO-Galactic-Survey-Standalone-Edition",
+      "path": null
+    },
+    {
+      "role": "release_catalog",
+      "name": "knoxhack/ECHO-Release-Index",
+      "path": null
+    },
+    {
+      "role": "launcher_consumer",
+      "name": "knoxhack/ECHO-Launcher",
+      "path": null
+    }
+  ],
+  "publicationPosture": "experimental_until_evidence_passes",
+  "positioning": "Later high-ceiling pack after Sky Relay and Foundry stabilize."
+}

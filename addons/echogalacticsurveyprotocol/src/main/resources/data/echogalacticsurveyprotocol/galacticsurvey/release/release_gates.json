@@ -1,0 +1,77 @@
+{
+  "schema": "echo.galactic_survey.release_gates.v1",
+  "publicAlphaAllowed": false,
+  "gates": [
+    {
+      "id": "probe_launch_works",
+      "required": true,
+      "proof": "probe:starter_probe"
+    },
+    {
+      "id": "holomap_reveals_meaningful_data",
+      "required": true,
+      "proof": "holomap_layer:scan_cones"
+    },
+    {
+      "id": "catalog_entries_unlock_from_discoveries",
+      "required": true,
+      "proof": "discovery:barren_moon_kg_01a"
+    },
+    {
+      "id": "fuel_route_limits_understandable",
+      "required": true,
+      "proof": "route:near_sector_01_survey_hop"
+    },
+    {
+      "id": "one_salvage_site_playable",
+      "required": true,
+      "proof": "salvage:derelict_relay_osprey"
+    },
+    {
+      "id": "one_probe_upgrade_matters",
+      "required": true,
+      "proof": "item:long_range_probe"
+    },
+    {
+      "id": "first_2_hour_loop_no_dead_end",
+      "required": true,
+      "proof": "mission:first_survey_circuit"
+    },
+    {
+      "id": "real_first_30_playthrough",
+      "required": true,
+      "proof": "manual:real_first_30_playthrough"
+    },
+    {
+      "id": "real_first_2_hour_playthrough",
+      "required": true,
+      "proof": "manual:real_first_2_hour_playthrough"
+    },
+    {
+      "id": "real_survey_array_playthrough",
+      "required": true,
+      "proof": "manual:real_survey_array_playthrough"
+    },
+    {
+      "id": "fresh_world_created",
+      "required": true,
+      "proof": "manual:fresh_world_created"
+    },
+    {
+      "id": "save_reload_verified",
+      "required": true,
+      "proof": "manual:save_reload_verified"
+    },
+    {
+      "id": "no_crash_evidence",
+      "required": true,
+      "proof": "manual:no_crash_evidence"
+    },
+    {
+      "id": "launcher_install_update_repair_rollback",
+      "required": true,
+      "proof": "launcher:install_update_repair_rollback"
+    }
+  ],
+  "promotionRule": "Do not create public-alpha Release Index entries until every gate has runtime evidence."
+}

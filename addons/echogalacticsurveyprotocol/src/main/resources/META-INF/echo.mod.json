@@ -1,0 +1,142 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echogalacticsurveyprotocol",
+  "name": "ECHO: Galactic Survey Protocol",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "pack_root",
+  "role": "official_pack",
+  "entrypoint": "com.knoxhack.echogalacticsurveyprotocol.EchoGalacticSurveyProtocol",
+  "publisher": "KnoxHack",
+  "channel": "experimental",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echoadaptercore",
+    "echocore",
+    "echonetcore",
+    "echoruntimeguard"
+  ],
+  "optional": [
+    "echogalacticcore",
+    "echoorbitalremnants",
+    "echovehiclecore",
+    "echoholomap",
+    "echoterminal",
+    "echoindex",
+    "echolens",
+    "echomissioncore",
+    "echopowergrid",
+    "echologisticsnetwork",
+    "echoprogressioncore",
+    "echosoundcore"
+  ],
+  "provides": [
+    "galacticsurvey.content",
+    "galacticsurvey.sectors",
+    "galacticsurvey.bodies",
+    "galacticsurvey.probes",
+    "galacticsurvey.routes",
+    "galacticsurvey.discoveries",
+    "galacticsurvey.salvage",
+    "galacticsurvey.depots",
+    "galacticsurvey.runtime",
+    "galacticsurvey.terminal",
+    "galacticsurvey.holomap_layers",
+    "galacticsurvey.lens_profiles",
+    "galacticsurvey.missions",
+    "galacticsurvey.release_readiness"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net",
+    "galactic.sectors",
+    "galactic.scan_data",
+    "holomap.layers",
+    "index.catalog",
+    "lens.scan_profiles",
+    "logistics.routes",
+    "missions.contracts",
+    "orbitalremnants.salvage_sites",
+    "power.grid",
+    "progression.unlock_graph",
+    "sound.telemetry",
+    "terminal.pages",
+    "vehicle.probes"
+  ],
+  "gameModes": [
+    "long_range_survey",
+    "survey_relaxed",
+    "salvage_risk",
+    "atlas_completion"
+  ],
+  "permissions": [
+    "content.blocks",
+    "content.items",
+    "data.world",
+    "gameplay.content",
+    "pack.root",
+    "save.profile",
+    "world.survey_state"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "catalog",
+        "data",
+        "depots",
+        "holomap",
+        "index",
+        "items",
+        "lens",
+        "logistics",
+        "loot",
+        "missions",
+        "power",
+        "probes",
+        "progression",
+        "routes",
+        "salvage",
+        "saves",
+        "sectors",
+        "sound",
+        "terminal",
+        "vehicles"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echogalacticsurveyprotocol.EchoGalacticSurveyNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Galactic Survey Protocol owns the pack-root contract for long-range survey, probes, route safety, depot logistics, orbital salvage, catalog progression, and Survey Array restoration. Keep it experimental until route, salvage, catalog, upgrade, and launcher evidence exist."
+  },
+  "apiStability": "alpha",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "parity_agent",
+      "gameplay_evidence_agent",
+      "release_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": [
+    "echoashfallprotocol:default_profile",
+    "echoopenlandsprotocol:default_profile",
+    "echoskyrelayprotocol:default_profile"
+  ]
+}
