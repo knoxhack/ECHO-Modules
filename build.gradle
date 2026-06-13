@@ -207,8 +207,14 @@ project(':echo-native-testkit') {
 
 tasks.register('buildEchoWorkspace') {
     group = 'build'
-    description = 'Builds the Ashfall runtime module closure used by Native, NeoForge, and Standalone release staging.'
-    dependsOn ashfallRuntimeModules.collect { ":${it}:jar" }
+    description = 'Builds the selected runtime module closure used by Native, NeoForge, and Standalone release staging.'
+    dependsOn {
+        def requestedAddonSet = String.valueOf(project.findProperty('echoAddonSet') ?: 'ashfall')
+        def moduleProjects = requestedAddonSet in ['all', 'beta']
+                ? subprojects.findAll { new File(it.projectDir, 'src/main/resources/META-INF/echo.mod.json').isFile() }
+                : ashfallRuntimeModules.collect { project(":${it}") }
+        moduleProjects.collect { "${it.path}:jar" }
+    }
 }
 
 tasks.register('compileEchoNativeM17LooseEntrypoints') {
@@ -221,6 +227,18 @@ tasks.register('generateCoreModuleIntegrationAudit', Exec) {
     group = 'verification'
     description = 'Generates the descriptor-derived Native Loader core module integration audit consumed by native load-state smoke gates.'
     commandLine 'node', 'scripts/generate-core-module-integration-audit.mjs'
+}
+
+tasks.register('generateModuleDocsIndex', Exec) {
+    group = 'documentation'
+    description = 'Regenerates docs/module-docs-index.md from every module descriptor under addons.'
+    commandLine 'node', 'scripts/generate-module-docs-index.mjs'
+}
+
+tasks.register('generateRuntimeParityAudit', Exec) {
+    group = 'verification'
+    description = 'Generates the all-module runtime parity audit and fix backlog across NeoForge, Native Loader, and Standalone Runtime.'
+    commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs'
 }
 
 tasks.register('validateReleaseArtifacts') {
