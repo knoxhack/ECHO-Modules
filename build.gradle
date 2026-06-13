@@ -82,6 +82,22 @@ def galacticSurveyRuntimeModules = [
 ]
 
 def galacticSurveyRequiredReleaseModules = [
+        'echocore',
+        'echoadaptercore',
+        'echonetcore',
+        'echoruntimeguard',
+        'echoterminal',
+        'echoindex',
+        'echolens',
+        'echoholomap',
+        'echomissioncore',
+        'echopowergrid',
+        'echologisticsnetwork',
+        'echoprogressioncore',
+        'echosoundcore',
+        'echogalacticcore',
+        'echoorbitalremnants',
+        'echovehiclecore',
         'echogalacticsurveyprotocol',
 ]
 
@@ -443,8 +459,7 @@ tasks.register('generateGalacticSurveyModuleRelease', Exec) {
             'galactic-survey-0.1.0-alpha',
             '--out',
             'dist/echo-module-release',
-            '--module',
-            'echogalacticsurveyprotocol'
+            *galacticSurveyRequiredReleaseModules.collectMany { ['--module', it] }
     doLast {
         def releaseManifest = file('dist/echo-module-release/echo-release.json')
         if (!releaseManifest.isFile()) {

@@ -24,7 +24,11 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+    withJavadocJar()
+}
 
 neoForge {
     version = project.neo_version
@@ -94,6 +98,16 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.withType(org.gradle.api.publish.tasks.GenerateModuleMetadata).configureEach {
+    if (name == 'generateMetadataFileForMavenJavaPublication') {
+        enabled = false
+    }
+}
+
 tasks.register("runAdapterCoreRegistryParitySmoke", JavaExec) {
     group = "verification"
     description = "Runs AdapterCore registry parity across Echo Native Loader and Echo Standalone Runtime backends."
@@ -144,6 +158,15 @@ publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
+            groupId = 'dev.echo.native'
+            artifactId = mod_id
+            version = mod_version
+            pom.withXml {
+                def root = asNode()
+                root.dependencies?.each { dependenciesNode ->
+                    root.remove(dependenciesNode)
+                }
+            }
         }
     }
 }

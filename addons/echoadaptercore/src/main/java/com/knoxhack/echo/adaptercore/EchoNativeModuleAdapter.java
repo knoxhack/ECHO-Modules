@@ -1,8 +1,12 @@
 package com.knoxhack.echo.adaptercore;
 
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
+import dev.echo.nativeplatform.contracts.EchoNativeCapabilityService;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
+import dev.echo.nativeplatform.contracts.EchoNativeMutationReceipt;
+import dev.echo.nativeplatform.contracts.EchoNativeRegistryService;
+import dev.echo.nativeplatform.contracts.EchoNativeServiceMutation;
 
 import java.lang.reflect.Method;
 import java.nio.file.Files;
@@ -33,6 +37,8 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
     String CONFIG_HOST_SERVICE_ID = "echo.native.config_host";
     String RESOURCE_HOST_SERVICE_ID = "echo.native.resource_host";
     String NETWORK_HOST_SERVICE_ID = "echo.native.network_host";
+    String TYPED_REGISTRY_SERVICE_ID = "echo.native.registry";
+    String TYPED_CAPABILITY_SERVICE_ID = "echo.native.capabilities";
 
     Map<String, Object> describeNativeSurfaces(Map<String, String> context);
 
@@ -65,6 +71,17 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                     "adaptercore." + normalized(context.descriptor().id()) + ".contract",
                     activation,
                     surfaces(activation, "adaptercore")
+            );
+            recordTypedCapabilityMutation(
+                    context,
+                    "adaptercore",
+                    "register_adaptercore_contract",
+                    "adaptercore." + normalized(context.descriptor().id()) + ".contract",
+                    Map.of(
+                            "source", "adaptercore.activation.contract",
+                            "adapterCoreUsed", Boolean.TRUE.equals(activation.get("adapterCoreUsed")),
+                            "featureContractCount", list(activation.get("registeredFeatureContracts")).size()
+                    )
             );
         }
         registerDeclaredNativeServices(context, activation);
@@ -241,6 +258,17 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                         "features",
                         "contracts"
                 );
+                recordTypedRegistryMutation(
+                        context,
+                        "features",
+                        "register_feature_contract",
+                        id,
+                        Map.of(
+                                "source", "adaptercore.registeredFeatureContracts",
+                                "contractId", id,
+                                "moduleId", context.descriptor().id()
+                        )
+                );
             }
         }
     }
@@ -257,6 +285,17 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                     id,
                     Map.of("kind", "adaptercore_declared_native_service", "evidence", Map.copyOf(service)),
                     declaredSurfaces.toArray(String[]::new)
+            );
+            recordTypedCapabilityMutation(
+                    context,
+                    "adaptercore",
+                    "register_declared_native_service",
+                    id,
+                    Map.of(
+                            "source", "adaptercore.serviceBridge",
+                            "service", Map.copyOf(service),
+                            "surfaces", List.copyOf(declaredSurfaces)
+                    )
             );
         }
     }
@@ -396,6 +435,17 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                         "adaptercore",
                         normalized(id)
                 );
+                recordTypedCapabilityMutation(
+                        context,
+                        "adaptercore",
+                        "register_adapter_domain",
+                        id,
+                        Map.of(
+                                "source", "adaptercore.adapterDomains",
+                                "domain", id,
+                                "moduleId", context.descriptor().id()
+                        )
+                );
             }
         }
     }
@@ -452,6 +502,13 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
             if ("MUTATED".equals(status)) {
                 mutationCount++;
                 context.recordMutation(mutationSurface, mutationAction, claim, EchoNativeLoadStatus.MUTATED);
+                recordTypedCapabilityMutation(
+                        context,
+                        mutationSurface,
+                        mutationAction,
+                        claim,
+                        evidence
+                );
             }
         }
         if (mutationCount > 0) {
@@ -635,6 +692,13 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                         "adaptercore_native_registry_host_registered",
                         registry + ":" + id,
                         EchoNativeLoadStatus.MUTATED
+                );
+                recordTypedRegistryMutation(
+                        context,
+                        "registry",
+                        "adaptercore_native_registry_host_registered",
+                        declaredContentId(context.descriptor().id(), id),
+                        evidence
                 );
             }
             EchoNativeLoadStatus nativeResourceStatus = registerNativeResourceRegistration(
@@ -988,6 +1052,80 @@ public interface EchoNativeModuleAdapter extends EchoRuntimeModuleAdapter, EchoN
                     context.descriptor().id(),
                     EchoNativeLoadStatus.MUTATED);
         }
+    }
+
+    private static void recordTypedRegistryMutation(
+            EchoNativeModuleLoadContext context,
+            String surface,
+            String action,
+            String target,
+            Map<String, Object> evidence
+    ) {
+        Object host = nativeHost(context, TYPED_REGISTRY_SERVICE_ID);
+        if (!(host instanceof EchoNativeRegistryService registryService)) {
+            return;
+        }
+        try {
+            recordTypedReceipt(context, registryService.register(serviceMutation(context, surface, action, target, evidence)));
+        } catch (RuntimeException exception) {
+            context.attribute("adaptercoreTypedRegistryMutationReceiptError",
+                    exception.getClass().getSimpleName() + ": " + exception.getMessage());
+        }
+    }
+
+    private static void recordTypedCapabilityMutation(
+            EchoNativeModuleLoadContext context,
+            String surface,
+            String action,
+            String target,
+            Map<String, Object> evidence
+    ) {
+        Object host = nativeHost(context, TYPED_CAPABILITY_SERVICE_ID);
+        if (!(host instanceof EchoNativeCapabilityService capabilityService)) {
+            return;
+        }
+        try {
+            recordTypedReceipt(context, capabilityService.registerIntegration(
+                    serviceMutation(context, surface, action, target, evidence)));
+        } catch (RuntimeException exception) {
+            context.attribute("adaptercoreTypedCapabilityMutationReceiptError",
+                    exception.getClass().getSimpleName() + ": " + exception.getMessage());
+        }
+    }
+
+    private static EchoNativeServiceMutation serviceMutation(
+            EchoNativeModuleLoadContext context,
+            String surface,
+            String action,
+            String target,
+            Map<String, Object> evidence
+    ) {
+        Map<String, Object> typedEvidence = new LinkedHashMap<>(evidence == null ? Map.of() : evidence);
+        typedEvidence.putIfAbsent("moduleId", context.descriptor().id());
+        typedEvidence.put("typedMutationProof", true);
+        return new EchoNativeServiceMutation(
+                context.descriptor().id(),
+                normalized(surface).isBlank() ? "native" : surface,
+                normalized(action).isBlank() ? "mutate" : action,
+                target,
+                context.descriptor().side(),
+                typedEvidence
+        );
+    }
+
+    private static void recordTypedReceipt(EchoNativeModuleLoadContext context, EchoNativeMutationReceipt receipt) {
+        if (receipt != null) {
+            context.recordMutation(receipt);
+        }
+    }
+
+    private static String declaredContentId(String moduleId, String id) {
+        String normalized = string(id).trim().toLowerCase(Locale.ROOT);
+        if (normalized.contains(":")) {
+            return normalized;
+        }
+        String namespace = string(moduleId).trim().toLowerCase(Locale.ROOT);
+        return namespace.isBlank() || normalized.isBlank() ? normalized : namespace + ":" + normalized;
     }
 
     private static String inferRepoRoot(Path descriptorPath) {

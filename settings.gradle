@@ -16,6 +16,7 @@ def includeAddon = { String name ->
 def defaultAddons = [
         'echocore',
         'echoplatformcore',
+        'echoaddonapi',
         'echoadaptercore',
         'echonetcore',
         'echoscreencore',
@@ -57,6 +58,7 @@ def defaultAddons = [
         'echoashfallprotocol',
         'echoopenlandsprotocol',
         'echoskyrelayprotocol',
+        'echovehiclecore',
         'echogalacticsurveyprotocol',
 ]
 

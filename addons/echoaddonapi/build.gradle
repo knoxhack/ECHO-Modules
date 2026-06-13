@@ -8,12 +8,13 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = 'echo-addon-api'
+    archivesName = mod_id
 }
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(25)
     withSourcesJar()
+    withJavadocJar()
 }
 
 dependencies {
@@ -24,10 +25,17 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
+            groupId = 'dev.echo.native'
+            artifactId = mod_id
+            version = mod_version
         }
     }
 }

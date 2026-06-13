@@ -946,19 +946,40 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
     }
 
     private static List<String> registeredNativeModuleCreativeTabItems() {
-        return ModCreativeTabs.nativeModuleCreativeItemIds();
+        try {
+            return ModCreativeTabs.nativeModuleCreativeItemIds();
+        } catch (LinkageError | RuntimeException error) {
+            return List.of();
+        }
     }
 
     private static List<String> registeredNativeModuleCreativeTabRegistryBackedItems() {
-        return ModCreativeTabs.nativeLoaderRegistryBackedCreativeItemIds();
+        try {
+            return ModCreativeTabs.nativeLoaderRegistryBackedCreativeItemIds();
+        } catch (LinkageError | RuntimeException error) {
+            return List.of();
+        }
     }
 
     private static List<String> registeredNativeModuleCreativeTabFeaturedItems() {
-        return ModCreativeTabs.nativeModuleCreativeFeaturedItemIds();
+        try {
+            return ModCreativeTabs.nativeModuleCreativeFeaturedItemIds();
+        } catch (LinkageError | RuntimeException error) {
+            return fallbackNativeModulesCreativeFeaturedItems();
+        }
     }
 
     private static List<String> registeredNativeModuleCreativeTabNamespaces() {
-        return ModCreativeTabs.nativeModuleCreativeNamespaces();
+        try {
+            return ModCreativeTabs.nativeModuleCreativeNamespaces();
+        } catch (LinkageError | RuntimeException error) {
+            return fallbackNativeModulesCreativeTabItems().stream()
+                    .map(EchoAshfallNativeModule::namespace)
+                    .filter(namespace -> !namespace.isBlank())
+                    .distinct()
+                    .sorted()
+                    .toList();
+        }
     }
 
     private static List<String> fallbackNativeModulesCreativeTabItems() {
@@ -1001,6 +1022,11 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 "echoashfallprotocol:survey_table",
                 "echoashfallprotocol:nexus_crystal"
         );
+    }
+
+    private static String namespace(String itemId) {
+        int separator = itemId == null ? -1 : itemId.indexOf(':');
+        return separator <= 0 ? "" : itemId.substring(0, separator);
     }
 
     private static List<String> nativeModulesCreativeTabSurfaceIds() {
