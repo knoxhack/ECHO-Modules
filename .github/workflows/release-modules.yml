@@ -138,6 +138,15 @@ jobs:
               git push origin "$TAG"
             fi
           fi
+          TAG_COMMIT="$(git rev-parse "$TAG^{commit}")"
+          if [ "$TAG_COMMIT" != "$GITHUB_SHA" ]; then
+            if [ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" ]; then
+              echo "Tag $TAG points at $TAG_COMMIT, expected $GITHUB_SHA." >&2
+              exit 1
+            fi
+            git tag -f "$TAG" "$GITHUB_SHA"
+            git push --force origin "refs/tags/$TAG"
+          fi
           tar -czf echo-module-release.tar.gz -C dist echo-module-release
           sha256sum echo-module-release.tar.gz > echo-module-release.tar.gz.sha256
           mapfile -t FILES < <({
