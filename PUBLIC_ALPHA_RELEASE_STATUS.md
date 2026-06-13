@@ -1,5 +1,7 @@
-﻿# Public Alpha Release Status
+# Module Release Status
 
-This brand-new repository is staged for the ECHO Native Platform public alpha.
+ECHO Modules is the first-party module source and artifact contract repo. It now tracks the ECHO Native `1.0.0-RC1` release candidate lane, not a generic Native Platform public alpha.
 
-Public release assets are staged through GitHub draft releases first. The official ECHO website is the public download hub.
+Only modules with compiled `.echo-addon` artifacts, descriptors, checksums, release metadata, and release-mode loader proof may be marked `ready-native`. Modules that rely on `local_build_output_classpath_fallback`, `source-packaged` output, or `--allow-missing-runtime` remain `blocked-with-reason` or non-player-facing.
+
+Public module assets are staged through GitHub releases and imported into the Release Index after artifact and provenance checks pass.
