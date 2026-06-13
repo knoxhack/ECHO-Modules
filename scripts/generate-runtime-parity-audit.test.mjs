@@ -124,6 +124,32 @@ try {
   assert.equal(JSON.parse(await fs.readFile(paths.json, 'utf8')).summary.runtimeRowCount, 6)
   assert.match(await fs.readFile(paths.markdown, 'utf8'), /ECHO Module Runtime Parity Audit/)
   assert.match(await fs.readFile(paths.backlog, 'utf8'), /ECHO Runtime Parity Fix Backlog/)
+
+  const strictPlayRun = await generateRuntimeParityAudit({ repoRoot, echoRoot, strictPlay: true })
+  assert.ok(strictPlayRun.play.playAudit.strictPlayWouldFail)
+  assert.equal(strictPlayRun.play.playAudit.summary.runtimeRowCount, 6)
+  assert.equal(strictPlayRun.play.playAudit.summary.resultCounts.pass, 0)
+  assert.equal(
+    strictPlayRun.play.playAudit.summary.resultCounts.partial + strictPlayRun.play.playAudit.summary.resultCounts.fail,
+    6,
+  )
+  assert.ok(strictPlayRun.play.evidenceManifest.summary.expectedRuntimeEvidenceCount >= 15)
+  assert.ok(strictPlayRun.play.evidenceManifest.summary.foundRuntimeEvidenceCount >= 4)
+  assert.equal(strictPlayRun.play.evidenceManifest.summary.passingRuntimeEvidenceCount, 0)
+  assert.equal(strictPlayRun.play.manualAcceptanceMatrix.summary.packLaneCount, 1)
+  assert.equal(strictPlayRun.play.manualAcceptanceMatrix.summary.resultCounts.fail, 1)
+  assert.equal(strictPlayRun.play.modulePlayCompletion.summary.moduleCount, 2)
+  assert.equal(strictPlayRun.play.modulePlayCompletion.summary.incomplete, 2)
+  assert.equal(JSON.parse(await fs.readFile(strictPlayRun.paths.playAuditJson, 'utf8')).schema, 'echo.module.runtime_play_audit.v1')
+  assert.equal(JSON.parse(await fs.readFile(strictPlayRun.paths.evidenceManifest, 'utf8')).schema, 'echo.module.runtime_play_evidence_manifest.v1')
+  assert.equal(JSON.parse(await fs.readFile(strictPlayRun.paths.manualAcceptanceMatrix, 'utf8')).schema, 'echo.module.manual_acceptance_matrix.v1')
+  assert.equal(JSON.parse(await fs.readFile(strictPlayRun.paths.modulePlayCompletion, 'utf8')).schema, 'echo.module.play_completion.v1')
+  const playBacklog = JSON.parse(await fs.readFile(strictPlayRun.paths.playFixBacklogJson, 'utf8'))
+  assert.equal(playBacklog.schema, 'echo.module.runtime_play_fix_backlog.v1')
+  assert.ok(playBacklog.summary.itemCount > 0)
+  assert.ok(playBacklog.items.some((item) => item.category === 'pack_acceptance'))
+  assert.match(await fs.readFile(strictPlayRun.paths.playAuditMarkdown, 'utf8'), /ECHO Module Runtime Play Audit/)
+  assert.match(await fs.readFile(strictPlayRun.paths.playFixBacklogMarkdown, 'utf8'), /ECHO Runtime Play Fix Backlog/)
 } finally {
   await fs.rm(echoRoot, { recursive: true, force: true })
 }

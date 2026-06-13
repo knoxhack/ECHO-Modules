@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { generateNeoForgeRuntimeEvidence } from './generate-neoforge-runtime-evidence.mjs'
+import { generateRuntimePlayAudit } from './generate-runtime-play-audit.mjs'
 
 const SCHEMA = 'echo.module.runtime_parity_audit.v1'
 const DESCRIPTOR_PATH = path.join('src', 'main', 'resources', 'META-INF', 'echo.mod.json')
@@ -1509,6 +1510,7 @@ export async function generateRuntimeParityAudit({
   echoRoot = path.dirname(path.resolve(repoRoot)),
   outDir = DEFAULT_OUT_DIR,
   strictFull = false,
+  strictPlay = false,
 } = {}) {
   const normalizedRoot = path.resolve(repoRoot)
   const normalizedEchoRoot = path.resolve(echoRoot)
@@ -1571,13 +1573,25 @@ export async function generateRuntimeParityAudit({
   await fs.writeFile(backlogPath, markdownBacklog(report), 'utf8')
   await fs.writeFile(contractsPath, `${JSON.stringify(moduleFeatureContracts(report), null, 2)}\n`, 'utf8')
 
+  let play = null
+  if (strictPlay) {
+    play = await generateRuntimePlayAudit({
+      parityReport: report,
+      repoRoot: normalizedRoot,
+      echoRoot: normalizedEchoRoot,
+      outDir: normalizePath(path.relative(normalizedRoot, normalizedOutDir)),
+    })
+  }
+
   return {
     report,
+    play,
     paths: {
       json: jsonPath,
       markdown: mdPath,
       backlog: backlogPath,
       contracts: contractsPath,
+      ...(play?.paths ?? {}),
     },
   }
 }
@@ -1860,6 +1874,7 @@ function parseArgs(argv) {
     outDir: DEFAULT_OUT_DIR,
     strict: false,
     strictFull: false,
+    strictPlay: false,
     help: false,
   }
   for (let index = 0; index < argv.length; index += 1) {
@@ -1869,6 +1884,10 @@ function parseArgs(argv) {
     else if (arg === '--out-dir') options.outDir = argv[++index]
     else if (arg === '--strict') options.strict = true
     else if (arg === '--strict-full') options.strictFull = true
+    else if (arg === '--strict-play') {
+      options.strictPlay = true
+      options.strictFull = true
+    }
     else if (arg === '--help') options.help = true
     else throw new Error(`Unknown argument: ${arg}`)
   }
@@ -1917,17 +1936,29 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
   try {
     const options = parseArgs(process.argv.slice(2))
     if (options.help) {
-      console.log('Usage: node scripts/generate-runtime-parity-audit.mjs [--repo-root <path>] [--echo-root <path>] [--out-dir <path>] [--strict] [--strict-full]')
+      console.log('Usage: node scripts/generate-runtime-parity-audit.mjs [--repo-root <path>] [--echo-root <path>] [--out-dir <path>] [--strict] [--strict-full] [--strict-play]')
     } else {
-      const { report, paths } = await generateRuntimeParityAudit(options)
+      const { report, play, paths } = await generateRuntimeParityAudit(options)
       console.log(`Wrote runtime parity audit JSON: ${paths.json}`)
       console.log(`Wrote runtime parity audit Markdown: ${paths.markdown}`)
       console.log(`Wrote runtime parity fix backlog: ${paths.backlog}`)
+      if (play) {
+        console.log(`Wrote runtime play audit JSON: ${paths.playAuditJson}`)
+        console.log(`Wrote runtime play audit Markdown: ${paths.playAuditMarkdown}`)
+        console.log(`Wrote runtime play evidence manifest: ${paths.evidenceManifest}`)
+        console.log(`Wrote manual acceptance matrix: ${paths.manualAcceptanceMatrix}`)
+        console.log(`Wrote module play completion report: ${paths.modulePlayCompletion}`)
+        console.log(`Wrote runtime play fix backlog JSON: ${paths.playFixBacklogJson}`)
+        console.log(`Wrote runtime play fix backlog Markdown: ${paths.playFixBacklogMarkdown}`)
+      }
       if ((options.strict || options.strictFull) && report.strictWouldFail) {
         throw new Error(`Runtime parity audit failed strict mode: ${report.summary.resultCounts.fail} failing row(s), ${report.summary.p0BacklogCount} P0 backlog item(s).`)
       }
       if (options.strictFull && report.strictFullWouldFail) {
         throw new Error(`Runtime parity audit failed strict-full mode: ${report.strictFullSummary.resultCounts.fail} failing feature row(s), ${report.strictFullSummary.resultCounts.partial} partial feature row(s).`)
+      }
+      if (options.strictPlay && play?.playAudit.strictPlayWouldFail) {
+        throw new Error(`Runtime parity audit failed strict-play mode: ${play.playAudit.summary.resultCounts.fail} failing row(s), ${play.playAudit.summary.resultCounts.partial} partial row(s), ${play.manualAcceptanceMatrix.summary.resultCounts.pass}/${play.manualAcceptanceMatrix.summary.packLaneCount} pack lane acceptance report(s) passing.`)
       }
     }
   } catch (error) {

@@ -30,11 +30,11 @@ import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeHardeni
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeMutationEvidence;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeSurfaceConsumers;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeUiHudHandoff;
+import com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs;
 import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 
-import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -946,20 +946,38 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
     }
 
     private static List<String> registeredNativeModuleCreativeTabItems() {
-        return invokeCreativeTabStringList("nativeModuleCreativeItemIds");
+        try {
+            return nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeItemIds());
+        } catch (LinkageError ignored) {
+            return List.of();
+        }
     }
 
     private static List<String> registeredNativeModuleCreativeTabRegistryBackedItems() {
-        return invokeCreativeTabStringList("nativeLoaderRegistryBackedCreativeItemIds");
+        try {
+            return nativeCreativeTabList(ModCreativeTabs.nativeLoaderRegistryBackedCreativeItemIds());
+        } catch (LinkageError ignored) {
+            return List.of();
+        }
     }
 
     private static List<String> registeredNativeModuleCreativeTabFeaturedItems() {
-        List<String> featuredItems = invokeCreativeTabStringList("nativeModuleCreativeFeaturedItemIds");
+        List<String> featuredItems;
+        try {
+            featuredItems = nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeFeaturedItemIds());
+        } catch (LinkageError ignored) {
+            featuredItems = List.of();
+        }
         return featuredItems.isEmpty() ? fallbackNativeModulesCreativeFeaturedItems() : featuredItems;
     }
 
     private static List<String> registeredNativeModuleCreativeTabNamespaces() {
-        List<String> namespaces = invokeCreativeTabStringList("nativeModuleCreativeNamespaces");
+        List<String> namespaces;
+        try {
+            namespaces = nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeNamespaces());
+        } catch (LinkageError ignored) {
+            namespaces = List.of();
+        }
         if (!namespaces.isEmpty()) {
             return namespaces;
         }
@@ -971,20 +989,14 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 .toList();
     }
 
-    private static List<String> invokeCreativeTabStringList(String methodName) {
-        try {
-            Class<?> creativeTabs = Class.forName("com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs");
-            Method method = creativeTabs.getMethod(methodName);
-            Object result = method.invoke(null);
-            if (result instanceof List<?> list && list.stream().allMatch(String.class::isInstance)) {
-                return list.stream()
-                        .map(String.class::cast)
-                        .toList();
-            }
-        } catch (ReflectiveOperationException | LinkageError | RuntimeException error) {
+    private static List<String> nativeCreativeTabList(List<String> values) {
+        if (values == null) {
             return List.of();
         }
-        return List.of();
+        return values.stream()
+                .map(String::valueOf)
+                .filter(item -> !item.isBlank())
+                .toList();
     }
 
     private static List<String> fallbackNativeModulesCreativeTabItems() {

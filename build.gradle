@@ -241,6 +241,19 @@ tasks.register('generateRuntimeParityAudit', Exec) {
     commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs'
 }
 
+tasks.register('generateStrictPlayEvidence', Exec) {
+    group = 'verification'
+    description = 'Refreshes NeoForge, Native, Standalone, and pack-lane strict-play evidence consumed by the runtime parity audit.'
+    commandLine 'node', 'scripts/generate-strict-play-evidence.mjs'
+}
+
+tasks.register('generateRuntimeStrictPlayAudit', Exec) {
+    group = 'verification'
+    description = 'Refreshes strict-play evidence and runs the player-functional runtime parity gate.'
+    dependsOn tasks.named('generateStrictPlayEvidence')
+    commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs', '--strict-play'
+}
+
 tasks.register('validateReleaseArtifacts') {
     group = 'verification'
     description = 'Verifies required Ashfall modules emit compiled runtime jars under addons/<module>/build/libs.'

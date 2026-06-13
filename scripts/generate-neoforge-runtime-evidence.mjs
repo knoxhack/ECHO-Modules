@@ -134,7 +134,119 @@ export async function generateNeoForgeRuntimeEvidence({
   const output = path.join(normalizedOutDir, 'neoforge-runtime-evidence.json')
   await fs.mkdir(path.dirname(output), { recursive: true })
   await fs.writeFile(output, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
-  return { report, path: output }
+  const strictPlayPaths = await writeStrictPlayPlaceholders({
+    report,
+    outDir: normalizedOutDir,
+  })
+  return { report, path: output, strictPlayPaths }
+}
+
+async function writeStrictPlayPlaceholders({ report, outDir }) {
+  const lifecycleRows = report.modules.filter((module) => module.lifecycleVerified)
+  const gameTestRows = report.modules.filter((module) => module.gameTests?.testNames?.length > 0)
+  const registryRows = report.modules.filter((module) =>
+    module.featureProofs?.sourceSignals?.deferredRegister
+      || module.expectedFeatures?.some((feature) => ['blocks', 'items', 'worldgen', 'recipes', 'loot', 'entities', 'machines'].includes(feature)))
+  const uiRows = report.modules.filter((module) =>
+    module.expectedFeatures?.some((feature) => ['gui', 'hud', 'screen', 'inventory_overlay', 'terminal', 'index', 'holomap', 'lens'].includes(feature)))
+
+  const outputs = [
+    [
+      'neoforge-play-evidence.json',
+      strictPlayReport({
+        schema: 'echo.neoforge.strict_play_evidence.v1',
+        source: report,
+        evidenceKind: 'source-contract-not-live-play',
+        requiredFor: ['lifecycle', 'content', 'ui', 'actions', 'blockItems', 'worldgen', 'saveNetwork'],
+        moduleIds: lifecycleRows.map((module) => module.moduleId),
+        modules: lifecycleRows,
+        blockers: [
+          'NeoForge source/compiled contract evidence exists, but no live NeoForge client/server session proof was ingested.',
+          'Strict-play requires executed UI/HUD/screen/action/world/save evidence, not source-contract inference.',
+        ],
+      }),
+    ],
+    [
+      'neoforge-module-gametest-results.json',
+      strictPlayReport({
+        schema: 'echo.neoforge.gametest_results.v1',
+        source: report,
+        evidenceKind: 'gametest-source-index-not-execution-results',
+        requiredFor: ['lifecycle', 'actions', 'blockItems', 'saveNetwork'],
+        moduleIds: gameTestRows.map((module) => module.moduleId),
+        modules: gameTestRows,
+        blockers: [
+          'GameTest sources are indexed, but no executed NeoForge GameTest result artifact was ingested.',
+          'Strict-play requires pass/fail execution results for module GameTests.',
+        ],
+      }),
+    ],
+    [
+      'neoforge-registry-content-results.json',
+      strictPlayReport({
+        schema: 'echo.neoforge.registry_content_results.v1',
+        source: report,
+        evidenceKind: 'registry-source-contract-not-runtime-registry-dump',
+        requiredFor: ['content', 'blockItems', 'worldgen'],
+        moduleIds: registryRows.map((module) => module.moduleId),
+        modules: registryRows,
+        blockers: [
+          'Registry/content source signals exist, but no runtime NeoForge registry/datapack/worldgen dump was ingested.',
+          'Strict-play requires runtime content registration evidence.',
+        ],
+      }),
+    ],
+    [
+      'neoforge-client-ui-results.json',
+      strictPlayReport({
+        schema: 'echo.neoforge.client_ui_results.v1',
+        source: report,
+        evidenceKind: 'ui-source-contract-not-live-client-route',
+        requiredFor: ['ui'],
+        moduleIds: uiRows.map((module) => module.moduleId),
+        modules: uiRows,
+        blockers: [
+          'UI source/surface contracts exist, but no live NeoForge client route, screenshot, or interaction proof was ingested.',
+          'Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected.',
+        ],
+      }),
+    ],
+  ]
+
+  const paths = {}
+  for (const [fileName, output] of outputs) {
+    const outputPath = path.join(outDir, fileName)
+    await fs.writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8')
+    paths[fileName] = outputPath
+  }
+  return paths
+}
+
+function strictPlayReport({ schema, source, evidenceKind, requiredFor, moduleIds, modules, blockers }) {
+  return {
+    schema,
+    generatedAt: source.generatedAt,
+    status: 'PARTIAL',
+    runtime: 'neoforge',
+    evidenceKind,
+    sourceEvidencePath: 'reports/runtime-parity/neoforge-runtime-evidence.json',
+    requiredFor,
+    moduleIds: unique(moduleIds),
+    moduleCount: unique(moduleIds).length,
+    allModules: false,
+    modules: modules.map((module) => ({
+      moduleId: module.moduleId,
+      name: module.name,
+      expectedFeatures: module.expectedFeatures,
+      gameTests: module.gameTests,
+      featureProofs: module.featureProofs,
+    })),
+    trustedMutations: [],
+    visibleRoutes: [],
+    saveEvidence: [],
+    networkEvidence: [],
+    blockers,
+  }
 }
 
 async function discoverModules(repoRoot) {
@@ -398,8 +510,11 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
     if (options.help) {
       console.log('Usage: node scripts/generate-neoforge-runtime-evidence.mjs [--repo-root <path>] [--out-dir <path>]')
     } else {
-      const { report, path: output } = await generateNeoForgeRuntimeEvidence(options)
+      const { report, path: output, strictPlayPaths } = await generateNeoForgeRuntimeEvidence(options)
       console.log(`Wrote NeoForge runtime evidence: ${output}`)
+      for (const [name, outputPath] of Object.entries(strictPlayPaths)) {
+        console.log(`Wrote NeoForge strict-play placeholder ${name}: ${outputPath}`)
+      }
       if (report.status !== 'PASS') {
         throw new Error(`NeoForge runtime evidence is ${report.status}: ${report.blockers.length} blocker(s).`)
       }

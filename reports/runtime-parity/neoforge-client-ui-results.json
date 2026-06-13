@@ -1,0 +1,5266 @@
+{
+  "schema": "echo.neoforge.client_ui_results.v1",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "status": "PARTIAL",
+  "runtime": "neoforge",
+  "evidenceKind": "ui-source-contract-not-live-client-route",
+  "sourceEvidencePath": "reports/runtime-parity/neoforge-runtime-evidence.json",
+  "requiredFor": [
+    "ui"
+  ],
+  "moduleIds": [
+    "echoaccessibilitycore",
+    "echoadaptercore",
+    "echoaddonapi",
+    "echoaetherworks",
+    "echoagriculturereclamation",
+    "echoarcanadivisionprotocol",
+    "echoarcaneindex",
+    "echoarmory",
+    "echoashfallprotocol",
+    "echobalancecore",
+    "echobasegrid",
+    "echobiomecore",
+    "echoblackboxprotocol",
+    "echoblockworks",
+    "echocameracore",
+    "echocinematiccore",
+    "echocodexcore",
+    "echocommonloot",
+    "echocontentcore",
+    "echoconvoyprotocol",
+    "echocore",
+    "echocreatorcore",
+    "echocreaturecore",
+    "echocreatureroles",
+    "echocursecore",
+    "echoequipmentcore",
+    "echofamiliarcore",
+    "echofoundationcore",
+    "echogalacticcore",
+    "echogalacticsurveyprotocol",
+    "echogrimoire",
+    "echoguidecore",
+    "echohealthcore",
+    "echoholomap",
+    "echohudcore",
+    "echoindex",
+    "echoindustrialnexus",
+    "echoinputcore",
+    "echolens",
+    "echolocalizationcore",
+    "echologisticsnetwork",
+    "echolorecore",
+    "echomachinecore",
+    "echomaterialcore",
+    "echometadatacore",
+    "echomodulegraph",
+    "echomultiblockcore",
+    "echonetcore",
+    "echonexusprotocol",
+    "echonotificationcore",
+    "echonpcore",
+    "echoopenlandsprotocol",
+    "echoorbitalremnants",
+    "echoplatformcore",
+    "echopowergrid",
+    "echopresencelink",
+    "echoprogressioncore",
+    "echorecipecore",
+    "echorecovery",
+    "echorelictech",
+    "echorendercore",
+    "echoriftworlds",
+    "echoritualcore",
+    "echoruincore",
+    "echoruntimeguard",
+    "echoscreencore",
+    "echoscriptcore",
+    "echoskyrelayprotocol",
+    "echosoundcore",
+    "echospellcore",
+    "echostationcore",
+    "echostationfall",
+    "echostructurecore",
+    "echoterminal",
+    "echoterritorycore",
+    "echotextureforge",
+    "echothemecore",
+    "echotoolcore",
+    "echotutorialcore",
+    "echoweathercore",
+    "echowiki",
+    "echoworldcore",
+    "echoworldstarter",
+    "signalos",
+    "signalosexample"
+  ],
+  "moduleCount": 85,
+  "allModules": false,
+  "modules": [
+    {
+      "moduleId": "echoaccessibilitycore",
+      "name": "ECHO: AccessibilityCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoadaptercore",
+      "name": "ECHO: AdapterCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": true,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoaddonapi",
+      "name": "ECHO Add-on API",
+      "expectedFeatures": [
+        "index",
+        "blocks",
+        "items",
+        "recipes",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "blocks",
+          "items",
+          "recipes",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": true,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoaetherworks",
+      "name": "ECHO: AetherWorks",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "block_actions",
+        "recipes",
+        "networking",
+        "save_data",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoaetherworks/test/AetherWorksGameTests.java"
+        ],
+        "testNames": [
+          ", CONDENSER_NETWORK.getId());\n        register(event, environment, ",
+          "aetherworks_machinecore_runtime_snapshot_contract",
+          "condenser_feeds_cell_and_player"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "block_actions",
+          "recipes",
+          "networking",
+          "save_data",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoagriculturereclamation",
+      "name": "ECHO: Agriculture Reclamation",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "block_actions",
+        "worldgen",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoagriculturereclamation/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BIO_REACTOR_UTILITY.getId());\r\n      register(event, environment, ",
+          ", CROSS_ADDON_SOIL.getId());\r\n      register(event, environment, ",
+          ", FACTION_SEED_BIAS.getId());\r\n      register(event, environment, ",
+          ", HYDROPONIC_TRAY.getId());\r\n      register(event, environment, ",
+          ", MACHINE_MENU_BLOCKED_OUTPUT.getId());\r\n      register(event, environment, ",
+          ", MAP_PROVIDER.getId());\r\n      register(event, environment, ",
+          ", PLAYER_PROGRESS_NBT.getId());\r\n      register(event, environment, ",
+          ", POLLINATOR_DRONE.getId());\r\n      register(event, environment, ",
+          ", PROCESS_DEFINITIONS.getId());\r\n      register(event, environment, ",
+          ", RESTORATION.getId());\r\n      register(event, environment, ",
+          ", SEED_CAPSULE.getId());\r\n      register(event, environment, ",
+          ", SEED_STABILIZATION.getId());\r\n      register(event, environment, ",
+          ", STANDALONE_RECIPE_CHAIN.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_REWARD_ONCE.getId());\r\n      register(event, environment, ",
+          ", WORLD_DATA_CODEC.getId());\r\n      register(event, environment, ",
+          "bio_reactor_utility_outputs",
+          "block_entity_persistence_round_trip",
+          "compost_recycler_utility_outputs",
+          "core_milestone_recording",
+          "core_recovery_once",
+          "core_route_records",
+          "cross_addon_soil_compatibility",
+          "faction_biased_seed_recovery",
+          "field_snapshot_api",
+          "greenhouse_safety_scoring",
+          "growth_greenhouse_cache_regression",
+          "hydroponic_tray_persistence",
+          "loot_modifier_packaging",
+          "machine_entity_diagnostics",
+          "machine_menu_blocked_output",
+          "machine_menu_process_completion",
+          "machine_quick_insert_fallback",
+          "main_progression_loop_regression",
+          "map_provider_snapshots",
+          "player_progress_nbt_round_trip",
+          "pollinator_drone_system",
+          "process_definitions_indexable",
+          "restoration_score_conversion",
+          "seed_capsule_analysis",
+          "seed_stabilization_profile",
+          "soil_state_conversion",
+          "standalone_recipe_chain",
+          "terminal_reward_claim_once",
+          "terminal_status_metrics",
+          "world_data_codec_round_trip"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "block_actions",
+          "worldgen",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoarcanadivisionprotocol",
+      "name": "ECHO: Arcana Division Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "missions",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoarcaneindex",
+      "name": "ECHO: Arcane Index",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "items",
+        "recipes"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "items",
+          "recipes"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoarmory",
+      "name": "ECHO: Armory",
+      "expectedFeatures": [
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoarmory/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CONTENT_V2_CONTRACTS.getId());\r\n      register(event, ",
+          ", DATA_PARSERS.getId());\r\n      register(event, ",
+          ", FACTION_LOCK_SAFETY.getId());\r\n      register(event, ",
+          ", MODULE_REGISTRATION.getId());\r\n      register(event, ",
+          ", OVERLOAD_AND_PROTECTION.getId());\r\n      register(event, ",
+          ", RANGED_RESOURCE_SAFETY.getId());\r\n      register(event, ",
+          ", REQUIRED_PROTECTION_PARSER.getId());\r\n      register(event, ",
+          ", STATION_INVENTORY_PERSISTENCE.getId());\r\n      register(event, ",
+          ", STATION_PREVIEW_CONTRACT.getId());\r\n      register(event, ",
+          ", TERMINAL_ACTIONS.getId());\r\n      register(event, ",
+          ", TERMINAL_SELECTED_ACTIONS.getId());\r\n      register(event, ",
+          "content_v2_contracts",
+          "core_wiring",
+          "data_components",
+          "data_parsers",
+          "faction_lock_safety",
+          "install_safety",
+          "loadout_readiness_states",
+          "missioncore_content_registration",
+          "module_install_swap",
+          "module_registration",
+          "overload_and_protection",
+          "ranged_resource_safety",
+          "readiness_report_v13",
+          "recharge_costs_fuel",
+          "required_protection_parser",
+          "stack_component_round_trip_persists_armory_state",
+          "staged_rack_readiness",
+          "station_inventory_round_trip_persists_items_and_gear_state",
+          "station_preview_contract",
+          "station_slot_and_transfer_safety",
+          "terminal_actions",
+          "terminal_selected_action_paths"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoashfallprotocol",
+      "name": "ECHO: Ashfall Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "entities",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoashfallprotocol/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ADVANCEMENT_CRITERIA_GUARD.getId());\r\n        register(event, environment, ",
+          ", AGENT7_CHECKPOINT_RELOG_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", AGENT7_FULL_PLAYTHROUGH_DESTROY_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", AGENT9_TECH_NATIVE_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", ARCHIVE_READ_STATE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_DISCOVERY_PROVIDER.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_FIRST_RELAY_ROUTE_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_FIRST_SPAWN_NEW_PLAYER_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_HUD_NOTICE_SHELF_LAYOUT.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_MIDGAME_ROUTE_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_MISSIONCORE_RUNTIME_ROUTE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_ROUTE_REWARD_DELIVERY_HOST_SMOKE.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_ROUTE_THIN_SPINE.getId());\r\n        register(event, environment, ",
+          ", ASH_CAMPFIRE_SHELTER_PULSE.getId());\r\n        register(event, environment, ",
+          ", BOSS_HUD_NAVIGATION.getId());\r\n        register(event, environment, ",
+          ", CRUDE_FILTER_ITEM_FLOW.getId());\r\n        register(event, environment, ",
+          ", DATA_LOG_ITEM_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", DRONE_FIELD_ASSISTANT_UTILITY.getId());\r\n        register(event, environment, ",
+          ", DRONE_INTEL_TARGETING.getId());\r\n        register(event, environment, ",
+          ", DRONE_REPAIR_DEPLOY_COMMAND_INTEL_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", EARLY_WATER_ROUTE_MARKERS.getId());\r\n        register(event, environment, ",
+          ", ECHO_CONTAINER_BLOCK_ENTITIES.getId());\r\n        register(event, environment, ",
+          ", EMERGENCY_BUNK_RESPAWN_BEHAVIOUR.getId());\r\n        register(event, environment, ",
+          ", ENTITY_ATTRIBUTE_HARDENING.getId());\r\n        register(event, environment, ",
+          ", FACTION_ACTION_REPUTATION_SERVICE_RAID_CONTRACT_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", FACTORY_CONTROLLER_SCAN_PAUSE.getId());\r\n        register(event, environment, ",
+          ", FILTER_CARTRIDGE_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", FIRST_NIGHT_ROUTE_SAFETY.getId());\r\n        register(event, environment, ",
+          ", GUARDIAN_BOSS_SMOKE.getId());\r\n        register(event, environment, ",
+          ", HAND_RECYCLER_STARTER_BATTERY_THROUGHPUT.getId());\r\n        register(event, environment, ",
+          ", HAZARD_MACHINE_RUNTIME_MARKERS.getId());\r\n        register(event, environment, ",
+          ", INSTABILITY_DAMPENER_ITEM_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", ITEM_PIPE_NETWORK_ROUTING.getId());\r\n        register(event, environment, ",
+          ", MACHINE_WEAR_SAVED_DATA.getId());\r\n        register(event, environment, ",
+          ", MEDICAL_CONSUMABLE_ITEM_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", MUTATION_INSTABILITY_WARNING_RAD_GATED.getId());\r\n        register(event, environment, ",
+          ", NEOFORGE_RUNTIME_HOST_MUTATION_GATE.getId());\r\n        register(event, environment, ",
+          ", NEXUS_CAMPAIGN_DATA.getId());\r\n        register(event, environment, ",
+          ", NEXUS_COMMAND_STATUS_ONLY.getId());\r\n        register(event, environment, ",
+          ", NEXUS_GUARDIAN_RELAY_SIEGE_FINALE_POSTGAME_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", NEXUS_UPGRADE_DATA_PATH.getId());\r\n        register(event, environment, ",
+          ", POWER_NODE_BLOCK_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", RADIATION_STORM_SLEEP_ADVANCE_PARTIAL.getId());\r\n        register(event, environment, ",
+          ", RARE_SCHEMATIC_RESEARCH.getId());\r\n        register(event, environment, ",
+          ", ROUTE_BALANCE_CONTRACTS.getId());\r\n        register(event, environment, ",
+          ", SHELTERED_RADIATION_STORM_NO_EXPOSURE.getId());\r\n        register(event, environment, ",
+          ", SIGNAL_SCANNER_BLOCK_RUNTIME_FLOW.getId());\r\n        register(event, environment, ",
+          ", STARTER_DROP_POD_TEMPLATE.getId());\r\n        register(event, environment, ",
+          ", STRUCTURE_EXPORT_PATHS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_COMMON_REGISTRATION.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_LORE_TAXONOMY.getId());\r\n        register(event, environment, ",
+          ", TOXIC_SLIME_NO_PASSIVE_PUDDLES.getId());\r\n        register(event, environment, ",
+          ", WATER_PURIFIER_TO_DRINK_RUNTIME_FLOW.getId());\r\n        if (machineCoreProofAvailable()) {\r\n            register(event, environment, ",
+          ", WIKI_MANUAL_OPTIONAL_INTEGRATION.getId());\r\n        register(event, environment, ",
+          "advancement_criteria_guard",
+          "agent3_playable_loop_native_host_smoke",
+          "agent7_checkpoint_relog_host_smoke",
+          "agent7_full_playthrough_control_host_smoke",
+          "agent7_full_playthrough_destroy_host_smoke",
+          "agent7_full_playthrough_restore_host_smoke",
+          "agent9_tech_native_host_smoke",
+          "archive_read_state",
+          "ash_campfire_shelter_pulse",
+          "ashfall_discovery_provider",
+          "ashfall_first_relay_route_host_smoke",
+          "ashfall_first_spawn_new_player_host_smoke",
+          "ashfall_first_spawn_returning_player_repair_host_smoke",
+          "ashfall_hud_notice_shelf_layout",
+          "ashfall_late_game_nexus_endings_host_smoke",
+          "ashfall_machine_meter_screen_host_smoke",
+          "ashfall_machinecore_runtime_snapshot_contract",
+          "ashfall_midgame_route_host_smoke",
+          "ashfall_mission_requirement_audit",
+          "ashfall_missioncore_runtime_route",
+          "ashfall_phase3_route_host_smoke",
+          "ashfall_route_reward_delivery_host_smoke",
+          "ashfall_route_thin_spine",
+          "boss_hud_navigation",
+          "cache_opened_runtime_marker",
+          "crude_filter_item_flow",
+          "data_log_item_runtime_flow",
+          "debug_command_permission_gates",
+          "drone_command_hardening",
+          "drone_field_assistant_utility",
+          "drone_intel_targeting",
+          "drone_repair_deploy_command_intel_runtime_flow",
+          "drone_repair_runtime_marker",
+          "early_water_route_markers",
+          "echo_container_block_entities",
+          "emergency_bunk_pairing_behaviour",
+          "emergency_bunk_respawn_behaviour",
+          "endgame_route_progress",
+          "entity_attribute_hardening",
+          "environmental_event_profiles",
+          "exploration_site_profiles",
+          "faction_action_reputation_service_raid_contract_runtime_flow",
+          "faction_contract_balance",
+          "factory_controller_scan_pause",
+          "field_manual_item_runtime_flow",
+          "filter_cartridge_runtime_flow",
+          "first_night_route_safety",
+          "gas_mask_item_runtime_flow",
+          "guardian_boss_smoke",
+          "guardian_profile_coverage",
+          "guardian_site_state",
+          "hand_recycler_starter_battery_throughput",
+          "hand_warmer_item_runtime_flow",
+          "hazard_machine_runtime_markers",
+          "instability_dampener_item_runtime_flow",
+          "item_pipe_network_routing",
+          "late_runtime_route_markers",
+          "load_distributor_priority_routing",
+          "machine_wear_saved_data",
+          "medical_consumable_item_runtime_flow",
+          "mission_guide_coverage",
+          "mission_ux_summary",
+          "missioncore_reward_claimable_ux",
+          "mutagen_item_runtime_flow",
+          "mutation_instability_warning_rad_gated",
+          "neoforge_runtime_host_machine_capability_gate",
+          "neoforge_runtime_host_mutation_gate",
+          "nexus_access_rules",
+          "nexus_campaign_data",
+          "nexus_command_status_only",
+          "nexus_guardian_relay_siege_finale_postgame_runtime_flow",
+          "nexus_upgrade_data_path",
+          "nexus_warfront_content",
+          "portable_scanner_item_runtime_flow",
+          "power_node_block_runtime_flow",
+          "procedural_terrain_footprints",
+          "quest_reward_stack_persistence",
+          "radaway_runtime_flow",
+          "radiation_storm_sleep_advance_clears",
+          "radiation_storm_sleep_advance_partial",
+          "radio_dynamic_station_persistence",
+          "rare_schematic_research",
+          "relay_station_block_runtime_flow",
+          "research_perk_graph",
+          "research_purchase_spends_rp",
+          "return_beacon_item_runtime_flow",
+          "route_balance_contracts",
+          "scanner_poi_marker_route_runtime_flow",
+          "scrap_knife_turn_in",
+          "scrap_salvage_recycler_parts_runtime_flow",
+          "sheltered_radiation_storm_no_exposure",
+          "signal_scanner_block_runtime_flow",
+          "sleep_cleared_radiation_storm_no_hazard",
+          "starter_drop_pod_corruption_guard",
+          "starter_drop_pod_template",
+          "starting_drop_pod_data_lenient_load",
+          "strict_faction_entity_ids",
+          "structure_export_paths",
+          "substrate_grinder_recipes",
+          "terminal_command_deck_ownership",
+          "terminal_common_registration",
+          "terminal_lore_taxonomy",
+          "toxic_biome_hazard_classification",
+          "toxic_slime_no_passive_puddles",
+          "warden_arena_service",
+          "water_bottle_drink_flow",
+          "water_purifier_network_power",
+          "water_purifier_to_drink_runtime_flow",
+          "wiki_manual_loot_modifier",
+          "wiki_manual_optional_integration",
+          "workshop_status_copy"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "entities",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echobalancecore",
+      "name": "ECHO: BalanceCore",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "recipes",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "recipes",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echobasegrid",
+      "name": "ECHO: Base Grid",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echobasegrid/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ",\r\n                HOLOMAP_CLAIM_ZONES_REQUIRE_TERRAIN.getId());\r\n    }\r\n\r\n    private static void claimRecordPermissions(GameTestHelper helper) {\r\n        UUID owner = UUID.randomUUID();\r\n        UUID memberId = UUID.randomUUID();\r\n        UUID managerId = UUID.randomUUID();\r\n        ClaimRecord claim = new ClaimRecord(\r\n                ",
+          ", CLAIM_ACTION_DIMENSION_AUTHORITY.getId());\r\n        register(event, environment, ",
+          ", CLAIM_PERMISSION_ACCESS_MATRIX.getId());\r\n        register(event, environment, ",
+          ", CLAIM_RECORD_PERMISSIONS.getId());\r\n        register(event, environment, ",
+          ", COMMAND_REGISTRATION_AND_FLOW.getId());\r\n        register(event, environment, ",
+          ", MALFORMED_ACTION_PACKET.getId());\r\n        register(event, environment, ",
+          "add_member_requires_online_target",
+          "claim_action_dimension_authority",
+          "claim_permission_access_matrix",
+          "claim_record_permissions",
+          "command_registration_and_flow",
+          "holomap_claim_zones_require_terrain",
+          "malformed_action_packet",
+          "release_authority",
+          "saved_data_codec",
+          "screencore_provider_rows",
+          "snapshot_packet_round_trip"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": false,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echobiomecore",
+      "name": "ECHO: BiomeCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "holomap",
+        "worldgen",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "holomap",
+          "worldgen",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoblackboxprotocol",
+      "name": "ECHO: Blackbox Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoblackboxprotocol/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ADVANCEMENT_CHAIN.getId());\r\n      register(event, environment, ",
+          ", BOSS_REWARDS.getId());\r\n      register(event, environment, ",
+          ", FRAGMENT_DECODING.getId());\r\n      register(event, environment, ",
+          ", MACHINE_GUI.getId());\r\n      register(event, environment, ",
+          ", MACHINE_PROCESSING.getId());\r\n      register(event, environment, ",
+          ", MACHINE_WORKSTATIONS.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_PROVIDER.getId());\r\n      register(event, environment, "
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoblockworks",
+      "name": "ECHO Blockworks",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoblockworks/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CATALOG_TEST.getId());\r\n      register(event, data, ",
+          ", TABLE_KIT_MODE.getId());\r\n      register(event, data, ",
+          ", TABLE_MENU_SHIFT_CLICK.getId());\r\n      register(event, data, ",
+          ", WORLDGEN_RESOURCE_COVERAGE.getId());\r\n      register(event, data, ",
+          "catalog_has_required_mvp_content",
+          "config_defaults",
+          "cutter_preserves_shape_state",
+          "missioncore_content_registration",
+          "table_conversion_consumes_one_input",
+          "table_menu_shift_click_and_invalid_inputs",
+          "table_palette_kit_mode_and_stack_conversion",
+          "worldgen_resource_coverage"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echocameracore",
+      "name": "ECHO: CameraCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echocinematiccore",
+      "name": "ECHO: CinematicCore",
+      "expectedFeatures": [
+        "gui",
+        "screen"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echocodexcore",
+      "name": "ECHO: CodexCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echocommonloot",
+      "name": "ECHO Common Loot",
+      "expectedFeatures": [
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echocontentcore",
+      "name": "ECHO: ContentCore",
+      "expectedFeatures": [
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoconvoyprotocol",
+      "name": "ECHO: Convoy Protocol",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoconvoyprotocol/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CARGO_ANCHOR_NO_DELETION.getId());\r\n      register(event, environment, ",
+          ", CHECKPOINT_GATING.getId());\r\n      register(event, environment, ",
+          ", CONFIG_SURFACE.getId());\r\n      register(event, environment, ",
+          ", FIELD_OPERATION_INCIDENT.getId());\r\n      register(event, environment, ",
+          ", FIELD_OPERATION_PERSISTENCE.getId());\r\n   }\r\n\r\n   private static void moduleRegistration(GameTestHelper helper) {\r\n      helper.assertTrue(ModBlocks.VEHICLE_WORKBENCH.get() != Blocks.AIR, ",
+          ", FIELD_OPS_ROUTE_PARSER.getId());\r\n      register(event, environment, ",
+          ", FUEL_CONSUMPTION.getId());\r\n      register(event, environment, ",
+          ", MARKER_MISMATCH.getId());\r\n      register(event, environment, ",
+          ", MODULE_REGISTRATION.getId());\r\n      register(event, environment, ",
+          ", MULTIBLOCK_LOGISTICS_UPGRADE.getId());\r\n      register(event, environment, ",
+          ", PRODUCTION_RELOAD_SOAK.getId());\r\n      register(event, environment, ",
+          ", ROUTE_COMPLETION.getId());\r\n      register(event, environment, ",
+          ", ROUTE_PARSER_VALIDATION.getId());\r\n      register(event, environment, ",
+          ", SCANNER_ROUTE_UTILITY.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_ACTIONS.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_ROUTE_SELECTION.getId());\r\n      register(event, environment, ",
+          ", UPGRADE_BAY_LINKING.getId());\r\n      register(event, environment, ",
+          ", UPGRADE_PERSISTENCE.getId());\r\n      register(event, environment, ",
+          ", UPGRADE_REMOVAL_GUARDS.getId());\r\n      register(event, environment, ",
+          ", VEHICLE_DIMENSIONS.getId());\r\n      register(event, environment, ",
+          ", WORLDGEN_RESOURCE_COVERAGE.getId());\r\n      register(event, environment, ",
+          "callsign_shielding_persistence",
+          "cargo_anchor_no_deletion",
+          "checkpoint_gating",
+          "checkpoint_progress",
+          "config_surface",
+          "core_route_telemetry",
+          "core_wiring",
+          "field_operation_incident",
+          "field_operation_lifecycle",
+          "field_operation_persistence",
+          "field_operation_policy",
+          "field_ops_route_parser",
+          "fuel_consumption",
+          "incident_parser_validation",
+          "marker_mismatch",
+          "module_registration",
+          "multiblock_logistics_upgrade",
+          "multiblock_task_inventory_consumption",
+          "production_reload_soak",
+          "relay_deployment",
+          "rendercore_rover_visuals",
+          "route_completion",
+          "route_discovery",
+          "route_parser",
+          "route_parser_validation",
+          "runtime_asset_coverage",
+          "scanner_route_utility",
+          "station_ownership",
+          "station_repair",
+          "terminal_actions",
+          "terminal_route_selection",
+          "terminal_snapshot",
+          "upgrade_bay_linking",
+          "upgrade_effective_stats",
+          "upgrade_persistence",
+          "upgrade_removal_guards",
+          "upgrade_slot_validation",
+          "vehicle_dimensions",
+          "vehicle_kit_deployment",
+          "vehicle_state",
+          "worldgen_resource_coverage"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echocore",
+      "name": "ECHO: Core",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "holomap",
+        "blocks",
+        "items",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "holomap",
+          "blocks",
+          "items",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echocreatorcore",
+      "name": "ECHO: CreatorCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echo/creatorcore/adapter/CreatorCoreGameTests.java"
+        ],
+        "testNames": [
+          ", CODEX_CONFIG_LOCKS.getId());\r\n    }\r\n\r\n    private static void definitionServiceAggregation(GameTestHelper helper) {\r\n        CreatorAdapterRegistry registry = new CreatorAdapterRegistry();\r\n        Identifier definitionId = EchoCreatorCore.id(",
+          ", DEFINITION_SERVICE.getId());\r\n        register(event, ",
+          ", OPTIONAL_MISSING.getId());\r\n        register(event, ",
+          "codex_config_locks",
+          "definition_service_aggregation",
+          "mission_studio_schema",
+          "optional_adapter_missing_safe",
+          "scriptcore_export_delegation"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echocreaturecore",
+      "name": "ECHO: CreatureCore",
+      "expectedFeatures": [
+        "lens",
+        "worldgen",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "lens",
+          "worldgen",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echocreatureroles",
+      "name": "ECHO Creature Roles",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echocursecore",
+      "name": "ECHO: CurseCore",
+      "expectedFeatures": [
+        "screen",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echocursecore/test/CurseCoreGameTests.java"
+        ],
+        "testNames": [
+          ", CURSE_PROVIDER_REGISTERS.getId());\n        register(event, environment, ",
+          "curse_lifecycle_applies_and_cleanses",
+          "curse_provider_registers"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoequipmentcore",
+      "name": "ECHO: EquipmentCore",
+      "expectedFeatures": [
+        "gui",
+        "items",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "items",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echofamiliarcore",
+      "name": "ECHO: FamiliarCore",
+      "expectedFeatures": [
+        "screen",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echofamiliarcore/test/FamiliarCoreGameTests.java"
+        ],
+        "testNames": [
+          ", STARTER_BONDS.getId());\n    }\r\n\r\n    private static void starterBonds(GameTestHelper helper) {\r\n        ServerPlayer player = helper.makeMockServerPlayerInLevel();\r\n        BlockPos playerPos = helper.absolutePos(new BlockPos(1, 2, 1));\r\n        player.teleportTo(helper.getLevel(), playerPos.getX() + 0.5D, playerPos.getY(), playerPos.getZ() + 0.5D,\r\n                java.util.Set.of(), 0.0F, 0.0F, false);\r\n        helper.assertTrue(FamiliarCoreApi.bind(player, FamiliarCoreApi.AETHER_WISP, ",
+          "starter_familiar_bonds_persist_and_tick"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echofoundationcore",
+      "name": "ECHO Foundation Core",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echogalacticcore",
+      "name": "ECHO: GalacticCore",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "holomap",
+        "blocks",
+        "items",
+        "block_actions",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data",
+        "audio",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echogalacticcore/nativeapi/EchoGalacticCoreNativeModuleTest.java"
+        ],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "holomap",
+          "blocks",
+          "items",
+          "block_actions",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data",
+          "audio",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echogalacticsurveyprotocol",
+      "name": "ECHO: Galactic Survey Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "index",
+        "holomap",
+        "lens",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "audio",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "index",
+          "holomap",
+          "lens",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "audio",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echogrimoire",
+      "name": "ECHO: Grimoire",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "blocks",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "blocks",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoguidecore",
+      "name": "ECHO: GuideCore",
+      "expectedFeatures": [
+        "gui",
+        "screen"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echohealthcore",
+      "name": "ECHO: HealthCore",
+      "expectedFeatures": [
+        "screen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoholomap",
+      "name": "ECHO: HoloMap",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "holomap",
+        "blocks",
+        "items",
+        "worldgen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoholomap/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ",\r\n                BUILTIN_ROUTE_HAZARD_PROVIDER_SNAPSHOT.getId());\r\n        register(event, adapterEnvironment, ",
+          ", BUILTIN_PROVIDER_REGISTRATION.getId());\r\n        register(event, environment, ",
+          ", CLIENT_RENDER_CACHE_STATE.getId());\r\n        register(event, environment, ",
+          ", DEATHPOINT_CODEC_AND_RETENTION.getId());\r\n        register(event, environment, ",
+          ", DEBUG_MARKER_SAVED_DATA_CODEC.getId());\r\n        register(event, environment, ",
+          ", MINIMAP_ENABLED_DEFAULT.getId());\r\n    }\r\n\r\n    private static void builtinProviderRegistration(GameTestHelper helper) {\r\n        HoloMapService.INSTANCE.clearForTests();\r\n        HoloMapService.INSTANCE.registerBuiltins();\r\n        HoloMapService.INSTANCE.registerBuiltins();\r\n        helper.assertTrue(HoloMapService.INSTANCE.providerCount() == 1,\r\n                ",
+          ", SNAPSHOT_FILTERING_AND_CAP.getId());\r\n        register(event, environment, ",
+          ", TACTICAL_POLISH_HELPERS.getId());\r\n        register(event, environment, ",
+          ", TERRAIN_SCANNER_AND_REQUEST_CAPS.getId());\r\n        register(event, environment, ",
+          ", TERRAIN_V3_TILE_METADATA.getId());\r\n        register(event, environment, ",
+          ", THEME_CORE_STYLE_FALLBACK.getId());\r\n        register(event, richEnvironment, ",
+          ", WAYPOINT_CLIENT_MERGE.getId());\r\n        register(event, environment, ",
+          ", WAYPOINT_MUTATION_RULES.getId());\r\n        register(event, environment, ",
+          "builtin_provider_registration",
+          "builtin_route_hazard_provider_snapshot",
+          "chunk_action_creates_saved_waypoint",
+          "client_render_cache_state",
+          "core_provider_rich_adaptation",
+          "deathpoint_codec_and_retention",
+          "deathpoint_personal_visibility",
+          "debug_marker_saved_data_codec",
+          "discovery_gated_snapshot",
+          "minimap_enabled_default",
+          "missioncore_content_registration",
+          "rich_provider_snapshot",
+          "screencore_holomap_registration",
+          "service_provider_isolation",
+          "snapshot_filtering_and_cap",
+          "tactical_polish_helpers",
+          "terrain_palette_determinism",
+          "terrain_saved_data_codec",
+          "terrain_scanner_and_request_caps",
+          "terrain_v3_tile_metadata",
+          "theme_core_style_fallback",
+          "waypoint_client_merge",
+          "waypoint_mutation_rules",
+          "waypoint_saved_data_codec",
+          "zone_packet_round_trip"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "holomap",
+          "blocks",
+          "items",
+          "worldgen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echohudcore",
+      "name": "ECHO: HUDCore",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "missions",
+        "networking"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "missions",
+          "networking"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoindex",
+      "name": "ECHO: Index",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "inventory_overlay",
+        "index",
+        "blocks",
+        "items",
+        "recipes",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoindex/test/IndexTerminalGameTests.java",
+          "src/test/java/com/knoxhack/echoindex/test/ModGameTests.java"
+        ],
+        "testNames": [
+          "content_provider_snapshot",
+          "first_party_provider_migration",
+          "machine_layout_validation",
+          "machine_process_plan_state",
+          "mission_reward_source_facts",
+          "missioncore_content_registration",
+          "recipe_like_provider_cards",
+          "recipe_query_result_limiting",
+          "recipe_transfer_action_records_after_success",
+          "screencore_bookmark_click_dispatches_netcore_action",
+          "semantic_duplicate_filtering",
+          "source_provider_facts",
+          "terminal_import_recipe_conversion",
+          "terminal_recipe_registry_revision",
+          "vanilla_recipe_grid_metadata"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "inventory_overlay",
+          "index",
+          "blocks",
+          "items",
+          "recipes",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoindustrialnexus",
+      "name": "ECHO: Industrial Nexus",
+      "expectedFeatures": [
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "block_actions",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data",
+        "audio",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoindustrialnexus/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ASSEMBLY_LINE_GUI_QUEUE.getId());\r\n      register(event, environment, ",
+          ", CROSS_COMPAT_OUTPUT.getId());\r\n      register(event, environment, ",
+          ", FACTORY_COMMAND_TERMINAL_ACTIONS.getId());\r\n      register(event, environment, ",
+          ", FLUID_CAPABILITY.getId());\r\n      register(event, environment, ",
+          ", FLUID_TANK.getId());\r\n      register(event, environment, ",
+          ", INDUSTRIAL_LENS_PROVIDER.getId());\r\n      register(event, environment, ",
+          ", INDUSTRIAL_MACHINE_STANDARD.getId());\r\n      register(event, environment, ",
+          ", ITEM_DUCT_ROUTING.getId());\r\n      register(event, environment, ",
+          ", ITEM_ECOSYSTEM_COMPLETENESS.getId());\r\n      register(event, environment, ",
+          ", LAVA_BUCKET_RETURN.getId());\r\n      register(event, environment, ",
+          ", MACHINECORE_UI_RUNTIME_CONSUMERS.getId());\r\n      register(event, environment, ",
+          ", MACHINE_PERSISTENCE.getId());\r\n      register(event, environment, ",
+          ", MACHINE_PROCESSING.getId());\r\n      register(event, environment, ",
+          ", NEXUS_FURNACE_ARRAY_PROVIDERS.getId());\r\n      register(event, environment, ",
+          ", NEXUS_FURNACE_ARRAY_ROBOTIC_TASK.getId());\r\n      register(event, environment, ",
+          ", POI_SMOKE.getId());\r\n      register(event, environment, ",
+          ", REGISTERED_ITEM_PATHS.getId());\r\n      register(event, environment, ",
+          ", RENDERCORE_VISUAL_STATES.getId());\r\n      register(event, environment, ",
+          ", SCRAP_DYNAMO_GENERATION.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_MISSIONS.getId());\r\n      register(event, environment, ",
+          ", TERMINAL_RECIPE_PARSER.getId());\r\n      register(event, environment, ",
+          ", UPGRADE_STACKING.getId());\r\n      register(event, environment, ",
+          ", WARDEN_SPAWN.getId());\r\n      register(event, environment, ",
+          "assembly_line_batch_queue",
+          "assembly_line_gui_queue",
+          "assembly_line_robotic_task",
+          "controller_remote_shutdown",
+          "core_chapter_route_records",
+          "cross_compat_component_output",
+          "factory_command_provider_snapshots",
+          "factory_command_terminal_actions",
+          "fluid_capability_fill_drain",
+          "fluid_pipe_transfer_filtering",
+          "fluid_tank_processing",
+          "flux_duct_transfer_loss",
+          "furnace_warden_reward_idempotency",
+          "furnace_warden_spawn",
+          "generator_powers_ore_grinder",
+          "industrial_lens_provider_registration",
+          "industrial_machine_standard_snapshot_contract",
+          "industrial_machinecore_runtime_snapshot_contract",
+          "industrial_multiblock_definitions",
+          "industrial_powergrid_flux_bridge",
+          "industrial_public_api_and_source_facts",
+          "item_duct_routing",
+          "item_ecosystem_completeness",
+          "item_ecosystem_tags",
+          "lava_bucket_returns_bucket",
+          "machine_and_duct_break_drops",
+          "machine_menu_data_sync",
+          "machine_recipe_processing",
+          "machine_side_config",
+          "machine_state_persistence",
+          "machinecore_ui_runtime_consumer_projections",
+          "nexus_furnace_array_core_key_mission",
+          "nexus_furnace_array_provider_snapshots",
+          "nexus_furnace_array_robotic_task",
+          "nexus_pressure_compat",
+          "procedural_poi_smoke",
+          "registered_orphan_item_paths",
+          "rendercore_visual_states",
+          "reward_claim_idempotency",
+          "scrap_dynamo_generates_flux",
+          "scrubber_safe_zone_progress",
+          "terminal_claim_idempotency",
+          "terminal_mission_snapshots",
+          "terminal_recipe_parser",
+          "terminal_route_placement",
+          "upgrade_stacking_rules"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "block_actions",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data",
+          "audio",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoinputcore",
+      "name": "ECHO: InputCore",
+      "expectedFeatures": [
+        "gui",
+        "screen"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echolens",
+      "name": "ECHO: Lens",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "lens",
+        "blocks",
+        "items",
+        "block_actions",
+        "worldgen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echolens/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BLOCK_SECTIONS.getId());\r\n        register(event, ",
+          ", CORE_REGISTRATION.getId());\r\n        register(event, ",
+          ", FAILURE_ISOLATION.getId());\r\n        register(event, ",
+          ", HUD_LAYOUT_BOUNDS.getId());\r\n        register(event, ",
+          ", MISSION_CORE_CONTENT.getId());\r\n        register(event, ",
+          ", NOOP_SERVICE.getId());\r\n        register(event, ",
+          ", REGISTER_ALL.getId());\r\n        register(event, ",
+          ", REGISTRY_ORDERING.getId());\r\n        register(event, ",
+          ", SERVER_PROVIDER_ORDERING.getId());\r\n        register(event, ",
+          ", SERVER_RESPONSE_STATUS.getId());\r\n        register(event, ",
+          ", THEME_COLOR_FALLBACK.getId());\r\n    }\r\n\r\n    private static void providerRegistryOrdering(GameTestHelper helper) {\r\n        LensProviderRegistry.withClearedForTests(() -> {\r\n            LensProviderRegistry.register(provider(",
+          "block_section_generation",
+          "config_registry_publication",
+          "core_chapter_and_service_registration",
+          "duplicate_provider_rejection",
+          "entity_section_generation",
+          "failing_provider_isolation",
+          "hud_layout_bounds",
+          "mission_actual_scan_target",
+          "missioncore_content_registration",
+          "noop_service_empty_report",
+          "optional_integration_noop",
+          "privacy_filtering",
+          "provider_diagnostics",
+          "provider_register_all",
+          "provider_registry_ordering",
+          "server_provider_deep_scan_signals",
+          "server_provider_ordering",
+          "server_response_status",
+          "server_scan_packet_codec",
+          "server_scan_worldcore_runtime_proof",
+          "theme_color_fallback"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "lens",
+          "blocks",
+          "items",
+          "block_actions",
+          "worldgen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echolocalizationcore",
+      "name": "ECHO: LocalizationCore",
+      "expectedFeatures": [
+        "hud",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "hud",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echologisticsnetwork",
+      "name": "ECHO: Logistics Network",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echologisticsnetwork/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", AUTO_RESTOCK_LOOP.getId(), 800);\r\n      register(event, ",
+          ", CONTAINER_BREAK_DROPS_INVENTORY.getId());\r\n      register(event, ",
+          ", CORE_WIRING.getId());\r\n      register(event, ",
+          ", DATA_BACKED_TOOLS.getId());\r\n      register(event, ",
+          ", DEPOT_SELECTION.getId());\r\n      register(event, ",
+          ", DRONE_DELIVERY.getId());\r\n      register(event, ",
+          ", FACTORY_LOADOUT.getId(), 400);\r\n      register(event, ",
+          ", INDUSTRIAL_DUCT_REACH.getId());\r\n      register(event, ",
+          ", INDUSTRIAL_MACHINE_ENDPOINT.getId());\r\n      register(event, ",
+          ", MODULE_REGISTRATION.getId());\r\n      register(event, ",
+          ", OFFLINE_DOCK_DIAGNOSTICS.getId());\r\n      register(event, ",
+          ", PUBLIC_NETWORK_STATUS.getId());\r\n      register(event, ",
+          ", STOCK_AND_READINESS.getId());\r\n      register(event, ",
+          ", TARGET_CAPACITY.getId());\r\n      register(event, ",
+          ", TERMINAL_ACTIONS.getId());\r\n      register(event, ",
+          ", TERMINAL_ROUTE_REFRESH.getId());\r\n      register(event, ",
+          "auto_restock_station_loop",
+          "block_state_persistence",
+          "container_break_drops_inventory",
+          "core_cross_addon_integration",
+          "core_wiring",
+          "courier_drone_delivery",
+          "courier_failure_recovery",
+          "courier_payload_persistence",
+          "dashboard_snapshot",
+          "data_backed_tools",
+          "data_parsers",
+          "depot_offer_selection_cooldown",
+          "factory_auto_restock_to_industrial_input_depot",
+          "factory_loadout_to_industrial_input_depot",
+          "industrial_duct_graph_limit",
+          "industrial_duct_reach",
+          "industrial_machine_external_endpoint",
+          "item_reservation_extraction",
+          "machinecore_legacy_endpoint_dedupe",
+          "missioncore_content_registration",
+          "module_registration",
+          "offline_dock_diagnostics",
+          "public_network_status",
+          "recovery_no_duplication",
+          "relay_idempotency_edges",
+          "remote_tablet_route_requester_loop",
+          "route_discovery",
+          "stock_counting_and_readiness",
+          "target_block_type_enforcement",
+          "target_capacity_precheck",
+          "terminal_actions",
+          "terminal_route_refresh"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echolorecore",
+      "name": "ECHO: LoreCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echomachinecore",
+      "name": "ECHO: MachineCore",
+      "expectedFeatures": [
+        "index",
+        "blocks",
+        "items",
+        "block_actions",
+        "recipes",
+        "networking",
+        "save_data",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "blocks",
+          "items",
+          "block_actions",
+          "recipes",
+          "networking",
+          "save_data",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echomaterialcore",
+      "name": "ECHO Material Core",
+      "expectedFeatures": [
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echometadatacore",
+      "name": "ECHO: MetadataCore",
+      "expectedFeatures": [
+        "screen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echomodulegraph",
+      "name": "ECHO: ModuleGraph",
+      "expectedFeatures": [
+        "lens",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "lens",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echomultiblockcore",
+      "name": "ECHO: MultiblockCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echomultiblockcore/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", AUTOMATION_EFFECT_DEDUPE.getId());\r\n        register(event, ",
+          ", AUTOMATION_EFFECT_NO_HANDLER.getId());\r\n        register(event, ",
+          ", AUTOMATION_METADATA_ALLOWED.getId());\r\n        register(event, ",
+          ", AUTOMATION_RECIPE_EFFECTS.getId());\r\n        register(event, ",
+          ", AUTOMATION_RECIPE_PARSE.getId());\r\n        register(event, ",
+          ", BUILD_ASSIST_LAYER_WRAP.getId());\r\n        register(event, ",
+          ", BUILD_ASSIST_OVERSIZED.getId());\r\n        register(event, ",
+          ", BUILD_ASSIST_TRANSFORM.getId());\r\n        register(event, ",
+          ", FEATURED_RECIPE_TRANSACTIONS.getId());\r\n        register(event, ",
+          ", INTEGRATION_DEDUPE.getId());\r\n        register(event, ",
+          ", INTEGRATION_EVENT_SNAPSHOTS.getId());\r\n        register(event, ",
+          ", INTEGRATION_SCAN_ROBOT.getId());\r\n        register(event, ",
+          ", JSON_BAD_PALETTE.getId());\r\n        register(event, ",
+          ", JSON_PARSE.getId());\r\n        register(event, ",
+          ", MISSING_DIAGNOSTIC.getId());\r\n        register(event, ",
+          ", MISSION_CORE_CONTENT.getId());\r\n        register(event, ",
+          ", POWER_PROVIDER_DRAW.getId());\r\n        register(event, ",
+          ", PROGRESSION_CONTENT_COVERAGE.getId());\r\n        register(event, ",
+          ", PROGRESSION_JSON_PARSE.getId());\r\n        register(event, ",
+          ", PROGRESSION_PREREQ_DIAGNOSTIC.getId());\r\n        register(event, ",
+          ", ROBOT_TOOL.getId());\r\n        register(event, ",
+          ", TASK_BLOCKED_OUTPUT.getId());\r\n        register(event, ",
+          "autobuilder_occupied_refusal_no_loss",
+          "automation_effect_completion_once",
+          "automation_effect_failure_isolated",
+          "automation_effect_no_handler_noop",
+          "automation_effect_provider_dedupe",
+          "automation_metadata_allowed_multiblocks",
+          "automation_recipe_bad_effect_warning",
+          "automation_recipe_bad_item_isolated",
+          "automation_recipe_effects_parse",
+          "automation_recipe_parse",
+          "build_assist_controller_anchor",
+          "build_assist_geometry_parity",
+          "build_assist_layer_wrap",
+          "build_assist_material_checklist",
+          "build_assist_material_summary",
+          "build_assist_oversized_snapshot",
+          "build_assist_transform",
+          "featured_recipe_transaction_coverage",
+          "integration_event_snapshot_constructors",
+          "integration_map_marker_snapshots",
+          "integration_provider_deduplicates",
+          "integration_provider_failure_isolated",
+          "integration_saved_data_snapshots",
+          "integration_scan_robotic_arm",
+          "json_definition_bad_palette_isolated",
+          "json_definition_parse",
+          "json_definition_warnings",
+          "missioncore_content_registration",
+          "multiblock_machinecore_runtime_snapshot_contract",
+          "power_provider_draw_and_failure_isolation",
+          "progression_bad_file_isolated",
+          "progression_content_coverage",
+          "progression_json_parse",
+          "progression_prerequisite_diagnostics",
+          "progression_snapshot_fields",
+          "robotic_arm_tool_requirement",
+          "showcase_facility_formation_coverage",
+          "showcase_facility_identity_coverage",
+          "structure_validation_missing_block",
+          "structure_validation_rotation_match",
+          "structure_validation_success",
+          "task_queue_consume_produce",
+          "task_queue_state_snapshots",
+          "task_transaction_full_output_no_loss"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echonetcore",
+      "name": "ECHO: NetCore",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echonetcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CLIENT_SYNC_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", RATE_LIMITER.getId());\r\n        register(event, environment, ",
+          ", SERVICE_FALLBACKS.getId());\r\n        register(event, environment, ",
+          "client_sync_registry",
+          "codec_round_trips",
+          "debug_hooks",
+          "packet_ids",
+          "rate_limiter",
+          "service_fallbacks"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": false,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echonexusprotocol",
+      "name": "ECHO: Nexus Protocol",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
+        "block_actions",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "audio",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echonexusprotocol/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ENDING_EFFECTS.getId());\r\n      register(event, environment, ",
+          ", ENERGY.getId());\r\n      register(event, environment, ",
+          ", FIELD_CHARGES.getId());\r\n      register(event, environment, ",
+          ", FIELD_MAP.getId());\r\n      register(event, environment, ",
+          ", JEI_JSON_PARITY.getId());\r\n      register(event, environment, ",
+          ", LOOT_POLISH.getId());\r\n   }\r\n\r\n   private static void energyStorageTransfer(GameTestHelper helper) {\r\n      BlockPos pos = new BlockPos(1, 1, 1);\r\n      helper.setBlock(pos, (Block)ModBlocks.NEXUS_CHARGE_TANK.get());\r\n      NexusMachineBlockEntity tank = (NexusMachineBlockEntity)helper.getBlockEntity(pos, NexusMachineBlockEntity.class);\r\n      tank.receiveCharge(1000);\r\n      helper.assertTrue(tank.energyStored() == 1000, ",
+          ", MACHINECORE_RUNTIME.getId());\r\n      register(event, environment, ",
+          ", MACHINE_PERSISTENCE.getId());\r\n      register(event, environment, ",
+          ", MACHINE_RECIPES.getId());\r\n      register(event, environment, ",
+          ", MOBS.getId());\r\n      register(event, environment, ",
+          ", ONE_TIME_REWARDS.getId());\r\n      register(event, environment, ",
+          ", POST_RELEASE_POLISH.getId());\r\n      register(event, environment, ",
+          ", RESOURCE_COMPLETENESS.getId());\r\n      register(event, environment, ",
+          ", ROUTE_PLACEMENT.getId());\r\n      register(event, environment, ",
+          ", SEAL.getId());\r\n      register(event, environment, ",
+          ", STRICT_PLAYABLE_STARTER_LOOP.getId());\r\n      register(event, environment, ",
+          ", TERMINAL.getId());\r\n      register(event, environment, ",
+          ", TERRAIN_SITES.getId());\r\n      register(event, environment, ",
+          "nexus_machinecore_runtime_snapshot_contract"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "items",
+          "block_actions",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "audio",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echonotificationcore",
+      "name": "ECHO: NotificationCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "missions",
+        "networking"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "missions",
+          "networking"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echonpcore",
+      "name": "ECHO: NPCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "items",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data",
+        "entities"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echo/npcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", NPC_SCREENCORE_RESOURCE_CONTRACT.getId());\r\n    }\r\n\r\n    private static void npcScreenCoreResourceContract(GameTestHelper helper) {\r\n        Path root = workspaceRoot();\r\n        try {\r\n            String page = Files.readString(root.resolve(",
+          "npc_screencore_resource_contract"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "items",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data",
+          "entities"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoopenlandsprotocol",
+      "name": "ECHO: Openlands Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data",
+        "entities",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data",
+          "entities",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": true,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoorbitalremnants",
+      "name": "ECHO: Orbital Remnants",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoorbitalremnants/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", AMBIENT_THREAT_CAP.getId());\r\n        register(event, environment, ",
+          ", BETA_CRASHBREAK_CONTRACT.getId());\r\n        register(event, environment, ",
+          ", BETA_FACTION_CONTRACTS.getId());\r\n        register(event, environment, ",
+          ", BETA_RC_POLISH.getId());\r\n        register(event, environment, ",
+          ", BETA_TERMINAL_GUIDANCE.getId());\r\n        register(event, environment, ",
+          ", CORE_INTEGRATION_CONTRACT.getId());\r\n        register(event, environment, ",
+          ", EARLY_GROUND_RECOVERY.getId());\r\n        register(event, environment, ",
+          ", EUROPA_CRYO_WARDEN.getId());\r\n        register(event, environment, ",
+          ", FACTION_REWARD.getId());\r\n        register(event, environment, ",
+          ", MACHINE_BREAK_DROPS_INVENTORY.getId());\r\n        register(event, environment, ",
+          ", MACHINE_PROCESSING.getId());\r\n        register(event, environment, ",
+          ", MID_GAME_ROUTE_GATES.getId());\r\n        register(event, environment, ",
+          ", OUTPOST_BARTER_BEHAVIOR.getId());\r\n        register(event, environment, ",
+          ", OUTPOST_LEGACY_MIGRATION.getId());\r\n        register(event, environment, ",
+          ", OUTPOST_NPC_PERSISTENCE.getId());\r\n        register(event, environment, ",
+          ", OUTPOST_NPC_REGISTRATION.getId());\r\n        register(event, environment, ",
+          ", PROGRESS_PERSISTENCE_ROUND_TRIP.getId());\r\n        register(event, environment, ",
+          ", ROCKET_ASSEMBLY.getId());\r\n        register(event, environment, ",
+          ", ROCKET_IGNITION_COMMIT.getId());\r\n        register(event, environment, ",
+          ", ROCKET_VEHICLE_PLACEMENT.getId());\r\n        register(event, environment, ",
+          ", ROUTE_ARRIVAL_SEED_ONCE.getId());\r\n        register(event, environment, ",
+          ", ROUTE_CACHES.getId());\r\n        register(event, environment, ",
+          ", ROUTE_GATES.getId());\r\n        register(event, environment, ",
+          ", ROUTE_SITE_FAMILIES.getId());\r\n        register(event, environment, ",
+          ", SURVEY_PROGRESS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MISSION_CACHE_STATE.getId());\r\n        register(event, environment, ",
+          "ambient_threat_cap",
+          "asset_completeness",
+          "beta_cache_support",
+          "beta_crashbreak_contract",
+          "beta_faction_contracts",
+          "beta_radwarden_contract",
+          "beta_rc_polish",
+          "beta_sporebound_contract",
+          "beta_survival_chain",
+          "beta_terminal_guidance",
+          "boss_identity",
+          "core_integration_contract",
+          "early_ground_recovery",
+          "early_launch_to_orbit",
+          "europa_cryo_warden",
+          "faction_reward",
+          "final_protocol",
+          "high_altitude_scan_gate",
+          "launch_readiness",
+          "machine_break_drops_inventory",
+          "machine_processing",
+          "mid_game_objective_chain",
+          "mid_game_recipes_and_sites",
+          "mid_game_route_gates",
+          "orbital_machinecore_runtime_snapshot_contract",
+          "outpost_action_validation",
+          "outpost_barter_behavior",
+          "outpost_charter_gating",
+          "outpost_legacy_migration",
+          "outpost_npc_persistence",
+          "outpost_npc_registration",
+          "outpost_spawn_caps",
+          "progress_persistence_round_trip",
+          "rocket_assembly",
+          "rocket_assembly_virtual_output",
+          "rocket_countdown_abort",
+          "rocket_damage_drop",
+          "rocket_ignition_commit",
+          "rocket_vehicle_placement",
+          "route_arrival_seed_once",
+          "route_caches",
+          "route_gates",
+          "route_site_families",
+          "route_terrain",
+          "strict_playable_path",
+          "suit_state",
+          "survey_hardening",
+          "survey_progress",
+          "terminal_lore_taxonomy",
+          "terminal_mission_cache_state",
+          "terminal_mission_integration",
+          "terminal_progress"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoplatformcore",
+      "name": "ECHO: PlatformCore",
+      "expectedFeatures": [
+        "screen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echopowergrid",
+      "name": "ECHO: PowerGrid",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echopowergrid/test/PowerGridGameTests.java"
+        ],
+        "testNames": [
+          ", BATTERY_STORES_ENERGY.getId());\r\n        register(event, environment, ",
+          ", BREAKER_ISOLATES_NETWORK.getId());\r\n        register(event, environment, ",
+          ", BREAKER_MENU_RESET.getId());\r\n        register(event, environment, ",
+          ", DRAW_POWER_SIMULATION_COMMIT.getId());\r\n        register(event, environment, ",
+          ", GENERATOR_CREATES_ENERGY.getId());\r\n        register(event, environment, ",
+          ", GENERATOR_TYPE_PERSISTENCE.getId());\r\n        register(event, environment, ",
+          ", HAND_CRANK_GENERATES_BURST.getId());\r\n        register(event, environment, ",
+          ", MACHINECORE_RUNTIME.getId());\r\n    }\r\n\r\n    private static void powerGridMachineCoreRuntimeSnapshotContract(GameTestHelper helper) {\r\n        BlockPos generatorPos = new BlockPos(1, 2, 1);\r\n        helper.setBlock(generatorPos, ModBlocks.SCRAP_BURNER_GENERATOR.get().defaultBlockState());\r\n        GeneratorBlockEntity generator = helper.getBlockEntity(generatorPos, GeneratorBlockEntity.class);\r\n        generator.fuelInventory().setItem(0, new ItemStack(Items.COAL, 2));\r\n        for (int i = 0; i < 3; i++) {\r\n            GeneratorBlockEntity.tick(helper.getLevel(), generator.getBlockPos(), generator.getBlockState(), generator);\r\n        }\r\n\r\n        EchoMachineRuntimeSnapshot direct = PowerGridMachineCoreAdapter.runtimeSnapshot(generator);\r\n        helper.assertTrue(direct.id().value().equals(EchoPowerGrid.id(",
+          ", NETWORK_REBUILDS_ON_PLACE.getId());\r\n        register(event, environment, ",
+          ", NODE_SUMMARIES_INCLUDE_13_CONTENT.getId());\r\n        register(event, environment, ",
+          ", SCRAP_BURNER_FUEL_SLOT_GENERATES.getId());\r\n        register(event, environment, ",
+          ", TECH_WAVE_15_GENERATOR_PROFILES.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_PACKET_CREATION.getId());\r\n        register(event, environment, ",
+          "battery_stores_energy",
+          "breaker_isolates_network",
+          "breaker_menu_reset",
+          "cable_connects_blocks",
+          "consumer_draws_energy",
+          "draw_power_simulation_commit",
+          "fe_transaction_rollback",
+          "generation_not_duplicated_under_deficit",
+          "generator_creates_energy",
+          "generator_fuel_inventory_persistence",
+          "generator_type_persistence",
+          "hand_crank_generates_burst",
+          "holomap_provider_markers",
+          "network_rebuilds_on_place",
+          "node_summaries_include_13_content",
+          "overload_trips_breaker",
+          "power_node_menu_data",
+          "powergrid_machinecore_runtime_snapshot_contract",
+          "route_summary_and_loss",
+          "scrap_burner_fuel_slot_generates",
+          "solar_panel_day_night",
+          "tech_wave_15_generator_profiles",
+          "tech_wave_15_storage_summaries",
+          "tech_wave_15_transfer_limits",
+          "terminal_packet_creation"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echopresencelink",
+      "name": "ECHO: Presence Link",
+      "expectedFeatures": [
+        "screen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echopresencelink/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BUTTON_FILTER.getId());\r\n    }\r\n\r\n    private static void providerPriority(GameTestHelper helper) {\r\n        EchoPresenceContext context = new EchoPresenceContext(null, ",
+          ", PAYLOAD_JSON.getId());\r\n        register(event, environment, ",
+          ", PROVIDER_PRIORITY.getId());\r\n        register(event, environment, ",
+          "button_filter",
+          "minimal_payload_json",
+          "payload_json",
+          "privacy_sanitization",
+          "provider_priority"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoprogressioncore",
+      "name": "ECHO: ProgressionCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "worldgen",
+        "recipes",
+        "missions",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "worldgen",
+          "recipes",
+          "missions",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echorecipecore",
+      "name": "ECHO: RecipeCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "block_actions",
+        "recipes",
+        "networking",
+        "save_data",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "block_actions",
+          "recipes",
+          "networking",
+          "save_data",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echorecovery",
+      "name": "ECHO: Recovery",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "networking",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echorecovery/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", DATAPACK_PARSERS.getId());\r\n        register(event, environment, ",
+          ", FIELD_CACHE_RECOVERY_XP_AND_KEY.getId());\r\n        register(event, environment, ",
+          ", LOCAL_API_HOOKS.getId());\r\n    }\r\n\r\n    private static void metadataRegistry(GameTestHelper helper) {\r\n        helper.assertTrue(ModBlocks.GRAVE.get() != Blocks.AIR, ",
+          ", METADATA_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", WORLD_DATA_LOOKUP.getId());\r\n        register(event, environment, ",
+          "access_recovery",
+          "core_service",
+          "datapack_parsers",
+          "field_cache_recovery_xp_and_key",
+          "local_api_hooks",
+          "metadata_registry",
+          "original_slot_restore",
+          "world_data_lookup",
+          "xp_capture_fallback"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "networking",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echorelictech",
+      "name": "ECHO: RelicTech",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echorelictech/test/RelicTechGameTests.java"
+        ],
+        "testNames": [
+          ", CONTAINMENT_LOCKER_FLAGS_AND_CLEARS.getId());\r\n        register(event, environment, ",
+          ", INSTABILITY_SAVED_DATA.getId());\r\n        register(event, environment, ",
+          ", PHASE_ANCHOR_HAS_DATA.getId());\r\n        register(event, environment, ",
+          ", RELIC_ANALYZER_PLACES.getId());\n        register(event, environment, ",
+          ", STARTER_RELICS_CREATE_STACKS.getId());\r\n        register(event, environment, ",
+          "containment_locker_flags_and_clears",
+          "containment_locker_places",
+          "instability_saved_data",
+          "null_battery_stores_charge",
+          "phase_anchor_has_data",
+          "relic_analyzer_places",
+          "relic_api_creates_identified_stack",
+          "relictech_machinecore_runtime_snapshot_contract",
+          "starter_relics_create_stacks",
+          "workbench_action_condition_gates"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echorendercore",
+      "name": "ECHO: RenderCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echorendercore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ANIMATION_PLAYBACK.getId());\r\n      register(event, environment, ",
+          ", PROFILE_PARSERS.getId());\r\n      register(event, environment, ",
+          ", V11_CREATOR_WORKBENCH.getId());\r\n      register(event, environment, ",
+          ", V13_COMPLETE_VISION.getId());\r\n      register(event, environment, ",
+          ", V15_REAL_RENDER_MOD.getId());\r\n      register(event, environment, ",
+          ", V17_SCREEN_FRAME_OPTIONS.getId());\r\n      register(event, environment, ",
+          ", V22_SOFT_MOB_PARTICLES.getId());\r\n   }\r\n\r\n   private static void profileParsers(GameTestHelper helper) {\r\n      helper.assertTrue(VisualState.byName(",
+          ", V3_LINT_REPORTS.getId());\r\n      register(event, environment, ",
+          ", V5_DIAGNOSTICS_AND_SCHEMAS.getId());\r\n      register(event, environment, ",
+          ", V7_COMPOSITION_PREVIEW_AND_MATERIALS.getId());\r\n      register(event, environment, ",
+          ", V9_ADVANCED_FX.getId());\r\n      register(event, environment, ",
+          "animation_playback",
+          "invalid_json_safety",
+          "profile_parsers",
+          "v10_isolated_advanced_fx",
+          "v11_creator_workbench",
+          "v12_pack_certification",
+          "v13_complete_vision",
+          "v14_visual_proof",
+          "v15_real_render_mod",
+          "v16_machine_screen_visuals",
+          "v17_screen_frame_options",
+          "v21_screen_chrome_evidence",
+          "v22_soft_mob_particles",
+          "v2_profile_validation",
+          "v3_lint_reports",
+          "v4_profile_tools",
+          "v5_diagnostics_and_schemas",
+          "v6_preview_hotswap_and_materials",
+          "v7_composition_preview_and_materials",
+          "v8_neon_effects",
+          "v9_advanced_fx"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": false,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoriftworlds",
+      "name": "ECHO: RiftWorlds",
+      "expectedFeatures": [
+        "gui",
+        "blocks",
+        "items",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoriftworlds/test/RiftWorldsGameTests.java"
+        ],
+        "testNames": [
+          ", RIFT_CRACK.getId());\n    }\r\n\r\n    private static void riftCrackAndPocketEncounter(GameTestHelper helper) {\r\n        ServerPlayer player = helper.makeMockServerPlayerInLevel();\r\n        BlockPos riftPos = helper.absolutePos(new BlockPos(1, 1, 1));\r\n        helper.setBlock(new BlockPos(1, 1, 1), ModBlocks.RIFT_CRACK.get().defaultBlockState());\r\n        double before = ArcanaCoreServices.aether().getAether(player, AetherSignalType.RIFT_AETHER);\r\n        RiftWorldsApi.scanRiftCrack(player, riftPos);\r\n        helper.assertTrue(ArcanaCoreServices.aether().getAether(player, AetherSignalType.RIFT_AETHER) > before,\r\n                ",
+          "rift_crack_and_pocket_encounter"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "blocks",
+          "items",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoritualcore",
+      "name": "ECHO: RitualCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoritualcore/test/RitualCoreGameTests.java"
+        ],
+        "testNames": [
+          ", BASIC_ALTAR_PLACES.getId());\n        register(event, environment, ",
+          ", PEDESTAL_STORES_INPUT.getId());\r\n        register(event, environment, ",
+          ", RELICTECH_DATA_CONTRACT.getId());\r\n        register(event, environment, ",
+          "basic_altar_places",
+          "non_relictech_rituals_complete",
+          "pedestal_stores_input",
+          "relictech_data_contract",
+          "ritual_provider_registers",
+          "structure_validator_recognizes_array"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoruincore",
+      "name": "ECHO: RuinCore",
+      "expectedFeatures": [
+        "gui",
+        "items",
+        "worldgen",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "items",
+          "worldgen",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoruntimeguard",
+      "name": "ECHO RuntimeGuard",
+      "expectedFeatures": [
+        "screen",
+        "blocks",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoruntimeguard/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CORE_RUNTIME_BUDGET_SERVICE.getId());\r\n        register(event, environment, ",
+          ", JSON_REPORT_GENERATION.getId());\r\n        register(event, environment, ",
+          ", MODE_TRANSITIONS.getId());\r\n        register(event, environment, ",
+          ", NETWORK_DUPLICATE_TRACKING.getId());\r\n        register(event, environment, ",
+          ", PARTICLE_BUDGET.getId());\r\n        register(event, environment, ",
+          ", REPORT_GENERATION.getId());\r\n        register(event, environment, ",
+          ", RUNTIME_SPINE_GATE_THROTTLE.getId());\r\n    }\r\n\r\n    private static void modeTransitions(GameTestHelper helper) {\r\n        RuntimeModeService.INSTANCE.reset();\r\n        RuntimeModeService.INSTANCE.setMode(RuntimeMode.POTATO);\r\n        helper.assertTrue(RuntimeModeService.INSTANCE.mode() == RuntimeMode.POTATO,\r\n                ",
+          "core_runtime_budget_service",
+          "json_report_generation",
+          "mode_transitions",
+          "network_duplicate_tracking",
+          "observable_metrics",
+          "particle_budget",
+          "report_generation",
+          "reset_clears_counters",
+          "runtime_spine_gate_throttle",
+          "smart_tick_rates",
+          "status_and_diagnostics",
+          "unavailable_metrics",
+          "validation_queue_merge"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "blocks",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoscreencore",
+      "name": "ECHO: ScreenCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "inventory_overlay",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoscreencore/client/test/ModGameTests.java",
+          "src/test/java/com/knoxhack/echoscreencore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", AI_CONTRACT_REFERENCES_EXIST.getId());\r\n        register(event, ",
+          ", BAD_LAYOUTS_TRIGGER_DIAGNOSTICS.getId());\r\n        register(event, ",
+          ", CYBERGLASS_CONSUMER_STYLES.getId());\r\n        register(event, ",
+          ", DENSE_LIST_HAS_EMPTY_STATE.getId());\r\n        register(event, ",
+          ", LIST_DETAIL_PATTERN_KEEPS_SINGLE_SCROLL_OWNER.getId());\r\n        register(event, ",
+          ", MULTI_COLUMN_REFERENCES_HAVE_STACK_BELOW.getId());\r\n        register(event, ",
+          ", REFERENCE_PAGES_LOAD.getId());\r\n        register(event, ",
+          ", REFERENCE_PAGES_PASS_DEFAULT_VIEWPORT.getId());\r\n        register(event, ",
+          ", REFERENCE_WORKBENCH_RESOURCES_LOAD.getId());\r\n        register(event, ",
+          ", ROW_TEXT_IS_BOUNDED.getId());\r\n        register(event, ",
+          ", SCROLL_LAYOUT_CACHE_REUSES_MEASUREMENTS.getId());\r\n        register(event, ",
+          ", SCROLL_PANEL_CULLS_OFFSCREEN_CHILDREN.getId());\r\n        register(event, ",
+          ", STYLE_SELECTOR_STATES.getId());\r\n        register(event, ",
+          ", THEME_TEXTURE_VALUES.getId());\r\n        register(event, ",
+          "ai_contract_references_exist",
+          "bad_layouts_trigger_diagnostics",
+          "client_ai_contract_references_exist",
+          "client_bad_layouts_trigger_diagnostics",
+          "client_cyberglass_consumer_styles",
+          "client_dense_list_has_empty_state",
+          "client_diagnostic_catalog_covers_known_codes",
+          "client_feature_hub_links_resolve",
+          "client_fit_screen_surface_scales_small_gui",
+          "client_input_router_caches_hover_hit_tests",
+          "client_list_detail_pattern_keeps_single_scroll_owner",
+          "client_multi_column_references_have_stack_below",
+          "client_reference_manifest_entries_exist",
+          "client_reference_pages_load",
+          "client_reference_pages_pass_default_viewport",
+          "client_reference_pages_pass_large_viewport",
+          "client_reference_pages_pass_small_viewport",
+          "client_reference_workbench_resources_load",
+          "client_responsive_stacked_layout",
+          "client_row_text_is_bounded",
+          "client_scroll_layout_cache_reuses_measurements",
+          "client_scroll_panel_culls_offscreen_children",
+          "client_scroll_panel_mouse_drag_scrolls",
+          "client_style_selector_states",
+          "client_text_layout_safety",
+          "client_theme_texture_values",
+          "cyberglass_consumer_styles",
+          "dense_list_has_empty_state",
+          "feature_hub_links_resolve",
+          "list_detail_pattern_keeps_single_scroll_owner",
+          "multi_column_references_have_stack_below",
+          "reference_manifest_entries_exist",
+          "reference_pages_load",
+          "reference_pages_pass_default_viewport",
+          "reference_pages_pass_large_viewport",
+          "reference_pages_pass_small_viewport",
+          "reference_workbench_resources_load",
+          "row_text_is_bounded"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "inventory_overlay",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoscriptcore",
+      "name": "ECHO: ScriptCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "items",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echo/scriptcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", MISSIONCORE_LIFECYCLE.getId());\r\n        register(event, environment, ",
+          ", SCREENCORE_UI_ACTIONS.getId());\r\n        register(event, environment, ",
+          ", VALIDATOR_DIAGNOSTICS.getId());\r\n        register(event, environment, ",
+          ", VALID_PARSE.getId());\r\n        register(event, environment, ",
+          "adapter_and_scoped_reload",
+          "loader_diagnostics",
+          "missioncore_source_lifecycle",
+          "runtime_storage_roundtrip",
+          "screencore_ui_action_execution",
+          "terminal_and_diagnostics",
+          "valid_definition_parse",
+          "validator_diagnostics"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "items",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoskyrelayprotocol",
+      "name": "ECHO: Sky Relay Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "index",
+        "holomap",
+        "lens",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "machines"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "index",
+          "holomap",
+          "lens",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "machines"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echosoundcore",
+      "name": "ECHO: SoundCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "networking",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echosoundcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", AMBIENCE_PROFILE_CONTRACTS.getId());\r\n    }\r\n\r\n    private static void soundServiceContract(GameTestHelper helper) {\r\n        EchoServiceRegistry.withClearedForTests(() -> {\r\n            helper.assertTrue(EchoOptionalServices.soundCore().isEmpty(),\r\n                    ",
+          ", AUDIO_PACKET_CONTRACTS.getId());\r\n        register(event, environment, ",
+          ", SOUND_SERVICE_CONTRACT.getId());\r\n        register(event, environment, ",
+          "ambience_profile_contracts",
+          "audio_packet_contracts",
+          "profile_contracts",
+          "sound_catalog_assets",
+          "sound_service_contract"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "networking",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echospellcore",
+      "name": "ECHO: SpellCore",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echospellcore/test/SpellCoreGameTests.java"
+        ],
+        "testNames": [
+          ", EXPANDED_SCHOOLS.getId());\r\n        register(event, environment, ",
+          ", MODIFIER_SOCKETS.getId());\r\n        register(event, environment, ",
+          ", SPELL_DECK_LOADOUT.getId());\r\n        register(event, environment, ",
+          ", SPELL_PROVIDER_REGISTERS.getId());\n        register(event, environment, ",
+          ", STARTER_SPELL_CASTS.getId());\r\n        register(event, environment, ",
+          "aether_bolt_spawns_spell_projectile",
+          "ash_veil_applies_effect",
+          "expanded_school_spells_cast",
+          "forbidden_school_spells_cast",
+          "signal_focus_cycles_spell",
+          "spell_deck_enforces_modifier_sockets",
+          "spell_deck_item_socket_menu_persists",
+          "spell_deck_loadout_configures_slot_and_modifier",
+          "spell_provider_registers",
+          "starter_spell_cast_consumes_aether_and_sets_cooldown"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echostationcore",
+      "name": "ECHO Station Core",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echostationfall",
+      "name": "ECHO: Stationfall",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echostationfall/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BOSS_REWARDS.getId());\r\n        register(event, environment, ",
+          ", COOLDOWNS_AND_GUARDS.getId());\r\n        register(event, environment, ",
+          ", GENERATOR_LAYOUT.getId());\r\n        register(event, environment, ",
+          ", MODULE_REGISTRATION.getId());\r\n        register(event, environment, ",
+          ", PROGRESS_AND_PANIC.getId());\r\n        register(event, environment, ",
+          ", ROUTE_SERVICE.getId());\r\n        register(event, environment, ",
+          "boss_rewards",
+          "cooldowns_and_guards",
+          "generator_layout",
+          "generator_salvage",
+          "module_registration",
+          "orbital_gate",
+          "progress_and_panic",
+          "route_service",
+          "route_tracker_objectives",
+          "station_state",
+          "survival_items",
+          "terminal_compat"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echostructurecore",
+      "name": "ECHO: StructureCore",
+      "expectedFeatures": [
+        "holomap",
+        "worldgen",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "holomap",
+          "worldgen",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echoterminal",
+      "name": "ECHO: Terminal",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "index",
+        "blocks",
+        "items",
+        "block_actions",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoterminal/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", TERMINAL_ADDON_GUIDE_ORDERING.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_API_IDS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_BASELINE_AUTO_REFRESH.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_CONFIG_WORKFLOW.getId());\r\n    }\r\n\r\n    private static void terminalApiIds(GameTestHelper helper) {\r\n        helper.assertTrue(TerminalActionPacket.ID.equals(id(",
+          ", TERMINAL_DISCOVERY_GRID_BATCH_RESOLUTION.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_DISCOVERY_GRID_FILTERS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_EMPTY_PROVIDER_CONTRACTS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MAIN_SURVIVAL_ROUTE_BOUNDS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MAIN_SURVIVAL_ROUTE_GATE.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MISSION_ACTION_ROUTING.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MISSION_BROWSER_CACHE.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MISSION_HUD_NOTIFICATIONS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MISSION_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_RECIPE_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_RESOURCE_NAME_CONTRACTS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_REWARD_TRANSACTIONAL.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_RUNTIME_SPINE_ACTIONS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_SCREENCORE_ACTION_CATALOG.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_SCREEN_PROVIDER_PRECEDENCE.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_THEME_CHAPTER_STYLE.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_THEME_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_THEME_SELECTION.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_ZOOM_OPTIONS.getId());\r\n        register(event, environment, ",
+          "terminal_addon_guide_ordering",
+          "terminal_addon_info_registry",
+          "terminal_api_ids",
+          "terminal_baseline_auto_refresh",
+          "terminal_baseline_cache_contract",
+          "terminal_baseline_data_definitions",
+          "terminal_client_options_config",
+          "terminal_command_deck_priority",
+          "terminal_config_workflow",
+          "terminal_discovery_grid_batch_resolution",
+          "terminal_discovery_grid_filters",
+          "terminal_discovery_grid_route_state",
+          "terminal_empty_provider_contracts",
+          "terminal_hud_notice_surface",
+          "terminal_lore_taxonomy",
+          "terminal_main_survival_route",
+          "terminal_main_survival_route_bounds",
+          "terminal_main_survival_route_cache",
+          "terminal_main_survival_route_gate",
+          "terminal_menu_validity",
+          "terminal_mission_action_routing",
+          "terminal_mission_browser_cache",
+          "terminal_mission_browser_phase_gating",
+          "terminal_mission_hud_notifications",
+          "terminal_mission_registry",
+          "terminal_navigation_profiles",
+          "terminal_recipe_lookups",
+          "terminal_recipe_registry",
+          "terminal_render_context_navigation",
+          "terminal_resource_name_contracts",
+          "terminal_reward_cache",
+          "terminal_reward_claim_flow",
+          "terminal_reward_explicit_owner",
+          "terminal_reward_transactional",
+          "terminal_runtime_spine_actions",
+          "terminal_screen_provider_precedence",
+          "terminal_screencore_action_catalog",
+          "terminal_screencore_click_action_dispatch",
+          "terminal_screencore_overview_route_cache",
+          "terminal_screencore_parity_state",
+          "terminal_screencore_recipe_index_cache",
+          "terminal_screencore_text_layout",
+          "terminal_scrollbar_metrics",
+          "terminal_tab_registry",
+          "terminal_theme_chapter_style",
+          "terminal_theme_icon_fallback",
+          "terminal_theme_registry",
+          "terminal_theme_resources",
+          "terminal_theme_selection",
+          "terminal_visual_polish_layout",
+          "terminal_zoom_options"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "index",
+          "blocks",
+          "items",
+          "block_actions",
+          "recipes",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoterritorycore",
+      "name": "ECHO: TerritoryCore",
+      "expectedFeatures": [
+        "gui",
+        "hud",
+        "screen",
+        "holomap",
+        "worldgen",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "hud",
+          "screen",
+          "holomap",
+          "worldgen",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echotextureforge",
+      "name": "ECHO: TextureForge",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echothemecore",
+      "name": "ECHO: ThemeCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echothemecore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", NEXUS_THEME_CONTRACT.getId());\r\n        register(event, ",
+          ", NO_LEGACY_LINE_OVERLAYS.getId());\r\n        register(event, ",
+          ", PUBLIC_THEME_TOKENS.getId());\r\n        register(event, ",
+          ", SCREENCORE_DYNAMIC_PICKER.getId());\r\n        register(event, ",
+          ", THEME_PARSE.getId());\r\n        register(event, ",
+          ", UI_TEXTURE_DIMENSIONS.getId());\r\n        register(event, ",
+          ", VANILLA_BUTTON_CHROME_BOUNDS.getId());\r\n        register(event, ",
+          ", VISUAL_SETTINGS.getId());\r\n        register(event, ",
+          "client_local_only_contract",
+          "client_theme_cycle_contract",
+          "cyberglass_full_theme_contract",
+          "mixin_client_only_contract",
+          "nexus_theme_contract",
+          "no_legacy_line_overlay_terms",
+          "public_theme_token_contract",
+          "registry_fallback",
+          "render_preset_registry",
+          "screencore_dynamic_picker_contract",
+          "theme_json_parse",
+          "ui_texture_dimensions",
+          "vanilla_button_chrome_bounds",
+          "vanilla_loading_panel_bounds",
+          "vanilla_ui_screen_classification",
+          "visual_settings"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echotoolcore",
+      "name": "ECHO Tool Core",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "echotutorialcore",
+      "name": "ECHO: TutorialCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echotutorialcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", CONDITION_MATCHES.getId());\r\n        register(event, ",
+          ", HUD_NOTICE_MAPPING.getId());\r\n    }\r\n\r\n    private static void registryValidation(GameTestHelper helper) {\r\n        TutorialCoreRegistries.resetForTests();\r\n        Identifier missing = id(",
+          ", PACKET_CODEC.getId());\r\n        register(event, ",
+          ", REGISTRY_VALIDATION.getId());\r\n        register(event, ",
+          "condition_key_validation",
+          "condition_matching",
+          "hud_notice_mapping",
+          "progress_flow_unlocks",
+          "progress_packet_codec",
+          "registry_validation",
+          "requirement_resolver"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoweathercore",
+      "name": "ECHO: WeatherCore",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "loot",
+        "networking",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoweathercore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", WEATHER_ADAPTERCORE_ENDED_STATE.getId());\r\n        register(event, environment, ",
+          ", WEATHER_ADAPTERCORE_FORECAST.getId());\r\n    }\r\n\r\n    private static void weatherSleepAdvanceClears(GameTestHelper helper) {\r\n        var level = helper.getLevel();\r\n        WeatherStateManager manager = WeatherStateManager.getInstance();\r\n        manager.clearAllEvents(level);\r\n        try {\r\n            var event = manager.startEvent(level, testProfile(1800), WeatherSeverity.SEVERE,\r\n                    helper.absolutePos(new BlockPos(2, 2, 2)), 0, ",
+          ", WEATHER_ADAPTERCORE_SCHEDULE.getId());\r\n        register(event, environment, ",
+          ", WEATHER_SAVED_EVENT_RELOAD_SURFACE.getId());\r\n        register(event, environment, ",
+          ", WEATHER_SLEEP_ADVANCE_CLEARS.getId());\r\n        register(event, environment, ",
+          "weather_adaptercore_ended_state",
+          "weather_adaptercore_forecast",
+          "weather_adaptercore_schedule",
+          "weather_adaptercore_state",
+          "weather_ashfall_toxic_front_surface",
+          "weather_exposure_countermeasure",
+          "weather_saved_event_reload_surface",
+          "weather_sleep_advance_clears",
+          "weather_sleep_advance_partial"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "loot",
+          "networking",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echowiki",
+      "name": "ECHO: Wiki",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "worldgen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echowiki/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", ARTICLE_BLOCK_PROVIDER_DATA.getId());\r\n        register(event, environment, ",
+          ", ASHFALL_GUIDE_BOOK_CONTENT.getId());\r\n    }\r\n\r\n    private static void wikiBannerAssetBudget(GameTestHelper helper) {\r\n        assertClasspathPngBudget(helper,\r\n                ",
+          ", GUIDE_BOOK_API_STACKS.getId());\r\n        register(event, environment, ",
+          ", GUIDE_BOOK_CHAPTER_ROW_DATA.getId());\r\n        register(event, environment, ",
+          ", GUIDE_BOOK_READER_FAST_RESOURCES.getId());\r\n        register(event, environment, ",
+          ", GUIDE_BOOK_REGISTRY_FILTERS.getId());\r\n        register(event, environment, ",
+          ", GUIDE_BOOK_RELOAD_WARNINGS.getId());\r\n        register(event, environment, ",
+          ", GUIDE_BOOK_STACK_FALLBACKS.getId());\r\n        register(event, environment, ",
+          ", JSON_ARTICLE_PARSE.getId());\r\n        register(event, environment, ",
+          ", REGISTRY_RELOAD_MERGE.getId());\r\n        register(event, environment, ",
+          ", WIKI_BANNER_ASSET_BUDGET.getId());\r\n        register(event, environment, ",
+          "article_block_provider_data",
+          "ashfall_guide_book_content",
+          "guide_book_api_stacks",
+          "guide_book_chapter_row_data",
+          "guide_book_index_provider",
+          "guide_book_labels",
+          "guide_book_parse",
+          "guide_book_provider_cache",
+          "guide_book_reader_fast_resources",
+          "guide_book_registry_filters",
+          "guide_book_reload_warnings",
+          "guide_book_selection_fallbacks",
+          "guide_book_stack_component",
+          "guide_book_stack_fallbacks",
+          "json_article_parse",
+          "json_collection_parse",
+          "registry_reload_merge",
+          "seeded_guide_book_chapters",
+          "wiki_banner_asset_budget",
+          "wiki_paged_providers",
+          "wiki_shell_provider_text"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "blocks",
+          "items",
+          "worldgen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": false,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoworldcore",
+      "name": "ECHO: WorldCore",
+      "expectedFeatures": [
+        "screen",
+        "items",
+        "worldgen",
+        "networking",
+        "save_data",
+        "audio"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echoworldcore/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", WORLDCORE_CELL_SAMPLE.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_JSON.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_MAP_PROVIDER.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_MARKER_IDEMPOTENCE.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_REGION_TRANSITION_EFFECTS.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_REGISTRY.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_RELEASE_GUARDS.getId());\r\n        if (agent7HookRecordersAvailable()) {\r\n            register(event, environment, ",
+          ", WORLDCORE_RUNTIME_BUS.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_SAVED_DATA.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_SPAWN_RULE_EVENT.getId());\r\n        register(event, environment, ",
+          ", WORLDCORE_VALIDATION_REPORT.getId());\r\n        register(event, environment, ",
+          "worldcore_agent7_exact_hook_ledger",
+          "worldcore_cell_sample",
+          "worldcore_context_snapshot",
+          "worldcore_data_overrides",
+          "worldcore_hazard_tick_effects",
+          "worldcore_holomap_zones",
+          "worldcore_json_definitions",
+          "worldcore_map_provider",
+          "worldcore_marker_idempotence",
+          "worldcore_marker_lookup",
+          "worldcore_noop",
+          "worldcore_region_transition_effects",
+          "worldcore_registry",
+          "worldcore_release_guards",
+          "worldcore_reload_diagnostics",
+          "worldcore_runtime_bus",
+          "worldcore_saved_data",
+          "worldcore_scan_tick_behavior",
+          "worldcore_spawn_rule_event",
+          "worldcore_structure_poi_lookup",
+          "worldcore_toxic_swamp_second_slice",
+          "worldcore_validation_report"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "screen",
+          "items",
+          "worldgen",
+          "networking",
+          "save_data",
+          "audio"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": false,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "echoworldstarter",
+      "name": "ECHO World Starter",
+      "expectedFeatures": [
+        "index",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "index",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": true,
+          "save": false,
+          "network": false
+        }
+      }
+    },
+    {
+      "moduleId": "signalos",
+      "name": "SignalOS",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "blocks",
+        "items",
+        "loot",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/signalos/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", API_CONTEXT_AND_TEMPLATES.getId());\r\n        register(event, environment, ",
+          ", CUSTOM_APP_RECORD_VIEW.getId());\r\n        register(event, environment, ",
+          ", DATA_DRIVE_COMPONENT_FLOW.getId());\r\n        register(event, environment, ",
+          ", ECHO_CORE_SERVICE_GUARD.getId());\r\n        register(event, environment, ",
+          ", JSON_PARSE_FAILURES.getId());\r\n        register(event, environment, ",
+          ", KUBEJS_BRIDGE_ABSENCE.getId());\r\n        register(event, environment, ",
+          ", NOTE_EDITING_FLOW.getId());\r\n        register(event, environment, ",
+          ", PLAYER_DATA_REWRITES.getId());\r\n        register(event, environment, ",
+          ", REGISTRY_SORTING.getId());\r\n        register(event, environment, ",
+          ", REWARD_STORAGE_FLOW.getId());\r\n        register(event, environment, ",
+          ", SIGNALNET_DRIVE_ACTIONS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
+          "api_context_and_templates",
+          "app_registry_and_data",
+          "archive_read_state",
+          "computer_network_discovery",
+          "custom_app_record_view",
+          "data_drive_component_flow",
+          "duplicate_id_handling",
+          "echo_core_service_guard",
+          "json_parse_failures",
+          "json_reference_validation",
+          "kubejs_bridge_absence",
+          "missioncore_content_registration",
+          "note_editing_flow",
+          "owned_terminal_reward_flow",
+          "player_data_rewrites",
+          "registry_sorting",
+          "reward_storage_flow",
+          "runtime_spine_action",
+          "server_action_validation",
+          "server_rack_menu_actions",
+          "signalnet_drive_actions",
+          "signalnet_json_and_search",
+          "terminal_menu_validity",
+          "terminal_state_snapshot"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "blocks",
+          "items",
+          "loot",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
+      "moduleId": "signalosexample",
+      "name": "SignalOS Example Addon",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "missions",
+        "networking",
+        "save_data"
+      ],
+      "gameTests": {
+        "files": [],
+        "testNames": []
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "missions",
+          "networking",
+          "save_data"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": false,
+          "block": false,
+          "item": false,
+          "worldgen": false,
+          "save": false,
+          "network": true
+        }
+      }
+    }
+  ],
+  "trustedMutations": [],
+  "visibleRoutes": [],
+  "saveEvidence": [],
+  "networkEvidence": [],
+  "blockers": [
+    "UI source/surface contracts exist, but no live NeoForge client route, screenshot, or interaction proof was ingested.",
+    "Strict-play requires visible/actionable HUD, Index, HoloMap, Lens, Terminal, and ScreenCore proof where expected."
+  ]
+}
