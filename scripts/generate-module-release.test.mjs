@@ -26,6 +26,12 @@ function jarEntries(jarPath) {
   return new Set(runJar(['tf', jarPath]).split(/\r?\n/u).filter(Boolean))
 }
 
+async function readJarEntry(jarPath, entryName) {
+  const extractRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-module-jar-entry-'))
+  runJar(['xf', jarPath, entryName], { cwd: extractRoot })
+  return fs.readFile(path.join(extractRoot, entryName), 'utf8')
+}
+
 async function makeRepo() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-modules-release-'))
   const moduleDir = path.join(root, 'addons', 'echosample')
@@ -74,7 +80,9 @@ test('generates per-module release artifacts and metadata', async () => {
   ])
   assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'compiled-runtime')
   assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'compiled-runtime')
-  assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'echo-addon').buildMode, 'compiled-runtime')
+  const echoAddonArtifact = moduleRecord.artifacts.find((artifact) => artifact.kind === 'echo-addon')
+  assert.equal(echoAddonArtifact.buildMode, 'compiled-runtime')
+  assert.ok(echoAddonArtifact.contains.includes('checksums.sha256'))
 
   const outputDir = path.join(repoRoot, 'dist', 'echo-module-release', 'echosample')
   await fs.access(path.join(outputDir, 'META-INF', 'echo.mod.json'))
@@ -91,6 +99,17 @@ test('generates per-module release artifacts and metadata', async () => {
   const standaloneEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-standalone.jar'))
   assert.ok(standaloneEntries.has('META-INF/echo.mod.json'))
   assert.ok(standaloneEntries.has('dev/echo/sample/Compiled.class'))
+
+  const addonPath = path.join(outputDir, 'echosample-1.2.3.echo-addon')
+  const addonEntries = jarEntries(addonPath)
+  assert.ok(addonEntries.has('META-INF/echo.mod.json'))
+  assert.ok(addonEntries.has('echo-addon-package.json'))
+  assert.ok(addonEntries.has('checksums.sha256'))
+  assert.ok(addonEntries.has('lib/echosample-1.2.3-runtime.jar'))
+  const addonChecksums = await readJarEntry(addonPath, 'checksums.sha256')
+  assert.match(addonChecksums, /META-INF\/echo\.mod\.json/u)
+  assert.match(addonChecksums, /echo-addon-package\.json/u)
+  assert.match(addonChecksums, /lib\/echosample-1\.2\.3-runtime\.jar/u)
 })
 
 test('fails by default when runtime jars are missing', async () => {
@@ -123,5 +142,7 @@ test('can emit runtime-named archives from source when build outputs are absent'
   ])
   assert.equal(artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'source-packaged')
   assert.equal(artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'source-packaged')
-  assert.equal(artifacts.find((artifact) => artifact.kind === 'echo-addon').buildMode, 'source-packaged')
+  const echoAddonArtifact = artifacts.find((artifact) => artifact.kind === 'echo-addon')
+  assert.equal(echoAddonArtifact.buildMode, 'source-packaged')
+  assert.ok(echoAddonArtifact.contains.includes('checksums.sha256'))
 })

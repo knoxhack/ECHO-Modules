@@ -16,6 +16,7 @@ For each module, generate:
 META-INF/echo.mod.json
 META-INF/neoforge.mods.toml
 echo-addon-package.json
+checksums.sha256
 ```
 
 Applicability:
@@ -29,6 +30,7 @@ Applicability:
 | `META-INF/echo.mod.json` | Always, embedded in each runtime artifact where applicable. |
 | `META-INF/neoforge.mods.toml` | NeoForge artifacts only. |
 | `echo-addon-package.json` | `.echo-addon` packages only. |
+| `checksums.sha256` | `.echo-addon` packages only, covering the embedded descriptor, package metadata, README, and runtime jar/source entries. |
 
 ## Generator
 
@@ -48,7 +50,7 @@ Compiled runtime jars are not copied blindly. The generator opens each compiled 
 | --- | --- |
 | `<module>-<version>-neoforge.jar` | `META-INF/echo.mod.json`, `META-INF/neoforge.mods.toml` |
 | `<module>-<version>-standalone.jar` | `META-INF/echo.mod.json` |
-| `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, optional `lib/<module>-<version>-runtime.jar` |
+| `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, `checksums.sha256`, optional `lib/<module>-<version>-runtime.jar` |
 
 Run `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release` after generation. The verifier opens every archive, checks sidecars, validates package dependencies, confirms manifest and checksum agreement, and rejects metadata-only claims.
 

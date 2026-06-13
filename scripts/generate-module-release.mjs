@@ -69,6 +69,10 @@ async function sha256File(filePath) {
   return createHash('sha256').update(await fs.readFile(filePath)).digest('hex')
 }
 
+function sha256Buffer(value) {
+  return createHash('sha256').update(Buffer.isBuffer(value) ? value : Buffer.from(value)).digest('hex')
+}
+
 function readZipEntries(buffer) {
   let eocd = -1
   const minimum = Math.max(0, buffer.length - 65557)
@@ -239,6 +243,18 @@ async function writeStoredZip(entries, outputPath) {
   await fs.writeFile(outputPath, Buffer.concat([...localParts, central, end]))
 }
 
+function checksumRowsForZipEntries(entries) {
+  return entries
+    .map((entry) => ({
+      name: normalizeZipPath(entry.name),
+      data: Buffer.isBuffer(entry.data) ? entry.data : Buffer.from(entry.data),
+    }))
+    .filter((entry) => entry.name !== 'checksums.sha256' && entry.name !== 'checksums.txt')
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((entry) => `${sha256Buffer(entry.data)}  ${entry.name}`)
+    .join('\n') + '\n'
+}
+
 async function findRuntimeJar(moduleDir, moduleId, version, family) {
   const libsDir = path.join(moduleDir, 'build', 'libs')
   if (!(await fileExists(libsDir))) return null
@@ -378,6 +394,7 @@ async function buildEchoAddonPackage({ moduleDir, moduleId, version, descriptor,
   if (await fileExists(readmePath)) {
     entries.push({ name: 'README.md', data: await fs.readFile(readmePath) })
   }
+  entries.push({ name: 'checksums.sha256', data: checksumRowsForZipEntries(entries) })
   await writeStoredZip(entries, outputPath)
   return packageJson
 }
@@ -524,7 +541,7 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
         downloadUrl: '',
         runtimeTarget: 'echo-native',
         buildMode: runtimeJarPath ? 'compiled-runtime' : 'source-packaged',
-        contains: ['META-INF/echo.mod.json', 'echo-addon-package.json'],
+        contains: ['META-INF/echo.mod.json', 'echo-addon-package.json', 'checksums.sha256'],
       })
     }
   }
