@@ -36,10 +36,12 @@ async function makeRepo() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-modules-release-'))
   const moduleDir = path.join(root, 'addons', 'echosample')
   await fs.mkdir(path.join(moduleDir, 'src/main/resources/META-INF'), { recursive: true })
+  await fs.mkdir(path.join(moduleDir, 'src/main/templates/META-INF'), { recursive: true })
   await fs.mkdir(path.join(moduleDir, 'src/main/java/dev/echo/sample'), { recursive: true })
   await fs.mkdir(path.join(moduleDir, 'build/libs'), { recursive: true })
   await fs.writeFile(path.join(moduleDir, 'src/main/java/dev/echo/sample/Sample.java'), 'package dev.echo.sample; public final class Sample {}')
-  await fs.writeFile(path.join(moduleDir, 'src/main/resources/META-INF/neoforge.mods.toml'), 'modLoader="javafml"\n')
+  await fs.writeFile(path.join(moduleDir, 'src/main/templates/META-INF/neoforge.mods.toml'), 'modLoader="javafml"\n[[mods]]\nmodId="${mod_id}"\nversion="${mod_version}"\ndisplayName="${mod_name}"\n[[dependencies.${mod_id}]]\nmodId="minecraft"\nversionRange="${minecraft_version_range}"\n')
+  await fs.writeFile(path.join(moduleDir, 'gradle.properties'), 'minecraft_version=26.1.2\nminecraft_version_range=[26.1.2,26.2)\nmod_id=echosample\nmod_name=ECHO Sample\nmod_license=All Rights Reserved\nmod_version=1.2.3\n')
   await fs.writeFile(path.join(moduleDir, 'src/main/resources/META-INF/echo.mod.json'), JSON.stringify({
     schema: 'echo.mod.v1',
     id: 'echosample',
@@ -95,6 +97,10 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.ok(neoforgeEntries.has('META-INF/echo.mod.json'))
   assert.ok(neoforgeEntries.has('META-INF/neoforge.mods.toml'))
   assert.ok(neoforgeEntries.has('dev/echo/sample/Compiled.class'))
+  const neoforgeToml = await readJarEntry(path.join(outputDir, 'echosample-1.2.3-neoforge.jar'), 'META-INF/neoforge.mods.toml')
+  assert.match(neoforgeToml, /modId="echosample"/u)
+  assert.match(neoforgeToml, /versionRange="\[1\.21\.1,1\.22\)"/u)
+  assert.doesNotMatch(neoforgeToml, /\$\{/u)
 
   const standaloneEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-standalone.jar'))
   assert.ok(standaloneEntries.has('META-INF/echo.mod.json'))

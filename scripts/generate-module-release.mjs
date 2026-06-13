@@ -11,6 +11,20 @@ const NEOFORGE_TOML_PATHS = [
   'src/main/resources/META-INF/neoforge.mods.toml',
   'src/main/templates/META-INF/neoforge.mods.toml',
 ]
+const TEMPLATE_DEFAULTS = {
+  minecraft_version: '1.21.1',
+  minecraft_version_range: '[1.21.1,1.22)',
+  minecraftVersion: '1.21.1',
+  minecraftVersionRange: '[1.21.1,1.22)',
+  neo_version: '26.1.2.29-beta',
+  neo_version_range: '[26.1.2.29-beta,)',
+  neoForgeVersion: '26.1.2.29-beta',
+  neoForgeVersionRange: '[26.1.2.29-beta,)',
+  loader_version_range: '[4,)',
+  loaderVersionRange: '[4,)',
+  mod_authors: 'KnoxHack',
+  mod_description: 'ECHO first-party module.',
+}
 
 const crcTable = new Uint32Array(256)
 for (let i = 0; i < 256; i += 1) {
@@ -63,6 +77,52 @@ async function fileExists(filePath) {
 
 async function readJson(filePath) {
   return JSON.parse(await fs.readFile(filePath, 'utf8'))
+}
+
+async function readProperties(filePath) {
+  if (!(await fileExists(filePath))) return {}
+  const properties = {}
+  for (const line of (await fs.readFile(filePath, 'utf8')).split(/\r?\n/u)) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('!')) continue
+    const match = trimmed.match(/^([^:=\s]+)\s*[:=]\s*(.*)$/u)
+    if (match) properties[match[1]] = match[2]
+  }
+  return properties
+}
+
+async function moduleTemplateProperties(moduleDir, descriptor) {
+  const moduleProperties = await readProperties(path.join(moduleDir, 'gradle.properties'))
+  const merged = {
+    ...TEMPLATE_DEFAULTS,
+    ...moduleProperties,
+    mod_id: moduleProperties.mod_id ?? descriptor.id ?? path.basename(moduleDir),
+    mod_name: moduleProperties.mod_name ?? descriptor.name ?? descriptor.id ?? path.basename(moduleDir),
+    mod_license: moduleProperties.mod_license ?? 'All Rights Reserved',
+    mod_version: moduleProperties.mod_version ?? descriptor.version,
+    mod_authors: moduleProperties.mod_authors ?? descriptor.authors ?? descriptor.author ?? TEMPLATE_DEFAULTS.mod_authors,
+    mod_description: moduleProperties.mod_description ?? descriptor.description ?? descriptor.name ?? descriptor.id ?? TEMPLATE_DEFAULTS.mod_description,
+  }
+  return {
+    ...merged,
+    minecraft_version: TEMPLATE_DEFAULTS.minecraft_version,
+    minecraft_version_range: TEMPLATE_DEFAULTS.minecraft_version_range,
+    minecraftVersion: TEMPLATE_DEFAULTS.minecraftVersion,
+    minecraftVersionRange: TEMPLATE_DEFAULTS.minecraftVersionRange,
+    loader_version_range: TEMPLATE_DEFAULTS.loader_version_range,
+    loaderVersionRange: TEMPLATE_DEFAULTS.loaderVersionRange,
+  }
+}
+
+function renderTemplateText(text, properties, sourceLabel) {
+  const rendered = String(text).replace(/\$\{([^}]+)\}/gu, (match, key) => {
+    if (Object.hasOwn(properties, key)) return String(properties[key])
+    throw new Error(`${sourceLabel}: missing template property ${key}`)
+  }).replace(/versionRange\s*=\s*"\[26\.1\.2,26\.2\)"/gu, `versionRange="${TEMPLATE_DEFAULTS.minecraft_version_range}"`)
+  if (rendered.includes('${')) {
+    throw new Error(`${sourceLabel}: unresolved template placeholder remains after rendering`)
+  }
+  return rendered
 }
 
 async function sha256File(filePath) {
@@ -272,11 +332,16 @@ async function findRuntimeJar(moduleDir, moduleId, version, family) {
   return match ? path.join(libsDir, match) : null
 }
 
-async function readNeoForgeToml(moduleDir) {
+async function readNeoForgeToml(moduleDir, templateProperties) {
   for (const relative of NEOFORGE_TOML_PATHS) {
     const absolute = path.join(moduleDir, relative)
     if (await fileExists(absolute)) {
-      return { absolute, relative }
+      const text = await fs.readFile(absolute, 'utf8')
+      return {
+        absolute,
+        relative,
+        data: Buffer.from(renderTemplateText(text, templateProperties, `${path.basename(moduleDir)}:${relative}`)),
+      }
     }
   }
   return null
@@ -311,7 +376,7 @@ async function sourceEntries(moduleDir, descriptorPath, neoForgeToml = null) {
     { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
   ]
   if (neoForgeToml) {
-    entries.push({ name: 'META-INF/neoforge.mods.toml', data: await fs.readFile(neoForgeToml.absolute) })
+    entries.push({ name: 'META-INF/neoforge.mods.toml', data: neoForgeToml.data })
   }
   const sourceRoots = [
     { root: path.join(moduleDir, 'src', 'main', 'java'), prefix: 'src/main/java' },
@@ -427,7 +492,7 @@ async function writeMetadataFiles({ moduleOutDir, descriptorPath, neoForgeToml, 
   await fs.mkdir(path.join(moduleOutDir, 'META-INF'), { recursive: true })
   await fs.copyFile(descriptorPath, path.join(moduleOutDir, 'META-INF', 'echo.mod.json'))
   if (neoForgeToml) {
-    await fs.copyFile(neoForgeToml.absolute, path.join(moduleOutDir, 'META-INF', 'neoforge.mods.toml'))
+    await fs.writeFile(path.join(moduleOutDir, 'META-INF', 'neoforge.mods.toml'), neoForgeToml.data)
   }
   if (echoAddonPackage) {
     await writeJson(path.join(moduleOutDir, 'echo-addon-package.json'), echoAddonPackage)
@@ -446,7 +511,8 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
   const moduleOutDir = path.join(outputRoot, moduleId)
   const artifacts = []
   const missing = []
-  const neoForgeToml = await readNeoForgeToml(moduleDir)
+  const templateProperties = await moduleTemplateProperties(moduleDir, descriptor)
+  const neoForgeToml = await readNeoForgeToml(moduleDir, templateProperties)
   const runtimeJarPath = await findRuntimeJar(moduleDir, moduleId, version, 'runtime')
 
   if (neoForgeToml) {
@@ -463,7 +529,7 @@ async function generateModule({ moduleDir, outputRoot, allowMissingRuntime, pack
           ['META-INF/echo.mod.json', 'META-INF/neoforge.mods.toml'],
           [
             { name: 'META-INF/echo.mod.json', data: await fs.readFile(descriptorPath) },
-            { name: 'META-INF/neoforge.mods.toml', data: await fs.readFile(neoForgeToml.absolute) },
+            { name: 'META-INF/neoforge.mods.toml', data: neoForgeToml.data },
           ],
         ))
       } else {

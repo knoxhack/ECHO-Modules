@@ -112,10 +112,23 @@ def galacticSurveyRequiredReleaseModules = [
 ]
 
 def echoSharedModuleProperties = [
-        minecraft_version      : '26.1.2',
-        minecraft_version_range: '[26.1.2,26.2)',
+        minecraft_version      : '1.21.1',
+        minecraft_version_range: '[1.21.1,1.22)',
         neo_version            : '26.1.2.29-beta',
+        neo_version_range      : '[26.1.2.29-beta,)',
+        minecraftVersion       : '1.21.1',
+        minecraftVersionRange  : '[1.21.1,1.22)',
+        neoForgeVersion        : '26.1.2.29-beta',
+        neoForgeVersionRange   : '[26.1.2.29-beta,)',
+        loaderVersionRange     : '[4,)',
 ]
+
+def echoForcedSharedModuleProperties = [
+        'minecraft_version',
+        'minecraft_version_range',
+        'minecraftVersion',
+        'minecraftVersionRange',
+] as Set
 
 gradle.beforeProject { project ->
     def propertiesFile = new File(project.projectDir, 'gradle.properties')
@@ -129,7 +142,7 @@ gradle.beforeProject { project ->
         }
     }
     echoSharedModuleProperties.each { key, value ->
-        if (!project.hasProperty(String.valueOf(key))) {
+        if (echoForcedSharedModuleProperties.contains(String.valueOf(key)) || !project.hasProperty(String.valueOf(key))) {
             project.extensions.extraProperties.set(String.valueOf(key), value)
         }
     }

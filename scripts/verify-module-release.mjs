@@ -102,6 +102,11 @@ async function inspectZip(filePath) {
       if (!entry) return null
       return JSON.parse(readZipEntry(buffer, entry).toString('utf8'))
     },
+    text(name) {
+      const entry = entryMap.get(name)
+      if (!entry) return null
+      return readZipEntry(buffer, entry).toString('utf8')
+    },
   }
 }
 
@@ -132,6 +137,12 @@ function expectedArtifactNames(moduleId, version) {
     `${moduleId}-${version}-standalone.jar`,
     `${moduleId}-${version}.echo-addon`,
   ]
+}
+
+function dependencyBlocks(tomlText) {
+  return String(tomlText)
+    .split(/\n(?=\[\[dependencies\.)/u)
+    .filter((block) => /^\[\[dependencies\./u.test(block.trimStart()))
 }
 
 async function verifyReleaseDir(releaseDir) {
@@ -202,6 +213,13 @@ async function verifyReleaseDir(releaseDir) {
     const neoforge = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-neoforge.jar`))
     assert.ok(neoforge.entries.has('META-INF/echo.mod.json'), 'NeoForge jar must embed descriptor')
     assert.ok(neoforge.entries.has('META-INF/neoforge.mods.toml'), 'NeoForge jar must embed neoforge.mods.toml')
+    const neoForgeToml = neoforge.text('META-INF/neoforge.mods.toml')
+    assert.ok(!neoForgeToml.includes('${'), `${moduleRecord.moduleId} NeoForge TOML must not contain unresolved template placeholders`)
+    assert.match(neoForgeToml, new RegExp(`modId\\s*=\\s*"${moduleRecord.moduleId}"`, 'u'), `${moduleRecord.moduleId} NeoForge TOML must declare the module id`)
+    const minecraftDependency = dependencyBlocks(neoForgeToml).find((block) => /modId\s*=\s*"minecraft"/u.test(block))
+    if (minecraftDependency) {
+      assert.doesNotMatch(minecraftDependency, /versionRange\s*=\s*"\[26\.1\.2/u, `${moduleRecord.moduleId} NeoForge TOML must not use the NeoForge loader line as the Minecraft version range`)
+    }
 
     const standalone = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-standalone.jar`))
     assert.ok(standalone.entries.has('META-INF/echo.mod.json'), 'Standalone jar must embed descriptor')
