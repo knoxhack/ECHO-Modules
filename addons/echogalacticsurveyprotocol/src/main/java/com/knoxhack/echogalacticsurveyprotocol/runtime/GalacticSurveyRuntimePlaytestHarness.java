@@ -77,7 +77,6 @@ public final class GalacticSurveyRuntimePlaytestHarness {
                 "publicAlphaStillRequiresExternalEvidence", !releasePreview.publicAlphaAllowed()
                         && releasePreview.blockers().contains("real_first_30_playthrough")
                         && releasePreview.blockers().contains("no_crash_evidence")
-                        && releasePreview.blockers().contains("launcher_install_update_repair_rollback")
         );
         boolean ok = runtimeChecks.values().stream().allMatch(Boolean.TRUE::equals);
 
@@ -130,7 +129,7 @@ public final class GalacticSurveyRuntimePlaytestHarness {
                 "residualRisks", List.of(
                         "This harness executes compiled runtime services, not a visible player/client playthrough.",
                         "Manual first-30-minute, first-2-hour, Survey Array, fresh-world, save/reload, and no-crash evidence remains required.",
-                        "Downloaded GitHub Release launcher install/update/repair/rollback evidence remains required."
+                        "Launcher install/update/repair/rollback evidence is owned by the Release Index launcher lifecycle reports."
                 )
         );
     }

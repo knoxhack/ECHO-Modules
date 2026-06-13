@@ -87,7 +87,7 @@ if (lensProfiles.length !== 5) fail(`Expected 5 lens profiles, found ${lensProfi
 if (holoMapLayers.length !== 7) fail(`Expected 7 HoloMap layers, found ${holoMapLayers.length}.`)
 if (missions.length !== 6) fail(`Expected 6 mission contracts, found ${missions.length}.`)
 if (soundEvents.length !== 6) fail(`Expected 6 sound events, found ${soundEvents.length}.`)
-if (releaseGates.length !== 14) fail(`Expected 14 release gates, found ${releaseGates.length}.`)
+if (releaseGates.length !== 13) fail(`Expected 13 release gates, found ${releaseGates.length}.`)
 
 for (const phase of phases) {
   if (!Array.isArray(phase.subphases) || phase.subphases.length !== 5) {
@@ -110,7 +110,6 @@ for (const item of items) {
 const externalProofs = new Set([
   'power:small_relay_online',
   'catalog:complete_sector_atlas',
-  'launcher:install_update_repair_rollback',
   'manual:real_first_30_playthrough',
   'manual:real_first_2_hour_playthrough',
   'manual:real_survey_array_playthrough',

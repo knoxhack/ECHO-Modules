@@ -58,7 +58,6 @@ function proofResolver({ blocks, items, probes, sectors, bodies, routes, discove
   const externalProofs = new Set([
     'power:small_relay_online',
     'catalog:complete_sector_atlas',
-    'launcher:install_update_repair_rollback',
   ])
 
   return (proof) => {
@@ -261,7 +260,6 @@ async function main() {
       realFirst30Playthrough: 'not_started',
       realFirst2HourPlaythrough: 'not_started',
       realSurveyArrayPlaythrough: 'not_started',
-      launcherInstallUpdateRepairRollback: 'not_started',
     },
   }
 

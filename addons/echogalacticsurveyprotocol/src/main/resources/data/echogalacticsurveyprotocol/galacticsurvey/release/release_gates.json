@@ -66,12 +66,7 @@
       "id": "no_crash_evidence",
       "required": true,
       "proof": "manual:no_crash_evidence"
-    },
-    {
-      "id": "launcher_install_update_repair_rollback",
-      "required": true,
-      "proof": "launcher:install_update_repair_rollback"
     }
   ],
-  "promotionRule": "Do not create public-alpha Release Index entries until every gate has runtime evidence."
+  "promotionRule": "Do not create public-alpha Release Index entries until every gameplay gate has runtime or manual player evidence. Launcher lifecycle evidence is verified separately by the Release Index."
 }

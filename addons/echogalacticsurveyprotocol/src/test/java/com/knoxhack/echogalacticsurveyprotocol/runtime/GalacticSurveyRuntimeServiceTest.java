@@ -381,7 +381,7 @@ class GalacticSurveyRuntimeServiceTest {
     }
 
     @Test
-    void publicAlphaReadinessBlocksWithoutLauncherAndRealPlaythroughEvidence() {
+    void publicAlphaReadinessBlocksWithoutRealPlaythroughEvidence() {
         GalacticSurveyRuntimeService.PublicAlphaReadinessReport blocked = runtime.evaluatePublicAlphaReadiness(
                 runtime.firstTwoHourSnapshot(),
                 List.of()
@@ -389,12 +389,11 @@ class GalacticSurveyRuntimeServiceTest {
 
         assertFalse(blocked.publicAlphaAllowed());
         assertEquals("required_release_evidence_missing", blocked.reason());
-        assertTrue(blocked.blockers().contains("launcher_install_update_repair_rollback"));
         assertTrue(blocked.blockers().contains("real_first_30_playthrough"));
 
         GalacticSurveyRuntimeService.PublicAlphaReadinessReport stillBlockedWithoutDerelictEvidence = runtime.evaluatePublicAlphaReadiness(
                 runtime.firstThirtyMinuteSnapshot(),
-                List.of("launcher:install_update_repair_rollback")
+                List.of()
         );
 
         assertFalse(stillBlockedWithoutDerelictEvidence.publicAlphaAllowed());
@@ -402,7 +401,7 @@ class GalacticSurveyRuntimeServiceTest {
 
         GalacticSurveyRuntimeService.PublicAlphaReadinessReport stillBlockedWithoutManualEvidence = runtime.evaluatePublicAlphaReadiness(
                 runtime.firstTwoHourSnapshot(),
-                List.of("launcher:install_update_repair_rollback")
+                List.of()
         );
 
         assertFalse(stillBlockedWithoutManualEvidence.publicAlphaAllowed());
@@ -411,7 +410,6 @@ class GalacticSurveyRuntimeServiceTest {
         GalacticSurveyRuntimeService.PublicAlphaReadinessReport ready = runtime.evaluatePublicAlphaReadiness(
                 runtime.surveyArrayReadySnapshot(),
                 List.of(
-                        "launcher:install_update_repair_rollback",
                         "manual:real_first_30_playthrough",
                         "manual:real_first_2_hour_playthrough",
                         "manual:real_survey_array_playthrough",
@@ -449,6 +447,5 @@ class GalacticSurveyRuntimeServiceTest {
         List<String> blockers = (List<String>) releaseGatePreview.get("blockers");
         assertTrue(blockers.contains("real_first_30_playthrough"));
         assertTrue(blockers.contains("no_crash_evidence"));
-        assertTrue(blockers.contains("launcher_install_update_repair_rollback"));
     }
 }

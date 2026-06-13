@@ -575,8 +575,7 @@ public final class GalacticSurveyRuntimeService {
             new ReleaseGateDefinition("real_survey_array_playthrough", true, "manual:real_survey_array_playthrough"),
             new ReleaseGateDefinition("fresh_world_created", true, "manual:fresh_world_created"),
             new ReleaseGateDefinition("save_reload_verified", true, "manual:save_reload_verified"),
-            new ReleaseGateDefinition("no_crash_evidence", true, "manual:no_crash_evidence"),
-            new ReleaseGateDefinition("launcher_install_update_repair_rollback", true, "launcher:install_update_repair_rollback")
+            new ReleaseGateDefinition("no_crash_evidence", true, "manual:no_crash_evidence")
     );
 
     public static OutpostState startingOutpost() {
