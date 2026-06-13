@@ -131,9 +131,30 @@ jobs:
             fi
           fi
           if ! git rev-parse "$TAG" >/dev/null 2>&1; then
-            git tag "$TAG"
-            git push origin "$TAG"
+            if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+              git fetch origin "refs/tags/$TAG:refs/tags/$TAG"
+            else
+              git tag "$TAG"
+              git push origin "$TAG"
+            fi
           fi
-          mapfile -t FILES < <(find dist/echo-module-release -type f ! -name checksums.txt | sort)
-          gh release create "$TAG" "${FILES[@]}" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag || \
+          tar -czf echo-module-release.tar.gz -C dist echo-module-release
+          sha256sum echo-module-release.tar.gz > echo-module-release.tar.gz.sha256
+          mapfile -t FILES < <({
+            printf '%s\n' \
+              dist/echo-module-release/echo-release.json \
+              dist/echo-module-release/checksums.sha256 \
+              echo-module-release.tar.gz \
+              echo-module-release.tar.gz.sha256
+            find dist/echo-module-release -type f \( \
+              -name '*.echo-addon' \
+              -o -name '*-neoforge.jar' \
+              -o -name '*-standalone.jar' \
+              -o -name '*-sources.jar' \
+            \)
+          } | sort)
+          if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "${FILES[@]}" --clobber
+          else
+            gh release create "$TAG" "${FILES[@]}" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag
+          fi

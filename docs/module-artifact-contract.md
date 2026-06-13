@@ -82,7 +82,7 @@ gh workflow run release-modules.yml `
   -f player_ready=true
 ```
 
-The Release Index may only promote those records after the workflow attaches the generated artifacts, checksum file, and attestation/provenance to the source-owned release.
+The workflow uploads unique runtime/source artifacts as individual GitHub Release assets, plus `echo-module-release.tar.gz` for the full foldered output containing duplicate-named sidecars such as `META-INF/echo.mod.json` and `META-INF/neoforge.mods.toml`. The Release Index may only promote those records after the workflow attaches the generated artifacts, checksum file, archive checksum, and attestation/provenance to the source-owned release.
 
 ## Edition Consumption
 
