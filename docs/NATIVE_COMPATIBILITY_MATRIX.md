@@ -7,8 +7,8 @@
 | Java | 25 | 25 | 25 |
 | Minecraft / runtime | 26.1.2 | 26.1.2 | 26.1.2 |
 | NeoForge backend | 26.1.2.29-beta | 26.1.2.29-beta | 26.1.2.29-beta |
-| ECHO Native Loader | 1.0.0-RC | 1.0.0-RC | 1.0.0-RC |
-| ECHO SDK | 1.0.0-RC | 1.0.0-RC | 1.0.0-RC |
+| ECHO Native Loader | 1.0.0-RC1 | 1.0.0-RC1 | 1.0.0-RC1 |
+| ECHO SDK | 1.0.0-RC1 | 1.0.0-RC1 | 1.0.0-RC1 |
 
 ## Operating Systems
 
@@ -20,104 +20,111 @@
 
 ## Per-Module Migration Status
 
+Status values:
+
+- `ready-native`: compiled Native artifacts can load without local build output fallback.
+- `ready-bridge`: supported through the NeoForge bridge lane only.
+- `blocked-with-reason`: not player-release-ready until the blocking issue is removed.
+- `not-supported`: intentionally unavailable on this lane.
+
 | Module | Role | NeoForge | Native | Standalone | Blocking Issues | Status |
 |---|---|:---:|:---:|:---:|---|---|
-| echocore | core | yes | yes | yes | none | ready |
-| echonetcore | core | yes | yes | partial | direct_sourceSet_output_reference | ready |
-| echo-native-platform | runtime | no | yes | yes | none | ready |
-| echoadaptercore | addon | yes | yes | yes | none | ready |
-| echoaddonapi | api | yes | yes | yes | missing_neoforge.mods.toml | deferred |
-| echoaetherworks | addon | yes | yes | yes | none | ready |
-| echoagentcore | addon | yes | yes | yes | none | ready |
-| echoagriculturereclamation | addon | yes | yes | yes | none | ready |
-| echoarcanacore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echoarcaneindex | addon | yes | yes | yes | none | ready |
-| echoarmory | addon | yes | yes | yes | none | ready |
-| echoashfallprotocol | addon | yes | yes | yes | none | ready |
-| echoassetcore | addon | yes | yes | yes | none | ready |
-| echoatmospherecore | addon | yes | yes | yes | none | ready |
-| echobasegrid | addon | yes | yes | yes | none | ready |
-| echobiomecore | addon | yes | yes | yes | none | ready |
-| echoblackboxprotocol | addon | yes | yes | yes | none | ready |
-| echoblockworks | addon | yes | yes | yes | none | ready |
-| echobridgecore | addon | yes | yes | yes | none | ready |
-| echocameracore | addon | yes | yes | yes | none | ready |
-| echocinematiccore | addon | yes | yes | yes | none | ready |
-| echocodexcore | addon | yes | yes | yes | none | ready |
-| echocombatcore | addon | yes | yes | yes | none | ready |
-| echocommunitybridge | addon | yes | yes | yes | none | ready |
-| echocontentcore | addon | yes | yes | yes | none | ready |
-| echoconvoyprotocol | addon | yes | yes | yes | none | ready |
-| echocreatorcore | addon | yes | yes | yes | none | ready |
-| echocreaturecore | addon | yes | yes | yes | none | ready |
-| echocursecore | addon | yes | yes | yes | none | ready |
-| echodatacore | addon | yes | yes | yes | none | ready |
-| echodifficultycore | addon | yes | yes | yes | none | ready |
-| echoeconomycore | addon | yes | yes | yes | none | ready |
-| echoencountercore | addon | yes | yes | yes | none | ready |
-| echoeventcore | addon | yes | yes | yes | none | ready |
-| echofamiliarcore | addon | yes | yes | yes | none | ready |
-| echogalacticcore | addon | yes | yes | yes | missing_neoforge.mods.toml | blocked |
-| echogrimoire | addon | yes | yes | yes | none | ready |
-| echoguidecore | addon | yes | yes | yes | none | ready |
-| echohealthcore | addon | yes | yes | yes | none | ready |
-| echoholomap | addon | yes | yes | yes | none | ready |
-| echohudcore | addon | yes | yes | yes | none | ready |
-| echoindex | addon | yes | yes | yes | none | ready |
-| echoindustrialnexus | addon | yes | yes | yes | none | ready |
-| echoinputcore | addon | yes | yes | yes | none | ready |
-| echolens | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echologisticscore | addon | yes | yes | yes | none | ready |
-| echologisticsnetwork | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echolootcore | addon | yes | yes | yes | none | ready |
-| echolorecore | addon | yes | yes | yes | none | ready |
-| echomachinecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echometadatacore | addon | yes | yes | yes | none | ready |
-| echomissioncore | addon | yes | yes | yes | none | ready |
-| echomodulegraph | addon | yes | yes | yes | none | ready |
-| echomultiblockcore | addon | yes | yes | yes | none | ready |
-| echonexusprotocol | addon | yes | yes | yes | none | ready |
-| echonotificationcore | addon | yes | yes | yes | none | ready |
-| echonpcore | addon | yes | yes | yes | none | ready |
-| echoorbitalremnants | addon | yes | yes | yes | none | ready |
-| echopackcore | addon | yes | yes | yes | none | ready |
-| echoplatformcore | addon | yes | yes | yes | none | ready |
-| echoplayercore | addon | yes | yes | yes | none | ready |
-| echopowercore | addon | yes | yes | yes | none | ready |
-| echopowergrid | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echopresencelink | addon | yes | yes | yes | none | ready |
-| echoprimecore | addon | yes | yes | yes | none | ready |
-| echoprogressioncore | addon | yes | yes | yes | none | ready |
-| echoquestdirector | addon | yes | yes | yes | none | ready |
-| echorecipecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echorecovery | addon | yes | yes | yes | none | ready |
-| echorelictech | addon | yes | yes | yes | none | ready |
-| echorendercore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echoreportcore | addon | yes | yes | yes | none | ready |
-| echoriftworlds | addon | yes | yes | yes | none | ready |
-| echoritualcore | addon | yes | yes | yes | none | ready |
-| echoruntimeguard | addon | yes | yes | partial | local_build_output_classpath_fallback, direct_sourceSet_output_reference | ready |
-| echoschemacore | addon | yes | yes | yes | none | ready |
-| echoscreencore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echoscriptcore | addon | yes | yes | yes | none | ready |
-| echosignalos | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echosocialcore | addon | yes | yes | yes | none | ready |
-| echosoundcore | addon | yes | yes | yes | none | ready |
-| echospawncore | addon | yes | yes | yes | none | ready |
-| echospellcore | addon | yes | yes | yes | none | ready |
-| echostationfall | addon | yes | yes | yes | none | ready |
-| echostatuscore | addon | yes | yes | yes | none | ready |
-| echostructurecore | addon | yes | yes | yes | none | ready |
-| echoterminal | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked |
-| echotextureforge | addon | yes | yes | yes | none | ready |
-| echothemecore | addon | yes | yes | yes | none | ready |
-| echotutorialcore | addon | yes | yes | yes | none | ready |
-| echovalidationcore | addon | yes | yes | yes | none | ready |
-| echovehiclecore | addon | yes | yes | yes | none | ready |
-| echoweathercore | addon | yes | yes | yes | none | ready |
-| echowiki | addon | yes | yes | yes | none | ready |
-| echoworldcore | addon | yes | yes | yes | none | ready |
-| signalosexample | addon | yes | yes | yes | none | ready |
+| echocore | core | yes | yes | yes | none | ready-native |
+| echonetcore | core | yes | yes | partial | direct_sourceSet_output_reference | blocked-with-reason |
+| echo-native-platform | runtime | no | yes | yes | none | ready-native |
+| echoadaptercore | addon | yes | yes | yes | none | ready-native |
+| echoaddonapi | api | yes | yes | yes | missing_neoforge.mods.toml | blocked-with-reason |
+| echoaetherworks | addon | yes | yes | yes | none | ready-native |
+| echoagentcore | addon | yes | yes | yes | none | ready-native |
+| echoagriculturereclamation | addon | yes | yes | yes | none | ready-native |
+| echoarcanacore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echoarcaneindex | addon | yes | yes | yes | none | ready-native |
+| echoarmory | addon | yes | yes | yes | none | ready-native |
+| echoashfallprotocol | addon | yes | yes | yes | none | ready-native |
+| echoassetcore | addon | yes | yes | yes | none | ready-native |
+| echoatmospherecore | addon | yes | yes | yes | none | ready-native |
+| echobasegrid | addon | yes | yes | yes | none | ready-native |
+| echobiomecore | addon | yes | yes | yes | none | ready-native |
+| echoblackboxprotocol | addon | yes | yes | yes | none | ready-native |
+| echoblockworks | addon | yes | yes | yes | none | ready-native |
+| echobridgecore | addon | yes | yes | yes | none | ready-native |
+| echocameracore | addon | yes | yes | yes | none | ready-native |
+| echocinematiccore | addon | yes | yes | yes | none | ready-native |
+| echocodexcore | addon | yes | yes | yes | none | ready-native |
+| echocombatcore | addon | yes | yes | yes | none | ready-native |
+| echocommunitybridge | addon | yes | yes | yes | none | ready-native |
+| echocontentcore | addon | yes | yes | yes | none | ready-native |
+| echoconvoyprotocol | addon | yes | yes | yes | none | ready-native |
+| echocreatorcore | addon | yes | yes | yes | none | ready-native |
+| echocreaturecore | addon | yes | yes | yes | none | ready-native |
+| echocursecore | addon | yes | yes | yes | none | ready-native |
+| echodatacore | addon | yes | yes | yes | none | ready-native |
+| echodifficultycore | addon | yes | yes | yes | none | ready-native |
+| echoeconomycore | addon | yes | yes | yes | none | ready-native |
+| echoencountercore | addon | yes | yes | yes | none | ready-native |
+| echoeventcore | addon | yes | yes | yes | none | ready-native |
+| echofamiliarcore | addon | yes | yes | yes | none | ready-native |
+| echogalacticcore | addon | yes | yes | yes | missing_neoforge.mods.toml | blocked-with-reason |
+| echogrimoire | addon | yes | yes | yes | none | ready-native |
+| echoguidecore | addon | yes | yes | yes | none | ready-native |
+| echohealthcore | addon | yes | yes | yes | none | ready-native |
+| echoholomap | addon | yes | yes | yes | none | ready-native |
+| echohudcore | addon | yes | yes | yes | none | ready-native |
+| echoindex | addon | yes | yes | yes | none | ready-native |
+| echoindustrialnexus | addon | yes | yes | yes | none | ready-native |
+| echoinputcore | addon | yes | yes | yes | none | ready-native |
+| echolens | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echologisticscore | addon | yes | yes | yes | none | ready-native |
+| echologisticsnetwork | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echolootcore | addon | yes | yes | yes | none | ready-native |
+| echolorecore | addon | yes | yes | yes | none | ready-native |
+| echomachinecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echometadatacore | addon | yes | yes | yes | none | ready-native |
+| echomissioncore | addon | yes | yes | yes | none | ready-native |
+| echomodulegraph | addon | yes | yes | yes | none | ready-native |
+| echomultiblockcore | addon | yes | yes | yes | none | ready-native |
+| echonexusprotocol | addon | yes | yes | yes | none | ready-native |
+| echonotificationcore | addon | yes | yes | yes | none | ready-native |
+| echonpcore | addon | yes | yes | yes | none | ready-native |
+| echoorbitalremnants | addon | yes | yes | yes | none | ready-native |
+| echopackcore | addon | yes | yes | yes | none | ready-native |
+| echoplatformcore | addon | yes | yes | yes | none | ready-native |
+| echoplayercore | addon | yes | yes | yes | none | ready-native |
+| echopowercore | addon | yes | yes | yes | none | ready-native |
+| echopowergrid | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echopresencelink | addon | yes | yes | yes | none | ready-native |
+| echoprimecore | addon | yes | yes | yes | none | ready-native |
+| echoprogressioncore | addon | yes | yes | yes | none | ready-native |
+| echoquestdirector | addon | yes | yes | yes | none | ready-native |
+| echorecipecore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echorecovery | addon | yes | yes | yes | none | ready-native |
+| echorelictech | addon | yes | yes | yes | none | ready-native |
+| echorendercore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echoreportcore | addon | yes | yes | yes | none | ready-native |
+| echoriftworlds | addon | yes | yes | yes | none | ready-native |
+| echoritualcore | addon | yes | yes | yes | none | ready-native |
+| echoruntimeguard | addon | yes | yes | partial | local_build_output_classpath_fallback, direct_sourceSet_output_reference | blocked-with-reason |
+| echoschemacore | addon | yes | yes | yes | none | ready-native |
+| echoscreencore | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echoscriptcore | addon | yes | yes | yes | none | ready-native |
+| echosignalos | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echosocialcore | addon | yes | yes | yes | none | ready-native |
+| echosoundcore | addon | yes | yes | yes | none | ready-native |
+| echospawncore | addon | yes | yes | yes | none | ready-native |
+| echospellcore | addon | yes | yes | yes | none | ready-native |
+| echostationfall | addon | yes | yes | yes | none | ready-native |
+| echostatuscore | addon | yes | yes | yes | none | ready-native |
+| echostructurecore | addon | yes | yes | yes | none | ready-native |
+| echoterminal | addon | yes | yes | yes | local_build_output_classpath_fallback | blocked-with-reason |
+| echotextureforge | addon | yes | yes | yes | none | ready-native |
+| echothemecore | addon | yes | yes | yes | none | ready-native |
+| echotutorialcore | addon | yes | yes | yes | none | ready-native |
+| echovalidationcore | addon | yes | yes | yes | none | ready-native |
+| echovehiclecore | addon | yes | yes | yes | none | ready-native |
+| echoweathercore | addon | yes | yes | yes | none | ready-native |
+| echowiki | addon | yes | yes | yes | none | ready-native |
+| echoworldcore | addon | yes | yes | yes | none | ready-native |
+| signalosexample | addon | yes | yes | yes | none | ready-native |
 
 ## Known Unsupported NeoForge Features
 
@@ -127,6 +134,6 @@
 
 ## Risk Notes
 
-- Addons in `blocked` status may still run under `NEOFORGE_BRIDGE` but are not yet validated for `NATIVE` lane.
+- Addons in `blocked-with-reason` status may still run under `NEOFORGE_BRIDGE` but are not yet validated for `NATIVE` lane.
 - Standalone lane is best-effort for core services; complex addons should use `NATIVE` or `NEOFORGE_BRIDGE`.
 - Always back up saves before switching runtime lanes.
