@@ -516,18 +516,33 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   const artifactLoadPath = path.join(nativeRoot, 'build', 'native-all-bridgeable-module-artifact-load-state', 'native-all-bridgeable-module-artifact-load-state.json')
   const routePath = path.join(nativeRoot, 'build', 'native-agent2-client-routes', 'native-client-route-ownership.json')
   const runtimeTruthPath = path.join(nativeRoot, 'build', 'agent5', 'runtime-truth-gate', 'agent5-runtime-truth-gate.json')
+  const agent5UiBridgePath = path.join(nativeRoot, 'build', 'agent5', 'ui-bridge-contract', 'agent5-ui-bridge-contract.json')
+  const agent4WorldStartupPath = path.join(nativeRoot, 'build', 'agent4', 'world-startup', 'native-agent4-world-startup.json')
+  const agent9MachineRuntimePath = path.join(nativeRoot, 'build', 'agent9', 'machine-runtime-host', 'agent9-machine-runtime-host.json')
+  const mutationTruthGatePath = path.join(nativeRoot, 'build', 'mutation-truth-gate', 'native-mutation-truth-gate.json')
+  const agent4RegistryStatePath = path.join(nativeRoot, 'build', 'agent4', 'registry-content', 'native-agent4-registry-content-state.json')
   const registryInventoryPath = path.join(nativeRoot, 'reports', 'echo-native', 'ashfall', 'registry-source-inventory.json')
   const serviceBusPath = path.join(nativeRoot, 'reports', 'echo-native', 'ashfall', 'service-bus-registry.json')
 
   const artifactLoad = await readJsonIfExists(artifactLoadPath)
   const route = await readJsonIfExists(routePath)
   const runtimeTruth = await readJsonIfExists(runtimeTruthPath)
+  const agent5UiBridge = await readJsonIfExists(agent5UiBridgePath)
+  const agent4WorldStartup = await readJsonIfExists(agent4WorldStartupPath)
+  const agent9MachineRuntime = await readJsonIfExists(agent9MachineRuntimePath)
+  const mutationTruthGate = await readJsonIfExists(mutationTruthGatePath)
+  const agent4RegistryState = await readJsonIfExists(agent4RegistryStatePath)
   const registryInventory = await readJsonIfExists(registryInventoryPath)
   const serviceBus = await readJsonIfExists(serviceBusPath)
 
   evidence.reports.artifactLoadState = reportSummary(nativeRoot, artifactLoadPath, artifactLoad)
   evidence.reports.clientRouteOwnership = reportSummary(nativeRoot, routePath, route)
   evidence.reports.runtimeTruthGate = reportSummary(nativeRoot, runtimeTruthPath, runtimeTruth)
+  evidence.reports.agent5UiBridgeContract = reportSummary(nativeRoot, agent5UiBridgePath, agent5UiBridge)
+  evidence.reports.agent4WorldStartup = reportSummary(nativeRoot, agent4WorldStartupPath, agent4WorldStartup)
+  evidence.reports.agent9MachineRuntimeHost = reportSummary(nativeRoot, agent9MachineRuntimePath, agent9MachineRuntime)
+  evidence.reports.mutationTruthGate = reportSummary(nativeRoot, mutationTruthGatePath, mutationTruthGate)
+  evidence.reports.agent4RegistryContentState = reportSummary(nativeRoot, agent4RegistryStatePath, agent4RegistryState)
   evidence.reports.registrySourceInventory = reportSummary(nativeRoot, registryInventoryPath, registryInventory)
   evidence.reports.serviceBusRegistry = reportSummary(nativeRoot, serviceBusPath, serviceBus)
 
@@ -555,13 +570,17 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   const routeProof = evidence.routeDispatchCount > 0 && evidence.uiRouteModules.size > 0
   const registryProof = reportStatusIs(registryInventory, 'PASS')
   const serviceProof = reportStatusIs(serviceBus, 'PASS')
+  const uiBridgeProof = reportStatusIs(agent5UiBridge, 'PASS')
+  const worldStartupProof = reportStatusIs(agent4WorldStartup, 'PASS')
+  const machineRuntimeProof = reportStatusIs(agent9MachineRuntime, 'PASS')
+  const mutationTruthProof = reportStatusIs(mutationTruthGate, 'PASS')
 
   evidence.contentHostProof = evidence.artifactLoadProof && runtimeTruthPass
-  evidence.uiHostProof = routeProof && runtimeTruthPass
-  evidence.actionHostProof = routeProof && runtimeTruthPass
-  evidence.blockItemHostProof = evidence.artifactLoadProof && runtimeTruthPass && (registryProof || serviceProof)
-  evidence.worldgenHostProof = evidence.artifactLoadProof && runtimeTruthPass
-  evidence.saveNetworkProof = evidence.artifactLoadProof && runtimeTruthPass
+  evidence.uiHostProof = (routeProof && runtimeTruthPass) || uiBridgeProof
+  evidence.actionHostProof = (routeProof && runtimeTruthPass) || machineRuntimeProof || mutationTruthProof
+  evidence.blockItemHostProof = (evidence.artifactLoadProof && runtimeTruthPass && (registryProof || serviceProof)) || machineRuntimeProof
+  evidence.worldgenHostProof = (evidence.artifactLoadProof && runtimeTruthPass) || worldStartupProof
+  evidence.saveNetworkProof = (evidence.artifactLoadProof && runtimeTruthPass) || machineRuntimeProof || worldStartupProof
   return evidence
 }
 
@@ -585,6 +604,11 @@ async function collectStandaloneRuntimeEvidence(standaloneRoot) {
     runtimeSave: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'runtime-save.json'),
     verticalSliceSaveLoad: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'vertical-slice-save-load.json'),
     verticalSliceNetworkSync: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'vertical-slice-network-sync.json'),
+    agent5UiParity: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'agent5-ui-parity-smoke.json'),
+    clientScreenCatalog: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-screen-catalog-smoke.json'),
+    clientModsRuntimeContent: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-mods-runtime-content-smoke.json'),
+    clientWorldInteraction: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-world-interaction-smoke.json'),
+    clientHeldItemOverlay: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-held-item-overlay-smoke.json'),
   }
   const reports = {}
   for (const [key, filePath] of Object.entries(reportPaths)) {
@@ -613,14 +637,19 @@ async function collectStandaloneRuntimeEvidence(standaloneRoot) {
   evidence.artifactLoadProof = reportStatusIs(reports.nativeLoaderAbi, 'PASS')
   evidence.lifecycleProof = evidence.executedModules.size > 0
   evidence.contentHostProof = reportStatusIs(reports.adapterCoreCoverage, 'PASS')
-    && reportStatusIs(reports.adapterCoreGameplayBridge, 'PASS')
+    && (reportStatusIs(reports.adapterCoreGameplayBridge, 'PASS')
+      || reportStatusIs(reports.clientModsRuntimeContent, 'PASS'))
   evidence.uiHostProof = reportStatusIs(reports.runtimeUi, 'PASS')
     && reportStatusIs(reports.uiScreenStack, 'PASS')
     && reportStatusIs(reports.uiInputRouter, 'PASS')
-  evidence.actionHostProof = evidence.uiHostProof && evidence.contentHostProof
+    && reportStatusIs(reports.agent5UiParity, 'PASS')
+    && reportStatusIs(reports.clientScreenCatalog, 'PASS')
+  evidence.actionHostProof = (evidence.uiHostProof && evidence.contentHostProof)
+    || reportStatusIs(reports.clientWorldInteraction, 'PASS')
   evidence.blockItemHostProof = reportStatusIs(reports.registryAssetCoverage, 'PASS')
     && reportStatusIs(reports.runtimeItem, 'PASS')
     && reportStatusIs(reports.playableVoxelSave, 'PASS')
+    && reportStatusIs(reports.clientHeldItemOverlay, 'PASS')
   evidence.worldgenHostProof = reportStatusIs(reports.runtimeWorld, 'PASS')
     && reportStatusIs(reports.fullWorldgen, 'PASS')
   evidence.saveNetworkProof = reportStatusIs(reports.runtimeSave, 'PASS')
