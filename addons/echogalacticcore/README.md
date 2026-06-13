@@ -20,10 +20,10 @@ Provides `galacticcore.content`, `galacticcore.celestial_routes`, `galacticcore.
 | Runtime | Status |
 | --- | --- |
 | ECHO native | Supported through `.echo-addon` packaging. |
-| Minecraft/NeoForge | Not declared. |
+| Minecraft/NeoForge | Supported as a metadata-compatible compiled jar. |
 | ECHO standalone | Supported through `-standalone.jar` packaging. |
 
-Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`
+Declared adapter runtimes: `neoforge`, `echo_native`, `echo_runtime_standalone`
 
 ## Dependencies
 
@@ -37,14 +37,15 @@ Consumes: `platform.contracts`, `echo.sdk.public_api`, `adapter.echo_native`, `e
 
 ## Consumed By Editions
 
-- Ashfall Native Edition consumes the `.echo-addon` artifact.
-- Ashfall Standalone Edition consumes the `-standalone.jar` artifact.
+- Galactic Survey Native Edition consumes the `.echo-addon` artifact.
+- Galactic Survey NeoForge Edition consumes the `-neoforge.jar` artifact.
+- Galactic Survey Standalone Edition consumes the `-standalone.jar` artifact.
 
 ## Generated Release Files
 
 | File | Requirement |
 | --- | --- |
-| `echogalacticcore-0.1.0-native-alpha-neoforge.jar` | Not applicable until NeoForge metadata/runtime support is added. |
+| `echogalacticcore-0.1.0-native-alpha-neoforge.jar` | Required for Galactic Survey NeoForge Edition. |
 | `echogalacticcore-0.1.0-native-alpha.echo-addon` | Required for Ashfall Native Edition. |
 | `echogalacticcore-0.1.0-native-alpha-standalone.jar` | Required for Ashfall Standalone Edition. |
 | `echogalacticcore-0.1.0-native-alpha-sources.jar` | Always required for traceability and developer debugging. |
@@ -57,7 +58,7 @@ The launcher resolves this module independently through `moduleRequirements`, co
 ## Descriptor Files
 
 - ECHO descriptor: [src/main/resources/META-INF/echo.mod.json](src/main/resources/META-INF/echo.mod.json)
-- NeoForge TOML: Not present.
+- NeoForge TOML: [src/main/templates/META-INF/neoforge.mods.toml](src/main/templates/META-INF/neoforge.mods.toml)
 
 ## Build And Release
 

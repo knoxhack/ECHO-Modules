@@ -1,0 +1,64 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/ECHO-Modules/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/ECHO-Modules"
+authors="KnoxHack / ECHO Labs"
+credits="Unofficial ECHO Platform port/fork of Galacticraft Legacy by TeamGalacticraft."
+description='''
+ECHO: GalacticCore provides celestial body, route, life-support, rocket, and
+legacy parity contracts for ECHO space-survey packs. This artifact exposes the
+common module metadata needed by NeoForge pack lanes while gameplay integrations
+remain routed through ECHO typed services.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoaddonapi"
+type="required"
+reason="Provides the public ECHO add-on API consumed by GalacticCore contracts."
+versionRange="[0.1.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoadaptercore"
+type="required"
+reason="Provides cross-runtime adapter service access for ECHO modules."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echovehiclecore"
+type="optional"
+reason="Enables route and vehicle hooks when installed by a survey pack."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoholomap"
+type="optional"
+reason="Enables celestial route overlays in the ECHO HoloMap."
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
