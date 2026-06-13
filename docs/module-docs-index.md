@@ -36,7 +36,7 @@ This index is generated from `addons/<module>/gradle.properties` and `META-INF/e
 | [echoencountercore](../addons/echoencountercore/README.md) | 1.0.0 | yes | yes | yes |
 | [echoeventcore](../addons/echoeventcore/README.md) | 1.0.0 | yes | yes | yes |
 | [echofamiliarcore](../addons/echofamiliarcore/README.md) | 1.0.0 | yes | yes | yes |
-| [echogalacticcore](../addons/echogalacticcore/README.md) | 0.1.0-native-alpha | yes | no | yes |
+| [echogalacticcore](../addons/echogalacticcore/README.md) | 0.1.0-native-alpha | yes | yes | yes |
 | [echogrimoire](../addons/echogrimoire/README.md) | 1.0.0 | yes | yes | yes |
 | [echoguidecore](../addons/echoguidecore/README.md) | 1.0.0 | yes | yes | yes |
 | [echohealthcore](../addons/echohealthcore/README.md) | 1.0.0 | yes | yes | yes |

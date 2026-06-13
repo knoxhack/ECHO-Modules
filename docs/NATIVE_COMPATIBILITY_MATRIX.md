@@ -33,7 +33,7 @@ Status values:
 | echonetcore | core | yes | yes | partial | direct_sourceSet_output_reference | blocked-with-reason |
 | echo-native-platform | runtime | no | yes | yes | none | ready-native |
 | echoadaptercore | addon | yes | yes | yes | none | ready-native |
-| echoaddonapi | api | yes | yes | yes | missing_neoforge.mods.toml | blocked-with-reason |
+| echoaddonapi | api | yes | yes | yes | none | ready-native |
 | echoaetherworks | addon | yes | yes | yes | none | ready-native |
 | echoagentcore | addon | yes | yes | yes | none | ready-native |
 | echoagriculturereclamation | addon | yes | yes | yes | none | ready-native |
@@ -64,7 +64,7 @@ Status values:
 | echoencountercore | addon | yes | yes | yes | none | ready-native |
 | echoeventcore | addon | yes | yes | yes | none | ready-native |
 | echofamiliarcore | addon | yes | yes | yes | none | ready-native |
-| echogalacticcore | addon | yes | yes | yes | missing_neoforge.mods.toml | blocked-with-reason |
+| echogalacticcore | addon | yes | yes | yes | none | ready-native |
 | echogrimoire | addon | yes | yes | yes | none | ready-native |
 | echoguidecore | addon | yes | yes | yes | none | ready-native |
 | echohealthcore | addon | yes | yes | yes | none | ready-native |

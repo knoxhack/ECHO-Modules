@@ -46,11 +46,11 @@ Consumes: `platform.contracts`, `echo.sdk.public_api`, `adapter.echo_native`, `e
 | File | Requirement |
 | --- | --- |
 | `echogalacticcore-0.1.0-native-alpha-neoforge.jar` | Required for Galactic Survey NeoForge Edition. |
-| `echogalacticcore-0.1.0-native-alpha.echo-addon` | Required for Ashfall Native Edition. |
-| `echogalacticcore-0.1.0-native-alpha-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echogalacticcore-0.1.0-native-alpha.echo-addon` | Required for Galactic Survey Native Edition. |
+| `echogalacticcore-0.1.0-native-alpha-standalone.jar` | Required for Galactic Survey Standalone Edition. |
 | `echogalacticcore-0.1.0-native-alpha-sources.jar` | Always required for traceability and developer debugging. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
-| `META-INF/neoforge.mods.toml` | Only required when NeoForge support is enabled. |
+| `META-INF/neoforge.mods.toml` | Required for NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |
 
 The launcher resolves this module independently through `moduleRequirements`, compares the installed file hash/version against release metadata, and downloads only the changed module artifact when an individual asset URL is available.

@@ -1,101 +1,113 @@
-# Porting Guide from NeoForge to ECHO Native
+# Porting Guide From NeoForge To ECHO Native
 
 ## Why Port?
 
-ECHO Native gives you service-based optional integrations, policy-driven runtime lanes, and built-in RuntimeGuard budgets. Porting is incremental: you can keep NeoForge compatibility while adding Native features.
+ECHO Native gives modules service-based optional integrations, policy-driven runtime lanes, release-mode descriptor validation, and RuntimeGuard budgets. Porting can be incremental: keep a NeoForge bridge lane while adding Native-first entrypoints and typed host service calls.
 
 ## Porting Checklist
 
 ### 1. Project Setup
 
-- Apply `echo-sdk-gradle-plugin` in `build.gradle`.
-- Add `echo-native-contracts` as `implementation`.
-- Move NeoForge-only dependencies to `compileOnly` or `neoforge` configuration.
+- Apply `dev.echo.native.echo-sdk-gradle-plugin`.
+- Compile against `echo-native-contracts`, `echoaddonapi`, and `echoadaptercore`.
+- Keep `echo-native-loader` and NeoForge runtime classes out of Native-first source sets.
+- Keep NeoForge `@Mod` classes in a bridge/compat source set or edition lane.
 
 ### 2. Descriptor
 
-Create `META-INF/echo-native-addon.descriptor.json` with:
-- `nativePolicy`: Start with `NEOFORGE_BRIDGE` if you want gradual migration.
-- `optionalIntegrations`: List every cross-mod integration.
-- `side`: Declare `CLIENT`/`SERVER`/`BOTH` accurately.
+Native-first addons use `META-INF/echo.mod.json`:
+
+```json
+{
+  "schema": "echo.mod.v1",
+  "id": "myaddon",
+  "name": "My Addon",
+  "version": "1.0.0-RC1",
+  "entrypoint": "com.example.MyNativeAddon",
+  "side": "common",
+  "access": {
+    "nativeClasspath": ["addon.jar"]
+  },
+  "apiStability": "beta"
+}
+```
 
 ### 3. Entry Point Migration
 
-Replace `@Mod` main class with an `EchoNativeAddon` entry point:
+Replace Native-lane `@Mod` assumptions with `EchoNativeModuleEntrypoint`:
 
 ```java
-public class MyNeoForgeMod {
-    // NeoForge entry point — keep it for NEOFORGE_BRIDGE lane
-}
-
-public class MyNativeAddon implements EchoNativeAddon {
+public final class MyNativeAddon implements EchoNativeModuleEntrypoint {
     @Override
-    public void onInitialize(EchoNativeAddonRuntime runtime) {
-        // Register services here
+    public void registerServices(EchoNativeModuleLoadContext context) {
+        context.registerService("myaddon:service", new MyService(), "registry");
     }
 }
 ```
 
-Register the native entry point in `echo-native-addon.descriptor.json`:
+Do not reference `EchoNativeAddon` or `EchoNativeAddonRuntime`; those are not the RC1 public entrypoint model.
 
-```json
-{
-  "entryPoints": {
-    "native": "com.example.MyNativeAddon"
-  }
-}
+### 4. Mutation Proof
+
+Release mode counts a module as `MUTATED` only when a typed host service returns an `EchoNativeMutationReceipt` with status `MUTATED`.
+
+```java
+EchoNativeServiceMutation mutation = EchoNativeServiceMutation.of(
+        "myaddon",
+        "registry",
+        "declare_content",
+        "myaddon:example",
+        EchoNativeRuntimeSide.COMMON
+);
+
+context.serviceRegistry()
+        .service("echo.native.registry", EchoNativeRegistryService.class)
+        .map(registry -> registry.register(mutation))
+        .ifPresent(context::recordMutation);
 ```
 
-### 4. Event Handling
+Descriptor metadata, diagnostic maps, and legacy `activateNative(Map)` claims are not mutation proof.
 
-Replace direct NeoForge event bus subscriptions with ECHO Native event contracts where available. For events without a Native wrapper, keep NeoForge subscriptions—they still work in the `NEOFORGE_BRIDGE` lane.
+### 5. Event, Registry, Config, And Network Porting
 
-| NeoForge Event | ECHO Native Equivalent |
-|---|---|
-| `FMLCommonSetupEvent` | `EchoNativeAddonRuntime.onInitialize()` |
-| `RegisterEvent` | `EchoCoreServices.registry().register(...)` |
-| `ServerStartingEvent` | `EchoNativeServerLifecycle.STARTING` |
-| `PlayerEvent.PlayerLoggedInEvent` | `EchoPlayerService.joinEvent()` |
+- Replace direct NeoForge event bus subscriptions with Native event services where available.
+- Replace raw registry writes with typed Native registry services.
+- Keep config reloads non-mutating unless the host changes active state or persists data.
+- Replace raw `SimpleChannel` assumptions with `echonetcore` packet contracts or a typed Native network host service.
 
-### 5. Registry Porting
+### 6. Testing
 
-Use `EchoCoreServices.contentRegistry()` for blocks, items, and entities. If you need raw NeoForge registries, access them through the `EchoNeoForgeBridge` service.
+Add `echo-native-testkit` tests alongside any NeoForge GameTest fixtures:
 
-### 6. Config
+```groovy
+testImplementation 'dev.echo.native:echo-native-testkit:1.0.0-RC1'
+```
 
-ECHO Native supports datapack-driven config and TOML files in `config/<modid>/`. For per-world config, use `DataCore` persistence services.
+Require typed receipts in tests before marking a module Native-ready.
 
-### 7. Networking
-
-Replace raw `SimpleChannel` with `echonetcore` packet contracts. Define packet descriptors in JSON or Java records, then register with `EchoNetService`.
-
-### 8. Testing
-
-Add `echo-native-testkit` tests alongside NeoForge `GameTest` fixtures. Run both until you switch fully to `NATIVE` policy.
-
-### 9. Validation
+### 7. Validation
 
 ```bash
-./gradlew validateAddon
-./gradlew parityReport
+./gradlew clean check packageEchoNativeAddon
 ```
 
-Fix any `ParityMismatch` warnings before switching from `NEOFORGE_BRIDGE` to `NATIVE`.
+The resulting `.echo-addon` must load in ECHO Native release mode without inferred classpath tokens, dev classpath fallback, or loader-internal imports.
 
 ## Common Pitfalls
 
-- **Direct `ModList` checks in hot paths**: Move them to setup or use `EchoOptionalServices`.
-- **Accessing another addon's saved data**: Use `DataCore` service contracts.
-- **Assuming NeoForge registries exist in Standalone lane**: Guard with `EchoNativePolicy.current().hasNeoForgeBackend()`.
-- **Missing `side` in descriptor**: Client-only code loaded on a server will crash.
+- Direct `ModList` checks in Native-first code.
+- Accessing another addon's saved data instead of using service contracts.
+- Assuming NeoForge registries exist in Native or Standalone lanes.
+- Missing `side` declarations in `META-INF/echo.mod.json`.
+- Self-minting `MUTATED` receipts instead of recording host-returned receipts.
 
 ## Gradual Migration Path
 
-| Stage | Policy | Goal |
+| Stage | Lane | Goal |
 |---|---|---|
-| 1 | `NEOFORGE_BRIDGE` | Addon loads via NeoForge; services registered to ECHO. |
-| 2 | `NEOFORGE_BRIDGE` | Replace direct cross-mod calls with service lookups. |
-| 3 | `NATIVE` | Switch policy; verify with testkit + parity report. |
-| 4 | `STANDALONE` (optional) | Strip NeoForge-only code for lightweight deployments. |
+| 1 | NeoForge bridge | Keep `@Mod` compatibility and expose ECHO services. |
+| 2 | Dual lane | Add `EchoNativeModuleEntrypoint` and typed host receipts. |
+| 3 | Native RC | Package `.echo-addon` and pass release-mode loader gates. |
+| 4 | Stable Native | Attach published artifacts, provenance, launcher, rollback, and gameplay evidence. |
 
 See [AdapterCore Guide](NATIVE_ADAPTERCORE_GUIDE.md) for bridge helpers.
