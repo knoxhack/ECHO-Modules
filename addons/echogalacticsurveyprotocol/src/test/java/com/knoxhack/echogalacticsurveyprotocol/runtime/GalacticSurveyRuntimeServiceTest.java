@@ -425,4 +425,30 @@ class GalacticSurveyRuntimeServiceTest {
         assertEquals("all_required_gates_satisfied", ready.reason());
         assertTrue(ready.gates().stream().allMatch(GalacticSurveyRuntimeService.ReleaseGateStatus::satisfied));
     }
+
+    @Test
+    void runtimePlaytestHarnessCoversMilestonesWithoutClaimingPublicAlphaReadiness() {
+        Map<String, Object> report = GalacticSurveyRuntimePlaytestHarness.runReport();
+
+        assertEquals(GalacticSurveyRuntimePlaytestHarness.SCHEMA, report.get("schemaVersion"));
+        assertEquals(true, report.get("ok"));
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> runtimeChecks = (Map<String, Object>) report.get("runtimeChecks");
+        assertEquals(true, runtimeChecks.get("first30Loop"));
+        assertEquals(true, runtimeChecks.get("first2HourLoop"));
+        assertEquals(true, runtimeChecks.get("holomapMeaningful"));
+        assertEquals(true, runtimeChecks.get("surveyArrayRestored"));
+        assertEquals(true, runtimeChecks.get("saveReloadEquivalent"));
+        assertEquals(true, runtimeChecks.get("publicAlphaStillRequiresExternalEvidence"));
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> releaseGatePreview = (Map<String, Object>) report.get("releaseGatePreview");
+        assertEquals(false, releaseGatePreview.get("publicAlphaAllowed"));
+        @SuppressWarnings("unchecked")
+        List<String> blockers = (List<String>) releaseGatePreview.get("blockers");
+        assertTrue(blockers.contains("real_first_30_playthrough"));
+        assertTrue(blockers.contains("no_crash_evidence"));
+        assertTrue(blockers.contains("launcher_install_update_repair_rollback"));
+    }
 }

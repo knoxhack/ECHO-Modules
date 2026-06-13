@@ -60,11 +60,17 @@ entries, and Launcher install/update/repair/rollback evidence.
 ```text
 node addons/echogalacticsurveyprotocol/scripts/validate-galactic-survey-contract.mjs --module-root addons/echogalacticsurveyprotocol
 node addons/echogalacticsurveyprotocol/scripts/smoke-galactic-survey-route.mjs --module-root addons/echogalacticsurveyprotocol
+./gradlew :echogalacticsurveyprotocol:runGalacticSurveyRuntimePlaytest
 ```
 
 The gameplay route smoke validates the first 30 minutes, first 2 hours, and
 Survey Array completion contract. It does not replace a visible in-game
 playthrough.
+
+The runtime playtest harness executes the compiled Java service and writes
+`build/reports/galactic-survey/runtime-playtest.json`. It proves deterministic
+runtime loops, HoloMap planning, Survey Array restoration, and save/reload
+equivalence, but it still does not replace live client capture.
 
 ## Phase Plan
 

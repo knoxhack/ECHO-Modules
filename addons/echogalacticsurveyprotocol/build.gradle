@@ -126,6 +126,17 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
 }
 
+def galacticSurveyRuntimePlaytestReport = layout.buildDirectory.file("reports/galactic-survey/runtime-playtest.json")
+tasks.register("runGalacticSurveyRuntimePlaytest", JavaExec) {
+    group = "verification"
+    description = "Runs the compiled Galactic Survey runtime playtest harness and writes a JSON evidence report."
+    dependsOn classes
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "com.knoxhack.echogalacticsurveyprotocol.runtime.GalacticSurveyRuntimePlaytestHarness"
+    args "--out", galacticSurveyRuntimePlaytestReport.get().asFile.absolutePath
+    outputs.file(galacticSurveyRuntimePlaytestReport)
+}
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
