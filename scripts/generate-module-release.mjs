@@ -12,10 +12,10 @@ const NEOFORGE_TOML_PATHS = [
   'src/main/templates/META-INF/neoforge.mods.toml',
 ]
 const TEMPLATE_DEFAULTS = {
-  minecraft_version: '1.21.1',
-  minecraft_version_range: '[1.21.1,1.22)',
-  minecraftVersion: '1.21.1',
-  minecraftVersionRange: '[1.21.1,1.22)',
+  minecraft_version: '26.1.2',
+  minecraft_version_range: '[26.1.2,26.2)',
+  minecraftVersion: '26.1.2',
+  minecraftVersionRange: '[26.1.2,26.2)',
   neo_version: '26.1.2.29-beta',
   neo_version_range: '[26.1.2.29-beta,)',
   neoForgeVersion: '26.1.2.29-beta',
@@ -118,7 +118,7 @@ function renderTemplateText(text, properties, sourceLabel) {
   const rendered = String(text).replace(/\$\{([^}]+)\}/gu, (match, key) => {
     if (Object.hasOwn(properties, key)) return String(properties[key])
     throw new Error(`${sourceLabel}: missing template property ${key}`)
-  }).replace(/versionRange\s*=\s*"\[26\.1\.2,26\.2\)"/gu, `versionRange="${TEMPLATE_DEFAULTS.minecraft_version_range}"`)
+  })
   if (rendered.includes('${')) {
     throw new Error(`${sourceLabel}: unresolved template placeholder remains after rendering`)
   }

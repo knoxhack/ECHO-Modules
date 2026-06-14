@@ -218,7 +218,7 @@ async function verifyReleaseDir(releaseDir) {
     assert.match(neoForgeToml, new RegExp(`modId\\s*=\\s*"${moduleRecord.moduleId}"`, 'u'), `${moduleRecord.moduleId} NeoForge TOML must declare the module id`)
     const minecraftDependency = dependencyBlocks(neoForgeToml).find((block) => /modId\s*=\s*"minecraft"/u.test(block))
     if (minecraftDependency) {
-      assert.doesNotMatch(minecraftDependency, /versionRange\s*=\s*"\[26\.1\.2/u, `${moduleRecord.moduleId} NeoForge TOML must not use the NeoForge loader line as the Minecraft version range`)
+      assert.match(minecraftDependency, /versionRange\s*=\s*"\[26\.1\.2,26\.2\)"/u, `${moduleRecord.moduleId} NeoForge TOML must target the ECHO NeoForge Minecraft runtime range`)
     }
 
     const standalone = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-standalone.jar`))

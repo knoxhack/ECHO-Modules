@@ -99,7 +99,7 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.ok(neoforgeEntries.has('dev/echo/sample/Compiled.class'))
   const neoforgeToml = await readJarEntry(path.join(outputDir, 'echosample-1.2.3-neoforge.jar'), 'META-INF/neoforge.mods.toml')
   assert.match(neoforgeToml, /modId="echosample"/u)
-  assert.match(neoforgeToml, /versionRange="\[1\.21\.1,1\.22\)"/u)
+  assert.match(neoforgeToml, /versionRange="\[26\.1\.2,26\.2\)"/u)
   assert.doesNotMatch(neoforgeToml, /\$\{/u)
 
   const standaloneEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-standalone.jar'))
