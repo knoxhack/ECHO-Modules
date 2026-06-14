@@ -704,12 +704,14 @@ export async function generateModuleRelease(options = {}) {
     }))
   }
 
+  const provenance = releaseProvenance()
   const release = {
     schemaVersion: MODULE_RELEASE_SCHEMA_VERSION,
     releaseId: options.releaseId ?? `modules-${new Date().toISOString().replace(/[:.]/g, '-')}`,
     generatedAt: new Date().toISOString(),
     sourceRepo: 'https://github.com/knoxhack/ECHO-Modules',
-    provenance: releaseProvenance(),
+    commitSha: provenance.commitSha,
+    provenance,
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)
