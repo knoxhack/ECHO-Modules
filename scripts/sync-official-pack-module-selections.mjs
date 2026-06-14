@@ -4,6 +4,7 @@ import fs from 'node:fs/promises'
 import { existsSync, statSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { constants as zlibConstants, deflateRawSync, inflateRawSync } from 'node:zlib'
 
 const __filename = fileURLToPath(import.meta.url)
 const modulesRoot = path.resolve(path.dirname(__filename), '..')
@@ -132,6 +133,15 @@ const changedFiles = []
 const errors = []
 let moduleReleaseArtifacts = new Map()
 
+const crcTable = new Uint32Array(256)
+for (let i = 0; i < 256; i += 1) {
+  let value = i
+  for (let bit = 0; bit < 8; bit += 1) {
+    value = (value & 1) ? (0xedb88320 ^ (value >>> 1)) : (value >>> 1)
+  }
+  crcTable[i] = value >>> 0
+}
+
 function formatJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`
 }
@@ -163,7 +173,10 @@ function setVirtualFile(file, content) {
 
 async function readTextMaybeVirtual(file) {
   const resolved = path.resolve(file)
-  if (virtualFiles.has(resolved)) return virtualFiles.get(resolved)
+  if (virtualFiles.has(resolved)) {
+    const value = virtualFiles.get(resolved)
+    return Buffer.isBuffer(value) ? value.toString('utf8') : value
+  }
   return fs.readFile(resolved, 'utf8')
 }
 
@@ -184,20 +197,187 @@ async function writeJsonIfChanged(file, value) {
   return writeTextIfChanged(file, formatJson(value))
 }
 
+async function writeBytesIfChanged(file, bytes) {
+  const resolved = path.resolve(file)
+  const buffer = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes)
+  const before = existsSync(resolved) ? await fs.readFile(resolved) : null
+  setVirtualFile(resolved, buffer)
+  if (before && before.equals(buffer)) return false
+  changedFiles.push(resolved)
+  if (writeMode) {
+    await fs.mkdir(path.dirname(resolved), { recursive: true })
+    await fs.writeFile(resolved, buffer)
+  }
+  return true
+}
+
 function hashBytes(bytes) {
+  const buffer = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes)
   return {
-    size: bytes.length,
-    sha256: crypto.createHash('sha256').update(bytes).digest('hex')
+    size: buffer.length,
+    sha256: crypto.createHash('sha256').update(buffer).digest('hex')
   }
 }
 
 async function fileDigest(file) {
   const resolved = path.resolve(file)
   if (hasVirtualFile(resolved)) {
-    return hashBytes(Buffer.from(getVirtualFile(resolved), 'utf8'))
+    const value = getVirtualFile(resolved)
+    return hashBytes(Buffer.isBuffer(value) ? value : Buffer.from(value, 'utf8'))
   }
   const bytes = await fs.readFile(resolved)
   return hashBytes(bytes)
+}
+
+function normalizeZipPath(value) {
+  return String(value ?? '').replace(/\\/g, '/').replace(/^\/+/u, '')
+}
+
+function crc32(buffer) {
+  let value = 0xffffffff
+  for (const byte of buffer) {
+    value = crcTable[(value ^ byte) & 0xff] ^ (value >>> 8)
+  }
+  return (value ^ 0xffffffff) >>> 0
+}
+
+function dosDateTime(date = new Date()) {
+  const year = Math.max(date.getFullYear(), 1980)
+  const time = (date.getHours() << 11) | (date.getMinutes() << 5) | Math.floor(date.getSeconds() / 2)
+  const day = ((year - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate()
+  return { time, day }
+}
+
+function u16(value) {
+  const buffer = Buffer.alloc(2)
+  buffer.writeUInt16LE(value)
+  return buffer
+}
+
+function u32(value) {
+  const buffer = Buffer.alloc(4)
+  buffer.writeUInt32LE(value >>> 0)
+  return buffer
+}
+
+function readZipEntries(buffer) {
+  let eocd = -1
+  const minimum = Math.max(0, buffer.length - 65557)
+  for (let offset = buffer.length - 22; offset >= minimum; offset -= 1) {
+    if (buffer.readUInt32LE(offset) === 0x06054b50) {
+      eocd = offset
+      break
+    }
+  }
+  if (eocd < 0) throw new Error('ZIP end-of-central-directory record not found.')
+  const entryCount = buffer.readUInt16LE(eocd + 10)
+  const centralDirOffset = buffer.readUInt32LE(eocd + 16)
+  const entries = []
+  let cursor = centralDirOffset
+  for (let index = 0; index < entryCount; index += 1) {
+    if (buffer.readUInt32LE(cursor) !== 0x02014b50) {
+      throw new Error('Invalid ZIP central directory entry.')
+    }
+    const method = buffer.readUInt16LE(cursor + 10)
+    const compressedSize = buffer.readUInt32LE(cursor + 20)
+    const nameLength = buffer.readUInt16LE(cursor + 28)
+    const extraLength = buffer.readUInt16LE(cursor + 30)
+    const commentLength = buffer.readUInt16LE(cursor + 32)
+    const localHeaderOffset = buffer.readUInt32LE(cursor + 42)
+    const name = normalizeZipPath(buffer.subarray(cursor + 46, cursor + 46 + nameLength).toString('utf8'))
+    entries.push({ name, method, compressedSize, localHeaderOffset })
+    cursor += 46 + nameLength + extraLength + commentLength
+  }
+  return entries
+}
+
+function readZipEntry(buffer, entry) {
+  const cursor = entry.localHeaderOffset
+  if (buffer.readUInt32LE(cursor) !== 0x04034b50) {
+    throw new Error(`Invalid ZIP local header for ${entry.name}.`)
+  }
+  const nameLength = buffer.readUInt16LE(cursor + 26)
+  const extraLength = buffer.readUInt16LE(cursor + 28)
+  const dataStart = cursor + 30 + nameLength + extraLength
+  const compressed = buffer.subarray(dataStart, dataStart + entry.compressedSize)
+  if (entry.method === 0) return compressed
+  if (entry.method === 8) return inflateRawSync(compressed, { finishFlush: zlibConstants.Z_SYNC_FLUSH })
+  throw new Error(`Unsupported ZIP compression method ${entry.method} for ${entry.name}.`)
+}
+
+function storedZipBuffer(entries) {
+  const now = dosDateTime(new Date('2020-01-01T00:00:00Z'))
+  const localParts = []
+  const centralParts = []
+  let offset = 0
+
+  for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+    const name = Buffer.from(normalizeZipPath(entry.name), 'utf8')
+    const data = Buffer.isBuffer(entry.data) ? entry.data : Buffer.from(entry.data)
+    const compressed = deflateRawSync(data, { level: 9 })
+    const crc = crc32(data)
+    const localHeader = Buffer.concat([
+      u32(0x04034b50),
+      u16(20),
+      u16(0x0800),
+      u16(8),
+      u16(now.time),
+      u16(now.day),
+      u32(crc),
+      u32(compressed.length),
+      u32(data.length),
+      u16(name.length),
+      u16(0),
+      name,
+    ])
+    localParts.push(localHeader, compressed)
+    centralParts.push(Buffer.concat([
+      u32(0x02014b50),
+      u16(20),
+      u16(20),
+      u16(0x0800),
+      u16(8),
+      u16(now.time),
+      u16(now.day),
+      u32(crc),
+      u32(compressed.length),
+      u32(data.length),
+      u16(name.length),
+      u16(0),
+      u16(0),
+      u16(0),
+      u16(0),
+      u32(0),
+      u32(offset),
+      name,
+    ]))
+    offset += localHeader.length + compressed.length
+  }
+
+  const central = Buffer.concat(centralParts)
+  const end = Buffer.concat([
+    u32(0x06054b50),
+    u16(0),
+    u16(0),
+    u16(entries.length),
+    u16(entries.length),
+    u32(central.length),
+    u32(offset),
+    u16(0),
+  ])
+  return Buffer.concat([...localParts, central, end])
+}
+
+function checksumRowsForZipEntries(entries) {
+  return entries
+    .map((entry) => ({
+      name: normalizeZipPath(entry.name),
+      data: Buffer.isBuffer(entry.data) ? entry.data : Buffer.from(entry.data),
+    }))
+    .filter((entry) => entry.name !== '.echo/checksums.sha256')
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((entry) => `${hashBytes(entry.data).sha256}  ${entry.name}`)
+    .join('\n') + '\n'
 }
 
 function fileExistsOrVirtual(file) {
@@ -570,6 +750,7 @@ async function updatePackSnapshots(repoRoot, packKey, laneKey, selection, descri
     const manifest = await readJson(file)
     const requirements = updatePackSnapshotObject(manifest, selection.modules, lanes[laneKey], descriptors, path.dirname(file))
     await decorateLocalArtifactHashes(requirements, path.dirname(file))
+    await materializePackArchive(manifest, requirements, lanes[laneKey], path.dirname(file))
     await writeJsonIfChanged(file, manifest)
     changedDirs.add(path.dirname(file))
   }
@@ -578,11 +759,78 @@ async function updatePackSnapshots(repoRoot, packKey, laneKey, selection, descri
   }
 }
 
+async function existingZipEntries(zipPath, lane) {
+  if (!fileExistsOrVirtual(zipPath)) return []
+  const bytes = hasVirtualFile(zipPath) ? getVirtualFile(zipPath) : await fs.readFile(zipPath)
+  const buffer = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes)
+  const installPrefix = `${lane.installDir}/`
+  const entries = []
+  for (const entry of readZipEntries(buffer)) {
+    if (!entry.name || entry.name.endsWith('/')) continue
+    if (entry.name.startsWith(installPrefix)) continue
+    if (entry.name === '.echo/pack-manifest.json' || entry.name === '.echo/checksums.sha256') continue
+    entries.push({ name: entry.name, data: readZipEntry(buffer, entry) })
+  }
+  return entries
+}
+
+async function materializePackArchive(manifest, requirements, lane, releaseDir) {
+  const zipName = manifest.artifactName ?? `${manifest.pack ?? manifest.id ?? path.basename(releaseDir)}-${manifest.version ?? '0.1.0'}.zip`
+  const zipPath = path.join(releaseDir, zipName)
+  const entries = await existingZipEntries(zipPath, lane)
+  const used = new Set(entries.map((entry) => normalizeZipPath(entry.name)))
+
+  for (const requirement of requirements) {
+    const moduleId = String(requirement.id ?? requirement.moduleId ?? '').toLowerCase()
+    const artifactName = requirement.assetName ?? requirement.artifactName
+    if (!moduleId || !artifactName) {
+      errors.push(`${path.relative(workspaceRoot, zipPath)} has a module requirement without id or artifactName.`)
+      continue
+    }
+    const artifactPath = path.join(modulesRoot, 'dist', 'echo-module-release', moduleId, artifactName)
+    if (!existsSync(artifactPath)) {
+      errors.push(`${path.relative(workspaceRoot, zipPath)} cannot materialize missing module artifact ${path.relative(workspaceRoot, artifactPath)}.`)
+      continue
+    }
+    const data = await fs.readFile(artifactPath)
+    const digest = hashBytes(data)
+    requirement.sha256 = digest.sha256
+    requirement.size = digest.size
+    const archivePath = normalizeZipPath(requirement.path)
+    if (used.has(archivePath)) {
+      errors.push(`${path.relative(workspaceRoot, zipPath)} has duplicate archive path ${archivePath}.`)
+      continue
+    }
+    used.add(archivePath)
+    entries.push({ name: archivePath, data })
+  }
+
+  const embeddedManifest = JSON.parse(formatJson(manifest))
+  embeddedManifest.artifactSha256 = ''
+  embeddedManifest.artifactSize = 0
+  entries.push({ name: '.echo/pack-manifest.json', data: Buffer.from(formatJson(embeddedManifest), 'utf8') })
+  entries.push({ name: '.echo/checksums.sha256', data: Buffer.from(checksumRowsForZipEntries(entries), 'utf8') })
+
+  const zipBytes = storedZipBuffer(entries)
+  const zipDigest = hashBytes(zipBytes)
+  manifest.artifactMode = manifest.artifactMode ?? 'zip'
+  manifest.artifactName = zipName
+  manifest.artifactSha256 = zipDigest.sha256
+  manifest.artifactSize = zipDigest.size
+  await writeBytesIfChanged(zipPath, zipBytes)
+  return zipDigest
+}
+
 async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
   const packFiles = await walkFiles(releaseDir, (file) => file.endsWith('.pack.json'))
   const packDigests = new Map()
   for (const packFile of packFiles) {
     packDigests.set(path.basename(packFile), await fileDigest(packFile))
+  }
+  const zipFiles = await walkFiles(releaseDir, (file) => file.endsWith('.zip'))
+  const zipDigests = new Map()
+  for (const zipFile of zipFiles) {
+    zipDigests.set(path.basename(zipFile), await fileDigest(zipFile))
   }
 
   const echoReleasePath = path.join(releaseDir, 'echo-release.json')
@@ -590,15 +838,22 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
     const echoRelease = parseJsonText(await readTextMaybeVirtual(echoReleasePath))
     const manifestName = echoRelease.manifestAsset ?? [...packDigests.keys()][0]
     const manifestDigest = packDigests.get(manifestName)
+    const artifactName = echoRelease.artifactAsset ?? [...zipDigests.keys()][0]
+    const artifactDigest = zipDigests.get(artifactName)
     if (manifestDigest) {
       echoRelease.manifestAsset = manifestName
       echoRelease.manifestSha256 = manifestDigest.sha256
       if ('manifestSize' in echoRelease) echoRelease.manifestSize = manifestDigest.size
     }
+    if (artifactDigest) {
+      echoRelease.artifactAsset = artifactName
+      echoRelease.artifactSha256 = artifactDigest.sha256
+      if ('artifactSize' in echoRelease) echoRelease.artifactSize = artifactDigest.size
+    }
     if ('moduleRequirementCount' in echoRelease) echoRelease.moduleRequirementCount = moduleRequirementCount
     if (Array.isArray(echoRelease.assets)) {
       for (const asset of echoRelease.assets) {
-        const digest = packDigests.get(asset.name)
+        const digest = packDigests.get(asset.name) ?? zipDigests.get(asset.name)
         if (digest) {
           asset.sha256 = digest.sha256
           asset.size = digest.size
@@ -612,37 +867,35 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
         echoRelease.artifacts.manifest.size = digest.size
       }
     }
+    if (echoRelease.artifacts?.pack?.file) {
+      const digest = zipDigests.get(echoRelease.artifacts.pack.file)
+      if (digest) {
+        echoRelease.artifacts.pack.sha256 = digest.sha256
+        echoRelease.artifacts.pack.size = digest.size
+      }
+    }
     await writeJsonIfChanged(echoReleasePath, echoRelease)
   }
 
   const checksumsPath = path.join(releaseDir, 'checksums.txt')
   if (existsSync(checksumsPath) || hasVirtualFile(checksumsPath)) {
-    const checksumTargets = new Map(packDigests)
+    const checksumTargets = new Map([...zipDigests, ...packDigests])
     if (fileExistsOrVirtual(echoReleasePath)) {
       checksumTargets.set('echo-release.json', await fileDigest(echoReleasePath))
     }
-    const original = await readTextMaybeVirtual(checksumsPath)
-    const lines = original.split(/\r?\n/u).filter((line) => line.trim().length > 0)
-    const seen = new Set()
-    const nextLines = lines.map((line) => {
-      const match = line.match(/^([a-fA-F0-9]{64})\s+(.+)$/u)
-      if (!match) return line
-      const name = match[2].trim()
-      const digest = checksumTargets.get(name)
-      if (!digest) return line
-      seen.add(name)
-      return `${digest.sha256}  ${name}`
-    })
-    for (const [name, digest] of checksumTargets) {
-      if (!seen.has(name)) nextLines.push(`${digest.sha256}  ${name}`)
-    }
+    const nextLines = [...checksumTargets.entries()]
+      .sort(([left], [right]) => {
+        const rank = (name) => name === 'echo-release.json' ? 0 : name.endsWith('.zip') ? 1 : name.endsWith('.pack.json') ? 2 : 3
+        return rank(left) - rank(right) || left.localeCompare(right)
+      })
+      .map(([name, digest]) => `${digest.sha256}  ${name}`)
     await writeTextIfChanged(checksumsPath, `${nextLines.join('\n')}\n`)
   }
 
   const releaseAuditPath = path.join(releaseDir, 'release-audit.json')
   if (existsSync(releaseAuditPath) || hasVirtualFile(releaseAuditPath)) {
     const releaseAudit = parseJsonText(await readTextMaybeVirtual(releaseAuditPath))
-    const assetDigests = new Map(packDigests)
+    const assetDigests = new Map([...zipDigests, ...packDigests])
     if (fileExistsOrVirtual(echoReleasePath)) {
       assetDigests.set('echo-release.json', await fileDigest(echoReleasePath))
     }
@@ -656,6 +909,10 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
         asset.sha256 = digest.sha256
         asset.size = digest.size
       }
+    }
+    if (releaseAudit.zip?.file) {
+      const digest = zipDigests.get(releaseAudit.zip.file)
+      if (digest) releaseAudit.zip.sha256 = digest.sha256
     }
     if (Array.isArray(releaseAudit.checksumEntries)) {
       for (const entry of releaseAudit.checksumEntries) {
