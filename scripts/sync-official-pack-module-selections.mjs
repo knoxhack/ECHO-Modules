@@ -824,8 +824,28 @@ async function materializePackArchive(manifest, requirements, lane, releaseDir) 
 async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
   const packFiles = await walkFiles(releaseDir, (file) => file.endsWith('.pack.json'))
   const packDigests = new Map()
+  const moduleArtifactDigests = new Map()
+  const moduleArtifactRows = []
+  const seenModuleArtifacts = new Set()
   for (const packFile of packFiles) {
     packDigests.set(path.basename(packFile), await fileDigest(packFile))
+    const packManifest = parseJsonText(await readTextMaybeVirtual(packFile))
+    for (const requirement of packManifest.moduleRequirements ?? []) {
+      const name = String(requirement?.assetName ?? requirement?.artifactName ?? '').toLowerCase()
+      if (!name || !requirement.sha256) continue
+      const row = {
+        name: requirement.assetName ?? requirement.artifactName,
+        role: 'pack-file',
+        sha256: requirement.sha256,
+        size: Number(requirement.size ?? 0),
+        path: requirement.path
+      }
+      moduleArtifactDigests.set(name, row)
+      if (!seenModuleArtifacts.has(name)) {
+        seenModuleArtifacts.add(name)
+        moduleArtifactRows.push(row)
+      }
+    }
   }
   const zipFiles = await walkFiles(releaseDir, (file) => file.endsWith('.zip'))
   const zipDigests = new Map()
@@ -852,13 +872,17 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
     }
     if ('moduleRequirementCount' in echoRelease) echoRelease.moduleRequirementCount = moduleRequirementCount
     if (Array.isArray(echoRelease.assets)) {
-      for (const asset of echoRelease.assets) {
-        const digest = packDigests.get(asset.name) ?? zipDigests.get(asset.name)
+      const nonModuleAssets = echoRelease.assets.filter((asset) => asset?.role !== 'pack-file')
+      for (const asset of nonModuleAssets) {
+        const moduleDigest = moduleArtifactDigests.get(String(asset.name ?? '').toLowerCase())
+        const digest = moduleDigest ?? packDigests.get(asset.name) ?? zipDigests.get(asset.name)
         if (digest) {
           asset.sha256 = digest.sha256
           asset.size = digest.size
+          if (moduleDigest?.path && asset.role === 'pack-file') asset.path = moduleDigest.path
         }
       }
+      echoRelease.assets = [...nonModuleAssets, ...moduleArtifactRows.map((row) => ({ ...row }))]
     }
     if (echoRelease.artifacts?.manifest?.file) {
       const digest = packDigests.get(echoRelease.artifacts.manifest.file)
@@ -904,7 +928,7 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
     }
     if (Array.isArray(releaseAudit.assets)) {
       for (const asset of releaseAudit.assets) {
-        const digest = assetDigests.get(asset.name)
+        const digest = moduleArtifactDigests.get(String(asset.name ?? '').toLowerCase()) ?? assetDigests.get(asset.name)
         if (!digest) continue
         asset.sha256 = digest.sha256
         asset.size = digest.size
@@ -915,14 +939,27 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
       if (digest) releaseAudit.zip.sha256 = digest.sha256
     }
     if (Array.isArray(releaseAudit.checksumEntries)) {
-      for (const entry of releaseAudit.checksumEntries) {
-        const digest = assetDigests.get(entry.file)
+      const nonModuleEntries = releaseAudit.checksumEntries.filter((entry) => entry?.coveredBy !== 'zip-entry')
+      for (const entry of nonModuleEntries) {
+        const digest = moduleArtifactDigests.get(String(entry.file ?? '').toLowerCase()) ?? assetDigests.get(entry.file)
         if (!digest) continue
         entry.expectedSha256 = digest.sha256
         entry.actualSha256 = digest.sha256
         entry.size = digest.size
         entry.ok = true
       }
+      const moduleEntries = moduleArtifactRows.map((row) => ({
+        file: row.name,
+        expectedSha256: row.sha256,
+        actualSha256: row.sha256,
+        coveredBy: 'zip-entry',
+        matchedPath: row.path,
+        size: row.size,
+        ok: true
+      }))
+      releaseAudit.checksumEntries = [...nonModuleEntries, ...moduleEntries]
+      releaseAudit.missingChecksumEntries = []
+      releaseAudit.mismatchedChecksumEntries = []
       if (releaseAudit.checksumCoverage) {
         releaseAudit.checksumCoverage.total = releaseAudit.checksumEntries.length
         releaseAudit.checksumCoverage.missing = releaseAudit.missingChecksumEntries?.length ?? 0
