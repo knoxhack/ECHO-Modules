@@ -1,5 +1,6 @@
 package com.knoxhack.echolens.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echolens.EchoLensClient;
 import com.knoxhack.echolens.api.LensAccessPolicy;
 import com.knoxhack.echolens.api.LensAction;
@@ -515,7 +516,7 @@ public final class LensHudOverlay {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static String fit(Font font, String text, int maxWidth) {

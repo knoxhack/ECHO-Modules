@@ -1,5 +1,6 @@
 package com.knoxhack.echoashfallprotocol.nativebridge;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs;
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import dev.echo.nativeplatform.loader.EchoNativeRegistryHost;
@@ -1098,7 +1099,7 @@ public final class AshfallNativeProductBridgeProvider implements NativeLoaderPro
     }
 
     private static boolean windowedNativeClientActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isWindowedNativeClient();
+        return EchoNativeRuntimeEnvironmentBridge.isWindowedNativeClient();
     }
 
     private static Map<String, String> surfaceImplementationClasses() {

@@ -1,5 +1,6 @@
 package com.knoxhack.echolens;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echolens.client.LensClientActions;
@@ -329,7 +330,7 @@ public class EchoLensClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static String text(Object value) {

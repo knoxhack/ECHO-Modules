@@ -1,11 +1,11 @@
 package com.knoxhack.echolens.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echolens.EchoLens;
 import com.knoxhack.echolens.integration.LensSoundFeedback;
 import com.knoxhack.echolens.platform.LensModuleAccess;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import java.lang.reflect.Constructor;
 import java.util.LinkedHashMap;
@@ -92,7 +92,7 @@ public final class LensClientActions {
     }
 
     private static boolean dispatchNativeIndexRoute(ItemStack stack, String actionId, String mode) {
-        if (!EchoNativeClientRuntimeEnvironment.isNativeLoaderActive()
+        if (!EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()
                 || stack == null
                 || stack.isEmpty()
                 || !LensModuleAccess.isLoaded("echoindex")) {

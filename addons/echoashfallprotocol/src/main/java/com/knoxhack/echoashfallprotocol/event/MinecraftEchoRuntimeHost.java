@@ -1,6 +1,7 @@
 package com.knoxhack.echoashfallprotocol.event;
 
 import com.knoxhack.echo.adaptercore.EchoCanonicalContentIds;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockEntitySnapshot;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockRef;
@@ -2811,7 +2812,7 @@ public class MinecraftEchoRuntimeHost implements EchoNativeRuntimeHost {
     }
 
     private static boolean nativeLoaderProcess() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static CompoundTag compoundFromMap(Map<String, Object> payload) {

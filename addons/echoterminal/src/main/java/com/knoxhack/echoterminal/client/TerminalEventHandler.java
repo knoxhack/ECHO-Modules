@@ -2,9 +2,9 @@ package com.knoxhack.echoterminal.client;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import java.util.Map;
 
@@ -56,6 +56,6 @@ public class TerminalEventHandler {
     }
 
     private static boolean nativeLoaderActive() {
-        return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 }

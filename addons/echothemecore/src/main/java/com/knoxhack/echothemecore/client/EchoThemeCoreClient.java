@@ -1,10 +1,10 @@
 package com.knoxhack.echothemecore.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echothemecore.EchoThemeCore;
 import com.knoxhack.echothemecore.client.vanilla.VanillaUiSkinLayer;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.brigadier.CommandDispatcher;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry.NativeClientRouteActionContext;
@@ -235,7 +235,7 @@ public final class EchoThemeCoreClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static String text(Object value) {

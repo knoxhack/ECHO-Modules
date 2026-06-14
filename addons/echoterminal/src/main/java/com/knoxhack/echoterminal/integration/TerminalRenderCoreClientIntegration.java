@@ -2,6 +2,7 @@ package com.knoxhack.echoterminal.integration;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echorendercore.api.RenderCoreBlockVisualHost;
 import com.knoxhack.echorendercore.api.VisualState;
 import com.knoxhack.echorendercore.client.RenderCoreBlockEntityRenderer;
@@ -16,7 +17,6 @@ import com.knoxhack.echoterminal.registry.ModBlockEntities;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry.NativeClientRouteActionContext;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -168,7 +168,7 @@ public final class TerminalRenderCoreClientIntegration {
    }
 
    private static boolean nativeLoaderActive() {
-      return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+      return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
    }
 
    private static RenderCoreScreenFrameOptions screenFrameOptions() {

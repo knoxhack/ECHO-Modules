@@ -1,5 +1,6 @@
 package com.knoxhack.echoashfallprotocol.mixin.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoashfallprotocol.Config;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoNativeAshfallLoadingOverlay;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoTerminalBackgrounds;
@@ -67,7 +68,7 @@ public abstract class EchoLoadingOverlayMixin {
     }
 
     private static boolean echo$isNativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private void echo$extractTerminalRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {

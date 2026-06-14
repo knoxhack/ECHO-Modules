@@ -2,6 +2,7 @@ package com.knoxhack.echoholomap;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoholomap.client.BuiltinHoloMapClientChunkActionProvider;
 import com.knoxhack.echoholomap.client.HoloMapClientChunkActions;
 import com.knoxhack.echoholomap.client.HoloMapMiniMapOverlay;
@@ -1007,7 +1008,7 @@ public final class EchoHoloMapClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static String text(Object value) {

@@ -1,7 +1,7 @@
 package com.knoxhack.echo.hudcore.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echo.hudcore.EchoHudSnapshotContract;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -265,7 +265,7 @@ public final class EchoHudCoreOverlay {
     }
 
     private static boolean nativeLoaderActive() {
-        return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static void recordNativeRouteState(

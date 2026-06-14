@@ -1,5 +1,6 @@
 package com.knoxhack.echoashfallprotocol.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoashfallprotocol.Config;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoMainMenuScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoNativeMainMenuScreen;
@@ -91,7 +92,7 @@ public final class EchoMainMenuEvents {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static boolean echoMenuEnabled() {

@@ -1,7 +1,7 @@
 package com.knoxhack.echo.hudcore;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echo.hudcore.client.EchoHudCoreOverlay;
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry.NativeClientRouteActionContext;
@@ -131,7 +131,7 @@ public final class EchoHudCoreClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private record NativeHudRenderContext(GuiGraphicsExtractor graphics, float partialTick) {

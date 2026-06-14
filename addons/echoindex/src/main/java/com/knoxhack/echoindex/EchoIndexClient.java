@@ -2,6 +2,7 @@ package com.knoxhack.echoindex;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindex.client.IndexCatalogScreen;
 import com.knoxhack.echoindex.client.IndexHotkeys;
@@ -1176,7 +1177,7 @@ public class EchoIndexClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     private static String text(Object value) {

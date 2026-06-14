@@ -1,6 +1,6 @@
 package com.knoxhack.echothemecore.client;
 
-import dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 
 public final class NativeLoaderTextIdentity {
     private static final String LABEL_PROPERTY = "echo.native.loader.label";
@@ -15,7 +15,7 @@ public final class NativeLoaderTextIdentity {
     }
 
     public static boolean active() {
-        return EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     public static String label() {

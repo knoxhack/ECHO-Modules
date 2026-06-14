@@ -1,5 +1,6 @@
 package com.knoxhack.echoashfallprotocol;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echocore.client.model.EchoMobFamily;
 import com.knoxhack.echocore.client.model.EchoMobFamilyRenderer;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
@@ -817,7 +818,7 @@ public class EchoAshfallProtocolClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return dev.echo.nativeplatform.contracts.EchoNativeClientRuntimeEnvironment.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     public static boolean ensureNativeClientRoutesRegisteredForNativeLoader() {
