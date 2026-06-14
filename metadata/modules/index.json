@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
-  "generatedAt": "2026-06-12T21:30:21.415Z",
-  "moduleCount": 131,
+  "generatedAt": "2026-06-14T21:32:00.988Z",
+  "moduleCount": 133,
   "modules": [
     {
       "id": "echoaccessibilitycore",
@@ -1409,6 +1409,85 @@
       "apiStability": "stable"
     },
     {
+      "id": "echodeepreachprotocol",
+      "name": "ECHO: Deep Reach Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "alpha",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echodeepreachprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echodeepreachprotocol",
+      "requires": [
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore",
+        "echoworldstarter",
+        "echocommonloot",
+        "echocreatureroles",
+        "echocore",
+        "echonetcore",
+        "echoadaptercore",
+        "echocontentcore",
+        "echoworldcore",
+        "echobiomecore",
+        "echostructurecore",
+        "echocreaturecore",
+        "echocombatcore",
+        "echohealthcore",
+        "echolootcore",
+        "echorecipecore",
+        "echoassetcore",
+        "echosoundcore",
+        "echothemecore",
+        "echoscreencore",
+        "echohudcore",
+        "echoplayercore",
+        "echonpcore",
+        "echoeconomycore",
+        "echohazardcore",
+        "echoequipmentcore",
+        "echosettlementcore",
+        "echoskillcore",
+        "echomissioncore",
+        "echoexpeditioncore",
+        "echoruincore",
+        "echovehiclecore",
+        "echoseasoncore",
+        "echosessioncore",
+        "echotelemetrycore"
+      ],
+      "optional": [
+        "echoindex",
+        "echotutorialcore",
+        "echoholomap",
+        "echolens",
+        "echoterminal",
+        "echorecovery",
+        "echoblockworks"
+      ],
+      "provides": [
+        "deepreach.content",
+        "deepreach.missions",
+        "deepreach.protocol",
+        "deepreach.survival",
+        "deepreach.world"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "foundation.*",
+        "hazard.registry",
+        "equipment.slots",
+        "settlement.registry"
+      ],
+      "apiStability": "alpha"
+    },
+    {
       "id": "echodependencydoctor",
       "name": "ECHO: DependencyDoctor",
       "version": "0.1.0",
@@ -1617,7 +1696,8 @@
         "echoadaptercore",
         "echoarmory",
         "echocombatcore",
-        "echotoolcore"
+        "echotoolcore",
+        "echohazardcore"
       ],
       "optional": [
         "echoaccessibilitycore"
@@ -1631,7 +1711,9 @@
       "consumes": [
         "armory.gear",
         "combat.stats",
-        "foundation.tools"
+        "foundation.tools",
+        "hazard.registry",
+        "hazard.resistance"
       ],
       "apiStability": "alpha"
     },
@@ -1871,6 +1953,74 @@
         "echo.native.save_data"
       ],
       "apiStability": "beta"
+    },
+    {
+      "id": "echogalacticsurveyprotocol",
+      "name": "ECHO: Galactic Survey Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "experimental",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "descriptorPath": "addons/echogalacticsurveyprotocol/src/main/resources/META-INF/echo.mod.json",
+      "moduleDir": "addons/echogalacticsurveyprotocol",
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore",
+        "echoruntimeguard"
+      ],
+      "optional": [
+        "echogalacticcore",
+        "echoorbitalremnants",
+        "echovehiclecore",
+        "echoholomap",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echomissioncore",
+        "echopowergrid",
+        "echologisticsnetwork",
+        "echoprogressioncore",
+        "echosoundcore"
+      ],
+      "provides": [
+        "galacticsurvey.content",
+        "galacticsurvey.sectors",
+        "galacticsurvey.bodies",
+        "galacticsurvey.probes",
+        "galacticsurvey.routes",
+        "galacticsurvey.discoveries",
+        "galacticsurvey.salvage",
+        "galacticsurvey.depots",
+        "galacticsurvey.runtime",
+        "galacticsurvey.terminal",
+        "galacticsurvey.holomap_layers",
+        "galacticsurvey.lens_profiles",
+        "galacticsurvey.missions",
+        "galacticsurvey.release_readiness"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "galactic.sectors",
+        "galactic.scan_data",
+        "holomap.layers",
+        "index.catalog",
+        "lens.scan_profiles",
+        "logistics.routes",
+        "missions.contracts",
+        "orbitalremnants.salvage_sites",
+        "power.grid",
+        "progression.unlock_graph",
+        "sound.telemetry",
+        "terminal.pages",
+        "vehicle.probes"
+      ],
+      "apiStability": "alpha"
     },
     {
       "id": "echogrimoire",
@@ -4035,7 +4185,9 @@
         "echobasegrid",
         "echonpcore",
         "echologisticscore",
-        "echoworldcore"
+        "echoworldcore",
+        "echohazardcore",
+        "echoequipmentcore"
       ],
       "optional": [
         "echofactioncore"
@@ -4049,8 +4201,10 @@
       "consumes": [
         "basegrid.claims",
         "npc.profiles",
-        "logistics.routes",
-        "world.regions"
+        "logistics.routing",
+        "world.regions",
+        "hazard.registry",
+        "hazard.resistance"
       ],
       "apiStability": "alpha"
     },

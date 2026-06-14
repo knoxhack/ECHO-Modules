@@ -16,14 +16,14 @@ This file documents the release outputs expected for `echohazardcore` version `0
 
 ## Release Boundary
 
-Status: Not Player Ready.
+Status: Runtime Ready.
 
-This module is source-packaged and contract-first until compiled runtime artifacts are published. Source-packaged outputs prove descriptor, metadata, native-surface, and packaging shape only. They must not be promoted as player-ready releases, and strict release generation must replace them with compiled runtime artifacts before publication.
+This module contains a compiled runtime implementation. The hazard registry, exposure engine, resistance provider integration, and player tick handler are active. Experience packs may extend it with additional hazard sources and resistance providers.
 
 ## Review Checklist
 
 - Descriptor ID, version, channel, API stability, trust level, side, and standalone support match the roadmap contract.
-- Native entrypoint reports contract metadata only and keeps `registryMutated` and `transformsPerformed` false.
+- Native entrypoint reports runtime state and lists registered hazards/sources.
 - `echo.platform_roadmap.module_contract.v1` data remains the authoritative small contract JSON for this roadmap module.
 - Any later gameplay implementation must update tests and keep this artifact boundary accurate.
 

@@ -1,0 +1,34 @@
+{
+  "parent": "echodeepreachprotocol:craft_divers_rig",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:remora_submersible"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_remora.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_remora.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_remora": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echodeepreachprotocol:remora_submersible"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_remora"
+    ]
+  ]
+}

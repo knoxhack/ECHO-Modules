@@ -4,7 +4,7 @@ This roadmap is implemented as contract-first modules. The first pass makes pack
 
 ## Review Baseline
 
-- Module catalog baseline: 131 descriptors after roadmap generation.
+- Module catalog baseline: 133 descriptors after roadmap generation.
 - Source of truth: `scripts/generate-platform-roadmap-modules.mjs` owns roadmap module scaffolds, bundle metadata, and roadmap docs.
 - Validator: `scripts/validate-platform-roadmap.mjs` enforces descriptor invariants, native entrypoints, bundle files, docs, and index membership.
 - Release posture: Phase 1 source-packaging smoke proves artifact shape only; compiled runtime artifacts are still required before player-ready publication.

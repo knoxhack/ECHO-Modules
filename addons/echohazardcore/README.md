@@ -4,7 +4,7 @@ Generic hazards for heat, cold, radiation, oxygen, pressure, corruption, disease
 
 ## Review Status
 
-This is a Phase 4 ECHO platform roadmap module and is ready for contract review. The first implementation is contract-first: descriptor metadata, native surface discovery, data contracts, docs, and release artifact metadata. It is not a finished gameplay/runtime implementation.
+This is a Phase 4 ECHO platform roadmap module. Runtime implementation is present. The module provides `HazardService`, built-in hazard types, exposure sources, resistance provider integration, and player tick damage/status application. Additional hazards and polish may be added by experience packs.
 
 ## Public Contracts
 
@@ -14,11 +14,11 @@ This is a Phase 4 ECHO platform roadmap module and is ready for contract review.
 
 ## Native Probe
 
-The native entrypoint reports the standard roadmap activation map: `activated`, `activationStage`, `adapterCoreUsed`, `nativeAdapterCodeExecuted`, `moduleId`, `packId`, `registeredFeatureContracts`, `logicalRegistrationCount`, `adapterDomains`, `runtimeTargets`, `referenceProbe`, `registryMutated: false`, and `transformsPerformed: false`.
+The native entrypoint reports the runtime activation map: `activated`, `activationStage`, `adapterCoreUsed`, `nativeAdapterCodeExecuted`, `moduleId`, `packId`, `registeredFeatureContracts`, `logicalRegistrationCount`, `registeredHazardCount`, `adapterDomains`, `runtimeTargets`, `referenceProbe`, `registryMutated: true`, and `transformsPerformed: false`.
 
 ## Contract Boundary
 
-This module exposes schemas, descriptors, data contracts, artifact metadata, and native surface probes only. Deeper gameplay behavior, runtime state mutation, player-facing loops, server operations, and destructive writes must land in later implementation work behind validation and policy gates.
+This module exposes the hazard runtime surface: registry, exposure evaluation, resistance aggregation, and world hooks. Experience packs register additional hazard sources and consume final exposure through `HazardService`. Destructive writes and player damage application are gated by the tick handler and respect difficulty scaling.
 
 ## References
 

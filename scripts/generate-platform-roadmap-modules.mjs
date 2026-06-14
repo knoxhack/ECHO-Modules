@@ -288,10 +288,10 @@ export const ROADMAP_MODULES = [
     role: 'settlement_core',
     kind: 'library',
     summary: 'Bases, shelters, NPC jobs, storage needs, defense score, comfort, and logistics request contracts.',
-    requires: ['echobasegrid', 'echonpcore', 'echologisticscore', 'echoworldcore'],
+    requires: ['echobasegrid', 'echonpcore', 'echologisticscore', 'echoworldcore', 'echohazardcore', 'echoequipmentcore'],
     optional: ['echofactioncore'],
     provides: ['settlement.registry', 'settlement.jobs', 'settlement.defense_score', 'settlement.logistics_requests'],
-    consumes: ['basegrid.claims', 'npc.profiles', 'logistics.routes', 'world.regions'],
+    consumes: ['basegrid.claims', 'npc.profiles', 'logistics.routing', 'world.regions', 'hazard.registry', 'hazard.resistance'],
     adapterDomains: ['data', 'entities', 'worldgen'],
     permissions: ['settlement.read', 'settlement.write'],
     mvpContracts: ['settlement_snapshot', 'npc_job_contract', 'defense_score_contract', 'logistics_request_contract'],
@@ -322,10 +322,10 @@ export const ROADMAP_MODULES = [
     role: 'equipment_core',
     kind: 'library',
     summary: 'Gear slots, durability rules, upgrades, modifiers, and loadout validation contracts.',
-    requires: ['echoarmory', 'echocombatcore', 'echotoolcore'],
+    requires: ['echoarmory', 'echocombatcore', 'echotoolcore', 'echohazardcore'],
     optional: ['echoaccessibilitycore'],
     provides: ['equipment.slots', 'equipment.durability', 'equipment.upgrades', 'equipment.loadout_validation'],
-    consumes: ['armory.gear', 'combat.stats', 'foundation.tools'],
+    consumes: ['armory.gear', 'combat.stats', 'foundation.tools', 'hazard.registry', 'hazard.resistance'],
     adapterDomains: ['data', 'items'],
     permissions: ['equipment.read', 'equipment.write'],
     mvpContracts: ['gear_slot_contract', 'durability_rules', 'upgrade_modifiers', 'loadout_validation'],
@@ -498,6 +498,16 @@ const BUNDLES = [
     bestFor: ['Sky Relay', 'Storm routes', 'Restoration loops'],
     packStyles: ['sky_relay', 'official_pack'],
     accent: '#6aa6ff',
+  },
+  {
+    id: 'deep_reach_official',
+    name: 'Deep Reach Official Bundle',
+    description: 'Deep Reach protocol plus Foundation and pressure-suit survival support modules.',
+    requiredModules: ['echocore', 'echoadaptercore', 'echonetcore', ...FOUNDATION_NATIVE_MODULES.map((module) => module.id), 'echodeepreachprotocol'],
+    optionalModules: ['echoassetcore', 'echobiomecore', 'echocontentcore', 'echocreaturecore', 'echocombatcore', 'echohealthcore', 'echolootcore', 'echorecipecore', 'echostructurecore', 'echoworldcore', 'echosoundcore', 'echothemecore', 'echoscreencore', 'echohudcore', 'echoplayercore', 'echonpcore', 'echoeconomycore', 'echohazardcore', 'echoequipmentcore', 'echosettlementcore', 'echoskillcore', 'echomissioncore', 'echoexpeditioncore', 'echoruincore', 'echovehiclecore', 'echoseasoncore', 'echosessioncore', 'echotelemetrycore', 'echoindex', 'echotutorialcore', 'echoholomap', 'echolens', 'echoterminal', 'echorecovery', 'echoblockworks'],
+    bestFor: ['Deep Reach', 'Pressure-suit survival', 'Abyssal exploration'],
+    packStyles: ['deep_reach', 'official_pack'],
+    accent: '#2ec4b6',
   },
   {
     id: 'arcana_division',
@@ -943,6 +953,15 @@ This module is source-packaged and contract-first until compiled runtime artifac
 
 function writeRoadmapModule(module) {
   const base = `addons/${module.id}`
+  const contractPath = `${base}/src/main/resources/data/${module.id}/roadmap/contracts.json`
+  // Runtime-ready modules have left the contract-first scaffold; do not overwrite them.
+  if (fs.existsSync(absolute(contractPath))) {
+    const existing = readJson(contractPath)
+    if (existing.status === 'runtime-ready') {
+      console.log(`Skipping runtime-ready roadmap module: ${module.id}`)
+      return
+    }
+  }
   writeText(`${base}/build.gradle`, moduleBuildGradle(module))
   writeText(`${base}/gradle.properties`, gradleProperties(module))
   writeText(`${base}/README.md`, readme(module))

@@ -20,6 +20,7 @@ neoForge {
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
+            sourceSet(sourceSets.test)
         }
     }
 }
@@ -35,6 +36,8 @@ dependencies {
     implementation project(":echonpcore")
     implementation project(":echologisticscore")
     implementation project(":echoworldcore")
+    implementation project(":echohazardcore")
+    implementation project(":echoequipmentcore")
     compileOnly project(":echo-native-contracts")
 }
 

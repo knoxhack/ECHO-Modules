@@ -1,0 +1,35 @@
+{
+  "parent": "echodeepreachprotocol:craft_abyssal_exosuit",
+  "display": {
+    "icon": {
+      "id": "echoequipmentcore:lattice_void_suit"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_lattice_void_suit.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_lattice_void_suit.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_lattice_void_suit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoequipmentcore:lattice_void_suit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_lattice_void_suit"
+    ]
+  ]
+}

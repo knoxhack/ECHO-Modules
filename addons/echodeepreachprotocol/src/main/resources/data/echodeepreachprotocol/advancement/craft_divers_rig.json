@@ -1,0 +1,34 @@
+{
+  "parent": "echodeepreachprotocol:craft_shoal_suit",
+  "display": {
+    "icon": {
+      "id": "echoequipmentcore:divers_rig"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_divers_rig.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_divers_rig.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_divers_rig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoequipmentcore:divers_rig"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_divers_rig"
+    ]
+  ]
+}

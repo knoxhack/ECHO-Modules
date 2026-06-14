@@ -1,0 +1,52 @@
+{
+  "id": "echodeepreachprotocol:secure_first_habitat",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_0",
+  "phaseTitle": "Shoal Anchor",
+  "phaseOrder": 0,
+  "order": 0,
+  "title": "Secure First Habitat",
+  "briefing": "Anchor the first pressurized shelter in the Shoals. Place a thermal vent frame and secure a pressure suit before the tide shifts.",
+  "fieldGuide": "First Deep Reach campaign step: establish a breathable, stable foothold near the shoals.",
+  "category": "survival",
+  "difficulty": "easy",
+  "icon": "echodeepreachprotocol:thermal_vent",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:secure_first_habitat/place_thermal_vent",
+      "type": "place_block",
+      "label": "Place a Thermal Vent",
+      "detail": "Anchor the habitat around an active vent until a proper settlement hull is available.",
+      "icon": "echodeepreachprotocol:thermal_vent",
+      "target": "echodeepreachprotocol:thermal_vent",
+      "required": 1
+    },
+    {
+      "id": "echodeepreachprotocol:secure_first_habitat/obtain_pressure_suit",
+      "type": "obtain_item",
+      "label": "Obtain a Pressure Suit",
+      "detail": "Find or craft a suit that can survive the first pressure boundary.",
+      "icon": "echoequipmentcore:shoal_suit",
+      "target": "echoequipmentcore:shoal_suit",
+      "required": 1
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:secure_first_habitat/reward_vent_crab_shell",
+      "item": "echodeepreachprotocol:vent_crab_shell",
+      "count": 3,
+      "label": "Vent Crab Shell",
+      "detail": "Tough plating salvaged from local vent crabs."
+    },
+    {
+      "id": "echodeepreachprotocol:secure_first_habitat/reward_sunken_sand",
+      "item": "echodeepreachprotocol:sunken_sand",
+      "count": 8,
+      "label": "Sunken Sand",
+      "detail": "Compressed seabed sediment for early construction."
+    }
+  ],
+  "completionText": "Habitat anchored and pressure protection confirmed. The Shoals are hostile, but survivable."
+}

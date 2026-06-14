@@ -4,7 +4,7 @@
   "name": "ECHO: HazardCore",
   "phase": 4,
   "role": "hazard_core",
-  "status": "contract-first",
+  "status": "runtime-ready",
   "summary": "Generic hazards for heat, cold, radiation, oxygen, pressure, corruption, disease, and storm exposure.",
   "dependencies": {
     "requires": [
@@ -47,8 +47,9 @@
   "probeAssertions": [
     "native entrypoint activates",
     "logical registration count equals descriptor provides count",
-    "registryMutated remains false",
-    "transformsPerformed remains false"
+    "hazard registry contains built-in hazard types",
+    "registered hazard sources apply exposure on player tick",
+    "resistance providers reduce final exposure"
   ],
-  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+  "implementationBoundary": "Runtime implementation is present. HazardService, built-in hazard types, exposure sources, and resistance provider integration are active. Additional hazards and polish may be added by experience packs."
 }

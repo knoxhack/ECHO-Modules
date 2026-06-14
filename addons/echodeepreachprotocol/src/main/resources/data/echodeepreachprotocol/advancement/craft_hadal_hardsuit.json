@@ -1,0 +1,35 @@
+{
+  "parent": "echodeepreachprotocol:craft_lattice_void_suit",
+  "display": {
+    "icon": {
+      "id": "echoequipmentcore:hadal_hardsuit"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_hadal_hardsuit.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_hadal_hardsuit.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_hadal_hardsuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoequipmentcore:hadal_hardsuit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_hadal_hardsuit"
+    ]
+  ]
+}

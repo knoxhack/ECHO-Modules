@@ -1,0 +1,36 @@
+{
+  "parent": "echodeepreachprotocol:craft_remora",
+  "display": {
+    "icon": {
+      "id": "echosettlementcore:submersible_dock"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.build_submersible_dock.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.build_submersible_dock.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "place_submersible_dock": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echosettlementcore:submersible_dock"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "place_submersible_dock"
+    ]
+  ]
+}

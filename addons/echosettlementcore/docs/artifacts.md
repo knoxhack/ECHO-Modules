@@ -16,14 +16,14 @@ This file documents the release outputs expected for `echosettlementcore` versio
 
 ## Release Boundary
 
-Status: Not Player Ready.
+Status: Runtime Ready.
 
-This module is source-packaged and contract-first until compiled runtime artifacts are published. Source-packaged outputs prove descriptor, metadata, native-surface, and packaging shape only. They must not be promoted as player-ready releases, and strict release generation must replace them with compiled runtime artifacts before publication.
+This module contains a compiled runtime implementation. Habitat blocks, block entities, settlement registry, NPC jobs, logistics requests, and hazard resistance integration are active.
 
 ## Review Checklist
 
 - Descriptor ID, version, channel, API stability, trust level, side, and standalone support match the roadmap contract.
-- Native entrypoint reports contract metadata only and keeps `registryMutated` and `transformsPerformed` false.
+- Native entrypoint reports runtime state and lists registered blocks/jobs.
 - `echo.platform_roadmap.module_contract.v1` data remains the authoritative small contract JSON for this roadmap module.
 - Any later gameplay implementation must update tests and keep this artifact boundary accurate.
 

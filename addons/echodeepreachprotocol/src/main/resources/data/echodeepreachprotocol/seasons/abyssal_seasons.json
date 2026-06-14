@@ -1,0 +1,73 @@
+{
+  "provider": "echoseasoncore",
+  "cycleId": "echodeepreachprotocol:abyssal_cycle",
+  "name": "Abyssal Cycle",
+  "description": "The Deep Reach does not have weather; it has moods. Five abyssal seasons rotate through the calendar, reshaping pressure, life, and hazard intensity.",
+  "seasons": [
+    {
+      "id": "echodeepreachprotocol:the_still",
+      "name": "The Still",
+      "durationTicks": 48000,
+      "description": "Calm water, predictable pressure. The safest window for shallow expeditions.",
+      "multipliers": {
+        "pressure": 1.0,
+        "oxygen_deprivation": 1.0,
+        "thermal": 1.0,
+        "corruption": 1.0,
+        "spawn": 1.0
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:the_surge",
+      "name": "The Surge",
+      "durationTicks": 36000,
+      "description": "Currents strengthen and pressure gradients steepen. Deeper zones become more dangerous.",
+      "multipliers": {
+        "pressure": 1.25,
+        "oxygen_deprivation": 1.0,
+        "thermal": 1.15,
+        "corruption": 1.0,
+        "spawn": 1.2
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:the_bloom",
+      "name": "The Bloom",
+      "durationTicks": 36000,
+      "description": "Bioluminescent life flourishes. Oxygen demand rises but corruption seems muted.",
+      "multipliers": {
+        "pressure": 1.0,
+        "oxygen_deprivation": 1.2,
+        "thermal": 1.0,
+        "corruption": 0.8,
+        "spawn": 1.0
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:the_hunger",
+      "name": "The Hunger",
+      "durationTicks": 36000,
+      "description": "Predators swarm. Creature activity peaks and thermal vents run hot.",
+      "multipliers": {
+        "pressure": 1.0,
+        "oxygen_deprivation": 1.0,
+        "thermal": 1.2,
+        "corruption": 1.0,
+        "spawn": 1.5
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:the_tremor",
+      "name": "The Tremor",
+      "durationTicks": 24000,
+      "description": "Seismic instability spikes. Pressure and structural hazards reach their worst.",
+      "multipliers": {
+        "pressure": 1.35,
+        "oxygen_deprivation": 1.1,
+        "thermal": 1.1,
+        "corruption": 1.1,
+        "spawn": 1.0
+      }
+    }
+  ]
+}

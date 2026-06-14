@@ -1,0 +1,68 @@
+{
+  "id": "echodeepreachprotocol:survey_twilight_caverns",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_1",
+  "phaseTitle": "Twilight Survey",
+  "phaseOrder": 1,
+  "order": 0,
+  "title": "Survey Twilight Caverns",
+  "briefing": "Map the cavern threshold where the last daylight fades. Clear stalkers from a vent site and establish a forward light marker.",
+  "fieldGuide": "Mid-depth exploration mission in the Deep Reach campaign.",
+  "category": "exploration",
+  "difficulty": "medium",
+  "icon": "echodeepreachprotocol:twilight_stalker_spawn_egg",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:survey_twilight_caverns/enter_twilight_caverns",
+      "type": "enter_region",
+      "label": "Enter the Twilight Caverns",
+      "detail": "Cross into the dim biome where the stalkers hunt.",
+      "icon": "echodeepreachprotocol:twilight_stalker_spawn_egg",
+      "target": "echodeepreachprotocol:twilight_caverns",
+      "required": 1,
+      "criteria": {
+        "location_type": "biome",
+        "location": "echodeepreachprotocol:twilight_caverns"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:survey_twilight_caverns/cull_stalkers",
+      "type": "kill_entity",
+      "label": "Cull Twilight Stalkers",
+      "detail": "Eliminate threats around the survey point.",
+      "icon": "echodeepreachprotocol:twilight_stalker_spawn_egg",
+      "target": "echodeepreachprotocol:twilight_stalker",
+      "required": 2,
+      "criteria": {
+        "entity": "echodeepreachprotocol:twilight_stalker"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:survey_twilight_caverns/place_thermal_vent",
+      "type": "place_block",
+      "label": "Place a Forward Thermal Vent",
+      "detail": "Mark the cavern route with a vent beacon for safe return.",
+      "icon": "echodeepreachprotocol:thermal_vent",
+      "target": "echodeepreachprotocol:thermal_vent",
+      "required": 1
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:survey_twilight_caverns/reward_lattice_crystal",
+      "item": "echodeepreachprotocol:lattice_crystal",
+      "count": 4,
+      "label": "Lattice Crystal",
+      "detail": "Strange resonant crystal common in deeper ruins."
+    },
+    {
+      "id": "echodeepreachprotocol:survey_twilight_caverns/reward_abyssal_stone",
+      "item": "echodeepreachprotocol:abyssal_stone",
+      "count": 8,
+      "label": "Abyssal Stone",
+      "detail": "Dense stone used for pressure-resistant construction."
+    }
+  ],
+  "completionText": "Twilight Caverns surveyed and a forward vent is burning. The route deeper is marked."
+}

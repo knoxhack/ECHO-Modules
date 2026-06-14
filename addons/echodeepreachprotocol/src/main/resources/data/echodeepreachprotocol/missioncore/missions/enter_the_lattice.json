@@ -1,0 +1,59 @@
+{
+  "id": "echodeepreachprotocol:enter_the_lattice",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_3",
+  "phaseTitle": "Lattice Incursion",
+  "phaseOrder": 3,
+  "order": 0,
+  "title": "Enter the Lattice",
+  "briefing": "The Lattice hums beneath the Abyssal Rifts. Cross into its resonant biome and clear the sentinels that guard the crystal fields.",
+  "fieldGuide": "Late-campaign exploration milestone in the Lattice biome.",
+  "category": "exploration",
+  "difficulty": "hard",
+  "icon": "echodeepreachprotocol:lattice_crystal",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:enter_the_lattice/enter_the_lattice",
+      "type": "enter_region",
+      "label": "Enter the Lattice",
+      "detail": "Step into the resonant biome where the crystal fields grow dense.",
+      "icon": "echodeepreachprotocol:lattice_crystal",
+      "target": "echodeepreachprotocol:the_lattice",
+      "required": 1,
+      "criteria": {
+        "location_type": "biome",
+        "location": "echodeepreachprotocol:the_lattice"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:enter_the_lattice/cull_lattice_sentinels",
+      "type": "kill_entity",
+      "label": "Cull Lattice Sentinels",
+      "detail": "Destroy the guardians patrolling the crystal fields.",
+      "icon": "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+      "target": "echodeepreachprotocol:lattice_sentinel",
+      "required": 3,
+      "criteria": {
+        "entity": "echodeepreachprotocol:lattice_sentinel"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:enter_the_lattice/reward_lattice_crystal",
+      "item": "echodeepreachprotocol:lattice_crystal",
+      "count": 4,
+      "label": "Lattice Crystal",
+      "detail": "Resonant crystals salvaged from the fields."
+    },
+    {
+      "id": "echodeepreachprotocol:enter_the_lattice/reward_abyssal_stone",
+      "item": "echodeepreachprotocol:abyssal_stone",
+      "count": 8,
+      "label": "Abyssal Stone",
+      "detail": "Dense stone useful for deep outposts."
+    }
+  ],
+  "completionText": "The Lattice has accepted your presence, and its sentinels have been silenced. The crystals are yours to study."
+}

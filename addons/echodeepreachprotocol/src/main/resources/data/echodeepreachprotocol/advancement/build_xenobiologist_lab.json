@@ -1,0 +1,36 @@
+{
+  "parent": "echodeepreachprotocol:build_habitat",
+  "display": {
+    "icon": {
+      "id": "echosettlementcore:xenobiologist_lab"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.build_xenobiologist_lab.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.build_xenobiologist_lab.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "place_xenobiologist_lab": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echosettlementcore:xenobiologist_lab"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "place_xenobiologist_lab"
+    ]
+  ]
+}

@@ -4,7 +4,7 @@
   "name": "ECHO: EquipmentCore",
   "phase": 4,
   "role": "equipment_core",
-  "status": "contract-first",
+  "status": "runtime-ready",
   "summary": "Gear slots, durability rules, upgrades, modifiers, and loadout validation contracts.",
   "dependencies": {
     "requires": [
@@ -12,7 +12,8 @@
       "echoadaptercore",
       "echoarmory",
       "echocombatcore",
-      "echotoolcore"
+      "echotoolcore",
+      "echohazardcore"
     ],
     "optional": [
       "echoaccessibilitycore"
@@ -28,7 +29,9 @@
     "consumes": [
       "armory.gear",
       "combat.stats",
-      "foundation.tools"
+      "foundation.tools",
+      "hazard.registry",
+      "hazard.resistance"
     ],
     "adapterDomains": [
       "data",
@@ -45,8 +48,9 @@
   "probeAssertions": [
     "native entrypoint activates",
     "logical registration count equals descriptor provides count",
-    "registryMutated remains false",
-    "transformsPerformed remains false"
+    "equipment slots are registered",
+    "diving suit tiers provide pressure resistance",
+    "resistance provider is registered with HazardService"
   ],
-  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+  "implementationBoundary": "Runtime implementation is present. EquipmentService, suit/rebreather/tool items, upgrade modifiers, durability, and hazard resistance integration are active."
 }

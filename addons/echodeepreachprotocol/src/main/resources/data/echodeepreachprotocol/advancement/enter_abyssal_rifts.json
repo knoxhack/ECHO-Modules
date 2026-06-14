@@ -1,0 +1,41 @@
+{
+  "parent": "echodeepreachprotocol:enter_twilight_caverns",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:abyssal_stone"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.enter_abyssal_rifts.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.enter_abyssal_rifts.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enter_abyssal_rifts": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "echodeepreachprotocol:abyssal_rifts"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter_abyssal_rifts"
+    ]
+  ]
+}

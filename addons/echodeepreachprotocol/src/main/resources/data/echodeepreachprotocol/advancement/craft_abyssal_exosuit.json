@@ -1,0 +1,35 @@
+{
+  "parent": "echodeepreachprotocol:craft_divers_rig",
+  "display": {
+    "icon": {
+      "id": "echoequipmentcore:abyssal_exosuit"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_abyssal_exosuit.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_abyssal_exosuit.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_abyssal_exosuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoequipmentcore:abyssal_exosuit"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_abyssal_exosuit"
+    ]
+  ]
+}

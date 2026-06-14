@@ -1,0 +1,147 @@
+{
+  "type": "echodeepreachprotocol:deep_reach",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "echodeepreachprotocol:shoals",
+          "parameters": {
+            "temperature": [
+              0.25,
+              0.65
+            ],
+            "humidity": [
+              0.35,
+              0.85
+            ],
+            "continentalness": [
+              -0.3,
+              0.25
+            ],
+            "erosion": [
+              -1.0,
+              1.0
+            ],
+            "depth": 0.0,
+            "weirdness": [
+              -0.35,
+              0.35
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "echodeepreachprotocol:twilight_caverns",
+          "parameters": {
+            "temperature": [
+              0.35,
+              0.75
+            ],
+            "humidity": [
+              0.0,
+              0.45
+            ],
+            "continentalness": [
+              -0.15,
+              0.35
+            ],
+            "erosion": [
+              -0.5,
+              0.5
+            ],
+            "depth": 0.35,
+            "weirdness": [
+              -0.5,
+              0.5
+            ],
+            "offset": 0.05
+          }
+        },
+        {
+          "biome": "echodeepreachprotocol:abyssal_rifts",
+          "parameters": {
+            "temperature": [
+              0.55,
+              0.95
+            ],
+            "humidity": [
+              0.45,
+              0.95
+            ],
+            "continentalness": [
+              -0.45,
+              0.05
+            ],
+            "erosion": [
+              -1.0,
+              0.0
+            ],
+            "depth": 0.65,
+            "weirdness": [
+              -0.75,
+              0.75
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "echodeepreachprotocol:the_lattice",
+          "parameters": {
+            "temperature": [
+              -0.15,
+              0.35
+            ],
+            "humidity": [
+              -0.35,
+              0.25
+            ],
+            "continentalness": [
+              0.15,
+              0.65
+            ],
+            "erosion": [
+              -0.75,
+              0.25
+            ],
+            "depth": 0.45,
+            "weirdness": [
+              0.25,
+              1.0
+            ],
+            "offset": 0.08
+          }
+        },
+        {
+          "biome": "echodeepreachprotocol:hadal_trenches",
+          "parameters": {
+            "temperature": [
+              -0.25,
+              0.15
+            ],
+            "humidity": [
+              0.55,
+              1.0
+            ],
+            "continentalness": [
+              -0.65,
+              -0.15
+            ],
+            "erosion": [
+              -1.0,
+              -0.25
+            ],
+            "depth": 0.85,
+            "weirdness": [
+              -1.0,
+              1.0
+            ],
+            "offset": 0.12
+          }
+        }
+      ]
+    },
+    "settings": "minecraft:overworld"
+  }
+}

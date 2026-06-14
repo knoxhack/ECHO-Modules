@@ -1,0 +1,55 @@
+{
+  "id": "echodeepreachprotocol:recover_lattice_archive",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_2",
+  "phaseTitle": "Lattice Recovery",
+  "phaseOrder": 2,
+  "order": 0,
+  "title": "Recover a Lattice Archive",
+  "briefing": "The Lattice archives hold pre-collapse deep-reach telemetry. Locate an archive structure and extract a crystal sample before the sentinels lock it down.",
+  "fieldGuide": "Mid-campaign recovery mission focused on structure exploration.",
+  "category": "exploration",
+  "difficulty": "medium",
+  "icon": "echodeepreachprotocol:lattice_crystal",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:recover_lattice_archive/enter_lattice_archive",
+      "type": "discover_structure",
+      "label": "Enter a Lattice Archive",
+      "detail": "Find and enter the buried archive structure.",
+      "icon": "echodeepreachprotocol:lattice_crystal",
+      "target": "echodeepreachprotocol:lattice_archive",
+      "required": 1,
+      "criteria": {
+        "structure": "echodeepreachprotocol:lattice_archive"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:recover_lattice_archive/obtain_lattice_crystal",
+      "type": "obtain_item",
+      "label": "Recover a Lattice Crystal",
+      "detail": "Carry a resonant crystal sample out of the archive.",
+      "icon": "echodeepreachprotocol:lattice_crystal",
+      "target": "echodeepreachprotocol:lattice_crystal",
+      "required": 1
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:recover_lattice_archive/reward_hadal_wraith_egg",
+      "item": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+      "count": 1,
+      "label": "Hadal Wraith Spawn Egg",
+      "detail": "A contained sample of the deepest known predator."
+    },
+    {
+      "id": "echodeepreachprotocol:recover_lattice_archive/reward_lattice_crystal",
+      "item": "echodeepreachprotocol:lattice_crystal",
+      "count": 2,
+      "label": "Lattice Crystal",
+      "detail": "Additional resonant crystals for crafting or study."
+    }
+  ],
+  "completionText": "Lattice archive breached and crystal sample secured. The data patterns point toward the Hadal Trenches."
+}

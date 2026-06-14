@@ -1,0 +1,135 @@
+{
+  "schema": "echo.mod.v1",
+  "id": "echodeepreachprotocol",
+  "name": "ECHO: Deep Reach Protocol",
+  "version": "0.1.0",
+  "type": "addon",
+  "kind": "pack_root",
+  "role": "official_pack",
+  "entrypoint": "com.knoxhack.echodeepreachprotocol.EchoDeepReachProtocol",
+  "publisher": "KnoxHack",
+  "channel": "alpha",
+  "official": true,
+  "trustLevel": "official",
+  "standalone": true,
+  "clientOnly": false,
+  "serverOnly": false,
+  "side": "common",
+  "requires": [
+    "echofoundationcore",
+    "echomaterialcore",
+    "echotoolcore",
+    "echostationcore",
+    "echoworldstarter",
+    "echocommonloot",
+    "echocreatureroles",
+    "echocore",
+    "echonetcore",
+    "echoadaptercore",
+    "echocontentcore",
+    "echoworldcore",
+    "echobiomecore",
+    "echostructurecore",
+    "echocreaturecore",
+    "echocombatcore",
+    "echohealthcore",
+    "echolootcore",
+    "echorecipecore",
+    "echoassetcore",
+    "echosoundcore",
+    "echothemecore",
+    "echoscreencore",
+    "echohudcore",
+    "echoplayercore",
+    "echonpcore",
+    "echoeconomycore",
+    "echohazardcore",
+    "echoequipmentcore",
+    "echosettlementcore",
+    "echoskillcore",
+    "echomissioncore",
+    "echoexpeditioncore",
+    "echoruincore",
+    "echovehiclecore",
+    "echoseasoncore",
+    "echosessioncore",
+    "echotelemetrycore"
+  ],
+  "optional": [
+    "echoindex",
+    "echotutorialcore",
+    "echoholomap",
+    "echolens",
+    "echoterminal",
+    "echorecovery",
+    "echoblockworks"
+  ],
+  "provides": [
+    "deepreach.content",
+    "deepreach.missions",
+    "deepreach.protocol",
+    "deepreach.survival",
+    "deepreach.world"
+  ],
+  "consumes": [
+    "echo.core",
+    "echo.net",
+    "foundation.*",
+    "hazard.registry",
+    "equipment.slots",
+    "settlement.registry"
+  ],
+  "gameModes": [
+    "deepreach_survival"
+  ],
+  "permissions": [
+    "commands.register",
+    "data.world",
+    "gameplay.content",
+    "pack.root"
+  ],
+  "assets": [],
+  "transforms": [],
+  "access": {
+    "adapterCore": {
+      "domains": [
+        "blocks",
+        "commands",
+        "data",
+        "entities",
+        "items",
+        "loot",
+        "missions",
+        "networking",
+        "recipes",
+        "saves",
+        "sounds",
+        "structures",
+        "ui_screens",
+        "worldgen"
+      ],
+      "runtimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ]
+    },
+    "nativeEntrypoint": "com.knoxhack.echodeepreachprotocol.EchoDeepReachNativeModule",
+    "nativeClasspath": [],
+    "requiresConfirmationForWriteActions": true,
+    "notes": "Deep Reach Protocol owns Official ECHO Pack #4 pressure-suit survival content. NeoForge is a compatibility output; Echo data IDs remain the source of truth for Native and Standalone parity."
+  },
+  "apiStability": "alpha",
+  "ai": {
+    "requiresHumanReview": true,
+    "recommendedAgentLanes": [
+      "metadata_agent",
+      "validation_agent",
+      "asset_agent",
+      "parity_agent"
+    ]
+  },
+  "deprecatedFeatures": [],
+  "replacements": [],
+  "conflicts": []
+}

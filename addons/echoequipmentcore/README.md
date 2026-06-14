@@ -4,21 +4,21 @@ Gear slots, durability rules, upgrades, modifiers, and loadout validation contra
 
 ## Review Status
 
-This is a Phase 4 ECHO platform roadmap module and is ready for contract review. The first implementation is contract-first: descriptor metadata, native surface discovery, data contracts, docs, and release artifact metadata. It is not a finished gameplay/runtime implementation.
+This is a Phase 4 ECHO platform roadmap module. Runtime implementation is present. The module provides `EquipmentService`, suit/rebreather/light/tool items, upgrade modifiers, durability, and hazard resistance integration.
 
 ## Public Contracts
 
 - Provides: `equipment.slots`, `equipment.durability`, `equipment.upgrades`, `equipment.loadout_validation`
-- Consumes: `armory.gear`, `combat.stats`, `foundation.tools`
+- Consumes: `armory.gear`, `combat.stats`, `foundation.tools`, `hazard.registry`, `hazard.resistance`
 - MVP contracts: `gear_slot_contract`, `durability_rules`, `upgrade_modifiers`, `loadout_validation`
 
 ## Native Probe
 
-The native entrypoint reports the standard roadmap activation map: `activated`, `activationStage`, `adapterCoreUsed`, `nativeAdapterCodeExecuted`, `moduleId`, `packId`, `registeredFeatureContracts`, `logicalRegistrationCount`, `adapterDomains`, `runtimeTargets`, `referenceProbe`, `registryMutated: false`, and `transformsPerformed: false`.
+The native entrypoint reports the runtime activation map: `activated`, `activationStage`, `adapterCoreUsed`, `nativeAdapterCodeExecuted`, `moduleId`, `packId`, `registeredFeatureContracts`, `logicalRegistrationCount`, `registeredSlots`, `registeredItems`, `adapterDomains`, `runtimeTargets`, `referenceProbe`, `registryMutated: true`, and `transformsPerformed: false`.
 
 ## Contract Boundary
 
-This module exposes schemas, descriptors, data contracts, artifact metadata, and native surface probes only. Deeper gameplay behavior, runtime state mutation, player-facing loops, server operations, and destructive writes must land in later implementation work behind validation and policy gates.
+This module exposes the equipment runtime surface: slots, stats, durability, upgrades, and loadout validation. Experience packs register equipment items and upgrades. Hazard resistance is contributed through the `IHazardResistanceProvider` integration.
 
 ## References
 

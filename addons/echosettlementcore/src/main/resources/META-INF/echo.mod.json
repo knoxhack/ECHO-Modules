@@ -22,7 +22,9 @@
     "echobasegrid",
     "echonpcore",
     "echologisticscore",
-    "echoworldcore"
+    "echoworldcore",
+    "echohazardcore",
+    "echoequipmentcore"
   ],
   "optional": [
     "echofactioncore"
@@ -36,8 +38,10 @@
   "consumes": [
     "basegrid.claims",
     "npc.profiles",
-    "logistics.routes",
-    "world.regions"
+    "logistics.routing",
+    "world.regions",
+    "hazard.registry",
+    "hazard.resistance"
   ],
   "gameModes": [
     "ashfall",
@@ -68,12 +72,12 @@
     "nativeEntrypoint": "com.knoxhack.echo.settlementcore.EchoSettlementCoreNativeModule",
     "nativeClasspath": [],
     "requiresConfirmationForWriteActions": true,
-    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+    "notes": "Settlement runtime module: habitats, NPC jobs, logistics requests, and hazard resistance."
   },
   "apiStability": "alpha",
   "roadmap": {
     "phase": 4,
-    "status": "contract-first",
+    "status": "runtime-ready",
     "mvpContracts": [
       "settlement_snapshot",
       "npc_job_contract",

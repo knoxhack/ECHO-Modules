@@ -1,0 +1,59 @@
+{
+  "id": "echodeepreachprotocol:reach_hadal_trench",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_3",
+  "phaseTitle": "Hadal Descent",
+  "phaseOrder": 3,
+  "order": 0,
+  "title": "Reach the Hadal Trench",
+  "briefing": "The campaign's deepest boundary lies in the Hadal Trenches. Survive the pressure, find the wraith that hunts the trench floor, and end it.",
+  "fieldGuide": "Late-campaign combat milestone for the Deep Reach route.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:reach_hadal_trench/enter_hadal_trenches",
+      "type": "enter_region",
+      "label": "Enter the Hadal Trenches",
+      "detail": "Descend into the deepest recorded biome of the Deep Reach.",
+      "icon": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+      "target": "echodeepreachprotocol:hadal_trenches",
+      "required": 1,
+      "criteria": {
+        "location_type": "biome",
+        "location": "echodeepreachprotocol:hadal_trenches"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:reach_hadal_trench/kill_hadal_wraith",
+      "type": "kill_entity",
+      "label": "Kill a Hadal Wraith",
+      "detail": "Put down the apex predator that claims the trench floor.",
+      "icon": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+      "target": "echodeepreachprotocol:hadal_wraith",
+      "required": 1,
+      "criteria": {
+        "entity": "echodeepreachprotocol:hadal_wraith"
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:reach_hadal_trench/reward_abyssal_stone",
+      "item": "echodeepreachprotocol:abyssal_stone",
+      "count": 8,
+      "label": "Abyssal Stone",
+      "detail": "Pressure-forged stone for the deepest outposts."
+    },
+    {
+      "id": "echodeepreachprotocol:reach_hadal_trench/reward_vent_crab_shell",
+      "item": "echodeepreachprotocol:vent_crab_shell",
+      "count": 4,
+      "label": "Vent Crab Shell",
+      "detail": "Salvaged plating useful for reinforcing dive gear."
+    }
+  ],
+  "completionText": "The Hadal Trench is no longer just a depth reading. You have walked the floor and survived its wraith."
+}

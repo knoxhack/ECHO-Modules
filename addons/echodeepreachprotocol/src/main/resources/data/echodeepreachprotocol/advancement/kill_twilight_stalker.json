@@ -1,0 +1,38 @@
+{
+  "parent": "echodeepreachprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:twilight_stalker_spawn_egg"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.kill_twilight_stalker.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.kill_twilight_stalker.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_twilight_stalker": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "echodeepreachprotocol:twilight_stalker"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_twilight_stalker"
+    ]
+  ]
+}

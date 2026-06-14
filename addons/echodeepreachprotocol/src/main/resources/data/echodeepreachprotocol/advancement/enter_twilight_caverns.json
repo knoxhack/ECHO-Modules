@@ -1,0 +1,40 @@
+{
+  "parent": "echodeepreachprotocol:enter_shoals",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:thermal_vent"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.enter_twilight_caverns.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.enter_twilight_caverns.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enter_twilight_caverns": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "echodeepreachprotocol:twilight_caverns"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter_twilight_caverns"
+    ]
+  ]
+}

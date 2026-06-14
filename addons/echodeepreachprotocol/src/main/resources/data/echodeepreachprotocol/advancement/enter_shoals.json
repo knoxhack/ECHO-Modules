@@ -1,0 +1,40 @@
+{
+  "parent": "echodeepreachprotocol:root",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:sunken_sand"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.enter_shoals.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.enter_shoals.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enter_shoals": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "echodeepreachprotocol:shoals"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter_shoals"
+    ]
+  ]
+}

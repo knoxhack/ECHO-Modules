@@ -1,0 +1,41 @@
+{
+  "parent": "echodeepreachprotocol:enter_abyssal_rifts",
+  "display": {
+    "icon": {
+      "id": "echodeepreachprotocol:lattice_crystal"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.enter_the_lattice.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.enter_the_lattice.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enter_the_lattice": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "echodeepreachprotocol:the_lattice"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter_the_lattice"
+    ]
+  ]
+}

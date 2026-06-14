@@ -1,0 +1,75 @@
+{
+  "carvers": [],
+  "creature_spawn_probability": 0.05,
+  "downfall": 0.8,
+  "effects": {
+    "fog_color": 5988193,
+    "foliage_color": 5588311,
+    "grass_color": 5733714,
+    "sky_color": 7907327,
+    "water_color": 3431846,
+    "water_fog_color": 1724143,
+    "ambient_loop_sound": "minecraft:ambient.underwater.loop",
+    "ambient_additions_sound": {
+      "sound": "minecraft:ambient.underwater.loop.additions",
+      "tick_chance": 0.01
+    }
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:seagrass_normal",
+      "minecraft:seagrass_cold",
+      "minecraft:seagrass_warm",
+      "minecraft:kelp_cold"
+    ],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 6
+      },
+      {
+        "type": "minecraft:salmon",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:dolphin",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ]
+  },
+  "temperature": 0.6
+}

@@ -17,9 +17,14 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 neoForge {
     version = project.neo_version
 
+    runs {
+        gameTestServer { type = "gameTestServer"; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id; programArguments.addAll '--tests', "${project.mod_id}:*" }
+    }
+
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
+            sourceSet(sourceSets.test)
         }
     }
 }
@@ -34,6 +39,7 @@ dependencies {
     implementation project(":echoarmory")
     implementation project(":echocombatcore")
     implementation project(":echotoolcore")
+    implementation project(":echohazardcore")
     compileOnly project(":echo-native-contracts")
 }
 

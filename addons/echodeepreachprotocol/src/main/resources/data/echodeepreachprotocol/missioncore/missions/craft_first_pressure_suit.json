@@ -1,0 +1,43 @@
+{
+  "id": "echodeepreachprotocol:craft_first_pressure_suit",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_0",
+  "phaseTitle": "Shoal Anchor",
+  "phaseOrder": 0,
+  "order": 1,
+  "title": "Craft a Pressure Suit",
+  "briefing": "A pressure suit is the difference between a dive and a death sentence. Craft or recover any diving-rated suit before pushing deeper.",
+  "fieldGuide": "Deep Reach crafting checkpoint: prove the player can assemble pressure gear.",
+  "category": "crafting",
+  "difficulty": "easy",
+  "icon": "echoequipmentcore:shoal_suit",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:craft_first_pressure_suit/obtain_diving_suit",
+      "type": "obtain_item",
+      "label": "Obtain a Diving Suit",
+      "detail": "Use a shoal suit or any equivalent diving suit from ECHO equipment.",
+      "icon": "echoequipmentcore:shoal_suit",
+      "target": "echoequipmentcore:shoal_suit",
+      "required": 1
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:craft_first_pressure_suit/reward_dive_tool",
+      "item": "echoequipmentcore:dive_tool",
+      "count": 1,
+      "label": "Dive Tool",
+      "detail": "Basic underwater cutting and prying tool."
+    },
+    {
+      "id": "echodeepreachprotocol:craft_first_pressure_suit/reward_light_sensor",
+      "item": "echoequipmentcore:light_sensor",
+      "count": 1,
+      "label": "Light Sensor",
+      "detail": "Portable photic sensor for mapping dark zones."
+    }
+  ],
+  "completionText": "Pressure suit and basic dive tools ready. The twilight zone is now within reach."
+}

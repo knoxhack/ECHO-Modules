@@ -1,0 +1,54 @@
+license="${mod_license}"
+issueTrackerURL="https://github.com/knoxhack/echo/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/knoxhack/echo"
+authors="KnoxHack"
+credits="Official ECHO pressure-suit survival pack root."
+description='''
+ECHO: Deep Reach Protocol provides the deepreach_survival game mode,
+pressure-suit content contract, and native surface description for the
+Deep Reach experience pack. NeoForge is a compatibility target; Echo data
+IDs remain the source of truth for Native and Standalone parity.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echocore"
+type="required"
+reason="Provides shared ECHO addon and pack-root services."
+versionRange="[0.1.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echonetcore"
+type="required"
+reason="Provides shared sync and multiplayer contracts for depth state and expeditions."
+versionRange="[0.1.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoadaptercore"
+type="required"
+reason="Keeps Deep Reach parity routed through Echo contracts instead of runtime-specific code."
+versionRange="[0.1.0,)"
+ordering="AFTER"
+side="BOTH"

@@ -21,7 +21,8 @@
     "echoadaptercore",
     "echoarmory",
     "echocombatcore",
-    "echotoolcore"
+    "echotoolcore",
+    "echohazardcore"
   ],
   "optional": [
     "echoaccessibilitycore"
@@ -35,7 +36,9 @@
   "consumes": [
     "armory.gear",
     "combat.stats",
-    "foundation.tools"
+    "foundation.tools",
+    "hazard.registry",
+    "hazard.resistance"
   ],
   "gameModes": [
     "ashfall",
@@ -65,12 +68,12 @@
     "nativeEntrypoint": "com.knoxhack.echo.equipmentcore.EchoEquipmentCoreNativeModule",
     "nativeClasspath": [],
     "requiresConfirmationForWriteActions": true,
-    "notes": "Contract-first platform roadmap module. Runtime behavior is limited to native surface description and in-memory probes until deeper implementation lands."
+    "notes": "Equipment runtime module: slots, suit tiers, upgrades, durability, and hazard resistance integration."
   },
   "apiStability": "alpha",
   "roadmap": {
     "phase": 4,
-    "status": "contract-first",
+    "status": "runtime-ready",
     "mvpContracts": [
       "gear_slot_contract",
       "durability_rules",

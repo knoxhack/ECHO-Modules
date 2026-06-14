@@ -61,8 +61,10 @@ function validateFoundationNativeEntrypoints() {
       if (!text.includes('implements EchoNativeSurfaceModuleEntrypoint')) {
         errors.push(`${nativePath} does not implement EchoNativeSurfaceModuleEntrypoint`)
       }
-      if (!text.includes('registryMutated", false')) {
-        errors.push(`${nativePath} does not report registryMutated false`)
+      const registryMutatedFalse = text.includes('registryMutated", false')
+      const registryMutatedTrue = text.includes('registryMutated", true')
+      if (!registryMutatedFalse && !registryMutatedTrue) {
+        errors.push(`${nativePath} does not report registryMutated false or true`)
       }
       if (!text.includes('transformsPerformed", false')) {
         errors.push(`${nativePath} does not report transformsPerformed false`)
@@ -75,20 +77,14 @@ function validateRoadmapModules() {
   for (const module of ROADMAP_MODULES) {
     const base = `addons/${module.id}`
     const relativeDescriptor = descriptorPath(module.id)
+    const contractPath = `${base}/src/main/resources/data/${module.id}/roadmap/contracts.json`
     requireFile(`${base}/README.md`)
     requireFile(`${base}/docs/artifacts.md`)
     requireFile(`${base}/build.gradle`)
     requireFile(`${base}/gradle.properties`)
     requireFile(`${base}/src/main/templates/META-INF/neoforge.mods.toml`)
-    requireFile(`${base}/src/main/resources/data/${module.id}/roadmap/contracts.json`)
+    requireFile(contractPath)
     requireFile(relativeDescriptor)
-    requireTextIncludes(`${base}/README.md`, '## Review Status')
-    requireTextIncludes(`${base}/README.md`, '## Native Probe')
-    requireTextIncludes(`${base}/README.md`, '## Contract Boundary')
-    requireTextIncludes(`${base}/README.md`, 'It is not a finished gameplay/runtime implementation.')
-    requireTextIncludes(`${base}/docs/artifacts.md`, 'Status: Not Player Ready.')
-    requireTextIncludes(`${base}/docs/artifacts.md`, 'Source-packaged outputs prove descriptor, metadata, native-surface, and packaging shape only.')
-    requireTextIncludes(`${base}/docs/artifacts.md`, '## Review Checklist')
     if (!exists(relativeDescriptor)) continue
 
     const descriptor = readJson(relativeDescriptor)
@@ -126,7 +122,7 @@ function validateRoadmapModules() {
         'registeredFeatureContracts"',
         'logicalRegistrationCount"',
         'referenceProbe"',
-        'registryMutated", false',
+        'registryMutated",',
         'transformsPerformed", false',
       ]) {
         if (!text.includes(required)) errors.push(`${nativePath} missing native output field ${required}`)
@@ -134,12 +130,33 @@ function validateRoadmapModules() {
     }
 
     const contract = readJson(`${base}/src/main/resources/data/${module.id}/roadmap/contracts.json`)
+    const isRuntimeReady = contract.status === 'runtime-ready'
+    requireTextIncludes(`${base}/README.md`, '## Review Status')
+    requireTextIncludes(`${base}/README.md`, '## Native Probe')
+    requireTextIncludes(`${base}/README.md`, '## Contract Boundary')
+    if (isRuntimeReady) {
+      requireTextIncludes(`${base}/README.md`, 'Runtime implementation is present.')
+    } else {
+      requireTextIncludes(`${base}/README.md`, 'It is not a finished gameplay/runtime implementation.')
+    }
+    if (isRuntimeReady) {
+      requireTextIncludes(`${base}/docs/artifacts.md`, 'Status: Runtime Ready.')
+    } else {
+      requireTextIncludes(`${base}/docs/artifacts.md`, 'Status: Not Player Ready.')
+    }
+    requireTextIncludes(`${base}/docs/artifacts.md`, '## Review Checklist')
     if (contract.schema !== 'echo.platform_roadmap.module_contract.v1') {
       errors.push(`${module.id} roadmap contract schema mismatch`)
     }
-    if (contract.status !== 'contract-first') errors.push(`${module.id} roadmap contract must stay contract-first`)
-    if (!String(contract.implementationBoundary ?? '').includes('Gameplay/runtime mutation must be added in later implementation phases.')) {
+    if (contract.status !== 'contract-first' && contract.status !== 'runtime-ready') {
+      errors.push(`${module.id} roadmap contract status must be 'contract-first' or 'runtime-ready'`)
+    }
+    const boundary = String(contract.implementationBoundary ?? '')
+    if (!isRuntimeReady && !boundary.includes('Gameplay/runtime mutation must be added in later implementation phases.')) {
       errors.push(`${module.id} roadmap contract implementation boundary is not explicit`)
+    }
+    if (isRuntimeReady && !boundary.includes('Runtime implementation is present')) {
+      errors.push(`${module.id} runtime-ready roadmap contract must state that runtime implementation is present`)
     }
     requireArrayContainsAll(`${module.id} mvpContracts`, contract.mvpContracts ?? [], module.mvpContracts)
   }
@@ -170,7 +187,7 @@ function validateDescriptorHygiene() {
 }
 
 function validateBundles() {
-  for (const bundleId of ['foundation', 'openlands_official', 'sky_relay_official', 'arcana_division', 'creator_tooling']) {
+  for (const bundleId of ['foundation', 'openlands_official', 'sky_relay_official', 'deep_reach_official', 'arcana_division', 'creator_tooling']) {
     const file = `metadata/bundles/${bundleId}.json`
     requireFile(file)
     if (!exists(file)) continue
@@ -187,7 +204,7 @@ function validateBundles() {
   requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', '## Review Baseline')
   requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', '## Contract Boundary')
   requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', '## Review Commands')
-  requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', 'Module catalog baseline: 131 descriptors after roadmap generation.')
+  requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', 'Module catalog baseline: 133 descriptors after roadmap generation.')
   requireTextIncludes('docs/ECHO_PLATFORM_ROADMAP.md', 'They do not mutate runtime state, register gameplay content, execute server operations, or claim completed player-facing loops.')
 }
 
@@ -197,8 +214,8 @@ function validateIndex() {
   for (const module of ROADMAP_MODULES) {
     if (!ids.has(module.id)) errors.push(`metadata/modules/index.json missing ${module.id}`)
   }
-  if (index.moduleCount !== 131) {
-    errors.push(`metadata/modules/index.json moduleCount expected 131, got ${index.moduleCount}`)
+  if (index.moduleCount !== 133) {
+    errors.push(`metadata/modules/index.json moduleCount expected 133, got ${index.moduleCount}`)
   }
 }
 

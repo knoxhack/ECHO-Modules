@@ -17,6 +17,7 @@ Bundles are curated module groups for Launcher browsing and pack-builder shortcu
 | foundation | Foundation Bundle | 10 | 0 | Baseline survival contracts, Official pack roots, Creator starter packs |
 | openlands_official | Openlands Official Bundle | 11 | 12 | Openlands, Calm exploration, Homesteading |
 | sky_relay_official | Sky Relay Official Bundle | 5 | 10 | Sky Relay, Storm routes, Restoration loops |
+| deep_reach_official | Deep Reach Official Bundle | 11 | 35 | Deep Reach, Pressure-suit survival, Abyssal exploration |
 | arcana_division | Arcana Division Bundle | 12 | 13 | Arcana Division, Magic research, Anomaly containment |
 | creator_tooling | Creator Tooling Bundle | 6 | 10 | Creator packs, Studio workflows, Release QA |
 

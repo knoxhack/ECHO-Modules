@@ -1,0 +1,34 @@
+{
+  "parent": "echodeepreachprotocol:craft_shoal_suit",
+  "display": {
+    "icon": {
+      "id": "echoequipmentcore:rebreather"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.craft_rebreather.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.craft_rebreather.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_rebreather": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "echoequipmentcore:rebreather"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_rebreather"
+    ]
+  ]
+}

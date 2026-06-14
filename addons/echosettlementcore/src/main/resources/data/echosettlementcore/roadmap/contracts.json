@@ -4,7 +4,7 @@
   "name": "ECHO: SettlementCore",
   "phase": 4,
   "role": "settlement_core",
-  "status": "contract-first",
+  "status": "runtime-ready",
   "summary": "Bases, shelters, NPC jobs, storage needs, defense score, comfort, and logistics request contracts.",
   "dependencies": {
     "requires": [
@@ -13,7 +13,9 @@
       "echobasegrid",
       "echonpcore",
       "echologisticscore",
-      "echoworldcore"
+      "echoworldcore",
+      "echohazardcore",
+      "echoequipmentcore"
     ],
     "optional": [
       "echofactioncore"
@@ -29,8 +31,10 @@
     "consumes": [
       "basegrid.claims",
       "npc.profiles",
-      "logistics.routes",
-      "world.regions"
+      "logistics.routing",
+      "world.regions",
+      "hazard.registry",
+      "hazard.resistance"
     ],
     "adapterDomains": [
       "data",
@@ -48,8 +52,9 @@
   "probeAssertions": [
     "native entrypoint activates",
     "logical registration count equals descriptor provides count",
-    "registryMutated remains false",
-    "transformsPerformed remains false"
+    "habitat blocks are registered",
+    "settlement service detects safe habitats",
+    "resistance provider grants immunity inside safe habitats"
   ],
-  "implementationBoundary": "This module exposes platform contracts only. Gameplay/runtime mutation must be added in later implementation phases."
+  "implementationBoundary": "Runtime implementation is present. SettlementService, habitat blocks, block entities, NPC jobs, logistics requests, and hazard resistance integration are active."
 }

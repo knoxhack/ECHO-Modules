@@ -1,0 +1,68 @@
+{
+  "id": "echodeepreachprotocol:conquer_hadal_trench",
+  "chapterId": "echodeepreachprotocol:deep_reach_campaign",
+  "phase": "phase_4",
+  "phaseTitle": "Hadal Conquest",
+  "phaseOrder": 4,
+  "order": 0,
+  "title": "Conquer the Hadal Trench",
+  "briefing": "No depth is unreachable with the right armor. Descend to the Hadal Trenches, end the wraith that rules them, and forge a Hadal Hardsuit worthy of the abyss.",
+  "fieldGuide": "Final campaign combat and crafting milestone.",
+  "category": "combat",
+  "difficulty": "hard",
+  "icon": "echoequipmentcore:hadal_hardsuit",
+  "kind": "main",
+  "objectives": [
+    {
+      "id": "echodeepreachprotocol:conquer_hadal_trench/enter_hadal_trenches",
+      "type": "enter_region",
+      "label": "Enter the Hadal Trenches",
+      "detail": "Descend into the deepest recorded biome of the Deep Reach.",
+      "icon": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+      "target": "echodeepreachprotocol:hadal_trenches",
+      "required": 1,
+      "criteria": {
+        "location_type": "biome",
+        "location": "echodeepreachprotocol:hadal_trenches"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:conquer_hadal_trench/kill_hadal_wraith",
+      "type": "kill_entity",
+      "label": "Kill a Hadal Wraith",
+      "detail": "Put down the apex predator that claims the trench floor.",
+      "icon": "echodeepreachprotocol:hadal_wraith_spawn_egg",
+      "target": "echodeepreachprotocol:hadal_wraith",
+      "required": 1,
+      "criteria": {
+        "entity": "echodeepreachprotocol:hadal_wraith"
+      }
+    },
+    {
+      "id": "echodeepreachprotocol:conquer_hadal_trench/craft_hadal_hardsuit",
+      "type": "obtain_item",
+      "label": "Forge a Hadal Hardsuit",
+      "detail": "Craft the pressure suit that makes the trench survivable.",
+      "icon": "echoequipmentcore:hadal_hardsuit",
+      "target": "echoequipmentcore:hadal_hardsuit",
+      "required": 1
+    }
+  ],
+  "rewards": [
+    {
+      "id": "echodeepreachprotocol:conquer_hadal_trench/reward_netherite_ingot",
+      "item": "minecraft:netherite_ingot",
+      "count": 1,
+      "label": "Netherite Ingot",
+      "detail": "A rare ingot to reinforce future expeditions."
+    },
+    {
+      "id": "echodeepreachprotocol:conquer_hadal_trench/reward_vent_crab_shell",
+      "item": "echodeepreachprotocol:vent_crab_shell",
+      "count": 4,
+      "label": "Vent Crab Shell",
+      "detail": "Salvaged plating useful for reinforcing dive gear."
+    }
+  ],
+  "completionText": "The Hadal Trench belongs to you now. Its wraith is gone, and its crushing depths have been answered with the strongest suit ever forged."
+}

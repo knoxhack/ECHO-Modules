@@ -1,0 +1,35 @@
+{
+  "parent": "echodeepreachprotocol:enter_shoals",
+  "display": {
+    "icon": {
+      "id": "echosettlementcore:divers_quarters"
+    },
+    "title": {
+      "translate": "advancement.echodeepreachprotocol.build_habitat.title"
+    },
+    "description": {
+      "translate": "advancement.echodeepreachprotocol.build_habitat.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "place_habitat": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "echosettlementcore:divers_quarters"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "place_habitat"
+    ]
+  ]
+}
