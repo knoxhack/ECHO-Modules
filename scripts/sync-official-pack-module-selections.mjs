@@ -10,10 +10,43 @@ const modulesRoot = path.resolve(path.dirname(__filename), '..')
 const workspaceRoot = path.resolve(modulesRoot, '..')
 const releaseIndexRoot = path.join(workspaceRoot, 'ECHO-Release-Index')
 const selectionPath = path.join(modulesRoot, 'metadata', 'official-pack-module-selections.json')
+const moduleReleasePath = path.join(modulesRoot, 'dist', 'echo-module-release', 'echo-release.json')
 
-const args = new Set(process.argv.slice(2))
-const writeMode = args.has('--write')
-const checkMode = args.has('--check') || !writeMode
+function parseArgs(argv) {
+  const options = {
+    write: false,
+    check: false,
+    moduleDownloadBaseUrl: null,
+  }
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index]
+    if (arg === '--write') options.write = true
+    else if (arg === '--check') options.check = true
+    else if (arg === '--module-download-base-url') options.moduleDownloadBaseUrl = argv[++index]
+    else if (arg === '--module-release-tag') {
+      const tag = argv[++index]
+      options.moduleDownloadBaseUrl = `https://github.com/knoxhack/ECHO-Modules/releases/download/${tag}`
+    } else {
+      throw new Error(`Unknown argument: ${arg}`)
+    }
+  }
+  if (!options.write) options.check = true
+  return options
+}
+
+function normalizeDownloadBaseUrl(value) {
+  if (!value) return null
+  const normalized = String(value).trim().replace(/\/+$/u, '')
+  if (!/^https?:\/\/[^/]+/u.test(normalized)) {
+    throw new Error(`Invalid module download base URL: ${value}`)
+  }
+  return normalized
+}
+
+const options = parseArgs(process.argv.slice(2))
+const writeMode = options.write
+const checkMode = options.check
+const moduleDownloadBaseUrl = normalizeDownloadBaseUrl(options.moduleDownloadBaseUrl)
 
 const lanes = {
   native: {
@@ -97,18 +130,23 @@ const packRootModules = {
 const virtualFiles = new Map()
 const changedFiles = []
 const errors = []
+let moduleReleaseArtifacts = new Map()
 
 function formatJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`
 }
 
 async function readJson(file) {
-  return JSON.parse(await fs.readFile(file, 'utf8'))
+  return parseJsonText(await fs.readFile(file, 'utf8'))
 }
 
 async function readJsonIfExists(file) {
   if (!existsSync(file) && !hasVirtualFile(file)) return null
-  return JSON.parse(await readTextMaybeVirtual(file))
+  return parseJsonText(await readTextMaybeVirtual(file))
+}
+
+function parseJsonText(text) {
+  return JSON.parse(String(text).replace(/^\uFEFF/u, ''))
 }
 
 function hasVirtualFile(file) {
@@ -173,6 +211,45 @@ function artifactNameFor(moduleId, version, lane) {
   throw new Error(`Unsupported artifact family ${lane.artifactFamily}`)
 }
 
+function artifactKey(moduleId, artifactFamily) {
+  return `${String(moduleId).toLowerCase()}:${artifactFamily}`
+}
+
+async function loadModuleReleaseArtifacts() {
+  const release = await readJsonIfExists(moduleReleasePath)
+  const artifacts = new Map()
+  for (const moduleRecord of release?.modules ?? []) {
+    const moduleId = String(moduleRecord.moduleId ?? '').toLowerCase()
+    if (!moduleId) continue
+    for (const artifact of moduleRecord.artifacts ?? []) {
+      if (!artifact?.kind || !artifact?.filename) continue
+      const downloadUrl = moduleDownloadBaseUrl
+        ? `${moduleDownloadBaseUrl}/${artifact.filename}`
+        : artifact.downloadUrl
+      artifacts.set(artifactKey(moduleId, artifact.kind), {
+        filename: artifact.filename,
+        sha256: artifact.sha256,
+        size: artifact.size,
+        downloadUrl
+      })
+    }
+  }
+  return artifacts
+}
+
+function moduleReleaseArtifact(moduleId, lane) {
+  return moduleReleaseArtifacts.get(artifactKey(moduleId, lane.artifactFamily)) ?? null
+}
+
+function siblingArtifactUrl(previousById, artifactName) {
+  for (const previous of previousById.values()) {
+    if (typeof previous?.url === 'string' && previous.url.includes('/releases/download/')) {
+      return previous.url.replace(/\/[^/]+$/u, `/${artifactName}`)
+    }
+  }
+  return null
+}
+
 function packIdFor(packKey, laneKey) {
   return `${packKey}-${lanes[laneKey].suffix}`
 }
@@ -204,7 +281,11 @@ function richRequirement(moduleId, lane, descriptors, previousById = new Map(), 
 
   const artifactPath = releaseDir ? path.join(releaseDir, artifactName) : null
   const previous = previousById.get(moduleId)
-  if (artifactPath && existsSync(artifactPath)) {
+  const releaseArtifact = moduleReleaseArtifact(moduleId, lane)
+  if (releaseArtifact && releaseArtifact.filename === artifactName) {
+    if (releaseArtifact.sha256) entry.sha256 = releaseArtifact.sha256
+    if (Number.isFinite(releaseArtifact.size)) entry.size = releaseArtifact.size
+  } else if (artifactPath && existsSync(artifactPath)) {
     const stat = statSync(artifactPath)
     entry.size = stat.size
   } else if (
@@ -214,6 +295,27 @@ function richRequirement(moduleId, lane, descriptors, previousById = new Map(), 
     if (previous.sha256) entry.sha256 = previous.sha256
     if (Number.isFinite(previous.size)) entry.size = previous.size
   }
+  const previousUrl = previous?.url
+  const releaseUrl = releaseArtifact?.downloadUrl
+  const derivedUrl = siblingArtifactUrl(previousById, artifactName)
+  if (releaseArtifact && releaseArtifact.filename === artifactName) {
+    if (releaseUrl) {
+      entry.url = releaseUrl
+    } else {
+      const previousSha = String(previous?.sha256 ?? '').toLowerCase()
+      const releaseSha = String(releaseArtifact.sha256 ?? '').toLowerCase()
+      const unchanged = previousSha && releaseSha && previousSha === releaseSha
+      if (unchanged && previousUrl) {
+        entry.url = previousUrl
+      } else if (unchanged && derivedUrl) {
+        entry.url = derivedUrl
+      } else if (previousUrl || derivedUrl) {
+        errors.push(`${moduleId} ${lane.label} ${artifactName} has regenerated hash metadata but no release download URL. Pass --module-release-tag <tag> or --module-download-base-url <url> before syncing pack manifests.`)
+      }
+    }
+  } else if (previousUrl) entry.url = previousUrl
+  else if (releaseUrl) entry.url = releaseUrl
+  else if (derivedUrl) entry.url = derivedUrl
   return entry
 }
 
@@ -386,6 +488,7 @@ function updatePackSnapshotObject(manifest, selection, lane, descriptors, releas
         if (!moduleId || !selected.has(moduleId)) return file
         const version = versionFor(moduleId, descriptors)
         const artifactName = artifactNameFor(moduleId, version, lane)
+        const releaseArtifact = moduleReleaseArtifact(moduleId, lane)
         const next = {
           ...file,
           path: `${lane.installDir}/${artifactName}`,
@@ -399,6 +502,10 @@ function updatePackSnapshotObject(manifest, selection, lane, descriptors, releas
         if (!(file.assetName === artifactName || file.artifactName === artifactName || file.path === next.path)) {
           delete next.sha256
           delete next.size
+        }
+        if (releaseArtifact && releaseArtifact.filename === artifactName) {
+          if (releaseArtifact.sha256) next.sha256 = releaseArtifact.sha256
+          if (Number.isFinite(releaseArtifact.size)) next.size = releaseArtifact.size
         }
         return next
       })
@@ -480,7 +587,7 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
 
   const echoReleasePath = path.join(releaseDir, 'echo-release.json')
   if (existsSync(echoReleasePath) || hasVirtualFile(echoReleasePath)) {
-    const echoRelease = JSON.parse(await readTextMaybeVirtual(echoReleasePath))
+    const echoRelease = parseJsonText(await readTextMaybeVirtual(echoReleasePath))
     const manifestName = echoRelease.manifestAsset ?? [...packDigests.keys()][0]
     const manifestDigest = packDigests.get(manifestName)
     if (manifestDigest) {
@@ -534,7 +641,7 @@ async function refreshReleaseSidecars(releaseDir, moduleRequirementCount) {
 
   const releaseAuditPath = path.join(releaseDir, 'release-audit.json')
   if (existsSync(releaseAuditPath) || hasVirtualFile(releaseAuditPath)) {
-    const releaseAudit = JSON.parse(await readTextMaybeVirtual(releaseAuditPath))
+    const releaseAudit = parseJsonText(await readTextMaybeVirtual(releaseAuditPath))
     const assetDigests = new Map(packDigests)
     if (fileExistsOrVirtual(echoReleasePath)) {
       assetDigests.set('echo-release.json', await fileDigest(echoReleasePath))
@@ -598,7 +705,7 @@ async function assertLaneParity(packKey, expectedModules) {
     }
     const packFiles = await walkFiles(path.join(repoRoot, 'release-assets'), (file) => file.endsWith('.pack.json'))
     for (const packFile of packFiles) {
-      const manifest = JSON.parse(await readTextMaybeVirtual(packFile))
+      const manifest = parseJsonText(await readTextMaybeVirtual(packFile))
       const actual = moduleIdsFromRequirements(manifest.moduleRequirements)
       if (!sameModuleIds(actual, expectedModules)) {
         errors.push(`${packFile} moduleRequirements differ from ${packKey}`)
@@ -617,6 +724,7 @@ async function assertLaneParity(packKey, expectedModules) {
 async function main() {
   const selections = await readJson(selectionPath)
   const descriptors = await collectDescriptors()
+  moduleReleaseArtifacts = await loadModuleReleaseArtifacts()
   validateSelections(selections, descriptors)
   if (errors.length > 0) {
     throw new Error(`Selection validation failed:\n${errors.map((error) => `- ${error}`).join('\n')}`)

@@ -64,6 +64,7 @@ test('generates per-module release artifacts and metadata', async () => {
     repoRoot,
     releaseId: 'test-release',
     modules: ['echosample'],
+    downloadBaseUrl: 'https://github.com/knoxhack/ECHO-Modules/releases/download/test-release',
   })
 
   assert.equal(release.releaseId, 'test-release')
@@ -84,6 +85,10 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'compiled-runtime')
   const echoAddonArtifact = moduleRecord.artifacts.find((artifact) => artifact.kind === 'echo-addon')
   assert.equal(echoAddonArtifact.buildMode, 'compiled-runtime')
+  assert.equal(
+    echoAddonArtifact.downloadUrl,
+    'https://github.com/knoxhack/ECHO-Modules/releases/download/test-release/echosample-1.2.3.echo-addon',
+  )
   assert.ok(echoAddonArtifact.contains.includes('checksums.sha256'))
 
   const outputDir = path.join(repoRoot, 'dist', 'echo-module-release', 'echosample')

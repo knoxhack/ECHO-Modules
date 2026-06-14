@@ -29,6 +29,7 @@ dependencies {
     implementation project(':echomaterialcore')
     compileOnly project(':echo-native-contracts')
     compileOnlyIfIncluded(':echoadaptercore')
+    runtimeOnly project(':echoadaptercore')
 }
 
 processResources {

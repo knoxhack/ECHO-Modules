@@ -36,10 +36,14 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
+@EventBusSubscriber(modid = EchoNetCore.MODID)
 public final class ModGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
             DeferredRegister.create(Registries.TEST_FUNCTION, EchoNetCore.MODID);
@@ -64,6 +68,17 @@ public final class ModGameTests {
         TEST_FUNCTIONS.register(eventBus);
     }
 
+    @SubscribeEvent
+    public static void registerTestFunctions(RegisterEvent event) {
+        event.register(Registries.TEST_FUNCTION, SERVICE_FALLBACKS.getId(), () -> ModGameTests::serviceFallbacks);
+        event.register(Registries.TEST_FUNCTION, PACKET_IDS.getId(), () -> ModGameTests::packetIds);
+        event.register(Registries.TEST_FUNCTION, RATE_LIMITER.getId(), () -> ModGameTests::rateLimiter);
+        event.register(Registries.TEST_FUNCTION, DEBUG_HOOKS.getId(), () -> ModGameTests::debugHooks);
+        event.register(Registries.TEST_FUNCTION, CLIENT_SYNC_REGISTRY.getId(), () -> ModGameTests::clientSyncRegistry);
+        event.register(Registries.TEST_FUNCTION, CODEC_ROUND_TRIPS.getId(), () -> ModGameTests::codecRoundTrips);
+    }
+
+    @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
         if (!shouldRegisterTests()) {
             return;

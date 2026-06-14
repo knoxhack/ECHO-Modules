@@ -1,6 +1,7 @@
 package com.knoxhack.echopowergrid;
 
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echopowergrid.commands.EchoPowerCommands;
 import com.knoxhack.echopowergrid.grid.PowerNetworkManager;
 import com.knoxhack.echopowergrid.integration.PowerGridCoreIntegration;
@@ -17,26 +18,41 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoPowerGrid.MODID)
 public class EchoPowerGrid {
     public static final String MODID = "echopowergrid";
+    private static final String REGISTER_COMMANDS_EVENT =
+            "net.neoforged.neoforge.event.RegisterCommandsEvent";
+    private static final String SERVER_TICK_POST_EVENT =
+            "net.neoforged.neoforge.event.tick.ServerTickEvent$Post";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
-    public EchoPowerGrid() {
+    EchoPowerGrid() {
+        this(null);
+    }
+
+    public EchoPowerGrid(IEventBus modEventBus) {
         var runtime = Agent9PowerGridRuntimeAdapter.activateNativeHostEntrypoint();
         LOGGER.info("ECHO PowerGrid Agent 9 native host adapter {}.", runtime.get("status"));
-        ModBlocks.register();
-        ModBlockEntities.register();
-        ModItems.register();
-        ModMenus.register();
-        ModCreativeTabs.register();
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModMenus.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
         com.knoxhack.echopowergrid.integration.prime.PowerGridPrimeIntegration.register();
         commonSetup();
+        EchoBackendLifecycleBridge.registerGameEventHandler(REGISTER_COMMANDS_EVENT, this::onRegisterCommands);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SERVER_TICK_POST_EVENT, this::onServerTickEvent);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echopowergrid.test.PowerGridGameTests");
     }
 
     public void commonSetup() {
@@ -48,6 +64,20 @@ public class EchoPowerGrid {
     public void onServerTick(MinecraftServer server) {
         PowerGridMachineRuntimeHost.bindServer(server);
         PowerNetworkManager.tickAll(server);
+    }
+
+    private void onServerTickEvent(Object event) {
+        MinecraftServer server = com.knoxhack.echo.adaptercore.EchoBackendWorldEventBridge.serverTickServer(event);
+        if (server != null) {
+            onServerTick(server);
+        }
+    }
+
+    private void onRegisterCommands(Object event) {
+        var dispatcher = com.knoxhack.echo.adaptercore.EchoBackendCommandEventBridge.dispatcher(event);
+        if (dispatcher != null) {
+            EchoPowerCommands.register(dispatcher, null, null);
+        }
     }
 
     public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext buildContext,

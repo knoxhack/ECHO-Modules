@@ -1,0 +1,2729 @@
+﻿{
+    "generatedAt":  "2026-06-14T07:39:28.1871990-04:00",
+    "rows":  [
+                 {
+                     "repo":  "knoxhack/ECHO-Arcana-Division-Native-Edition",
+                     "tag":  "arcana-division-native-1.0.0-beta",
+                     "lane":  "native",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Arcana-Division-Native-Edition__arcana-division-native-1.0.0-beta",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  39,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "arcana-division-native-edition-1.0.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "29c2ca22660538af245db0e6fd10e2d49e1af0d2ac582a2520949d76a65a1cb9",
+                                        "localSize":  116998122,
+                                        "remoteSha":  "29c2ca22660538af245db0e6fd10e2d49e1af0d2ac582a2520949d76a65a1cb9",
+                                        "remoteSize":  116998122,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "arcana-division-native-edition-beta-1.0.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "7b912587e5efd224b5dac3b4f3a8a7237eabfde0ab4f1fac74e26f5f68391f54",
+                                        "localSize":  47217,
+                                        "remoteSha":  "7b912587e5efd224b5dac3b4f3a8a7237eabfde0ab4f1fac74e26f5f68391f54",
+                                        "remoteSize":  47217,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "c2d32c551b0cc5bfec56afe9548f442895b8bc3b5f7c4dd1e66bf5d9ca7621bd",
+                                        "localSize":  315,
+                                        "remoteSha":  "c2d32c551b0cc5bfec56afe9548f442895b8bc3b5f7c4dd1e66bf5d9ca7621bd",
+                                        "remoteSize":  315,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "7128659d0dc93410d69dd1caff995788dcb390db4a0dfedc2ece439fa1fbd857",
+                                        "localSize":  16951,
+                                        "remoteSha":  "7128659d0dc93410d69dd1caff995788dcb390db4a0dfedc2ece439fa1fbd857",
+                                        "remoteSize":  16951,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "addons/echoadaptercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoaetherworks",
+                                         "path":  "addons/echoaetherworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanacore",
+                                         "path":  "addons/echoarcanacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanadivisionprotocol",
+                                         "path":  "addons/echoarcanadivisionprotocol-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcaneindex",
+                                         "path":  "addons/echoarcaneindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "addons/echoblockworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocodexcore",
+                                         "path":  "addons/echocodexcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "addons/echocommonloot-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "addons/echocontentcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "addons/echocore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "addons/echocreatureroles-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocursecore",
+                                         "path":  "addons/echocursecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofamiliarcore",
+                                         "path":  "addons/echofamiliarcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "addons/echofoundationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogrimoire",
+                                         "path":  "addons/echogrimoire-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "addons/echoholomap-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "addons/echohudcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "addons/echoindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "addons/echolens-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "addons/echomaterialcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "addons/echomissioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "addons/echonetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "addons/echoplatformcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "addons/echorelictech-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoriftworlds",
+                                         "path":  "addons/echoriftworlds-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoritualcore",
+                                         "path":  "addons/echoritualcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "addons/echoruntimeguard-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "addons/echoschemacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "addons/echoscreencore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "addons/echosoundcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echospellcore",
+                                         "path":  "addons/echospellcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "addons/echostationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "addons/echoterminal-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "addons/echothemecore-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "addons/echotoolcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "addons/echotutorialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "addons/echovalidationcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "addons/echoworldcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "addons/echoworldstarter-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Ashfall-Native-Edition",
+                     "tag":  "v0.1.0-ashfall-native-edition",
+                     "lane":  "native",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Ashfall-Native-Edition__v0.1.0-ashfall-native-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  46,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "ashfall-native-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "eb987dac02e339854610211ac372081046ed4436de1dcb55669314fc9c977205",
+                                        "localSize":  267548766,
+                                        "remoteSha":  "eb987dac02e339854610211ac372081046ed4436de1dcb55669314fc9c977205",
+                                        "remoteSize":  267548766,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "ashfall-native-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "ee95ad116a13745843df3ec072fd51b4899f390f4873d7958c49aa50064d20a7",
+                                        "localSize":  48919,
+                                        "remoteSha":  "ee95ad116a13745843df3ec072fd51b4899f390f4873d7958c49aa50064d20a7",
+                                        "remoteSize":  48919,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "874523b4a5a79a4cea252e1b1582236a2568365efa563ef7a81dd1b46f4f4914",
+                                        "localSize":  300,
+                                        "remoteSha":  "874523b4a5a79a4cea252e1b1582236a2568365efa563ef7a81dd1b46f4f4914",
+                                        "remoteSize":  300,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "192194ae6346f1f25715014b10bf07b005572c53966896985170c7e38650e03f",
+                                        "localSize":  19575,
+                                        "remoteSha":  "192194ae6346f1f25715014b10bf07b005572c53966896985170c7e38650e03f",
+                                        "remoteSize":  19575,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "addons/echoadaptercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "addons/echoagriculturereclamation-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarmory",
+                                         "path":  "addons/echoarmory-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoashfallprotocol",
+                                         "path":  "addons/echoashfallprotocol-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblackboxprotocol",
+                                         "path":  "addons/echoblackboxprotocol-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "addons/echoblockworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "addons/echocommonloot-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "addons/echocontentcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoconvoyprotocol",
+                                         "path":  "addons/echoconvoyprotocol-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "addons/echocore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "addons/echocreatureroles-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echodatacore",
+                                         "path":  "addons/echodatacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "addons/echofoundationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "addons/echoholomap-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "addons/echohudcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "addons/echoindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "addons/echoindustrialnexus-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "addons/echolens-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "addons/echologisticsnetwork-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "addons/echomaterialcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "addons/echomissioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "addons/echomultiblockcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "addons/echonetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonexusprotocol",
+                                         "path":  "addons/echonexusprotocol-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "addons/echoorbitalremnants-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "addons/echoplatformcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "addons/echopowergrid-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "addons/echorecovery-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "addons/echorelictech-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorendercore",
+                                         "path":  "addons/echorendercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "addons/echoruntimeguard-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "addons/echoschemacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "addons/echoscreencore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "addons/echosoundcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "addons/echostationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationfall",
+                                         "path":  "addons/echostationfall-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "addons/echoterminal-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "addons/echothemecore-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "addons/echotoolcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "addons/echotutorialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "addons/echovalidationcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "addons/echoweathercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echowiki",
+                                         "path":  "addons/echowiki-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "addons/echoworldcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "addons/echoworldstarter-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "signalos",
+                                         "path":  "addons/signalos-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Galactic-Survey-Native-Edition",
+                     "tag":  "galactic-survey-native-0.1.0-alpha",
+                     "lane":  "native",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Galactic-Survey-Native-Edition__galactic-survey-native-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  41,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "95785beffc21f8108ec4301732c9639b9417830f871c8d6695203062870d37b8",
+                                        "localSize":  316,
+                                        "remoteSha":  "95785beffc21f8108ec4301732c9639b9417830f871c8d6695203062870d37b8",
+                                        "remoteSize":  316,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "14545c31f40900fb5633f0d9cde140bcc4ed8f9d2141bec3e2557f694579b004",
+                                        "localSize":  17785,
+                                        "remoteSha":  "14545c31f40900fb5633f0d9cde140bcc4ed8f9d2141bec3e2557f694579b004",
+                                        "remoteSize":  17785,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-native-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "34362978e16adf08e656e5bde51f30bc68caa411bb87afd7bc8158a1aac74581",
+                                        "localSize":  145056800,
+                                        "remoteSha":  "34362978e16adf08e656e5bde51f30bc68caa411bb87afd7bc8158a1aac74581",
+                                        "remoteSize":  145056800,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-native-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "28662c3a70529dd91e84b54c6a6274fd9e09b4b83df590580ccda74fead46db8",
+                                        "localSize":  34224,
+                                        "remoteSha":  "28662c3a70529dd91e84b54c6a6274fd9e09b4b83df590580ccda74fead46db8",
+                                        "remoteSize":  34224,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "addons/echoadaptercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "addons/echoassetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "addons/echoatmospherecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "addons/echoblockworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "addons/echocameracore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "addons/echocommonloot-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "addons/echocontentcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "addons/echocore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "addons/echocreatureroles-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "addons/echofoundationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticcore",
+                                         "path":  "addons/echogalacticcore-0.1.0-native-alpha.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticsurveyprotocol",
+                                         "path":  "addons/echogalacticsurveyprotocol-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "addons/echoholomap-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "addons/echohudcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "addons/echoindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoinputcore",
+                                         "path":  "addons/echoinputcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "addons/echolens-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "addons/echologisticsnetwork-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomachinecore",
+                                         "path":  "addons/echomachinecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "addons/echomaterialcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "addons/echomissioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "addons/echonetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "addons/echoorbitalremnants-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "addons/echoplatformcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowercore",
+                                         "path":  "addons/echopowercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "addons/echopowergrid-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "addons/echoprogressioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "addons/echorecipecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "addons/echoruntimeguard-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "addons/echoschemacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "addons/echoscreencore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "addons/echosoundcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "addons/echostationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "addons/echoterminal-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "addons/echothemecore-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "addons/echotoolcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "addons/echotutorialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "addons/echovalidationcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovehiclecore",
+                                         "path":  "addons/echovehiclecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "addons/echoworldcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "addons/echoworldstarter-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Openlands-Native-Edition",
+                     "tag":  "v0.1.0-openlands-native-edition",
+                     "lane":  "native",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Openlands-Native-Edition__v0.1.0-openlands-native-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  42,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "684271913eebffce5648de97449093bd21732dbad477419e3d7eac23447eefdd",
+                                        "localSize":  304,
+                                        "remoteSha":  "684271913eebffce5648de97449093bd21732dbad477419e3d7eac23447eefdd",
+                                        "remoteSize":  304,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "4420a81beb939320deb980f848cd36b4aa8d7a08ba058dafaa579230ccf7cb23",
+                                        "localSize":  18017,
+                                        "remoteSha":  "4420a81beb939320deb980f848cd36b4aa8d7a08ba058dafaa579230ccf7cb23",
+                                        "remoteSize":  18017,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-native-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "94471d6245c6b00781166f4af203bdb6e986bb80f76ca6ba70836255cfced73b",
+                                        "localSize":  112433076,
+                                        "remoteSha":  "94471d6245c6b00781166f4af203bdb6e986bb80f76ca6ba70836255cfced73b",
+                                        "remoteSize":  112433076,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-native-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "a0c0eb6294e314778ad69d4bcc83d586ebb5b6dfdd77a2b47931fc0db6891694",
+                                        "localSize":  46340,
+                                        "remoteSha":  "a0c0eb6294e314778ad69d4bcc83d586ebb5b6dfdd77a2b47931fc0db6891694",
+                                        "remoteSize":  46340,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "addons/echoadaptercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "addons/echoassetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echobiomecore",
+                                         "path":  "addons/echobiomecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "addons/echoblockworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "addons/echocommonloot-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "addons/echocontentcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "addons/echocore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreaturecore",
+                                         "path":  "addons/echocreaturecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "addons/echocreatureroles-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "addons/echoeconomycore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "addons/echofoundationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohealthcore",
+                                         "path":  "addons/echohealthcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "addons/echoholomap-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "addons/echohudcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "addons/echoindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "addons/echolens-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolootcore",
+                                         "path":  "addons/echolootcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "addons/echomaterialcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "addons/echomissioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "addons/echonetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonpcore",
+                                         "path":  "addons/echonpcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoopenlandsprotocol",
+                                         "path":  "addons/echoopenlandsprotocol-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "addons/echoplatformcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplayercore",
+                                         "path":  "addons/echoplayercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "addons/echoprogressioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "addons/echorecipecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "addons/echorecovery-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "addons/echoruntimeguard-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "addons/echoschemacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "addons/echoscreencore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "addons/echosocialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "addons/echosoundcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "addons/echostationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostructurecore",
+                                         "path":  "addons/echostructurecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "addons/echoterminal-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "addons/echothemecore-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "addons/echotoolcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "addons/echotutorialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "addons/echovalidationcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "addons/echoweathercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "addons/echoworldcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "addons/echoworldstarter-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Sky-Relay-Native-Edition",
+                     "tag":  "sky-relay-native-0.1.0-alpha",
+                     "lane":  "native",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Sky-Relay-Native-Edition__sky-relay-native-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  43,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "46561e80fe5f6cb2ee595c11903b0a4a786f5922dab910b4615d96da5770e5d7",
+                                        "localSize":  304,
+                                        "remoteSha":  "46561e80fe5f6cb2ee595c11903b0a4a786f5922dab910b4615d96da5770e5d7",
+                                        "remoteSize":  304,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "135006b43e71c8b87886550f54acbc9cbca945859cce158f77b51cc01ab5d8bf",
+                                        "localSize":  18476,
+                                        "remoteSha":  "135006b43e71c8b87886550f54acbc9cbca945859cce158f77b51cc01ab5d8bf",
+                                        "remoteSize":  18476,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "native-harness-driver-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "6a8e8d62936c2bda3df0170da8eb7af02042731d29b67ae7079392f9430c204d",
+                                        "localSize":  1134,
+                                        "remoteSha":  "6a8e8d62936c2bda3df0170da8eb7af02042731d29b67ae7079392f9430c204d",
+                                        "remoteSize":  1134,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "release-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "7e03fd7d0070ec28ebf7bcb7f871f4be02ca169bc32b4d2a67ad3e0d7f3d4bb7",
+                                        "localSize":  1634,
+                                        "remoteSha":  "7e03fd7d0070ec28ebf7bcb7f871f4be02ca169bc32b4d2a67ad3e0d7f3d4bb7",
+                                        "remoteSize":  1634,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-native-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "6b1e9d013f64bc134be5f488b9a40f0c3309ebcb2bb07e4cb2fabe6244c0e884",
+                                        "localSize":  154910908,
+                                        "remoteSha":  "6b1e9d013f64bc134be5f488b9a40f0c3309ebcb2bb07e4cb2fabe6244c0e884",
+                                        "remoteSize":  154910908,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-native-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "b3ef051030e1be3a8f01216a62591e4a290bf2ca11d5267034aff08b4a8d83ad",
+                                        "localSize":  46239,
+                                        "remoteSha":  "b3ef051030e1be3a8f01216a62591e4a290bf2ca11d5267034aff08b4a8d83ad",
+                                        "remoteSize":  46239,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-pack-build-report.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "2e3de26acfc4658a65af61573e6c1edde4ba30b995eb1cbc6b1958af3803e9ab",
+                                        "localSize":  6503,
+                                        "remoteSha":  "2e3de26acfc4658a65af61573e6c1edde4ba30b995eb1cbc6b1958af3803e9ab",
+                                        "remoteSize":  6503,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "addons/echoadaptercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "addons/echoagriculturereclamation-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "addons/echoassetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "addons/echoatmospherecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "addons/echoblockworks-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "addons/echocameracore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "addons/echocommonloot-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "addons/echocontentcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "addons/echocore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "addons/echocreatureroles-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "addons/echoeconomycore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "addons/echofoundationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "addons/echoholomap-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "addons/echohudcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "addons/echoindex-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "addons/echoindustrialnexus-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "addons/echolens-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "addons/echologisticsnetwork-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "addons/echomaterialcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "addons/echomissioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "addons/echomultiblockcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "addons/echonetcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "addons/echoorbitalremnants-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "addons/echoplatformcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "addons/echopowergrid-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "addons/echoprogressioncore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "addons/echorecipecore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "addons/echorecovery-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "addons/echoruntimeguard-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "addons/echoschemacore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "addons/echoscreencore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoskyrelayprotocol",
+                                         "path":  "addons/echoskyrelayprotocol-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "addons/echosocialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "addons/echosoundcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "addons/echostationcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "addons/echoterminal-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "addons/echothemecore-1.3.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "addons/echotoolcore-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "addons/echotutorialcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "addons/echovalidationcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "addons/echoweathercore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "addons/echoworldcore-1.0.0.echo-addon",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "addons/echoworldstarter-0.1.0.echo-addon",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Arcana-Division-Standalone-Edition",
+                     "tag":  "arcana-division-standalone-1.0.0-beta",
+                     "lane":  "standalone",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Arcana-Division-Standalone-Edition__arcana-division-standalone-1.0.0-beta",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  39,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "arcana-division-standalone-edition-1.0.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "e4b3f143127905acec8f2d3109994f2f36968901ed06365baaebfdc2688475be",
+                                        "localSize":  116889106,
+                                        "remoteSha":  "e4b3f143127905acec8f2d3109994f2f36968901ed06365baaebfdc2688475be",
+                                        "remoteSize":  116889106,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "arcana-division-standalone-edition-beta-1.0.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "92e02c05ab80cfe8115e52a7e826a4d5fd35de5305ce847463585b200df71f79",
+                                        "localSize":  47259,
+                                        "remoteSha":  "92e02c05ab80cfe8115e52a7e826a4d5fd35de5305ce847463585b200df71f79",
+                                        "remoteSize":  47259,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "34f9a84b56177f323ddfc2e3094f43db4695f9e0266b6e2f9d40595407b53d1a",
+                                        "localSize":  323,
+                                        "remoteSha":  "34f9a84b56177f323ddfc2e3094f43db4695f9e0266b6e2f9d40595407b53d1a",
+                                        "remoteSize":  323,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "57bc6ec2430a4d4f94a87041d6b6cf828efda32237382d2215a8a5fbaae13349",
+                                        "localSize":  17228,
+                                        "remoteSha":  "57bc6ec2430a4d4f94a87041d6b6cf828efda32237382d2215a8a5fbaae13349",
+                                        "remoteSize":  17228,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoaetherworks",
+                                         "path":  "mods/echoaetherworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanacore",
+                                         "path":  "mods/echoarcanacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanadivisionprotocol",
+                                         "path":  "mods/echoarcanadivisionprotocol-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcaneindex",
+                                         "path":  "mods/echoarcaneindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocodexcore",
+                                         "path":  "mods/echocodexcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocursecore",
+                                         "path":  "mods/echocursecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofamiliarcore",
+                                         "path":  "mods/echofamiliarcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogrimoire",
+                                         "path":  "mods/echogrimoire-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "mods/echorelictech-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoriftworlds",
+                                         "path":  "mods/echoriftworlds-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoritualcore",
+                                         "path":  "mods/echoritualcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echospellcore",
+                                         "path":  "mods/echospellcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Ashfall-Standalone-Edition",
+                     "tag":  "v0.1.0-ashfall-standalone-edition",
+                     "lane":  "standalone",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Ashfall-Standalone-Edition__v0.1.0-ashfall-standalone-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  46,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "ashfall-standalone-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "b5bfd2f45121fdc69131eccb75ae13969fcbbef0dba3dc00f687d60f9b600344",
+                                        "localSize":  267352444,
+                                        "remoteSha":  "b5bfd2f45121fdc69131eccb75ae13969fcbbef0dba3dc00f687d60f9b600344",
+                                        "remoteSize":  267352444,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "ashfall-standalone-edition-experimental-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "a95641209ff9cb64dc29c7f1b9776e366416888992ec218c6b29019e2e446cd2",
+                                        "localSize":  49650,
+                                        "remoteSha":  "a95641209ff9cb64dc29c7f1b9776e366416888992ec218c6b29019e2e446cd2",
+                                        "remoteSize":  49650,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "7fdfde0d063df2f9675037e8f2a8db2731c61d5e9a823f70b71d34acc8656974",
+                                        "localSize":  315,
+                                        "remoteSha":  "7fdfde0d063df2f9675037e8f2a8db2731c61d5e9a823f70b71d34acc8656974",
+                                        "remoteSize":  315,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "0f36b287d1861d3a6688a7965ba432e34ab0122dceacb9d56318212b9b80e69c",
+                                        "localSize":  19929,
+                                        "remoteSha":  "0f36b287d1861d3a6688a7965ba432e34ab0122dceacb9d56318212b9b80e69c",
+                                        "remoteSize":  19929,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "mods/echoagriculturereclamation-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarmory",
+                                         "path":  "mods/echoarmory-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoashfallprotocol",
+                                         "path":  "mods/echoashfallprotocol-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblackboxprotocol",
+                                         "path":  "mods/echoblackboxprotocol-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoconvoyprotocol",
+                                         "path":  "mods/echoconvoyprotocol-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echodatacore",
+                                         "path":  "mods/echodatacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "mods/echoindustrialnexus-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "mods/echomultiblockcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonexusprotocol",
+                                         "path":  "mods/echonexusprotocol-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "mods/echorelictech-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorendercore",
+                                         "path":  "mods/echorendercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationfall",
+                                         "path":  "mods/echostationfall-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echowiki",
+                                         "path":  "mods/echowiki-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "signalos",
+                                         "path":  "mods/signalos-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Galactic-Survey-Standalone-Edition",
+                     "tag":  "galactic-survey-standalone-0.1.0-alpha",
+                     "lane":  "standalone",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Galactic-Survey-Standalone-Edition__galactic-survey-standalone-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  41,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "f1a113393d459aa72fb7a45e5ab4b9b02c74dabcb5866e9c5d7bc3c197764c25",
+                                        "localSize":  324,
+                                        "remoteSha":  "f1a113393d459aa72fb7a45e5ab4b9b02c74dabcb5866e9c5d7bc3c197764c25",
+                                        "remoteSize":  324,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "b2ba677164b83a3e18c58aed77d5aaef93359b2df8f63ef5273bf26210ed46c5",
+                                        "localSize":  18074,
+                                        "remoteSha":  "b2ba677164b83a3e18c58aed77d5aaef93359b2df8f63ef5273bf26210ed46c5",
+                                        "remoteSize":  18074,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-standalone-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "cb2d353b8fb52f96bc9baa6ecff02bec998f37b1c9ac025f861ff6d0a7acdf3d",
+                                        "localSize":  144919866,
+                                        "remoteSha":  "cb2d353b8fb52f96bc9baa6ecff02bec998f37b1c9ac025f861ff6d0a7acdf3d",
+                                        "remoteSize":  144919866,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-standalone-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "d7ef00d306b6559a346dda0d420261600db88008ac1e7381905580d2e98e7f8f",
+                                        "localSize":  34170,
+                                        "remoteSha":  "d7ef00d306b6559a346dda0d420261600db88008ac1e7381905580d2e98e7f8f",
+                                        "remoteSize":  34170,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "mods/echoatmospherecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "mods/echocameracore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticcore",
+                                         "path":  "mods/echogalacticcore-0.1.0-native-alpha-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticsurveyprotocol",
+                                         "path":  "mods/echogalacticsurveyprotocol-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoinputcore",
+                                         "path":  "mods/echoinputcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomachinecore",
+                                         "path":  "mods/echomachinecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowercore",
+                                         "path":  "mods/echopowercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovehiclecore",
+                                         "path":  "mods/echovehiclecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Openlands-Standalone-Edition",
+                     "tag":  "v0.1.0-openlands-standalone-edition",
+                     "lane":  "standalone",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Openlands-Standalone-Edition__v0.1.0-openlands-standalone-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  42,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "1a4158d09342a19c1b6e062c43fd18c795b5880a9c310559c82039bf3afe867c",
+                                        "localSize":  319,
+                                        "remoteSha":  "1a4158d09342a19c1b6e062c43fd18c795b5880a9c310559c82039bf3afe867c",
+                                        "remoteSize":  319,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "174821d85579271ddf0fd052f3baaea062d5e68b3bfe6d6d05cd0c96671ff6fa",
+                                        "localSize":  18347,
+                                        "remoteSha":  "174821d85579271ddf0fd052f3baaea062d5e68b3bfe6d6d05cd0c96671ff6fa",
+                                        "remoteSize":  18347,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-standalone-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "08e7045913810edf83435f1e066d2962502705106b8403b6b767855e5dafbc19",
+                                        "localSize":  112306557,
+                                        "remoteSha":  "08e7045913810edf83435f1e066d2962502705106b8403b6b767855e5dafbc19",
+                                        "remoteSize":  112306557,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-standalone-edition-experimental-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "b30e5e75d54bf1f861eb79f110f6b5ca18c75f7e6c90640a20e158f85b1b4529",
+                                        "localSize":  46570,
+                                        "remoteSha":  "b30e5e75d54bf1f861eb79f110f6b5ca18c75f7e6c90640a20e158f85b1b4529",
+                                        "remoteSize":  46570,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echobiomecore",
+                                         "path":  "mods/echobiomecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreaturecore",
+                                         "path":  "mods/echocreaturecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "mods/echoeconomycore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohealthcore",
+                                         "path":  "mods/echohealthcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolootcore",
+                                         "path":  "mods/echolootcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonpcore",
+                                         "path":  "mods/echonpcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoopenlandsprotocol",
+                                         "path":  "mods/echoopenlandsprotocol-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplayercore",
+                                         "path":  "mods/echoplayercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "mods/echosocialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostructurecore",
+                                         "path":  "mods/echostructurecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Sky-Relay-Standalone-Edition",
+                     "tag":  "sky-relay-standalone-0.1.0-alpha",
+                     "lane":  "standalone",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-native-standalone-pack-release\\knoxhack__ECHO-Sky-Relay-Standalone-Edition__sky-relay-standalone-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  43,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "30fe8cdddb066b6ab7796de7069363779572dc9960bec3b714c8f02aa002df11",
+                                        "localSize":  312,
+                                        "remoteSha":  "30fe8cdddb066b6ab7796de7069363779572dc9960bec3b714c8f02aa002df11",
+                                        "remoteSize":  312,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "bd4e93ca51b54b32fc7f675202abcb527e54f3f305bf40a243a1cefcc63484dc",
+                                        "localSize":  18777,
+                                        "remoteSha":  "bd4e93ca51b54b32fc7f675202abcb527e54f3f305bf40a243a1cefcc63484dc",
+                                        "remoteSize":  18777,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "release-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "076af0e66004e825920e36ffb77ac2cca6ba763b53745359b28c13f2e6fa599d",
+                                        "localSize":  1632,
+                                        "remoteSha":  "076af0e66004e825920e36ffb77ac2cca6ba763b53745359b28c13f2e6fa599d",
+                                        "remoteSize":  1632,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-pack-build-report.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "0724da5df439f5d4d185f28982d8b6965c9a63ae4cddce189f132aa5472c7d2b",
+                                        "localSize":  6639,
+                                        "remoteSha":  "0724da5df439f5d4d185f28982d8b6965c9a63ae4cddce189f132aa5472c7d2b",
+                                        "remoteSize":  6639,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-standalone-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "16aef997ded49c81f0cd977eb4d211f9ae336fba5463085a1ec21eebf316ca25",
+                                        "localSize":  154774490,
+                                        "remoteSha":  "16aef997ded49c81f0cd977eb4d211f9ae336fba5463085a1ec21eebf316ca25",
+                                        "remoteSize":  154774490,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-standalone-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "9e2aa997a6fcb750ae224a04aaf858d8f7a3d39c8a4152b5509ab0bc80655037",
+                                        "localSize":  46486,
+                                        "remoteSha":  "9e2aa997a6fcb750ae224a04aaf858d8f7a3d39c8a4152b5509ab0bc80655037",
+                                        "remoteSize":  46486,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "standalone-harness-driver-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "e4edd32c46fee56d35dd85a7517a777ebc31d4597df8938f9b32d20547ad2a2e",
+                                        "localSize":  1186,
+                                        "remoteSha":  "e4edd32c46fee56d35dd85a7517a777ebc31d4597df8938f9b32d20547ad2a2e",
+                                        "remoteSize":  1186,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "mods/echoagriculturereclamation-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "mods/echoatmospherecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "mods/echocameracore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "mods/echoeconomycore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "mods/echoindustrialnexus-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "mods/echomultiblockcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoskyrelayprotocol",
+                                         "path":  "mods/echoskyrelayprotocol-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "mods/echosocialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-standalone.jar",
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-standalone.jar",
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 }
+             ]
+}

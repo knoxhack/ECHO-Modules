@@ -83,6 +83,7 @@
     "echoscriptcore",
     "echoseasoncore",
     "echosettlementcore",
+    "echosignalos",
     "echoskyrelayprotocol",
     "echosocialcore",
     "echospawncore",
@@ -102,8 +103,7 @@
     "echoweathercore",
     "echowiki",
     "echoworldcore",
-    "echoworldstarter",
-    "signalos"
+    "echoworldstarter"
   ],
   "moduleCount": 93,
   "allModules": false,
@@ -132,7 +132,8 @@
         "missions",
         "networking",
         "save_data",
-        "audio"
+        "audio",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -159,7 +160,8 @@
           "missions",
           "networking",
           "save_data",
-          "audio"
+          "audio",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": true,
@@ -226,7 +228,8 @@
         "recipes",
         "networking",
         "save_data",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -257,7 +260,8 @@
           "recipes",
           "networking",
           "save_data",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -282,7 +286,8 @@
         "worldgen",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -354,7 +359,8 @@
           "worldgen",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -374,7 +380,8 @@
         "blocks",
         "items",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -393,7 +400,8 @@
           "blocks",
           "items",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -511,7 +519,8 @@
         "recipes",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -570,7 +579,8 @@
           "recipes",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -599,7 +609,8 @@
         "networking",
         "save_data",
         "entities",
-        "audio"
+        "audio",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -795,7 +806,8 @@
           "networking",
           "save_data",
           "entities",
-          "audio"
+          "audio",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1004,7 +1016,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -1038,7 +1051,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1064,7 +1078,8 @@
         "recipes",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -1104,7 +1119,8 @@
           "recipes",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1123,7 +1139,8 @@
       "expectedFeatures": [
         "items",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -1141,7 +1158,8 @@
         "features": [
           "items",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1262,7 +1280,8 @@
         "recipes",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -1285,7 +1304,8 @@
           "recipes",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1309,7 +1329,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -1397,7 +1418,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1606,7 +1628,8 @@
         "screen",
         "items",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -1631,7 +1654,8 @@
           "screen",
           "items",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -1912,7 +1936,8 @@
         "screen",
         "items",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -1936,7 +1961,8 @@
           "screen",
           "items",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -2011,7 +2037,8 @@
         "networking",
         "save_data",
         "audio",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -2042,7 +2069,8 @@
           "networking",
           "save_data",
           "audio",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -2073,7 +2101,8 @@
         "networking",
         "save_data",
         "audio",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -2103,7 +2132,8 @@
           "networking",
           "save_data",
           "audio",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -2369,7 +2399,8 @@
         "networking",
         "save_data",
         "audio",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -2468,7 +2499,8 @@
           "networking",
           "save_data",
           "audio",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -2615,7 +2647,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -2689,7 +2722,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -2913,7 +2947,8 @@
         "recipes",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3007,7 +3042,8 @@
           "recipes",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3085,7 +3121,8 @@
         "networking",
         "save_data",
         "audio",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3133,7 +3170,8 @@
           "networking",
           "save_data",
           "audio",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3157,7 +3195,8 @@
         "missions",
         "networking",
         "save_data",
-        "entities"
+        "entities",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3185,7 +3224,8 @@
           "missions",
           "networking",
           "save_data",
-          "entities"
+          "entities",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3213,7 +3253,8 @@
         "networking",
         "save_data",
         "entities",
-        "audio"
+        "audio",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -3240,7 +3281,8 @@
           "networking",
           "save_data",
           "entities",
-          "audio"
+          "audio",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3266,7 +3308,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3372,7 +3415,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3484,7 +3528,8 @@
         "missions",
         "networking",
         "save_data",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3549,7 +3594,8 @@
           "missions",
           "networking",
           "save_data",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3572,7 +3618,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -3594,7 +3641,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3749,7 +3797,8 @@
         "loot",
         "networking",
         "save_data",
-        "audio"
+        "audio",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3789,7 +3838,8 @@
           "loot",
           "networking",
           "save_data",
-          "audio"
+          "audio",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3813,7 +3863,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3854,7 +3905,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -3953,7 +4005,8 @@
         "worldgen",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -3980,7 +4033,8 @@
           "worldgen",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -4006,7 +4060,8 @@
         "recipes",
         "loot",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -4043,7 +4098,8 @@
           "recipes",
           "loot",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -4397,6 +4453,96 @@
       }
     },
     {
+      "moduleId": "echosignalos",
+      "name": "SignalOS",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "terminal",
+        "blocks",
+        "items",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "creative_tab"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/signalos/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", API_CONTEXT_AND_TEMPLATES.getId());\r\n        register(event, environment, ",
+          ", CUSTOM_APP_RECORD_VIEW.getId());\r\n        register(event, environment, ",
+          ", DATA_DRIVE_COMPONENT_FLOW.getId());\r\n        register(event, environment, ",
+          ", ECHO_CORE_SERVICE_GUARD.getId());\r\n        register(event, environment, ",
+          ", JSON_PARSE_FAILURES.getId());\r\n        register(event, environment, ",
+          ", KUBEJS_BRIDGE_ABSENCE.getId());\r\n        register(event, environment, ",
+          ", NOTE_EDITING_FLOW.getId());\r\n        register(event, environment, ",
+          ", PLAYER_DATA_REWRITES.getId());\r\n        register(event, environment, ",
+          ", REGISTRY_SORTING.getId());\r\n        register(event, environment, ",
+          ", REWARD_STORAGE_FLOW.getId());\r\n        register(event, environment, ",
+          ", SIGNALNET_DRIVE_ACTIONS.getId());\r\n        register(event, environment, ",
+          ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
+          "api_context_and_templates",
+          "app_registry_and_data",
+          "archive_read_state",
+          "computer_network_discovery",
+          "custom_app_record_view",
+          "data_drive_component_flow",
+          "duplicate_id_handling",
+          "echo_core_service_guard",
+          "json_parse_failures",
+          "json_reference_validation",
+          "kubejs_bridge_absence",
+          "missioncore_content_registration",
+          "note_editing_flow",
+          "owned_terminal_reward_flow",
+          "player_data_rewrites",
+          "registry_sorting",
+          "reward_storage_flow",
+          "runtime_spine_action",
+          "server_action_validation",
+          "server_rack_menu_actions",
+          "signalnet_drive_actions",
+          "signalnet_json_and_search",
+          "terminal_menu_validity",
+          "terminal_state_snapshot"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "terminal",
+          "blocks",
+          "items",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "creative_tab"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": true,
+          "network": true
+        }
+      }
+    },
+    {
       "moduleId": "echoskyrelayprotocol",
       "name": "ECHO: Sky Relay Protocol",
       "expectedFeatures": [
@@ -4414,7 +4560,8 @@
         "missions",
         "networking",
         "save_data",
-        "machines"
+        "machines",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -4444,7 +4591,8 @@
           "missions",
           "networking",
           "save_data",
-          "machines"
+          "machines",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -4538,7 +4686,8 @@
         "items",
         "worldgen",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -4579,7 +4728,8 @@
           "items",
           "worldgen",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -4647,7 +4797,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -4692,7 +4843,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -4829,7 +4981,8 @@
         "loot",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -4935,7 +5088,8 @@
           "loot",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -5000,7 +5154,8 @@
         "blocks",
         "items",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [],
@@ -5021,7 +5176,8 @@
           "blocks",
           "items",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -5255,7 +5411,8 @@
         "loot",
         "networking",
         "save_data",
-        "audio"
+        "audio",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -5296,7 +5453,8 @@
           "loot",
           "networking",
           "save_data",
-          "audio"
+          "audio",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -5320,7 +5478,8 @@
         "worldgen",
         "missions",
         "networking",
-        "save_data"
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
         "files": [
@@ -5378,7 +5537,8 @@
           "worldgen",
           "missions",
           "networking",
-          "save_data"
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
@@ -5510,94 +5670,6 @@
           "worldgen": true,
           "save": false,
           "network": false
-        }
-      }
-    },
-    {
-      "moduleId": "signalos",
-      "name": "SignalOS",
-      "expectedFeatures": [
-        "gui",
-        "screen",
-        "terminal",
-        "blocks",
-        "items",
-        "loot",
-        "missions",
-        "networking",
-        "save_data"
-      ],
-      "gameTests": {
-        "files": [
-          "src/test/java/com/knoxhack/signalos/registry/ModGameTests.java"
-        ],
-        "testNames": [
-          ", API_CONTEXT_AND_TEMPLATES.getId());\r\n        register(event, environment, ",
-          ", CUSTOM_APP_RECORD_VIEW.getId());\r\n        register(event, environment, ",
-          ", DATA_DRIVE_COMPONENT_FLOW.getId());\r\n        register(event, environment, ",
-          ", ECHO_CORE_SERVICE_GUARD.getId());\r\n        register(event, environment, ",
-          ", JSON_PARSE_FAILURES.getId());\r\n        register(event, environment, ",
-          ", KUBEJS_BRIDGE_ABSENCE.getId());\r\n        register(event, environment, ",
-          ", NOTE_EDITING_FLOW.getId());\r\n        register(event, environment, ",
-          ", PLAYER_DATA_REWRITES.getId());\r\n        register(event, environment, ",
-          ", REGISTRY_SORTING.getId());\r\n        register(event, environment, ",
-          ", REWARD_STORAGE_FLOW.getId());\r\n        register(event, environment, ",
-          ", SIGNALNET_DRIVE_ACTIONS.getId());\r\n        register(event, environment, ",
-          ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
-          "api_context_and_templates",
-          "app_registry_and_data",
-          "archive_read_state",
-          "computer_network_discovery",
-          "custom_app_record_view",
-          "data_drive_component_flow",
-          "duplicate_id_handling",
-          "echo_core_service_guard",
-          "json_parse_failures",
-          "json_reference_validation",
-          "kubejs_bridge_absence",
-          "missioncore_content_registration",
-          "note_editing_flow",
-          "owned_terminal_reward_flow",
-          "player_data_rewrites",
-          "registry_sorting",
-          "reward_storage_flow",
-          "runtime_spine_action",
-          "server_action_validation",
-          "server_rack_menu_actions",
-          "signalnet_drive_actions",
-          "signalnet_json_and_search",
-          "terminal_menu_validity",
-          "terminal_state_snapshot"
-        ]
-      },
-      "featureProofs": {
-        "lifecycle": true,
-        "content": true,
-        "ui": true,
-        "actions": true,
-        "blockItems": true,
-        "worldgen": true,
-        "saveReload": true,
-        "networkSync": true,
-        "features": [
-          "gui",
-          "screen",
-          "terminal",
-          "blocks",
-          "items",
-          "loot",
-          "missions",
-          "networking",
-          "save_data"
-        ],
-        "sourceSignals": {
-          "deferredRegister": false,
-          "screen": true,
-          "block": true,
-          "item": true,
-          "worldgen": true,
-          "save": true,
-          "network": true
         }
       }
     }

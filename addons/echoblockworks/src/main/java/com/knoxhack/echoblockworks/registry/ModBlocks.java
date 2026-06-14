@@ -1,5 +1,7 @@
 package com.knoxhack.echoblockworks.registry;
 
+import com.knoxhack.echo.adaptercore.EchoBackendRegistryBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendRegistryEntry;
 import com.knoxhack.echoblockworks.EchoBlockworks;
 import com.knoxhack.echoblockworks.block.BlockworksDecorativeBlock;
 import com.knoxhack.echoblockworks.block.BlockworksSlabBlock;
@@ -21,12 +23,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 public final class ModBlocks {
+   public static final Object BLOCKS = EchoBackendRegistryBridge.create(BuiltInRegistries.BLOCK, EchoBlockworks.MODID);
    private static final Map<String, NativeRegistryHolder<Block>> BY_ID = new LinkedHashMap<>();
    private static final List<NativeRegistryHolder<Block>> BLOCKWORKS_BLOCKS = new ArrayList<>();
    private static final List<NativeRegistryHolder<Block>> CREATIVE_BLOCKS = new ArrayList<>();
@@ -36,18 +42,18 @@ public final class ModBlocks {
 
    static {
       for (BlockworksBlockInfo info : BlockworksCatalog.blockInfos()) {
-         NativeRegistryHolder<Block> block = NativeRegistryHolder.of(info.blockId(), createBlock(info, propertiesFor(info)));
+         NativeRegistryHolder<Block> block = register(info.blockId(), id -> createBlock(info, propertiesFor(info, id)));
          BY_ID.put(info.blockId(), block);
          BLOCKWORKS_BLOCKS.add(block);
          CREATIVE_BLOCKS.add(block);
       }
       for (BlockworksDetailSpec detail : BlockworksCatalog.details()) {
-         NativeRegistryHolder<Block> block = NativeRegistryHolder.of(detail.id(), createDetailBlock(detail, propertiesFor(detail)));
+         NativeRegistryHolder<Block> block = register(detail.id(), id -> createDetailBlock(detail, propertiesFor(detail, id)));
          BY_ID.put(detail.id(), block);
          DETAIL_BLOCKS.put(detail.id(), block);
          CREATIVE_BLOCKS.add(block);
       }
-      BLOCKWORKS_TABLE = NativeRegistryHolder.of("echo_blockworks_table", new BlockworksTableBlock(BlockBehaviour.Properties.of()
+      BLOCKWORKS_TABLE = register("echo_blockworks_table", id -> new BlockworksTableBlock(baseProperties(id)
          .mapColor(MapColor.METAL)
          .strength(3.5F, 8.0F)
          .sound(SoundType.METAL)));
@@ -58,7 +64,8 @@ public final class ModBlocks {
    private ModBlocks() {
    }
 
-   public static void register() {
+   public static void register(Object eventBus) {
+      EchoBackendRegistryBridge.registerEventBus(BLOCKS, eventBus);
    }
 
    public static NativeRegistryHolder<Block> blockFor(BlockworksBlockInfo info) {
@@ -111,8 +118,17 @@ public final class ModBlocks {
       };
    }
 
-   private static BlockBehaviour.Properties propertiesFor(BlockworksBlockInfo info) {
-      BlockBehaviour.Properties properties = BlockBehaviour.Properties.of()
+   private static NativeRegistryHolder<Block> register(String id, java.util.function.Function<Identifier, Block> factory) {
+      EchoBackendRegistryEntry<Block> entry = EchoBackendRegistryBridge.registerWithId(BLOCKS, id, factory);
+      return NativeRegistryHolder.deferred(id, entry);
+   }
+
+   private static BlockBehaviour.Properties baseProperties(Identifier id) {
+      return BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, id));
+   }
+
+   private static BlockBehaviour.Properties propertiesFor(BlockworksBlockInfo info, Identifier id) {
+      BlockBehaviour.Properties properties = baseProperties(id)
          .mapColor(colorFor(info.family().theme()))
          .requiresCorrectToolForDrops();
       if (info.variant().glassLike() || info.family().theme() == BlockworksTheme.RECLAMATION) {
@@ -131,8 +147,8 @@ public final class ModBlocks {
       return properties;
    }
 
-   private static BlockBehaviour.Properties propertiesFor(BlockworksDetailSpec detail) {
-      BlockBehaviour.Properties properties = BlockBehaviour.Properties.of()
+   private static BlockBehaviour.Properties propertiesFor(BlockworksDetailSpec detail, Identifier id) {
+      BlockBehaviour.Properties properties = baseProperties(id)
          .mapColor(colorFor(detail.theme()))
          .strength(detail.kind() == BlockworksDetailKind.FLOOR_LOW ? 0.6F : 2.0F, 3.0F)
          .sound(detail.theme() == BlockworksTheme.RUINED ? SoundType.STONE : SoundType.METAL)

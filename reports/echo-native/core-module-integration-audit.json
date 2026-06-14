@@ -1,6 +1,6 @@
 {
   "schema": "echo.native.core_module_integration_audit.v1",
-  "generatedAt": "2026-06-13T08:36:31.510Z",
+  "generatedAt": "2026-06-14T01:22:37.732Z",
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "moduleCount": 132,
@@ -2348,7 +2348,6 @@
       "side": "common",
       "standalone": true,
       "requires": [
-        "echoaddonapi",
         "echoadaptercore"
       ],
       "optional": [
@@ -2375,7 +2374,6 @@
       ],
       "consumes": [
         "platform.contracts",
-        "echo.sdk.public_api",
         "adapter.echo_native",
         "echo.native.registry",
         "echo.native.lifecycle",
@@ -2445,6 +2443,7 @@
         "galacticsurvey.discoveries",
         "galacticsurvey.salvage",
         "galacticsurvey.depots",
+        "galacticsurvey.runtime",
         "galacticsurvey.terminal",
         "galacticsurvey.holomap_layers",
         "galacticsurvey.lens_profiles",

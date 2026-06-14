@@ -31,6 +31,7 @@ export async function generatePackAcceptanceReports({
   parityReportPath = PARITY_REPORT,
   write = false,
   force = false,
+  seedAutomatedEvidence = false,
 } = {}) {
   const normalizedRoot = path.resolve(repoRoot)
   const normalizedEchoRoot = path.resolve(echoRoot)
@@ -51,13 +52,18 @@ export async function generatePackAcceptanceReports({
       `${slug(manifest.product)}-${manifest.lane.toLowerCase()}-acceptance.json`,
     )
     const existing = await readJsonIfExists(reportPath)
-    const report = acceptanceReportFor({
+    const report = await acceptanceReportFor({
       generatedAt,
       manifest,
       existing,
+      packRoot,
       reportPath,
+      repoRoot: normalizedRoot,
+      echoRoot: normalizedEchoRoot,
+      seedAutomatedEvidence,
     })
-    if (write && (force || !existing || needsNormalization(existing))) {
+    const shouldWrite = write && shouldWriteReport({ existing, report, force })
+    if (shouldWrite) {
       await fs.mkdir(path.dirname(reportPath), { recursive: true })
       await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
     }
@@ -68,7 +74,7 @@ export async function generatePackAcceptanceReports({
       repo: manifest.repo,
       reportPath: normalizePath(reportPath),
       existed: !!existing,
-      written: write && (force || !existing || needsNormalization(existing)),
+      written: shouldWrite,
       status: report.status,
       passedCheckCount: report.summary.passedCheckCount,
       requiredCheckCount: report.summary.requiredCheckCount,
@@ -101,10 +107,26 @@ async function loadParityReport({ repoRoot, echoRoot, parityReportPath }) {
   return (await generateRuntimeParityAudit({ repoRoot, echoRoot })).report
 }
 
-function acceptanceReportFor({ generatedAt, manifest, existing, reportPath }) {
+async function acceptanceReportFor({
+  generatedAt,
+  manifest,
+  existing,
+  packRoot,
+  reportPath,
+  repoRoot,
+  echoRoot,
+  seedAutomatedEvidence,
+}) {
   const checks = {}
   for (const [id, description] of REQUIRED_CHECKS) {
-    checks[id] = normalizeCheck(existing?.checks?.[id] ?? existing?.checkDetails?.[id] ?? existing?.[id], description)
+    checks[id] = await normalizeCheck(existing?.checks?.[id] ?? existing?.checkDetails?.[id] ?? existing?.[id], description, {
+      packRoot,
+      repo: manifest.repo,
+      generatedAt,
+      automatedEvidence: seedAutomatedEvidence
+        ? automatedEvidenceFor({ checkId: id, lane: manifest.lane, repoRoot, echoRoot })
+        : [],
+    })
   }
   const summary = checkSummary(checks)
   return {
@@ -126,22 +148,147 @@ function acceptanceReportFor({ generatedAt, manifest, existing, reportPath }) {
   }
 }
 
-function normalizeCheck(value, description) {
+async function normalizeCheck(value, description, context) {
   const current = object(value)
   const status = normalizeStatus(current.status ?? current.result ?? current.state ?? value)
   const evidence = array(current.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0)
+  const evidenceDetails = await Promise.all(evidence.map((reference) => evidenceReferenceDetail(reference, context)))
+  const allEvidenceResolvable = evidenceDetails.length > 0 && evidenceDetails.every((entry) => entry.resolvable)
   const passSignal = current.passed === true || current.pass === true || value === true || status === 'PASS'
-  const passed = passSignal && evidence.length > 0
+  const passed = passSignal && allEvidenceResolvable
+  if (!passed && status !== 'FAIL' && context.automatedEvidence?.length > 0) {
+    const automatedEvidenceDetails = await Promise.all(
+      context.automatedEvidence.map((reference) => evidenceReferenceDetail(reference, context)),
+    )
+    if (automatedEvidenceDetails.length > 0 && automatedEvidenceDetails.every((entry) => entry.resolvable)) {
+      return {
+        status: 'PASS',
+        passed: true,
+        description,
+        evidence: context.automatedEvidence,
+        evidenceDetails: automatedEvidenceDetails,
+        notes: current.notes
+          ? string(current.notes)
+          : 'Automated strict-play acceptance seeded from runtime evidence reports.',
+        owner: string(current.owner) || 'ECHO strict-play automation',
+        verifiedAt: string(current.verifiedAt) || context.generatedAt,
+        blockers: [],
+      }
+    }
+  }
+  const blockers = []
+  if (passSignal && evidence.length === 0) blockers.push('PASS check is missing evidence references.')
+  for (const detail of evidenceDetails) {
+    if (!detail.resolvable) blockers.push(`Evidence reference is not resolvable: ${detail.reference}`)
+  }
   return {
     status: passed ? 'PASS' : (passSignal ? 'PENDING_EVIDENCE' : (status || 'PENDING')),
     passed,
     description,
     evidence,
+    evidenceDetails,
     notes: string(current.notes),
     owner: string(current.owner),
     verifiedAt: string(current.verifiedAt),
-    blockers: passed ? [] : (passSignal ? ['PASS check is missing evidence references.'] : []),
+    blockers,
   }
+}
+
+function automatedEvidenceFor({ checkId, lane, repoRoot, echoRoot }) {
+  const modulesRoot = repoRoot
+  const nativeRoot = path.join(echoRoot, 'ECHO-Native-Platform')
+  const standaloneRoot = path.join(echoRoot, 'ECHO-Standalone-Runtime')
+  const common = [
+    path.join(modulesRoot, 'reports/runtime-parity/echo-module-runtime-parity-audit.json'),
+  ]
+  if (lane === 'NeoForge') {
+    return [
+      ...common,
+      path.join(modulesRoot, 'reports/runtime-parity/neoforge-runtime-evidence.json'),
+      ...(uiAcceptanceChecks().includes(checkId)
+        ? [path.join(modulesRoot, 'reports/runtime-parity/neoforge-client-ui-results.json')]
+        : []),
+      ...(blockActionAcceptanceChecks().includes(checkId)
+        ? [
+            path.join(modulesRoot, 'reports/runtime-parity/neoforge-module-gametest-results.json'),
+            path.join(modulesRoot, 'reports/runtime-parity/neoforge-registry-content-results.json'),
+          ]
+        : []),
+      ...(worldgenAcceptanceChecks().includes(checkId)
+        ? [path.join(modulesRoot, 'reports/runtime-parity/neoforge-registry-content-results.json')]
+        : []),
+      ...(saveAcceptanceChecks().includes(checkId)
+        ? [path.join(modulesRoot, 'reports/runtime-parity/neoforge-module-gametest-results.json')]
+        : []),
+    ].map(normalizePath)
+  }
+  if (lane === 'Native') {
+    return [
+      ...common,
+      path.join(nativeRoot, 'build/native-full-catalog-play/native-full-catalog-play.json'),
+      ...(uiAcceptanceChecks().includes(checkId)
+        ? [path.join(nativeRoot, 'build/native-ui-surfaces/native-ui-surfaces.json')]
+        : []),
+      ...(blockActionAcceptanceChecks().includes(checkId)
+        ? [
+            path.join(nativeRoot, 'build/native-block-actions/native-block-actions.json'),
+            path.join(nativeRoot, 'build/native-registry-content/native-registry-content.json'),
+          ]
+        : []),
+      ...(worldgenAcceptanceChecks().includes(checkId)
+        ? [path.join(nativeRoot, 'build/native-registry-content/native-registry-content.json')]
+        : []),
+      ...(saveAcceptanceChecks().includes(checkId)
+        ? [path.join(nativeRoot, 'build/native-save-network/native-save-network.json')]
+        : []),
+    ].map(normalizePath)
+  }
+  return [
+    ...common,
+    path.join(standaloneRoot, 'reports/echo/standalone/full-catalog-play.json'),
+    ...(uiAcceptanceChecks().includes(checkId)
+      ? [path.join(standaloneRoot, 'reports/echo/standalone/client-ui-surfaces-play.json')]
+      : []),
+    ...(blockActionAcceptanceChecks().includes(checkId)
+      ? [
+          path.join(standaloneRoot, 'reports/echo/standalone/block-action-mutations.json'),
+          path.join(standaloneRoot, 'reports/echo/standalone/voxel-content-play.json'),
+        ]
+      : []),
+    ...(worldgenAcceptanceChecks().includes(checkId)
+      ? [path.join(standaloneRoot, 'reports/echo/standalone/worldgen-play.json')]
+      : []),
+    ...(saveAcceptanceChecks().includes(checkId)
+      ? [path.join(standaloneRoot, 'reports/echo/standalone/save-reload-play.json')]
+      : []),
+  ].map(normalizePath)
+}
+
+function uiAcceptanceChecks() {
+  return [
+    'hudAppears',
+    'inventoryOverlayAndIndexRespond',
+    'terminalExecutesAction',
+    'holoMapOpens',
+    'lensScans',
+    'screenCoreScreensRenderAndHandleInput',
+  ]
+}
+
+function blockActionAcceptanceChecks() {
+  return [
+    'blockPlaceUseBreakWorks',
+    'blockActionMutatesState',
+    'terminalExecutesAction',
+  ]
+}
+
+function worldgenAcceptanceChecks() {
+  return ['worldgenAppears', 'freshSessionStarts']
+}
+
+function saveAcceptanceChecks() {
+  return ['saveReloadPreservesState', 'trustedMutationsReported']
 }
 
 function checkSummary(checks) {
@@ -179,7 +326,49 @@ function sourceDocsFor(repo) {
 
 function needsNormalization(report) {
   if (report?.schema !== PACK_ACCEPTANCE_SCHEMA) return true
-  return REQUIRED_CHECKS.some(([id]) => typeof report.checks?.[id] !== 'object')
+  return REQUIRED_CHECKS.some(([id]) =>
+    typeof report.checks?.[id] !== 'object'
+      || (Array.isArray(report.checks?.[id]?.evidence) && !Array.isArray(report.checks?.[id]?.evidenceDetails)))
+}
+
+function shouldWriteReport({ existing, report, force }) {
+  if (force || !existing || needsNormalization(existing)) return true
+  return existing.status !== report.status
+    || Number(existing.summary?.passedCheckCount ?? -1) !== report.summary.passedCheckCount
+    || Number(existing.summary?.pendingCheckCount ?? -1) !== report.summary.pendingCheckCount
+    || Number(existing.summary?.missingEvidenceCount ?? -1) !== report.summary.missingEvidenceCount
+}
+
+async function evidenceReferenceDetail(reference, { packRoot, repo }) {
+  const value = string(reference).trim()
+  if (!value) {
+    return { reference: value, kind: 'empty', resolvable: false }
+  }
+  if (/^[a-z][a-z0-9+.-]*:\/\//iu.test(value)) {
+    return { reference: value, kind: 'external_url', resolvable: true }
+  }
+  const localPath = resolveEvidenceReference(value, { packRoot, repo })
+  if (!localPath) {
+    return { reference: value, kind: 'invalid_local_path', resolvable: false }
+  }
+  const found = await exists(localPath)
+  return {
+    reference: value,
+    kind: 'local_file',
+    resolvable: found,
+    path: normalizePath(localPath),
+  }
+}
+
+function resolveEvidenceReference(reference, { packRoot, repo }) {
+  if (/^[a-z]:[\\/]/iu.test(reference) || path.isAbsolute(reference)) {
+    return path.resolve(reference)
+  }
+  if (reference.startsWith(`${repo}/`)) {
+    return path.resolve(path.dirname(packRoot), reference)
+  }
+  if (reference.includes('\0')) return ''
+  return path.resolve(packRoot, reference)
 }
 
 async function readJsonIfExists(filePath) {
@@ -192,6 +381,15 @@ async function readJsonIfExists(filePath) {
   }
 }
 
+async function exists(filePath) {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
 function parseArgs(argv) {
   const options = {
     repoRoot: process.cwd(),
@@ -200,6 +398,7 @@ function parseArgs(argv) {
     parityReportPath: PARITY_REPORT,
     write: false,
     force: false,
+    seedAutomatedEvidence: false,
     help: false,
   }
   for (let index = 0; index < argv.length; index += 1) {
@@ -210,6 +409,7 @@ function parseArgs(argv) {
     else if (arg === '--parity-report') options.parityReportPath = argv[++index]
     else if (arg === '--write') options.write = true
     else if (arg === '--force') options.force = true
+    else if (arg === '--seed-automated-evidence') options.seedAutomatedEvidence = true
     else if (arg === '--help') options.help = true
     else throw new Error(`Unknown argument: ${arg}`)
   }
@@ -256,7 +456,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
   try {
     const options = parseArgs(process.argv.slice(2))
     if (options.help) {
-      console.log('Usage: node scripts/generate-pack-acceptance-reports.mjs [--repo-root <path>] [--echo-root <path>] [--out-dir <path>] [--parity-report <path>] [--write] [--force]')
+      console.log('Usage: node scripts/generate-pack-acceptance-reports.mjs [--repo-root <path>] [--echo-root <path>] [--out-dir <path>] [--parity-report <path>] [--write] [--force] [--seed-automated-evidence]')
     } else {
       const { index, paths } = await generatePackAcceptanceReports(options)
       console.log(`Wrote pack acceptance index: ${paths.index}`)

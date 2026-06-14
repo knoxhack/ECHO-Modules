@@ -1,0 +1,138 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T13:19:05.713Z",
+  "status": "PASS",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-terminal-fix-results.json",
+  "moduleIds": [
+    "echoterminal"
+  ],
+  "selectedModuleIds": [
+    "echoterminal"
+  ],
+  "selectedProjectNames": [
+    "echoterminal"
+  ],
+  "selectedModuleCount": 1,
+  "passedModuleIds": [
+    "echoterminal"
+  ],
+  "failedModuleIds": [],
+  "allSelectedModulesPassed": true,
+  "trustedMutations": [
+    "NeoForge GameTest server completed for echoterminal."
+  ],
+  "visibleRoutes": [],
+  "saveEvidence": [
+    "NeoForge GameTest execution for echoterminal included save/reload/network-named tests."
+  ],
+  "networkEvidence": [
+    "NeoForge GameTest execution for echoterminal included network/sync-named tests."
+  ],
+  "results": [
+    {
+      "moduleId": "echoterminal",
+      "projectName": "echoterminal",
+      "task": ":echoterminal:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echoterminal:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T13:18:45.385Z",
+      "finishedAt": "2026-06-14T13:19:05.710Z",
+      "durationMs": 20324,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "oScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-row-copy -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-copy-block -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-row-copy -> content-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-color\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> title-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> detail-line-height\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> text-gap\r\n[09:19:03] [Server thread/DEBUG] [co.kn.ec.EchoScreenCoreMod/]: ScreenCore unknown_style_property: .terminal-route-layout .terminal-route-copy-block -> content-height\r\n[09:19:03] [Server thread/INFO] [co.kn.ec.EchoNetCore/]: ECHO packet SERVERBOUND SERVERBOUND_ACTION echoterminal:terminal_action player= detail=test-client-action-accepted\r\n[09:19:03] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++]\r\n[09:19:03] [Server thread/INFO] [minecraft/GameTestServer]: ========= 49 GAME TESTS COMPLETE IN 2.347 s ======================\r\n[09:19:03] [Server thread/INFO] [minecraft/GameTestServer]: All 49 required tests passed :)\r\n[09:19:03] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[09:19:03] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[09:19:03] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[09:19:03] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:19:03] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:19:03] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:19:03] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:19:03] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[09:19:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[09:19:05] [Server thread/DEBUG] [ne.ne.ne.co.CommonHooks/WP]: Gathered mod list to write to world save Test Level\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[09:19:05] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[09:19:05] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER\r\n[09:19:05] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 20s\r\n65 actionable tasks: 1 executed, 64 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "2026-06-14T13:18:49.810270800Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", TERMINAL_ADDON_GUIDE_ORDERING.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_API_IDS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_BASELINE_AUTO_REFRESH.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_CONFIG_WORKFLOW.getId());\r\n    }\r\n\r\n    private static void terminalApiIds(GameTestHelper helper) {\r\n        helper.assertTrue(TerminalActionPacket.ID.equals(id(",
+        ", TERMINAL_DISCOVERY_GRID_BATCH_RESOLUTION.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_DISCOVERY_GRID_FILTERS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_EMPTY_PROVIDER_CONTRACTS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MAIN_SURVIVAL_ROUTE_BOUNDS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MAIN_SURVIVAL_ROUTE_GATE.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MISSION_ACTION_ROUTING.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MISSION_BROWSER_CACHE.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MISSION_HUD_NOTIFICATIONS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MISSION_REGISTRY.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_RECIPE_REGISTRY.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_RESOURCE_NAME_CONTRACTS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_REWARD_TRANSACTIONAL.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_RUNTIME_SPINE_ACTIONS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_SCREENCORE_ACTION_CATALOG.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_SCREEN_PROVIDER_PRECEDENCE.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_THEME_CHAPTER_STYLE.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_THEME_REGISTRY.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_THEME_SELECTION.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_ZOOM_OPTIONS.getId());\r\n        register(event, environment, ",
+        "terminal_addon_guide_ordering",
+        "terminal_addon_info_registry",
+        "terminal_api_ids",
+        "terminal_baseline_auto_refresh",
+        "terminal_baseline_cache_contract",
+        "terminal_baseline_data_definitions",
+        "terminal_client_options_config",
+        "terminal_command_deck_priority",
+        "terminal_config_workflow",
+        "terminal_discovery_grid_batch_resolution",
+        "terminal_discovery_grid_filters",
+        "terminal_discovery_grid_route_state",
+        "terminal_empty_provider_contracts",
+        "terminal_hud_notice_surface",
+        "terminal_lore_taxonomy",
+        "terminal_main_survival_route",
+        "terminal_main_survival_route_bounds",
+        "terminal_main_survival_route_cache",
+        "terminal_main_survival_route_gate",
+        "terminal_menu_validity",
+        "terminal_mission_action_routing",
+        "terminal_mission_browser_cache",
+        "terminal_mission_browser_phase_gating",
+        "terminal_mission_hud_notifications",
+        "terminal_mission_registry",
+        "terminal_navigation_profiles",
+        "terminal_recipe_lookups",
+        "terminal_recipe_registry",
+        "terminal_render_context_navigation",
+        "terminal_resource_name_contracts",
+        "terminal_reward_cache",
+        "terminal_reward_claim_flow",
+        "terminal_reward_explicit_owner",
+        "terminal_reward_transactional",
+        "terminal_runtime_spine_actions",
+        "terminal_screen_provider_precedence",
+        "terminal_screencore_action_catalog",
+        "terminal_screencore_click_action_dispatch",
+        "terminal_screencore_overview_route_cache",
+        "terminal_screencore_parity_state",
+        "terminal_screencore_recipe_index_cache",
+        "terminal_screencore_text_layout",
+        "terminal_scrollbar_metrics",
+        "terminal_tab_registry",
+        "terminal_theme_chapter_style",
+        "terminal_theme_icon_fallback",
+        "terminal_theme_registry",
+        "terminal_theme_resources",
+        "terminal_theme_selection",
+        "terminal_visual_polish_layout",
+        "terminal_zoom_options"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echoterminal/test/ModGameTests.java"
+      ]
+    }
+  ],
+  "blockers": []
+}

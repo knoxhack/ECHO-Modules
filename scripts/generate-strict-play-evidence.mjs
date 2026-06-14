@@ -52,7 +52,7 @@ export async function generateStrictPlayEvidence({
       command: 'node',
       args: [
         'scripts/generate-pack-acceptance-reports.mjs',
-        ...(writePackAcceptance ? ['--write'] : []),
+        ...(writePackAcceptance ? ['--write', '--seed-automated-evidence'] : []),
       ],
     })
   }

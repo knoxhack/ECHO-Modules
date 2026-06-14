@@ -20,17 +20,40 @@ import com.knoxhack.echonexusprotocol.registry.ModSounds;
 import com.knoxhack.echonexusprotocol.registry.ModWorldgen;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoNexusProtocol.MODID)
 public class EchoNexusProtocol {
    public static final String MODID = "echonexusprotocol";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String COMMON_SETUP_EVENT =
+      "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+   private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+      "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
+   private static final String REGISTER_SPAWN_PLACEMENTS_EVENT =
+      "net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent";
+   private static final String REGISTER_CAPABILITIES_EVENT =
+      "net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent";
+   private static final String LEVEL_TICK_POST_EVENT =
+      "net.neoforged.neoforge.event.tick.LevelTickEvent$Post";
+   private static final String PLAYER_TICK_POST_EVENT =
+      "net.neoforged.neoforge.event.tick.PlayerTickEvent$Post";
+   private static final String LIVING_DAMAGE_PRE_EVENT =
+      "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Pre";
+   private static final String REGISTER_COMMANDS_EVENT =
+      "net.neoforged.neoforge.event.RegisterCommandsEvent";
 
    public static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(MODID, path);
    }
 
-   public EchoNexusProtocol(Object modEventBus) {
+   EchoNexusProtocol() {
+      this(null);
+   }
+
+   public EchoNexusProtocol(IEventBus modEventBus) {
       ModBlocks.register(modEventBus);
       ModBlockEntities.register(modEventBus);
       ModEntities.register(modEventBus);
@@ -42,17 +65,22 @@ public class EchoNexusProtocol {
       ModAttachments.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echonexusprotocol.integration.prime.NexusPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerSpawnPlacements);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEnergyCapabilities::register);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+         ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_SPAWN_PLACEMENTS_EVENT,
+         ModEntities::registerSpawnPlacements);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_CAPABILITIES_EVENT,
+         ModEnergyCapabilities::register);
       NexusWorldEvents worldEvents = new NexusWorldEvents();
       NexusArmorEvents armorEvents = new NexusArmorEvents();
       NexusCommandHandler commands = new NexusCommandHandler();
-      EchoBackendLifecycleBridge.registerGameEventHandler(worldEvents::onLevelTick);
-      EchoBackendLifecycleBridge.registerGameEventHandler(armorEvents::onPlayerTick);
-      EchoBackendLifecycleBridge.registerGameEventHandler(armorEvents::onDamage);
-      EchoBackendLifecycleBridge.registerGameEventHandler(commands::register);
+      EchoBackendLifecycleBridge.registerGameEventHandler(LEVEL_TICK_POST_EVENT, worldEvents::onLevelTick);
+      EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_TICK_POST_EVENT, armorEvents::onPlayerTick);
+      EchoBackendLifecycleBridge.registerGameEventHandler(LIVING_DAMAGE_PRE_EVENT, armorEvents::onDamage);
+      EchoBackendLifecycleBridge.registerGameEventHandler(REGISTER_COMMANDS_EVENT, commands::register);
+      EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+         "com.knoxhack.echonexusprotocol.test.ModGameTests");
       Config.registerEchoConfig();
    }
 

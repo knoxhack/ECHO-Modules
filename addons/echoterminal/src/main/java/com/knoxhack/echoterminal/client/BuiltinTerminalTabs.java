@@ -352,9 +352,11 @@ public final class BuiltinTerminalTabs {
             knownKeys.add(cleanKey(chapterId(chapter)));
             knownKeys.add(cleanKey(chapterModId(chapter)));
         }
-        Set<String> configModuleIds = new HashSet<>();
-        TerminalConfigClientState.commonModules().forEach(module -> configModuleIds.add(module.moduleId()));
-        EchoConfigRegistry.snapshots(EchoConfigSide.CLIENT).forEach(module -> configModuleIds.add(module.moduleId()));
+        Map<String, EchoConfigModuleSnapshot> configModules = new LinkedHashMap<>();
+        TerminalConfigClientState.commonModules().forEach(module -> configModules.putIfAbsent(module.moduleId(), module));
+        EchoConfigRegistry.snapshots(EchoConfigSide.COMMON).forEach(module -> configModules.putIfAbsent(module.moduleId(), module));
+        EchoConfigRegistry.snapshots(EchoConfigSide.CLIENT).forEach(module -> configModules.putIfAbsent(module.moduleId(), module));
+        Set<String> configModuleIds = new HashSet<>(configModules.keySet());
         if (configModuleIds.isEmpty()) {
             return entries;
         }
@@ -363,14 +365,22 @@ public final class BuiltinTerminalTabs {
                 if (module == null || !module.loaded() || !configModuleIds.contains(module.modId())) {
                     continue;
                 }
-                if (knownKeys.contains(module.modId())) {
+                if (knownKeys.contains(cleanKey(module.modId()))) {
                     continue;
                 }
                 entries.add(new ModuleAddonChapter(module));
-                knownKeys.add(module.modId());
+                knownKeys.add(cleanKey(module.modId()));
             }
         } catch (RuntimeException exception) {
             EchoTerminal.LOGGER.warn("Terminal config module list failed; using registered addon chapters only.", exception);
+        }
+        for (EchoConfigModuleSnapshot module : configModules.values()) {
+            String moduleId = module.moduleId();
+            if (moduleId.isBlank() || knownKeys.contains(cleanKey(moduleId))) {
+                continue;
+            }
+            entries.add(new ConfigSnapshotAddonChapter(module));
+            knownKeys.add(cleanKey(moduleId));
         }
         return entries;
     }
@@ -548,6 +558,28 @@ public final class BuiltinTerminalTabs {
         @Override
         public String statusLine(net.minecraft.world.entity.player.Player player) {
             return module.statusLine();
+        }
+    }
+
+    private record ConfigSnapshotAddonChapter(EchoConfigModuleSnapshot module) implements EchoAddonChapter {
+        @Override
+        public String id() {
+            return module.moduleId();
+        }
+
+        @Override
+        public String modId() {
+            return module.moduleId();
+        }
+
+        @Override
+        public String displayName() {
+            return module.displayName();
+        }
+
+        @Override
+        public String summary() {
+            return "Runtime module exposes editable ECHO config.";
         }
     }
 

@@ -52,6 +52,26 @@ public record EchoFactionProfile(
                 standingFor(reputation), memory, activeContractId, completedContractIds);
     }
 
+    public EchoFactionProfile withActiveContract(Identifier contractId) {
+        return new EchoFactionProfile(definition, reputation, contacted, contactCount, lastInteractionTick, lastRoleId,
+                standingFor(reputation), npcMemory, Optional.ofNullable(contractId), completedContractIds);
+    }
+
+    public EchoFactionProfile withoutActiveContract() {
+        return new EchoFactionProfile(definition, reputation, contacted, contactCount, lastInteractionTick, lastRoleId,
+                standingFor(reputation), npcMemory, Optional.empty(), completedContractIds);
+    }
+
+    public EchoFactionProfile withCompletedContract(Identifier contractId) {
+        if (contractId == null || completedContractIds.contains(contractId)) {
+            return this;
+        }
+        java.util.LinkedHashSet<Identifier> completed = new java.util.LinkedHashSet<>(completedContractIds);
+        completed.add(contractId);
+        return new EchoFactionProfile(definition, reputation, contacted, contactCount, lastInteractionTick, lastRoleId,
+                standingFor(reputation), npcMemory, activeContractId, completed);
+    }
+
     private static EchoFactionStanding standingFor(int reputation) {
         return EchoFactionStanding.fromReputation(reputation);
     }

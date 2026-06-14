@@ -80,19 +80,11 @@ public abstract class EchoLoadingOverlayMixin {
         float fadeInAnim = this.fadeInStart > -1L ? (float) (now - this.fadeInStart) / 500.0F : -1.0F;
         float overlayAlpha;
         if (fadeOutAnim >= 1.0F) {
-            if (this.minecraft.screen != null) {
-                this.minecraft.screen.extractRenderStateWithTooltipAndSubtitles(graphics, 0, 0, partialTick);
-            } else {
-                this.minecraft.gui.extractDeferredSubtitles();
-            }
+            echo$extractDeferredSubtitlesOnly();
             graphics.nextStratum();
             overlayAlpha = 1.0F - Mth.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F);
         } else if (this.fadeIn) {
-            if (this.minecraft.screen != null && fadeInAnim < 1.0F) {
-                this.minecraft.screen.extractRenderStateWithTooltipAndSubtitles(graphics, mouseX, mouseY, partialTick);
-            } else {
-                this.minecraft.gui.extractDeferredSubtitles();
-            }
+            echo$extractDeferredSubtitlesOnly();
             graphics.nextStratum();
             overlayAlpha = Mth.clamp(fadeInAnim, 0.15F, 1.0F);
         } else {
@@ -109,6 +101,12 @@ public abstract class EchoLoadingOverlayMixin {
         if (fadeOutAnim >= 2.0F) {
             this.minecraft.setOverlay(null);
         }
+    }
+
+    private void echo$extractDeferredSubtitlesOnly() {
+        // Loading overlays share the GUI render state with the current screen; re-extracting that screen can request
+        // a second vanilla blur in the same frame.
+        this.minecraft.gui.extractDeferredSubtitles();
     }
 
     private void echo$drawTerminalOverlay(GuiGraphicsExtractor graphics, float partialTick, float progress, float alpha) {

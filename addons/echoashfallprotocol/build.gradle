@@ -85,6 +85,7 @@ neoForge {
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
+            sourceSet(sourceSets.test)
         }
     }
 }
@@ -96,6 +97,8 @@ configurations {
 dependencies {
     compileOnly project(':echo-native-contracts')
     compileOnly project(':echo-native-loader')
+    runtimeOnly project(':echo-native-contracts')
+    runtimeOnly project(':echo-native-loader')
     implementation project(':echocore')
     implementation project(':echonetcore')
     implementation project(':echoblockworks')
@@ -127,6 +130,7 @@ dependencies {
     ].each { compileOnlyIfIncluded(it); localRuntimeIfIncluded(it) }
 
     compileOnlyIfIncluded(':echoadaptercore')
+    localRuntimeIfIncluded(':echoadaptercore')
     compileOnlyIfIncluded(':echoterminal')
     compileOnlyIfIncluded(':echolens')
     compileOnlyIfIncluded(':echorendercore')
@@ -153,6 +157,19 @@ dependencies {
             ':echoindex',
             ':echowiki',
             ':echomachinecore',
+            ':echopowercore',
+            ':echopowergrid',
+            ':echoindustrialnexus',
+            ':echomultiblockcore',
+            ':echologisticscore',
+            ':echologisticsnetwork',
+            ':echobasegrid',
+            ':echoconvoyprotocol',
+            ':echovehiclecore',
+            ':echoeconomycore',
+            ':echolootcore',
+            ':echosocialcore',
+            ':echorecipecore',
             ':echoassetcore',
     ].each { localRuntimeIfIncluded(it) }
 

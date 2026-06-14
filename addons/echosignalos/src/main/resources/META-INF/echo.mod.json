@@ -1,6 +1,6 @@
 {
   "schema": "echo.mod.v1",
-  "id": "signalos",
+  "id": "echosignalos",
   "name": "SignalOS",
   "version": "1.0.0",
   "type": "addon",
@@ -91,6 +91,13 @@
     ]
   },
   "deprecatedFeatures": [],
-  "replacements": [],
+  "replacements": [
+    {
+      "legacyId": "signalos",
+      "replacementId": "echosignalos",
+      "scope": "module_id",
+      "contentNamespace": "signalos"
+    }
+  ],
   "conflicts": []
 }

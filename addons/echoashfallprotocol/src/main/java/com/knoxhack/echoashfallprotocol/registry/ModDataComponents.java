@@ -27,4 +27,8 @@ public final class ModDataComponents {
 
     private ModDataComponents() {
     }
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(DATA_COMPONENT_TYPES, eventBus);
+    }
 }

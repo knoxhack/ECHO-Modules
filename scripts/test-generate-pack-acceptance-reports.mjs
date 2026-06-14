@@ -76,11 +76,38 @@ try {
     ])),
   })
 
+  await generatePackAcceptanceReports({ repoRoot, echoRoot, write: true, force: true })
+  const missingFileReport = await readJson(packRepo, 'reports/pack-acceptance/ashfall-neoforge-acceptance.json')
+  assert.equal(missingFileReport.status, 'PENDING')
+  assert.equal(missingFileReport.summary.passedCheckCount, 0)
+  assert.equal(missingFileReport.summary.missingEvidenceCount, REQUIRED_CHECK_IDS.length)
+  assert.equal(missingFileReport.checks.installLaunchSucceeds.evidenceDetails[0].resolvable, false)
+
+  for (const id of REQUIRED_CHECK_IDS) {
+    await writeJson(packRepo, `reports/pack-acceptance/evidence/${id}.json`, {
+      status: 'PASS',
+      check: id,
+      proof: 'fixture evidence file exists',
+    })
+  }
+  await writeJson(packRepo, 'reports/pack-acceptance/ashfall-neoforge-acceptance.json', {
+    schema: 'echo.pack.manual_acceptance_report.v1',
+    checks: Object.fromEntries(REQUIRED_CHECK_IDS.map((id) => [
+      id,
+      {
+        status: 'PASS',
+        evidence: [`reports/pack-acceptance/evidence/${id}.json`],
+        verifiedAt: '2026-06-13T00:00:00Z',
+      },
+    ])),
+  })
+
   const { index } = await generatePackAcceptanceReports({ repoRoot, echoRoot, write: true, force: true })
   const passReport = await readJson(packRepo, 'reports/pack-acceptance/ashfall-neoforge-acceptance.json')
   assert.equal(passReport.status, 'PASS')
   assert.equal(passReport.summary.passedCheckCount, REQUIRED_CHECK_IDS.length)
   assert.equal(passReport.summary.missingEvidenceCount, 0)
+  assert.equal(passReport.checks.installLaunchSucceeds.evidenceDetails[0].resolvable, true)
   assert.equal(index.summary.passCount, 1)
 } finally {
   await fs.rm(echoRoot, { recursive: true, force: true })

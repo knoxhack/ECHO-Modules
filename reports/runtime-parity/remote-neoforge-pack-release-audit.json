@@ -1,0 +1,2239 @@
+﻿{
+    "generatedAt":  "2026-06-14T07:27:16.4943839-04:00",
+    "rows":  [
+                 {
+                     "repo":  "knoxhack/ECHO-Ashfall-NeoForge-Edition",
+                     "tag":  "v0.1.0-ashfall-neoforge-edition",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-neoforge-pack-release\\knoxhack__ECHO-Ashfall-NeoForge-Edition__v0.1.0-ashfall-neoforge-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  46,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "ashfall-neoforge-edition-0.1.0.zip",
+                                        "url":  "https://github.com/knoxhack/ECHO-Ashfall-NeoForge-Edition/releases/download/v0.1.0-ashfall-neoforge-edition/ashfall-neoforge-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "ec0bf92387893c9377b393eab067cb2fdf993ada527007edb7919d5ab8c45725",
+                                        "localSize":  267385168,
+                                        "remoteSha":  "ec0bf92387893c9377b393eab067cb2fdf993ada527007edb7919d5ab8c45725",
+                                        "remoteSize":  267385168,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "ashfall-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Ashfall-NeoForge-Edition/releases/download/v0.1.0-ashfall-neoforge-edition/ashfall-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "f23d888dac7c2080f45089d6f62c06e69958e2b99d816d3f691bb38a373a4993",
+                                        "localSize":  82250,
+                                        "remoteSha":  "f23d888dac7c2080f45089d6f62c06e69958e2b99d816d3f691bb38a373a4993",
+                                        "remoteSize":  82250,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "url":  "https://github.com/knoxhack/ECHO-Ashfall-NeoForge-Edition/releases/download/v0.1.0-ashfall-neoforge-edition/checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "22670bb728c2403c96608a61395cb98bd7bcaaabf7bdcc04ef84f9443634a00e",
+                                        "localSize":  304,
+                                        "remoteSha":  "22670bb728c2403c96608a61395cb98bd7bcaaabf7bdcc04ef84f9443634a00e",
+                                        "remoteSize":  304,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Ashfall-NeoForge-Edition/releases/download/v0.1.0-ashfall-neoforge-edition/echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "a9534378e7130cddd626f7ffa6396c0c4579d92f8b7d87755c441e18b6d7a8c4",
+                                        "localSize":  19688,
+                                        "remoteSha":  "a9534378e7130cddd626f7ffa6396c0c4579d92f8b7d87755c441e18b6d7a8c4",
+                                        "remoteSize":  19688,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "actualSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "expectedSize":  945091,
+                                         "actualSize":  945091,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "mods/echoagriculturereclamation-1.0.0-neoforge.jar",
+                                         "expectedSha":  "28043b5ef14e2f6583727757d295c81620f035ededf96d739d76a3e59f2e288b",
+                                         "actualSha":  "28043b5ef14e2f6583727757d295c81620f035ededf96d739d76a3e59f2e288b",
+                                         "expectedSize":  502465,
+                                         "actualSize":  502465,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarmory",
+                                         "path":  "mods/echoarmory-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1b086fd4ffe357ea5268a3157ca9a88cd3ddf0ed28d3e0f193006bc0bc254e04",
+                                         "actualSha":  "1b086fd4ffe357ea5268a3157ca9a88cd3ddf0ed28d3e0f193006bc0bc254e04",
+                                         "expectedSize":  10422891,
+                                         "actualSize":  10422891,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoashfallprotocol",
+                                         "path":  "mods/echoashfallprotocol-1.0.0-neoforge.jar",
+                                         "expectedSha":  "d170a72c8feb12c3bbf8acbbed5ae8dee43dc590303911d1e7809f31460dfbd3",
+                                         "actualSha":  "d170a72c8feb12c3bbf8acbbed5ae8dee43dc590303911d1e7809f31460dfbd3",
+                                         "expectedSize":  59364144,
+                                         "actualSize":  59364144,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblackboxprotocol",
+                                         "path":  "mods/echoblackboxprotocol-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7db420fa68d197aecc4467993698e0bd0d66238ec444bf970ef6d2daf9831f50",
+                                         "actualSha":  "7db420fa68d197aecc4467993698e0bd0d66238ec444bf970ef6d2daf9831f50",
+                                         "expectedSize":  10846257,
+                                         "actualSize":  10846257,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "actualSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "expectedSize":  1302372,
+                                         "actualSize":  1302372,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "actualSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "expectedSize":  7780,
+                                         "actualSize":  7780,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "actualSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "expectedSize":  33272,
+                                         "actualSize":  33272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoconvoyprotocol",
+                                         "path":  "mods/echoconvoyprotocol-1.0.0-neoforge.jar",
+                                         "expectedSha":  "c3fd56b9a442a9d4b53d1a87981aee8bf13eddc1034261068123cfe463b83a99",
+                                         "actualSha":  "c3fd56b9a442a9d4b53d1a87981aee8bf13eddc1034261068123cfe463b83a99",
+                                         "expectedSize":  903864,
+                                         "actualSize":  903864,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "actualSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "expectedSize":  368893,
+                                         "actualSize":  368893,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-neoforge.jar",
+                                         "expectedSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "actualSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "expectedSize":  7623,
+                                         "actualSize":  7623,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echodatacore",
+                                         "path":  "mods/echodatacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "e50c18c8acdd7d899f2ccd89764c678f77e632eef7b1a6450d8ca98bebc6467c",
+                                         "actualSha":  "e50c18c8acdd7d899f2ccd89764c678f77e632eef7b1a6450d8ca98bebc6467c",
+                                         "expectedSize":  105214,
+                                         "actualSize":  105214,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "actualSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "expectedSize":  10970,
+                                         "actualSize":  10970,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "actualSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "expectedSize":  1496612,
+                                         "actualSize":  1496612,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "actualSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "expectedSize":  46592,
+                                         "actualSize":  46592,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "actualSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "expectedSize":  586929,
+                                         "actualSize":  586929,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "mods/echoindustrialnexus-1.0.0-neoforge.jar",
+                                         "expectedSha":  "2b8ebd3a4b2a043a5532669f3bfe1ca377ac8c7db4f8d72ab133ed46828581fe",
+                                         "actualSha":  "2b8ebd3a4b2a043a5532669f3bfe1ca377ac8c7db4f8d72ab133ed46828581fe",
+                                         "expectedSize":  5310384,
+                                         "actualSize":  5310384,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "actualSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "expectedSize":  215164,
+                                         "actualSize":  215164,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "actualSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "expectedSize":  3672994,
+                                         "actualSize":  3672994,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "actualSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "expectedSize":  13231,
+                                         "actualSize":  13231,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "actualSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "expectedSize":  103758,
+                                         "actualSize":  103758,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "mods/echomultiblockcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "446b8596e20b604da5dc6e9bfea64a93ff797fc1ff7543377edc162caebe9ef4",
+                                         "actualSha":  "446b8596e20b604da5dc6e9bfea64a93ff797fc1ff7543377edc162caebe9ef4",
+                                         "expectedSize":  12685382,
+                                         "actualSize":  12685382,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "actualSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "expectedSize":  68888,
+                                         "actualSize":  68888,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonexusprotocol",
+                                         "path":  "mods/echonexusprotocol-1.0.0-neoforge.jar",
+                                         "expectedSha":  "aba8db15a11f5aeecf0540afa89c52f2839d69984c31f83f0f07f12227f3467c",
+                                         "actualSha":  "aba8db15a11f5aeecf0540afa89c52f2839d69984c31f83f0f07f12227f3467c",
+                                         "expectedSize":  13873708,
+                                         "actualSize":  13873708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "actualSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "expectedSize":  14483867,
+                                         "actualSize":  14483867,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "actualSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "expectedSize":  46638,
+                                         "actualSize":  46638,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-neoforge.jar",
+                                         "expectedSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "actualSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "expectedSize":  7185421,
+                                         "actualSize":  7185421,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-neoforge.jar",
+                                         "expectedSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "actualSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "expectedSize":  2687036,
+                                         "actualSize":  2687036,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "mods/echorelictech-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ebc55dc32f89ed7df6501ed893427b67d3cd7d3effadce2d266ab4b65006f85a",
+                                         "actualSha":  "ebc55dc32f89ed7df6501ed893427b67d3cd7d3effadce2d266ab4b65006f85a",
+                                         "expectedSize":  7709166,
+                                         "actualSize":  7709166,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorendercore",
+                                         "path":  "mods/echorendercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0f40e27c125d6857a2508303ccf65437b6e8fb8b9eafae26dbb316547da0e958",
+                                         "actualSha":  "0f40e27c125d6857a2508303ccf65437b6e8fb8b9eafae26dbb316547da0e958",
+                                         "expectedSize":  510555,
+                                         "actualSize":  510555,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-neoforge.jar",
+                                         "expectedSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "actualSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "expectedSize":  127454,
+                                         "actualSize":  127454,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "actualSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "expectedSize":  30708,
+                                         "actualSize":  30708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "actualSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "expectedSize":  392464,
+                                         "actualSize":  392464,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "actualSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "expectedSize":  11079852,
+                                         "actualSize":  11079852,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "actualSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "expectedSize":  9178,
+                                         "actualSize":  9178,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationfall",
+                                         "path":  "mods/echostationfall-1.0.0-neoforge.jar",
+                                         "expectedSha":  "43041a31832570465f635dada01b2273d7d5dc9896d13c53ff4a99758717639b",
+                                         "actualSha":  "43041a31832570465f635dada01b2273d7d5dc9896d13c53ff4a99758717639b",
+                                         "expectedSize":  3926033,
+                                         "actualSize":  3926033,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-neoforge.jar",
+                                         "expectedSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "actualSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "expectedSize":  22986198,
+                                         "actualSize":  22986198,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-neoforge.jar",
+                                         "expectedSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "actualSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "expectedSize":  69621179,
+                                         "actualSize":  69621179,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "actualSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "expectedSize":  8990,
+                                         "actualSize":  8990,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "actualSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "expectedSize":  214981,
+                                         "actualSize":  214981,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "actualSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "expectedSize":  42001,
+                                         "actualSize":  42001,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "actualSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "expectedSize":  244558,
+                                         "actualSize":  244558,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echowiki",
+                                         "path":  "mods/echowiki-1.0.0-neoforge.jar",
+                                         "expectedSha":  "c746da971c7075ebc963a11636343cfe857e8addad2001fa24890370cbd691d6",
+                                         "actualSha":  "c746da971c7075ebc963a11636343cfe857e8addad2001fa24890370cbd691d6",
+                                         "expectedSize":  4712023,
+                                         "actualSize":  4712023,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "actualSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "expectedSize":  177332,
+                                         "actualSize":  177332,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "actualSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "expectedSize":  10303,
+                                         "actualSize":  10303,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "signalos",
+                                         "path":  "mods/signalos-1.0.0-neoforge.jar",
+                                         "expectedSha":  "4d5303e2ffdb32ce344d412da9964d33a32c231814b384eafdcd2de4cbb806b1",
+                                         "actualSha":  "4d5303e2ffdb32ce344d412da9964d33a32c231814b384eafdcd2de4cbb806b1",
+                                         "expectedSize":  1849685,
+                                         "actualSize":  1849685,
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Openlands-NeoForge-Edition",
+                     "tag":  "v0.1.0-openlands-neoforge-edition",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-neoforge-pack-release\\knoxhack__ECHO-Openlands-NeoForge-Edition__v0.1.0-openlands-neoforge-edition",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  42,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "url":  "https://github.com/knoxhack/ECHO-Openlands-NeoForge-Edition/releases/download/v0.1.0-openlands-neoforge-edition/checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "4388569404940ae0d2a350aedb8057b2912f0c17aa656d36c6c665bba84e4f29",
+                                        "localSize":  308,
+                                        "remoteSha":  "4388569404940ae0d2a350aedb8057b2912f0c17aa656d36c6c665bba84e4f29",
+                                        "remoteSize":  308,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Openlands-NeoForge-Edition/releases/download/v0.1.0-openlands-neoforge-edition/echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "44240715dc96b7227a32192460c5946a8aa67881525da3725c06162fbe7c9aa3",
+                                        "localSize":  18122,
+                                        "remoteSha":  "44240715dc96b7227a32192460c5946a8aa67881525da3725c06162fbe7c9aa3",
+                                        "remoteSize":  18122,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-neoforge-edition-0.1.0.zip",
+                                        "url":  "https://github.com/knoxhack/ECHO-Openlands-NeoForge-Edition/releases/download/v0.1.0-openlands-neoforge-edition/openlands-neoforge-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "603eb6f660930479c6cdce6f821d5f56b07ce69c81e0f7515908294796f0bd19",
+                                        "localSize":  112306627,
+                                        "remoteSha":  "603eb6f660930479c6cdce6f821d5f56b07ce69c81e0f7515908294796f0bd19",
+                                        "remoteSize":  112306627,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "openlands-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Openlands-NeoForge-Edition/releases/download/v0.1.0-openlands-neoforge-edition/openlands-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "15640311805a6395b8c219fb65c2525301ccf293be3f9f4529c1026cf9f08907",
+                                        "localSize":  46476,
+                                        "remoteSha":  "15640311805a6395b8c219fb65c2525301ccf293be3f9f4529c1026cf9f08907",
+                                        "remoteSize":  46476,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "actualSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "expectedSize":  945091,
+                                         "actualSize":  945091,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "actualSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "expectedSize":  45265,
+                                         "actualSize":  45265,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echobiomecore",
+                                         "path":  "mods/echobiomecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "4725849332a7bb292f9f53fc534095ad3520d617119aad3c2a15f1e970fa80a5",
+                                         "actualSha":  "4725849332a7bb292f9f53fc534095ad3520d617119aad3c2a15f1e970fa80a5",
+                                         "expectedSize":  23331,
+                                         "actualSize":  23331,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "actualSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "expectedSize":  1302372,
+                                         "actualSize":  1302372,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "actualSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "expectedSize":  7780,
+                                         "actualSize":  7780,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "actualSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "expectedSize":  33272,
+                                         "actualSize":  33272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "actualSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "expectedSize":  368893,
+                                         "actualSize":  368893,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreaturecore",
+                                         "path":  "mods/echocreaturecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "56706a776503bd9f929c939cc7cda88f0416875e379db9fa30b0f9c18998e373",
+                                         "actualSha":  "56706a776503bd9f929c939cc7cda88f0416875e379db9fa30b0f9c18998e373",
+                                         "expectedSize":  21047,
+                                         "actualSize":  21047,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-neoforge.jar",
+                                         "expectedSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "actualSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "expectedSize":  7623,
+                                         "actualSize":  7623,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "mods/echoeconomycore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "52f5fe020977dc6e72046e6c3f8c54f29b215abf2638f7b692f5a860251b6a4f",
+                                         "actualSha":  "52f5fe020977dc6e72046e6c3f8c54f29b215abf2638f7b692f5a860251b6a4f",
+                                         "expectedSize":  28968,
+                                         "actualSize":  28968,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "actualSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "expectedSize":  10970,
+                                         "actualSize":  10970,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohealthcore",
+                                         "path":  "mods/echohealthcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b9b58bdf9ac05ca9d4f274931efee1926fdb7700d662de62b0a4cf2706cfe21f",
+                                         "actualSha":  "b9b58bdf9ac05ca9d4f274931efee1926fdb7700d662de62b0a4cf2706cfe21f",
+                                         "expectedSize":  42532,
+                                         "actualSize":  42532,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "actualSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "expectedSize":  1496612,
+                                         "actualSize":  1496612,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "actualSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "expectedSize":  46592,
+                                         "actualSize":  46592,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "actualSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "expectedSize":  586929,
+                                         "actualSize":  586929,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "actualSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "expectedSize":  215164,
+                                         "actualSize":  215164,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolootcore",
+                                         "path":  "mods/echolootcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "6cc78b1cdce81b5836252ca46359d7367ef1edd665e0faac28161aa966664f02",
+                                         "actualSha":  "6cc78b1cdce81b5836252ca46359d7367ef1edd665e0faac28161aa966664f02",
+                                         "expectedSize":  24122,
+                                         "actualSize":  24122,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "actualSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "expectedSize":  13231,
+                                         "actualSize":  13231,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "actualSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "expectedSize":  103758,
+                                         "actualSize":  103758,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "actualSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "expectedSize":  68888,
+                                         "actualSize":  68888,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonpcore",
+                                         "path":  "mods/echonpcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3ab638d8b712006c4b03a00a46b577a2acc18450d00b734403dad0783532ee3c",
+                                         "actualSha":  "3ab638d8b712006c4b03a00a46b577a2acc18450d00b734403dad0783532ee3c",
+                                         "expectedSize":  312813,
+                                         "actualSize":  312813,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoopenlandsprotocol",
+                                         "path":  "mods/echoopenlandsprotocol-0.1.0-neoforge.jar",
+                                         "expectedSha":  "55c642e8fab7d221407e1094a749ec5ae3ea4d4e09f24eec4565e6137326ee00",
+                                         "actualSha":  "55c642e8fab7d221407e1094a749ec5ae3ea4d4e09f24eec4565e6137326ee00",
+                                         "expectedSize":  282272,
+                                         "actualSize":  282272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "actualSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "expectedSize":  46638,
+                                         "actualSize":  46638,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplayercore",
+                                         "path":  "mods/echoplayercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "9b7969ceb6b21cff89bae99607f5094fd9c17c93219cfbb3223151fc627a2d73",
+                                         "actualSha":  "9b7969ceb6b21cff89bae99607f5094fd9c17c93219cfbb3223151fc627a2d73",
+                                         "expectedSize":  69341,
+                                         "actualSize":  69341,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "actualSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "expectedSize":  46387,
+                                         "actualSize":  46387,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "actualSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "expectedSize":  37919,
+                                         "actualSize":  37919,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-neoforge.jar",
+                                         "expectedSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "actualSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "expectedSize":  2687036,
+                                         "actualSize":  2687036,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-neoforge.jar",
+                                         "expectedSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "actualSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "expectedSize":  127454,
+                                         "actualSize":  127454,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "actualSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "expectedSize":  30708,
+                                         "actualSize":  30708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "actualSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "expectedSize":  392464,
+                                         "actualSize":  392464,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "mods/echosocialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0f7140f79e4a74431bcb5a36276d86a54be248eb92753257929967837dc96865",
+                                         "actualSha":  "0f7140f79e4a74431bcb5a36276d86a54be248eb92753257929967837dc96865",
+                                         "expectedSize":  57108,
+                                         "actualSize":  57108,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "actualSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "expectedSize":  11079852,
+                                         "actualSize":  11079852,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "actualSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "expectedSize":  9178,
+                                         "actualSize":  9178,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostructurecore",
+                                         "path":  "mods/echostructurecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "e716b499eb32ce44f0a388e6132db7af0a5168b1f114b8549c6b70e7d064cf80",
+                                         "actualSha":  "e716b499eb32ce44f0a388e6132db7af0a5168b1f114b8549c6b70e7d064cf80",
+                                         "expectedSize":  28956,
+                                         "actualSize":  28956,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-neoforge.jar",
+                                         "expectedSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "actualSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "expectedSize":  22986198,
+                                         "actualSize":  22986198,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-neoforge.jar",
+                                         "expectedSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "actualSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "expectedSize":  69621179,
+                                         "actualSize":  69621179,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "actualSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "expectedSize":  8990,
+                                         "actualSize":  8990,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "actualSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "expectedSize":  214981,
+                                         "actualSize":  214981,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "actualSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "expectedSize":  42001,
+                                         "actualSize":  42001,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "actualSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "expectedSize":  244558,
+                                         "actualSize":  244558,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "actualSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "expectedSize":  177332,
+                                         "actualSize":  177332,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "actualSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "expectedSize":  10303,
+                                         "actualSize":  10303,
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Arcana-Division-NeoForge-Edition",
+                     "tag":  "arcana-division-neoforge-1.0.0-beta",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-neoforge-pack-release\\knoxhack__ECHO-Arcana-Division-NeoForge-Edition__arcana-division-neoforge-1.0.0-beta",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  39,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "arcana-division-neoforge-edition-1.0.0.zip",
+                                        "url":  "https://github.com/knoxhack/ECHO-Arcana-Division-NeoForge-Edition/releases/download/arcana-division-neoforge-1.0.0-beta/arcana-division-neoforge-edition-1.0.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "13fb8ab91f6148ce523edc23f8baeb630f0661978a9e5128cd9c0025e6c4da03",
+                                        "localSize":  116843365,
+                                        "remoteSha":  "13fb8ab91f6148ce523edc23f8baeb630f0661978a9e5128cd9c0025e6c4da03",
+                                        "remoteSize":  116843365,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "arcana-division-neoforge-edition-beta-1.0.0.pack.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Arcana-Division-NeoForge-Edition/releases/download/arcana-division-neoforge-1.0.0-beta/arcana-division-neoforge-edition-beta-1.0.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "3fbb2ac9c9ed4eb18c08809384b2061819e353483ee5722c401be7a77f5a1047",
+                                        "localSize":  46969,
+                                        "remoteSha":  "3fbb2ac9c9ed4eb18c08809384b2061819e353483ee5722c401be7a77f5a1047",
+                                        "remoteSize":  46969,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "checksums.txt",
+                                        "url":  "https://github.com/knoxhack/ECHO-Arcana-Division-NeoForge-Edition/releases/download/arcana-division-neoforge-1.0.0-beta/checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "cc6f3499004ad0cf44841092088d90d26cbe6a6933fa2ac2f1ca358b1bbc8985",
+                                        "localSize":  319,
+                                        "remoteSha":  "cc6f3499004ad0cf44841092088d90d26cbe6a6933fa2ac2f1ca358b1bbc8985",
+                                        "remoteSize":  319,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Arcana-Division-NeoForge-Edition/releases/download/arcana-division-neoforge-1.0.0-beta/echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "eacaa1ca2854ccd0b1e6eff81b1c1418fd14433b9770c1b51fe8dacef830d45a",
+                                        "localSize":  17104,
+                                        "remoteSha":  "eacaa1ca2854ccd0b1e6eff81b1c1418fd14433b9770c1b51fe8dacef830d45a",
+                                        "remoteSize":  17104,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "release-audit.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Arcana-Division-NeoForge-Edition/releases/download/arcana-division-neoforge-1.0.0-beta/release-audit.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "fde0d334f83afdab77da501c9ef130b13029775a525a8c4a3de1cca67e29430a",
+                                        "localSize":  29031,
+                                        "remoteSha":  "fde0d334f83afdab77da501c9ef130b13029775a525a8c4a3de1cca67e29430a",
+                                        "remoteSize":  29031,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "actualSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "expectedSize":  945091,
+                                         "actualSize":  945091,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoaetherworks",
+                                         "path":  "mods/echoaetherworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "792f0864bbbec101436c2aedd372dd7c4275f0a77e4b85b24931e674e31f578a",
+                                         "actualSha":  "792f0864bbbec101436c2aedd372dd7c4275f0a77e4b85b24931e674e31f578a",
+                                         "expectedSize":  91171,
+                                         "actualSize":  91171,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanacore",
+                                         "path":  "mods/echoarcanacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf5970ad81aae6b0fc525ecffe9c009ef59f139fe62224f51d6d8a497d3fee22",
+                                         "actualSha":  "bf5970ad81aae6b0fc525ecffe9c009ef59f139fe62224f51d6d8a497d3fee22",
+                                         "expectedSize":  127323,
+                                         "actualSize":  127323,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcanadivisionprotocol",
+                                         "path":  "mods/echoarcanadivisionprotocol-1.0.0-neoforge.jar",
+                                         "expectedSha":  "8be1d636b313cf9586a5ef03d03f3148707442b08652baa6115115ef86d4599f",
+                                         "actualSha":  "8be1d636b313cf9586a5ef03d03f3148707442b08652baa6115115ef86d4599f",
+                                         "expectedSize":  8362,
+                                         "actualSize":  8362,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoarcaneindex",
+                                         "path":  "mods/echoarcaneindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1a3f9bae0904ae1b81e2a57bc30953aaf3501898ad566002eb21363b55ca351b",
+                                         "actualSha":  "1a3f9bae0904ae1b81e2a57bc30953aaf3501898ad566002eb21363b55ca351b",
+                                         "expectedSize":  31407,
+                                         "actualSize":  31407,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "actualSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "expectedSize":  1302372,
+                                         "actualSize":  1302372,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocodexcore",
+                                         "path":  "mods/echocodexcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "d25ad2b3959e2c1aa2841d64a407b0a7831f81a12c2675de6ffbc2c972e661e0",
+                                         "actualSha":  "d25ad2b3959e2c1aa2841d64a407b0a7831f81a12c2675de6ffbc2c972e661e0",
+                                         "expectedSize":  23055,
+                                         "actualSize":  23055,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "actualSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "expectedSize":  7780,
+                                         "actualSize":  7780,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "actualSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "expectedSize":  33272,
+                                         "actualSize":  33272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "actualSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "expectedSize":  368893,
+                                         "actualSize":  368893,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-neoforge.jar",
+                                         "expectedSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "actualSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "expectedSize":  7623,
+                                         "actualSize":  7623,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocursecore",
+                                         "path":  "mods/echocursecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "c081eda30ff37cb9cb36ab61e69e6853fa53b2779cf32d121367081544438809",
+                                         "actualSha":  "c081eda30ff37cb9cb36ab61e69e6853fa53b2779cf32d121367081544438809",
+                                         "expectedSize":  64080,
+                                         "actualSize":  64080,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofamiliarcore",
+                                         "path":  "mods/echofamiliarcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5b448d68e78fd743248c54a462cd07819591e603518ac689e68a9f33133a2f21",
+                                         "actualSha":  "5b448d68e78fd743248c54a462cd07819591e603518ac689e68a9f33133a2f21",
+                                         "expectedSize":  50030,
+                                         "actualSize":  50030,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "actualSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "expectedSize":  10970,
+                                         "actualSize":  10970,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogrimoire",
+                                         "path":  "mods/echogrimoire-1.0.0-neoforge.jar",
+                                         "expectedSha":  "4854d92967a1afb266bf97e049c5a57c4eb0e184e5fa3a12dfa2eb9ec30091f4",
+                                         "actualSha":  "4854d92967a1afb266bf97e049c5a57c4eb0e184e5fa3a12dfa2eb9ec30091f4",
+                                         "expectedSize":  29522,
+                                         "actualSize":  29522,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "actualSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "expectedSize":  1496612,
+                                         "actualSize":  1496612,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "actualSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "expectedSize":  46592,
+                                         "actualSize":  46592,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "actualSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "expectedSize":  586929,
+                                         "actualSize":  586929,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "actualSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "expectedSize":  215164,
+                                         "actualSize":  215164,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "actualSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "expectedSize":  13231,
+                                         "actualSize":  13231,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "actualSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "expectedSize":  103758,
+                                         "actualSize":  103758,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "actualSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "expectedSize":  68888,
+                                         "actualSize":  68888,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "actualSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "expectedSize":  46638,
+                                         "actualSize":  46638,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorelictech",
+                                         "path":  "mods/echorelictech-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ebc55dc32f89ed7df6501ed893427b67d3cd7d3effadce2d266ab4b65006f85a",
+                                         "actualSha":  "ebc55dc32f89ed7df6501ed893427b67d3cd7d3effadce2d266ab4b65006f85a",
+                                         "expectedSize":  7709166,
+                                         "actualSize":  7709166,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoriftworlds",
+                                         "path":  "mods/echoriftworlds-1.0.0-neoforge.jar",
+                                         "expectedSha":  "6f4332a8a2871fd30bb19c8344e861fe63b62dcb53d6c949fb50f2c0031fc8b7",
+                                         "actualSha":  "6f4332a8a2871fd30bb19c8344e861fe63b62dcb53d6c949fb50f2c0031fc8b7",
+                                         "expectedSize":  33389,
+                                         "actualSize":  33389,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoritualcore",
+                                         "path":  "mods/echoritualcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "00bbc7ef37b52304e78d41cde09b7309f95d2383ba3105eecf3c3e8da3dcc0e0",
+                                         "actualSha":  "00bbc7ef37b52304e78d41cde09b7309f95d2383ba3105eecf3c3e8da3dcc0e0",
+                                         "expectedSize":  105134,
+                                         "actualSize":  105134,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-neoforge.jar",
+                                         "expectedSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "actualSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "expectedSize":  127454,
+                                         "actualSize":  127454,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "actualSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "expectedSize":  30708,
+                                         "actualSize":  30708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "actualSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "expectedSize":  392464,
+                                         "actualSize":  392464,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "actualSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "expectedSize":  11079852,
+                                         "actualSize":  11079852,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echospellcore",
+                                         "path":  "mods/echospellcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "387ece46e8b09aa8777c5bcaf3f5bbf4808136c28b3be2f6e1806a668849650f",
+                                         "actualSha":  "387ece46e8b09aa8777c5bcaf3f5bbf4808136c28b3be2f6e1806a668849650f",
+                                         "expectedSize":  167056,
+                                         "actualSize":  167056,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "actualSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "expectedSize":  9178,
+                                         "actualSize":  9178,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-neoforge.jar",
+                                         "expectedSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "actualSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "expectedSize":  22986198,
+                                         "actualSize":  22986198,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-neoforge.jar",
+                                         "expectedSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "actualSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "expectedSize":  69621179,
+                                         "actualSize":  69621179,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "actualSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "expectedSize":  8990,
+                                         "actualSize":  8990,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "actualSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "expectedSize":  214981,
+                                         "actualSize":  214981,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "actualSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "expectedSize":  42001,
+                                         "actualSize":  42001,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "actualSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "expectedSize":  177332,
+                                         "actualSize":  177332,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "actualSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "expectedSize":  10303,
+                                         "actualSize":  10303,
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Sky-Relay-NeoForge-Edition",
+                     "tag":  "sky-relay-neoforge-0.1.0-alpha",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-neoforge-pack-release\\knoxhack__ECHO-Sky-Relay-NeoForge-Edition__sky-relay-neoforge-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  43,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "f57ad7d832418be45c4a0dd9c98d6a281c8419b08b7b15b7ad44ed801885d08c",
+                                        "localSize":  308,
+                                        "remoteSha":  "f57ad7d832418be45c4a0dd9c98d6a281c8419b08b7b15b7ad44ed801885d08c",
+                                        "remoteSize":  308,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "38346c68192d8a4d43f9eba554c63152314a784619c6cf688b059e6b5548ee19",
+                                        "localSize":  18583,
+                                        "remoteSha":  "38346c68192d8a4d43f9eba554c63152314a784619c6cf688b059e6b5548ee19",
+                                        "remoteSize":  18583,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "neoforge-harness-driver-manifest.template.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/neoforge-harness-driver-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "1766f7e8fe95ca184111c959025fa4e6f4fa3392f5dbfeac12e17285fac96541",
+                                        "localSize":  1151,
+                                        "remoteSha":  "1766f7e8fe95ca184111c959025fa4e6f4fa3392f5dbfeac12e17285fac96541",
+                                        "remoteSize":  1151,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "release-manifest.template.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/release-manifest.template.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "dd29aa1a255590b611fde1c2cd321211872462f8f003fd23af53efcacba99393",
+                                        "localSize":  1628,
+                                        "remoteSha":  "dd29aa1a255590b611fde1c2cd321211872462f8f003fd23af53efcacba99393",
+                                        "remoteSize":  1628,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-neoforge-edition-0.1.0.zip",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/sky-relay-neoforge-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "02bee9d837ea5d4e9a1ecb5d0cce95d55554a14b3d67d1264e2d3d21c0280ad3",
+                                        "localSize":  154774519,
+                                        "remoteSha":  "02bee9d837ea5d4e9a1ecb5d0cce95d55554a14b3d67d1264e2d3d21c0280ad3",
+                                        "remoteSize":  154774519,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/sky-relay-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "17c208a7d92a06d9484fa66f5705e35bd765466cd42f327265799d1cb9e761cf",
+                                        "localSize":  46374,
+                                        "remoteSha":  "17c208a7d92a06d9484fa66f5705e35bd765466cd42f327265799d1cb9e761cf",
+                                        "remoteSize":  46374,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "sky-relay-pack-build-report.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Sky-Relay-NeoForge-Edition/releases/download/sky-relay-neoforge-0.1.0-alpha/sky-relay-pack-build-report.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "a0c49c485b9eaf3d0392f1ddb1c872549c235ce7e8b0fa824e59b21ed35277d8",
+                                        "localSize":  6535,
+                                        "remoteSha":  "a0c49c485b9eaf3d0392f1ddb1c872549c235ce7e8b0fa824e59b21ed35277d8",
+                                        "remoteSize":  6535,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "actualSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "expectedSize":  945091,
+                                         "actualSize":  945091,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoagriculturereclamation",
+                                         "path":  "mods/echoagriculturereclamation-1.0.0-neoforge.jar",
+                                         "expectedSha":  "28043b5ef14e2f6583727757d295c81620f035ededf96d739d76a3e59f2e288b",
+                                         "actualSha":  "28043b5ef14e2f6583727757d295c81620f035ededf96d739d76a3e59f2e288b",
+                                         "expectedSize":  502465,
+                                         "actualSize":  502465,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "actualSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "expectedSize":  45265,
+                                         "actualSize":  45265,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "mods/echoatmospherecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a5443d38d9b3e7044c61f32ffa2c6f0289f529f141adc83b5016a0a3e907ce44",
+                                         "actualSha":  "a5443d38d9b3e7044c61f32ffa2c6f0289f529f141adc83b5016a0a3e907ce44",
+                                         "expectedSize":  28674,
+                                         "actualSize":  28674,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "actualSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "expectedSize":  1302372,
+                                         "actualSize":  1302372,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "mods/echocameracore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b0cc77d4f60398a23b6c9e4b215e730e8a6e7b1204759a1095e3e115b90ede06",
+                                         "actualSha":  "b0cc77d4f60398a23b6c9e4b215e730e8a6e7b1204759a1095e3e115b90ede06",
+                                         "expectedSize":  18136,
+                                         "actualSize":  18136,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "actualSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "expectedSize":  7780,
+                                         "actualSize":  7780,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "actualSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "expectedSize":  33272,
+                                         "actualSize":  33272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "actualSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "expectedSize":  368893,
+                                         "actualSize":  368893,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-neoforge.jar",
+                                         "expectedSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "actualSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "expectedSize":  7623,
+                                         "actualSize":  7623,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoeconomycore",
+                                         "path":  "mods/echoeconomycore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "52f5fe020977dc6e72046e6c3f8c54f29b215abf2638f7b692f5a860251b6a4f",
+                                         "actualSha":  "52f5fe020977dc6e72046e6c3f8c54f29b215abf2638f7b692f5a860251b6a4f",
+                                         "expectedSize":  28968,
+                                         "actualSize":  28968,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "actualSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "expectedSize":  10970,
+                                         "actualSize":  10970,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "actualSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "expectedSize":  1496612,
+                                         "actualSize":  1496612,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "actualSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "expectedSize":  46592,
+                                         "actualSize":  46592,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "actualSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "expectedSize":  586929,
+                                         "actualSize":  586929,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindustrialnexus",
+                                         "path":  "mods/echoindustrialnexus-1.0.0-neoforge.jar",
+                                         "expectedSha":  "2b8ebd3a4b2a043a5532669f3bfe1ca377ac8c7db4f8d72ab133ed46828581fe",
+                                         "actualSha":  "2b8ebd3a4b2a043a5532669f3bfe1ca377ac8c7db4f8d72ab133ed46828581fe",
+                                         "expectedSize":  5310384,
+                                         "actualSize":  5310384,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "actualSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "expectedSize":  215164,
+                                         "actualSize":  215164,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "actualSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "expectedSize":  3672994,
+                                         "actualSize":  3672994,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "actualSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "expectedSize":  13231,
+                                         "actualSize":  13231,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "actualSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "expectedSize":  103758,
+                                         "actualSize":  103758,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomultiblockcore",
+                                         "path":  "mods/echomultiblockcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "446b8596e20b604da5dc6e9bfea64a93ff797fc1ff7543377edc162caebe9ef4",
+                                         "actualSha":  "446b8596e20b604da5dc6e9bfea64a93ff797fc1ff7543377edc162caebe9ef4",
+                                         "expectedSize":  12685382,
+                                         "actualSize":  12685382,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "actualSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "expectedSize":  68888,
+                                         "actualSize":  68888,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "actualSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "expectedSize":  14483867,
+                                         "actualSize":  14483867,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "actualSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "expectedSize":  46638,
+                                         "actualSize":  46638,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-neoforge.jar",
+                                         "expectedSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "actualSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "expectedSize":  7185421,
+                                         "actualSize":  7185421,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "actualSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "expectedSize":  46387,
+                                         "actualSize":  46387,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "actualSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "expectedSize":  37919,
+                                         "actualSize":  37919,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecovery",
+                                         "path":  "mods/echorecovery-1.3.0-neoforge.jar",
+                                         "expectedSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "actualSha":  "03bb047df389fdfb03cad36e33831c79e97076efa6971dd7d61dd9a48b9e79af",
+                                         "expectedSize":  2687036,
+                                         "actualSize":  2687036,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-neoforge.jar",
+                                         "expectedSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "actualSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "expectedSize":  127454,
+                                         "actualSize":  127454,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "actualSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "expectedSize":  30708,
+                                         "actualSize":  30708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "actualSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "expectedSize":  392464,
+                                         "actualSize":  392464,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoskyrelayprotocol",
+                                         "path":  "mods/echoskyrelayprotocol-0.1.0-neoforge.jar",
+                                         "expectedSha":  "6ec1748cba52816b10d993a69fc24fe90aba768d05595c6bd4af09cb84007932",
+                                         "actualSha":  "6ec1748cba52816b10d993a69fc24fe90aba768d05595c6bd4af09cb84007932",
+                                         "expectedSize":  50340,
+                                         "actualSize":  50340,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosocialcore",
+                                         "path":  "mods/echosocialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0f7140f79e4a74431bcb5a36276d86a54be248eb92753257929967837dc96865",
+                                         "actualSha":  "0f7140f79e4a74431bcb5a36276d86a54be248eb92753257929967837dc96865",
+                                         "expectedSize":  57108,
+                                         "actualSize":  57108,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "actualSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "expectedSize":  11079852,
+                                         "actualSize":  11079852,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "actualSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "expectedSize":  9178,
+                                         "actualSize":  9178,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-neoforge.jar",
+                                         "expectedSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "actualSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "expectedSize":  22986198,
+                                         "actualSize":  22986198,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-neoforge.jar",
+                                         "expectedSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "actualSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "expectedSize":  69621179,
+                                         "actualSize":  69621179,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "actualSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "expectedSize":  8990,
+                                         "actualSize":  8990,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "actualSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "expectedSize":  214981,
+                                         "actualSize":  214981,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "actualSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "expectedSize":  42001,
+                                         "actualSize":  42001,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoweathercore",
+                                         "path":  "mods/echoweathercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "actualSha":  "0903a3aeb5961d943865d569ac0a15a284122180ee8a40b244c5dc2d951772e2",
+                                         "expectedSize":  244558,
+                                         "actualSize":  244558,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "actualSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "expectedSize":  177332,
+                                         "actualSize":  177332,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "actualSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "expectedSize":  10303,
+                                         "actualSize":  10303,
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 },
+                 {
+                     "repo":  "knoxhack/ECHO-Galactic-Survey-NeoForge-Edition",
+                     "tag":  "galactic-survey-neoforge-0.1.0-alpha",
+                     "remoteDir":  "C:\\Development\\Github\\ECHO-Modules\\tmp\\remote-neoforge-pack-release\\knoxhack__ECHO-Galactic-Survey-NeoForge-Edition__galactic-survey-neoforge-0.1.0-alpha",
+                     "assetStatus":  "ok",
+                     "assetIssues":  [
+
+                                     ],
+                     "contentStatus":  "ok",
+                     "requirementCount":  41,
+                     "contentIssueCount":  0,
+                     "contentIssues":  [
+
+                                       ],
+                     "assets":  [
+                                    {
+                                        "name":  "checksums.txt",
+                                        "url":  "https://github.com/knoxhack/ECHO-Galactic-Survey-NeoForge-Edition/releases/download/galactic-survey-neoforge-0.1.0-alpha/checksums.txt",
+                                        "downloadOk":  true,
+                                        "localSha":  "724b2405360efaf05a63a50d7da9238b8add4a27172675c1ca3a3b97ab47522e",
+                                        "localSize":  320,
+                                        "remoteSha":  "724b2405360efaf05a63a50d7da9238b8add4a27172675c1ca3a3b97ab47522e",
+                                        "remoteSize":  320,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "echo-release.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Galactic-Survey-NeoForge-Edition/releases/download/galactic-survey-neoforge-0.1.0-alpha/echo-release.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "4bdb6f1519c202df008e0efbd1f9d06478d3da34e4cc9b9d7c9f9bef59abffda",
+                                        "localSize":  17888,
+                                        "remoteSha":  "4bdb6f1519c202df008e0efbd1f9d06478d3da34e4cc9b9d7c9f9bef59abffda",
+                                        "remoteSize":  17888,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-neoforge-edition-0.1.0.zip",
+                                        "url":  "https://github.com/knoxhack/ECHO-Galactic-Survey-NeoForge-Edition/releases/download/galactic-survey-neoforge-0.1.0-alpha/galactic-survey-neoforge-edition-0.1.0.zip",
+                                        "downloadOk":  true,
+                                        "localSha":  "2bf07e5590c0136d6bd4a41ef56d23f7afc3ea7cc14970e9ba9a3a313a58afb7",
+                                        "localSize":  144920791,
+                                        "remoteSha":  "2bf07e5590c0136d6bd4a41ef56d23f7afc3ea7cc14970e9ba9a3a313a58afb7",
+                                        "remoteSize":  144920791,
+                                        "status":  "ok"
+                                    },
+                                    {
+                                        "name":  "galactic-survey-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "url":  "https://github.com/knoxhack/ECHO-Galactic-Survey-NeoForge-Edition/releases/download/galactic-survey-neoforge-0.1.0-alpha/galactic-survey-neoforge-edition-alpha-0.1.0.pack.json",
+                                        "downloadOk":  true,
+                                        "localSha":  "1c38909584b4dad849cf51d25e5bd7bb01c71adb721acb57039588d4a3009757",
+                                        "localSize":  34230,
+                                        "remoteSha":  "1c38909584b4dad849cf51d25e5bd7bb01c71adb721acb57039588d4a3009757",
+                                        "remoteSize":  34230,
+                                        "status":  "ok"
+                                    }
+                                ],
+                     "entries":  [
+                                     {
+                                         "moduleId":  "echoadaptercore",
+                                         "path":  "mods/echoadaptercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "actualSha":  "ec8c4e2dbda2a14eea270d8f74aee95ae373978c422d4b0f61b5be20a1533bb0",
+                                         "expectedSize":  945091,
+                                         "actualSize":  945091,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoassetcore",
+                                         "path":  "mods/echoassetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "actualSha":  "3bc6ff8dc17ed31ad878812e022e50ee977a4035e7fe6cc6e97860f25f88dccc",
+                                         "expectedSize":  45265,
+                                         "actualSize":  45265,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoatmospherecore",
+                                         "path":  "mods/echoatmospherecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a5443d38d9b3e7044c61f32ffa2c6f0289f529f141adc83b5016a0a3e907ce44",
+                                         "actualSha":  "a5443d38d9b3e7044c61f32ffa2c6f0289f529f141adc83b5016a0a3e907ce44",
+                                         "expectedSize":  28674,
+                                         "actualSize":  28674,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoblockworks",
+                                         "path":  "mods/echoblockworks-1.0.0-neoforge.jar",
+                                         "expectedSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "actualSha":  "adcf05b11d15b997bb29851f81b8743cdf47135923928d4b92298afe752ce3a9",
+                                         "expectedSize":  1302372,
+                                         "actualSize":  1302372,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocameracore",
+                                         "path":  "mods/echocameracore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b0cc77d4f60398a23b6c9e4b215e730e8a6e7b1204759a1095e3e115b90ede06",
+                                         "actualSha":  "b0cc77d4f60398a23b6c9e4b215e730e8a6e7b1204759a1095e3e115b90ede06",
+                                         "expectedSize":  18136,
+                                         "actualSize":  18136,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocommonloot",
+                                         "path":  "mods/echocommonloot-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "actualSha":  "9fda252499e97a3a8097f70bf4ee4b0abe7fcffd069de5fcb277cfc1674b8637",
+                                         "expectedSize":  7780,
+                                         "actualSize":  7780,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocontentcore",
+                                         "path":  "mods/echocontentcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "actualSha":  "91f170feec79038a8db8d143a8b888b8e756e4e14427e13453fe688833c22ad4",
+                                         "expectedSize":  33272,
+                                         "actualSize":  33272,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocore",
+                                         "path":  "mods/echocore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "actualSha":  "31115ba0e5e6a4533a809e62a1c612e8e67a1211af1c5102c1da2fe13f204d2d",
+                                         "expectedSize":  368893,
+                                         "actualSize":  368893,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echocreatureroles",
+                                         "path":  "mods/echocreatureroles-0.1.0-neoforge.jar",
+                                         "expectedSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "actualSha":  "52146106f716ede0557c08a6a403317947b697708dcae722634fbeec4ffeb8ba",
+                                         "expectedSize":  7623,
+                                         "actualSize":  7623,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echofoundationcore",
+                                         "path":  "mods/echofoundationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "actualSha":  "d738b627e35aa3227df500efc0aeba225f0115b110f6494cf04c4c58d3eb2b02",
+                                         "expectedSize":  10970,
+                                         "actualSize":  10970,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticcore",
+                                         "path":  "mods/echogalacticcore-0.1.0-native-alpha-neoforge.jar",
+                                         "expectedSha":  "d8e3ee9b7d37abd4b3a54b62dd23c2020f5a4d6bd3346b319a024dbbde47668f",
+                                         "actualSha":  "d8e3ee9b7d37abd4b3a54b62dd23c2020f5a4d6bd3346b319a024dbbde47668f",
+                                         "expectedSize":  12074779,
+                                         "actualSize":  12074779,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echogalacticsurveyprotocol",
+                                         "path":  "mods/echogalacticsurveyprotocol-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2450cbbbb3a30421d1801a89ad2ef05f89056ac9f7b65b5f2200a8df6edf8cde",
+                                         "actualSha":  "2450cbbbb3a30421d1801a89ad2ef05f89056ac9f7b65b5f2200a8df6edf8cde",
+                                         "expectedSize":  123112,
+                                         "actualSize":  123112,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoholomap",
+                                         "path":  "mods/echoholomap-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "actualSha":  "5a2079acf4051cbe835a23dba40a75339abe13baba8b9fa69efc16808fe39ca0",
+                                         "expectedSize":  1496612,
+                                         "actualSize":  1496612,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echohudcore",
+                                         "path":  "mods/echohudcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "actualSha":  "42f1a8ae22330a97bdb11e2b36e88ad57c6ccd7cd4231e0993fbdd4f95433d2c",
+                                         "expectedSize":  46592,
+                                         "actualSize":  46592,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoindex",
+                                         "path":  "mods/echoindex-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "actualSha":  "5d67a90144e60a1d8aff85b472ac1217d7282197605b628203161544eaa4a183",
+                                         "expectedSize":  586929,
+                                         "actualSize":  586929,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoinputcore",
+                                         "path":  "mods/echoinputcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "d13228863e516b94e9df9543f71e2619c33370ca429bd6295ca8bf839aca891a",
+                                         "actualSha":  "d13228863e516b94e9df9543f71e2619c33370ca429bd6295ca8bf839aca891a",
+                                         "expectedSize":  21460,
+                                         "actualSize":  21460,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echolens",
+                                         "path":  "mods/echolens-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "actualSha":  "7fdf9e462af02733884bc2429971942d6de6fd7e22a0ee2d43aea386aa76781d",
+                                         "expectedSize":  215164,
+                                         "actualSize":  215164,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echologisticsnetwork",
+                                         "path":  "mods/echologisticsnetwork-1.0.0-neoforge.jar",
+                                         "expectedSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "actualSha":  "5ab530c782c7d839c6d0165bcbab809641869b58f3e8bf5ad46b5ad008f84111",
+                                         "expectedSize":  3672994,
+                                         "actualSize":  3672994,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomachinecore",
+                                         "path":  "mods/echomachinecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "223a1e0e6ad6c0b76aa47981646c3f9837ef28b3bc900b94487d9e567591dca4",
+                                         "actualSha":  "223a1e0e6ad6c0b76aa47981646c3f9837ef28b3bc900b94487d9e567591dca4",
+                                         "expectedSize":  68655,
+                                         "actualSize":  68655,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomaterialcore",
+                                         "path":  "mods/echomaterialcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "actualSha":  "a07b7937f905bb7290acd573a3b9f14feef0abd595991ab1f80e26da573bafcd",
+                                         "expectedSize":  13231,
+                                         "actualSize":  13231,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echomissioncore",
+                                         "path":  "mods/echomissioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "actualSha":  "bd95757ba0c5c797858830c98bf9ba799c57293ebd35cd4edd4bef315622aa3b",
+                                         "expectedSize":  103758,
+                                         "actualSize":  103758,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echonetcore",
+                                         "path":  "mods/echonetcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "actualSha":  "046e3082e458b3b62afe65ab978ce773e40e759a989124f534780e9c2685606a",
+                                         "expectedSize":  68888,
+                                         "actualSize":  68888,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoorbitalremnants",
+                                         "path":  "mods/echoorbitalremnants-1.0.0-neoforge.jar",
+                                         "expectedSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "actualSha":  "7d3a588f384b85e53311b9a1d5d9ac5f0c067ee81fce3b917705b62081b125ce",
+                                         "expectedSize":  14483867,
+                                         "actualSize":  14483867,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoplatformcore",
+                                         "path":  "mods/echoplatformcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "actualSha":  "059c34555f1192db811c6fdaf7f4a87571c660038171f75430e0221c2ffcebaa",
+                                         "expectedSize":  46638,
+                                         "actualSize":  46638,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowercore",
+                                         "path":  "mods/echopowercore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "e0d648d8b845703e9b76e8cc6403a5ae48faff0500f0f3a140f63f831808dfa2",
+                                         "actualSha":  "e0d648d8b845703e9b76e8cc6403a5ae48faff0500f0f3a140f63f831808dfa2",
+                                         "expectedSize":  23108,
+                                         "actualSize":  23108,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echopowergrid",
+                                         "path":  "mods/echopowergrid-1.0.0-neoforge.jar",
+                                         "expectedSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "actualSha":  "13e09cbbd0b5404e5018acbb88ff23286b6ecf6b2816fca1683a2e69a34bc420",
+                                         "expectedSize":  7185421,
+                                         "actualSize":  7185421,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoprogressioncore",
+                                         "path":  "mods/echoprogressioncore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "actualSha":  "a6a977253e3562806a69a6a46439c80caafffa05183c8f1ae77b2f19d0ca2f77",
+                                         "expectedSize":  46387,
+                                         "actualSize":  46387,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echorecipecore",
+                                         "path":  "mods/echorecipecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "actualSha":  "3cf7a289dd87e60076a07f5207eb4ca488b5ebdd2ec9d70a2bfec9a4ebda51f2",
+                                         "expectedSize":  37919,
+                                         "actualSize":  37919,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoruntimeguard",
+                                         "path":  "mods/echoruntimeguard-1.0.0-neoforge.jar",
+                                         "expectedSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "actualSha":  "508fad959c88491dcaa45584c19adc174f5cc1b0b79845994c8e0ce51bf0f4db",
+                                         "expectedSize":  127454,
+                                         "actualSize":  127454,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoschemacore",
+                                         "path":  "mods/echoschemacore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "actualSha":  "bf23e43e2a8ea0484d39465a5bdbe84465c662645f474bd0284fcf7a7b6e2e38",
+                                         "expectedSize":  30708,
+                                         "actualSize":  30708,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoscreencore",
+                                         "path":  "mods/echoscreencore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "actualSha":  "47fd8248d3786cfe72574ad648d3aa1e2d809b2dc91b7f5511bbb7cdd0e5e359",
+                                         "expectedSize":  392464,
+                                         "actualSize":  392464,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echosoundcore",
+                                         "path":  "mods/echosoundcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "actualSha":  "0d71c4b03b643d84719fe673e79d5c793e9a835ca7d7405d405dd28891483ab9",
+                                         "expectedSize":  11079852,
+                                         "actualSize":  11079852,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echostationcore",
+                                         "path":  "mods/echostationcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "actualSha":  "9749ce968fa8722e98bd718f1e7d0d9ad7e5730fd0044cbb001dfbbbe8b63e14",
+                                         "expectedSize":  9178,
+                                         "actualSize":  9178,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoterminal",
+                                         "path":  "mods/echoterminal-1.0.0-neoforge.jar",
+                                         "expectedSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "actualSha":  "259f0da30fc641d1c95ec5e372dc2ca9b5c9fae9223715f630ef1c979f3aa224",
+                                         "expectedSize":  22986198,
+                                         "actualSize":  22986198,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echothemecore",
+                                         "path":  "mods/echothemecore-1.3.0-neoforge.jar",
+                                         "expectedSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "actualSha":  "01f98e0a52ab61f08530b976abc82ea3a658947b15af3ef5779f93f9389a756b",
+                                         "expectedSize":  69621179,
+                                         "actualSize":  69621179,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotoolcore",
+                                         "path":  "mods/echotoolcore-0.1.0-neoforge.jar",
+                                         "expectedSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "actualSha":  "ffba003385408e3a0e7f618a3da21074b7f25afed56816ad2fc73edf2df90f19",
+                                         "expectedSize":  8990,
+                                         "actualSize":  8990,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echotutorialcore",
+                                         "path":  "mods/echotutorialcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "actualSha":  "a17c4ab33b9df3e5718b5e854aa45b10db928a0286fec32fcc961884971ccc66",
+                                         "expectedSize":  214981,
+                                         "actualSize":  214981,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovalidationcore",
+                                         "path":  "mods/echovalidationcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "actualSha":  "b1efd0f32138c91cdac5758b73a067327822a959d8ad8e93bf36391105f1d9c0",
+                                         "expectedSize":  42001,
+                                         "actualSize":  42001,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echovehiclecore",
+                                         "path":  "mods/echovehiclecore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "e3f94e4ed68b10b34df72bb548d9e4c3c225c4cc7e3513a4d490c171ec544902",
+                                         "actualSha":  "e3f94e4ed68b10b34df72bb548d9e4c3c225c4cc7e3513a4d490c171ec544902",
+                                         "expectedSize":  21800,
+                                         "actualSize":  21800,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldcore",
+                                         "path":  "mods/echoworldcore-1.0.0-neoforge.jar",
+                                         "expectedSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "actualSha":  "1571dc08d4f94c9e0935cb491c85787b932cc1fcb0239f7cc47418aee39d03c2",
+                                         "expectedSize":  177332,
+                                         "actualSize":  177332,
+                                         "status":  "ok"
+                                     },
+                                     {
+                                         "moduleId":  "echoworldstarter",
+                                         "path":  "mods/echoworldstarter-0.1.0-neoforge.jar",
+                                         "expectedSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "actualSha":  "2e4cbe46cd3ccf3be4a3378c4d2467033c0d0e5e6771de0814be3489225dd10f",
+                                         "expectedSize":  10303,
+                                         "actualSize":  10303,
+                                         "status":  "ok"
+                                     }
+                                 ]
+                 }
+             ]
+}

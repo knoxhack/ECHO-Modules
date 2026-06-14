@@ -27,6 +27,7 @@ neoForge {
 configurations { runtimeClasspath.extendsFrom localRuntime }
 
 dependencies {
+    implementation project(':echoadaptercore')
     implementation project(":echocore")
     api project(":echoplatformcore")
     api project(":echoschemacore")

@@ -1325,7 +1325,7 @@ public final class ModGameTests {
                 "Core-facing Orbital availability should be true after the handoff condition is satisfied");
 
         EchoChapterCapability capability = EchoCoreServices.chapterCapabilities(player).stream()
-                .filter(entry -> "orbital_remnants".equals(entry.id()))
+                .filter(entry -> "orbital_remnants".equals(entry.id().getPath()))
                 .findFirst()
                 .orElse(null);
         helper.assertTrue(capability != null && capability.installed(),

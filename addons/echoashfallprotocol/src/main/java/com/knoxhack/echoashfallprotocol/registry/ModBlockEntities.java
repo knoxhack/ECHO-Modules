@@ -140,4 +140,8 @@ public class ModBlockEntities {
                             ModBlocks.ECHO_CACHE.get(),
                             ModBlocks.ECHO_CRATE.get(),
                             ModBlocks.SUPPLY_CRATE.get())));
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(BLOCK_ENTITIES, eventBus);
+    }
 }

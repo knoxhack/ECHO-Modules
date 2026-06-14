@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-Optional modules: `echoblockworks`, `echoholomap`, `echolens`, `echorendercore`, `echoruntimeguard`, `echoscreencore`, `signalos`, `echosoundcore`, `echoterminal`
+Optional modules: `echoblockworks`, `echoholomap`, `echolens`, `echorendercore`, `echoruntimeguard`, `echoscreencore`, `echosignalos`, `echosoundcore`, `echoterminal`
 
 Provides: `theme.asset_kits`, `theme.block_palettes`, `theme.echo_platform`, `theme.cyberglass`, `theme.render_profiles`, `theme.tokens`, `theme.ui_skins`
 

@@ -20,17 +20,41 @@ import com.knoxhack.echoorbitalremnants.suit.SuitEvents;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoOrbitalRemnants.MODID)
 public class EchoOrbitalRemnants {
     public static final String MODID = "echoorbitalremnants";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final String COMMON_SETUP_EVENT =
+            "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+    private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+            "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
+    private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
+    private static final String PLAYER_TICK_POST_EVENT =
+            "net.neoforged.neoforge.event.tick.PlayerTickEvent$Post";
+    private static final String RIGHT_CLICK_BLOCK_EVENT =
+            "net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock";
+    private static final String PLAYER_CLONE_EVENT =
+            "net.neoforged.neoforge.event.entity.player.PlayerEvent$Clone";
+    private static final String ITEM_TOOLTIP_EVENT =
+            "net.neoforged.neoforge.client.event.ItemTooltipEvent";
+    private static final String REGISTER_COMMANDS_EVENT =
+            "net.neoforged.neoforge.event.RegisterCommandsEvent";
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
-    public EchoOrbitalRemnants(Object modEventBus) {
+    EchoOrbitalRemnants() {
+        this(null);
+    }
+
+    public EchoOrbitalRemnants(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
@@ -41,18 +65,23 @@ public class EchoOrbitalRemnants {
         ModCreativeTabs.register(modEventBus);
         com.knoxhack.echoorbitalremnants.integration.prime.OrbitalPrimeIntegration.register();
 
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetworking::registerPayloads);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+                ModEntities::registerAttributes);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_PAYLOAD_HANDLERS_EVENT,
+                ModNetworking::registerPayloads);
 
         SuitEvents suitEvents = new SuitEvents();
         ModTooltipEvents tooltipEvents = new ModTooltipEvents();
-        EchoBackendLifecycleBridge.registerGameEventHandler(suitEvents::onPlayerTick);
-        EchoBackendLifecycleBridge.registerGameEventHandler(suitEvents::onRouteCacheOpen);
-        EchoBackendLifecycleBridge.registerGameEventHandler(suitEvents::onClone);
-        EchoBackendLifecycleBridge.registerGameEventHandler(tooltipEvents::onItemTooltip);
-        EchoBackendLifecycleBridge.registerGameEventHandler(Echo7RouteCommandHandler::onRegisterCommands);
-        EchoBackendLifecycleBridge.registerGameEventHandler(OrbitalOutpostSpawner::onPlayerTick);
+        EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_TICK_POST_EVENT, suitEvents::onPlayerTick);
+        EchoBackendLifecycleBridge.registerGameEventHandler(RIGHT_CLICK_BLOCK_EVENT, suitEvents::onRouteCacheOpen);
+        EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_CLONE_EVENT, suitEvents::onClone);
+        EchoBackendLifecycleBridge.registerGameEventHandler(ITEM_TOOLTIP_EVENT, tooltipEvents::onItemTooltip);
+        EchoBackendLifecycleBridge.registerGameEventHandler(REGISTER_COMMANDS_EVENT,
+                Echo7RouteCommandHandler::onRegisterCommands);
+        EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_TICK_POST_EVENT, OrbitalOutpostSpawner::onPlayerTick);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echoorbitalremnants.test.ModGameTests");
 
         Config.registerEchoConfig();
     }
@@ -62,7 +91,7 @@ public class EchoOrbitalRemnants {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
             AshfallCompat.registerAddonChapter();
             OrbitalIndexProvider.register();
-            if (EchoRuntimeModules.isLoaded("echoterminal")) {
+            if (ModList.get().isLoaded("echoterminal")) {
                 OrbitalTerminalCommonIntegration.register();
             }
             if (EchoRuntimeModules.isLoaded("echomachinecore")) {

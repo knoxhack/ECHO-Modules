@@ -13,13 +13,21 @@ import com.knoxhack.signalos.service.SignalOsBuiltinActions;
 import com.knoxhack.signalos.service.SignalOsTerminalServices;
 import com.knoxhack.signalos.network.ModNetwork;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(SignalOS.LOADER_MODID)
 public class SignalOS {
+    public static final String LOADER_MODID = "echosignalos";
     public static final String MODID = "signalos";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public SignalOS(Object modEventBus) {
+    SignalOS() {
+        this(null);
+    }
+
+    public SignalOS(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModDataComponents.register(modEventBus);
@@ -29,6 +37,8 @@ public class SignalOS {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerGameEventHandler(SignalOsServerReloaders::addServerReloadListeners);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.signalos.registry.ModGameTests");
     }
 
     private void commonSetup(Object event) {

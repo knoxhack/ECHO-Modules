@@ -29,6 +29,7 @@ configurations { runtimeClasspath.extendsFrom localRuntime }
 dependencies {
     implementation project(":echocore")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
     compileOnly project(":echo-native-contracts")
     api project(":echoplatformcore")
     api project(":echoschemacore")

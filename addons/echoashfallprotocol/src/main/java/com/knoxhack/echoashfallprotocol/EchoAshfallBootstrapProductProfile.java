@@ -493,7 +493,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 Map.entry("echoterminal", "com.knoxhack.echoterminal.EchoTerminalNativeModule"),
                 Map.entry("echoweathercore", "com.knoxhack.echoweathercore.EchoWeatherCoreNativeModule"),
                 Map.entry("echowiki", "com.knoxhack.echowiki.EchoWikiNativeModule"),
-                Map.entry("signalos", "com.knoxhack.signalos.EchoSignalOsNativeModule"),
+                Map.entry("echosignalos", "com.knoxhack.signalos.EchoSignalOsNativeModule"),
                 Map.entry(NAMESPACE, "com.knoxhack.echoashfallprotocol.EchoAshfallNativeModule")
         );
     }
@@ -770,7 +770,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         "com.knoxhack.echowiki.content.WikiContentRegistry",
                         "com.knoxhack.echowiki.integration.WikiTerminalClientIntegration"
                 )),
-                Map.entry("signalos", List.of(
+                Map.entry("echosignalos", List.of(
                         "com.knoxhack.signalos.content.SignalOsBuiltinContent",
                         "com.knoxhack.signalos.service.SignalOsBuiltinActions"
                 ))
@@ -1488,7 +1488,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 List.of("echoterminal:echo_terminal_remote"),
                 "echowiki",
                 List.of("echowiki:guide_book"),
-                "signalos",
+                "echosignalos",
                 List.of("signalos:data_drive")
         );
     }
@@ -1501,7 +1501,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "echoindex",
                 "echolens",
                 "echoholomap",
-                "signalos"
+                "echosignalos"
         );
     }
 
@@ -1513,7 +1513,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "echolens", "lens",
                 "echoholomap", "holomap",
                 "echowiki", "wiki",
-                "signalos", "signalos"
+                "echosignalos", "signalos"
         );
     }
 
@@ -1525,7 +1525,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "echolens", "Lens",
                 "echoholomap", "HoloMap",
                 "echowiki", "Wiki",
-                "signalos", "SignalOS"
+                "echosignalos", "SignalOS"
         );
     }
 
@@ -1572,7 +1572,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         staticInvocation("wikiTerminalClientIntegrationRegistered",
                                 "com.knoxhack.echowiki.integration.WikiTerminalClientIntegration", "register")
                 ),
-                "signalos", List.of(
+                "echosignalos", List.of(
                         staticInvocation("signalOsBuiltinContentRegistered",
                                 "com.knoxhack.signalos.content.SignalOsBuiltinContent", "register"),
                         staticInvocation("signalOsBuiltinActionsRegistered",
@@ -1596,7 +1596,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                         staticValueInvocation("lensDiagnostics",
                                 "com.knoxhack.echolens.registry.LensProviderRegistry", "diagnostics")
                 ),
-                "signalos", List.of(
+                "echosignalos", List.of(
                         staticValueInvocation("signalOsChapters",
                                 "com.knoxhack.signalos.content.SignalOsContentRegistry", "chapters"),
                         staticValueInvocation("signalOsMissions",

@@ -1,0 +1,94 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T13:54:20.677Z",
+  "status": "FAIL",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-powergrid-registry-fix-results.json",
+  "moduleIds": [],
+  "selectedModuleIds": [
+    "echopowergrid"
+  ],
+  "selectedProjectNames": [
+    "echopowergrid"
+  ],
+  "selectedModuleCount": 1,
+  "passedModuleIds": [],
+  "failedModuleIds": [
+    "echopowergrid"
+  ],
+  "allSelectedModulesPassed": false,
+  "trustedMutations": [],
+  "visibleRoutes": [],
+  "saveEvidence": [],
+  "networkEvidence": [],
+  "results": [
+    {
+      "moduleId": "echopowergrid",
+      "projectName": "echopowergrid",
+      "task": ":echopowergrid:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echopowergrid:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T13:54:01.012Z",
+      "finishedAt": "2026-06-14T13:54:20.674Z",
+      "durationMs": 19662,
+      "exitCode": 1,
+      "status": "FAIL",
+      "stdoutTail": ": available\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent0/]: direct buffer constructor: unavailable: Reflective setAccessible(true) disabled\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent0/]: java.nio.Bits.unaligned: available, true\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent0/]: jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: symbolic reference class is not accessible: class jdk.internal.misc.Unsafe, from class io.netty.util.internal.PlatformDependent0 (unnamed module @71bc1ae4)\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: sun.misc.Unsafe: available\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.tmpdir: C:\\Users\\knox\\AppData\\Local\\Temp (java.io.tmpdir)\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: Platform: Windows\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.noPreferDirect: false\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.jfr.enabled: true\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.AbstractByteBuf/]: -Dio.netty.buffer.checkAccessible: true\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.AbstractByteBuf/]: -Dio.netty.buffer.checkBounds: true\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.ResourceLeakDetectorFactory/]: Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@53f0e4b5\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.in.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.AdaptiveByteBufAllocator/]: -Dio.netty.allocator.useCachedMagazinesForNonEventLoopThreads: false\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.maxCapacityPerThread: 4096\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.ratio: 8\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.chunkSize: 32\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.blocking: false\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.batchFastThreadLocalOnly: true\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.allocator.type: adaptive\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.threadLocalDirectBufferSize: 0\r\n[09:54:13] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.maxThreadLocalCharBufferSize: 16384\r\n[09:54:13] [modloading-worker-0/DEBUG] [ne.ne.fm.ja.AutomaticEventSubscriber/LOADING]: Subscribing method private static void net.neoforged.neoforge.network.filters.GenericPacketSplitter.register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent) to the event bus of mod neoforge\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loading configs type COMMON\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.ne.co.NeoForgeMod/FORGEMOD]: Loaded NeoForge config file neoforge-common.toml\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loaded TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echopowergrid\\run\\config\\neoforge-common.toml\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Watching TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echopowergrid\\run\\config\\neoforge-common.toml for changes\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.fm.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue Common setup: 1 jobs\r\n[09:54:13] [modloading-sync-worker/DEBUG] [ne.ne.fm.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 1.324 ms\r\n[09:54:15] [main/INFO] [minecraft/RecipeManager]: Loaded 1545 recipes\r\n[09:54:15] [main/INFO] [minecraft/AdvancementTree]: Loaded 1617 advancements\r\n[09:54:15] [main/INFO] [ne.ne.ne.co.cr.RecipePriorityManager/]: Loaded 0 recipe priority overrides\r\n[09:54:16] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loading configs type SERVER\r\n[09:54:16] [Server thread/DEBUG] [ne.ne.ne.co.NeoForgeMod/FORGEMOD]: Loaded NeoForge config file neoforge-server.toml\r\n[09:54:16] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loaded TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echopowergrid\\run\\config\\neoforge-server.toml\r\n[09:54:16] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Watching TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echopowergrid\\run\\config\\neoforge-server.toml for changes\r\n[09:54:16] [Server thread/DEBUG] [io.ne.ut.in.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0x83fb0c395d4b22b1\r\n[09:54:16] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Selecting global world spawn...\r\n[09:54:16] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Loading 0 persistent chunks...\r\n[09:54:16] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Preparing spawn area: 100%\r\n[09:54:16] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 349 ms\r\n[09:54:16] [Server thread/INFO] [minecraft/GameTestServer]: Each test that matches echopowergrid:* will be run 1 times (total: 25)\r\n[09:54:16] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server\r\n[09:54:16] [Server thread/DEBUG] [ne.ne.ne.se.LanguageHook/]: Loaded 14 language files for en_us\r\n[09:54:16] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler\r\n[09:54:16] [Server thread/INFO] [minecraft/GameTestServer]: 25 tests are now running at position -11641678, -59, -2131796!\r\n[09:54:17] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echopowergrid:powergrid_hardening' batch 0 (25 tests)...\r\n[09:54:17] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 1 at (0.0, 0.0, 0.0)\r\n[09:54:17] [Server thread/DEBUG] [io.ne.ut.in.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: available\r\n[09:54:17] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:17] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 2 at (0.0, 0.0, 0.0)\r\n[09:54:17] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:17] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 3 at (0.0, 0.0, 0.0)\r\n[09:54:17] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:17] [Server thread/ERROR] [minecraft/LogTestReporter]: echopowergrid:fe_transaction_rollback failed at -11641468, -59, -2131796! Aborted FE insert transaction should roll battery back to zero EP on tick 1\r\n[09:54:18] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 4 at (0.0, 0.0, 0.0)\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:18] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 5 at (0.0, 0.0, 0.0)\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [++__+_+X+++++_+++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [++__+_+X+++++_+++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [++__+++X+++++_+++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [++__+++X+++++_+++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 7 at (0.0, 0.0, 0.0)\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++X+++++++++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++X+++++++++_+++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++X+++++++++++++++++]\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: ========= 25 GAME TESTS COMPLETE IN 1.781 s ======================\r\n[09:54:18] [Server thread/ERROR] [minecraft/GameTestServer]: 1 required tests failed :(\r\n[09:54:18] [Server thread/ERROR] [minecraft/GameTestServer]:    - echopowergrid:fe_transaction_rollback: Aborted FE insert transaction should roll battery back to zero EP on tick 1\r\n[09:54:18] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[09:54:18] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:54:18] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:54:18] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:54:18] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[09:54:19] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[09:54:20] [Server thread/DEBUG] [ne.ne.ne.co.CommonHooks/WP]: Gathered mod list to write to world save Test Level\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[09:54:20] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[09:54:20] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER\r\n[09:54:20] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n> Task :echopowergrid:runGameTestServer FAILED\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n79 actionable tasks: 1 executed, 78 up-to-date\r\n",
+      "stderrTail": "2026-06-14T13:54:05.454272200Z main WARN Advanced terminal features are not available in this environment\r\n\r\nFAILURE: Build failed with an exception.\r\n\r\n* What went wrong:\r\nExecution failed for task ':echopowergrid:runGameTestServer'.\r\n> Process 'command 'C:\\Program Files\\Zulu\\zulu-25\\bin\\java.exe'' finished with non-zero exit value 1\r\n\r\n* Try:\r\n> Run with --stacktrace option to get the stack trace.\r\n> Run with --info or --debug option to get more log output.\r\n> Run with --scan to generate a Build Scan (powered by Develocity).\r\n> Get more help at https://help.gradle.org.\r\n\r\nBUILD FAILED in 19s\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", BATTERY_STORES_ENERGY.getId());\r\n        register(event, environment, ",
+        ", BREAKER_ISOLATES_NETWORK.getId());\r\n        register(event, environment, ",
+        ", BREAKER_MENU_RESET.getId());\r\n        register(event, environment, ",
+        ", DRAW_POWER_SIMULATION_COMMIT.getId());\r\n        register(event, environment, ",
+        ", GENERATOR_CREATES_ENERGY.getId());\r\n        register(event, environment, ",
+        ", GENERATOR_TYPE_PERSISTENCE.getId());\r\n        register(event, environment, ",
+        ", HAND_CRANK_GENERATES_BURST.getId());\r\n        register(event, environment, ",
+        ", MACHINECORE_RUNTIME.getId());\r\n    }\r\n\r\n    private static void powerGridMachineCoreRuntimeSnapshotContract(GameTestHelper helper) {\r\n        BlockPos generatorPos = new BlockPos(1, 2, 1);\r\n        helper.setBlock(generatorPos, ModBlocks.SCRAP_BURNER_GENERATOR.get().defaultBlockState());\r\n        GeneratorBlockEntity generator = helper.getBlockEntity(generatorPos, GeneratorBlockEntity.class);\r\n        generator.fuelInventory().setItem(0, new ItemStack(Items.COAL, 2));\r\n        for (int i = 0; i < 3; i++) {\r\n            GeneratorBlockEntity.tick(helper.getLevel(), generator.getBlockPos(), generator.getBlockState(), generator);\r\n        }\r\n\r\n        EchoMachineRuntimeSnapshot direct = PowerGridMachineCoreAdapter.runtimeSnapshot(generator);\r\n        helper.assertTrue(direct.id().value().equals(EchoPowerGrid.id(",
+        ", NETWORK_REBUILDS_ON_PLACE.getId());\r\n        register(event, environment, ",
+        ", NODE_SUMMARIES_INCLUDE_13_CONTENT.getId());\r\n        register(event, environment, ",
+        ", SCRAP_BURNER_FUEL_SLOT_GENERATES.getId());\r\n        register(event, environment, ",
+        ", TECH_WAVE_15_GENERATOR_PROFILES.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_PACKET_CREATION.getId());\r\n        register(event, environment, ",
+        "battery_stores_energy",
+        "breaker_isolates_network",
+        "breaker_menu_reset",
+        "cable_connects_blocks",
+        "consumer_draws_energy",
+        "draw_power_simulation_commit",
+        "fe_transaction_rollback",
+        "generation_not_duplicated_under_deficit",
+        "generator_creates_energy",
+        "generator_fuel_inventory_persistence",
+        "generator_type_persistence",
+        "hand_crank_generates_burst",
+        "holomap_provider_markers",
+        "network_rebuilds_on_place",
+        "node_summaries_include_13_content",
+        "overload_trips_breaker",
+        "power_node_menu_data",
+        "powergrid_machinecore_runtime_snapshot_contract",
+        "route_summary_and_loss",
+        "scrap_burner_fuel_slot_generates",
+        "solar_panel_day_night",
+        "tech_wave_15_generator_profiles",
+        "tech_wave_15_storage_summaries",
+        "tech_wave_15_transfer_limits",
+        "terminal_packet_creation"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echopowergrid/test/PowerGridGameTests.java"
+      ]
+    }
+  ],
+  "blockers": [
+    "echopowergrid: Gradle task exited 1"
+  ]
+}

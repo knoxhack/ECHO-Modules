@@ -22,17 +22,25 @@ import com.knoxhack.echoruntimeguard.runtime.SmartTickService;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoRuntimeGuard.MODID)
 public final class EchoRuntimeGuard {
     public static final String MODID = "echoruntimeguard";
     public static final String CHAPTER_ID = "runtimeguard";
+    private static final String COMMON_SETUP_EVENT = "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoRuntimeGuard(Object modEventBus) {
+    EchoRuntimeGuard() {
+        this(null);
+    }
+
+    public EchoRuntimeGuard(IEventBus modEventBus) {
         RuntimeGuardConfig.registerEchoConfig();
 
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
 
         EchoBackendLifecycleBridge.registerGameEventHandler(RuntimeProfilerService.INSTANCE::onServerTickPre);
         EchoBackendLifecycleBridge.registerGameEventHandler(RuntimeProfilerService.INSTANCE::onServerTickPost);
@@ -40,6 +48,8 @@ public final class EchoRuntimeGuard {
         EchoBackendLifecycleBridge.registerGameEventHandler(NetworkBudgetService.INSTANCE::onServerTick);
         EchoBackendLifecycleBridge.registerGameEventHandler(RuntimeGuardCommands::register);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoRuntimeGuard::resetTickBudgets);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echoruntimeguard.registry.ModGameTests");
     }
 
     public static Identifier id(String path) {

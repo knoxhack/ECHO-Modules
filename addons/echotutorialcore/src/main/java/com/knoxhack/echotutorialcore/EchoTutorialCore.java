@@ -14,13 +14,21 @@ import com.knoxhack.echotutorialcore.server.TutorialHintManager;
 import com.mojang.logging.LogUtils;
 import com.echoplatform.echocore.api.EchoCoreServices;
 import com.echoplatform.echocore.api.EchoOptionalServices;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoTutorialCore.MODID)
 public class EchoTutorialCore {
     public static final String MODID = "echotutorialcore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoTutorialCore(Object modEventBus, Object modContainer) {
+    EchoTutorialCore() {
+        this(null, null);
+    }
+
+    public EchoTutorialCore(IEventBus modEventBus, ModContainer modContainer) {
         ModAttachments.register(modEventBus);
         TutorialNetworking.register(modEventBus);
 
@@ -32,6 +40,8 @@ public class EchoTutorialCore {
         EchoBackendLifecycleBridge.registerGameEventHandler(TutorialEventHandler::onPlayerLogout);
         EchoBackendLifecycleBridge.registerGameEventHandler(TutorialEventHandler::onPlayerDeath);
         EchoBackendLifecycleBridge.registerGameEventHandler(TutorialEventHandler::onBlockPlace);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echotutorialcore.test.ModGameTests");
     }
 
     private void commonSetup(Object event) {

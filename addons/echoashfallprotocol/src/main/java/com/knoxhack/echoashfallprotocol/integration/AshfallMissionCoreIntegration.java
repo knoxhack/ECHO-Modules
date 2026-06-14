@@ -57,6 +57,9 @@ public final class AshfallMissionCoreIntegration {
         registered = true;
         try {
             EchoCoreServices.registerMissionContent(EchoAshfallProtocol.MODID, registry -> {
+                if (nativeJsonOwnsRoute()) {
+                    return;
+                }
                 registry.registerChapter(EchoAshfallProtocol.MODID, new MissionChapterDefinition(
                         CHAPTER_ID,
                         "ECHO-7 Protocol Chain",

@@ -33,6 +33,7 @@ configurations { runtimeClasspath.extendsFrom localRuntime }
 dependencies {
     implementation project(":echocore")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

@@ -753,11 +753,15 @@ public final class AshfallAdapterCoreEarlyEventRuntime {
             return true;
         }
         water.shrink(1);
-        ItemStack glassBottle = new ItemStack(Items.GLASS_BOTTLE);
-        if (!player.getInventory().add(glassBottle)) {
-            player.drop(glassBottle, false);
-        }
+        addReturnedGlassBottle(player, hand);
         return true;
+    }
+
+    private static void addReturnedGlassBottle(ServerPlayer player, InteractionHand hand) {
+        ItemStack returnedBottle = new ItemStack(Items.GLASS_BOTTLE);
+        if (!player.getInventory().add(returnedBottle)) {
+            player.drop(returnedBottle, false);
+        }
     }
 
     private static Item waterItem(String itemId) {

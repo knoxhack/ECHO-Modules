@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.strict_play_evidence_refresh.v1",
-  "generatedAt": "2026-06-13T22:00:30.073Z",
+  "generatedAt": "2026-06-14T15:23:18.421Z",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "echoRoot": "C:/Development/Github",
   "status": "PASS",
@@ -15,7 +15,7 @@
       ],
       "exitCode": 0,
       "ok": true,
-      "durationMs": 2066,
+      "durationMs": 2242,
       "stdoutTail": "Wrote NeoForge runtime evidence: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\neoforge-runtime-evidence.json\nWrote NeoForge strict-play placeholder neoforge-play-evidence.json: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\neoforge-play-evidence.json\nWrote NeoForge strict-play placeholder neoforge-module-gametest-results.json: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\neoforge-module-gametest-results.json\nWrote NeoForge strict-play placeholder neoforge-registry-content-results.json: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\neoforge-registry-content-results.json\nWrote NeoForge strict-play placeholder neoforge-client-ui-results.json: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\neoforge-client-ui-results.json\n",
       "stderrTail": "",
       "spawnError": ""
@@ -30,8 +30,8 @@
       ],
       "exitCode": 0,
       "ok": true,
-      "durationMs": 109,
-      "stdoutTail": "PASS 132 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json\nPASS 10 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-ui-surfaces/native-ui-surfaces.json\nPASS 10 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-registry-content/native-registry-content.json\nPASS 5 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-block-actions/native-block-actions.json\nPASS 17 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-save-network/native-save-network.json\n",
+      "durationMs": 191,
+      "stdoutTail": "PASS 132 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-full-catalog-play/native-full-catalog-play.json\nPASS 11 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-ui-surfaces/native-ui-surfaces.json\nPASS 10 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-registry-content/native-registry-content.json\nPASS 5 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-block-actions/native-block-actions.json\nPASS 17 module(s): C:/Development/Github/ECHO-Native-Platform/build/native-save-network/native-save-network.json\n",
       "stderrTail": "",
       "spawnError": ""
     },
@@ -45,7 +45,7 @@
       ],
       "exitCode": 0,
       "ok": true,
-      "durationMs": 80,
+      "durationMs": 83,
       "stdoutTail": "PASS 96 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/full-catalog-play.json\nPASS 11 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/client-ui-surfaces-play.json\nPASS 5 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/voxel-content-play.json\nPASS 4 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/block-action-mutations.json\nPASS 10 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/worldgen-play.json\nPASS 94 module(s): C:/Development/Github/ECHO-Standalone-Runtime/reports/echo/standalone/save-reload-play.json\n",
       "stderrTail": "",
       "spawnError": ""
@@ -57,12 +57,13 @@
       "command": [
         "node",
         "scripts/generate-pack-acceptance-reports.mjs",
-        "--write"
+        "--write",
+        "--seed-automated-evidence"
       ],
       "exitCode": 0,
       "ok": true,
-      "durationMs": 104,
-      "stdoutTail": "Wrote pack acceptance index: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\pack-acceptance-report-index.json\nPack acceptance reports: 0 written, 15 existing, 15 pending, 0 passing.\n",
+      "durationMs": 161,
+      "stdoutTail": "Wrote pack acceptance index: C:\\Development\\Github\\ECHO-Modules\\reports\\runtime-parity\\pack-acceptance-report-index.json\nPack acceptance reports: 0 written, 15 existing, 0 pending, 15 passing.\n",
       "stderrTail": "",
       "spawnError": ""
     }

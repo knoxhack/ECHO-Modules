@@ -12,6 +12,7 @@ import com.knoxhack.echoashfallprotocol.power.PowerNetwork;
 import com.knoxhack.echoashfallprotocol.registry.ModBlockEntities;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -34,7 +35,7 @@ import java.util.Map;
  * Isotope Refiner Block Entity - Tier 2 extraction.
  * Converts Tier 1 outputs + crystal dust into gold, redstone, and lapis.
  */
-public class IsotopeRefinerBlockEntity extends BlockEntity implements MenuProvider, IEnergyStorage {
+public class IsotopeRefinerBlockEntity extends BlockEntity implements MenuProvider, HopperHandler, IEnergyStorage {
     public static final int INPUT_SLOT = 0;
     public static final int CATALYST_SLOT = 1;
     public static final int OUTPUT_SLOT_1 = 2;
@@ -249,5 +250,31 @@ public class IsotopeRefinerBlockEntity extends BlockEntity implements MenuProvid
     @Override public void setEnergyStored(int energy) {
         energyStorage.setEnergyStored(energy);
         setChanged();
+    }
+
+    @Override
+    public int[] getInputSlots(Direction side) {
+        return new int[]{INPUT_SLOT, CATALYST_SLOT};
+    }
+
+    @Override
+    public int[] getOutputSlots(Direction side) {
+        return side == Direction.DOWN ? new int[]{OUTPUT_SLOT_1, OUTPUT_SLOT_2} : new int[]{};
+    }
+
+    @Override
+    public boolean canInsertItem(int slot, ItemStack stack) {
+        if (slot == INPUT_SLOT) {
+            return REFINER_RECIPES.containsKey(stack.getItem());
+        }
+        if (slot == CATALYST_SLOT) {
+            return stack.is(ModItems.CRYSTAL_DUST.get());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExtractItem(int slot) {
+        return slot == OUTPUT_SLOT_1 || slot == OUTPUT_SLOT_2;
     }
 }

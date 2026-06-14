@@ -107,7 +107,7 @@ public final class ThemeCoreCommands {
             + ", vanilla_ui=" + ThemeCoreConfig.vanillaUiEnabled()
             + ", render_presets=" + RenderPresetRegistry.listPresets().size(), ChatFormatting.GRAY);
         tell(source, "Optional integrations: terminal=" + loaded("echoterminal")
-            + ", signalos=" + loaded("signalos")
+            + ", signalos=" + (loaded("echosignalos") || loaded("signalos"))
             + ", holomap=" + loaded("echoholomap")
             + ", lens=" + loaded("echolens")
             + ", rendercore=" + loaded("echorendercore")

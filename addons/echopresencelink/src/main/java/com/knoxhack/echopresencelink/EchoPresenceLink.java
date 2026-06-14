@@ -10,24 +10,34 @@ import com.knoxhack.echopresencelink.presence.PresenceCoreDiagnostics;
 import com.knoxhack.echopresencelink.presence.TerminalPresenceProvider;
 import com.mojang.logging.LogUtils;
 import java.lang.reflect.InvocationTargetException;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoPresenceLink.MODID)
 public class EchoPresenceLink {
     public static final String MODID = "echopresencelink";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoPresenceLink(Object modEventBus, Object modContainer) {
+    EchoPresenceLink() {
+        this(null, null);
+    }
+
+    public EchoPresenceLink(IEventBus modEventBus, ModContainer modContainer) {
         EchoPresenceRegistry.register(new CoreEchoPresenceProvider());
         EchoPresenceRegistry.register(new TerminalPresenceProvider());
         EchoCoreServices.registerDiagnosticService(new PresenceCoreDiagnostics());
 
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echopresencelink.test.ModGameTests");
         registerClientBootstrap(modEventBus, modContainer);
     }
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            if (EchoRuntimeModules.isLoaded("signalos")) {
+            if (EchoRuntimeModules.isLoaded("echosignalos") || EchoRuntimeModules.isLoaded("signalos")) {
                 PresenceLinkSignalOsIntegration.register();
             }
         });

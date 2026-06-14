@@ -1,0 +1,179 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T13:51:06.756Z",
+  "status": "PASS",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-typed-lifecycle-fix-results.json",
+  "moduleIds": [
+    "echomultiblockcore",
+    "echoruntimeguard"
+  ],
+  "selectedModuleIds": [
+    "echomultiblockcore",
+    "echoruntimeguard"
+  ],
+  "selectedProjectNames": [
+    "echomultiblockcore",
+    "echoruntimeguard"
+  ],
+  "selectedModuleCount": 2,
+  "passedModuleIds": [
+    "echomultiblockcore",
+    "echoruntimeguard"
+  ],
+  "failedModuleIds": [],
+  "allSelectedModulesPassed": true,
+  "trustedMutations": [
+    "NeoForge GameTest server completed for echomultiblockcore.",
+    "NeoForge GameTest server completed for echoruntimeguard."
+  ],
+  "visibleRoutes": [],
+  "saveEvidence": [
+    "NeoForge GameTest execution for echomultiblockcore included save/reload/network-named tests.",
+    "NeoForge GameTest execution for echoruntimeguard included save/reload/network-named tests."
+  ],
+  "networkEvidence": [
+    "NeoForge GameTest execution for echoruntimeguard included network/sync-named tests."
+  ],
+  "results": [
+    {
+      "moduleId": "echomultiblockcore",
+      "projectName": "echomultiblockcore",
+      "task": ":echomultiblockcore:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echomultiblockcore:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T13:50:27.534Z",
+      "finishedAt": "2026-06-14T13:50:50.306Z",
+      "durationMs": 22771,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "erver.processPacketsAndTick(MinecraftServer.java:1035) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:776) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:300) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat java.base/java.lang.Thread.run(Thread.java:1474) [?:?] {}\r\n[09:50:48] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore power draw provider com.knoxhack.echomultiblockcore.registry.ModGameTests$10 failed; ignoring provider output.\r\njava.lang.IllegalStateException: draw failure\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests$10.drawPower(ModGameTests.java:642) ~[main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.api.MultiblockIntegrationServices.drawPower(MultiblockIntegrationServices.java:146) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests.lambda$powerProviderDrawAndFailureIsolation$0(ModGameTests.java:651) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.api.MultiblockIntegrationServices.withClearedForTests(MultiblockIntegrationServices.java:194) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests.powerProviderDrawAndFailureIsolation(ModGameTests.java:645) [main/:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.FunctionGameTestInstance.run(FunctionGameTestInstance.java:34) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.startTest(GameTestInfo.java:163) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.tickInternal(GameTestInfo.java:119) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.tick(GameTestInfo.java:104) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestTicker.lambda$tick$0(GameTestTicker.java:47) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:905) [?:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestTicker.tick(GameTestTicker.java:47) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1171) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1003) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestServer.tickServer(GameTestServer.java:255) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.processPacketsAndTick(MinecraftServer.java:1035) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:776) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:300) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat java.base/java.lang.Thread.run(Thread.java:1474) [?:?] {}\r\n[09:50:48] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore power draw provider com.knoxhack.echomultiblockcore.registry.ModGameTests$10 failed; ignoring provider output.\r\njava.lang.IllegalStateException: draw failure\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests$10.drawPower(ModGameTests.java:642) ~[main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.api.MultiblockIntegrationServices.drawPower(MultiblockIntegrationServices.java:146) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests.lambda$powerProviderDrawAndFailureIsolation$0(ModGameTests.java:654) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.api.MultiblockIntegrationServices.withClearedForTests(MultiblockIntegrationServices.java:194) [main/:?] {}\r\n\tat TRANSFORMER/echomultiblockcore@1.0.0/com.knoxhack.echomultiblockcore.registry.ModGameTests.powerProviderDrawAndFailureIsolation(ModGameTests.java:645) [main/:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.FunctionGameTestInstance.run(FunctionGameTestInstance.java:34) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.startTest(GameTestInfo.java:163) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.tickInternal(GameTestInfo.java:119) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestInfo.tick(GameTestInfo.java:104) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestTicker.lambda$tick$0(GameTestTicker.java:47) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:905) [?:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestTicker.tick(GameTestTicker.java:47) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1171) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1003) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.gametest.framework.GameTestServer.tickServer(GameTestServer.java:255) [minecraft-patched-26.1.2.29-beta.jar:?] {}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.processPacketsAndTick(MinecraftServer.java:1035) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:776) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat TRANSFORMER/minecraft@26.1.2/net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:300) [minecraft-patched-26.1.2.29-beta.jar:?] {neoforge:access_transformer}\r\n\tat java.base/java.lang.Thread.run(Thread.java:1474) [?:?] {}\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_build_assist_material_summary' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_build_assist_geometry_parity' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_showcase_facility_identity_coverage' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_automation_recipe_parse' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++       ]\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_structure_validation_rotation_match' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++      ]\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_progression_prerequisite_diagnostics' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_automation_recipe_bad_effect_warning' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_integration_provider_deduplicates' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore terminal provider echomultiblockcore:test_terminal_provider ignored because that id is already registered.\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_build_assist_oversized_snapshot' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echomultiblockcore:multiblock_task_queue_consume_produce' batch 0 (1 tests)...\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++]\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: ========= 44 GAME TESTS COMPLETE IN 4.235 s ======================\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: All 44 required tests passed :)\r\n[09:50:48] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[09:50:48] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[09:50:48] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[09:50:48] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[09:50:48] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[09:50:48] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[09:50:48] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[09:50:49] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[09:50:49] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 22s\r\n60 actionable tasks: 1 executed, 59 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "2026-06-14T13:50:32.057790300Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", AUTOMATION_EFFECT_DEDUPE.getId());\r\n        register(event, ",
+        ", AUTOMATION_EFFECT_NO_HANDLER.getId());\r\n        register(event, ",
+        ", AUTOMATION_METADATA_ALLOWED.getId());\r\n        register(event, ",
+        ", AUTOMATION_RECIPE_EFFECTS.getId());\r\n        register(event, ",
+        ", AUTOMATION_RECIPE_PARSE.getId());\r\n        register(event, ",
+        ", BUILD_ASSIST_LAYER_WRAP.getId());\r\n        register(event, ",
+        ", BUILD_ASSIST_OVERSIZED.getId());\r\n        register(event, ",
+        ", BUILD_ASSIST_TRANSFORM.getId());\r\n        register(event, ",
+        ", FEATURED_RECIPE_TRANSACTIONS.getId());\r\n        register(event, ",
+        ", INTEGRATION_DEDUPE.getId());\r\n        register(event, ",
+        ", INTEGRATION_EVENT_SNAPSHOTS.getId());\r\n        register(event, ",
+        ", INTEGRATION_SCAN_ROBOT.getId());\r\n        register(event, ",
+        ", JSON_BAD_PALETTE.getId());\r\n        register(event, ",
+        ", JSON_PARSE.getId());\r\n        register(event, ",
+        ", MISSING_DIAGNOSTIC.getId());\r\n        register(event, ",
+        ", MISSION_CORE_CONTENT.getId());\r\n        register(event, ",
+        ", POWER_PROVIDER_DRAW.getId());\r\n        register(event, ",
+        ", PROGRESSION_CONTENT_COVERAGE.getId());\r\n        register(event, ",
+        ", PROGRESSION_JSON_PARSE.getId());\r\n        register(event, ",
+        ", PROGRESSION_PREREQ_DIAGNOSTIC.getId());\r\n        register(event, ",
+        ", ROBOT_TOOL.getId());\r\n        register(event, ",
+        ", TASK_BLOCKED_OUTPUT.getId());\r\n        register(event, ",
+        "autobuilder_occupied_refusal_no_loss",
+        "automation_effect_completion_once",
+        "automation_effect_failure_isolated",
+        "automation_effect_no_handler_noop",
+        "automation_effect_provider_dedupe",
+        "automation_metadata_allowed_multiblocks",
+        "automation_recipe_bad_effect_warning",
+        "automation_recipe_bad_item_isolated",
+        "automation_recipe_effects_parse",
+        "automation_recipe_parse",
+        "build_assist_controller_anchor",
+        "build_assist_geometry_parity",
+        "build_assist_layer_wrap",
+        "build_assist_material_checklist",
+        "build_assist_material_summary",
+        "build_assist_oversized_snapshot",
+        "build_assist_transform",
+        "featured_recipe_transaction_coverage",
+        "integration_event_snapshot_constructors",
+        "integration_map_marker_snapshots",
+        "integration_provider_deduplicates",
+        "integration_provider_failure_isolated",
+        "integration_saved_data_snapshots",
+        "integration_scan_robotic_arm",
+        "json_definition_bad_palette_isolated",
+        "json_definition_parse",
+        "json_definition_warnings",
+        "missioncore_content_registration",
+        "multiblock_machinecore_runtime_snapshot_contract",
+        "power_provider_draw_and_failure_isolation",
+        "progression_bad_file_isolated",
+        "progression_content_coverage",
+        "progression_json_parse",
+        "progression_prerequisite_diagnostics",
+        "progression_snapshot_fields",
+        "robotic_arm_tool_requirement",
+        "showcase_facility_formation_coverage",
+        "showcase_facility_identity_coverage",
+        "structure_validation_missing_block",
+        "structure_validation_rotation_match",
+        "structure_validation_success",
+        "task_queue_consume_produce",
+        "task_queue_state_snapshots",
+        "task_transaction_full_output_no_loss"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echomultiblockcore/registry/ModGameTests.java"
+      ]
+    },
+    {
+      "moduleId": "echoruntimeguard",
+      "projectName": "echoruntimeguard",
+      "task": ":echoruntimeguard:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echoruntimeguard:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T13:50:50.307Z",
+      "finishedAt": "2026-06-14T13:51:06.756Z",
+      "durationMs": 16449,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "> Task :echo-native-contracts:compileJava UP-TO-DATE\r\n> Task :echo-native-contracts:processResources NO-SOURCE\r\n> Task :echo-native-contracts:classes UP-TO-DATE\r\n> Task :echo-native-contracts:jar UP-TO-DATE\r\n> Task :echoadaptercore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echocore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echocore:compileJava UP-TO-DATE\r\n> Task :echoplatformcore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoplatformcore:compileJava UP-TO-DATE\r\n> Task :echoadaptercore:compileJava UP-TO-DATE\r\n> Task :echoadaptercore:generateModMetadata UP-TO-DATE\r\n> Task :echoadaptercore:processResources UP-TO-DATE\r\n> Task :echoadaptercore:classes UP-TO-DATE\r\n> Task :echoadaptercore:jarJar NO-SOURCE\r\n> Task :echoadaptercore:jar UP-TO-DATE\r\n> Task :echocore:generateModMetadata UP-TO-DATE\r\n> Task :echocore:processResources UP-TO-DATE\r\n> Task :echocore:classes UP-TO-DATE\r\n> Task :echocore:jarJar NO-SOURCE\r\n> Task :echocore:jar UP-TO-DATE\r\n> Task :echonetcore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echonetcore:compileJava UP-TO-DATE\r\n> Task :echonetcore:generateModMetadata UP-TO-DATE\r\n> Task :echonetcore:processResources UP-TO-DATE\r\n> Task :echonetcore:classes UP-TO-DATE\r\n> Task :echonetcore:jarJar NO-SOURCE\r\n> Task :echonetcore:jar UP-TO-DATE\r\n> Task :echoplatformcore:generateModMetadata UP-TO-DATE\r\n> Task :echoplatformcore:processResources UP-TO-DATE\r\n> Task :echoplatformcore:classes UP-TO-DATE\r\n> Task :echoplatformcore:jarJar NO-SOURCE\r\n> Task :echoplatformcore:jar UP-TO-DATE\r\n> Task :echoruntimeguard:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoassetcore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echocontentcore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoschemacore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoschemacore:compileJava UP-TO-DATE\r\n> Task :echovalidationcore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echovalidationcore:compileJava UP-TO-DATE\r\n> Task :echocontentcore:compileJava UP-TO-DATE\r\n> Task :echoassetcore:compileJava UP-TO-DATE\r\n> Task :echomachinecore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echorecipecore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echorecipecore:compileJava UP-TO-DATE\r\n> Task :echomachinecore:compileJava UP-TO-DATE\r\n> Task :echorendercore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echorendercore:compileJava UP-TO-DATE\r\n> Task :echoscreencore:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoscreencore:compileJava UP-TO-DATE\r\n> Task :echoterminal:createMinecraftArtifacts UP-TO-DATE\r\n> Task :echoterminal:compileJava UP-TO-DATE\r\n> Task :echoruntimeguard:compileJava UP-TO-DATE\r\n> Task :echoruntimeguard:generateModMetadata UP-TO-DATE\r\n> Task :echoruntimeguard:processResources UP-TO-DATE\r\n> Task :echoruntimeguard:classes UP-TO-DATE\r\n> Task :echoruntimeguard:compileTestJava UP-TO-DATE\r\n> Task :echoruntimeguard:downloadAssets UP-TO-DATE\r\n> Task :echoruntimeguard:prepareGameTestServerRun UP-TO-DATE\r\n> Task :echoruntimeguard:processTestResources NO-SOURCE\r\n> Task :echoruntimeguard:testClasses UP-TO-DATE\r\n\r\n> Task :echoruntimeguard:runGameTestServer\r\n[09:50:53] [main/INFO] [ne.ne.fm.st.Entrypoint/]: JVM Uptime at startup: 199ms\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Starting FancyModLoader version 11.0.13 (DEDICATED_SERVER in DEV)\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Game directory: C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\run\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.EarlyServiceDiscovery/]: Found 2 early service jars (out of 112) in 38ms\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Loading FML Early Services:\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/11.0.13/491a1bedecb33802fa118cae384b60f91f6f0241/earlydisplay-11.0.13.jar\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/11.0.13/c9c89eaf35535990110088224d188748d81eaecf/loader-11.0.13.jar\r\n[09:50:53] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: Not loading early display in headless mode.\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.mo.lo.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.mo.lo.InDevFolderLocator/CORE]: Got mod coordinates echoruntimeguard%%C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\build\\classes\\java\\main;echoruntimeguard%%C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\build\\resources\\main;echoruntimeguard%%C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\build\\classes\\java\\test;echoruntimeguard%%C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\build\\resources\\test from env\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: \n     Mod List:\n\t\tName Version (Mod Id)\n\n\t\tECHO RuntimeGuard 1.0.0 (echoruntimeguard)\n\t\tECHO: AdapterCore 1.0.0 (echoadaptercore)\n\t\tECHO: Core 1.0.0 (echocore)\n\t\tECHO: NetCore 1.0.0 (echonetcore)\n\t\tECHO: PlatformCore 1.0.0 (echoplatformcore)\n\t\tMinecraft 26.1.2 (minecraft)\n\t\tNeoForge 26.1.2.29-beta (neoforge)\r\n[09:50:54] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.3+mixin.0.8.7/41c4a3984a80f4679e759fb9f495587acc5cdac7/sponge-mixin-0.17.3+mixin.0.8.7.jar Service=FML Env=SERVER\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Loading FML Plugins:\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.29-beta/fc1c456905fb706b428092d6ac75e0b1f5d99921/neoforge-26.1.2.29-beta-universal.jar > net.neoforged.neoforge-coremods-26.1.2.29-beta.jar\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Building game content classloader:\n - echoadaptercore (jar(C:/Development/Github/ECHO-Modules/addons/echoadaptercore/build/libs/echoadaptercore-1.0.0.jar))\n - echocore (jar(C:/Development/Github/ECHO-Modules/addons/echocore/build/libs/echocore-1.0.0.jar))\n - echonetcore (jar(C:/Development/Github/ECHO-Modules/addons/echonetcore/build/libs/echonetcore-1.0.0.jar))\n - echoplatformcore (jar(C:/Development/Github/ECHO-Modules/addons/echoplatformcore/build/libs/echoplatformcore-1.0.0.jar))\n - echoruntimeguard (composite(folder(C:/Development/Github/ECHO-Modules/addons/echoruntimeguard/build/classes/java/main), folder(C:/Development/Github/ECHO-Modules/addons/echoruntimeguard/build/resources/main), folder(C:/Development/Github/ECHO-Modules/addons/echoruntimeguard/build/classes/java/test)))\n - minecraft (composite(filtered(jar(C:/Development/Github/ECHO-Modules/addons/echoruntimeguard/build/moddev/artifacts/minecraft-patched-26.1.2.29-beta.jar)), filtered(jar(C:/Development/Github/ECHO-Modules/addons/echoruntimeguard/build/moddev/artifacts/minecraft-patched-26.1.2.29-beta.jar))))\n - mixinextras.neoforge (jar(C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.29-beta/fc1c456905fb706b428092d6ac75e0b1f5d99921/neoforge-26.1.2.29-beta-universal.jar > mixinextras-neoforge-0.5.4.jar))\n - neoforge (composite(filtered(jar(C:/Users/knox/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.29-beta/fc1c456905fb706b428092d6ac75e0b1f5d99921/neoforge-26.1.2.29-beta-universal.jar))))\n - net.neoforged.fml.generated (empty(VirtualJar/net.neoforged.fml.generated))\r\n[09:50:54] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Built game content classloader in 37ms\r\n[09:50:55] [main/INFO] [minecraft/GameTestMainUtil]: Running GameTestMain with cwd 'C:\\Development\\Github\\ECHO-Modules\\addons\\echoruntimeguard\\run', universe path 'gametestserver'\r\n[09:50:55] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.4).\r\n[09:51:01] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 26.1.2.29-beta, for MC 26.1.2\r\n[09:51:01] [modloading-worker-0/INFO] [co.kn.ec.EchoRuntimeGuard/]: ECHO RuntimeGuard online. Find the lag. Protect the signal. Restore performance.\r\n[09:51:03] [main/INFO] [minecraft/RecipeManager]: Loaded 1515 recipes\r\n[09:51:03] [main/INFO] [minecraft/AdvancementTree]: Loaded 1617 advancements\r\n[09:51:03] [main/INFO] [ne.ne.ne.co.cr.RecipePriorityManager/]: Loaded 0 recipe priority overrides\r\n[09:51:03] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Selecting global world spawn...\r\n[09:51:04] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Loading 0 persistent chunks...\r\n[09:51:04] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Preparing spawn area: 100%\r\n[09:51:04] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 338 ms\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: Each test that matches echoruntimeguard:* will be run 1 times (total: 13)\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server\r\n[09:51:04] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: 13 tests are now running at position -9007930, -59, 11527513!\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echoruntimeguard:runtimeguard' batch 0 (13 tests)...\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++]\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: ========= 13 GAME TESTS COMPLETE IN 437.1 ms ======================\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: All 13 required tests passed :)\r\n[09:51:04] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[09:51:04] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[09:51:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[09:51:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[09:51:05] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[09:51:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[09:51:06] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 16s\r\n48 actionable tasks: 1 executed, 47 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "2026-06-14T13:50:53.638051400Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", CORE_RUNTIME_BUDGET_SERVICE.getId());\r\n        register(event, environment, ",
+        ", JSON_REPORT_GENERATION.getId());\r\n        register(event, environment, ",
+        ", MODE_TRANSITIONS.getId());\r\n        register(event, environment, ",
+        ", NETWORK_DUPLICATE_TRACKING.getId());\r\n        register(event, environment, ",
+        ", PARTICLE_BUDGET.getId());\r\n        register(event, environment, ",
+        ", REPORT_GENERATION.getId());\r\n        register(event, environment, ",
+        ", RUNTIME_SPINE_GATE_THROTTLE.getId());\r\n    }\r\n\r\n    private static void modeTransitions(GameTestHelper helper) {\r\n        RuntimeModeService.INSTANCE.reset();\r\n        RuntimeModeService.INSTANCE.setMode(RuntimeMode.POTATO);\r\n        helper.assertTrue(RuntimeModeService.INSTANCE.mode() == RuntimeMode.POTATO,\r\n                ",
+        "core_runtime_budget_service",
+        "json_report_generation",
+        "mode_transitions",
+        "network_duplicate_tracking",
+        "observable_metrics",
+        "particle_budget",
+        "report_generation",
+        "reset_clears_counters",
+        "runtime_spine_gate_throttle",
+        "smart_tick_rates",
+        "status_and_diagnostics",
+        "unavailable_metrics",
+        "validation_queue_merge"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echoruntimeguard/registry/ModGameTests.java"
+      ]
+    }
+  ],
+  "blockers": []
+}

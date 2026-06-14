@@ -99,7 +99,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     }
 
     public boolean nativeLoaderBackendPrimary() {
-        return nativeLoaderOperationHostActive();
+        return compatibilityDelegate == null && nativeLoaderOperationHostActive();
     }
 
     public boolean liveMinecraftDelegateFallbackAvailable() {
@@ -127,7 +127,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     }
 
     public boolean nativeLoaderPrimaryRuntime() {
-        return nativeLoaderOperationHostActive();
+        return nativeLoaderBackendPrimary();
     }
 
     public Map<String, Object> runtimeHostReport() {
@@ -220,7 +220,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     }
 
     private EchoNativeRuntimeHost operationHost() {
-        return nativeLoaderAttachedHost;
+        return compatibilityDelegate == null ? nativeLoaderAttachedHost : compatibilityDelegate;
     }
 
     private boolean nativeLoaderOperationHostActive() {
@@ -357,8 +357,10 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
         snapshot.put("nativeLoaderLiveRuntimeBridgeAttached", nativeLoaderLiveRuntimeBridgeAttached());
         snapshot.put("nativeLoaderLiveRuntimeBridgeId", nativeLoaderLiveRuntimeBridgeId());
         snapshot.put("compatibilityFallbackUsed", false);
+        snapshot.put("liveMinecraftBridgePrimary", compatibilityDelegate != null);
         snapshot.put("nativeLoaderBackendFirst", nativeLoaderOperationHostActive());
-        snapshot.put("nativeLoaderBackendPrimaryConfigured", true);
+        snapshot.put("nativeLoaderBackendPrimaryConfigured", compatibilityDelegate == null);
+        snapshot.put("nativeLoaderBackendMirrorAttached", compatibilityDelegate != null && nativeLoaderBackendAttached());
         snapshot.put("nativeLoaderPrimaryRuntime", nativeLoaderPrimaryRuntime());
         snapshot.put("liveMinecraftDelegateFallbackAvailable", liveMinecraftDelegateFallbackAvailable());
         String fallbackDelegateId = compatibilityDelegateId();

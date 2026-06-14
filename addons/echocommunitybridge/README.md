@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-Optional modules: `signalos`
+Optional modules: `echosignalos`
 
 Provides: `community.discord_relay`, `community.server_events`, `community.server_status`, `launcher.server_status_bridge`
 

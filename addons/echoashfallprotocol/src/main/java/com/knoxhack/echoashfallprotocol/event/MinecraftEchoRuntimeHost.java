@@ -103,6 +103,7 @@ public class MinecraftEchoRuntimeHost implements EchoNativeRuntimeHost {
     public static final String RUNTIME_HOST_ID = "echoashfallprotocol:minecraft_runtime_host";
     private static final String FIRST_JOIN_FLAG = "ashes_of_tomorrow.received_kit";
     private static final String QUEST_DROP_POD_INITIALIZED = "quest.dropPodInitialized";
+    private static final String FIRST_MISSION_ID = "secure_crash_outpost";
     private static final String SAVE_ROOT = "echoashfallprotocol.runtime_host.save_data";
     private static final Identifier RUNTIME_HUD_CHANNEL =
             Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "runtime_hud_notification");
@@ -2577,8 +2578,22 @@ public class MinecraftEchoRuntimeHost implements EchoNativeRuntimeHost {
             return false;
         }
         QuestData quest = player.getData(ModAttachments.QUEST_DATA.get());
-        quest.setDropPodInitialized(Boolean.TRUE.equals(value));
-        QuestData.saveAndSync(player, quest);
+        boolean initialized = Boolean.TRUE.equals(value);
+        boolean changed = quest.isDropPodInitialized() != initialized;
+        quest.setDropPodInitialized(initialized);
+        if (initialized) {
+            boolean missionAlreadyAvailable = quest.isMissionUnlocked(FIRST_MISSION_ID)
+                    || quest.isMissionCompleted(FIRST_MISSION_ID);
+            if (!missionAlreadyAvailable) {
+                quest.unlockMission(FIRST_MISSION_ID);
+                changed = true;
+            }
+            quest.setSelectedMissionId(FIRST_MISSION_ID);
+            changed |= quest.repairMissionState(player);
+        }
+        if (changed || initialized) {
+            QuestData.saveAndSync(player, quest);
+        }
         return true;
     }
 

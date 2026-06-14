@@ -1,0 +1,98 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T14:12:04.642Z",
+  "status": "PASS",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-signalos-registry-fix-results.json",
+  "moduleIds": [
+    "echosignalos"
+  ],
+  "selectedModuleIds": [
+    "echosignalos"
+  ],
+  "selectedProjectNames": [
+    "echosignalos"
+  ],
+  "selectedModuleCount": 1,
+  "passedModuleIds": [
+    "echosignalos"
+  ],
+  "failedModuleIds": [],
+  "allSelectedModulesPassed": true,
+  "trustedMutations": [
+    "NeoForge GameTest server completed for echosignalos."
+  ],
+  "visibleRoutes": [],
+  "saveEvidence": [
+    "NeoForge GameTest execution for echosignalos included save/reload/network-named tests."
+  ],
+  "networkEvidence": [
+    "NeoForge GameTest execution for echosignalos included network/sync-named tests."
+  ],
+  "results": [
+    {
+      "moduleId": "echosignalos",
+      "projectName": "echosignalos",
+      "task": ":echosignalos:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echosignalos:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T14:11:45.221Z",
+      "finishedAt": "2026-06-14T14:12:04.639Z",
+      "durationMs": 19418,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: Platform: Windows\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.noPreferDirect: false\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.PlatformDependent/]: -Dio.netty.jfr.enabled: true\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.AbstractByteBuf/]: -Dio.netty.buffer.checkAccessible: true\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.AbstractByteBuf/]: -Dio.netty.buffer.checkBounds: true\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.ResourceLeakDetectorFactory/]: Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@f0599d\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.in.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.AdaptiveByteBufAllocator/]: -Dio.netty.allocator.useCachedMagazinesForNonEventLoopThreads: false\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.maxCapacityPerThread: 4096\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.ratio: 8\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.chunkSize: 32\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.blocking: false\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.ut.Recycler/]: -Dio.netty.recycler.batchFastThreadLocalOnly: true\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.allocator.type: adaptive\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.threadLocalDirectBufferSize: 0\r\n[10:11:57] [modloading-worker-0/DEBUG] [io.ne.bu.ByteBufUtil/]: -Dio.netty.maxThreadLocalCharBufferSize: 16384\r\n[10:11:57] [modloading-worker-0/DEBUG] [ne.ne.fm.ja.AutomaticEventSubscriber/LOADING]: Subscribing method private static void net.neoforged.neoforge.network.filters.GenericPacketSplitter.register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent) to the event bus of mod neoforge\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loading configs type COMMON\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.ne.co.NeoForgeMod/FORGEMOD]: Loaded NeoForge config file neoforge-common.toml\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loaded TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echosignalos\\run\\config\\neoforge-common.toml\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Watching TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echosignalos\\run\\config\\neoforge-common.toml for changes\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.fm.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue Common setup: 1 jobs\r\n[10:11:57] [modloading-sync-worker/DEBUG] [ne.ne.fm.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 1.066 ms\r\n[10:11:59] [main/INFO] [minecraft/RecipeManager]: Loaded 1520 recipes\r\n[10:11:59] [main/INFO] [minecraft/AdvancementTree]: Loaded 1617 advancements\r\n[10:11:59] [main/INFO] [ne.ne.ne.co.cr.RecipePriorityManager/]: Loaded 0 recipe priority overrides\r\n[10:12:00] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loading configs type SERVER\r\n[10:12:00] [Server thread/DEBUG] [ne.ne.ne.co.NeoForgeMod/FORGEMOD]: Loaded NeoForge config file neoforge-server.toml\r\n[10:12:00] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loaded TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echosignalos\\run\\config\\neoforge-server.toml\r\n[10:12:00] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Watching TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echosignalos\\run\\config\\neoforge-server.toml for changes\r\n[10:12:00] [Server thread/DEBUG] [io.ne.ut.in.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0x9992ae6eaee95c87\r\n[10:12:00] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Selecting global world spawn...\r\n[10:12:00] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Loading 0 persistent chunks...\r\n[10:12:00] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Preparing spawn area: 100%\r\n[10:12:00] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 322 ms\r\n[10:12:00] [Server thread/INFO] [minecraft/GameTestServer]: Each test that matches signalos:* will be run 1 times (total: 24)\r\n[10:12:00] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server\r\n[10:12:00] [Server thread/DEBUG] [ne.ne.ne.se.LanguageHook/]: Loaded 10 language files for en_us\r\n[10:12:00] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler\r\n[10:12:00] [Server thread/INFO] [minecraft/GameTestServer]: 24 tests are now running at position -2207335, -59, 14488880!\r\n[10:12:01] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'signalos:signalos_mvp' batch 0 (24 tests)...\r\n[10:12:01] [Server thread/WARN] [co.kn.si.SignalOS/]: SignalOS mission signalos_test:missing_reward_mission references missing reward item signalos_test:missing_reward; mission skipped.\r\n[10:12:01] [Server thread/WARN] [co.kn.si.SignalOS/]: SignalOS mission signalos_test:orphan_mission references missing chapter signalos_test:missing; mission skipped.\r\n[10:12:01] [Server thread/WARN] [co.kn.si.SignalOS/]: SignalOS archive signalos_test:orphan_archive references missing chapter signalos_test:missing; archive skipped.\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS found an existing Echo Core terminal provider; SignalOS will not replace cross-addon terminal ownership.\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS loaded 0 JSON apps, 0 JSON data records, 2 JSON drive templates, 0 JSON net sites, 0 JSON chapters, 0 JSON missions, and 0 JSON archive records.\r\n[10:12:01] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 7 at (0.0, 0.0, 0.0)\r\n[10:12:01] [Server thread/DEBUG] [io.ne.ut.in.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: available\r\n[10:12:01] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS loaded 0 JSON apps, 0 JSON data records, 1 JSON drive templates, 0 JSON net sites, 0 JSON chapters, 0 JSON missions, and 0 JSON archive records.\r\n[10:12:01] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 8 at (0.0, 0.0, 0.0)\r\n[10:12:01] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS loaded 0 JSON apps, 0 JSON data records, 0 JSON drive templates, 1 JSON net sites, 0 JSON chapters, 0 JSON missions, and 0 JSON archive records.\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS loaded 0 JSON apps, 0 JSON data records, 0 JSON drive templates, 2 JSON net sites, 0 JSON chapters, 0 JSON missions, and 0 JSON archive records.\r\n[10:12:01] [Server thread/WARN] [co.kn.si.SignalOS/]: Duplicate SignalNet address echo.home from signalos_test:net/echo_home ignored; already owned by signalos_test:net/duplicate.\r\n[10:12:01] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 10 at (0.0, 0.0, 0.0)\r\n[10:12:01] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:01] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 11 at (0.0, 0.0, 0.0)\r\n[10:12:01] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:01] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 12 at (0.0, 0.0, 0.0)\r\n[10:12:01] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:01] [Server thread/INFO] [co.kn.si.SignalOS/]: SignalOS loaded 0 JSON apps, 0 JSON data records, 0 JSON drive templates, 1 JSON net sites, 0 JSON chapters, 0 JSON missions, and 0 JSON archive records.\r\n[10:12:02] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 13 at (0.0, 0.0, 0.0)\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:12:02] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++]\r\n[10:12:02] [Server thread/INFO] [minecraft/GameTestServer]: ========= 24 GAME TESTS COMPLETE IN 1.310 s ======================\r\n[10:12:02] [Server thread/INFO] [minecraft/GameTestServer]: All 24 required tests passed :)\r\n[10:12:02] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[10:12:02] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:12:02] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:12:02] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:12:02] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[10:12:03] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[10:12:04] [Server thread/DEBUG] [ne.ne.ne.co.CommonHooks/WP]: Gathered mod list to write to world save Test Level\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[10:12:04] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[10:12:04] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER\r\n[10:12:04] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 19s\r\n40 actionable tasks: 1 executed, 39 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "2026-06-14T14:11:49.001270900Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", API_CONTEXT_AND_TEMPLATES.getId());\r\n        register(event, environment, ",
+        ", CUSTOM_APP_RECORD_VIEW.getId());\r\n        register(event, environment, ",
+        ", DATA_DRIVE_COMPONENT_FLOW.getId());\r\n        register(event, environment, ",
+        ", ECHO_CORE_SERVICE_GUARD.getId());\r\n        register(event, environment, ",
+        ", JSON_PARSE_FAILURES.getId());\r\n        register(event, environment, ",
+        ", KUBEJS_BRIDGE_ABSENCE.getId());\r\n        register(event, environment, ",
+        ", NOTE_EDITING_FLOW.getId());\r\n        register(event, environment, ",
+        ", PLAYER_DATA_REWRITES.getId());\r\n        register(event, environment, ",
+        ", REGISTRY_SORTING.getId());\r\n        register(event, environment, ",
+        ", REWARD_STORAGE_FLOW.getId());\r\n        register(event, environment, ",
+        ", SIGNALNET_DRIVE_ACTIONS.getId());\r\n        register(event, environment, ",
+        ", TERMINAL_MENU_VALIDITY.getId());\r\n        register(event, environment, ",
+        "api_context_and_templates",
+        "app_registry_and_data",
+        "archive_read_state",
+        "computer_network_discovery",
+        "custom_app_record_view",
+        "data_drive_component_flow",
+        "duplicate_id_handling",
+        "echo_core_service_guard",
+        "json_parse_failures",
+        "json_reference_validation",
+        "kubejs_bridge_absence",
+        "missioncore_content_registration",
+        "note_editing_flow",
+        "owned_terminal_reward_flow",
+        "player_data_rewrites",
+        "registry_sorting",
+        "reward_storage_flow",
+        "runtime_spine_action",
+        "server_action_validation",
+        "server_rack_menu_actions",
+        "signalnet_drive_actions",
+        "signalnet_json_and_search",
+        "terminal_menu_validity",
+        "terminal_state_snapshot"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/signalos/registry/ModGameTests.java"
+      ]
+    }
+  ],
+  "blockers": []
+}

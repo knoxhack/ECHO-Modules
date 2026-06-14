@@ -14,9 +14,11 @@ import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
 import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.echoplatform.echocore.api.mission.RewardDefinition;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class ArmoryMissionCoreIntegration {
     private static final Identifier CHAPTER = id("armory");
@@ -39,38 +41,38 @@ public final class ArmoryMissionCoreIntegration {
         registerMission(registry, "inspect_loadout", "scan", MissionObjectiveType.SCAN_ENTITY,
                 "Inspect Loadout", "Scan any Armory station with gear loaded.",
                 "The loadout inspection feed is now linked into MissionCore.",
-                new ItemStack(ModBlocks.ARMORY_BENCH.get()), 0,
-                "Scan an Armory loadout", new ItemStack(Items.IRON_INGOT, 2));
+                safeStack(ModBlocks.ARMORY_BENCH, 1), 0,
+                "Scan an Armory loadout", safeStack(() -> Items.IRON_INGOT, 2));
         registerMission(registry, "forge_upgrade", "upgrade", MissionObjectiveType.CRAFT_ITEM,
                 "Forge Upgrade", "Upgrade a weapon or armor tier at the correct Armory forge.",
                 "The forge accepted the operator upgrade pattern.",
-                new ItemStack(ModBlocks.WEAPON_FORGE.get()), 1,
-                "Upgrade Armory gear", new ItemStack(ModItems.RESONANCE_SHARD.get(), 1));
+                safeStack(ModBlocks.WEAPON_FORGE, 1), 1,
+                "Upgrade Armory gear", safeStack(ModItems.RESONANCE_SHARD, 1));
         registerMission(registry, "install_module", "module", MissionObjectiveType.REPAIR_MACHINE,
                 "Install Module", "Install any compatible Armory module into a loadout piece.",
                 "Module bus handshake completed.",
-                new ItemStack(ModBlocks.MODULE_UPGRADE_TABLE.get()), 2,
-                "Install an Armory module", new ItemStack(ModItems.STABILITY_RUNE.get(), 1));
+                safeStack(ModBlocks.MODULE_UPGRADE_TABLE, 1), 2,
+                "Install an Armory module", safeStack(ModItems.STABILITY_RUNE, 1));
         registerMission(registry, "recharge_core", "recharge", MissionObjectiveType.REPAIR_MACHINE,
                 "Recharge Core", "Recharge a depleted Armory energy core from AUX reserves.",
                 "Energy reserves are field-ready.",
-                new ItemStack(ModBlocks.ENERGY_CORE_CHARGING_STATION.get()), 3,
-                "Recharge Armory energy", new ItemStack(ModItems.VEIL_CRYSTAL.get(), 1));
+                safeStack(ModBlocks.ENERGY_CORE_CHARGING_STATION, 1), 3,
+                "Recharge Armory energy", safeStack(ModItems.VEIL_CRYSTAL, 1));
         registerMission(registry, "bind_loadout", "bind", MissionObjectiveType.SCAN_ENTITY,
                 "Bind Loadout", "Bind gear to an operator kit through the Loadout Terminal.",
                 "Operator field kit signature stored.",
-                new ItemStack(ModBlocks.LOADOUT_TERMINAL.get()), 4,
-                "Bind an operator loadout", new ItemStack(ModItems.ARMORY_ALLOY_PLATE.get(), 2));
+                safeStack(ModBlocks.LOADOUT_TERMINAL, 1), 4,
+                "Bind an operator loadout", safeStack(ModItems.ARMORY_ALLOY_PLATE, 2));
         registerMission(registry, "prepare_route_kit", "prepare", MissionObjectiveType.CUSTOM,
                 "Prepare Route Kit", "Bring an Armory route kit to full readiness.",
                 "Route-kit readiness is now mission tracked.",
-                new ItemStack(ModItems.GAS_MASK_FILTER.get()), 5,
-                "Prepare an Armory route kit", new ItemStack(ModItems.AMMO_CRYSTALS.get(), 8));
+                safeStack(ModItems.GAS_MASK_FILTER, 1), 5,
+                "Prepare an Armory route kit", safeStack(ModItems.AMMO_CRYSTALS, 8));
         registerMission(registry, "dispatch_route_kit", "dispatch", MissionObjectiveType.ESTABLISH_ROUTE,
                 "Dispatch Route Kit", "Queue an Armory kit through a Logistics loadout preset.",
                 "Armory and Logistics dispatch lanes are linked.",
-                new ItemStack(ModBlocks.LOADOUT_TERMINAL.get()), 6,
-                "Dispatch an Armory route kit", new ItemStack(ModItems.RESONANCE_SHARD.get(), 1));
+                safeStack(ModBlocks.LOADOUT_TERMINAL, 1), 6,
+                "Dispatch an Armory route kit", safeStack(ModItems.RESONANCE_SHARD, 1));
     }
 
     private static void registerMission(
@@ -112,5 +114,14 @@ public final class ArmoryMissionCoreIntegration {
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoArmory.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, int count) {
+        try {
+            ItemLike value = item == null ? null : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return ItemStack.EMPTY;
+        }
     }
 }

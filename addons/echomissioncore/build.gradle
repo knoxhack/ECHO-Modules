@@ -53,6 +53,7 @@ neoForge {
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
+            sourceSet(sourceSets.test)
         }
     }
 }
@@ -64,6 +65,7 @@ configurations {
 dependencies {
     implementation project(":echocore")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
     compileOnly project(":echoterminal")
     localRuntime project(":echodatacore")
     localRuntime project(":echoterminal")

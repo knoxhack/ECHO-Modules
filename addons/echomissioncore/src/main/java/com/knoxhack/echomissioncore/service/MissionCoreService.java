@@ -85,8 +85,10 @@ public final class MissionCoreService implements IMissionService {
 
     public synchronized void replaceJsonContent(List<MissionChapterDefinition> jsonChapters, List<MissionDefinition> jsonMissions) {
         validationWarnings.clear();
+        Set<String> jsonNamespaces = representedNamespaces(jsonChapters, jsonMissions);
+        removeSourceContent("json");
         replaceSourceContent("json", jsonChapters, jsonMissions);
-        EchoCoreServices.replayMissionContent(this);
+        EchoCoreServices.replayMissionContent(this, jsonNamespaces);
         EchoCoreServices.invalidateIndexRecipes("mission content changed");
     }
 
@@ -969,6 +971,51 @@ public final class MissionCoreService implements IMissionService {
             }
             return false;
         });
+    }
+
+    private void removeNamespaceContent(Set<String> namespaces) {
+        if (namespaces == null || namespaces.isEmpty()) {
+            return;
+        }
+        chapterSources.entrySet().removeIf(entry -> {
+            if (entry.getKey() != null && namespaces.contains(entry.getKey().getNamespace())) {
+                chapters.remove(entry.getKey());
+                return true;
+            }
+            return false;
+        });
+        missionSources.entrySet().removeIf(entry -> {
+            if (entry.getKey() != null && namespaces.contains(entry.getKey().getNamespace())) {
+                missions.remove(entry.getKey());
+                return true;
+            }
+            return false;
+        });
+        hookCoverage.keySet().removeIf(namespaces::contains);
+    }
+
+    private static Set<String> representedNamespaces(
+            List<MissionChapterDefinition> sourceChapters,
+            List<MissionDefinition> sourceMissions) {
+        LinkedHashSet<String> namespaces = new LinkedHashSet<>();
+        if (sourceChapters != null) {
+            for (MissionChapterDefinition chapter : sourceChapters) {
+                if (chapter != null && chapter.id() != null) {
+                    namespaces.add(chapter.id().getNamespace());
+                }
+            }
+        }
+        if (sourceMissions != null) {
+            for (MissionDefinition mission : sourceMissions) {
+                if (mission != null && mission.id() != null) {
+                    namespaces.add(mission.id().getNamespace());
+                }
+                if (mission != null && mission.chapterId() != null) {
+                    namespaces.add(mission.chapterId().getNamespace());
+                }
+            }
+        }
+        return Set.copyOf(namespaces);
     }
 
     private boolean isMissionStructurallyValid(String source, MissionDefinition mission) {

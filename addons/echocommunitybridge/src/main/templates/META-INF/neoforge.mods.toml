@@ -37,9 +37,17 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="signalos"
+modId="echosignalos"
 type="optional"
 reason="Publishes bridge diagnostics and live status records to SignalOS when installed."
 versionRange="[1.0.0,)"
 ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoadaptercore"
+type="required"
+reason="Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity."
+versionRange="[1.0.0,)"
+ordering="AFTER"
 side="BOTH"

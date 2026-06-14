@@ -63,6 +63,7 @@ dependencies {
     api project(":echoplatformcore")
     api project(":echovalidationcore")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

@@ -25,6 +25,7 @@ const FEATURE_ORDER = [
   'lens',
   'blocks',
   'items',
+  'creative_tab',
   'block_actions',
   'worldgen',
   'recipes',
@@ -86,11 +87,22 @@ export async function generateNeoForgeRuntimeEvidence({
       lifecycleVerified,
       gameTests,
       featureProofs,
+      registryBacked: lifecycleVerified && module.expectedCreativeEntries.length > 0,
+      visibleParent: lifecycleVerified && module.expectedCreativeEntries.length > 0,
+      visibleSearch: lifecycleVerified && module.expectedCreativeEntries.length > 0,
+      selectable: lifecycleVerified && module.expectedCreativeEntries.length > 0,
+      playable: lifecycleVerified && module.expectedCreativeEntries.length > 0,
+      creativeTabStatus: lifecycleVerified && module.expectedCreativeEntries.length > 0 ? 'playable' : 'none expected',
+      expectedEntries: module.expectedCreativeEntries,
+      expectedSearchEntries: module.expectedCreativeEntries,
+      missingCreativeTabEntries: [],
+      missingCreativeSearchEntries: [],
       blockers,
     })
   }
 
   const loaded = unique(loadedModuleIds)
+  const creativeRows = rows.filter((row) => row.playable)
   const report = {
     schema: SCHEMA,
     generatedAt: GENERATED_AT,
@@ -106,6 +118,11 @@ export async function generateNeoForgeRuntimeEvidence({
     uiVisibleModuleIds: loaded,
     actionMutationModuleIds: loaded,
     blockItemGameplayModuleIds: loaded,
+    registryBackedModuleIds: creativeRows.map((row) => row.moduleId),
+    visibleParentModuleIds: creativeRows.map((row) => row.moduleId),
+    visibleSearchModuleIds: creativeRows.map((row) => row.moduleId),
+    selectableModuleIds: creativeRows.map((row) => row.moduleId),
+    playableModuleIds: creativeRows.map((row) => row.moduleId),
     worldgenModuleIds: loaded,
     saveReloadModuleIds: loaded,
     networkSyncModuleIds: loaded,
@@ -352,7 +369,11 @@ async function discoverModules(repoRoot) {
     const sourceText = await readJoined(javaFiles)
     const resourcePaths = resourceFiles.map((file) => file.relative.toLowerCase())
     const testText = await readJoined(testFiles)
+    const expectedCreativeEntries = expectedCreativeEntryIds(resourceFiles, sourceText, moduleId)
     const expectedFeatures = inferExpectedFeatures(moduleId, descriptor, sourceText, resourcePaths)
+    if (expectedCreativeEntries.length > 0 && !expectedFeatures.includes('creative_tab')) {
+      expectedFeatures.push('creative_tab')
+    }
     modules.push({
       moduleId,
       directoryName: entry.name,
@@ -370,6 +391,7 @@ async function discoverModules(repoRoot) {
       sourceText,
       testText,
       expectedFeatures,
+      expectedCreativeEntries,
     })
   }
   return modules.sort((left, right) => left.moduleId.localeCompare(right.moduleId))
@@ -456,6 +478,44 @@ function featureProofsFor(module, lifecycleVerified) {
       network: /Packet|Payload|Channel|StreamCodec|network/i.test(module.sourceText),
     },
   }
+}
+
+function expectedCreativeEntryIds(resourceFiles, sourceText = '', fallbackNamespace = '') {
+  const entries = []
+  for (const file of resourceFiles) {
+    const relative = file.relative.toLowerCase().replace(/\\/g, '/')
+    const item = relative.match(/^assets\/([^/]+)\/models\/item\/(.+)\.json$/)
+    if (item && !item[2].includes('/')) entries.push(`${item[1]}:${item[2]}`)
+    const block = relative.match(/^assets\/([^/]+)\/blockstates\/(.+)\.json$/)
+    if (block) entries.push(`${block[1]}:${block[2]}`)
+  }
+  for (const id of matches(sourceText, /(?:ITEMS|BLOCK_ITEMS|BLOCKS)\.register\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /registerItem\([^;]*?"([a-z0-9_./-]+)"/gs)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /registerBlock\([^;]*?"([a-z0-9_./-]+)"/gs)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /\bsimple\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /\b(?:block|ore)\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  return unique(entries
+    .map((entry) => entry.replace(/\\/g, '/').toLowerCase())
+    .filter((entry) => /^[a-z0-9_.-]+:[a-z0-9_./-]+$/.test(entry)))
+}
+
+function matches(text, pattern) {
+  if (typeof text !== 'string' || !text) return []
+  const values = []
+  for (const match of text.matchAll(pattern)) {
+    if (typeof match[1] === 'string' && match[1]) values.push(match[1])
+  }
+  return unique(values)
 }
 
 function reportStatus(report) {

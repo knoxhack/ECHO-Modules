@@ -8,6 +8,7 @@ import com.echoplatform.echocore.api.EchoFactionContractState;
 import com.echoplatform.echocore.api.EchoFactionDefinition;
 import com.echoplatform.echocore.api.EchoFactionPoiAffinity;
 import com.echoplatform.echocore.api.EchoFactionProfile;
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.world.ExplorationSiteRegistry;
@@ -84,13 +85,48 @@ public final class AshfallFactionInteractionHandler implements EchoFactionAction
     public EchoFactionActionResult handle(ServerPlayer player, Identifier factionId, Identifier actionId,
             String roleId, Identifier targetId) {
         Identifier canonicalFaction = AshfallFactionMap.canonicalOrDefault(factionId);
-        EchoFactionProfile profile = com.echoplatform.echocore.api.EchoCoreServices.factionProfile(player, canonicalFaction)
+        EchoFactionProfile profile = EchoCoreServices.factionProfile(player, canonicalFaction)
                 .orElse(null);
         if (profile == null) {
             return EchoFactionActionResult.failure("Unknown Faction", "This contact is not registered with Echo Core.");
         }
 
         EchoFactionDefinition definition = profile.definition();
+        if (EchoCoreServices.ACCEPT_FACTION_CONTRACT_ACTION.equals(actionId)) {
+            EchoFactionContract contract = contract(definition, targetId);
+            if (contract == null) {
+                return EchoFactionActionResult.failure("Contract Unavailable", "Requested field contract is not available.");
+            }
+            EchoFactionContractState state = contractState(player, profile, contract, roleId);
+            if (!state.canAccept()) {
+                return EchoFactionActionResult.failure("Contract Locked",
+                        state.lockedReason().isBlank() ? "This field contract is not ready." : state.lockedReason());
+            }
+            EchoFactionActionResult result = acceptContract(player, profile, contract, roleId);
+            if (result.success()) {
+                EchoCoreServices.setFactionActiveContract(player, canonicalFaction, contract.id());
+            }
+            return result;
+        }
+
+        if (EchoCoreServices.COMPLETE_FACTION_CONTRACT_ACTION.equals(actionId)) {
+            EchoFactionContract contract = contract(definition, targetId);
+            if (contract == null) {
+                return EchoFactionActionResult.failure("Contract Unavailable", "Requested field contract is not available.");
+            }
+            EchoFactionContractState state = contractState(player, profile, contract, roleId);
+            if (!state.canComplete()) {
+                return EchoFactionActionResult.failure("Contract Pending",
+                        state.lockedReason().isBlank() ? "Field contract objective is still pending." : state.lockedReason());
+            }
+            EchoFactionActionResult result = completeContract(player, profile, contract, roleId);
+            if (result.success()) {
+                EchoCoreServices.addFactionReputation(player, canonicalFaction, contract.reputationReward());
+                EchoCoreServices.markFactionContractCompleted(player, canonicalFaction, contract.id());
+            }
+            return result;
+        }
+
         if (LOCAL_POI_HINT.equals(actionId)) {
             return EchoFactionActionResult.info("Route Hint", localContext(player, profile, roleId));
         }
@@ -123,6 +159,16 @@ public final class AshfallFactionInteractionHandler implements EchoFactionAction
         }
 
         return EchoFactionActionResult.failure("Unavailable", "This Ashfall faction action is not available.");
+    }
+
+    private static EchoFactionContract contract(EchoFactionDefinition definition, Identifier contractId) {
+        if (definition == null || contractId == null) {
+            return null;
+        }
+        return definition.contracts().stream()
+                .filter(contract -> contract.id().equals(contractId))
+                .findFirst()
+                .orElse(null);
     }
 
     private static String roleVoice(EchoFactionDefinition definition, String roleId) {

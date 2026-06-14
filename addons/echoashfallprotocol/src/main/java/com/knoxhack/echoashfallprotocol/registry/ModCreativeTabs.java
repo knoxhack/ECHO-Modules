@@ -442,4 +442,8 @@ public class ModCreativeTabs {
         int separator = itemId == null ? -1 : itemId.indexOf(':');
         return separator <= 0 ? "" : itemId.substring(0, separator);
     }
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(CREATIVE_MODE_TABS, eventBus);
+    }
 }

@@ -16,19 +16,24 @@ import com.knoxhack.echoindex.service.IndexSourceRecipeProvider;
 import com.knoxhack.echoindex.service.VanillaIndexRecipeProvider;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
+@Mod(EchoIndex.MODID)
 public class EchoIndex {
     public static final String MODID = "echoindex";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoIndex(Object modEventBus) {
+    public EchoIndex(IEventBus modEventBus) {
         Config.registerEchoConfig();
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerGameEventHandler(IndexReloaders::addServerReloadListeners);
         IndexCommands.register();
         IndexEvents.register();
+        registerOptionalGameTests(modEventBus, "com.knoxhack.echoindex.test.ModGameTests");
     }
 
     private void commonSetup(Object event) {
@@ -93,6 +98,26 @@ public class EchoIndex {
                     .invoke(null);
         } catch (ReflectiveOperationException | LinkageError exception) {
             LOGGER.warn("ECHO: Index terminal integration could not be registered.", exception);
+        }
+    }
+
+    private static void registerOptionalGameTests(IEventBus modEventBus, String className) {
+        try {
+            Class<?> gameTests = Class.forName(className);
+            gameTests.getMethod("register", IEventBus.class).invoke(null, modEventBus);
+            modEventBus.addListener((RegisterGameTestsEvent event) -> registerOptionalGameTestInstances(gameTests, event));
+        } catch (ClassNotFoundException ignored) {
+            // Production runtime does not include src/test classes.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO: Index GameTest registration is unavailable for {}.", className, exception);
+        }
+    }
+
+    private static void registerOptionalGameTestInstances(Class<?> gameTests, RegisterGameTestsEvent event) {
+        try {
+            gameTests.getMethod("registerTests", RegisterGameTestsEvent.class).invoke(null, event);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO: Index GameTest instances could not be registered.", exception);
         }
     }
 

@@ -31,7 +31,7 @@ side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="echocore"
-type="required"
+type="optional"
 reason="Provides the base ECHO core service layer."
 versionRange="[1.0.0,)"
 ordering="AFTER"
@@ -39,7 +39,7 @@ side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="echoplatformcore"
-type="required"
+type="optional"
 reason="Provides platform unit, feature, capability, and compatibility contracts."
 versionRange="[1.0.0,)"
 ordering="AFTER"

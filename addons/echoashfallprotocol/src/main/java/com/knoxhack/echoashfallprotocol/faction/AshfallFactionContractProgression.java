@@ -38,11 +38,24 @@ public final class AshfallFactionContractProgression {
         }
         boolean active = profile.activeContractId().filter(contract.id()::equals).isPresent();
         if (!active) {
-            return new EchoFactionContractState(contract.id(), base.canAccept(), false, base.progressLine(), base.lockedReason());
+            return new EchoFactionContractState(
+                    contract.id(),
+                    base.canAccept(),
+                    false,
+                    false,
+                    base.completed(),
+                    base.progressLine(),
+                    base.lockedReason());
         }
         String progress = progressLine(player, spec);
         boolean complete = isComplete(player, spec);
-        return new EchoFactionContractState(contract.id(), false, complete, progress,
+        return new EchoFactionContractState(
+                contract.id(),
+                false,
+                complete,
+                true,
+                base.completed(),
+                progress,
                 complete ? "" : "Objective pending: " + progress);
     }
 

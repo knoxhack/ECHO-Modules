@@ -131,3 +131,11 @@ reason="Allows installed ECHO themes to skin Wiki ScreenCore pages through share
 versionRange="[1.0.0,)"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="echoadaptercore"
+type="required"
+reason="Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

@@ -30,7 +30,7 @@ public class EchoCommunityBridge {
     private void commonSetup(Object event) {
         LOGGER.info("ECHO: Community Bridge online. Public status and Discord relay ready.");
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            if (EchoRuntimeModules.isLoaded("signalos")) {
+            if (EchoRuntimeModules.isLoaded("echosignalos") || EchoRuntimeModules.isLoaded("signalos")) {
                 CommunityBridgeSignalOsIntegration.register();
             }
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {

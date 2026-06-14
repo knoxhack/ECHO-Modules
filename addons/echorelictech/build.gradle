@@ -49,6 +49,7 @@ def optionalProject = { String path, String configuration ->
 dependencies {
     implementation project(":echocore")
     optionalProject(":echoadaptercore", "compileOnly")
+    localRuntime project(":echoadaptercore")
     optionalProject(":echoarcanacore", "compileOnly")
     optionalProject(":echoterminal", "compileOnly")
     optionalProject(":echolens", "compileOnly")

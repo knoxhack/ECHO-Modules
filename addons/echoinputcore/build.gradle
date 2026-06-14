@@ -30,6 +30,7 @@ neoForge {
 configurations { runtimeClasspath.extendsFrom localRuntime }
 
 dependencies {
+    implementation project(':echoadaptercore')
     implementation project(":echocore")
     compileOnly project(":echo-native-contracts")
     api project(":echoplatformcore")

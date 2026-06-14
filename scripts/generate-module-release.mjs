@@ -133,6 +133,25 @@ function sha256Buffer(value) {
   return createHash('sha256').update(Buffer.isBuffer(value) ? value : Buffer.from(value)).digest('hex')
 }
 
+function normalizeDownloadBaseUrl(value) {
+  if (!value) return null
+  const normalized = String(value).trim().replace(/\/+$/u, '')
+  if (!/^https?:\/\/[^/]+/u.test(normalized)) {
+    throw new Error(`Invalid download base URL: ${value}`)
+  }
+  return normalized
+}
+
+function applyArtifactDownloadUrls(modules, downloadBaseUrl) {
+  if (!downloadBaseUrl) return modules
+  for (const moduleRecord of modules) {
+    for (const artifact of moduleRecord.artifacts ?? []) {
+      artifact.downloadUrl = `${downloadBaseUrl}/${artifact.filename}`
+    }
+  }
+  return modules
+}
+
 function readZipEntries(buffer) {
   let eocd = -1
   const minimum = Math.max(0, buffer.length - 65557)
@@ -666,6 +685,7 @@ function parseArgs(argv) {
     packageFromSource: false,
     repoRoot: process.cwd(),
     releaseId: null,
+    downloadBaseUrl: null,
   }
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index]
@@ -673,6 +693,7 @@ function parseArgs(argv) {
     else if (arg === '--out') options.outDir = argv[++index]
     else if (arg === '--repo-root') options.repoRoot = argv[++index]
     else if (arg === '--release-id') options.releaseId = argv[++index]
+    else if (arg === '--download-base-url') options.downloadBaseUrl = argv[++index]
     else if (arg === '--allow-missing-runtime') options.allowMissingRuntime = true
     else if (arg === '--package-from-source') {
       options.packageFromSource = true
@@ -703,6 +724,7 @@ export async function generateModuleRelease(options = {}) {
       packageFromSource: Boolean(options.packageFromSource),
     }))
   }
+  applyArtifactDownloadUrls(modules, normalizeDownloadBaseUrl(options.downloadBaseUrl))
 
   const provenance = releaseProvenance()
   const release = {
@@ -728,6 +750,7 @@ Options:
   --module <id>              Generate one module. Repeat for multiple modules.
   --out <dir>                Output directory relative to repo root. Default: ${DEFAULT_OUT_DIR}
   --release-id <id>          Release id to write into echo-release.json.
+  --download-base-url <url>  Public release asset base URL used for artifact downloadUrl fields.
   --allow-missing-runtime    Allow metadata/source outputs when built runtime jars are missing.
   --package-from-source      Emit runtime-named archives from module source/resources when compiled jars are missing.
   --repo-root <path>         Repository root, mostly for tests.

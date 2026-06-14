@@ -26,7 +26,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 ## Dependencies
 
-Required modules: `echoadaptercore`, `echocore`, `echonetcore`, `signalos`
+Required modules: `echoadaptercore`, `echocore`, `echonetcore`, `echosignalos`
 
 Optional modules: `echoindex`, `echoterminal`
 

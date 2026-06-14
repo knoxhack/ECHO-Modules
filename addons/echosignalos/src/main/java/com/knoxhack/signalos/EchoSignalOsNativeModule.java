@@ -3,15 +3,34 @@ package com.knoxhack.signalos;
 import com.knoxhack.echo.adaptercore.EchoNativeEventBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeLifecycleBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeModuleAdapter;
-import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import com.knoxhack.echo.adaptercore.EchoNativeRegistryBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeStoryRuntimeBridge;
+import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
+import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
+import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class EchoSignalOsNativeModule implements EchoNativeModuleAdapter, EchoNativeModuleEntrypoint {
+    @Override
+    public void registerServices(EchoNativeModuleLoadContext context) {
+        Map<String, Object> activation = describeNativeSurfaces(
+                EchoNativeActivationSurfaceRegistrar.bridgeContext(context)
+        );
+        context.registerService(
+                "adaptercore.signalos.contract",
+                activation,
+                "adaptercore",
+                "terminal",
+                "archive",
+                "data_drive",
+                "mission",
+                "chapter"
+        );
+    }
+
     @Override
     public Map<String, Object> describeNativeSurfaces(Map<String, String> context) {
         EchoNativeLifecycleBridge lifecycle = new EchoNativeLifecycleBridge(MODULE_ID)

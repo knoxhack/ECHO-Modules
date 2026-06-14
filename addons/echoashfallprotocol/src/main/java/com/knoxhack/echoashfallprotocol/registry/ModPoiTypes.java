@@ -75,4 +75,8 @@ public class ModPoiTypes {
                 .map(entry -> (ResourceKey<PoiType>) entry.key())
                 .collect(Collectors.toSet());
     }
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(POI_TYPES, eventBus);
+    }
 }

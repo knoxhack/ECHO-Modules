@@ -28,7 +28,7 @@ Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
 Required modules: `echoadaptercore`, `echocore`, `echonetcore`
 
-Optional modules: `echodatacore`, `echoholomap`, `echoindex`, `echolens`, `echomissioncore`, `echothemecore`, `signalos`
+Optional modules: `echodatacore`, `echoholomap`, `echoindex`, `echolens`, `echomissioncore`, `echothemecore`, `echosignalos`
 
 Provides: `terminal.surface`
 

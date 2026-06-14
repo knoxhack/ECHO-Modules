@@ -171,6 +171,10 @@ public class ModEntities {
         return EchoBackendEntityBridge.registerEntityType(ENTITIES, id, factory, category, builderCustomizer);
     }
 
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(ENTITIES, eventBus);
+    }
+
     public static void registerAttributes(Object event) {
         EchoBackendEntityBridge.putAttributes(event, RAD_ZOMBIE.get(), RadZombie.createAttributes().build());
         EchoBackendEntityBridge.putAttributes(event, SCAVENGER_BANDIT.get(), ScavengerBandit.createAttributes().build());

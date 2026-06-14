@@ -29,4 +29,8 @@ public class ModSounds {
         return EchoBackendRegistryBridge.register(SOUNDS, name,
                 () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, name)));
     }
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(SOUNDS, eventBus);
+    }
 }

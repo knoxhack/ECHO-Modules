@@ -65,4 +65,8 @@ public class ModMenuTypes {
                     com.knoxhack.echo.adaptercore.EchoMenuFactory<T> factory) {
         return EchoBackendRegistryBridge.register(MENU_TYPES, id, () -> EchoBackendMenuBridge.extendedMenuType(factory));
     }
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(MENU_TYPES, eventBus);
+    }
 }

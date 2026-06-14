@@ -6,7 +6,7 @@ Provides `signalos.archives`, `signalos.chapters`, `signalos.data_drives`, `sign
 
 | Field | Value |
 | --- | --- |
-| Module ID | `signalos` |
+| Module ID | `echosignalos` |
 | Version | `1.0.0` |
 | Type | `addon` |
 | Kind | `library` |
@@ -44,10 +44,10 @@ Consumes: `echo.core`, `echo.net`
 
 | File | Requirement |
 | --- | --- |
-| `signalos-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
-| `signalos-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
-| `signalos-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
-| `signalos-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `echosignalos-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echosignalos-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
+| `echosignalos-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echosignalos-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |
@@ -64,7 +64,7 @@ The launcher resolves this module independently through `moduleRequirements`, co
 Run module builds from the `ECHO-Modules` repository root. Release generation is owned by `scripts/generate-module-release.mjs`.
 
 ```sh
-node scripts/generate-module-release.mjs --module signalos
+node scripts/generate-module-release.mjs --module echosignalos
 ```
 
 Use `--package-from-source` only for source-packaged visibility releases. Replace those artifacts with compiled runtime jars before marking a release player-ready.

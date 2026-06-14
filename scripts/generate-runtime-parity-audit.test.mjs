@@ -136,6 +136,14 @@ try {
   assert.ok(strictPlayRun.play.evidenceManifest.summary.expectedRuntimeEvidenceCount >= 15)
   assert.ok(strictPlayRun.play.evidenceManifest.summary.foundRuntimeEvidenceCount >= 4)
   assert.equal(strictPlayRun.play.evidenceManifest.summary.passingRuntimeEvidenceCount, 0)
+  const playEvidenceEntry = strictPlayRun.play.evidenceManifest.runtimeEvidence.find((entry) => entry.key === 'neoforgePlayEvidence')
+  assert.ok(playEvidenceEntry)
+  assert.deepEqual(playEvidenceEntry.expectedModuleIds, ['echocore', 'echoindex'])
+  assert.equal(playEvidenceEntry.expectedModuleCount, 2)
+  assert.equal(
+    playEvidenceEntry.missingModuleCount,
+    playEvidenceEntry.expectedModuleCount - playEvidenceEntry.coveredModuleCount,
+  )
   assert.equal(strictPlayRun.play.manualAcceptanceMatrix.summary.packLaneCount, 1)
   assert.equal(strictPlayRun.play.manualAcceptanceMatrix.summary.resultCounts.fail, 1)
   assert.equal(strictPlayRun.play.modulePlayCompletion.summary.moduleCount, 2)
@@ -148,6 +156,7 @@ try {
   assert.equal(playBacklog.schema, 'echo.module.runtime_play_fix_backlog.v1')
   assert.ok(playBacklog.summary.itemCount > 0)
   assert.ok(playBacklog.items.some((item) => item.category === 'pack_acceptance'))
+  assert.ok(playBacklog.items.some((item) => item.category === 'runtime_evidence' && Array.isArray(item.missingModuleIds)))
   assert.match(await fs.readFile(strictPlayRun.paths.playAuditMarkdown, 'utf8'), /ECHO Module Runtime Play Audit/)
   assert.match(await fs.readFile(strictPlayRun.paths.playFixBacklogMarkdown, 'utf8'), /ECHO Runtime Play Fix Backlog/)
 } finally {

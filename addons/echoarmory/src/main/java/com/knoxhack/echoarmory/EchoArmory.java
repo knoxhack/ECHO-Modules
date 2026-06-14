@@ -16,13 +16,30 @@ import com.knoxhack.echoarmory.registry.ModItems;
 import com.knoxhack.echoarmory.registry.ModMenus;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoArmory.MODID)
 public class EchoArmory {
    public static final String MODID = "echoarmory";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String COMMON_SETUP_EVENT =
+      "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+   private static final String ADD_SERVER_RELOAD_LISTENERS_EVENT =
+      "net.neoforged.neoforge.event.AddServerReloadListenersEvent";
+   private static final String PLAYER_TICK_POST_EVENT =
+      "net.neoforged.neoforge.event.tick.PlayerTickEvent$Post";
+   private static final String LIVING_DAMAGE_PRE_EVENT =
+      "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Pre";
+   private static final String ITEM_CRAFTED_EVENT =
+      "net.neoforged.neoforge.event.entity.player.PlayerEvent$ItemCraftedEvent";
 
-   public EchoArmory(Object modEventBus) {
+   EchoArmory() {
+      this(null);
+   }
+
+   public EchoArmory(IEventBus modEventBus) {
       ModDataComponents.register(modEventBus);
       ModBlocks.register(modEventBus);
       ModBlockEntities.register(modEventBus);
@@ -31,11 +48,14 @@ public class EchoArmory {
       ModMenus.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echoarmory.integration.prime.ArmoryPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-      EchoBackendLifecycleBridge.registerGameEventHandler(ArmoryReloaders::addServerReloadListeners);
-      EchoBackendLifecycleBridge.registerGameEventHandler(ArmoryEvents::onPlayerTick);
-      EchoBackendLifecycleBridge.registerGameEventHandler(ArmoryEvents::onLivingDamage);
-      EchoBackendLifecycleBridge.registerGameEventHandler(ArmoryEvents::onItemCrafted);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+      EchoBackendLifecycleBridge.registerGameEventHandler(ADD_SERVER_RELOAD_LISTENERS_EVENT,
+         ArmoryReloaders::addServerReloadListeners);
+      EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_TICK_POST_EVENT, ArmoryEvents::onPlayerTick);
+      EchoBackendLifecycleBridge.registerGameEventHandler(LIVING_DAMAGE_PRE_EVENT, ArmoryEvents::onLivingDamage);
+      EchoBackendLifecycleBridge.registerGameEventHandler(ITEM_CRAFTED_EVENT, ArmoryEvents::onItemCrafted);
+      EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+         "com.knoxhack.echoarmory.registry.ModGameTests");
    }
 
    private void commonSetup(Object event) {

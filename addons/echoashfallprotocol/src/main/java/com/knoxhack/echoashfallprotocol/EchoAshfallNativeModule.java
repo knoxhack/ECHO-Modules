@@ -30,7 +30,7 @@ import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeHardeni
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeRuntimeMutationEvidence;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeSurfaceConsumers;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeUiHudHandoff;
-import com.knoxhack.echoashfallprotocol.registry.ModCreativeTabs;
+import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeCreativeTabCatalog;
 import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
@@ -946,38 +946,20 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
     }
 
     private static List<String> registeredNativeModuleCreativeTabItems() {
-        try {
-            return nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeItemIds());
-        } catch (LinkageError ignored) {
-            return List.of();
-        }
+        return AshfallNativeCreativeTabCatalog.itemIds();
     }
 
     private static List<String> registeredNativeModuleCreativeTabRegistryBackedItems() {
-        try {
-            return nativeCreativeTabList(ModCreativeTabs.nativeLoaderRegistryBackedCreativeItemIds());
-        } catch (LinkageError ignored) {
-            return List.of();
-        }
+        return AshfallNativeCreativeTabCatalog.baselineItemIds();
     }
 
     private static List<String> registeredNativeModuleCreativeTabFeaturedItems() {
-        List<String> featuredItems;
-        try {
-            featuredItems = nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeFeaturedItemIds());
-        } catch (LinkageError ignored) {
-            featuredItems = List.of();
-        }
+        List<String> featuredItems = AshfallNativeCreativeTabCatalog.featuredItemIds();
         return featuredItems.isEmpty() ? fallbackNativeModulesCreativeFeaturedItems() : featuredItems;
     }
 
     private static List<String> registeredNativeModuleCreativeTabNamespaces() {
-        List<String> namespaces;
-        try {
-            namespaces = nativeCreativeTabList(ModCreativeTabs.nativeModuleCreativeNamespaces());
-        } catch (LinkageError ignored) {
-            namespaces = List.of();
-        }
+        List<String> namespaces = AshfallNativeCreativeTabCatalog.namespaces();
         if (!namespaces.isEmpty()) {
             return namespaces;
         }
@@ -989,7 +971,7 @@ public final class EchoAshfallNativeModule implements EchoNativeModuleEntrypoint
                 .toList();
     }
 
-    private static List<String> nativeCreativeTabList(List<String> values) {
+    private static List<String> nativeCreativeTabList(List<?> values) {
         if (values == null) {
             return List.of();
         }

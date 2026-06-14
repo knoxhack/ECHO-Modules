@@ -18,7 +18,7 @@ public final class EchoRuntimeModules {
     }
 
     public static boolean isLoaded(String moduleId) {
-        return MODULES.containsKey(moduleId);
+        return MODULES.containsKey(moduleId) || isNeoForgeModLoaded(moduleId);
     }
 
     public static void markLoaded(String moduleId, String displayName, String version) {
@@ -34,7 +34,8 @@ public final class EchoRuntimeModules {
             return module;
         }
         String id = moduleId == null || moduleId.isBlank() ? fallbackName : moduleId;
-        return new EchoRuntimeModule(id == null ? "" : id, "dev", "runtime", false);
+        boolean loaded = isNeoForgeModLoaded(id);
+        return new EchoRuntimeModule(id == null ? "" : id, "dev", "runtime", loaded);
     }
 
     public Collection<EchoRuntimeModule> all() {
@@ -44,6 +45,20 @@ public final class EchoRuntimeModules {
     public record EchoRuntimeModule(String id, String version, String side, boolean official) {
         public String displayName() {
             return id == null ? "" : id;
+        }
+    }
+
+    private static boolean isNeoForgeModLoaded(String moduleId) {
+        if (moduleId == null || moduleId.isBlank()) {
+            return false;
+        }
+        try {
+            Class<?> modListClass = Class.forName("net.neoforged.fml.ModList");
+            Object modList = modListClass.getMethod("get").invoke(null);
+            Object loaded = modListClass.getMethod("isLoaded", String.class).invoke(modList, moduleId);
+            return Boolean.TRUE.equals(loaded);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            return false;
         }
     }
 }

@@ -14,13 +14,26 @@ import com.knoxhack.echologisticsnetwork.registry.ModItems;
 import com.knoxhack.echologisticsnetwork.registry.ModMenus;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoLogisticsNetwork.MODID)
 public class EchoLogisticsNetwork {
    public static final String MODID = "echologisticsnetwork";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String COMMON_SETUP_EVENT =
+      "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+   private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+      "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
+   private static final String ADD_SERVER_RELOAD_LISTENERS_EVENT =
+      "net.neoforged.neoforge.event.AddServerReloadListenersEvent";
 
-   public EchoLogisticsNetwork(Object modEventBus) {
+   EchoLogisticsNetwork() {
+      this(null);
+   }
+
+   public EchoLogisticsNetwork(IEventBus modEventBus) {
       var runtime = Agent9LogisticsNetworkRuntimeAdapter.activateNativeHostEntrypoint();
       LOGGER.info("ECHO Logistics Network Agent 9 native host adapter {}.", runtime.get("status"));
       Config.registerEchoConfig();
@@ -32,9 +45,13 @@ public class EchoLogisticsNetwork {
       ModEntities.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echologisticsnetwork.integration.prime.LogisticsPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-      EchoBackendLifecycleBridge.registerGameEventHandler(LogisticsReloaders::addServerReloadListeners);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+         ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+      EchoBackendLifecycleBridge.registerGameEventHandler(ADD_SERVER_RELOAD_LISTENERS_EVENT,
+         LogisticsReloaders::addServerReloadListeners);
+      EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+         "com.knoxhack.echologisticsnetwork.registry.ModGameTests");
    }
 
    private void commonSetup(Object event) {

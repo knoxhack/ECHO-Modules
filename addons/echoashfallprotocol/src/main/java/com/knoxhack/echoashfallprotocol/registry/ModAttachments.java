@@ -2,6 +2,7 @@ package com.knoxhack.echoashfallprotocol.registry;
 
 import com.knoxhack.echo.adaptercore.EchoAttachmentHandle;
 import com.knoxhack.echo.adaptercore.EchoBackendAttachmentBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendRegistryBridge;
 import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import com.knoxhack.echoashfallprotocol.endgame.PostNexusData;
 import com.knoxhack.echoashfallprotocol.survival.MutationData;
@@ -141,4 +142,8 @@ public class ModAttachments {
             AshfallFactionContractData::new,
             AshfallFactionContractData.STREAM_CODEC
     );
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(ATTACHMENT_TYPES, eventBus);
+    }
 }

@@ -512,6 +512,10 @@ public class ModItems {
                 .component(DataComponents.ENTITY_DATA, TypedEntityData.of(typeSupplier.get(), new CompoundTag()))));
     }
 
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(ITEMS, eventBus);
+    }
+
     private static Item.Properties waterBottleProperties() {
         FoodProperties waterFood = new FoodProperties.Builder()
                 .nutrition(0)
@@ -521,7 +525,6 @@ public class ModItems {
         return new Item.Properties()
                 .stacksTo(16)
                 .food(waterFood, WATER_DRINK)
-                .usingConvertsTo(Items.GLASS_BOTTLE)
                 .useCooldown(0.75F);
     }
 

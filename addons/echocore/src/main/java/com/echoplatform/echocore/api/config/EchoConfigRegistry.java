@@ -43,8 +43,8 @@ public final class EchoConfigRegistry {
     public static List<EchoConfigModuleSnapshot> snapshots(EchoConfigSide side) {
         return GLOBAL.providers.values().stream()
                 .map(EchoConfigProvider::describeConfig)
-                .filter(module -> side == null || module.side() == side)
-                .map(EchoConfigRegistry::snapshot)
+                .map(module -> snapshot(module, side))
+                .filter(EchoConfigModuleSnapshot::hasEntries)
                 .toList();
     }
 
@@ -54,10 +54,14 @@ public final class EchoConfigRegistry {
             return Optional.empty();
         }
         EchoConfigModule module = provider.describeConfig();
-        if (module == null || (side != null && module.side() != side)) {
+        if (module == null) {
             return Optional.empty();
         }
-        return Optional.of(snapshot(module));
+        EchoConfigModuleSnapshot snapshot = snapshot(module, side);
+        if (side != null && !snapshot.hasEntries()) {
+            return Optional.empty();
+        }
+        return Optional.of(snapshot);
     }
 
     public static EchoConfigApplyResult apply(EchoConfigSide side, String moduleId, String entryId, String value) {
@@ -66,10 +70,26 @@ public final class EchoConfigRegistry {
             return EchoConfigApplyResult.rejected("Config provider is unavailable.");
         }
         EchoConfigModule module = provider.describeConfig();
-        if (module == null || (side != null && module.side() != side)) {
+        if (module == null) {
             return EchoConfigApplyResult.rejected("Config side is unavailable.");
         }
-        return provider.apply(module);
+        Optional<EchoConfigEntry> entry = module.categories().stream()
+                .flatMap(category -> category.entries().stream())
+                .filter(candidate -> candidate.key().equals(entryId))
+                .findFirst();
+        if (entry.isEmpty()) {
+            return EchoConfigApplyResult.rejected("Config entry is unavailable.");
+        }
+        EchoConfigEntry configEntry = entry.get();
+        if (side != null && configEntry.side() != side) {
+            return EchoConfigApplyResult.rejected("Config side is unavailable.");
+        }
+        EchoConfigApplyResult entryResult = configEntry.apply(value);
+        if (!entryResult.success()) {
+            return entryResult;
+        }
+        EchoConfigApplyResult providerResult = provider.apply(module);
+        return providerResult == null ? EchoConfigApplyResult.acceptedResult() : providerResult;
     }
 
     public static EchoConfigApplyResult reset(EchoConfigSide side, String moduleId, String entryId) {
@@ -77,18 +97,21 @@ public final class EchoConfigRegistry {
     }
 
     private static EchoConfigModuleSnapshot snapshot(EchoConfigModule module) {
+        return snapshot(module, null);
+    }
+
+    private static EchoConfigModuleSnapshot snapshot(EchoConfigModule module, EchoConfigSide side) {
         List<EchoConfigCategorySnapshot> categories = module.categories().stream()
-                .map(category -> new EchoConfigCategorySnapshot(
-                        category.id(),
-                        category.displayName(),
-                        category.entries().stream()
+                .map(category -> {
+                    List<EchoConfigEntrySnapshot> entries = category.entries().stream()
+                                .filter(entry -> side == null || entry.side() == side)
                                 .map(entry -> new EchoConfigEntrySnapshot(
                                         module.moduleId(),
                                         category.id(),
                                         entry.key(),
                                         entry.key(),
                                         entry.description(),
-                                        module.side(),
+                                        entry.side(),
                                         entry.kind(),
                                         entry.defaultValue(),
                                         entry.defaultValue(),
@@ -99,7 +122,10 @@ public final class EchoConfigRegistry {
                                         false,
                                         false,
                                         ""))
-                                .toList()))
+                                .toList();
+                    return new EchoConfigCategorySnapshot(category.id(), category.displayName(), entries);
+                })
+                .filter(category -> !category.entries().isEmpty())
                 .toList();
         return new EchoConfigModuleSnapshot(module.moduleId(), module.moduleId(), categories);
     }

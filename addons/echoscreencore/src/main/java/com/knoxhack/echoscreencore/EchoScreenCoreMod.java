@@ -2,18 +2,22 @@ package com.knoxhack.echoscreencore;
 
 import com.echoplatform.echocore.api.EchoAddonChapter;
 import com.echoplatform.echocore.api.EchoAddonRegistry;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoScreenCoreMod.MOD_ID)
 public final class EchoScreenCoreMod {
     public static final String MOD_ID = "echoscreencore";
     public static final Logger LOGGER = LogUtils.getLogger();
     private static final String CHAPTER_ID = "screencore";
 
-    public EchoScreenCoreMod() {
-        commonSetup();
+    public EchoScreenCoreMod(IEventBus modEventBus) {
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         LOGGER.info("ECHO: ScreenCore core loaded.");
     }
 
@@ -21,8 +25,8 @@ public final class EchoScreenCoreMod {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    public void commonSetup() {
-        EchoScreenCoreMod.registerAddonChapter();
+    public void commonSetup(Object event) {
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, EchoScreenCoreMod::registerAddonChapter);
     }
 
     private static void registerAddonChapter() {

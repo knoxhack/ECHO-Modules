@@ -9,6 +9,7 @@ import com.knoxhack.echoashfallprotocol.power.PowerNetwork;
 import com.knoxhack.echoashfallprotocol.registry.ModBlockEntities;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
  * Duration: 400 ticks (20 seconds)
  * Power: 8 FE/tick
  */
-public class RadiationCleanserBlockEntity extends BlockEntity implements MenuProvider, IEnergyStorage {
+public class RadiationCleanserBlockEntity extends BlockEntity implements MenuProvider, HopperHandler, IEnergyStorage {
     public static final int INPUT_SLOT = 0;
     public static final int FILTER_SLOT = 1;
     public static final int OUTPUT_SLOT = 2;
@@ -227,5 +228,31 @@ public class RadiationCleanserBlockEntity extends BlockEntity implements MenuPro
     @Override public void setEnergyStored(int energy) {
         energyStorage.setEnergyStored(energy);
         setChanged();
+    }
+
+    @Override
+    public int[] getInputSlots(Direction side) {
+        return new int[]{INPUT_SLOT, FILTER_SLOT};
+    }
+
+    @Override
+    public int[] getOutputSlots(Direction side) {
+        return side == Direction.DOWN ? new int[]{OUTPUT_SLOT} : new int[]{};
+    }
+
+    @Override
+    public boolean canInsertItem(int slot, ItemStack stack) {
+        if (slot == INPUT_SLOT) {
+            return DECONTAMINATION_MAP.containsKey(stack.getItem());
+        }
+        if (slot == FILTER_SLOT) {
+            return stack.is(ModItems.FILTER_CARTRIDGE_ADVANCED.get());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExtractItem(int slot) {
+        return slot == OUTPUT_SLOT;
     }
 }

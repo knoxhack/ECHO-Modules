@@ -13,13 +13,24 @@ import com.knoxhack.echoblackboxprotocol.registry.ModRecipes;
 import com.knoxhack.echoblackboxprotocol.registry.ModWorldgen;
 import com.mojang.logging.LogUtils;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoBlackboxProtocol.MODID)
 public class EchoBlackboxProtocol {
    public static final String MODID = "echoblackboxprotocol";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String COMMON_SETUP_EVENT =
+      "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+   private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+      "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
 
-   public EchoBlackboxProtocol(Object modEventBus) {
+   EchoBlackboxProtocol() {
+      this(null);
+   }
+
+   public EchoBlackboxProtocol(IEventBus modEventBus) {
       ModBlocks.register(modEventBus);
       ModBlockEntities.register(modEventBus);
       ModItems.register(modEventBus);
@@ -29,8 +40,11 @@ public class EchoBlackboxProtocol {
       ModWorldgen.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echoblackboxprotocol.integration.prime.BlackboxPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+         ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+         "com.knoxhack.echoblackboxprotocol.test.ModGameTests");
    }
 
    private void commonSetup(Object event) {

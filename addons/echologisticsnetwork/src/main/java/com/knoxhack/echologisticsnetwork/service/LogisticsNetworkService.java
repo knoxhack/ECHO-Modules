@@ -567,6 +567,11 @@ public final class LogisticsNetworkService {
       if (level == null || origin == null || payload == null || payload.isEmpty()) {
          return false;
       }
+      for (StorageNode node : externalDeliveryNodes(level, origin, networkId)) {
+         if (canInsertAll(node.container(), payload)) {
+            return insertPayloadIntoContainer(node.container(), payload);
+         }
+      }
       for (StorageNode node : storageNodes(level, origin, networkId)) {
          if (canInsertAll(node.container(), payload)) {
             return insertPayloadIntoContainer(node.container(), payload);
@@ -579,7 +584,8 @@ public final class LogisticsNetworkService {
       if (level == null || origin == null || payload == null || payload.isEmpty()) {
          return false;
       }
-      return storageNodes(level, origin, networkId).stream().anyMatch(node -> canInsertAll(node.container(), payload));
+      return externalDeliveryNodes(level, origin, networkId).stream().anyMatch(node -> canInsertAll(node.container(), payload))
+         || storageNodes(level, origin, networkId).stream().anyMatch(node -> canInsertAll(node.container(), payload));
    }
 
    public static int cancelActiveDeliveries(Player player, BlockPos origin, String networkId) {
@@ -919,6 +925,27 @@ public final class LogisticsNetworkService {
             nodes.putIfAbsent(endpoint.pos(), new StorageNode(container, endpoint.pos(), category));
          }
       }
+   }
+
+   private static List<StorageNode> externalDeliveryNodes(Level level, BlockPos origin, String networkId) {
+      return externalEndpoints(level, origin, networkId).stream()
+         .filter(endpoint -> endpoint.hasRole(LogisticsExternalEndpointRole.DELIVERY_TARGET)
+            && networkMatches(networkId, endpoint.networkId()))
+         .map(endpoint -> externalStorageNode(level, endpoint))
+         .flatMap(Optional::stream)
+         .sorted(Comparator.comparing(node -> node.pos().toShortString()))
+         .toList();
+   }
+
+   private static Optional<StorageNode> externalStorageNode(Level level, LogisticsExternalEndpoint endpoint) {
+      if (level == null || endpoint == null) {
+         return Optional.empty();
+      }
+      if (level.getBlockEntity(endpoint.pos()) instanceof Container container && !(container instanceof LogisticsBlockEntity)) {
+         String category = endpoint.categoryId() == null ? "" : endpoint.categoryId().toString();
+         return Optional.of(new StorageNode(container, endpoint.pos(), category));
+      }
+      return Optional.empty();
    }
 
    private static List<LogisticsExternalEndpoint> externalEndpoints(Level level, BlockPos origin, String networkId) {

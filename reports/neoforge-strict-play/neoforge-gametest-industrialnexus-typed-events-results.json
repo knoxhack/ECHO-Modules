@@ -1,0 +1,131 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T14:07:50.824Z",
+  "status": "PASS",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-industrialnexus-typed-events-results.json",
+  "moduleIds": [
+    "echoindustrialnexus"
+  ],
+  "selectedModuleIds": [
+    "echoindustrialnexus"
+  ],
+  "selectedProjectNames": [
+    "echoindustrialnexus"
+  ],
+  "selectedModuleCount": 1,
+  "passedModuleIds": [
+    "echoindustrialnexus"
+  ],
+  "failedModuleIds": [],
+  "allSelectedModulesPassed": true,
+  "trustedMutations": [
+    "NeoForge GameTest server completed for echoindustrialnexus."
+  ],
+  "visibleRoutes": [],
+  "saveEvidence": [
+    "NeoForge GameTest execution for echoindustrialnexus included save/reload/network-named tests."
+  ],
+  "networkEvidence": [
+    "NeoForge GameTest execution for echoindustrialnexus included network/sync-named tests."
+  ],
+  "results": [
+    {
+      "moduleId": "echoindustrialnexus",
+      "projectName": "echoindustrialnexus",
+      "task": ":echoindustrialnexus:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echoindustrialnexus:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T14:07:23.583Z",
+      "finishedAt": "2026-06-14T14:07:50.821Z",
+      "durationMs": 27237,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "unds[min=Optional.empty, max=Optional.empty]], full=Ints[bounds=Bounds[min=Optional.empty, max=Optional.empty], boundsSqr=Bounds[min=Optional.empty, max=Optional.empty]], empty=Ints[bounds=Bounds[min=Optional.empty, max=Optional.empty], boundsSqr=Bounds[min=Optional.empty, max=Optional.empty]]], items=[ItemPredicate[items=Optional.empty, count=Ints[bounds=Bounds[min=Optional.empty, max=Optional.empty], boundsSqr=Bounds[min=Optional.empty, max=Optional.empty]], components=DataComponentMatchers[exact=[], partial={}]]]]]}, requirements=[[supply_crate]], sendsTelemetryEvent=false, name=Optional.empty]]]\r\n[10:07:40] [main/INFO] [minecraft/RecipeManager]: Loaded 1889 recipes\r\n[10:07:40] [main/INFO] [minecraft/AdvancementTree]: Loaded 1660 advancements\r\n[10:07:40] [main/INFO] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore loaded 17 multiblock definition(s).\r\n[10:07:40] [main/INFO] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore loaded 32 automation recipe(s).\r\n[10:07:40] [main/INFO] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore loaded 11 upgrade definition(s).\r\n[10:07:40] [main/INFO] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore loaded 11 progression definition(s).\r\n[10:07:40] [main/INFO] [ne.ne.ne.co.cr.RecipePriorityManager/]: Loaded 0 recipe priority overrides\r\n[10:07:40] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loading configs type SERVER\r\n[10:07:40] [Server thread/DEBUG] [ne.ne.ne.co.NeoForgeMod/FORGEMOD]: Loaded NeoForge config file neoforge-server.toml\r\n[10:07:40] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Loaded TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echoindustrialnexus\\run\\config\\neoforge-server.toml\r\n[10:07:40] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Watching TOML config file C:\\Development\\Github\\ECHO-Modules\\addons\\echoindustrialnexus\\run\\config\\neoforge-server.toml for changes\r\n[10:07:40] [Server thread/DEBUG] [io.ne.ut.in.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0xde05da93922063ec\r\n[10:07:40] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Selecting global world spawn...\r\n[10:07:40] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Loading 0 persistent chunks...\r\n[10:07:40] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Preparing spawn area: 100%\r\n[10:07:40] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 393 ms\r\n[10:07:40] [Server thread/INFO] [minecraft/GameTestServer]: Each test that matches echoindustrialnexus:* will be run 1 times (total: 46)\r\n[10:07:40] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server\r\n[10:07:41] [Server thread/DEBUG] [ne.ne.ne.se.LanguageHook/]: Loaded 22 language files for en_us\r\n[10:07:41] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler\r\n[10:07:41] [Server thread/INFO] [minecraft/GameTestServer]: 46 tests are now running at position -1651144, -59, -14331333!\r\n[10:07:46] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echoindustrialnexus:industrial_chapter' batch 0 (46 tests)...\r\n[10:07:46] [Server thread/WARN] [minecraft/MinecraftServer]: Can't keep up! Is the server overloaded? Running 4938ms or 98 ticks behind\r\n[10:07:46] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 16 at (0.0, 0.0, 0.0)\r\n[10:07:46] [Server thread/DEBUG] [io.ne.ut.in.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: available\r\n[10:07:46] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:46] [Server thread/INFO] [co.kn.ec.EchoIndustrialNexus/]: ECHO platform providers after Industrial setup: discoveries=1, factions=0, maps=2, indexContent=2, dataKeys=0\r\n[10:07:46] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Skipped Industrial Nexus POI abandoned_thermal_plant at BlockPos{x=-1651107, y=-60, z=-14331151} because terrain failed placement checks.\r\n[10:07:46] [Server thread/INFO] [co.kn.ec.EchoIndustrialNexus/]: Generated Industrial Nexus POI nexus_heat_exchanger_ruins at BlockPos{x=-1651088, y=-60, z=-14331151}\r\n[10:07:46] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:46] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:46] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 29 at (0.0, 0.0, 0.0)\r\n[10:07:46] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 30 at (0.0, 0.0, 0.0)\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 31 at (0.0, 0.0, 0.0)\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 34 at (0.0, 0.0, 0.0)\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/WARN] [co.kn.ec.EchoMultiblockCore/]: ECHO MultiblockCore automation effect provider echoindustrialnexus:nexus_array_effects ignored because that id is already registered.\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoIndustrialNexus/]: Industrial Nexus multiblock automation tasks are data-driven through MultiblockCore automation recipes.\r\n[10:07:47] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 35 at (0.0, 0.0, 0.0)\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/DEBUG] [co.kn.ec.EchoLens/]: Registered Lens provider echolens:machinecore_runtime (com.knoxhack.echolens.integration.MachineCoreLensIntegration$Provider)\r\n[10:07:47] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics MachineCore endpoint provider registered.\r\n[10:07:47] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 40 at (0.0, 0.0, 0.0)\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player has reached the goal [Factory Chain]\r\n[10:07:47] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++]\r\n[10:07:47] [Server thread/INFO] [minecraft/GameTestServer]: ========= 46 GAME TESTS COMPLETE IN 6.454 s ======================\r\n[10:07:47] [Server thread/INFO] [minecraft/GameTestServer]: All 46 required tests passed :)\r\n[10:07:47] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[10:07:47] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:07:47] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:07:47] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:07:47] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: test-mock-player lost connection: Server closed\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player left the game\r\n[10:07:47] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[10:07:48] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[10:07:50] [Server thread/DEBUG] [ne.ne.ne.co.CommonHooks/WP]: Gathered mod list to write to world save Test Level\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[10:07:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[10:07:50] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER\r\n[10:07:50] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 27s\r\n102 actionable tasks: 1 executed, 101 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "2026-06-14T14:07:29.322877500Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", ASSEMBLY_LINE_GUI_QUEUE.getId());\r\n      register(event, environment, ",
+        ", CROSS_COMPAT_OUTPUT.getId());\r\n      register(event, environment, ",
+        ", FACTORY_COMMAND_TERMINAL_ACTIONS.getId());\r\n      register(event, environment, ",
+        ", FLUID_CAPABILITY.getId());\r\n      register(event, environment, ",
+        ", FLUID_TANK.getId());\r\n      register(event, environment, ",
+        ", INDUSTRIAL_LENS_PROVIDER.getId());\r\n      register(event, environment, ",
+        ", INDUSTRIAL_MACHINE_STANDARD.getId());\r\n      register(event, environment, ",
+        ", ITEM_DUCT_ROUTING.getId());\r\n      register(event, environment, ",
+        ", ITEM_ECOSYSTEM_COMPLETENESS.getId());\r\n      register(event, environment, ",
+        ", LAVA_BUCKET_RETURN.getId());\r\n      register(event, environment, ",
+        ", MACHINECORE_UI_RUNTIME_CONSUMERS.getId());\r\n      register(event, environment, ",
+        ", MACHINE_PERSISTENCE.getId());\r\n      register(event, environment, ",
+        ", MACHINE_PROCESSING.getId());\r\n      register(event, environment, ",
+        ", NEXUS_FURNACE_ARRAY_PROVIDERS.getId());\r\n      register(event, environment, ",
+        ", NEXUS_FURNACE_ARRAY_ROBOTIC_TASK.getId());\r\n      register(event, environment, ",
+        ", POI_SMOKE.getId());\r\n      register(event, environment, ",
+        ", REGISTERED_ITEM_PATHS.getId());\r\n      register(event, environment, ",
+        ", RENDERCORE_VISUAL_STATES.getId());\r\n      register(event, environment, ",
+        ", SCRAP_DYNAMO_GENERATION.getId());\r\n      register(event, environment, ",
+        ", TERMINAL_MISSIONS.getId());\r\n      register(event, environment, ",
+        ", TERMINAL_RECIPE_PARSER.getId());\r\n      register(event, environment, ",
+        ", UPGRADE_STACKING.getId());\r\n      register(event, environment, ",
+        ", WARDEN_SPAWN.getId());\r\n      register(event, environment, ",
+        "assembly_line_batch_queue",
+        "assembly_line_gui_queue",
+        "assembly_line_robotic_task",
+        "controller_remote_shutdown",
+        "core_chapter_route_records",
+        "cross_compat_component_output",
+        "factory_command_provider_snapshots",
+        "factory_command_terminal_actions",
+        "fluid_capability_fill_drain",
+        "fluid_pipe_transfer_filtering",
+        "fluid_tank_processing",
+        "flux_duct_transfer_loss",
+        "furnace_warden_reward_idempotency",
+        "furnace_warden_spawn",
+        "generator_powers_ore_grinder",
+        "industrial_lens_provider_registration",
+        "industrial_machine_standard_snapshot_contract",
+        "industrial_machinecore_runtime_snapshot_contract",
+        "industrial_multiblock_definitions",
+        "industrial_powergrid_flux_bridge",
+        "industrial_public_api_and_source_facts",
+        "item_duct_routing",
+        "item_ecosystem_completeness",
+        "item_ecosystem_tags",
+        "lava_bucket_returns_bucket",
+        "machine_and_duct_break_drops",
+        "machine_menu_data_sync",
+        "machine_recipe_processing",
+        "machine_side_config",
+        "machine_state_persistence",
+        "machinecore_ui_runtime_consumer_projections",
+        "nexus_furnace_array_core_key_mission",
+        "nexus_furnace_array_provider_snapshots",
+        "nexus_furnace_array_robotic_task",
+        "nexus_pressure_compat",
+        "procedural_poi_smoke",
+        "registered_orphan_item_paths",
+        "rendercore_visual_states",
+        "reward_claim_idempotency",
+        "scrap_dynamo_generates_flux",
+        "scrubber_safe_zone_progress",
+        "terminal_claim_idempotency",
+        "terminal_mission_snapshots",
+        "terminal_recipe_parser",
+        "terminal_route_placement",
+        "upgrade_stacking_rules"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echoindustrialnexus/test/ModGameTests.java"
+      ]
+    }
+  ],
+  "blockers": []
+}

@@ -14,6 +14,7 @@ import com.echoplatform.echocore.api.mission.IMissionService;
 import com.echoplatform.echocore.api.mission.InMemoryMissionRegistry;
 import com.echoplatform.echocore.api.mission.InMemoryMissionService;
 import com.echoplatform.echocore.api.mission.MissionObjectiveType;
+import com.echoplatform.echocore.api.mission.NoOpMissionService;
 import com.echoplatform.echocore.api.network.INetworkService;
 import com.echoplatform.echocore.api.network.NoOpNetworkService;
 import com.echoplatform.echocore.api.spine.EchoSpineBus;
@@ -136,11 +137,11 @@ public final class EchoCoreServices {
     }
 
     public static IMissionRegistry missionRegistry() {
-        return REGISTRY.require(IMissionRegistry.class);
+        return REGISTRY.find(IMissionRegistry.class).orElse(NoOpMissionService.INSTANCE);
     }
 
     public static IMissionService missionService() {
-        return REGISTRY.require(IMissionService.class);
+        return REGISTRY.find(IMissionService.class).orElse(NoOpMissionService.INSTANCE);
     }
 
     public static void registerMissionService(IMissionService service) {
@@ -179,7 +180,7 @@ public final class EchoCoreServices {
     }
 
     public static IRegionService regionService() {
-        return REGISTRY.require(IRegionService.class);
+        return REGISTRY.find(IRegionService.class).orElse(NoOpWorldService.INSTANCE);
     }
 
     public static IPlayerDataView playerData(Player player) {
@@ -325,6 +326,9 @@ public final class EchoCoreServices {
                 } catch (RuntimeException exception) {
                     state = EchoDiscoveryState.LOCKED;
                 }
+                if (state == EchoDiscoveryState.LOCKED && hasDiscoveredFeature(player, entry.id())) {
+                    state = EchoDiscoveryState.DISCOVERED;
+                }
                 entries.add(new EchoResolvedDiscoveryEntry(entry, state));
             }
         }
@@ -362,7 +366,19 @@ public final class EchoCoreServices {
     }
 
     public static StructureDiscoveryService structureDiscoveryService() {
-        return structureDiscoveryService;
+        return EchoServiceRegistry.find(IStructureDiscoveryService.class)
+                .<StructureDiscoveryService>map(service -> service)
+                .or(() -> EchoServiceRegistry.find(StructureDiscoveryService.class))
+                .orElse(structureDiscoveryService);
+    }
+
+    public static void registerStructureDiscoveryService(StructureDiscoveryService service) {
+        structureDiscoveryService = service == null ? new StructureDiscoveryService() {
+        } : service;
+        EchoServiceRegistry.register(StructureDiscoveryService.class, structureDiscoveryService);
+        if (service instanceof IStructureDiscoveryService legacyService) {
+            EchoServiceRegistry.register(IStructureDiscoveryService.class, legacyService);
+        }
     }
 
     public static void registerMapDataProvider(IMapDataProvider provider) {
@@ -603,7 +619,7 @@ public final class EchoCoreServices {
     }
 
     public static IWorldRegionService worldRegions() {
-        return worldRegionService == null ? NoOpWorldService.INSTANCE : worldRegionService;
+        return REGISTRY.find(IWorldRegionService.class).orElse(NoOpWorldService.INSTANCE);
     }
 
     public static IWorldRegionService worldMarkerService() {
@@ -647,14 +663,24 @@ public final class EchoCoreServices {
     }
 
     public static List<EchoChapterCapability> chapterCapabilities(Player player) {
-        return RUNTIME_MODULES.all().stream()
-                .map(module -> new EchoChapterCapability(
-                        Identifier.fromNamespaceAndPath(EchoCore.MOD_ID, module.id()),
-                        module.displayName(),
-                        true,
-                        true,
-                        module.side()))
-                .toList();
+        Map<String, EchoChapterCapability> capabilities = new LinkedHashMap<>();
+        for (EchoRuntimeModules.EchoRuntimeModule module : RUNTIME_MODULES.all()) {
+            capabilities.put(module.id(), new EchoChapterCapability(
+                    Identifier.fromNamespaceAndPath(EchoCore.MOD_ID, module.id()),
+                    module.displayName(),
+                    true,
+                    true,
+                    module.side()));
+        }
+        for (EchoAddonChapter chapter : EchoAddonRegistry.chapters()) {
+            capabilities.put(chapter.id(), new EchoChapterCapability(
+                    Identifier.fromNamespaceAndPath(EchoCore.MOD_ID, chapter.id()),
+                    chapter.displayName(),
+                    true,
+                    chapter.isAvailable(player),
+                    chapter.statusLine(player)));
+        }
+        return List.copyOf(capabilities.values());
     }
 
     public static WorldContextSnapshot worldContext(Player player) {
@@ -697,12 +723,20 @@ public final class EchoCoreServices {
     }
 
     public static void replayMissionContent(IMissionRegistry registry) {
+        replayMissionContent(registry, Set.of());
+    }
+
+    public static void replayMissionContent(IMissionRegistry registry, Set<String> excludedModuleIds) {
         if (registry == null) {
             return;
         }
-        for (Consumer<IMissionRegistry> registrar : MISSION_CONTENT_REGISTRARS.values()) {
+        Set<String> excluded = excludedModuleIds == null ? Set.of() : Set.copyOf(excludedModuleIds);
+        for (Map.Entry<String, Consumer<IMissionRegistry>> entry : MISSION_CONTENT_REGISTRARS.entrySet()) {
+            if (excluded.contains(entry.getKey())) {
+                continue;
+            }
             try {
-                registrar.accept(registry);
+                entry.getValue().accept(registry);
             } catch (RuntimeException ignored) {
             }
         }
@@ -727,7 +761,7 @@ public final class EchoCoreServices {
     }
 
     public static boolean missionCoreAvailable() {
-        return missionService().available();
+        return REGISTRY.find(IMissionService.class).map(IMissionService::available).orElse(false);
     }
 
     public static boolean startMission(ServerPlayer player, Identifier missionId) {
@@ -941,6 +975,30 @@ public final class EchoCoreServices {
                         player == null ? profile.lastInteractionTick() : player.level().getGameTime(),
                         profile.lastRoleId(), profile.standing(), memory, profile.activeContractId(),
                         profile.completedContractIds())));
+    }
+
+    public static void setFactionActiveContract(ServerPlayer player, Identifier factionId, Identifier contractId) {
+        if (player == null || factionId == null || contractId == null) {
+            return;
+        }
+        EchoFactionProfile profile = factionProfileOrCreate(player, factionId);
+        profilesFor(player).put(factionId, profile.withActiveContract(contractId));
+    }
+
+    public static void clearFactionActiveContract(ServerPlayer player, Identifier factionId) {
+        if (player == null || factionId == null) {
+            return;
+        }
+        EchoFactionProfile profile = factionProfileOrCreate(player, factionId);
+        profilesFor(player).put(factionId, profile.withoutActiveContract());
+    }
+
+    public static void markFactionContractCompleted(ServerPlayer player, Identifier factionId, Identifier contractId) {
+        if (player == null || factionId == null || contractId == null) {
+            return;
+        }
+        EchoFactionProfile profile = factionProfileOrCreate(player, factionId);
+        profilesFor(player).put(factionId, profile.withoutActiveContract().withCompletedContract(contractId));
     }
 
     public static Optional<EchoFactionInteractionSnapshot> factionInteractionSnapshot(

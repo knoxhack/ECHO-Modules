@@ -17,6 +17,7 @@ base {
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+def signalOsContentNamespace = (project.findProperty('content_namespace') ?: 'signalos').toString()
 
 neoForge {
     version = project.neo_version
@@ -24,17 +25,17 @@ neoForge {
     runs {
         signalosClient {
             client()
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            systemProperty 'neoforge.enabledGameTestNamespaces', signalOsContentNamespace
         }
         server {
             server()
             programArgument '--nogui'
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            systemProperty 'neoforge.enabledGameTestNamespaces', signalOsContentNamespace
         }
         gameTestServer {
             type = "gameTestServer"
-            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${project.mod_id}:*").toString()
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--tests', (project.findProperty('echoGameTestSelector') ?: "${signalOsContentNamespace}:*").toString()
+            systemProperty 'neoforge.enabledGameTestNamespaces', signalOsContentNamespace
         }
         data {
             clientData()
@@ -51,6 +52,7 @@ neoForge {
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
+            sourceSet(sourceSets.test)
         }
     }
 }

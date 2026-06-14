@@ -39,7 +39,7 @@ Cell values: Required, Recommended, Optional, Not Needed, Experimental, or Offic
 | `echoweathercore` | Optional | Optional | Optional | Not Needed | Optional | Recommended | Optional | Optional | Optional | Optional | Recommended | Recommended |
 | `echowiki` | Optional | Optional | Optional | Not Needed | Recommended | Optional | Optional | Optional | Optional | Optional | Optional | Recommended |
 | `echoworldcore` | Optional | Optional | Recommended | Not Needed | Recommended | Recommended | Optional | Optional | Optional | Optional | Optional | Recommended |
-| `signalos` | Optional | Optional | Optional | Not Needed | Recommended | Optional | Optional | Recommended | Optional | Optional | Optional | Recommended |
+| `echosignalos` | Optional | Optional | Optional | Not Needed | Recommended | Optional | Optional | Recommended | Optional | Optional | Optional | Recommended |
 | `signalosexample` | Optional | Optional | Optional | Not Needed | Optional | Optional | Optional | Optional | Optional | Not Needed | Optional | Not Needed |
 
 ## Starter Stack Notes

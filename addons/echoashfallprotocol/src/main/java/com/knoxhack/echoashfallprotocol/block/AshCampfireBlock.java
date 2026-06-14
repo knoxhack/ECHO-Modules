@@ -3,6 +3,7 @@ package com.knoxhack.echoashfallprotocol.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -23,26 +24,36 @@ public class AshCampfireBlock extends CampfireBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        super.randomTick(state, level, pos, random);
-        applyShelterPulse(state, level, pos);
+        BlockState liveState = level.getBlockState(pos);
+        if (!liveState.is(this) || !liveState.getValue(LIT)) {
+            return;
+        }
+        super.randomTick(liveState, level, pos, random);
+        applyShelterPulse(liveState, level, pos);
     }
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        super.tick(state, level, pos, random);
-        applyShelterPulse(state, level, pos);
-        if (state.getValue(LIT)) {
-            level.scheduleTick(pos, this, 40);
+        BlockState liveState = level.getBlockState(pos);
+        if (!liveState.is(this) || !liveState.getValue(LIT)) {
+            return;
         }
+        super.tick(liveState, level, pos, random);
+        applyShelterPulse(liveState, level, pos);
+        level.scheduleTick(pos, this, 40);
     }
 
     private void applyShelterPulse(BlockState state, ServerLevel level, BlockPos pos) {
-        if (!state.getValue(LIT)) {
+        BlockState liveState = level.getBlockState(pos);
+        if (!liveState.is(this) || !liveState.getValue(LIT)) {
             return;
         }
         AABB aura = new AABB(pos).inflate(5.0D);
         for (Monster monster : level.getEntitiesOfClass(Monster.class, aura)) {
-            if (monster.getTarget() != null && monster.distanceToSqr(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) < 25.0D) {
+            LivingEntity target = monster.getTarget();
+            if (target != null
+                    && monster.distanceToSqr(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) < 25.0D
+                    && target.distanceToSqr(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) < 25.0D) {
                 monster.setTarget(null);
             }
         }

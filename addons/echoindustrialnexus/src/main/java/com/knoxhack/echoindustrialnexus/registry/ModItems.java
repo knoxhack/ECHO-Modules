@@ -309,7 +309,7 @@ public final class ModItems {
    }
 
    private static EchoBackendRegistryEntry<BlockItem> blockItem(EchoBackendRegistryEntry<? extends Block> block) {
-      Identifier id = BuiltInRegistries.BLOCK.getKey(block.get());
+      Identifier id = block.id();
       return EchoBackendRegistryBridge.registerWithId(
          ITEMS,
          id.getPath(),

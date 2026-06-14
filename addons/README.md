@@ -22,7 +22,7 @@ The native product package task now scans the workspace root by default, so it d
 .\gradlew.bat packageNativeProductLayout --console=plain --no-problems-report
 ```
 
-The workspace root `echo.pack.json` is the canonical Ashfall runtime product profile for that package task. It names `echoashfallprotocol` as the root module and selects the runtime modules by descriptor id, including `signalos` from `addons/echosignalos`.
+The workspace root `echo.pack.json` is the canonical Ashfall runtime product profile for that package task. It names `echoashfallprotocol` as the root module and selects the runtime modules by descriptor id, including `echosignalos` from `addons/echosignalos`.
 
 Use the packaged release launcher path when you want the clean product flow instead of a source-tree or tester launch. `startNativeClient` is the short alias for that same release-mode path:
 

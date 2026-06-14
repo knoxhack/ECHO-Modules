@@ -14,8 +14,10 @@ import com.knoxhack.echomultiblockcore.EchoMultiblockCore;
 import com.knoxhack.echomultiblockcore.registry.ModBlocks;
 import com.knoxhack.echomultiblockcore.registry.ModItems;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 public final class MultiblockMissionCoreIntegration {
     private static final Identifier CHAPTER = id("multiblock_core");
@@ -38,23 +40,28 @@ public final class MultiblockMissionCoreIntegration {
         registerMission(registry, "validate_first_structure", "validate", MissionObjectiveType.BUILD_MULTIBLOCK,
                 "Validate First Structure", "Validate or form a MultiblockCore structure from a controller.",
                 "The facility controller accepted a complete structure.",
-                new ItemStack(ModBlocks.MULTIBLOCK_CONTROLLER.get()), 0, "Validate a structure", new ItemStack(ModItems.MACHINE_CASING.get(), 2));
+                safeStack(ModBlocks.MULTIBLOCK_CONTROLLER, 1), 0, "Validate a structure",
+                safeStack(ModItems.MACHINE_CASING, 2));
         registerMission(registry, "install_robot_tool", "tool", MissionObjectiveType.REPAIR_MACHINE,
                 "Install Robot Tool", "Install any tool head into a robotic arm.",
                 "Robotic workcell tooling is online.",
-                new ItemStack(ModBlocks.ROBOTIC_ARM.get()), 1, "Install a robot tool head", new ItemStack(ModItems.WELDER_HEAD.get(), 1));
+                safeStack(ModBlocks.ROBOTIC_ARM, 1), 1, "Install a robot tool head",
+                safeStack(ModItems.WELDER_HEAD, 1));
         registerMission(registry, "complete_automation_task", "task", MissionObjectiveType.CUSTOM,
                 "Complete Automation Task", "Let a queued MultiblockCore automation task complete.",
                 "Automation completion reached MissionCore.",
-                new ItemStack(ModItems.SUPPLY_MANIFEST.get()), 2, "Complete an automation task", new ItemStack(ModItems.SIGNAL_CIRCUIT.get(), 2));
+                safeStack(ModItems.SUPPLY_MANIFEST, 1), 2, "Complete an automation task",
+                safeStack(ModItems.SIGNAL_CIRCUIT, 2));
         registerMission(registry, "repair_integrity", "repair", MissionObjectiveType.REPAIR_MACHINE,
                 "Repair Integrity", "Complete an automation task that repairs facility integrity.",
                 "Facility integrity repair has been recorded.",
-                new ItemStack(ModItems.INTEGRITY_UPGRADE.get()), 3, "Repair multiblock integrity", new ItemStack(ModItems.INTEGRITY_UPGRADE.get(), 1));
+                safeStack(ModItems.INTEGRITY_UPGRADE, 1), 3, "Repair multiblock integrity",
+                safeStack(ModItems.INTEGRITY_UPGRADE, 1));
         registerMission(registry, "use_auto_builder", "builder", MissionObjectiveType.BUILD_MULTIBLOCK,
                 "Use Auto-Builder", "Run the auto-builder to place missing structure blocks.",
                 "Auto-builder placement assistance is online.",
-                new ItemStack(ModBlocks.AUTO_BUILDER.get()), 4, "Use the auto-builder", new ItemStack(ModItems.AUTO_BUILDER_CORE.get(), 1));
+                safeStack(ModBlocks.AUTO_BUILDER, 1), 4, "Use the auto-builder",
+                safeStack(ModItems.AUTO_BUILDER_CORE, 1));
     }
 
     private static void registerMission(
@@ -92,5 +99,14 @@ public final class MultiblockMissionCoreIntegration {
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoMultiblockCore.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, int count) {
+        try {
+            ItemLike value = item == null ? null : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return ItemStack.EMPTY;
+        }
     }
 }

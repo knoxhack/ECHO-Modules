@@ -12,6 +12,7 @@ import com.knoxhack.echoashfallprotocol.power.PowerNetwork;
 import com.knoxhack.echoashfallprotocol.registry.ModBlockEntities;
 import com.knoxhack.echoashfallprotocol.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -31,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Crystalline Synthesizer Block Entity - Tier 3 extraction.
  */
-public class CrystallineSynthesizerBlockEntity extends BlockEntity implements MenuProvider, IEnergyStorage {
+public class CrystallineSynthesizerBlockEntity extends BlockEntity implements MenuProvider, HopperHandler, IEnergyStorage {
     public static final int INPUT_SLOT_1 = 0;
     public static final int INPUT_SLOT_2 = 1;
     public static final int CATALYST_SLOT = 2;
@@ -273,5 +274,34 @@ public class CrystallineSynthesizerBlockEntity extends BlockEntity implements Me
     @Override public void setEnergyStored(int energy) {
         energyStorage.setEnergyStored(energy);
         setChanged();
+    }
+
+    @Override
+    public int[] getInputSlots(Direction side) {
+        return new int[]{INPUT_SLOT_1, INPUT_SLOT_2, CATALYST_SLOT};
+    }
+
+    @Override
+    public int[] getOutputSlots(Direction side) {
+        return side == Direction.DOWN ? new int[]{OUTPUT_SLOT} : new int[]{};
+    }
+
+    @Override
+    public boolean canInsertItem(int slot, ItemStack stack) {
+        if (slot == INPUT_SLOT_1) {
+            return stack.is(ModItems.GEM_FRAGMENT.get());
+        }
+        if (slot == INPUT_SLOT_2) {
+            return stack.is(ModItems.DENSE_ALLOY_CHUNK.get());
+        }
+        if (slot == CATALYST_SLOT) {
+            return stack.is(ModItems.ENERGY_CELL.get());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExtractItem(int slot) {
+        return slot == OUTPUT_SLOT;
     }
 }

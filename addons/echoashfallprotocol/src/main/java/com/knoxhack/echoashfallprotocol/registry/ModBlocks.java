@@ -1061,6 +1061,11 @@ public class ModBlocks {
                         .setId(ResourceKey.create(Registries.ITEM, id))));
     }
 
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(BLOCKS, eventBus);
+        EchoBackendRegistryBridge.registerEventBus(BLOCK_ITEMS, eventBus);
+    }
+
     private static <T extends Block> EchoBackendRegistryEntry<T> registerCustomBlock(String name, Function<BlockBehaviour.Properties, T> factory, BlockBehaviour.Properties properties) {
         return EchoBackendRegistryBridge.registerWithId(BLOCKS, name, id -> factory.apply(withId(properties, id)));
     }

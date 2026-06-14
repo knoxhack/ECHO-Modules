@@ -1,5 +1,7 @@
 package com.knoxhack.echopowergrid.registry;
 
+import com.knoxhack.echo.adaptercore.EchoBackendRegistryBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendRegistryEntry;
 import com.knoxhack.echopowergrid.EchoPowerGrid;
 import com.knoxhack.echopowergrid.api.GeneratorType;
 import com.knoxhack.echopowergrid.block.BatteryBlock;
@@ -10,6 +12,9 @@ import com.knoxhack.echopowergrid.block.MeterBlock;
 import com.knoxhack.echopowergrid.block.SubstationBlock;
 import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
 public final class ModBlocks {
+    private static final Object BLOCKS = EchoBackendRegistryBridge.create(BuiltInRegistries.BLOCK, EchoPowerGrid.MODID);
     private static final List<NativeRegistryHolder<Block>> BLOCK_ITEMS = new ArrayList<>();
 
     // Generators
@@ -52,7 +58,8 @@ public final class ModBlocks {
 
     private ModBlocks() {}
 
-    public static void register() {
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(BLOCKS, eventBus);
     }
 
     public static List<NativeRegistryHolder<Block>> blockItems() {
@@ -82,31 +89,31 @@ public final class ModBlocks {
     }
 
     private static NativeRegistryHolder<Block> registerGenerator(String name, long genRate, long buffer, GeneratorType type) {
-        return tracked(name, new GeneratorBlock(genRate, buffer, type, defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new GeneratorBlock(genRate, buffer, type, defaultProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerStorage(String name, long capacity, long maxIn, long maxOut) {
-        return tracked(name, new BatteryBlock(capacity, maxIn, maxOut, defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new BatteryBlock(capacity, maxIn, maxOut, defaultProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerCable(String name, long transferLimit) {
-        return tracked(name, new CableBlock(transferLimit, cableProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new CableBlock(transferLimit, cableProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerSubstation(String name) {
-        return tracked(name, new SubstationBlock(defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new SubstationBlock(defaultProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerBreaker(String name) {
-        return tracked(name, new BreakerBlock(defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new BreakerBlock(defaultProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerMeter(String name) {
-        return tracked(name, new MeterBlock(defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new MeterBlock(defaultProps().apply(blockProps(name))));
     }
 
     private static NativeRegistryHolder<Block> registerConsumer(String name, long demand) {
-        return tracked(name, new com.knoxhack.echopowergrid.block.ConsumerBlock(demand, defaultProps().apply(BlockBehaviour.Properties.of())));
+        return tracked(name, () -> new com.knoxhack.echopowergrid.block.ConsumerBlock(demand, defaultProps().apply(blockProps(name))));
     }
 
     private static java.util.function.UnaryOperator<BlockBehaviour.Properties> defaultProps() {
@@ -117,8 +124,14 @@ public final class ModBlocks {
         return p -> p.mapColor(MapColor.COLOR_GRAY).strength(0.8F, 2.0F).sound(SoundType.COPPER).noOcclusion().dynamicShape();
     }
 
-    private static NativeRegistryHolder<Block> tracked(String name, Block block) {
-        NativeRegistryHolder<Block> holder = NativeRegistryHolder.of(name, block);
+    private static BlockBehaviour.Properties blockProps(String name) {
+        return BlockBehaviour.Properties.of()
+                .setId(ResourceKey.create(Registries.BLOCK, EchoPowerGrid.id(name)));
+    }
+
+    private static NativeRegistryHolder<Block> tracked(String name, java.util.function.Supplier<? extends Block> block) {
+        EchoBackendRegistryEntry<Block> entry = EchoBackendRegistryBridge.register(BLOCKS, name, block);
+        NativeRegistryHolder<Block> holder = NativeRegistryHolder.deferred(name, entry);
         BLOCK_ITEMS.add(holder);
         return holder;
     }

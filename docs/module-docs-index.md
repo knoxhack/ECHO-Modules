@@ -110,6 +110,7 @@ This index is generated from `addons/<module>/gradle.properties` and `META-INF/e
 | [echoserveropscore](../addons/echoserveropscore/README.md) | 0.1.0 | yes | yes | yes |
 | [echosessioncore](../addons/echosessioncore/README.md) | 0.1.0 | yes | yes | yes |
 | [echosettlementcore](../addons/echosettlementcore/README.md) | 0.1.0 | yes | yes | yes |
+| [echosignalos](../addons/echosignalos/README.md) | 1.0.0 | yes | yes | yes |
 | [echoskillcore](../addons/echoskillcore/README.md) | 0.1.0 | yes | yes | yes |
 | [echoskyrelayprotocol](../addons/echoskyrelayprotocol/README.md) | 0.1.0 | yes | yes | yes |
 | [echosocialcore](../addons/echosocialcore/README.md) | 1.0.0 | yes | yes | yes |
@@ -134,5 +135,4 @@ This index is generated from `addons/<module>/gradle.properties` and `META-INF/e
 | [echowiki](../addons/echowiki/README.md) | 1.0.0 | yes | yes | yes |
 | [echoworldcore](../addons/echoworldcore/README.md) | 1.0.0 | yes | yes | yes |
 | [echoworldstarter](../addons/echoworldstarter/README.md) | 0.1.0 | yes | yes | yes |
-| [signalos](../addons/echosignalos/README.md) | 1.0.0 | yes | yes | yes |
 | [signalosexample](../addons/signalosexample/README.md) | 1.0.0 | yes | yes | yes |

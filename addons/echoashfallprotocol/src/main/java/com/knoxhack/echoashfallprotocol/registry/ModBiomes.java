@@ -22,4 +22,7 @@ public class ModBiomes {
             "cryogenic_ruins", 
             com.knoxhack.echoashfallprotocol.world.CryogenicRuinsBiome::create);
 
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(BIOMES, eventBus);
+    }
 }

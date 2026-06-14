@@ -22,14 +22,24 @@ import com.knoxhack.echomultiblockcore.runtime.MultiblockRuntimeEvents;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoMultiblockCore.MODID)
 public final class EchoMultiblockCore {
     public static final String MODID = "echomultiblockcore";
     public static final String CHAPTER_ID = "multiblock_core";
+    private static final String COMMON_SETUP_EVENT = "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+    private static final String ADD_SERVER_RELOAD_LISTENERS_EVENT =
+            "net.neoforged.neoforge.event.AddServerReloadListenersEvent";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoMultiblockCore(Object modEventBus) {
+    EchoMultiblockCore() {
+        this(null);
+    }
+
+    public EchoMultiblockCore(IEventBus modEventBus) {
         var runtime = Agent9MultiblockRuntimeAdapter.activateNativeHostEntrypoint();
         LOGGER.info("ECHO MultiblockCore Agent 9 native host adapter {}.", runtime.get("status"));
         ModBlocks.register(modEventBus);
@@ -42,11 +52,14 @@ public final class EchoMultiblockCore {
         Config.registerEchoConfig();
 
         EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-        EchoBackendLifecycleBridge.registerGameEventHandler(MultiblockReloaders::addServerReloadListeners);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+        EchoBackendLifecycleBridge.registerGameEventHandler(ADD_SERVER_RELOAD_LISTENERS_EVENT,
+                MultiblockReloaders::addServerReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(MultiblockCommands::register);
         EchoBackendLifecycleBridge.registerGameEventHandler(MultiblockRuntimeEvents::onServerTick);
         EchoBackendLifecycleBridge.registerGameEventHandler(MultiblockRuntimeEvents::onPlayerLoggedIn);
+        EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+                "com.knoxhack.echomultiblockcore.registry.ModGameTests");
     }
 
     public static Identifier id(String path) {

@@ -20,7 +20,7 @@ public record RewardDefinition(
     }
 
     public static RewardDefinition item(Identifier id, MissionRewardClaimMode claimMode, ItemStack stack) {
-        return new RewardDefinition(id, claimMode, stack, stack == null ? "" : stack.getHoverName().getString(), "", Map.of());
+        return new RewardDefinition(id, claimMode, stack, safeLabel(stack), "", Map.of());
     }
 
     public static RewardDefinition text(Identifier id, String label, String detail) {
@@ -33,5 +33,16 @@ public record RewardDefinition(
 
     public boolean claimed() {
         return false;
+    }
+
+    private static String safeLabel(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "";
+        }
+        try {
+            return stack.getHoverName().getString();
+        } catch (RuntimeException | LinkageError ignored) {
+            return "";
+        }
     }
 }

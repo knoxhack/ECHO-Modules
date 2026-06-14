@@ -2,15 +2,17 @@ package com.knoxhack.echopowergrid.capability;
 
 import com.knoxhack.echopowergrid.api.EchoEnergyStorage;
 import com.knoxhack.echopowergrid.config.PowerGridConfig;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-public class EpEnergyHandler {
+public class EpEnergyHandler extends SnapshotJournal<Long> {
     private final EchoEnergyStorage storage;
     private final Runnable onChanged;
     private Long snapshot;
 
     public EpEnergyHandler(EchoEnergyStorage storage, Runnable onChanged) {
         this.storage = storage;
-        this.onChanged = onChanged;
+        this.onChanged = onChanged == null ? () -> { } : onChanged;
     }
 
     public int insert(int amount, Object transaction) {
@@ -19,11 +21,13 @@ public class EpEnergyHandler {
         long receivedEp = storage.receiveEnergy(epAmount, true);
         int received = (int) Math.min(Integer.MAX_VALUE, receivedEp / PowerGridConfig.FE_TO_EP_RATIO.get());
         if (received > 0) {
-            if (transaction != null) {
+            if (transaction instanceof TransactionContext context) {
+                updateSnapshots(context);
+            } else if (transaction != null) {
                 snapshot = createSnapshot();
             }
             storage.receiveEnergy((long) (received * PowerGridConfig.FE_TO_EP_RATIO.get()), false);
-            if (transaction == null && onChanged != null) {
+            if (transaction == null) {
                 onChanged.run();
             }
         }
@@ -36,11 +40,13 @@ public class EpEnergyHandler {
         long extractedEp = storage.extractEnergy(epAmount, true);
         int extracted = (int) Math.min(Integer.MAX_VALUE, extractedEp / PowerGridConfig.FE_TO_EP_RATIO.get());
         if (extracted > 0) {
-            if (transaction != null) {
+            if (transaction instanceof TransactionContext context) {
+                updateSnapshots(context);
+            } else if (transaction != null) {
                 snapshot = createSnapshot();
             }
             storage.extractEnergy((long) (extracted * PowerGridConfig.FE_TO_EP_RATIO.get()), false);
-            if (transaction == null && onChanged != null) {
+            if (transaction == null) {
                 onChanged.run();
             }
         }
@@ -59,10 +65,12 @@ public class EpEnergyHandler {
         return (long) (storage.getMaxEnergyStored() / PowerGridConfig.EP_TO_FE_RATIO.get());
     }
 
+    @Override
     public Long createSnapshot() {
         return storage.getEnergyStored();
     }
 
+    @Override
     public void revertToSnapshot(Long snapshot) {
         long target = Math.max(0L, Math.min(storage.getMaxEnergyStored(), snapshot == null ? 0L : snapshot));
         long current = storage.getEnergyStored();
@@ -78,8 +86,9 @@ public class EpEnergyHandler {
         snapshot = null;
     }
 
+    @Override
     public void onRootCommit(Long snapshot) {
-        if (onChanged != null) onChanged.run();
+        onChanged.run();
     }
 
     private void drainDirect(long amount) {

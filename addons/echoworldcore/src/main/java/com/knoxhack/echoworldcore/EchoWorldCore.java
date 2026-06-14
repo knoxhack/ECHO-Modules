@@ -4,6 +4,7 @@ import com.echoplatform.echocore.api.EchoAddonChapter;
 import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.echoplatform.echocore.api.EchoCoreServices;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echoworldcore.event.WorldCoreEvents;
 import com.knoxhack.echoworldcore.integration.WorldCoreDiagnosticProvider;
 import com.knoxhack.echoworldcore.integration.WorldCoreDiscoveryProvider;
@@ -12,37 +13,44 @@ import com.knoxhack.echoworldcore.integration.WorldCoreMapDataProvider;
 import com.knoxhack.echoworldcore.registry.WorldCoreBuiltins;
 import com.knoxhack.echoworldcore.service.WorldRegionService;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 
+@Mod(EchoWorldCore.MODID)
 public final class EchoWorldCore {
     public static final String MODID = "echoworldcore";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final String CHAPTER_ID = "world_core";
 
-    public EchoWorldCore() {
+    public EchoWorldCore(IEventBus modEventBus) {
         Config.registerEchoConfig();
         EchoCoreServices.registerWorldRegionService(WorldRegionService.INSTANCE);
         WorldCoreEvents.attach();
-        commonSetup();
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        registerOptionalGameTests(modEventBus, "com.knoxhack.echoworldcore.test.ModGameTests");
     }
 
-    public void commonSetup() {
-        WorldRegionService service = WorldRegionService.INSTANCE;
-        WorldCoreBuiltins.register(service);
-        EchoCoreServices.registerDiscoveryProvider(new WorldCoreDiscoveryProvider(service));
-        EchoCoreServices.registerDiagnosticService(WorldCoreDiagnosticProvider.INSTANCE);
-        EchoCoreServices.registerIndexContentProvider(WorldCoreIndexProvider.INSTANCE);
-        EchoCoreServices.registerMapDataProvider(WorldCoreMapDataProvider.INSTANCE);
-        registerAddonChapter();
-        if (EchoRuntimeModules.isLoaded("echoterminal")) {
-            registerTerminalIntegration();
-        }
-        if (EchoRuntimeModules.isLoaded("echoholomap")) {
-            registerHoloMapIntegration();
-        }
-        LOGGER.info("ECHO WorldCore initialized with {} region definitions and {} hazard definitions.",
-                service.regionDefinitions().size(), service.hazardDefinitions().size());
+    public void commonSetup(Object event) {
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
+            WorldRegionService service = WorldRegionService.INSTANCE;
+            WorldCoreBuiltins.register(service);
+            EchoCoreServices.registerDiscoveryProvider(new WorldCoreDiscoveryProvider(service));
+            EchoCoreServices.registerDiagnosticService(WorldCoreDiagnosticProvider.INSTANCE);
+            EchoCoreServices.registerIndexContentProvider(WorldCoreIndexProvider.INSTANCE);
+            EchoCoreServices.registerMapDataProvider(WorldCoreMapDataProvider.INSTANCE);
+            registerAddonChapter();
+            if (EchoRuntimeModules.isLoaded("echoterminal")) {
+                registerTerminalIntegration();
+            }
+            if (EchoRuntimeModules.isLoaded("echoholomap")) {
+                registerHoloMapIntegration();
+            }
+            LOGGER.info("ECHO WorldCore initialized with {} region definitions and {} hazard definitions.",
+                    service.regionDefinitions().size(), service.hazardDefinitions().size());
+        });
     }
 
     private static void registerAddonChapter() {
@@ -99,6 +107,26 @@ public final class EchoWorldCore {
                     .invoke(null);
         } catch (ReflectiveOperationException exception) {
             LOGGER.warn("WorldCore HoloMap rich zone integration could not be registered.", exception);
+        }
+    }
+
+    private static void registerOptionalGameTests(IEventBus modEventBus, String className) {
+        try {
+            Class<?> gameTests = Class.forName(className);
+            gameTests.getMethod("register", IEventBus.class).invoke(null, modEventBus);
+            modEventBus.addListener((RegisterGameTestsEvent event) -> registerOptionalGameTestInstances(gameTests, event));
+        } catch (ClassNotFoundException ignored) {
+            // Production runtime does not include src/test classes.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO WorldCore GameTest registration is unavailable for {}.", className, exception);
+        }
+    }
+
+    private static void registerOptionalGameTestInstances(Class<?> gameTests, RegisterGameTestsEvent event) {
+        try {
+            gameTests.getMethod("registerTests", RegisterGameTestsEvent.class).invoke(null, event);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO WorldCore GameTest instances could not be registered.", exception);
         }
     }
 }

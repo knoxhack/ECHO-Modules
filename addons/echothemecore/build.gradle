@@ -63,6 +63,7 @@ dependencies {
     implementation project(":echonetcore")
     compileOnly project(":echo-native-contracts")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
     compileOnly project(":echorendercore")
     compileOnly project(":echoruntimeguard")
     compileOnly project(":echoterminal")

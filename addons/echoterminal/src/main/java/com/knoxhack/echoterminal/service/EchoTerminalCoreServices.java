@@ -28,6 +28,7 @@ public final class EchoTerminalCoreServices {
 
     public static void rememberTerminal(Player player, BlockPos pos) {
         if (player != null && pos != null) {
+            register();
             TERMINAL_CACHE.put(player.getUUID(), new TerminalReference(player.level().dimension(), pos.immutable()));
         }
     }

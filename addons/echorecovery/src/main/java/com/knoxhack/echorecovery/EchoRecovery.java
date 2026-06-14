@@ -22,15 +22,19 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
+@Mod(EchoRecovery.MODID)
 public class EchoRecovery {
     public static final String MODID = "echorecovery";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     private static boolean ashfallLoaded = false;
 
-    public EchoRecovery(Object modEventBus) {
+    public EchoRecovery(IEventBus modEventBus) {
         EchoRuntimeModules.markLoaded(MODID, "ECHO Recovery", "");
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
@@ -47,6 +51,7 @@ public class EchoRecovery {
         EchoBackendLifecycleBridge.registerGameEventHandler(RecoveryReloaders::addServerReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStarted);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStopping);
+        registerOptionalGameTests(modEventBus, "com.knoxhack.echorecovery.test.ModGameTests");
         ashfallLoaded = EchoRuntimeModules.isLoaded("echoashfallprotocol");
     }
 
@@ -73,6 +78,26 @@ public class EchoRecovery {
     }
 
     private void onServerStopping(Object event) {
+    }
+
+    private static void registerOptionalGameTests(IEventBus modEventBus, String className) {
+        try {
+            Class<?> gameTests = Class.forName(className);
+            gameTests.getMethod("register", IEventBus.class).invoke(null, modEventBus);
+            modEventBus.addListener((RegisterGameTestsEvent event) -> registerOptionalGameTestInstances(gameTests, event));
+        } catch (ClassNotFoundException ignored) {
+            // Production runtime does not include src/test classes.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO Recovery GameTest registration is unavailable for {}.", className, exception);
+        }
+    }
+
+    private static void registerOptionalGameTestInstances(Class<?> gameTests, RegisterGameTestsEvent event) {
+        try {
+            gameTests.getMethod("registerTests", RegisterGameTestsEvent.class).invoke(null, event);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO Recovery GameTest instances could not be registered.", exception);
+        }
     }
 
     public static boolean isAshfallLoaded() {

@@ -15,15 +15,20 @@ import com.knoxhack.echoholomap.map.HoloMapTerrainScanner;
 import com.knoxhack.echoholomap.network.ModNetwork;
 import com.knoxhack.echoholomap.world.HoloMapDeathpointEvents;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 
+@Mod(EchoHoloMap.MODID)
 public final class EchoHoloMap {
     public static final String MODID = "echoholomap";
     public static final String CHAPTER_ID = "holomap";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoHoloMap(Object modEventBus, Object modContainer) {
+    public EchoHoloMap(IEventBus modEventBus, ModContainer modContainer) {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
         Config.registerEchoConfig();
@@ -32,6 +37,7 @@ public final class EchoHoloMap {
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapDeathpointEvents::onPlayerDeath);
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapDeathpointEvents::onPlayerLoggedIn);
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapDeathpointEvents::onPlayerRespawn);
+        registerOptionalGameTests(modEventBus, "com.knoxhack.echoholomap.test.ModGameTests");
     }
 
     private void commonSetup(Object event) {
@@ -109,6 +115,26 @@ public final class EchoHoloMap {
                     .invoke(null);
         } catch (ReflectiveOperationException | LinkageError exception) {
             LOGGER.warn("ECHO HoloMap MachineCore integration could not be registered.", exception);
+        }
+    }
+
+    private static void registerOptionalGameTests(IEventBus modEventBus, String className) {
+        try {
+            Class<?> gameTests = Class.forName(className);
+            gameTests.getMethod("register", IEventBus.class).invoke(null, modEventBus);
+            modEventBus.addListener((RegisterGameTestsEvent event) -> registerOptionalGameTestInstances(gameTests, event));
+        } catch (ClassNotFoundException ignored) {
+            // Production runtime does not include src/test classes.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO HoloMap GameTest registration is unavailable for {}.", className, exception);
+        }
+    }
+
+    private static void registerOptionalGameTestInstances(Class<?> gameTests, RegisterGameTestsEvent event) {
+        try {
+            gameTests.getMethod("registerTests", RegisterGameTestsEvent.class).invoke(null, event);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO HoloMap GameTest instances could not be registered.", exception);
         }
     }
 

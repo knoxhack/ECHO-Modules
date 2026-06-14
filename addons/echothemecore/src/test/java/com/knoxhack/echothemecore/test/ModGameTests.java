@@ -642,11 +642,19 @@ public final class ModGameTests {
                 "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/mixin/client/ThemeCoreScreenMixin.java"));
             String containerMixin = Files.readString(root.resolve(
                 "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/mixin/client/ThemeCoreContainerScreenMixin.java"));
+            String loadingOverlayMixin = Files.readString(root.resolve(
+                "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/mixin/client/ThemeCoreLoadingOverlayMixin.java"));
             helper.assertTrue(screenMixin.contains("ThemeCoreConfig.safeFallbackEnabled()")
                     && containerMixin.contains("ThemeCoreConfig.safeFallbackEnabled()"),
                 "Full replacement mixins should preserve the safe fallback guard.");
             helper.assertFalse(screenMixin.contains("ci.cancel()") || containerMixin.contains("ci.cancel()"),
                 "Screen and container replacement hooks should draw chrome without cancelling input or vanilla layout.");
+            helper.assertFalse(loadingOverlayMixin.contains("extractRenderStateWithTooltipAndSubtitles"),
+                "Loading overlay replacement must not re-extract the current screen because that can request a second blur in the same frame.");
+            helper.assertFalse(loadingOverlayMixin.contains("!this.reload.isDone()"),
+                "Loading overlay replacement should own the whole reload overlay path instead of falling back to vanilla mid-reload.");
+            helper.assertTrue(loadingOverlayMixin.contains("extractDeferredSubtitlesOnly"),
+                "Loading overlay replacement should keep subtitles without re-running screen background extraction.");
         } catch (IOException exception) {
             helper.fail("Could not inspect ThemeCore mixin metadata: " + exception.getMessage());
         }

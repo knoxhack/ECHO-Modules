@@ -1,0 +1,110 @@
+{
+  "schema": "echo.neoforge.gametest_results.v1",
+  "generatedAt": "2026-06-14T15:01:42.636Z",
+  "status": "PASS",
+  "runtime": "neoforge",
+  "evidenceKind": "executed-neoforge-gametest-results",
+  "repoRoot": "C:/Development/Github/ECHO-Modules",
+  "output": "C:/Development/Github/ECHO-Modules/reports/neoforge-strict-play/neoforge-gametest-logistics-after-external-delivery-priority.json",
+  "moduleIds": [
+    "echologisticsnetwork"
+  ],
+  "selectedModuleIds": [
+    "echologisticsnetwork"
+  ],
+  "selectedProjectNames": [
+    "echologisticsnetwork"
+  ],
+  "selectedModuleCount": 1,
+  "passedModuleIds": [
+    "echologisticsnetwork"
+  ],
+  "failedModuleIds": [],
+  "allSelectedModulesPassed": true,
+  "trustedMutations": [
+    "NeoForge GameTest server completed for echologisticsnetwork."
+  ],
+  "visibleRoutes": [],
+  "saveEvidence": [
+    "NeoForge GameTest execution for echologisticsnetwork included save/reload/network-named tests."
+  ],
+  "networkEvidence": [
+    "NeoForge GameTest execution for echologisticsnetwork included network/sync-named tests."
+  ],
+  "results": [
+    {
+      "moduleId": "echologisticsnetwork",
+      "projectName": "echologisticsnetwork",
+      "task": ":echologisticsnetwork:runGameTestServer",
+      "command": [
+        ".\\gradlew.bat",
+        "-PechoAddonSet=all",
+        ":echologisticsnetwork:runGameTestServer",
+        "--console=plain"
+      ],
+      "startedAt": "2026-06-14T15:00:27.931Z",
+      "finishedAt": "2026-06-14T15:01:42.633Z",
+      "durationMs": 74702,
+      "exitCode": 0,
+      "status": "PASS",
+      "stdoutTail": "ft/LoggingLevelLoadListener]: Preparing spawn area: 100%\r\n[11:01:23] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 427 ms\r\n[11:01:23] [Server thread/INFO] [minecraft/GameTestServer]: Each test that matches echologisticsnetwork:* will be run 1 times (total: 32)\r\n[11:01:23] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server\r\n[11:01:23] [Server thread/DEBUG] [ne.ne.ne.se.LanguageHook/]: Loaded 22 language files for en_us\r\n[11:01:23] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler\r\n[11:01:23] [Server thread/INFO] [minecraft/GameTestServer]: 32 tests are now running at position 5601518, -59, -3570295!\r\n[11:01:24] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_courier_drone_delivery' batch 0 (1 tests)...\r\n[11:01:25] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_core_wiring' batch 0 (1 tests)...\r\n[11:01:25] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_item_reservation_extraction' batch 0 (1 tests)...\r\n[11:01:26] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_data_backed_tools' batch 0 (1 tests)...\r\n[11:01:26] [Server thread/WARN] [minecraft/MinecraftServer]: Can't keep up! Is the server overloaded? Running 2196ms or 43 ticks behind\r\n[11:01:26] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_public_network_status' batch 0 (1 tests)...\r\n[11:01:27] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_target_block_type_enforcement' batch 0 (1 tests)...\r\n[11:01:27] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics loaded 0 JSON categories, 1 JSON loadouts, and 0 JSON depot offers.\r\n[11:01:27] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_factory_auto_restock_to_industrial_input_depot' batch 0 (1 tests)...\r\n[11:01:27] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics loaded 0 JSON categories, 1 JSON loadouts, and 0 JSON depot offers.\r\n[11:01:27] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 8 at (0.0, 0.0, 0.0)\r\n[11:01:27] [Server thread/DEBUG] [io.ne.ut.in.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: available\r\n[11:01:27] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:28] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_route_discovery' batch 0 (1 tests)...\r\n[11:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++                         ]\r\n[11:01:28] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics Network terminal actions registered.\r\n[11:01:29] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_industrial_duct_graph_limit' batch 0 (1 tests)...\r\n[11:01:29] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_terminal_actions' batch 0 (1 tests)...\r\n[11:01:29] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics Network terminal actions registered.\r\n[11:01:29] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 14 at (0.0, 0.0, 0.0)\r\n[11:01:29] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:30] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_core_cross_addon_integration' batch 0 (1 tests)...\r\n[11:01:30] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 17 at (0.0, 0.0, 0.0)\r\n[11:01:30] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:31] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_industrial_machine_external_endpoint' batch 0 (1 tests)...\r\n[11:01:31] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics Industrial machine endpoint provider registered.\r\n[11:01:31] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_module_registration' batch 0 (1 tests)...\r\n[11:01:32] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_block_state_persistence' batch 0 (1 tests)...\r\n[11:01:32] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_recovery_no_duplication' batch 0 (1 tests)...\r\n[11:01:33] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_courier_failure_recovery' batch 0 (1 tests)...\r\n[11:01:33] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_relay_idempotency_edges' batch 0 (1 tests)...\r\n[11:01:33] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++                ]\r\n[11:01:33] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 24 at (0.0, 0.0, 0.0)\r\n[11:01:33] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:34] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_missioncore_content_registration' batch 0 (1 tests)...\r\n[11:01:35] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_stock_counting_and_readiness' batch 0 (1 tests)...\r\n[11:01:35] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_industrial_duct_reach' batch 0 (1 tests)...\r\n[11:01:35] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_depot_offer_selection_cooldown' batch 0 (1 tests)...\r\n[11:01:35] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics loaded 0 JSON categories, 0 JSON loadouts, and 2 JSON depot offers.\r\n[11:01:36] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_data_parsers' batch 0 (1 tests)...\r\n[11:01:36] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_factory_loadout_to_industrial_input_depot' batch 0 (1 tests)...\r\n[11:01:36] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics loaded 0 JSON categories, 1 JSON loadouts, and 0 JSON depot offers.\r\n[11:01:36] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 29 at (0.0, 0.0, 0.0)\r\n[11:01:36] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:37] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_target_capacity_precheck' batch 0 (1 tests)...\r\n[11:01:37] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_dashboard_snapshot' batch 0 (1 tests)...\r\n[11:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++        ]\r\n[11:01:38] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_terminal_route_refresh' batch 0 (1 tests)...\r\n[11:01:38] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics Network terminal actions registered.\r\n[11:01:38] [Server thread/INFO] [minecraft/PlayerList]: test-mock-player[embedded] logged in with entity id 34 at (0.0, 0.0, 0.0)\r\n[11:01:38] [Server thread/INFO] [minecraft/MinecraftServer]: test-mock-player joined the game\r\n[11:01:38] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_remote_tablet_route_requester_loop' batch 0 (1 tests)...\r\n[11:01:39] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_container_break_drops_inventory' batch 0 (1 tests)...\r\n[11:01:39] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_auto_restock_station_loop' batch 0 (1 tests)...\r\n[11:01:40] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_machinecore_legacy_endpoint_dedupe' batch 0 (1 tests)...\r\n[11:01:40] [Server thread/INFO] [co.kn.ec.EchoLogisticsNetwork/]: ECHO Logistics Industrial machine endpoint provider registered.\r\n[11:01:40] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_courier_payload_persistence' batch 0 (1 tests)...\r\n[11:01:41] [Server thread/INFO] [minecraft/GameTestRunner]: Running test environment 'echologisticsnetwork:logistics_network_offline_dock_diagnostics' batch 0 (1 tests)...\r\n[11:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++]\r\n[11:01:41] [Server thread/INFO] [minecraft/GameTestServer]: ========= 32 GAME TESTS COMPLETE IN 17.86 s ======================\r\n[11:01:41] [Server thread/INFO] [minecraft/GameTestServer]: All 32 required tests passed :)\r\n[11:01:41] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end\r\n[11:01:41] [Server thread/DEBUG] [ne.ne.ne.co.CommonHooks/WP]: Gathered mod list to write to world save Test Level\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved\r\n[11:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved\r\n[11:01:42] [Server thread/DEBUG] [ne.ne.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER\r\n[11:01:42] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down\r\n\r\n[Incubating] Problems report is available at: file:///C:/Development/Github/ECHO-Modules/build/reports/problems/problems-report.html\r\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\r\n\r\nBUILD SUCCESSFUL in 1m 14s\r\n107 actionable tasks: 5 executed, 102 up-to-date\r\nConsider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html\r\n",
+      "stderrTail": "Note: C:\\Development\\Github\\ECHO-Modules\\addons\\echoorbitalremnants\\src\\main\\java\\com\\knoxhack\\echoorbitalremnants\\integration\\OrbitalIndexProvider.java uses or overrides a deprecated API.\r\nNote: Recompile with -Xlint:deprecation for details.\r\n2026-06-14T15:01:09.812495700Z main WARN Advanced terminal features are not available in this environment\r\n",
+      "timedOut": false,
+      "spawnError": "",
+      "testNames": [
+        ", AUTO_RESTOCK_LOOP.getId(), 800);\r\n      register(event, ",
+        ", CONTAINER_BREAK_DROPS_INVENTORY.getId());\r\n      register(event, ",
+        ", CORE_WIRING.getId());\r\n      register(event, ",
+        ", DATA_BACKED_TOOLS.getId());\r\n      register(event, ",
+        ", DEPOT_SELECTION.getId());\r\n      register(event, ",
+        ", DRONE_DELIVERY.getId());\r\n      register(event, ",
+        ", FACTORY_LOADOUT.getId(), 400);\r\n      register(event, ",
+        ", INDUSTRIAL_DUCT_REACH.getId());\r\n      register(event, ",
+        ", INDUSTRIAL_MACHINE_ENDPOINT.getId());\r\n      register(event, ",
+        ", MODULE_REGISTRATION.getId());\r\n      register(event, ",
+        ", OFFLINE_DOCK_DIAGNOSTICS.getId());\r\n      register(event, ",
+        ", PUBLIC_NETWORK_STATUS.getId());\r\n      register(event, ",
+        ", STOCK_AND_READINESS.getId());\r\n      register(event, ",
+        ", TARGET_CAPACITY.getId());\r\n      register(event, ",
+        ", TERMINAL_ACTIONS.getId());\r\n      register(event, ",
+        ", TERMINAL_ROUTE_REFRESH.getId());\r\n      register(event, ",
+        "auto_restock_station_loop",
+        "block_state_persistence",
+        "container_break_drops_inventory",
+        "core_cross_addon_integration",
+        "core_wiring",
+        "courier_drone_delivery",
+        "courier_failure_recovery",
+        "courier_payload_persistence",
+        "dashboard_snapshot",
+        "data_backed_tools",
+        "data_parsers",
+        "depot_offer_selection_cooldown",
+        "factory_auto_restock_to_industrial_input_depot",
+        "factory_loadout_to_industrial_input_depot",
+        "industrial_duct_graph_limit",
+        "industrial_duct_reach",
+        "industrial_machine_external_endpoint",
+        "item_reservation_extraction",
+        "machinecore_legacy_endpoint_dedupe",
+        "missioncore_content_registration",
+        "module_registration",
+        "offline_dock_diagnostics",
+        "public_network_status",
+        "recovery_no_duplication",
+        "relay_idempotency_edges",
+        "remote_tablet_route_requester_loop",
+        "route_discovery",
+        "stock_counting_and_readiness",
+        "target_block_type_enforcement",
+        "target_capacity_precheck",
+        "terminal_actions",
+        "terminal_route_refresh"
+      ],
+      "testFiles": [
+        "src/test/java/com/knoxhack/echologisticsnetwork/registry/ModGameTests.java"
+      ]
+    }
+  ],
+  "blockers": []
+}

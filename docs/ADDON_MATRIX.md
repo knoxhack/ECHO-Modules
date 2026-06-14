@@ -112,12 +112,12 @@ The authoritative launcher-facing module matrix now lives in `metadata/modules/i
 | `echoscreencore` | UI/UX | Beta | echocore, echonetcore | echothemecore | Yes | No | addons/echoscreencore/src/main/resources/META-INF/echo.mod.json |
 | `echosoundcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoweathercore, echostationfall | Yes | No | addons/echosoundcore/src/main/resources/META-INF/echo.mod.json |
 | `echostationfall` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echosoundcore, echoholomap, echoblackboxprotocol | Yes | No | addons/echostationfall/src/main/resources/META-INF/echo.mod.json |
-| `echoterminal` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echolens, signalos, echodatacore | Yes | No | addons/echoterminal/src/main/resources/META-INF/echo.mod.json |
+| `echoterminal` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoindex, echomissioncore, echoholomap, echolens, echosignalos, echodatacore | Yes | No | addons/echoterminal/src/main/resources/META-INF/echo.mod.json |
 | `echotextureforge` | Developer Tool | Experimental | echocore, echonetcore | echothemecore, echoscreencore | No | No | addons/echotextureforge/src/main/resources/META-INF/echo.mod.json |
 | `echothemecore` | UI/UX | Stable | echocore, echonetcore | echoscreencore | Yes | No | addons/echothemecore/src/main/resources/META-INF/echo.mod.json |
 | `echotutorialcore` | UI/UX | Beta | echocore, echonetcore | echothemecore, echoterminal, echoindex, echomissioncore | Yes | No | addons/echotutorialcore/src/main/resources/META-INF/echo.mod.json |
 | `echoweathercore` | World | Beta | echocore, echonetcore | echoworldcore, echoholomap, echosoundcore, echoterminal, echoindex | Yes | No | addons/echoweathercore/src/main/resources/META-INF/echo.mod.json |
 | `echowiki` | UI/UX | Experimental | echocore, echonetcore | echoscreencore, echothemecore, echoindex, echoterminal | Yes | No | addons/echowiki/src/main/resources/META-INF/echo.mod.json |
 | `echoworldcore` | World | Beta | echocore, echonetcore | echoholomap, echoindex, echolens, echodatacore, echoruntimeguard | Yes | No | addons/echoworldcore/src/main/resources/META-INF/echo.mod.json |
-| `signalos` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echodatacore | Yes | No | addons/signalos/src/main/resources/META-INF/echo.mod.json |
-| `signalosexample` | Developer Tool | Internal | echocore, echonetcore, signalos | echoterminal, echoindex | No | No | addons/signalosexample/src/main/resources/META-INF/echo.mod.json |
+| `echosignalos` | Story | Beta | echocore, echonetcore | echoterminal, echoindex, echomissioncore, echodatacore | Yes | No | addons/echosignalos/src/main/resources/META-INF/echo.mod.json |
+| `signalosexample` | Developer Tool | Internal | echocore, echonetcore, echosignalos | echoterminal, echoindex | No | No | addons/signalosexample/src/main/resources/META-INF/echo.mod.json |

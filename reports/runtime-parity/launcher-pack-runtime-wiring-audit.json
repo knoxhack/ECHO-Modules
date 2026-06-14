@@ -1,0 +1,5177 @@
+{
+  "schemaVersion": "echo.launcher-pack-runtime-wiring-audit.v1",
+  "generatedAt": "2026-06-14T15:16:11.258Z",
+  "launcherInstancesRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances",
+  "expectedSurfaceModules": [
+    "echohudcore",
+    "echoscreencore",
+    "echothemecore",
+    "echoterminal",
+    "echoindex",
+    "echolens",
+    "echoholomap"
+  ],
+  "summary": {
+    "instanceCount": 15,
+    "passCount": 4,
+    "failCount": 11,
+    "byLane": {
+      "neoforge": {
+        "count": 5,
+        "pass": 3,
+        "fail": 2
+      },
+      "echo_native": {
+        "count": 5,
+        "pass": 1,
+        "fail": 4
+      },
+      "standalone": {
+        "count": 5,
+        "pass": 0,
+        "fail": 5
+      }
+    }
+  },
+  "rows": [
+    {
+      "instance": "Arcana Division Native Edition",
+      "lane": "echo_native",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Arcana Division Native Edition\\addons",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {},
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "issues": [
+        "missing artifact directory C:\\Users\\knox\\ECHOLauncher\\Instances\\Arcana Division Native Edition\\addons"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Arcana Division NeoForge Edition",
+      "lane": "neoforge",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Arcana Division NeoForge Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Arcana Division Standalone Edition",
+      "lane": "standalone",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Arcana Division Standalone Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Ashfall Native Edition",
+      "lane": "echo_native",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Ashfall Native Edition\\addons",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {},
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "issues": [
+        "missing artifact directory C:\\Users\\knox\\ECHOLauncher\\Instances\\Ashfall Native Edition\\addons"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Ashfall NeoForge Edition",
+      "lane": "neoforge",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Ashfall NeoForge Edition\\mods",
+      "status": "pass",
+      "artifactCount": 46,
+      "moduleCount": 46,
+      "surfaceModules": {
+        "echohudcore": true,
+        "echoscreencore": true,
+        "echothemecore": true,
+        "echoterminal": true,
+        "echoindex": true,
+        "echolens": true,
+        "echoholomap": true
+      },
+      "missingSurfaceModules": [],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": "1.0.0",
+      "adapterCoreNeoForgeVersion": "1.0.0",
+      "adapterCoreHasNamedRegisterModListener": true,
+      "issues": [],
+      "modules": [
+        {
+          "moduleId": "echoadaptercore",
+          "version": "1.0.0",
+          "fileName": "echoadaptercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoagriculturereclamation",
+          "version": "1.0.0",
+          "fileName": "echoagriculturereclamation-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoarmory",
+          "version": "1.0.0",
+          "fileName": "echoarmory-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoashfallprotocol",
+          "version": "1.0.0",
+          "fileName": "echoashfallprotocol-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoblockworks",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            },
+            {
+              "id": "echoworldstarter",
+              "version": "*"
+            },
+            {
+              "id": "echocommonloot",
+              "version": "*"
+            },
+            {
+              "id": "echocreatureroles",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoblackboxprotocol",
+          "version": "1.0.0",
+          "fileName": "echoblackboxprotocol-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoblockworks",
+          "version": "1.0.0",
+          "fileName": "echoblockworks-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocommonloot",
+          "version": "0.1.0",
+          "fileName": "echocommonloot-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocontentcore",
+          "version": "1.0.0",
+          "fileName": "echocontentcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoconvoyprotocol",
+          "version": "1.0.0",
+          "fileName": "echoconvoyprotocol-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocore",
+          "version": "1.0.0",
+          "fileName": "echocore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": []
+        },
+        {
+          "moduleId": "echocreatureroles",
+          "version": "0.1.0",
+          "fileName": "echocreatureroles-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echodatacore",
+          "version": "1.0.0",
+          "fileName": "echodatacore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echofoundationcore",
+          "version": "0.1.0",
+          "fileName": "echofoundationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoholomap",
+          "version": "1.0.0",
+          "fileName": "echoholomap-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohudcore",
+          "version": "1.0.0",
+          "fileName": "echohudcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoindex",
+          "version": "1.0.0",
+          "fileName": "echoindex-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoindustrialnexus",
+          "version": "1.0.0",
+          "fileName": "echoindustrialnexus-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolens",
+          "version": "1.0.0",
+          "fileName": "echolens-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echologisticsnetwork",
+          "version": "1.0.0",
+          "fileName": "echologisticsnetwork-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomaterialcore",
+          "version": "0.1.0",
+          "fileName": "echomaterialcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomissioncore",
+          "version": "1.0.0",
+          "fileName": "echomissioncore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomultiblockcore",
+          "version": "1.0.0",
+          "fileName": "echomultiblockcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonetcore",
+          "version": "1.0.0",
+          "fileName": "echonetcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonexusprotocol",
+          "version": "1.0.0",
+          "fileName": "echonexusprotocol-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoorbitalremnants",
+          "version": "1.0.0",
+          "fileName": "echoorbitalremnants-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplatformcore",
+          "version": "1.0.0",
+          "fileName": "echoplatformcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echopowergrid",
+          "version": "1.0.0",
+          "fileName": "echopowergrid-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecovery",
+          "version": "1.3.0",
+          "fileName": "echorecovery-1.3.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.3.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorelictech",
+          "version": "1.0.0",
+          "fileName": "echorelictech-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorendercore",
+          "version": "1.0.0",
+          "fileName": "echorendercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoruntimeguard",
+          "version": "1.0.0",
+          "fileName": "echoruntimeguard-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoschemacore",
+          "version": "1.0.0",
+          "fileName": "echoschemacore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoscreencore",
+          "version": "1.0.0",
+          "fileName": "echoscreencore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosoundcore",
+          "version": "1.0.0",
+          "fileName": "echosoundcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostationcore",
+          "version": "0.1.0",
+          "fileName": "echostationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostationfall",
+          "version": "1.0.0",
+          "fileName": "echostationfall-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoterminal",
+          "version": "1.0.0",
+          "fileName": "echoterminal-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echothemecore",
+          "version": "1.3.0",
+          "fileName": "echothemecore-1.3.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.3.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotoolcore",
+          "version": "0.1.0",
+          "fileName": "echotoolcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotutorialcore",
+          "version": "1.0.0",
+          "fileName": "echotutorialcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echovalidationcore",
+          "version": "1.0.0",
+          "fileName": "echovalidationcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoweathercore",
+          "version": "1.0.0",
+          "fileName": "echoweathercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echowiki",
+          "version": "1.0.0",
+          "fileName": "echowiki-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldcore",
+          "version": "1.0.0",
+          "fileName": "echoworldcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldstarter",
+          "version": "0.1.0",
+          "fileName": "echoworldstarter-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "signalos",
+          "version": "1.0.0",
+          "fileName": "signalos-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "instance": "Ashfall Standalone Edition",
+      "lane": "standalone",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Ashfall Standalone Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Galactic Survey Native Edition",
+      "lane": "echo_native",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Galactic Survey Native Edition\\addons",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {},
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "issues": [
+        "missing artifact directory C:\\Users\\knox\\ECHOLauncher\\Instances\\Galactic Survey Native Edition\\addons"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Galactic Survey NeoForge Edition",
+      "lane": "neoforge",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Galactic Survey NeoForge Edition\\mods",
+      "status": "pass",
+      "artifactCount": 42,
+      "moduleCount": 42,
+      "surfaceModules": {
+        "echohudcore": true,
+        "echoscreencore": true,
+        "echothemecore": true,
+        "echoterminal": true,
+        "echoindex": true,
+        "echolens": true,
+        "echoholomap": true
+      },
+      "missingSurfaceModules": [],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": "1.0.0",
+      "adapterCoreNeoForgeVersion": "1.0.0",
+      "adapterCoreHasNamedRegisterModListener": true,
+      "issues": [],
+      "modules": [
+        {
+          "moduleId": "echoadaptercore",
+          "version": "1.0.0",
+          "fileName": "echoadaptercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoaddonapi",
+          "version": "0.1.0",
+          "fileName": "echoaddonapi-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0-RC1",
+          "requires": []
+        },
+        {
+          "moduleId": "echoassetcore",
+          "version": "1.0.0",
+          "fileName": "echoassetcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoatmospherecore",
+          "version": "1.0.0",
+          "fileName": "echoatmospherecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoblockworks",
+          "version": "1.0.0",
+          "fileName": "echoblockworks-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocameracore",
+          "version": "1.0.0",
+          "fileName": "echocameracore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocommonloot",
+          "version": "0.1.0",
+          "fileName": "echocommonloot-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocontentcore",
+          "version": "1.0.0",
+          "fileName": "echocontentcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocore",
+          "version": "1.0.0",
+          "fileName": "echocore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": []
+        },
+        {
+          "moduleId": "echocreatureroles",
+          "version": "0.1.0",
+          "fileName": "echocreatureroles-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echofoundationcore",
+          "version": "0.1.0",
+          "fileName": "echofoundationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echogalacticcore",
+          "version": "0.1.0-native-alpha",
+          "fileName": "echogalacticcore-0.1.0-native-alpha-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0-native-alpha",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echogalacticsurveyprotocol",
+          "version": "0.1.0",
+          "fileName": "echogalacticsurveyprotocol-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echoruntimeguard",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoholomap",
+          "version": "1.0.0",
+          "fileName": "echoholomap-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohudcore",
+          "version": "1.0.0",
+          "fileName": "echohudcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoindex",
+          "version": "1.0.0",
+          "fileName": "echoindex-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoinputcore",
+          "version": "1.0.0",
+          "fileName": "echoinputcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolens",
+          "version": "1.0.0",
+          "fileName": "echolens-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echologisticsnetwork",
+          "version": "1.0.0",
+          "fileName": "echologisticsnetwork-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomachinecore",
+          "version": "1.0.0",
+          "fileName": "echomachinecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomaterialcore",
+          "version": "0.1.0",
+          "fileName": "echomaterialcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomissioncore",
+          "version": "1.0.0",
+          "fileName": "echomissioncore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonetcore",
+          "version": "1.0.0",
+          "fileName": "echonetcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoorbitalremnants",
+          "version": "1.0.0",
+          "fileName": "echoorbitalremnants-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplatformcore",
+          "version": "1.0.0",
+          "fileName": "echoplatformcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echopowercore",
+          "version": "1.0.0",
+          "fileName": "echopowercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echopowergrid",
+          "version": "1.0.0",
+          "fileName": "echopowergrid-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoprogressioncore",
+          "version": "1.0.0",
+          "fileName": "echoprogressioncore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecipecore",
+          "version": "1.0.0",
+          "fileName": "echorecipecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoruntimeguard",
+          "version": "1.0.0",
+          "fileName": "echoruntimeguard-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoschemacore",
+          "version": "1.0.0",
+          "fileName": "echoschemacore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoscreencore",
+          "version": "1.0.0",
+          "fileName": "echoscreencore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosoundcore",
+          "version": "1.0.0",
+          "fileName": "echosoundcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostationcore",
+          "version": "0.1.0",
+          "fileName": "echostationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoterminal",
+          "version": "1.0.0",
+          "fileName": "echoterminal-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echothemecore",
+          "version": "1.3.0",
+          "fileName": "echothemecore-1.3.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.3.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotoolcore",
+          "version": "0.1.0",
+          "fileName": "echotoolcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotutorialcore",
+          "version": "1.0.0",
+          "fileName": "echotutorialcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echovalidationcore",
+          "version": "1.0.0",
+          "fileName": "echovalidationcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echovehiclecore",
+          "version": "1.0.0",
+          "fileName": "echovehiclecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldcore",
+          "version": "1.0.0",
+          "fileName": "echoworldcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldstarter",
+          "version": "0.1.0",
+          "fileName": "echoworldstarter-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "instance": "Galactic Survey Standalone Edition",
+      "lane": "standalone",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Galactic Survey Standalone Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Openlands Native Edition",
+      "lane": "echo_native",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Openlands Native Edition\\addons",
+      "status": "pass",
+      "artifactCount": 42,
+      "moduleCount": 42,
+      "surfaceModules": {
+        "echohudcore": true,
+        "echoscreencore": true,
+        "echothemecore": true,
+        "echoterminal": true,
+        "echoindex": true,
+        "echolens": true,
+        "echoholomap": true
+      },
+      "missingSurfaceModules": [],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": "1.0.0",
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [],
+      "modules": [
+        {
+          "moduleId": "echoadaptercore",
+          "version": "1.0.0",
+          "fileName": "echoadaptercore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoassetcore",
+          "version": "1.0.0",
+          "fileName": "echoassetcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echobiomecore",
+          "version": "1.0.0",
+          "fileName": "echobiomecore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoblockworks",
+          "version": "1.0.0",
+          "fileName": "echoblockworks-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocommonloot",
+          "version": "0.1.0",
+          "fileName": "echocommonloot-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocontentcore",
+          "version": "1.0.0",
+          "fileName": "echocontentcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocore",
+          "version": "1.0.0",
+          "fileName": "echocore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": []
+        },
+        {
+          "moduleId": "echocreaturecore",
+          "version": "1.0.0",
+          "fileName": "echocreaturecore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocreatureroles",
+          "version": "0.1.0",
+          "fileName": "echocreatureroles-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoeconomycore",
+          "version": "1.0.0",
+          "fileName": "echoeconomycore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echofoundationcore",
+          "version": "0.1.0",
+          "fileName": "echofoundationcore-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohealthcore",
+          "version": "1.0.0",
+          "fileName": "echohealthcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoholomap",
+          "version": "1.0.0",
+          "fileName": "echoholomap-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohudcore",
+          "version": "1.0.0",
+          "fileName": "echohudcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoindex",
+          "version": "1.0.0",
+          "fileName": "echoindex-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolens",
+          "version": "1.0.0",
+          "fileName": "echolens-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolootcore",
+          "version": "1.0.0",
+          "fileName": "echolootcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomaterialcore",
+          "version": "0.1.0",
+          "fileName": "echomaterialcore-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomissioncore",
+          "version": "1.0.0",
+          "fileName": "echomissioncore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonetcore",
+          "version": "1.0.0",
+          "fileName": "echonetcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonpcore",
+          "version": "1.0.0",
+          "fileName": "echonpcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoopenlandsprotocol",
+          "version": "0.1.0",
+          "fileName": "echoopenlandsprotocol-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echobiomecore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echocreaturecore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            },
+            {
+              "id": "echoworldstarter",
+              "version": "*"
+            },
+            {
+              "id": "echocommonloot",
+              "version": "*"
+            },
+            {
+              "id": "echocreatureroles",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echostructurecore",
+              "version": "*"
+            },
+            {
+              "id": "echoworldcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplatformcore",
+          "version": "1.0.0",
+          "fileName": "echoplatformcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplayercore",
+          "version": "1.0.0",
+          "fileName": "echoplayercore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoprogressioncore",
+          "version": "1.0.0",
+          "fileName": "echoprogressioncore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecipecore",
+          "version": "1.0.0",
+          "fileName": "echorecipecore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecovery",
+          "version": "1.3.0",
+          "fileName": "echorecovery-1.3.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoruntimeguard",
+          "version": "1.0.0",
+          "fileName": "echoruntimeguard-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoschemacore",
+          "version": "1.0.0",
+          "fileName": "echoschemacore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoscreencore",
+          "version": "1.0.0",
+          "fileName": "echoscreencore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosocialcore",
+          "version": "1.0.0",
+          "fileName": "echosocialcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosoundcore",
+          "version": "1.0.0",
+          "fileName": "echosoundcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostationcore",
+          "version": "0.1.0",
+          "fileName": "echostationcore-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostructurecore",
+          "version": "1.0.0",
+          "fileName": "echostructurecore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoterminal",
+          "version": "1.0.0",
+          "fileName": "echoterminal-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echothemecore",
+          "version": "1.3.0",
+          "fileName": "echothemecore-1.3.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotoolcore",
+          "version": "0.1.0",
+          "fileName": "echotoolcore-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotutorialcore",
+          "version": "1.0.0",
+          "fileName": "echotutorialcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echovalidationcore",
+          "version": "1.0.0",
+          "fileName": "echovalidationcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoweathercore",
+          "version": "1.0.0",
+          "fileName": "echoweathercore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldcore",
+          "version": "1.0.0",
+          "fileName": "echoworldcore-1.0.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldstarter",
+          "version": "0.1.0",
+          "fileName": "echoworldstarter-0.1.0.echo-addon",
+          "hasDescriptor": true,
+          "hasPackageManifest": true,
+          "hasNeoForgeToml": false,
+          "neoForgeVersion": null,
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "instance": "Openlands NeoForge Edition",
+      "lane": "neoforge",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Openlands NeoForge Edition\\mods",
+      "status": "pass",
+      "artifactCount": 42,
+      "moduleCount": 42,
+      "surfaceModules": {
+        "echohudcore": true,
+        "echoscreencore": true,
+        "echothemecore": true,
+        "echoterminal": true,
+        "echoindex": true,
+        "echolens": true,
+        "echoholomap": true
+      },
+      "missingSurfaceModules": [],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": "1.0.0",
+      "adapterCoreNeoForgeVersion": "1.0.0",
+      "adapterCoreHasNamedRegisterModListener": true,
+      "issues": [],
+      "modules": [
+        {
+          "moduleId": "echoadaptercore",
+          "version": "1.0.0",
+          "fileName": "echoadaptercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoassetcore",
+          "version": "1.0.0",
+          "fileName": "echoassetcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echobiomecore",
+          "version": "1.0.0",
+          "fileName": "echobiomecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoblockworks",
+          "version": "1.0.0",
+          "fileName": "echoblockworks-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocommonloot",
+          "version": "0.1.0",
+          "fileName": "echocommonloot-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocontentcore",
+          "version": "1.0.0",
+          "fileName": "echocontentcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocore",
+          "version": "1.0.0",
+          "fileName": "echocore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": []
+        },
+        {
+          "moduleId": "echocreaturecore",
+          "version": "1.0.0",
+          "fileName": "echocreaturecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echocreatureroles",
+          "version": "0.1.0",
+          "fileName": "echocreatureroles-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoeconomycore",
+          "version": "1.0.0",
+          "fileName": "echoeconomycore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echofoundationcore",
+          "version": "0.1.0",
+          "fileName": "echofoundationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohealthcore",
+          "version": "1.0.0",
+          "fileName": "echohealthcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoholomap",
+          "version": "1.0.0",
+          "fileName": "echoholomap-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echohudcore",
+          "version": "1.0.0",
+          "fileName": "echohudcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoindex",
+          "version": "1.0.0",
+          "fileName": "echoindex-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolens",
+          "version": "1.0.0",
+          "fileName": "echolens-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echolootcore",
+          "version": "1.0.0",
+          "fileName": "echolootcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomaterialcore",
+          "version": "0.1.0",
+          "fileName": "echomaterialcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echomissioncore",
+          "version": "1.0.0",
+          "fileName": "echomissioncore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonetcore",
+          "version": "1.0.0",
+          "fileName": "echonetcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echonpcore",
+          "version": "1.0.0",
+          "fileName": "echonpcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoopenlandsprotocol",
+          "version": "0.1.0",
+          "fileName": "echoopenlandsprotocol-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echoassetcore",
+              "version": "*"
+            },
+            {
+              "id": "echobiomecore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echocreaturecore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            },
+            {
+              "id": "echoworldstarter",
+              "version": "*"
+            },
+            {
+              "id": "echocommonloot",
+              "version": "*"
+            },
+            {
+              "id": "echocreatureroles",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echostructurecore",
+              "version": "*"
+            },
+            {
+              "id": "echoworldcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplatformcore",
+          "version": "1.0.0",
+          "fileName": "echoplatformcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoplayercore",
+          "version": "1.0.0",
+          "fileName": "echoplayercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoprogressioncore",
+          "version": "1.0.0",
+          "fileName": "echoprogressioncore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echorecipecore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecipecore",
+          "version": "1.0.0",
+          "fileName": "echorecipecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echorecovery",
+          "version": "1.3.0",
+          "fileName": "echorecovery-1.3.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.3.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoruntimeguard",
+          "version": "1.0.0",
+          "fileName": "echoruntimeguard-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoschemacore",
+          "version": "1.0.0",
+          "fileName": "echoschemacore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoscreencore",
+          "version": "1.0.0",
+          "fileName": "echoscreencore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosocialcore",
+          "version": "1.0.0",
+          "fileName": "echosocialcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echosoundcore",
+          "version": "1.0.0",
+          "fileName": "echosoundcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostationcore",
+          "version": "0.1.0",
+          "fileName": "echostationcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echostructurecore",
+          "version": "1.0.0",
+          "fileName": "echostructurecore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocontentcore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoprogressioncore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            },
+            {
+              "id": "echosocialcore",
+              "version": "*"
+            },
+            {
+              "id": "echovalidationcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoterminal",
+          "version": "1.0.0",
+          "fileName": "echoterminal-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echothemecore",
+          "version": "1.3.0",
+          "fileName": "echothemecore-1.3.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.3.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotoolcore",
+          "version": "0.1.0",
+          "fileName": "echotoolcore-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echotutorialcore",
+          "version": "1.0.0",
+          "fileName": "echotutorialcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echovalidationcore",
+          "version": "1.0.0",
+          "fileName": "echovalidationcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echoplatformcore",
+              "version": "*"
+            },
+            {
+              "id": "echoschemacore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoweathercore",
+          "version": "1.0.0",
+          "fileName": "echoweathercore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldcore",
+          "version": "1.0.0",
+          "fileName": "echoworldcore-1.0.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "1.0.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            }
+          ]
+        },
+        {
+          "moduleId": "echoworldstarter",
+          "version": "0.1.0",
+          "fileName": "echoworldstarter-0.1.0-neoforge.jar",
+          "hasDescriptor": true,
+          "hasPackageManifest": false,
+          "hasNeoForgeToml": true,
+          "neoForgeVersion": "0.1.0",
+          "requires": [
+            {
+              "id": "echoadaptercore",
+              "version": "*"
+            },
+            {
+              "id": "echocore",
+              "version": "*"
+            },
+            {
+              "id": "echonetcore",
+              "version": "*"
+            },
+            {
+              "id": "echofoundationcore",
+              "version": "*"
+            },
+            {
+              "id": "echomaterialcore",
+              "version": "*"
+            },
+            {
+              "id": "echotoolcore",
+              "version": "*"
+            },
+            {
+              "id": "echostationcore",
+              "version": "*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "instance": "Openlands Standalone Edition",
+      "lane": "standalone",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Openlands Standalone Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Sky Relay Native Edition",
+      "lane": "echo_native",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Sky Relay Native Edition\\addons",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {},
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "issues": [
+        "missing artifact directory C:\\Users\\knox\\ECHOLauncher\\Instances\\Sky Relay Native Edition\\addons"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Sky Relay NeoForge Edition",
+      "lane": "neoforge",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Sky Relay NeoForge Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    },
+    {
+      "instance": "Sky Relay Standalone Edition",
+      "lane": "standalone",
+      "artifactRoot": "C:\\Users\\knox\\ECHOLauncher\\Instances\\Sky Relay Standalone Edition\\mods",
+      "status": "fail",
+      "artifactCount": 0,
+      "moduleCount": 0,
+      "surfaceModules": {
+        "echohudcore": false,
+        "echoscreencore": false,
+        "echothemecore": false,
+        "echoterminal": false,
+        "echoindex": false,
+        "echolens": false,
+        "echoholomap": false
+      },
+      "missingSurfaceModules": [
+        "echohudcore",
+        "echoscreencore",
+        "echothemecore",
+        "echoterminal",
+        "echoindex",
+        "echolens",
+        "echoholomap"
+      ],
+      "missingRequiredDependencies": [],
+      "unsupportedRequiredDependencies": [],
+      "adapterCoreVersion": null,
+      "adapterCoreNeoForgeVersion": null,
+      "adapterCoreHasNamedRegisterModListener": false,
+      "issues": [
+        "missing core player-facing surface module(s): echohudcore, echoscreencore, echothemecore, echoterminal, echoindex, echolens, echoholomap",
+        "missing echoadaptercore"
+      ],
+      "modules": []
+    }
+  ]
+}

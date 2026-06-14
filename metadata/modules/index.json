@@ -1071,7 +1071,7 @@
         "echonetcore"
       ],
       "optional": [
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "community.discord_relay",
@@ -3266,7 +3266,7 @@
         "echoashfallprotocol",
         "echocommunitybridge",
         "echoterminal",
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "presence.discord_rpc",
@@ -4055,7 +4055,7 @@
       "apiStability": "alpha"
     },
     {
-      "id": "signalos",
+      "id": "echosignalos",
       "name": "SignalOS",
       "version": "1.0.0",
       "kind": "library",
@@ -4269,7 +4269,7 @@
         "echopowergrid",
         "echorendercore",
         "echoruntimeguard",
-        "signalos",
+        "echosignalos",
         "echostationfall",
         "echoterminal",
         "echothemecore",
@@ -4626,7 +4626,7 @@
         "echolens",
         "echomissioncore",
         "echothemecore",
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "terminal.surface"
@@ -4733,7 +4733,7 @@
         "echorendercore",
         "echoruntimeguard",
         "echoscreencore",
-        "signalos",
+        "echosignalos",
         "echosoundcore",
         "echoterminal"
       ],
@@ -5071,7 +5071,7 @@
         "echoadaptercore",
         "echocore",
         "echonetcore",
-        "signalos"
+        "echosignalos"
       ],
       "optional": [
         "echoindex",

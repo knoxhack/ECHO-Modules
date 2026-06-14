@@ -191,7 +191,8 @@ import com.knoxhack.echo.adaptercore.host.EchoWorldCoreRuntimeHost;
  * EchoModuleTruthLayerBootstrap.registerAll();
  * </pre>
  *
- * <p>This wires 91 modules into the AdapterCore truth layer.
+ * <p>This wires 91 module-specific bridges, then fills all descriptor-backed
+ * modules with a strict compatibility runtime-host surface.
  */
 public final class EchoModuleTruthLayerBootstrap {
     private static boolean registered;
@@ -389,6 +390,8 @@ public final class EchoModuleTruthLayerBootstrap {
         EchoWeathercoreRuntimeHost.register();
         EchoWikiRuntimeHost.register();
         EchoWorldCoreRuntimeHost.register();
+
+        EchoAdapterCoreModuleCompatibilityCatalog.registerAll();
     }
 
     public static boolean isRegistered() {

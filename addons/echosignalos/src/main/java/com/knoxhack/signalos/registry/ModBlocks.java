@@ -8,6 +8,8 @@ import com.knoxhack.signalos.block.SignalOsServerRackBlock;
 import com.knoxhack.signalos.block.SignalOsTerminalBlock;
 import com.knoxhack.signalos.item.SignalOsDataDriveItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -20,53 +22,49 @@ public final class ModBlocks {
     public static final Object BLOCKS = EchoBackendRegistryBridge.create(Registries.BLOCK, SignalOS.MODID);
     public static final Object BLOCK_ITEMS = EchoBackendRegistryBridge.create(Registries.ITEM, SignalOS.MODID);
 
-    public static final EchoBackendRegistryEntry<Block> TERMINAL = EchoBackendRegistryBridge.register(BLOCKS,
+    public static final EchoBackendRegistryEntry<Block> TERMINAL = EchoBackendRegistryBridge.registerWithId(BLOCKS,
             "terminal",
-            () -> new SignalOsTerminalBlock(BlockBehaviour.Properties.of()
+            id -> new SignalOsTerminalBlock(blockProperties(id)
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)
                     .lightLevel(state -> 7)));
 
-    public static final EchoBackendRegistryEntry<Block> WORKSTATION = EchoBackendRegistryBridge.register(BLOCKS,
+    public static final EchoBackendRegistryEntry<Block> WORKSTATION = EchoBackendRegistryBridge.registerWithId(BLOCKS,
             "workstation",
-            () -> new SignalOsTerminalBlock(BlockBehaviour.Properties.of()
+            id -> new SignalOsTerminalBlock(blockProperties(id)
                     .mapColor(MapColor.COLOR_CYAN)
                     .strength(3.5F, 6.0F)
                     .sound(SoundType.METAL)
                     .lightLevel(state -> 9)));
 
-    public static final EchoBackendRegistryEntry<Block> SERVER_RACK = EchoBackendRegistryBridge.register(BLOCKS,
+    public static final EchoBackendRegistryEntry<Block> SERVER_RACK = EchoBackendRegistryBridge.registerWithId(BLOCKS,
             "server_rack",
-            () -> new SignalOsServerRackBlock(BlockBehaviour.Properties.of()
+            id -> new SignalOsServerRackBlock(blockProperties(id)
                     .mapColor(MapColor.COLOR_BLACK)
                     .strength(4.0F, 8.0F)
                     .sound(SoundType.METAL)
                     .lightLevel(state -> 4)));
 
-    public static final EchoBackendRegistryEntry<Block> NETWORK_RELAY = EchoBackendRegistryBridge.register(BLOCKS,
+    public static final EchoBackendRegistryEntry<Block> NETWORK_RELAY = EchoBackendRegistryBridge.registerWithId(BLOCKS,
             "network_relay",
-            () -> new SignalOsNetworkRelayBlock(BlockBehaviour.Properties.of()
+            id -> new SignalOsNetworkRelayBlock(blockProperties(id)
                     .mapColor(MapColor.COLOR_LIGHT_BLUE)
                     .strength(2.5F, 5.0F)
                     .sound(SoundType.METAL)
                     .lightLevel(state -> 10)));
 
     public static final EchoBackendRegistryEntry<BlockItem> TERMINAL_ITEM =
-            EchoBackendRegistryBridge.register(BLOCK_ITEMS, "terminal",
-                    () -> new BlockItem(TERMINAL.get(), new Item.Properties()));
+            blockItem(TERMINAL);
     public static final EchoBackendRegistryEntry<BlockItem> WORKSTATION_ITEM =
-            EchoBackendRegistryBridge.register(BLOCK_ITEMS, "workstation",
-                    () -> new BlockItem(WORKSTATION.get(), new Item.Properties()));
+            blockItem(WORKSTATION);
     public static final EchoBackendRegistryEntry<BlockItem> SERVER_RACK_ITEM =
-            EchoBackendRegistryBridge.register(BLOCK_ITEMS, "server_rack",
-                    () -> new BlockItem(SERVER_RACK.get(), new Item.Properties()));
+            blockItem(SERVER_RACK);
     public static final EchoBackendRegistryEntry<BlockItem> NETWORK_RELAY_ITEM =
-            EchoBackendRegistryBridge.register(BLOCK_ITEMS, "network_relay",
-                    () -> new BlockItem(NETWORK_RELAY.get(), new Item.Properties()));
+            blockItem(NETWORK_RELAY);
     public static final EchoBackendRegistryEntry<SignalOsDataDriveItem> DATA_DRIVE =
-            EchoBackendRegistryBridge.register(BLOCK_ITEMS, "data_drive",
-                    () -> new SignalOsDataDriveItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+            EchoBackendRegistryBridge.registerWithId(BLOCK_ITEMS, "data_drive",
+                    id -> new SignalOsDataDriveItem(itemProperties(id).stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     private ModBlocks() {
     }
@@ -82,5 +80,19 @@ public final class ModBlocks {
     public static void register(Object eventBus) {
         EchoBackendRegistryBridge.registerEventBus(BLOCKS, eventBus);
         EchoBackendRegistryBridge.registerEventBus(BLOCK_ITEMS, eventBus);
+    }
+
+    private static EchoBackendRegistryEntry<BlockItem> blockItem(EchoBackendRegistryEntry<? extends Block> block) {
+        Identifier id = block.id();
+        return EchoBackendRegistryBridge.registerWithId(BLOCK_ITEMS, id.getPath(),
+                itemId -> new BlockItem(block.get(), itemProperties(itemId).useBlockDescriptionPrefix()));
+    }
+
+    private static BlockBehaviour.Properties blockProperties(Identifier id) {
+        return BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, id));
+    }
+
+    private static Item.Properties itemProperties(Identifier id) {
+        return new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id));
     }
 }

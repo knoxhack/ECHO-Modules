@@ -33,6 +33,7 @@ dependencies {
     implementation project(":echoscreencore")
 
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
     compileOnly project(":echoterminal")
 
     localRuntime project(":echoterminal")

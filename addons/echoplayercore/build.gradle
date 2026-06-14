@@ -38,6 +38,7 @@ def optionalProject = { String path, String configuration ->
 }
 
 dependencies {
+    implementation project(':echoadaptercore')
     implementation project(":echocore")
     compileOnly project(":echo-native-contracts")
     implementation project(":echonetcore")

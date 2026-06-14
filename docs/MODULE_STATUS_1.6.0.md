@@ -41,5 +41,5 @@ ECHO 1.6.0 is a playable UI polish pass. Status labels continue to describe publ
 | `echoweathercore` | WeatherCore by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echowiki` | Wiki by ECHO Labs | Experimental | Yes | Yes | No | Yes | Experimental | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `echoworldcore` | WorldCore by ECHO Labs | Beta | Yes | Yes | No | No | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x compatibility polish |
-| `signalos` | SignalOS by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
+| `echosignalos` | SignalOS by ECHO Labs | Beta | Yes | Yes | No | Yes | Beta | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x UI polish follow-up |
 | `signalosexample` | SignalOS Example by ECHO Labs | Internal Only | No | No | No | No | Internal Only | docs/KNOWN_ISSUES_1.6.0.md | 1.6.x compatibility polish |

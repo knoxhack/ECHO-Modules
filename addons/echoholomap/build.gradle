@@ -26,7 +26,7 @@ neoForge {
         data { clientData(); programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath() }
         configureEach { systemProperty 'forge.logging.markers', 'REGISTRIES'; logLevel = org.slf4j.event.Level.DEBUG }
     }
-    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+    mods { "${mod_id}" { sourceSet(sourceSets.main); sourceSet(sourceSets.test) } }
 }
 
 configurations { runtimeClasspath.extendsFrom localRuntime }
@@ -43,6 +43,7 @@ dependencies {
     compileOnly project(":echo-native-contracts")
     compileOnlyIfIncluded(":echomachinecore")
     compileOnly project(":echoadaptercore")
+    localRuntime project(":echoadaptercore")
     compileOnly project(":echoterminal")
     compileOnly project(":echorendercore")
     compileOnly project(":echoruntimeguard")

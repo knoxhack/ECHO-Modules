@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { generateAdapterCoreStrictPortAudit } from './generate-adaptercore-strict-port-audit.mjs'
 import { generateNeoForgeRuntimeEvidence } from './generate-neoforge-runtime-evidence.mjs'
 import { generateRuntimePlayAudit } from './generate-runtime-play-audit.mjs'
 
@@ -36,6 +37,7 @@ const FEATURE_ORDER = [
   'lens',
   'blocks',
   'items',
+  'creative_tab',
   'block_actions',
   'worldgen',
   'recipes',
@@ -71,6 +73,7 @@ const FEATURE_EVIDENCE_REQUIREMENTS = {
   lens: 'visible-actionable',
   blocks: 'gameplay-mutated',
   items: 'gameplay-mutated',
+  creative_tab: 'gameplay-mutated',
   block_actions: 'gameplay-mutated',
   worldgen: 'host-registered',
   recipes: 'host-registered',
@@ -161,14 +164,26 @@ async function moduleRecord(repoRoot, directoryName, moduleRoot, descriptorPath,
   const descriptorRelativePath = normalizePath(path.relative(repoRoot, descriptorPath))
   const declaredDomains = cleanList(adapterCore.domains)
   const declaredRuntimes = cleanList(adapterCore.runtimes)
-  const sourceSignals = sourceSignalRecord(entrypointSource, nativeEntrypointSource, javaFiles, resourceFiles)
+  const itemGroupLangKeys = await itemGroupLangKeysFor(resourceFiles)
+  const sourceSignals = sourceSignalRecord(entrypointSource, nativeEntrypointSource, javaFiles, resourceFiles, itemGroupLangKeys)
   const resourceSignals = resourceSignalRecord(resourceFiles)
+  const creativeSource = await creativeSourceText(javaFiles)
+  const aliases = moduleAliasesFor(descriptor, moduleId)
+  const expectedCreativeEntries = expectedCreativeEntryIds(resourceFiles, creativeSource, moduleId)
   const expectedFeatures = inferExpectedFeatures({
     moduleId,
+    aliases,
     descriptor,
     declaredDomains,
     sourceSignals,
     resourceSignals,
+    expectedCreativeEntries,
+  })
+  const expectedCreativeTabs = expectedCreativeTabsFor({
+    moduleId,
+    expectedFeatures,
+    sourceSignals,
+    expectedCreativeEntries,
   })
 
   return {
@@ -189,6 +204,7 @@ async function moduleRecord(repoRoot, directoryName, moduleRoot, descriptorPath,
     consumes: cleanList(descriptor.consumes),
     permissions: cleanList(descriptor.permissions),
     gameModes: cleanList(descriptor.gameModes),
+    aliases,
     declaredDomains,
     declaredRuntimes,
     entrypoint,
@@ -200,16 +216,34 @@ async function moduleRecord(repoRoot, directoryName, moduleRoot, descriptorPath,
       ? normalizePath(path.relative(repoRoot, nativeEntrypointSourcePath))
       : '',
     expectedFeatures,
+    expectedCreativeTabs,
+    expectedCreativeEntries,
     sourceSignals,
     resourceSignals,
   }
+}
+
+function moduleAliasesFor(descriptor, moduleId) {
+  const aliases = []
+  for (const alias of cleanList(descriptor.aliases)) aliases.push(alias)
+  for (const alias of cleanList(descriptor.legacyAliases)) aliases.push(alias)
+  for (const replacement of Array.isArray(descriptor.replacements) ? descriptor.replacements : []) {
+    if (!replacement || typeof replacement !== 'object') continue
+    const legacyId = string(replacement.legacyId)
+    const replacementId = string(replacement.replacementId)
+    if (legacyId && (!replacementId || replacementId === moduleId)) aliases.push(legacyId)
+  }
+  return aliases
+    .map((alias) => alias.trim())
+    .filter((alias) => alias && alias !== moduleId)
+    .filter(uniqueFilter)
 }
 
 function classSourcePath(moduleRoot, className) {
   return path.join(moduleRoot, 'src', 'main', 'java', `${className.replace(/\./g, path.sep)}.java`)
 }
 
-function sourceSignalRecord(entrypointSource, nativeEntrypointSource, javaFiles, resourceFiles) {
+function sourceSignalRecord(entrypointSource, nativeEntrypointSource, javaFiles, resourceFiles, itemGroupLangKeys = []) {
   const source = `${entrypointSource}\n${nativeEntrypointSource}`
   const javaPaths = javaFiles.map((file) => file.relative.toLowerCase())
   const resourcePaths = resourceFiles.map((file) => file.relative.toLowerCase())
@@ -222,6 +256,14 @@ function sourceSignalRecord(entrypointSource, nativeEntrypointSource, javaFiles,
     hasNativeSurfaceDeclaration: source.includes('nativeSurfaceImplementationClass'),
     hasNativeClientRouteRegistrar: source.includes('ensureNativeClientRoutesRegisteredForNativeLoader'),
     hasDeferredRegister: source.includes('DeferredRegister') || source.includes('RegisterEvent'),
+    hasCreativeTabClass: javaPaths.some((file) => file.endsWith('creativetabs.java') || file.includes('creativetab')),
+    hasCreativeTabRegistration: source.includes('CreativeModeTab')
+      || source.includes('registerCreativeTab')
+      || source.includes('creative_tab')
+      || source.includes('creative_tabs')
+      || source.includes('EchoCreativeContentGroup')
+      || itemGroupLangKeys.length > 0,
+    itemGroupLangKeys,
     hasScreenClass: javaPaths.some((file) => file.includes('screen') || file.includes('client')),
     hasOverlayClass: javaPaths.some((file) => file.includes('overlay') || file.includes('hud')),
     hasBlockClass: javaPaths.some((file) => file.includes('block')),
@@ -248,7 +290,38 @@ function resourceSignalRecord(resourceFiles) {
   }
 }
 
-function inferExpectedFeatures({ moduleId, descriptor, declaredDomains, sourceSignals, resourceSignals }) {
+async function itemGroupLangKeysFor(resourceFiles) {
+  const keys = []
+  for (const file of resourceFiles) {
+    if (!/assets\/[^/]+\/lang\/.+\.json$/i.test(file.relative)) continue
+    const json = await readJsonIfExists(file.absolute)
+    if (!json || json.parseError) continue
+    for (const key of Object.keys(json)) {
+      if (key.startsWith('itemGroup.')) keys.push(key)
+    }
+  }
+  return unique(keys)
+}
+
+async function creativeSourceText(javaFiles) {
+  const parts = []
+  for (const file of javaFiles) {
+    const relative = file.relative.replace(/\\/g, '/')
+    if (!relative.endsWith('.java')) continue
+    if (!(/CreativeTab/.test(relative)
+      || /Items\.java$/.test(relative)
+      || /Blocks\.java$/.test(relative)
+      || /ContentDefinitions\.java$/.test(relative)
+      || /Machines\.java$/.test(relative)
+      || /NativeModule\.java$/.test(relative)
+      || /ProductBridgeProvider\.java$/.test(relative)
+      || /registry\//i.test(relative))) continue
+    parts.push(await readText(file.absolute))
+  }
+  return parts.join('\n')
+}
+
+function inferExpectedFeatures({ moduleId, descriptor, declaredDomains, sourceSignals, resourceSignals, expectedCreativeEntries = [] }) {
   const text = [
     moduleId,
     descriptor.kind,
@@ -277,6 +350,7 @@ function inferExpectedFeatures({ moduleId, descriptor, declaredDomains, sourceSi
   add('lens', 'lens', 'scanner', 'scan')
   add('blocks', 'block', 'blocks', 'multiblock', 'machine')
   add('items', 'item', 'items', 'inventory', 'loot')
+  add('creative_tab', 'creative tab', 'creative_tab', 'creative_tabs', 'itemgroup')
   add('block_actions', 'block action', 'block_actions', 'machine', 'place', 'use', 'break', 'interaction')
   add('worldgen', 'worldgen', 'world', 'biome', 'structure', 'region', 'hazard', 'weather', 'spawn')
   add('recipes', 'recipe', 'recipes', 'crafting')
@@ -301,12 +375,70 @@ function inferExpectedFeatures({ moduleId, descriptor, declaredDomains, sourceSi
   if (sourceSignals.hasScreenClass || resourceSignals.hasUiAssets) addAll(features, ['gui', 'screen'])
   if (sourceSignals.hasBlockClass || resourceSignals.hasBlockstates) features.add('blocks')
   if (sourceSignals.hasItemClass || resourceSignals.hasModels) features.add('items')
+  const hasExpectedCreativeEntries = expectedCreativeEntries.length > 0
+  if (hasExpectedCreativeEntries
+    || sourceSignals.hasDeferredRegister
+    || resourceSignals.hasBlockstates
+    || ((sourceSignals.hasCreativeTabClass || sourceSignals.hasCreativeTabRegistration) && hasExpectedCreativeEntries)) {
+    features.add('creative_tab')
+  }
   if (resourceSignals.hasWorldgen || resourceSignals.hasStructures || sourceSignals.hasWorldClass) features.add('worldgen')
   if (resourceSignals.hasRecipes) features.add('recipes')
   if (resourceSignals.hasLoot) features.add('loot')
   if (resourceSignals.hasSounds) features.add('audio')
 
   return FEATURE_ORDER.filter((feature) => features.has(feature))
+}
+
+function expectedCreativeTabsFor({ moduleId, expectedFeatures, sourceSignals, expectedCreativeEntries = [] }) {
+  if (!expectedFeatures.includes('creative_tab')) return []
+  return [{
+    id: `${moduleId}:native_modules`,
+    titleKey: `itemGroup.${moduleId}`,
+    source: sourceSignals.hasCreativeTabClass || sourceSignals.hasCreativeTabRegistration
+      ? 'source.creative_tab'
+      : 'inferred.content_module',
+    searchExpected: true,
+    expectedEntries: expectedCreativeEntries,
+  }]
+}
+
+function expectedCreativeEntryIds(resourceFiles, sourceText = '', fallbackNamespace = '') {
+  const entries = []
+  for (const file of resourceFiles) {
+    const relative = file.relative.toLowerCase().replace(/\\/g, '/')
+    const item = relative.match(/^assets\/([^/]+)\/models\/item\/(.+)\.json$/)
+    if (item && !item[2].includes('/')) entries.push(`${item[1]}:${item[2]}`)
+    const block = relative.match(/^assets\/([^/]+)\/blockstates\/(.+)\.json$/)
+    if (block) entries.push(`${block[1]}:${block[2]}`)
+  }
+  for (const id of matches(sourceText, /(?:ITEMS|BLOCK_ITEMS|BLOCKS)\.register\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /registerItem\([^;]*?"([a-z0-9_./-]+)"/gs)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /registerBlock\([^;]*?"([a-z0-9_./-]+)"/gs)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /\bsimple\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  for (const id of matches(sourceText, /\b(?:block|ore)\(\s*"([a-z0-9_./-]+)"/g)) {
+    entries.push(`${fallbackNamespace}:${id}`)
+  }
+  return unique(entries
+    .map((entry) => entry.replace(/\\/g, '/').toLowerCase())
+    .filter((entry) => /^[a-z0-9_.-]+:[a-z0-9_./-]+$/.test(entry)))
+}
+
+function matches(text, pattern) {
+  if (typeof text !== 'string' || !text) return []
+  const values = []
+  for (const match of text.matchAll(pattern)) {
+    if (typeof match[1] === 'string' && match[1]) values.push(match[1])
+  }
+  return unique(values)
 }
 
 function assetsText(value) {
@@ -444,14 +576,54 @@ async function releaseIndex(repoRoot) {
   return { found: true, path: releasePath, modules }
 }
 
-async function collectRuntimeEvidence(echoRoot, modulesRepoRoot, outDir) {
+async function collectRuntimeEvidence(echoRoot, modulesRepoRoot, outDir, modules = []) {
   const neoforge = await collectNeoForgeRuntimeEvidence(modulesRepoRoot, outDir)
   const native = await collectNativeRuntimeEvidence(path.join(echoRoot, 'ECHO-Native-Platform'))
   const standalone = await collectStandaloneRuntimeEvidence(path.join(echoRoot, 'ECHO-Standalone-Runtime'))
+  applyRuntimeEvidenceAliases(neoforge, modules)
+  applyRuntimeEvidenceAliases(native, modules)
+  applyRuntimeEvidenceAliases(standalone, modules)
   return {
     neoforge,
     echo_native: native,
     standalone,
+  }
+}
+
+function applyRuntimeEvidenceAliases(evidence, modules) {
+  const sets = [
+    evidence.loadedModules,
+    evidence.coveredModules,
+    evidence.executedModules,
+    evidence.uiRouteModules,
+    evidence.contentHostModules,
+    evidence.uiVisibleModules,
+    evidence.actionMutationModules,
+    evidence.blockItemGameplayModules,
+    evidence.creativeTabRegistryModules,
+    evidence.creativeTabParentVisibleModules,
+    evidence.creativeTabSearchVisibleModules,
+    evidence.creativeTabSelectableModules,
+    evidence.creativeTabPlayableModules,
+    evidence.worldgenModules,
+    evidence.saveReloadModules,
+    evidence.networkSyncModules,
+  ]
+  for (const module of modules) {
+    const aliases = cleanList(module.aliases)
+    if (module.moduleId === 'echosignalos' && !aliases.includes('signalos')) aliases.push('signalos')
+    for (const alias of aliases) {
+      for (const set of sets) {
+        if (set?.has(alias)) set.add(module.moduleId)
+      }
+      if (evidence.creativeTabEvidenceByModule?.has(alias) && !evidence.creativeTabEvidenceByModule.has(module.moduleId)) {
+        evidence.creativeTabEvidenceByModule.set(module.moduleId, {
+          ...evidence.creativeTabEvidenceByModule.get(alias),
+          moduleId: module.moduleId,
+          evidenceAlias: alias,
+        })
+      }
+    }
   }
 }
 
@@ -468,6 +640,12 @@ function emptyRuntimeEvidence(runtime, repoRoot) {
     uiVisibleModules: new Set(),
     actionMutationModules: new Set(),
     blockItemGameplayModules: new Set(),
+    creativeTabRegistryModules: new Set(),
+    creativeTabParentVisibleModules: new Set(),
+    creativeTabSearchVisibleModules: new Set(),
+    creativeTabSelectableModules: new Set(),
+    creativeTabPlayableModules: new Set(),
+    creativeTabEvidenceByModule: new Map(),
     worldgenModules: new Set(),
     saveReloadModules: new Set(),
     networkSyncModules: new Set(),
@@ -478,6 +656,7 @@ function emptyRuntimeEvidence(runtime, repoRoot) {
     uiHostProof: false,
     actionHostProof: false,
     blockItemHostProof: false,
+    creativeTabHostProof: false,
     worldgenHostProof: false,
     saveNetworkProof: false,
   }
@@ -498,6 +677,7 @@ async function collectNeoForgeRuntimeEvidence(repoRoot, outDir) {
   for (const moduleId of cleanList(report.saveReloadModuleIds)) evidence.saveReloadModules.add(moduleId)
   for (const moduleId of cleanList(report.networkSyncModuleIds)) evidence.networkSyncModules.add(moduleId)
   for (const moduleId of cleanList(report.gameTestModuleIds)) evidence.coveredModules.add(moduleId)
+  collectCreativeTabEvidence(report, evidence)
   evidence.routeDispatchCount = cleanList(report.visibleRoutes).length
   evidence.artifactLoadProof = reportStatusIs(report, 'PASS') || evidence.loadedModules.size > 0
   evidence.lifecycleProof = evidence.executedModules.size > 0
@@ -505,6 +685,7 @@ async function collectNeoForgeRuntimeEvidence(repoRoot, outDir) {
   evidence.uiHostProof = evidence.uiVisibleModules.size > 0
   evidence.actionHostProof = evidence.actionMutationModules.size > 0
   evidence.blockItemHostProof = evidence.blockItemGameplayModules.size > 0
+  evidence.creativeTabHostProof = evidence.creativeTabPlayableModules.size > 0
   evidence.worldgenHostProof = evidence.worldgenModules.size > 0
   evidence.saveNetworkProof = evidence.saveReloadModules.size > 0 || evidence.networkSyncModules.size > 0
   return evidence
@@ -522,6 +703,7 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   const agent9MachineRuntimePath = path.join(nativeRoot, 'build', 'agent9', 'machine-runtime-host', 'agent9-machine-runtime-host.json')
   const mutationTruthGatePath = path.join(nativeRoot, 'build', 'mutation-truth-gate', 'native-mutation-truth-gate.json')
   const agent4RegistryStatePath = path.join(nativeRoot, 'build', 'agent4', 'registry-content', 'native-agent4-registry-content-state.json')
+  const creativeTabVisibilityPath = path.join(nativeRoot, 'build', 'native-all-module-creative-tab-visibility', 'native-all-module-creative-tab-visibility.json')
   const registryInventoryPath = path.join(nativeRoot, 'reports', 'echo-native', 'ashfall', 'registry-source-inventory.json')
   const serviceBusPath = path.join(nativeRoot, 'reports', 'echo-native', 'ashfall', 'service-bus-registry.json')
 
@@ -533,6 +715,7 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   const agent9MachineRuntime = await readJsonIfExists(agent9MachineRuntimePath)
   const mutationTruthGate = await readJsonIfExists(mutationTruthGatePath)
   const agent4RegistryState = await readJsonIfExists(agent4RegistryStatePath)
+  const creativeTabVisibility = await readJsonIfExists(creativeTabVisibilityPath)
   const registryInventory = await readJsonIfExists(registryInventoryPath)
   const serviceBus = await readJsonIfExists(serviceBusPath)
 
@@ -544,6 +727,7 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   evidence.reports.agent9MachineRuntimeHost = reportSummary(nativeRoot, agent9MachineRuntimePath, agent9MachineRuntime)
   evidence.reports.mutationTruthGate = reportSummary(nativeRoot, mutationTruthGatePath, mutationTruthGate)
   evidence.reports.agent4RegistryContentState = reportSummary(nativeRoot, agent4RegistryStatePath, agent4RegistryState)
+  evidence.reports.creativeTabVisibility = reportSummary(nativeRoot, creativeTabVisibilityPath, creativeTabVisibility)
   evidence.reports.registrySourceInventory = reportSummary(nativeRoot, registryInventoryPath, registryInventory)
   evidence.reports.serviceBusRegistry = reportSummary(nativeRoot, serviceBusPath, serviceBus)
 
@@ -554,6 +738,7 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
       const moduleId = string(module.moduleId ?? module.id)
       if (moduleId) evidence.loadedModules.add(moduleId)
     }
+    for (const moduleId of cleanList(artifactLoad.targetModules)) evidence.loadedModules.add(moduleId)
     const loadedDir = path.join(nativeRoot, 'build', 'native-all-bridgeable-module-artifact-load-state', 'loaded-modules')
     if (await exists(loadedDir)) {
       for (const file of await fs.readdir(loadedDir)) {
@@ -575,11 +760,13 @@ async function collectNativeRuntimeEvidence(nativeRoot) {
   const worldStartupProof = reportStatusIs(agent4WorldStartup, 'PASS')
   const machineRuntimeProof = reportStatusIs(agent9MachineRuntime, 'PASS')
   const mutationTruthProof = reportStatusIs(mutationTruthGate, 'PASS')
+  collectCreativeTabEvidence(creativeTabVisibility, evidence)
 
   evidence.contentHostProof = evidence.artifactLoadProof && runtimeTruthPass
   evidence.uiHostProof = (routeProof && runtimeTruthPass) || uiBridgeProof
   evidence.actionHostProof = (routeProof && runtimeTruthPass) || machineRuntimeProof || mutationTruthProof
   evidence.blockItemHostProof = (evidence.artifactLoadProof && runtimeTruthPass && (registryProof || serviceProof)) || machineRuntimeProof
+  evidence.creativeTabHostProof = evidence.creativeTabPlayableModules.size > 0
   evidence.worldgenHostProof = (evidence.artifactLoadProof && runtimeTruthPass) || worldStartupProof
   evidence.saveNetworkProof = (evidence.artifactLoadProof && runtimeTruthPass) || machineRuntimeProof || worldStartupProof
   return evidence
@@ -610,6 +797,7 @@ async function collectStandaloneRuntimeEvidence(standaloneRoot) {
     clientModsRuntimeContent: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-mods-runtime-content-smoke.json'),
     clientWorldInteraction: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-world-interaction-smoke.json'),
     clientHeldItemOverlay: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'client-held-item-overlay-smoke.json'),
+    creativeTabVisibility: path.join(standaloneRoot, 'reports', 'echo', 'standalone', 'all-module-creative-tab-visibility-smoke.json'),
   }
   const reports = {}
   for (const [key, filePath] of Object.entries(reportPaths)) {
@@ -651,6 +839,8 @@ async function collectStandaloneRuntimeEvidence(standaloneRoot) {
     && reportStatusIs(reports.runtimeItem, 'PASS')
     && reportStatusIs(reports.playableVoxelSave, 'PASS')
     && reportStatusIs(reports.clientHeldItemOverlay, 'PASS')
+  collectCreativeTabEvidence(reports.creativeTabVisibility, evidence)
+  evidence.creativeTabHostProof = evidence.creativeTabPlayableModules.size > 0
   evidence.worldgenHostProof = reportStatusIs(reports.runtimeWorld, 'PASS')
     && reportStatusIs(reports.fullWorldgen, 'PASS')
   evidence.saveNetworkProof = reportStatusIs(reports.runtimeSave, 'PASS')
@@ -686,14 +876,18 @@ function collectRouteModules(value, modules) {
   if (value.handled === true || value.status === 'MUTATED' || value.trustedMutation === true) {
     for (const key of ['routeModuleId', 'moduleId', 'ownerModuleId']) {
       const moduleId = string(value[key])
-      if (moduleId.startsWith('echo')) modules.add(moduleId)
+      if (isFirstPartyRuntimeId(moduleId)) modules.add(moduleId)
     }
     for (const handlerId of cleanList(value.ownerHandlerIds)) {
       const moduleId = handlerId.split(':')[0]
-      if (moduleId.startsWith('echo')) modules.add(moduleId)
+      if (isFirstPartyRuntimeId(moduleId)) modules.add(moduleId)
     }
   }
   for (const child of Object.values(value)) collectRouteModules(child, modules)
+}
+
+function isFirstPartyRuntimeId(value) {
+  return value.startsWith('echo') || value.startsWith('signalos')
 }
 
 function runtimeModuleHasLoadProof(evidence, moduleId) {
@@ -710,6 +904,10 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
   const uiSurfaceStatus = uiSurfaceStatusFor(module, runtime, evidenceForRuntime)
   const actionRouteStatus = actionRouteStatusFor(module, runtime, evidenceForRuntime)
   const blockItemStatus = blockItemStatusFor(module, runtime, evidenceForRuntime)
+  const creativeTabStatus = creativeTabStatusFor(module, runtime, evidenceForRuntime)
+  const creativeTabEvidence = evidenceForRuntime.creativeTabEvidenceByModule?.get(module.moduleId) ?? {}
+  const missingCreativeTabEntries = missingCreativeTabEntriesFor(module, evidenceForRuntime)
+  const missingCreativeSearchEntries = missingCreativeSearchEntriesFor(module, evidenceForRuntime)
   const worldgenStatus = worldgenStatusFor(module, runtime, evidenceForRuntime)
   const saveNetworkStatus = saveNetworkStatusFor(module, runtime, evidenceForRuntime)
   const statuses = {
@@ -719,6 +917,10 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
     uiSurfaceStatus,
     actionRouteStatus,
     blockItemStatus,
+    creativeTabStatus,
+    creativeTabEvidence,
+    missingCreativeTabEntries,
+    missingCreativeSearchEntries,
     worldgenStatus,
     saveNetworkStatus,
   }
@@ -733,6 +935,10 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
     uiSurfaceStatus,
     actionRouteStatus,
     blockItemStatus,
+    creativeTabStatus,
+    creativeTabEvidence,
+    missingCreativeTabEntries,
+    missingCreativeSearchEntries,
     worldgenStatus,
     saveNetworkStatus,
   })
@@ -750,6 +956,7 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
     packRefs,
     declaredDomains: module.declaredDomains,
     expectedFeatures: module.expectedFeatures,
+    expectedCreativeTabs: module.expectedCreativeTabs,
     artifactStatus: artifactStatus.status,
     artifactEvidence: artifactStatus,
     entrypointStatus,
@@ -757,6 +964,10 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
     uiSurfaceStatus,
     actionRouteStatus,
     blockItemStatus,
+    creativeTabStatus,
+    creativeTabEvidence,
+    missingCreativeTabEntries,
+    missingCreativeSearchEntries,
     worldgenStatus,
     saveNetworkStatus,
     featureEvidence,
@@ -767,6 +978,32 @@ async function runtimeRow({ repoRoot, release, module, runtime, packRefs, runtim
     result,
     blockers,
     recommendedFix: recommendedFixFor({ module, runtime, blockers }),
+  }
+}
+
+function collectCreativeTabEvidence(report, evidence) {
+  if (!report || report.parseError) return
+  addModuleIds(evidence.creativeTabRegistryModules, cleanList(report.registryBackedModuleIds))
+  addModuleIds(evidence.creativeTabParentVisibleModules, cleanList(report.visibleParentModuleIds))
+  addModuleIds(evidence.creativeTabSearchVisibleModules, cleanList(report.visibleSearchModuleIds))
+  addModuleIds(evidence.creativeTabSelectableModules, cleanList(report.selectableModuleIds))
+  addModuleIds(evidence.creativeTabPlayableModules, cleanList(report.playableModuleIds))
+  for (const module of Array.isArray(report.modules) ? report.modules : []) {
+    if (!module || typeof module !== 'object') continue
+    const moduleId = string(module.moduleId)
+    if (!moduleId) continue
+    evidence.creativeTabEvidenceByModule.set(moduleId, module)
+    if (module.registryBacked === true) evidence.creativeTabRegistryModules.add(moduleId)
+    if (module.visibleParent === true) evidence.creativeTabParentVisibleModules.add(moduleId)
+    if (module.visibleSearch === true) evidence.creativeTabSearchVisibleModules.add(moduleId)
+    if (module.selectable === true) evidence.creativeTabSelectableModules.add(moduleId)
+    if (module.playable === true) evidence.creativeTabPlayableModules.add(moduleId)
+  }
+}
+
+function addModuleIds(target, values) {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim()) target.add(value.trim())
   }
 }
 
@@ -940,6 +1177,50 @@ function blockItemStatusFor(module, runtime, runtimeEvidence) {
   return 'declared-only'
 }
 
+function creativeTabStatusFor(module, runtime, runtimeEvidence) {
+  if (!expectsCreativeTabs(module)) return 'none expected'
+  if (runtimeEvidence.creativeTabPlayableModules?.has(module.moduleId)) return 'playable'
+  if (runtimeEvidence.creativeTabSelectableModules?.has(module.moduleId)) return 'selectable'
+  if (runtimeEvidence.creativeTabSearchVisibleModules?.has(module.moduleId)) return 'visible-search'
+  if (runtimeEvidence.creativeTabParentVisibleModules?.has(module.moduleId)) return 'visible-parent'
+  if (runtimeEvidence.creativeTabRegistryModules?.has(module.moduleId)) return 'registry-backed'
+  if (module.sourceSignals.hasCreativeTabClass || module.sourceSignals.hasCreativeTabRegistration) return 'declared-only'
+  return 'declared-only'
+}
+
+function missingCreativeTabEntriesFor(module, runtimeEvidence) {
+  if (!expectsCreativeTabs(module)) return []
+  const evidence = runtimeEvidence.creativeTabEvidenceByModule?.get(module.moduleId)
+  if (Array.isArray(evidence?.missingCreativeTabEntries)) return cleanList(evidence.missingCreativeTabEntries)
+  if (runtimeEvidence.creativeTabPlayableModules?.has(module.moduleId)
+    || runtimeEvidence.creativeTabSelectableModules?.has(module.moduleId)
+    || runtimeEvidence.creativeTabParentVisibleModules?.has(module.moduleId)) {
+    return []
+  }
+  return expectedCreativeEntriesFor(module)
+}
+
+function missingCreativeSearchEntriesFor(module, runtimeEvidence) {
+  if (!expectsCreativeTabs(module)) return []
+  const evidence = runtimeEvidence.creativeTabEvidenceByModule?.get(module.moduleId)
+  if (Array.isArray(evidence?.missingCreativeSearchEntries)) return cleanList(evidence.missingCreativeSearchEntries)
+  if (runtimeEvidence.creativeTabPlayableModules?.has(module.moduleId)
+    || runtimeEvidence.creativeTabSelectableModules?.has(module.moduleId)
+    || runtimeEvidence.creativeTabSearchVisibleModules?.has(module.moduleId)) {
+    return []
+  }
+  return module.expectedCreativeTabs
+    .filter((tab) => tab.searchExpected !== false)
+    .flatMap((tab) => cleanList(tab.expectedEntries))
+    .filter(uniqueFilter)
+}
+
+function expectedCreativeEntriesFor(module) {
+  return cleanList(module.expectedCreativeEntries).length > 0
+    ? cleanList(module.expectedCreativeEntries)
+    : module.expectedCreativeTabs.flatMap((tab) => cleanList(tab.expectedEntries)).filter(uniqueFilter)
+}
+
 function worldgenStatusFor(module, runtime, runtimeEvidence) {
   if (!module.expectedFeatures.includes('worldgen')) return 'none expected'
   if (runtime.id === 'echo_native'
@@ -991,6 +1272,11 @@ function featureEvidenceLevel(feature, runtime, statuses, runtimeEvidence, modul
     || runtimeEvidence.actionMutationModules?.has(module.moduleId)
   const blockItemProof = (runtimeEvidence.blockItemHostProof && hasLoadProof)
     || runtimeEvidence.blockItemGameplayModules?.has(module.moduleId)
+  const creativePlayableProof = runtimeEvidence.creativeTabPlayableModules?.has(module.moduleId)
+  const creativeSelectableProof = runtimeEvidence.creativeTabSelectableModules?.has(module.moduleId)
+  const creativeVisibleProof = runtimeEvidence.creativeTabSearchVisibleModules?.has(module.moduleId)
+    || runtimeEvidence.creativeTabParentVisibleModules?.has(module.moduleId)
+  const creativeRegistryProof = runtimeEvidence.creativeTabRegistryModules?.has(module.moduleId)
   const worldgenProof = (runtimeEvidence.worldgenHostProof && hasLoadProof)
     || runtimeEvidence.worldgenModules?.has(module.moduleId)
   const saveNetworkProof = (runtimeEvidence.saveNetworkProof && hasLoadProof)
@@ -1011,6 +1297,14 @@ function featureEvidenceLevel(feature, runtime, statuses, runtimeEvidence, modul
     if (statuses.blockItemStatus === 'place/use/break verified') return 'gameplay-mutated'
     if (statuses.blockItemStatus === 'registry-backed') return 'host-registered'
     if (module.sourceSignals.hasBlockClass || module.sourceSignals.hasItemClass || module.sourceSignals.hasDeferredRegister) return 'static-source'
+    return 'static-source'
+  }
+
+  if (feature === 'creative_tab') {
+    if (creativePlayableProof) return 'gameplay-mutated'
+    if (creativeSelectableProof || creativeVisibleProof) return 'visible-actionable'
+    if (creativeRegistryProof) return 'host-registered'
+    if (module.sourceSignals.hasCreativeTabClass || module.sourceSignals.hasCreativeTabRegistration) return 'static-source'
     return 'static-source'
   }
 
@@ -1063,6 +1357,8 @@ function evidenceFor(module, runtime, statuses, runtimeEvidence) {
     entrypointSourceExists: runtime.id === 'neoforge' ? module.entrypointSourceExists : module.nativeEntrypointSourceExists,
     nativeEntrypointSourceExists: module.nativeEntrypointSourceExists,
     artifactStatus: statuses.artifactStatus.status,
+    expectedCreativeTabs: module.expectedCreativeTabs,
+    creativeTabStatus: statuses.creativeTabStatus,
     sourceSignals: module.sourceSignals,
     resourceSignals: module.resourceSignals,
     runtimeProof: publicRuntimeProofForModule(runtimeEvidence, module.moduleId),
@@ -1080,6 +1376,11 @@ function publicRuntimeProofForModule(runtimeEvidence, moduleId) {
       uiVisible: runtimeEvidence.uiVisibleModules?.has(moduleId) ?? false,
       actionMutation: runtimeEvidence.actionMutationModules?.has(moduleId) ?? false,
       blockItemGameplay: runtimeEvidence.blockItemGameplayModules?.has(moduleId) ?? false,
+      creativeTabRegistry: runtimeEvidence.creativeTabRegistryModules?.has(moduleId) ?? false,
+      creativeTabParentVisible: runtimeEvidence.creativeTabParentVisibleModules?.has(moduleId) ?? false,
+      creativeTabSearchVisible: runtimeEvidence.creativeTabSearchVisibleModules?.has(moduleId) ?? false,
+      creativeTabSelectable: runtimeEvidence.creativeTabSelectableModules?.has(moduleId) ?? false,
+      creativeTabPlayable: runtimeEvidence.creativeTabPlayableModules?.has(moduleId) ?? false,
       worldgen: runtimeEvidence.worldgenModules?.has(moduleId) ?? false,
       saveReload: runtimeEvidence.saveReloadModules?.has(moduleId) ?? false,
       networkSync: runtimeEvidence.networkSyncModules?.has(moduleId) ?? false,
@@ -1092,9 +1393,11 @@ function publicRuntimeProofForModule(runtimeEvidence, moduleId) {
       ui: runtimeEvidence.uiHostProof,
       action: runtimeEvidence.actionHostProof,
       blockItem: runtimeEvidence.blockItemHostProof,
+      creativeTab: runtimeEvidence.creativeTabHostProof,
       worldgen: runtimeEvidence.worldgenHostProof,
       saveNetwork: runtimeEvidence.saveNetworkProof,
     },
+    creativeTabEvidence: runtimeEvidence.creativeTabEvidenceByModule?.get(moduleId) ?? {},
   }
 }
 
@@ -1117,6 +1420,7 @@ function blockersFor({
   uiSurfaceStatus,
   actionRouteStatus,
   blockItemStatus,
+  creativeTabStatus,
   worldgenStatus,
   saveNetworkStatus,
 }) {
@@ -1135,6 +1439,9 @@ function blockersFor({
   }
   if (expectsBlockItems(module) && ['declared-only'].includes(blockItemStatus)) {
     blockers.push('expected block/item behavior is declared without place/use/break evidence')
+  }
+  if (expectsCreativeTabs(module) && ['declared-only', 'registry-backed', 'visible-parent', 'visible-search', 'selectable'].includes(creativeTabStatus)) {
+    blockers.push(`expected creative tab content is ${creativeTabStatus}; visible/search/select/play proof is required`)
   }
   if (module.expectedFeatures.includes('worldgen') && ['none expected'].includes(worldgenStatus)) {
     blockers.push('expected worldgen/resource behavior lacks data or generated-runtime evidence')
@@ -1197,6 +1504,9 @@ function recommendedFixFor({ module, runtime, blockers }) {
   if (blockers.some((blocker) => blocker.includes('block/item'))) {
     return `${runtime.ownerRepo}: prove ${module.moduleId} block/item place, use, break, and save behavior through runtime host tests.`
   }
+  if (blockers.some((blocker) => blocker.includes('creative tab'))) {
+    return `${runtime.ownerRepo}: prove ${module.moduleId} creative tab entries are registry-backed, visible in parent/search, selectable, and playable.`
+  }
   return `${runtime.ownerRepo}: add runtime proof for ${module.moduleId} feature buckets: ${module.expectedFeatures.join(', ')}.`
 }
 
@@ -1207,6 +1517,10 @@ function expectsActions(module) {
 
 function expectsBlockItems(module) {
   return module.expectedFeatures.some((feature) => ['blocks', 'items', 'machines'].includes(feature))
+}
+
+function expectsCreativeTabs(module) {
+  return module.expectedFeatures.includes('creative_tab')
 }
 
 function expectsSaveNetwork(module) {
@@ -1327,6 +1641,27 @@ function buildBacklog({ rows, modules, docsIndex, preferredPacks }) {
     )
   }
 
+  const creativeTabGaps = rows
+    .filter((row) =>
+      row.runtime !== 'neoforge'
+      && expectsCreativeTabs(row)
+      && row.creativeTabStatus !== 'playable')
+    .map((row) => row.moduleId)
+  if (creativeTabGaps.length > 0) {
+    addIssue(
+      'P0',
+      'ECHO-Native-Platform / ECHO-Standalone-Runtime',
+      'creative inventory parity',
+      'Prove all module creative tabs are visible, searchable, selectable, and playable',
+      `${unique(creativeTabGaps).length} module(s) expect creative inventory content without full live creative-tab play proof.`,
+      {
+        modules: unique(creativeTabGaps),
+        runtimes: ['echo_native', 'standalone'],
+        recommendedFix: 'Generalize the creative tab bridge beyond Ashfall/fixtures and require per-module parent/search/select/play evidence.',
+      },
+    )
+  }
+
   if (docsIndex.missingModuleIds.length > 0 || docsIndex.missingDirectories.length > 0 || docsIndex.extraIndexEntries.length > 0) {
     addIssue(
       'P1',
@@ -1401,6 +1736,14 @@ function markdownReport(report) {
   lines.push(`- Strict-full partial rows: ${report.strictFullSummary.resultCounts.partial}`)
   lines.push(`- Strict-full failing rows: ${report.strictFullSummary.resultCounts.fail}`)
   lines.push('')
+  if (report.adapterCoreStrictPortAudit) {
+    lines.push('## AdapterCore Strict Port')
+    lines.push('')
+    lines.push(`- Passing modules: ${report.adapterCoreStrictPortAudit.summary.resultCounts.pass}`)
+    lines.push(`- Failing modules: ${report.adapterCoreStrictPortAudit.summary.resultCounts.fail}`)
+    lines.push(`- Report: \`${report.adapterCoreStrictPortAudit.reportPath}\``)
+    lines.push('')
+  }
   lines.push('| Runtime | Pass | Partial | Fail |')
   lines.push('| --- | ---: | ---: | ---: |')
   for (const runtime of RUNTIMES) {
@@ -1453,10 +1796,10 @@ function markdownReport(report) {
   lines.push('')
   lines.push('## Module Runtime Matrix')
   lines.push('')
-  lines.push('| Module | Runtime | Result | Artifact | Entrypoint | UI | Actions | Block/Item | Worldgen | Save/Network | Blockers |')
-  lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |')
+  lines.push('| Module | Runtime | Result | Artifact | Entrypoint | UI | Actions | Block/Item | Creative Tab | Worldgen | Save/Network | Blockers |')
+  lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |')
   for (const row of report.rows) {
-    lines.push(`| ${row.moduleId} | ${row.runtime} | ${row.result} | ${row.artifactStatus} | ${row.entrypointStatus} | ${row.uiSurfaceStatus} | ${row.actionRouteStatus} | ${row.blockItemStatus} | ${row.worldgenStatus} | ${row.saveNetworkStatus} | ${escapeCell(row.blockers.join('; '))} |`)
+    lines.push(`| ${row.moduleId} | ${row.runtime} | ${row.result} | ${row.artifactStatus} | ${row.entrypointStatus} | ${row.uiSurfaceStatus} | ${row.actionRouteStatus} | ${row.blockItemStatus} | ${row.creativeTabStatus} | ${row.worldgenStatus} | ${row.saveNetworkStatus} | ${escapeCell(row.blockers.join('; '))} |`)
   }
   lines.push('')
   lines.push('## Strict-Full Feature Gaps by Module')
@@ -1520,13 +1863,23 @@ export async function generateRuntimeParityAudit({
   const allPackManifests = await discoverPackManifests(normalizedEchoRoot)
   const preferredManifests = preferredPackManifests(allPackManifests)
   const release = await releaseIndex(normalizedRoot)
-  const runtimeEvidence = await collectRuntimeEvidence(normalizedEchoRoot, normalizedRoot, normalizePath(path.relative(normalizedRoot, normalizedOutDir)))
+  const runtimeEvidence = await collectRuntimeEvidence(normalizedEchoRoot, normalizedRoot, normalizePath(path.relative(normalizedRoot, normalizedOutDir)), modules)
   const rows = []
   for (const module of modules) {
     const packRefs = packRefsForModule(module.moduleId, preferredManifests)
     for (const runtime of RUNTIMES) {
       rows.push(await runtimeRow({ repoRoot: normalizedRoot, release, module, runtime, packRefs, runtimeEvidence }))
     }
+  }
+  const adapterCoreStrictPort = strictFull || strictPlay
+    ? await generateAdapterCoreStrictPortAudit({
+      repoRoot: normalizedRoot,
+      outDir: normalizePath(path.relative(normalizedRoot, normalizedOutDir)),
+      write: true,
+    })
+    : null
+  if (adapterCoreStrictPort) {
+    applyAdapterCoreStrictPortBlockers(rows, adapterCoreStrictPort.report)
   }
 
   const report = {
@@ -1546,6 +1899,15 @@ export async function generateRuntimeParityAudit({
     summary: {},
     docsIndex,
     runtimeEvidence: publicRuntimeEvidence(runtimeEvidence),
+    adapterCoreStrictPortAudit: adapterCoreStrictPort
+      ? {
+          schema: adapterCoreStrictPort.report.schema,
+          generatedAt: adapterCoreStrictPort.report.generatedAt,
+          summary: adapterCoreStrictPort.report.summary,
+          reportPath: normalizePath(path.relative(normalizedRoot, adapterCoreStrictPort.outputs.json)),
+          markdownPath: normalizePath(path.relative(normalizedRoot, adapterCoreStrictPort.outputs.markdown)),
+        }
+      : null,
     packAudit: {
       allManifestCount: allPackManifests.length,
       preferredManifests,
@@ -1591,6 +1953,12 @@ export async function generateRuntimeParityAudit({
       markdown: mdPath,
       backlog: backlogPath,
       contracts: contractsPath,
+      ...(adapterCoreStrictPort
+        ? {
+            adapterCoreStrictPort: adapterCoreStrictPort.outputs.json,
+            adapterCoreStrictPortMarkdown: adapterCoreStrictPort.outputs.markdown,
+          }
+        : {}),
       ...(play?.paths ?? {}),
     },
   }
@@ -1634,6 +2002,7 @@ function moduleFeatureContracts(report) {
           native: module.nativeEntrypoint,
         },
         expectedFeatures: module.expectedFeatures,
+        expectedCreativeTabs: module.expectedCreativeTabs,
         contentKinds: inferContentKinds(module),
         uiRoutes: inferUiRoutes(module),
         blockActions: inferBlockActions(module),
@@ -1709,6 +2078,11 @@ function publicRuntimeEvidence(runtimeEvidence) {
         uiVisible: evidence.uiVisibleModules?.size ?? 0,
         actionMutation: evidence.actionMutationModules?.size ?? 0,
         blockItemGameplay: evidence.blockItemGameplayModules?.size ?? 0,
+        creativeTabRegistry: evidence.creativeTabRegistryModules?.size ?? 0,
+        creativeTabParentVisible: evidence.creativeTabParentVisibleModules?.size ?? 0,
+        creativeTabSearchVisible: evidence.creativeTabSearchVisibleModules?.size ?? 0,
+        creativeTabSelectable: evidence.creativeTabSelectableModules?.size ?? 0,
+        creativeTabPlayable: evidence.creativeTabPlayableModules?.size ?? 0,
         worldgen: evidence.worldgenModules?.size ?? 0,
         saveReload: evidence.saveReloadModules?.size ?? 0,
         networkSync: evidence.networkSyncModules?.size ?? 0,
@@ -1721,6 +2095,7 @@ function publicRuntimeEvidence(runtimeEvidence) {
         ui: evidence.uiHostProof,
         action: evidence.actionHostProof,
         blockItem: evidence.blockItemHostProof,
+        creativeTab: evidence.creativeTabHostProof,
         worldgen: evidence.worldgenHostProof,
         saveNetwork: evidence.saveNetworkProof,
       },
@@ -1774,6 +2149,7 @@ function publicModuleRecord(module) {
     declaredDomains: module.declaredDomains,
     declaredRuntimes: module.declaredRuntimes,
     expectedFeatures: module.expectedFeatures,
+    expectedCreativeTabs: module.expectedCreativeTabs,
     entrypoint: module.entrypoint,
     entrypointSourceExists: module.entrypointSourceExists,
     nativeEntrypoint: module.nativeEntrypoint,
@@ -1806,6 +2182,22 @@ function summaryFor(report) {
     p0BacklogCount: report.backlog.filter((item) => item.priority === 'P0').length,
     p1BacklogCount: report.backlog.filter((item) => item.priority === 'P1').length,
     p2BacklogCount: report.backlog.filter((item) => item.priority === 'P2').length,
+  }
+}
+
+function applyAdapterCoreStrictPortBlockers(rows, adapterCoreReport) {
+  const blockersByModule = new Map(
+    adapterCoreReport.rows
+      .filter((row) => row.strictBlockers.length > 0)
+      .map((row) => [
+        row.moduleId,
+        row.strictBlockers.map((blocker) => `missing AdapterCore strict-port evidence: ${blocker}`),
+      ]),
+  )
+  for (const row of rows) {
+    const blockers = blockersByModule.get(row.moduleId)
+    if (!blockers) continue
+    row.strictFullBlockers = [...new Set([...(row.strictFullBlockers ?? []), ...blockers])]
   }
 }
 
@@ -1852,7 +2244,7 @@ function strictFullSummaryFor(report) {
 function featureBucketFor(feature) {
   if (['gui', 'hud', 'screen', 'inventory_overlay'].includes(feature)) return 'ui_surface'
   if (['terminal', 'index', 'holomap', 'lens'].includes(feature)) return 'ui_application'
-  if (['blocks', 'items', 'block_actions', 'machines', 'entities'].includes(feature)) return 'content_action'
+  if (['blocks', 'items', 'creative_tab', 'block_actions', 'machines', 'entities'].includes(feature)) return 'content_action'
   if (['worldgen', 'recipes', 'loot'].includes(feature)) return 'content_data'
   if (['networking', 'save_data', 'missions'].includes(feature)) return 'state_sync'
   return 'other'
@@ -1915,6 +2307,10 @@ function cleanList(value) {
 
 function unique(values) {
   return [...new Set(values)].sort()
+}
+
+function uniqueFilter(value, index, values) {
+  return values.indexOf(value) === index
 }
 
 function normalizePath(value) {

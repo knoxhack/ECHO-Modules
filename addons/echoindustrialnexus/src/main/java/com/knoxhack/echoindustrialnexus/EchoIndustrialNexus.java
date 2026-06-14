@@ -19,17 +19,34 @@ import com.knoxhack.echoindustrialnexus.registry.ModRecipes;
 import com.knoxhack.echoindustrialnexus.registry.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoIndustrialNexus.MODID)
 public class EchoIndustrialNexus {
    public static final String MODID = "echoindustrialnexus";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+      "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
+   private static final String REGISTER_CAPABILITIES_EVENT =
+      "net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent";
+   private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+      "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
+   private static final String COMMON_SETUP_EVENT =
+      "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+   private static final String ROBOTIC_TASK_COMPLETED_EVENT =
+      "com.knoxhack.echomultiblockcore.event.RoboticTaskCompletedEvent";
 
    public static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(MODID, path);
    }
 
-   public EchoIndustrialNexus(Object modEventBus) {
+   EchoIndustrialNexus() {
+      this(null);
+   }
+
+   public EchoIndustrialNexus(IEventBus modEventBus) {
       var runtime = Agent9IndustrialNexusRuntimeAdapter.activateNativeHostEntrypoint();
       LOGGER.info("ECHO Industrial Nexus Agent 9 native host adapter {}.", runtime.get("status"));
       ModBlocks.register(modEventBus);
@@ -42,13 +59,19 @@ public class EchoIndustrialNexus {
       ModSounds.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echoindustrialnexus.integration.prime.IndustrialPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModCapabilities::register);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-      EchoBackendLifecycleBridge.registerGameEventHandler(new IndustrialMultiblockMissionEvents()::onRoboticTaskCompleted);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+         ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_CAPABILITIES_EVENT,
+         ModCapabilities::register);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_PAYLOAD_HANDLERS_EVENT,
+         ModNetwork::registerPayloads);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
+      EchoBackendLifecycleBridge.registerGameEventHandler(ROBOTIC_TASK_COMPLETED_EVENT,
+         new IndustrialMultiblockMissionEvents()::onRoboticTaskCompleted);
       EchoBackendLifecycleBridge.registerGameEventHandler(IndustrialPoiGenerationHandler::onChunkLoad);
       EchoBackendLifecycleBridge.registerGameEventHandler(IndustrialPoiGenerationHandler::onLevelTick);
+      EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
+            "com.knoxhack.echoindustrialnexus.test.ModGameTests");
       Config.registerEchoConfig();
    }
 

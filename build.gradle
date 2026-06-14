@@ -13,6 +13,23 @@ def ashfallRuntimeModules = [
         'echolens',
         'echopresencelink',
         'echoterminal',
+        'echoindex',
+        'echoholomap',
+        'echomissioncore',
+        'echomachinecore',
+        'echopowercore',
+        'echopowergrid',
+        'echoindustrialnexus',
+        'echomultiblockcore',
+        'echologisticscore',
+        'echologisticsnetwork',
+        'echobasegrid',
+        'echoconvoyprotocol',
+        'echovehiclecore',
+        'echoeconomycore',
+        'echolootcore',
+        'echosocialcore',
+        'echorecipecore',
         'echoblockworks',
         'echoashfallprotocol',
 ]
@@ -26,6 +43,23 @@ def ashfallRequiredReleaseModules = [
         'echolens',
         'echopresencelink',
         'echoterminal',
+        'echoindex',
+        'echoholomap',
+        'echomissioncore',
+        'echomachinecore',
+        'echopowercore',
+        'echopowergrid',
+        'echoindustrialnexus',
+        'echomultiblockcore',
+        'echologisticscore',
+        'echologisticsnetwork',
+        'echobasegrid',
+        'echoconvoyprotocol',
+        'echovehiclecore',
+        'echoeconomycore',
+        'echolootcore',
+        'echosocialcore',
+        'echorecipecore',
         'echoblockworks',
         'echoashfallprotocol',
 ]
@@ -112,12 +146,12 @@ def galacticSurveyRequiredReleaseModules = [
 ]
 
 def echoSharedModuleProperties = [
-        minecraft_version      : '1.21.1',
-        minecraft_version_range: '[1.21.1,1.22)',
+        minecraft_version      : '26.1.2',
+        minecraft_version_range: '[26.1.2,26.2)',
         neo_version            : '26.1.2.29-beta',
         neo_version_range      : '[26.1.2.29-beta,)',
-        minecraftVersion       : '1.21.1',
-        minecraftVersionRange  : '[1.21.1,1.22)',
+        minecraftVersion       : '26.1.2',
+        minecraftVersionRange  : '[26.1.2,26.2)',
         neoForgeVersion        : '26.1.2.29-beta',
         neoForgeVersionRange   : '[26.1.2.29-beta,)',
         loaderVersionRange     : '[4,)',
@@ -252,10 +286,43 @@ tasks.register('generateRuntimeParityAudit', Exec) {
     commandLine 'node', 'scripts/generate-runtime-parity-audit.mjs'
 }
 
+tasks.register('generateAdapterCoreStrictPortAudit', Exec) {
+    group = 'verification'
+    description = 'Generates the runtime-strict AdapterCore port audit across descriptor-backed modules.'
+    commandLine 'node', 'scripts/generate-adaptercore-strict-port-audit.mjs'
+}
+
+tasks.register('testGenerateAdapterCoreStrictPortAudit', Exec) {
+    group = 'verification'
+    description = 'Tests the AdapterCore strict port audit failure modes and SignalOS ID migration rules.'
+    commandLine 'node', 'scripts/test-generate-adaptercore-strict-port-audit.mjs'
+}
+
 tasks.register('testGenerateNeoForgeRuntimeEvidence', Exec) {
     group = 'verification'
     description = 'Tests NeoForge strict-play evidence ingestion for executed GameTest, client UI, registry, and live play reports.'
     commandLine 'node', 'scripts/test-generate-neoforge-runtime-evidence.mjs'
+}
+
+tasks.register('runNeoForgeStrictPlayGameTests', Exec) {
+    group = 'verification'
+    description = 'Runs selected NeoForge GameTest server tasks and writes strict-play GameTest evidence JSON.'
+    def selectedModules = String.valueOf(project.findProperty('echoNeoForgeGameTestModules') ?: '').trim()
+    def argsList = ['scripts/run-neoforge-gametests-and-write-evidence.mjs']
+    if (selectedModules.isBlank()) {
+        argsList.add('--all-with-gametests')
+        argsList.add('--continue-on-failure')
+    } else {
+        argsList.add('--modules')
+        argsList.add(selectedModules)
+    }
+    commandLine (['node'] + argsList)
+}
+
+tasks.register('testRunNeoForgeStrictPlayGameTests', Exec) {
+    group = 'verification'
+    description = 'Tests NeoForge strict-play GameTest runner discovery and evidence schema.'
+    commandLine 'node', 'scripts/test-run-neoforge-gametests-and-write-evidence.mjs'
 }
 
 tasks.register('testGeneratePackAcceptanceReports', Exec) {
@@ -321,26 +388,7 @@ tasks.register('generateAshfallRequiredModuleRelease', Exec) {
             'modules-v0.1.0-alpha',
             '--out',
             'dist/echo-module-release',
-            '--module',
-            'echocore',
-            '--module',
-            'echoplatformcore',
-            '--module',
-            'echoadaptercore',
-            '--module',
-            'echonetcore',
-            '--module',
-            'echoruntimeguard',
-            '--module',
-            'echolens',
-            '--module',
-            'echopresencelink',
-            '--module',
-            'echoterminal',
-            '--module',
-            'echoblockworks',
-            '--module',
-            'echoashfallprotocol'
+            *ashfallRequiredReleaseModules.collectMany { ['--module', it] }
     doLast {
         def releaseManifest = file('dist/echo-module-release/echo-release.json')
         if (!releaseManifest.isFile()) {

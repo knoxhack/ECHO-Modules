@@ -67,3 +67,11 @@ reason="Shows Nexus machine recipes and progression notes in Just Enough Items."
 versionRange="[29.5.0,)"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.echonexusprotocol]]
+modId="echoadaptercore"
+type="required"
+reason="Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity."
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"

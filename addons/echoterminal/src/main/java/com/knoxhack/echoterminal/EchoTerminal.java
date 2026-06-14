@@ -17,13 +17,20 @@ import com.knoxhack.echoterminal.registry.ModItems;
 import com.knoxhack.echoterminal.registry.ModMenus;
 import com.knoxhack.echoterminal.service.EchoTerminalCoreServices;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
+@Mod(EchoTerminal.MODID)
 public class EchoTerminal {
     public static final String MODID = "echoterminal";
+    private static final String COMMON_SETUP_EVENT = "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+    private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoTerminal(Object modEventBus) {
+    public EchoTerminal(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
@@ -31,9 +38,11 @@ public class EchoTerminal {
         ModMenus.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
 
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_PAYLOAD_HANDLERS_EVENT,
+                ModNetwork::registerPayloads);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
         VanillaJourneyProgression.register();
+        registerOptionalGameTests(modEventBus, "com.knoxhack.echoterminal.test.ModGameTests");
     }
 
     private void commonSetup(Object event) {
@@ -60,6 +69,26 @@ public class EchoTerminal {
                     .invoke(null);
         } catch (ReflectiveOperationException | LinkageError exception) {
             LOGGER.warn("ECHO: Terminal MachineCore integration could not be registered.", exception);
+        }
+    }
+
+    private static void registerOptionalGameTests(IEventBus modEventBus, String className) {
+        try {
+            Class<?> gameTests = Class.forName(className);
+            gameTests.getMethod("register", IEventBus.class).invoke(null, modEventBus);
+            modEventBus.addListener((RegisterGameTestsEvent event) -> registerOptionalGameTestInstances(gameTests, event));
+        } catch (ClassNotFoundException ignored) {
+            // Production runtime does not include src/test classes.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO: Terminal GameTest registration is unavailable for {}.", className, exception);
+        }
+    }
+
+    private static void registerOptionalGameTestInstances(Class<?> gameTests, RegisterGameTestsEvent event) {
+        try {
+            gameTests.getMethod("registerTests", RegisterGameTestsEvent.class).invoke(null, event);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO: Terminal GameTest instances could not be registered.", exception);
         }
     }
 }

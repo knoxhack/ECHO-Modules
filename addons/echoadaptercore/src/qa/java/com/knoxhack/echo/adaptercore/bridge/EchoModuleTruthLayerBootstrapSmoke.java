@@ -49,12 +49,14 @@ public final class EchoModuleTruthLayerBootstrapSmoke {
                         && host.capabilities().supportsCanonicalContent("echoindex:recipe_search/index_query")
                         && host.capabilities().hudEvents())
                 .orElse(false);
+        int compatibilityCatalogModules = EchoAdapterCoreModuleCompatibilityCatalog.moduleIds().size();
 
         Map<String, Object> report = new LinkedHashMap<>();
         report.put("schema", "echo.module_truth_layer_bootstrap_smoke.v1");
-        report.put("passed", registered && runtimeHosts >= 91 && indexHostReady);
+        report.put("passed", registered && runtimeHosts >= compatibilityCatalogModules && indexHostReady);
         report.put("bridgesRegistered", registered ? 91 : 0);
         report.put("runtimeHostsRegistered", runtimeHosts);
+        report.put("compatibilityCatalogModules", compatibilityCatalogModules);
         report.put("echoIndexRuntimeHostReady", indexHostReady);
         return Map.copyOf(report);
     }

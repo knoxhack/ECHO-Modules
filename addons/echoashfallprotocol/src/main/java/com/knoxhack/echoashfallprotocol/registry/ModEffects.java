@@ -17,4 +17,8 @@ public class ModEffects {
     // === NEXUS PATH EFFECTS ===
     public static final Supplier<MobEffect> ALLIANCE = EchoBackendRegistryBridge.register(EFFECTS, "alliance",
             AllianceEffect::new);
+
+    public static void register(Object eventBus) {
+        EchoBackendRegistryBridge.registerEventBus(EFFECTS, eventBus);
+    }
 }

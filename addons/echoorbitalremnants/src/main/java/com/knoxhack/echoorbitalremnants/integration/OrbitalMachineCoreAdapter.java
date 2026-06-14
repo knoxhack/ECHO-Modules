@@ -75,7 +75,7 @@ public final class OrbitalMachineCoreAdapter {
                 machineState(machine),
                 OWNER,
                 null,
-                List.of(recipeBinding(machine)),
+                recipeBindings(machine),
                 List.of(),
                 new EchoMachineMaintenanceProfile(
                         maintenanceWear(machine),
@@ -240,6 +240,35 @@ public final class OrbitalMachineCoreAdapter {
                 List.of(),
                 Map.of("family", family(machine), "source", "OrbitalMachineCoreAdapter")
         );
+    }
+
+    private static List<EchoMachineRecipeBinding> recipeBindings(OrbitalMachineBlockEntity machine) {
+        EchoMachineRecipeBinding live = recipeBinding(machine);
+        String representative = representativeRecipeId(machine.kind());
+        if (representative == null || representative.equals(live.recipeId().value())) {
+            return List.of(live);
+        }
+        return List.of(live, new EchoMachineRecipeBinding(
+                EchoRecipeId.of(representative),
+                null,
+                family(machine),
+                0,
+                List.of(),
+                Map.of("family", family(machine), "source", "OrbitalMachineCoreAdapter", "representative", "true")));
+    }
+
+    private static String representativeRecipeId(MachineKind kind) {
+        return switch (kind) {
+            case OXYGEN_COMPRESSOR -> EchoOrbitalRemnants.id("machine_emergency_oxygen_cell").toString();
+            case FUEL_REFINERY -> EchoOrbitalRemnants.id("machine_fuel_tank").toString();
+            case HEAT_SHIELD_FABRICATOR -> EchoOrbitalRemnants.id("machine_heat_shield_plate").toString();
+            case ORBITAL_FABRICATOR -> EchoOrbitalRemnants.id("machine_life_support_module").toString();
+            case VACUUM_SMELTER -> EchoOrbitalRemnants.id("machine_orbital_alloy").toString();
+            case SOLAR_RECLAIMER -> EchoOrbitalRemnants.id("machine_navigation_chip").toString();
+            case SUIT_CHARGING_STATION -> EchoOrbitalRemnants.id("machine_oxygen_tank").toString();
+            case SIGNAL_ANALYZER -> EchoOrbitalRemnants.id("machine_orbit_survey_data").toString();
+            case ROCKET_ASSEMBLY_FRAME, NAVIGATION_CONSOLE, STATION_LIFE_SUPPORT_CORE -> null;
+        };
     }
 
     private static List<EchoMachineAutomationHook> automationHooks(OrbitalMachineBlockEntity machine) {

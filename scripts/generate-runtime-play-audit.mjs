@@ -292,17 +292,38 @@ async function evidenceManifestFor({ generatedAt, repoRoot, echoRoot, parityRepo
     for (const definition of definitions) {
       const absolute = path.join(runtimeRoot, definition.path)
       const report = await readJsonIfExists(absolute)
+      const status = reportStatus(report)
       const moduleIds = moduleIdsFromReport(report)
+      const expectedModuleIds = expectedModuleIdsForEvidence({
+        parityReport,
+        runtime,
+        requiredFor: definition.requiredFor,
+      })
+      const allModules = reportCoversAllModules(report, parityReport.modules.length)
+      const trustedModuleIds = status === 'PASS' ? moduleIds : []
+      const coveredModuleIds = status === 'PASS' && allModules
+        ? expectedModuleIds
+        : trustedModuleIds.filter((moduleId) => expectedModuleIds.includes(moduleId))
+      const missingModuleIds = expectedModuleIds.filter((moduleId) => !coveredModuleIds.includes(moduleId))
       runtimeEntries.push({
         ...definition,
         runtime,
         absolutePath: normalizePath(absolute),
         found: !!report,
-        status: reportStatus(report),
+        status,
         schema: string(report?.schema),
+        publishedModuleIds: moduleIds,
+        publishedModuleCount: moduleIds.length,
         moduleIds,
         moduleCount: moduleIds.length,
-        allModules: reportCoversAllModules(report, parityReport.modules.length),
+        expectedModuleIds,
+        expectedModuleCount: expectedModuleIds.length,
+        coveredModuleIds,
+        coveredModuleCount: coveredModuleIds.length,
+        missingModuleIds,
+        missingModuleCount: missingModuleIds.length,
+        allModules,
+        coversExpectedModules: expectedModuleIds.length > 0 && missingModuleIds.length === 0,
         blockers: array(report?.blockers).filter((item) => typeof item === 'string'),
         sourceReports: array(report?.sourceReports),
         parseError: string(report?.parseError),
@@ -338,8 +359,9 @@ async function manualAcceptanceMatrixFor({ generatedAt, echoRoot, packAudit }) {
     const checkDetails = {}
     for (const check of REQUIRED_PACK_CHECKS) {
       const checkValue = report?.checks?.[check] ?? report?.checkDetails?.[check] ?? report?.[check]
-      checks[check] = checkPassed(checkValue)
-      checkDetails[check] = checkDetail(checkValue)
+      const detail = await checkDetail(checkValue, { packRoot, repo: manifest.repo })
+      checks[check] = detail.passed === true
+      checkDetails[check] = detail
     }
     const blockers = []
     if (!report) {
@@ -388,8 +410,12 @@ function playRowFor({ row, evidenceManifest, manualAcceptanceMatrix }) {
   }
   const runtimeEvidence = runtimeEvidenceFor(row.runtime, evidenceManifest)
   const featureNeeds = featureNeedsFor(row.expectedFeatures ?? [])
+  const strictFullCoverage = Object.fromEntries(featureNeeds.map((need) => [
+    need,
+    strictFullSatisfiesNeed(row, need),
+  ]))
   for (const need of featureNeeds) {
-    const satisfied = runtimeEvidence.some((entry) =>
+    const satisfied = strictFullCoverage[need] || runtimeEvidence.some((entry) =>
       entry.status === 'PASS'
         && entry.requiredFor.includes(need)
         && reportCoversModule(entry, row.moduleId))
@@ -410,6 +436,7 @@ function playRowFor({ row, evidenceManifest, manualAcceptanceMatrix }) {
     runtime: row.runtime,
     ownerRepo: row.ownerRepo,
     expectedFeatures: row.expectedFeatures,
+    strictFullCoverage,
     packRefs: row.packRefs,
     runtimeEvidence: runtimeEvidence.map((entry) => ({
       key: entry.key,
@@ -467,6 +494,13 @@ function playFixBacklogFor({ generatedAt, playRows, evidenceManifest, manualAcce
   const items = []
   for (const entry of evidenceManifest.runtimeEvidence) {
     if (entry.status === 'PASS') continue
+    const unresolvedRows = playRows.filter((row) =>
+      row.runtime === entry.runtime
+        && featureNeedsFor(row.expectedFeatures ?? []).some((need) =>
+          entry.requiredFor.includes(need)
+            && !row.strictFullCoverage?.[need]
+            && !reportCoversModule(entry, row.moduleId)))
+    if (unresolvedRows.length === 0) continue
     items.push({
       id: `PLAY-EVIDENCE-${entry.runtime}-${entry.key}`.toUpperCase().replace(/[^A-Z0-9]+/g, '-'),
       priority: 'P0',
@@ -480,6 +514,10 @@ function playFixBacklogFor({ generatedAt, playRows, evidenceManifest, manualAcce
       requiredFor: entry.requiredFor,
       modules: entry.moduleIds,
       affectedModuleCount: entry.allModules ? 'all' : entry.moduleCount,
+      expectedModuleCount: entry.expectedModuleCount,
+      coveredModuleCount: entry.coveredModuleCount,
+      missingModuleCount: entry.missingModuleCount,
+      missingModuleIds: entry.missingModuleIds,
       evidencePath: relativeDisplayPath(entry),
       blockers: entryBlockers(entry),
       recommendedFix: recommendedFixForEvidence(entry),
@@ -490,7 +528,7 @@ function playFixBacklogFor({ generatedAt, playRows, evidenceManifest, manualAcce
   for (const row of playRows) {
     const runtimeEvidence = row.runtimeEvidence ?? []
     for (const need of featureNeedsFor(row.expectedFeatures ?? [])) {
-      const satisfied = runtimeEvidence.some((entry) =>
+      const satisfied = row.strictFullCoverage?.[need] || runtimeEvidence.some((entry) =>
         entry.status === 'PASS'
           && entry.requiredFor.includes(need)
           && entry.moduleCovered)
@@ -593,6 +631,17 @@ function recommendedFixForCoverage(runtime, need) {
   return `Expand Standalone strict-play ${need} evidence to cover every module that declares the related feature bucket.`
 }
 
+function expectedModuleIdsForEvidence({ parityReport, runtime, requiredFor }) {
+  return unique(array(parityReport.rows)
+    .filter((row) => row.runtime === runtime)
+    .filter((row) => {
+      const needs = featureNeedsFor(row.expectedFeatures ?? [])
+      return requiredFor.some((need) => needs.includes(need))
+    })
+    .map((row) => row.moduleId)
+    .filter((moduleId) => typeof moduleId === 'string' && moduleId.trim()))
+}
+
 function ownerRepoForRuntime(runtime) {
   return RUNTIME_REPO_NAMES[runtime] ?? 'ECHO-Modules'
 }
@@ -630,10 +679,10 @@ function markdownPlayAudit(playAudit, evidenceManifest, manualAcceptanceMatrix) 
   lines.push('')
   lines.push('## Evidence Manifest')
   lines.push('')
-  lines.push('| Runtime | Evidence | Status | Found | Modules | Path |')
-  lines.push('| --- | --- | --- | --- | ---: | --- |')
+  lines.push('| Runtime | Evidence | Status | Found | Covered | Expected | Missing | Path |')
+  lines.push('| --- | --- | --- | --- | ---: | ---: | ---: | --- |')
   for (const entry of evidenceManifest.runtimeEvidence) {
-    lines.push(`| ${entry.runtime} | ${entry.key} | ${entry.status || 'missing'} | ${entry.found ? 'yes' : 'no'} | ${entry.moduleCount} | \`${entry.path}\` |`)
+    lines.push(`| ${entry.runtime} | ${entry.key} | ${entry.status || 'missing'} | ${entry.found ? 'yes' : 'no'} | ${entry.coveredModuleCount ?? entry.moduleCount} | ${entry.expectedModuleCount ?? ''} | ${entry.missingModuleCount ?? ''} | \`${entry.path}\` |`)
   }
   lines.push('')
   lines.push('## Pack Acceptance')
@@ -678,7 +727,10 @@ function markdownPlayFixBacklog(backlog) {
       if (item.runtimes.length > 0) lines.push(`- Runtime: ${item.runtimes.join(', ')}`)
       if (item.requiredFor.length > 0) lines.push(`- Required proof: ${item.requiredFor.join(', ')}`)
       lines.push(`- Affected modules: ${item.affectedModuleCount}`)
+      if (typeof item.expectedModuleCount === 'number') lines.push(`- Expected module coverage: ${item.coveredModuleCount}/${item.expectedModuleCount}`)
+      if (typeof item.missingModuleCount === 'number') lines.push(`- Missing module coverage: ${item.missingModuleCount}`)
       if (item.evidencePath) lines.push(`- Evidence: \`${item.evidencePath}\``)
+      if (item.missingModuleIds?.length > 0) lines.push(`- Missing modules: ${inlineList(item.missingModuleIds, 40)}`)
       if (item.modules.length > 0) lines.push(`- Modules: ${inlineList(item.modules, 40)}`)
       if (item.blockers.length > 0) lines.push(`- First blocker: ${item.blockers[0]}`)
       lines.push(`- Recommended fix: ${item.recommendedFix}`)
@@ -695,13 +747,13 @@ function runtimeEvidenceFor(runtime, evidenceManifest) {
 function featureNeedsFor(features) {
   const needs = new Set(['lifecycle'])
   if (features.length > 0) needs.add('content')
-  if (features.some((feature) => ['gui', 'hud', 'screen', 'inventory_overlay', 'terminal', 'index', 'holomap', 'lens', 'audio'].includes(feature))) {
+  if (features.some((feature) => ['gui', 'hud', 'screen', 'inventory_overlay', 'terminal', 'index', 'holomap', 'lens'].includes(feature))) {
     needs.add('ui')
   }
-  if (features.some((feature) => ['block_actions', 'machines', 'missions'].includes(feature))) {
+  if (features.some((feature) => ['block_actions', 'machines'].includes(feature))) {
     needs.add('actions')
   }
-  if (features.some((feature) => ['blocks', 'items', 'entities', 'machines'].includes(feature))) {
+  if (features.some((feature) => ['blocks', 'items', 'machines'].includes(feature))) {
     needs.add('blockItems')
   }
   if (features.includes('worldgen')) needs.add('worldgen')
@@ -709,6 +761,34 @@ function featureNeedsFor(features) {
     needs.add('saveNetwork')
   }
   return [...needs].sort()
+}
+
+function strictFullSatisfiesNeed(row, need) {
+  if (row.strictFullBlockers?.length) return false
+  if (row.result && row.result !== 'pass') return false
+  if (need === 'lifecycle') {
+    return ['verified', 'compiled'].includes(row.artifactStatus)
+      && row.entrypointStatus === 'lifecycle-runs'
+  }
+  if (need === 'content') {
+    return ['host-mutated', 'playable'].includes(row.contentStatus)
+  }
+  if (need === 'ui') {
+    return row.uiSurfaceStatus === 'visible/actionable'
+  }
+  if (need === 'actions') {
+    return row.actionRouteStatus === 'mutates gameplay'
+  }
+  if (need === 'blockItems') {
+    return row.blockItemStatus === 'place/use/break verified'
+  }
+  if (need === 'worldgen') {
+    return row.worldgenStatus === 'generated in runtime'
+  }
+  if (need === 'saveNetwork') {
+    return row.saveNetworkStatus === 'save/reload or sync verified'
+  }
+  return false
 }
 
 function packRowsFor(row, manualAcceptanceMatrix) {
@@ -720,7 +800,10 @@ function packRowsFor(row, manualAcceptanceMatrix) {
 }
 
 function reportCoversModule(entry, moduleId) {
-  return entry.allModules || entry.moduleIds?.includes(moduleId) || entry.moduleIds?.includes('*')
+  return entry.allModules
+    || entry.coveredModuleIds?.includes(moduleId)
+    || entry.moduleIds?.includes(moduleId)
+    || entry.moduleIds?.includes('*')
 }
 
 function reportCoversAllModules(report, expectedCount) {
@@ -783,35 +866,86 @@ function reportStatus(report) {
   return value
 }
 
-function checkPassed(value) {
-  if (value === true || typeof value === 'string') return false
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false
+async function checkPassed(value, context = {}) {
+  return (await checkDetail(value, context)).passed === true
+}
+
+async function checkDetail(value, context = {}) {
+  if (value === true || typeof value === 'string') {
+    const status = value === true || normalizedPassStatus(value) === 'PASS'
+      ? 'PENDING_EVIDENCE'
+      : (normalizedPassStatus(value) || 'MISSING')
+    return {
+      status,
+      passed: false,
+      evidence: [],
+      evidenceDetails: [],
+      notes: '',
+      owner: '',
+      blockers: status === 'PENDING_EVIDENCE' ? ['PASS check is missing evidence references.'] : [],
+    }
+  }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return { status: 'MISSING', passed: false, evidence: [], evidenceDetails: [], notes: '', owner: '', blockers: [] }
+  }
   const evidence = array(value.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0)
   const passSignal = value.passed === true
     || value.pass === true
     || normalizedPassStatus(value.status ?? value.result ?? value.state) === 'PASS'
-  return passSignal && evidence.length > 0
-}
-
-function checkDetail(value) {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) {
-    return { status: checkPassed(value) ? 'PASS' : 'MISSING', evidence: [] }
-  }
+  const evidenceDetails = await Promise.all(evidence.map((reference) => evidenceReferenceDetail(reference, context)))
+  const passed = passSignal && evidenceDetails.length > 0 && evidenceDetails.every((entry) => entry.resolvable)
+  const pendingStatus = normalizedPassStatus(value.status ?? value.result ?? value.state) === 'PASS'
+    ? 'PENDING_EVIDENCE'
+    : (normalizedPassStatus(value.status ?? value.result ?? value.state) || 'MISSING')
+  const blockers = []
+  if (passSignal && evidence.length === 0) blockers.push('PASS check is missing evidence references.')
+  blockers.push(...evidenceDetails
+    .filter((entry) => !entry.resolvable)
+    .map((entry) => `Evidence reference is not resolvable: ${entry.reference}`))
   return {
-    status: checkPassed(value)
-      ? 'PASS'
-      : (normalizedPassStatus(value.status ?? value.result ?? value.state) === 'PASS' ? 'PENDING_EVIDENCE' : (normalizedPassStatus(value.status ?? value.result ?? value.state) || 'MISSING')),
-    evidence: array(value.evidence).filter((item) => typeof item === 'string' && item.trim().length > 0),
+    status: passed ? 'PASS' : pendingStatus,
+    passed,
+    evidence,
+    evidenceDetails,
     notes: string(value.notes),
     owner: string(value.owner),
+    blockers: passed ? [] : blockers,
   }
+}
+
+async function evidenceReferenceDetail(reference, { packRoot = '', repo = '' } = {}) {
+  const value = string(reference).trim()
+  if (!value) return { reference: value, kind: 'empty', resolvable: false }
+  if (/^[a-z][a-z0-9+.-]*:\/\//iu.test(value)) {
+    return { reference: value, kind: 'external_url', resolvable: true }
+  }
+  const localPath = resolveEvidenceReference(value, { packRoot, repo })
+  if (!localPath) return { reference: value, kind: 'invalid_local_path', resolvable: false }
+  const found = await exists(localPath)
+  return {
+    reference: value,
+    kind: 'local_file',
+    resolvable: found,
+    path: normalizePath(localPath),
+  }
+}
+
+function resolveEvidenceReference(reference, { packRoot, repo }) {
+  if (/^[a-z]:[\\/]/iu.test(reference) || path.isAbsolute(reference)) {
+    return path.resolve(reference)
+  }
+  if (repo && reference.startsWith(`${repo}/`)) {
+    return path.resolve(path.dirname(packRoot), reference)
+  }
+  if (reference.includes('\0') || !packRoot) return ''
+  return path.resolve(packRoot, reference)
 }
 
 function normalizedPassStatus(value) {
   const normalized = string(value).trim().toUpperCase()
   if (['PASS', 'PASSED', 'SUCCESS', 'OK'].includes(normalized)) return 'PASS'
   if (['FAIL', 'FAILED', 'ERROR'].includes(normalized)) return 'FAIL'
-  if (['PENDING', 'TODO', 'NOT_RUN'].includes(normalized)) return 'PENDING'
+  if (['PENDING', 'PENDING_EVIDENCE', 'TODO', 'NOT_RUN'].includes(normalized)) return normalized === 'PENDING_EVIDENCE' ? 'PENDING_EVIDENCE' : 'PENDING'
   if (['PARTIAL', 'WARN', 'WARNING'].includes(normalized)) return 'PARTIAL'
   return normalized
 }

@@ -20,13 +20,48 @@ import net.minecraft.world.item.Items;
 
 public final class BlockworksMissionCoreIntegration {
     private static final Identifier CHAPTER = id("blockworks");
+    private static boolean registered;
+    private static boolean hookCoverageRegistered;
 
     private BlockworksMissionCoreIntegration() {
     }
 
     public static void register() {
-        EchoCoreServices.registerMissionContent(EchoBlockworks.MODID, BlockworksMissionCoreIntegration::registerContent);
-        BlockworksMissionHooks.registerCoverage();
+        registerHookCoverage();
+        registerWhenReady();
+    }
+
+    public static boolean registerWhenReady() {
+        if (registered) {
+            return true;
+        }
+        if (!itemStackComponentsBound()) {
+            return false;
+        }
+        try {
+            EchoCoreServices.registerMissionContent(EchoBlockworks.MODID, BlockworksMissionCoreIntegration::registerContent);
+            registered = true;
+            return true;
+        } catch (RuntimeException | LinkageError exception) {
+            registered = false;
+            EchoBlockworks.LOGGER.warn("Blockworks MissionCore content is not ready yet; it will be retried.", exception);
+            return false;
+        }
+    }
+
+    private static void registerHookCoverage() {
+        if (!hookCoverageRegistered) {
+            BlockworksMissionHooks.registerCoverage();
+            hookCoverageRegistered = true;
+        }
+    }
+
+    private static boolean itemStackComponentsBound() {
+        try {
+            return !new ItemStack(Items.STONE).isEmpty();
+        } catch (RuntimeException | LinkageError exception) {
+            return false;
+        }
     }
 
     public static void registerContent(IMissionRegistry registry) {

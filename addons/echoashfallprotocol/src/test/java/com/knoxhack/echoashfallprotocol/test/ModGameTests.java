@@ -197,6 +197,7 @@ import io.netty.buffer.Unpooled;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -2999,6 +3000,16 @@ public final class ModGameTests {
         ServerPlayer player = helper.makeMockServerPlayerInLevel();
         BlockPos playerPos = helper.absolutePos(new BlockPos(2, 2, 4));
         player.setPos(playerPos.getX() + 0.5D, playerPos.getY(), playerPos.getZ() + 0.5D);
+        LivingEntity unlitTarget = EntityType.VILLAGER.create(level, EntitySpawnReason.EVENT);
+        helper.assertTrue(unlitTarget != null,
+                "Villager target should spawn for unlit ash campfire control coverage");
+        if (unlitTarget == null) {
+            helper.succeed();
+            return;
+        }
+        BlockPos unlitTargetPos = helper.absolutePos(new BlockPos(10, 2, 4));
+        unlitTarget.setPos(unlitTargetPos.getX() + 0.5D, unlitTargetPos.getY(), unlitTargetPos.getZ() + 0.5D);
+        level.addFreshEntity(unlitTarget);
 
         BlockPos lit = new BlockPos(2, 2, 2);
         BlockPos unlit = new BlockPos(10, 2, 2);
@@ -3020,7 +3031,7 @@ public final class ModGameTests {
         nearLit.setPos(litZombiePos.getX() + 0.5D, litZombiePos.getY(), litZombiePos.getZ() + 0.5D);
         nearUnlit.setPos(unlitZombiePos.getX() + 0.5D, unlitZombiePos.getY(), unlitZombiePos.getZ() + 0.5D);
         nearLit.setTarget(player);
-        nearUnlit.setTarget(player);
+        nearUnlit.setTarget(unlitTarget);
         level.addFreshEntity(nearLit);
         level.addFreshEntity(nearUnlit);
 
@@ -3029,10 +3040,11 @@ public final class ModGameTests {
         helper.runAfterDelay(3L, () -> {
             helper.assertTrue(nearLit.getTarget() == null,
                     "Lit Ash Campfire scheduled shelter pulse should clear nearby hostile targets");
-            helper.assertTrue(nearUnlit.getTarget() == player,
+            helper.assertTrue(nearUnlit.getTarget() == unlitTarget,
                     "Unlit Ash Campfire should not clear hostile targets");
             nearLit.discard();
             nearUnlit.discard();
+            unlitTarget.discard();
             helper.succeed();
         });
     }
@@ -6208,10 +6220,21 @@ public final class ModGameTests {
             Class.forName("com.knoxhack.echoashfallprotocol.test.AshfallMachineCoreGameTests")
                     .getMethod("ashfallMachineCoreRuntimeSnapshotContract", GameTestHelper.class)
                     .invoke(null, helper);
+        } catch (InvocationTargetException exception) {
+            Throwable cause = exception.getCause();
+            if (cause instanceof RuntimeException runtimeException) {
+                throw runtimeException;
+            }
+            if (cause instanceof Error error) {
+                throw error;
+            }
+            helper.assertTrue(false, "Ashfall MachineCore runtime proof failed: "
+                    + (cause == null
+                    ? exception.getClass().getName() + ": " + exception.getMessage()
+                    : cause.getClass().getName() + ": " + cause.getMessage()));
         } catch (ReflectiveOperationException | LinkageError exception) {
             helper.assertTrue(false, "Ashfall MachineCore runtime proof is unavailable in this addon profile: "
-                    + exception.getMessage());
-            helper.succeed();
+                    + exception.getClass().getName() + ": " + exception.getMessage());
         }
     }
 
@@ -6689,6 +6712,7 @@ public final class ModGameTests {
         finishPlayer.getFoodData().setFoodLevel(20);
         ItemStack finishStack = new ItemStack(ModItems.CLEAN_WATER_BOTTLE.get(), 4);
         finishPlayer.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, finishStack);
+        int glassBottleBefore = countInventory(finishPlayer, Items.GLASS_BOTTLE);
         int drinkLedgerBefore = com.knoxhack.echo.adaptercore.EchoRuntimeMutationLedger.global().entries().size();
 
         ItemStack finishedStack = finishStack.finishUsingItem(helper.getLevel(), finishPlayer);
@@ -6700,8 +6724,10 @@ public final class ModGameTests {
                 "Completed stacked drink should leave remaining clean water in hand");
         helper.assertTrue(finishPlayer.getItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND).getCount() == 3,
                 "Completed stacked drink should consume exactly one clean water bottle");
-        helper.assertTrue(countInventory(finishPlayer, Items.GLASS_BOTTLE) == 1,
-                "Completed stacked drink should return exactly one glass bottle");
+        int glassBottleAfter = countInventory(finishPlayer, Items.GLASS_BOTTLE);
+        helper.assertTrue(glassBottleAfter == glassBottleBefore + 1,
+                "Completed stacked drink should return exactly one glass bottle; before="
+                        + glassBottleBefore + ", after=" + glassBottleAfter);
         helper.assertTrue(QuestData.get(finishPlayer).hasVisitedLocation("special", "water:clean_consumed"),
                 "Completed clean water drink should record the clean-water route marker through AdapterCore");
         var drinkLedgerEntries = com.knoxhack.echo.adaptercore.EchoRuntimeMutationLedger.global().entries();
@@ -8718,6 +8744,7 @@ public final class ModGameTests {
         Connection connection = new Connection(PacketFlow.SERVERBOUND);
         new EmbeddedChannel(connection);
         helper.getLevel().getServer().getPlayerList().placeNewPlayer(connection, player, cookie);
+        SaveMigrationHandler.ensureCurrent(player, "gametest_connected_player_login");
         return player;
     }
 
@@ -8754,6 +8781,7 @@ public final class ModGameTests {
 
     private static void saveAgent7ConnectedPlayer(GameTestHelper helper, ServerPlayer player) {
         try {
+            SaveMigrationHandler.ensureCurrent(player, "gametest_connected_player_save");
             Method save = helper.getLevel().getServer().getPlayerList().getClass()
                     .getSuperclass()
                     .getDeclaredMethod("save", ServerPlayer.class);
