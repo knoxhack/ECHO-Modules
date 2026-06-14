@@ -52,7 +52,7 @@ public class EchoOrbitalRemnants {
 
     EchoOrbitalRemnants() {
         this(null);
-    }
+}
 
     public EchoOrbitalRemnants(IEventBus modEventBus) {
         ModBlocks.register(modEventBus);
@@ -84,7 +84,9 @@ public class EchoOrbitalRemnants {
                 "com.knoxhack.echoorbitalremnants.test.ModGameTests");
 
         Config.registerEchoConfig();
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echoorbitalremnants.EchoOrbitalRemnantsClient");
+}
 
     private void commonSetup(Object event) {
         LOGGER.info("ECHO-7 orbital systems initialized. Quarantine route chain ready.");

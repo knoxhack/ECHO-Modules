@@ -18,6 +18,7 @@ function parseArgs(argv) {
     write: false,
     check: false,
     moduleDownloadBaseUrl: null,
+    packKeys: [],
   }
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index]
@@ -27,6 +28,10 @@ function parseArgs(argv) {
     else if (arg === '--module-release-tag') {
       const tag = argv[++index]
       options.moduleDownloadBaseUrl = `https://github.com/knoxhack/ECHO-Modules/releases/download/${tag}`
+    } else if (arg === '--pack') {
+      const packKey = argv[++index]
+      if (!packKey) throw new Error(`${arg} requires a value`)
+      options.packKeys.push(String(packKey).toLowerCase())
     } else {
       throw new Error(`Unknown argument: ${arg}`)
     }
@@ -438,6 +443,26 @@ function repoNameFor(packKey, laneKey) {
   return `${packRepoNames[packKey]}-${lanes[laneKey].label}-Edition`
 }
 
+function selectedPackKeys(selections) {
+  if (options.packKeys.length === 0) return new Set(Object.keys(selections.packs))
+  const selected = new Set()
+  for (const requested of options.packKeys) {
+    for (const packKey of Object.keys(selections.packs)) {
+      const ids = new Set([
+        packKey,
+        ...Object.keys(lanes).map((laneKey) => packIdFor(packKey, laneKey)),
+      ])
+      if (ids.has(requested)) selected.add(packKey)
+    }
+  }
+  for (const requested of options.packKeys) {
+    if (![...selected].some((packKey) => packKey === requested || Object.keys(lanes).some((laneKey) => packIdFor(packKey, laneKey) === requested))) {
+      throw new Error(`Unknown pack filter: ${requested}`)
+    }
+  }
+  return selected
+}
+
 function versionFor(moduleId, descriptors) {
   const descriptor = descriptors.get(moduleId)
   if (!descriptor) throw new Error(`No descriptor for ${moduleId}`)
@@ -658,37 +683,46 @@ function updatePackSnapshotObject(manifest, selection, lane, descriptors, releas
   }
   if (Array.isArray(manifest.files)) {
     const selected = new Set(selection)
-    manifest.files = manifest.files
-      .filter((file) => {
-        const moduleId = String(file?.moduleId ?? file?.id ?? '').toLowerCase()
-        return !moduleId || selected.has(moduleId)
-      })
-      .map((file) => {
-        const moduleId = String(file?.moduleId ?? file?.id ?? '').toLowerCase()
-        if (!moduleId || !selected.has(moduleId)) return file
-        const version = versionFor(moduleId, descriptors)
-        const artifactName = artifactNameFor(moduleId, version, lane)
-        const releaseArtifact = moduleReleaseArtifact(moduleId, lane)
+    const previousFilesById = entriesByModuleId(manifest.files)
+    const nonModuleFiles = manifest.files.filter((file) => {
+      const moduleId = String(file?.moduleId ?? file?.id ?? '').toLowerCase()
+      return !moduleId
+    })
+    manifest.files = [
+      ...requirements.map((requirement) => {
+        const moduleId = String(requirement.moduleId ?? requirement.id ?? '').toLowerCase()
+        const file = previousFilesById.get(moduleId) ?? {}
         const next = {
           ...file,
-          path: `${lane.installDir}/${artifactName}`,
-          assetName: artifactName,
-          artifactName,
+          id: file.id ?? moduleId,
           moduleId,
+          path: requirement.path,
+          assetName: requirement.assetName,
+          artifactName: requirement.artifactName,
+          artifactFamily: lane.artifactFamily,
           required: true,
-          side: file.side ?? 'both'
+          side: file.side ?? requirement.side ?? 'both'
         }
-        if (file.artifactFamily) next.artifactFamily = lane.artifactFamily
-        if (!(file.assetName === artifactName || file.artifactName === artifactName || file.path === next.path)) {
-          delete next.sha256
-          delete next.size
-        }
-        if (releaseArtifact && releaseArtifact.filename === artifactName) {
-          if (releaseArtifact.sha256) next.sha256 = releaseArtifact.sha256
-          if (Number.isFinite(releaseArtifact.size)) next.size = releaseArtifact.size
-        }
+        if (requirement.url) next.url = requirement.url
+        if (requirement.sha256) next.sha256 = requirement.sha256
+        else delete next.sha256
+        if (Number.isFinite(requirement.size)) next.size = requirement.size
+        else delete next.size
         return next
+      }),
+      ...nonModuleFiles
+    ]
+    for (const requirement of requirements) {
+      const moduleId = String(requirement.moduleId ?? requirement.id ?? '').toLowerCase()
+      const expectedPath = normalizeZipPath(requirement.path)
+      const matches = manifest.files.filter((file) => {
+        const fileModuleId = String(file?.moduleId ?? file?.id ?? '').toLowerCase()
+        return fileModuleId === moduleId && normalizeZipPath(file?.path) === expectedPath
       })
+      if (selected.has(moduleId) && matches.length !== 1) {
+        errors.push(`${manifest.packId ?? manifest.id ?? 'pack manifest'} files[] must contain exactly one ${moduleId} entry at ${expectedPath}; found ${matches.length}.`)
+      }
+    }
   }
   if ('moduleRequirementCount' in manifest) manifest.moduleRequirementCount = selection.length
   return requirements
@@ -1020,11 +1054,13 @@ async function main() {
   const descriptors = await collectDescriptors()
   moduleReleaseArtifacts = await loadModuleReleaseArtifacts()
   validateSelections(selections, descriptors)
+  const packFilters = selectedPackKeys(selections)
   if (errors.length > 0) {
     throw new Error(`Selection validation failed:\n${errors.map((error) => `- ${error}`).join('\n')}`)
   }
 
   for (const [packKey, selection] of Object.entries(selections.packs)) {
+    if (!packFilters.has(packKey)) continue
     for (const laneKey of Object.keys(lanes)) {
       const repoRoot = path.join(workspaceRoot, repoNameFor(packKey, laneKey))
       if (!existsSync(repoRoot)) {

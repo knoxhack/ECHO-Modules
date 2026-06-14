@@ -32,7 +32,9 @@ public final class EchoThemeCore {
         ModNetwork.registerPayloads();
         ThemeCoreConfig.registerEchoConfig();
         commonSetup();
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(null,
+                "com.knoxhack.echothemecore.client.EchoThemeCoreClient");
+}
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);

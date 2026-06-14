@@ -33,7 +33,9 @@ public class EchoBlockworks {
       Config.registerEchoConfig();
       EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
       EchoBackendLifecycleBridge.registerGameEventHandler(SERVER_STARTED_EVENT, this::onServerStarted);
-   }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echoblockworks.EchoBlockworksClient");
+}
 
    public static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(MODID, path);

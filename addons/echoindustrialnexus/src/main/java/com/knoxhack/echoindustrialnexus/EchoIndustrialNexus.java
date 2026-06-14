@@ -44,7 +44,7 @@ public class EchoIndustrialNexus {
 
    EchoIndustrialNexus() {
       this(null);
-   }
+}
 
    public EchoIndustrialNexus(IEventBus modEventBus) {
       var runtime = Agent9IndustrialNexusRuntimeAdapter.activateNativeHostEntrypoint();
@@ -73,7 +73,9 @@ public class EchoIndustrialNexus {
       EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
             "com.knoxhack.echoindustrialnexus.test.ModGameTests");
       Config.registerEchoConfig();
-   }
+      com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+           "com.knoxhack.echoindustrialnexus.EchoIndustrialNexusClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO Industrial Nexus online. Where survival becomes infrastructure.");

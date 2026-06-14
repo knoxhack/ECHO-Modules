@@ -21,7 +21,9 @@ public final class EchoBaseGrid {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, BaseGridNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerGameEventHandler(BaseGridCommands::onRegisterCommands);
         LOGGER.info("ECHO: Base Grid online.");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echobasegrid.EchoBaseGridClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, EchoBaseGrid::registerHoloMapIntegration);

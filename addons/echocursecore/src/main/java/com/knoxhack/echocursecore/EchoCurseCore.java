@@ -28,7 +28,9 @@ public final class EchoCurseCore {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, CurseCoreNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onPlayerTick);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echocursecore.EchoCurseCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

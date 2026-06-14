@@ -37,7 +37,7 @@ public class EchoPowerGrid {
 
     EchoPowerGrid() {
         this(null);
-    }
+}
 
     public EchoPowerGrid(IEventBus modEventBus) {
         var runtime = Agent9PowerGridRuntimeAdapter.activateNativeHostEntrypoint();
@@ -53,7 +53,9 @@ public class EchoPowerGrid {
         EchoBackendLifecycleBridge.registerGameEventHandler(SERVER_TICK_POST_EVENT, this::onServerTickEvent);
         EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
                 "com.knoxhack.echopowergrid.test.PowerGridGameTests");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echopowergrid.EchoPowerGridClient");
+}
 
     public void commonSetup() {
         LOGGER.info("ECHO PowerGrid online. Restore the grid. Power the signal.");

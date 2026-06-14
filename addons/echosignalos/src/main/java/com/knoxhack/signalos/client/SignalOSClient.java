@@ -26,9 +26,9 @@ public class SignalOSClient {
     public SignalOSClient(Object container) {
         EchoBackendLifecycleBridge.registerGameEventHandler(SignalOSClient::onKeyInput);
         EchoBackendLifecycleBridge.registerGameEventHandler(SignalOSClient::onCharacterTyped);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::onRegisterKeyMappings);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::onRegisterMenuScreens);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::onRegisterRenderers);
+        EchoBackendLifecycleBridge.registerModListener(container, ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(container, ClientModEvents::onRegisterMenuScreens);
+        EchoBackendLifecycleBridge.registerModListener(container, ClientModEvents::onRegisterRenderers);
         SignalNetClientRenderers.register();
         if (SignalOsModuleAccess.isLoaded("echorendercore")) {
             registerRenderCoreScreenIntegration();

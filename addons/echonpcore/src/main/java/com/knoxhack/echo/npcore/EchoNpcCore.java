@@ -31,7 +31,9 @@ public class EchoNpcCore {
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoNpcCoreCommands::register);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoNpcReplacementService::onEntityJoinLevel);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoNpcReplacementService::onEntityInteract);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echo.npcore.EchoNpcCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

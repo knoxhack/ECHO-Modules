@@ -27,7 +27,9 @@ public final class EchoSpellCore {
         ModCreativeTabs.register(modEventBus);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echospellcore.EchoSpellCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

@@ -27,7 +27,9 @@ public class EchoSoundCore {
         com.knoxhack.echosoundcore.integration.prime.SoundCorePrimeIntegration.register();
         SoundCoreNetwork.registerPayloads();
         commonSetup();
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(null,
+                "com.knoxhack.echosoundcore.EchoSoundCoreClient");
+}
 
     public void commonSetup() {
         LOGGER.info("ECHO: SoundCore online. Adaptive audio framework initializing.");

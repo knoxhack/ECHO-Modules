@@ -33,7 +33,9 @@ public class EchoAgricultureReclamation {
       EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
       EchoBackendLifecycleBridge.registerGameEventHandler(this::registerCommands);
       EchoBackendLifecycleBridge.registerGameEventHandler(ReclamationReloaders::addServerReloadListeners);
-   }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamationClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO Agriculture Reclamation online. Dead worlds do not get the final word.");

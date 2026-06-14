@@ -27,7 +27,9 @@ public class EchoStationfall {
         EchoBackendLifecycleBridge.registerGameEventHandler(stationfallEvents::onClone);
         EchoBackendLifecycleBridge.registerGameEventHandler(tooltipEvents::onItemTooltip);
         Config.registerEchoConfig();
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echostationfall.EchoStationfallClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

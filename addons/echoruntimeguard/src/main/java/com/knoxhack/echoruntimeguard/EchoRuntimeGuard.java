@@ -35,7 +35,7 @@ public final class EchoRuntimeGuard {
 
     EchoRuntimeGuard() {
         this(null);
-    }
+}
 
     public EchoRuntimeGuard(IEventBus modEventBus) {
         RuntimeGuardConfig.registerEchoConfig();
@@ -50,7 +50,9 @@ public final class EchoRuntimeGuard {
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoRuntimeGuard::resetTickBudgets);
         EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
                 "com.knoxhack.echoruntimeguard.registry.ModGameTests");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echoruntimeguard.EchoRuntimeGuardClient");
+}
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);

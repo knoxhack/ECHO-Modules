@@ -27,7 +27,9 @@ public final class EchoRitualCore {
         ModMenus.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echoritualcore.EchoRitualCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

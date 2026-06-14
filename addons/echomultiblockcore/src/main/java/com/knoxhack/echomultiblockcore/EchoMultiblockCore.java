@@ -37,7 +37,7 @@ public final class EchoMultiblockCore {
 
     EchoMultiblockCore() {
         this(null);
-    }
+}
 
     public EchoMultiblockCore(IEventBus modEventBus) {
         var runtime = Agent9MultiblockRuntimeAdapter.activateNativeHostEntrypoint();
@@ -60,7 +60,9 @@ public final class EchoMultiblockCore {
         EchoBackendLifecycleBridge.registerGameEventHandler(MultiblockRuntimeEvents::onPlayerLoggedIn);
         EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
                 "com.knoxhack.echomultiblockcore.registry.ModGameTests");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echomultiblockcore.EchoMultiblockCoreClient");
+}
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);

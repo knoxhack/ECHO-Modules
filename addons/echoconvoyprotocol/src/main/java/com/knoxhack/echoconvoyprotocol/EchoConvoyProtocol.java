@@ -45,7 +45,9 @@ public class EchoConvoyProtocol {
       EchoBackendLifecycleBridge.registerGameEventHandler(event -> ConvoyCommands.register(event));
       EchoBackendLifecycleBridge.registerGameEventHandler(ConvoyEvents::onPlayerTick);
       EchoBackendLifecycleBridge.registerGameEventHandler(ModTooltipEvents::onItemTooltip);
-   }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echoconvoyprotocol.EchoConvoyProtocolClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO Convoy Protocol initialized. Road crews are improvising.");

@@ -32,7 +32,9 @@ public final class EchoFamiliarCore {
         modEventBus.addListener((EntityAttributeCreationEvent event) -> ModEntities.registerAttributes(event));
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onPlayerTick);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echofamiliarcore.EchoFamiliarCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {

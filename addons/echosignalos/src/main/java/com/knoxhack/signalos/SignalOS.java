@@ -39,6 +39,8 @@ public class SignalOS {
         EchoBackendLifecycleBridge.registerGameEventHandler(SignalOsServerReloaders::addServerReloadListeners);
         EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
                 "com.knoxhack.signalos.registry.ModGameTests");
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.signalos.client.SignalOSClient");
     }
 
     private void commonSetup(Object event) {

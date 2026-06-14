@@ -37,7 +37,7 @@ public class EchoArmory {
 
    EchoArmory() {
       this(null);
-   }
+}
 
    public EchoArmory(IEventBus modEventBus) {
       ModDataComponents.register(modEventBus);
@@ -56,7 +56,9 @@ public class EchoArmory {
       EchoBackendLifecycleBridge.registerGameEventHandler(ITEM_CRAFTED_EVENT, ArmoryEvents::onItemCrafted);
       EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
          "com.knoxhack.echoarmory.registry.ModGameTests");
-   }
+      com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+           "com.knoxhack.echoarmory.EchoArmoryClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO Armory online. Modular survival is now mission-ready.");

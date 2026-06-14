@@ -37,7 +37,9 @@ public class EchoRelicTech {
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onAddReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerTick);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onRegisterCommands);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echorelictech.EchoRelicTechClient");
+}
 
     private void commonSetup(Object event) {
         LOGGER.info("ECHO: RelicTech online. Powerful enough to be exciting. Dangerous enough to respect.");

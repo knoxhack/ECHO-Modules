@@ -201,6 +201,18 @@ public class EchoAshfallProtocolClient {
         bootstrapClient();
     }
 
+    public EchoAshfallProtocolClient(Object modEventBus) {
+        bootstrapClient();
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
+                modEventBus, ClientModEvents::onRegisterLayerDefinitions);
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
+                modEventBus, ClientModEvents::onRegisterEntityRenderers);
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
+                modEventBus, ClientModEvents::onRegisterKeyMappings);
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
+                modEventBus, ClientModEvents::onRegisterMenuScreens);
+    }
+
     public static void bootstrapClient() {
         if (EchoRuntimeModules.isLoaded("echoterminal")) {
             AshfallTerminalIntegration.registerClient();

@@ -1,5 +1,6 @@
 package com.knoxhack.echo.adaptercore;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
@@ -8,6 +9,7 @@ import java.util.function.Consumer;
  */
 public final class EchoBackendLifecycleBridge {
     private static final String I_EVENT_BUS = "net.neoforged.bus.api.IEventBus";
+    private static final String MINECRAFT_CLIENT = "net.minecraft.client.Minecraft";
     private static final String REGISTER_GAME_TESTS_EVENT =
             "net.neoforged.neoforge.event.RegisterGameTestsEvent";
 
@@ -73,6 +75,39 @@ public final class EchoBackendLifecycleBridge {
         }
     }
 
+    public static boolean bootstrapClientEntrypoint(Object eventBus, String clientEntrypointClassName) {
+        if (clientEntrypointClassName == null || clientEntrypointClassName.isBlank() || !isClientRuntime()) {
+            return false;
+        }
+        Class<?> clientClass = resolveClass(clientEntrypointClassName);
+        if (clientClass == null) {
+            return false;
+        }
+        if (eventBus != null) {
+            for (Constructor<?> constructor : clientClass.getConstructors()) {
+                if (constructor.getParameterCount() == 1
+                        && constructor.getParameterTypes()[0].isAssignableFrom(eventBus.getClass())
+                        && construct(constructor, eventBus)) {
+                    return true;
+                }
+            }
+        } else {
+            for (Constructor<?> constructor : clientClass.getConstructors()) {
+                if (constructor.getParameterCount() == 1
+                        && !constructor.getParameterTypes()[0].isPrimitive()
+                        && construct(constructor, new Object[] { null })) {
+                    return true;
+                }
+            }
+        }
+        for (Constructor<?> constructor : clientClass.getConstructors()) {
+            if (constructor.getParameterCount() == 0 && construct(constructor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void runCommonSetupWork(Object event, Runnable work) {
         if (work == null) {
             return;
@@ -81,6 +116,10 @@ public final class EchoBackendLifecycleBridge {
             return;
         }
         work.run();
+    }
+
+    public static boolean isClientRuntime() {
+        return resolveClass(MINECRAFT_CLIENT) != null;
     }
 
     private static Object neoForgeEventBus() {
@@ -118,6 +157,15 @@ public final class EchoBackendLifecycleBridge {
             }
         }
         return false;
+    }
+
+    private static boolean construct(Constructor<?> constructor, Object... arguments) {
+        try {
+            constructor.newInstance(arguments);
+            return true;
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            return false;
+        }
     }
 
     private static boolean invokeStaticOneArgument(

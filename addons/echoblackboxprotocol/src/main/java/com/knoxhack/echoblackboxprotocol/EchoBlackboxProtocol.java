@@ -28,7 +28,7 @@ public class EchoBlackboxProtocol {
 
    EchoBlackboxProtocol() {
       this(null);
-   }
+}
 
    public EchoBlackboxProtocol(IEventBus modEventBus) {
       ModBlocks.register(modEventBus);
@@ -45,7 +45,9 @@ public class EchoBlackboxProtocol {
          ModEntities::registerAttributes);
       EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
          "com.knoxhack.echoblackboxprotocol.test.ModGameTests");
-   }
+      com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+           "com.knoxhack.echoblackboxprotocol.EchoBlackboxProtocolClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO-7 blackbox protocol initialized. Truth Engine cold-start accepted.");

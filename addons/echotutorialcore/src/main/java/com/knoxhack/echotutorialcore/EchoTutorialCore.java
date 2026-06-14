@@ -26,7 +26,7 @@ public class EchoTutorialCore {
 
     EchoTutorialCore() {
         this(null, null);
-    }
+}
 
     public EchoTutorialCore(IEventBus modEventBus, ModContainer modContainer) {
         ModAttachments.register(modEventBus);
@@ -42,7 +42,9 @@ public class EchoTutorialCore {
         EchoBackendLifecycleBridge.registerGameEventHandler(TutorialEventHandler::onBlockPlace);
         EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
                 "com.knoxhack.echotutorialcore.test.ModGameTests");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echotutorialcore.EchoTutorialCoreClient");
+}
 
     private void commonSetup(Object event) {
         LOGGER.info("ECHO: TutorialCore online. Ashfall deep, but not confusing.");

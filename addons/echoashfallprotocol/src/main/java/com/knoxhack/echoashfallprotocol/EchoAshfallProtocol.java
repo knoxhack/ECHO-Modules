@@ -64,7 +64,9 @@ public class EchoAshfallProtocol {
         EchoCommandRegistry.register(CompanionDroneCommands.command());
         EchoBackendLifecycleBridge.registerGameEventHandler(PLAYER_LOGGED_IN_EVENT, SaveMigrationHandler::onPlayerLogin);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+            "com.knoxhack.echoashfallprotocol.EchoAshfallProtocolClient");
+}
 
     private void registerDeferredContent(Object modEventBus) {
         ModDataComponents.register(modEventBus);

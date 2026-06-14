@@ -31,7 +31,7 @@ public class EchoLogisticsNetwork {
 
    EchoLogisticsNetwork() {
       this(null);
-   }
+}
 
    public EchoLogisticsNetwork(IEventBus modEventBus) {
       var runtime = Agent9LogisticsNetworkRuntimeAdapter.activateNativeHostEntrypoint();
@@ -52,7 +52,9 @@ public class EchoLogisticsNetwork {
          LogisticsReloaders::addServerReloadListeners);
       EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
          "com.knoxhack.echologisticsnetwork.registry.ModGameTests");
-   }
+      com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+           "com.knoxhack.echologisticsnetwork.EchoLogisticsNetworkClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO Logistics Network online. Supply chaos is now a routing problem.");

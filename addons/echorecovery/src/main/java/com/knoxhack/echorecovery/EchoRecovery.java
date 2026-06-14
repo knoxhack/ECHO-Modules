@@ -53,7 +53,9 @@ public class EchoRecovery {
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStopping);
         registerOptionalGameTests(modEventBus, "com.knoxhack.echorecovery.test.ModGameTests");
         ashfallLoaded = EchoRuntimeModules.isLoaded("echoashfallprotocol");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echorecovery.EchoRecoveryClient");
+}
 
     private void commonSetup(Object event) {
         LOGGER.info("ECHO Recovery online. Standalone recovery enabled.");

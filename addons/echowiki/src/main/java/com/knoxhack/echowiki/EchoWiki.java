@@ -38,7 +38,9 @@ public final class EchoWiki {
         EchoBackendLifecycleBridge.registerGameEventHandler(ADD_RELOAD_LISTENERS_EVENT, WikiReloaders::addServerReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(REGISTER_COMMANDS_EVENT, GuideBookCommands::register);
         LOGGER.info("ECHO: Wiki is preparing the Survival Codex.");
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echowiki.EchoWikiClient");
+}
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);

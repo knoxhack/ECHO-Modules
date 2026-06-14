@@ -51,7 +51,7 @@ public class EchoNexusProtocol {
 
    EchoNexusProtocol() {
       this(null);
-   }
+}
 
    public EchoNexusProtocol(IEventBus modEventBus) {
       ModBlocks.register(modEventBus);
@@ -82,7 +82,9 @@ public class EchoNexusProtocol {
       EchoBackendLifecycleBridge.registerOptionalGameTests(modEventBus,
          "com.knoxhack.echonexusprotocol.test.ModGameTests");
       Config.registerEchoConfig();
-   }
+      com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+           "com.knoxhack.echonexusprotocol.EchoNexusProtocolClient");
+}
 
    private void commonSetup(Object event) {
       LOGGER.info("ECHO-7 Nexus systems initialized. Reality field telemetry online.");

@@ -28,7 +28,9 @@ public final class EchoScriptCore {
         EchoCommandRegistry.register(EchoScriptCommands.root());
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onAddReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStarted);
-    }
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echo.scriptcore.client.EchoScriptCoreClient");
+}
 
     private void commonSetup(Object event) {
         EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
