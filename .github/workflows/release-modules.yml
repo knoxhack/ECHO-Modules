@@ -64,6 +64,11 @@ jobs:
             ../ECHO-Native-Platform/gradlew -p . generateGalacticSurveyModuleRelease --console=plain
             exit 0
           fi
+          if [ "$PLAYER_READY" = "true" ]; then
+            chmod +x ../ECHO-Native-Platform/gradlew
+            ../ECHO-Native-Platform/gradlew -p . buildEchoWorkspace -PechoAddonSet=all --console=plain
+            BUILT=1
+          fi
           if [ -n "$MODULE" ]; then
             if [ -x "addons/$MODULE/gradlew" ]; then
               (cd "addons/$MODULE" && ./gradlew build)
