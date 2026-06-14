@@ -286,11 +286,6 @@ function packManifestBase(edition, moduleRequirements, files, artifact) {
       type: 'neoforge',
       version: NEOFORGE_VERSION,
       minecraftLauncherVersionId: `neoforge-${NEOFORGE_VERSION}`,
-      installer: {
-        assetName: `neoforge-${NEOFORGE_VERSION}-installer.jar`,
-        sha256: 'f'.repeat(64),
-        installMode: 'client',
-      },
     }
     manifest.launch = {
       mainClass: 'net.neoforged.fml.startup.Client',
@@ -404,6 +399,7 @@ if (manifest.channel !== expected.channel) errors.push('manifest channel mismatc
 if (manifest.target !== expected.target) errors.push('manifest target mismatch')
 if ((manifest.moduleRequirements ?? []).length !== expected.moduleRequirements) errors.push(\`moduleRequirements must contain \${expected.moduleRequirements} entries\`)
 if (!manifest.files?.some((file) => file.moduleId === 'echoarcanadivisionprotocol')) errors.push('pack root protocol artifact is missing from files')
+if (manifest.loader?.installer?.sha256 === 'f'.repeat(64)) errors.push('NeoForge installer SHA-256 is still a placeholder')
 if (release.id !== expected.packId) errors.push('release id mismatch')
 if (release.releaseTag !== '${edition.releaseTag}') errors.push('release tag mismatch')
 
