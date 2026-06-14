@@ -40,10 +40,14 @@ public class EchoLensClient {
             GLFW.GLFW_KEY_LEFT_ALT,
             KEY_CATEGORY);
 
-    public EchoLensClient(Object container) {
+    public EchoLensClient() {
+        this(null);
+    }
+
+    public EchoLensClient(Object modEventBus) {
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoLensClient::onKeyInput);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoLensClient::onRenderGui);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
         if (LensModuleAccess.isLoaded("echoindex")) {
             registerIndexClientIntegration();
         }

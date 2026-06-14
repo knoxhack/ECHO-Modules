@@ -91,10 +91,14 @@ public final class EchoHoloMapClient {
                     GLFW.GLFW_KEY_BACKSLASH)));
 
     public EchoHoloMapClient() {
+        this(null);
+    }
+
+    public EchoHoloMapClient(Object modEventBus) {
         HoloMapClientChunkActions.register(BuiltinHoloMapClientChunkActionProvider.INSTANCE);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoHoloMapClient::onKeyInput);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::onRegisterKeyMappings);
-        EchoBackendLifecycleBridge.registerGameEventHandler(ClientModEvents::registerGuiLayers);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::registerGuiLayers);
         if (HoloMapModuleAccess.isLoaded("echoterminal")) {
             registerTerminalClientIntegration();
         }

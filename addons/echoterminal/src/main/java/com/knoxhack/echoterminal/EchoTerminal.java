@@ -18,7 +18,9 @@ import com.knoxhack.echoterminal.registry.ModMenus;
 import com.knoxhack.echoterminal.service.EchoTerminalCoreServices;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
@@ -43,6 +45,10 @@ public class EchoTerminal {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
         VanillaJourneyProgression.register();
         registerOptionalGameTests(modEventBus, "com.knoxhack.echoterminal.test.ModGameTests");
+
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
+            new EchoTerminalClient(modEventBus);
+        }
     }
 
     private void commonSetup(Object event) {

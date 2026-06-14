@@ -16,8 +16,10 @@ import com.knoxhack.echoindex.service.IndexSourceRecipeProvider;
 import com.knoxhack.echoindex.service.VanillaIndexRecipeProvider;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
@@ -34,6 +36,10 @@ public class EchoIndex {
         IndexCommands.register();
         IndexEvents.register();
         registerOptionalGameTests(modEventBus, "com.knoxhack.echoindex.test.ModGameTests");
+
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
+            new EchoIndexClient(modEventBus);
+        }
     }
 
     private void commonSetup(Object event) {

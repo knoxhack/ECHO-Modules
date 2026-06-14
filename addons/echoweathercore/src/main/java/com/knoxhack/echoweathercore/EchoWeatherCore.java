@@ -16,6 +16,8 @@ import com.knoxhack.echoweathercore.registry.WeatherCoreMenus;
 import com.knoxhack.echoweathercore.server.WeatherSleepHandler;
 import com.knoxhack.echoweathercore.server.WeatherStateManager;
 import com.mojang.logging.LogUtils;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 public class EchoWeatherCore {
@@ -37,6 +39,10 @@ public class EchoWeatherCore {
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStopping);
         EchoBackendLifecycleBridge.registerGameEventHandler(WeatherSleepHandler::onSleepFinished);
         WeatherCoreEvents.attach();
+
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
+            new EchoWeatherCoreClient(modEventBus);
+        }
     }
 
     private void commonSetup(Object event) {
