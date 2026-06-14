@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
@@ -18,6 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import dev.echo.nativeplatform.loader.NativeLoaderClasspathSupport;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -157,7 +157,8 @@ public final class EchoNativeAshfallSurfaceScreen extends Screen {
         state.put("moduleCount", modules().size());
         state.put("nativeDataRecordCount", number(dataSource.get("recordCount")));
         state.put("nativeDataSourcePath", textValue(dataSource, "sourcePath", ""));
-        state.put("moduleClasspath", System.getProperty("echo.native.moduleClasspath", ""));
+        state.put("moduleClasspath",
+                NativeLoaderClasspathSupport.nativeModuleClasspath("echo.native.moduleClasspath"));
         return Map.copyOf(state);
     }
 
@@ -429,12 +430,8 @@ public final class EchoNativeAshfallSurfaceScreen extends Screen {
     }
 
     private static List<ModuleInfo> modules() {
-        String classpath = System.getProperty("echo.native.moduleClasspath", "");
-        if (classpath.isBlank()) {
-            return List.of();
-        }
         List<ModuleInfo> modules = new ArrayList<>();
-        for (String entry : classpath.split(java.util.regex.Pattern.quote(File.pathSeparator))) {
+        for (String entry : NativeLoaderClasspathSupport.nativeModuleClasspathEntries("echo.native.moduleClasspath")) {
             if (entry == null || entry.isBlank()) {
                 continue;
             }

@@ -1,11 +1,10 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.IntSupplier;
 
+import dev.echo.nativeplatform.loader.NativeLoaderClasspathSupport;
 import dev.echo.nativeplatform.loader.NativeLoaderAshfallWorldStartupService;
 import dev.echo.nativeplatform.loader.NativeLoaderAshfallWorldStartupService.StartupPlan;
 import net.minecraft.SharedConstants;
@@ -285,20 +284,14 @@ public final class EchoNativeMainMenuScreen extends Screen {
     }
 
     private static List<String> nativeModuleNames() {
-        String classpath = System.getProperty("echo.native.moduleClasspath", "");
-        if (classpath.isBlank()) {
-            return List.of();
-        }
-        List<String> names = new ArrayList<>();
-        for (String entry : classpath.split(java.util.regex.Pattern.quote(File.pathSeparator))) {
-            String normalized = entry.replace('\\', '/');
-            int slash = normalized.lastIndexOf('/');
-            String name = slash >= 0 ? normalized.substring(slash + 1) : normalized;
-            if (!name.isBlank()) {
-                names.add(name);
-            }
-        }
-        return List.copyOf(names);
+        return NativeLoaderClasspathSupport.nativeModuleClasspathEntries("echo.native.moduleClasspath").stream()
+                .map(entry -> {
+                    String normalized = entry.replace('\\', '/');
+                    int slash = normalized.lastIndexOf('/');
+                    return slash >= 0 ? normalized.substring(slash + 1) : normalized;
+                })
+                .filter(name -> !name.isBlank())
+                .toList();
     }
 
     private void text(GuiGraphicsExtractor graphics, String value, int x, int y, int color) {
@@ -430,7 +423,7 @@ public final class EchoNativeMainMenuScreen extends Screen {
         public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
             super.extractRenderState(graphics, mouseX, mouseY, partialTick);
             graphics.text(this.font, "ECHO NATIVE MODULE INDEX", 34, 34, CYAN, false);
-            graphics.text(this.font, "Loaded from echo.native.moduleClasspath", 34, 50, MUTED, false);
+            graphics.text(this.font, "Loaded from native module classpath", 34, 50, MUTED, false);
             List<String> modules = nativeModuleNames();
             int y = 76;
             int maxRows = Math.max(1, (this.height - 126) / 12);
