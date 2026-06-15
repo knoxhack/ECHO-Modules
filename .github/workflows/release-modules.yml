@@ -143,10 +143,17 @@ jobs:
       - name: Verify module release artifacts
         run: node scripts/verify-module-release.mjs --release-dir dist/echo-module-release
 
+      - name: Prepare release archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf echo-module-release.tar.gz -C dist echo-module-release
+          sha256sum echo-module-release.tar.gz > echo-module-release.tar.gz.sha256
+
       - name: Attest module release artifacts
         uses: actions/attest@v4
         with:
-          subject-checksums: ECHO-Modules/dist/echo-module-release/checksums.sha256
+          subject-checksums: ECHO-Modules/echo-module-release.tar.gz.sha256
 
       - name: Create or update GitHub Release
         env:
@@ -178,8 +185,6 @@ jobs:
             git tag -f "$TAG" "$GITHUB_SHA"
             git push --force origin "refs/tags/$TAG"
           fi
-          tar -czf echo-module-release.tar.gz -C dist echo-module-release
-          sha256sum echo-module-release.tar.gz > echo-module-release.tar.gz.sha256
           mapfile -t FILES < <({
             printf '%s\n' \
               dist/echo-module-release/echo-release.json \
