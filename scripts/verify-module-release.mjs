@@ -202,7 +202,7 @@ async function verifyReleaseDir(releaseDir) {
   assert.ok(Array.isArray(release.modules) && release.modules.length > 0, 'release manifest must include modules')
   assert.equal(release.provenance?.generatedBy, 'scripts/generate-module-release.mjs', 'release manifest must record generator provenance')
   assert.equal(release.provenance?.attestation?.action, 'actions/attest@v4', 'release manifest must record attestation action')
-  assert.equal(release.provenance?.attestation?.subjectChecksums, 'checksums.sha256', 'release manifest must record checksum attestation subject')
+  assert.equal(release.provenance?.attestation?.subjectChecksums, 'echo-module-release.tar.gz.sha256', 'release manifest must record checksum attestation subject')
   assert.equal(release.contentGraphEvidence?.kind, 'content-graph-evidence', 'release manifest must record content graph evidence artifact')
   assert.equal(release.contentGraphEvidence?.filename, 'content-graph-evidence.json', 'release manifest content graph evidence filename mismatch')
   assert.equal(release.contentGraphEvidence?.schemaVersion, 'echo.content_graph.evidence.v1', 'release manifest content graph evidence schema mismatch')

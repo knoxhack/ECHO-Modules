@@ -81,7 +81,7 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.equal(release.schemaVersion, 'echo.module.release.v1')
   assert.equal(release.provenance.generatedBy, 'scripts/generate-module-release.mjs')
   assert.equal(release.provenance.attestation.action, 'actions/attest@v4')
-  assert.equal(release.provenance.attestation.subjectChecksums, 'checksums.sha256')
+  assert.equal(release.provenance.attestation.subjectChecksums, 'echo-module-release.tar.gz.sha256')
   assert.equal(release.contentGraphEvidence.kind, 'content-graph-evidence')
   assert.equal(release.contentGraphEvidence.filename, 'content-graph-evidence.json')
   assert.equal(release.contentGraphEvidence.runtimeTarget, 'content-graph')

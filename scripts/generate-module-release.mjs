@@ -566,7 +566,7 @@ function releaseProvenance() {
     generatedBy: 'scripts/generate-module-release.mjs',
     attestation: {
       action: 'actions/attest@v4',
-      subjectChecksums: 'checksums.sha256',
+      subjectChecksums: 'echo-module-release.tar.gz.sha256',
     },
   }
 }
