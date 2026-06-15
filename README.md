@@ -26,17 +26,25 @@ Run commands from the repository root.
 - `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release`
 - `node scripts/generate-module-release.mjs --module echoarmory`
 - `node scripts/generate-content-graph.mjs --all --write`
-- `node scripts/validate-content-graph.mjs --strict`
+- `node scripts/validate-content-graph.mjs --strict --sdk-root ..\ECHO-SDK`
 - `node scripts/test-generate-content-graph.mjs`
 - `node scripts/release-workflow-audit.mjs`
 
 ## Artifact Ownership
 
-Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, a `-content-graph.json` sidecar, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, `echo-addon-package.json` where applicable, and a per-module `.echo/content-graph/` tree embedded in every runtime archive.
+Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, a `-content-graph.json` sidecar, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, `echo-addon-package.json` where applicable, and a per-module `.echo/content-graph/` tree embedded in every runtime archive. The release root also owns `content-graph-evidence.json`, the aggregate `echo.content_graph.evidence.v1` artifact consumed by release tooling and UI surfaces.
 
 Strict player-facing releases are generated from compiled runtime jars. During release generation, compiled NeoForge and standalone jars are rewritten with the required descriptor sidecars before checksum calculation. `scripts/verify-module-release.mjs` opens every produced archive and rejects missing descriptors, missing NeoForge TOML, source-packaged runtime outputs, or checksum drift before the artifacts can be imported by the Release Index.
 
-Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
+Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `content-graph-evidence.json` and `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
+
+## Content Graph
+
+Every module release produces a canonical `.ECHO Content Graph` sidecar and embeds the same graph tree into each runtime archive. The release root additionally produces `content-graph-evidence.json`, a canonical summary of the same graphs. This gives launchers, runtimes, and review tools a runtime-neutral map of blocks, items, recipes, missions, UI intents, and their relationships without forcing every consumer to parse every sidecar.
+
+- Generate: `node scripts/generate-content-graph.mjs --all --write`
+- Validate: `node scripts/validate-content-graph.mjs --strict`
+- Docs: [docs/content-graph.md](docs/content-graph.md) and [ECHO-SDK/docs/schemas/content-graph.md](../ECHO-SDK/docs/schemas/content-graph.md)
 
 ## Docs Index
 

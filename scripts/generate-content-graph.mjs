@@ -12,6 +12,7 @@ const EDGE_SCHEMA = 'echo.content_graph.edge.v1'
 const GRAPH_SCHEMA = 'echo.content_graph.v1'
 const FEATURE_LIST_SCHEMA = 'echo.content_feature_list.v1'
 const EXPORT_PLAN_SCHEMA = 'echo.content_graph.export_plan.v1'
+const EVIDENCE_SCHEMA = 'echo.content_graph.evidence.v1'
 
 const NODE_KINDS = {
   MODULE: 'echo:module',
@@ -53,6 +54,7 @@ const EDGE_KINDS = {
 }
 
 const RUNTIME_TARGETS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'hytale']
+const EXPORT_PLAN_STATUSES = ['direct', 'adapter_required', 'fallback', 'blocked', 'not_applicable']
 
 const UI_INTENTS = [
   'selection_menu',
@@ -1263,6 +1265,133 @@ function generateProvenance(graph, moduleDir) {
   }
 }
 
+function hytaleStatusSummary(plan) {
+  const summary = Object.fromEntries(EXPORT_PLAN_STATUSES.map((status) => [status, 0]))
+  for (const node of plan?.nodes ?? []) {
+    if (typeof node?.status === 'string' && Object.hasOwn(summary, node.status)) {
+      summary[node.status] += 1
+    }
+  }
+  return summary
+}
+
+function hytaleBlockerSummaries(plan) {
+  const blockedNodes = (plan?.nodes ?? [])
+    .filter((node) => node?.status === 'blocked')
+    .map((node) => `${node.nodeId}${node.rationale ? `: ${node.rationale}` : ''}`)
+    .filter(Boolean)
+  if (blockedNodes.length > 0) return blockedNodes
+
+  if (Array.isArray(plan?.blockers)) {
+    return plan.blockers
+      .map((blocker) => {
+        if (typeof blocker === 'string') return blocker
+        if (blocker && typeof blocker === 'object') {
+          return `${blocker.nodeId ?? blocker.id ?? 'unknown'}${blocker.rationale ? `: ${blocker.rationale}` : ''}`
+        }
+        return ''
+      })
+      .filter(Boolean)
+  }
+
+  const blocked = Number(plan?.summary?.blocked ?? 0)
+  return blocked > 0 ? [`${blocked} Hytale node(s) blocked by summary count.`] : []
+}
+
+export function summarizeContentGraphEvidence(results, {
+  generatedAt = nowIso(),
+  source = 'ECHO-Modules/dist/echo-module-release',
+} = {}) {
+  const modules = []
+  const diagnostics = []
+  const hytaleSummary = Object.fromEntries(EXPORT_PLAN_STATUSES.map((status) => [status, 0]))
+  let nodeCount = 0
+  let edgeCount = 0
+  let featureCount = 0
+  let exportPlanCount = 0
+  let unresolvedReferenceCount = 0
+  let hytaleBlockerCount = 0
+
+  for (const result of results) {
+    const graph = result.graph ?? {}
+    const features = Array.isArray(result.features?.features) ? result.features.features : []
+    const plans = result.plans ?? {}
+    const hytale = plans.hytale
+    const blockers = hytaleBlockerSummaries(hytale)
+    const statusSummary = hytaleStatusSummary(hytale)
+    const unresolved = Array.isArray(graph.unresolvedReferences) ? graph.unresolvedReferences : []
+    const requiredUnresolved = unresolved.filter((ref) => ref?.required)
+    const validationIssues = requiredUnresolved.map((ref) => `Required unresolved reference ${ref.id}${ref.context ? ` (${ref.context})` : ''}`)
+
+    for (const [status, count] of Object.entries(statusSummary)) {
+      hytaleSummary[status] += count
+    }
+
+    const moduleNodeCount = Array.isArray(graph.nodes) ? graph.nodes.length : 0
+    const moduleEdgeCount = Array.isArray(graph.edges) ? graph.edges.length : 0
+    const moduleExportPlanCount = Object.keys(plans).length
+    nodeCount += moduleNodeCount
+    edgeCount += moduleEdgeCount
+    featureCount += features.length
+    exportPlanCount += moduleExportPlanCount
+    unresolvedReferenceCount += unresolved.length
+    hytaleBlockerCount += blockers.length
+
+    modules.push({
+      moduleId: result.moduleId,
+      version: result.version,
+      graphPath: `${result.moduleId}/${result.version}/.echo/content-graph/content-graph.json`,
+      schemaVersion: String(graph.schemaVersion ?? ''),
+      nodeCount: moduleNodeCount,
+      edgeCount: moduleEdgeCount,
+      featureCount: features.length,
+      exportPlanCount: moduleExportPlanCount,
+      unresolvedReferenceCount: unresolved.length,
+      hytaleBlockerCount: blockers.length,
+      validationState: validationIssues.length > 0 ? 'invalid' : blockers.length > 0 || unresolved.length > 0 ? 'warning' : 'valid',
+      hytaleBlockers: blockers,
+      validationIssues,
+    })
+
+    if (blockers.length > 0) {
+      diagnostics.push({
+        severity: 'warning',
+        code: 'HYTALE_BLOCKED',
+        path: `${result.moduleId}/${result.version}/.echo/content-graph/export-plans/hytale.json`,
+        message: `${result.moduleId} has ${blockers.length} Hytale blocked node(s).`,
+      })
+    }
+    for (const issue of validationIssues) {
+      diagnostics.push({
+        severity: 'error',
+        code: 'CONTENT_GRAPH_REQUIRED_UNRESOLVED_REFERENCE',
+        path: `${result.moduleId}/${result.version}/.echo/content-graph/content-graph.json`,
+        message: issue,
+      })
+    }
+  }
+
+  return {
+    schemaVersion: EVIDENCE_SCHEMA,
+    generatedAt,
+    source,
+    graphCount: results.length,
+    moduleCount: results.length,
+    nodeCount,
+    edgeCount,
+    featureCount,
+    exportPlanCount,
+    unresolvedReferenceCount,
+    hytaleBlockerCount,
+    validationState: diagnostics.some((diagnostic) => diagnostic.severity === 'error' || diagnostic.severity === 'fatal')
+      ? 'invalid'
+      : diagnostics.length > 0 ? 'warning' : 'valid',
+    hytaleSummary,
+    modules: modules.sort((left, right) => left.moduleId.localeCompare(right.moduleId)),
+    diagnostics,
+  }
+}
+
 export async function generateContentGraph({
   repoRoot = process.cwd(),
   moduleIds = [],
@@ -1322,6 +1451,7 @@ export async function generateContentGraph({
     results.push({
       moduleId,
       moduleDir: entry.moduleDir,
+      version: entry.descriptor.version || '0.1.0',
       nodeCount: nodes.length,
       edgeCount: edges.length,
       unresolvedCount: unresolved.length,

@@ -146,6 +146,56 @@ function dependencyBlocks(tomlText) {
     .filter((block) => /^\[\[dependencies\./u.test(block.trimStart()))
 }
 
+function assertContentGraphDocument(document, moduleRecord, context) {
+  assert.ok(document && typeof document === 'object' && !Array.isArray(document), `${context} must be a JSON object`)
+  assert.equal(document.schemaVersion, 'echo.content_graph.v1', `${context} must use echo.content_graph.v1`)
+  assert.equal(document.moduleId, moduleRecord.moduleId, `${context} moduleId must match release record`)
+  assert.ok(Array.isArray(document.modules), `${context} modules must be an array`)
+  assert.ok(document.modules.includes(moduleRecord.moduleId), `${context} modules must include ${moduleRecord.moduleId}`)
+  assert.ok(Array.isArray(document.nodes), `${context} nodes must be an array`)
+  assert.ok(Array.isArray(document.edges), `${context} edges must be an array`)
+  assert.ok(typeof document.generatedAt === 'string' && document.generatedAt.length > 0, `${context} must include generatedAt`)
+}
+
+function assertRuntimeArchiveContentGraph(zip, moduleRecord, label) {
+  const requiredEntries = [
+    '.echo/content-graph/content-graph.json',
+    '.echo/content-graph/features.json',
+    '.echo/content-graph/export-plans/hytale.json',
+  ]
+  for (const entry of requiredEntries) {
+    assert.ok(zip.entries.has(entry), `${label} must embed ${entry}`)
+  }
+  assertContentGraphDocument(
+    zip.json('.echo/content-graph/content-graph.json'),
+    moduleRecord,
+    `${label} embedded content graph`,
+  )
+  const features = zip.json('.echo/content-graph/features.json')
+  assert.ok(features && typeof features === 'object' && Array.isArray(features.features), `${label} features.json must include features array`)
+  const hytale = zip.json('.echo/content-graph/export-plans/hytale.json')
+  assert.ok(hytale && typeof hytale === 'object', `${label} Hytale export plan must be a JSON object`)
+  assert.equal(hytale.schemaVersion, 'echo.content_graph.export_plan.v1', `${label} Hytale export plan schema mismatch`)
+  assert.equal(hytale.target, 'hytale', `${label} Hytale export plan target mismatch`)
+  assert.ok(Array.isArray(hytale.nodes), `${label} Hytale export plan nodes must be an array`)
+  assert.ok(hytale.summary && typeof hytale.summary === 'object', `${label} Hytale export plan must include summary`)
+}
+
+function assertContentGraphEvidenceDocument(document, release) {
+  assert.ok(document && typeof document === 'object' && !Array.isArray(document), 'content-graph-evidence.json must be a JSON object')
+  assert.equal(document.schemaVersion, 'echo.content_graph.evidence.v1', 'content graph evidence schema mismatch')
+  assert.equal(document.graphCount, release.modules.length, 'content graph evidence graphCount must match release modules')
+  assert.equal(document.moduleCount, release.modules.length, 'content graph evidence moduleCount must match release modules')
+  assert.ok(document.nodeCount > 0, 'content graph evidence must count nodes')
+  assert.ok(document.edgeCount >= 0, 'content graph evidence must count edges')
+  assert.ok(document.featureCount >= 0, 'content graph evidence must count features')
+  assert.ok(document.exportPlanCount >= release.modules.length, 'content graph evidence must count export plans')
+  assert.ok(Number.isInteger(document.hytaleBlockerCount), 'content graph evidence must count Hytale blockers')
+  assert.ok(Array.isArray(document.modules), 'content graph evidence modules must be an array')
+  assert.equal(document.modules.length, release.modules.length, 'content graph evidence modules length must match release modules')
+  assert.ok(Array.isArray(document.diagnostics), 'content graph evidence diagnostics must be an array')
+}
+
 async function verifyReleaseDir(releaseDir) {
   const release = await readJson(path.join(releaseDir, 'echo-release.json'))
   assert.equal(release.schemaVersion, 'echo.module.release.v1')
@@ -153,11 +203,26 @@ async function verifyReleaseDir(releaseDir) {
   assert.equal(release.provenance?.generatedBy, 'scripts/generate-module-release.mjs', 'release manifest must record generator provenance')
   assert.equal(release.provenance?.attestation?.action, 'actions/attest@v4', 'release manifest must record attestation action')
   assert.equal(release.provenance?.attestation?.subjectChecksums, 'checksums.sha256', 'release manifest must record checksum attestation subject')
+  assert.equal(release.contentGraphEvidence?.kind, 'content-graph-evidence', 'release manifest must record content graph evidence artifact')
+  assert.equal(release.contentGraphEvidence?.filename, 'content-graph-evidence.json', 'release manifest content graph evidence filename mismatch')
+  assert.equal(release.contentGraphEvidence?.schemaVersion, 'echo.content_graph.evidence.v1', 'release manifest content graph evidence schema mismatch')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.sha256')), 'checksums.sha256 must exist')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.txt')), 'checksums.txt compatibility copy must exist')
+  assert.ok(await fileExists(path.join(releaseDir, 'content-graph-evidence.json')), 'content-graph-evidence.json must exist')
 
   const checksums = parseChecksums(await fs.readFile(path.join(releaseDir, 'checksums.sha256'), 'utf8'))
   assert.equal(checksums.get('echo-release.json'), await sha256File(path.join(releaseDir, 'echo-release.json')), 'echo-release.json checksum row missing')
+  assert.equal(
+    checksums.get('content-graph-evidence.json'),
+    await sha256File(path.join(releaseDir, 'content-graph-evidence.json')),
+    'content-graph-evidence.json checksum row missing',
+  )
+  assert.equal(
+    release.contentGraphEvidence.sha256,
+    await sha256File(path.join(releaseDir, 'content-graph-evidence.json')),
+    'release manifest content graph evidence sha256 mismatch',
+  )
+  assertContentGraphEvidenceDocument(await readJson(path.join(releaseDir, 'content-graph-evidence.json')), release)
   for (const moduleRecord of release.modules) {
     const moduleDir = path.join(releaseDir, moduleRecord.moduleId)
     assert.deepEqual(moduleRecord.artifacts.map((artifact) => artifact.filename).sort(), expectedArtifactNames(moduleRecord.moduleId, moduleRecord.version))
@@ -193,9 +258,24 @@ async function verifyReleaseDir(releaseDir) {
       }
     }
 
+    const contentGraphArtifact = moduleRecord.artifacts.find((artifact) => artifact.kind === 'content-graph')
+    assert.ok(contentGraphArtifact, `${moduleRecord.moduleId} content graph artifact missing`)
+    assert.equal(contentGraphArtifact.runtimeTarget, 'content-graph', `${moduleRecord.moduleId} content graph artifact target mismatch`)
+    assert.equal(contentGraphArtifact.buildMode, 'generated', `${moduleRecord.moduleId} content graph artifact must be generated`)
+    assert.ok(
+      contentGraphArtifact.contains.includes('.echo/content-graph/content-graph.json'),
+      `${moduleRecord.moduleId} content graph artifact must declare canonical graph content`,
+    )
+    assertContentGraphDocument(
+      await readJson(path.join(moduleDir, contentGraphArtifact.filename)),
+      moduleRecord,
+      `${moduleRecord.moduleId} content graph sidecar`,
+    )
+
     const echoAddon = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}.echo-addon`))
     assert.ok(echoAddon.entries.has('META-INF/echo.mod.json'), 'echo-addon must embed descriptor')
     assert.ok(echoAddon.entries.has('echo-addon-package.json'), 'echo-addon must embed package manifest')
+    assertRuntimeArchiveContentGraph(echoAddon, moduleRecord, `${moduleRecord.moduleId} echo-addon`)
     const packageManifest = echoAddon.json('echo-addon-package.json')
     assert.equal(packageManifest.schemaVersion, 'echo.addon.package.v1')
     assert.ok(Array.isArray(packageManifest.dependencies), 'package manifest dependencies must be an array')
@@ -214,6 +294,7 @@ async function verifyReleaseDir(releaseDir) {
     const neoforge = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-neoforge.jar`))
     assert.ok(neoforge.entries.has('META-INF/echo.mod.json'), 'NeoForge jar must embed descriptor')
     assert.ok(neoforge.entries.has('META-INF/neoforge.mods.toml'), 'NeoForge jar must embed neoforge.mods.toml')
+    assertRuntimeArchiveContentGraph(neoforge, moduleRecord, `${moduleRecord.moduleId} NeoForge jar`)
     const neoForgeToml = neoforge.text('META-INF/neoforge.mods.toml')
     assert.ok(!neoForgeToml.includes('${'), `${moduleRecord.moduleId} NeoForge TOML must not contain unresolved template placeholders`)
     assert.match(neoForgeToml, new RegExp(`modId\\s*=\\s*"${moduleRecord.moduleId}"`, 'u'), `${moduleRecord.moduleId} NeoForge TOML must declare the module id`)
@@ -224,6 +305,7 @@ async function verifyReleaseDir(releaseDir) {
 
     const standalone = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-standalone.jar`))
     assert.ok(standalone.entries.has('META-INF/echo.mod.json'), 'Standalone jar must embed descriptor')
+    assertRuntimeArchiveContentGraph(standalone, moduleRecord, `${moduleRecord.moduleId} Standalone jar`)
 
     const sources = await inspectZip(path.join(moduleDir, `${moduleRecord.moduleId}-${moduleRecord.version}-sources.jar`))
     assert.ok(sources.entries.has('META-INF/echo.mod.json'), 'sources jar must embed descriptor')

@@ -10,6 +10,8 @@ This file documents the release outputs expected for `echocommunitybridge` versi
 | `echocommunitybridge-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
 | `echocommunitybridge-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
 | `echocommunitybridge-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `echocommunitybridge-1.0.0-content-graph.json` | Required; Release-Index catalogable sidecar containing the canonical `.ECHO Content Graph`. |
+| `.echo/content-graph/*` | Required; embedded in every runtime archive and also available via the content-graph sidecar. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |

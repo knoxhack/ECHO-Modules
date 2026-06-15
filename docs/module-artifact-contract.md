@@ -13,11 +13,14 @@ For each module, generate:
 <module>-<version>.echo-addon
 <module>-<version>-standalone.jar
 <module>-<version>-sources.jar
+<module>-<version>-content-graph.json
 META-INF/echo.mod.json
 META-INF/neoforge.mods.toml
 echo-addon-package.json
 checksums.sha256
 ```
+
+The release root also includes `content-graph-evidence.json`, a single aggregate `echo.content_graph.evidence.v1` document for the whole module release.
 
 Applicability:
 
@@ -27,6 +30,8 @@ Applicability:
 | `<module>-<version>.echo-addon` | The module supports the ECHO native addon/module runtime. |
 | `<module>-<version>-standalone.jar` | The module supports the standalone runtime. |
 | `<module>-<version>-sources.jar` | Always, for traceability and developer debugging. |
+| `<module>-<version>-content-graph.json` | Always, a Release-Index-catalogable sidecar containing the canonical `.ECHO Content Graph`. |
+| `content-graph-evidence.json` | Always at the release root, aggregate release evidence for graph/module/node/edge/feature/export-plan/Hytale-blocker counts. |
 | `META-INF/echo.mod.json` | Always, embedded in each runtime artifact where applicable. |
 | `META-INF/neoforge.mods.toml` | NeoForge artifacts only. |
 | `echo-addon-package.json` | `.echo-addon` packages only. |
@@ -40,7 +45,7 @@ Use the repository release generator from `knoxhack/ECHO-Modules`:
 node scripts/generate-module-release.mjs
 ```
 
-The generator writes `dist/echo-module-release/` with per-module folders, `echo-release.json`, canonical `checksums.sha256`, and a `checksums.txt` compatibility copy. `echo-release.json` uses `schemaVersion: "echo.module.release.v1"` so Release Index imports can validate it without reshaping.
+The generator writes `dist/echo-module-release/` with per-module folders, `content-graph-evidence.json`, `echo-release.json`, canonical `checksums.sha256`, and a `checksums.txt` compatibility copy. `echo-release.json` uses `schemaVersion: "echo.module.release.v1"` and records the evidence artifact under `contentGraphEvidence` so Release Index imports can validate it without reshaping.
 
 By default it is strict: runtime artifacts are only emitted from existing built jars under `addons/<module>/build/libs`, and the command fails if a required runtime jar is missing. This prevents publishing placeholder runnable jars.
 
@@ -48,11 +53,12 @@ Compiled runtime jars are not copied blindly. The generator opens each compiled 
 
 | Runtime artifact | Required embedded metadata |
 | --- | --- |
-| `<module>-<version>-neoforge.jar` | `META-INF/echo.mod.json`, `META-INF/neoforge.mods.toml` |
-| `<module>-<version>-standalone.jar` | `META-INF/echo.mod.json` |
-| `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, `checksums.sha256`, optional `lib/<module>-<version>-runtime.jar` |
+| `<module>-<version>-neoforge.jar` | `META-INF/echo.mod.json`, `META-INF/neoforge.mods.toml`, `.echo/content-graph/*` |
+| `<module>-<version>-standalone.jar` | `META-INF/echo.mod.json`, `.echo/content-graph/*` |
+| `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, `checksums.sha256`, `.echo/content-graph/*`, optional `lib/<module>-<version>-runtime.jar` |
 
 Run `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release` after generation. The verifier opens every archive, checks sidecars, validates package dependencies, confirms manifest and checksum agreement, and rejects metadata-only claims.
+It also validates `content-graph-evidence.json` as the canonical release summary.
 
 Useful options:
 

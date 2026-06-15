@@ -20,9 +20,12 @@ requireText('attestations: write', 'attestations write permission')
 forbidText('artifact-metadata:', 'unsupported artifact-metadata permission')
 
 requireText('actions/attest@v4', 'actions/attest@v4 step')
-requireText('subject-checksums: dist/echo-module-release/checksums.sha256', 'checksum attestation subject')
+requireText('subject-checksums: ECHO-Modules/dist/echo-module-release/checksums.sha256', 'checksum attestation subject')
+requireText('sdk_ref:', 'optional SDK ref input for branch validation')
+requireText("ref: ${{ github.event_name == 'workflow_dispatch' && inputs.sdk_ref || 'main' }}", 'ECHO-SDK branch-aware checkout')
 requireText('node scripts/generate-module-release.mjs', 'module release generator invocation')
 requireText('node scripts/verify-module-release.mjs --release-dir dist/echo-module-release', 'release verifier invocation')
+requireText('node scripts/validate-content-graph.mjs --strict --sdk-root ../ECHO-SDK', 'strict content graph SDK schema validation')
 
 requireText('MODULE="${{ github.event.inputs.module || \'\' }}"', 'selected module input handling')
 requireText('find addons -mindepth 2 -maxdepth 2 -name gradlew -perm -111', 'all-module wrapper discovery')
@@ -30,7 +33,8 @@ requireText('player_ready=true requires compiled runtime jars or module-local Gr
 requireText('ARGS+=(--package-from-source)', 'development visibility source-packaging mode')
 requireText('gh release create "$TAG"', 'GitHub release creation')
 requireText('gh release upload "$TAG"', 'GitHub release upload fallback')
-requireText('! -name checksums.txt', 'checksum compatibility copy excluded from release upload')
+requireText("-o -name '*-content-graph.json'", 'content graph sidecar release upload')
+requireText('dist/echo-module-release/content-graph-evidence.json', 'content graph evidence release upload')
 
 if (errors.length) {
   console.error(errors.join('\n'))

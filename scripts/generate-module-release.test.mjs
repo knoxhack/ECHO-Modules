@@ -26,6 +26,16 @@ function jarEntries(jarPath) {
   return new Set(runJar(['tf', jarPath]).split(/\r?\n/u).filter(Boolean))
 }
 
+function expectedArtifactNames(moduleId, version) {
+  return [
+    `${moduleId}-${version}-content-graph.json`,
+    `${moduleId}-${version}-neoforge.jar`,
+    `${moduleId}-${version}-sources.jar`,
+    `${moduleId}-${version}-standalone.jar`,
+    `${moduleId}-${version}.echo-addon`,
+  ]
+}
+
 async function readJarEntry(jarPath, entryName) {
   const extractRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-module-jar-entry-'))
   runJar(['xf', jarPath, entryName], { cwd: extractRoot })
@@ -72,17 +82,25 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.equal(release.provenance.generatedBy, 'scripts/generate-module-release.mjs')
   assert.equal(release.provenance.attestation.action, 'actions/attest@v4')
   assert.equal(release.provenance.attestation.subjectChecksums, 'checksums.sha256')
+  assert.equal(release.contentGraphEvidence.kind, 'content-graph-evidence')
+  assert.equal(release.contentGraphEvidence.filename, 'content-graph-evidence.json')
+  assert.equal(release.contentGraphEvidence.runtimeTarget, 'content-graph')
+  assert.equal(release.contentGraphEvidence.buildMode, 'generated')
+  assert.equal(release.contentGraphEvidence.schemaVersion, 'echo.content_graph.evidence.v1')
+  assert.equal(
+    release.contentGraphEvidence.downloadUrl,
+    'https://github.com/knoxhack/ECHO-Modules/releases/download/test-release/content-graph-evidence.json',
+  )
   assert.equal(release.modules.length, 1)
   const moduleRecord = release.modules[0]
   assert.equal(moduleRecord.moduleId, 'echosample')
-  assert.deepEqual(moduleRecord.artifacts.map((artifact) => artifact.filename).sort(), [
-    'echosample-1.2.3-neoforge.jar',
-    'echosample-1.2.3-sources.jar',
-    'echosample-1.2.3-standalone.jar',
-    'echosample-1.2.3.echo-addon',
-  ])
+  assert.deepEqual(moduleRecord.artifacts.map((artifact) => artifact.filename).sort(), expectedArtifactNames('echosample', '1.2.3'))
   assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'compiled-runtime')
   assert.equal(moduleRecord.artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'compiled-runtime')
+  const contentGraphArtifact = moduleRecord.artifacts.find((artifact) => artifact.kind === 'content-graph')
+  assert.equal(contentGraphArtifact.buildMode, 'generated')
+  assert.equal(contentGraphArtifact.runtimeTarget, 'content-graph')
+  assert.ok(contentGraphArtifact.contains.includes('.echo/content-graph/content-graph.json'))
   const echoAddonArtifact = moduleRecord.artifacts.find((artifact) => artifact.kind === 'echo-addon')
   assert.equal(echoAddonArtifact.buildMode, 'compiled-runtime')
   assert.equal(
@@ -95,13 +113,35 @@ test('generates per-module release artifacts and metadata', async () => {
   await fs.access(path.join(outputDir, 'META-INF', 'echo.mod.json'))
   await fs.access(path.join(outputDir, 'META-INF', 'neoforge.mods.toml'))
   await fs.access(path.join(outputDir, 'echo-addon-package.json'))
+  await fs.access(path.join(outputDir, 'echosample-1.2.3-content-graph.json'))
+  await fs.access(path.join(outputDir, '1.2.3', '.echo', 'content-graph', 'features.json'))
+  await fs.access(path.join(outputDir, '1.2.3', '.echo', 'content-graph', 'export-plans', 'hytale.json'))
   await fs.access(path.join(repoRoot, 'dist', 'echo-module-release', 'echo-release.json'))
+  await fs.access(path.join(repoRoot, 'dist', 'echo-module-release', 'content-graph-evidence.json'))
   await fs.access(path.join(repoRoot, 'dist', 'echo-module-release', 'checksums.txt'))
+
+  const contentGraph = JSON.parse(await fs.readFile(path.join(outputDir, 'echosample-1.2.3-content-graph.json'), 'utf8'))
+  assert.equal(contentGraph.schemaVersion, 'echo.content_graph.v1')
+  assert.equal(contentGraph.moduleId, 'echosample')
+  assert.ok(Array.isArray(contentGraph.nodes))
+  assert.ok(Array.isArray(contentGraph.edges))
+  const contentGraphEvidence = JSON.parse(await fs.readFile(path.join(repoRoot, 'dist', 'echo-module-release', 'content-graph-evidence.json'), 'utf8'))
+  assert.equal(contentGraphEvidence.schemaVersion, 'echo.content_graph.evidence.v1')
+  assert.equal(contentGraphEvidence.graphCount, 1)
+  assert.equal(contentGraphEvidence.moduleCount, 1)
+  assert.ok(contentGraphEvidence.nodeCount > 0)
+  assert.ok(contentGraphEvidence.featureCount >= 0)
+  assert.ok(contentGraphEvidence.exportPlanCount >= 1)
+  assert.ok(Number.isInteger(contentGraphEvidence.hytaleBlockerCount))
+  assert.equal(contentGraphEvidence.modules[0].moduleId, 'echosample')
 
   const neoforgeEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-neoforge.jar'))
   assert.ok(neoforgeEntries.has('META-INF/echo.mod.json'))
   assert.ok(neoforgeEntries.has('META-INF/neoforge.mods.toml'))
   assert.ok(neoforgeEntries.has('dev/echo/sample/Compiled.class'))
+  assert.ok(neoforgeEntries.has('.echo/content-graph/content-graph.json'))
+  assert.ok(neoforgeEntries.has('.echo/content-graph/features.json'))
+  assert.ok(neoforgeEntries.has('.echo/content-graph/export-plans/hytale.json'))
   const neoforgeToml = await readJarEntry(path.join(outputDir, 'echosample-1.2.3-neoforge.jar'), 'META-INF/neoforge.mods.toml')
   assert.match(neoforgeToml, /modId="echosample"/u)
   assert.match(neoforgeToml, /versionRange="\[26\.1\.2,26\.2\)"/u)
@@ -110,6 +150,9 @@ test('generates per-module release artifacts and metadata', async () => {
   const standaloneEntries = jarEntries(path.join(outputDir, 'echosample-1.2.3-standalone.jar'))
   assert.ok(standaloneEntries.has('META-INF/echo.mod.json'))
   assert.ok(standaloneEntries.has('dev/echo/sample/Compiled.class'))
+  assert.ok(standaloneEntries.has('.echo/content-graph/content-graph.json'))
+  assert.ok(standaloneEntries.has('.echo/content-graph/features.json'))
+  assert.ok(standaloneEntries.has('.echo/content-graph/export-plans/hytale.json'))
 
   const addonPath = path.join(outputDir, 'echosample-1.2.3.echo-addon')
   const addonEntries = jarEntries(addonPath)
@@ -117,10 +160,14 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.ok(addonEntries.has('echo-addon-package.json'))
   assert.ok(addonEntries.has('checksums.sha256'))
   assert.ok(addonEntries.has('lib/echosample-1.2.3-runtime.jar'))
+  assert.ok(addonEntries.has('.echo/content-graph/content-graph.json'))
+  assert.ok(addonEntries.has('.echo/content-graph/features.json'))
+  assert.ok(addonEntries.has('.echo/content-graph/export-plans/hytale.json'))
   const addonChecksums = await readJarEntry(addonPath, 'checksums.sha256')
   assert.match(addonChecksums, /META-INF\/echo\.mod\.json/u)
   assert.match(addonChecksums, /echo-addon-package\.json/u)
   assert.match(addonChecksums, /lib\/echosample-1\.2\.3-runtime\.jar/u)
+  assert.match(addonChecksums, /\.echo\/content-graph\/content-graph\.json/u)
 })
 
 test('fails by default when runtime jars are missing', async () => {
@@ -145,15 +192,12 @@ test('can emit runtime-named archives from source when build outputs are absent'
   })
 
   const artifacts = release.modules[0].artifacts
-  assert.deepEqual(artifacts.map((artifact) => artifact.filename).sort(), [
-    'echosample-1.2.3-neoforge.jar',
-    'echosample-1.2.3-sources.jar',
-    'echosample-1.2.3-standalone.jar',
-    'echosample-1.2.3.echo-addon',
-  ])
+  assert.deepEqual(artifacts.map((artifact) => artifact.filename).sort(), expectedArtifactNames('echosample', '1.2.3'))
   assert.equal(artifacts.find((artifact) => artifact.kind === 'neoforge').buildMode, 'source-packaged')
   assert.equal(artifacts.find((artifact) => artifact.kind === 'standalone').buildMode, 'source-packaged')
+  assert.equal(artifacts.find((artifact) => artifact.kind === 'content-graph').buildMode, 'generated')
   const echoAddonArtifact = artifacts.find((artifact) => artifact.kind === 'echo-addon')
   assert.equal(echoAddonArtifact.buildMode, 'source-packaged')
   assert.ok(echoAddonArtifact.contains.includes('checksums.sha256'))
+  assert.ok(echoAddonArtifact.contains.includes('.echo/content-graph/content-graph.json'))
 })

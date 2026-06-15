@@ -20,6 +20,11 @@ on:
         required: false
         default: false
         type: boolean
+      sdk_ref:
+        description: "Optional ECHO-SDK ref for strict content graph schema validation. Defaults to main."
+        required: false
+        default: "main"
+        type: string
   push:
     tags:
       - "modules-v*"
@@ -45,6 +50,12 @@ jobs:
         with:
           repository: knoxhack/ECHO-Native-Platform
           path: ECHO-Native-Platform
+
+      - uses: actions/checkout@v4
+        with:
+          repository: knoxhack/ECHO-SDK
+          path: ECHO-SDK
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.sdk_ref || 'main' }}
 
       - uses: actions/setup-node@v4
         with:
@@ -126,6 +137,9 @@ jobs:
           fi
           node scripts/generate-module-release.mjs "${ARGS[@]}"
 
+      - name: Validate content graph evidence
+        run: node scripts/validate-content-graph.mjs --strict --sdk-root ../ECHO-SDK
+
       - name: Verify module release artifacts
         run: node scripts/verify-module-release.mjs --release-dir dist/echo-module-release
 
@@ -169,6 +183,7 @@ jobs:
           mapfile -t FILES < <({
             printf '%s\n' \
               dist/echo-module-release/echo-release.json \
+              dist/echo-module-release/content-graph-evidence.json \
               dist/echo-module-release/checksums.sha256 \
               echo-module-release.tar.gz \
               echo-module-release.tar.gz.sha256
@@ -177,6 +192,7 @@ jobs:
               -o -name '*-neoforge.jar' \
               -o -name '*-standalone.jar' \
               -o -name '*-sources.jar' \
+              -o -name '*-content-graph.json' \
             \)
           } | sort)
           if gh release view "$TAG" >/dev/null 2>&1; then

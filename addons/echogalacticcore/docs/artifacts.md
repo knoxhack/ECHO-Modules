@@ -10,6 +10,8 @@ This file documents the release outputs expected for `echogalacticcore` version 
 | `echogalacticcore-0.1.0-native-alpha.echo-addon` | Required for Galactic Survey Native Edition. |
 | `echogalacticcore-0.1.0-native-alpha-standalone.jar` | Required for Galactic Survey Standalone Edition. |
 | `echogalacticcore-0.1.0-native-alpha-sources.jar` | Always required for traceability and developer debugging. |
+| `echogalacticcore-0.1.0-native-alpha-content-graph.json` | Required; Release-Index catalogable sidecar containing the canonical `.ECHO Content Graph`. |
+| `.echo/content-graph/*` | Required; embedded in every runtime archive and also available via the content-graph sidecar. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required for NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |

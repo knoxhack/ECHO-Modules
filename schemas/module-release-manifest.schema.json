@@ -3,7 +3,7 @@
   "$id": "https://raw.githubusercontent.com/knoxhack/ECHO-Release-Index/main/modules/module-release-manifest.schema.json",
   "title": "ECHO Module Release Manifest",
   "type": "object",
-  "required": ["schemaVersion", "releaseId", "generatedAt", "provenance", "modules"],
+  "required": ["schemaVersion", "releaseId", "generatedAt", "provenance", "contentGraphEvidence", "modules"],
   "properties": {
     "schemaVersion": {
       "const": "echo.module.release.v1"
@@ -59,6 +59,37 @@
               "const": "checksums.sha256"
             }
           }
+        }
+      }
+    },
+    "contentGraphEvidence": {
+      "type": "object",
+      "required": ["kind", "filename", "sha256", "size", "runtimeTarget", "buildMode", "schemaVersion"],
+      "properties": {
+        "kind": {
+          "const": "content-graph-evidence"
+        },
+        "filename": {
+          "const": "content-graph-evidence.json"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "downloadUrl": {
+          "type": "string"
+        },
+        "runtimeTarget": {
+          "const": "content-graph"
+        },
+        "buildMode": {
+          "const": "generated"
+        },
+        "schemaVersion": {
+          "const": "echo.content_graph.evidence.v1"
         }
       }
     },
@@ -128,6 +159,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "buildMode": {
+                  "enum": ["compiled-runtime", "source-packaged", "generated", null]
                 }
               }
             }

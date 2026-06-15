@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { constants as zlibConstants, deflateRawSync, inflateRawSync } from 'node:zlib'
-import { generateContentGraph } from './generate-content-graph.mjs'
+import { generateContentGraph, summarizeContentGraphEvidence } from './generate-content-graph.mjs'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
 const MODULE_RELEASE_SCHEMA_VERSION = 'echo.module.release.v1'
@@ -792,7 +792,7 @@ export async function generateModuleRelease(options = {}) {
 
   // Generate and embed .ECHO Content Graph artifacts into release archives.
   console.log(`Generating .ECHO Content Graph artifacts for ${modules.length} module(s)...`)
-  await generateContentGraph({ repoRoot, write: true, outputRoot })
+  const contentGraphResults = await generateContentGraph({ repoRoot, write: true, outputRoot })
   for (const moduleRecord of modules) {
     const moduleOutDir = path.join(outputRoot, moduleRecord.moduleId)
     const graphPath = path.join(moduleOutDir, moduleRecord.version, '.echo', 'content-graph', 'content-graph.json')
@@ -812,6 +812,7 @@ export async function generateModuleRelease(options = {}) {
       })
     }
   }
+  applyArtifactDownloadUrls(modules, normalizeDownloadBaseUrl(options.downloadBaseUrl))
   for (const moduleRecord of modules) {
     const moduleOutDir = path.join(outputRoot, moduleRecord.moduleId)
     await embedContentGraphIntoModuleArtifacts({
@@ -823,13 +824,32 @@ export async function generateModuleRelease(options = {}) {
   }
 
   const provenance = releaseProvenance()
+  const generatedAt = new Date().toISOString()
+  const contentGraphEvidencePath = path.join(outputRoot, 'content-graph-evidence.json')
+  const contentGraphEvidence = summarizeContentGraphEvidence(contentGraphResults, {
+    generatedAt,
+    source: `ECHO-Modules/${path.relative(repoRoot, outputRoot).replace(/\\/g, '/')}`,
+  })
+  await writeJson(contentGraphEvidencePath, contentGraphEvidence)
+  const contentGraphEvidenceStat = await fs.stat(contentGraphEvidencePath)
+  const contentGraphEvidenceArtifact = {
+    kind: 'content-graph-evidence',
+    filename: 'content-graph-evidence.json',
+    sha256: await sha256File(contentGraphEvidencePath),
+    size: contentGraphEvidenceStat.size,
+    downloadUrl: options.downloadBaseUrl ? `${normalizeDownloadBaseUrl(options.downloadBaseUrl)}/content-graph-evidence.json` : '',
+    runtimeTarget: 'content-graph',
+    buildMode: 'generated',
+    schemaVersion: contentGraphEvidence.schemaVersion,
+  }
   const release = {
     schemaVersion: MODULE_RELEASE_SCHEMA_VERSION,
     releaseId: options.releaseId ?? `modules-${new Date().toISOString().replace(/[:.]/g, '-')}`,
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     sourceRepo: 'https://github.com/knoxhack/ECHO-Modules',
     commitSha: provenance.commitSha,
     provenance,
+    contentGraphEvidence: contentGraphEvidenceArtifact,
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)

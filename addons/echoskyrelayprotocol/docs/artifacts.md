@@ -11,6 +11,8 @@ version `0.1.0`.
 | `echoskyrelayprotocol-0.1.0.echo-addon` | Required for Sky Relay Native Edition. |
 | `echoskyrelayprotocol-0.1.0-standalone.jar` | Required for Sky Relay Standalone Edition. |
 | `echoskyrelayprotocol-0.1.0-sources.jar` | Always required for traceability and developer debugging. |
+| `echoskyrelayprotocol-0.1.0-content-graph.json` | Required; Release-Index catalogable sidecar containing the canonical `.ECHO Content Graph`. |
+| `.echo/content-graph/*` | Required; embedded in every runtime archive and also available via the content-graph sidecar. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |
