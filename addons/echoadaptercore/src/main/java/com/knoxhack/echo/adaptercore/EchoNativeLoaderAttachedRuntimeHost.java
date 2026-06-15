@@ -7,6 +7,8 @@ import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeCapabilityReque
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeEvent;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeItemStack;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationContext;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationProofKind;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationReceipt;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePacket;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePlayerRef;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePosition;
@@ -19,6 +21,7 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -615,14 +618,59 @@ public final class EchoNativeLoaderAttachedRuntimeHost extends EchoUnsupportedRu
         snapshot.put("adapterCoreEnteredNativeLoaderBackend", true);
         snapshot.put("runtimeHostId", runtimeHostId());
         return switch (status) {
-            case "MUTATED" -> adapterCoreLiveProofSatisfied(methodName, snapshot)
-                    ? NativeResult.mutated("Native Loader backend mutated live state.", snapshot)
+            case "MUTATED" -> adapterCoreMutationProofSatisfied(methodName, snapshot)
+                    ? NativeResult.mutated("Native Loader backend mutated live state.", snapshot,
+                    nativeLoaderReceipt(methodName, snapshot))
                     : NativeResult.failed("Native Loader backend mutation did not include release-grade live runtime proof.",
                             proofFailureSnapshot(methodName, snapshot));
             case "FAILED" -> NativeResult.failed("Native Loader backend attempted mutation and failed.", snapshot);
             case "UNSUPPORTED" -> NativeResult.unsupported("Native Loader backend does not support this surface.", snapshot);
             default -> NativeResult.noop("Native Loader backend did not mutate state.", snapshot);
         };
+    }
+
+    private NativeMutationReceipt nativeLoaderReceipt(String methodName, Map<String, Object> snapshot) {
+        String method = methodName == null ? "" : methodName;
+        return new NativeMutationReceipt(
+                "native-loader:" + method + ":" + String.valueOf(snapshot.getOrDefault("operationId", method)),
+                runtimeHostId(),
+                EchoAdapterConstants.MOD_ID,
+                EchoNativeRuntimeHost.interfaceForHostApi(method),
+                method,
+                "MUTATED",
+                nativeLoaderProofKind(method),
+                Map.of("nativeMethod", method, "backendClass", nativeLoaderBackend.getClass().getName()),
+                snapshot,
+                isSaveMutation(method),
+                isHudOrEventMutation(method),
+                String.valueOf(snapshot.getOrDefault("idempotencyKey", method)));
+    }
+
+    private static NativeMutationProofKind nativeLoaderProofKind(String methodName) {
+        if (isSaveMutation(methodName)) {
+            return NativeMutationProofKind.SAVE_WRITE;
+        }
+        if ("sendPacketHud".equals(methodName) || "registerNetworkPacket".equals(methodName)
+                || "syncServerClient".equals(methodName)) {
+            return NativeMutationProofKind.PACKET_EVENT;
+        }
+        if (isHudOrEventMutation(methodName)) {
+            return NativeMutationProofKind.HUD_EVENT;
+        }
+        return NativeMutationProofKind.HOST_STATE;
+    }
+
+    private static boolean isSaveMutation(String methodName) {
+        return "writeSaveData".equals(methodName) || "deleteSaveData".equals(methodName);
+    }
+
+    private static boolean isHudOrEventMutation(String methodName) {
+        return "emitEvent".equals(methodName)
+                || "publishRuntimeEvent".equals(methodName)
+                || "sendPacketHud".equals(methodName)
+                || "emitHud".equals(methodName)
+                || "registerNetworkPacket".equals(methodName)
+                || "syncServerClient".equals(methodName);
     }
 
     private static Map<String, Object> proofFailureSnapshot(String methodName, Map<String, Object> snapshot) {
@@ -645,6 +693,30 @@ public final class EchoNativeLoaderAttachedRuntimeHost extends EchoUnsupportedRu
         String proofField = requiredProofField(methodName);
         return (proofField.isBlank() || boolDeep(snapshot, proofField))
                 && saveDataMutationProofSatisfied(methodName, snapshot);
+    }
+
+    private static boolean adapterCoreMutationProofSatisfied(String methodName, Map<String, Object> snapshot) {
+        return adapterCoreLiveProofSatisfied(methodName, snapshot)
+                || typedBackendMutationReceiptSatisfied(snapshot);
+    }
+
+    private static boolean typedBackendMutationReceiptSatisfied(Map<String, Object> snapshot) {
+        Object receiptValue = snapshot.get("typedMutationReceipt");
+        if (!(receiptValue instanceof Map<?, ?> receipt)) {
+            return false;
+        }
+        if (!"MUTATED".equals(String.valueOf(receipt.get("status")))) {
+            return false;
+        }
+        Object evidenceValue = receipt.get("evidence");
+        if (!(evidenceValue instanceof Map<?, ?> evidence)) {
+            return false;
+        }
+        Object before = evidence.get("before");
+        Object after = evidence.get("after");
+        return before != null
+                && after != null
+                && !Objects.equals(before, after);
     }
 
     private static boolean saveDataMutationProofSatisfied(String methodName, Map<String, Object> snapshot) {

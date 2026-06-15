@@ -24,6 +24,14 @@ Provides `adapter.neoforge`, `adapter.echo_native`, `adapter.echo_runtime_standa
 
 Declared adapter runtimes: `echo_native`, `echo_runtime_standalone`, `neoforge`
 
+## Gameplay Mutation Spine
+
+AdapterCore is the authoritative gameplay mutation spine for beta runtime proof. `EchoNativeRuntimeHost.NativeResult` now distinguishes status from proof: `MUTATED` is accepted for release evidence only when it carries `NativeMutationReceipt` data with a release-grade proof kind.
+
+Required receipt fields include `operationId`, `runtimeHostId`, `moduleId`, `nativeInterface`, `nativeMethod`, `status`, `proofKind`, `beforeSummary`, `afterSummary`, `saveTouched`, `hudOrEventEmitted`, and `idempotencyKey`. `HOST_STATE`, `SAVE_WRITE`, `HUD_EVENT`, and `PACKET_EVENT` can satisfy release proof. `DIAGNOSTIC_ONLY` and `QUEUED_ONLY` never do.
+
+Ashfall is the first consumer path: first-join grants, drop-pod placement, teleport/respawn binding, save writes, HUD/packet feedback, machine use, ticks, capabilities, energy, and output events dispatch through AdapterCore and write receipt-backed ledger entries.
+
 ## Dependencies
 
 Required modules: `echocore`, `echoplatformcore`

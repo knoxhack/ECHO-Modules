@@ -1186,24 +1186,31 @@ public final class AshfallAdapterCoreMachineRuntimeHost extends EchoUnsupportedR
                     writePlayerMachineSave(player, "last_output_event", EVENT_OUTPUT_CREATED);
                 }
                 boolean blockSaved = markBlockEntityChanged(payload);
-                return NativeResult.mutated("Published machine.output_created through AdapterCore and live mission/HUD/save hooks.", copyPayload(payload, Map.of(
+                boolean liveEffect = missionAdvanced || player != null || blockSaved;
+                Map<String, Object> snapshot = copyPayload(payload, Map.of(
                         "eventPublished", true,
                         "missionAdvanced", missionAdvanced,
                         "powerMissionAdvanced", powerMissionAdvanced,
                         "outputMissionAdvanced", outputMissionAdvanced,
                         "hudVisible", player != null,
-                        "saveUpdated", true,
-                        "blockSaveUpdated", blockSaved)));
+                        "saveUpdated", player != null || blockSaved,
+                        "blockSaveUpdated", blockSaved));
+                return liveEffect
+                        ? NativeResult.mutated("Published machine.output_created through AdapterCore and live mission/HUD/save hooks.", snapshot)
+                        : NativeResult.noop("Machine output event had no live mission, HUD, player save, or block save effect.", snapshot);
             }
             if (ACTION_USE_BLOCK.equals(event.eventId())) {
                 if (player != null) {
                     writePlayerMachineSave(player, "last_used_machine", machineId);
                     writePlayerMachineSave(player, "last_used_at", Long.toString(context.gameTime()));
                 }
-                return NativeResult.mutated("Published machine use through AdapterCore player action path.", copyPayload(payload, Map.of(
-                        "eventPublished", true,
-                        "hudVisible", true,
-                        "saveUpdated", player != null)));
+                Map<String, Object> snapshot = copyPayload(payload, Map.of(
+                        "eventPublished", player != null,
+                        "hudVisible", player != null,
+                        "saveUpdated", player != null));
+                return player != null
+                        ? NativeResult.mutated("Published machine use through AdapterCore player action path.", snapshot)
+                        : NativeResult.noop("Machine use event had no online player save or HUD effect.", snapshot);
             }
             if (ACTION_STATE_CHANGED.equals(event.eventId())) {
                 boolean powerMissionAdvanced = player != null
@@ -1214,13 +1221,17 @@ public final class AshfallAdapterCoreMachineRuntimeHost extends EchoUnsupportedR
                     writePlayerMachineSave(player, "last_state_at", Long.toString(context.gameTime()));
                 }
                 boolean blockSaved = markBlockEntityChanged(payload);
-                return NativeResult.mutated("Published machine.state_changed through AdapterCore and live save hooks.", copyPayload(payload, Map.of(
+                boolean liveEffect = powerMissionAdvanced || player != null || blockSaved;
+                Map<String, Object> snapshot = copyPayload(payload, Map.of(
                         "eventPublished", true,
                         "missionAdvanced", powerMissionAdvanced,
                         "powerMissionAdvanced", powerMissionAdvanced,
                         "hudVisible", player != null,
-                        "saveUpdated", true,
-                        "blockSaveUpdated", blockSaved)));
+                        "saveUpdated", player != null || blockSaved,
+                        "blockSaveUpdated", blockSaved));
+                return liveEffect
+                        ? NativeResult.mutated("Published machine.state_changed through AdapterCore and live save hooks.", snapshot)
+                        : NativeResult.noop("Machine state event had no live mission, HUD, player save, or block save effect.", snapshot);
             }
             return NativeResult.unsupported("AdapterCore machine event id is not wired by this host.", Map.of(
                     "eventId", event.eventId(),
@@ -1263,11 +1274,14 @@ public final class AshfallAdapterCoreMachineRuntimeHost extends EchoUnsupportedR
                 saved = true;
             }
             boolean blockSaved = markBlockEntityChanged(data.payload());
-            return NativeResult.mutated("Wrote AdapterCore machine save data into live player/block persistent state.", Map.of(
+            Map<String, Object> snapshot = Map.of(
                     "scope", data.scope(),
                     "key", data.key(),
                     "playerSaveUpdated", saved,
-                    "blockSaveUpdated", blockSaved));
+                    "blockSaveUpdated", blockSaved);
+            return saved || blockSaved
+                    ? NativeResult.mutated("Wrote AdapterCore machine save data into live player/block persistent state.", snapshot)
+                    : NativeResult.noop("AdapterCore machine save data had no live player or block persistence target.", snapshot);
         }
 
         @Override

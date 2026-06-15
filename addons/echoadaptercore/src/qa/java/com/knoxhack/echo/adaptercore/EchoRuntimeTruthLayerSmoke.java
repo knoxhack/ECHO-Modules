@@ -7,6 +7,8 @@ import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeCapabilityReque
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeEvent;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeItemStack;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationContext;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationProofKind;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationReceipt;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePacket;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePlayerRef;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePosition;
@@ -48,7 +50,11 @@ public final class EchoRuntimeTruthLayerSmoke {
         registry.register(host, new EchoRuntimeHostCapabilities(
                 RUNTIME_HOST_ID,
                 Set.of("EchoNativeRuntimeHost.SaveData", "EchoNativeRuntimeHost.Events"),
-                Set.of(EchoCanonicalContentIds.EVENT_PLAYER_ITEM_CONSUMED),
+                Set.of(
+                        EchoCanonicalContentIds.EVENT_PLAYER_ITEM_CONSUMED,
+                        "adaptercore.metadata_only_mutation",
+                        "adaptercore.diagnostic_only_mutation",
+                        "adaptercore.queued_only_mutation"),
                 Set.of(EchoCanonicalContentIds.ITEM_CLEAN_WATER_BOTTLE),
                 true,
                 true,
@@ -75,6 +81,51 @@ public final class EchoRuntimeTruthLayerSmoke {
                     "events", truthHost.eventsPublished(),
                     "eventStatus", eventResult.status());
             return EchoRuntimeActionOutcome.of(before, saveResult, after, true, true);
+        });
+        dispatcher.registerAction(RUNTIME_HOST_ID, "adaptercore.metadata_only_mutation", (runtimeHost, action) ->
+                EchoRuntimeActionOutcome.of(
+                        Map.of(),
+                        NativeResult.mutated("Metadata-only mutation claim.", Map.of(
+                                "intendedMutation", true,
+                                "metadataOnly", true)),
+                        Map.of(),
+                        false,
+                        false));
+        dispatcher.registerAction(RUNTIME_HOST_ID, "adaptercore.diagnostic_only_mutation", (runtimeHost, action) -> {
+            Map<String, Object> before = Map.of("counter", 1);
+            Map<String, Object> after = Map.of("counter", 2);
+            NativeMutationReceipt receipt = receipt(
+                    "adaptercore.diagnostic_only_mutation",
+                    NativeMutationProofKind.DIAGNOSTIC_ONLY,
+                    before,
+                    after,
+                    false,
+                    false,
+                    action.context());
+            return EchoRuntimeActionOutcome.of(
+                    before,
+                    NativeResult.mutated("Diagnostic-only mutation claim.", Map.of("diagnosticOnly", true), receipt),
+                    after,
+                    false,
+                    false);
+        });
+        dispatcher.registerAction(RUNTIME_HOST_ID, "adaptercore.queued_only_mutation", (runtimeHost, action) -> {
+            Map<String, Object> before = Map.of("queueDepth", 1);
+            Map<String, Object> after = Map.of("queueDepth", 2);
+            NativeMutationReceipt receipt = receipt(
+                    "adaptercore.queued_only_mutation",
+                    NativeMutationProofKind.QUEUED_ONLY,
+                    before,
+                    after,
+                    false,
+                    false,
+                    action.context());
+            return EchoRuntimeActionOutcome.of(
+                    before,
+                    NativeResult.mutated("Queued-only mutation claim.", Map.of("queuedOnly", true), receipt),
+                    after,
+                    false,
+                    false);
         });
 
         NativeMutationContext context = new NativeMutationContext(
@@ -105,10 +156,55 @@ public final class EchoRuntimeTruthLayerSmoke {
                 null,
                 null,
                 context));
+        NativeResult metadataOnly = dispatcher.dispatch(new EchoRuntimeAction(
+                "adaptercore.metadata_only_mutation",
+                RUNTIME_HOST_ID,
+                Map.of("source", "truth_layer_smoke"),
+                player,
+                "minecraft:overworld",
+                null,
+                null,
+                context));
+        NativeResult diagnosticOnly = dispatcher.dispatch(new EchoRuntimeAction(
+                "adaptercore.diagnostic_only_mutation",
+                RUNTIME_HOST_ID,
+                Map.of("source", "truth_layer_smoke"),
+                player,
+                "minecraft:overworld",
+                null,
+                null,
+                context));
+        NativeResult queuedOnly = dispatcher.dispatch(new EchoRuntimeAction(
+                "adaptercore.queued_only_mutation",
+                RUNTIME_HOST_ID,
+                Map.of("source", "truth_layer_smoke"),
+                player,
+                "minecraft:overworld",
+                null,
+                null,
+                context));
 
         NativeResult legacyNoop = new NativeResult(false, "SKIPPED_ALREADY_REPAIRED", "legacy skip", Map.of());
         NativeResult legacyMutated = new NativeResult(true, "MUTATED_DROPPED", "legacy mutation", Map.of());
         NativeResult queued = new NativeResult(false, "PLANNED", "queued only", Map.of());
+        NativeResult diagnosticOnlyReceipt = NativeResult.mutated("diagnostic receipt", Map.of(),
+                receipt(
+                        "adaptercore.direct_diagnostic_only_mutation",
+                        NativeMutationProofKind.DIAGNOSTIC_ONLY,
+                        Map.of("value", 1),
+                        Map.of("value", 2),
+                        false,
+                        false,
+                        context));
+        NativeResult queuedOnlyReceipt = NativeResult.mutated("queued receipt", Map.of(),
+                receipt(
+                        "adaptercore.direct_queued_only_mutation",
+                        NativeMutationProofKind.QUEUED_ONLY,
+                        Map.of("value", 1),
+                        Map.of("value", 2),
+                        false,
+                        false,
+                        context));
         Map<String, Object> gapAudit = new EchoNativeRuntimeGapAudit(EchoAdapterConstants.MOD_ID).audit(
                 "echoadaptercore:truth_smoke_gap_audit",
                 List.of(Map.of(
@@ -120,17 +216,38 @@ public final class EchoRuntimeTruthLayerSmoke {
                         "minecraftRuntimeMutated", false,
                         "status", "PASS")));
         List<EchoNativeRuntimeHost.NativeMutationLedgerEntry> entries = ledger.entries();
-        boolean ledgerMutatedTruth = entries.size() == 2
-                && EchoCanonicalContentIds.EVENT_PLAYER_ITEM_CONSUMED.equals(entries.get(0).actionId())
-                && entries.get(0).resultStatus() == NativeResultStatus.MUTATED
-                && entries.get(0).saveTouched()
-                && entries.get(0).hudOrEventEmitted()
-                && entries.get(1).resultStatus() == NativeResultStatus.UNSUPPORTED
-                && !entries.get(1).saveTouched()
-                && !entries.get(1).hudOrEventEmitted();
+        boolean ledgerMutatedTruth = entries.size() == 5
+                && entries.stream().anyMatch(entry ->
+                EchoCanonicalContentIds.EVENT_PLAYER_ITEM_CONSUMED.equals(entry.actionId())
+                        && entry.resultStatus() == NativeResultStatus.MUTATED
+                        && entry.saveTouched()
+                        && entry.hudOrEventEmitted()
+                        && entry.receipt() != null
+                        && entry.receipt().hasReleaseProof())
+                && entries.stream().anyMatch(entry ->
+                "ashfall.unimplemented_action".equals(entry.actionId())
+                        && entry.resultStatus() == NativeResultStatus.UNSUPPORTED
+                        && !entry.saveTouched()
+                        && !entry.hudOrEventEmitted())
+                && entries.stream().filter(entry -> entry.resultStatus() == NativeResultStatus.FAILED)
+                .filter(entry -> !entry.saveTouched())
+                .filter(entry -> !entry.hudOrEventEmitted())
+                .count() == 3L;
+        boolean metadataOnlyRejected = metadataOnly.resultStatus() == NativeResultStatus.FAILED
+                && !metadataOnly.hasReleaseProof()
+                && metadataOnly.failureReason().contains("missing before/after");
+        boolean diagnosticOnlyRejected = diagnosticOnly.resultStatus() == NativeResultStatus.FAILED
+                && !diagnosticOnly.hasReleaseProof()
+                && diagnosticOnly.failureReason().contains("diagnostic-only");
+        boolean queuedOnlyRejected = queuedOnly.resultStatus() == NativeResultStatus.FAILED
+                && !queuedOnly.hasReleaseProof()
+                && queuedOnly.failureReason().contains("queued-only");
         // validateTruth acceptance gate checks
         boolean validateTruthPassMutated = true;
         boolean validateTruthPassNoop = true;
+        boolean validateTruthFailMissingReceipt = false;
+        boolean validateTruthFailDiagnosticOnly = false;
+        boolean validateTruthFailQueuedOnly = false;
         boolean validateTruthFailLyingMutated = false;
         boolean validateTruthFailLyingNoop = false;
         try {
@@ -142,6 +259,23 @@ public final class EchoRuntimeTruthLayerSmoke {
             EchoNativeRuntimeHost.validateTruth(NativeResult.noop("actual noop", Map.of()), false);
         } catch (IllegalStateException e) {
             validateTruthPassNoop = false;
+        }
+        try {
+            EchoNativeRuntimeHost.validateTruth(NativeResult.mutated("missing receipt", Map.of(
+                    "beforeSummary", Map.of("value", 1),
+                    "afterSummary", Map.of("value", 2))), true);
+        } catch (IllegalStateException e) {
+            validateTruthFailMissingReceipt = true;
+        }
+        try {
+            EchoNativeRuntimeHost.validateTruth(diagnosticOnlyReceipt, true);
+        } catch (IllegalStateException e) {
+            validateTruthFailDiagnosticOnly = true;
+        }
+        try {
+            EchoNativeRuntimeHost.validateTruth(queuedOnlyReceipt, true);
+        } catch (IllegalStateException e) {
+            validateTruthFailQueuedOnly = true;
         }
         try {
             EchoNativeRuntimeHost.validateTruth(NativeResult.mutated("lying mutation", Map.of()), false);
@@ -169,14 +303,22 @@ public final class EchoRuntimeTruthLayerSmoke {
 
         boolean passed = mutated.resultStatus() == NativeResultStatus.MUTATED
                 && mutated.mutated()
+                && mutated.hasReleaseProof()
                 && unsupported.resultStatus() == NativeResultStatus.UNSUPPORTED
                 && !unsupported.mutated()
                 && legacyNoop.resultStatus() == NativeResultStatus.NOOP
                 && !legacyNoop.mutated()
                 && legacyMutated.resultStatus() == NativeResultStatus.MUTATED
                 && legacyMutated.mutated()
+                && !legacyMutated.hasReleaseProof()
+                && metadataOnlyRejected
+                && diagnosticOnlyRejected
+                && queuedOnlyRejected
+                && !diagnosticOnlyReceipt.hasReleaseProof()
+                && !queuedOnlyReceipt.hasReleaseProof()
                 && queued.resultStatus() == NativeResultStatus.QUEUED
                 && !queued.mutated()
+                && !queued.hasReleaseProof()
                 && host.saveWrites() == 1
                 && host.eventsPublished() == 1
                 && gapAudit.get("queuedGapCount") instanceof Number gapCount
@@ -184,6 +326,9 @@ public final class EchoRuntimeTruthLayerSmoke {
                 && ledgerMutatedTruth
                 && validateTruthPassMutated
                 && validateTruthPassNoop
+                && validateTruthFailMissingReceipt
+                && validateTruthFailDiagnosticOnly
+                && validateTruthFailQueuedOnly
                 && validateTruthFailLyingMutated
                 && validateTruthFailLyingNoop
                 && mcQueueIsQueued
@@ -199,12 +344,25 @@ public final class EchoRuntimeTruthLayerSmoke {
         report.put("legacyNoopStatus", legacyNoop.status());
         report.put("legacyMutatedStatus", legacyMutated.status());
         report.put("queuedStatus", queued.status());
+        report.put("metadataOnlyStatus", metadataOnly.status());
+        report.put("diagnosticOnlyStatus", diagnosticOnly.status());
+        report.put("queuedOnlyStatus", queuedOnly.status());
+        report.put("mutatedReleaseProof", mutated.hasReleaseProof());
+        report.put("legacyMutatedReleaseProof", legacyMutated.hasReleaseProof());
+        report.put("metadataOnlyRejected", metadataOnlyRejected);
+        report.put("diagnosticOnlyRejected", diagnosticOnlyRejected);
+        report.put("queuedOnlyRejected", queuedOnlyRejected);
+        report.put("diagnosticOnlyReceiptReleaseProof", diagnosticOnlyReceipt.hasReleaseProof());
+        report.put("queuedOnlyReceiptReleaseProof", queuedOnlyReceipt.hasReleaseProof());
         report.put("saveWrites", host.saveWrites());
         report.put("eventsPublished", host.eventsPublished());
         report.put("ledgerEntryCount", entries.size());
         report.put("truthClaimGapCount", gapAudit.get("queuedGapCount"));
         report.put("validateTruthPassMutated", validateTruthPassMutated);
         report.put("validateTruthPassNoop", validateTruthPassNoop);
+        report.put("validateTruthFailMissingReceipt", validateTruthFailMissingReceipt);
+        report.put("validateTruthFailDiagnosticOnly", validateTruthFailDiagnosticOnly);
+        report.put("validateTruthFailQueuedOnly", validateTruthFailQueuedOnly);
         report.put("validateTruthFailLyingMutated", validateTruthFailLyingMutated);
         report.put("validateTruthFailLyingNoop", validateTruthFailLyingNoop);
         report.put("mcQueueIsQueued", mcQueueIsQueued);
@@ -213,6 +371,29 @@ public final class EchoRuntimeTruthLayerSmoke {
         report.put("mcQueueCannotConsume", mcQueueCannotConsume);
         report.put("ledger", ledger.snapshots());
         return Map.copyOf(report);
+    }
+
+    private static NativeMutationReceipt receipt(
+            String actionId,
+            NativeMutationProofKind proofKind,
+            Map<String, Object> before,
+            Map<String, Object> after,
+            boolean saveTouched,
+            boolean hudOrEventEmitted,
+            NativeMutationContext context) {
+        return new NativeMutationReceipt(
+                actionId + ":" + context.idempotencyKey(),
+                RUNTIME_HOST_ID,
+                EchoAdapterConstants.MOD_ID,
+                EchoNativeRuntimeHost.interfaceForHostApi(actionId),
+                actionId,
+                "MUTATED",
+                proofKind,
+                before,
+                after,
+                saveTouched,
+                hudOrEventEmitted,
+                context.idempotencyKey());
     }
 
     private static NativeResult unsupported(String message, Map<String, Object> snapshot) {

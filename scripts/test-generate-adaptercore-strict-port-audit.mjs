@@ -55,6 +55,19 @@ async function main() {
     java: 'package test; public final class SignalOS { public static final String LOADER_MODID = "echosignalos"; public static final String MODID = "signalos"; }',
     artifacts: true,
   })
+  await writeModule(root, {
+    dir: 'echoashfallprotocol',
+    id: 'echoashfallprotocol',
+    requires: ['echoadaptercore'],
+    gradle: 'dependencies { implementation project(":echoadaptercore") }\n',
+    toml: toml('echoashfallprotocol', [{ modId: 'echoadaptercore', type: 'required' }]),
+    java: 'package test; import com.knoxhack.echo.adaptercore.EchoRuntimeActionDispatcher; import com.knoxhack.echo.adaptercore.EchoRuntimeActionDispatcher.EchoRuntimeActionOutcome; public final class AshfallQueuedProof { String marker = "EchoRuntimeActionDispatcher EchoRuntimeActionOutcome QUEUED_ONLY"; }\n',
+    artifacts: true,
+  })
+  await fs.writeFile(
+    path.join(root, 'addons', 'echoashfallprotocol', 'src', 'main', 'java', 'test', 'AshfallAdapterCoreFirstSpawnRuntime.java'),
+    'package test; public final class AshfallAdapterCoreFirstSpawnRuntime { String marker = "NativeResult.mutated("; }\n',
+  )
   await writeAdapterCoreCatalog(root, ['echocore', 'echocompileonly', 'echosignalos'])
 
   const { report } = await generateAdapterCoreStrictPortAudit({
@@ -91,6 +104,13 @@ async function main() {
   assert.equal(signalOs.signalOs.gradleModIdIsCanonical, true)
   assert.equal(signalOs.signalOs.legacyContentNamespacePreserved, true)
   assert.equal(signalOs.signalOs.legacyAliasEvidence, true)
+
+  const ashfallQueued = rows.get('echoashfallprotocol')
+  assert.equal(ashfallQueued.result, 'fail')
+  assert.equal(ashfallQueued.adapterCoreGameplayMutationProof.dispatchProofSurfacePresent, true)
+  assert.equal(ashfallQueued.adapterCoreGameplayMutationProof.dispatcherBypassMutationEvidence.length, 1)
+  assertContains(ashfallQueued.strictBlockers, 'Ashfall AdapterCore gameplay proof includes queued-only evidence')
+  assertContains(ashfallQueued.strictBlockers, 'Ashfall AdapterCore gameplay mutation proof bypasses dispatcher enforcement')
 
   await fs.writeFile(
     path.join(root, 'addons', 'echocore', 'src', 'main', 'templates', 'META-INF', 'neoforge.mods.toml'),

@@ -119,6 +119,7 @@ async function auditModule(repoRoot, moduleInfo, adapterCoreSourceSignal) {
   const neoforgeToml = await neoForgeTomlDependencyStatus(moduleInfo.addonRoot, moduleInfo.moduleId)
   const javaSignal = await javaAdapterCoreSignalStatus(moduleInfo, adapterCoreSourceSignal)
   const truthLayer = truthLayerCoverageStatus(moduleInfo.moduleId, adapterCoreSourceSignal)
+  const gameplayMutationProof = await adapterCoreGameplayMutationProofStatus(moduleInfo)
   const artifacts = await artifactStatus(repoRoot, moduleInfo)
   const signalOs = await signalOsStatus(moduleInfo)
   const strictBlockers = []
@@ -179,6 +180,25 @@ async function auditModule(repoRoot, moduleInfo, adapterCoreSourceSignal) {
     recommendedFixes.push('Add a real AdapterCore-backed path, truth bridge, runtime host, or compatibility catalog entry.')
   }
 
+  if (moduleInfo.moduleId === 'echoashfallprotocol') {
+    if (!gameplayMutationProof.dispatchProofSurfacePresent) {
+      strictBlockers.push('Ashfall AdapterCore gameplay mutation dispatch proof surface is missing')
+      recommendedFixes.push('Route Ashfall gameplay mutations through EchoRuntimeActionDispatcher outcomes with receipt-grade before/after, save, HUD, or event evidence.')
+    }
+    if (gameplayMutationProof.queuedOnlyEvidence.length > 0) {
+      strictBlockers.push('Ashfall AdapterCore gameplay proof includes queued-only evidence')
+      recommendedFixes.push('Replace queued-only AdapterCore gameplay proof with live mutation receipts or mark it non-release proof.')
+    }
+    if (gameplayMutationProof.diagnosticOnlyEvidence.length > 0) {
+      strictBlockers.push('Ashfall AdapterCore gameplay proof includes diagnostic-only evidence')
+      recommendedFixes.push('Keep diagnostic-only AdapterCore evidence out of Ashfall release proof paths.')
+    }
+    if (gameplayMutationProof.dispatcherBypassMutationEvidence.length > 0) {
+      strictBlockers.push('Ashfall AdapterCore gameplay mutation proof bypasses dispatcher enforcement')
+      recommendedFixes.push('Route canonical Ashfall first-spawn, early-event, and machine mutation claims through EchoRuntimeActionDispatcher outcomes.')
+    }
+  }
+
   for (const artifact of artifacts.required) {
     if (!artifact.present) {
       strictBlockers.push(`compiled ${artifact.runtime} artifact is missing: ${artifact.expected}`)
@@ -221,6 +241,7 @@ async function auditModule(repoRoot, moduleInfo, adapterCoreSourceSignal) {
     neoforgeTomlDependency: neoforgeToml,
     javaAdapterCoreSignal: javaSignal,
     adapterCoreTruthLayer: truthLayer,
+    adapterCoreGameplayMutationProof: gameplayMutationProof,
     artifacts,
     signalOs: moduleInfo.moduleDir === SIGNALOS_MODULE_ID ? signalOs : undefined,
     strictBlockers,
@@ -366,6 +387,51 @@ async function javaAdapterCoreSignalStatus(moduleInfo, adapterCoreSourceSignal) 
     sourceHitCount: hits.length,
     adapterCoreCoverage: adapterCoreCoverage.covered,
   }
+}
+
+async function adapterCoreGameplayMutationProofStatus(moduleInfo) {
+  const javaRoot = path.join(moduleInfo.addonRoot, 'src', 'main', 'java')
+  const files = await listFiles(javaRoot, (file) => file.endsWith('.java'))
+  const dispatchProofSurface = []
+  const queuedOnlyEvidence = []
+  const diagnosticOnlyEvidence = []
+  const dispatcherBypassMutationEvidence = []
+  for (const file of files) {
+    const text = await readTextIfExists(file)
+    if (!text) continue
+    const relative = normalizePath(path.relative(process.cwd(), file))
+    if (text.includes('EchoRuntimeActionDispatcher') && text.includes('EchoRuntimeActionOutcome')) {
+      dispatchProofSurface.push(relative)
+    }
+    if (isCanonicalAshfallProofFile(relative)
+        && containsMutationClaim(text)
+        && !(text.includes('EchoRuntimeActionDispatcher') && text.includes('EchoRuntimeActionOutcome'))) {
+      dispatcherBypassMutationEvidence.push(relative)
+    }
+    if (/\bQUEUED_ONLY\b|queued-only|queuedOnly/i.test(text)) {
+      queuedOnlyEvidence.push(relative)
+    }
+    if (/\bDIAGNOSTIC_ONLY\b|diagnostic-only|diagnosticOnly/i.test(text)) {
+      diagnosticOnlyEvidence.push(relative)
+    }
+  }
+  return {
+    dispatchProofSurfacePresent: dispatchProofSurface.length > 0,
+    dispatchProofSurface: dispatchProofSurface.slice(0, 12),
+    dispatchProofSurfaceCount: dispatchProofSurface.length,
+    queuedOnlyEvidence: [...new Set(queuedOnlyEvidence)],
+    diagnosticOnlyEvidence: [...new Set(diagnosticOnlyEvidence)],
+    dispatcherBypassMutationEvidence: [...new Set(dispatcherBypassMutationEvidence)],
+  }
+}
+
+function isCanonicalAshfallProofFile(relativePath) {
+  return /(?:AshfallAdapterCoreFirstSpawnRuntime|AshfallAdapterCoreEarlyEventRuntime|AshfallAdapterCoreMachineRuntimeHost)\.java$/.test(relativePath)
+}
+
+function containsMutationClaim(text) {
+  return /NativeResult\.mutated\(/.test(text)
+    || /new\s+NativeResult\s*\([^;]*(?:true|"MUTATED"|MUTATED)/s.test(text)
 }
 
 function truthLayerCoverageStatus(moduleId, adapterCoreSourceSignal) {

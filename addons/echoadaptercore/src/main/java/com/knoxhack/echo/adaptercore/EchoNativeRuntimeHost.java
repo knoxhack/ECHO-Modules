@@ -259,11 +259,17 @@ public interface EchoNativeRuntimeHost {
         }
     }
 
+    /**
+     * Runtime mutation result. A {@code MUTATED} status is a factual host claim;
+     * release evidence also requires a {@link NativeMutationReceipt} whose
+     * {@link NativeMutationReceipt#hasReleaseProof()} method returns true.
+     */
     record NativeResult(
             boolean mutated,
             String status,
             String message,
-            Map<String, Object> snapshot) {
+            Map<String, Object> snapshot,
+            NativeMutationReceipt receipt) {
         public NativeResult {
             boolean requestedMutationFlag = mutated;
             String requestedStatus = AdapterContractGuards.optionalText(status);
@@ -283,11 +289,26 @@ public interface EchoNativeRuntimeHost {
             if (requestedMutationFlag != mutated) {
                 normalizedSnapshot.put("rawMutationFlag", requestedMutationFlag);
             }
+            if (receipt != null) {
+                normalizedSnapshot.put("mutationReceipt", receipt.snapshot());
+                normalizedSnapshot.put("releaseProof", receipt.hasReleaseProof());
+            } else {
+                normalizedSnapshot.put("releaseProof", false);
+            }
             snapshot = Map.copyOf(normalizedSnapshot);
         }
 
+        public NativeResult(boolean mutated, String status, String message, Map<String, Object> snapshot) {
+            this(mutated, status, message, snapshot, null);
+        }
+
         public NativeResult(NativeResultStatus status, String message, Map<String, Object> snapshot) {
-            this(status == NativeResultStatus.MUTATED, status.name(), message, snapshot);
+            this(status, message, snapshot, null);
+        }
+
+        public NativeResult(NativeResultStatus status, String message, Map<String, Object> snapshot,
+                            NativeMutationReceipt receipt) {
+            this(status == NativeResultStatus.MUTATED, status.name(), message, snapshot, receipt);
         }
 
         public NativeResultStatus resultStatus() {
@@ -296,6 +317,14 @@ public interface EchoNativeRuntimeHost {
 
         public boolean completedWithMutation() {
             return resultStatus() == NativeResultStatus.MUTATED;
+        }
+
+        public boolean hasReleaseProof() {
+            return receipt != null && receipt.hasReleaseProof();
+        }
+
+        public boolean completedWithReleaseProof() {
+            return completedWithMutation() && hasReleaseProof();
         }
 
         public boolean completedWithoutMutation() {
@@ -319,8 +348,17 @@ public interface EchoNativeRuntimeHost {
             return reason == null ? "" : String.valueOf(reason);
         }
 
+        public NativeResult withReceipt(NativeMutationReceipt receipt) {
+            return new NativeResult(resultStatus(), message, snapshot, receipt);
+        }
+
         public static NativeResult mutated(String message, Map<String, Object> snapshot) {
             return new NativeResult(NativeResultStatus.MUTATED, message, snapshot);
+        }
+
+        public static NativeResult mutated(String message, Map<String, Object> snapshot,
+                                           NativeMutationReceipt receipt) {
+            return new NativeResult(NativeResultStatus.MUTATED, message, snapshot, receipt);
         }
 
         public static NativeResult noop(String message, Map<String, Object> snapshot) {
@@ -337,6 +375,99 @@ public interface EchoNativeRuntimeHost {
 
         public static NativeResult queued(String message, Map<String, Object> snapshot) {
             return new NativeResult(NativeResultStatus.QUEUED, message, snapshot);
+        }
+    }
+
+    enum NativeMutationProofKind {
+        HOST_STATE,
+        SAVE_WRITE,
+        HUD_EVENT,
+        PACKET_EVENT,
+        DIAGNOSTIC_ONLY,
+        QUEUED_ONLY;
+
+        public boolean releaseProof() {
+            return this != DIAGNOSTIC_ONLY && this != QUEUED_ONLY;
+        }
+
+        public static NativeMutationProofKind from(String value) {
+            String normalized = value == null ? "" : value.trim().toUpperCase(Locale.ROOT);
+            if (normalized.isBlank()) {
+                return DIAGNOSTIC_ONLY;
+            }
+            try {
+                return NativeMutationProofKind.valueOf(normalized);
+            } catch (IllegalArgumentException ignored) {
+                return DIAGNOSTIC_ONLY;
+            }
+        }
+    }
+
+    /**
+     * Release-proof mutation receipt. Diagnostic and queued proof kinds remain
+     * visible in snapshots, but never satisfy release proof.
+     */
+    record NativeMutationReceipt(
+            String operationId,
+            String runtimeHostId,
+            String moduleId,
+            String nativeInterface,
+            String nativeMethod,
+            String status,
+            NativeMutationProofKind proofKind,
+            Map<String, Object> beforeSummary,
+            Map<String, Object> afterSummary,
+            boolean saveTouched,
+            boolean hudOrEventEmitted,
+            String idempotencyKey) {
+        public NativeMutationReceipt {
+            operationId = AdapterContractGuards.requireText(operationId, "native mutation receipt operation id");
+            runtimeHostId = AdapterContractGuards.requireText(runtimeHostId, "native mutation receipt runtime host id");
+            moduleId = AdapterContractGuards.requireText(moduleId, "native mutation receipt module id");
+            nativeInterface = AdapterContractGuards.requireText(nativeInterface, "native mutation receipt interface");
+            nativeMethod = AdapterContractGuards.requireText(nativeMethod, "native mutation receipt method");
+            NativeResultStatus resultStatus = NativeResultStatus.from(status, false);
+            status = resultStatus.name();
+            proofKind = proofKind == null ? NativeMutationProofKind.DIAGNOSTIC_ONLY : proofKind;
+            beforeSummary = beforeSummary == null ? Map.of() : Map.copyOf(beforeSummary);
+            afterSummary = afterSummary == null ? Map.of() : Map.copyOf(afterSummary);
+            idempotencyKey = AdapterContractGuards.optionalText(idempotencyKey);
+        }
+
+        public NativeResultStatus resultStatus() {
+            return NativeResultStatus.valueOf(status);
+        }
+
+        public boolean hasReleaseProof() {
+            if (resultStatus() != NativeResultStatus.MUTATED || !proofKind.releaseProof()) {
+                return false;
+            }
+            boolean hasStateDelta = (!beforeSummary.isEmpty() || !afterSummary.isEmpty())
+                    && !beforeSummary.equals(afterSummary);
+            return switch (proofKind) {
+                case HOST_STATE -> hasStateDelta;
+                case SAVE_WRITE -> saveTouched || hasStateDelta;
+                case HUD_EVENT, PACKET_EVENT -> hudOrEventEmitted || hasStateDelta;
+                case DIAGNOSTIC_ONLY, QUEUED_ONLY -> false;
+            };
+        }
+
+        public Map<String, Object> snapshot() {
+            Map<String, Object> receipt = new LinkedHashMap<>();
+            receipt.put("operationId", operationId);
+            receipt.put("runtimeHostId", runtimeHostId);
+            receipt.put("moduleId", moduleId);
+            receipt.put("nativeInterface", nativeInterface);
+            receipt.put("nativeMethod", nativeMethod);
+            receipt.put("status", status);
+            receipt.put("proofKind", proofKind.name());
+            receipt.put("beforeSummary", beforeSummary);
+            receipt.put("afterSummary", afterSummary);
+            receipt.put("saveTouched", saveTouched);
+            receipt.put("hudOrEventEmitted", hudOrEventEmitted);
+            receipt.put("idempotencyKey", idempotencyKey);
+            receipt.put("releaseProof", hasReleaseProof());
+            return Map.copyOf(receipt);
         }
     }
 
@@ -430,7 +561,8 @@ public interface EchoNativeRuntimeHost {
             NativeResultStatus resultStatus,
             String failureReason,
             boolean saveTouched,
-            boolean hudOrEventEmitted) {
+            boolean hudOrEventEmitted,
+            NativeMutationReceipt receipt) {
         public NativeMutationLedgerEntry {
             actionId = AdapterContractGuards.requireText(actionId, "mutation ledger action id");
             runtimeHostId = AdapterContractGuards.requireText(runtimeHostId, "mutation ledger runtime host id");
@@ -440,6 +572,21 @@ public interface EchoNativeRuntimeHost {
             afterSummary = afterSummary == null ? Map.of() : Map.copyOf(afterSummary);
             resultStatus = resultStatus == null ? NativeResultStatus.FAILED : resultStatus;
             failureReason = AdapterContractGuards.optionalText(failureReason);
+        }
+
+        public NativeMutationLedgerEntry(
+                String actionId,
+                String runtimeHostId,
+                Map<String, Object> inputPayload,
+                NativeMutationTarget target,
+                Map<String, Object> beforeSummary,
+                Map<String, Object> afterSummary,
+                NativeResultStatus resultStatus,
+                String failureReason,
+                boolean saveTouched,
+                boolean hudOrEventEmitted) {
+            this(actionId, runtimeHostId, inputPayload, target, beforeSummary, afterSummary, resultStatus,
+                    failureReason, saveTouched, hudOrEventEmitted, null);
         }
 
         public Map<String, Object> snapshot() {
@@ -454,6 +601,10 @@ public interface EchoNativeRuntimeHost {
             entry.put("failureReason", failureReason);
             entry.put("saveTouched", saveTouched);
             entry.put("hudOrEventEmitted", hudOrEventEmitted);
+            entry.put("releaseProof", receipt != null && receipt.hasReleaseProof());
+            if (receipt != null) {
+                entry.put("mutationReceipt", receipt.snapshot());
+            }
             return Map.copyOf(entry);
         }
     }
@@ -631,6 +782,10 @@ public interface EchoNativeRuntimeHost {
             throw new IllegalStateException(
                     "AdapterCore truth violation: result status is " + status
                             + " but actual state did NOT change. A host must not return MUTATED unless it mutates state.");
+        }
+        if (actualStateChanged && claimedMutated && !result.hasReleaseProof()) {
+            throw new IllegalStateException(
+                    "AdapterCore truth violation: MUTATED result is missing release-grade NativeMutationReceipt proof.");
         }
     }
 

@@ -55,7 +55,9 @@ final class AshfallNativeRuntimeMutationEvidence {
             summaries.add(Map.of(
                     "status", result.status(),
                     "mutated", result.mutated(),
+                    "releaseProof", result.hasReleaseProof(),
                     "message", result.message(),
+                    "receipt", result.receipt() == null ? Map.of() : result.receipt().snapshot(),
                     "snapshot", result.snapshot()));
         }
         return List.copyOf(summaries);

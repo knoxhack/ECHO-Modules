@@ -38,7 +38,8 @@ public final class EchoRuntimeMutationLedger {
                 result == null ? EchoNativeRuntimeHost.NativeResultStatus.FAILED : result.resultStatus(),
                 result == null ? "missing runtime result" : result.failureReason(),
                 saveTouched,
-                hudOrEventEmitted);
+                hudOrEventEmitted,
+                result == null ? null : result.receipt());
         entries.add(entry);
         return entry;
     }

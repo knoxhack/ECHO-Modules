@@ -1,0 +1,27 @@
+{
+  "schema": "echo.adaptercore.registry_backend_parity_smoke.v1",
+  "status": "PASS",
+  "moduleId": "echoadaptercore",
+  "behavior": "adaptercore_registry_backend_resolution",
+  "scope": "EchoAdapterCore registry contract parity across Echo Native Loader and Echo Standalone Runtime backends.",
+  "nativeBackend": "echo-native-loader",
+  "standaloneBackend": "echo-standalone-runtime",
+  "passedCheckCount": 14,
+  "passedChecks": [
+    "same content IDs exist on both runtimes",
+    "same recipes resolve",
+    "same recipe inputs resolve",
+    "same recipe types resolve",
+    "same loot tables resolve",
+    "same sounds resolve",
+    "same structures resolve",
+    "same structure types resolve",
+    "same tags resolve",
+    "same creative content groups resolve",
+    "same search visibility resolves",
+    "same terminal/index data resolves",
+    "no missing required textures/models/lang",
+    "same tag overlays merge"
+  ],
+  "failedChecks": []
+}

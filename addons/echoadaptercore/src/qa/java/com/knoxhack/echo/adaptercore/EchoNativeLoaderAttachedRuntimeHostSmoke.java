@@ -5,6 +5,8 @@ import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeBlockState;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeEvent;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeItemStack;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationContext;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationProofKind;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeMutationReceipt;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePlayerRef;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativePosition;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeHost.NativeResult;
@@ -98,7 +100,8 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
                     ? NativeResult.mutated("AdapterCore action mutated through Native Loader backend.", Map.of(
                             "adapterCoreEnteredNativeLoaderBackend", true,
                             "nativeLoaderLedgerDelta", afterLedgerCount - beforeLedgerCount,
-                            "surfaceStatuses", surfaceResults.stream().map(NativeResult::status).toList()))
+                            "surfaceStatuses", surfaceResults.stream().map(NativeResult::status).toList()),
+                    nativeLoaderActionReceipt(action, before, after))
                     : NativeResult.failed("AdapterCore action did not mutate through every Native Loader surface.", Map.of(
                             "adapterCoreEnteredNativeLoaderBackend", true,
                             "nativeLoaderLedgerDelta", afterLedgerCount - beforeLedgerCount,
@@ -128,6 +131,25 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
         NativeResult unchangedBlock = nativeHost.worldBlocks().setBlock(block, new NativeBlockState(
                 "echoashfallprotocol:drop_pod_marker",
                 Map.of()), context);
+        NativeMutationContext typedReceiptContext = new NativeMutationContext(
+                EchoAdapterConstants.MOD_ID,
+                "minecraft:overworld",
+                "adaptercore-native-loader-typed-receipt-smoke",
+                "server",
+                1730L,
+                Map.of("source", "adaptercore_native_loader_typed_receipt_smoke"));
+        NativeResult acceptedTypedReceipt = new EchoNativeLoaderAttachedRuntimeHost(new FakeTypedReceiptBackend(true))
+                .playerInventory()
+                .grant(player, new NativeItemStack(
+                        "echoashfallprotocol:typed_receipt_probe",
+                        1,
+                        Map.of()), typedReceiptContext);
+        NativeResult rejectedTypedReceipt = new EchoNativeLoaderAttachedRuntimeHost(new FakeTypedReceiptBackend(false))
+                .playerInventory()
+                .grant(player, new NativeItemStack(
+                        "echoashfallprotocol:typed_receipt_probe",
+                        1,
+                        Map.of()), typedReceiptContext);
 
         List<Map<String, Object>> nativeLoaderLedger = nativeHost.nativeLoaderMutationLedger();
         List<Map<String, Object>> adapterLedger = adapterCoreLedger.snapshots();
@@ -137,16 +159,28 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
                 && nativeLoaderLedger.stream()
                 .filter(record -> "MUTATED".equals(String.valueOf(record.get("status"))))
                 .count() >= 6;
+        boolean nativeTypedReceiptsPresent = nativeLoaderLedger.stream()
+                .filter(record -> "MUTATED".equals(String.valueOf(record.get("status"))))
+                .allMatch(record -> record.get("typedMutationReceipt") instanceof Map<?, ?> receipt
+                        && "MUTATED".equals(String.valueOf(receipt.get("status"))));
         boolean adapterCoreLedgerMutated = adapterLedger.size() == 1
-                && "MUTATED".equals(String.valueOf(adapterLedger.get(0).get("resultStatus")));
+                && "MUTATED".equals(String.valueOf(adapterLedger.get(0).get("resultStatus")))
+                && Boolean.TRUE.equals(adapterLedger.get(0).get("releaseProof"));
         boolean noFakeNoopMutation = unchangedBlock.completedWithoutMutation();
+        boolean typedReceiptEvidenceRequired = acceptedTypedReceipt.completedWithReleaseProof()
+                && rejectedTypedReceipt.resultStatus() == EchoNativeRuntimeHost.NativeResultStatus.FAILED
+                && !rejectedTypedReceipt.hasReleaseProof()
+                && rejectedTypedReceipt.failureReason().contains("missing AdapterCore live Minecraft proof");
         boolean saveDataWritten = Files.isRegularFile(savesDirectory.resolve("saveData.json"));
         boolean inventoryWritten = Files.isRegularFile(savesDirectory.resolve("inventory.json"));
         boolean blockWritten = Files.isRegularFile(savesDirectory.resolve("worldBlocks.json"));
         boolean passed = dispatchResult.completedWithMutation()
+                && dispatchResult.hasReleaseProof()
                 && nativeLedgerMutated
+                && nativeTypedReceiptsPresent
                 && adapterCoreLedgerMutated
                 && noFakeNoopMutation
+                && typedReceiptEvidenceRequired
                 && saveDataWritten
                 && inventoryWritten
                 && blockWritten;
@@ -166,9 +200,15 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
         report.put("actionId", ACTION_ID);
         report.put("adapterCoreCallEnteredNativeLoaderBackend", dispatchResult.completedWithMutation());
         report.put("dispatchStatus", dispatchResult.status());
+        report.put("dispatchReleaseProof", dispatchResult.hasReleaseProof());
         report.put("unchangedBlockStatus", unchangedBlock.status());
         report.put("noFakeNoopMutation", noFakeNoopMutation);
+        report.put("acceptedTypedReceiptStatus", acceptedTypedReceipt.status());
+        report.put("acceptedTypedReceiptReleaseProof", acceptedTypedReceipt.hasReleaseProof());
+        report.put("rejectedTypedReceiptStatus", rejectedTypedReceipt.status());
+        report.put("typedReceiptEvidenceRequired", typedReceiptEvidenceRequired);
         report.put("nativeLoaderMutationLedger", nativeLoaderLedger);
+        report.put("nativeTypedReceiptsPresent", nativeTypedReceiptsPresent);
         report.put("adapterCoreMutationLedger", adapterLedger);
         report.put("nativeLoaderSnapshot", nativeHost.nativeLoaderSnapshot());
         report.put("persistedSaveDirectory", savesDirectory.toString().replace('\\', '/'));
@@ -186,6 +226,25 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
             throw new AssertionError("AdapterCore Native Loader runtime host smoke failed: " + report);
         }
         System.out.println("adaptercore native loader runtime host smoke PASS " + reportPath);
+    }
+
+    private static NativeMutationReceipt nativeLoaderActionReceipt(
+            EchoRuntimeAction action,
+            Map<String, Object> before,
+            Map<String, Object> after) {
+        return new NativeMutationReceipt(
+                ACTION_ID + ":" + action.context().idempotencyKey(),
+                RUNTIME_HOST_ID,
+                EchoAdapterConstants.MOD_ID,
+                EchoNativeRuntimeHost.interfaceForHostApi(ACTION_ID),
+                ACTION_ID,
+                "MUTATED",
+                NativeMutationProofKind.HOST_STATE,
+                before,
+                after,
+                true,
+                true,
+                action.context().idempotencyKey());
     }
 
     private static Object createNativeLoaderBackend(Path savesDirectory) throws Exception {
@@ -232,6 +291,59 @@ public final class EchoNativeLoaderAttachedRuntimeHostSmoke {
                 "save_data"),
                 "dev.echo.nativeplatform.loader.NativeLoaderAdapterCoreBackend");
         return backend;
+    }
+
+    public static final class FakeTypedReceiptBackend {
+        private final boolean stateChanged;
+
+        FakeTypedReceiptBackend(boolean stateChanged) {
+            this.stateChanged = stateChanged;
+        }
+
+        public FakeMutationRecord grantItem(String playerId, String itemId, int count) {
+            return new FakeMutationRecord(stateChanged, playerId, itemId, count);
+        }
+    }
+
+    public static final class FakeMutationRecord {
+        private final boolean stateChanged;
+        private final String playerId;
+        private final String itemId;
+        private final int count;
+
+        FakeMutationRecord(boolean stateChanged, String playerId, String itemId, int count) {
+            this.stateChanged = stateChanged;
+            this.playerId = playerId;
+            this.itemId = itemId;
+            this.count = count;
+        }
+
+        public Map<String, Object> toReport() {
+            Map<String, Object> before = stateChanged
+                    ? Map.of("inventoryCount", 0)
+                    : Map.of("inventoryCount", count);
+            Map<String, Object> after = Map.of("inventoryCount", count);
+            Map<String, Object> receipt = Map.of(
+                    "status", "MUTATED",
+                    "evidence", Map.of(
+                            "before", before,
+                            "after", after));
+            Map<String, Object> report = new LinkedHashMap<>();
+            report.put("status", "MUTATED");
+            report.put("operationId", stateChanged ? "fake-typed-receipt-accepted" : "fake-typed-receipt-rejected");
+            report.put("idempotencyKey", stateChanged ? "fake-typed-accepted" : "fake-typed-rejected");
+            report.put("playerId", playerId);
+            report.put("itemId", itemId);
+            report.put("count", count);
+            report.put("typedMutationReceipt", receipt);
+            report.put("liveRuntimeAccessed", false);
+            report.put("minecraftRuntimeAccessed", false);
+            report.put("liveRuntimeMutationSupported", false);
+            report.put("liveRuntimeReleaseProofSatisfied", false);
+            report.put("liveRuntimeSurfaceMutationSatisfied", false);
+            report.put("mirrorOnlyReleaseProof", true);
+            return Map.copyOf(report);
+        }
     }
 
     private static void deleteRecursively(Path path) throws IOException {
