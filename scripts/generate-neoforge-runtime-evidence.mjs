@@ -55,6 +55,7 @@ export async function generateNeoForgeRuntimeEvidence({
   const normalizedRoot = path.resolve(repoRoot)
   const normalizedOutDir = path.resolve(normalizedRoot, outDir)
   const modules = await discoverModules(normalizedRoot)
+  const release = await releaseIndex(normalizedRoot)
   const strictPlayInputs = await readStrictPlayInputs(normalizedRoot)
   const rows = []
   const loadedModuleIds = []
@@ -62,7 +63,7 @@ export async function generateNeoForgeRuntimeEvidence({
   let gameTestCount = 0
 
   for (const module of modules) {
-    const artifact = await neoforgeArtifact(normalizedRoot, module)
+    const artifact = await neoforgeArtifact(normalizedRoot, release, module)
     const gameTests = await gameTestEvidence(module)
     gameTestCount += gameTests.testNames.length
     if (gameTests.testNames.length > 0) gameTestModuleIds.push(module.moduleId)
@@ -397,8 +398,74 @@ async function discoverModules(repoRoot) {
   return modules.sort((left, right) => left.moduleId.localeCompare(right.moduleId))
 }
 
-async function neoforgeArtifact(repoRoot, module) {
+async function releaseIndex(repoRoot) {
+  const candidates = await releaseIndexCandidates(repoRoot)
+  if (candidates.length === 0) return { found: false, path: '', modules: new Map() }
+  candidates.sort((left, right) => {
+    if (right.moduleCount !== left.moduleCount) return right.moduleCount - left.moduleCount
+    return right.generatedAt.localeCompare(left.generatedAt)
+  })
+  const { releasePath, release } = candidates[0]
+  const modules = new Map()
+  for (const module of array(release.modules)) {
+    const moduleId = string(module.moduleId)
+    if (moduleId) modules.set(moduleId, module)
+  }
+  return { found: true, path: releasePath, modules }
+}
+
+async function releaseIndexCandidates(repoRoot) {
+  const distRoot = path.join(repoRoot, 'dist')
+  const candidates = []
+  const primary = path.join(distRoot, 'echo-module-release', 'echo-release.json')
+  if (await exists(primary)) {
+    candidates.push(releaseIndexCandidate(primary, await readJson(primary)))
+  }
+  if (!(await exists(distRoot))) return candidates
+  for (const entry of await fs.readdir(distRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name === 'echo-module-release') continue
+    const releasePath = path.join(distRoot, entry.name, 'echo-release.json')
+    if (!(await exists(releasePath))) continue
+    try {
+      candidates.push(releaseIndexCandidate(releasePath, await readJson(releasePath)))
+    } catch {
+      // Scratch release outputs may be incomplete while generation is running.
+    }
+  }
+  return candidates
+}
+
+function releaseIndexCandidate(releasePath, release) {
+  return {
+    releasePath,
+    release,
+    moduleCount: array(release.modules).length,
+    generatedAt: string(release.generatedAt),
+  }
+}
+
+async function neoforgeArtifact(repoRoot, release, module) {
   const expectedName = `${module.moduleId}-${module.version}-neoforge.jar`
+  const releaseModule = release.modules.get(module.moduleId)
+  const matchingReleaseArtifact = artifactRecords(releaseModule).find((artifact) => {
+    const filename = string(artifact.filename || artifact.assetName || artifact.name)
+    const kind = string(artifact.kind || artifact.artifactFamily || artifact.family)
+    return filename === expectedName || kind === 'neoforge' || filename.endsWith('-neoforge.jar')
+  })
+  if (matchingReleaseArtifact) {
+    const buildMode = string(matchingReleaseArtifact.buildMode) || 'compiled-runtime'
+    return {
+      found: buildMode !== 'source-packaged',
+      expectedName,
+      path: normalizePath(path.relative(repoRoot, release.path)),
+      bytes: Number(matchingReleaseArtifact.size ?? 0),
+      buildMode,
+      source: 'release-manifest',
+      downloadUrl: string(matchingReleaseArtifact.downloadUrl),
+      sha256: string(matchingReleaseArtifact.sha256),
+      artifact: matchingReleaseArtifact,
+    }
+  }
   const candidates = [
     path.join(repoRoot, 'dist', 'echo-module-release', module.moduleId, expectedName),
     path.join(module.moduleRoot, 'build', 'libs', expectedName),
@@ -430,6 +497,15 @@ async function neoforgeArtifact(repoRoot, module) {
     bytes: 0,
     buildMode: '',
   }
+}
+
+function artifactRecords(releaseModule) {
+  if (!releaseModule || typeof releaseModule !== 'object') return []
+  const values = []
+  for (const key of ['artifacts', 'assets', 'files']) {
+    if (Array.isArray(releaseModule[key])) values.push(...releaseModule[key])
+  }
+  return values
 }
 
 async function gameTestEvidence(module) {

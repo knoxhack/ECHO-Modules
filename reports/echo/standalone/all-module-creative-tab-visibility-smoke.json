@@ -1,20 +1,20 @@
 {
   "schema": "echo.standalone.all_module_creative_tab_visibility.v1",
-  "generatedAt": "2026-06-14T11:56:59.241Z",
-  "status": "PASS",
+  "generatedAt": "2026-06-15T01:33:50.053Z",
+  "status": "FAIL",
   "runtime": "standalone",
   "modulesRoot": "C:/Development/Github/ECHO-Modules",
   "runtimeRoot": "C:/Development/Github/ECHO-Modules",
-  "allModules": true,
+  "allModules": false,
   "summary": {
-    "moduleCount": 132,
-    "expectedCreativeTabModuleCount": 36,
-    "registryBackedModuleCount": 36,
-    "visibleParentModuleCount": 36,
-    "visibleSearchModuleCount": 36,
-    "selectableModuleCount": 36,
-    "playableModuleCount": 36,
-    "failingModuleCount": 0
+    "moduleCount": 133,
+    "expectedCreativeTabModuleCount": 39,
+    "registryBackedModuleCount": 35,
+    "visibleParentModuleCount": 35,
+    "visibleSearchModuleCount": 35,
+    "selectableModuleCount": 35,
+    "playableModuleCount": 35,
+    "failingModuleCount": 4
   },
   "moduleIds": [
     "echoadaptercore",
@@ -28,6 +28,8 @@
     "echocontentcore",
     "echoconvoyprotocol",
     "echocursecore",
+    "echodeepreachprotocol",
+    "echoequipmentcore",
     "echofamiliarcore",
     "echogalacticcore",
     "echogalacticsurveyprotocol",
@@ -44,6 +46,7 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
+    "echosettlementcore",
     "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
@@ -66,6 +69,8 @@
     "echocontentcore",
     "echoconvoyprotocol",
     "echocursecore",
+    "echodeepreachprotocol",
+    "echoequipmentcore",
     "echofamiliarcore",
     "echogalacticcore",
     "echogalacticsurveyprotocol",
@@ -82,6 +87,7 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
+    "echosettlementcore",
     "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
@@ -120,7 +126,6 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
-    "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
     "echospellcore",
@@ -158,7 +163,6 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
-    "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
     "echospellcore",
@@ -196,7 +200,6 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
-    "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
     "echospellcore",
@@ -234,7 +237,6 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
-    "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
     "echospellcore",
@@ -272,7 +274,6 @@
     "echorelictech",
     "echoriftworlds",
     "echoritualcore",
-    "echosignalos",
     "echoskyrelayprotocol",
     "echosoundcore",
     "echospellcore",
@@ -334,7 +335,7 @@
     {
       "path": "ECHO-Standalone-Runtime/reports/echo/standalone/all-module-creative-tab-visibility-smoke.json",
       "found": true,
-      "status": "PASS",
+      "status": "FAIL",
       "schema": "echo.standalone.all_module_creative_tab_visibility.v1"
     },
     {
@@ -346,7 +347,7 @@
     {
       "path": "ECHO-Standalone-Runtime/reports/echo/standalone/client-creative-inventory-smoke.json",
       "found": true,
-      "status": "PASS",
+      "status": "FAIL",
       "schema": "echo.standalone.client_smoke.client-creative-inventory-smoke.v1"
     },
     {
@@ -4934,6 +4935,7 @@
         "hasModels": true,
         "creativeDeclared": true,
         "creativeTabFiles": [
+          "com/knoxhack/echoashfallprotocol/nativebridge/AshfallNativeCreativeTabCatalog.java",
           "com/knoxhack/echoashfallprotocol/registry/ModCreativeTabs.java"
         ],
         "itemGroupLangKeys": [
@@ -6418,6 +6420,239 @@
       "missingCreativeSearchEntries": [],
       "result": "pass",
       "blockers": []
+    },
+    {
+      "moduleId": "echodeepreachprotocol",
+      "name": "ECHO: Deep Reach Protocol",
+      "version": "0.1.0",
+      "directory": "addons/echodeepreachprotocol",
+      "expectedFeatures": [
+        "blocks",
+        "entities",
+        "items",
+        "creative_tab"
+      ],
+      "expectedCreativeTabs": [
+        {
+          "id": "echodeepreachprotocol:native_modules",
+          "titleKey": "itemGroup.echodeepreachprotocol",
+          "source": "inferred.content_module",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+            "echodeepreachprotocol:abyssal_stone",
+            "echodeepreachprotocol:bloater_spawn_egg",
+            "echodeepreachprotocol:hadal_wraith_spawn_egg",
+            "echodeepreachprotocol:lattice_crystal",
+            "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+            "echodeepreachprotocol:remora_submersible",
+            "echodeepreachprotocol:sunken_sand",
+            "echodeepreachprotocol:thermal_vent",
+            "echodeepreachprotocol:twilight_stalker_spawn_egg",
+            "echodeepreachprotocol:vent_crab_shell",
+            "echodeepreachprotocol:vent_crab_spawn_egg"
+          ]
+        }
+      ],
+      "expectedCreativeEntries": [
+        "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+        "echodeepreachprotocol:abyssal_stone",
+        "echodeepreachprotocol:bloater_spawn_egg",
+        "echodeepreachprotocol:hadal_wraith_spawn_egg",
+        "echodeepreachprotocol:lattice_crystal",
+        "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+        "echodeepreachprotocol:remora_submersible",
+        "echodeepreachprotocol:sunken_sand",
+        "echodeepreachprotocol:thermal_vent",
+        "echodeepreachprotocol:twilight_stalker_spawn_egg",
+        "echodeepreachprotocol:vent_crab_shell",
+        "echodeepreachprotocol:vent_crab_spawn_egg"
+      ],
+      "expectedSearchEntries": [
+        "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+        "echodeepreachprotocol:abyssal_stone",
+        "echodeepreachprotocol:bloater_spawn_egg",
+        "echodeepreachprotocol:hadal_wraith_spawn_egg",
+        "echodeepreachprotocol:lattice_crystal",
+        "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+        "echodeepreachprotocol:remora_submersible",
+        "echodeepreachprotocol:sunken_sand",
+        "echodeepreachprotocol:thermal_vent",
+        "echodeepreachprotocol:twilight_stalker_spawn_egg",
+        "echodeepreachprotocol:vent_crab_shell",
+        "echodeepreachprotocol:vent_crab_spawn_egg"
+      ],
+      "sourceSignals": {
+        "hasDeferredRegister": false,
+        "hasBlockstates": true,
+        "hasModels": true,
+        "creativeDeclared": false,
+        "creativeTabFiles": [],
+        "itemGroupLangKeys": [],
+        "creativeTabIds": []
+      },
+      "registryBacked": false,
+      "visibleParent": false,
+      "visibleSearch": false,
+      "selectable": false,
+      "playable": false,
+      "creativeTabStatus": "missing",
+      "missingCreativeTabEntries": [
+        "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+        "echodeepreachprotocol:abyssal_stone",
+        "echodeepreachprotocol:bloater_spawn_egg",
+        "echodeepreachprotocol:hadal_wraith_spawn_egg",
+        "echodeepreachprotocol:lattice_crystal",
+        "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+        "echodeepreachprotocol:remora_submersible",
+        "echodeepreachprotocol:sunken_sand",
+        "echodeepreachprotocol:thermal_vent",
+        "echodeepreachprotocol:twilight_stalker_spawn_egg",
+        "echodeepreachprotocol:vent_crab_shell",
+        "echodeepreachprotocol:vent_crab_spawn_egg"
+      ],
+      "missingCreativeSearchEntries": [
+        "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+        "echodeepreachprotocol:abyssal_stone",
+        "echodeepreachprotocol:bloater_spawn_egg",
+        "echodeepreachprotocol:hadal_wraith_spawn_egg",
+        "echodeepreachprotocol:lattice_crystal",
+        "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+        "echodeepreachprotocol:remora_submersible",
+        "echodeepreachprotocol:sunken_sand",
+        "echodeepreachprotocol:thermal_vent",
+        "echodeepreachprotocol:twilight_stalker_spawn_egg",
+        "echodeepreachprotocol:vent_crab_shell",
+        "echodeepreachprotocol:vent_crab_spawn_egg"
+      ],
+      "result": "fail",
+      "blockers": [
+        "creative tab/group has no registry-backed runtime host proof",
+        "creative tab entries are not proven visible in the parent creative inventory path",
+        "creative tab entries are not proven visible in creative search",
+        "no module creative-tab entry is proven selectable into inventory or hotbar",
+        "no selected creative-tab block/item is proven usable in gameplay"
+      ]
+    },
+    {
+      "moduleId": "echoequipmentcore",
+      "name": "ECHO: EquipmentCore",
+      "version": "0.1.0",
+      "directory": "addons/echoequipmentcore",
+      "expectedFeatures": [
+        "creative_tab",
+        "items"
+      ],
+      "expectedCreativeTabs": [
+        {
+          "id": "echoequipmentcore:echoequipmentcore_equipment",
+          "titleKey": "itemGroup.echoequipmentcore.equipment",
+          "source": "lang.itemGroup",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echoequipmentcore:abyssal_exosuit",
+            "echoequipmentcore:dive_tool",
+            "echoequipmentcore:divers_rig",
+            "echoequipmentcore:emergency_buoyancy",
+            "echoequipmentcore:hadal_hardsuit",
+            "echoequipmentcore:laser_cutter",
+            "echoequipmentcore:lattice_void_suit",
+            "echoequipmentcore:light_sensor",
+            "echoequipmentcore:oxygen_scrubber",
+            "echoequipmentcore:rebreather",
+            "echoequipmentcore:reinforced_joints",
+            "echoequipmentcore:shoal_suit",
+            "echoequipmentcore:thermal_regulator"
+          ]
+        }
+      ],
+      "expectedCreativeEntries": [
+        "echoequipmentcore:abyssal_exosuit",
+        "echoequipmentcore:dive_tool",
+        "echoequipmentcore:divers_rig",
+        "echoequipmentcore:emergency_buoyancy",
+        "echoequipmentcore:hadal_hardsuit",
+        "echoequipmentcore:laser_cutter",
+        "echoequipmentcore:lattice_void_suit",
+        "echoequipmentcore:light_sensor",
+        "echoequipmentcore:oxygen_scrubber",
+        "echoequipmentcore:rebreather",
+        "echoequipmentcore:reinforced_joints",
+        "echoequipmentcore:shoal_suit",
+        "echoequipmentcore:thermal_regulator"
+      ],
+      "expectedSearchEntries": [
+        "echoequipmentcore:abyssal_exosuit",
+        "echoequipmentcore:dive_tool",
+        "echoequipmentcore:divers_rig",
+        "echoequipmentcore:emergency_buoyancy",
+        "echoequipmentcore:hadal_hardsuit",
+        "echoequipmentcore:laser_cutter",
+        "echoequipmentcore:lattice_void_suit",
+        "echoequipmentcore:light_sensor",
+        "echoequipmentcore:oxygen_scrubber",
+        "echoequipmentcore:rebreather",
+        "echoequipmentcore:reinforced_joints",
+        "echoequipmentcore:shoal_suit",
+        "echoequipmentcore:thermal_regulator"
+      ],
+      "sourceSignals": {
+        "hasDeferredRegister": false,
+        "hasBlockstates": false,
+        "hasModels": true,
+        "creativeDeclared": true,
+        "creativeTabFiles": [
+          "com/knoxhack/echo/equipmentcore/registry/ModCreativeTabs.java"
+        ],
+        "itemGroupLangKeys": [
+          "itemGroup.echoequipmentcore.equipment"
+        ],
+        "creativeTabIds": []
+      },
+      "registryBacked": false,
+      "visibleParent": false,
+      "visibleSearch": false,
+      "selectable": false,
+      "playable": false,
+      "creativeTabStatus": "declared-only",
+      "missingCreativeTabEntries": [
+        "echoequipmentcore:abyssal_exosuit",
+        "echoequipmentcore:dive_tool",
+        "echoequipmentcore:divers_rig",
+        "echoequipmentcore:emergency_buoyancy",
+        "echoequipmentcore:hadal_hardsuit",
+        "echoequipmentcore:laser_cutter",
+        "echoequipmentcore:lattice_void_suit",
+        "echoequipmentcore:light_sensor",
+        "echoequipmentcore:oxygen_scrubber",
+        "echoequipmentcore:rebreather",
+        "echoequipmentcore:reinforced_joints",
+        "echoequipmentcore:shoal_suit",
+        "echoequipmentcore:thermal_regulator"
+      ],
+      "missingCreativeSearchEntries": [
+        "echoequipmentcore:abyssal_exosuit",
+        "echoequipmentcore:dive_tool",
+        "echoequipmentcore:divers_rig",
+        "echoequipmentcore:emergency_buoyancy",
+        "echoequipmentcore:hadal_hardsuit",
+        "echoequipmentcore:laser_cutter",
+        "echoequipmentcore:lattice_void_suit",
+        "echoequipmentcore:light_sensor",
+        "echoequipmentcore:oxygen_scrubber",
+        "echoequipmentcore:rebreather",
+        "echoequipmentcore:reinforced_joints",
+        "echoequipmentcore:shoal_suit",
+        "echoequipmentcore:thermal_regulator"
+      ],
+      "result": "fail",
+      "blockers": [
+        "creative tab/group has no registry-backed runtime host proof",
+        "creative tab entries are not proven visible in the parent creative inventory path",
+        "creative tab entries are not proven visible in creative search",
+        "no module creative-tab entry is proven selectable into inventory or hotbar",
+        "no selected creative-tab block/item is proven usable in gameplay"
+      ]
     },
     {
       "moduleId": "echofamiliarcore",
@@ -11221,6 +11456,119 @@
       "blockers": []
     },
     {
+      "moduleId": "echosettlementcore",
+      "name": "ECHO: SettlementCore",
+      "version": "0.1.0",
+      "directory": "addons/echosettlementcore",
+      "expectedFeatures": [
+        "blocks",
+        "creative_tab",
+        "entities",
+        "items",
+        "machines"
+      ],
+      "expectedCreativeTabs": [
+        {
+          "id": "echosettlementcore:echosettlementcore_settlement",
+          "titleKey": "itemGroup.echosettlementcore.settlement",
+          "source": "lang.itemGroup",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echosettlementcore:airlock",
+            "echosettlementcore:cargo_locker",
+            "echosettlementcore:deep_miner_station",
+            "echosettlementcore:divers_quarters",
+            "echosettlementcore:med_bay",
+            "echosettlementcore:oxygen_recycler",
+            "echosettlementcore:pressure_mechanic_station",
+            "echosettlementcore:pressure_pump",
+            "echosettlementcore:submersible_dock",
+            "echosettlementcore:workshop",
+            "echosettlementcore:xenobiologist_lab"
+          ]
+        }
+      ],
+      "expectedCreativeEntries": [
+        "echosettlementcore:airlock",
+        "echosettlementcore:cargo_locker",
+        "echosettlementcore:deep_miner_station",
+        "echosettlementcore:divers_quarters",
+        "echosettlementcore:med_bay",
+        "echosettlementcore:oxygen_recycler",
+        "echosettlementcore:pressure_mechanic_station",
+        "echosettlementcore:pressure_pump",
+        "echosettlementcore:submersible_dock",
+        "echosettlementcore:workshop",
+        "echosettlementcore:xenobiologist_lab"
+      ],
+      "expectedSearchEntries": [
+        "echosettlementcore:airlock",
+        "echosettlementcore:cargo_locker",
+        "echosettlementcore:deep_miner_station",
+        "echosettlementcore:divers_quarters",
+        "echosettlementcore:med_bay",
+        "echosettlementcore:oxygen_recycler",
+        "echosettlementcore:pressure_mechanic_station",
+        "echosettlementcore:pressure_pump",
+        "echosettlementcore:submersible_dock",
+        "echosettlementcore:workshop",
+        "echosettlementcore:xenobiologist_lab"
+      ],
+      "sourceSignals": {
+        "hasDeferredRegister": false,
+        "hasBlockstates": true,
+        "hasModels": true,
+        "creativeDeclared": true,
+        "creativeTabFiles": [
+          "com/knoxhack/echo/settlementcore/registry/ModCreativeTabs.java"
+        ],
+        "itemGroupLangKeys": [
+          "itemGroup.echosettlementcore.settlement"
+        ],
+        "creativeTabIds": []
+      },
+      "registryBacked": false,
+      "visibleParent": false,
+      "visibleSearch": false,
+      "selectable": false,
+      "playable": false,
+      "creativeTabStatus": "declared-only",
+      "missingCreativeTabEntries": [
+        "echosettlementcore:airlock",
+        "echosettlementcore:cargo_locker",
+        "echosettlementcore:deep_miner_station",
+        "echosettlementcore:divers_quarters",
+        "echosettlementcore:med_bay",
+        "echosettlementcore:oxygen_recycler",
+        "echosettlementcore:pressure_mechanic_station",
+        "echosettlementcore:pressure_pump",
+        "echosettlementcore:submersible_dock",
+        "echosettlementcore:workshop",
+        "echosettlementcore:xenobiologist_lab"
+      ],
+      "missingCreativeSearchEntries": [
+        "echosettlementcore:airlock",
+        "echosettlementcore:cargo_locker",
+        "echosettlementcore:deep_miner_station",
+        "echosettlementcore:divers_quarters",
+        "echosettlementcore:med_bay",
+        "echosettlementcore:oxygen_recycler",
+        "echosettlementcore:pressure_mechanic_station",
+        "echosettlementcore:pressure_pump",
+        "echosettlementcore:submersible_dock",
+        "echosettlementcore:workshop",
+        "echosettlementcore:xenobiologist_lab"
+      ],
+      "result": "fail",
+      "blockers": [
+        "creative tab/group has no registry-backed runtime host proof",
+        "creative tab entries are not proven visible in the parent creative inventory path",
+        "creative tab entries are not proven visible in creative search",
+        "no module creative-tab entry is proven selectable into inventory or hotbar",
+        "no selected creative-tab block/item is proven usable in gameplay"
+      ]
+    },
+    {
       "moduleId": "echosignalos",
       "name": "SignalOS",
       "version": "1.0.0",
@@ -11272,16 +11620,34 @@
         ],
         "creativeTabIds": []
       },
-      "registryBacked": true,
-      "visibleParent": true,
-      "visibleSearch": true,
-      "selectable": true,
-      "playable": true,
-      "creativeTabStatus": "playable",
-      "missingCreativeTabEntries": [],
-      "missingCreativeSearchEntries": [],
-      "result": "pass",
-      "blockers": []
+      "registryBacked": false,
+      "visibleParent": false,
+      "visibleSearch": false,
+      "selectable": false,
+      "playable": false,
+      "creativeTabStatus": "declared-only",
+      "missingCreativeTabEntries": [
+        "signalos:data_drive",
+        "signalos:network_relay",
+        "signalos:server_rack",
+        "signalos:terminal",
+        "signalos:workstation"
+      ],
+      "missingCreativeSearchEntries": [
+        "signalos:data_drive",
+        "signalos:network_relay",
+        "signalos:server_rack",
+        "signalos:terminal",
+        "signalos:workstation"
+      ],
+      "result": "fail",
+      "blockers": [
+        "creative tab/group has no registry-backed runtime host proof",
+        "creative tab entries are not proven visible in the parent creative inventory path",
+        "creative tab entries are not proven visible in creative search",
+        "no module creative-tab entry is proven selectable into inventory or hotbar",
+        "no selected creative-tab block/item is proven usable in gameplay"
+      ]
     },
     {
       "moduleId": "echoskyrelayprotocol",
@@ -12048,5 +12414,26 @@
       "blockers": []
     }
   ],
-  "blockers": []
+  "blockers": [
+    "echodeepreachprotocol: creative tab entries are not proven visible in creative search",
+    "echodeepreachprotocol: creative tab entries are not proven visible in the parent creative inventory path",
+    "echodeepreachprotocol: creative tab/group has no registry-backed runtime host proof",
+    "echodeepreachprotocol: no module creative-tab entry is proven selectable into inventory or hotbar",
+    "echodeepreachprotocol: no selected creative-tab block/item is proven usable in gameplay",
+    "echoequipmentcore: creative tab entries are not proven visible in creative search",
+    "echoequipmentcore: creative tab entries are not proven visible in the parent creative inventory path",
+    "echoequipmentcore: creative tab/group has no registry-backed runtime host proof",
+    "echoequipmentcore: no module creative-tab entry is proven selectable into inventory or hotbar",
+    "echoequipmentcore: no selected creative-tab block/item is proven usable in gameplay",
+    "echosettlementcore: creative tab entries are not proven visible in creative search",
+    "echosettlementcore: creative tab entries are not proven visible in the parent creative inventory path",
+    "echosettlementcore: creative tab/group has no registry-backed runtime host proof",
+    "echosettlementcore: no module creative-tab entry is proven selectable into inventory or hotbar",
+    "echosettlementcore: no selected creative-tab block/item is proven usable in gameplay",
+    "echosignalos: creative tab entries are not proven visible in creative search",
+    "echosignalos: creative tab entries are not proven visible in the parent creative inventory path",
+    "echosignalos: creative tab/group has no registry-backed runtime host proof",
+    "echosignalos: no module creative-tab entry is proven selectable into inventory or hotbar",
+    "echosignalos: no selected creative-tab block/item is proven usable in gameplay"
+  ]
 }

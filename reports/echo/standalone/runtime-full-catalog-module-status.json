@@ -2,9 +2,9 @@
   "schema": "echo.standalone.runtime_full_catalog_module_status.v1",
   "generatedAt": "1970-01-01T00:00:00Z",
   "status": "PASS",
-  "descriptorCount": 132,
+  "descriptorCount": 133,
   "statusCounts": {
-    "runtime-active": 116,
+    "runtime-active": 117,
     "runtime-tooling-only": 12,
     "runtime-dev-only": 4,
     "runtime-disabled-with-reason": 0
@@ -57,6 +57,7 @@
     "echocurationcore": {"status": "runtime-tooling-only", "reason": "runtime-tooling-only: descriptor provides runtime tooling or diagnostics, not direct gameplay; descriptor-only load; no classloader or module code execution"},
     "echocursecore": {"status": "runtime-active", "reason": "runtime-active: descriptor is eligible for standalone runtime activation; descriptor-only load; no classloader or module code execution"},
     "echodatacore": {"status": "runtime-active", "reason": "runtime-active: descriptor is eligible for standalone runtime activation; descriptor-only load; no classloader or module code execution"},
+    "echodeepreachprotocol": {"status": "runtime-active", "reason": "runtime-active: descriptor is eligible for standalone runtime activation; descriptor-only load; no classloader or module code execution"},
     "echodependencydoctor": {"status": "runtime-tooling-only", "reason": "runtime-tooling-only: descriptor provides runtime tooling or diagnostics, not direct gameplay; descriptor-only load; no classloader or module code execution"},
     "echodifficultycore": {"status": "runtime-active", "reason": "runtime-active: descriptor is eligible for standalone runtime activation; descriptor-only load; no classloader or module code execution"},
     "echodisastercore": {"status": "runtime-active", "reason": "runtime-active: descriptor is eligible for standalone runtime activation; descriptor-only load; no classloader or module code execution"},

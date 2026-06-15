@@ -15,7 +15,7 @@ async function readJson(root, relativePath) {
   return JSON.parse(await fs.readFile(path.join(root, relativePath), 'utf8'))
 }
 
-async function writeModule(root, directory, descriptor, sources) {
+async function writeModule(root, directory, descriptor, sources, { writeArtifact = true } = {}) {
   const moduleRoot = path.join(root, 'addons', directory)
   await writeJson(moduleRoot, 'src/main/resources/META-INF/echo.mod.json', descriptor)
   for (const [className, source] of Object.entries(sources)) {
@@ -25,8 +25,10 @@ async function writeModule(root, directory, descriptor, sources) {
   }
   const artifactName = `${descriptor.id}-${descriptor.version}-neoforge.jar`
   const artifactPath = path.join(moduleRoot, 'build', 'libs', artifactName)
-  await fs.mkdir(path.dirname(artifactPath), { recursive: true })
-  await fs.writeFile(artifactPath, 'compiled-neoforge-jar-fixture', 'utf8')
+  if (writeArtifact) {
+    await fs.mkdir(path.dirname(artifactPath), { recursive: true })
+    await fs.writeFile(artifactPath, 'compiled-neoforge-jar-fixture', 'utf8')
+  }
 }
 
 const repoRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-neoforge-runtime-evidence-'))
@@ -69,7 +71,51 @@ try {
     'com.example.EchoIndex': 'package com.example; public final class EchoIndex { Object screen; Object item; }\n',
   })
 
+  await writeModule(repoRoot, 'echoreleaseonly', {
+    schema: 'echo.mod.v1',
+    id: 'echoreleaseonly',
+    name: 'ECHO Release Only',
+    version: '1.0.0',
+    kind: 'library',
+    role: 'foundation',
+    entrypoint: 'com.example.EchoReleaseOnly',
+    access: {
+      adapterCore: {
+        runtimes: ['neoforge', 'echo_native', 'echo_runtime_standalone'],
+        domains: ['data'],
+      },
+    },
+  }, {
+    'com.example.EchoReleaseOnly': 'package com.example; public final class EchoReleaseOnly {}\n',
+  }, { writeArtifact: false })
+
+  await writeJson(repoRoot, 'dist/full-release/echo-release.json', {
+    schemaVersion: 'echo.module.release.v1',
+    generatedAt: '2026-06-15T00:00:00.000Z',
+    modules: [
+      {
+        moduleId: 'echoreleaseonly',
+        version: '1.0.0',
+        artifacts: [
+          {
+            kind: 'neoforge',
+            filename: 'echoreleaseonly-1.0.0-neoforge.jar',
+            size: 1234,
+            sha256: 'abc123',
+            downloadUrl: 'https://example.invalid/echoreleaseonly-1.0.0-neoforge.jar',
+            buildMode: 'compiled-runtime',
+          },
+        ],
+      },
+    ],
+  })
+
   await generateNeoForgeRuntimeEvidence({ repoRoot })
+  const runtimeEvidence = await readJson(repoRoot, 'reports/runtime-parity/neoforge-runtime-evidence.json')
+  const releaseOnly = runtimeEvidence.modules.find((module) => module.moduleId === 'echoreleaseonly')
+  assert.equal(releaseOnly.lifecycleVerified, true)
+  assert.equal(releaseOnly.artifact.source, 'release-manifest')
+  assert.equal(releaseOnly.artifact.path, 'dist/full-release/echo-release.json')
 
   const missingUi = await readJson(repoRoot, 'reports/runtime-parity/neoforge-client-ui-results.json')
   assert.equal(missingUi.status, 'PARTIAL')

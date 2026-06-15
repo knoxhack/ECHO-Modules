@@ -565,15 +565,51 @@ function packRefsForModule(moduleId, packManifests) {
 }
 
 async function releaseIndex(repoRoot) {
-  const releasePath = path.join(repoRoot, 'dist', 'echo-module-release', 'echo-release.json')
-  if (!(await exists(releasePath))) return { found: false, modules: new Map() }
-  const release = await readJson(releasePath)
+  const candidates = await releaseIndexCandidates(repoRoot)
+  if (candidates.length === 0) return { found: false, modules: new Map() }
+  candidates.sort((left, right) => {
+    if (right.moduleCount !== left.moduleCount) return right.moduleCount - left.moduleCount
+    return right.generatedAt.localeCompare(left.generatedAt)
+  })
+  const { releasePath, release } = candidates[0]
   const modules = new Map()
   for (const module of Array.isArray(release.modules) ? release.modules : []) {
     const moduleId = string(module.moduleId)
     if (moduleId) modules.set(moduleId, module)
   }
   return { found: true, path: releasePath, modules }
+}
+
+async function releaseIndexCandidates(repoRoot) {
+  const distRoot = path.join(repoRoot, 'dist')
+  const candidates = []
+  const primary = path.join(distRoot, 'echo-module-release', 'echo-release.json')
+  if (await exists(primary)) {
+    const release = await readJson(primary)
+    candidates.push(releaseIndexCandidate(primary, release))
+  }
+  if (!(await exists(distRoot))) return candidates
+  for (const entry of await fs.readdir(distRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name === 'echo-module-release') continue
+    const releasePath = path.join(distRoot, entry.name, 'echo-release.json')
+    if (!(await exists(releasePath))) continue
+    try {
+      const release = await readJson(releasePath)
+      candidates.push(releaseIndexCandidate(releasePath, release))
+    } catch {
+      // Ignore stale scratch outputs that are not valid module release manifests.
+    }
+  }
+  return candidates
+}
+
+function releaseIndexCandidate(releasePath, release) {
+  return {
+    releasePath,
+    release,
+    moduleCount: Array.isArray(release.modules) ? release.modules.length : 0,
+    generatedAt: string(release.generatedAt),
+  }
 }
 
 async function collectRuntimeEvidence(echoRoot, modulesRepoRoot, outDir, modules = []) {

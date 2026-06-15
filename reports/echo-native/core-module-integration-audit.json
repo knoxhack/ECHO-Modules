@@ -1,10 +1,10 @@
 {
   "schema": "echo.native.core_module_integration_audit.v1",
-  "generatedAt": "2026-06-14T01:22:37.732Z",
+  "generatedAt": "2026-06-15T01:50:21.763Z",
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
-  "moduleCount": 132,
-  "bridgeableModuleCount": 132,
+  "moduleCount": 133,
+  "bridgeableModuleCount": 133,
   "coreSpineModuleCount": 34,
   "coreSpineModules": [
     "echocore",
@@ -1380,7 +1380,7 @@
         "echonetcore"
       ],
       "optional": [
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "community.discord_relay",
@@ -1818,6 +1818,95 @@
       "nativeIntegrationStatus": "LEGACY_ADAPTER_BRIDGEABLE"
     },
     {
+      "moduleId": "echodeepreachprotocol",
+      "directory": "addons/echodeepreachprotocol",
+      "descriptorPath": "addons/echodeepreachprotocol/src/main/resources/META-INF/echo.mod.json",
+      "name": "ECHO: Deep Reach Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "channel": "alpha",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "requires": [
+        "echofoundationcore",
+        "echomaterialcore",
+        "echotoolcore",
+        "echostationcore",
+        "echoworldstarter",
+        "echocommonloot",
+        "echocreatureroles",
+        "echocore",
+        "echonetcore",
+        "echoadaptercore",
+        "echocontentcore",
+        "echoworldcore",
+        "echobiomecore",
+        "echostructurecore",
+        "echocreaturecore",
+        "echocombatcore",
+        "echohealthcore",
+        "echolootcore",
+        "echorecipecore",
+        "echoassetcore",
+        "echosoundcore",
+        "echothemecore",
+        "echoscreencore",
+        "echohudcore",
+        "echoplayercore",
+        "echonpcore",
+        "echoeconomycore",
+        "echohazardcore",
+        "echoequipmentcore",
+        "echosettlementcore",
+        "echoskillcore",
+        "echomissioncore",
+        "echoexpeditioncore",
+        "echoruincore",
+        "echovehiclecore",
+        "echoseasoncore",
+        "echosessioncore",
+        "echotelemetrycore"
+      ],
+      "optional": [
+        "echoindex",
+        "echotutorialcore",
+        "echoholomap",
+        "echolens",
+        "echoterminal",
+        "echorecovery",
+        "echoblockworks"
+      ],
+      "provides": [
+        "deepreach.content",
+        "deepreach.missions",
+        "deepreach.protocol",
+        "deepreach.survival",
+        "deepreach.world"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net",
+        "foundation.*",
+        "hazard.registry",
+        "equipment.slots",
+        "settlement.registry"
+      ],
+      "apiStability": "alpha",
+      "nativeEntrypoint": "com.knoxhack.echodeepreachprotocol.EchoDeepReachNativeModule",
+      "adapterCoreRuntimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ],
+      "hasBuildGradle": true,
+      "hasJavaSource": true,
+      "inCoreSpineAudit": false,
+      "nativeIntegrationStatus": "LEGACY_ADAPTER_BRIDGEABLE"
+    },
+    {
       "moduleId": "echodependencydoctor",
       "directory": "addons/echodependencydoctor",
       "descriptorPath": "addons/echodependencydoctor/src/main/resources/META-INF/echo.mod.json",
@@ -2076,7 +2165,8 @@
         "echoadaptercore",
         "echoarmory",
         "echocombatcore",
-        "echotoolcore"
+        "echotoolcore",
+        "echohazardcore"
       ],
       "optional": [
         "echoaccessibilitycore"
@@ -2090,7 +2180,9 @@
       "consumes": [
         "armory.gear",
         "combat.stats",
-        "foundation.tools"
+        "foundation.tools",
+        "hazard.registry",
+        "hazard.resistance"
       ],
       "apiStability": "alpha",
       "nativeEntrypoint": "com.knoxhack.echo.equipmentcore.EchoEquipmentCoreNativeModule",
@@ -4233,7 +4325,7 @@
         "echoashfallprotocol",
         "echocommunitybridge",
         "echoterminal",
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "presence.discord_rpc",
@@ -5192,7 +5284,9 @@
         "echobasegrid",
         "echonpcore",
         "echologisticscore",
-        "echoworldcore"
+        "echoworldcore",
+        "echohazardcore",
+        "echoequipmentcore"
       ],
       "optional": [
         "echofactioncore"
@@ -5206,11 +5300,63 @@
       "consumes": [
         "basegrid.claims",
         "npc.profiles",
-        "logistics.routes",
-        "world.regions"
+        "logistics.routing",
+        "world.regions",
+        "hazard.registry",
+        "hazard.resistance"
       ],
       "apiStability": "alpha",
       "nativeEntrypoint": "com.knoxhack.echo.settlementcore.EchoSettlementCoreNativeModule",
+      "adapterCoreRuntimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ],
+      "hasBuildGradle": true,
+      "hasJavaSource": true,
+      "inCoreSpineAudit": false,
+      "nativeIntegrationStatus": "LEGACY_ADAPTER_BRIDGEABLE"
+    },
+    {
+      "moduleId": "echosignalos",
+      "directory": "addons/echosignalos",
+      "descriptorPath": "addons/echosignalos/src/main/resources/META-INF/echo.mod.json",
+      "name": "SignalOS",
+      "version": "1.0.0",
+      "kind": "library",
+      "role": "story",
+      "channel": "beta",
+      "official": true,
+      "trustLevel": "official",
+      "side": "common",
+      "standalone": true,
+      "requires": [
+        "echoadaptercore",
+        "echocore",
+        "echonetcore"
+      ],
+      "optional": [
+        "echodatacore",
+        "echoindex",
+        "echomissioncore",
+        "echorendercore",
+        "echoscreencore",
+        "echoterminal"
+      ],
+      "provides": [
+        "signalos.archives",
+        "signalos.chapters",
+        "signalos.data_drives",
+        "signalos.missions",
+        "signalos.net",
+        "signalos.terminal"
+      ],
+      "consumes": [
+        "echo.core",
+        "echo.net"
+      ],
+      "apiStability": "beta",
+      "nativeEntrypoint": "com.knoxhack.signalos.EchoSignalOsNativeModule",
       "adapterCoreRuntimes": [
         "neoforge",
         "echo_native",
@@ -5426,7 +5572,7 @@
         "echopowergrid",
         "echorendercore",
         "echoruntimeguard",
-        "signalos",
+        "echosignalos",
         "echostationfall",
         "echoterminal",
         "echothemecore",
@@ -5873,7 +6019,7 @@
         "echolens",
         "echomissioncore",
         "echothemecore",
-        "signalos"
+        "echosignalos"
       ],
       "provides": [
         "terminal.surface"
@@ -6010,7 +6156,7 @@
         "echorendercore",
         "echoruntimeguard",
         "echoscreencore",
-        "signalos",
+        "echosignalos",
         "echosoundcore",
         "echoterminal"
       ],
@@ -6422,56 +6568,6 @@
       "nativeIntegrationStatus": "LEGACY_ADAPTER_BRIDGEABLE"
     },
     {
-      "moduleId": "signalos",
-      "directory": "addons/echosignalos",
-      "descriptorPath": "addons/echosignalos/src/main/resources/META-INF/echo.mod.json",
-      "name": "SignalOS",
-      "version": "1.0.0",
-      "kind": "library",
-      "role": "story",
-      "channel": "beta",
-      "official": true,
-      "trustLevel": "official",
-      "side": "common",
-      "standalone": true,
-      "requires": [
-        "echoadaptercore",
-        "echocore",
-        "echonetcore"
-      ],
-      "optional": [
-        "echodatacore",
-        "echoindex",
-        "echomissioncore",
-        "echorendercore",
-        "echoscreencore",
-        "echoterminal"
-      ],
-      "provides": [
-        "signalos.archives",
-        "signalos.chapters",
-        "signalos.data_drives",
-        "signalos.missions",
-        "signalos.net",
-        "signalos.terminal"
-      ],
-      "consumes": [
-        "echo.core",
-        "echo.net"
-      ],
-      "apiStability": "beta",
-      "nativeEntrypoint": "com.knoxhack.signalos.EchoSignalOsNativeModule",
-      "adapterCoreRuntimes": [
-        "neoforge",
-        "echo_native",
-        "echo_runtime_standalone"
-      ],
-      "hasBuildGradle": true,
-      "hasJavaSource": true,
-      "inCoreSpineAudit": false,
-      "nativeIntegrationStatus": "LEGACY_ADAPTER_BRIDGEABLE"
-    },
-    {
       "moduleId": "signalosexample",
       "directory": "addons/signalosexample",
       "descriptorPath": "addons/signalosexample/src/main/resources/META-INF/echo.mod.json",
@@ -6488,7 +6584,7 @@
         "echoadaptercore",
         "echocore",
         "echonetcore",
-        "signalos"
+        "echosignalos"
       ],
       "optional": [
         "echoindex",
