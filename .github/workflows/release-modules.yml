@@ -200,8 +200,29 @@ jobs:
               -o -name '*-content-graph.json' \
             \)
           } | sort)
+          upload_release_file() {
+            local file="$1"
+            local attempt=1
+            while true; do
+              if gh release upload "$TAG" "$file" --clobber; then
+                sleep 2
+                return 0
+              fi
+              if [ "$attempt" -ge 6 ]; then
+                echo "Failed to upload $file after $attempt attempts." >&2
+                return 1
+              fi
+              local delay=$((attempt * 60))
+              echo "Upload failed for $file; retrying in ${delay}s." >&2
+              sleep "$delay"
+              attempt=$((attempt + 1))
+            done
+          }
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "${FILES[@]}" --clobber
+            :
           else
-            gh release create "$TAG" "${FILES[@]}" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag
+            gh release create "$TAG" --title "$TAG" --notes "ECHO module release generated from ${GITHUB_SHA}." --verify-tag
           fi
+          for file in "${FILES[@]}"; do
+            upload_release_file "$file"
+          done

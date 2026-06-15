@@ -35,6 +35,8 @@ requireText('player_ready=true requires compiled runtime jars or module-local Gr
 requireText('ARGS+=(--package-from-source)', 'development visibility source-packaging mode')
 requireText('gh release create "$TAG"', 'GitHub release creation')
 requireText('gh release upload "$TAG"', 'GitHub release upload fallback')
+requireText('upload_release_file()', 'throttled release asset upload helper')
+requireText('sleep 2', 'release asset upload pacing')
 requireText("-o -name '*-content-graph.json'", 'content graph sidecar release upload')
 requireText('dist/echo-module-release/content-graph-evidence.json', 'content graph evidence release upload')
 
