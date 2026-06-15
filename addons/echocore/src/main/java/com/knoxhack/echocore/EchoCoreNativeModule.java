@@ -16,7 +16,9 @@ public final class EchoCoreNativeModule implements EchoNativeSurfaceModuleEntryp
     public static final List<String> CONTRACT_IDS = List.of(
             SERVICE_REGISTRY_CONTRACT_ID,
             DATA_BUS_CONTRACT_ID,
-            CORE_DIAGNOSTICS_CONTRACT_ID,
+            CORE_DIAGNOSTICS_CONTRACT_ID
+    );
+    public static final List<String> PLANNED_CONTRACT_IDS = List.of(
             NATIVE_HUB_CONTRACT_ID,
             "echo.native_hub"
     );
@@ -44,6 +46,8 @@ public final class EchoCoreNativeModule implements EchoNativeSurfaceModuleEntryp
         result.put("adapterDomains", List.of("data", "diagnostics", "ui_screens"));
         result.put("runtimeTargets", List.of("echo_native", "echo_runtime_standalone"));
         result.put("registryBridge", nativeHubRegistryBridge());
+        result.put("plannedFeatureContracts", PLANNED_CONTRACT_IDS);
+        result.put("plannedAdapterDomains", List.of("ui_screens"));
         result.put("serviceRegistryRoundTrip", referenceProbe.get("serviceRegistryRoundTrip"));
         result.put("dataBusSubscriptionRoundTrip", referenceProbe.get("dataBusSubscriptionRoundTrip"));
         result.put("diagnosticSummaryAvailable", referenceProbe.get("diagnosticSummaryAvailable"));
@@ -55,12 +59,14 @@ public final class EchoCoreNativeModule implements EchoNativeSurfaceModuleEntryp
         result.put("nativeHubSurfaceId", "echocore:native_hub");
         result.put("nativeHubKeybind", "key.echocore.native_hub");
         result.put("nativeHubDefaultKey", "F7");
+        result.put("nativeHubActionable", false);
+        result.put("uiSurfaceStatus", "planned_only");
         result.put("registryInjected", false);
         result.put("registryMutated", false);
         result.put("serviceCodeExecuted", true);
         result.put("transformsPerformed", false);
         result.put("summary",
-                "EchoCore native contract exercised service registry, data bus, platform diagnostics, and the Native Hub screen surface for AdapterCore.");
+                "EchoCore native contract exercised service registry, data bus, and platform diagnostics; the Native Hub surface remains planned-only until a live client bridge owns it.");
         return Map.copyOf(result);
     }
 

@@ -1,9 +1,9 @@
 # AdapterCore Strict Port Audit
 
 - Schema: `echo.adaptercore.strict_port_audit.v1`
-- Generated: 2026-06-14T15:27:41.808Z
-- Modules: 132
-- Passing: 132
+- Generated: 2026-06-14T23:44:27.951Z
+- Modules: 133
+- Passing: 133
 - Failing: 0
 
 ## Result By Module
@@ -47,6 +47,7 @@
 | echocurationcore | tier2plus | pass | none |
 | echocursecore | tier2plus | pass | none |
 | echodatacore | tier2plus | pass | none |
+| echodeepreachprotocol | tier2plus | pass | none |
 | echodependencydoctor | tier2plus | pass | none |
 | echodifficultycore | tier2plus | pass | none |
 | echodisastercore | tier2plus | pass | none |

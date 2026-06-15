@@ -23,6 +23,8 @@ public final class EchoCreatorCore {
         EchoCommandRegistry.register(CreatorCoreCommands.creatorAliasRoot());
         EchoBackendLifecycleBridge.registerGameEventHandler(CreatorCoreApi.get().pilot()::onServerTick);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echo.creatorcore.EchoCreatorCoreClient");
         LOGGER.info("ECHO: CreatorCore dashboard foundation loaded.");
     }
 

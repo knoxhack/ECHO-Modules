@@ -37,6 +37,7 @@
     "echocreatureroles",
     "echocursecore",
     "echodatacore",
+    "echodeepreachprotocol",
     "echodisastercore",
     "echoeconomycore",
     "echoencountercore",
@@ -105,7 +106,7 @@
     "echoworldcore",
     "echoworldstarter"
   ],
-  "moduleCount": 93,
+  "moduleCount": 94,
   "allModules": false,
   "sourceReports": [
     {
@@ -1714,6 +1715,90 @@
       }
     },
     {
+      "moduleId": "echodeepreachprotocol",
+      "name": "ECHO: Deep Reach Protocol",
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "index",
+        "blocks",
+        "items",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "audio",
+        "creative_tab"
+      ],
+      "gameTests": {
+        "files": [
+          "src/test/java/com/knoxhack/echodeepreachprotocol/test/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BIOMES_REGISTERED.getId());\n        register(event, environment, ",
+          ", CORRUPTION_NEAR_LATTICE.getId());\n\n        // Remora vehicle\n        register(event, environment, ",
+          ", DEEP_REACH_MISSIONS_LOADED.getId());\n        register(event, environment, ",
+          ", LATE_GAME_MISSIONS_PARSE.getId());\n\n        // Season tests\n        register(event, environment, ",
+          ", PRESSURE_SURFACE.getId());\n        register(event, environment, ",
+          ", REMORA_ITEM_REGISTERED.getId());\n\n        // MissionCore campaign tests\n        register(event, environment, ",
+          ", SEASON_MULTIPLIER_SANITY.getId());\n        register(event, environment, ",
+          ", STRUCTURES_REGISTERED.getId());\n\n        // Hazard sources\n        register(event, environment, ",
+          "biomes_registered",
+          "blocks_registered",
+          "deep_reach_campaign_chapter_registered",
+          "deep_reach_corruption_near_lattice",
+          "deep_reach_missions_loaded",
+          "deep_reach_oxygen_underwater",
+          "deep_reach_pressure_deep",
+          "deep_reach_pressure_surface",
+          "late_game_advancements_parse",
+          "late_game_missions_parse",
+          "remora_entity_registered",
+          "remora_item_registered",
+          "season_manager_exists",
+          "season_multiplier_sanity",
+          "structure_nbts_exist",
+          "structures_registered"
+        ]
+      },
+      "featureProofs": {
+        "lifecycle": true,
+        "content": true,
+        "ui": true,
+        "actions": true,
+        "blockItems": true,
+        "worldgen": true,
+        "saveReload": true,
+        "networkSync": true,
+        "features": [
+          "gui",
+          "screen",
+          "index",
+          "blocks",
+          "items",
+          "worldgen",
+          "recipes",
+          "loot",
+          "missions",
+          "networking",
+          "save_data",
+          "audio",
+          "creative_tab"
+        ],
+        "sourceSignals": {
+          "deferredRegister": false,
+          "screen": true,
+          "block": true,
+          "item": true,
+          "worldgen": true,
+          "save": false,
+          "network": true
+        }
+      }
+    },
+    {
       "moduleId": "echodisastercore",
       "name": "ECHO: DisasterCore",
       "expectedFeatures": [
@@ -1824,11 +1909,24 @@
       "expectedFeatures": [
         "gui",
         "items",
-        "save_data"
+        "networking",
+        "save_data",
+        "creative_tab"
       ],
       "gameTests": {
-        "files": [],
-        "testNames": []
+        "files": [
+          "src/test/java/com/knoxhack/echo/equipmentcore/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", RESISTANCE_PROVIDER.getId());\n    }\n\n    private static void slotRegistration(GameTestHelper helper) {\n        helper.assertTrue(ModItems.SHOAL_SUIT.get() != Items.AIR, ",
+          ", SLOT_REGISTRATION.getId());\n        register(event, ",
+          ", UPGRADE_INSTALL.getId());\n        register(event, ",
+          "durability_damage",
+          "resistance_provider",
+          "slot_registration",
+          "suit_stats",
+          "upgrade_install"
+        ]
       },
       "featureProofs": {
         "lifecycle": true,
@@ -1842,16 +1940,18 @@
         "features": [
           "gui",
           "items",
-          "save_data"
+          "networking",
+          "save_data",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
           "screen": false,
           "block": false,
-          "item": false,
+          "item": true,
           "worldgen": false,
-          "save": false,
-          "network": false
+          "save": true,
+          "network": true
         }
       }
     },
@@ -2195,6 +2295,7 @@
       "moduleId": "echohazardcore",
       "name": "ECHO: HazardCore",
       "expectedFeatures": [
+        "blocks",
         "worldgen",
         "save_data"
       ],
@@ -2212,13 +2313,14 @@
         "saveReload": true,
         "networkSync": true,
         "features": [
+          "blocks",
           "worldgen",
           "save_data"
         ],
         "sourceSignals": {
           "deferredRegister": false,
           "screen": false,
-          "block": false,
+          "block": true,
           "item": false,
           "worldgen": true,
           "save": false,
@@ -4417,14 +4519,29 @@
       "moduleId": "echosettlementcore",
       "name": "ECHO: SettlementCore",
       "expectedFeatures": [
+        "screen",
+        "blocks",
+        "items",
         "worldgen",
+        "loot",
         "missions",
+        "networking",
         "save_data",
-        "entities"
+        "entities",
+        "creative_tab"
       ],
       "gameTests": {
-        "files": [],
-        "testNames": []
+        "files": [
+          "src/test/java/com/knoxhack/echosettlementcore/registry/ModGameTests.java"
+        ],
+        "testNames": [
+          ", BLOCK_REGISTRATION.getId());\n        register(event, ",
+          ", JOB_DEFINITIONS.getId());\n        register(event, ",
+          "block_registration",
+          "job_definitions",
+          "logistics_request",
+          "safe_habitat"
+        ]
       },
       "featureProofs": {
         "lifecycle": true,
@@ -4436,19 +4553,25 @@
         "saveReload": true,
         "networkSync": true,
         "features": [
+          "screen",
+          "blocks",
+          "items",
           "worldgen",
+          "loot",
           "missions",
+          "networking",
           "save_data",
-          "entities"
+          "entities",
+          "creative_tab"
         ],
         "sourceSignals": {
           "deferredRegister": false,
-          "screen": false,
-          "block": false,
-          "item": false,
+          "screen": true,
+          "block": true,
+          "item": true,
           "worldgen": true,
-          "save": false,
-          "network": false
+          "save": true,
+          "network": true
         }
       }
     },

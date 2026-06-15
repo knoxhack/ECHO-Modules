@@ -105,7 +105,7 @@
               "required": ["kind", "filename", "sha256", "size", "downloadUrl"],
               "properties": {
                 "kind": {
-                  "enum": ["echo-addon", "neoforge", "standalone", "sources"]
+                  "enum": ["echo-addon", "neoforge", "standalone", "sources", "content-graph"]
                 },
                 "filename": {
                   "type": "string"
@@ -121,12 +121,12 @@
                   "type": "string"
                 },
                 "runtimeTarget": {
-                  "enum": ["echo-native", "neoforge", "standalone", "sources"]
+                  "enum": ["echo-native", "neoforge", "standalone", "sources", "content-graph"]
                 },
                 "contains": {
                   "type": "array",
                   "items": {
-                    "enum": ["META-INF/echo.mod.json", "META-INF/neoforge.mods.toml", "echo-addon-package.json"]
+                    "type": "string"
                   }
                 }
               }

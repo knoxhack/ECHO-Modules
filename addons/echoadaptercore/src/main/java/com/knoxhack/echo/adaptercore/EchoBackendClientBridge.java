@@ -3,6 +3,10 @@ package com.knoxhack.echo.adaptercore;
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.lang.reflect.Proxy;
 import java.util.function.Supplier;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.ParticleResources;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -25,6 +29,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.ContainerScreenEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
@@ -66,6 +71,28 @@ public final class EchoBackendClientBridge {
     public static boolean addClientReloadListener(Object event, Identifier id, PreparableReloadListener listener) {
         if (event instanceof AddClientReloadListenersEvent reload && id != null && listener != null) {
             reload.addListener(id, listener);
+            return true;
+        }
+        return false;
+    }
+
+    public static <T extends ParticleOptions> boolean registerParticleProvider(
+            Object event,
+            ParticleType<T> type,
+            ParticleResources.SpriteParticleRegistration<T> registration) {
+        if (event instanceof RegisterParticleProvidersEvent particles && type != null && registration != null) {
+            particles.registerSpriteSet(type, registration);
+            return true;
+        }
+        return false;
+    }
+
+    public static <T extends ParticleOptions> boolean registerSpecialParticleProvider(
+            Object event,
+            ParticleType<T> type,
+            ParticleProvider<T> provider) {
+        if (event instanceof RegisterParticleProvidersEvent particles && type != null && provider != null) {
+            particles.registerSpecial(type, provider);
             return true;
         }
         return false;

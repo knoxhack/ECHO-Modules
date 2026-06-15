@@ -1,6 +1,6 @@
 {
   "schema": "echo.module.feature_contracts.v1",
-  "generatedAt": "2026-06-14T15:45:15.097Z",
+  "generatedAt": "2026-06-14T23:44:27.983Z",
   "modules": [
     {
       "moduleId": "echoaccessibilitycore",
@@ -80,13 +80,29 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data",
-            "audio"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -382,22 +398,75 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "entities",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -595,16 +664,44 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "worldgen",
-            "recipes",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -818,17 +915,50 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "recipes",
-            "save_data",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -932,10 +1062,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -1184,18 +1318,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -1327,11 +1498,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -1524,20 +1703,64 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "index",
-            "blocks",
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -1694,13 +1917,29 @@
               "requiredLevel": "host-registered"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "index",
-            "recipes"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -1940,17 +2179,50 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "recipes",
-            "loot",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -2490,22 +2762,75 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "entities",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -2671,10 +2996,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -2748,11 +3077,19 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "save_data",
-            "audio"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -2858,11 +3195,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -2961,13 +3306,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "recipes",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -3119,16 +3480,44 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "worldgen",
-            "missions",
-            "networking",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -3290,15 +3679,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "holomap",
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -3568,19 +3981,60 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4110,18 +4564,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "index",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "recipes",
-            "loot"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4230,10 +4721,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4309,11 +4804,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4427,12 +4930,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4506,10 +5021,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4581,11 +5100,19 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4687,12 +5214,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -4810,12 +5349,25 @@
             }
           ],
           "satisfied": [
-            "items",
-            "creative_tab",
-            "save_data",
-            "entities"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -5013,15 +5565,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "blocks",
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -5142,13 +5718,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -5379,16 +5971,45 @@
             }
           ],
           "satisfied": [
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data",
-            "entities"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -5735,20 +6356,65 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "entities"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6033,19 +6699,59 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "index",
-            "holomap",
-            "blocks",
-            "worldgen",
-            "missions",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6174,12 +6880,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6302,13 +7020,29 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "lens",
-            "worldgen",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "lens",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6502,15 +7236,39 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6599,10 +7357,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6769,16 +7531,45 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "items",
-            "creative_tab",
-            "recipes",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6902,11 +7693,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -6924,6 +7723,405 @@
             "save_data"
           ],
           "gaps": []
+        }
+      }
+    },
+    {
+      "moduleId": "echodeepreachprotocol",
+      "name": "ECHO: Deep Reach Protocol",
+      "version": "0.1.0",
+      "kind": "pack_root",
+      "role": "official_pack",
+      "requiredRuntimes": [
+        "neoforge",
+        "echo_native",
+        "echo_runtime_standalone"
+      ],
+      "requiredPacks": [],
+      "entrypoints": {
+        "main": "com.knoxhack.echodeepreachprotocol.EchoDeepReachProtocol",
+        "native": "com.knoxhack.echodeepreachprotocol.EchoDeepReachNativeModule"
+      },
+      "expectedFeatures": [
+        "gui",
+        "screen",
+        "blocks",
+        "items",
+        "creative_tab",
+        "worldgen",
+        "recipes",
+        "loot",
+        "missions",
+        "networking",
+        "save_data",
+        "entities",
+        "audio"
+      ],
+      "expectedCreativeTabs": [
+        {
+          "id": "echodeepreachprotocol:native_modules",
+          "titleKey": "itemGroup.echodeepreachprotocol",
+          "source": "inferred.content_module",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echodeepreachprotocol:abyssal_leviathan_spawn_egg",
+            "echodeepreachprotocol:abyssal_stone",
+            "echodeepreachprotocol:bloater_spawn_egg",
+            "echodeepreachprotocol:hadal_wraith_spawn_egg",
+            "echodeepreachprotocol:lattice_crystal",
+            "echodeepreachprotocol:lattice_sentinel_spawn_egg",
+            "echodeepreachprotocol:remora_submersible",
+            "echodeepreachprotocol:sunken_sand",
+            "echodeepreachprotocol:thermal_vent",
+            "echodeepreachprotocol:twilight_stalker_spawn_egg",
+            "echodeepreachprotocol:vent_crab_shell",
+            "echodeepreachprotocol:vent_crab_spawn_egg"
+          ]
+        }
+      ],
+      "contentKinds": [
+        "block",
+        "item",
+        "recipe",
+        "loot",
+        "entity"
+      ],
+      "uiRoutes": [],
+      "blockActions": [
+        "place",
+        "use",
+        "break"
+      ],
+      "saveKeys": [
+        "echodeepreachprotocol",
+        "echodeepreachprotocol:missions"
+      ],
+      "networkChannels": [
+        "echodeepreachprotocol"
+      ],
+      "worldgenKeys": [
+        "echodeepreachprotocol"
+      ],
+      "runtimeContracts": {
+        "neoforge": {
+          "required": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable"
+            }
+          ],
+          "satisfied": [
+            "gui",
+            "screen",
+            "blocks",
+            "items",
+            "creative_tab",
+            "worldgen",
+            "recipes",
+            "loot",
+            "missions",
+            "networking",
+            "save_data",
+            "entities",
+            "audio"
+          ],
+          "gaps": []
+        },
+        "echo_native": {
+          "required": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable"
+            }
+          ],
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
+        },
+        "standalone": {
+          "required": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable"
+            }
+          ],
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         }
       }
     },
@@ -7017,10 +8215,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7096,11 +8298,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7204,11 +8414,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7301,12 +8519,24 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7350,17 +8580,45 @@
       },
       "expectedFeatures": [
         "items",
+        "creative_tab",
+        "worldgen",
         "save_data"
       ],
-      "expectedCreativeTabs": [],
-      "contentKinds": [],
+      "expectedCreativeTabs": [
+        {
+          "id": "echoequipmentcore:native_modules",
+          "titleKey": "itemGroup.echoequipmentcore",
+          "source": "source.creative_tab",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echoequipmentcore:abyssal_exosuit",
+            "echoequipmentcore:dive_tool",
+            "echoequipmentcore:divers_rig",
+            "echoequipmentcore:emergency_buoyancy",
+            "echoequipmentcore:hadal_hardsuit",
+            "echoequipmentcore:laser_cutter",
+            "echoequipmentcore:lattice_void_suit",
+            "echoequipmentcore:light_sensor",
+            "echoequipmentcore:oxygen_scrubber",
+            "echoequipmentcore:rebreather",
+            "echoequipmentcore:reinforced_joints",
+            "echoequipmentcore:shoal_suit",
+            "echoequipmentcore:thermal_regulator"
+          ]
+        }
+      ],
+      "contentKinds": [
+        "item"
+      ],
       "uiRoutes": [],
       "blockActions": [],
       "saveKeys": [
         "echoequipmentcore"
       ],
       "networkChannels": [],
-      "worldgenKeys": [],
+      "worldgenKeys": [
+        "echoequipmentcore"
+      ],
       "runtimeContracts": {
         "neoforge": {
           "required": [
@@ -7369,12 +8627,22 @@
               "requiredLevel": "gameplay-mutated"
             },
             {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
               "feature": "save_data",
               "requiredLevel": "save-reloaded"
             }
           ],
           "satisfied": [
             "items",
+            "creative_tab",
+            "worldgen",
             "save_data"
           ],
           "gaps": []
@@ -7386,15 +8654,41 @@
               "requiredLevel": "gameplay-mutated"
             },
             {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
               "feature": "save_data",
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7403,15 +8697,30 @@
               "requiredLevel": "gameplay-mutated"
             },
             {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
               "feature": "save_data",
               "requiredLevel": "save-reloaded"
             }
           ],
           "satisfied": [
             "items",
+            "worldgen",
             "save_data"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         }
       }
     },
@@ -7486,12 +8795,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7588,12 +8909,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7690,12 +9023,24 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "missions",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -7848,14 +9193,35 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "items",
-            "creative_tab",
-            "save_data",
-            "entities"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -8059,15 +9425,39 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -8782,23 +10172,80 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "holomap",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "recipes",
-            "loot",
-            "networking",
-            "save_data",
-            "audio",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9131,23 +10578,80 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "terminal",
-            "index",
-            "holomap",
-            "lens",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "loot",
-            "missions",
-            "save_data",
-            "audio",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "lens",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9326,13 +10830,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "terminal",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9419,11 +10939,19 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9461,13 +10989,20 @@
         "native": "com.knoxhack.echo.hazardcore.EchoHazardCoreNativeModule"
       },
       "expectedFeatures": [
+        "blocks",
         "worldgen",
         "save_data"
       ],
       "expectedCreativeTabs": [],
-      "contentKinds": [],
+      "contentKinds": [
+        "block"
+      ],
       "uiRoutes": [],
-      "blockActions": [],
+      "blockActions": [
+        "place",
+        "use",
+        "break"
+      ],
       "saveKeys": [
         "echohazardcore"
       ],
@@ -9479,6 +11014,10 @@
         "neoforge": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
               "requiredLevel": "host-registered"
             },
@@ -9488,6 +11027,7 @@
             }
           ],
           "satisfied": [
+            "blocks",
             "worldgen",
             "save_data"
           ],
@@ -9496,6 +11036,10 @@
         "echo_native": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
               "requiredLevel": "host-registered"
             },
@@ -9504,15 +11048,32 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
               "requiredLevel": "host-registered"
             },
@@ -9522,6 +11083,7 @@
             }
           ],
           "satisfied": [
+            "blocks",
             "worldgen",
             "save_data"
           ],
@@ -9590,10 +11152,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9773,15 +11339,39 @@
               "requiredLevel": "network-synced"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "holomap",
-            "worldgen",
-            "networking"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -9975,14 +11565,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "worldgen",
-            "missions"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -10216,18 +11826,54 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "inventory_overlay",
-            "index",
-            "blocks",
-            "items",
-            "recipes",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "inventory_overlay",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -10805,21 +12451,70 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "recipes",
-            "loot",
-            "networking",
-            "save_data",
-            "audio",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -10964,11 +12659,19 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11179,17 +12882,49 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "lens",
-            "blocks",
-            "block_actions",
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "lens",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11310,12 +13045,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11427,13 +13174,29 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "items",
-            "networking",
-            "save_data",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11690,19 +13453,60 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11860,13 +13664,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "loot",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -11975,13 +13795,29 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data",
-            "audio"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12132,15 +13968,39 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "blocks",
-            "items",
-            "block_actions",
-            "recipes",
-            "save_data",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12358,16 +14218,44 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "blocks",
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12461,10 +14349,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12528,10 +14420,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12691,13 +14587,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -12788,11 +14700,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "lens",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "lens",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -13036,17 +14956,50 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -13231,12 +15184,24 @@
               "requiredLevel": "network-synced"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "networking"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -13541,22 +15506,75 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "audio",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -13705,12 +15723,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "missions"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -13906,18 +15936,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "worldgen",
-            "missions",
-            "networking",
-            "save_data",
-            "entities"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -14289,21 +16356,70 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "index",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data",
-            "entities",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -14722,20 +16838,65 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "terminal",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -14874,12 +17035,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -14953,10 +17126,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15081,10 +17258,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15185,12 +17366,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15264,10 +17457,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15342,11 +17539,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15456,12 +17661,24 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "networking",
-            "save_data",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15743,20 +17960,65 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -15907,13 +18169,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -16138,17 +18416,50 @@
             }
           ],
           "satisfied": [
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -16342,15 +18653,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "worldgen",
-            "recipes",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -16462,12 +18797,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -16659,17 +19006,49 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "index",
-            "blocks",
-            "block_actions",
-            "recipes",
-            "save_data",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -16938,19 +19317,60 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "networking",
-            "save_data",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -17241,18 +19661,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -17422,14 +19879,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "blocks",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -17513,10 +19990,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -17666,14 +20147,35 @@
             }
           ],
           "satisfied": [
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "missions",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -17891,17 +20393,50 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18037,13 +20572,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18243,15 +20794,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "worldgen",
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18401,10 +20976,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18588,15 +21167,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "blocks",
-            "items",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18728,14 +21331,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "worldgen",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18850,13 +21473,29 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "loot",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -18947,11 +21586,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "networking",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -19031,11 +21678,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -19073,19 +21728,51 @@
         "native": "com.knoxhack.echo.settlementcore.EchoSettlementCoreNativeModule"
       },
       "expectedFeatures": [
+        "blocks",
+        "items",
+        "creative_tab",
         "worldgen",
+        "recipes",
+        "loot",
         "missions",
         "save_data",
         "entities",
         "machines"
       ],
-      "expectedCreativeTabs": [],
+      "expectedCreativeTabs": [
+        {
+          "id": "echosettlementcore:native_modules",
+          "titleKey": "itemGroup.echosettlementcore",
+          "source": "source.creative_tab",
+          "searchExpected": true,
+          "expectedEntries": [
+            "echosettlementcore:airlock",
+            "echosettlementcore:cargo_locker",
+            "echosettlementcore:deep_miner_station",
+            "echosettlementcore:divers_quarters",
+            "echosettlementcore:med_bay",
+            "echosettlementcore:oxygen_recycler",
+            "echosettlementcore:pressure_mechanic_station",
+            "echosettlementcore:pressure_pump",
+            "echosettlementcore:submersible_dock",
+            "echosettlementcore:workshop",
+            "echosettlementcore:xenobiologist_lab"
+          ]
+        }
+      ],
       "contentKinds": [
+        "block",
+        "item",
+        "recipe",
+        "loot",
         "entity",
         "machine"
       ],
       "uiRoutes": [],
       "blockActions": [
+        "place",
+        "use",
+        "break",
         "tick",
         "insert",
         "extract"
@@ -19102,7 +21789,27 @@
         "neoforge": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
               "requiredLevel": "host-registered"
             },
             {
@@ -19123,7 +21830,12 @@
             }
           ],
           "satisfied": [
+            "blocks",
+            "items",
+            "creative_tab",
             "worldgen",
+            "recipes",
+            "loot",
             "missions",
             "save_data",
             "entities",
@@ -19134,7 +21846,27 @@
         "echo_native": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
               "requiredLevel": "host-registered"
             },
             {
@@ -19154,19 +21886,84 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "missions",
-            "save_data",
-            "entities",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
             {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated"
+            },
+            {
               "feature": "worldgen",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered"
+            },
+            {
+              "feature": "loot",
               "requiredLevel": "host-registered"
             },
             {
@@ -19187,13 +21984,23 @@
             }
           ],
           "satisfied": [
+            "blocks",
+            "items",
             "worldgen",
+            "recipes",
+            "loot",
             "missions",
             "save_data",
             "entities",
             "machines"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "creative_tab",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         }
       }
     },
@@ -19375,18 +22182,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "terminal",
-            "blocks",
-            "items",
-            "creative_tab",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -19506,11 +22350,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -19777,23 +22629,80 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "terminal",
-            "index",
-            "holomap",
-            "lens",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data",
-            "machines"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "index",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "lens",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -19974,12 +22883,24 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "block_actions",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -20200,15 +23121,40 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "creative_tab",
-            "worldgen",
-            "networking",
-            "save_data",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -20326,12 +23272,24 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -20536,17 +23494,50 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -20753,14 +23744,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21002,18 +24013,55 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "loot",
-            "missions",
-            "networking",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21134,11 +24182,19 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21244,12 +24300,24 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "holomap",
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21359,13 +24427,29 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "items",
-            "loot",
-            "save_data",
-            "machines"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "machines",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21444,10 +24528,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21707,20 +24795,65 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "terminal",
-            "blocks",
-            "items",
-            "creative_tab",
-            "block_actions",
-            "recipes",
-            "loot",
-            "missions",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "terminal",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "block_actions",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -21894,15 +25027,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "holomap",
-            "worldgen",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "holomap",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22032,12 +25189,25 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "creative_tab",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22225,14 +25395,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "blocks",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22419,14 +25609,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22626,15 +25836,39 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "hud",
-            "screen",
-            "worldgen",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "hud",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22784,10 +26018,14 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -22898,13 +26136,29 @@
               "requiredLevel": "gameplay-mutated"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "save_data",
-            "entities"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "entities",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -23189,19 +26443,60 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "blocks",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "loot",
-            "networking",
-            "save_data",
-            "audio"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "blocks",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "networking",
+              "requiredLevel": "network-synced",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -23415,16 +26710,45 @@
             }
           ],
           "satisfied": [
-            "gui",
-            "screen",
-            "items",
-            "creative_tab",
-            "worldgen",
-            "recipes",
-            "missions",
-            "save_data"
+            "creative_tab"
           ],
-          "gaps": []
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -23596,11 +26920,19 @@
               "requiredLevel": "visible-actionable"
             }
           ],
-          "satisfied": [
-            "worldgen",
-            "audio"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "audio",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -23772,14 +27104,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "items",
-            "worldgen",
-            "recipes",
-            "loot",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "worldgen",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "recipes",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "loot",
+              "requiredLevel": "host-registered",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [
@@ -23906,14 +27258,34 @@
               "requiredLevel": "save-reloaded"
             }
           ],
-          "satisfied": [
-            "gui",
-            "screen",
-            "items",
-            "missions",
-            "save_data"
-          ],
-          "gaps": []
+          "satisfied": [],
+          "gaps": [
+            {
+              "feature": "gui",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "screen",
+              "requiredLevel": "visible-actionable",
+              "actualLevel": "static-source"
+            },
+            {
+              "feature": "items",
+              "requiredLevel": "gameplay-mutated",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "missions",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            },
+            {
+              "feature": "save_data",
+              "requiredLevel": "save-reloaded",
+              "actualLevel": "host-registered"
+            }
+          ]
         },
         "standalone": {
           "required": [

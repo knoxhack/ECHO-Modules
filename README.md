@@ -25,11 +25,14 @@ Run commands from the repository root.
 - `.\gradlew.bat generateGalacticSurveyModuleRelease --console=plain`
 - `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release`
 - `node scripts/generate-module-release.mjs --module echoarmory`
+- `node scripts/generate-content-graph.mjs --all --write`
+- `node scripts/validate-content-graph.mjs --strict`
+- `node scripts/test-generate-content-graph.mjs`
 - `node scripts/release-workflow-audit.mjs`
 
 ## Artifact Ownership
 
-Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, and `echo-addon-package.json` where applicable.
+Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, a `-content-graph.json` sidecar, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, `echo-addon-package.json` where applicable, and a per-module `.echo/content-graph/` tree embedded in every runtime archive.
 
 Strict player-facing releases are generated from compiled runtime jars. During release generation, compiled NeoForge and standalone jars are rewritten with the required descriptor sidecars before checksum calculation. `scripts/verify-module-release.mjs` opens every produced archive and rejects missing descriptors, missing NeoForge TOML, source-packaged runtime outputs, or checksum drift before the artifacts can be imported by the Release Index.
 
@@ -39,6 +42,7 @@ Generated module releases publish `echo-release.json` with `schemaVersion: "echo
 
 - [docs/module-artifact-contract.md](docs/module-artifact-contract.md)
 - [docs/module-docs-index.md](docs/module-docs-index.md)
+- [docs/content-graph.md](docs/content-graph.md)
 - [schemas/module-release-manifest.schema.json](schemas/module-release-manifest.schema.json)
 - [docs/ADDON_MATRIX.md](docs/ADDON_MATRIX.md)
 - [docs/COMPATIBILITY_MATRIX.md](docs/COMPATIBILITY_MATRIX.md)

@@ -18,6 +18,9 @@ public final class EchoScreenCoreMod {
 
     public EchoScreenCoreMod(IEventBus modEventBus) {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(
+                modEventBus,
+                "com.knoxhack.echoscreencore.client.EchoScreenCoreClient");
         LOGGER.info("ECHO: ScreenCore core loaded.");
     }
 

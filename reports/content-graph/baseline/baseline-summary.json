@@ -1,0 +1,28 @@
+{
+  "schema": "echo.content_graph.baseline_summary.v1",
+  "generatedAt": "2026-06-14T19:10:00-04:00",
+  "moduleCount": 133,
+  "adapterCoreStrictAudit": {
+    "pass": 132,
+    "fail": 1,
+    "blockingModuleIds": ["echodeepreachprotocol"],
+    "note": "Pre-existing baseline failure due to missing compiled artifacts. Content graph work must not reduce this count."
+  },
+  "runtimeParityAudit": {
+    "status": "strict-fail",
+    "failingRows": 3,
+    "p0BacklogItems": 7,
+    "note": "Pre-existing strict-full failures. Content graph work must not increase failing rows."
+  },
+  "releaseIndexValidation": {
+    "status": "pass-with-warning",
+    "entries": 157,
+    "warnings": 1,
+    "warning": "addons/echoopenlandsprotocol.json has no indexed artifacts"
+  },
+  "sdkValidation": {
+    "status": "pass",
+    "testedFixtures": 56,
+    "failures": 0
+  }
+}

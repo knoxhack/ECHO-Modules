@@ -4,7 +4,12 @@ import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echopresencelink.EchoPresenceLink;
 
 public final class EchoPresenceClientBootstrap {
-    private EchoPresenceClientBootstrap() {
+    public EchoPresenceClientBootstrap() {
+        this(null);
+    }
+
+    public EchoPresenceClientBootstrap(Object modEventBus) {
+        register(modEventBus, null);
     }
 
     public static void register(Object modEventBus, Object modContainer) {

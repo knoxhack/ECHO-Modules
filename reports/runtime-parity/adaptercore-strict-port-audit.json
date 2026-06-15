@@ -1,6 +1,6 @@
 {
   "schema": "echo.adaptercore.strict_port_audit.v1",
-  "generatedAt": "2026-06-14T15:27:41.808Z",
+  "generatedAt": "2026-06-14T23:44:27.951Z",
   "generatedFrom": [
     "ECHO-Modules/addons/*/src/main/resources/META-INF/echo.mod.json",
     "ECHO-Modules/addons/*/build.gradle",
@@ -10,13 +10,13 @@
     "ECHO-Modules/addons/echoadaptercore/src/main/java"
   ],
   "summary": {
-    "moduleCount": 132,
+    "moduleCount": 133,
     "resultCounts": {
-      "pass": 132,
+      "pass": 133,
       "fail": 0
     },
     "tierCounts": {
-      "tier2plus": 126,
+      "tier2plus": 127,
       "tier1": 1,
       "tier0": 5
     },
@@ -79,7 +79,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -209,7 +209,7 @@
           "addons/echoadaptercore/src/main/java/com/knoxhack/echo/adaptercore/bridge/EchoAssetcoreTruthBridge.java",
           "addons/echoadaptercore/src/main/java/com/knoxhack/echo/adaptercore/bridge/EchoAtmospherecoreTruthBridge.java"
         ],
-        "sourceHitCount": 339,
+        "sourceHitCount": 340,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -311,7 +311,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -427,7 +427,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -558,7 +558,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -803,7 +803,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -944,7 +944,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1059,7 +1059,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1324,7 +1324,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1343,7 +1343,7 @@
           "addons/echoashfallprotocol/src/main/java/com/knoxhack/echoashfallprotocol/block/entity/AtmosphericScrubberBlockEntity.java",
           "addons/echoashfallprotocol/src/main/java/com/knoxhack/echoashfallprotocol/block/entity/BatteryBankBlockEntity.java"
         ],
-        "sourceHitCount": 160,
+        "sourceHitCount": 163,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -1455,7 +1455,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1575,7 +1575,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1693,7 +1693,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1818,7 +1818,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -1933,7 +1933,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2062,7 +2062,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2182,7 +2182,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2311,7 +2311,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2437,7 +2437,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2554,7 +2554,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2678,7 +2678,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2797,7 +2797,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -2919,7 +2919,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3040,7 +3040,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3162,7 +3162,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3288,7 +3288,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3402,7 +3402,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3528,7 +3528,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3646,7 +3646,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3766,7 +3766,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -3885,7 +3885,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4010,7 +4010,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4131,7 +4131,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4247,7 +4247,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4361,7 +4361,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4489,7 +4489,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4557,6 +4557,160 @@
       "recommendedFixes": []
     },
     {
+      "moduleId": "echodeepreachprotocol",
+      "moduleDir": "echodeepreachprotocol",
+      "version": "0.1.0",
+      "tier": "tier2plus",
+      "result": "pass",
+      "descriptor": {
+        "path": "addons/echodeepreachprotocol/src/main/resources/META-INF/echo.mod.json",
+        "requires": {
+          "declared": true,
+          "values": [
+            "echofoundationcore",
+            "echomaterialcore",
+            "echotoolcore",
+            "echostationcore",
+            "echoworldstarter",
+            "echocommonloot",
+            "echocreatureroles",
+            "echocore",
+            "echonetcore",
+            "echoadaptercore",
+            "echocontentcore",
+            "echoworldcore",
+            "echobiomecore",
+            "echostructurecore",
+            "echocreaturecore",
+            "echocombatcore",
+            "echohealthcore",
+            "echolootcore",
+            "echorecipecore",
+            "echoassetcore",
+            "echosoundcore",
+            "echothemecore",
+            "echoscreencore",
+            "echohudcore",
+            "echoplayercore",
+            "echonpcore",
+            "echoeconomycore",
+            "echohazardcore",
+            "echoequipmentcore",
+            "echosettlementcore",
+            "echoskillcore",
+            "echomissioncore",
+            "echoexpeditioncore",
+            "echoruincore",
+            "echovehiclecore",
+            "echoseasoncore",
+            "echosessioncore",
+            "echotelemetrycore"
+          ]
+        },
+        "adapterCoreRuntimes": [
+          {
+            "runtime": "neoforge",
+            "declared": true
+          },
+          {
+            "runtime": "echo_native",
+            "declared": true
+          },
+          {
+            "runtime": "echo_runtime_standalone",
+            "declared": true
+          }
+        ]
+      },
+      "gradleDependency": {
+        "path": "addons/echodeepreachprotocol/build.gradle",
+        "mode": "helper",
+        "runtimePresent": false,
+        "evidence": [
+          {
+            "line": 84,
+            "text": "':echoadaptercore',"
+          }
+        ]
+      },
+      "neoforgeTomlDependency": {
+        "path": "addons/echodeepreachprotocol/src/main/templates/META-INF/neoforge.mods.toml",
+        "present": true,
+        "required": true,
+        "type": "required",
+        "ordering": "AFTER",
+        "side": "BOTH",
+        "selfDependency": false,
+        "requiredTier0Dependencies": [],
+        "evidence": [
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Keeps Deep Reach parity routed through Echo contracts instead of runtime-specific code.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+        ]
+      },
+      "javaAdapterCoreSignal": {
+        "present": true,
+        "sourceHits": [
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/client/EchoDeepReachClient.java",
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/EchoDeepReachProtocol.java",
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/registry/ModBiomes.java",
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/registry/ModBlocks.java",
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/registry/ModEntities.java",
+          "addons/echodeepreachprotocol/src/main/java/com/knoxhack/echodeepreachprotocol/registry/ModItems.java"
+        ],
+        "sourceHitCount": 6,
+        "adapterCoreCoverage": false
+      },
+      "adapterCoreTruthLayer": {
+        "covered": false,
+        "evidence": [],
+        "expectedNeedles": [
+          "\"echodeepreachprotocol\"",
+          "echodeepreachprotocol:runtime_host",
+          "EchodeepreachprotocolTruthBridge",
+          "EchodeepreachprotocolRuntimeHost"
+        ]
+      },
+      "artifacts": {
+        "releaseDir": "dist/echo-module-release/echodeepreachprotocol",
+        "buildLibsDir": "addons/echodeepreachprotocol/build/libs",
+        "required": [
+          {
+            "runtime": "neoforge",
+            "expected": "echodeepreachprotocol-0.1.0-neoforge.jar",
+            "present": true,
+            "presentInRelease": true,
+            "presentInBuild": true,
+            "legacyOnly": false
+          },
+          {
+            "runtime": "native",
+            "expected": "echodeepreachprotocol-0.1.0.echo-addon",
+            "present": true,
+            "presentInRelease": true,
+            "presentInBuild": false,
+            "legacyOnly": false
+          },
+          {
+            "runtime": "standalone",
+            "expected": "echodeepreachprotocol-0.1.0-standalone.jar",
+            "present": true,
+            "presentInRelease": true,
+            "presentInBuild": false,
+            "legacyOnly": false
+          }
+        ],
+        "sources": {
+          "runtime": "sources",
+          "expected": "echodeepreachprotocol-0.1.0-sources.jar",
+          "present": true,
+          "presentInRelease": true,
+          "presentInBuild": false,
+          "legacyOnly": false
+        }
+      },
+      "strictBlockers": [],
+      "recommendedFixes": []
+    },
+    {
       "moduleId": "echodependencydoctor",
       "moduleDir": "echodependencydoctor",
       "version": "0.1.0",
@@ -4610,7 +4764,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4732,7 +4886,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4854,7 +5008,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -4973,7 +5127,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5098,7 +5252,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5179,7 +5333,8 @@
             "echoadaptercore",
             "echoarmory",
             "echocombatcore",
-            "echotoolcore"
+            "echotoolcore",
+            "echohazardcore"
           ]
         },
         "adapterCoreRuntimes": [
@@ -5203,7 +5358,7 @@
         "runtimePresent": true,
         "evidence": [
           {
-            "line": 33,
+            "line": 38,
             "text": "implementation project(\":echoadaptercore\")"
           }
         ]
@@ -5218,13 +5373,19 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
-        "sourceHits": [],
-        "sourceHitCount": 0,
+        "sourceHits": [
+          "addons/echoequipmentcore/src/main/java/com/knoxhack/echo/equipmentcore/EchoEquipmentCore.java",
+          "addons/echoequipmentcore/src/main/java/com/knoxhack/echo/equipmentcore/event/EquipmentEvents.java",
+          "addons/echoequipmentcore/src/main/java/com/knoxhack/echo/equipmentcore/registry/ModCreativeTabs.java",
+          "addons/echoequipmentcore/src/main/java/com/knoxhack/echo/equipmentcore/registry/ModDataComponents.java",
+          "addons/echoequipmentcore/src/main/java/com/knoxhack/echo/equipmentcore/registry/ModItems.java"
+        ],
+        "sourceHitCount": 5,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -5336,7 +5497,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5455,7 +5616,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5571,7 +5732,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5685,7 +5846,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5812,7 +5973,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -5928,7 +6089,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides cross-runtime adapter service access for ECHO modules.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides cross-runtime adapter service access for ECHO modules.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6043,7 +6204,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Keeps Galactic Survey parity routed through ECHO contracts instead of runtime-specific code.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Keeps Galactic Survey parity routed through ECHO contracts instead of runtime-specific code.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6161,7 +6322,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6288,7 +6449,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6409,13 +6570,16 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
-        "sourceHits": [],
-        "sourceHitCount": 0,
+        "sourceHits": [
+          "addons/echohazardcore/src/main/java/com/knoxhack/echo/hazardcore/EchoHazardCore.java",
+          "addons/echohazardcore/src/main/java/com/knoxhack/echo/hazardcore/event/HazardPlayerTickHandler.java"
+        ],
+        "sourceHitCount": 2,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -6528,7 +6692,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6651,7 +6815,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -6775,15 +6939,17 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
         "sourceHits": [
+          "addons/echohudcore/src/main/java/com/knoxhack/echo/hudcore/client/EchoHudCoreOverlay.java",
+          "addons/echohudcore/src/main/java/com/knoxhack/echo/hudcore/EchoHudCoreClient.java",
           "addons/echohudcore/src/main/java/com/knoxhack/echo/hudcore/EchoHudCoreNativeModule.java"
         ],
-        "sourceHitCount": 1,
+        "sourceHitCount": 3,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -6893,7 +7059,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -7152,7 +7318,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -7280,11 +7446,13 @@
       "javaAdapterCoreSignal": {
         "present": true,
         "sourceHits": [
+          "addons/echolens/src/main/java/com/knoxhack/echolens/client/LensClientActions.java",
+          "addons/echolens/src/main/java/com/knoxhack/echolens/client/LensHudOverlay.java",
           "addons/echolens/src/main/java/com/knoxhack/echolens/EchoLens.java",
           "addons/echolens/src/main/java/com/knoxhack/echolens/EchoLensClient.java",
           "addons/echolens/src/main/java/com/knoxhack/echolens/EchoLensNativeModule.java"
         ],
-        "sourceHitCount": 3,
+        "sourceHitCount": 5,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -7395,7 +7563,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -7517,7 +7685,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -7769,7 +7937,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -7894,7 +8062,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8017,7 +8185,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8141,7 +8309,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8258,7 +8426,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8378,7 +8546,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8496,7 +8664,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8620,7 +8788,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8736,7 +8904,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -8872,7 +9040,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9127,7 +9295,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9245,7 +9413,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9386,7 +9554,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\r\nmodId=\"echoadaptercore\"\r\ntype=\"required\"\r\nreason=\"Keeps Openlands parity routed through Echo contracts instead of runtime-specific code.\"\r\nversionRange=\"[1.0.0,)\"\r\nordering=\"AFTER\"\r\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Keeps Openlands parity routed through Echo contracts instead of runtime-specific code.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9500,7 +9668,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9635,7 +9803,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9755,7 +9923,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9862,7 +10030,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -9980,7 +10148,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10099,7 +10267,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10215,7 +10383,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10333,7 +10501,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10575,7 +10743,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10696,7 +10864,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10829,7 +10997,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -10949,7 +11117,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11068,7 +11236,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11451,7 +11619,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11576,7 +11744,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\r\nmodId=\"echoadaptercore\"\r\ntype=\"required\"\r\nreason=\"Provides compatibility matrix contracts for runtime and loader reports.\"\r\nversionRange=\"[1.0.0,)\"\r\nordering=\"AFTER\"\r\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides compatibility matrix contracts for runtime and loader reports.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11695,7 +11863,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11818,7 +11986,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -11946,7 +12114,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12060,7 +12228,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12176,7 +12344,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12297,7 +12465,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12415,7 +12583,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12537,7 +12705,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12654,7 +12822,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12770,7 +12938,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -12848,7 +13016,9 @@
             "echobasegrid",
             "echonpcore",
             "echologisticscore",
-            "echoworldcore"
+            "echoworldcore",
+            "echohazardcore",
+            "echoequipmentcore"
           ]
         },
         "adapterCoreRuntimes": [
@@ -12872,7 +13042,7 @@
         "runtimePresent": true,
         "evidence": [
           {
-            "line": 33,
+            "line": 34,
             "text": "implementation project(\":echoadaptercore\")"
           }
         ]
@@ -12887,13 +13057,20 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
-        "sourceHits": [],
-        "sourceHitCount": 0,
+        "sourceHits": [
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/EchoSettlementCore.java",
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/registry/ModBlockEntities.java",
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/registry/ModBlocks.java",
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/registry/ModCreativeTabs.java",
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/registry/ModItems.java",
+          "addons/echosettlementcore/src/main/java/com/knoxhack/echo/settlementcore/registry/ModMenus.java"
+        ],
+        "sourceHitCount": 6,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -13001,7 +13178,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13137,7 +13314,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13252,7 +13429,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\r\nmodId=\"echoadaptercore\"\r\ntype=\"required\"\r\nreason=\"Keeps Sky Relay parity routed through Echo contracts instead of runtime-specific code.\"\r\nversionRange=\"[1.0.0,)\"\r\nordering=\"AFTER\"\r\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Keeps Sky Relay parity routed through Echo contracts instead of runtime-specific code.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13373,7 +13550,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13493,15 +13670,16 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
         "sourceHits": [
+          "addons/echosoundcore/src/main/java/com/knoxhack/echosoundcore/EchoSoundCore.java",
           "addons/echosoundcore/src/main/java/com/knoxhack/echosoundcore/EchoSoundCoreNativeModule.java"
         ],
-        "sourceHitCount": 1,
+        "sourceHitCount": 2,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -13620,7 +13798,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13741,7 +13919,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13873,7 +14051,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -13987,7 +14165,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14122,7 +14300,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14250,7 +14428,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14372,7 +14550,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14488,7 +14666,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14602,7 +14780,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14734,7 +14912,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14848,7 +15026,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -14971,15 +15149,18 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
         "present": true,
         "sourceHits": [
+          "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/client/EchoThemeCoreClient.java",
+          "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/client/NativeLoaderTextIdentity.java",
+          "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/EchoThemeCore.java",
           "addons/echothemecore/src/main/java/com/knoxhack/echothemecore/EchoThemeCoreNativeModule.java"
         ],
-        "sourceHitCount": 1,
+        "sourceHitCount": 4,
         "adapterCoreCoverage": true
       },
       "adapterCoreTruthLayer": {
@@ -15095,7 +15276,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -15330,7 +15511,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"optional\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"NONE\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -15451,7 +15632,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -15706,7 +15887,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -15834,7 +16015,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -15964,7 +16145,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {
@@ -16079,7 +16260,7 @@
         "selfDependency": false,
         "requiredTier0Dependencies": [],
         "evidence": [
-          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[1.0.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
+          "[[dependencies.${mod_id}]]\nmodId=\"echoadaptercore\"\ntype=\"required\"\nreason=\"Provides shared AdapterCore runtime bridges for NeoForge, ECHO Native, and Standalone parity.\"\nversionRange=\"[0.1.0,)\"\nordering=\"AFTER\"\nside=\"BOTH\""
         ]
       },
       "javaAdapterCoreSignal": {

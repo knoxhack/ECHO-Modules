@@ -9,11 +9,9 @@ import com.knoxhack.echolens.network.ModNetwork;
 import com.knoxhack.echolens.provider.LensBuiltins;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.Identifier;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import org.slf4j.Logger;
 
@@ -29,9 +27,8 @@ public class EchoLens {
         EchoBackendLifecycleBridge.registerGameEventHandler(LensCommands::register);
         registerOptionalGameTests(modEventBus, "com.knoxhack.echolens.test.ModGameTests");
 
-        if (FMLEnvironment.getDist() == Dist.CLIENT) {
-            new EchoLensClient(modEventBus);
-        }
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echolens.EchoLensClient");
     }
 
     private void commonSetup(Object event) {

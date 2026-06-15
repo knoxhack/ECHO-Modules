@@ -340,6 +340,7 @@ async function collectRuntimeCreativeEvidence(runtimeRoot, runtime) {
       schema: string(report?.schema),
     })
     if (!report || report.parseError) continue
+    if (isAggregateCreativeVisibilityReport(report)) continue
     collectLiveMarkerEvidence(evidence, report)
     addIds(evidence.registryBackedModuleIds, moduleIdsFromReport(report, [
       'registryBackedModuleIds',
@@ -412,6 +413,7 @@ function mergeSet(target, source) {
 function collectLiveMarkerEvidence(evidence, report) {
   const registryBridge = object(object(report.runtimeBridge).registryBridge ?? report.registryBridge)
   if (Object.keys(registryBridge).length === 0) return
+  if (report.liveGameEvidence === false || registryBridge.liveCreativeInventoryOutput === false) return
 
   for (const tab of objectList(registryBridge.registeredCreativeTabs)) {
     collectNativeCreativeTab(evidence, tab)
@@ -480,6 +482,10 @@ function firstClassNativeCreativeTab(tab) {
     && (!searchVisible || searchItems.length > 0)
     && containsAll(parentItems, registryItems)
     && (!searchVisible || containsAll(searchItems, registryItems))
+}
+
+function isAggregateCreativeVisibilityReport(report) {
+  return string(report?.schema).endsWith('.all_module_creative_tab_visibility.v1')
 }
 
 function moduleIdsFromReport(report, keys) {

@@ -1,0 +1,85 @@
+{
+  "schema": "echo.content_graph.final_verification.v1",
+  "generatedAt": "2026-06-14T19:55:00-04:00",
+  "phase": "all",
+  "gates": {
+    "sdkSchemaValidation": {
+      "status": "PASS",
+      "testedFixtures": 80,
+      "failures": 0
+    },
+    "moduleGraphGeneration": {
+      "status": "PASS",
+      "modules": 133,
+      "nodes": 2105,
+      "edges": 2268
+    },
+    "contentGraphValidation": {
+      "status": "PASS",
+      "modules": 133,
+      "errors": 0,
+      "warnings": 0
+    },
+    "featureListGeneration": {
+      "status": "PASS",
+      "modules": 133,
+      "features": 162
+    },
+    "hytaleExportPlan": {
+      "status": "PASS",
+      "modules": 133,
+      "blockedNodes": 9,
+      "note": "Blocked is an explicit planning status for entity/npc nodes until Hytale entity contract exists."
+    },
+    "standaloneContentGraphSmoke": {
+      "status": "PASS",
+      "graphs": 133,
+      "nodes": 2105,
+      "edges": 2268,
+      "features": 162,
+      "hytalePlans": 133
+    },
+    "standaloneAlphaReadiness": {
+      "status": "PASS",
+      "checks": 48,
+      "blocked": 0
+    },
+    "openlandsContentLoadSmoke": {
+      "status": "PASS"
+    },
+    "releaseIndexValidation": {
+      "status": "PASS",
+      "entries": 157,
+      "warnings": 1,
+      "warning": "addons/echoopenlandsprotocol.json has no indexed artifacts (pre-existing)"
+    },
+    "adapterCoreStrictAudit": {
+      "status": "PASS",
+      "passing": 133,
+      "failing": 0
+    },
+    "runtimeParityAudit": {
+      "status": "PASS",
+      "failingRows": 0,
+      "p0BacklogItems": 4
+    }
+  },
+  "acceptanceCriteria": {
+    "allModulesGenerateGraphNodes": true,
+    "zeroUnresolvedRequiredReferences": true,
+    "everyModuleHasFeatureList": true,
+    "everyNodeHasProvenance": true,
+    "everyUiSurfaceIsIntent": true,
+    "hytalePlannerAccountsForEveryNode": true,
+    "noPortableGraphFieldContainsRuntimeClasses": true,
+    "adapterCoreStrictAuditPassing": true,
+    "runtimeParityPlayReleaseGatesPassing": true
+  },
+  "knownNextSteps": [
+    "Embed .echo/content-graph/ tree inside generated .echo-addon, -neoforge.jar, and -standalone.jar archives via generate-module-release.mjs.",
+    "Add full graph editor page (GraphEditor.tsx) in ECHO-Addons-Studio.",
+    "Add graph review page (GraphReview.tsx) in ECHO-Developer-Studio.",
+    "Consume content-graph artifacts in ECHO-Launcher LibraryCatalog UI.",
+    "Add optional contentGraph output to EchoNativeGraphPlanner in ECHO-Native-Platform."
+  ]
+}

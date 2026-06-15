@@ -31,10 +31,15 @@ public final class EchoDeepReachClient {
     private static final String REGISTER_RENDERERS_EVENT =
             "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers";
 
-    private EchoDeepReachClient() {
+    public EchoDeepReachClient() {
+        this(null);
     }
 
-    public static void register(IEventBus modEventBus) {
+    public EchoDeepReachClient(Object modEventBus) {
+        register(modEventBus);
+    }
+
+    public static void register(Object modEventBus) {
         EchoBackendLifecycleBridge.registerModListener(
                 modEventBus,
                 REGISTER_LAYER_DEFINITIONS_EVENT,

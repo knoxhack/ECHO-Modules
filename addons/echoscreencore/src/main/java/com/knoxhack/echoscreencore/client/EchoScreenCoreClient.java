@@ -1,5 +1,7 @@
 package com.knoxhack.echoscreencore.client;
 
+import com.knoxhack.echo.adaptercore.EchoBackendCommandEventBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echoscreencore.EchoScreenCoreMod;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoScreenRegistry;
@@ -11,19 +13,29 @@ import com.knoxhack.echoscreencore.client.reference.ScreenCoreReferenceData;
 import com.knoxhack.echoscreencore.client.screen.EchoScreen;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 
 public final class EchoScreenCoreClient {
+    private static final AtomicBoolean REGISTERED = new AtomicBoolean(false);
     private static EchoAccessibilitySettings accessibility = EchoAccessibilitySettings.DEFAULT;
     private static boolean debugEnabled;
 
     public EchoScreenCoreClient() {
+        this(null);
+    }
+
+    public EchoScreenCoreClient(Object modEventBus) {
+        if (!REGISTERED.compareAndSet(false, true)) {
+            return;
+        }
         EchoComponentRegistry.registerDefaults();
         registerBuiltinDataProviders();
         ScreenCoreReferenceData.register();
         registerDemoActions();
+        EchoBackendLifecycleBridge.registerGameEventHandler(EchoScreenCoreClient::onClientCommands);
         EchoScreens.registerClientOpener((pageId, context) -> {
             Minecraft.getInstance().setScreen(new EchoScreen(pageId, context, accessibility, debugEnabled));
             return true;
@@ -34,6 +46,13 @@ public final class EchoScreenCoreClient {
 
     public void registerClientCommands(CommandDispatcher<CommandSourceStack> dispatcher) {
         EchoScreenCoreClientCommands.register(dispatcher);
+    }
+
+    private static void onClientCommands(Object event) {
+        CommandDispatcher<CommandSourceStack> dispatcher = EchoBackendCommandEventBridge.clientDispatcher(event);
+        if (dispatcher != null) {
+            EchoScreenCoreClientCommands.register(dispatcher);
+        }
     }
 
     public static EchoAccessibilitySettings accessibility() {

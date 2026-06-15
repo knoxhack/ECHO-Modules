@@ -3,6 +3,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { constants as zlibConstants, deflateRawSync, inflateRawSync } from 'node:zlib'
+import { generateContentGraph } from './generate-content-graph.mjs'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
 const MODULE_RELEASE_SCHEMA_VERSION = 'echo.module.release.v1'
@@ -243,6 +244,69 @@ async function listFiles(root, base = root) {
     }
   }
   return files
+}
+
+async function collectContentGraphEntries(graphDir) {
+  const entries = []
+  for (const file of await listFiles(graphDir, graphDir)) {
+    entries.push({
+      name: `.echo/content-graph/${file.archivePath}`,
+      data: await fs.readFile(file.absolute),
+    })
+  }
+  return entries
+}
+
+async function refreshArchiveChecksums(archivePath) {
+  const buffer = await fs.readFile(archivePath)
+  const entries = readZipEntries(buffer)
+  const retained = []
+  for (const entry of entries) {
+    if (entry.name === 'checksums.sha256' || entry.name === 'checksums.txt') continue
+    retained.push({ name: entry.name, data: readZipEntry(buffer, entry) })
+  }
+  const rows = retained
+    .map((entry) => ({ name: normalizeZipPath(entry.name), data: entry.data }))
+    .filter((entry) => entry.name !== 'checksums.sha256' && entry.name !== 'checksums.txt')
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((entry) => `${sha256Buffer(entry.data)}  ${entry.name}`)
+    .join('\n') + '\n'
+  await copyJarWithOverlaysAndRecord(
+    archivePath,
+    archivePath,
+    'echo-addon',
+    [],
+    [{ name: 'checksums.sha256', data: rows }],
+  )
+}
+
+async function embedContentGraphIntoModuleArtifacts({ moduleOutDir, moduleId, version, artifacts }) {
+  const graphDir = path.join(moduleOutDir, version, '.echo', 'content-graph')
+  if (!(await fileExists(graphDir))) return
+  const graphEntries = await collectContentGraphEntries(graphDir)
+  if (graphEntries.length === 0) return
+  const graphPaths = graphEntries.map((entry) => entry.name)
+
+  const artifactKindsToEmbed = ['echo-addon', 'neoforge', 'standalone']
+  for (const artifact of artifacts) {
+    if (!artifactKindsToEmbed.includes(artifact.kind)) continue
+    const artifactPath = path.join(moduleOutDir, artifact.filename)
+    if (!(await fileExists(artifactPath))) continue
+    await copyJarWithOverlaysAndRecord(
+      artifactPath,
+      artifactPath,
+      artifact.kind,
+      [...(artifact.contains || []), ...graphPaths],
+      graphEntries,
+    )
+    if (artifact.kind === 'echo-addon') {
+      await refreshArchiveChecksums(artifactPath)
+    }
+    const stat = await fs.stat(artifactPath)
+    artifact.sha256 = await sha256File(artifactPath)
+    artifact.size = stat.size
+    artifact.contains = [...new Set([...(artifact.contains || []), ...graphPaths])]
+  }
 }
 
 async function releaseChecksumRows(outputRoot) {
@@ -725,6 +789,38 @@ export async function generateModuleRelease(options = {}) {
     }))
   }
   applyArtifactDownloadUrls(modules, normalizeDownloadBaseUrl(options.downloadBaseUrl))
+
+  // Generate and embed .ECHO Content Graph artifacts into release archives.
+  console.log(`Generating .ECHO Content Graph artifacts for ${modules.length} module(s)...`)
+  await generateContentGraph({ repoRoot, write: true, outputRoot })
+  for (const moduleRecord of modules) {
+    const moduleOutDir = path.join(outputRoot, moduleRecord.moduleId)
+    const graphPath = path.join(moduleOutDir, moduleRecord.version, '.echo', 'content-graph', 'content-graph.json')
+    if (await fileExists(graphPath)) {
+      const sidecarPath = path.join(moduleOutDir, `${moduleRecord.moduleId}-${moduleRecord.version}-content-graph.json`)
+      await fs.copyFile(graphPath, sidecarPath)
+      const stat = await fs.stat(sidecarPath)
+      moduleRecord.artifacts.push({
+        kind: 'content-graph',
+        filename: path.basename(sidecarPath),
+        sha256: await sha256File(sidecarPath),
+        size: stat.size,
+        downloadUrl: '',
+        runtimeTarget: 'content-graph',
+        buildMode: 'generated',
+        contains: ['.echo/content-graph/content-graph.json'],
+      })
+    }
+  }
+  for (const moduleRecord of modules) {
+    const moduleOutDir = path.join(outputRoot, moduleRecord.moduleId)
+    await embedContentGraphIntoModuleArtifacts({
+      moduleOutDir,
+      moduleId: moduleRecord.moduleId,
+      version: moduleRecord.version,
+      artifacts: moduleRecord.artifacts,
+    })
+  }
 
   const provenance = releaseProvenance()
   const release = {

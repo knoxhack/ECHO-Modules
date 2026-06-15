@@ -15,11 +15,9 @@ import com.knoxhack.echoholomap.map.HoloMapTerrainScanner;
 import com.knoxhack.echoholomap.network.ModNetwork;
 import com.knoxhack.echoholomap.world.HoloMapDeathpointEvents;
 import com.mojang.logging.LogUtils;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
@@ -41,9 +39,8 @@ public final class EchoHoloMap {
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapDeathpointEvents::onPlayerRespawn);
         registerOptionalGameTests(modEventBus, "com.knoxhack.echoholomap.test.ModGameTests");
 
-        if (FMLEnvironment.getDist() == Dist.CLIENT) {
-            new EchoHoloMapClient(modEventBus);
-        }
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echoholomap.EchoHoloMapClient");
     }
 
     private void commonSetup(Object event) {

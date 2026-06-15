@@ -49,7 +49,8 @@ public class EchoDeepReachProtocol {
         EchoBackendLifecycleBridge.registerGameEventHandler(
                 REGISTER_COMMANDS_EVENT,
                 DeepReachCommands::register);
-        registerOptionalClient(modEventBus);
+        EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,
+                "com.knoxhack.echodeepreachprotocol.client.EchoDeepReachClient");
     }
 
     private void registerDeferredContent(Object modEventBus) {
@@ -102,15 +103,4 @@ public class EchoDeepReachProtocol {
         }
     }
 
-    private static void registerOptionalClient(IEventBus modEventBus) {
-        try {
-            Class<?> clientClass = Class.forName("com.knoxhack.echodeepreachprotocol.client.EchoDeepReachClient");
-            clientClass.getMethod("register", IEventBus.class).invoke(null, modEventBus);
-            LOGGER.debug("Deep Reach client-side registrations loaded.");
-        } catch (ClassNotFoundException ignored) {
-            // Dedicated server; client classes are not present.
-        } catch (ReflectiveOperationException | LinkageError exception) {
-            LOGGER.warn("Deep Reach client-side registrations could not be loaded.", exception);
-        }
-    }
 }

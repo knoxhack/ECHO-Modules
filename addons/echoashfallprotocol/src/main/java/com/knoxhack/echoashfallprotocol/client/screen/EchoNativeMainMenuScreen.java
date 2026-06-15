@@ -1,11 +1,18 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.IntSupplier;
+import java.util.stream.Stream;
 
-import dev.echo.nativeplatform.loader.NativeLoaderClasspathSupport;
 import dev.echo.nativeplatform.loader.NativeLoaderAshfallWorldStartupService;
+import dev.echo.nativeplatform.loader.NativeLoaderClasspathSupport;
 import dev.echo.nativeplatform.loader.NativeLoaderAshfallWorldStartupService.StartupPlan;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
@@ -146,17 +153,17 @@ public final class EchoNativeMainMenuScreen extends Screen {
         y += 15;
         drawStatus(graphics, left + 18, y, "Profile", "Ashfall Protocol native product profile", CYAN, contentWidth);
         y += 15;
-        drawStatus(graphics, left + 18, y, "World", NativeLoaderAshfallWorldStartupService.configuredProductWorldFolder(), AMBER,
-                contentWidth);
+        drawStatus(graphics, left + 18, y, "World",
+                NativeLoaderAshfallWorldStartupService.configuredProductWorldFolder(), AMBER, contentWidth);
         y += 15;
-        drawStatus(graphics, left + 18, y, "Modules", moduleSummary(), AMBER, contentWidth);
+        drawStatus(graphics, left + 18, y, "Modules", moduleSummary(), moduleSummary().contains("pending") ? AMBER : GREEN, contentWidth);
 
         if (!compact && y + 64 < bottom) {
             y += 30;
             drawSection(graphics, left + 14, y, "ASHFALL SIGNAL", contentWidth);
             y += 18;
             drawWrapped(graphics,
-                    "The native client is now projecting an Ashfall-owned screen from the addon jar, not a generated bootstrap dashboard.",
+                    "Native modules are staged by the launcher; world startup, multiplayer, module index, and settings stay on product-owned Ashfall routes.",
                     left + 18, y, contentWidth - 8, 4, TEXT);
         }
     }
@@ -199,11 +206,6 @@ public final class EchoNativeMainMenuScreen extends Screen {
         return new NativeButton(x, y, width, BUTTON_HEIGHT, label, action, () -> this.ticks);
     }
 
-    private void openOrCreateProductWorld() {
-        Minecraft client = this.minecraft == null ? Minecraft.getInstance() : this.minecraft;
-        EchoNativeAshfallWorldOpenDispatcher.openOrCreateProductWorldFromNativeLoader(client, this);
-    }
-
     public static Screen productStartupFailureScreen(Screen parent, StartupPlan plan) {
         return new ProductWorldStartupFailureScreen(
                 parent,
@@ -215,16 +217,21 @@ public final class EchoNativeMainMenuScreen extends Screen {
         return new ProductWorldStartupFailureScreen(parent, title, lines);
     }
 
+    private void openOrCreateProductWorld() {
+        Minecraft client = this.minecraft == null ? Minecraft.getInstance() : this.minecraft;
+        EchoNativeAshfallWorldOpenDispatcher.openOrCreateProductWorldFromNativeLoader(client, this);
+    }
+
+    private static boolean productWorldAutoOpen() {
+        return NativeLoaderAshfallWorldStartupService.productWorldAutoOpen();
+    }
+
     private static String productStartupFailureTitle(StartupPlan plan) {
         return switch (plan.failureKind()) {
             case "old_vanilla_save_guard" -> "WORLD FOLDER IS NOT ASHFALL";
             case "missing_product_datapack" -> "ASHFALL DATAPACK OFFLINE";
             default -> "ASHFALL STARTUP BLOCKED";
         };
-    }
-
-    private static boolean productWorldAutoOpen() {
-        return NativeLoaderAshfallWorldStartupService.productWorldAutoOpen();
     }
 
     private void drawSection(GuiGraphicsExtractor graphics, int x, int y, String label, int width) {
@@ -284,14 +291,60 @@ public final class EchoNativeMainMenuScreen extends Screen {
     }
 
     private static List<String> nativeModuleNames() {
-        return NativeLoaderClasspathSupport.nativeModuleClasspathEntries("echo.native.moduleClasspath").stream()
-                .map(entry -> {
-                    String normalized = entry.replace('\\', '/');
-                    int slash = normalized.lastIndexOf('/');
-                    return slash >= 0 ? normalized.substring(slash + 1) : normalized;
-                })
-                .filter(name -> !name.isBlank())
-                .toList();
+        Set<String> names = new LinkedHashSet<>();
+        for (String entry : NativeLoaderClasspathSupport.nativeModuleClasspathEntries("echo.native.moduleClasspath")) {
+            addModuleName(names, entry);
+        }
+        if (names.isEmpty()) {
+            for (String entry : stagedNativeModuleJars()) {
+                addModuleName(names, entry);
+            }
+        }
+        return List.copyOf(names);
+    }
+
+    private static void addModuleName(Set<String> names, String entry) {
+        if (entry == null || entry.isBlank()) {
+            return;
+        }
+        String normalized = entry.replace('\\', '/');
+        int slash = normalized.lastIndexOf('/');
+        String name = slash >= 0 ? normalized.substring(slash + 1) : normalized;
+        if (!name.isBlank()) {
+            names.add(name);
+        }
+    }
+
+    private static List<String> stagedNativeModuleJars() {
+        Path root = nativeLoaderAddonRoot();
+        if (root == null || !Files.isDirectory(root)) {
+            return List.of();
+        }
+        try (Stream<Path> paths = Files.walk(root, 6)) {
+            return paths
+                    .filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName() != null && path.getFileName().toString().endsWith(".jar"))
+                    .map(path -> path.toAbsolutePath().normalize().toString())
+                    .sorted()
+                    .toList();
+        } catch (IOException | SecurityException exception) {
+            return List.of();
+        }
+    }
+
+    private static Path nativeLoaderAddonRoot() {
+        List<String> candidates = new ArrayList<>();
+        candidates.add(System.getProperty("echo.native.gameDir", ""));
+        candidates.add(System.getProperty("user.dir", ""));
+        for (String candidate : candidates) {
+            if (candidate != null && !candidate.isBlank()) {
+                return Path.of(candidate).toAbsolutePath().normalize()
+                        .resolve(".echo")
+                        .resolve("native-loader")
+                        .resolve("addons");
+            }
+        }
+        return null;
     }
 
     private void text(GuiGraphicsExtractor graphics, String value, int x, int y, int color) {
