@@ -402,7 +402,7 @@ tasks.register('generateAshfallRequiredModuleRelease', Exec) {
         }
 
         release.modules.each { moduleRecord ->
-            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' && it.kind != 'content-graph' }
             if (runtimeArtifacts.empty) {
                 throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
             }
@@ -467,7 +467,7 @@ tasks.register('generateOpenlandsModuleRelease', Exec) {
         }
 
         release.modules.each { moduleRecord ->
-            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' && it.kind != 'content-graph' }
             if (runtimeArtifacts.empty) {
                 throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
             }
@@ -534,7 +534,7 @@ tasks.register('generateSkyRelayModuleRelease', Exec) {
         }
 
         release.modules.each { moduleRecord ->
-            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' && it.kind != 'content-graph' }
             if (runtimeArtifacts.empty) {
                 throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
             }
@@ -600,7 +600,7 @@ tasks.register('generateGalacticSurveyModuleRelease', Exec) {
         }
 
         release.modules.each { moduleRecord ->
-            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' }
+            def runtimeArtifacts = moduleRecord.artifacts.findAll { it.kind != 'sources' && it.kind != 'content-graph' }
             if (runtimeArtifacts.empty) {
                 throw new GradleException("${moduleRecord.moduleId} generated no runtime artifacts")
             }

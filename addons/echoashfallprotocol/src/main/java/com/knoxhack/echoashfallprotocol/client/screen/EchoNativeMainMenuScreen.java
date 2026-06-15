@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.IntSupplier;
 import java.util.stream.Stream;
 
@@ -19,6 +18,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
+import net.minecraft.client.gui.screens.options.OptionsScreen;
+import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.network.chat.Component;
 
 /**
@@ -39,9 +41,7 @@ public final class EchoNativeMainMenuScreen extends Screen {
     private static final int MUTED = 0xFF8CA2AE;
     private static final int BUTTON_HEIGHT = 20;
     private static final int BUTTON_COUNT = 5;
-    private static final AtomicBoolean PRODUCT_WORLD_AUTO_OPEN_ATTEMPTED = new AtomicBoolean(false);
     private int ticks;
-    private boolean productWorldAutoOpenTriggered;
 
     public EchoNativeMainMenuScreen() {
         super(Component.literal("ECHO Native Ashfall"));
@@ -54,17 +54,17 @@ public final class EchoNativeMainMenuScreen extends Screen {
         int menuY = commandY();
         int gap = commandButtonGap();
         int buttonY = menuY + 48;
-        this.addRenderableWidget(nativeButton("[ ASHFALL WORLD ]",
-                button -> openOrCreateProductWorld(),
+        this.addRenderableWidget(nativeButton("[ SINGLEPLAYER ]",
+                button -> this.minecraft.setScreen(new SelectWorldScreen(this)),
                 menuX + 18, buttonY, menuWidth - 36));
         this.addRenderableWidget(nativeButton("[ MULTIPLAYER ]",
-                button -> this.minecraft.setScreen(NativeRouteScreen.multiplayer(this)),
+                button -> this.minecraft.setScreen(new JoinMultiplayerScreen(this)),
                 menuX + 18, buttonY + gap, menuWidth - 36));
-        this.addRenderableWidget(nativeButton("[ MODULE INDEX ]",
+        this.addRenderableWidget(nativeButton("[ MODS ]",
                 button -> this.minecraft.setScreen(new ModuleIndexScreen(this)),
                 menuX + 18, buttonY + gap * 2, menuWidth - 36));
         this.addRenderableWidget(nativeButton("[ OPTIONS ]",
-                button -> this.minecraft.setScreen(NativeRouteScreen.options(this)),
+                button -> this.minecraft.setScreen(new OptionsScreen(this, this.minecraft.options, false)),
                 menuX + 18, buttonY + gap * 3, menuWidth - 36));
         this.addRenderableWidget(nativeButton("[ QUIT ]",
                 button -> this.minecraft.stop(),
@@ -75,13 +75,6 @@ public final class EchoNativeMainMenuScreen extends Screen {
     public void tick() {
         super.tick();
         this.ticks++;
-        if (!this.productWorldAutoOpenTriggered
-                && productWorldAutoOpen()
-                && this.ticks > 8
-                && PRODUCT_WORLD_AUTO_OPEN_ATTEMPTED.compareAndSet(false, true)) {
-            this.productWorldAutoOpenTriggered = true;
-            openOrCreateProductWorld();
-        }
     }
 
     @Override
@@ -163,7 +156,7 @@ public final class EchoNativeMainMenuScreen extends Screen {
             drawSection(graphics, left + 14, y, "ASHFALL SIGNAL", contentWidth);
             y += 18;
             drawWrapped(graphics,
-                    "Native modules are staged by the launcher; world startup, multiplayer, module index, and settings stay on product-owned Ashfall routes.",
+                    "Native modules are staged by the launcher; singleplayer, multiplayer, mods, and settings use normal Minecraft routes.",
                     left + 18, y, contentWidth - 8, 4, TEXT);
         }
     }
@@ -215,15 +208,6 @@ public final class EchoNativeMainMenuScreen extends Screen {
 
     public static Screen productStartupFailureScreen(Screen parent, String title, List<String> lines) {
         return new ProductWorldStartupFailureScreen(parent, title, lines);
-    }
-
-    private void openOrCreateProductWorld() {
-        Minecraft client = this.minecraft == null ? Minecraft.getInstance() : this.minecraft;
-        EchoNativeAshfallWorldOpenDispatcher.openOrCreateProductWorldFromNativeLoader(client, this);
-    }
-
-    private static boolean productWorldAutoOpen() {
-        return NativeLoaderAshfallWorldStartupService.productWorldAutoOpen();
     }
 
     private static String productStartupFailureTitle(StartupPlan plan) {
@@ -475,7 +459,7 @@ public final class EchoNativeMainMenuScreen extends Screen {
         @Override
         public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
             super.extractRenderState(graphics, mouseX, mouseY, partialTick);
-            graphics.text(this.font, "ECHO NATIVE MODULE INDEX", 34, 34, CYAN, false);
+            graphics.text(this.font, "ECHO NATIVE MODS", 34, 34, CYAN, false);
             graphics.text(this.font, "Loaded from native module classpath", 34, 50, MUTED, false);
             List<String> modules = nativeModuleNames();
             int y = 76;
@@ -587,90 +571,6 @@ public final class EchoNativeMainMenuScreen extends Screen {
                 limit--;
             }
             return value.substring(0, limit) + suffix;
-        }
-    }
-
-    private static final class NativeRouteScreen extends Screen {
-        private final Screen parent;
-        private final String heading;
-        private final String route;
-        private final List<String> lines;
-        private int ticks;
-
-        private NativeRouteScreen(Screen parent, String heading, String route, List<String> lines) {
-            super(Component.literal(heading));
-            this.parent = parent;
-            this.heading = heading;
-            this.route = route;
-            this.lines = List.copyOf(lines);
-        }
-
-        static NativeRouteScreen multiplayer(Screen parent) {
-            return new NativeRouteScreen(
-                    parent,
-                    "ECHO Native Multiplayer",
-                    "native_ui:multiplayer",
-                    List.of(
-                            "profile: Ashfall",
-                            "route: native multiplayer uplink",
-                            "status: local product session shell active",
-                            "vanilla menu handoff: blocked"));
-        }
-
-        static NativeRouteScreen options(Screen parent) {
-            return new NativeRouteScreen(
-                    parent,
-                    "ECHO Native Settings",
-                    "native_ui:settings",
-                    List.of(
-                            "profile: Ashfall",
-                            "route: native product settings",
-                            "resource stack: product-owned",
-                            "vanilla menu handoff: blocked"));
-        }
-
-        @Override
-        protected void init() {
-            int buttonWidth = Math.min(180, Math.max(120, this.width / 4));
-            this.addRenderableWidget(Button.builder(Component.literal("[ BACK ]"),
-                            button -> this.minecraft.setScreen(this.parent))
-                    .bounds(this.width - buttonWidth - 22, this.height - 34, buttonWidth, 20)
-                    .build());
-        }
-
-        @Override
-        public void tick() {
-            super.tick();
-            this.ticks++;
-        }
-
-        @Override
-        public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-            graphics.fill(0, 0, this.width, this.height, BG);
-            int sweep = this.width <= 0 ? 0 : (this.ticks * 3) % Math.max(1, this.width);
-            graphics.fill(Math.max(0, sweep - 84), 0, Math.min(this.width, sweep), this.height, 0x1119B7D4);
-            graphics.fill(24, 24, this.width - 24, this.height - 48, PANEL_SOFT);
-            graphics.outline(24, 24, this.width - 48, this.height - 72, LINE);
-            graphics.fill(25, 25, this.width - 25, 54, 0x8620024A);
-        }
-
-        @Override
-        public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-            super.extractRenderState(graphics, mouseX, mouseY, partialTick);
-            graphics.text(this.font, "ECHO NATIVE", 40, 38, CYAN, false);
-            graphics.text(this.font, this.heading.toUpperCase(java.util.Locale.ROOT)
-                    + (((this.ticks / 18) % 2) == 0 ? "_" : ""), 40, 70, TEXT, false);
-            graphics.text(this.font, "surface-id: " + this.route, 40, 88, CYAN_DIM, false);
-            int y = 116;
-            for (String line : this.lines) {
-                graphics.text(this.font, line, 48, y, line.contains("blocked") ? GREEN : MUTED, false);
-                y += 14;
-            }
-        }
-
-        @Override
-        public boolean isPauseScreen() {
-            return false;
         }
     }
 
