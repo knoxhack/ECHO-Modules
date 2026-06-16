@@ -115,13 +115,13 @@ function validateSchemaValue(schema, value, pointer = '$') {
   return errors
 }
 
-async function validateEvidenceAgainstSdkSchema(evidence, sdkRoot) {
-  const schemaPath = path.resolve(sdkRoot, 'schemas', 'content-graph-evidence.schema.json')
+async function validateAgainstSdkSchema(document, sdkRoot, schemaName) {
+  const schemaPath = path.resolve(sdkRoot, 'schemas', schemaName)
   if (!(await fileExists(schemaPath))) {
     return { missing: schemaPath, errors: [] }
   }
   const schema = JSON.parse(await fs.readFile(schemaPath, 'utf8'))
-  return { missing: null, errors: validateSchemaValue(schema, evidence) }
+  return { missing: null, errors: validateSchemaValue(schema, document) }
 }
 
 export async function validateContentGraph({
@@ -142,6 +142,15 @@ export async function validateContentGraph({
   const warnings = []
   let totalNodes = 0
   let totalEdges = 0
+  const exportPlanSchemaPath = path.resolve(sdkRoot, 'schemas', 'content-graph-export-plan.schema.json')
+  const exportPlanSchema = await fileExists(exportPlanSchemaPath)
+    ? JSON.parse(await fs.readFile(exportPlanSchemaPath, 'utf8'))
+    : null
+  if (!exportPlanSchema) {
+    const message = `SDK content graph export plan schema not found at ${exportPlanSchemaPath}`
+    if (strict) errors.push(message)
+    else warnings.push(message)
+  }
 
   for (const result of results) {
     const graph = result.graph
@@ -188,6 +197,13 @@ export async function validateContentGraph({
       }
     }
 
+    if (exportPlanSchema) {
+      for (const [target, runtimePlan] of Object.entries(result.plans ?? {})) {
+        const planErrors = validateSchemaValue(exportPlanSchema, runtimePlan)
+        errors.push(...planErrors.map((error) => `${result.moduleId}: ${target} export plan: ${error}`))
+      }
+    }
+
     if (strict && graph.unresolvedReferences.some((ref) => ref.required)) {
       errors.push(`${result.moduleId}: has required unresolved references`)
     }
@@ -196,7 +212,7 @@ export async function validateContentGraph({
   }
 
   const evidence = summarizeContentGraphEvidence(results, { source: 'ECHO-Modules/content-graph-validation' })
-  const evidenceSchema = await validateEvidenceAgainstSdkSchema(evidence, sdkRoot)
+  const evidenceSchema = await validateAgainstSdkSchema(evidence, sdkRoot, 'content-graph-evidence.schema.json')
   if (evidenceSchema.missing) {
     const message = `SDK content graph evidence schema not found at ${evidenceSchema.missing}`
     if (strict) errors.push(message)
