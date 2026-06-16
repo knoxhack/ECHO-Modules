@@ -1442,9 +1442,11 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
             }
             snapshotProofSatisfied = snapshotProofSatisfied && directSurfaceLiveProofSatisfied(surface, evidence);
             boolean liveMutation = result != null && result.completedWithMutation();
-            boolean proofSatisfied = liveMutation && compatibilityDelegate != null && snapshotProofSatisfied;
+            boolean releaseProof = result != null && result.hasReleaseProof();
+            boolean proofSatisfied = liveMutation && releaseProof && compatibilityDelegate != null && snapshotProofSatisfied;
             evidence.put("liveRuntimeSurface", surface);
             evidence.put("liveRuntimeDispatchProofSatisfied", proofSatisfied);
+            evidence.put("liveRuntimeDispatchReleaseProof", releaseProof);
             evidence.put("liveRuntimeDispatchMinecraftAccessed", compatibilityDelegate != null);
             evidence.put("liveRuntimeDispatchMutationSupported", compatibilityDelegate != null);
             evidence.put("liveRuntimeDispatchLiveMutation", liveMutation);
@@ -1571,7 +1573,9 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
             }
             Object liveRuntimeDispatchId = evidence.get("liveRuntimeDispatchId");
             Map<String, Object> snapshot = result.snapshot();
+            boolean releaseProof = result.hasReleaseProof();
             boolean proofSatisfied = result.completedWithMutation()
+                    && releaseProof
                     && Boolean.TRUE.equals(snapshot.get("minecraftRuntimeAccessed"))
                     && Boolean.TRUE.equals(snapshot.get("runtimeSurfaceLiveProofSatisfied"));
             evidence.putAll(snapshot);
@@ -1579,6 +1583,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
                 evidence.put("liveRuntimeDispatchId", liveRuntimeDispatchId);
             }
             evidence.put("liveRuntimeDispatchProofSatisfied", proofSatisfied);
+            evidence.put("liveRuntimeDispatchReleaseProof", releaseProof);
             evidence.put("liveRuntimeDispatchMinecraftAccessed", Boolean.TRUE.equals(snapshot.get("minecraftRuntimeAccessed")));
             evidence.put("liveRuntimeDispatchMutationSupported", Boolean.TRUE.equals(snapshot.get("liveRuntimeMutationSupported")));
             evidence.put("liveRuntimeDispatchLiveMutation", result.completedWithMutation());
