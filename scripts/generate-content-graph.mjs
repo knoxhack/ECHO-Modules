@@ -1165,6 +1165,52 @@ function generateFeatures(moduleId, nodes, edges) {
   }
 }
 
+function hytaleActorPlan(node, {
+  contract,
+  adapter,
+  mappedTo,
+  actorLabel,
+}) {
+  const hints = node.runtimeHints?.hytale ?? {}
+  const declaredContract = hints.entityContract || hints.npcContract || hints.actorContract
+  if (declaredContract === true || typeof declaredContract === 'string') {
+    return {
+      status: 'direct',
+      mappedTo,
+      contract: declaredContract === true ? contract : String(declaredContract),
+      rationale: `${actorLabel} declares a Hytale runtime contract.`,
+    }
+  }
+  const declaredAdapter = hints.entityAdapter || hints.npcAdapter || hints.actorAdapter
+  if (declaredAdapter === true || typeof declaredAdapter === 'string') {
+    return {
+      status: 'adapter_required',
+      mappedTo,
+      contract,
+      requiredAdapter: declaredAdapter === true ? adapter : String(declaredAdapter),
+      rationale: `${actorLabel} requires a Hytale adapter contract before runtime export.`,
+    }
+  }
+  const fallback = hints.fallback || hints.uiFallback || hints.exportFallback
+  if (typeof fallback === 'string' && fallback.trim()) {
+    return {
+      status: 'fallback',
+      mappedTo: fallback.trim(),
+      contract,
+      rationale: `${actorLabel} uses an explicit Hytale fallback instead of a runtime actor export.`,
+    }
+  }
+  return {
+    status: 'blocked',
+    mappedTo: null,
+    contract,
+    requiredAdapter: adapter,
+    blockedReasonCode: 'HYTALE_ACTOR_CONTRACT_MISSING',
+    rationale: 'Hytale entity contract not defined.',
+    recommendedFix: `Define ${contract} hints or an explicit Hytale fallback for this ${actorLabel.toLowerCase()} node.`,
+  }
+}
+
 function generateExportPlan(target, graph) {
   const plan = {
     schemaVersion: EXPORT_PLAN_SCHEMA,
@@ -1185,8 +1231,18 @@ function generateExportPlan(target, graph) {
     [NODE_KINDS.ITEM]: () => ({ status: 'direct', mappedTo: 'item' }),
     [NODE_KINDS.CREATIVE_TAB]: () => ({ status: 'direct', mappedTo: 'creative_inventory_category' }),
     [NODE_KINDS.RECIPE]: () => ({ status: 'adapter_required', mappedTo: 'crafting_action' }),
-    [NODE_KINDS.ENTITY]: () => ({ status: 'blocked', mappedTo: null, rationale: 'Hytale entity contract not defined.' }),
-    [NODE_KINDS.NPC]: () => ({ status: 'blocked', mappedTo: null, rationale: 'Hytale entity contract not defined.' }),
+    [NODE_KINDS.ENTITY]: (node) => hytaleActorPlan(node, {
+      contract: 'echo.hytale.entity_contract.v1',
+      adapter: 'echo.hytale.entity_adapter.v1',
+      mappedTo: 'entity_definition',
+      actorLabel: 'Entity',
+    }),
+    [NODE_KINDS.NPC]: (node) => hytaleActorPlan(node, {
+      contract: 'echo.hytale.npc_contract.v1',
+      adapter: 'echo.hytale.npc_adapter.v1',
+      mappedTo: 'npc_definition',
+      actorLabel: 'NPC',
+    }),
     [NODE_KINDS.REGION]: () => ({ status: 'direct', mappedTo: 'area_trigger' }),
     [NODE_KINDS.TRIGGER]: () => ({ status: 'direct', mappedTo: 'trigger' }),
     [NODE_KINDS.EFFECT]: () => ({ status: 'adapter_required', mappedTo: 'effect_adapter' }),
@@ -1208,12 +1264,17 @@ function generateExportPlan(target, graph) {
   for (const node of graph.nodes) {
     const mapFn = mapping[node.kind] || (() => ({ status: 'blocked', mappedTo: null, rationale: 'No Hytale mapping defined.' }))
     const mapped = mapFn(node)
-    plan.nodes.push({
+    const planNode = {
       nodeId: node.id,
+      kind: node.kind,
       status: mapped.status,
-      mappedTo: mapped.mappedTo,
-      rationale: mapped.rationale || undefined,
-    })
+    }
+    for (const key of ['mappedTo', 'rationale', 'contract', 'requiredAdapter', 'blockedReasonCode', 'recommendedFix']) {
+      if (mapped[key] !== undefined && mapped[key] !== null && mapped[key] !== '') {
+        planNode[key] = mapped[key]
+      }
+    }
+    plan.nodes.push(planNode)
     plan.summary[mapped.status]++
   }
 

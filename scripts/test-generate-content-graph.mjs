@@ -9,6 +9,23 @@ async function main() {
   for (const r of results) {
     console.log(`  ${r.moduleId}: ${r.nodeCount} nodes, ${r.edgeCount} edges`)
   }
+  const openlands = results.find((r) => r.moduleId === 'echoopenlandsprotocol')
+  const blockedActors = openlands.plans.hytale.nodes.filter((node) =>
+    node.status === 'blocked'
+    && ['echo:entity', 'echo:npc'].includes(node.kind))
+  if (blockedActors.length > 0) {
+    if (blockedActors.length !== 9) {
+      throw new Error(`Expected 9 explicit Openlands Hytale actor blockers, found ${blockedActors.length}.`)
+    }
+    for (const node of blockedActors) {
+      if (node.blockedReasonCode !== 'HYTALE_ACTOR_CONTRACT_MISSING') {
+        throw new Error(`${node.nodeId} missing HYTALE_ACTOR_CONTRACT_MISSING reason code.`)
+      }
+      if (!node.contract || !node.requiredAdapter || !node.recommendedFix) {
+        throw new Error(`${node.nodeId} missing Hytale actor contract planning metadata.`)
+      }
+    }
+  }
 
   const validation = await validateContentGraph({ moduleIds: sampleModules })
   if (!validation.passed) {

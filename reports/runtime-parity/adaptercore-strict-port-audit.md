@@ -1,7 +1,7 @@
 # AdapterCore Strict Port Audit
 
 - Schema: `echo.adaptercore.strict_port_audit.v1`
-- Generated: 2026-06-14T23:44:27.951Z
+- Generated: 2026-06-16T10:09:55.361Z
 - Modules: 133
 - Passing: 133
 - Failing: 0

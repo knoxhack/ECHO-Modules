@@ -1,6 +1,6 @@
 # ECHO Module Runtime Parity Audit
 
-Generated: 2026-06-15T01:59:16.862Z
+Generated: 2026-06-16T10:24:08.276Z
 
 ## Summary
 
@@ -85,6 +85,11 @@ Generated: 2026-06-15T01:59:16.862Z
 | --- | --- | --- | ---: |
 | P1 | ECHO-Modules | Regenerate module docs index from the full descriptor inventory | 1 |
 | P2 | ECHO-Modules | Promote runtime parity audit into release workflow documentation | 0 |
+
+## Creative Tab Gaps
+
+| Module | Runtime | Status | Expected Tabs | Missing Parent Entries | Missing Search Entries |
+| --- | --- | --- | --- | --- | --- |
 
 ## Module Runtime Matrix
 

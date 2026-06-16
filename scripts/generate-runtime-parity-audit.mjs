@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { generateAdapterCoreStrictPortAudit } from './generate-adaptercore-strict-port-audit.mjs'
+import { validateContentGraph } from './validate-content-graph.mjs'
 import { generateNeoForgeRuntimeEvidence } from './generate-neoforge-runtime-evidence.mjs'
 import { generateRuntimePlayAudit } from './generate-runtime-play-audit.mjs'
 
@@ -134,17 +135,24 @@ async function listFiles(root, base = root) {
 
 async function discoverModules(repoRoot) {
   const addonsRoot = path.join(repoRoot, 'addons')
-  const entries = await fs.readdir(addonsRoot, { withFileTypes: true })
+  const descriptorPaths = await discoverDescriptorPaths(addonsRoot)
   const modules = []
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue
-    const moduleRoot = path.join(addonsRoot, entry.name)
-    const descriptorPath = path.join(moduleRoot, DESCRIPTOR_PATH)
-    if (!(await exists(descriptorPath))) continue
+  for (const descriptorPath of descriptorPaths) {
+    const moduleRoot = path.dirname(path.dirname(path.dirname(path.dirname(path.dirname(descriptorPath)))))
+    const directoryName = normalizePath(path.relative(addonsRoot, moduleRoot))
     const descriptor = await readJson(descriptorPath)
-    modules.push(await moduleRecord(repoRoot, entry.name, moduleRoot, descriptorPath, descriptor))
+    modules.push(await moduleRecord(repoRoot, directoryName, moduleRoot, descriptorPath, descriptor))
   }
   return modules.sort((left, right) => left.moduleId.localeCompare(right.moduleId))
+}
+
+async function discoverDescriptorPaths(addonsRoot) {
+  if (!(await exists(addonsRoot))) return []
+  const files = await listFiles(addonsRoot)
+  return files
+    .filter((file) => file.relative.endsWith(normalizePath(DESCRIPTOR_PATH)))
+    .map((file) => file.absolute)
+    .sort((left, right) => left.localeCompare(right))
 }
 
 async function moduleRecord(repoRoot, directoryName, moduleRoot, descriptorPath, descriptor) {
@@ -375,11 +383,15 @@ function inferExpectedFeatures({ moduleId, descriptor, declaredDomains, sourceSi
   if (sourceSignals.hasScreenClass || resourceSignals.hasUiAssets) addAll(features, ['gui', 'screen'])
   if (sourceSignals.hasBlockClass || resourceSignals.hasBlockstates) features.add('blocks')
   if (sourceSignals.hasItemClass || resourceSignals.hasModels) features.add('items')
-  const hasExpectedCreativeEntries = expectedCreativeEntries.length > 0
-  if (hasExpectedCreativeEntries
-    || sourceSignals.hasDeferredRegister
+  const hasBlockOrItemContent = sourceSignals.hasBlockClass
+    || sourceSignals.hasItemClass
     || resourceSignals.hasBlockstates
-    || ((sourceSignals.hasCreativeTabClass || sourceSignals.hasCreativeTabRegistration) && hasExpectedCreativeEntries)) {
+    || expectedCreativeEntries.length > 0
+  const hasCreativeData = sourceSignals.hasCreativeTabClass
+    || sourceSignals.hasCreativeTabRegistration
+    || sourceSignals.itemGroupLangKeys.length > 0
+  const hasExpectedCreativeEntries = expectedCreativeEntries.length > 0
+  if (hasExpectedCreativeEntries || (hasCreativeData && hasBlockOrItemContent)) {
     features.add('creative_tab')
   }
   if (resourceSignals.hasWorldgen || resourceSignals.hasStructures || sourceSignals.hasWorldClass) features.add('worldgen')
@@ -1677,25 +1689,31 @@ function buildBacklog({ rows, modules, docsIndex, preferredPacks }) {
     )
   }
 
-  const creativeTabGaps = rows
-    .filter((row) =>
-      row.runtime !== 'neoforge'
-      && expectsCreativeTabs(row)
-      && row.creativeTabStatus !== 'playable')
-    .map((row) => row.moduleId)
-  if (creativeTabGaps.length > 0) {
-    addIssue(
-      'P0',
-      'ECHO-Native-Platform / ECHO-Standalone-Runtime',
-      'creative inventory parity',
-      'Prove all module creative tabs are visible, searchable, selectable, and playable',
-      `${unique(creativeTabGaps).length} module(s) expect creative inventory content without full live creative-tab play proof.`,
-      {
-        modules: unique(creativeTabGaps),
-        runtimes: ['echo_native', 'standalone'],
-        recommendedFix: 'Generalize the creative tab bridge beyond Ashfall/fixtures and require per-module parent/search/select/play evidence.',
-      },
-    )
+  for (const runtime of RUNTIMES) {
+    const creativeTabGapRows = rows
+      .filter((row) =>
+        row.runtime === runtime.id
+        && expectsCreativeTabs(row)
+        && (row.creativeTabStatus !== 'playable'
+          || row.missingCreativeTabEntries.length > 0
+          || row.missingCreativeSearchEntries.length > 0))
+    const creativeTabGaps = creativeTabGapRows.map((row) => row.moduleId).sort()
+    if (creativeTabGaps.length > 0) {
+      const missingTabEntryCount = sum(creativeTabGapRows.map((row) => row.missingCreativeTabEntries.length))
+      const missingSearchEntryCount = sum(creativeTabGapRows.map((row) => row.missingCreativeSearchEntries.length))
+      addIssue(
+        'P0',
+        runtime.ownerRepo,
+        'creative inventory parity',
+        `${runtime.label} creative tabs need visible/search/select/play proof`,
+        `${unique(creativeTabGaps).length} module(s) expect creative inventory content without full ${runtime.id} creative-tab play proof. Missing tab entries: ${missingTabEntryCount}; missing search entries: ${missingSearchEntryCount}.`,
+        {
+          modules: unique(creativeTabGaps),
+          runtimes: [runtime.id],
+          recommendedFix: 'Require per-module creative-tab evidence for registry backing, parent visibility, search visibility, selection, and gameplay use before parity passes.',
+        },
+      )
+    }
   }
 
   if (docsIndex.missingModuleIds.length > 0 || docsIndex.missingDirectories.length > 0 || docsIndex.extraIndexEntries.length > 0) {
@@ -1744,6 +1762,29 @@ function buildBacklog({ rows, modules, docsIndex, preferredPacks }) {
   return issues
 }
 
+function backlogGroupsFor(backlog) {
+  const priorities = ['P0', 'P1', 'P2']
+  return priorities
+    .map((priority) => {
+      const items = backlog.filter((item) => item.priority === priority)
+      return {
+        priority,
+        itemCount: items.length,
+        ownerRepos: unique(items.map((item) => item.ownerRepo)).sort().map((ownerRepo) => {
+          const ownerItems = items.filter((item) => item.ownerRepo === ownerRepo)
+          return {
+            ownerRepo,
+            itemCount: ownerItems.length,
+            itemIds: ownerItems.map((item) => item.id),
+            modules: unique(ownerItems.flatMap((item) => item.modules)).sort(),
+            runtimes: unique(ownerItems.flatMap((item) => item.runtimes)).sort(),
+          }
+        }),
+      }
+    })
+    .filter((group) => group.itemCount > 0)
+}
+
 function expectsUi(rowOrModule) {
   return rowOrModule.expectedFeatures.some((feature) =>
     ['gui', 'hud', 'screen', 'inventory_overlay', 'terminal', 'index', 'holomap', 'lens'].includes(feature))
@@ -1778,6 +1819,18 @@ function markdownReport(report) {
     lines.push(`- Passing modules: ${report.adapterCoreStrictPortAudit.summary.resultCounts.pass}`)
     lines.push(`- Failing modules: ${report.adapterCoreStrictPortAudit.summary.resultCounts.fail}`)
     lines.push(`- Report: \`${report.adapterCoreStrictPortAudit.reportPath}\``)
+    lines.push('')
+  }
+  if (report.contentGraphStrictAudit) {
+    lines.push('## Content Graph Strict Evidence')
+    lines.push('')
+    lines.push(`- Result: ${report.contentGraphStrictAudit.passed ? 'PASS' : 'FAIL'}`)
+    lines.push(`- Modules: ${report.contentGraphStrictAudit.summary.moduleCount}`)
+    lines.push(`- Nodes: ${report.contentGraphStrictAudit.summary.nodeCount}`)
+    lines.push(`- Edges: ${report.contentGraphStrictAudit.summary.edgeCount}`)
+    lines.push(`- Errors: ${report.contentGraphStrictAudit.summary.errorCount}`)
+    lines.push(`- Warnings: ${report.contentGraphStrictAudit.summary.warningCount}`)
+    lines.push(`- Hytale blockers: ${report.contentGraphStrictAudit.summary.hytaleBlockerCount}`)
     lines.push('')
   }
   lines.push('| Runtime | Pass | Partial | Fail |')
@@ -1830,6 +1883,18 @@ function markdownReport(report) {
     lines.push(`| ${item.priority} | ${item.ownerRepo} | ${item.title} | ${item.modules.length} |`)
   }
   lines.push('')
+  lines.push('## Creative Tab Gaps')
+  lines.push('')
+  lines.push('| Module | Runtime | Status | Expected Tabs | Missing Parent Entries | Missing Search Entries |')
+  lines.push('| --- | --- | --- | --- | --- | --- |')
+  for (const row of report.rows.filter((row) =>
+    expectsCreativeTabs(row)
+    && (row.creativeTabStatus !== 'playable'
+      || row.missingCreativeTabEntries.length > 0
+      || row.missingCreativeSearchEntries.length > 0))) {
+    lines.push(`| ${row.moduleId} | ${row.runtime} | ${row.creativeTabStatus} | ${escapeCell(inlineList(row.expectedCreativeTabs.map((tab) => tab.id), 8))} | ${escapeCell(inlineList(row.missingCreativeTabEntries, 8))} | ${escapeCell(inlineList(row.missingCreativeSearchEntries, 8))} |`)
+  }
+  lines.push('')
   lines.push('## Module Runtime Matrix')
   lines.push('')
   lines.push('| Module | Runtime | Result | Artifact | Entrypoint | UI | Actions | Block/Item | Creative Tab | Worldgen | Save/Network | Blockers |')
@@ -1868,17 +1933,20 @@ function markdownBacklog(report) {
       lines.push('')
       continue
     }
-    for (const item of items) {
-      lines.push(`### ${item.id} - ${item.title}`)
+    for (const ownerRepo of unique(items.map((item) => item.ownerRepo)).sort()) {
+      lines.push(`### ${ownerRepo}`)
       lines.push('')
-      lines.push(`- Owner: ${item.ownerRepo}`)
-      lines.push(`- Subsystem: ${item.subsystem}`)
-      lines.push(`- Summary: ${item.summary}`)
-      if (item.runtimes.length > 0) lines.push(`- Runtimes: ${inlineList(item.runtimes)}`)
-      if (item.packRepos.length > 0) lines.push(`- Pack repos: ${inlineList(item.packRepos)}`)
-      if (item.modules.length > 0) lines.push(`- Modules (${item.modules.length}): ${inlineList(item.modules, 40)}`)
-      lines.push(`- Recommended fix: ${item.recommendedFix}`)
-      lines.push('')
+      for (const item of items.filter((item) => item.ownerRepo === ownerRepo)) {
+        lines.push(`#### ${item.id} - ${item.title}`)
+        lines.push('')
+        lines.push(`- Subsystem: ${item.subsystem}`)
+        lines.push(`- Summary: ${item.summary}`)
+        if (item.runtimes.length > 0) lines.push(`- Runtimes: ${inlineList(item.runtimes)}`)
+        if (item.packRepos.length > 0) lines.push(`- Pack repos: ${inlineList(item.packRepos)}`)
+        if (item.modules.length > 0) lines.push(`- Modules (${item.modules.length}): ${inlineList(item.modules, 40)}`)
+        lines.push(`- Recommended fix: ${item.recommendedFix}`)
+        lines.push('')
+      }
     }
   }
   return `${lines.join('\n')}\n`
@@ -1917,16 +1985,27 @@ export async function generateRuntimeParityAudit({
   if (adapterCoreStrictPort) {
     applyAdapterCoreStrictPortBlockers(rows, adapterCoreStrictPort.report)
   }
+  const contentGraphStrict = strictFull || strictPlay
+    ? await validateContentGraph({
+      repoRoot: normalizedRoot,
+      strict: true,
+      sdkRoot: path.join(normalizedEchoRoot, 'ECHO-SDK'),
+    })
+    : null
+  if (contentGraphStrict) {
+    applyContentGraphStrictBlockers(rows, contentGraphStrict)
+  }
 
   const report = {
     schema: SCHEMA,
     generatedAt: new Date().toISOString(),
     generatedFrom: [
-      'ECHO-Modules/addons/*/src/main/resources/META-INF/echo.mod.json',
+      'ECHO-Modules/addons/**/src/main/resources/META-INF/echo.mod.json',
       'ECHO-Modules/docs/module-docs-index.md',
       'ECHO-*-(Native|NeoForge|Standalone)-Edition manifests',
       'ECHO-Modules/dist/echo-module-release/echo-release.json when present',
       'ECHO-Native-Platform and ECHO-Standalone-Runtime smoke reports when present',
+      'ECHO-Modules .echo/content-graph validation when strict-full or strict-play is enabled',
     ],
     repoRoot: normalizePath(normalizedRoot),
     echoRoot: normalizePath(normalizedEchoRoot),
@@ -1944,6 +2023,7 @@ export async function generateRuntimeParityAudit({
           markdownPath: normalizePath(path.relative(normalizedRoot, adapterCoreStrictPort.outputs.markdown)),
         }
       : null,
+    contentGraphStrictAudit: contentGraphStrict ? publicContentGraphStrictAudit(contentGraphStrict) : null,
     packAudit: {
       allManifestCount: allPackManifests.length,
       preferredManifests,
@@ -1951,9 +2031,11 @@ export async function generateRuntimeParityAudit({
     modules: modules.map(publicModuleRecord),
     rows,
     backlog: [],
+    backlogGroups: [],
     strictWouldFail: false,
   }
   report.backlog = buildBacklog({ rows, modules, docsIndex, preferredPacks: preferredManifests })
+  report.backlogGroups = backlogGroupsFor(report.backlog)
   report.summary = summaryFor(report)
   report.strictFullSummary = strictFullSummaryFor(report)
   report.strictWouldFail = report.summary.resultCounts.fail > 0
@@ -2221,6 +2303,40 @@ function summaryFor(report) {
   }
 }
 
+function publicContentGraphStrictAudit(validation) {
+  const evidence = validation.evidence ?? {}
+  return {
+    schema: 'echo.runtime_parity.content_graph_strict.v1',
+    passed: validation.passed,
+    summary: {
+      moduleCount: validation.moduleCount,
+      nodeCount: validation.totalNodes,
+      edgeCount: validation.totalEdges,
+      errorCount: validation.errors.length,
+      warningCount: validation.warnings.length,
+      hytaleBlockerCount: Number(evidence.hytaleBlockerCount ?? 0),
+      validationState: string(evidence.validationState),
+    },
+    evidenceSchemaVersion: string(evidence.schemaVersion),
+    hytaleSummary: evidence.hytaleSummary ?? {},
+    modules: (evidence.modules ?? []).map((module) => ({
+      moduleId: string(module.moduleId),
+      schemaVersion: string(module.schemaVersion),
+      nodeCount: Number(module.nodeCount ?? 0),
+      edgeCount: Number(module.edgeCount ?? 0),
+      featureCount: Number(module.featureCount ?? 0),
+      exportPlanCount: Number(module.exportPlanCount ?? 0),
+      unresolvedReferenceCount: Number(module.unresolvedReferenceCount ?? 0),
+      hytaleBlockerCount: Number(module.hytaleBlockerCount ?? 0),
+      validationState: string(module.validationState),
+      validationIssues: cleanList(module.validationIssues),
+      hytaleBlockers: cleanList(module.hytaleBlockers),
+    })),
+    errors: validation.errors,
+    warnings: validation.warnings,
+  }
+}
+
 function applyAdapterCoreStrictPortBlockers(rows, adapterCoreReport) {
   const blockersByModule = new Map(
     adapterCoreReport.rows
@@ -2235,6 +2351,78 @@ function applyAdapterCoreStrictPortBlockers(rows, adapterCoreReport) {
     if (!blockers) continue
     row.strictFullBlockers = [...new Set([...(row.strictFullBlockers ?? []), ...blockers])]
   }
+}
+
+function applyContentGraphStrictBlockers(rows, validation) {
+  const knownModules = new Set(rows.map((row) => row.moduleId))
+  const evidenceByModule = new Map((validation.evidence?.modules ?? []).map((module) => [string(module.moduleId), module]))
+  const blockersByModule = new Map()
+  const globalBlockers = []
+
+  for (const [moduleId, moduleEvidence] of evidenceByModule) {
+    const blockers = []
+    if (string(moduleEvidence.schemaVersion) !== 'echo.content_graph.v1') {
+      blockers.push(`Content Graph strict evidence: ${moduleId} graph schema is ${string(moduleEvidence.schemaVersion) || 'missing'}`)
+    }
+    if (Number(moduleEvidence.nodeCount ?? 0) <= 0) {
+      blockers.push(`Content Graph strict evidence: ${moduleId} has no graph nodes`)
+    }
+    if (Number(moduleEvidence.exportPlanCount ?? 0) < 4) {
+      blockers.push(`Content Graph strict evidence: ${moduleId} is missing one or more runtime export plans`)
+    }
+    for (const issue of cleanList(moduleEvidence.validationIssues)) {
+      blockers.push(`Content Graph strict evidence: ${issue}`)
+    }
+    if (blockers.length > 0) blockersByModule.set(moduleId, blockers)
+  }
+
+  for (const error of validation.errors) {
+    const { moduleId, message } = contentGraphValidationMessage(error, knownModules)
+    const blocker = `Content Graph strict evidence: ${message}`
+    if (moduleId) {
+      const blockers = blockersByModule.get(moduleId) ?? []
+      blockers.push(blocker)
+      blockersByModule.set(moduleId, blockers)
+    } else {
+      globalBlockers.push(blocker)
+    }
+  }
+
+  if (!validation.passed && blockersByModule.size === 0 && globalBlockers.length === 0) {
+    globalBlockers.push('Content Graph strict evidence: validation failed without module-specific diagnostics')
+  }
+
+  for (const row of rows) {
+    const moduleEvidence = evidenceByModule.get(row.moduleId)
+    row.contentGraphEvidence = moduleEvidence
+      ? {
+          schemaVersion: string(moduleEvidence.schemaVersion),
+          nodeCount: Number(moduleEvidence.nodeCount ?? 0),
+          edgeCount: Number(moduleEvidence.edgeCount ?? 0),
+          featureCount: Number(moduleEvidence.featureCount ?? 0),
+          exportPlanCount: Number(moduleEvidence.exportPlanCount ?? 0),
+          unresolvedReferenceCount: Number(moduleEvidence.unresolvedReferenceCount ?? 0),
+          hytaleBlockerCount: Number(moduleEvidence.hytaleBlockerCount ?? 0),
+          hytaleBlockers: cleanList(moduleEvidence.hytaleBlockers),
+          validationState: string(moduleEvidence.validationState),
+          validationIssues: cleanList(moduleEvidence.validationIssues),
+        }
+      : null
+    const blockers = [...globalBlockers, ...(blockersByModule.get(row.moduleId) ?? [])]
+    row.contentGraphStrictBlockers = [...new Set(blockers)]
+    if (blockers.length > 0) {
+      row.strictFullBlockers = [...new Set([...(row.strictFullBlockers ?? []), ...blockers])]
+    }
+  }
+}
+
+function contentGraphValidationMessage(error, knownModules) {
+  const message = string(error)
+  const match = /^([a-z][a-z0-9_-]*):\s*(.+)$/u.exec(message)
+  if (match && knownModules.has(match[1])) {
+    return { moduleId: match[1], message: match[2] }
+  }
+  return { moduleId: '', message }
 }
 
 function strictFullSummaryFor(report) {
@@ -2293,6 +2481,10 @@ function countBy(values, keyFn) {
     result[key] = (result[key] ?? 0) + 1
   }
   return result
+}
+
+function sum(values) {
+  return values.reduce((total, value) => total + (Number(value) || 0), 0)
 }
 
 function parseArgs(argv) {

@@ -124,10 +124,15 @@ async function validateEvidenceAgainstSdkSchema(evidence, sdkRoot) {
   return { missing: null, errors: validateSchemaValue(schema, evidence) }
 }
 
-export async function validateContentGraph({ strict = false, moduleIds = [], sdkRoot = path.resolve(process.cwd(), '..', 'ECHO-SDK') } = {}) {
-  const results = await generateContentGraph({ moduleIds })
+export async function validateContentGraph({
+  repoRoot = process.cwd(),
+  strict = false,
+  moduleIds = [],
+  sdkRoot = path.resolve(repoRoot, '..', 'ECHO-SDK'),
+} = {}) {
+  const results = await generateContentGraph({ repoRoot, moduleIds })
   // Build a global node id namespace from all module graphs so cross-module edges validate.
-  const allModuleResults = await generateContentGraph({ moduleIds: [] })
+  const allModuleResults = await generateContentGraph({ repoRoot, moduleIds: [] })
   const globalNodeIds = new Set(allModuleResults.flatMap((r) => r.graph.nodes.map((n) => n.id)))
   // Always allow references to synthetic runtime nodes.
   const RUNTIME_IDS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'hytale'].map((t) => `echo:runtime/${t}`)
@@ -212,21 +217,23 @@ export async function validateContentGraph({ strict = false, moduleIds = [], sdk
 }
 
 function parseArgs(argv) {
+  const repoRoot = argv.includes('--repo-root') ? path.resolve(argv[argv.indexOf('--repo-root') + 1]) : process.cwd()
   return {
+    repoRoot,
     strict: argv.includes('--strict'),
     help: argv.includes('--help'),
     moduleIds: argv.includes('--module') ? argv[argv.indexOf('--module') + 1]?.split(',') ?? [] : [],
-    sdkRoot: argv.includes('--sdk-root') ? argv[argv.indexOf('--sdk-root') + 1] : path.resolve(process.cwd(), '..', 'ECHO-SDK'),
+    sdkRoot: argv.includes('--sdk-root') ? argv[argv.indexOf('--sdk-root') + 1] : path.resolve(repoRoot, '..', 'ECHO-SDK'),
   }
 }
 
 const options = parseArgs(process.argv.slice(2))
 if (options.help) {
-  console.log('Usage: node scripts/validate-content-graph.mjs [--strict] [--module id1,id2] [--sdk-root ../ECHO-SDK]')
+  console.log('Usage: node scripts/validate-content-graph.mjs [--strict] [--module id1,id2] [--repo-root .] [--sdk-root ../ECHO-SDK]')
   process.exit(0)
 }
 
-validateContentGraph({ strict: options.strict, moduleIds: options.moduleIds, sdkRoot: options.sdkRoot })
+validateContentGraph({ repoRoot: options.repoRoot, strict: options.strict, moduleIds: options.moduleIds, sdkRoot: options.sdkRoot })
   .then((result) => {
     console.log(`Validated ${result.moduleCount} module(s), ${result.totalNodes} nodes, ${result.totalEdges} edges.`)
     if (result.warnings.length > 0) {

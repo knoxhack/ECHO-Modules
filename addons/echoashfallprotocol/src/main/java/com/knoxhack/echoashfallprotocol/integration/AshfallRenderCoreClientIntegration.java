@@ -28,10 +28,10 @@ public final class AshfallRenderCoreClientIntegration {
         registerStaticSurface("blue_ice_crystal");
     }
 
-    public static void registerEntityRenderers(Object event) {
+    public static boolean registerEntityRenderers(Object event) {
         Method register = rendererRegistrationMethod(event);
         if (register == null) {
-            return;
+            return false;
         }
         registerEntityRenderer(event, register, ModEntities.RAD_ZOMBIE.get(), renderer("rad_zombie", EchoMobFamily.HUMANOID, 1.0F, 0.5F));
         registerEntityRenderer(event, register, ModEntities.SCAVENGER_BANDIT.get(), renderer("scavenger_bandit", EchoMobFamily.HUMANOID, 1.0F, 0.5F));
@@ -67,6 +67,7 @@ public final class AshfallRenderCoreClientIntegration {
         registerEntityRenderer(event, register, ModEntities.CORRUPTION_BLOOM.get(), renderer("corruption_bloom", EchoMobFamily.HEAVY_BOSS, 1.04F, 0.86F));
         registerEntityRenderer(event, register, ModEntities.SEVERANCE_ENGINE.get(), renderer("severance_engine", EchoMobFamily.HEAVY_BOSS, 1.14F, 0.86F));
         registerEntityRenderer(event, register, ModEntities.MIRROR_COMMAND.get(), renderer("mirror_command", EchoMobFamily.HEAVY_BOSS, 1.08F, 0.86F));
+        return true;
     }
 
     private static <T extends Mob> EntityRendererProvider<T> renderer(String entityName, EchoMobFamily family,

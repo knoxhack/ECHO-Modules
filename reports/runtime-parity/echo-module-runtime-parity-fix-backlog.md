@@ -1,6 +1,6 @@
 # ECHO Runtime Parity Fix Backlog
 
-Generated: 2026-06-15T01:59:16.862Z
+Generated: 2026-06-16T10:24:08.276Z
 
 ## P0
 
@@ -8,9 +8,10 @@ No items.
 
 ## P1
 
-### RPA-001 - Regenerate module docs index from the full descriptor inventory
+### ECHO-Modules
 
-- Owner: ECHO-Modules
+#### RPA-001 - Regenerate module docs index from the full descriptor inventory
+
 - Subsystem: docs index
 - Summary: Docs index drift detected: 1 missing id(s), 1 missing directorie(s), 0 extra entrie(s).
 - Modules (1): echodeepreachprotocol
@@ -18,9 +19,10 @@ No items.
 
 ## P2
 
-### RPA-002 - Promote runtime parity audit into release workflow documentation
+### ECHO-Modules
 
-- Owner: ECHO-Modules
+#### RPA-002 - Promote runtime parity audit into release workflow documentation
+
 - Subsystem: audit polish
 - Summary: The generator is intentionally separate from release mutation until the first backlog is triaged.
 - Recommended fix: After the P0/P1 items are understood, decide whether --strict should become a release workflow gate.

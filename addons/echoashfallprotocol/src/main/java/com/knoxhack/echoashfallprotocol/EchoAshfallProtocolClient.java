@@ -73,6 +73,14 @@ import org.lwjgl.glfw.GLFW;
  */
 public class EchoAshfallProtocolClient {
     /** [N] opens the welcome screen. [V] cycles HUD mode. [M] is handled by ECHO Terminal. */
+    private static final String REGISTER_LAYER_DEFINITIONS_EVENT =
+            "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterLayerDefinitions";
+    private static final String REGISTER_ENTITY_RENDERERS_EVENT =
+            "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers";
+    private static final String REGISTER_KEY_MAPPINGS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
+    private static final String REGISTER_MENU_SCREENS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterMenuScreensEvent";
     private static final int KEY_M = GLFW.GLFW_KEY_M;
     private static final int KEY_N = GLFW.GLFW_KEY_N;
     private static final int KEY_V = GLFW.GLFW_KEY_V;
@@ -204,13 +212,13 @@ public class EchoAshfallProtocolClient {
     public EchoAshfallProtocolClient(Object modEventBus) {
         bootstrapClient();
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
-                modEventBus, ClientModEvents::onRegisterLayerDefinitions);
+                modEventBus, REGISTER_LAYER_DEFINITIONS_EVENT, ClientModEvents::onRegisterLayerDefinitions);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
-                modEventBus, ClientModEvents::onRegisterEntityRenderers);
+                modEventBus, REGISTER_ENTITY_RENDERERS_EVENT, ClientModEvents::onRegisterEntityRenderers);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
-                modEventBus, ClientModEvents::onRegisterKeyMappings);
+                modEventBus, REGISTER_KEY_MAPPINGS_EVENT, ClientModEvents::onRegisterKeyMappings);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
-                modEventBus, ClientModEvents::onRegisterMenuScreens);
+                modEventBus, REGISTER_MENU_SCREENS_EVENT, ClientModEvents::onRegisterMenuScreens);
     }
 
     public static void bootstrapClient() {
@@ -1056,6 +1064,8 @@ public class EchoAshfallProtocolClient {
         }
 
         static void onRegisterEntityRenderers(Object event) {
+            EchoAshfallProtocol.LOGGER.info("Registering ECHO Ashfall entity renderers via {}.",
+                    event == null ? "null event" : event.getClass().getName());
             if (EchoRuntimeModules.isLoaded("echorendercore") && registerRenderCoreEntityRenderers(event)) {
                 return;
             }
@@ -1117,10 +1127,10 @@ public class EchoAshfallProtocolClient {
 
         private static boolean registerRenderCoreEntityRenderers(Object event) {
             try {
-                Class.forName("com.knoxhack.echoashfallprotocol.integration.AshfallRenderCoreClientIntegration")
+                Object registered = Class.forName("com.knoxhack.echoashfallprotocol.integration.AshfallRenderCoreClientIntegration")
                         .getMethod("registerEntityRenderers", Object.class)
                         .invoke(null, event);
-                return true;
+                return Boolean.TRUE.equals(registered);
             } catch (ReflectiveOperationException | LinkageError exception) {
                 EchoAshfallProtocol.LOGGER.warn("ECHO Ashfall RenderCore entity renderer integration unavailable; using generated fallback renderers.", exception);
                 return false;

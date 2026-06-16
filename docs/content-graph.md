@@ -60,9 +60,17 @@ node scripts/validate-content-graph.mjs --strict
 
 With `--strict`, any unresolved required reference, portable-field violation, or invalid `echo.content_graph.evidence.v1` SDK summary exits non-zero, making it suitable for CI gates.
 
+Current strict baseline: `133` module graphs, `4392` nodes, and `5911` edges validate. The Hytale export planner currently reports `9` explicit actor blockers, all from `echoopenlandsprotocol` entity nodes that need a future Hytale entity contract or fallback declaration.
+
 ## Hytale Boundary
 
 `export-plans/hytale.json` is planning evidence only. The statuses `direct`, `adapter_required`, `fallback`, `blocked`, and `not_applicable` describe how a node could map to Hytale after an adapter/codegen layer exists. The generator does not produce Hytale runtime assets, and a graph with zero blockers would still need a real Hytale adapter gate before it can be called runtime-supported.
+
+Entity and NPC blockers are typed decisions, not silent omissions. Blocked actor nodes include `blockedReasonCode`, `contract`, `requiredAdapter`, and `recommendedFix` fields so release and UI consumers can report the exact missing Hytale contract.
+
+## Runtime Parity Gate
+
+`generate-runtime-parity-audit.mjs --strict-full` validates the Content Graph and attaches graph evidence to each runtime row. Graph validation errors become strict-full blockers; Hytale `blocked` nodes remain planning evidence and do not fail strict-full by themselves.
 
 ## Embedding in Releases
 
