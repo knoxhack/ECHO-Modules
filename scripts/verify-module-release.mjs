@@ -4,6 +4,7 @@ import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import process from 'node:process'
+import { pathToFileURL } from 'node:url'
 import zlib from 'node:zlib'
 import { generateModuleRelease } from './generate-module-release.mjs'
 
@@ -184,15 +185,22 @@ function assertRuntimeArchiveContentGraph(zip, moduleRecord, label) {
 function assertContentGraphEvidenceDocument(document, release) {
   assert.ok(document && typeof document === 'object' && !Array.isArray(document), 'content-graph-evidence.json must be a JSON object')
   assert.equal(document.schemaVersion, 'echo.content_graph.evidence.v1', 'content graph evidence schema mismatch')
-  assert.equal(document.graphCount, release.modules.length, 'content graph evidence graphCount must match release modules')
-  assert.equal(document.moduleCount, release.modules.length, 'content graph evidence moduleCount must match release modules')
+  assert.ok(Array.isArray(document.modules), 'content graph evidence modules must be an array')
+  assert.equal(document.graphCount, document.modules.length, 'content graph evidence graphCount must match evidence modules')
+  assert.equal(document.moduleCount, document.modules.length, 'content graph evidence moduleCount must match evidence modules')
+  assert.ok(document.graphCount >= release.modules.length, 'content graph evidence graphCount must cover release modules')
+  assert.ok(document.moduleCount >= release.modules.length, 'content graph evidence moduleCount must cover release modules')
   assert.ok(document.nodeCount > 0, 'content graph evidence must count nodes')
   assert.ok(document.edgeCount >= 0, 'content graph evidence must count edges')
   assert.ok(document.featureCount >= 0, 'content graph evidence must count features')
   assert.ok(document.exportPlanCount >= release.modules.length, 'content graph evidence must count export plans')
   assert.ok(Number.isInteger(document.hytaleBlockerCount), 'content graph evidence must count Hytale blockers')
-  assert.ok(Array.isArray(document.modules), 'content graph evidence modules must be an array')
-  assert.equal(document.modules.length, release.modules.length, 'content graph evidence modules length must match release modules')
+  assert.ok(document.modules.length >= release.modules.length, 'content graph evidence modules length must cover release modules')
+  const evidenceModuleIds = new Set(document.modules.map((moduleRecord) => String(moduleRecord.moduleId ?? '')))
+  const missingModules = release.modules
+    .map((moduleRecord) => String(moduleRecord.moduleId ?? ''))
+    .filter((moduleId) => !evidenceModuleIds.has(moduleId))
+  assert.equal(missingModules.length, 0, `content graph evidence missing release module(s): ${missingModules.join(', ')}`)
   assert.ok(Array.isArray(document.diagnostics), 'content graph evidence diagnostics must be an array')
 }
 
@@ -350,7 +358,14 @@ async function main() {
   console.log(`Verified ${verified} module release record(s).`)
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error))
-  process.exitCode = 1
-})
+export {
+  assertContentGraphEvidenceDocument,
+  verifyReleaseDir,
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error))
+    process.exitCode = 1
+  })
+}
