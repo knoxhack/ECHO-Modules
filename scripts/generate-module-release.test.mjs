@@ -46,6 +46,8 @@ async function makeRepo() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'echo-modules-release-'))
   const moduleDir = path.join(root, 'addons', 'echosample')
   await fs.mkdir(path.join(moduleDir, 'src/main/resources/META-INF'), { recursive: true })
+  await fs.mkdir(path.join(moduleDir, 'src/main/resources/data/echosample/echosample/gear'), { recursive: true })
+  await fs.mkdir(path.join(moduleDir, 'src/main/resources/data/echosample/echosample/station_recipes'), { recursive: true })
   await fs.mkdir(path.join(moduleDir, 'src/main/templates/META-INF'), { recursive: true })
   await fs.mkdir(path.join(moduleDir, 'src/main/java/dev/echo/sample'), { recursive: true })
   await fs.mkdir(path.join(moduleDir, 'build/libs'), { recursive: true })
@@ -63,6 +65,17 @@ async function makeRepo() {
     access: {
       nativeEntrypoint: 'dev.echo.sample.SampleModule',
     },
+  }, null, 2))
+  await fs.writeFile(path.join(moduleDir, 'src/main/resources/data/echosample/echosample/gear/sample_blade.json'), JSON.stringify({
+    id: 'sample_blade',
+    displayName: 'Sample Blade',
+    tags: ['fixture_gear'],
+  }, null, 2))
+  await fs.writeFile(path.join(moduleDir, 'src/main/resources/data/echosample/echosample/station_recipes/bench_tune.json'), JSON.stringify({
+    title: 'Bench Tune',
+    station: 'sample_bench',
+    inputs: [{ item: 'echosample:sample_blade', count: 1 }],
+    outputs: [{ item: 'echosample:tuned_blade', count: 1 }],
   }, null, 2))
   await writeFixtureRuntimeJar(path.join(moduleDir, 'build/libs/echosample-1.2.3.jar'))
   return root
@@ -125,6 +138,11 @@ test('generates per-module release artifacts and metadata', async () => {
   assert.equal(contentGraph.moduleId, 'echosample')
   assert.ok(Array.isArray(contentGraph.nodes))
   assert.ok(Array.isArray(contentGraph.edges))
+  const contentGraphNodeIds = new Set(contentGraph.nodes.map((node) => node.id))
+  assert.ok(contentGraphNodeIds.has('echosample:sample_blade'))
+  assert.ok(contentGraphNodeIds.has('echosample:bench_tune'))
+  const features = JSON.parse(await fs.readFile(path.join(outputDir, '1.2.3', '.echo', 'content-graph', 'features.json'), 'utf8'))
+  assert.ok(features.features.some((feature) => feature.id === 'echosample:feature/sample_blade'))
   const contentGraphEvidence = JSON.parse(await fs.readFile(path.join(repoRoot, 'dist', 'echo-module-release', 'content-graph-evidence.json'), 'utf8'))
   assert.equal(contentGraphEvidence.schemaVersion, 'echo.content_graph.evidence.v1')
   assert.equal(contentGraphEvidence.graphCount, 1)

@@ -334,10 +334,14 @@ function namespaceFromPath(filePath, baseDir) {
   return parts[0]
 }
 
+function normalizedPath(value) {
+  return String(value).replace(/\\/g, '/')
+}
+
 function sourceFor(filePath) {
   return {
     repo: 'ECHO-Modules',
-    path: path.relative(process.cwd(), filePath).replace(/\\/g, '/'),
+    path: normalizedPath(path.relative(process.cwd(), filePath)),
     format: 'json',
   }
 }
@@ -538,9 +542,10 @@ function extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes) {
 
 function extractSingleObject(filePath, payload, ns, moduleId, nodes) {
   if (!payload || typeof payload !== 'object') return
+  const normalizedFilePath = normalizedPath(filePath)
   const localName = path.basename(filePath, '.json')
   const displayName = payload.title || payload.displayName || payload.name || localName
-  if (filePath.includes('/gear/') || filePath.includes('/modules/')) {
+  if (normalizedFilePath.includes('/gear/') || normalizedFilePath.includes('/modules/')) {
     const id = payload.id ? (payload.id.includes(':') ? payload.id : nodeId(ns, payload.id)) : nodeId(ns, localName)
     nodes.push(makeNode({
       kind: NODE_KINDS.ITEM,
@@ -551,7 +556,7 @@ function extractSingleObject(filePath, payload, ns, moduleId, nodes) {
       data: { ...payload },
       extra: { capabilities: payload.tags || [] },
     }))
-  } else if (filePath.includes('/station_recipes/')) {
+  } else if (normalizedFilePath.includes('/station_recipes/')) {
     const id = nodeId(ns, localName)
     nodes.push(makeNode({
       kind: NODE_KINDS.RECIPE,
@@ -837,7 +842,8 @@ async function generateContentNodes(entry, allModuleIds) {
   for await (const filePath of walkFiles(dataDir)) {
     const payload = await parseContentJson(filePath)
     if (!payload || typeof payload !== 'object') continue
-    if (filePath.includes('/tags/')) continue
+    const normalizedFilePath = normalizedPath(filePath)
+    if (normalizedFilePath.includes('/tags/')) continue
     const ns = namespaceFromPath(filePath, dataDir)
 
     // Minecraft datapack recipes and loot tables
@@ -861,7 +867,7 @@ async function generateContentNodes(entry, allModuleIds) {
       continue
     }
 
-    if (filePath.includes('/loot_table/')) {
+    if (normalizedFilePath.includes('/loot_table/')) {
       extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes)
       continue
     }
