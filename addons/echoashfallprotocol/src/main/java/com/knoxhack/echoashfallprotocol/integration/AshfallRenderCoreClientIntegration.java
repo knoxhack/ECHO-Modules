@@ -94,6 +94,7 @@ public final class AshfallRenderCoreClientIntegration {
             register.invoke(event, entityType, provider);
         } catch (ReflectiveOperationException e) {
             EchoAshfallProtocol.LOGGER.error("[RenderCore] Failed to register renderer for {}", entityType, e);
+            throw new IllegalStateException("RenderCore renderer registration failed for " + entityType, e);
         }
     }
 

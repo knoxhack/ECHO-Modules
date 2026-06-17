@@ -3,11 +3,14 @@ package com.knoxhack.echo.adaptercore;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
 /**
  * AdapterCore backend bridge for mod lifecycle and event-bus wiring.
  */
 public final class EchoBackendLifecycleBridge {
+    private static final Logger LOGGER = LogUtils.getLogger();
     private static final String I_EVENT_BUS = "net.neoforged.bus.api.IEventBus";
     private static final String MINECRAFT_CLIENT = "net.minecraft.client.Minecraft";
     private static final String REGISTER_GAME_TESTS_EVENT =
@@ -81,13 +84,14 @@ public final class EchoBackendLifecycleBridge {
         }
         Class<?> clientClass = resolveClass(clientEntrypointClassName);
         if (clientClass == null) {
+            LOGGER.warn("ECHO client entrypoint {} could not be resolved in client runtime.", clientEntrypointClassName);
             return false;
         }
         if (eventBus != null) {
             for (Constructor<?> constructor : clientClass.getConstructors()) {
                 if (constructor.getParameterCount() == 1
                         && constructor.getParameterTypes()[0].isAssignableFrom(eventBus.getClass())
-                        && construct(constructor, eventBus)) {
+                        && constructClientEntrypoint(clientEntrypointClassName, constructor, eventBus)) {
                     return true;
                 }
             }
@@ -95,16 +99,18 @@ public final class EchoBackendLifecycleBridge {
             for (Constructor<?> constructor : clientClass.getConstructors()) {
                 if (constructor.getParameterCount() == 1
                         && !constructor.getParameterTypes()[0].isPrimitive()
-                        && construct(constructor, new Object[] { null })) {
+                        && constructClientEntrypoint(clientEntrypointClassName, constructor, (Object) null)) {
                     return true;
                 }
             }
         }
         for (Constructor<?> constructor : clientClass.getConstructors()) {
-            if (constructor.getParameterCount() == 0 && construct(constructor)) {
+            if (constructor.getParameterCount() == 0
+                    && constructClientEntrypoint(clientEntrypointClassName, constructor)) {
                 return true;
             }
         }
+        LOGGER.warn("ECHO client entrypoint {} did not expose a usable constructor.", clientEntrypointClassName);
         return false;
     }
 
@@ -164,6 +170,18 @@ public final class EchoBackendLifecycleBridge {
             constructor.newInstance(arguments);
             return true;
         } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            return false;
+        }
+    }
+
+    private static boolean constructClientEntrypoint(
+            String className, Constructor<?> constructor, Object... arguments) {
+        try {
+            constructor.newInstance(arguments);
+            return true;
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            LOGGER.warn("ECHO client entrypoint {} failed during {} construction.",
+                    className, constructor, exception);
             return false;
         }
     }

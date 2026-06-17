@@ -77,6 +77,8 @@ public class EchoAshfallProtocolClient {
             "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterLayerDefinitions";
     private static final String REGISTER_ENTITY_RENDERERS_EVENT =
             "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers";
+    private static final String CLIENT_SETUP_EVENT =
+            "net.neoforged.fml.event.lifecycle.FMLClientSetupEvent";
     private static final String REGISTER_KEY_MAPPINGS_EVENT =
             "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
     private static final String REGISTER_MENU_SCREENS_EVENT =
@@ -206,11 +208,12 @@ public class EchoAshfallProtocolClient {
             DRONE_KEY_CATEGORY);
 
     public EchoAshfallProtocolClient() {
-        bootstrapClient();
+        safeBootstrapClient();
     }
 
     public EchoAshfallProtocolClient(Object modEventBus) {
-        bootstrapClient();
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
+                modEventBus, CLIENT_SETUP_EVENT, ClientModEvents::onClientSetup);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
                 modEventBus, REGISTER_LAYER_DEFINITIONS_EVENT, ClientModEvents::onRegisterLayerDefinitions);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
@@ -219,6 +222,17 @@ public class EchoAshfallProtocolClient {
                 modEventBus, REGISTER_KEY_MAPPINGS_EVENT, ClientModEvents::onRegisterKeyMappings);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
                 modEventBus, REGISTER_MENU_SCREENS_EVENT, ClientModEvents::onRegisterMenuScreens);
+        safeBootstrapClient();
+    }
+
+    private static void safeBootstrapClient() {
+        try {
+            bootstrapClient();
+        } catch (RuntimeException | LinkageError exception) {
+            EchoAshfallProtocol.LOGGER.warn(
+                    "ECHO Ashfall optional client bootstrap failed; critical client event listeners remain registered.",
+                    exception);
+        }
     }
 
     public static void bootstrapClient() {
@@ -1054,9 +1068,9 @@ public class EchoAshfallProtocolClient {
     }
 
     public static class ClientModEvents {
-        static void onClientSetup() {
+        static void onClientSetup(Object event) {
             EchoAshfallProtocol.LOGGER.info("ECHO: ASHFALL PROTOCOL - Client systems online");
-            bootstrapClient();
+            safeBootstrapClient();
         }
 
         static void onRegisterLayerDefinitions(Object event) {
