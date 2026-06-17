@@ -34,7 +34,7 @@ import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.entity.ModEntities;
 import com.knoxhack.echoashfallprotocol.integration.AshfallTerminalIntegration;
 import com.knoxhack.echoashfallprotocol.integration.AshfallPresenceIntegration;
-import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteRegistrar;
+import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteBridge;
 import com.knoxhack.echoashfallprotocol.network.DroneCommandPacket;
 import com.knoxhack.echoashfallprotocol.registry.ModMenuTypes;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
@@ -440,7 +440,7 @@ public class EchoAshfallProtocolClient {
         registerNativeClientRoutes();
         String surfaceType = nativeSurfaceType(route.surface());
         publishNativeSurfaceLifecycle(surfaceType, "key", route.action(), "keybind", hotkeyMetadata);
-        if (AshfallNativeClientRouteRegistrar.dispatch(surfaceType, route.action())) {
+        if (AshfallNativeClientRouteBridge.dispatch(surfaceType, route.action())) {
             Map<String, Object> routeMetadata = withOutcome(hotkeyMetadata, "route_dispatch");
             publishNativeSurfaceLifecycle(surfaceType, "open", route.action(), "route_dispatch", routeMetadata);
             publishNativeSurfaceLifecycle(surfaceType, "focus", route.action(), "route_dispatch", routeMetadata);
@@ -487,7 +487,7 @@ public class EchoAshfallProtocolClient {
         if (metadata != null) {
             eventMetadata.putAll(metadata);
         }
-        AshfallNativeClientRouteRegistrar.publishLifecycleEvent(
+        AshfallNativeClientRouteBridge.publishLifecycleEvent(
                 surfaceType,
                 phase,
                 action,
@@ -864,7 +864,7 @@ public class EchoAshfallProtocolClient {
     }
 
     private static void registerNativeClientRoutes() {
-        AshfallNativeClientRouteRegistrar.register(
+        AshfallNativeClientRouteBridge.register(
                 nativeLoaderActive(),
                 EchoAshfallProtocolClient::dispatchAshfallNativeSurface);
     }
@@ -1018,7 +1018,7 @@ public class EchoAshfallProtocolClient {
         metadata.put("visibleKeybindCategory", NATIVE_UI_KEY_CATEGORY_ID);
         metadata.put("deterministicDefaultBinding", true);
         metadata.put("conflictAudited", true);
-        AshfallNativeClientRouteRegistrar.registerInputBinding(
+        AshfallNativeClientRouteBridge.registerInputBinding(
                 surfaceType,
                 binding.route().action(),
                 Map.copyOf(metadata));

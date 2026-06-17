@@ -1,6 +1,6 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
-import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteRegistrar;
+import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteBridge;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
@@ -85,7 +85,7 @@ public final class EchoNativeAshfallLoadingOverlay {
         state.put("productProfile", "echoashfallprotocol:ashfall_native_product");
         state.put("nativeLoadingSurface", true);
         Map<String, Object> snapshot = Map.copyOf(state);
-        AshfallNativeClientRouteRegistrar.publishLifecycleEvent(
+        AshfallNativeClientRouteBridge.publishLifecycleEvent(
                 "loading_screen",
                 "render",
                 "ashfall.loading_screen",
