@@ -137,6 +137,7 @@ const virtualFiles = new Map()
 const changedFiles = []
 const errors = []
 let moduleReleaseArtifacts = new Map()
+let moduleReleaseMetadata = null
 
 const crcTable = new Uint32Array(256)
 for (let i = 0; i < 256; i += 1) {
@@ -402,6 +403,7 @@ function artifactKey(moduleId, artifactFamily) {
 
 async function loadModuleReleaseArtifacts() {
   const release = await readJsonIfExists(moduleReleasePath)
+  moduleReleaseMetadata = release ?? null
   const artifacts = new Map()
   for (const moduleRecord of release?.modules ?? []) {
     const moduleId = String(moduleRecord.moduleId ?? '').toLowerCase()
@@ -420,6 +422,18 @@ async function loadModuleReleaseArtifacts() {
     }
   }
   return artifacts
+}
+
+function applyModuleReleaseMetadata(manifest) {
+  const releaseId = String(moduleReleaseMetadata?.releaseId ?? '').trim()
+  if (!releaseId) return
+  manifest.moduleRelease = releaseId
+  manifest.moduleReleaseId = releaseId
+  const generatedAt = String(moduleReleaseMetadata?.generatedAt ?? '').trim()
+  const date = generatedAt ? generatedAt.slice(0, 10) : ''
+  const commitSha = String(moduleReleaseMetadata?.commitSha ?? '').trim()
+  const commitSuffix = commitSha ? ` (${commitSha})` : ''
+  manifest.moduleSourceRevision = `ECHO-Modules ${releaseId}${commitSuffix}${date ? `, ${date}` : ''}`
 }
 
 function moduleReleaseArtifact(moduleId, lane) {
@@ -660,6 +674,7 @@ function updatePackManifestObject(manifest, selection, lane, descriptors, releas
   manifest.moduleRequirements = requirements
   if ('runtimeTarget' in manifest || lane.runtimeTarget) manifest.runtimeTarget = lane.runtimeTarget
   if ('loader' in manifest || lane.loader) manifest.loader = lane.loader
+  applyModuleReleaseMetadata(manifest)
   return requirements
 }
 
@@ -725,6 +740,7 @@ function updatePackSnapshotObject(manifest, selection, lane, descriptors, releas
     }
   }
   if ('moduleRequirementCount' in manifest) manifest.moduleRequirementCount = selection.length
+  applyModuleReleaseMetadata(manifest)
   return requirements
 }
 
@@ -752,6 +768,7 @@ async function updateReleaseManifestTemplate(repoRoot, packKey, laneKey, selecti
     }
   }
   updatePackManifestObject(manifest, selection.modules, lane, descriptors)
+  updatePackSnapshotObject(manifest, selection.modules, lane, descriptors, null)
   await refreshArtifactMetadata(manifest, repoRoot)
   await writeJsonIfChanged(file, manifest)
 }

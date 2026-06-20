@@ -23,8 +23,14 @@ const NODE_KINDS = {
   ITEM: 'echo:item',
   CREATIVE_TAB: 'echo:creative_tab',
   RECIPE: 'echo:recipe',
+  LOOT_TABLE: 'echo:loot_table',
   ENTITY: 'echo:entity',
   NPC: 'echo:npc',
+  BIOME: 'echo:biome',
+  STRUCTURE: 'echo:structure',
+  FEATURE: 'echo:feature',
+  SPAWN_RULE: 'echo:spawn_rule',
+  SOUND_EVENT: 'echo:sound_event',
   REGION: 'echo:region',
   TRIGGER: 'echo:trigger',
   EFFECT: 'echo:effect',
@@ -44,6 +50,11 @@ const EDGE_KINDS = {
   CREATIVE_TAB_CONTAINS_ITEM: 'creative_tab_contains_item',
   RECIPE_CONSUMES_ITEM: 'recipe_consumes_item',
   RECIPE_OUTPUTS_ITEM: 'recipe_outputs_item',
+  LOOT_TABLE_DROPS_ITEM: 'loot_table_drops_item',
+  BIOME_HAS_STRUCTURE: 'biome_has_structure',
+  BIOME_HAS_FEATURE: 'biome_has_feature',
+  STRUCTURE_USES_TEMPLATE_POOL: 'structure_uses_template_pool',
+  SPAWN_RULE_SPAWNS_ENTITY: 'spawn_rule_spawns_entity',
   MISSION_HAS_OBJECTIVE: 'mission_has_objective',
   OBJECTIVE_TARGETS_NODE: 'objective_targets_node',
   UI_INTENT_CONTROLS_NODE: 'ui_intent_controls_node',
@@ -127,13 +138,22 @@ function edgeId(namespace, kind, from, to) {
   return `${namespace}:${safe}`
 }
 
+function portableDisplayName(value) {
+  let name = String(value ?? '').trim()
+  if (!name) return name
+  name = name.replace(/BlockEntity/g, 'Block Entity')
+  if (/Screen\s*$/.test(name)) name = `${name} View`
+  if (/Menu\s*$/.test(name)) name = `${name} Surface`
+  return name
+}
+
 function makeNode({ kind, id, moduleId, displayName, source, data = {}, provenance = {}, extra = {} }) {
   const node = {
     schemaVersion: NODE_SCHEMA,
     kind,
     id,
     moduleId,
-    displayName: displayName ?? id,
+    displayName: portableDisplayName(displayName ?? id),
     source: source ?? { repo: 'ECHO-Modules', path: '', format: 'generated' },
     aliases: [],
     capabilities: [],
@@ -183,6 +203,46 @@ function runtimeHintsFromDescriptor(descriptor) {
     else if (target === 'neoforge') hints.neoforge.declared = true
   }
   return hints
+}
+
+function descriptorUiRegistrations(descriptor) {
+  const moduleId = descriptor.id
+  const provides = new Set((descriptor.provides ?? []).map(String))
+  const permissions = new Set((descriptor.permissions ?? []).map(String))
+  const role = String(descriptor.role ?? '')
+  const registrations = []
+
+  if (provides.has('terminal.surface') || role.includes('terminal')) {
+    registrations.push({
+      localId: 'ui/terminal',
+      displayName: `${descriptor.name ?? moduleId} Terminal`,
+      intent: 'terminal_page',
+      surface: 'terminal',
+      capabilities: ['terminal', 'screen'],
+    })
+  }
+
+  if ([...provides].some((item) => item.startsWith('lens.')) || role.includes('scanner')) {
+    registrations.push({
+      localId: 'ui/lens_overlay',
+      displayName: `${descriptor.name ?? moduleId} Lens Overlay`,
+      intent: 'scanner_result',
+      surface: 'lens_overlay',
+      capabilities: ['lens', 'hud_overlay', 'scanner'],
+    })
+  }
+
+  if ([...provides].some((item) => item.startsWith('hud.')) || permissions.has('hud.widgets') || role.includes('hud')) {
+    registrations.push({
+      localId: 'ui/hud_overlay',
+      displayName: `${descriptor.name ?? moduleId} HUD Overlay`,
+      intent: 'progress_tracker',
+      surface: 'hud_overlay',
+      capabilities: ['hud', 'hud_overlay'],
+    })
+  }
+
+  return registrations
 }
 
 function generateModuleNodes(entry) {
@@ -236,6 +296,18 @@ function generateModuleNodes(entry) {
   }
 
   for (const depId of descriptor.requires ?? []) {
+    nodes.push(makeNode({
+      kind: NODE_KINDS.MODULE,
+      id: nodeId(depId, 'module'),
+      moduleId: depId,
+      displayName: depId,
+      source: {
+        repo: 'ECHO-Modules',
+        path: path.relative(process.cwd(), entry.descriptorPath).replace(/\\/g, '/'),
+        format: 'json',
+      },
+      data: { dependencyOf: moduleId, optional: false, externalReference: true },
+    }))
     edges.push(makeEdge({
       kind: EDGE_KINDS.MODULE_REQUIRES_MODULE,
       from: nodeId(moduleId, 'module'),
@@ -245,6 +317,18 @@ function generateModuleNodes(entry) {
     }))
   }
   for (const depId of descriptor.optional ?? []) {
+    nodes.push(makeNode({
+      kind: NODE_KINDS.MODULE,
+      id: nodeId(depId, 'module'),
+      moduleId: depId,
+      displayName: depId,
+      source: {
+        repo: 'ECHO-Modules',
+        path: path.relative(process.cwd(), entry.descriptorPath).replace(/\\/g, '/'),
+        format: 'json',
+      },
+      data: { dependencyOf: moduleId, optional: true, externalReference: true },
+    }))
     edges.push(makeEdge({
       kind: EDGE_KINDS.MODULE_REQUIRES_MODULE,
       from: nodeId(moduleId, 'module'),
@@ -311,6 +395,30 @@ function generateModuleNodes(entry) {
     }))
   }
 
+  for (const ui of descriptorUiRegistrations(descriptor)) {
+    nodes.push(makeNode({
+      kind: NODE_KINDS.UI_INTENT,
+      id: nodeId(moduleId, ui.localId),
+      moduleId,
+      displayName: ui.displayName,
+      source: {
+        repo: 'ECHO-Modules',
+        path: path.relative(process.cwd(), entry.descriptorPath).replace(/\\/g, '/'),
+        format: 'json',
+      },
+      data: {
+        surface: ui.surface,
+        descriptorRole: descriptor.role,
+        providedCapabilities: descriptor.provides ?? [],
+      },
+      extra: {
+        intent: ui.intent,
+        capabilities: ui.capabilities,
+        runtimeHints: runtimeHintsFromDescriptor(descriptor),
+      },
+    }))
+  }
+
   return { nodes, edges }
 }
 
@@ -320,6 +428,20 @@ async function* walkFiles(dir) {
     const entries = await fs.readdir(dir, { withFileTypes: true, recursive: true })
     for (const entry of entries) {
       if (entry.isFile() && entry.name.endsWith('.json')) {
+        yield path.join(entry.parentPath ?? dir, entry.name)
+      }
+    }
+  } catch {
+    // ignore missing directories
+  }
+}
+
+async function* walkResourceFiles(dir) {
+  if (!dir) return
+  try {
+    const entries = await fs.readdir(dir, { withFileTypes: true, recursive: true })
+    for (const entry of entries) {
+      if (entry.isFile()) {
         yield path.join(entry.parentPath ?? dir, entry.name)
       }
     }
@@ -346,11 +468,41 @@ function sourceFor(filePath) {
   }
 }
 
+function sourceForResource(filePath) {
+  const ext = path.extname(filePath).toLowerCase()
+  return {
+    repo: 'ECHO-Modules',
+    path: normalizedPath(path.relative(process.cwd(), filePath)),
+    format: ext === '.json' ? 'json' : ext === '.java' ? 'java' : ext === '.xml' ? 'xml' : 'generated',
+  }
+}
+
 function normalizeContentId(raw, defaultNs) {
   if (!raw || typeof raw !== 'string') return null
   const id = raw.startsWith('#') ? raw.slice(1) : raw
   if (id.includes(':')) return id
   return nodeId(defaultNs, id)
+}
+
+function localPathAfterNamespace(filePath, baseDir) {
+  const parts = path.relative(baseDir, filePath).split(path.sep)
+  return normalizedPath(parts.slice(1).join('/'))
+}
+
+function stripJsonExtension(value) {
+  return String(value).replace(/\.json$/i, '')
+}
+
+function stripResourceExtension(value) {
+  return String(value).replace(/\.[^.]+$/i, '')
+}
+
+function displayNameFromLocalId(value) {
+  return String(value)
+    .split(/[/:_.-]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ')
 }
 
 function safeLocalId(name) {
@@ -507,10 +659,44 @@ function extractMinecraftRecipe(filePath, payload, ns, moduleId, nodes, edges) {
   }
 }
 
-function extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes) {
+function* collectLootEntryItems(entries, ns) {
+  if (!Array.isArray(entries)) return
+  for (const entry of entries) {
+    if (!entry || typeof entry !== 'object') continue
+    if ((entry.type === 'minecraft:item' || entry.type === 'item') && entry.name) {
+      const itemId = normalizeContentId(entry.name, ns)
+      if (itemId) yield itemId
+    }
+    if (Array.isArray(entry.children)) yield* collectLootEntryItems(entry.children, ns)
+    if (Array.isArray(entry.entries)) yield* collectLootEntryItems(entry.entries, ns)
+  }
+}
+
+function extractMinecraftLootTable(filePath, payload, ns, moduleId, dataDir, nodes, edges) {
+  const relativePath = localPathAfterNamespace(filePath, dataDir)
+  const lootRelative = stripJsonExtension(relativePath.replace(/^loot_tables?\//, ''))
+  const lootTableId = nodeId(ns, lootRelative)
+  const lootNodeId = nodeId(ns, `loot/${lootRelative}`)
   const isBlock = payload.type === 'minecraft:block' || /[\\/]blocks[\\/]/.test(filePath)
+  const isEntity = payload.type === 'minecraft:entity' || payload.type === 'entity' || /[\\/]entities[\\/]/.test(filePath)
   const localName = path.basename(filePath, '.json')
   const blockId = isBlock ? nodeId(ns, localName) : null
+  const entityId = isEntity ? nodeId(ns, localName) : null
+  nodes.push(makeNode({
+    kind: NODE_KINDS.LOOT_TABLE,
+    id: lootNodeId,
+    moduleId,
+    displayName: displayNameFromLocalId(lootRelative),
+    source: sourceFor(filePath),
+    data: {
+      lootTableId,
+      lootPath: lootRelative,
+      lootType: payload.type ?? (isBlock ? 'minecraft:block' : isEntity ? 'minecraft:entity' : 'unknown'),
+      targetBlockId: blockId,
+      targetEntityId: entityId,
+      poolCount: Array.isArray(payload.pools) ? payload.pools.length : 0,
+    },
+  }))
   if (blockId) {
     nodes.push(makeNode({
       kind: NODE_KINDS.BLOCK,
@@ -521,22 +707,199 @@ function extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes) {
       data: { lootTable: true },
     }))
   }
+  if (entityId) {
+    nodes.push(makeNode({
+      kind: NODE_KINDS.ENTITY,
+      id: entityId,
+      moduleId,
+      displayName: displayNameFromLocalId(localName),
+      source: sourceFor(filePath),
+      data: { lootTableId, entityId },
+    }))
+  }
+  const droppedItemIds = new Set()
   for (const pool of payload.pools || []) {
-    for (const entry of pool.entries || []) {
-      if (entry.type === 'minecraft:item' && entry.name) {
-        const itemId = normalizeContentId(entry.name, ns)
-        if (itemId) {
-          nodes.push(makeNode({
-            kind: NODE_KINDS.ITEM,
-            id: itemId,
-            moduleId,
-            displayName: itemId.split(':').pop(),
-            source: sourceFor(filePath),
-            data: {},
-          }))
-        }
-      }
+    for (const itemId of collectLootEntryItems(pool.entries, ns)) {
+      droppedItemIds.add(itemId)
+      nodes.push(makeNode({
+        kind: NODE_KINDS.ITEM,
+        id: itemId,
+        moduleId,
+        displayName: itemId.split(':').pop(),
+        source: sourceFor(filePath),
+        data: {},
+      }))
     }
+  }
+  for (const itemId of droppedItemIds) {
+    edges.push(makeEdge({
+      kind: EDGE_KINDS.LOOT_TABLE_DROPS_ITEM,
+      from: lootNodeId,
+      to: itemId,
+      moduleId,
+      data: { lootTableId },
+    }))
+  }
+}
+
+function extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, nodes) {
+  const relativePath = localPathAfterNamespace(filePath, dataDir)
+  const localPath = stripJsonExtension(relativePath)
+  let kind = null
+  let localId = null
+  let data = {}
+
+  if (localPath.startsWith('worldgen/biome/')) {
+    kind = NODE_KINDS.BIOME
+    localId = localPath.replace(/^worldgen\/biome\//, '')
+    data = { biomeId: nodeId(ns, localId), worldgenType: 'biome', definition: payload }
+  } else if (localPath.startsWith('worldgen/structure/')) {
+    kind = NODE_KINDS.STRUCTURE
+    localId = localPath.replace(/^worldgen\/structure\//, '')
+    data = { structureId: nodeId(ns, localId), worldgenType: 'structure', definition: payload }
+  } else if (localPath.startsWith('worldgen/configured_feature/')) {
+    kind = NODE_KINDS.FEATURE
+    localId = `configured/${localPath.replace(/^worldgen\/configured_feature\//, '')}`
+    data = { featureId: nodeId(ns, localId), worldgenType: 'configured_feature', definition: payload }
+  } else if (localPath.startsWith('worldgen/placed_feature/')) {
+    kind = NODE_KINDS.FEATURE
+    localId = `placed/${localPath.replace(/^worldgen\/placed_feature\//, '')}`
+    data = { featureId: nodeId(ns, localId), worldgenType: 'placed_feature', definition: payload }
+  } else if (localPath.startsWith('worldgen/template_pool/')) {
+    kind = NODE_KINDS.FEATURE
+    localId = `template_pool/${localPath.replace(/^worldgen\/template_pool\//, '')}`
+    data = { featureId: nodeId(ns, localId), worldgenType: 'template_pool', definition: payload }
+  } else if (localPath.startsWith('worldgen/world_preset/')) {
+    kind = NODE_KINDS.REGION
+    localId = `world_preset/${localPath.replace(/^worldgen\/world_preset\//, '')}`
+    data = { regionType: 'world_preset', presetId: nodeId(ns, localId), definition: payload }
+  }
+
+  if (!kind || !localId) return
+  const nodeLocalId = kind === NODE_KINDS.BIOME
+    ? `biome/${localId}`
+    : kind === NODE_KINDS.STRUCTURE
+      ? `structure/${localId}`
+      : kind === NODE_KINDS.FEATURE
+        ? `feature/${localId}`
+        : `region/${localId}`
+  nodes.push(makeNode({
+    kind,
+    id: nodeId(ns, nodeLocalId),
+    moduleId,
+    displayName: payload.displayName || payload.name || displayNameFromLocalId(localId),
+    source: sourceFor(filePath),
+    data,
+  }))
+}
+
+function extractStructureAsset(filePath, ns, moduleId, dataDir, nodes) {
+  const relativePath = localPathAfterNamespace(filePath, dataDir)
+  if (!/^structures?\//.test(relativePath)) return
+  const localPath = stripResourceExtension(relativePath.replace(/^structures?\//, ''))
+  nodes.push(makeNode({
+    kind: NODE_KINDS.STRUCTURE,
+    id: nodeId(ns, `structure_asset/${localPath}`),
+    moduleId,
+    displayName: displayNameFromLocalId(localPath),
+    source: sourceForResource(filePath),
+    data: {
+      structureId: nodeId(ns, localPath),
+      worldgenType: 'nbt_template',
+      assetPath: normalizedPath(path.relative(process.cwd(), filePath)),
+    },
+  }))
+}
+
+function extractSoundEvents(filePath, payload, ns, moduleId, nodes) {
+  for (const [soundName, sound] of Object.entries(payload ?? {})) {
+    if (!sound || typeof sound !== 'object') continue
+    const soundEventId = nodeId(ns, soundName)
+    nodes.push(makeNode({
+      kind: NODE_KINDS.SOUND_EVENT,
+      id: nodeId(ns, `sound/${soundName}`),
+      moduleId,
+      displayName: sound.subtitle || displayNameFromLocalId(soundName),
+      source: sourceFor(filePath),
+      data: {
+        soundEventId,
+        subtitle: sound.subtitle,
+        sounds: Array.isArray(sound.sounds) ? sound.sounds : [],
+      },
+    }))
+  }
+}
+
+function extractMissionObject(filePath, mission, ns, moduleId, nodes, edges) {
+  if (!mission || typeof mission !== 'object') return
+  const rawId = mission.id || mission.advancement || mission.title || path.basename(filePath, '.json')
+  if (!rawId) return
+  const missionId = rawId.includes(':') ? rawId : nodeId(ns, `mission/${rawId}`)
+  nodes.push(makeNode({
+    kind: NODE_KINDS.MISSION,
+    id: missionId,
+    moduleId,
+    displayName: mission.title || displayNameFromLocalId(rawId),
+    source: sourceFor(filePath),
+    data: {
+      chapterId: mission.chapterId,
+      phase: mission.phase,
+      phaseTitle: mission.phaseTitle,
+      order: mission.order,
+      category: mission.category,
+      difficulty: mission.difficulty,
+      icon: mission.icon,
+      kind: mission.kind,
+      prerequisites: mission.prerequisites ?? [],
+      guidanceLinks: mission.guidanceLinks ?? {},
+      nativeHooks: mission.nativeHooks ?? {},
+      requirements: mission.requirements ?? [],
+      rewards: mission.rewards ?? [],
+    },
+  }))
+  const objectives = Array.isArray(mission.objectives) ? mission.objectives : []
+  if (objectives.length === 0) {
+    const objectiveId = nodeId(ns, `objective/${missionId.split(':')[1]}/complete`)
+    nodes.push(makeNode({
+      kind: NODE_KINDS.OBJECTIVE,
+      id: objectiveId,
+      moduleId,
+      displayName: `Complete ${mission.title || rawId}`,
+      source: sourceFor(filePath),
+      data: { objectiveType: 'complete_trigger' },
+    }))
+    edges.push(makeEdge({
+      kind: EDGE_KINDS.MISSION_HAS_OBJECTIVE,
+      from: missionId,
+      to: objectiveId,
+      moduleId,
+    }))
+    return
+  }
+  for (const objective of objectives) {
+    const rawObjectiveId = objective.id || `${missionId.split(':')[1]}/main`
+    const objectiveId = rawObjectiveId.includes(':') ? rawObjectiveId : nodeId(ns, `objective/${rawObjectiveId}`)
+    nodes.push(makeNode({
+      kind: NODE_KINDS.OBJECTIVE,
+      id: objectiveId,
+      moduleId,
+      displayName: objective.label || objective.title || displayNameFromLocalId(rawObjectiveId),
+      source: sourceFor(filePath),
+      data: {
+        objectiveType: OBJECTIVE_TYPES.includes(objective.type) ? objective.type : (objective.type || 'complete_trigger'),
+        detail: objective.detail,
+        icon: objective.icon,
+        target: objective.target,
+        required: objective.required,
+        criteria: objective.criteria ?? {},
+      },
+    }))
+    edges.push(makeEdge({
+      kind: EDGE_KINDS.MISSION_HAS_OBJECTIVE,
+      from: missionId,
+      to: objectiveId,
+      moduleId,
+    }))
   }
 }
 
@@ -664,6 +1027,97 @@ function extractNativeCreativeTabs(source) {
   return tabs
 }
 
+function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEggItemIds, nodes, edges) {
+  const constantToEntity = new Map()
+  const registerPattern = /public\s+static\s+final\s+EchoBackendRegistryEntry\s*<\s*EntityType\s*<\s*([^>]+?)\s*>\s*>\s+([A-Z0-9_]+)\s*=\s*registerEntityType\s*\(\s*"([^"]+)"\s*,\s*([A-Za-z0-9_:.]+)::new\s*,\s*MobCategory\.([A-Z_]+)\s*,\s*builder\s*->\s*builder([\s\S]*?)\);/g
+  for (const match of source.matchAll(registerPattern)) {
+    const [, genericType, constantName, localId, factoryClass, category, builderBody] = match
+    const entityId = nodeId(ns, localId)
+    constantToEntity.set(constantName, { localId, entityId })
+    const size = /\.sized\s*\(\s*([0-9.]+)F?\s*,\s*([0-9.]+)F?\s*\)/.exec(builderBody)
+    const tracking = /\.clientTrackingRange\s*\(\s*([0-9]+)\s*\)/.exec(builderBody)
+    const spawnEggItemId = spawnEggItemIds.has(nodeId(ns, `${localId}_spawn_egg`))
+      ? nodeId(ns, `${localId}_spawn_egg`)
+      : null
+    nodes.push(makeNode({
+      kind: NODE_KINDS.ENTITY,
+      id: entityId,
+      moduleId,
+      displayName: displayNameFromLocalId(localId),
+      source: sourceForResource(filePath),
+      data: {
+        entityId,
+        registryId: entityId,
+        javaType: genericType.trim(),
+        factoryClass,
+        category: category.toLowerCase(),
+        width: size ? Number(size[1]) : null,
+        height: size ? Number(size[2]) : null,
+        clientTrackingRange: tracking ? Number(tracking[1]) : null,
+        fireImmune: builderBody.includes('.fireImmune()'),
+        spawnEggItemId,
+        visualProfile: spawnEggItemId ? {
+          itemModel: `${ns}:item/${localId}_spawn_egg`,
+          itemTexture: `${ns}:textures/item/${localId}_spawn_egg.png`,
+        } : null,
+      },
+      extra: {
+        capabilities: ['entity_registry', category.toLowerCase()],
+        runtimeHints: {
+          neoforge: { declared: true, registryBridge: 'EchoBackendEntityBridge' },
+          echo_native: { declared: true },
+          echo_runtime_standalone: { declared: true },
+          hytale: { actorAdapter: true },
+        },
+      },
+    }))
+  }
+
+  const spawnCalls = [
+    ['registerMonsterSpawn', 'monster', 'ON_GROUND', 'MOTION_BLOCKING_NO_LEAVES', 'Monster.checkMonsterSpawnRules'],
+    ['registerGroundMobSpawn', 'ground_mob', 'ON_GROUND', 'MOTION_BLOCKING_NO_LEAVES', 'Mob.checkMobSpawnRules'],
+    ['registerNoRestrictionSpawn', 'no_restrictions', 'NO_RESTRICTIONS', 'MOTION_BLOCKING_NO_LEAVES', 'always_true'],
+  ]
+  for (const [method, ruleType, placement, heightmap, predicate] of spawnCalls) {
+    const pattern = new RegExp(`${method}\\s*\\(\\s*event\\s*,\\s*([A-Z0-9_]+)\\s*\\)`, 'g')
+    for (const match of source.matchAll(pattern)) {
+      const entity = constantToEntity.get(match[1])
+      if (!entity) continue
+      const ruleId = nodeId(ns, `spawn_rule/${entity.localId}`)
+      nodes.push(makeNode({
+        kind: NODE_KINDS.SPAWN_RULE,
+        id: ruleId,
+        moduleId,
+        displayName: `${displayNameFromLocalId(entity.localId)} Spawn Rule`,
+        source: sourceForResource(filePath),
+        data: {
+          entityId: entity.entityId,
+          ruleType,
+          placement,
+          heightmap,
+          predicate,
+        },
+      }))
+      edges.push(makeEdge({
+        kind: EDGE_KINDS.SPAWN_RULE_SPAWNS_ENTITY,
+        from: ruleId,
+        to: entity.entityId,
+        moduleId,
+      }))
+    }
+  }
+}
+
+function inferUiIntent(rawId, requestedIntent = '') {
+  if (UI_INTENTS.includes(requestedIntent)) return requestedIntent
+  const id = String(rawId ?? '').toLowerCase()
+  if (id.includes('terminal')) return 'terminal_page'
+  if (id.includes('lens') || id.includes('scan')) return 'scanner_result'
+  if (id.includes('hud') || id.includes('vital') || id.includes('mission')) return 'progress_tracker'
+  if (id.includes('index') || id.includes('recipe') || id.includes('search')) return 'selection_menu'
+  return 'detail_panel'
+}
+
 function inferContentNamespace(descriptor, dataDir) {
   // Prefer descriptor namespace hints; fall back to module id.
   return descriptor.id
@@ -679,9 +1133,9 @@ async function generateContentNodes(entry, allModuleIds) {
   const assetsDir = entry.assetsDir
   const javaDir = path.join(path.dirname(path.dirname(path.dirname(entry.descriptorPath))), 'java')
 
-  if (!dataDir) return { nodes, edges, unresolved }
-
   const contentNs = inferContentNamespace(descriptor, dataDir)
+
+  if (dataDir) {
 
   // Parse Foundation moved payloads first so canonical IDs take precedence.
   const foundationDir = path.join(dataDir, contentNs, 'foundation')
@@ -846,6 +1300,21 @@ async function generateContentNodes(entry, allModuleIds) {
     if (normalizedFilePath.includes('/tags/')) continue
     const ns = namespaceFromPath(filePath, dataDir)
 
+    if (normalizedFilePath.includes('/worldgen/')) {
+      extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, nodes)
+      continue
+    }
+
+    if (normalizedFilePath.includes('/missioncore/missions/')) {
+      extractMissionObject(filePath, payload, ns, moduleId, nodes, edges)
+      continue
+    }
+
+    if (normalizedFilePath.includes('/loot_table/') || normalizedFilePath.includes('/loot_tables/')) {
+      extractMinecraftLootTable(filePath, payload, ns, moduleId, dataDir, nodes, edges)
+      continue
+    }
+
     // Minecraft datapack recipes and loot tables
     if (typeof payload.type === 'string' && payload.type.startsWith('minecraft:')) {
       const recipeTypes = [
@@ -862,13 +1331,8 @@ async function generateContentNodes(entry, allModuleIds) {
       if (recipeTypes.includes(payload.type)) {
         extractMinecraftRecipe(filePath, payload, ns, moduleId, nodes, edges)
       } else {
-        extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes)
+        extractMinecraftLootTable(filePath, payload, ns, moduleId, dataDir, nodes, edges)
       }
-      continue
-    }
-
-    if (normalizedFilePath.includes('/loot_table/')) {
-      extractMinecraftLootTable(filePath, payload, ns, moduleId, nodes)
       continue
     }
 
@@ -986,11 +1450,12 @@ async function generateContentNodes(entry, allModuleIds) {
                 to: objectiveId,
                 moduleId,
               }))
-              if (objective.target) {
+              const targetId = normalizeContentId(objective.target, ns)
+              if (targetId) {
                 edges.push(makeEdge({
                   kind: EDGE_KINDS.OBJECTIVE_TARGETS_NODE,
                   from: objectiveId,
-                  to: nodeId(ns, objective.target),
+                  to: targetId,
                   moduleId,
                 }))
               }
@@ -1004,12 +1469,86 @@ async function generateContentNodes(entry, allModuleIds) {
     extractSingleObject(filePath, payload, ns, moduleId, nodes)
   }
 
-  // Assets scan for UI intent hints
+  for await (const filePath of walkResourceFiles(dataDir)) {
+    if (!filePath.toLowerCase().endsWith('.nbt')) continue
+    const ns = namespaceFromPath(filePath, dataDir)
+    extractStructureAsset(filePath, ns, moduleId, dataDir, nodes)
+  }
+  }
+
+  const spawnEggItemIds = new Set()
+
+  // Assets scan for UI intent hints and renderable client assets
   for await (const filePath of walkFiles(assetsDir)) {
     const payload = await parseContentJson(filePath)
     if (!payload || typeof payload !== 'object') continue
+    const normalizedFilePath = normalizedPath(filePath)
     const schema = payload.schema || ''
     const ns = namespaceFromPath(filePath, assetsDir)
+
+    if (path.basename(filePath) === 'sounds.json') {
+      extractSoundEvents(filePath, payload, ns, moduleId, nodes)
+      continue
+    }
+
+    if (normalizedFilePath.includes('/items/') && path.basename(filePath, '.json').endsWith('_spawn_egg')) {
+      const localId = path.basename(filePath, '.json')
+      const itemId = nodeId(ns, localId)
+      spawnEggItemIds.add(itemId)
+      nodes.push(makeNode({
+        kind: NODE_KINDS.ITEM,
+        id: itemId,
+        moduleId,
+        displayName: displayNameFromLocalId(localId),
+        source: sourceFor(filePath),
+        data: {
+          itemKind: 'spawn_egg',
+          model: payload.model?.model,
+          targetEntityId: nodeId(ns, localId.replace(/_spawn_egg$/, '')),
+        },
+        extra: { capabilities: ['spawn_egg', 'entity_spawn'] },
+      }))
+      continue
+    }
+
+    if (normalizedFilePath.includes('/rendercore/visual_profiles/screen/')) {
+      const localId = path.basename(filePath, '.json')
+      const profileId = nodeId(ns, `visual_profile/screen/${localId}`)
+      nodes.push(makeNode({
+        kind: NODE_KINDS.ASSET,
+        id: profileId,
+        moduleId,
+        displayName: payload.surface?.display_name || displayNameFromLocalId(localId),
+        source: sourceFor(filePath),
+        data: {
+          assetKind: 'rendercore_visual_profile',
+          surface: payload.surface ?? {},
+          baseTexture: payload.base_texture,
+          requiredEvidence: payload.qa?.evidence ?? [],
+        },
+      }))
+      const surfaceType = String(payload.surface?.type ?? '')
+      const intent = surfaceType.includes('hud_overlay')
+        ? inferUiIntent(`${ns}:${localId}`)
+        : inferUiIntent(`${ns}:${localId}`, payload.intent)
+      nodes.push(makeNode({
+        kind: NODE_KINDS.UI_INTENT,
+        id: nodeId(ns, `ui/${localId}`),
+        moduleId,
+        displayName: payload.surface?.display_name || displayNameFromLocalId(localId),
+        source: sourceFor(filePath),
+        data: {
+          surface: surfaceType || 'screen',
+          visualProfile: profileId,
+          ownerAddon: payload.surface?.owner_addon,
+        },
+        extra: {
+          intent,
+          capabilities: [surfaceType || 'screen', ...(payload.surface?.tags ?? [])].filter(Boolean),
+        },
+      }))
+      continue
+    }
 
     if (schema.includes('screen') || schema.includes('eui') || filePath.includes('eui_manifest')) {
       const pages = payload.pages || payload.screens || []
@@ -1025,7 +1564,7 @@ async function generateContentNodes(entry, allModuleIds) {
           source: { repo: 'ECHO-Modules', path: path.relative(process.cwd(), filePath).replace(/\\/g, '/'), format: 'json' },
           data: {},
           extra: {
-            intent: UI_INTENTS.includes(page.intent) ? page.intent : 'detail_panel',
+            intent: inferUiIntent(localId, page.intent),
             actions: (page.actions || []).map((a) => ({ id: a.id, label: a.label || a.id, requires: a.requires })),
             fallbacks: {
               neoforge: page.fallbacks?.neoforge || 'custom_screen',
@@ -1039,8 +1578,47 @@ async function generateContentNodes(entry, allModuleIds) {
     }
   }
 
+  for await (const filePath of walkResourceFiles(assetsDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    const ext = path.extname(filePath).toLowerCase()
+    if (!['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) continue
+    if (!normalizedFilePath.includes('/textures/gui/hud/')) continue
+    const ns = namespaceFromPath(filePath, assetsDir)
+    const localId = stripResourceExtension(localPathAfterNamespace(filePath, assetsDir).replace(/^textures\/gui\/hud\//, ''))
+    const assetId = nodeId(ns, `asset/hud/${localId}`)
+    nodes.push(makeNode({
+      kind: NODE_KINDS.ASSET,
+      id: assetId,
+      moduleId,
+      displayName: displayNameFromLocalId(localId),
+      source: sourceForResource(filePath),
+      data: {
+        assetKind: 'hud_texture',
+        assetPath: normalizedPath(path.relative(process.cwd(), filePath)),
+      },
+    }))
+    nodes.push(makeNode({
+      kind: NODE_KINDS.UI_INTENT,
+      id: nodeId(ns, `ui/hud/${localId}`),
+      moduleId,
+      displayName: `${displayNameFromLocalId(localId)} HUD`,
+      source: sourceForResource(filePath),
+      data: {
+        surface: 'hud_overlay',
+        asset: assetId,
+      },
+      extra: {
+        intent: 'progress_tracker',
+        capabilities: ['hud', 'hud_overlay'],
+      },
+    }))
+  }
+
   for await (const filePath of walkJavaFiles(javaDir)) {
     const source = await readText(filePath)
+    if (source.includes('registerEntityType(')) {
+      extractJavaEntityRegistrations(source, contentNs, moduleId, filePath, spawnEggItemIds, nodes, edges)
+    }
     if (!source.includes('"creative_tab"')) continue
     for (const tab of extractNativeCreativeTabs(source)) {
       nodes.push(makeNode({
@@ -1211,6 +1789,161 @@ function hytaleActorPlan(node, {
   }
 }
 
+function runtimeTargetPlan(target, node, fallbackPlan) {
+  if (target === 'hytale') return fallbackPlan
+
+  const targetHints = node.runtimeHints?.[target] ?? {}
+  if (targetHints.unsupported === true || targetHints.blocked === true) {
+    return {
+      status: 'blocked',
+      mappedTo: null,
+      blockedReasonCode: `${target.toUpperCase()}_EXPORT_BLOCKED`,
+      rationale: `Content Graph node is explicitly blocked for ${target}.`,
+    }
+  }
+
+  if (target === 'neoforge') {
+    return neoforgeRuntimePlan(node, fallbackPlan)
+  }
+  if (target === 'echo_runtime_standalone') {
+    return standaloneRuntimePlan(node, fallbackPlan)
+  }
+  if (target === 'echo_native') {
+    return nativeRuntimePlan(node, fallbackPlan)
+  }
+  return fallbackPlan
+}
+
+function neoforgeRuntimePlan(node, fallbackPlan) {
+  switch (node.kind) {
+    case NODE_KINDS.MODULE:
+    case NODE_KINDS.ADDON:
+    case NODE_KINDS.DEPENDENCY:
+    case NODE_KINDS.SETTING:
+    case NODE_KINDS.SYSTEM:
+      return { status: 'not_applicable', mappedTo: null }
+    case NODE_KINDS.BLOCK:
+    case NODE_KINDS.ITEM:
+    case NODE_KINDS.CREATIVE_TAB:
+    case NODE_KINDS.ENTITY:
+    case NODE_KINDS.NPC:
+    case NODE_KINDS.BIOME:
+    case NODE_KINDS.STRUCTURE:
+    case NODE_KINDS.FEATURE:
+    case NODE_KINDS.SOUND_EVENT:
+      return { status: 'direct', mappedTo: 'neoforge_registry' }
+    default:
+      return fallbackPlan.status === 'blocked'
+        ? { status: 'adapter_required', mappedTo: 'neoforge_adapter_bridge' }
+        : fallbackPlan
+  }
+}
+
+function nativeRuntimePlan(node, fallbackPlan) {
+  switch (node.kind) {
+    case NODE_KINDS.MODULE:
+    case NODE_KINDS.ADDON:
+    case NODE_KINDS.DEPENDENCY:
+    case NODE_KINDS.SETTING:
+    case NODE_KINDS.SYSTEM:
+      return { status: 'not_applicable', mappedTo: null }
+    case NODE_KINDS.CREATIVE_TAB:
+    case NODE_KINDS.SOUND_EVENT:
+    case NODE_KINDS.REGION:
+      return { status: 'direct', mappedTo: 'native_runtime_registry' }
+    default:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_native_bridge',
+        requiredAdapter: 'echo.adaptercore.native_runtime.v1',
+        rationale: 'Native runtime consumes Content Graph identity through AdapterCore-backed mutations.',
+      }
+  }
+}
+
+function standaloneRuntimePlan(node, fallbackPlan) {
+  switch (node.kind) {
+    case NODE_KINDS.MODULE:
+    case NODE_KINDS.ADDON:
+    case NODE_KINDS.DEPENDENCY:
+    case NODE_KINDS.SETTING:
+    case NODE_KINDS.SYSTEM:
+      return { status: 'not_applicable', mappedTo: null }
+    case NODE_KINDS.CREATIVE_TAB:
+      return { status: 'direct', mappedTo: 'creative_inventory_category' }
+    case NODE_KINDS.SOUND_EVENT:
+      return { status: 'direct', mappedTo: 'sound_event' }
+    case NODE_KINDS.ASSET:
+      return { status: 'direct', mappedTo: 'runtime_asset' }
+    case NODE_KINDS.UI_INTENT:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_ui_event',
+        requiredAdapter: 'echo.adaptercore.ui_runtime.v1',
+        rationale: 'Standalone hosts ScreenCore/HUD/Lens/Terminal/Index surfaces through AdapterCore events.',
+      }
+    case NODE_KINDS.ENTITY:
+    case NODE_KINDS.NPC:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_entity_runtime',
+        requiredAdapter: 'echo.adaptercore.entity_runtime.v1',
+        rationale: 'Standalone consumes graph-backed entity registry, visuals, spawn eggs, and mutations through AdapterCore.',
+      }
+    case NODE_KINDS.SPAWN_RULE:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_spawn_rule',
+        requiredAdapter: 'echo.adaptercore.spawn_runtime.v1',
+        rationale: 'Standalone spawn rules are graph-backed and executed through AdapterCore spawn/despawn mutations.',
+      }
+    case NODE_KINDS.BLOCK:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_block_runtime',
+        requiredAdapter: 'echo.adaptercore.block_runtime.v1',
+        rationale: 'Standalone block placement and breaking must emit AdapterCore mutation receipts.',
+      }
+    case NODE_KINDS.ITEM:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_item_runtime',
+        requiredAdapter: 'echo.adaptercore.item_runtime.v1',
+        rationale: 'Standalone item use and inventory changes must emit AdapterCore mutation receipts.',
+      }
+    case NODE_KINDS.RECIPE:
+      return { status: 'adapter_required', mappedTo: 'adaptercore_recipe_runtime' }
+    case NODE_KINDS.LOOT_TABLE:
+      return { status: 'adapter_required', mappedTo: 'adaptercore_loot_runtime' }
+    case NODE_KINDS.BIOME:
+    case NODE_KINDS.STRUCTURE:
+    case NODE_KINDS.FEATURE:
+    case NODE_KINDS.REGION:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_world_runtime',
+        requiredAdapter: 'echo.adaptercore.world_runtime.v1',
+        rationale: 'Standalone world identity is graph-backed and hosted through the AdapterCore world bridge.',
+      }
+    case NODE_KINDS.EFFECT:
+    case NODE_KINDS.MISSION:
+    case NODE_KINDS.OBJECTIVE:
+      return {
+        status: 'adapter_required',
+        mappedTo: 'adaptercore_gameplay_runtime',
+        requiredAdapter: 'echo.adaptercore.gameplay_runtime.v1',
+      }
+    default:
+      return fallbackPlan.status === 'blocked'
+        ? {
+            status: 'adapter_required',
+            mappedTo: 'adaptercore_content_runtime',
+            requiredAdapter: 'echo.adaptercore.content_runtime.v1',
+          }
+        : fallbackPlan
+  }
+}
+
 function generateExportPlan(target, graph) {
   const plan = {
     schemaVersion: EXPORT_PLAN_SCHEMA,
@@ -1231,6 +1964,7 @@ function generateExportPlan(target, graph) {
     [NODE_KINDS.ITEM]: () => ({ status: 'direct', mappedTo: 'item' }),
     [NODE_KINDS.CREATIVE_TAB]: () => ({ status: 'direct', mappedTo: 'creative_inventory_category' }),
     [NODE_KINDS.RECIPE]: () => ({ status: 'adapter_required', mappedTo: 'crafting_action' }),
+    [NODE_KINDS.LOOT_TABLE]: () => ({ status: 'adapter_required', mappedTo: 'loot_table_adapter' }),
     [NODE_KINDS.ENTITY]: (node) => hytaleActorPlan(node, {
       contract: 'echo.hytale.entity_contract.v1',
       adapter: 'echo.hytale.entity_adapter.v1',
@@ -1243,6 +1977,11 @@ function generateExportPlan(target, graph) {
       mappedTo: 'npc_definition',
       actorLabel: 'NPC',
     }),
+    [NODE_KINDS.BIOME]: () => ({ status: 'adapter_required', mappedTo: 'biome_definition_adapter' }),
+    [NODE_KINDS.STRUCTURE]: () => ({ status: 'adapter_required', mappedTo: 'structure_template_adapter' }),
+    [NODE_KINDS.FEATURE]: () => ({ status: 'adapter_required', mappedTo: 'world_feature_adapter' }),
+    [NODE_KINDS.SPAWN_RULE]: () => ({ status: 'adapter_required', mappedTo: 'spawn_rule_adapter' }),
+    [NODE_KINDS.SOUND_EVENT]: () => ({ status: 'direct', mappedTo: 'sound_event' }),
     [NODE_KINDS.REGION]: () => ({ status: 'direct', mappedTo: 'area_trigger' }),
     [NODE_KINDS.TRIGGER]: () => ({ status: 'direct', mappedTo: 'trigger' }),
     [NODE_KINDS.EFFECT]: () => ({ status: 'adapter_required', mappedTo: 'effect_adapter' }),
@@ -1263,7 +2002,7 @@ function generateExportPlan(target, graph) {
 
   for (const node of graph.nodes) {
     const mapFn = mapping[node.kind] || (() => ({ status: 'blocked', mappedTo: null, rationale: 'No Hytale mapping defined.' }))
-    const mapped = mapFn(node)
+    const mapped = runtimeTargetPlan(target, node, mapFn(node))
     const planNode = {
       nodeId: node.id,
       kind: node.kind,
@@ -1276,15 +2015,6 @@ function generateExportPlan(target, graph) {
     }
     plan.nodes.push(planNode)
     plan.summary[mapped.status]++
-  }
-
-  if (target !== 'hytale') {
-    // For native/neoforge/standalone, mark all content nodes as direct by default
-    for (const entry of plan.nodes) {
-      if (entry.status === 'blocked' || entry.status === 'not_applicable') continue
-      entry.status = 'direct'
-    }
-    plan.summary = { direct: plan.nodes.length, adapter_required: 0, fallback: 0, blocked: 0, not_applicable: 0 }
   }
 
   return plan

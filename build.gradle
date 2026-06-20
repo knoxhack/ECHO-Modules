@@ -436,7 +436,7 @@ tasks.register('generateAshfallRequiredModuleRelease', Exec) {
     commandLine 'node',
             'scripts/generate-module-release.mjs',
             '--release-id',
-            'modules-v0.1.0-alpha',
+            'modules-beta-full-20260620',
             '--out',
             'dist/echo-module-release',
             *ashfallRequiredReleaseModules.collectMany { ['--module', it] }
