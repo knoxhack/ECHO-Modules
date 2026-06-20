@@ -1,5 +1,7 @@
 package com.knoxhack.echoindex.client;
 
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
+import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.service.IndexRecipeQueryClientState;
 import com.knoxhack.echoindex.service.IndexService;
 import java.util.ArrayDeque;
@@ -11,17 +13,108 @@ import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 public final class IndexNativeSessionBridge {
     private static final int HISTORY_LIMIT = 12;
     private static final int SAMPLE_LIMIT = 8;
     private static final Deque<Map<String, Object>> ACTION_HISTORY = new ArrayDeque<>();
+    private static final ThreadLocal<Boolean> SESSION_CAPTURE_ACTIVE = ThreadLocal.withInitial(() -> false);
+    private static volatile String lastReadinessSkip = "";
+    private static volatile String lastSnapshotFailure = "";
     private static volatile Map<String, Object> lastSession = Map.of(
             "nativeIndexSessionReady", false,
             "actionHistory", List.of());
 
     private IndexNativeSessionBridge() {
+    }
+
+    public static synchronized Map<String, Object> recordNativeReadinessSnapshot(
+            String reason,
+            Map<String, Object> routeMetadata
+    ) {
+        Map<String, Object> actionMetadata = new LinkedHashMap<>();
+        actionMetadata.put("kind", "readiness_snapshot");
+        actionMetadata.put("mode", "dashboard");
+        actionMetadata.put("reason", clean(reason, "native_index_readiness"));
+        if (nativeSessionCaptureActive()) {
+            return lastSession;
+        }
+        SESSION_CAPTURE_ACTIVE.set(true);
+        try {
+            IndexRecipeCache.CacheSnapshot cache = IndexRecipeCache.snapshot();
+            if (!cacheBackedByRows(cache)) {
+                logReadinessSkip(reason, cache);
+                return lastSession;
+            }
+            return captureNativeRoute(
+                    "index.readiness_snapshot",
+                    Map.copyOf(actionMetadata),
+                    true,
+                    "native_index_readiness_snapshot",
+                    routeMetadata == null ? Map.of() : routeMetadata,
+                    cache);
+        } finally {
+            SESSION_CAPTURE_ACTIVE.remove();
+        }
+    }
+
+    private static boolean cacheBackedByRows(IndexRecipeCache.CacheSnapshot cache) {
+        return cache != null
+                && !cache.empty()
+                && (!cache.items().isEmpty()
+                || !cache.recipes().isEmpty()
+                || !cache.machines().isEmpty());
+    }
+
+    private static void logReadinessSkip(String reason, IndexRecipeCache.CacheSnapshot cache) {
+        String message = "reason=" + clean(reason, "native_index_readiness")
+                + ", empty=" + (cache == null || cache.empty())
+                + ", items=" + (cache == null ? 0 : cache.items().size())
+                + ", recipes=" + (cache == null ? 0 : cache.recipes().size())
+                + ", machines=" + (cache == null ? 0 : cache.machines().size());
+        if (!message.equals(lastReadinessSkip)) {
+            lastReadinessSkip = message;
+            EchoIndex.LOGGER.info("ECHO: Index native readiness snapshot waiting for cache rows [{}].", message);
+        }
+    }
+
+    static boolean nativeSessionCaptureActive() {
+        return Boolean.TRUE.equals(SESSION_CAPTURE_ACTIVE.get());
+    }
+
+    public static synchronized Map<String, Object> ensureNativeReadinessSnapshot(
+            String reason,
+            Map<String, Object> routeMetadata
+    ) {
+        if (Boolean.TRUE.equals(lastSession.get("nativeIndexSessionReady"))) {
+            return lastSession;
+        }
+        return recordNativeReadinessSnapshot(reason, routeMetadata);
+    }
+
+    public static synchronized Map<String, Object> snapshot() {
+        if (!Boolean.TRUE.equals(lastSession.get("nativeIndexSessionReady"))) {
+            try {
+                ensureNativeReadinessSnapshot("native_bridge_poll", Map.of(
+                        "source", "native_live_ui_bridge_poll",
+                        "eventType", "native_index_session_snapshot_poll",
+                        "service", "EchoNativeLiveUiBridge"));
+            } catch (RuntimeException | LinkageError exception) {
+                logSnapshotFailure(exception);
+                return lastSession;
+            }
+        }
+        return lastSession;
+    }
+
+    private static void logSnapshotFailure(Throwable exception) {
+        String message = exception.getClass().getName() + ": " + exception.getMessage();
+        if (!message.equals(lastSnapshotFailure)) {
+            lastSnapshotFailure = message;
+            EchoIndex.LOGGER.info("ECHO: Index native readiness snapshot failed during bridge poll [{}].", message);
+        }
     }
 
     public static synchronized Map<String, Object> recordNativeRoute(
@@ -40,15 +133,40 @@ public final class IndexNativeSessionBridge {
             String outcome,
             Map<String, Object> routeMetadata
     ) {
-        IndexRecipeCache.CacheSnapshot cache = IndexRecipeCache.snapshot();
+        if (nativeSessionCaptureActive()) {
+            return lastSession;
+        }
+        SESSION_CAPTURE_ACTIVE.set(true);
+        try {
+            return captureNativeRoute(
+                    actionId,
+                    actionMetadata,
+                    opened,
+                    outcome,
+                    routeMetadata == null ? Map.of() : routeMetadata,
+                    IndexRecipeCache.snapshot());
+        } finally {
+            SESSION_CAPTURE_ACTIVE.remove();
+        }
+    }
+
+    private static Map<String, Object> captureNativeRoute(
+            String actionId,
+            Map<String, Object> actionMetadata,
+            boolean opened,
+            String outcome,
+            Map<String, Object> routeMetadata,
+            IndexRecipeCache.CacheSnapshot cache
+    ) {
+        Map<String, Object> safeRouteMetadata = routeMetadata == null ? Map.of() : routeMetadata;
         IndexUiState state = IndexUiState.INSTANCE;
         Map<String, Object> stats = cache.stats(state);
-        Map<String, Object> safeRouteMetadata = routeMetadata == null ? Map.of() : routeMetadata;
+        Map<String, Object> safeActionMetadata = actionMetadata == null ? Map.of() : actionMetadata;
         Map<String, Object> actionEntry = new LinkedHashMap<>();
         actionEntry.put("actionId", clean(actionId, "index.catalog"));
-        actionEntry.put("kind", clean(value(actionMetadata, "kind"), "route"));
-        actionEntry.put("mode", clean(value(actionMetadata, "mode"), ""));
-        actionEntry.put("recipeMode", clean(value(actionMetadata, "recipeMode"), ""));
+        actionEntry.put("kind", clean(value(safeActionMetadata, "kind"), "route"));
+        actionEntry.put("mode", clean(value(safeActionMetadata, "mode"), ""));
+        actionEntry.put("recipeMode", clean(value(safeActionMetadata, "recipeMode"), ""));
         actionEntry.put("opened", opened);
         actionEntry.put("outcome", clean(outcome, opened ? "opened" : "unavailable"));
         actionEntry.put("currentPage", state.currentPage().toString());
@@ -70,7 +188,7 @@ public final class IndexNativeSessionBridge {
         session.put("indexLiveUxBridge", "echo-index-native-session");
         session.put("actionId", actionEntry.get("actionId"));
         session.put("kind", actionEntry.get("kind"));
-        session.put("actionDispatch", actionDispatch(actionEntry, actionMetadata));
+        session.put("actionDispatch", actionDispatch(actionEntry, safeActionMetadata));
         session.put("routeMetadata", actionEntry.get("routeMetadata"));
         session.put("routeSource", actionEntry.getOrDefault("routeSource", ""));
         session.put("routeEventType", actionEntry.getOrDefault("routeEventType", ""));
@@ -104,10 +222,6 @@ public final class IndexNativeSessionBridge {
         session.put("routeDrivenIndexModel", routeDrivenIndexModel(actionEntry, session, safeRouteMetadata));
         session.put("actionHistory", List.copyOf(ACTION_HISTORY));
         lastSession = Map.copyOf(session);
-        return lastSession;
-    }
-
-    public static Map<String, Object> snapshot() {
         return lastSession;
     }
 
@@ -175,8 +289,9 @@ public final class IndexNativeSessionBridge {
         Map<String, Object> held = new LinkedHashMap<>();
         held.put("present", !stack.isEmpty());
         if (!stack.isEmpty()) {
-            held.put("id", IndexService.itemId(stack.getItem()).toString());
-            held.put("name", stack.getHoverName().getString());
+            Identifier id = IndexService.itemId(stack.getItem());
+            held.put("id", id.toString());
+            held.put("name", safeStackName(stack, id));
             held.put("count", stack.getCount());
             held.put("hasRecipeResult", IndexRecipeQueryClientState.hasResult(stack.getItem()));
             held.put("recipeLoading", IndexRecipeQueryClientState.loading(stack.getItem()));
@@ -225,7 +340,7 @@ public final class IndexNativeSessionBridge {
                 Map<String, Object> sample = new LinkedHashMap<>();
                 sample.put("slot", slot);
                 sample.put("id", id);
-                sample.put("name", stack.getHoverName().getString());
+                sample.put("name", safeStackName(stack, IndexService.itemId(stack.getItem())));
                 sample.put("count", stack.getCount());
                 sample.put("indexed", item != null);
                 sample.put("recipeCount", item == null ? 0 : item.recipeCount());
@@ -403,6 +518,46 @@ public final class IndexNativeSessionBridge {
 
     private static String selectedId(Object id) {
         return id == null ? "" : String.valueOf(id);
+    }
+
+    private static String safeStackName(ItemStack stack, Identifier id) {
+        if (stack == null || stack.isEmpty()) {
+            return fallbackStackName(id);
+        }
+        if (EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()) {
+            return fallbackStackName(id);
+        }
+        try {
+            String name = stack.getHoverName().getString();
+            return name == null || name.isBlank() ? fallbackStackName(id) : name;
+        } catch (RuntimeException | LinkageError exception) {
+            return fallbackStackName(id);
+        }
+    }
+
+    private static String fallbackStackName(Identifier id) {
+        if (id == null) {
+            return "Unknown Item";
+        }
+        String path = id.getPath();
+        if (path == null || path.isBlank()) {
+            return id.toString();
+        }
+        String[] parts = path.replace('-', '_').split("_");
+        StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            if (part.isBlank()) {
+                continue;
+            }
+            if (!builder.isEmpty()) {
+                builder.append(' ');
+            }
+            builder.append(Character.toUpperCase(part.charAt(0)));
+            if (part.length() > 1) {
+                builder.append(part.substring(1));
+            }
+        }
+        return builder.isEmpty() ? id.toString() : builder.toString();
     }
 
     private static String clean(Object value, String fallback) {

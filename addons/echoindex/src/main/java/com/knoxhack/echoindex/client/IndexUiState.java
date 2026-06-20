@@ -58,7 +58,12 @@ public final class IndexUiState {
             return IndexScreenCorePages.DASHBOARD;
         }
         Identifier stored = Identifier.tryParse(IndexFavoriteStore.setting("lastPage"));
-        return stored == null ? IndexScreenCorePages.DASHBOARD : stored;
+        if (stored == null
+                || stored.getPath().isBlank()
+                || !stored.getNamespace().equals(IndexScreenCorePages.DASHBOARD.getNamespace())) {
+            return IndexScreenCorePages.DASHBOARD;
+        }
+        return stored;
     }
 
     public void setSearchQuery(String query) {

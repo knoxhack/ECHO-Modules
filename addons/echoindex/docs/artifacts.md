@@ -1,16 +1,16 @@
 # ECHO: Index Artifact Notes
 
-This file documents the release outputs expected for `echoindex` version `1.0.0`.
+This file documents the release outputs expected for `echoindex` version `1.0.1`.
 
 ## Artifact Matrix
 
 | File | Requirement |
 | --- | --- |
-| `echoindex-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
-| `echoindex-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
-| `echoindex-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
-| `echoindex-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
-| `echoindex-1.0.0-content-graph.json` | Required; Release-Index catalogable sidecar containing the canonical `.ECHO Content Graph`. |
+| `echoindex-1.0.1-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoindex-1.0.1.echo-addon` | Required for Ashfall Native Edition. |
+| `echoindex-1.0.1-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoindex-1.0.1-sources.jar` | Always required for traceability and developer debugging. |
+| `echoindex-1.0.1-content-graph.json` | Required; Release-Index catalogable sidecar containing the canonical `.ECHO Content Graph`. |
 | `.echo/content-graph/*` | Required; embedded in every runtime archive and also available via the content-graph sidecar. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |

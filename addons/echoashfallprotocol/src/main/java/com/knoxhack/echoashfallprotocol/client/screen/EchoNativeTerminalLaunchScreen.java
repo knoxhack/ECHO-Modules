@@ -1,7 +1,6 @@
 package com.knoxhack.echoashfallprotocol.client.screen;
 
-import com.knoxhack.echoterminal.client.screen.EchoTerminalScreens;
-import com.knoxhack.echoterminal.menu.EchoTerminalMenu;
+import com.knoxhack.echoterminal.EchoTerminalClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
@@ -52,9 +51,6 @@ public final class EchoNativeTerminalLaunchScreen extends Screen {
         if (minecraft.player == null) {
             return;
         }
-        minecraft.setScreen(EchoTerminalScreens.create(
-                new EchoTerminalMenu(0, minecraft.player.getInventory()),
-                minecraft.player.getInventory(),
-                Component.translatable("container.echoterminal.echo_terminal")));
+        EchoTerminalClient.openNativeTerminalFromLaunchScreen();
     }
 }

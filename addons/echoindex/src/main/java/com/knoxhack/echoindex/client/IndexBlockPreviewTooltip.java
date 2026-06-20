@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 
-final class IndexBlockPreviewTooltip implements ClientTooltipComponent {
+public final class IndexBlockPreviewTooltip implements ClientTooltipComponent {
     private static final int FRAME_PAD = 2;
     private static final int GAP = 2;
 
@@ -16,7 +16,7 @@ final class IndexBlockPreviewTooltip implements ClientTooltipComponent {
     private final int previewSize;
     private final int frameSize;
 
-    IndexBlockPreviewTooltip(IndexBlockPreviewTooltipData data) {
+    public IndexBlockPreviewTooltip(IndexBlockPreviewTooltipData data) {
         this.stack = data.stack().copy();
         this.stack.setCount(1);
         this.vanillaImage = data.vanillaImage().map(IndexBlockPreviewTooltip::clientComponent).orElse(null);
@@ -59,6 +59,10 @@ final class IndexBlockPreviewTooltip implements ClientTooltipComponent {
     }
 
     private static ClientTooltipComponent clientComponent(TooltipComponent component) {
-        return ClientTooltipComponent.create(component);
+        try {
+            return ClientTooltipComponent.create(component);
+        } catch (IllegalArgumentException exception) {
+            return null;
+        }
     }
 }

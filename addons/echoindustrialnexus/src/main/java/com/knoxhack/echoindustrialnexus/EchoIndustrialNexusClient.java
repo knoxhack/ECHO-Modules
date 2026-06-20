@@ -1,18 +1,46 @@
 package com.knoxhack.echoindustrialnexus;
 
 import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echocore.client.model.EchoMobFamily;
 import com.knoxhack.echocore.client.model.EchoMobFamilyRenderer;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoindustrialnexus.client.IndustrialMachineScreen;
 import com.knoxhack.echoindustrialnexus.client.IndustrialMultiblockControllerScreen;
 import com.knoxhack.echoindustrialnexus.registry.ModEntities;
+import com.knoxhack.echoindustrialnexus.registry.ModFluids;
 import com.knoxhack.echoindustrialnexus.registry.ModMenus;
+import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Mob;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
+import net.neoforged.neoforge.client.fluid.FluidTintSource;
 
 public class EchoIndustrialNexusClient {
+   private static final String REGISTER_FLUID_MODELS_EVENT =
+      "net.neoforged.neoforge.client.event.RegisterFluidModelsEvent";
+   private static final Material WATER_STILL = new Material(Identifier.fromNamespaceAndPath("minecraft", "block/water_still"));
+   private static final Material WATER_FLOW = new Material(Identifier.fromNamespaceAndPath("minecraft", "block/water_flow"));
+   private static final Material WATER_OVERLAY = new Material(Identifier.fromNamespaceAndPath("minecraft", "block/water_overlay"));
+
    public EchoIndustrialNexusClient() {
+      this(null);
+   }
+
+   public EchoIndustrialNexusClient(IEventBus modEventBus) {
+      this((Object) modEventBus);
+   }
+
+   public EchoIndustrialNexusClient(Object modEventBus) {
+      if (modEventBus instanceof IEventBus eventBus) {
+         eventBus.addListener(RegisterFluidModelsEvent.class, EchoIndustrialNexusClient::registerFluidModels);
+      } else {
+         EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_FLUID_MODELS_EVENT,
+            EchoIndustrialNexusClient::registerFluidModelsFromObject);
+      }
       if (EchoRuntimeModules.isLoaded("echoterminal")) {
          registerTerminalClientIntegration();
       }
@@ -40,6 +68,44 @@ public class EchoIndustrialNexusClient {
       EchoBackendClientBridge.registerMenuScreen(event, ModMenus.INDUSTRIAL_MACHINE.get(), IndustrialMachineScreen.class);
       EchoBackendClientBridge.registerMenuScreen(event, ModMenus.INDUSTRIAL_MULTIBLOCK_CONTROLLER.get(),
          IndustrialMultiblockControllerScreen.class);
+   }
+
+   static void registerFluidModelsFromObject(Object event) {
+      if (event instanceof RegisterFluidModelsEvent fluidModelsEvent) {
+         registerFluidModels(fluidModelsEvent);
+      }
+   }
+
+   static void registerFluidModels(RegisterFluidModelsEvent fluidModelsEvent) {
+      if (fluidModelsEvent == null) {
+         return;
+      }
+      for (ModFluids.IndustrialFluid fluid : ModFluids.ALL) {
+         fluidModelsEvent.register(fluidModel(tintFor(fluid.name())), fluid.source(), fluid.flowing());
+      }
+   }
+
+   private static FluidModel.Unbaked fluidModel(int tint) {
+      return new FluidModel.Unbaked(
+         WATER_STILL,
+         WATER_FLOW,
+         WATER_OVERLAY,
+         (FluidTintSource) fluidState -> tint);
+   }
+
+   private static int tintFor(String name) {
+      return switch (name) {
+         case "dirty_water" -> 0xFF6E7258;
+         case "clean_water" -> 0xFF64B9D7;
+         case "toxic_sludge" -> 0xFF6FD65D;
+         case "static_fluid" -> 0xFF9A7CFF;
+         case "cryo_gel" -> 0xFF80E4FF;
+         case "coolant" -> 0xFF45C9B8;
+         case "chemical_solvent" -> 0xFFD6C46D;
+         case "nexus_gel" -> 0xFFC36CFF;
+         case "oil_residue" -> 0xFF28221C;
+         default -> 0xFFFFFFFF;
+      };
    }
 
    private static void registerTerminalClientIntegration() {

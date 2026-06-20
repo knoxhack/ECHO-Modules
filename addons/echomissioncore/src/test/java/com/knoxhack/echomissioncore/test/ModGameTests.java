@@ -18,6 +18,9 @@ import com.echoplatform.echocore.api.WorldMarkerType;
 import com.echoplatform.echocore.api.WorldRegionInstance;
 import com.echoplatform.echocore.api.WorldRegionType;
 import com.echoplatform.echocore.api.mission.IMissionProgressView;
+import com.echoplatform.echocore.api.mission.IMissionService;
+import com.echoplatform.echocore.api.mission.IObjectiveView;
+import com.echoplatform.echocore.api.mission.IRewardView;
 import com.echoplatform.echocore.api.mission.MissionActionView;
 import com.echoplatform.echocore.api.mission.MissionChapterDefinition;
 import com.echoplatform.echocore.api.mission.MissionDefinition;
@@ -43,12 +46,20 @@ import com.knoxhack.echoterminal.api.mission.TerminalMissionIntelUnlock;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionRole;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionRoutePlacement;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionSnapshot;
+import com.knoxhack.echoterminal.api.mission.TerminalMissionStatus;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -87,6 +98,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("player_data_round_trip", () -> ModGameTests::playerDataRoundTrip);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_PROVIDER =
             TEST_FUNCTIONS.register("terminal_provider_snapshot", () -> ModGameTests::terminalProviderSnapshot);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_PROVIDER_NATIVE_FALLBACK =
+            TEST_FUNCTIONS.register("terminal_provider_native_fallback", () -> ModGameTests::terminalProviderNativeFallback);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> CUSTOM_ACTIONS =
             TEST_FUNCTIONS.register("custom_action_bridge", () -> ModGameTests::customActionBridge);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> WORLDCORE_CONSUMER =
@@ -97,6 +110,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("repeatable_reset", () -> ModGameTests::repeatableReset);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> JSON_RELOAD_REPLACEMENT =
             TEST_FUNCTIONS.register("json_reload_replacement", () -> ModGameTests::jsonReloadReplacement);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> NATIVE_CLASSPATH_JSON =
+            TEST_FUNCTIONS.register("native_classpath_json_load", () -> ModGameTests::nativeClasspathJsonLoad);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> IMMEDIATE_REWARD =
             TEST_FUNCTIONS.register("immediate_reward_once", () -> ModGameTests::immediateRewardOnce);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> EXTERNAL_STATUS_PREREQUISITES =
@@ -123,11 +138,13 @@ public final class ModGameTests {
         register(event, environment, "objective_reward_flow", OBJECTIVE_REWARD_FLOW.getId());
         register(event, environment, "player_data_round_trip", PLAYER_DATA_ROUND_TRIP.getId());
         register(event, environment, "terminal_provider_snapshot", TERMINAL_PROVIDER.getId());
+        register(event, environment, "terminal_provider_native_fallback", TERMINAL_PROVIDER_NATIVE_FALLBACK.getId());
         register(event, environment, "custom_action_bridge", CUSTOM_ACTIONS.getId());
         register(event, environment, "worldcore_consumer", WORLDCORE_CONSUMER.getId());
         register(event, environment, "hook_coverage", HOOK_COVERAGE.getId());
         register(event, environment, "repeatable_reset", REPEATABLE_RESET.getId());
         register(event, environment, "json_reload_replacement", JSON_RELOAD_REPLACEMENT.getId());
+        register(event, environment, "native_classpath_json_load", NATIVE_CLASSPATH_JSON.getId());
         register(event, environment, "immediate_reward_once", IMMEDIATE_REWARD.getId());
         register(event, environment, "external_status_prerequisites", EXTERNAL_STATUS_PREREQUISITES.getId());
         register(event, environment, "terminal_route_metadata", TERMINAL_ROUTE_METADATA.getId());
@@ -179,6 +196,13 @@ public final class ModGameTests {
                 "Mission JSON should parse reward mode alias");
         helper.assertTrue("25".equals(reward.metadata().get("xp")) && "3".equals(reward.metadata().get("reputation")),
                 "Mission JSON should preserve reward metadata fields");
+        MissionDefinition deferredReward = MissionCoreJsonReloadListener.parseMissionForTests(id("json_deferred_reward"), JsonParser.parseString("""
+                {"chapter":"echomissioncore:json_chapter","rewards":[{"item":"echomissioncore:runtime_bound_reward","count":2}]}
+                """).getAsJsonObject());
+        RewardDefinition deferred = deferredReward.rewards().getFirst();
+        helper.assertTrue("echomissioncore:runtime_bound_reward".equals(deferred.metadata().get("item"))
+                        && "2".equals(deferred.metadata().get("count")),
+                "Mission JSON should preserve unresolved Native reward item metadata instead of dropping the mission");
 
         boolean failed = false;
         try {
@@ -247,6 +271,67 @@ public final class ModGameTests {
         helper.assertFalse(service.missionDefinition(firstJsonMission).isPresent(), "Old JSON mission should be removed.");
         helper.assertTrue(service.missionDefinition(secondJsonMission).isPresent(), "New JSON mission should load.");
         helper.succeed();
+    }
+
+    private static void nativeClasspathJsonLoad(GameTestHelper helper) {
+        Path jar = null;
+        MissionCoreService service = MissionCoreService.INSTANCE;
+        try {
+            service.clearForTests();
+            jar = Files.createTempFile("missioncore-native-classpath", ".jar");
+            writeNativeClasspathMissionJar(jar);
+            MissionCoreJsonReloadListener.LoadedContent loaded =
+                    MissionCoreJsonReloadListener.loadNativeClasspathForTests(List.of(jar));
+            helper.assertTrue(loaded.chapters().size() == 1,
+                    "Native classpath loader should parse one MissionCore chapter from a runtime jar.");
+            helper.assertTrue(loaded.missions().size() == 1,
+                    "Native classpath loader should parse one MissionCore mission from a runtime jar.");
+
+            int loadedMissions = MissionCoreJsonReloadListener.reloadNativeClasspathIfPresent(
+                    List.of(jar),
+                    "gametest_native_classpath");
+            Identifier missionId = Identifier.fromNamespaceAndPath("echomissioncore_native_test", "native_start");
+            helper.assertTrue(loadedMissions == 1 && service.missionDefinition(missionId).isPresent(),
+                    "Native classpath reload should publish runtime-jar missions into MissionCore.");
+            helper.succeed();
+        } catch (IOException exception) {
+            helper.fail("Native classpath MissionCore test setup failed: " + exception.getMessage());
+        } finally {
+            service.clearForTests();
+            service.registerBuiltInContent();
+            if (jar != null) {
+                try {
+                    Files.deleteIfExists(jar);
+                } catch (IOException ignored) {
+                }
+            }
+        }
+    }
+
+    private static void writeNativeClasspathMissionJar(Path jar) throws IOException {
+        try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(jar))) {
+            addZipEntry(zip,
+                    "data/echomissioncore_native_test/missioncore/chapters/native_route.json",
+                    """
+                            {"title":"Native Route","summary":"Loaded from a Native runtime jar.","order":1}
+                            """);
+            addZipEntry(zip,
+                    "data/echomissioncore_native_test/missioncore/missions/native_start.json",
+                    """
+                            {
+                              "chapter":"echomissioncore_native_test:native_route",
+                              "title":"Native Start",
+                              "briefing":"Loaded from a Native runtime jar.",
+                              "objectives":[{"type":"custom","label":"Boot","detail":"Load from classpath."}]
+                            }
+                            """);
+        }
+    }
+
+    private static void addZipEntry(ZipOutputStream zip, String name, String content) throws IOException {
+        zip.putNextEntry(new ZipEntry(name));
+        zip.write(content.getBytes(StandardCharsets.UTF_8));
+        zip.closeEntry();
     }
 
     private static void immediateRewardOnce(GameTestHelper helper) {
@@ -566,6 +651,178 @@ public final class ModGameTests {
         } catch (ReflectiveOperationException exception) {
             helper.fail("MissionCore Terminal provider reflection failed: " + exception.getMessage());
         }
+    }
+
+    private static void terminalProviderNativeFallback(GameTestHelper helper) {
+        if (!ModList.get().isLoaded("echoterminal")) {
+            helper.succeed();
+            return;
+        }
+        Identifier chapterId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "ashfall_protocol");
+        Identifier missionId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "native_definition_only");
+        MissionDefinition mission = MissionDefinition.builder(missionId, chapterId)
+                .text("Native Definition Only", "Definition rows should load without live progress views.", "GameTest")
+                .objective(ObjectiveDefinition.simple(
+                        Identifier.fromNamespaceAndPath("echoashfallprotocol", "native_definition_only/read"),
+                        MissionObjectiveType.CUSTOM,
+                        "Read",
+                        "Read the field manual.",
+                        ItemStack.EMPTY,
+                        1))
+                .build();
+        AtomicBoolean checked = new AtomicBoolean(false);
+        EchoServiceRegistry.withClearedForTests(() -> {
+            EchoCoreServices.registerMissionService(new IMissionService() {
+                @Override
+                public boolean available() {
+                    return true;
+                }
+
+                @Override
+                public List<MissionDefinition> missionDefinitions() {
+                    return List.of(mission);
+                }
+
+                @Override
+                public List<MissionChapterDefinition> chapters() {
+                    return List.of(new MissionChapterDefinition(
+                            chapterId,
+                            "Ashfall Protocol",
+                            "Native fallback chapter.",
+                            1,
+                            0x55FFDD));
+                }
+
+                @Override
+                public List<IMissionProgressView> missions(Player player) {
+                    throw new IllegalStateException("native progress views unavailable");
+                }
+            });
+            List<TerminalMissionDefinition> rows = MissionCoreTerminalProvider.INSTANCE.missions(null);
+            helper.assertTrue(rows.stream().anyMatch(row -> missionId.equals(row.id())),
+                    "Terminal provider should fall back to definition-only mission rows when progress views throw.");
+            checked.set(true);
+        });
+        helper.assertTrue(checked.get(), "Native fallback assertion should execute.");
+
+        AtomicBoolean checkedProgressFallback = new AtomicBoolean(false);
+        EchoServiceRegistry.withClearedForTests(() -> {
+            EchoCoreServices.registerMissionService(new IMissionService() {
+                @Override
+                public boolean available() {
+                    return true;
+                }
+
+                @Override
+                public List<MissionDefinition> missionDefinitions() {
+                    return List.of(mission);
+                }
+
+                @Override
+                public List<MissionChapterDefinition> chapters() {
+                    return List.of(new MissionChapterDefinition(
+                            chapterId,
+                            "Ashfall Protocol",
+                            "Native fallback chapter.",
+                            1,
+                            0x55FFDD));
+                }
+
+                @Override
+                public List<IMissionProgressView> missions(Player player) {
+                    return List.of(new IMissionProgressView() {
+                        @Override
+                        public MissionDefinition definition() {
+                            return mission;
+                        }
+
+                        @Override
+                        public MissionStatus status() {
+                            return MissionStatus.AVAILABLE;
+                        }
+
+                        @Override
+                        public List<IObjectiveView> objectives() {
+                            throw new IllegalStateException("native objective views unavailable");
+                        }
+
+                        @Override
+                        public List<IRewardView> rewards() {
+                            throw new IllegalStateException("native reward views unavailable");
+                        }
+                    });
+                }
+            });
+            List<TerminalMissionDefinition> rows = MissionCoreTerminalProvider.INSTANCE.missions(null);
+            helper.assertTrue(rows.stream().anyMatch(row -> missionId.equals(row.id())),
+                    "Terminal provider should keep definition-only rows when progress view details throw.");
+            checkedProgressFallback.set(true);
+        });
+        helper.assertTrue(checkedProgressFallback.get(), "Native progress-detail fallback assertion should execute.");
+
+        AtomicBoolean checkedEmptyProgressFallback = new AtomicBoolean(false);
+        EchoServiceRegistry.withClearedForTests(() -> {
+            EchoCoreServices.registerMissionService(new IMissionService() {
+                @Override
+                public boolean available() {
+                    return true;
+                }
+
+                @Override
+                public List<MissionDefinition> missionDefinitions() {
+                    return List.of(mission);
+                }
+
+                @Override
+                public List<MissionChapterDefinition> chapters() {
+                    return List.of(new MissionChapterDefinition(
+                            chapterId,
+                            "Ashfall Protocol",
+                            "Native fallback chapter.",
+                            1,
+                            0x55FFDD));
+                }
+
+                @Override
+                public List<IMissionProgressView> missions(Player player) {
+                    return List.of();
+                }
+            });
+            List<TerminalMissionDefinition> rows = MissionCoreTerminalProvider.INSTANCE.missions(null);
+            helper.assertTrue(rows.stream().anyMatch(row -> missionId.equals(row.id())),
+                    "Terminal provider should fall back to definition-only rows when progress views are empty.");
+            checkedEmptyProgressFallback.set(true);
+        });
+        helper.assertTrue(checkedEmptyProgressFallback.get(), "Native empty-progress fallback assertion should execute.");
+
+        AtomicBoolean checkedSnapshotFallback = new AtomicBoolean(false);
+        EchoServiceRegistry.withClearedForTests(() -> {
+            EchoCoreServices.registerMissionService(new IMissionService() {
+                @Override
+                public boolean available() {
+                    return true;
+                }
+
+                @Override
+                public List<MissionDefinition> missionDefinitions() {
+                    return List.of(mission);
+                }
+
+                @Override
+                public Optional<IMissionProgressView> mission(Player player, Identifier requestedMissionId) {
+                    throw new LinkageError("native progress snapshot unavailable");
+                }
+            });
+            TerminalMissionSnapshot snapshot = MissionCoreTerminalProvider.INSTANCE.snapshot(null, missionId);
+            helper.assertTrue(snapshot.status() == TerminalMissionStatus.UNLOCKED,
+                    "Terminal provider should expose a usable definition-only snapshot when live snapshots fail.");
+            helper.assertTrue(snapshot.actions().stream().anyMatch(action -> action.enabled()
+                            && "track".equals(action.id())),
+                    "Definition-only snapshot should keep a track action visible.");
+            checkedSnapshotFallback.set(true);
+        });
+        helper.assertTrue(checkedSnapshotFallback.get(), "Native snapshot fallback assertion should execute.");
+        helper.succeed();
     }
 
     private static void customActionBridge(GameTestHelper helper) {

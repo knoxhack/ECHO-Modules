@@ -84,6 +84,17 @@ public final class EchoIndexNativeModule implements EchoNativeModuleAdapter, Ech
 
     @Override
     public void ready(EchoNativeModuleLoadContext context) {
+        CommonServices commonServices = ensureCommonServicesRegisteredForNativeLoader(context);
+        boolean commonRegistered = commonServices.registered();
+        boolean commonReady = commonServices.ready();
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered && commonReady);
+        context.attribute("nativeCommonServicesDeferred", commonServices.deferred() || !commonReady);
+        context.recordMutation(
+                "platform_services",
+                commonRegistered ? "register" : commonReady ? "already_registered" : "deferred_until_components_bound",
+                "echoindex:common_services",
+                commonRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
         registerNativeClientRoutesFromModule(context);
         context.attribute("echoIndexNativeReady", true);
         context.recordMutation(
@@ -91,6 +102,23 @@ public final class EchoIndexNativeModule implements EchoNativeModuleAdapter, Ech
                 "module_ready",
                 "echoindex:index",
                 EchoNativeLoadStatus.REGISTERED);
+    }
+
+    private static CommonServices ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoIndexNativeModule.class.getPackageName() + ".EchoIndex";
+        try {
+            Class<?> moduleClass = Class.forName(moduleClassName);
+            Object registered = moduleClass
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            Object ready = moduleClass
+                    .getMethod("commonServicesRegistered")
+                    .invoke(null);
+            return new CommonServices(Boolean.TRUE.equals(registered), Boolean.TRUE.equals(ready), false);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return new CommonServices(false, false, true);
+        }
     }
 
     @Override
@@ -478,6 +506,9 @@ public final class EchoIndexNativeModule implements EchoNativeModuleAdapter, Ech
     }
 
     private static final String MODULE_ID = "echoindex";
+
+    private record CommonServices(boolean registered, boolean ready, boolean deferred) {
+    }
 
     private record NativeService(String kind, Map<String, Object> evidence) {
         private NativeService {

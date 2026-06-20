@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
@@ -82,7 +83,8 @@ public class EnvironmentalEventData extends SavedData {
     public static final SavedDataType<EnvironmentalEventData> TYPE = new SavedDataType<EnvironmentalEventData>(
         Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "environmental_events"),
         EnvironmentalEventData::new,
-        CODEC
+        CODEC,
+        DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private EnvironmentalEventType currentEvent = EnvironmentalEventType.NONE;

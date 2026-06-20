@@ -16,12 +16,20 @@ import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echomissioncore.service.MissionCoreService;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
@@ -38,16 +46,12 @@ public final class MissionCoreJsonReloadListener extends SimplePreparableReloadL
 
     @Override
     protected LoadedContent prepare(ResourceManager manager, ProfilerFiller profiler) {
-        return new LoadedContent(
-                load(manager, CHAPTER_DIR, MissionCoreJsonReloadListener::parseChapter),
-                load(manager, MISSION_DIR, MissionCoreJsonReloadListener::parseMission));
+        return loadContent(manager);
     }
 
     @Override
     protected void apply(LoadedContent loaded, ResourceManager manager, ProfilerFiller profiler) {
-        MissionCoreService.INSTANCE.replaceJsonContent(loaded.chapters(), loaded.missions());
-        EchoMissionCore.LOGGER.info("Loaded {} MissionCore JSON chapters and {} JSON missions.",
-                loaded.chapters().size(), loaded.missions().size());
+        applyLoadedContent(loaded, "server_reload_listener");
     }
 
     public static MissionChapterDefinition parseChapterForTests(Identifier id, JsonObject json) {
@@ -56,6 +60,151 @@ public final class MissionCoreJsonReloadListener extends SimplePreparableReloadL
 
     public static MissionDefinition parseMissionForTests(Identifier id, JsonObject json) {
         return parseMission(id, json);
+    }
+
+    public static int reloadNow(ResourceManager manager, String source) {
+        if (manager == null) {
+            return 0;
+        }
+        LoadedContent loaded = loadContent(manager);
+        applyLoadedContent(loaded, source == null || source.isBlank() ? "direct_reload" : source);
+        return loaded.missions().size();
+    }
+
+    public static int reloadIfPresent(ResourceManager manager, String source) {
+        if (manager == null) {
+            return 0;
+        }
+        LoadedContent loaded = loadContent(manager);
+        if (loaded.chapters().isEmpty() && loaded.missions().isEmpty()) {
+            return 0;
+        }
+        applyLoadedContent(loaded, source == null || source.isBlank() ? "direct_reload" : source);
+        return loaded.missions().size();
+    }
+
+    public static int reloadNativeClasspathIfPresent(List<Path> moduleClasspath, String source) {
+        LoadedContent loaded = loadNativeClasspath(moduleClasspath);
+        if (loaded.chapters().isEmpty() && loaded.missions().isEmpty()) {
+            return 0;
+        }
+        applyLoadedContent(loaded, source == null || source.isBlank() ? "native_classpath" : source);
+        return loaded.missions().size();
+    }
+
+    public static LoadedContent loadNativeClasspathForTests(List<Path> moduleClasspath) {
+        return loadNativeClasspath(moduleClasspath);
+    }
+
+    private static LoadedContent loadContent(ResourceManager manager) {
+        return new LoadedContent(
+                load(manager, CHAPTER_DIR, MissionCoreJsonReloadListener::parseChapter),
+                load(manager, MISSION_DIR, MissionCoreJsonReloadListener::parseMission));
+    }
+
+    private static LoadedContent loadNativeClasspath(List<Path> moduleClasspath) {
+        if (moduleClasspath == null || moduleClasspath.isEmpty()) {
+            return new LoadedContent(List.of(), List.of());
+        }
+        Map<Identifier, MissionChapterDefinition> chapters = new LinkedHashMap<>();
+        Map<Identifier, MissionDefinition> missions = new LinkedHashMap<>();
+        for (Path path : moduleClasspath) {
+            loadNativeClasspathJar(path, chapters, missions);
+        }
+        return new LoadedContent(List.copyOf(chapters.values()), List.copyOf(missions.values()));
+    }
+
+    private static void loadNativeClasspathJar(
+            Path path,
+            Map<Identifier, MissionChapterDefinition> chapters,
+            Map<Identifier, MissionDefinition> missions) {
+        if (path == null || !Files.isRegularFile(path) || !path.getFileName().toString().endsWith(".jar")) {
+            return;
+        }
+        try (ZipFile zip = new ZipFile(path.toFile())) {
+            Enumeration<? extends ZipEntry> entries = zip.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                if (entry.isDirectory() || !entry.getName().endsWith(".json")) {
+                    continue;
+                }
+                loadNativeClasspathEntry(path, zip, entry, chapters, missions);
+            }
+        } catch (IOException | RuntimeException exception) {
+            EchoMissionCore.LOGGER.debug("MissionCore skipped Native module classpath entry {}.", path, exception);
+        }
+    }
+
+    private static void loadNativeClasspathEntry(
+            Path jar,
+            ZipFile zip,
+            ZipEntry entry,
+            Map<Identifier, MissionChapterDefinition> chapters,
+            Map<Identifier, MissionDefinition> missions) {
+        String entryName = entry.getName().replace('\\', '/');
+        Identifier chapterId = nativeContentId(entryName, CHAPTER_DIR);
+        Identifier missionId = nativeContentId(entryName, MISSION_DIR);
+        if (chapterId == null && missionId == null) {
+            return;
+        }
+        try (Reader reader = new InputStreamReader(zip.getInputStream(entry), StandardCharsets.UTF_8)) {
+            JsonElement root = JsonParser.parseReader(reader);
+            if (!root.isJsonObject()) {
+                throw new JsonParseException("Root must be a JSON object.");
+            }
+            if (chapterId != null) {
+                if (chapters.putIfAbsent(chapterId, parseChapter(chapterId, root.getAsJsonObject())) != null) {
+                    EchoMissionCore.LOGGER.warn("Duplicate MissionCore Native classpath chapter {} from {} ignored.",
+                            chapterId, entryName);
+                }
+                return;
+            }
+            if (missions.putIfAbsent(missionId, parseMission(missionId, root.getAsJsonObject())) != null) {
+                EchoMissionCore.LOGGER.warn("Duplicate MissionCore Native classpath mission {} from {} ignored.",
+                        missionId, entryName);
+            }
+        } catch (IOException | RuntimeException exception) {
+            EchoMissionCore.LOGGER.warn("Could not parse MissionCore Native classpath JSON {} from {}: {}",
+                    entryName, jar, exception.getMessage());
+        }
+    }
+
+    private static Identifier nativeContentId(String entryName, String directory) {
+        String normalized = entryName == null ? "" : entryName.replace('\\', '/');
+        String prefix = "data/";
+        if (!normalized.startsWith(prefix)) {
+            return null;
+        }
+        String path = normalized.substring(prefix.length());
+        int namespaceEnd = path.indexOf('/');
+        if (namespaceEnd <= 0) {
+            return null;
+        }
+        String namespace = path.substring(0, namespaceEnd);
+        String contentPath = path.substring(namespaceEnd + 1);
+        String directoryPrefix = directory + "/";
+        if (!contentPath.startsWith(directoryPrefix) || !contentPath.endsWith(".json")) {
+            return null;
+        }
+        contentPath = contentPath.substring(directoryPrefix.length(), contentPath.length() - ".json".length());
+        return Identifier.fromNamespaceAndPath(namespace, contentPath);
+    }
+
+    private static void applyLoadedContent(LoadedContent loaded, String source) {
+        MissionCoreService.INSTANCE.replaceJsonContent(loaded.chapters(), loaded.missions());
+        EchoMissionCore.LOGGER.info("Loaded {} MissionCore JSON chapters and {} JSON missions [{}].",
+                loaded.chapters().size(), loaded.missions().size(), source);
+        notifyTerminalMissionContentLoaded(loaded.missions().size());
+    }
+
+    private static void notifyTerminalMissionContentLoaded(int missionCount) {
+        try {
+            Class<?> integration = Class.forName(
+                    "com.knoxhack.echomissioncore.integration.MissionCoreTerminalIntegration");
+            integration.getMethod("notifyMissionContentLoaded", int.class).invoke(null, missionCount);
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException
+                 | InvocationTargetException | LinkageError ignored) {
+        }
     }
 
     private static <T> List<T> load(ResourceManager manager, String directory, Parser<T> parser) {
@@ -172,7 +321,7 @@ public final class MissionCoreJsonReloadListener extends SimplePreparableReloadL
             int count = Math.max(1, integer(object, "count", 1));
             String label = string(object, "label", "");
             if (!itemId.isBlank()) {
-                Identifier item = validatedRewardItem(itemId);
+                Identifier item = validatedRewardItemId(itemId);
                 metadata.putIfAbsent("item", item.toString());
                 metadata.putIfAbsent("count", Integer.toString(count));
                 if (label.isBlank()) {
@@ -388,14 +537,14 @@ public final class MissionCoreJsonReloadListener extends SimplePreparableReloadL
         throw new JsonParseException("Unknown objective type: " + value);
     }
 
-    private static Identifier validatedRewardItem(String itemId) {
+    private static Identifier validatedRewardItemId(String itemId) {
         Identifier id = Identifier.tryParse(itemId);
         if (id == null) {
             throw new JsonParseException("Invalid reward item id: " + itemId);
         }
         Item item = BuiltInRegistries.ITEM.getValue(id);
         if (item == null || item == Items.AIR) {
-            throw new JsonParseException("Unknown reward item: " + itemId);
+            EchoMissionCore.LOGGER.debug("MissionCore JSON reward {} deferred because the item registry is not ready yet.", id);
         }
         return id;
     }

@@ -1,10 +1,14 @@
 package com.knoxhack.echoterminal.player;
 
 import com.knoxhack.echo.adaptercore.EchoValueIOSerializable;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.registry.ModAttachments;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
@@ -18,6 +22,8 @@ public class TerminalPlayerData implements EchoValueIOSerializable {
             TerminalPlayerData::writeSync,
             TerminalPlayerData::readSync);
 
+    private static final Map<UUID, TerminalPlayerData> NATIVE_SESSION_DATA = new ConcurrentHashMap<>();
+
     private String trackedTabId = "";
     private String trackedChapterId = "";
     private String trackedMissionId = "";
@@ -29,20 +35,32 @@ public class TerminalPlayerData implements EchoValueIOSerializable {
 
     public static TerminalPlayerData get(Player player) {
         if (nativeLoaderClientActive()) {
+            return nativeSessionData(player);
+        }
+        if (player == null) {
             return new TerminalPlayerData();
         }
-        return player == null ? new TerminalPlayerData() : player.getData(ModAttachments.TERMINAL_PLAYER_DATA.get());
+        try {
+            return AttachmentAccess.get(player);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.debug("Terminal player attachments unavailable; using native session data.", exception);
+            return nativeSessionData(player);
+        }
     }
 
     public static void saveAndSync(ServerPlayer player, TerminalPlayerData data) {
         if (player == null || data == null) {
             return;
         }
-        player.setData(ModAttachments.TERMINAL_PLAYER_DATA.get(), data);
+        if (nativeLoaderClientActive()) {
+            NATIVE_SESSION_DATA.put(player.getUUID(), data);
+            return;
+        }
         try {
-            player.syncData(ModAttachments.TERMINAL_PLAYER_DATA.get());
-        } catch (RuntimeException exception) {
+            AttachmentAccess.saveAndSync(player, data);
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Terminal player data saved without client sync.", exception);
+            NATIVE_SESSION_DATA.put(player.getUUID(), data);
         }
     }
 
@@ -149,8 +167,28 @@ public class TerminalPlayerData implements EchoValueIOSerializable {
     }
 
     private static boolean nativeLoaderClientActive() {
-        return Boolean.getBoolean("echo.native.loader")
-                && "windowed-native-client".equals(System.getProperty("echo.native.runtime.mode", ""));
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
+    }
+
+    private static TerminalPlayerData nativeSessionData(Player player) {
+        if (player == null) {
+            return new TerminalPlayerData();
+        }
+        return NATIVE_SESSION_DATA.computeIfAbsent(player.getUUID(), ignored -> new TerminalPlayerData());
+    }
+
+    private static final class AttachmentAccess {
+        private AttachmentAccess() {
+        }
+
+        private static TerminalPlayerData get(Player player) {
+            return player.getData(ModAttachments.TERMINAL_PLAYER_DATA.get());
+        }
+
+        private static void saveAndSync(ServerPlayer player, TerminalPlayerData data) {
+            player.setData(ModAttachments.TERMINAL_PLAYER_DATA.get(), data);
+            player.syncData(ModAttachments.TERMINAL_PLAYER_DATA.get());
+        }
     }
 
     @Override

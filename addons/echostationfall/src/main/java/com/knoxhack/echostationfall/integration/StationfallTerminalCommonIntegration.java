@@ -34,11 +34,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Supplier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 public final class StationfallTerminalCommonIntegration {
@@ -370,21 +372,21 @@ public final class StationfallTerminalCommonIntegration {
         return switch (mission) {
             case BOARD -> List.of(req("Station route", progress.canBoard(player)
                     ? "Stationfall route available."
-                    : "Need Stationfall coordinates/network.", ModItems.STATION_ACCESS_CARD.get(), progress.canBoard(player) ? 1 : 0, 1));
+                    : "Need Stationfall coordinates/network.", () -> (ItemLike) ModItems.STATION_ACCESS_CARD.get(), Items.MAP, progress.canBoard(player) ? 1 : 0, 1));
             case POWER -> List.of(req("Section power", progress.poweredSectionCount() + "/9 sections stable.",
-                    ModItems.STATION_BATTERY.get(), progress.poweredSectionCount(), 9));
+                    () -> (ItemLike) ModItems.STATION_BATTERY.get(), Items.REDSTONE, progress.poweredSectionCount(), 9));
             case LOGS -> List.of(req("Crew logs", progress.decodedLogCount() + "/9 decoded.",
-                    ModItems.CREW_LOG_TABLET.get(), progress.decodedLogCount(), 9));
+                    () -> (ItemLike) ModItems.CREW_LOG_TABLET.get(), Items.PAPER, progress.decodedLogCount(), 9));
             case STABILIZE -> stabilizeRequirements(player, progress);
             case OVERRIDE -> List.of(req("AI Override", progress.aiOverrideObtained()
                     ? "Override chip synchronized."
-                    : "Use Data Core Terminal.", ModItems.AI_OVERRIDE_CHIP.get(), progress.aiOverrideObtained() ? 1 : 0, 1));
+                    : "Use Data Core Terminal.", () -> (ItemLike) ModItems.AI_OVERRIDE_CHIP.get(), Items.REDSTONE, progress.aiOverrideObtained() ? 1 : 0, 1));
             case MOTHER -> List.of(req("Station Mother", progress.bossDefeated()
                     ? "Boss defeated."
-                    : "Use Command Console with override.", ModItems.AI_OVERRIDE_CORE.get(), progress.bossDefeated() ? 1 : 0, 1));
+                    : "Use Command Console with override.", () -> (ItemLike) ModItems.AI_OVERRIDE_CORE.get(), Items.NETHER_STAR, progress.bossDefeated() ? 1 : 0, 1));
             case BLACKBOX -> List.of(req("Blackbox", progress.blackboxRetrieved()
                     ? "Blackbox recovered."
-                    : "Defeat Station Mother.", ModItems.STATIONFALL_BLACKBOX.get(), progress.blackboxRetrieved() ? 1 : 0, 1));
+                    : "Defeat Station Mother.", () -> (ItemLike) ModItems.STATIONFALL_BLACKBOX.get(), Items.ENDER_CHEST, progress.blackboxRetrieved() ? 1 : 0, 1));
         };
     }
 
@@ -392,22 +394,22 @@ public final class StationfallTerminalCommonIntegration {
         List<TerminalMissionRequirement> requirements = new ArrayList<>();
         requirements.add(req("Section objectives",
                 progress.objectiveCount() + "/" + StationfallObjective.values().length + " stabilized.",
-                ModItems.PRESSURE_SEAL_KIT.get(), progress.objectiveCount(), StationfallObjective.values().length));
+                () -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, progress.objectiveCount(), StationfallObjective.values().length));
         StationfallSuitState suit = player == null ? null : StationfallSuitState.get(player);
         SignalPanicState panic = player == null ? null : SignalPanicState.get(player);
         int pressure = suit == null ? 0 : suit.pressure();
         int oxygen = suit == null ? 0 : suit.oxygen();
         int panicSafety = panic == null ? 0 : Math.max(0, 100 - panic.value());
         requirements.add(req("Pressure seal", pressure + "% suit pressure restored.",
-                ModItems.PRESSURE_SEAL_KIT.get(), pressure, 70));
+                () -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, pressure, 70));
         requirements.add(req("Oxygen reserve", oxygen + "% suit oxygen restored.",
-                ModItems.EMERGENCY_OXYGEN_PACK.get(), oxygen, 70));
+                () -> (ItemLike) ModItems.EMERGENCY_OXYGEN_PACK.get(), Items.GLASS_BOTTLE, oxygen, 70));
         requirements.add(req("Signal Panic dampened", (panic == null ? 0 : panic.value()) + "% panic exposure.",
-                ModItems.SIGNAL_PANIC_DAMPENER.get(), panicSafety, 70));
+                () -> (ItemLike) ModItems.SIGNAL_PANIC_DAMPENER.get(), Items.REDSTONE, panicSafety, 70));
         for (StationfallObjective objective : StationfallObjective.values()) {
             requirements.add(req(objective.title(),
                     objective.section().displayName() + ": " + objectiveStepLine(progress, objective),
-                    ModItems.CREW_LOG_TABLET.get(),
+                    () -> (ItemLike) ModItems.CREW_LOG_TABLET.get(), Items.PAPER,
                     progress.objectiveStepCount(objective),
                     objective.targetSteps()));
         }
@@ -418,34 +420,53 @@ public final class StationfallTerminalCommonIntegration {
         return progress.objectiveStepCount(objective) + "/" + objective.targetSteps() + " - " + objective.hint();
     }
 
-    private static TerminalMissionRequirement req(String label, String description, ItemLike icon, int have, int need) {
+    private static TerminalMissionRequirement req(String label, String description, Supplier<? extends ItemLike> icon, ItemLike fallback, int have, int need) {
         int needed = Math.max(1, need);
         int held = Math.max(0, Math.min(needed, have));
-        return TerminalMissionRequirement.custom(label, description, new ItemStack(icon), held, needed, held >= needed);
+        return TerminalMissionRequirement.custom(label, description, stack(icon, fallback, 1), held, needed, held >= needed);
     }
 
     private static List<ItemStack> rewards(Mission mission) {
         return switch (mission) {
-            case BOARD -> List.of(new ItemStack(ModItems.EMERGENCY_OXYGEN_PACK.get(), 2), new ItemStack(ModItems.PRESSURE_SEAL_KIT.get(), 2));
-            case POWER -> List.of(new ItemStack(ModItems.STATION_BATTERY.get(), 2), new ItemStack(ModItems.SIGNAL_PANIC_DAMPENER.get()));
-            case LOGS -> List.of(new ItemStack(ModItems.CREW_LOG_TABLET.get(), 3));
-            case STABILIZE -> List.of(new ItemStack(ModItems.PRESSURE_SEAL_KIT.get(), 3), new ItemStack(ModItems.EMERGENCY_OXYGEN_PACK.get(), 2));
-            case OVERRIDE -> List.of(new ItemStack(ModItems.PRESSURE_SEAL_KIT.get(), 4));
-            case MOTHER -> List.of(new ItemStack(ModItems.EMERGENCY_OXYGEN_PACK.get(), 4));
-            case BLACKBOX -> List.of(new ItemStack(ModItems.ORBITAL_MEMORY_FRAGMENT.get(), 2));
+            case BOARD -> List.of(stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_PACK.get(), Items.GLASS_BOTTLE, 2), stack(() -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, 2));
+            case POWER -> List.of(stack(() -> (ItemLike) ModItems.STATION_BATTERY.get(), Items.REDSTONE, 2), stack(() -> (ItemLike) ModItems.SIGNAL_PANIC_DAMPENER.get(), Items.REDSTONE, 1));
+            case LOGS -> List.of(stack(() -> (ItemLike) ModItems.CREW_LOG_TABLET.get(), Items.PAPER, 3));
+            case STABILIZE -> List.of(stack(() -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, 3), stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_PACK.get(), Items.GLASS_BOTTLE, 2));
+            case OVERRIDE -> List.of(stack(() -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, 4));
+            case MOTHER -> List.of(stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_PACK.get(), Items.GLASS_BOTTLE, 4));
+            case BLACKBOX -> List.of(stack(() -> (ItemLike) ModItems.ORBITAL_MEMORY_FRAGMENT.get(), Items.PAPER, 2));
         };
     }
 
     private static ItemStack icon(Mission mission) {
         return switch (mission) {
-            case BOARD -> new ItemStack(ModItems.STATION_ACCESS_CARD.get());
-            case POWER -> new ItemStack(ModItems.STATION_BATTERY.get());
-            case LOGS -> new ItemStack(ModItems.CREW_LOG_TABLET.get());
-            case STABILIZE -> new ItemStack(ModItems.PRESSURE_SEAL_KIT.get());
-            case OVERRIDE -> new ItemStack(ModItems.AI_OVERRIDE_CHIP.get());
-            case MOTHER -> new ItemStack(ModItems.AI_OVERRIDE_CORE.get());
-            case BLACKBOX -> new ItemStack(ModItems.STATIONFALL_BLACKBOX.get());
+            case BOARD -> stack(() -> (ItemLike) ModItems.STATION_ACCESS_CARD.get(), Items.MAP, 1);
+            case POWER -> stack(() -> (ItemLike) ModItems.STATION_BATTERY.get(), Items.REDSTONE, 1);
+            case LOGS -> stack(() -> (ItemLike) ModItems.CREW_LOG_TABLET.get(), Items.PAPER, 1);
+            case STABILIZE -> stack(() -> (ItemLike) ModItems.PRESSURE_SEAL_KIT.get(), Items.IRON_INGOT, 1);
+            case OVERRIDE -> stack(() -> (ItemLike) ModItems.AI_OVERRIDE_CHIP.get(), Items.REDSTONE, 1);
+            case MOTHER -> stack(() -> (ItemLike) ModItems.AI_OVERRIDE_CORE.get(), Items.NETHER_STAR, 1);
+            case BLACKBOX -> stack(() -> (ItemLike) ModItems.STATIONFALL_BLACKBOX.get(), Items.ENDER_CHEST, 1);
         };
+    }
+
+    private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 
     private static void award(ServerPlayer player, List<ItemStack> rewards) {

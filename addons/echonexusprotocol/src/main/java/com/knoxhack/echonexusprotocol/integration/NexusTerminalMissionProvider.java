@@ -1,6 +1,7 @@
 package com.knoxhack.echonexusprotocol.integration;
 
 import com.echoplatform.echocore.api.EchoCoreServices;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echonexusprotocol.data.NexusPlayerData;
 import com.knoxhack.echonexusprotocol.world.NexusWorldData;
 import com.knoxhack.echonexusprotocol.registry.ModBlocks;
@@ -20,12 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 public final class NexusTerminalMissionProvider implements TerminalMissionProvider {
@@ -224,7 +227,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Stationfall handoff",
                NexusProgression.isNexusUnlocked(player) ? "Blackbox recovery accepted." : NexusProgression.STATIONFALL_GATE + " missing.",
-               (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(),
+               stack(() -> (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), Items.OBSIDIAN, 1),
                NexusProgression.isNexusUnlocked(player) ? 1 : 0,
                1
             )
@@ -233,7 +236,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Nexus Recycler",
                data.hasUsedMachine("nexus_recycler") ? "Recycler telemetry logged." : "Process salvage in a Nexus Recycler.",
-               (ItemLike)ModBlocks.NEXUS_RECYCLER.get(),
+               stack(() -> (ItemLike)ModBlocks.NEXUS_RECYCLER.get(), Items.FURNACE, 1),
                data.hasUsedMachine("nexus_recycler") ? 1 : 0,
                1
             )
@@ -242,14 +245,14 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Field Stabilizer",
                data.hasUsedMachine("nexus_field_stabilizer") ? "Chunk field raised by stabilizer." : "Power and run a Nexus Field Stabilizer.",
-               (ItemLike)ModBlocks.NEXUS_FIELD_STABILIZER.get(),
+               stack(() -> (ItemLike)ModBlocks.NEXUS_FIELD_STABILIZER.get(), Items.BEACON, 1),
                data.hasUsedMachine("nexus_field_stabilizer") ? 1 : 0,
                1
             ),
             requirement(
                "Corruption Filter",
                data.hasUsedMachine("corruption_filter") ? "Filter telemetry logged." : "Use a Corruption Filter to clean contamination.",
-               (ItemLike)ModBlocks.CORRUPTION_FILTER.get(),
+               stack(() -> (ItemLike)ModBlocks.CORRUPTION_FILTER.get(), Items.HOPPER, 1),
                data.hasUsedMachine("corruption_filter") ? 1 : 0,
                1
             )
@@ -258,7 +261,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Memory Decoder",
                data.hasUsedMachine("memory_decoder") ? "Decoder route indexed." : "Run a Memory Decoder recipe.",
-               (ItemLike)ModBlocks.MEMORY_DECODER.get(),
+               stack(() -> (ItemLike)ModBlocks.MEMORY_DECODER.get(), Items.LODESTONE, 1),
                data.hasUsedMachine("memory_decoder") ? 1 : 0,
                1
             )
@@ -267,7 +270,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Blackbox fragments",
                data.blackboxFragments() >= 3 ? "Three fragments decoded." : "Recover Blackbox Fragments from vaults and bosses.",
-               (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(),
+               stack(() -> (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), Items.OBSIDIAN, 1),
                data.blackboxFragments(),
                3
             )
@@ -276,7 +279,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Corruption Warden",
                data.wardenDefeated() ? "Containment boss defeated." : "Raid a Corruption Containment Lab.",
-               (ItemLike)ModItems.REACTOR_CORE.get(),
+               stack(() -> (ItemLike)ModItems.REACTOR_CORE.get(), Items.FIRE_CHARGE, 1),
                data.wardenDefeated() ? 1 : 0,
                1
             )
@@ -285,7 +288,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Blackbox Monolith",
                data.blackboxMonolithActivated() ? "Monolith activated." : "Activate the Blackbox Monolith.",
-               (ItemLike)ModBlocks.BLACKBOX_PLATE.get(),
+               stack(() -> (ItemLike)ModBlocks.BLACKBOX_PLATE.get(), Items.SCULK, 1),
                data.blackboxMonolithActivated() ? 1 : 0,
                1
             )
@@ -294,7 +297,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Reality Forge",
                data.hasUsedMachine("reality_forge") ? "Matter rewrite completed." : "Complete a Reality Forge transmutation.",
-               (ItemLike)ModBlocks.REALITY_FORGE.get(),
+               stack(() -> (ItemLike)ModBlocks.REALITY_FORGE.get(), Items.ANVIL, 1),
                data.hasUsedMachine("reality_forge") ? 1 : 0,
                1
             )
@@ -303,7 +306,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Core entry",
                data.coreEntered() ? "Nexus dimension route opened." : "Use the Core Access Key or Core Key Assembly.",
-               (ItemLike)ModItems.CORE_KEY_ASSEMBLY.get(),
+               stack(() -> (ItemLike)ModItems.CORE_KEY_ASSEMBLY.get(), Items.TRIPWIRE_HOOK, 1),
                data.coreEntered() ? 1 : 0,
                1
             )
@@ -312,7 +315,7 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
             requirement(
                "Ending path",
                data.hasEndingPath() ? "Path " + data.endingPath() + " committed." : "Defeat Nexus Guardian and choose a path.",
-               (ItemLike)ModItems.STABLE_NEXUS_CORE.get(),
+               stack(() -> (ItemLike)ModItems.STABLE_NEXUS_CORE.get(), Items.NETHER_STAR, 1),
                data.hasEndingPath() ? 1 : 0,
                1
             )
@@ -442,33 +445,66 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
       return TerminalMissionRequirement.custom(label, detail, new ItemStack(icon), safeHave, safeNeed, safeHave >= safeNeed);
    }
 
+   private static TerminalMissionRequirement requirement(String label, String detail, ItemStack icon, int have, int need) {
+      int safeNeed = Math.max(1, need);
+      int safeHave = Math.max(0, Math.min(safeNeed, have));
+      return TerminalMissionRequirement.custom(label, detail, icon, safeHave, safeNeed, safeHave >= safeNeed);
+   }
+
    private static List<ItemStack> rewards(NexusTerminalMissionProvider.NexusMission mission) {
       return switch (mission) {
-         case SIGNAL_BENEATH -> stacks(stack((ItemLike)ModItems.NEXUS_SHARD.get(), 2), stack((ItemLike)ModItems.SIGNAL_WIRE.get(), 2));
-         case DIRTY_CHARGE -> stacks(stack((ItemLike)ModItems.FILTER_MEMBRANE.get(), 1), stack((ItemLike)ModItems.FIELD_MEMBRANE.get(), 1));
-         case STABILIZE_CAMP -> stacks(stack((ItemLike)ModItems.PURITY_CHARGE.get(), 2), stack((ItemLike)ModItems.STABILIZED_PURITY_CHARGE.get(), 1));
-         case TOWER_SPEAKS -> stacks(stack((ItemLike)ModItems.MEMORY_SHARD.get(), 2), stack((ItemLike)ModItems.DATA_FRAGMENT.get(), 3));
-         case DELETED_HISTORY -> stacks(stack((ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), 1), stack((ItemLike)ModItems.REALITY_DUST.get(), 1));
-         case QUARANTINE_FAILED -> stacks(stack((ItemLike)ModItems.CORRUPTED_FERRITE.get(), 3), stack((ItemLike)ModItems.FIELD_ANCHOR.get(), 1));
-         case MONOLITH_REMEMBERS -> stacks(stack((ItemLike)ModItems.CORE_ACCESS_KEY.get(), 1));
-         case REALITY_FORGE -> stacks(stack((ItemLike)ModItems.STABILIZED_ALLOY.get(), 3), stack((ItemLike)ModItems.CORE_GLASS.get(), 2));
-         case CORE_DOOR -> stacks(stack((ItemLike)ModItems.STABILIZED_PURITY_CHARGE.get(), 2), stack((ItemLike)ModItems.COLLAPSE_CHARGE.get(), 2));
-         case REBUILDS_WORLD -> stacks(stack((ItemLike)ModItems.STABLE_NEXUS_CORE.get(), 1), stack((ItemLike)ModItems.REALITY_DUST.get(), 4));
+         case SIGNAL_BENEATH -> stacks(
+            stack(() -> (ItemLike)ModItems.NEXUS_SHARD.get(), Items.ECHO_SHARD, 2),
+            stack(() -> (ItemLike)ModItems.SIGNAL_WIRE.get(), Items.REDSTONE, 2)
+         );
+         case DIRTY_CHARGE -> stacks(
+            stack(() -> (ItemLike)ModItems.FILTER_MEMBRANE.get(), Items.PAPER, 1),
+            stack(() -> (ItemLike)ModItems.FIELD_MEMBRANE.get(), Items.PHANTOM_MEMBRANE, 1)
+         );
+         case STABILIZE_CAMP -> stacks(
+            stack(() -> (ItemLike)ModItems.PURITY_CHARGE.get(), Items.GLOWSTONE_DUST, 2),
+            stack(() -> (ItemLike)ModItems.STABILIZED_PURITY_CHARGE.get(), Items.AMETHYST_SHARD, 1)
+         );
+         case TOWER_SPEAKS -> stacks(
+            stack(() -> (ItemLike)ModItems.MEMORY_SHARD.get(), Items.PRISMARINE_SHARD, 2),
+            stack(() -> (ItemLike)ModItems.DATA_FRAGMENT.get(), Items.PAPER, 3)
+         );
+         case DELETED_HISTORY -> stacks(
+            stack(() -> (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), Items.OBSIDIAN, 1),
+            stack(() -> (ItemLike)ModItems.REALITY_DUST.get(), Items.REDSTONE, 1)
+         );
+         case QUARANTINE_FAILED -> stacks(
+            stack(() -> (ItemLike)ModItems.CORRUPTED_FERRITE.get(), Items.RAW_IRON, 3),
+            stack(() -> (ItemLike)ModItems.FIELD_ANCHOR.get(), Items.ENDER_PEARL, 1)
+         );
+         case MONOLITH_REMEMBERS -> stacks(stack(() -> (ItemLike)ModItems.CORE_ACCESS_KEY.get(), Items.TRIPWIRE_HOOK, 1));
+         case REALITY_FORGE -> stacks(
+            stack(() -> (ItemLike)ModItems.STABILIZED_ALLOY.get(), Items.IRON_INGOT, 3),
+            stack(() -> (ItemLike)ModItems.CORE_GLASS.get(), Items.GLASS, 2)
+         );
+         case CORE_DOOR -> stacks(
+            stack(() -> (ItemLike)ModItems.STABILIZED_PURITY_CHARGE.get(), Items.AMETHYST_SHARD, 2),
+            stack(() -> (ItemLike)ModItems.COLLAPSE_CHARGE.get(), Items.GUNPOWDER, 2)
+         );
+         case REBUILDS_WORLD -> stacks(
+            stack(() -> (ItemLike)ModItems.STABLE_NEXUS_CORE.get(), Items.NETHER_STAR, 1),
+            stack(() -> (ItemLike)ModItems.REALITY_DUST.get(), Items.REDSTONE, 4)
+         );
       };
    }
 
    private static ItemStack icon(NexusTerminalMissionProvider.NexusMission mission) {
       return switch (mission) {
-         case SIGNAL_BENEATH -> stack((ItemLike)ModItems.NEXUS_SCANNER_VISOR.get(), 1);
-         case DIRTY_CHARGE -> stack((ItemLike)ModBlocks.NEXUS_RECYCLER.get(), 1);
-         case STABILIZE_CAMP -> stack((ItemLike)ModBlocks.NEXUS_FIELD_STABILIZER.get(), 1);
-         case TOWER_SPEAKS -> stack((ItemLike)ModBlocks.MEMORY_DECODER.get(), 1);
-         case DELETED_HISTORY -> stack((ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), 1);
-         case QUARANTINE_FAILED -> stack((ItemLike)ModItems.REACTOR_CORE.get(), 1);
-         case MONOLITH_REMEMBERS -> stack((ItemLike)ModBlocks.BLACKBOX_PLATE.get(), 1);
-         case REALITY_FORGE -> stack((ItemLike)ModBlocks.REALITY_FORGE.get(), 1);
-         case CORE_DOOR -> stack((ItemLike)ModItems.CORE_KEY_ASSEMBLY.get(), 1);
-         case REBUILDS_WORLD -> stack((ItemLike)ModItems.STABLE_NEXUS_CORE.get(), 1);
+         case SIGNAL_BENEATH -> stack(() -> (ItemLike)ModItems.NEXUS_SCANNER_VISOR.get(), Items.SPYGLASS, 1);
+         case DIRTY_CHARGE -> stack(() -> (ItemLike)ModBlocks.NEXUS_RECYCLER.get(), Items.FURNACE, 1);
+         case STABILIZE_CAMP -> stack(() -> (ItemLike)ModBlocks.NEXUS_FIELD_STABILIZER.get(), Items.BEACON, 1);
+         case TOWER_SPEAKS -> stack(() -> (ItemLike)ModBlocks.MEMORY_DECODER.get(), Items.LODESTONE, 1);
+         case DELETED_HISTORY -> stack(() -> (ItemLike)ModItems.BLACKBOX_FRAGMENT.get(), Items.OBSIDIAN, 1);
+         case QUARANTINE_FAILED -> stack(() -> (ItemLike)ModItems.REACTOR_CORE.get(), Items.FIRE_CHARGE, 1);
+         case MONOLITH_REMEMBERS -> stack(() -> (ItemLike)ModBlocks.BLACKBOX_PLATE.get(), Items.SCULK, 1);
+         case REALITY_FORGE -> stack(() -> (ItemLike)ModBlocks.REALITY_FORGE.get(), Items.ANVIL, 1);
+         case CORE_DOOR -> stack(() -> (ItemLike)ModItems.CORE_KEY_ASSEMBLY.get(), Items.TRIPWIRE_HOOK, 1);
+         case REBUILDS_WORLD -> stack(() -> (ItemLike)ModItems.STABLE_NEXUS_CORE.get(), Items.NETHER_STAR, 1);
       };
    }
 
@@ -485,7 +521,41 @@ public final class NexusTerminalMissionProvider implements TerminalMissionProvid
    }
 
    private static ItemStack stack(ItemLike item, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
       return new ItemStack(item, count);
+   }
+
+   private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
+      ItemLike resolved = fallback;
+      if (!nativeLoaderActive()) {
+         try {
+            resolved = item.get();
+         } catch (Throwable ignored) {
+            resolved = fallback;
+         }
+      }
+      return resolved == null ? ItemStack.EMPTY : new ItemStack(resolved, Math.max(1, count));
+   }
+
+   private static boolean nativeLoaderActive() {
+      if (Boolean.getBoolean("echo.native.loader")) {
+         return true;
+      }
+      if (!System.getProperty("echo.native.moduleIds", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank()) {
+         return true;
+      }
+      try {
+         return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
+      } catch (RuntimeException | LinkageError ignored) {
+         return false;
+      }
    }
 
    private static String endingLine(String path) {

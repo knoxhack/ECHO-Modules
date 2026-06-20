@@ -41,17 +41,19 @@ public final class ClientRecipeDisplayAccess {
         if (!(player instanceof LocalPlayer) || Minecraft.getInstance().level == null) {
             return List.of();
         }
+        Map<String, ItemStack> stacks = new LinkedHashMap<>();
+        addStacks(stacks, NativeIndexCatalogAccess.catalogStacks());
         try {
             CreativeModeTabs.tryRebuildTabContents(FeatureFlags.DEFAULT_FLAGS, true,
                     Minecraft.getInstance().level.registryAccess());
         } catch (RuntimeException ignored) {
-            return List.of();
+            return List.copyOf(stacks.values());
         }
-        Map<String, ItemStack> stacks = new LinkedHashMap<>();
         for (CreativeModeTab tab : CreativeModeTabs.allTabs()) {
             addStacks(stacks, tab.getDisplayItems());
             addStacks(stacks, tab.getSearchTabDisplayItems());
         }
+        addStacks(stacks, NativeIndexCatalogAccess.catalogStacks());
         return List.copyOf(stacks.values());
     }
 

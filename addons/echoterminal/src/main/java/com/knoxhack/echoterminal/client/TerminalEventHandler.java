@@ -9,9 +9,16 @@ import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import java.util.Map;
 
 public class TerminalEventHandler {
+    private static final String SCREEN_CHAR_TYPED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$CharacterTyped$Pre";
+    private static final String SCREEN_MOUSE_SCROLLED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$MouseScrolled$Pre";
+
     public static void register() {
-        EchoBackendLifecycleBridge.registerGameEventHandler(TerminalEventHandler::onCharacterTyped);
-        EchoBackendLifecycleBridge.registerGameEventHandler(TerminalEventHandler::onMouseScroll);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_CHAR_TYPED_PRE_EVENT,
+                TerminalEventHandler::onCharacterTyped);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_MOUSE_SCROLLED_PRE_EVENT,
+                TerminalEventHandler::onMouseScroll);
     }
 
     private static void onCharacterTyped(Object event) {

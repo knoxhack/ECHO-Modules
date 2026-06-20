@@ -2,6 +2,7 @@ package com.knoxhack.echonetcore;
 
 import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echonetcore.config.EchoNetCoreConfig;
+import com.knoxhack.echonetcore.service.EchoNeoForgeNetworkRuntime;
 import com.knoxhack.echonetcore.service.NetCoreNetworkService;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ public class EchoNetCore {
     public EchoNetCore() {
         EchoNetCoreConfig.registerEchoConfig();
         EchoCoreServices.registerNetworkService(NetCoreNetworkService.INSTANCE);
+        EchoNeoForgeNetworkRuntime.install();
         LOGGER.info("ECHO: NetCore native network bridge online.");
     }
 }

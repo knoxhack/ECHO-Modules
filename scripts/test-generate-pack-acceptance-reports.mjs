@@ -109,6 +109,27 @@ try {
   assert.equal(passReport.summary.missingEvidenceCount, 0)
   assert.equal(passReport.checks.installLaunchSucceeds.evidenceDetails[0].resolvable, true)
   assert.equal(index.summary.passCount, 1)
+
+  await writeJson(repoRoot, 'reports/runtime-parity/echo-module-runtime-parity-audit.json', {
+    schema: 'echo.module.runtime_parity_audit.v1',
+    generatedAt: '1970-01-01T00:00:01Z',
+    packAudit: {
+      preferredManifests: [
+        {
+          product: 'Ashfall',
+          lane: 'NeoForge',
+          repo: 'ECHO-Ashfall-NeoForge-Edition',
+          manifestPath: 'release-manifest.template.json',
+          moduleCount: 3,
+        },
+      ],
+    },
+  })
+
+  const { index: metadataRefreshIndex } = await generatePackAcceptanceReports({ repoRoot, echoRoot, write: true })
+  const refreshedReport = await readJson(packRepo, 'reports/pack-acceptance/ashfall-neoforge-acceptance.json')
+  assert.equal(refreshedReport.moduleCount, 3)
+  assert.equal(metadataRefreshIndex.summary.writtenReportCount, 1)
 } finally {
   await fs.rm(echoRoot, { recursive: true, force: true })
 }

@@ -14,13 +14,27 @@ import com.knoxhack.echoagriculturereclamation.registry.ModEntities;
 import com.knoxhack.echoagriculturereclamation.registry.ModItems;
 import com.knoxhack.echoagriculturereclamation.registry.ModMenus;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoAgricultureReclamation.MODID)
 public class EchoAgricultureReclamation {
    public static final String MODID = "echoagriculturereclamation";
    public static final Logger LOGGER = LogUtils.getLogger();
+   private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
+      "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
 
-   public EchoAgricultureReclamation(Object modEventBus, Object modContainer) {
+   EchoAgricultureReclamation() {
+      this(null, null);
+}
+
+   public EchoAgricultureReclamation(IEventBus modEventBus, ModContainer modContainer) {
+      this((Object) modEventBus, modContainer);
+}
+
+   EchoAgricultureReclamation(Object modEventBus, Object modContainer) {
       ModBlocks.register(modEventBus);
       ModBlockEntities.register(modEventBus);
       ModEntities.register(modEventBus);
@@ -29,7 +43,8 @@ public class EchoAgricultureReclamation {
       ModItems.register(modEventBus);
       ModCreativeTabs.register(modEventBus);
       com.knoxhack.echoagriculturereclamation.integration.prime.ReclamationPrimeIntegration.register();
-      EchoBackendLifecycleBridge.registerModListener(modEventBus, ModEntities::registerAttributes);
+      EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_ATTRIBUTE_CREATION_EVENT,
+         ModEntities::registerAttributes);
       EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
       EchoBackendLifecycleBridge.registerGameEventHandler(this::registerCommands);
       EchoBackendLifecycleBridge.registerGameEventHandler(ReclamationReloaders::addServerReloadListeners);

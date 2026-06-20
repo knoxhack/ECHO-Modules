@@ -14,8 +14,11 @@ import com.knoxhack.echorelictech.api.event.RelicTechEvents;
 import com.knoxhack.echorelictech.registry.ModBlocks;
 import com.knoxhack.echorelictech.registry.ModItems;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public class RelicTechMissionCoreIntegration {
     private static final Identifier CHAPTER_ID = id("arcana_relictech");
@@ -42,7 +45,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic recovered.",
                 MissionObjectiveType.OBTAIN_ITEM,
                 id("unidentified_relic"),
-                new ItemStack(ModItems.UNIDENTIFIED_RELIC.get()));
+                safeStack(() -> (ItemLike) ModItems.UNIDENTIFIED_RELIC.get(), Items.ENDER_EYE, 1));
 
         registerMission(registry,
                 "scan_unknown_relic",
@@ -51,7 +54,7 @@ public class RelicTechMissionCoreIntegration {
                 "Unknown relic signature scanned.",
                 MissionObjectiveType.CUSTOM,
                 id("unknown_relic_scanned"),
-                new ItemStack(ModItems.RELIC_DIAGNOSTIC_REPORT.get()));
+                safeStack(() -> (ItemLike) ModItems.RELIC_DIAGNOSTIC_REPORT.get(), Items.PAPER, 1));
 
         registerMission(registry,
                 "decode_first_relic",
@@ -60,7 +63,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic decoded.",
                 MissionObjectiveType.CUSTOM,
                 id("first_relic_decoded"),
-                new ItemStack(ModBlocks.RELIC_ANALYZER.get()));
+                safeStack(() -> (ItemLike) ModBlocks.RELIC_ANALYZER.get(), Items.LODESTONE, 1));
 
         registerMission(registry,
                 "stabilize_first_relic",
@@ -69,7 +72,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic stabilized.",
                 MissionObjectiveType.CUSTOM,
                 id("first_relic_stabilized"),
-                new ItemStack(ModBlocks.PROTOTYPE_WORKBENCH.get()));
+                safeStack(() -> (ItemLike) ModBlocks.PROTOTYPE_WORKBENCH.get(), Items.SMITHING_TABLE, 1));
 
         registerMission(registry,
                 "charge_null_battery",
@@ -78,7 +81,7 @@ public class RelicTechMissionCoreIntegration {
                 "Null Battery charged.",
                 MissionObjectiveType.CUSTOM,
                 id("null_battery_charged"),
-                new ItemStack(ModItems.NULL_BATTERY.get()));
+                safeStack(() -> (ItemLike) ModItems.NULL_BATTERY.get(), Items.REDSTONE, 1));
 
         registerMission(registry,
                 "use_relic_ability",
@@ -87,7 +90,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic activation logged.",
                 MissionObjectiveType.CUSTOM,
                 id("relic_ability_used"),
-                new ItemStack(ModItems.PHASE_ANCHOR.get()));
+                safeStack(() -> (ItemLike) ModItems.PHASE_ANCHOR.get(), Items.ENDER_PEARL, 1));
 
         registerMission(registry,
                 "survive_relic_backlash",
@@ -96,7 +99,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic backlash logged.",
                 MissionObjectiveType.CUSTOM,
                 id("relic_backlash_survived"),
-                new ItemStack(ModItems.PHASE_ANCHOR.get()));
+                safeStack(() -> (ItemLike) ModItems.PHASE_ANCHOR.get(), Items.ENDER_PEARL, 1));
 
         registerMission(registry,
                 "bind_relic",
@@ -105,7 +108,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic binding logged.",
                 MissionObjectiveType.CUSTOM,
                 id("phase_anchor"),
-                new ItemStack(ModItems.PHASE_ANCHOR.get()));
+                safeStack(() -> (ItemLike) ModItems.PHASE_ANCHOR.get(), Items.ENDER_PEARL, 1));
 
         registerMission(registry,
                 "use_guardian_lens",
@@ -114,7 +117,7 @@ public class RelicTechMissionCoreIntegration {
                 "Guardian scan logged.",
                 MissionObjectiveType.CUSTOM,
                 id("guardian_lens"),
-                new ItemStack(ModItems.GUARDIAN_LENS.get()));
+                safeStack(() -> (ItemLike) ModItems.GUARDIAN_LENS.get(), Items.SPYGLASS, 1));
 
         registerMission(registry,
                 "use_echo_mirror",
@@ -123,7 +126,7 @@ public class RelicTechMissionCoreIntegration {
                 "Echo projection logged.",
                 MissionObjectiveType.CUSTOM,
                 id("echo_mirror"),
-                new ItemStack(ModItems.ECHO_MIRROR.get()));
+                safeStack(() -> (ItemLike) ModItems.ECHO_MIRROR.get(), Items.GLASS_PANE, 1));
 
         registerMission(registry,
                 "use_gravity_clamp",
@@ -132,7 +135,7 @@ public class RelicTechMissionCoreIntegration {
                 "Gravity clamp pulse logged.",
                 MissionObjectiveType.CUSTOM,
                 id("gravity_clamp"),
-                new ItemStack(ModItems.GRAVITY_CLAMP.get()));
+                safeStack(() -> (ItemLike) ModItems.GRAVITY_CLAMP.get(), Items.IRON_INGOT, 1));
 
         registerMission(registry,
                 "use_rift_lantern",
@@ -141,7 +144,7 @@ public class RelicTechMissionCoreIntegration {
                 "Rift lantern sweep logged.",
                 MissionObjectiveType.CUSTOM,
                 id("rift_lantern"),
-                new ItemStack(ModItems.RIFT_LANTERN.get()));
+                safeStack(() -> (ItemLike) ModItems.RIFT_LANTERN.get(), Items.SOUL_LANTERN, 1));
 
         registerMission(registry,
                 "use_void_compass",
@@ -150,7 +153,7 @@ public class RelicTechMissionCoreIntegration {
                 "Vault coordinate logged.",
                 MissionObjectiveType.CUSTOM,
                 id("void_compass"),
-                new ItemStack(ModItems.VOID_COMPASS.get()));
+                safeStack(() -> (ItemLike) ModItems.VOID_COMPASS.get(), Items.COMPASS, 1));
 
         registerMission(registry,
                 "use_matter_stitcher",
@@ -159,7 +162,7 @@ public class RelicTechMissionCoreIntegration {
                 "Matter stitch logged.",
                 MissionObjectiveType.CUSTOM,
                 id("matter_stitcher"),
-                new ItemStack(ModItems.MATTER_STITCHER.get()));
+                safeStack(() -> (ItemLike) ModItems.MATTER_STITCHER.get(), Items.SHEARS, 1));
 
         registerMission(registry,
                 "contain_relic",
@@ -168,7 +171,7 @@ public class RelicTechMissionCoreIntegration {
                 "Relic containment logged.",
                 MissionObjectiveType.CUSTOM,
                 id("relic_contained"),
-                new ItemStack(ModBlocks.CONTAINMENT_LOCKER.get()));
+                safeStack(() -> (ItemLike) ModBlocks.CONTAINMENT_LOCKER.get(), Items.CHEST, 1));
 
         registerMission(registry,
                 "discover_cursed_relic",
@@ -177,7 +180,7 @@ public class RelicTechMissionCoreIntegration {
                 "Cursed relic discovery logged.",
                 MissionObjectiveType.CUSTOM,
                 id("cursed_relic_discovered"),
-                new ItemStack(ModItems.BLOOD_CIRCUIT.get()));
+                safeStack(() -> (ItemLike) ModItems.BLOOD_CIRCUIT.get(), Items.REDSTONE, 1));
 
         registerMission(registry,
                 "recover_legendary_frame",
@@ -186,7 +189,7 @@ public class RelicTechMissionCoreIntegration {
                 "Legendary frame recovered.",
                 MissionObjectiveType.OBTAIN_ITEM,
                 id("legendary_relic_frame"),
-                new ItemStack(ModItems.LEGENDARY_RELIC_FRAME.get()));
+                safeStack(() -> (ItemLike) ModItems.LEGENDARY_RELIC_FRAME.get(), Items.NETHER_STAR, 1));
 
         registerMission(registry,
                 "discover_vault",
@@ -195,7 +198,7 @@ public class RelicTechMissionCoreIntegration {
                 "Vault discovery logged.",
                 MissionObjectiveType.DISCOVER_STRUCTURE,
                 id("pre_gridfall_research_vault"),
-                new ItemStack(ModBlocks.RELIC_VAULT_DOOR.get()));
+                safeStack(() -> (ItemLike) ModBlocks.RELIC_VAULT_DOOR.get(), Items.IRON_DOOR, 1));
     }
 
     private static void registerMission(
@@ -296,16 +299,16 @@ public class RelicTechMissionCoreIntegration {
 
     private static ItemStack rewardStack(String path) {
         return switch (path) {
-            case "find_unknown_relic" -> new ItemStack(ModItems.RELIC_SHARD.get(), 4);
-            case "scan_unknown_relic" -> new ItemStack(ModItems.RELIC_DIAGNOSTIC_REPORT.get(), 1);
-            case "decode_first_relic" -> new ItemStack(ModItems.PRE_GRIDFALL_CIRCUIT.get(), 2);
-            case "stabilize_first_relic" -> new ItemStack(ModItems.STABILIZED_RIFTSTONE.get(), 1);
-            case "charge_null_battery" -> new ItemStack(ModItems.NULL_CELL.get(), 3);
-            case "contain_relic" -> new ItemStack(ModItems.CONTAINMENT_GLASS.get(), 2);
-            case "discover_cursed_relic" -> new ItemStack(ModItems.FORBIDDEN_PROTOTYPE_FILE.get(), 1);
-            case "recover_legendary_frame" -> new ItemStack(ModItems.LEGENDARY_RELIC_FRAME.get(), 1);
-            case "discover_vault" -> new ItemStack(ModItems.RELIC_DIAGNOSTIC_REPORT.get(), 1);
-            default -> new ItemStack(ModItems.RELIC_SHARD.get(), 2);
+            case "find_unknown_relic" -> safeStack(() -> (ItemLike) ModItems.RELIC_SHARD.get(), Items.AMETHYST_SHARD, 4);
+            case "scan_unknown_relic" -> safeStack(() -> (ItemLike) ModItems.RELIC_DIAGNOSTIC_REPORT.get(), Items.PAPER, 1);
+            case "decode_first_relic" -> safeStack(() -> (ItemLike) ModItems.PRE_GRIDFALL_CIRCUIT.get(), Items.REDSTONE, 2);
+            case "stabilize_first_relic" -> safeStack(() -> (ItemLike) ModItems.STABILIZED_RIFTSTONE.get(), Items.AMETHYST_SHARD, 1);
+            case "charge_null_battery" -> safeStack(() -> (ItemLike) ModItems.NULL_CELL.get(), Items.REDSTONE, 3);
+            case "contain_relic" -> safeStack(() -> (ItemLike) ModItems.CONTAINMENT_GLASS.get(), Items.GLASS, 2);
+            case "discover_cursed_relic" -> safeStack(() -> (ItemLike) ModItems.FORBIDDEN_PROTOTYPE_FILE.get(), Items.PAPER, 1);
+            case "recover_legendary_frame" -> safeStack(() -> (ItemLike) ModItems.LEGENDARY_RELIC_FRAME.get(), Items.NETHER_STAR, 1);
+            case "discover_vault" -> safeStack(() -> (ItemLike) ModItems.RELIC_DIAGNOSTIC_REPORT.get(), Items.PAPER, 1);
+            default -> safeStack(() -> (ItemLike) ModItems.RELIC_SHARD.get(), Items.AMETHYST_SHARD, 2);
         };
     }
 
@@ -424,5 +427,24 @@ public class RelicTechMissionCoreIntegration {
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoRelicTech.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 }

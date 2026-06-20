@@ -25,6 +25,7 @@ import com.echoplatform.echocore.api.index.IndexRelation;
 import com.echoplatform.echocore.api.index.IndexSearchResult;
 import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.echoplatform.echocore.api.index.IndexSourceFact;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.IndexIds;
@@ -143,6 +144,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
 
     @Override
     public List<IndexContentSnapshot> contentSnapshots(Player player) {
+        ensureCommonServicesReady("index_service_content_snapshots");
         List<String> warnings = new ArrayList<>();
         List<IndexContentSnapshot> snapshots = collectContentProviderSnapshots(player, warnings);
         applyContentSnapshots(snapshots);
@@ -303,6 +305,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
     }
 
     public IndexRecipeSnapshot recipeSnapshot(Player player) {
+        ensureCommonServicesReady("index_service_recipe_snapshot");
         boolean client = recipeClientContext(player);
         IndexRecipeSnapshot snapshot = client ? clientRecipeSnapshot : serverRecipeSnapshot;
         if (snapshot != null && !staleClientSnapshot(player, snapshot)) {
@@ -319,6 +322,17 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
                 }
             }
             return snapshot;
+        }
+    }
+
+    private void ensureCommonServicesReady(String reason) {
+        if (EchoIndex.commonServicesRegistered()) {
+            return;
+        }
+        try {
+            EchoIndex.ensureCommonServicesRegisteredForNativeLoader(reason);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("Index common services retry skipped for {}.", reason, exception);
         }
     }
 
@@ -438,7 +452,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
 
     public void applySyncedRecipeSnapshot(CompoundTag tag) {
         IndexRecipeSnapshot snapshot = IndexRecipeSnapshotCodec.decode(tag);
-        if (snapshot == null || snapshot.recipes().isEmpty()) {
+        if (snapshot == null) {
             return;
         }
         clientSnapshotReason = snapshot.buildReason();
@@ -629,6 +643,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
     }
 
     private void refreshContentCaches(Player player) {
+        ensureCommonServicesReady("index_service_content_cache");
         if (contentProviders.isEmpty() && !hasContent(dataContentSnapshot)) {
             if (!latestContentSnapshots.isEmpty()) {
                 applyContentSnapshots(List.of());
@@ -1185,7 +1200,9 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
     }
 
     public List<ItemStack> itemCatalog(Player player) {
+        ensureCommonServicesReady("index_service_item_catalog");
         boolean client = recipeClientContext(player);
+        boolean nativeClient = nativeCatalogPreferred(player);
         List<ItemStack> cached = cachedItems;
         if (Config.SEARCH_CACHE_ENABLED.get() && !cached.isEmpty() && cachedItemsClient == client) {
             return cached;
@@ -1201,7 +1218,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
             }
         }
         List<ItemStack> built = stacks.values().stream()
-                .sorted(itemCatalogComparator())
+                .sorted(itemCatalogComparator(nativeClient))
                 .toList();
         cachedItems = built;
         cachedItemsClient = client;
@@ -1212,13 +1229,32 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
         return itemCatalogRevision.get();
     }
 
-    private static Comparator<ItemStack> itemCatalogComparator() {
+    private static Comparator<ItemStack> itemCatalogComparator(boolean nativeClient) {
         return Comparator
-                .comparingInt((ItemStack stack) -> "minecraft".equals(itemId(stack.getItem()).getNamespace()) ? 0 : 1)
+                .comparingInt((ItemStack stack) -> catalogPriority(itemId(stack.getItem()), nativeClient))
                 .thenComparing(stack -> itemId(stack.getItem()).getNamespace().toLowerCase(Locale.ROOT))
-                .thenComparing(stack -> stack.getHoverName().getString().toLowerCase(Locale.ROOT))
+                .thenComparing(stack -> safeStackName(stack, itemId(stack.getItem())).toLowerCase(Locale.ROOT))
                 .thenComparing(stack -> itemId(stack.getItem()).getPath())
                 .thenComparing(IndexService::stackKey);
+    }
+
+    private static int catalogPriority(Identifier id, boolean nativeClient) {
+        String namespace = id == null ? "" : id.getNamespace().toLowerCase(Locale.ROOT);
+        if (nativeClient && nativePackNamespace(namespace)) {
+            return 0;
+        }
+        if ("minecraft".equals(namespace)) {
+            return nativeClient ? 2 : 0;
+        }
+        return nativeClient ? 1 : 1;
+    }
+
+    private static boolean nativePackNamespace(String namespace) {
+        return namespace != null && (namespace.startsWith("echo") || namespace.equals("signalos"));
+    }
+
+    private static boolean nativeCatalogPreferred(Player player) {
+        return recipeClientContextStatic(player) && EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
     }
 
     public List<ItemStack> filteredItems(Player player, String query, int maxResults) {
@@ -1249,7 +1285,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
         for (ItemStack stack : itemCatalog(player)) {
             if (itemMatches(player, stack, normalized)) {
                 Identifier id = itemId(stack.getItem());
-                results.add(new IndexSearchResult(id, "item", stack.getHoverName().getString(), stack, score(id, normalized)));
+                results.add(new IndexSearchResult(id, "item", safeStackName(stack, id), stack, score(id, normalized)));
             }
             if (results.size() >= limit) {
                 return results;
@@ -1388,7 +1424,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
         if ("bookmarked".equals(token) || "favorite".equals(token)) {
             return bookmarks(player).contains(id);
         }
-        String name = stack.getHoverName().getString().toLowerCase(Locale.ROOT);
+        String name = safeStackName(stack, id).toLowerCase(Locale.ROOT);
         return name.contains(token)
                 || (Config.SEARCH_REGISTRY_SEARCH.get() && id.toString().contains(token))
                 || (Config.SEARCH_TOOLTIP_SEARCH.get()
@@ -1400,7 +1436,7 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
         Item item = stack.getItem();
         String path = id == null ? "" : id.getPath().toLowerCase(Locale.ROOT);
         String namespace = id == null ? "" : id.getNamespace().toLowerCase(Locale.ROOT);
-        String name = stack.getHoverName().getString().toLowerCase(Locale.ROOT);
+        String name = safeStackName(stack, id).toLowerCase(Locale.ROOT);
         return switch (token) {
             case "block", "blocks" -> item instanceof BlockItem;
             case "machine", "machines" -> item instanceof BlockItem && hasAny(path + " " + name,
@@ -1425,6 +1461,46 @@ public final class IndexService implements IIndexService, IIndexRegistry, IIndex
             }
         }
         return false;
+    }
+
+    private static String safeStackName(ItemStack stack, Identifier id) {
+        if (stack == null || stack.isEmpty()) {
+            return fallbackStackName(id);
+        }
+        if (EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()) {
+            return fallbackStackName(id);
+        }
+        try {
+            String name = stack.getHoverName().getString();
+            return name == null || name.isBlank() ? fallbackStackName(id) : name;
+        } catch (RuntimeException | LinkageError exception) {
+            return fallbackStackName(id);
+        }
+    }
+
+    private static String fallbackStackName(Identifier id) {
+        if (id == null) {
+            return "Unknown Item";
+        }
+        String path = id.getPath();
+        if (path == null || path.isBlank()) {
+            return id.toString();
+        }
+        String[] parts = path.replace('-', '_').split("_");
+        StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            if (part.isBlank()) {
+                continue;
+            }
+            if (!builder.isEmpty()) {
+                builder.append(' ');
+            }
+            builder.append(Character.toUpperCase(part.charAt(0)));
+            if (part.length() > 1) {
+                builder.append(part.substring(1));
+            }
+        }
+        return builder.isEmpty() ? id.toString() : builder.toString();
     }
 
     private boolean entryMatches(Player player, IndexEntry entry, String query) {

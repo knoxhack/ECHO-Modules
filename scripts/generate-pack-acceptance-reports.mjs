@@ -334,6 +334,12 @@ function needsNormalization(report) {
 function shouldWriteReport({ existing, report, force }) {
   if (force || !existing || needsNormalization(existing)) return true
   return existing.status !== report.status
+    || existing.product !== report.product
+    || existing.lane !== report.lane
+    || existing.runtime !== report.runtime
+    || existing.repo !== report.repo
+    || existing.manifestPath !== report.manifestPath
+    || Number(existing.moduleCount ?? -1) !== report.moduleCount
     || Number(existing.summary?.passedCheckCount ?? -1) !== report.summary.passedCheckCount
     || Number(existing.summary?.pendingCheckCount ?? -1) !== report.summary.pendingCheckCount
     || Number(existing.summary?.missingEvidenceCount ?? -1) !== report.summary.missingEvidenceCount

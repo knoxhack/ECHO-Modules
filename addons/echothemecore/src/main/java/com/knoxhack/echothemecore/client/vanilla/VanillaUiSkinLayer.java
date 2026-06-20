@@ -47,6 +47,9 @@ public final class VanillaUiSkinLayer {
     }
 
     public static void onScreenBackground(Screen screen, GuiGraphicsExtractor graphics) {
+        if (VanillaUiProductOwnership.productOwnsScreen(screen)) {
+            return;
+        }
         if (consumeReplacementBackground(screen)) {
             return;
         }
@@ -64,6 +67,9 @@ public final class VanillaUiSkinLayer {
     }
 
     public static void onScreenRender(Screen screen, GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        if (VanillaUiProductOwnership.productOwnsScreen(screen)) {
+            return;
+        }
         if (consumeReplacementAccents(screen)) {
             return;
         }
@@ -174,6 +180,9 @@ public final class VanillaUiSkinLayer {
 
     private static VanillaUiSurface classifyReplacementScreen(Screen screen, GuiGraphicsExtractor graphics) {
         if (screen == null || graphics == null || !ThemeCoreConfig.vanillaUiEnabled()) {
+            return null;
+        }
+        if (VanillaUiProductOwnership.productOwnsScreen(screen)) {
             return null;
         }
         VanillaUiSurface surface = VanillaUiScreenClassifier.classify(screen);

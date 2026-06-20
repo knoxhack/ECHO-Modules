@@ -181,8 +181,9 @@ public final class AutomationRecipeJsonReloadListener extends SimplePreparableRe
     }
 
     private static void validateRecipe(MultiblockAutomationRecipe recipe, List<String> warnings, List<String> errors) {
-        if (recipe.inputs().isEmpty() && recipe.outputs().isEmpty() && recipe.integrityRepair() <= 0) {
-            warnings.add("$.outputs: recipe has no inputs, outputs, or repair effect.");
+        if (recipe.inputs().isEmpty() && recipe.outputs().isEmpty() && recipe.integrityRepair() <= 0
+                && recipe.effects().isEmpty()) {
+            warnings.add("$.outputs: recipe has no inputs, outputs, repair effect, or automation effect.");
         }
         for (int i = 0; i < recipe.inputs().size(); i++) {
             AutomationIngredient ingredient = recipe.inputs().get(i);

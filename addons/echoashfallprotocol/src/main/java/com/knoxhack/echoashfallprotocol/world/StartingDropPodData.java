@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
@@ -56,7 +57,8 @@ public class StartingDropPodData extends SavedData {
     public static final SavedDataType<StartingDropPodData> TYPE = new SavedDataType<StartingDropPodData>(
             Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "starting_drop_pods"),
             StartingDropPodData::new,
-            CODEC
+            CODEC,
+            DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private final List<Entry> pods = new ArrayList<>();

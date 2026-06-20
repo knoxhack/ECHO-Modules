@@ -140,11 +140,13 @@ final class IndexAddonPresentation {
     }
 
     private static String loadedDisplayName(String modId, Descriptor descriptor) {
-        String display = EchoRuntimeModules.metadata(modId, descriptor == null ? modId : descriptor.displayName()).displayName();
-        if (display != null && !display.isBlank()) {
-            return display;
+        String fallback = descriptor == null ? fallbackName(modId) : descriptor.displayName();
+        String display = EchoRuntimeModules.metadata(modId, fallback).displayName();
+        if (display == null || display.isBlank()) {
+            return fallback;
         }
-        return descriptor == null ? fallbackName(modId) : descriptor.displayName();
+        String clean = display.strip();
+        return isIdLikeDisplay(clean, modId) ? fallback : clean;
     }
 
     private static String loadedVersion(String modId) {
@@ -156,6 +158,21 @@ final class IndexAddonPresentation {
         return titleCase(cleanModId(modId)
                 .replaceFirst("^echo", "echo ")
                 .replaceFirst("^neo", "neo "));
+    }
+
+    private static boolean isIdLikeDisplay(String displayName, String modId) {
+        String display = normalizeIdLike(displayName);
+        String id = normalizeIdLike(cleanModId(modId));
+        return display.equals(id) || display.equals(normalizeIdLike(fallbackName(modId)));
+    }
+
+    private static String normalizeIdLike(String value) {
+        return value == null
+                ? ""
+                : value.replace("_", "")
+                        .replace("-", "")
+                        .replace(" ", "")
+                        .toLowerCase(Locale.ROOT);
     }
 
     private static String compactLabel(String displayName, String modId) {

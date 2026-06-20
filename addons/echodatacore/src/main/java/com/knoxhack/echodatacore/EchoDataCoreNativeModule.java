@@ -4,7 +4,9 @@ import com.knoxhack.echo.adaptercore.EchoNativeEventBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeLifecycleBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeModuleAdapter;
 import com.knoxhack.echo.adaptercore.EchoNativeRegistryBridge;
+import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
+import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,6 +25,32 @@ public final class EchoDataCoreNativeModule implements EchoNativeModuleAdapter, 
             EchoDataCoreRuntimeProfileSyncContract.DATA_SYNC_CONTRACT_ID,
             EchoDataCoreRuntimeProfileSyncContract.ADAPTERCORE_CONTRACT_ID
     );
+
+    @Override
+    public void ready(EchoNativeModuleLoadContext context) {
+        boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
+        context.recordMutation(
+                "platform_services",
+                commonRegistered ? "register" : "already_registered",
+                "echodatacore:common_services",
+                commonRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
+    }
+
+    private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoDataCoreNativeModule.class.getPackageName() + ".EchoDataCore";
+        try {
+            Object result = Class.forName(moduleClassName)
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferred", true);
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return false;
+        }
+    }
 
     @Override
     public Map<String, Object> describeNativeSurfaces(Map<String, String> context) {

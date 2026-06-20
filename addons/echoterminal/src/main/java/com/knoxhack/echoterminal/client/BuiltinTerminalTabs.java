@@ -154,22 +154,34 @@ public final class BuiltinTerminalTabs {
     }
 
     public static void register() {
-        if (!REGISTERED.compareAndSet(false, true)) {
+        if (REGISTERED.get() && !TerminalTabRegistry.tabs().isEmpty()) {
             return;
         }
-        for (BuiltinTabRegistration registration : builtinTabs()) {
-            registerTab(registration.tab(), registration.profile());
+        synchronized (BuiltinTerminalTabs.class) {
+            if (REGISTERED.get() && !TerminalTabRegistry.tabs().isEmpty()) {
+                return;
+            }
+            try {
+                for (BuiltinTabRegistration registration : builtinTabs()) {
+                    registerTab(registration.tab(), registration.profile());
+                }
+                TerminalArchiveRegistry.register(new TerminalArchiveEntry(
+                        id("field_manual"),
+                        "Protocol Flow",
+                        "Terminal Field Interface",
+                        "OPEN",
+                        List.of(
+                                "Use this terminal as the command surface for installed ECHO chapters and survival routes.",
+                                "Views collect missions, field records, drone controls, route state, and chapter status when those systems are present.",
+                                "Progression stays sealed until the field route proves it; the terminal shows the clearest safe command view without opening records early."),
+                        false));
+                TerminalTabRegistry.ensureSorted();
+                REGISTERED.set(true);
+            } catch (RuntimeException | LinkageError exception) {
+                REGISTERED.set(false);
+                throw exception;
+            }
         }
-        TerminalArchiveRegistry.register(new TerminalArchiveEntry(
-                id("field_manual"),
-                "Protocol Flow",
-                "Terminal Field Interface",
-                "OPEN",
-                List.of(
-                        "Use this terminal as the command surface for installed ECHO chapters and survival routes.",
-                        "Views collect missions, field records, drone controls, route state, and chapter status when those systems are present.",
-                        "Progression stays sealed until the field route proves it; the terminal shows the clearest safe command view without opening records early."),
-                false));
     }
 
     public static Map<Identifier, TerminalNavigationProfile> builtinNavigationProfilesForTests() {

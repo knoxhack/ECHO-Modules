@@ -4,7 +4,7 @@
     <param name="inspectorTitle" value="Bookmark Tools"/>
     <slot name="content">
       <component src="echoindex:index_search_filter_bar"/>
-      <grid columns="1fr 1fr" gap="12">
+      <grid columns="1fr 1fr" gap="10" stack-below="lg">
         <panel title="Favorite Items">
           <list bind="index.favorites.items" item="item"><component src="echoindex:index_item_row"><param name="id" value="{item.id}"/><param name="icon" value="{item.icon}"/><param name="title" value="{item.displayName}"/><param name="subtitle" value="{item.modName}"/><param name="badge" value="FAV"/></component><empty-state title="No favorite items" body="Use Favorite from item detail or item cards to save frequently checked items."/></list>
         </panel>

@@ -128,6 +128,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("automation_recipe_bad_item_isolated", () -> ModGameTests::automationRecipeBadItemIsolated);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> AUTOMATION_RECIPE_EFFECTS =
             TEST_FUNCTIONS.register("automation_recipe_effects_parse", () -> ModGameTests::automationRecipeEffectsParse);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> AUTOMATION_RECIPE_EFFECT_ONLY =
+            TEST_FUNCTIONS.register("automation_recipe_effect_only_no_empty_warning", () -> ModGameTests::automationRecipeEffectOnlyNoEmptyWarning);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> AUTOMATION_RECIPE_BAD_EFFECT =
             TEST_FUNCTIONS.register("automation_recipe_bad_effect_warning", () -> ModGameTests::automationRecipeBadEffectWarning);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> AUTOMATION_EFFECT_DEDUPE =
@@ -217,6 +219,7 @@ public final class ModGameTests {
         register(event, "automation_recipe_parse", AUTOMATION_RECIPE_PARSE.getId());
         register(event, "automation_recipe_bad_item_isolated", AUTOMATION_RECIPE_BAD_ITEM.getId());
         register(event, "automation_recipe_effects_parse", AUTOMATION_RECIPE_EFFECTS.getId());
+        register(event, "automation_recipe_effect_only_no_empty_warning", AUTOMATION_RECIPE_EFFECT_ONLY.getId());
         register(event, "automation_recipe_bad_effect_warning", AUTOMATION_RECIPE_BAD_EFFECT.getId());
         register(event, "automation_effect_provider_dedupe", AUTOMATION_EFFECT_DEDUPE.getId());
         register(event, "automation_effect_failure_isolated", AUTOMATION_EFFECT_FAILURE.getId());
@@ -422,6 +425,25 @@ public final class ModGameTests {
                         }
                         """).getAsJsonObject());
         helper.assertTrue(recipe.effects().equals(List.of(EchoMultiblockCore.id("test_effect"))), "Automation effects should parse additively.");
+        helper.succeed();
+    }
+
+    private static void automationRecipeEffectOnlyNoEmptyWarning(GameTestHelper helper) {
+        MultiblockAutomationRecipeParseResult result = AutomationRecipeJsonReloadListener.parseRecipeResultForTests(EchoMultiblockCore.id("effect_only_recipe"),
+                JsonParser.parseString("""
+                        {
+                          "id": "echomultiblockcore:effect_only_recipe",
+                          "display_name": "Effect Only Recipe",
+                          "required_workcell": "ASSEMBLY",
+                          "required_tools": ["WELDER"],
+                          "effects": ["echomultiblockcore:test_effect"]
+                        }
+                        """).getAsJsonObject());
+        helper.assertTrue(result.valid(), "Effect-only recipes should parse.");
+        helper.assertTrue(result.recipe().effects().equals(List.of(EchoMultiblockCore.id("test_effect"))),
+                "Effect-only recipes should keep declared effects.");
+        helper.assertTrue(result.warnings().stream().noneMatch(warning -> warning.contains("recipe has no inputs")),
+                "Effect-only recipes should not be reported as empty.");
         helper.succeed();
     }
 

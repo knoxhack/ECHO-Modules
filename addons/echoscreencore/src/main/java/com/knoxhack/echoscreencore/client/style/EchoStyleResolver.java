@@ -14,10 +14,14 @@ import java.util.Set;
 public final class EchoStyleResolver {
     private static final Set<String> KNOWN_PROPERTIES = Set.of(
         "width", "height", "min-width", "min-height", "max-width", "max-height",
-        "padding", "margin", "gap", "layout", "direction", "columns", "rows",
+        "padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "margin", "margin-top", "margin-right", "margin-bottom", "margin-left",
+        "gap", "layout", "direction", "columns", "rows",
         "align", "justify", "background", "border-color", "border-width", "border-radius",
         "color", "font-size", "opacity", "overflow", "wrap", "text-align", "visibility",
         "glow", "shadow", "z-index", "line-height", "max-lines", "tab-height",
+        "title-color", "detail-color", "title-line-height", "detail-line-height",
+        "text-gap", "content-height",
         "fit", "surface", "surface-depth", "background-texture", "background-texture-2",
         "background-texture-3", "texture-alpha", "texture-alpha-2", "texture-alpha-3",
         "texture-inset", "texture-inset-2", "texture-inset-3",

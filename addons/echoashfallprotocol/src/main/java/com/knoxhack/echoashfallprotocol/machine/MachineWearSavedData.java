@@ -8,6 +8,7 @@ import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
@@ -30,7 +31,8 @@ public class MachineWearSavedData extends SavedData {
     public static final SavedDataType<MachineWearSavedData> TYPE = new SavedDataType<>(
             Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "machine_wear"),
             MachineWearSavedData::new,
-            CODEC
+            CODEC,
+            DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private final Map<String, Entry> entries = new HashMap<>();

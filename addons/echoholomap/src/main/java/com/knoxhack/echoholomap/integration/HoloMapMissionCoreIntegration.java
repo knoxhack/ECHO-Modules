@@ -14,7 +14,6 @@ import com.knoxhack.echoholomap.EchoHoloMap;
 import java.util.Map;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public final class HoloMapMissionCoreIntegration {
     private static final Identifier CHAPTER = id("holomap");
@@ -37,19 +36,19 @@ public final class HoloMapMissionCoreIntegration {
         registerMission(registry, "discover_terrain", "terrain", MissionObjectiveType.ENTER_REGION,
                 "Discover Terrain", "Let HoloMap sample new terrain around the operator.",
                 "Terrain tiles are now cached for the map surface.",
-                new ItemStack(Items.FILLED_MAP), 0, 3, "Sample terrain chunks", new ItemStack(Items.PAPER, 4));
+                ItemStack.EMPTY, 0, 3, "Sample terrain chunks", ItemStack.EMPTY);
         registerMission(registry, "create_waypoint", "waypoint", MissionObjectiveType.CUSTOM,
                 "Create Waypoint", "Save a personal or shared waypoint.",
                 "Waypoint storage is now linked to the command map.",
-                new ItemStack(Items.COMPASS), 1, 1, "Create a waypoint", new ItemStack(Items.COMPASS, 1));
+                ItemStack.EMPTY, 1, 1, "Create a waypoint", ItemStack.EMPTY);
         registerMission(registry, "reveal_marker", "marker", MissionObjectiveType.DISCOVER_STRUCTURE,
                 "Reveal Marker", "Reveal a server-side map marker such as a debug, route, or recovery point.",
                 "Marker visibility is confirmed.",
-                new ItemStack(Items.SPYGLASS), 2, 1, "Reveal a map marker", new ItemStack(Items.GLOWSTONE_DUST, 2));
+                ItemStack.EMPTY, 2, 1, "Reveal a map marker", ItemStack.EMPTY);
         registerMission(registry, "sync_route", "sync", MissionObjectiveType.ESTABLISH_ROUTE,
                 "Sync Route", "Open HoloMap after route or recovery markers are available.",
                 "Route and recovery overlays are synced to the client.",
-                new ItemStack(Items.RECOVERY_COMPASS), 3, 1, "Sync route markers", new ItemStack(Items.REDSTONE, 4));
+                ItemStack.EMPTY, 3, 1, "Sync route markers", ItemStack.EMPTY);
     }
 
     private static void registerMission(

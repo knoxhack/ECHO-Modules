@@ -20,11 +20,13 @@ import com.knoxhack.echoterminal.api.mission.TerminalMissionStatus;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 public final class BlackboxMissionProvider implements TerminalMissionProvider {
@@ -382,7 +384,7 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Decoded memories",
                   "Any typed Blackbox memory records.",
-                  new ItemStack((ItemLike)ModItems.PERSONAL_BLACKBOX_FRAGMENT.get()),
+                  stack(() -> (ItemLike) ModItems.PERSONAL_BLACKBOX_FRAGMENT.get(), Items.PAPER, 1),
                   progress.decodedMemoryTotal(),
                   6
                )
@@ -391,21 +393,21 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Personal Logs",
                   "Personal memory route proof.",
-                  new ItemStack((ItemLike)ModItems.PERSONAL_MEMORY_RECORD.get()),
+                  stack(() -> (ItemLike) ModItems.PERSONAL_MEMORY_RECORD.get(), Items.PAPER, 1),
                   progress.memoryCount(MemoryType.PERSONAL),
                   2
                ),
                requirement(
                   "Security Logs",
                   "Security memory route proof.",
-                  new ItemStack((ItemLike)ModItems.SECURITY_MEMORY_RECORD.get()),
+                  stack(() -> (ItemLike) ModItems.SECURITY_MEMORY_RECORD.get(), Items.PAPER, 1),
                   progress.memoryCount(MemoryType.SECURITY),
                   2
                ),
                requirement(
                   "Vault Proof",
                   "Blackbox Vault dungeon proof sealed.",
-                  new ItemStack((ItemLike)ModBlocks.VAULT_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.VAULT_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.completed(BlackboxDungeon.VAULT) ? 1 : 0,
                   1
                )
@@ -414,21 +416,21 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Vault Route",
                   "Vault proof recovered.",
-                  new ItemStack((ItemLike)ModBlocks.VAULT_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.VAULT_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.completed(BlackboxDungeon.VAULT) ? 1 : 0,
                   1
                ),
                requirement(
                   "Command Logs",
                   "Command memory route proof.",
-                  new ItemStack((ItemLike)ModItems.COMMAND_MEMORY_RECORD.get()),
+                  stack(() -> (ItemLike) ModItems.COMMAND_MEMORY_RECORD.get(), Items.PAPER, 1),
                   progress.memoryCount(MemoryType.COMMAND),
                   2
                ),
                requirement(
                   "Bunker Proof",
                   "Command Bunker dungeon proof sealed.",
-                  new ItemStack((ItemLike)ModBlocks.BUNKER_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.BUNKER_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.completed(BlackboxDungeon.BUNKER) ? 1 : 0,
                   1
                )
@@ -437,14 +439,14 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "False ECHO",
                   "ECHO Identity Fragment proof.",
-                  new ItemStack((ItemLike)ModItems.ECHO_IDENTITY_FRAGMENT.get()),
+                  stack(() -> (ItemLike) ModItems.ECHO_IDENTITY_FRAGMENT.get(), Items.AMETHYST_SHARD, 1),
                   progress.bossDefeated("false_echo") ? 1 : 0,
                   1
                ),
                requirement(
                   "Command Remnant",
                   "Command Key proof.",
-                  new ItemStack((ItemLike)ModItems.COMMAND_KEY.get()),
+                  stack(() -> (ItemLike) ModItems.COMMAND_KEY.get(), Items.TRIPWIRE_HOOK, 1),
                   progress.bossDefeated("command_remnant") ? 1 : 0,
                   1
                )
@@ -453,21 +455,21 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "False ECHO Proof",
                   "ECHO Identity Fragment recovered.",
-                  new ItemStack((ItemLike)ModItems.ECHO_IDENTITY_FRAGMENT.get()),
+                  stack(() -> (ItemLike) ModItems.ECHO_IDENTITY_FRAGMENT.get(), Items.AMETHYST_SHARD, 1),
                   progress.bossDefeated("false_echo") ? 1 : 0,
                   1
                ),
                requirement(
                   "ECHO Logs",
                   "ECHO memory route proof.",
-                  new ItemStack((ItemLike)ModItems.ECHO_MEMORY_RECORD.get()),
+                  stack(() -> (ItemLike) ModItems.ECHO_MEMORY_RECORD.get(), Items.PAPER, 1),
                   progress.memoryCount(MemoryType.ECHO),
                   2
                ),
                requirement(
                   "Labyrinth Proof",
                   "Memory Labyrinth route stabilized.",
-                  new ItemStack((ItemLike)ModBlocks.LABYRINTH_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.LABYRINTH_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.completed(BlackboxDungeon.LABYRINTH) ? 1 : 0,
                   1
                )
@@ -476,21 +478,21 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Command Remnant Proof",
                   "Command Key recovered.",
-                  new ItemStack((ItemLike)ModItems.COMMAND_KEY.get()),
+                  stack(() -> (ItemLike) ModItems.COMMAND_KEY.get(), Items.TRIPWIRE_HOOK, 1),
                   progress.bossDefeated("command_remnant") ? 1 : 0,
                   1
                ),
                requirement(
                   "Core Logs",
                   "Core memory route proof.",
-                  new ItemStack((ItemLike)ModItems.CORE_MEMORY_RECORD.get()),
+                  stack(() -> (ItemLike) ModItems.CORE_MEMORY_RECORD.get(), Items.PAPER, 1),
                   progress.memoryCount(MemoryType.CORE),
                   2
                ),
                requirement(
                   "Temple Proof",
                   "Core Access Temple proof sealed.",
-                  new ItemStack((ItemLike)ModBlocks.TEMPLE_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.TEMPLE_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.completed(BlackboxDungeon.TEMPLE) ? 1 : 0,
                   1
                )
@@ -499,7 +501,7 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Nexus Core Access Key",
                   "Assembled at the Core Key Assembler.",
-                  new ItemStack((ItemLike)ModItems.NEXUS_CORE_ACCESS_KEY.get()),
+                  stack(() -> (ItemLike) ModItems.NEXUS_CORE_ACCESS_KEY.get(), Items.TRIPWIRE_HOOK, 1),
                   progress.hasNexusCoreAccessKey() ? 1 : 0,
                   1
                )
@@ -508,7 +510,7 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Core Chamber Route",
                   "Nexus Core Access Key accepted.",
-                  new ItemStack((ItemLike)ModBlocks.CORE_CHAMBER_MONOLITH.get()),
+                  stack(() -> (ItemLike) ModBlocks.CORE_CHAMBER_MONOLITH.get(), Items.LODESTONE, 1),
                   progress.canEnter(BlackboxDungeon.CORE_CHAMBER) ? 1 : 0,
                   1
                )
@@ -517,7 +519,7 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Guardian Core",
                   "Nexus Guardian defeated.",
-                  new ItemStack((ItemLike)ModItems.GUARDIAN_CORE.get()),
+                  stack(() -> (ItemLike) ModItems.GUARDIAN_CORE.get(), Items.NETHER_STAR, 1),
                   progress.bossDefeated("nexus_guardian") ? 1 : 0,
                   1
                )
@@ -526,7 +528,7 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
                requirement(
                   "Truth Engine",
                   "Restore, Control, Destroy, or Merge directive committed.",
-                  new ItemStack((ItemLike)ModBlocks.TRUTH_ENGINE.get()),
+                  stack(() -> (ItemLike) ModBlocks.TRUTH_ENGINE.get(), Items.LECTERN, 1),
                   progress.ending() == BlackboxEnding.NONE ? 0 : 1,
                   1
                )
@@ -536,31 +538,31 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
 
       List<ItemStack> rewards() {
         return switch (this) {
-            case DECODE -> List.of(new ItemStack((ItemLike)ModItems.STATIC_FLUID.get(), 2));
-            case VAULT -> List.of(new ItemStack((ItemLike)ModItems.CORRUPTED_FERRITE.get(), 4));
-            case BUNKER -> List.of(new ItemStack((ItemLike)ModItems.CORE_ACCESS_KEY_MATRIX.get()));
-            case BOSSES -> List.of(new ItemStack((ItemLike)ModItems.CORE_ACCESS_KEY_MATRIX.get()));
-            case LABYRINTH -> List.of(new ItemStack((ItemLike)ModItems.CORE_ACCESS_KEY_RIGHT.get()));
-            case TEMPLE -> List.of(new ItemStack((ItemLike)ModItems.STATIC_FLUID.get(), 3));
-            case KEY -> List.of(new ItemStack((ItemLike)ModItems.STATIC_FLUID.get(), 4));
-            case CORE_CHAMBER -> List.of(new ItemStack((ItemLike)ModItems.STATIC_FLUID.get(), 4));
-            case GUARDIAN -> List.of(new ItemStack((ItemLike)ModItems.RESTORE_DIRECTIVE.get()), new ItemStack((ItemLike)ModItems.DESTROY_DIRECTIVE.get()));
-            case ENDING -> List.of(new ItemStack((ItemLike)ModItems.DELETED_BLACKBOX_FRAGMENT.get()));
+            case DECODE -> List.of(stack(() -> (ItemLike) ModItems.STATIC_FLUID.get(), Items.GLASS_BOTTLE, 2));
+            case VAULT -> List.of(stack(() -> (ItemLike) ModItems.CORRUPTED_FERRITE.get(), Items.IRON_INGOT, 4));
+            case BUNKER -> List.of(stack(() -> (ItemLike) ModItems.CORE_ACCESS_KEY_MATRIX.get(), Items.TRIPWIRE_HOOK, 1));
+            case BOSSES -> List.of(stack(() -> (ItemLike) ModItems.CORE_ACCESS_KEY_MATRIX.get(), Items.TRIPWIRE_HOOK, 1));
+            case LABYRINTH -> List.of(stack(() -> (ItemLike) ModItems.CORE_ACCESS_KEY_RIGHT.get(), Items.TRIPWIRE_HOOK, 1));
+            case TEMPLE -> List.of(stack(() -> (ItemLike) ModItems.STATIC_FLUID.get(), Items.GLASS_BOTTLE, 3));
+            case KEY -> List.of(stack(() -> (ItemLike) ModItems.STATIC_FLUID.get(), Items.GLASS_BOTTLE, 4));
+            case CORE_CHAMBER -> List.of(stack(() -> (ItemLike) ModItems.STATIC_FLUID.get(), Items.GLASS_BOTTLE, 4));
+            case GUARDIAN -> List.of(stack(() -> (ItemLike) ModItems.RESTORE_DIRECTIVE.get(), Items.PAPER, 1), stack(() -> (ItemLike) ModItems.DESTROY_DIRECTIVE.get(), Items.PAPER, 1));
+            case ENDING -> List.of(stack(() -> (ItemLike) ModItems.DELETED_BLACKBOX_FRAGMENT.get(), Items.PAPER, 1));
          };
       }
 
       ItemStack icon() {
          return switch (this) {
-            case DECODE -> new ItemStack((ItemLike)ModBlocks.BLACKBOX_DECODER.get());
-            case VAULT -> new ItemStack((ItemLike)ModBlocks.VAULT_MONOLITH.get());
-            case BUNKER -> new ItemStack((ItemLike)ModBlocks.BUNKER_MONOLITH.get());
-            case BOSSES -> new ItemStack((ItemLike)ModItems.ECHO_IDENTITY_FRAGMENT.get());
-            case LABYRINTH -> new ItemStack((ItemLike)ModBlocks.LABYRINTH_MONOLITH.get());
-            case TEMPLE -> new ItemStack((ItemLike)ModBlocks.TEMPLE_MONOLITH.get());
-            case KEY -> new ItemStack((ItemLike)ModItems.NEXUS_CORE_ACCESS_KEY.get());
-            case CORE_CHAMBER -> new ItemStack((ItemLike)ModBlocks.CORE_CHAMBER_MONOLITH.get());
-            case GUARDIAN -> new ItemStack((ItemLike)ModItems.GUARDIAN_CORE.get());
-            case ENDING -> new ItemStack((ItemLike)ModBlocks.TRUTH_ENGINE.get());
+            case DECODE -> stack(() -> (ItemLike) ModBlocks.BLACKBOX_DECODER.get(), Items.COMPARATOR, 1);
+            case VAULT -> stack(() -> (ItemLike) ModBlocks.VAULT_MONOLITH.get(), Items.LODESTONE, 1);
+            case BUNKER -> stack(() -> (ItemLike) ModBlocks.BUNKER_MONOLITH.get(), Items.LODESTONE, 1);
+            case BOSSES -> stack(() -> (ItemLike) ModItems.ECHO_IDENTITY_FRAGMENT.get(), Items.AMETHYST_SHARD, 1);
+            case LABYRINTH -> stack(() -> (ItemLike) ModBlocks.LABYRINTH_MONOLITH.get(), Items.LODESTONE, 1);
+            case TEMPLE -> stack(() -> (ItemLike) ModBlocks.TEMPLE_MONOLITH.get(), Items.LODESTONE, 1);
+            case KEY -> stack(() -> (ItemLike) ModItems.NEXUS_CORE_ACCESS_KEY.get(), Items.TRIPWIRE_HOOK, 1);
+            case CORE_CHAMBER -> stack(() -> (ItemLike) ModBlocks.CORE_CHAMBER_MONOLITH.get(), Items.LODESTONE, 1);
+            case GUARDIAN -> stack(() -> (ItemLike) ModItems.GUARDIAN_CORE.get(), Items.NETHER_STAR, 1);
+            case ENDING -> stack(() -> (ItemLike) ModBlocks.TRUTH_ENGINE.get(), Items.LECTERN, 1);
          };
       }
 
@@ -569,5 +571,24 @@ public final class BlackboxMissionProvider implements TerminalMissionProvider {
          int safeHave = Math.max(0, Math.min(safeNeed, have));
          return TerminalMissionRequirement.custom(label, detail, icon, safeHave, safeNeed, safeHave >= safeNeed);
       }
+   }
+
+   private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
+      try {
+         ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+         return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+      } catch (RuntimeException | LinkageError ignored) {
+         return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+      }
+   }
+
+   private static boolean nativeLoaderActive() {
+      return Boolean.getBoolean("echo.native.loader")
+         || !System.getProperty("echo.native.moduleIds", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
    }
 }

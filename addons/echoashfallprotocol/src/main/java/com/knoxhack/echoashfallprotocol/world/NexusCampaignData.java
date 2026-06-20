@@ -15,6 +15,7 @@ import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
@@ -73,7 +74,8 @@ public class NexusCampaignData extends SavedData {
     public static final SavedDataType<NexusCampaignData> TYPE = new SavedDataType<>(
             Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "nexus_campaign"),
             NexusCampaignData::new,
-            CODEC
+            CODEC,
+            DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private int instability = 0;

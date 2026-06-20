@@ -104,18 +104,19 @@ public final class HoloMapScreenCoreIntegration {
 
     public static boolean openFullscreen() {
         register();
-        EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
-                "open",
-                "holomap.screencore.open_fullscreen",
-                HoloMapScreenCoreIntegration.class.getName(),
-                Map.of(
-                        "targetScreenClass", HoloMapScreenCoreIntegration.class.getName(),
-                        "transitionSource", "holomap_screencore_open_fullscreen",
-                        "screenBridge", "echoscreencore"
-                ));
-        if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
+                        "open",
+                        "holomap.screencore.open_fullscreen",
+                        HoloMapScreenCoreIntegration.class.getName(),
+                        Map.of(
+                                "targetScreenClass", HoloMapScreenCoreIntegration.class.getName(),
+                                "transitionSource", "holomap_screencore_open_fullscreen",
+                                "screenBridge", "echoscreencore"
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         HoloMapUiController.fullscreen().open();
         return EchoScreens.open(FULLSCREEN_PAGE, EchoDataContext.empty()

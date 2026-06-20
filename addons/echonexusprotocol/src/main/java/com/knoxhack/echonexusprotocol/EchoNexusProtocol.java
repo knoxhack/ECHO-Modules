@@ -19,6 +19,7 @@ import com.knoxhack.echonexusprotocol.registry.ModRecipes;
 import com.knoxhack.echonexusprotocol.registry.ModSounds;
 import com.knoxhack.echonexusprotocol.registry.ModWorldgen;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -44,6 +45,7 @@ public class EchoNexusProtocol {
       "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Pre";
    private static final String REGISTER_COMMANDS_EVENT =
       "net.neoforged.neoforge.event.RegisterCommandsEvent";
+   private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
    public static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(MODID, path);
@@ -87,14 +89,24 @@ public class EchoNexusProtocol {
 }
 
    private void commonSetup(Object event) {
-      LOGGER.info("ECHO-7 Nexus systems initialized. Reality field telemetry online.");
-      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-         NexusCoreIntegration.register();
-         registerTerminalCommonIntegration();
-         if (EchoRuntimeModules.isLoaded("echomachinecore")) {
-            tryInvoke("com.knoxhack.echonexusprotocol.integration.NexusMachineCoreRuntimeProvider");
-         }
-      });
+      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+   }
+
+   public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+      return registerCommonServices("native_loader_module_ready");
+   }
+
+   private static boolean registerCommonServices(String source) {
+      if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+         return false;
+      }
+      LOGGER.info("ECHO-7 Nexus systems initialized [{}]. Reality field telemetry online.", source);
+      NexusCoreIntegration.register();
+      registerTerminalCommonIntegration();
+      if (EchoRuntimeModules.isLoaded("echomachinecore")) {
+         tryInvoke("com.knoxhack.echonexusprotocol.integration.NexusMachineCoreRuntimeProvider");
+      }
+      return true;
    }
 
    private static void registerTerminalCommonIntegration() {

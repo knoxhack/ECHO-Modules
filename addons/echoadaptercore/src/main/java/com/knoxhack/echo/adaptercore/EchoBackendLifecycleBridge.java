@@ -15,6 +15,8 @@ public final class EchoBackendLifecycleBridge {
     private static final String MINECRAFT_CLIENT = "net.minecraft.client.Minecraft";
     private static final String REGISTER_GAME_TESTS_EVENT =
             "net.neoforged.neoforge.event.RegisterGameTestsEvent";
+    private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
 
     private EchoBackendLifecycleBridge() {
     }
@@ -30,10 +32,11 @@ public final class EchoBackendLifecycleBridge {
             return;
         }
         Class<?> eventClass = resolveClass(eventClassName);
-        if (eventClass != null && invokeClassConsumer(eventBus, "addListener", eventClass, listener)) {
+        Consumer<?> effectiveListener = wrapPayloadRegistrationListener(eventClassName, listener);
+        if (eventClass != null && invokeClassConsumer(eventBus, "addListener", eventClass, effectiveListener)) {
             return;
         }
-        registerModListener(eventBus, listener);
+        registerModListener(eventBus, effectiveListener);
     }
 
     public static void registerGameEventListener(Object listener) {
@@ -163,6 +166,25 @@ public final class EchoBackendLifecycleBridge {
             }
         }
         return false;
+    }
+
+    private static Consumer<?> wrapPayloadRegistrationListener(String eventClassName, Consumer<?> listener) {
+        if (!REGISTER_PAYLOAD_HANDLERS_EVENT.equals(eventClassName) || listener == null) {
+            return listener;
+        }
+        return event -> runWithNetCorePayloadRegistrationEvent(event, listener);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void runWithNetCorePayloadRegistrationEvent(Object event, Consumer<?> listener) {
+        Runnable work = () -> ((Consumer<Object>) listener).accept(event);
+        try {
+            Class.forName("com.knoxhack.echonetcore.api.EchoNetPayloads")
+                    .getMethod("withRegistrationEvent", Object.class, Runnable.class)
+                    .invoke(null, event, work);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+            work.run();
+        }
     }
 
     private static boolean construct(Constructor<?> constructor, Object... arguments) {

@@ -55,13 +55,26 @@ final class IndexTooltipUtil {
                 lines.add(line.getVisualOrderText());
             }
         }
-        Optional<TooltipComponent> image = stack.getTooltipImage();
+        boolean nativeClient = EchoIndexClient.nativeLoaderClientActiveForScreens();
+        Optional<TooltipComponent> image = nativeClient ? Optional.empty() : stack.getTooltipImage();
         Optional<TooltipComponent> customImage = image;
-        if (!EchoIndexClient.nativeLoaderClientActiveForScreens() && stack.getItem() instanceof BlockItem) {
+        if (!nativeClient && stack.getItem() instanceof BlockItem) {
             customImage = Optional.of(new IndexBlockPreviewTooltipData(stack, image, previewSize(graphics)));
         }
-        graphics.setTooltipForNextFrame(font, lines, customImage, IndexTooltipPositioner.INSTANCE, x, y, false,
-                stack.get(DataComponents.TOOLTIP_STYLE));
+        setTooltipForNextFrame(graphics, font, lines, customImage, x, y, stack.get(DataComponents.TOOLTIP_STYLE));
+    }
+
+    private static void setTooltipForNextFrame(GuiGraphicsExtractor graphics, Font font,
+            List<FormattedCharSequence> lines, Optional<TooltipComponent> image, int x, int y, Identifier style) {
+        try {
+            graphics.setTooltipForNextFrame(font, lines, image, IndexTooltipPositioner.INSTANCE, x, y, false, style);
+        } catch (RuntimeException exception) {
+            try {
+                graphics.setTooltipForNextFrame(font, lines, Optional.empty(), IndexTooltipPositioner.INSTANCE, x, y,
+                        false, null);
+            } catch (RuntimeException ignored) {
+            }
+        }
     }
 
     private static int previewSize(GuiGraphicsExtractor graphics) {

@@ -15,6 +15,7 @@ import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreens;
 import com.knoxhack.echoterminal.client.screen.TerminalClientConfigIntegration;
 import com.knoxhack.echoterminal.client.screen.TerminalClientOptions;
+import com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreBridge;
 import com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen;
 import com.knoxhack.echoterminal.menu.EchoTerminalMenu;
 import com.knoxhack.echoterminal.registry.ModMenus;
@@ -38,6 +39,15 @@ import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public class EchoTerminalClient {
+    private static final String INPUT_KEY_EVENT = "net.neoforged.neoforge.client.event.InputEvent$Key";
+    private static final String CLIENT_TICK_POST_EVENT = "net.neoforged.neoforge.client.event.ClientTickEvent$Post";
+    private static final String RENDER_GUI_POST_EVENT = "net.neoforged.neoforge.client.event.RenderGuiEvent$Post";
+    private static final String REGISTER_KEY_MAPPINGS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
+    private static final String REGISTER_MENU_SCREENS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterMenuScreensEvent";
+    private static final String ENTITY_RENDERERS_REGISTER_RENDERERS_EVENT =
+            "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers";
     private static final AtomicBoolean NATIVE_ROUTE_REGISTERED = new AtomicBoolean(false);
     private static final ThreadLocal<TerminalScreenCoreScreen> NATIVE_SCREEN_CORE_SCREEN = new ThreadLocal<>();
     private static final ThreadLocal<EchoAction> NATIVE_SCREEN_CORE_ACTION = new ThreadLocal<>();
@@ -67,9 +77,9 @@ public class EchoTerminalClient {
         TerminalClientOptions.load();
         TerminalClientConfigIntegration.register();
         BuiltinTerminalTabs.register();
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoTerminalClient::onKeyInput);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoTerminalClient::onClientTick);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoTerminalClient::onRenderGui);
+        EchoBackendLifecycleBridge.registerGameEventHandler(INPUT_KEY_EVENT, EchoTerminalClient::onKeyInput);
+        EchoBackendLifecycleBridge.registerGameEventHandler(CLIENT_TICK_POST_EVENT, EchoTerminalClient::onClientTick);
+        EchoBackendLifecycleBridge.registerGameEventHandler(RENDER_GUI_POST_EVENT, EchoTerminalClient::onRenderGui);
         TerminalEventHandler.register();
         if (EchoRuntimeModules.isLoaded("echorendercore")) {
             registerRenderCoreScreenIntegration();
@@ -77,9 +87,12 @@ public class EchoTerminalClient {
         if (EchoRuntimeModules.isLoaded("echoscreencore")) {
             registerScreenCoreIntegration();
         }
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterMenuScreens);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterRenderers);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_KEY_MAPPINGS_EVENT,
+                ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_MENU_SCREENS_EVENT,
+                ClientModEvents::onRegisterMenuScreens);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ENTITY_RENDERERS_REGISTER_RENDERERS_EVENT,
+                ClientModEvents::onRegisterRenderers);
         registerNativeClientRoutes();
     }
 
@@ -87,6 +100,7 @@ public class EchoTerminalClient {
         if (!EchoBackendClientBridge.keyActionEquals(event, GLFW.GLFW_PRESS)) {
             return;
         }
+        Minecraft minecraft = Minecraft.getInstance();
         if (nativeLoaderActive()) {
             EchoNativeLoadStatus status = dispatchNativeInput(event);
             if (status == EchoNativeLoadStatus.MUTATED) {
@@ -94,10 +108,9 @@ public class EchoTerminalClient {
             }
         }
         if (!EchoBackendClientBridge.keyMappingMatches(OPEN_TERMINAL_KEY, event)
-                && (!nativeLoaderActive() || EchoBackendClientBridge.keyCode(event) != GLFW.GLFW_KEY_M)) {
+                && EchoBackendClientBridge.keyCode(event) != GLFW.GLFW_KEY_M) {
             return;
         }
-        Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null) {
             return;
         }
@@ -210,12 +223,16 @@ public class EchoTerminalClient {
                 "echoterminal:eui",
                 "terminal",
                 Map.of(
-                        "nativeSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreen",
-                        "nativeScreenBridgeClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreens",
+                        "nativeSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen",
+                        "nativeScreenBridgeClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreBridge",
+                        "fallbackSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreen",
+                        "fallbackScreenBridgeClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreens",
+                        "screenBridge", "echoscreencore",
                         "source", "echoterminal_native_module_route_registrar"),
                 Map.of(
                         "nativeClientRouteProcess", true,
                         "clientRouteMutationSupported", true,
+                        "screenCoreSurface", true,
                         "nativeClientRouteSdk", "echo-native-client-route-registry"),
                 true);
         registry.registerActions(EchoTerminal.MODID, "echoterminal:eui", "terminal", Map.ofEntries(
@@ -323,7 +340,8 @@ public class EchoTerminalClient {
     private static EchoNativeLoadStatus dispatchNativeInput(Object event) {
         EchoNativeClientRouteRegistry registry = EchoNativeClientRouteRegistries.get();
         for (NativeTerminalInputBinding binding : NATIVE_TERMINAL_INPUT_BINDINGS) {
-            if (EchoBackendClientBridge.keyMappingMatches(OPEN_TERMINAL_KEY, event)) {
+            if (EchoBackendClientBridge.keyMappingMatches(OPEN_TERMINAL_KEY, event)
+                    || EchoBackendClientBridge.keyCode(event) == binding.keyCode()) {
                 return registry.keyInput(
                         binding.keyMapping(),
                         binding.keyCode(),
@@ -571,6 +589,34 @@ public class EchoTerminalClient {
                 "liveSessionBridge", "echo-terminal-native-session");
     }
 
+    public static boolean openNativeTerminalFromLaunchScreen() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.player == null) {
+            return false;
+        }
+        if (minecraft.screen != null && !EchoTerminalScreens.isManagedTerminalScreen(minecraft.screen)) {
+            minecraft.setScreen(null);
+        }
+        if (nativeLoaderActive()) {
+            publishNativeScreenLifecycle(
+                    "open",
+                    "terminal.open",
+                    TerminalScreenCoreScreen.class.getName(),
+                    Map.of(
+                            "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
+                            "transitionSource", "terminal_native_launch_screen",
+                            "screenBridge", "terminal_screencore",
+                            "nativePlaceholderScreenBypassed", true
+                    ));
+        } else {
+            registerScreenCoreIntegration();
+        }
+        if (openNativeScreenCoreTerminal()) {
+            return true;
+        }
+        return openBootstrappedTerminalFallback(minecraft);
+    }
+
     private static boolean openTerminalScreen() {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null || EchoTerminalScreens.isManagedTerminalScreen(minecraft.screen)) {
@@ -580,36 +626,68 @@ public class EchoTerminalClient {
             return false;
         }
         if (nativeLoaderActive()) {
+            publishNativeScreenLifecycle(
+                    "open",
+                    "terminal.open",
+                    TerminalScreenCoreScreen.class.getName(),
+                    Map.of(
+                            "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
+                            "transitionSource", "terminal_route_open",
+                            "screenBridge", "terminal_screencore",
+                            "nativePlaceholderScreenBypassed", true
+                    ));
+            if (openNativeScreenCoreTerminal()) {
+                return true;
+            }
             EchoNativeLoadStatus lifecycleStatus = publishNativeScreenLifecycle(
                     "open",
                     "terminal.open",
-                    EchoNativeTerminalScreen.class.getName(),
+                    EchoTerminalScreen.class.getName(),
                     Map.of(
-                            "targetScreenClass", EchoNativeTerminalScreen.class.getName(),
+                            "targetScreenClass", EchoTerminalScreen.class.getName(),
                             "transitionSource", "terminal_route_open",
-                            "screenBridge", "native_terminal"
+                            "screenBridge", "classic_terminal"
                     ));
-            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+            if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
                 return false;
             }
-            minecraft.setScreen(new EchoNativeTerminalScreen());
-            return true;
+            return openBootstrappedTerminalFallback(minecraft);
         }
-        if (nativeLoaderActive()) {
+        return openBootstrappedTerminalFallback(minecraft);
+    }
+
+    private static boolean openNativeScreenCoreTerminal() {
+        try {
+            registerNativeProductTerminalIntegrations();
+            BuiltinTerminalCommonIntegration.register();
+            BuiltinTerminalTabs.register();
+            TerminalTabRegistry.ensureSorted();
             registerScreenCoreIntegration();
-        }
-        EchoNativeLoadStatus lifecycleStatus = publishNativeScreenLifecycle(
-                "open",
-                "terminal.open",
-                "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen",
-                Map.of(
-                        "targetScreenClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen",
-                        "transitionSource", "terminal_route_open",
-                        "screenBridge", "terminal_screencore"
-                ));
-        if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+            boolean opened = TerminalScreenCoreBridge.open();
+            if (!opened) {
+                EchoTerminal.LOGGER.warn(
+                        "ECHO Terminal Native route could not open ScreenCore directly; falling back to registered screen providers. tabCount={}, screenCorePresent={}, useScreenCore={}.",
+                        TerminalTabRegistry.tabs().size(),
+                        TerminalScreenCoreBridge.screenCorePresent(),
+                        TerminalClientOptions.useScreenCore());
+            }
+            return opened;
+        } catch (RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.warn(
+                    "ECHO Terminal Native route failed while opening ScreenCore directly; falling back to registered screen providers.",
+                    exception);
             return false;
         }
+    }
+
+    private static boolean openBootstrappedTerminalFallback(Minecraft minecraft) {
+        if (minecraft.player == null) {
+            return false;
+        }
+        registerNativeProductTerminalIntegrations();
+        BuiltinTerminalCommonIntegration.register();
+        BuiltinTerminalTabs.register();
+        TerminalTabRegistry.ensureSorted();
         minecraft.setScreen(EchoTerminalScreens.create(
                 new EchoTerminalMenu(0, minecraft.player.getInventory()),
                 minecraft.player.getInventory(),
@@ -627,26 +705,46 @@ public class EchoTerminalClient {
             minecraft.player.sendSystemMessage(Component.literal("Terminal native route unavailable: invalid tab " + tabId));
             return false;
         }
-        if (!EchoRuntimeModules.isLoaded("echoscreencore")) {
+        if (!nativeLoaderActive() && !EchoRuntimeModules.isLoaded("echoscreencore")) {
             minecraft.player.sendSystemMessage(Component.literal("Terminal native route unavailable: ScreenCore is not loaded."));
             return false;
         }
         try {
-            Object opened = Class.forName("com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreBridge")
-                    .getMethod("openTab", Identifier.class)
-                    .invoke(null, parsed);
-            boolean success = opened instanceof Boolean value && value;
+            BuiltinTerminalCommonIntegration.register();
+            BuiltinTerminalTabs.register();
+            TerminalTabRegistry.ensureSorted();
+            registerScreenCoreIntegration();
+            boolean success = TerminalScreenCoreBridge.openTab(parsed);
             if (success) {
                 minecraft.player.sendSystemMessage(Component.literal("Terminal route // " + label));
             } else {
                 minecraft.player.sendSystemMessage(Component.literal("Terminal native route unavailable: " + label));
             }
             return success;
-        } catch (ReflectiveOperationException | LinkageError | RuntimeException exception) {
+        } catch (LinkageError | RuntimeException exception) {
             EchoTerminal.LOGGER.warn("ECHO Terminal native route {} could not open ScreenCore tab {}.",
                     label, parsed, exception);
             minecraft.player.sendSystemMessage(Component.literal("Terminal native route unavailable: " + label));
             return false;
+        }
+    }
+
+    private static void registerNativeProductTerminalIntegrations() {
+        if (!nativeLoaderActive()) {
+            return;
+        }
+        invokeOptionalProductTerminalBootstrap("com.knoxhack.echoashfallprotocol.EchoAshfallProtocolClient");
+    }
+
+    private static void invokeOptionalProductTerminalBootstrap(String className) {
+        try {
+            Class.forName(className)
+                    .getMethod("bootstrapClient")
+                    .invoke(null);
+        } catch (ClassNotFoundException ignored) {
+            // Optional pack integration is absent for non-Ashfall terminal hosts.
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.debug("Optional terminal product bootstrap {} was not available.", className, exception);
         }
     }
 
@@ -656,6 +754,84 @@ public class EchoTerminalClient {
 
     public static boolean nativeLoaderClientActiveForScreens() {
         return nativeLoaderActive();
+    }
+
+    public static boolean publishNativeScreenLifecycleMutated(
+            String phase,
+            String actionId,
+            String screenClass,
+            Map<String, Object> metadata
+    ) {
+        return nativeLoaderActive()
+                && publishNativeScreenLifecycle(phase, actionId, screenClass, metadata) == EchoNativeLoadStatus.MUTATED;
+    }
+
+    public static void publishNativeScreenLifecycleIfActive(
+            String phase,
+            String actionId,
+            String screenClass,
+            Map<String, Object> metadata
+    ) {
+        if (nativeLoaderActive()) {
+            publishNativeScreenLifecycle(phase, actionId, screenClass, metadata);
+        }
+    }
+
+    public static void publishNativeScreenCoreInputResult(
+            String actionId,
+            String eventType,
+            boolean handled,
+            Map<String, Object> metadata
+    ) {
+        if (!nativeLoaderActive()) {
+            return;
+        }
+        Map<String, Object> event = new LinkedHashMap<>();
+        event.put("source", "native_screencore_input_local_result");
+        event.put("eventType", textOrDefault(eventType, "terminal_screencore_input"));
+        event.put("screenClass", TerminalScreenCoreScreen.class.getName());
+        event.put("screenBridge", "echoscreencore");
+        event.put("localScreenCoreInputHandled", handled);
+        if (metadata != null) {
+            event.putAll(metadata);
+        }
+        publishNativeScreenLifecycle(
+                "input",
+                textOrDefault(actionId, "terminal.screencore.input"),
+                TerminalScreenCoreScreen.class.getName(),
+                event);
+    }
+
+    public static void publishNativeScreenCoreActionResult(
+            String screenCoreActionId,
+            EchoActionContext actionContext,
+            boolean handled
+    ) {
+        if (!nativeLoaderActive()) {
+            return;
+        }
+        Map<String, Object> metadata = new LinkedHashMap<>();
+        metadata.put("source", "native_screencore_action_local_result");
+        metadata.put("eventType", "terminal_screencore_action");
+        metadata.put("screenClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreActions");
+        metadata.put("screenBridge", "echoscreencore");
+        metadata.put("actionCatalog", "TerminalScreenCoreActionIds");
+        metadata.put("screenCoreActionId", textOrDefault(screenCoreActionId, "unknown"));
+        metadata.put("localScreenCoreActionRan", true);
+        metadata.put("localScreenCoreActionHandled", handled);
+        if (actionContext != null) {
+            putIfPresent(metadata, "pageId", actionContext.pageId());
+            putIfPresent(metadata, "componentId", actionContext.componentId());
+            putIfPresent(metadata, "action", actionContext.action());
+            putIfPresent(metadata, "argument", actionContext.argument());
+            putIfPresent(metadata, "actionValue", actionContext.actionValue());
+            putIfPresent(metadata, "inputEvent", actionContext.inputEvent());
+        }
+        publishNativeScreenLifecycle(
+                "action",
+                "terminal.screencore.action",
+                "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreActions",
+                metadata);
     }
 
     public static EchoNativeLoadStatus publishNativeScreenLifecycle(

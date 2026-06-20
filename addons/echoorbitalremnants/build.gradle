@@ -189,13 +189,27 @@ tasks.withType(JavaCompile).configureEach {
 
 def addonLocalReleaseJarDir = project.layout.projectDirectory.dir('build/libs')
 
-tasks.register('syncAddonReleaseJar', Sync) {
+tasks.register('syncAddonReleaseJar') {
     group = 'distribution'
     description = 'Copies the redirected Gradle build jar into the addon-local build/libs release path.'
 
-    dependsOn tasks.named('jar')
-    from(tasks.named('jar', Jar).flatMap { it.archiveFile })
-    into addonLocalReleaseJarDir
+    def jarTask = tasks.named('jar', Jar)
+    dependsOn jarTask
+    inputs.file(jarTask.flatMap { it.archiveFile })
+    outputs.dir(addonLocalReleaseJarDir)
+
+    doLast {
+        def source = jarTask.get().archiveFile.get().asFile
+        def target = addonLocalReleaseJarDir.file(source.name).asFile
+        if (source.canonicalFile == target.canonicalFile) {
+            return
+        }
+        target.parentFile.mkdirs()
+        java.nio.file.Files.copy(
+                source.toPath(),
+                target.toPath(),
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+    }
 }
 
 tasks.named('build') {

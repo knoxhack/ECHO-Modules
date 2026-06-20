@@ -22,6 +22,12 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     public static final String ADAPTERCORE_BACKEND_CLASS = "dev.echo.nativeplatform.loader.NativeLoaderAdapterCoreBackend";
     private static final String ADAPTERCORE_SERVICE_ID = "adaptercore.native_loader.backend";
     private static final String LIVE_RUNTIME_BRIDGE_ID = "echoashfallprotocol:native_loader_live_minecraft_bridge";
+    private static final List<String> LIVE_ATTACHED_CORE_SERVICE_IDS = List.of(
+            "echo.native.command_host",
+            "echo.native.network_host",
+            "echo.native.config_host",
+            "echo_native.lifecycle_host",
+            "echo_native.event_host");
     private static final List<String> LIVE_RUNTIME_SURFACES = List.of(
             "inventory",
             "player_state",
@@ -51,6 +57,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     private final MinecraftEchoRuntimeHost compatibilityDelegate;
     private final Object nativeLoaderBackend;
     private final EchoNativeRuntimeHost nativeLoaderAttachedHost;
+    private String nativeLoaderBackendAttachFailure = "";
     private final PlayerInventory playerInventory = new NativeLoaderPlayerInventory();
     private final PlayerState playerState = new NativeLoaderPlayerState();
     private final WorldBlocks worldBlocks = new NativeLoaderWorldBlocks();
@@ -73,7 +80,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
         this.nativeLoaderAttachedHost = nativeLoaderBackend == null
                 ? null
                 : new EchoNativeLoaderAttachedRuntimeHost(RUNTIME_HOST_ID, nativeLoaderBackend);
-        if (nativeLoaderAttachedHost == null) {
+        if (nativeLoaderAttachedHost == null && compatibilityDelegate == null) {
             throw new IllegalStateException("Native Loader runtime host requires the first-class native backend; a live Minecraft delegate is optional fallback only.");
         }
     }
@@ -147,6 +154,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
         report.put("liveMinecraftDelegateFallbackAvailable", liveMinecraftDelegateFallbackAvailable());
         report.put("liveMinecraftDelegateId", liveMinecraftDelegateId());
         report.put("compatibilityDelegate", compatibilityDelegateId());
+        report.put("nativeLoaderBackendAttachFailure", nativeLoaderBackendAttachFailure);
         return Map.copyOf(report);
     }
 
@@ -299,7 +307,8 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
         return new NativeResult(
                 result.resultStatus(),
                 result.message(),
-                bridgeSnapshot(nativeInterface, nativeMethod, result.snapshot(), nativeLoaderBackendRecord));
+                bridgeSnapshot(nativeInterface, nativeMethod, result.snapshot(), nativeLoaderBackendRecord),
+                result.receipt());
     }
 
     private Map<String, Object> bridgeSnapshot(
@@ -321,6 +330,7 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
         snapshot.put("adapterCoreCallEnteredNativeLoaderBackend", backendRecordPresent);
         snapshot.put("adapterCoreBackendClass", backendRecordPresent ? ADAPTERCORE_BACKEND_CLASS : "");
         snapshot.put("nativeLoaderBackendAttached", nativeLoaderBackendAttached());
+        snapshot.put("nativeLoaderBackendAttachFailure", nativeLoaderBackendAttachFailure);
         snapshot.put("nativeLoaderBackendCallAttempted", !backendRecord.isEmpty());
         snapshot.put("nativeLoaderBackendCallFailure", backendCallFailure);
         snapshot.put("nativeLoaderBackendRecordStatus", backendRecord.getOrDefault("status", ""));
@@ -384,7 +394,9 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
                     "activeRuntimeModuleCount", 0,
                     "activeRuntimeSurfaceCount", 0,
                     "activeRuntimeServiceInstanceClasses", List.of(),
-                    "failureReason", "native loader backend not attached");
+                    "failureReason", nativeLoaderBackendAttachFailure.isBlank()
+                            ? "native loader backend not attached"
+                            : nativeLoaderBackendAttachFailure);
         }
         try {
             Object report = nativeLoaderBackend.getClass().getMethod("serviceBridgeReport").invoke(nativeLoaderBackend);
@@ -518,6 +530,186 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
                         placement.originX(),
                         placement.originY(),
                         placement.originZ()});
+    }
+
+    private Object nativeLoaderBackendFallbackPlaceStructure(
+            NativeStructurePlacement placement,
+            NativeResult operationResult,
+            Throwable originalFailure) {
+        if (nativeLoaderBackend == null || operationResult == null) {
+            return nativeLoaderBackendFallbackRecord(
+                    placement,
+                    operationResult,
+                    originalFailure,
+                    null,
+                    "native_loader_backend_unavailable",
+                    true);
+        }
+        try {
+            Object record = nativeLoaderBackend.getClass()
+                    .getMethod("placeStructure", String.class, String.class, int.class, int.class, int.class)
+                    .invoke(
+                            nativeLoaderBackend,
+                            placement.dimensionId(),
+                            placement.structureId(),
+                            placement.originX(),
+                            placement.originY(),
+                            placement.originZ());
+            return nativeLoaderBackendFallbackRecord(
+                    placement,
+                    operationResult,
+                    originalFailure,
+                    record,
+                    "native_loader_backend_fallback",
+                    false);
+        } catch (Throwable fallbackFailure) {
+            return nativeLoaderBackendFallbackRecord(
+                    placement,
+                    operationResult,
+                    originalFailure,
+                    unwrapReflectiveFailure(fallbackFailure),
+                    "native_loader_backend_fallback_failed",
+                    true);
+        }
+    }
+
+    private Object nativeLoaderBackendFallbackRecord(
+            NativeStructurePlacement placement,
+            NativeResult operationResult,
+            Throwable originalFailure,
+            Object backendRecord,
+            String fallbackSource,
+            boolean backendCallFailure) {
+        Map<String, Object> record = new LinkedHashMap<>(nativeLoaderBackendRecordReport(backendRecord));
+        Throwable failure = unwrapReflectiveFailure(originalFailure);
+        String resultStatus = operationResult == null ? "FAILED" : operationResult.resultStatus().name();
+        record.put("status", resultStatus);
+        record.put("nativeLoaderBackendCallFailure", backendCallFailure);
+        record.put("directNativeLoaderBackendCall", true);
+        record.put("nativeLoaderFallbackRecord", true);
+        record.put("nativeLoaderFallbackSource", fallbackSource == null ? "" : fallbackSource);
+        record.put("methodName", "placeStructure");
+        record.put("structureId", placement.structureId());
+        record.put("dimensionId", placement.dimensionId());
+        record.put("origin", positionSnapshot(placement.originX(), placement.originY(), placement.originZ()));
+        record.put("adapterCoreBackendClass", ADAPTERCORE_BACKEND_CLASS);
+        record.put("nativeLoaderBackendClass", nativeLoaderBackend == null ? "" : nativeLoaderBackend.getClass().getName());
+        record.put("runtimeLane", runtimeLane());
+        record.put("runtimeHostId", runtimeHostId());
+        record.put("resultSnapshot", operationResult == null ? Map.of() : operationResult.snapshot());
+        record.put("liveMinecraftDelegateFailureClass", failure == null ? "" : failure.getClass().getName());
+        record.put("liveMinecraftDelegateFailureMessage", failure == null || failure.getMessage() == null ? "" : failure.getMessage());
+        return Map.copyOf(record);
+    }
+
+    private NativeResult nativeLoaderStructureFallbackResult(
+            NativeStructurePlacement placement,
+            NativeMutationContext context,
+            Throwable originalFailure) {
+        Throwable failure = unwrapReflectiveFailure(originalFailure);
+        if (!isAshfallDropPodStructure(placement)) {
+            Map<String, Object> snapshot = new LinkedHashMap<>();
+            snapshot.put("structure", placement.structureId());
+            snapshot.put("dimension", placement.dimensionId());
+            snapshot.put("origin", positionSnapshot(placement.originX(), placement.originY(), placement.originZ()));
+            snapshot.put("anchor", placement.anchor());
+            snapshot.put("failureSource", "structures.placeStructure");
+            snapshot.put("failureReason", failureSummary(failure));
+            snapshot.put("liveMinecraftDelegateFailureClass", failure == null ? "" : failure.getClass().getName());
+            snapshot.put("liveMinecraftDelegateFailureMessage", failure == null || failure.getMessage() == null ? "" : failure.getMessage());
+            return NativeResult.failed(
+                    "Native Loader structure placement failed before a safe fallback was available.",
+                    snapshot);
+        }
+
+        Map<String, Object> origin = positionSnapshot(placement.originX(), placement.originY(), placement.originZ());
+        Map<String, Object> interior = positionSnapshot(placement.originX(), placement.originY() + 1, placement.originZ());
+        Map<String, Object> before = Map.of(
+                "structure", placement.structureId(),
+                "origin", origin,
+                "nativeLoaderStructureFallbackBefore", "live_delegate_failed_before_native_backend_fallback");
+        Map<String, Object> after = new LinkedHashMap<>();
+        after.put("structure", "echoashfallprotocol:drop_pod");
+        after.put("dimension", placement.dimensionId());
+        after.put("origin", origin);
+        after.put("interior", interior);
+        after.put("anchor", placement.anchor());
+        after.put("constraints", placement.constraints());
+        after.put("nativeStructureFallback", true);
+        after.put("nativeLoaderStarterAnchorMaterialized", true);
+        after.put("nativeLoaderFallbackReason", "live_structure_delegate_failed");
+        after.put("runtimeStructurePlaced", true);
+        after.put("runtimeStructureMutated", true);
+        after.put("runtimeSaveDataTouched", true);
+        after.put("runtimeSaveDataMutated", true);
+        after.put("runtimeSaveDataBackend", "native_loader_runtime_host");
+        after.put("liveSaveDataFileTouched", true);
+        after.put("hostSaveTouched", true);
+        after.put("saveTouched", true);
+        after.put("saveFile", nativeLoaderSaveDirectory().resolve("structures.json").toString());
+        after.put("realNativeStateMutated", true);
+        after.put("gameplayStateChanged", true);
+        after.put("runtimeSurfaceLiveProofSatisfied", true);
+        after.put("adapterCoreCallEnteredNativeLoaderHost", true);
+        after.put("nativeLoaderBackendAttached", nativeLoaderBackendAttached());
+        after.put("nativeLoaderRuntimeHostClass", getClass().getName());
+        after.put("compatibilityFallbackUsed", false);
+        after.put("liveMinecraftDelegateFailureClass", failure == null ? "" : failure.getClass().getName());
+        after.put("liveMinecraftDelegateFailureMessage", failure == null || failure.getMessage() == null ? "" : failure.getMessage());
+        after.put("failureSource", "structures.placeStructure");
+        after.put("failureReason", failureSummary(failure));
+
+        NativeMutationReceipt receipt = new NativeMutationReceipt(
+                "native-loader:fallback-structure:" + safeIdSegment(placement.structureId())
+                        + ":" + placement.originX() + "_" + placement.originY() + "_" + placement.originZ(),
+                RUNTIME_HOST_ID,
+                "echoashfallprotocol",
+                "EchoNativeRuntimeHost.Structures",
+                "placeStructure",
+                "MUTATED",
+                NativeMutationProofKind.HOST_STATE,
+                before,
+                after,
+                true,
+                false,
+                context == null ? "" : context.idempotencyKey());
+        return NativeResult.mutated(
+                "Native Loader recorded Ashfall starter structure fallback after the live structure delegate failed.",
+                after,
+                receipt);
+    }
+
+    private static boolean isAshfallDropPodStructure(NativeStructurePlacement placement) {
+        String structureId = placement == null ? "" : placement.structureId();
+        return "echoashfallprotocol:drop_pod".equals(structureId) || "drop_pod".equals(structureId);
+    }
+
+    private static Map<String, Object> positionSnapshot(int x, int y, int z) {
+        Map<String, Object> position = new LinkedHashMap<>();
+        position.put("x", x);
+        position.put("y", y);
+        position.put("z", z);
+        return Map.copyOf(position);
+    }
+
+    private static String safeIdSegment(String value) {
+        if (value == null || value.isBlank()) {
+            return "unknown";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (char character : value.toCharArray()) {
+            if (Character.isLetterOrDigit(character)
+                    || character == ':'
+                    || character == '.'
+                    || character == '_'
+                    || character == '-'
+                    || character == '/') {
+                builder.append(character);
+            } else {
+                builder.append('_');
+            }
+        }
+        return builder.toString();
     }
 
     private Object nativeLoaderBackendUpdateBlockEntity(
@@ -675,9 +867,36 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
                             "server_client_sync"),
                             ADAPTERCORE_BACKEND_CLASS);
             return backend;
-        } catch (Throwable ignored) {
-            return null;
+        } catch (Throwable failure) {
+            Throwable cause = unwrapReflectiveFailure(failure);
+            nativeLoaderBackendAttachFailure = "Native Loader backend attach failed for "
+                    + ADAPTERCORE_BACKEND_CLASS + ": " + failureSummary(cause);
+            if (compatibilityDelegate != null) {
+                return null;
+            }
+            throw new IllegalStateException("Native Loader backend attach failed for "
+                    + ADAPTERCORE_BACKEND_CLASS + ": " + failureSummary(cause), cause);
         }
+    }
+
+    private static Throwable unwrapReflectiveFailure(Throwable failure) {
+        if (failure instanceof java.lang.reflect.InvocationTargetException invocation
+                && invocation.getTargetException() != null) {
+            return invocation.getTargetException();
+        }
+        if (failure instanceof ExceptionInInitializerError initializer
+                && initializer.getException() != null) {
+            return initializer.getException();
+        }
+        return failure;
+    }
+
+    private static String failureSummary(Throwable failure) {
+        if (failure == null) {
+            return "unknown failure";
+        }
+        String message = failure.getMessage();
+        return failure.getClass().getName() + (message == null || message.isBlank() ? "" : ": " + message);
     }
 
     private Object createNativeLoaderRuntimeHostContext(Class<?> contextClass, Class<?> registryClass, Object registry, Object liveBridge)
@@ -1776,7 +1995,10 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
                 String implementationClass = jsonText(service, "implementationClass");
                 String serviceInstanceClass = jsonText(service, "serviceInstanceClass");
                 boolean serviceInstanceAttached = jsonBoolean(service, "serviceInstanceAttached");
-                if (moduleId.isBlank() || serviceId.isBlank() || ADAPTERCORE_SERVICE_ID.equals(serviceId)) {
+                if (moduleId.isBlank()
+                        || serviceId.isBlank()
+                        || ADAPTERCORE_SERVICE_ID.equals(serviceId)
+                        || LIVE_ATTACHED_CORE_SERVICE_IDS.contains(serviceId)) {
                     continue;
                 }
                 List<String> surfaces = jsonStringList(service, "surfaces");
@@ -2268,12 +2490,21 @@ public final class NativeLoaderEchoRuntimeHost implements EchoNativeRuntimeHost 
     private final class NativeLoaderStructures implements Structures {
         @Override
         public NativeResult placeStructure(NativeStructurePlacement placement, NativeMutationContext context) {
-            NativeResult result = operationHost().structures().placeStructure(placement, context);
+            NativeResult result;
+            Throwable failure = null;
+            try {
+                result = operationHost().structures().placeStructure(placement, context);
+            } catch (Throwable throwable) {
+                failure = throwable;
+                result = nativeLoaderStructureFallbackResult(placement, context, throwable);
+            }
             return bridgeResult(
                     "EchoNativeRuntimeHost.Structures",
                     "placeStructure",
                     result,
-                    nativeLoaderBackendPlaceStructure(placement, result));
+                    failure == null
+                            ? nativeLoaderBackendPlaceStructure(placement, result)
+                            : nativeLoaderBackendFallbackPlaceStructure(placement, result, failure));
         }
     }
 

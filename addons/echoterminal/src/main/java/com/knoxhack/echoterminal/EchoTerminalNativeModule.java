@@ -40,8 +40,25 @@ public final class EchoTerminalNativeModule implements EchoNativeModuleAdapter, 
 
     @Override
     public void ready(EchoNativeModuleLoadContext context) {
+        boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
         registerNativeClientRoutesFromModule(context);
         EchoNativeActivationSurfaceRegistrar.ready(context);
+    }
+
+    private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoTerminalNativeModule.class.getPackageName() + ".EchoTerminal";
+        try {
+            Object result = Class.forName(moduleClassName)
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferred", true);
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return false;
+        }
     }
 
     @Override

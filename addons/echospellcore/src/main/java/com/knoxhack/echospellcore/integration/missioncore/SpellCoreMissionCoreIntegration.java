@@ -14,8 +14,11 @@ import com.knoxhack.echospellcore.api.SpellCoreApi;
 import com.knoxhack.echospellcore.api.SpellCoreEvents;
 import com.knoxhack.echospellcore.registry.ModItems;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class SpellCoreMissionCoreIntegration {
     private static final Identifier CHAPTER_ID = id("arcana_spellcore");
@@ -39,76 +42,76 @@ public final class SpellCoreMissionCoreIntegration {
                 0x46E7FF));
         registerMission(registry, "craft_signal_focus", "Obtain Signal Focus",
                 "Recover or craft the first shared spellcasting focus.",
-                "Focus shell online.", MissionObjectiveType.OBTAIN_ITEM, id("signal_focus"), new ItemStack(ModItems.SIGNAL_FOCUS.get()));
+                "Focus shell online.", MissionObjectiveType.OBTAIN_ITEM, id("signal_focus"), safeStack(() -> (ItemLike) ModItems.SIGNAL_FOCUS.get(), Items.SPYGLASS, 1));
         registerMission(registry, "carry_awakened_spell_core", "Carry Awakened Spell Core",
                 "Use RitualCore's Spell Core Awakening output as the first casting authorization token.",
                 "Spell core authorization present.", MissionObjectiveType.CUSTOM,
                 Identifier.fromNamespaceAndPath("echoritualcore", "awakened_spell_core"),
-                new ItemStack(ModItems.BLANK_SPELL_CORE.get()));
+                safeStack(() -> (ItemLike) ModItems.BLANK_SPELL_CORE.get(), Items.BOOK, 1));
         registerMission(registry, "cast_signal_pulse", "Cast Signal Pulse",
                 "Use Signal Focus to reveal and disrupt nearby signatures.",
                 "Signal Pulse cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.SIGNAL_PULSE,
-                new ItemStack(ModItems.SIGNAL_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.SIGNAL_CATALYST.get(), Items.GLOWSTONE_DUST, 1));
         registerMission(registry, "cast_aether_bolt", "Cast Aether Bolt",
                 "Cycle the Signal Focus and fire the first Aether projectile.",
                 "Aether Bolt cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.AETHER_BOLT,
-                new ItemStack(ModItems.AETHER_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.AETHER_CATALYST.get(), Items.AMETHYST_SHARD, 1));
         registerMission(registry, "cast_ash_veil", "Cast Ash Veil",
                 "Cycle the Signal Focus and cloak yourself in ash signal static.",
                 "Ash Veil cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.ASH_VEIL,
-                new ItemStack(ModItems.ASH_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.ASH_CATALYST.get(), Items.GUNPOWDER, 1));
         registerMission(registry, "cast_void_step", "Cast Void Step",
                 "Configure a Void-school slot and blink through a safe short vector.",
                 "Void Step cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.VOID_STEP,
-                new ItemStack(ModItems.VOID_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.VOID_CATALYST.get(), Items.ENDER_PEARL, 1));
         registerMission(registry, "cast_storm_lance", "Cast Storm Lance",
                 "Fire a Storm-school projectile through the synchronized projectile layer.",
                 "Storm Lance cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.STORM_LANCE,
-                new ItemStack(ModItems.STORM_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.STORM_CATALYST.get(), Items.LIGHTNING_ROD, 1));
         registerMission(registry, "cast_crystal_wall", "Cast Crystal Wall",
                 "Use Refined Aether to raise a Crystal defensive projection.",
                 "Crystal Wall cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.CRYSTAL_WALL,
-                new ItemStack(ModItems.CRYSTAL_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.CRYSTAL_CATALYST.get(), Items.AMETHYST_CLUSTER, 1));
         registerMission(registry, "cast_blood_surge", "Cast Blood Surge",
                 "Route damage and cursed aether through the first Blood-school amplifier.",
                 "Blood Surge cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.BLOOD_SURGE,
-                new ItemStack(ModItems.BLOOD_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.BLOOD_CATALYST.get(), Items.REDSTONE, 1));
         registerMission(registry, "cast_rift_blink", "Cast Rift Blink",
                 "Use Rift Aether to move through a short calibrated exit trace.",
                 "Rift Blink cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.RIFT_BLINK,
-                new ItemStack(ModItems.RIFT_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.RIFT_CATALYST.get(), Items.ENDER_EYE, 1));
         registerMission(registry, "cast_soul_thread", "Cast Soul Thread",
                 "Latch a Soul-school thread for healing or hostile signal suppression.",
                 "Soul Thread cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.SOUL_THREAD,
-                new ItemStack(ModItems.SOUL_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.SOUL_CATALYST.get(), Items.SOUL_LANTERN, 1));
         registerMission(registry, "cast_decay_touch", "Cast Decay Touch",
                 "Apply the first Decay-school contact curse to a living target.",
                 "Decay Touch cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.DECAY_TOUCH,
-                new ItemStack(ModItems.DECAY_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.DECAY_CATALYST.get(), Items.ROTTEN_FLESH, 1));
         registerMission(registry, "cast_veil_trace", "Cast Veil Trace",
                 "Spend Veil Resonance to expose a hidden signature or target trace.",
                 "Veil Trace cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.VEIL_TRACE,
-                new ItemStack(ModItems.SIGNAL_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.SIGNAL_CATALYST.get(), Items.GLOWSTONE_DUST, 1));
         registerMission(registry, "cast_fracture_shear", "Cast Fracture Shear",
                 "Fire a Fracture-school projectile and watch the stabilized trail.",
                 "Fracture Shear cast.", MissionObjectiveType.CUSTOM, SpellCoreApi.FRACTURE_SHEAR,
-                new ItemStack(ModItems.RIFT_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.RIFT_CATALYST.get(), Items.ENDER_EYE, 1));
         registerMission(registry, "configure_spell_deck", "Configure Spell Deck",
                 "Open the Spell Deck and assign a spell or active slot.",
                 "Loadout slot configured.", MissionObjectiveType.CUSTOM, id("loadout_configured"),
-                new ItemStack(ModItems.SPELL_DECK.get()));
+                safeStack(() -> (ItemLike) ModItems.SPELL_DECK.get(), Items.BOOK, 1));
         registerMission(registry, "fire_spell_projectile", "Fire Spell Projectile",
                 "Cast Aether Bolt or Dust Lance through the synchronized projectile layer.",
                 "Projectile spell fired.", MissionObjectiveType.CUSTOM, id("spell_projectile_fired"),
-                new ItemStack(ModItems.AETHER_CATALYST.get()));
+                safeStack(() -> (ItemLike) ModItems.AETHER_CATALYST.get(), Items.AMETHYST_SHARD, 1));
         registerMission(registry, "install_spell_modifier", "Install Spell Modifier",
                 "Toggle Range, Efficiency, or Overcharge on a Spell Deck slot.",
                 "Modifier bus updated.", MissionObjectiveType.CUSTOM, id("loadout_configured"),
-                new ItemStack(ModItems.OVERCHARGED_SPELL_CORE.get()));
+                safeStack(() -> (ItemLike) ModItems.OVERCHARGED_SPELL_CORE.get(), Items.BLAZE_POWDER, 1));
         registerMission(registry, "manage_cooldown", "Check Spell Cooldown",
                 "Attempt a spell while it is cooling down and read the HUD/Terminal feedback.",
                 "Cooldown handled.", MissionObjectiveType.CUSTOM, id("cooldown_checked"),
-                new ItemStack(ModItems.SPELL_DECK.get()));
+                safeStack(() -> (ItemLike) ModItems.SPELL_DECK.get(), Items.BOOK, 1));
     }
 
     private static void registerMission(IMissionRegistry registry, String path, String title, String briefing,
@@ -227,28 +230,47 @@ public final class SpellCoreMissionCoreIntegration {
 
     private static ItemStack rewardStack(String path) {
         return switch (path) {
-            case "craft_signal_focus" -> new ItemStack(ModItems.SIGNAL_CATALYST.get(), 2);
-            case "carry_awakened_spell_core" -> new ItemStack(ModItems.BLANK_SPELL_CORE.get(), 1);
-            case "cast_signal_pulse" -> new ItemStack(ModItems.AETHER_CATALYST.get(), 1);
-            case "cast_aether_bolt" -> new ItemStack(ModItems.ASH_CATALYST.get(), 1);
-            case "cast_ash_veil" -> new ItemStack(ModItems.ENGRAVED_SPELL_CORE.get(), 1);
-            case "cast_void_step" -> new ItemStack(ModItems.VOID_CATALYST.get(), 1);
-            case "cast_storm_lance" -> new ItemStack(ModItems.STORM_CATALYST.get(), 1);
-            case "cast_crystal_wall" -> new ItemStack(ModItems.CRYSTAL_CATALYST.get(), 1);
-            case "cast_blood_surge" -> new ItemStack(ModItems.BLOOD_CATALYST.get(), 1);
-            case "cast_rift_blink" -> new ItemStack(ModItems.RIFT_CATALYST.get(), 1);
-            case "cast_soul_thread" -> new ItemStack(ModItems.SOUL_CATALYST.get(), 1);
-            case "cast_decay_touch" -> new ItemStack(ModItems.DECAY_CATALYST.get(), 1);
-            case "cast_veil_trace" -> new ItemStack(ModItems.SIGNAL_CATALYST.get(), 1);
-            case "cast_fracture_shear" -> new ItemStack(ModItems.RIFT_CATALYST.get(), 1);
-            case "configure_spell_deck" -> new ItemStack(ModItems.BLANK_SPELL_CORE.get(), 1);
-            case "install_spell_modifier" -> new ItemStack(ModItems.OVERCHARGED_SPELL_CORE.get(), 1);
-            case "fire_spell_projectile" -> new ItemStack(ModItems.AETHER_CATALYST.get(), 2);
-            default -> new ItemStack(ModItems.SIGNAL_CATALYST.get(), 1);
+            case "craft_signal_focus" -> safeStack(() -> (ItemLike) ModItems.SIGNAL_CATALYST.get(), Items.GLOWSTONE_DUST, 2);
+            case "carry_awakened_spell_core" -> safeStack(() -> (ItemLike) ModItems.BLANK_SPELL_CORE.get(), Items.BOOK, 1);
+            case "cast_signal_pulse" -> safeStack(() -> (ItemLike) ModItems.AETHER_CATALYST.get(), Items.AMETHYST_SHARD, 1);
+            case "cast_aether_bolt" -> safeStack(() -> (ItemLike) ModItems.ASH_CATALYST.get(), Items.GUNPOWDER, 1);
+            case "cast_ash_veil" -> safeStack(() -> (ItemLike) ModItems.ENGRAVED_SPELL_CORE.get(), Items.BOOK, 1);
+            case "cast_void_step" -> safeStack(() -> (ItemLike) ModItems.VOID_CATALYST.get(), Items.ENDER_PEARL, 1);
+            case "cast_storm_lance" -> safeStack(() -> (ItemLike) ModItems.STORM_CATALYST.get(), Items.LIGHTNING_ROD, 1);
+            case "cast_crystal_wall" -> safeStack(() -> (ItemLike) ModItems.CRYSTAL_CATALYST.get(), Items.AMETHYST_CLUSTER, 1);
+            case "cast_blood_surge" -> safeStack(() -> (ItemLike) ModItems.BLOOD_CATALYST.get(), Items.REDSTONE, 1);
+            case "cast_rift_blink" -> safeStack(() -> (ItemLike) ModItems.RIFT_CATALYST.get(), Items.ENDER_EYE, 1);
+            case "cast_soul_thread" -> safeStack(() -> (ItemLike) ModItems.SOUL_CATALYST.get(), Items.SOUL_LANTERN, 1);
+            case "cast_decay_touch" -> safeStack(() -> (ItemLike) ModItems.DECAY_CATALYST.get(), Items.ROTTEN_FLESH, 1);
+            case "cast_veil_trace" -> safeStack(() -> (ItemLike) ModItems.SIGNAL_CATALYST.get(), Items.GLOWSTONE_DUST, 1);
+            case "cast_fracture_shear" -> safeStack(() -> (ItemLike) ModItems.RIFT_CATALYST.get(), Items.ENDER_EYE, 1);
+            case "configure_spell_deck" -> safeStack(() -> (ItemLike) ModItems.BLANK_SPELL_CORE.get(), Items.BOOK, 1);
+            case "install_spell_modifier" -> safeStack(() -> (ItemLike) ModItems.OVERCHARGED_SPELL_CORE.get(), Items.BLAZE_POWDER, 1);
+            case "fire_spell_projectile" -> safeStack(() -> (ItemLike) ModItems.AETHER_CATALYST.get(), Items.AMETHYST_SHARD, 2);
+            default -> safeStack(() -> (ItemLike) ModItems.SIGNAL_CATALYST.get(), Items.GLOWSTONE_DUST, 1);
         };
     }
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoSpellCore.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 }

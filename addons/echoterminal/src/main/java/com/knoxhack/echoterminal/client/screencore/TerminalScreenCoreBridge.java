@@ -3,12 +3,14 @@ package com.knoxhack.echoterminal.client.screencore;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.api.EchoScreens;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import com.knoxhack.echoterminal.BuiltinTerminalCommonIntegration;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.EchoTerminalClient;
 import com.knoxhack.echoterminal.api.TerminalNavigationProfiles;
 import com.knoxhack.echoterminal.api.TerminalScreenCorePageMetadata;
 import com.knoxhack.echoterminal.api.TerminalTab;
 import com.knoxhack.echoterminal.api.TerminalTabRegistry;
+import com.knoxhack.echoterminal.client.BuiltinTerminalTabs;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreenProvider;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreens;
@@ -37,6 +39,7 @@ public final class TerminalScreenCoreBridge {
     private static final Identifier FALLBACK_PAGE = page("terminal_fallback");
     private static final Map<Identifier, Identifier> BUILTIN_TAB_PAGES = builtinTabPages();
     private static WeakReference<TerminalScreenCoreScreen> activeScreen = new WeakReference<>(null);
+    private static final AtomicBoolean BOOTSTRAPPED_TABS = new AtomicBoolean(false);
     private static final AtomicBoolean WARNED_SCREENCORE_FALLBACK = new AtomicBoolean(false);
     private static final AtomicBoolean LOGGED_SCREENCORE_OPEN = new AtomicBoolean(false);
     private static final AtomicBoolean LOGGED_LEGACY_OPEN = new AtomicBoolean(false);
@@ -48,6 +51,7 @@ public final class TerminalScreenCoreBridge {
         if (!REGISTERED.compareAndSet(false, true)) {
             return;
         }
+        ensureTerminalTabsReady();
         TerminalScreenCoreDataProviders.register();
         TerminalScreenCoreActions.register();
         EchoScreens.registerInvalidationHandler(TerminalScreenCoreBridge::invalidateOpenScreen);
@@ -93,17 +97,44 @@ public final class TerminalScreenCoreBridge {
         EchoTerminal.LOGGER.info("ECHO Terminal ScreenCore bridge registered; fallback renderer remains available.");
     }
 
+    private static void ensureTerminalTabsReady() {
+        if (BOOTSTRAPPED_TABS.get() && !TerminalTabRegistry.tabs().isEmpty()) {
+            return;
+        }
+        synchronized (TerminalScreenCoreBridge.class) {
+            if (BOOTSTRAPPED_TABS.get() && !TerminalTabRegistry.tabs().isEmpty()) {
+                return;
+            }
+            BOOTSTRAPPED_TABS.set(true);
+            try {
+                TerminalClientOptions.load();
+                BuiltinTerminalCommonIntegration.register();
+                BuiltinTerminalTabs.register();
+                TerminalTabRegistry.ensureSorted();
+            } catch (RuntimeException | LinkageError exception) {
+                BOOTSTRAPPED_TABS.set(false);
+                EchoTerminal.LOGGER.warn("ECHO Terminal ScreenCore bridge could not bootstrap built-in tabs.", exception);
+            }
+        }
+    }
+
     public static boolean screenCorePresent() {
         try {
-            return EchoRuntimeModules.isLoaded("echoscreencore");
+            if (EchoRuntimeModules.isLoaded("echoscreencore")) {
+                return true;
+            }
         } catch (RuntimeException | LinkageError ignored) {
-            return false;
         }
+        return EchoTerminalClient.nativeLoaderClientActiveForScreens()
+                && classAvailable("com.knoxhack.echoscreencore.api.EchoScreens");
     }
 
     public static boolean shouldUseScreenCoreTerminal() {
         if (!screenCorePresent() || !TerminalClientOptions.useScreenCore()) {
             return false;
+        }
+        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+            return true;
         }
         if (TerminalClientOptions.cyberglassActive()
                 && TerminalClientOptions.useCyberglassScreenCoreTheme()) {
@@ -156,6 +187,7 @@ public final class TerminalScreenCoreBridge {
     }
 
     public static Identifier normalizeTab(Identifier tabId) {
+        ensureTerminalTabsReady();
         if (tabId != null && TerminalTabRegistry.tabs().stream()
                 .anyMatch(tab -> tab != null && tab.descriptor().id().equals(tabId))) {
             return tabId;
@@ -164,6 +196,7 @@ public final class TerminalScreenCoreBridge {
     }
 
     public static Optional<TerminalTab> tab(Identifier tabId) {
+        ensureTerminalTabsReady();
         if (tabId == null) {
             return Optional.empty();
         }
@@ -173,6 +206,7 @@ public final class TerminalScreenCoreBridge {
     }
 
     public static List<TerminalTab> tabs() {
+        ensureTerminalTabsReady();
         return TerminalTabRegistry.tabs();
     }
 
@@ -197,6 +231,7 @@ public final class TerminalScreenCoreBridge {
     }
 
     public static boolean openTab(Identifier tabId) {
+        ensureTerminalTabsReady();
         TerminalTabRegistry.ensureSorted();
         Identifier normalizedTab = normalizeTab(tabId);
         if (tabId != null && !normalizedTab.equals(tabId)) {
@@ -210,43 +245,50 @@ public final class TerminalScreenCoreBridge {
             return false;
         }
         if (minecraft.screen != null && !EchoTerminalScreens.isManagedTerminalScreen(minecraft.screen)) {
-            return false;
+            if (!EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                return false;
+            }
+            minecraft.setScreen(null);
         }
         TerminalScreenCoreScreen current = activeScreen.get();
         if (current != null && minecraft.screen == current) {
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "open",
-                    "terminal.screencore.open_tab",
-                    current.getClass().getName(),
-                    Map.of(
-                            "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
-                            "transitionSource", "terminal_screencore_bridge_open_tab",
-                            "nextPage", pageForTab(normalizedTab).toString(),
-                            "nextTab", normalizedTab.toString(),
-                            "replacingActiveScreen", true
-                    ));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                            "open",
+                            "terminal.screencore.open_tab",
+                            current.getClass().getName(),
+                            Map.of(
+                                    "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
+                                    "transitionSource", "terminal_screencore_bridge_open_tab",
+                                    "nextPage", pageForTab(normalizedTab).toString(),
+                                    "nextTab", normalizedTab.toString(),
+                                    "replacingActiveScreen", true
+                            ));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    EchoTerminal.LOGGER.debug("Native route declined ECHO Terminal ScreenCore active tab replacement.");
+                    return false;
+                }
             }
             minecraft.setScreen(new TerminalScreenCoreScreen(
                     current.terminalMenu(), current.playerInventory(), current.screenTitle(), normalizedTab));
             return true;
         }
-        EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                "open",
-                "terminal.screencore.open_tab",
-                TerminalScreenCoreScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
-                        "transitionSource", "terminal_screencore_bridge_open_tab",
-                        "nextPage", pageForTab(normalizedTab).toString(),
-                        "nextTab", normalizedTab.toString(),
-                        "replacingActiveScreen", false
-                ));
-        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                        "open",
+                        "terminal.screencore.open_tab",
+                        TerminalScreenCoreScreen.class.getName(),
+                        Map.of(
+                                "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
+                                "transitionSource", "terminal_screencore_bridge_open_tab",
+                                "nextPage", pageForTab(normalizedTab).toString(),
+                                "nextTab", normalizedTab.toString(),
+                                "replacingActiveScreen", false
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                EchoTerminal.LOGGER.debug("Native route declined ECHO Terminal ScreenCore tab open.");
+                return false;
+            }
         }
         minecraft.setScreen(new TerminalScreenCoreScreen(
                 new EchoTerminalMenu(0, minecraft.player.getInventory()),
@@ -279,9 +321,43 @@ public final class TerminalScreenCoreBridge {
     }
 
     private static void invalidateOpenScreen(Identifier pageId) {
-        TerminalScreenCoreScreen screen = activeScreen.get();
-        if (screen != null && (pageId == null || pageId.equals(screen.pageId()))) {
-            screen.markDataDirty();
+        runOnClientThread(() -> {
+            TerminalScreenCoreScreen screen = activeScreen.get();
+            if (screen != null && (pageId == null || pageId.equals(screen.pageId()))) {
+                screen.markDataDirty();
+            }
+        });
+    }
+
+    private static void runOnClientThread(Runnable task) {
+        try {
+            Minecraft minecraft = Minecraft.getInstance();
+            if (minecraft != null) {
+                minecraft.execute(task);
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.debug("Unable to schedule Terminal ScreenCore data invalidation on the client thread.",
+                    exception);
+        }
+    }
+
+    private static boolean classAvailable(String className) {
+        ClassLoader contextLoader = Thread.currentThread().getContextClassLoader();
+        if (classAvailable(className, contextLoader)) {
+            return true;
+        }
+        return classAvailable(className, TerminalScreenCoreBridge.class.getClassLoader());
+    }
+
+    private static boolean classAvailable(String className, ClassLoader classLoader) {
+        if (classLoader == null) {
+            return false;
+        }
+        try {
+            Class.forName(className, false, classLoader);
+            return true;
+        } catch (ClassNotFoundException | LinkageError exception) {
+            return false;
         }
     }
 

@@ -4,6 +4,7 @@ import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.echoplatform.echocore.api.EchoAddonChapter;
 import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.echoplatform.echocore.api.EchoCoreServices;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.knoxhack.echoholomap.command.HoloMapCommands;
 import com.knoxhack.echoholomap.integration.HoloMapIndexIntegration;
 import com.knoxhack.echoholomap.integration.HoloMapMissionCoreIntegration;
@@ -15,6 +16,7 @@ import com.knoxhack.echoholomap.map.HoloMapTerrainScanner;
 import com.knoxhack.echoholomap.network.ModNetwork;
 import com.knoxhack.echoholomap.world.HoloMapDeathpointEvents;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -26,11 +28,16 @@ import org.slf4j.Logger;
 public final class EchoHoloMap {
     public static final String MODID = "echoholomap";
     public static final String CHAPTER_ID = "holomap";
+    private static final String COMMON_SETUP_EVENT = "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
+    private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
     public EchoHoloMap(IEventBus modEventBus, ModContainer modContainer) {
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_PAYLOAD_HANDLERS_EVENT,
+                ModNetwork::registerPayloads);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, COMMON_SETUP_EVENT, this::commonSetup);
         Config.registerEchoConfig();
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapCommands::register);
         EchoBackendLifecycleBridge.registerGameEventHandler(HoloMapTerrainScanner::onPlayerTick);
@@ -44,26 +51,36 @@ public final class EchoHoloMap {
     }
 
     private void commonSetup(Object event) {
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            HoloMapService.INSTANCE.registerBuiltins();
-            HoloMapService.INSTANCE.registerHoloProvider(BuiltinHoloMapRouteHazardProvider.INSTANCE);
-            HoloMapChunkActions.register(BuiltinHoloMapChunkActionProvider.INSTANCE);
-            EchoCoreServices.registerMapMarkerService(HoloMapService.INSTANCE);
-            registerAddonChapter();
-            if (modulePresent("com.knoxhack.echomissioncore.EchoMissionCore")) {
-                HoloMapMissionCoreIntegration.register();
-            }
-            if (modulePresent("com.knoxhack.echomachinecore.EchoMachineCore")) {
-                registerMachineCoreIntegration();
-            }
-            if (modulePresent("com.knoxhack.echoterminal.EchoTerminal")) {
-                registerTerminalIntegration();
-            }
-            if (modulePresent("com.knoxhack.echoindex.EchoIndex")) {
-                HoloMapIndexIntegration.register();
-            }
-            LOGGER.info("ECHO: HoloMap online. {}", EchoCoreServices.platformProviderSummary());
-        });
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return registerCommonServices("native_loader_module_ready");
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        HoloMapService.INSTANCE.registerBuiltins();
+        HoloMapService.INSTANCE.registerHoloProvider(BuiltinHoloMapRouteHazardProvider.INSTANCE);
+        HoloMapChunkActions.register(BuiltinHoloMapChunkActionProvider.INSTANCE);
+        EchoCoreServices.registerMapMarkerService(HoloMapService.INSTANCE);
+        registerAddonChapter();
+        if (modulePresent("echomissioncore", "com.knoxhack.echomissioncore.EchoMissionCore")) {
+            HoloMapMissionCoreIntegration.register();
+        }
+        if (modulePresent("echomachinecore", "com.knoxhack.echomachinecore.EchoMachineCore")) {
+            registerMachineCoreIntegration();
+        }
+        if (modulePresent("echoterminal", "com.knoxhack.echoterminal.EchoTerminal")) {
+            registerTerminalIntegration();
+        }
+        if (modulePresent("echoindex", "com.knoxhack.echoindex.EchoIndex")) {
+            HoloMapIndexIntegration.register();
+        }
+        LOGGER.info("ECHO: HoloMap online [{}]. {}", source, EchoCoreServices.platformProviderSummary());
+        return true;
     }
 
     private static void registerAddonChapter() {
@@ -141,7 +158,10 @@ public final class EchoHoloMap {
         }
     }
 
-    private static boolean modulePresent(String className) {
+    private static boolean modulePresent(String moduleId, String className) {
+        if (EchoRuntimeModules.isLoaded(moduleId)) {
+            return true;
+        }
         try {
             Class.forName(className, false, EchoHoloMap.class.getClassLoader());
             return true;

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
@@ -44,6 +45,31 @@ public final class IndexRecipeQueryClientState {
                 lastQueryWarning,
                 System.currentTimeMillis()));
         REVISION.incrementAndGet();
+    }
+
+    public static boolean applyLocalFallback(Identifier itemId, IndexRecipeSnapshot snapshot) {
+        if (itemId == null || snapshot == null || snapshot.recipesStillLoading()) {
+            return false;
+        }
+        QueryResult existing = RESULTS.get(itemId);
+        if (existing != null && existing.generation() >= snapshot.generation()) {
+            return false;
+        }
+        Item item = BuiltInRegistries.ITEM.getOptional(itemId).orElse(null);
+        if (item == null) {
+            return false;
+        }
+        List<IndexRecipeView> outputViews = snapshot.recipesFor(item);
+        List<IndexRecipeView> recipes = outputViews.stream()
+                .filter(recipe -> !IndexRecipeSourceKind.isSourceCard(recipe))
+                .toList();
+        List<IndexRecipeView> sources = outputViews.stream()
+                .filter(IndexRecipeSourceKind::isSourceCard)
+                .toList();
+        CompoundTag tag = IndexRecipeSnapshotCodec.encodeQueryResult(itemId, snapshot,
+                recipes, snapshot.usesFor(item), sources, "");
+        apply(itemId, tag);
+        return true;
     }
 
     public static void applyHealth(CompoundTag tag) {
@@ -134,6 +160,16 @@ public final class IndexRecipeQueryClientState {
 
     public static boolean loading(Item item) {
         return item != null && !hasResult(item);
+    }
+
+    public static void clearForTests() {
+        RESULTS.clear();
+        METADATA.clear();
+        LAST_REQUESTS.clear();
+        health = Health.empty();
+        lastQueriedItem = null;
+        lastQueryWarning = "";
+        REVISION.incrementAndGet();
     }
 
     private static void applyMetadata(net.minecraft.nbt.ListTag recipes) {

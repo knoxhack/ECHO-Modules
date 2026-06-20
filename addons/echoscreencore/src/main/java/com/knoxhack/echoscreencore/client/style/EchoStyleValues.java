@@ -148,7 +148,19 @@ public final class EchoStyleValues {
             bottom = length(parts.length > 2 ? parts[2] : "0", 0, 0, theme, diagnostics);
             left = length(parts.length > 3 ? parts[3] : "0", 0, 0, theme, diagnostics);
         }
+        if (style != null) {
+            top = directionalInset(style, property + "-top", top, theme, diagnostics);
+            right = directionalInset(style, property + "-right", right, theme, diagnostics);
+            bottom = directionalInset(style, property + "-bottom", bottom, theme, diagnostics);
+            left = directionalInset(style, property + "-left", left, theme, diagnostics);
+        }
         return new Insets(top, right, bottom, left);
+    }
+
+    private static int directionalInset(EchoStyle style, String property, int fallback,
+            EchoThemeBridge theme, EchoScreenDiagnostics diagnostics) {
+        String raw = style.value(property, "");
+        return raw == null || raw.isBlank() ? fallback : length(raw, 0, fallback, theme, diagnostics);
     }
 
     private static String unwrapScale(String raw) {

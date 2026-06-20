@@ -92,15 +92,16 @@ public final class IndexRecipeUi {
         if (item == null) {
             return List.of();
         }
-        recordQueryState(player, item, mode);
         if (clientContext(player)) {
-            requestServerViews(item);
+            requestServerViews(player, item);
+            recordQueryState(player, item, mode);
             return switch (mode) {
                 case USES -> IndexRecipeQueryClientState.usesFor(item);
                 case SOURCES -> IndexRecipeQueryClientState.sourcesFor(item);
                 case RECIPES -> IndexRecipeQueryClientState.recipesFor(item);
             };
         }
+        recordQueryState(player, item, mode);
         return switch (mode) {
             case USES -> IndexService.INSTANCE.usesFor(player, item);
             case SOURCES -> IndexService.INSTANCE.recipesFor(player, item).stream()
@@ -196,7 +197,7 @@ public final class IndexRecipeUi {
                 lastHoveredRecipeId = recipe.id();
             }
             IndexRecipePlan plan = IndexRecipePlanner.plan(Minecraft.getInstance().player, recipe);
-            IndexRecipeDisplayMetadata metadata = IndexRecipeQueryClientState.metadata(recipe.id()).orElse(null);
+            IndexRecipeDisplayMetadata metadata = metadataFor(recipe.id());
             CardMode mode = cardMode(w, h);
             if (metadata != null && metadata.vanillaLayout()) {
                 drawVanillaRecipeCardContents(graphics, font, recipe, metadata, plan, x, y, w, h,
@@ -1438,10 +1439,14 @@ public final class IndexRecipeUi {
 
     public static String emptyMessage(Player player, Item item, ViewMode mode) {
         if (clientContext(player)) {
-            requestServerViews(item);
+            requestServerViews(player, item);
             var result = IndexRecipeQueryClientState.result(item);
             if (result.isEmpty()) {
-                return text("screen.echoindex.recipe.empty.loading");
+                IndexRecipeSnapshot snapshot = IndexService.INSTANCE.recipeSnapshot(player);
+                if (snapshot.recipesStillLoading()) {
+                    return text("screen.echoindex.recipe.empty.loading");
+                }
+                return emptyMessageForSnapshot(snapshot, mode);
             }
             String warning = result.get().warning();
             if (!warning.isBlank()) {
@@ -1472,6 +1477,20 @@ public final class IndexRecipeUi {
                 }
                 yield text("screen.echoindex.recipe.empty.no_recipes");
             }
+        };
+    }
+
+    private static String emptyMessageForSnapshot(IndexRecipeSnapshot snapshot, ViewMode mode) {
+        boolean noProviderRecipes = snapshot == null || snapshot.recipes().isEmpty();
+        boolean sourcesLoaded = snapshot != null && snapshot.sourceCardsLoaded();
+        return switch (mode) {
+            case USES -> text("screen.echoindex.recipe.empty.no_uses");
+            case SOURCES -> sourcesLoaded
+                    ? text("screen.echoindex.recipe.empty.no_sources")
+                    : text("screen.echoindex.recipe.empty.no_sources_loading");
+            case RECIPES -> noProviderRecipes
+                    ? text("screen.echoindex.recipe.empty.provider_warning")
+                    : text("screen.echoindex.recipe.empty.no_recipes");
         };
     }
 
@@ -1563,7 +1582,7 @@ public final class IndexRecipeUi {
         }
     }
 
-    private static void requestServerViews(Item item) {
+    private static void requestServerViews(Player player, Item item) {
         if (item == null) {
             return;
         }
@@ -1571,6 +1590,7 @@ public final class IndexRecipeUi {
         if (IndexRecipeQueryClientState.shouldRequest(itemId)) {
             EchoNetClientActions.trySendServerboundAction(new IndexRecipeQueryPacket(itemId, true, true, true));
         }
+        IndexRecipeQueryClientState.applyLocalFallback(itemId, IndexService.INSTANCE.recipeSnapshot(player));
     }
 
     private static boolean clientContext(Player player) {
@@ -1590,6 +1610,18 @@ public final class IndexRecipeUi {
         } else {
             lastQueryCacheState = "server";
         }
+    }
+
+    private static IndexRecipeDisplayMetadata metadataFor(Identifier recipeId) {
+        var queryMetadata = IndexRecipeQueryClientState.metadata(recipeId);
+        if (queryMetadata.isPresent()) {
+            return queryMetadata.get();
+        }
+        Player player = Minecraft.getInstance().player;
+        if (player == null) {
+            return null;
+        }
+        return IndexService.INSTANCE.recipeSnapshot(player).metadata(recipeId).orElse(null);
     }
 
     public record SlotHit(int x, int y, int w, int h, ItemStack stack, IndexSlotRole role,

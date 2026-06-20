@@ -40,10 +40,12 @@ import com.knoxhack.echoscreencore.api.EchoDataContext;
 import com.knoxhack.echoscreencore.client.engine.EchoScreenEngine;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.client.IndexActions;
+import com.knoxhack.echoindex.client.IndexNativeSessionBridge;
 import com.knoxhack.echoindex.client.IndexScreenCorePages;
 import com.knoxhack.echoindex.client.IndexUiState;
 import com.knoxhack.echoindex.integration.IndexMissionCoreIntegration;
 import com.knoxhack.echoindex.network.IndexActionPacket;
+import com.knoxhack.echoindex.network.IndexRecipeQueryPacket;
 import com.knoxhack.echoindex.network.IndexStateSyncPacket;
 import com.knoxhack.echoindex.network.ModNetwork;
 import com.knoxhack.echoindex.service.IndexDiscoveryStore;
@@ -52,6 +54,7 @@ import com.knoxhack.echoindex.service.IndexRecipeActionState;
 import com.knoxhack.echoindex.service.IndexRecipeLayoutType;
 import com.knoxhack.echoindex.service.IndexRecipePlan;
 import com.knoxhack.echoindex.service.IndexRecipePlanner;
+import com.knoxhack.echoindex.service.IndexRecipeQueryClientState;
 import com.knoxhack.echoindex.service.IndexRecipeSnapshot;
 import com.knoxhack.echoindex.service.IndexRecipeSnapshotCodec;
 import com.knoxhack.echoindex.service.IndexRecipeSourceKind;
@@ -101,6 +104,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("recipe_like_provider_cards", () -> ModGameTests::recipeLikeProviderCards);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> QUERY_RESULT_LIMITING =
             TEST_FUNCTIONS.register("recipe_query_result_limiting", () -> ModGameTests::recipeQueryResultLimiting);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> QUERY_LOCAL_FALLBACK =
+            TEST_FUNCTIONS.register("recipe_query_local_fallback", () -> ModGameTests::recipeQueryLocalFallback);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> VANILLA_RECIPE_GRID_METADATA =
             TEST_FUNCTIONS.register("vanilla_recipe_grid_metadata", () -> ModGameTests::vanillaRecipeGridMetadata);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> RECIPE_TRANSFER_ACTION_RECORDS_AFTER_SUCCESS =
@@ -109,6 +114,9 @@ public final class ModGameTests {
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> SCREENCORE_BOOKMARK_CLICK_DISPATCHES_NETCORE_ACTION =
             TEST_FUNCTIONS.register("screencore_bookmark_click_dispatches_netcore_action",
                     () -> ModGameTests::screenCoreBookmarkClickDispatchesNetCoreAction);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> NATIVE_READINESS_SNAPSHOT_CACHE_BACKED =
+            TEST_FUNCTIONS.register("native_readiness_snapshot_cache_backed",
+                    () -> ModGameTests::nativeReadinessSnapshotCacheBacked);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> SOURCE_PROVIDER_FACTS =
             TEST_FUNCTIONS.register("source_provider_facts", () -> ModGameTests::sourceProviderFacts);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> MISSION_REWARD_SOURCE_FACTS =
@@ -167,6 +175,8 @@ public final class ModGameTests {
                 new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, RECIPE_LIKE_PROVIDER_CARDS.getId()), data));
         event.registerTest(id("recipe_query_result_limiting"),
                 new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, QUERY_RESULT_LIMITING.getId()), data));
+        event.registerTest(id("recipe_query_local_fallback"),
+                new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, QUERY_LOCAL_FALLBACK.getId()), data));
         event.registerTest(id("vanilla_recipe_grid_metadata"),
                 new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, VANILLA_RECIPE_GRID_METADATA.getId()), data));
         event.registerTest(id("recipe_transfer_action_records_after_success"),
@@ -175,6 +185,9 @@ public final class ModGameTests {
         event.registerTest(id("screencore_bookmark_click_dispatches_netcore_action"),
                 new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION,
                         SCREENCORE_BOOKMARK_CLICK_DISPATCHES_NETCORE_ACTION.getId()), data));
+        event.registerTest(id("native_readiness_snapshot_cache_backed"),
+                new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION,
+                        NATIVE_READINESS_SNAPSHOT_CACHE_BACKED.getId()), data));
         event.registerTest(id("source_provider_facts"),
                 new FunctionGameTestInstance(ResourceKey.create(Registries.TEST_FUNCTION, SOURCE_PROVIDER_FACTS.getId()), data));
         event.registerTest(id("mission_reward_source_facts"),
@@ -547,6 +560,40 @@ public final class ModGameTests {
         helper.succeed();
     }
 
+    private static void recipeQueryLocalFallback(GameTestHelper helper) {
+        IndexRecipeQueryClientState.clearForTests();
+        try {
+            Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+            IndexRecipeSnapshot snapshot = IndexService.INSTANCE.recipeSnapshotForTests(
+                    player, List.of(VanillaIndexRecipeProvider.INSTANCE));
+            Identifier itemId = Identifier.withDefaultNamespace("diamond_pickaxe");
+            boolean sent;
+            try (EchoNetClientActions.TestActionOverrideHandle ignored =
+                         EchoNetClientActions.installActionOverrideForTests(payload -> Optional.of(false))) {
+                sent = EchoNetClientActions.trySendServerboundAction(
+                        new IndexRecipeQueryPacket(itemId, true, true, true));
+            }
+            helper.assertFalse(sent, "Rejected client transport should report that no server query was accepted.");
+            helper.assertTrue(IndexRecipeQueryClientState.applyLocalFallback(itemId, snapshot),
+                    "Local fallback should seed a query result from the client recipe snapshot.");
+
+            var result = IndexRecipeQueryClientState.result(Items.DIAMOND_PICKAXE)
+                    .orElseThrow(() -> helper.assertionException("Fallback should create a query result."));
+            helper.assertFalse(IndexRecipeQueryClientState.loading(Items.DIAMOND_PICKAXE),
+                    "Fallback query result should stop the client loading state.");
+            helper.assertTrue(!result.recipes().isEmpty(),
+                    "Fallback query result should expose local recipe views.");
+            helper.assertTrue(result.warning().isBlank(),
+                    "Fallback query result should not invent a server warning.");
+            IndexRecipeDisplayMetadata metadata = IndexRecipeQueryClientState.metadata(itemId)
+                    .orElseThrow(() -> helper.assertionException("Fallback should preserve vanilla display metadata."));
+            assertDiamondPickaxeGrid(helper, metadata, "fallback query metadata");
+        } finally {
+            IndexRecipeQueryClientState.clearForTests();
+        }
+        helper.succeed();
+    }
+
     private static void vanillaRecipeGridMetadata(GameTestHelper helper) {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         IndexRecipeSnapshot snapshot = IndexService.INSTANCE.recipeSnapshotForTests(
@@ -705,6 +752,34 @@ public final class ModGameTests {
         helper.succeed();
     }
 
+    private static void nativeReadinessSnapshotCacheBacked(GameTestHelper helper) {
+        IndexUiState.INSTANCE.resetFilters();
+        Map<String, Object> snapshot = IndexNativeSessionBridge.recordNativeReadinessSnapshot(
+                "gametest_native_readiness",
+                Map.of(
+                        "source", "gametest",
+                        "eventType", "native_readiness_snapshot"));
+        helper.assertTrue(Boolean.TRUE.equals(snapshot.get("nativeIndexSessionReady")),
+                "Native Index readiness snapshot should mark the session ready.");
+        helper.assertFalse(Boolean.TRUE.equals(snapshot.get("placeholderIndexData")),
+                "Native Index readiness snapshot should not report placeholder data.");
+        helper.assertTrue("live_index_cache_inventory_recipe_state".equals(snapshot.get("nativeIndexOverlayDataSource")),
+                "Native Index readiness snapshot should be backed by the live Index cache.");
+
+        Map<?, ?> stats = map(snapshot.get("dashboardStats"));
+        helper.assertTrue(number(stats, "itemCount") > 0,
+                "Native Index readiness snapshot should expose indexed item rows.");
+        helper.assertTrue(number(stats, "visibleItemCount") > 0,
+                "Native Index readiness snapshot should expose visible item rows.");
+
+        Map<?, ?> inventoryFacts = map(snapshot.get("inventoryFacts"));
+        helper.assertTrue(number(inventoryFacts, "visibleInventoryIndexedItems") > 0,
+                "Native Index inventory facts should prove the overlay has indexed rows available.");
+        helper.assertTrue(map(snapshot.get("routeDrivenIndexModel")).containsKey("dashboardStats"),
+                "Native Index readiness snapshot should include the route-driven model consumed by Ashfall live UI evidence.");
+        helper.succeed();
+    }
+
     private static EchoDataContext recipeDetailContext(Identifier recipeId) {
         List<String> notes = List.of("Authored Index ScreenCore bookmark click fixture.");
         Map<String, Object> selectedRecipe = Map.of(
@@ -787,6 +862,22 @@ public final class ModGameTests {
             String message) {
         helper.assertTrue(index >= 0 && index < metadata.cells().size(), message + " Cell index exists.");
         helper.assertTrue(metadata.cells().get(index).stream().noneMatch(stack -> stack != null && !stack.isEmpty()), message);
+    }
+
+    private static Map<?, ?> map(Object value) {
+        return value instanceof Map<?, ?> raw ? raw : Map.of();
+    }
+
+    private static int number(Map<?, ?> map, String key) {
+        Object value = map.get(key);
+        if (value instanceof Number number) {
+            return number.intValue();
+        }
+        try {
+            return value == null ? 0 : Integer.parseInt(String.valueOf(value));
+        } catch (NumberFormatException ignored) {
+            return 0;
+        }
     }
 
     private static final class RecordingMissionService implements IMissionService {

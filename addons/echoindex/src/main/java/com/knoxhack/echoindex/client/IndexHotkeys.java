@@ -59,19 +59,20 @@ public final class IndexHotkeys {
         if (hoveredStack.isEmpty()) {
             return false;
         }
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "open",
-                "index.hotkey_key_pressed",
-                IndexRecipeScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", IndexRecipeScreen.class.getName(),
-                        "transitionSource", "index_hotkey_hovered_stack",
-                        "recipeMode", mode.name(),
-                        "itemId", IndexService.itemId(hoveredStack.getItem()).toString()
-                ));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "open",
+                        "index.hotkey_key_pressed",
+                        IndexRecipeScreen.class.getName(),
+                        Map.of(
+                                "targetScreenClass", IndexRecipeScreen.class.getName(),
+                                "transitionSource", "index_hotkey_hovered_stack",
+                                "recipeMode", mode.name(),
+                                "itemId", IndexService.itemId(hoveredStack.getItem()).toString()
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         minecraft.setScreen(new IndexRecipeScreen(hoveredStack, mode));
         return true;

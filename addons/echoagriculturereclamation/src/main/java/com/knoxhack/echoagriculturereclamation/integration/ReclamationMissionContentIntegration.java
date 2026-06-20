@@ -12,8 +12,11 @@ import com.knoxhack.echoagriculturereclamation.EchoAgricultureReclamation;
 import com.knoxhack.echoagriculturereclamation.registry.ModBlocks;
 import com.knoxhack.echoagriculturereclamation.registry.ModItems;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class ReclamationMissionContentIntegration {
    private static final Identifier CHAPTER = id("field_reclamation");
@@ -35,22 +38,22 @@ public final class ReclamationMissionContentIntegration {
          0xFF92F7A6));
       mission(registry, "recover_seed", "Seed Capsule Recovery", "Recover and analyze a seed capsule.",
          "Recovered capsules unlock crop profiles for standalone farming and Ashfall salvage tables.",
-         new ItemStack(ModItems.RECOVERED_SEED_CAPSULE.get()), 0, "Recover or analyze a seed capsule");
+         safeStack(() -> (ItemLike) ModItems.RECOVERED_SEED_CAPSULE.get(), Items.WHEAT_SEEDS, 1), 0, "Recover or analyze a seed capsule");
       mission(registry, "analyze_soil", "Soil Health Survey", "Inspect contaminated, dead, irradiated, or restored soil.",
          "Soil state drives crop support, purifier output, and restoration thresholds.",
-         new ItemStack(ModBlocks.ECOLOGY_SCANNER.get()), 1, "Analyze local soil");
+         safeStack(() -> (ItemLike) ModBlocks.ECOLOGY_SCANNER.get(), Items.COMPASS, 1), 1, "Analyze local soil");
       mission(registry, "first_growth", "First Clean Growth", "Grow any Reclamation crop or hydroponic culture.",
          "A living crop proves the seed profile can survive outside vault storage.",
-         new ItemStack(ModBlocks.HYDROPONIC_TRAY.get()), 2, "Grow a Reclamation crop");
+         safeStack(() -> (ItemLike) ModBlocks.HYDROPONIC_TRAY.get(), Items.FLOWER_POT, 1), 2, "Grow a Reclamation crop");
       mission(registry, "gene_stabilization", "Gene Stabilization", "Stabilize a contaminated seed profile.",
          "Stable seeds improve yields, reduce contamination returns, and push restoration faster.",
-         new ItemStack(ModBlocks.GENE_STABILIZER.get()), 3, "Stabilize a seed");
+         safeStack(() -> (ItemLike) ModBlocks.GENE_STABILIZER.get(), Items.BREWING_STAND, 1), 3, "Stabilize a seed");
       mission(registry, "greenhouse_online", "Greenhouse Zone Online", "Scan and register a safe greenhouse envelope.",
          "Controllers save zone quality and protect crops from exposed-weather growth pressure.",
-         new ItemStack(ModBlocks.GREENHOUSE_CONTROLLER.get()), 4, "Bring a greenhouse zone online");
+         safeStack(() -> (ItemLike) ModBlocks.GREENHOUSE_CONTROLLER.get(), Items.GLASS, 1), 4, "Bring a greenhouse zone online");
       mission(registry, "restore_chunk", "Chunk Restoration", "Raise a local restoration score to its configured target.",
          "Crop maturity, purifier passes, and scanner pulses convert a field from toxic to restored.",
-         new ItemStack(ModBlocks.RESTORED_SOIL.get()), 5, "Restore a local field");
+         safeStack(() -> (ItemLike) ModBlocks.RESTORED_SOIL.get(), Items.DIRT, 1), 5, "Restore a local field");
    }
 
    private static void mission(IMissionRegistry registry, String path, String title, String briefing,
@@ -76,5 +79,24 @@ public final class ReclamationMissionContentIntegration {
 
    private static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(EchoAgricultureReclamation.MODID, path);
+   }
+
+   private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
+      try {
+         ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+         return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+      } catch (RuntimeException | LinkageError ignored) {
+         return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+      }
+   }
+
+   private static boolean nativeLoaderActive() {
+      return Boolean.getBoolean("echo.native.loader")
+         || !System.getProperty("echo.native.moduleIds", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
    }
 }

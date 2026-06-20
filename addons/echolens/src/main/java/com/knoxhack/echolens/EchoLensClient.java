@@ -22,6 +22,10 @@ import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
 public class EchoLensClient {
+    private static final String INPUT_KEY_EVENT = "net.neoforged.neoforge.client.event.InputEvent$Key";
+    private static final String RENDER_GUI_POST_EVENT = "net.neoforged.neoforge.client.event.RenderGuiEvent$Post";
+    private static final String REGISTER_KEY_MAPPINGS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
     private static final AtomicBoolean NATIVE_ROUTE_REGISTERED = new AtomicBoolean(false);
     private static final ThreadLocal<NativeLensOverlayRender> NATIVE_LENS_OVERLAY_RENDER = new ThreadLocal<>();
     private static final Map<Integer, NativeLensInputBinding> NATIVE_INPUT_BINDINGS = Map.of(
@@ -46,9 +50,10 @@ public class EchoLensClient {
     }
 
     public EchoLensClient(Object modEventBus) {
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoLensClient::onKeyInput);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoLensClient::onRenderGui);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerGameEventHandler(INPUT_KEY_EVENT, EchoLensClient::onKeyInput);
+        EchoBackendLifecycleBridge.registerGameEventHandler(RENDER_GUI_POST_EVENT, EchoLensClient::onRenderGui);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_KEY_MAPPINGS_EVENT,
+                ClientModEvents::onRegisterKeyMappings);
         if (LensModuleAccess.isLoaded("echoindex")) {
             registerIndexClientIntegration();
         }
@@ -69,14 +74,14 @@ public class EchoLensClient {
         if (minecraft.player == null || minecraft.screen != null) {
             return;
         }
-        if (EchoBackendClientBridge.keyMappingMatches(DEEP_SCAN_KEY, event)) {
+        int key = key(event);
+        if (EchoBackendClientBridge.keyMappingMatches(DEEP_SCAN_KEY, event) || key == GLFW.GLFW_KEY_LEFT_ALT) {
             LensHudOverlay.requestDeepScan();
             return;
         }
         if (LensHudOverlay.currentTargetStack().isEmpty()) {
             return;
         }
-        int key = key(event);
         if (key == GLFW.GLFW_KEY_R) {
             LensClientActions.openIndexRecipes(LensHudOverlay.currentTargetStack());
         } else if (key == GLFW.GLFW_KEY_U) {

@@ -9,17 +9,19 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 public final class EchoPayloadRegistrar {
     private final String protocolVersion;
     private final boolean optional;
+    private final Object registrationEvent;
     private final List<EchoPayloadRegistration<?>> registrations = new ArrayList<>();
 
-    private EchoPayloadRegistrar(String protocolVersion, boolean optional) {
+    private EchoPayloadRegistrar(String protocolVersion, boolean optional, Object registrationEvent) {
         this.protocolVersion = protocolVersion == null || protocolVersion.isBlank()
                 ? EchoNetPayloads.VERSION
                 : protocolVersion;
         this.optional = optional;
+        this.registrationEvent = registrationEvent;
     }
 
     public static EchoPayloadRegistrar optional(String protocolVersion) {
-        return new EchoPayloadRegistrar(protocolVersion, true);
+        return new EchoPayloadRegistrar(protocolVersion, true, EchoNetPayloads.currentRegistrationEvent());
     }
 
     public String protocolVersion() {
@@ -37,7 +39,9 @@ public final class EchoPayloadRegistrar {
     public <T extends CustomPacketPayload> EchoPayloadRegistrar playToClient(
             CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec) {
-        registrations.add(EchoPayloadRegistration.clientbound(type, codec, null));
+        EchoPayloadRegistration<T> registration = EchoPayloadRegistration.clientbound(type, codec, null);
+        registrations.add(registration);
+        EchoNeoForgePayloadBridge.register(registrationEvent, protocolVersion, optional, registration);
         return this;
     }
 
@@ -45,7 +49,9 @@ public final class EchoPayloadRegistrar {
             CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec,
             ClientboundReceiver<T> handler) {
-        registrations.add(EchoPayloadRegistration.clientbound(type, codec, handler));
+        EchoPayloadRegistration<T> registration = EchoPayloadRegistration.clientbound(type, codec, handler);
+        registrations.add(registration);
+        EchoNeoForgePayloadBridge.register(registrationEvent, protocolVersion, optional, registration);
         return this;
     }
 
@@ -53,7 +59,9 @@ public final class EchoPayloadRegistrar {
             CustomPacketPayload.Type<T> type,
             StreamCodec<? super RegistryFriendlyByteBuf, T> codec,
             ServerboundReceiver<T> handler) {
-        registrations.add(EchoPayloadRegistration.serverbound(type, codec, handler));
+        EchoPayloadRegistration<T> registration = EchoPayloadRegistration.serverbound(type, codec, handler);
+        registrations.add(registration);
+        EchoNeoForgePayloadBridge.register(registrationEvent, protocolVersion, optional, registration);
         return this;
     }
 

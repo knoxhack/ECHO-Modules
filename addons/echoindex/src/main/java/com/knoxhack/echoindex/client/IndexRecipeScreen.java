@@ -182,13 +182,14 @@ public final class IndexRecipeScreen extends Screen {
             IndexRecipeTraceState.Trace trace = IndexRecipeTraceState.current();
             if (traceApplies(trace)
                     && inside(mouseX, mouseY, detailX + detailW - 74, detailY + 4, 68, 16)) {
-                EchoNativeLoadStatus lifecycleStatus = publishNativeRecipeScreenOpen(
-                        trace.rootStack(),
-                        Mode.RECIPES,
-                        "recipe_trace_root_button");
-                if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                        && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                    return false;
+                if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                    EchoNativeLoadStatus lifecycleStatus = publishNativeRecipeScreenOpen(
+                                trace.rootStack(),
+                                Mode.RECIPES,
+                                "recipe_trace_root_button");
+                    if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                        return false;
+                    }
                 }
                 Minecraft.getInstance().setScreen(new IndexRecipeScreen(trace.rootStack(), Mode.RECIPES));
                 return true;
@@ -217,13 +218,14 @@ public final class IndexRecipeScreen extends Screen {
                 } else if (button == 1 && hit.choiceCyclable()) {
                     IndexRecipeUi.cycleChoice(hit, 1);
                 } else {
-                    EchoNativeLoadStatus lifecycleStatus = publishNativeRecipeScreenOpen(
-                            hit.stack(),
-                            modeForSlot(hit, button),
-                            "recipe_slot_navigation");
-                    if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                            && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                        return false;
+                    if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                        EchoNativeLoadStatus lifecycleStatus = publishNativeRecipeScreenOpen(
+                                    hit.stack(),
+                                    modeForSlot(hit, button),
+                                    "recipe_slot_navigation");
+                        if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                            return false;
+                        }
                     }
                     Minecraft.getInstance().setScreen(new IndexRecipeScreen(hit.stack(), modeForSlot(hit, button)));
                 }

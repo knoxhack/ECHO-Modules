@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 public final class MultiblockMissionCoreIntegration {
@@ -40,28 +41,28 @@ public final class MultiblockMissionCoreIntegration {
         registerMission(registry, "validate_first_structure", "validate", MissionObjectiveType.BUILD_MULTIBLOCK,
                 "Validate First Structure", "Validate or form a MultiblockCore structure from a controller.",
                 "The facility controller accepted a complete structure.",
-                safeStack(ModBlocks.MULTIBLOCK_CONTROLLER, 1), 0, "Validate a structure",
-                safeStack(ModItems.MACHINE_CASING, 2));
+                safeStack(() -> (ItemLike) ModBlocks.MULTIBLOCK_CONTROLLER.get(), Items.REPEATER, 1), 0, "Validate a structure",
+                safeStack(() -> (ItemLike) ModItems.MACHINE_CASING.get(), Items.IRON_BLOCK, 2));
         registerMission(registry, "install_robot_tool", "tool", MissionObjectiveType.REPAIR_MACHINE,
                 "Install Robot Tool", "Install any tool head into a robotic arm.",
                 "Robotic workcell tooling is online.",
-                safeStack(ModBlocks.ROBOTIC_ARM, 1), 1, "Install a robot tool head",
-                safeStack(ModItems.WELDER_HEAD, 1));
+                safeStack(() -> (ItemLike) ModBlocks.ROBOTIC_ARM.get(), Items.ARMOR_STAND, 1), 1, "Install a robot tool head",
+                safeStack(() -> (ItemLike) ModItems.WELDER_HEAD.get(), Items.IRON_INGOT, 1));
         registerMission(registry, "complete_automation_task", "task", MissionObjectiveType.CUSTOM,
                 "Complete Automation Task", "Let a queued MultiblockCore automation task complete.",
                 "Automation completion reached MissionCore.",
-                safeStack(ModItems.SUPPLY_MANIFEST, 1), 2, "Complete an automation task",
-                safeStack(ModItems.SIGNAL_CIRCUIT, 2));
+                safeStack(() -> (ItemLike) ModItems.SUPPLY_MANIFEST.get(), Items.PAPER, 1), 2, "Complete an automation task",
+                safeStack(() -> (ItemLike) ModItems.SIGNAL_CIRCUIT.get(), Items.REDSTONE, 2));
         registerMission(registry, "repair_integrity", "repair", MissionObjectiveType.REPAIR_MACHINE,
                 "Repair Integrity", "Complete an automation task that repairs facility integrity.",
                 "Facility integrity repair has been recorded.",
-                safeStack(ModItems.INTEGRITY_UPGRADE, 1), 3, "Repair multiblock integrity",
-                safeStack(ModItems.INTEGRITY_UPGRADE, 1));
+                safeStack(() -> (ItemLike) ModItems.INTEGRITY_UPGRADE.get(), Items.ANVIL, 1), 3, "Repair multiblock integrity",
+                safeStack(() -> (ItemLike) ModItems.INTEGRITY_UPGRADE.get(), Items.ANVIL, 1));
         registerMission(registry, "use_auto_builder", "builder", MissionObjectiveType.BUILD_MULTIBLOCK,
                 "Use Auto-Builder", "Run the auto-builder to place missing structure blocks.",
                 "Auto-builder placement assistance is online.",
-                safeStack(ModBlocks.AUTO_BUILDER, 1), 4, "Use the auto-builder",
-                safeStack(ModItems.AUTO_BUILDER_CORE, 1));
+                safeStack(() -> (ItemLike) ModBlocks.AUTO_BUILDER.get(), Items.SCAFFOLDING, 1), 4, "Use the auto-builder",
+                safeStack(() -> (ItemLike) ModItems.AUTO_BUILDER_CORE.get(), Items.PISTON, 1));
     }
 
     private static void registerMission(
@@ -101,12 +102,7 @@ public final class MultiblockMissionCoreIntegration {
         return Identifier.fromNamespaceAndPath(EchoMultiblockCore.MODID, path);
     }
 
-    private static ItemStack safeStack(Supplier<? extends ItemLike> item, int count) {
-        try {
-            ItemLike value = item == null ? null : item.get();
-            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
-        } catch (RuntimeException | LinkageError ignored) {
-            return ItemStack.EMPTY;
-        }
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        return ItemStack.EMPTY;
     }
 }

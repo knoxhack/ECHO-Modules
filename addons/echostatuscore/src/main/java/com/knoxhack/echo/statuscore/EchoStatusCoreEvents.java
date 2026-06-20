@@ -1,7 +1,6 @@
 package com.knoxhack.echo.statuscore;
 
-import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
-import com.knoxhack.echo.adaptercore.EchoNativeAgent7LiveHookEvidenceBridge;
+import java.util.function.Consumer;
 
 public final class EchoStatusCoreEvents {
     private static volatile boolean statusRegistryHookAttached;
@@ -13,7 +12,7 @@ public final class EchoStatusCoreEvents {
         if (statusRegistryHookAttached) {
             return;
         }
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoStatusCoreEvents::onServerStarting);
+        registerGameEventHandler(EchoStatusCoreEvents::onServerStarting);
         statusRegistryHookAttached = true;
     }
 
@@ -48,10 +47,22 @@ public final class EchoStatusCoreEvents {
     }
 
     private static void recordAgent7LiveHook(long gameTick, String sourceReason) {
-        EchoNativeAgent7LiveHookEvidenceBridge.recordExactCallback(
-                "echostatuscore",
-                "server_starting",
-                gameTick,
-                sourceReason);
+        try {
+            Class.forName("com.knoxhack.echo.adaptercore.EchoNativeAgent7LiveHookEvidenceBridge")
+                    .getMethod("recordExactCallback", String.class, String.class, long.class, String.class)
+                    .invoke(null, "echostatuscore", "server_starting", gameTick, sourceReason);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            // StatusCore can still run as a native/standalone module before the NeoForge lifecycle bridge exists.
+        }
+    }
+
+    private static void registerGameEventHandler(Consumer<Object> listener) {
+        try {
+            Class.forName("com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge")
+                    .getMethod("registerGameEventHandler", Consumer.class)
+                    .invoke(null, listener);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            // The native/standalone source-safety harness does not provide the NeoForge lifecycle bridge.
+        }
     }
 }

@@ -184,6 +184,23 @@ dependencies {
     localRuntime "org.jline:jline-terminal:3.20.0"
 }
 
+def ashfallEmbeddedNativeProjects = [
+        ':echo-native-contracts',
+        ':echo-native-diagnostics',
+        ':echo-native-packos',
+        ':echo-native-loader',
+].collect { rootProject.findProject(it) }.findAll { it != null }
+
+tasks.named('jar', Jar).configure {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    ashfallEmbeddedNativeProjects.each { nativeProject ->
+        dependsOn nativeProject.tasks.named('classes')
+        from(nativeProject.sourceSets.main.output) {
+            exclude 'META-INF/MANIFEST.MF'
+        }
+    }
+}
+
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
@@ -204,6 +221,18 @@ neoForge.ideSyncTask generateModMetadata
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.register('runAshfallNativeLoaderRuntimeHostGate', JavaExec) {
+    group = 'verification'
+    description = 'Verifies Ashfall can attach the Native Loader AdapterCore backend and mutate live-proof surfaces.'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.knoxhack.echoashfallprotocol.test.AshfallNativeLoaderRuntimeHostGateMain'
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('runAshfallNativeLoaderRuntimeHostGate')
 }
 
 publishing {

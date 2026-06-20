@@ -13,6 +13,7 @@ import com.knoxhack.echoblackboxprotocol.registry.ModRecipes;
 import com.knoxhack.echoblackboxprotocol.registry.ModWorldgen;
 import com.mojang.logging.LogUtils;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ public class EchoBlackboxProtocol {
       "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
    private static final String ENTITY_ATTRIBUTE_CREATION_EVENT =
       "net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent";
+   private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
    EchoBlackboxProtocol() {
       this(null);
@@ -50,12 +52,22 @@ public class EchoBlackboxProtocol {
 }
 
    private void commonSetup(Object event) {
-      LOGGER.info("ECHO-7 blackbox protocol initialized. Truth Engine cold-start accepted.");
-      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-         BlackboxCoreIntegration.registerAddonChapter();
-         if (EchoRuntimeModules.isLoaded("echoterminal")) {
-            BlackboxTerminalCommonIntegration.register();
-         }
-      });
+      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+   }
+
+   public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+      return registerCommonServices("native_loader_module_ready");
+   }
+
+   private static boolean registerCommonServices(String source) {
+      if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+         return false;
+      }
+      LOGGER.info("ECHO-7 blackbox protocol initialized [{}]. Truth Engine cold-start accepted.", source);
+      BlackboxCoreIntegration.registerAddonChapter();
+      if (EchoRuntimeModules.isLoaded("echoterminal")) {
+         BlackboxTerminalCommonIntegration.register();
+      }
+      return true;
    }
 }

@@ -8,6 +8,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
@@ -44,7 +45,8 @@ public class BiomeGuardianSiteData extends SavedData {
     public static final SavedDataType<BiomeGuardianSiteData> TYPE = new SavedDataType<>(
             Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "biome_guardian_sites"),
             BiomeGuardianSiteData::new,
-            CODEC
+            CODEC,
+            DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private final List<Entry> sites = new ArrayList<>();

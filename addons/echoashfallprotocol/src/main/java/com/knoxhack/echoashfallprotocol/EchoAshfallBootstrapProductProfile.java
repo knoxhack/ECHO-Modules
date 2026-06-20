@@ -238,7 +238,7 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
     public List<String> requiredLiveMutationSurfaces() {
         return List.of(
                 "inventory",
-                "world_blocks",
+                "structures",
                 "save_data",
                 "hud"
         );
@@ -882,6 +882,13 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
     @Override
     public List<String> nativeSaveDatapackEntryPrefixes() {
         return List.of(
+                "data/echoashfallprotocol/adaptercore/",
+                "data/echoashfallprotocol/advancement/",
+                "data/echoashfallprotocol/echoworldcore/",
+                "data/echoashfallprotocol/loot_table/",
+                "data/echoashfallprotocol/missioncore/",
+                "data/echoashfallprotocol/recipe/",
+                "data/echoashfallprotocol/registries/",
                 "data/echoashfallprotocol/worldgen/",
                 "data/echoashfallprotocol/tags/worldgen/",
                 "data/echoashfallprotocol/structure/",
@@ -901,7 +908,13 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
                 "prefallDimensionTypePresent",
                 "data/echoashfallprotocol/dimension_type/prefall_archives.json",
                 "overworldNoiseSettingsPresent",
-                "data/echoashfallprotocol/worldgen/noise_settings/wasteland_overworld.json"
+                "data/echoashfallprotocol/worldgen/noise_settings/wasteland_overworld.json",
+                "missionCoreCrashLandingChapterPresent",
+                "data/echoashfallprotocol/missioncore/chapters/ashfall_crash_landing.json",
+                "missionCoreMajorRoutesChapterPresent",
+                "data/echoashfallprotocol/missioncore/chapters/ashfall_major_routes.json",
+                "missionCoreSecureCrashOutpostPresent",
+                "data/echoashfallprotocol/missioncore/missions/secure_crash_outpost.json"
         );
     }
 
@@ -1852,6 +1865,16 @@ public final class EchoAshfallBootstrapProductProfile implements EchoNativeBoots
     @Override
     public String nativePlayableProofMarkerBlockId() {
         return id("native_loader_proof_marker");
+    }
+
+    @Override
+    public String nativePlayableStartingStructureId() {
+        return id("drop_pod");
+    }
+
+    @Override
+    public String nativePlayableStartingStructureAnchor() {
+        return "personal_starting_drop_pod.interior";
     }
 
     @Override

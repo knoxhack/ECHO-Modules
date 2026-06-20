@@ -989,11 +989,34 @@ public final class AshfallAdapterCoreEarlyEventRuntime {
 
     private static int countItem(ServerPlayer player, Item item) {
         int count = 0;
+        ItemStack mainHand = player.getMainHandItem();
+        ItemStack offHand = player.getOffhandItem();
+        ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
+        ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
+        ItemStack legs = player.getItemBySlot(EquipmentSlot.LEGS);
+        ItemStack feet = player.getItemBySlot(EquipmentSlot.FEET);
+        boolean countedMainHand = false;
+        boolean countedOffHand = false;
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
+            if (stack == head || stack == chest || stack == legs || stack == feet) {
+                continue;
+            }
+            if (stack == mainHand) {
+                countedMainHand = true;
+            }
+            if (stack == offHand) {
+                countedOffHand = true;
+            }
             if (!stack.isEmpty() && stack.is(item)) {
                 count += stack.getCount();
             }
+        }
+        if (!countedMainHand && !mainHand.isEmpty() && mainHand.is(item)) {
+            count += mainHand.getCount();
+        }
+        if (!countedOffHand && offHand != mainHand && !offHand.isEmpty() && offHand.is(item)) {
+            count += offHand.getCount();
         }
         return count;
     }

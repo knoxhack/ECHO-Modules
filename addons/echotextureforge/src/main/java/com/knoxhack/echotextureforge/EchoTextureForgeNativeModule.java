@@ -32,9 +32,7 @@ public final class EchoTextureForgeNativeModule implements EchoNativeSurfaceModu
             SPEC_REGISTRY_CONTRACT_ID,
             PROMPT_EXPORT_CONTRACT_ID,
             REVIEW_STATE_CONTRACT_ID,
-            TEXTURE_AUDIT_CONTRACT_ID
-    );
-    public static final List<String> PLANNED_CONTRACT_IDS = List.of(
+            TEXTURE_AUDIT_CONTRACT_ID,
             DASHBOARD_CONTRACT_ID
     );
 
@@ -49,10 +47,8 @@ public final class EchoTextureForgeNativeModule implements EchoNativeSurfaceModu
         result.put("moduleId", MODULE_ID);
         result.put("packId", context.getOrDefault("packId", "unknown"));
         result.put("registeredFeatureContracts", CONTRACT_IDS);
-        result.put("plannedFeatureContracts", PLANNED_CONTRACT_IDS);
         result.put("logicalRegistrationCount", CONTRACT_IDS.size());
-        result.put("adapterDomains", List.of("assets", "data", "diagnostics"));
-        result.put("plannedAdapterDomains", List.of("ui_screens"));
+        result.put("adapterDomains", List.of("assets", "data", "diagnostics", "ui_screens"));
         result.put("runtimeTargets", List.of("echo_native", "echo_runtime_standalone"));
         result.put("specRegistryRoundTrip", referenceProbe.get("specRegistryRoundTrip"));
         result.put("promptExportRoundTrip", referenceProbe.get("promptExportRoundTrip"));
@@ -61,14 +57,14 @@ public final class EchoTextureForgeNativeModule implements EchoNativeSurfaceModu
         result.put("dashboardSurfaceResolved", referenceProbe.get("dashboardSurfaceResolved"));
         result.put("dashboardSurfacePlanned", referenceProbe.get("dashboardSurfacePlanned"));
         result.put("dashboardSurfaceStatus", referenceProbe.get("dashboardStatus"));
-        result.put("dashboardActionable", false);
-        result.put("uiSurfaceStatus", "planned_only");
+        result.put("dashboardActionable", true);
+        result.put("uiSurfaceStatus", "resolved_placeholder");
         result.put("requiresDashboardClientBridge", true);
         result.put("referenceProbe", referenceProbe);
         result.put("registryInjected", false);
         result.put("registryMutated", false);
         result.put("transformsPerformed", false);
-        result.put("summary", "TextureForge native contract exercised spec registry, prompt template, review-state enum, audit report, and validation; dashboard UI remains planned-only until a ScreenCore implementation is wired.");
+        result.put("summary", "TextureForge native contract exercised spec registry, prompt template, review-state enum, audit report, validation, and the native placeholder dashboard surface.");
         return Map.copyOf(result);
     }
 
@@ -83,12 +79,12 @@ public final class EchoTextureForgeNativeModule implements EchoNativeSurfaceModu
                 "TextureForge native adapter should exercise prompt export behavior");
         require(Boolean.TRUE.equals(activation.get("textureAuditRoundTrip")),
                 "TextureForge native adapter should exercise audit behavior");
-        require(Boolean.FALSE.equals(activation.get("dashboardSurfaceResolved")),
-                "TextureForge native adapter should not claim the planned dashboard as live");
-        require(Boolean.TRUE.equals(activation.get("dashboardSurfacePlanned")),
-                "TextureForge native adapter should report the planned dashboard backlog");
+        require(Boolean.TRUE.equals(activation.get("dashboardSurfaceResolved")),
+                "TextureForge native adapter should resolve the dashboard placeholder surface");
+        require(Boolean.FALSE.equals(activation.get("dashboardSurfacePlanned")),
+                "TextureForge native adapter should not report the dashboard as planned-only");
         System.out.println("textureforge native adapter smoke PASS contracts=" + CONTRACT_IDS.size()
-                + " planned=" + PLANNED_CONTRACT_IDS.size());
+                + " dashboard=resolved");
     }
 
     private Map<String, Object> exerciseReferenceBehavior() {
@@ -162,9 +158,9 @@ public final class EchoTextureForgeNativeModule implements EchoNativeSurfaceModu
                 && report.severitySummary().get(TextureAuditSeverity.WARNING) == 1
                 && rules.defaultResolution().equals(TextureResolution.DEFAULT_32)
                 && rules.requirePowerOfTwo());
-        result.put("dashboardSurfaceResolved", false);
-        result.put("dashboardSurfacePlanned", dashboardStatus.contains("reserved")
+        result.put("dashboardSurfaceResolved", dashboardStatus.contains("resolved")
                 && dashboardStatus.contains("ScreenCore"));
+        result.put("dashboardSurfacePlanned", false);
         result.put("promptLength", prompt.length());
         result.put("registrySize", registry.size());
         result.put("dashboardStatus", dashboardStatus);

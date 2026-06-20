@@ -39,11 +39,12 @@ public final class IndexScreenCoreBridge {
         Identifier page = IndexUiState.INSTANCE.startPage();
         IndexUiState.INSTANCE.setCurrentPage(page);
         try {
-            EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle(
-                    "index.screencore.open", page, "index_screencore_open", Map.of());
-            if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus =
+                        publishOpenLifecycle("index.screencore.open", page, "index_screencore_open", Map.of());
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             boolean opened = EchoScreens.open(page, IndexDataProviders.context());
             if (!opened) {
@@ -67,12 +68,15 @@ public final class IndexScreenCoreBridge {
         Identifier page = IndexScreenCorePages.fromMode(mode);
         IndexUiState.INSTANCE.setCurrentPage(page);
         try {
-            EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle("index.screencore.open_mode", page, "index_screencore_open_mode", Map.of(
-                    "mode", mode == null ? "" : mode
-            ));
-            if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle(
+                        "index.screencore.open_mode",
+                        page,
+                        "index_screencore_open_mode",
+                        Map.of("mode", mode == null ? "" : mode));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             boolean opened = EchoScreens.open(page, IndexDataProviders.context());
             if (!opened) {
@@ -91,11 +95,15 @@ public final class IndexScreenCoreBridge {
             IndexUiState.INSTANCE.selection().selectItem(itemId);
         }
         IndexUiState.INSTANCE.setCurrentPage(IndexScreenCorePages.ITEM_DETAIL);
-        EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle("index.screencore.open_item", IndexScreenCorePages.ITEM_DETAIL,
-                "index_screencore_open_item", Map.of("itemId", itemId == null ? "" : itemId.toString()));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle(
+                    "index.screencore.open_item",
+                    IndexScreenCorePages.ITEM_DETAIL,
+                    "index_screencore_open_item",
+                    Map.of("itemId", itemId == null ? "" : itemId.toString()));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         return EchoScreens.open(IndexScreenCorePages.ITEM_DETAIL, IndexDataProviders.context());
     }
@@ -106,11 +114,15 @@ public final class IndexScreenCoreBridge {
             IndexUiState.INSTANCE.selection().selectRecipe(recipeId);
         }
         IndexUiState.INSTANCE.setCurrentPage(IndexScreenCorePages.RECIPE_DETAIL);
-        EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle("index.screencore.open_recipe", IndexScreenCorePages.RECIPE_DETAIL,
-                "index_screencore_open_recipe", Map.of("recipeId", recipeId == null ? "" : recipeId.toString()));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = publishOpenLifecycle(
+                    "index.screencore.open_recipe",
+                    IndexScreenCorePages.RECIPE_DETAIL,
+                    "index_screencore_open_recipe",
+                    Map.of("recipeId", recipeId == null ? "" : recipeId.toString()));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         return EchoScreens.open(IndexScreenCorePages.RECIPE_DETAIL, IndexDataProviders.context());
     }

@@ -15,6 +15,7 @@ import com.knoxhack.echoindex.service.IndexService;
 import com.knoxhack.echoindex.service.IndexSourceRecipeProvider;
 import com.knoxhack.echoindex.service.VanillaIndexRecipeProvider;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -25,11 +26,15 @@ import org.slf4j.Logger;
 public class EchoIndex {
     public static final String MODID = "echoindex";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
+    private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
 
     public EchoIndex(IEventBus modEventBus) {
         Config.registerEchoConfig();
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ModNetwork::registerPayloads);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_PAYLOAD_HANDLERS_EVENT,
+                ModNetwork::registerPayloads);
         EchoBackendLifecycleBridge.registerGameEventHandler(IndexReloaders::addServerReloadListeners);
         IndexCommands.register();
         IndexEvents.register();
@@ -40,8 +45,32 @@ public class EchoIndex {
     }
 
     private void commonSetup(Object event) {
-        LOGGER.info("ECHO: Index is assembling the shared archive.");
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return ensureCommonServicesRegisteredForNativeLoader("native_loader_module_ready");
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader(String source) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            LOGGER.info("ECHO: Index common services deferred [{}]; item stack components are not bound yet.",
+                    source);
+            return false;
+        }
+        return registerCommonServices(source);
+    }
+
+    public static boolean commonServicesRegistered() {
+        return COMMON_SERVICES_REGISTERED.get();
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        try {
+            LOGGER.info("ECHO: Index is assembling the shared archive [{}].", source);
             EchoAddonRegistry.register(new EchoAddonChapter() {
                 @Override
                 public String id() {
@@ -81,7 +110,14 @@ public class EchoIndex {
             if (EchoRuntimeModules.isLoaded("echoterminal")) {
                 registerTerminalIntegration();
             }
-        });
+            return true;
+        } catch (RuntimeException | LinkageError exception) {
+            COMMON_SERVICES_REGISTERED.set(false);
+            LOGGER.warn("ECHO: Index common services could not register [{}]; will retry when components are bound.",
+                    source,
+                    exception);
+            return false;
+        }
     }
 
     private static void registerMachineCoreIntegration() {

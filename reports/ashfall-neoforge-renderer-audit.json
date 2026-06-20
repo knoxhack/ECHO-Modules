@@ -1,0 +1,218 @@
+{
+  "schema": "echo.modules.ashfall_neoforge_renderer_audit.v1",
+  "generatedAt": "2026-06-19T12:12:49.095Z",
+  "pack": "ashfall-neoforge-edition",
+  "manifestPath": "C:\\Development\\Github\\ECHO-Ashfall-NeoForge-Edition\\release-manifest.template.json",
+  "moduleCount": 46,
+  "entityModuleCount": 10,
+  "entityCount": 83,
+  "renderCoreRequired": true,
+  "ok": true,
+  "issueCount": 0,
+  "issues": [],
+  "modules": [
+    {
+      "moduleId": "echoagriculturereclamation",
+      "present": true,
+      "entityCount": 1,
+      "entities": [
+        "POLLINATOR_DRONE"
+      ],
+      "rendererRegistrationCount": 1,
+      "renderCoreRegistrationCount": 1,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoarmory",
+      "present": true,
+      "entityCount": 3,
+      "entities": [
+        "ENERGY_BOLT",
+        "SIGIL_CHAKRAM",
+        "VEIL_ARROW"
+      ],
+      "rendererRegistrationCount": 3,
+      "renderCoreRegistrationCount": 0,
+      "hasRenderCoreIntegration": false,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoashfallprotocol",
+      "present": true,
+      "entityCount": 34,
+      "entities": [
+        "ASH_WRAITH",
+        "CITY_RUIN_STALKER",
+        "CITY_STALKER",
+        "CORRUPTION_BLOOM",
+        "CRASH_SURVIVOR",
+        "CRASH_ZONE_COLOSSUS",
+        "CRYOGENIC_OVERSEER",
+        "ECHO_COMPANION_DRONE",
+        "ECHO_DRONE",
+        "FACTION_NPC",
+        "FERAL_HUMAN",
+        "GLOWING_GHOUL",
+        "GRIDBOUND_HUSK",
+        "INDUSTRIAL_JUGGERNAUT",
+        "IRRADIATED_WOLF",
+        "MIRROR_COMMAND",
+        "MUTATED_CRAWLER",
+        "NEXUS_NULLIFIER",
+        "NEXUS_SCAR_AVATAR",
+        "PLAINS_WARLORD",
+        "RAD_ZOMBIE",
+        "RADIATION_BEHEMOTH",
+        "RELAY_WARDEN",
+        "RUST_WALKER",
+        "SCAVENGER_BANDIT",
+        "SCOUT_DRONE",
+        "SEVERANCE_ENGINE",
+        "SIGNAL_LEECH",
+        "STEAM_WRAITH",
+        "TOXIC_HIVE_MATRIARCH",
+        "TOXIC_SLIME",
+        "WARDEN_BOSS",
+        "WASTELAND_SENTINEL",
+        "WILD_DOG"
+      ],
+      "rendererRegistrationCount": 34,
+      "renderCoreRegistrationCount": 34,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoblackboxprotocol",
+      "present": true,
+      "entityCount": 9,
+      "entities": [
+        "ARCHIVE_HUSK",
+        "BLACKBOX_SENTINEL",
+        "COMMAND_REMNANT",
+        "COMMAND_REMNANT_MINION",
+        "FALSE_ECHO",
+        "FALSE_ECHO_MINION",
+        "MEMORY_PARASITE",
+        "NEXUS_GUARDIAN",
+        "SECURITY_ECHO"
+      ],
+      "rendererRegistrationCount": 9,
+      "renderCoreRegistrationCount": 9,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoconvoyprotocol",
+      "present": true,
+      "entityCount": 4,
+      "entities": [
+        "ARMORED_RELAY_TRUCK",
+        "CARGO_CRAWLER",
+        "SCRAP_BIKE",
+        "WASTELAND_ROVER"
+      ],
+      "rendererRegistrationCount": 4,
+      "renderCoreRegistrationCount": 4,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoindustrialnexus",
+      "present": true,
+      "entityCount": 2,
+      "entities": [
+        "FURNACE_DRONE",
+        "FURNACE_WARDEN"
+      ],
+      "rendererRegistrationCount": 2,
+      "renderCoreRegistrationCount": 2,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echologisticsnetwork",
+      "present": true,
+      "entityCount": 1,
+      "entities": [
+        "COURIER_DRONE"
+      ],
+      "rendererRegistrationCount": 1,
+      "renderCoreRegistrationCount": 1,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echonexusprotocol",
+      "present": true,
+      "entityCount": 7,
+      "entities": [
+        "ARCHIVE_SEEKER",
+        "CORE_SOLDIER",
+        "CORRUPTION_WARDEN",
+        "DATA_WRAITH",
+        "NEXUS_GUARDIAN",
+        "NEXUS_HUSK",
+        "STATIC_CRAWLER"
+      ],
+      "rendererRegistrationCount": 7,
+      "renderCoreRegistrationCount": 7,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echoorbitalremnants",
+      "present": true,
+      "entityCount": 13,
+      "entities": [
+        "ABANDONED_CAPTAIN",
+        "BROKEN_ASTRONAUT",
+        "CORRUPTED_DOCKING_AI",
+        "ECHO_DEFENSE_DRONE",
+        "ECHO_ZERO",
+        "EMERGENCY_ROCKET_VEHICLE",
+        "EUROPA_CRYO_WARDEN",
+        "LUNAR_NEXUS_HUSK",
+        "NEXUS_HUSK",
+        "ORBITAL_FACTION_NPC",
+        "SATURN_RELAY_SENTINEL",
+        "TITAN_METHANE_STALKER",
+        "VACUUM_WRAITH"
+      ],
+      "rendererRegistrationCount": 13,
+      "renderCoreRegistrationCount": 13,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    },
+    {
+      "moduleId": "echostationfall",
+      "present": true,
+      "entityCount": 9,
+      "entities": [
+        "EVA_STALKER",
+        "HOLLOW_CREWMAN",
+        "HYDROPONIC_GROWTH",
+        "MAINTENANCE_DRONE",
+        "MEDICAL_HUSK",
+        "SCREAMING_SIGNAL",
+        "STATION_MIMIC",
+        "STATION_MOTHER",
+        "SUIT_WITHOUT_BODY"
+      ],
+      "rendererRegistrationCount": 9,
+      "renderCoreRegistrationCount": 9,
+      "hasRenderCoreIntegration": true,
+      "missingRendererRegistrations": [],
+      "missingRenderCoreRegistrations": []
+    }
+  ]
+}

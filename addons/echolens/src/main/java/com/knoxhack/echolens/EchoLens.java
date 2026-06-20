@@ -8,6 +8,8 @@ import com.knoxhack.echolens.integration.LensMissionCoreIntegration;
 import com.knoxhack.echolens.network.ModNetwork;
 import com.knoxhack.echolens.provider.LensBuiltins;
 import com.mojang.logging.LogUtils;
+import com.echoplatform.echocore.api.EchoRuntimeModules;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -19,6 +21,7 @@ import org.slf4j.Logger;
 public class EchoLens {
     public static final String MODID = "echolens";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
     public EchoLens(IEventBus modEventBus, ModContainer modContainer) {
         LensConfig.registerEchoConfig();
@@ -32,23 +35,33 @@ public class EchoLens {
     }
 
     private void commonSetup(Object event) {
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            LensBuiltins.register();
-            LensCoreIntegration.register();
-            if (modulePresent("com.knoxhack.echomissioncore.EchoMissionCore")) {
-                LensMissionCoreIntegration.register();
-            }
-            if (modulePresent("com.knoxhack.echomachinecore.EchoMachineCore")) {
-                registerMachineCoreIntegration();
-            }
-            if (modulePresent("com.knoxhack.echoterminal.EchoTerminal")) {
-                registerTerminalIntegration();
-            }
-            LOGGER.info("ECHO: Lens scanner HUD online with {} providers.",
-                    com.knoxhack.echolens.registry.LensProviderRegistry.count());
-            LOGGER.info("ECHO: Lens server-assisted Deep Scan online with {} server providers.",
-                    com.knoxhack.echolens.registry.LensProviderRegistry.serverProviders().size());
-        });
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return registerCommonServices("native_loader_module_ready");
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        LensBuiltins.register();
+        LensCoreIntegration.register();
+        if (modulePresent("echomissioncore", "com.knoxhack.echomissioncore.EchoMissionCore")) {
+            LensMissionCoreIntegration.register();
+        }
+        if (modulePresent("echomachinecore", "com.knoxhack.echomachinecore.EchoMachineCore")) {
+            registerMachineCoreIntegration();
+        }
+        if (modulePresent("echoterminal", "com.knoxhack.echoterminal.EchoTerminal")) {
+            registerTerminalIntegration();
+        }
+        LOGGER.info("ECHO: Lens scanner HUD online [{}] with {} providers.",
+                source, com.knoxhack.echolens.registry.LensProviderRegistry.count());
+        LOGGER.info("ECHO: Lens server-assisted Deep Scan online [{}] with {} server providers.",
+                source, com.knoxhack.echolens.registry.LensProviderRegistry.serverProviders().size());
+        return true;
     }
 
     private static void registerTerminalIntegration() {
@@ -95,7 +108,10 @@ public class EchoLens {
         return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
-    private static boolean modulePresent(String className) {
+    private static boolean modulePresent(String moduleId, String className) {
+        if (EchoRuntimeModules.isLoaded(moduleId)) {
+            return true;
+        }
         try {
             Class.forName(className, false, EchoLens.class.getClassLoader());
             return true;

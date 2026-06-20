@@ -1,5 +1,6 @@
 package com.knoxhack.echorecovery.integration;
 
+import com.echoplatform.echocore.api.EchoCoreServices;
 import com.knoxhack.echorecovery.EchoRecovery;
 import com.knoxhack.echorecovery.config.RecoveryConfig;
 import com.knoxhack.echorecovery.data.RecoveryWorldData;
@@ -20,9 +21,13 @@ import com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionReward;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class RecoveryTerminalIntegration {
     private static boolean registered;
@@ -109,26 +114,26 @@ public final class RecoveryTerminalIntegration {
                     mission(FIRST_RECOVERY, 1, "First Recovery",
                             "Recover a grave or field cache after death.",
                             "Death creates a protected cache by default. Use /graves list or a Recovery Compass to locate it.",
-                            new ItemStack(ModItems.GRAVE_KEY.get())),
+                            stack(() -> (ItemLike) ModItems.GRAVE_KEY.get(), Items.NAME_TAG, 1)),
                     mission(COMPASS, 2, "Recovery Compass",
                             "Craft or carry a Recovery Compass for nearest-cache guidance.",
                             "The compass tracks same-dimension graves by default and reports cross-dimensional blocks clearly.",
-                            new ItemStack(ModItems.RECOVERY_COMPASS.get())),
+                            stack(() -> (ItemLike) ModItems.RECOVERY_COMPASS.get(), Items.COMPASS, 1)),
                     mission(REMOTE, 3, "Remote Recovery",
                             "Optional service restore when remote recovery is enabled.",
                             "Remote recovery stays disabled by default. Server operators may enable it for assisted restores.",
-                            new ItemStack(ModItems.RECOVERY_TOKEN.get())),
+                            stack(() -> (ItemLike) ModItems.RECOVERY_TOKEN.get(), Items.EMERALD, 1)),
                     mission(TEAM, 4, "Shared Recovery",
                             "Share a cache with another player or enable team recovery.",
                             "Use /graves share <player> for the latest active grave. Team access follows config.",
-                            new ItemStack(ModItems.DEATH_RECORD.get()))
+                            stack(() -> (ItemLike) ModItems.DEATH_RECORD.get(), Items.PAPER, 1))
             );
         }
 
         @Override
         public TerminalMissionSnapshot snapshot(Player player, net.minecraft.resources.Identifier missionId) {
             int active = activeGraves(player);
-            boolean hasCompass = player != null && player.getInventory().contains(new ItemStack(ModItems.RECOVERY_COMPASS.get()));
+            boolean hasCompass = has(player, () -> ModItems.RECOVERY_COMPASS.get());
             TerminalMissionStatus status = TerminalMissionStatus.UNLOCKED;
             float progress = 0.0F;
             String hint = "Review Recovery tools and continue.";
@@ -205,6 +210,37 @@ public final class RecoveryTerminalIntegration {
                 count += RecoveryWorldData.getOrCreate(serverLevel).getActiveGraves(player.getUUID()).size();
             }
             return count;
+        }
+
+        private static boolean has(Player player, Supplier<? extends Item> item) {
+            if (player == null || nativeLoaderActive() || item == null) {
+                return false;
+            }
+            try {
+                Item value = item.get();
+                return value != null && player.getInventory().contains(new ItemStack(value));
+            } catch (RuntimeException | LinkageError ignored) {
+                return false;
+            }
+        }
+
+        private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+            if (!EchoCoreServices.itemStackComponentsBound()) {
+                return ItemStack.EMPTY;
+            }
+            try {
+                ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+                return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+            } catch (RuntimeException | LinkageError ignored) {
+                return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+            }
+        }
+
+        private static boolean nativeLoaderActive() {
+            return Boolean.getBoolean("echo.native.loader")
+                    || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                    || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                    || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
         }
     }
 }

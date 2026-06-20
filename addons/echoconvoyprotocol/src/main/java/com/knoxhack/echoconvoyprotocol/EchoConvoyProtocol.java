@@ -22,13 +22,20 @@ import com.knoxhack.echoconvoyprotocol.task.ConvoyMultiblockTasks;
 import com.echoplatform.echocore.api.EchoCoreServices;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoConvoyProtocol.MODID)
 public class EchoConvoyProtocol {
    public static final String MODID = "echoconvoyprotocol";
    public static final Logger LOGGER = LogUtils.getLogger();
 
-   public EchoConvoyProtocol(Object modEventBus) {
+   public EchoConvoyProtocol(IEventBus modEventBus) {
+      this((Object) modEventBus);
+}
+
+   EchoConvoyProtocol(Object modEventBus) {
       var runtime = Agent9ConvoyRuntimeAdapter.activateNativeHostEntrypoint();
       LOGGER.info("ECHO Convoy Protocol Agent 9 native host adapter {}.", runtime.get("status"));
       ModBlocks.register(modEventBus);

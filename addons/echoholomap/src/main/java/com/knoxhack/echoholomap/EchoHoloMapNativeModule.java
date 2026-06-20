@@ -41,8 +41,30 @@ public final class EchoHoloMapNativeModule implements EchoNativeModuleAdapter, E
 
     @Override
     public void ready(EchoNativeModuleLoadContext context) {
+        boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
+        context.recordMutation(
+                "platform_services",
+                commonRegistered ? "register" : "already_registered",
+                "echoholomap:common_services",
+                commonRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
         registerNativeClientRoutesFromModule(context);
         EchoNativeActivationSurfaceRegistrar.ready(context);
+    }
+
+    private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoHoloMapNativeModule.class.getPackageName() + ".EchoHoloMap";
+        try {
+            Object result = Class.forName(moduleClassName)
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferred", true);
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return false;
+        }
     }
 
     @Override

@@ -14,9 +14,11 @@ import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
 import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.echoplatform.echocore.api.mission.RewardDefinition;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class BlockworksMissionCoreIntegration {
     private static final Identifier CHAPTER = id("blockworks");
@@ -74,19 +76,19 @@ public final class BlockworksMissionCoreIntegration {
         registerMission(registry, "use_table", "table", MissionObjectiveType.CUSTOM,
                 "Use Blockworks Table", "Craft or use a Blockworks Table conversion workflow.",
                 "The table conversion loop is online.",
-                new ItemStack(ModBlocks.BLOCKWORKS_TABLE.get()), 0, "Use the Blockworks Table", new ItemStack(Items.STONECUTTER, 1));
+                safeStack(() -> (ItemLike) ModBlocks.BLOCKWORKS_TABLE.get(), Items.STONECUTTER, 1), 0, "Use the Blockworks Table", safeStack(() -> Items.STONECUTTER, Items.STONECUTTER, 1));
         registerMission(registry, "convert_variant", "convert", MissionObjectiveType.CRAFT_ITEM,
                 "Convert Variant", "Convert any Blockworks variant through the table.",
                 "A Blockworks palette conversion has been recorded.",
-                new ItemStack(ModBlocks.BLOCKWORKS_TABLE.get()), 1, "Convert a Blockworks variant", new ItemStack(Items.BRICKS, 4));
+                safeStack(() -> (ItemLike) ModBlocks.BLOCKWORKS_TABLE.get(), Items.STONECUTTER, 1), 1, "Convert a Blockworks variant", safeStack(() -> Items.BRICKS, Items.BRICKS, 4));
         registerMission(registry, "use_pattern_cutter", "cutter", MissionObjectiveType.PLACE_BLOCK,
                 "Use Pattern Cutter", "Cycle a placed Blockworks block with the Echo Pattern Cutter.",
                 "Pattern cutter state transfer verified.",
-                new ItemStack(ModItems.ECHO_PATTERN_CUTTER.get()), 2, "Use the Pattern Cutter", new ItemStack(ModItems.ECHO_PATTERN_CUTTER.get()));
+                safeStack(() -> (ItemLike) ModItems.ECHO_PATTERN_CUTTER.get(), Items.SHEARS, 1), 2, "Use the Pattern Cutter", safeStack(() -> (ItemLike) ModItems.ECHO_PATTERN_CUTTER.get(), Items.SHEARS, 1));
         registerMission(registry, "discover_showcase_site", "showcase", MissionObjectiveType.DISCOVER_STRUCTURE,
                 "Discover Showcase Site", "Find or interact with a generated Blockworks showcase site.",
                 "Showcase discovery route recorded.",
-                new ItemStack(Items.LODESTONE), 3, "Discover a showcase site", new ItemStack(Items.LANTERN, 2));
+                safeStack(() -> Items.LODESTONE, Items.LODESTONE, 1), 3, "Discover a showcase site", safeStack(() -> Items.LANTERN, Items.LANTERN, 2));
     }
 
     private static void registerMission(
@@ -124,5 +126,24 @@ public final class BlockworksMissionCoreIntegration {
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoBlockworks.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 }

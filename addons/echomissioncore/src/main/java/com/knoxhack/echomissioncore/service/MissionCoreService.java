@@ -17,6 +17,7 @@ import com.echoplatform.echocore.api.mission.MissionStatus;
 import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
+import com.knoxhack.echomissioncore.content.MissionCoreNativeJsonBootstrap;
 import com.knoxhack.echomissioncore.storage.MissionPlayerData;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -45,6 +46,7 @@ public final class MissionCoreService implements IMissionService {
     private final Map<Identifier, String> missionSources = new LinkedHashMap<>();
     private final Map<String, Map<Identifier, Set<Identifier>>> hookCoverage = new LinkedHashMap<>();
     private final List<String> validationWarnings = new ArrayList<>();
+    private final Set<String> jsonOwnedNamespaces = new LinkedHashSet<>();
     private boolean builtInContentRegistered;
     private static final Set<String> MIGRATED_TERMINAL_SOURCES = Set.of(
             "echoashfallprotocol",
@@ -87,6 +89,9 @@ public final class MissionCoreService implements IMissionService {
         validationWarnings.clear();
         Set<String> jsonNamespaces = representedNamespaces(jsonChapters, jsonMissions);
         removeSourceContent("json");
+        removeNamespaceContent(jsonNamespaces);
+        jsonOwnedNamespaces.clear();
+        jsonOwnedNamespaces.addAll(jsonNamespaces);
         replaceSourceContent("json", jsonChapters, jsonMissions);
         EchoCoreServices.replayMissionContent(this, jsonNamespaces);
         EchoCoreServices.invalidateIndexRecipes("mission content changed");
@@ -159,6 +164,9 @@ public final class MissionCoreService implements IMissionService {
             warnValidation("MissionCore chapter from " + safeSource + " has an invalid id and was ignored.");
             return;
         }
+        if (jsonNamespaceOwns(safeSource, chapter.id())) {
+            return;
+        }
         MissionChapterDefinition previous = chapters.get(chapter.id());
         String previousSource = chapterSources.get(chapter.id());
         if (previous != null && !previous.equals(chapter) && !safeSource.equals(previousSource)) {
@@ -182,6 +190,9 @@ public final class MissionCoreService implements IMissionService {
         if (!isMissionStructurallyValid(safeSource, mission)) {
             return;
         }
+        if (jsonNamespaceOwns(safeSource, mission.id()) || jsonNamespaceOwns(safeSource, mission.chapterId())) {
+            return;
+        }
         if (!chapters.containsKey(mission.chapterId())) {
             warnValidation("MissionCore mission " + mission.id() + " from " + safeSource
                     + " skipped because chapter " + mission.chapterId() + " is not registered.");
@@ -203,16 +214,19 @@ public final class MissionCoreService implements IMissionService {
 
     @Override
     public synchronized Optional<MissionChapterDefinition> chapter(Identifier chapterId) {
+        ensureNativeJsonContentLoaded("chapter");
         return Optional.ofNullable(chapters.get(chapterId));
     }
 
     @Override
     public synchronized Optional<MissionDefinition> missionDefinition(Identifier missionId) {
+        ensureNativeJsonContentLoaded("mission_definition");
         return Optional.ofNullable(missions.get(missionId));
     }
 
     @Override
     public synchronized List<MissionChapterDefinition> chapters() {
+        ensureNativeJsonContentLoaded("chapters");
         return chapters.values().stream()
                 .sorted(Comparator.comparingInt(MissionChapterDefinition::order).thenComparing(chapter -> chapter.id().toString()))
                 .toList();
@@ -220,6 +234,7 @@ public final class MissionCoreService implements IMissionService {
 
     @Override
     public synchronized List<MissionDefinition> missionDefinitions() {
+        ensureNativeJsonContentLoaded("mission_definitions");
         return missions.values().stream()
                 .sorted(Comparator.comparingInt(MissionDefinition::phaseOrder)
                         .thenComparingInt(MissionDefinition::missionOrder)
@@ -228,10 +243,12 @@ public final class MissionCoreService implements IMissionService {
     }
 
     public synchronized List<String> validationWarnings() {
+        ensureNativeJsonContentLoaded("validation_warnings");
         return List.copyOf(validationWarnings);
     }
 
     public synchronized Map<String, Integer> sourceCounts() {
+        ensureNativeJsonContentLoaded("source_counts");
         Map<String, Integer> counts = new LinkedHashMap<>();
         for (String source : missionSources.values()) {
             counts.merge(source, 1, Integer::sum);
@@ -260,6 +277,7 @@ public final class MissionCoreService implements IMissionService {
     }
 
     public synchronized List<String> validateContent() {
+        ensureNativeJsonContentLoaded("validate_content");
         List<String> warnings = new ArrayList<>(validationWarnings);
         for (MissionDefinition mission : missions.values()) {
             if (!chapters.containsKey(mission.chapterId())) {
@@ -296,6 +314,11 @@ public final class MissionCoreService implements IMissionService {
         hookCoverage.clear();
         validationWarnings.clear();
         builtInContentRegistered = false;
+        jsonOwnedNamespaces.clear();
+    }
+
+    private void ensureNativeJsonContentLoaded(String reason) {
+        MissionCoreNativeJsonBootstrap.ensureLoaded(reason);
     }
 
     @Override
@@ -954,6 +977,10 @@ public final class MissionCoreService implements IMissionService {
 
     private static String safeSource(String source) {
         return source == null || source.isBlank() ? "unknown" : source;
+    }
+
+    private boolean jsonNamespaceOwns(String source, Identifier id) {
+        return id != null && !"json".equals(source) && jsonOwnedNamespaces.contains(id.getNamespace());
     }
 
     private void removeSourceContent(String source) {

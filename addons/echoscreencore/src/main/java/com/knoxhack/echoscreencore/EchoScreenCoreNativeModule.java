@@ -7,14 +7,31 @@ import com.knoxhack.echo.adaptercore.EchoNativeRegistryBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimePacketConsumerBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeServiceBridge;
 import dev.echo.nativeplatform.contracts.EchoNativeActivationSurfaceRegistrar;
+import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
+
+import java.lang.reflect.Method;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class EchoScreenCoreNativeModule implements EchoNativeModuleAdapter, EchoNativeModuleEntrypoint {
+    private static final List<String> REGISTERED_FEATURE_CONTRACTS = List.of(
+            "screen.actions",
+            "screen.bindings",
+            "screen.components",
+            "screen.contracts",
+            "screen.data_provider",
+            "screen.layouts",
+            "screen.markup",
+            "screen.style",
+            "screen.surface",
+            "screen.theme_bridge",
+            EchoScreenCoreCompositionContract.ADAPTERCORE_CONTRACT_ID
+    );
+
     @Override
     public void discover(EchoNativeModuleLoadContext context) {
         context.attribute("nativeEntrypointBridge", "direct_native_module_entrypoint");
@@ -40,7 +57,37 @@ public final class EchoScreenCoreNativeModule implements EchoNativeModuleAdapter
 
     @Override
     public void ready(EchoNativeModuleLoadContext context) {
+        boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+        boolean clientRegistered = ensureClientRegisteredForNativeLoader();
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
+        context.attribute("nativeClientRegistryRegistered", clientRegistered);
+        context.attribute("nativeClientRegistryAlreadyRegistered", !clientRegistered);
+        context.recordMutation(
+                "platform_services",
+                commonRegistered ? "register" : "already_registered",
+                "echoscreencore:common_services",
+                commonRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
+        context.recordMutation(
+                "screen_registry",
+                clientRegistered ? "register" : "already_registered",
+                "echoscreencore:client_registry",
+                clientRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
         EchoNativeActivationSurfaceRegistrar.ready(context);
+    }
+
+    private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoScreenCoreNativeModule.class.getPackageName() + ".EchoScreenCoreMod";
+        try {
+            Object result = Class.forName(moduleClassName)
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferred", true);
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return false;
+        }
     }
 
     @Override
@@ -88,20 +135,10 @@ public final class EchoScreenCoreNativeModule implements EchoNativeModuleAdapter
         result.put("registryBridge", registry.describe());
         result.put("eventBridge", events.describe());
         result.put("serviceBridge", services.describe());
-        result.put("logicalRegistrationCount", 9);
+        result.put("logicalRegistrationCount", REGISTERED_FEATURE_CONTRACTS.size());
         result.put("eventHookCount", 4);
         result.put("approvedNativeServiceCount", 2);
-        result.put("registeredFeatureContracts", List.of(
-                "screen.actions",
-                "screen.native_host",
-                "screen.bindings",
-                "screen.components",
-                "screen.contracts",
-                "screen.layouts",
-                "screen.markup",
-                "screen.theme_bridge",
-                EchoScreenCoreCompositionContract.ADAPTERCORE_CONTRACT_ID
-        ));
+        result.put("registeredFeatureContracts", REGISTERED_FEATURE_CONTRACTS);
         result.put("screenComposition", screenComposition);
         result.put("screenCompositionExecuted", screenCompositionPassed);
         result.put("requiresScreenBridge", true);
@@ -131,6 +168,18 @@ public final class EchoScreenCoreNativeModule implements EchoNativeModuleAdapter
                 context,
                 () -> describeNativeSurfaces(EchoNativeActivationSurfaceRegistrar.bridgeContext(context))
         );
+    }
+
+    private static boolean ensureClientRegisteredForNativeLoader() {
+        String clientClassName = EchoScreenCoreNativeModule.class.getPackageName() + ".client.EchoScreenCoreClient";
+        try {
+            Class<?> clientClass = Class.forName(clientClassName);
+            Method method = clientClass.getMethod("ensureRegisteredForNativeLoader");
+            Object result = method.invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError ex) {
+            return false;
+        }
     }
 
     private static final String MODULE_ID = "echoscreencore";

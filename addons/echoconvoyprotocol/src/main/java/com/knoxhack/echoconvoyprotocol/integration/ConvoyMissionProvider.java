@@ -30,6 +30,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -37,7 +38,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import org.jspecify.annotations.Nullable;
@@ -251,7 +254,7 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
          tr("prep.field_guide"),
          tr("category.acquisition"),
          tr("difficulty.starter"),
-         new ItemStack(ModBlocks.VEHICLE_WORKBENCH.get().asItem()),
+         stack(() -> ModBlocks.VEHICLE_WORKBENCH.get().asItem(), Items.CRAFTING_TABLE, 1),
          List.of(),
          prepRequirements(player),
          List.of(TerminalMissionReward.text(tr("reward.route_board.label"), tr("reward.route_board.detail")))
@@ -344,7 +347,7 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
       boolean progressed = hasAnyRouteProgress(player);
       boolean complete = vehicle != null || progressed;
       boolean hasWorkbench = hasWorkbench(player);
-      boolean hasKit = inventoryCount(player, ModItems.SCRAP_BIKE_KIT.get()) > 0;
+      boolean hasKit = !nativeLoaderActive() && inventoryCount(player, ModItems.SCRAP_BIKE_KIT.get()) > 0;
       float progress = complete ? 1.0F : hasKit ? 0.75F : hasWorkbench ? 0.35F : 0.0F;
       String hint = complete
          ? tr("prep.hint.complete")
@@ -433,12 +436,12 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
 
    private static List<TerminalMissionRequirement> prepRequirements(Player player) {
       boolean workbench = hasWorkbench(player);
-      int kitCount = inventoryCount(player, ModItems.SCRAP_BIKE_KIT.get());
+      int kitCount = nativeLoaderActive() ? 0 : inventoryCount(player, ModItems.SCRAP_BIKE_KIT.get());
       boolean vehicle = nearestVehicle(player, 12.0D) != null || hasAnyRouteProgress(player);
       return List.of(
-         TerminalMissionRequirement.block(tr("requirement.workbench"), tr("requirement.workbench.detail"), new ItemStack(ModBlocks.VEHICLE_WORKBENCH.get().asItem()), workbench ? 1 : 0, 1, workbench),
-         TerminalMissionRequirement.item(new ItemStack(ModItems.SCRAP_BIKE_KIT.get()), kitCount, 1, kitCount > 0 || vehicle),
-         TerminalMissionRequirement.custom(tr("requirement.owned_vehicle"), tr("requirement.owned_vehicle.detail"), new ItemStack(ModItems.SCRAP_BIKE_KIT.get()), vehicle ? 1 : 0, 1, vehicle)
+         TerminalMissionRequirement.block(tr("requirement.workbench"), tr("requirement.workbench.detail"), stack(() -> ModBlocks.VEHICLE_WORKBENCH.get().asItem(), Items.CRAFTING_TABLE, 1), workbench ? 1 : 0, 1, workbench),
+         TerminalMissionRequirement.item(stack(() -> (ItemLike) ModItems.SCRAP_BIKE_KIT.get(), Items.MINECART, 1), kitCount, 1, kitCount > 0 || vehicle),
+         TerminalMissionRequirement.custom(tr("requirement.owned_vehicle"), tr("requirement.owned_vehicle.detail"), stack(() -> (ItemLike) ModItems.SCRAP_BIKE_KIT.get(), Items.MINECART, 1), vehicle ? 1 : 0, 1, vehicle)
       );
    }
 
@@ -462,7 +465,7 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
       requirements.add(TerminalMissionRequirement.custom(
          tr("requirement.fuel"),
          tr("requirement.fuel.detail"),
-         new ItemStack(ModItems.FUEL_CANISTER.get()),
+         stack(() -> (ItemLike) ModItems.FUEL_CANISTER.get(), Items.BUCKET, 1),
          fuel,
          requiredFuel,
          fuel >= requiredFuel
@@ -480,10 +483,10 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
       boolean vehicle = nearestVehicle(player, 12.0D) != null;
       boolean marker = nearestSignalMarker(player) != null;
       return List.of(
-         TerminalMissionRequirement.custom(tr("requirement.active_route"), tr("requirement.active_route.detail"), new ItemStack(ModBlocks.CONVOY_BEACON.get().asItem()), active ? 1 : 0, 1, active),
-         TerminalMissionRequirement.custom(tr("requirement.paired_vehicle"), tr("requirement.paired_vehicle.detail"), vehicle ? vehicleIcon(route) : new ItemStack(ModItems.ROUTE_BEACON.get()), vehicle ? 1 : 0, 1, vehicle),
-         TerminalMissionRequirement.block(tr("requirement.signal_marker"), tr("requirement.signal_marker.detail"), new ItemStack(ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem()), marker ? 1 : 0, 1, marker),
-         TerminalMissionRequirement.custom(tr("requirement.reward_state"), tr("requirement.reward_state.detail"), new ItemStack(ModItems.CARGO_NET.get()), ConvoyRouteService.claimableRewards(player) > 0 || allRoutesClaimed(progress) ? 1 : 0, 1, ConvoyRouteService.claimableRewards(player) > 0 || allRoutesClaimed(progress))
+         TerminalMissionRequirement.custom(tr("requirement.active_route"), tr("requirement.active_route.detail"), stack(() -> ModBlocks.CONVOY_BEACON.get().asItem(), Items.BELL, 1), active ? 1 : 0, 1, active),
+         TerminalMissionRequirement.custom(tr("requirement.paired_vehicle"), tr("requirement.paired_vehicle.detail"), vehicle ? vehicleIcon(route) : stack(() -> (ItemLike) ModItems.ROUTE_BEACON.get(), Items.COMPASS, 1), vehicle ? 1 : 0, 1, vehicle),
+         TerminalMissionRequirement.block(tr("requirement.signal_marker"), tr("requirement.signal_marker.detail"), stack(() -> ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem(), Items.REDSTONE_TORCH, 1), marker ? 1 : 0, 1, marker),
+         TerminalMissionRequirement.custom(tr("requirement.reward_state"), tr("requirement.reward_state.detail"), stack(() -> (ItemLike) ModItems.CARGO_NET.get(), Items.STRING, 1), ConvoyRouteService.claimableRewards(player) > 0 || allRoutesClaimed(progress) ? 1 : 0, 1, ConvoyRouteService.claimableRewards(player) > 0 || allRoutesClaimed(progress))
       );
    }
 
@@ -493,7 +496,8 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
       }
       ConvoyProgress progress = ConvoyProgress.get(player);
       return switch (side.key()) {
-         case "depot_formation" -> progress.flag(side.key()) || hasNearbyBlock(player, ModBlocks.CONVOY_DEPOT_CONTROLLER.get(), 16);
+         case "depot_formation" -> progress.flag(side.key())
+            || (!nativeLoaderActive() && hasNearbyBlock(player, ModBlocks.CONVOY_DEPOT_CONTROLLER.get(), 16));
          case "field_operation_staging" -> progress.flag(side.key()) || nearestConvoyController(player, 24.0D)
             .map(controller -> !controller.fieldOperation().routeId().isBlank())
             .orElse(false);
@@ -506,13 +510,13 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
 
    private static ItemStack sideIcon(String key) {
       return switch (key) {
-         case "depot_formation" -> new ItemStack(ModBlocks.CONVOY_DEPOT_CONTROLLER.get().asItem());
-         case "refuel_repair" -> new ItemStack(ModItems.CONVOY_REPAIR_KIT.get());
-         case "field_operation_staging" -> new ItemStack(ModBlocks.ROUTE_DISPATCH_TOWER_CONTROLLER.get().asItem());
-         case "incident_resolution" -> new ItemStack(ModItems.ROUTE_BEACON.get());
-         case "convoy_recovery" -> new ItemStack(ModBlocks.CONVOY_RECOVERY_BEACON_CONTROLLER.get().asItem());
-         case "salvage_export" -> new ItemStack(ModBlocks.CARGO_OUTPUT_CRATE.get().asItem());
-         default -> new ItemStack(ModBlocks.CONVOY_BEACON.get().asItem());
+         case "depot_formation" -> stack(() -> ModBlocks.CONVOY_DEPOT_CONTROLLER.get().asItem(), Items.SMITHING_TABLE, 1);
+         case "refuel_repair" -> stack(() -> (ItemLike) ModItems.CONVOY_REPAIR_KIT.get(), Items.IRON_INGOT, 1);
+         case "field_operation_staging" -> stack(() -> ModBlocks.ROUTE_DISPATCH_TOWER_CONTROLLER.get().asItem(), Items.LECTERN, 1);
+         case "incident_resolution" -> stack(() -> (ItemLike) ModItems.ROUTE_BEACON.get(), Items.COMPASS, 1);
+         case "convoy_recovery" -> stack(() -> ModBlocks.CONVOY_RECOVERY_BEACON_CONTROLLER.get().asItem(), Items.BELL, 1);
+         case "salvage_export" -> stack(() -> ModBlocks.CARGO_OUTPUT_CRATE.get().asItem(), Items.CHEST, 1);
+         default -> stack(() -> ModBlocks.CONVOY_BEACON.get().asItem(), Items.BELL, 1);
       };
    }
 
@@ -579,6 +583,9 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
    }
 
    private static boolean hasWorkbench(Player player) {
+      if (nativeLoaderActive()) {
+         return false;
+      }
       return inventoryCount(player, ModBlocks.VEHICLE_WORKBENCH.get().asItem()) > 0
          || hasNearbyBlock(player, ModBlocks.VEHICLE_WORKBENCH.get(), 12);
    }
@@ -611,7 +618,7 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
    }
 
    private static boolean hasNearbyBlock(Player player, Block block, int radius) {
-      if (player == null || block == null) {
+      if (player == null || block == null || nativeLoaderActive()) {
          return false;
       }
       Level level = player.level();
@@ -658,6 +665,9 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
 
    @Nullable
    private static SignalMarker nearestSignalMarker(ServerPlayer player) {
+      if (nativeLoaderActive()) {
+         return null;
+      }
       Level level = player.level();
       BlockPos center = player.blockPosition();
       SignalMarker best = null;
@@ -694,14 +704,14 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
 
    private static ItemStack vehicleIcon(@Nullable ConvoyRouteDefinition route) {
       if (route == null) {
-         return new ItemStack(ModItems.ROUTE_BEACON.get());
+         return stack(() -> (ItemLike) ModItems.ROUTE_BEACON.get(), Items.COMPASS, 1);
       }
       return switch (route.requiredVehicle()) {
-         case "scrap_bike" -> new ItemStack(ModItems.SCRAP_BIKE_KIT.get());
-         case "wasteland_rover" -> new ItemStack(ModItems.WASTELAND_ROVER_KIT.get());
-         case "cargo_crawler" -> new ItemStack(ModItems.CARGO_CRAWLER_KIT.get());
-         case "armored_relay_truck" -> new ItemStack(ModItems.ARMORED_RELAY_TRUCK_KIT.get());
-         default -> new ItemStack(ModItems.ROUTE_BEACON.get());
+         case "scrap_bike" -> stack(() -> (ItemLike) ModItems.SCRAP_BIKE_KIT.get(), Items.MINECART, 1);
+         case "wasteland_rover" -> stack(() -> (ItemLike) ModItems.WASTELAND_ROVER_KIT.get(), Items.MINECART, 1);
+         case "cargo_crawler" -> stack(() -> (ItemLike) ModItems.CARGO_CRAWLER_KIT.get(), Items.CHEST_MINECART, 1);
+         case "armored_relay_truck" -> stack(() -> (ItemLike) ModItems.ARMORED_RELAY_TRUCK_KIT.get(), Items.FURNACE_MINECART, 1);
+         default -> stack(() -> (ItemLike) ModItems.ROUTE_BEACON.get(), Items.COMPASS, 1);
       };
    }
 
@@ -709,25 +719,44 @@ public final class ConvoyMissionProvider implements TerminalMissionProvider {
       BlockerKind blocker = routeGuidance(player).blocker();
       return switch (blocker) {
          case NO_VEHICLE, WRONG_VEHICLE -> vehicleIcon(route);
-         case FUEL -> new ItemStack(ModItems.FUEL_CANISTER.get());
+         case FUEL -> stack(() -> (ItemLike) ModItems.FUEL_CANISTER.get(), Items.BUCKET, 1);
          case CARGO -> route != null && !route.requiredCargo().isEmpty()
-            ? route.requiredCargo().getFirst().stack()
-            : new ItemStack(ModBlocks.CARGO_ANCHOR.get().asItem());
-         case CHECKPOINT -> new ItemStack(ModItems.ROUTE_BEACON.get());
-         case ACTIVE, SIGNAL -> new ItemStack(ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem());
-         case REWARD -> new ItemStack(ModItems.CARGO_NET.get());
-         case READY -> new ItemStack(ModBlocks.CONVOY_BEACON.get().asItem());
-         case NONE, BLOCKED -> new ItemStack(ModBlocks.CONVOY_BEACON.get().asItem());
+            ? (nativeLoaderActive() ? stack(() -> Items.CHEST, Items.CHEST, 1) : route.requiredCargo().getFirst().stack())
+            : stack(() -> ModBlocks.CARGO_ANCHOR.get().asItem(), Items.CHEST, 1);
+         case CHECKPOINT -> stack(() -> (ItemLike) ModItems.ROUTE_BEACON.get(), Items.COMPASS, 1);
+         case ACTIVE, SIGNAL -> stack(() -> ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem(), Items.REDSTONE_TORCH, 1);
+         case REWARD -> stack(() -> (ItemLike) ModItems.CARGO_NET.get(), Items.STRING, 1);
+         case READY -> stack(() -> ModBlocks.CONVOY_BEACON.get().asItem(), Items.BELL, 1);
+         case NONE, BLOCKED -> stack(() -> ModBlocks.CONVOY_BEACON.get().asItem(), Items.BELL, 1);
       };
    }
 
    private static ItemStack closeIcon(Player player, @Nullable ConvoyRouteDefinition route) {
       return switch (closeTone(player)) {
-         case REWARD -> new ItemStack(ModItems.CARGO_NET.get());
-         case ACTIVE, SIGNAL -> new ItemStack(ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem());
-         case READY -> new ItemStack(ModBlocks.CONVOY_BEACON.get().asItem());
+         case REWARD -> stack(() -> (ItemLike) ModItems.CARGO_NET.get(), Items.STRING, 1);
+         case ACTIVE, SIGNAL -> stack(() -> ModBlocks.ROADSIDE_SIGNAL_MARKER.get().asItem(), Items.REDSTONE_TORCH, 1);
+         case READY -> stack(() -> ModBlocks.CONVOY_BEACON.get().asItem(), Items.BELL, 1);
          default -> routeIcon(player, route);
       };
+   }
+
+   private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
+      try {
+         ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+         return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+      } catch (RuntimeException | LinkageError ignored) {
+         return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+      }
+   }
+
+   private static boolean nativeLoaderActive() {
+      return Boolean.getBoolean("echo.native.loader")
+         || !System.getProperty("echo.native.moduleIds", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
    }
 
    private static RouteGuidance routeGuidance(Player player) {

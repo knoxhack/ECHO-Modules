@@ -62,48 +62,48 @@
         <scroll class="terminal-route-panel terminal-route-briefing-panel terminal-route-briefing-scroll" scroll-state="true" state-key="terminal.missions.briefing">
           <column class="terminal-route-briefing-stack" gap="6">
             <section class="terminal-mission-detail terminal-route-briefing-card" title="MISSION BRIEFING">
-            <row class="terminal-chip-row terminal-route-chip-row" gap="6">
-              <status-chip status="{terminal.missionBrowser.selectedMission.status|active}" value="{terminal.missionBrowser.selectedMission.statusCompactLabel|READY}"/>
-              <status-chip status="info" value="{terminal.missionBrowser.selectedMission.typeLabel|MAIN}"/>
-              <status-chip status="{terminal.missionBrowser.selectedMission.rewardState|info}" value="{terminal.missionBrowser.selectedMission.rewardCompactLabel|RWD 0}"/>
-            </row>
-            <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card terminal-route-info-card" title="MISSION INFO">
-              <copy-block class="terminal-route-detail-copy terminal-route-info-copy" title="{terminal.missionBrowser.selectedMission.briefingTitle|Mission Detail}" subtitle="{terminal.missionBrowser.selectedMission.briefingBody|No briefing packet is available for this objective.}"/>
-              <copy-block class="terminal-route-detail-copy terminal-route-guidance-copy" title="{terminal.missionBrowser.selectedMission.guidanceTitle|Next step}" subtitle="{terminal.missionBrowser.selectedMission.guidanceBody|Track this objective to pin it on the Command Deck.}"/>
+              <row class="terminal-chip-row terminal-route-chip-row" gap="6">
+                <status-chip status="{terminal.missionBrowser.selectedMission.status|active}" value="{terminal.missionBrowser.selectedMission.statusCompactLabel|READY}"/>
+                <status-chip status="info" value="{terminal.missionBrowser.selectedMission.typeLabel|MAIN}"/>
+                <status-chip status="{terminal.missionBrowser.selectedMission.rewardState|info}" value="{terminal.missionBrowser.selectedMission.rewardCompactLabel|RWD 0}"/>
+              </row>
+              <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card terminal-route-info-card" title="MISSION INFO">
+                <copy-block class="terminal-route-detail-copy terminal-route-info-copy" title="{terminal.missionBrowser.selectedMission.briefingTitle|Mission Detail}" subtitle="{terminal.missionBrowser.selectedMission.briefingBody|No briefing packet is available for this objective.}"/>
+                <copy-block class="terminal-route-detail-copy terminal-route-guidance-copy" title="{terminal.missionBrowser.selectedMission.guidanceTitle|Next step}" subtitle="{terminal.missionBrowser.selectedMission.guidanceBody|Track this objective to pin it on the Command Deck.}"/>
+              </section>
+              <progress-bar class="terminal-selected-mission-progress terminal-route-detail-progress" value="{terminal.missionBrowser.selectedMission.progressPercent|0}" max="100"/>
+              <column class="terminal-mission-detail-content" gap="6">
+                <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card" title="REQUIREMENTS">
+                  <list bind="terminal.missionBrowser.selectedMission.requirements" item="requirement">
+                    <list-row class="terminal-compact-row terminal-mission-check-row terminal-route-detail-row">
+                      <item-icon class="terminal-route-item-icon" item="{requirement.iconItemId}" count="{requirement.iconCount|1}"/>
+                      <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{requirement.title}" subtitle="{requirement.detail}"/>
+                      <status-chip class="terminal-route-state-chip" status="{requirement.status}" value="{requirement.statusLabel}"/>
+                    </list-row>
+                    <empty-state title="No requirements" body="No checklist is exposed."/>
+                  </list>
+                </section>
+
+                <section class="terminal-side-panel terminal-mission-check-panel terminal-mission-reward-panel terminal-route-detail-card" title="REWARDS">
+                  <list bind="terminal.missionBrowser.selectedMission.rewardRows" item="reward">
+                    <list-row class="terminal-compact-row terminal-mission-check-row terminal-mission-reward-row terminal-route-detail-row">
+                      <item-icon class="terminal-route-item-icon" item="{reward.iconItemId}" count="{reward.iconCount|1}"/>
+                      <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{reward.title}" subtitle="{reward.detail}"/>
+                      <status-chip class="terminal-route-index-chip" status="info" value="{reward.countLabel}"/>
+                    </list-row>
+                    <empty-state title="No rewards" body="No reward manifest."/>
+                  </list>
+                </section>
+              </column>
             </section>
-            <progress-bar class="terminal-selected-mission-progress terminal-route-detail-progress" value="{terminal.missionBrowser.selectedMission.progressPercent|0}" max="100"/>
-            <column class="terminal-mission-detail-content" gap="6">
-              <section class="terminal-side-panel terminal-mission-check-panel terminal-route-detail-card" title="REQUIREMENTS">
-                <list bind="terminal.missionBrowser.selectedMission.requirements" item="requirement">
-                  <list-row class="terminal-compact-row terminal-mission-check-row terminal-route-detail-row">
-                    <item-icon class="terminal-route-item-icon" item="{requirement.iconItemId}" count="{requirement.iconCount|1}"/>
-                    <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{requirement.title}" subtitle="{requirement.detail}"/>
-                    <status-chip class="terminal-route-state-chip" status="{requirement.status}" value="{requirement.statusLabel}"/>
-                  </list-row>
-                  <empty-state title="No requirements" body="No checklist is exposed."/>
-                </list>
-              </section>
 
-              <section class="terminal-side-panel terminal-mission-check-panel terminal-mission-reward-panel terminal-route-detail-card" title="REWARDS">
-                <list bind="terminal.missionBrowser.selectedMission.rewardRows" item="reward">
-                  <list-row class="terminal-compact-row terminal-mission-check-row terminal-mission-reward-row terminal-route-detail-row">
-                    <item-icon class="terminal-route-item-icon" item="{reward.iconItemId}" count="{reward.iconCount|1}"/>
-                    <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{reward.title}" subtitle="{reward.detail}"/>
-                    <status-chip class="terminal-route-index-chip" status="info" value="{reward.countLabel}"/>
-                  </list-row>
-                  <empty-state title="No rewards" body="No reward manifest."/>
-                </list>
-              </section>
-            </column>
-
-            <grid class="terminal-mission-action-strip" columns="1fr 1fr 1fr 1fr 1fr" gap="5">
+            <grid class="terminal-mission-action-strip" columns="1fr 1fr 1fr 1fr 1fr" gap="5" stack-below="300">
               <button class="terminal-route-action-button" action="terminal.track_mission" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-clear="{terminal.missionBrowser.selectedMission.trackClear|false}" disabled="{terminal.missionBrowser.selectedMission.trackDisabled|false}" disabled-reason="{terminal.missionBrowser.selectedMission.trackDisabledReason|Select a route mission first.}" variant="primary">{terminal.missionBrowser.selectedMission.trackLabel|Track}</button>
               <button class="terminal-route-action-button" action="terminal.perform_mission_action" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.completeActionId}" disabled="{terminal.missionBrowser.selectedMission.completeCommandDisabled|true}" disabled-reason="{terminal.missionBrowser.selectedMission.completeCommandDisabledReason|Complete is not available yet.}" variant="ghost">Complete</button>
-              <button class="terminal-route-action-button terminal-route-claim-button" action="terminal.perform_mission_action" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.claimActionId}" disabled="{terminal.missionBrowser.selectedMission.claimCommandDisabled|true}" disabled-reason="{terminal.missionBrowser.selectedMission.claimCommandDisabledReason|No reward cache is available.}" variant="ghost">Claim Rewards</button>
+              <button class="terminal-route-action-button terminal-route-claim-button" action="terminal.perform_mission_action" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.claimActionId}" disabled="{terminal.missionBrowser.selectedMission.claimCommandDisabled|true}" disabled-reason="{terminal.missionBrowser.selectedMission.claimCommandDisabledReason|No reward cache is available.}" variant="ghost">Claim</button>
               <button class="terminal-route-action-button" action="terminal.activate_selected_mission" action-value="{terminal.missionBrowser.selectedMission.id}" action-param-action_id="{terminal.missionBrowser.selectedMission.primaryActionId}" disabled="{terminal.missionBrowser.selectedMission.primaryCommandDisabled|false}" disabled-reason="{terminal.missionBrowser.selectedMission.primaryCommandDisabledReason|No mission command is available.}" variant="ghost">{terminal.missionBrowser.selectedMission.primaryCommandLabel|Next}</button>
               <button class="terminal-route-action-button" action="terminal.open_tab" action-value="echoterminal:mission_graph" variant="ghost">Map</button>
             </grid>
-            </section>
 
             <section class="terminal-side-panel terminal-route-sideops-card" title="SIDE OPERATIONS">
               <list bind="terminal.missionBrowser.selectedMission.sideCards" item="side">

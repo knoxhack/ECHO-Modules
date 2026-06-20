@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public final class IndexRecipeTraceState {
@@ -100,6 +102,15 @@ public final class IndexRecipeTraceState {
         for (TraceEntryBuilder builder : builders.values()) {
             ItemStack stack = builder.stack();
             Identifier itemId = IndexService.itemId(stack.getItem());
+            boolean requested = false;
+            if (prefetch && IndexRecipeQueryClientState.shouldRequest(itemId)) {
+                requested = EchoNetClientActions.trySendServerboundAction(
+                        new IndexRecipeQueryPacket(itemId, true, true, true));
+                prefetched++;
+            }
+            if (prefetch) {
+                applyLocalFallback(itemId);
+            }
             var cached = IndexRecipeQueryClientState.result(stack.getItem());
             boolean cacheHit = cached.isPresent() && cached.get().generation() >= healthGeneration;
             boolean staleCache = cached.isPresent() && cached.get().generation() < healthGeneration;
@@ -111,17 +122,11 @@ public final class IndexRecipeTraceState {
             if (staleCache) {
                 stale++;
             }
-            boolean requested = false;
-            if (prefetch && IndexRecipeQueryClientState.shouldRequest(itemId)) {
-                EchoNetClientActions.trySendServerboundAction(new IndexRecipeQueryPacket(itemId, true, true, true));
-                requested = true;
-                prefetched++;
-            }
             int recipeCount = cached.map(result -> result.recipes().size()).orElse(0);
             int useCount = cached.map(result -> result.uses().size()).orElse(0);
             int sourceCount = cached.map(result -> result.sources().size()).orElse(0);
             entries.add(new TraceEntry(itemId, stack.copy(), builder.required(), builder.available(),
-                    builder.missing(), recipeCount, useCount, sourceCount, cacheHit, requested));
+                    builder.missing(), recipeCount, useCount, sourceCount, cacheHit, requested && !cacheHit));
         }
         if (prefetch) {
             lastCacheHits = hits;
@@ -131,6 +136,13 @@ public final class IndexRecipeTraceState {
         }
         return new Trace(IndexService.itemId(rootStack.getItem()), rootStack.copy(), recipe.id(),
                 recipe.title(), entries, System.currentTimeMillis(), 1);
+    }
+
+    private static void applyLocalFallback(Identifier itemId) {
+        Player player = Minecraft.getInstance().player;
+        if (player != null) {
+            IndexRecipeQueryClientState.applyLocalFallback(itemId, IndexService.INSTANCE.recipeSnapshot(player));
+        }
     }
 
     private static final class TraceEntryBuilder {

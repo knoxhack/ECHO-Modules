@@ -28,7 +28,7 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
     private Identifier pageId;
     private EchoFitScreenSurface surface;
 
-    TerminalScreenCoreScreen(EchoTerminalMenu menu, Inventory playerInventory, Component title, Identifier activeTabId) {
+    public TerminalScreenCoreScreen(EchoTerminalMenu menu, Inventory playerInventory, Component title, Identifier activeTabId) {
         super(menu, playerInventory, title);
         this.terminalMenu = menu;
         this.playerInventory = playerInventory;
@@ -61,18 +61,19 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
     }
 
     boolean openLegacyRenderer() {
-        EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                "open",
-                "terminal.screencore.open_legacy_renderer",
-                getClass().getName(),
-                Map.of(
-                        "targetScreenClass", EchoTerminalScreen.class.getName(),
-                        "transitionSource", "terminal_screencore_legacy_renderer",
-                        "screenBridge", "classic_terminal"
-                ));
-        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                    "open",
+                    "terminal.screencore.open_legacy_renderer",
+                    getClass().getName(),
+                    Map.of(
+                            "targetScreenClass", EchoTerminalScreen.class.getName(),
+                            "transitionSource", "terminal_screencore_legacy_renderer",
+                            "screenBridge", "classic_terminal"
+                    ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         Minecraft.getInstance().setScreen(new EchoTerminalScreen(terminalMenu, playerInventory, screenTitle));
         return true;
@@ -178,17 +179,18 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
 
     public boolean handleNativeRouteKey(int key, boolean openTerminalKey) {
         if (openTerminalKey) {
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "close",
-                    "terminal.screencore.close",
-                    getClass().getName(),
-                    Map.of(
-                            "transitionSource", "terminal_screencore_key",
-                            "closeKey", key
-                    ));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                        "close",
+                        "terminal.screencore.close",
+                        getClass().getName(),
+                        Map.of(
+                                "transitionSource", "terminal_screencore_key",
+                                "closeKey", key
+                        ));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(null);
             return true;
@@ -228,14 +230,15 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
     private final class Controls implements EchoActionContext.ScreenControls {
         @Override
         public boolean close() {
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "close",
-                    "terminal.screencore.close",
-                    TerminalScreenCoreScreen.this.getClass().getName(),
-                    Map.of("transitionSource", "terminal_screencore_controls_close"));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                        "close",
+                        "terminal.screencore.close",
+                        TerminalScreenCoreScreen.this.getClass().getName(),
+                        Map.of("transitionSource", "terminal_screencore_controls_close"));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(null);
             return true;
@@ -243,14 +246,15 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
 
         @Override
         public boolean back() {
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "close",
-                    "terminal.screencore.back",
-                    TerminalScreenCoreScreen.this.getClass().getName(),
-                    Map.of("transitionSource", "terminal_screencore_controls_back"));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                        "close",
+                        "terminal.screencore.back",
+                        TerminalScreenCoreScreen.this.getClass().getName(),
+                        Map.of("transitionSource", "terminal_screencore_controls_back"));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(null);
             return true;
@@ -259,19 +263,20 @@ public final class TerminalScreenCoreScreen extends AbstractContainerScreen<Echo
         @Override
         public boolean open(Identifier nextPage, EchoDataContext context) {
             Identifier nextTab = activeTabFromContext(context, nextPage);
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "open",
-                    "terminal.screencore.open_page",
-                    TerminalScreenCoreScreen.this.getClass().getName(),
-                    Map.of(
-                            "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
-                            "transitionSource", "terminal_screencore_controls_open",
-                            "nextPage", nextPage == null ? "" : nextPage.toString(),
-                            "nextTab", nextTab == null ? "" : nextTab.toString()
-                    ));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                        "open",
+                        "terminal.screencore.open_page",
+                        TerminalScreenCoreScreen.this.getClass().getName(),
+                        Map.of(
+                                "targetScreenClass", TerminalScreenCoreScreen.class.getName(),
+                                "transitionSource", "terminal_screencore_controls_open",
+                                "nextPage", nextPage == null ? "" : nextPage.toString(),
+                                "nextTab", nextTab == null ? "" : nextTab.toString()
+                        ));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(new TerminalScreenCoreScreen(
                     terminalMenu, playerInventory, screenTitle, nextTab));

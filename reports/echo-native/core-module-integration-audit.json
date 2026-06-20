@@ -1,6 +1,6 @@
 {
   "schema": "echo.native.core_module_integration_audit.v1",
-  "generatedAt": "2026-06-15T01:50:21.763Z",
+  "generatedAt": "2026-06-18T23:01:29.913Z",
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
   "repoRoot": "C:/Development/Github/ECHO-Modules",
   "moduleCount": 133,
@@ -5044,9 +5044,13 @@
         "screen.bindings",
         "screen.components",
         "screen.contracts",
+        "screen.data_provider",
         "screen.layouts",
         "screen.markup",
-        "screen.theme_bridge"
+        "screen.style",
+        "screen.surface",
+        "screen.theme_bridge",
+        "echoscreencore:screen/field_ops_composition"
       ],
       "consumes": [
         "echo.core"

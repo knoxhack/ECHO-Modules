@@ -18,6 +18,7 @@ import com.knoxhack.echoindustrialnexus.registry.ModMenus;
 import com.knoxhack.echoindustrialnexus.registry.ModRecipes;
 import com.knoxhack.echoindustrialnexus.registry.ModSounds;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -37,6 +38,7 @@ public class EchoIndustrialNexus {
       "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
    private static final String ROBOTIC_TASK_COMPLETED_EVENT =
       "com.knoxhack.echomultiblockcore.event.RoboticTaskCompletedEvent";
+   private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
    public static Identifier id(String path) {
       return Identifier.fromNamespaceAndPath(MODID, path);
@@ -78,21 +80,31 @@ public class EchoIndustrialNexus {
 }
 
    private void commonSetup(Object event) {
-      LOGGER.info("ECHO Industrial Nexus online. Where survival becomes infrastructure.");
-      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-         IndustrialCoreIntegration.registerAddonChapter();
-         IndustrialIndexProvider.register();
-         registerOptionalMultiblockIntegration();
-         if (EchoRuntimeModules.isLoaded("echomachinecore")) {
-            invokeOptionalRegister("com.knoxhack.echoindustrialnexus.integration.IndustrialMachineCoreRuntimeProvider");
-         }
-         if (EchoRuntimeModules.isLoaded("echolens")) {
-            invokeOptionalRegister("com.knoxhack.echoindustrialnexus.integration.IndustrialLensIntegration");
-         }
-         if (EchoRuntimeModules.isLoaded("echoterminal")) {
-            registerTerminalIntegration();
-         }
-      });
+      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+   }
+
+   public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+      return registerCommonServices("native_loader_module_ready");
+   }
+
+   private static boolean registerCommonServices(String source) {
+      if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+         return false;
+      }
+      LOGGER.info("ECHO Industrial Nexus online [{}]. Where survival becomes infrastructure.", source);
+      IndustrialCoreIntegration.registerAddonChapter();
+      IndustrialIndexProvider.register();
+      registerOptionalMultiblockIntegration();
+      if (EchoRuntimeModules.isLoaded("echomachinecore")) {
+         invokeOptionalRegister("com.knoxhack.echoindustrialnexus.integration.IndustrialMachineCoreRuntimeProvider");
+      }
+      if (EchoRuntimeModules.isLoaded("echolens")) {
+         invokeOptionalRegister("com.knoxhack.echoindustrialnexus.integration.IndustrialLensIntegration");
+      }
+      if (EchoRuntimeModules.isLoaded("echoterminal")) {
+         registerTerminalIntegration();
+      }
+      return true;
    }
 
    private static void registerOptionalMultiblockIntegration() {

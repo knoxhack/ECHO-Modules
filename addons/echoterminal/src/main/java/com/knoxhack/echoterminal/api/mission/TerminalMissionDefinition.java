@@ -31,9 +31,20 @@ public record TerminalMissionDefinition(
         fieldGuide = fieldGuide == null ? "" : fieldGuide;
         category = category == null ? "" : category;
         difficulty = difficulty == null ? "" : difficulty;
-        icon = icon == null ? ItemStack.EMPTY : icon.copy();
+        icon = safeCopy(icon);
         prerequisites = List.copyOf(prerequisites == null ? List.of() : prerequisites);
         requirements = List.copyOf(requirements == null ? List.of() : requirements);
         rewards = List.copyOf(rewards == null ? List.of() : rewards);
+    }
+
+    private static ItemStack safeCopy(ItemStack stack) {
+        if (stack == null) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            return stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
+        } catch (RuntimeException | LinkageError exception) {
+            return ItemStack.EMPTY;
+        }
     }
 }

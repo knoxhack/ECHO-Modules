@@ -5,6 +5,7 @@ repositories { exclusiveContent { forRepository { maven { name = 'GeckoLib'; url
 configurations { runtimeClasspath.extendsFrom localRuntime }
 neoForge { version = project.neo_version; runs { stationfallClient { client() }; server { server(); programArgument '--nogui' }; gameTestServer { type='gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id } }; mods { "${mod_id}" { sourceSet(sourceSets.main) } } }
 dependencies { implementation project(':echocore'); implementation project(':echoadaptercore'); compileOnly project(':echoorbitalremnants'); compileOnly project(':echoterminal'); compileOnly project(':echorendercore'); localRuntime project(':echoorbitalremnants'); localRuntime project(':echoterminal'); localRuntime project(':echorendercore') }
+tasks.withType(Test).configureEach { dependsOn project(':echoorbitalremnants').tasks.named('syncAddonReleaseJar') }
 var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
     var replaceProperties = [
             minecraft_version      : minecraft_version,

@@ -1,15 +1,20 @@
 package com.knoxhack.echoterminal.mission;
 
 import com.knoxhack.echo.adaptercore.EchoValueIOSerializable;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.registry.ModAttachments;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
@@ -17,6 +22,8 @@ public class VanillaJourneyData implements EchoValueIOSerializable {
     public static final StreamCodec<RegistryFriendlyByteBuf, VanillaJourneyData> STREAM_CODEC = StreamCodec.of(
             VanillaJourneyData::writeSync,
             VanillaJourneyData::readSync);
+
+    private static final Map<UUID, VanillaJourneyData> NATIVE_SESSION_DATA = new ConcurrentHashMap<>();
 
     private final Set<String> claimedRewardIds = new HashSet<>();
     private final Set<String> completedAdvancementIds = new HashSet<>();
@@ -54,19 +61,34 @@ public class VanillaJourneyData implements EchoValueIOSerializable {
         return Set.copyOf(completedAdvancementIds);
     }
 
-    public static VanillaJourneyData get(net.minecraft.world.entity.player.Player player) {
+    public static VanillaJourneyData get(Player player) {
         if (nativeLoaderClientActive()) {
+            return nativeSessionData(player);
+        }
+        if (player == null) {
             return new VanillaJourneyData();
         }
-        return player.getData(ModAttachments.VANILLA_JOURNEY_DATA.get());
+        try {
+            return AttachmentAccess.get(player);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.debug("Vanilla journey attachments unavailable; using native session data.", exception);
+            return nativeSessionData(player);
+        }
     }
 
     public static void saveAndSync(ServerPlayer player, VanillaJourneyData data) {
-        player.setData(ModAttachments.VANILLA_JOURNEY_DATA.get(), data);
+        if (player == null || data == null) {
+            return;
+        }
+        if (nativeLoaderClientActive()) {
+            NATIVE_SESSION_DATA.put(player.getUUID(), data);
+            return;
+        }
         try {
-            player.syncData(ModAttachments.VANILLA_JOURNEY_DATA.get());
-        } catch (RuntimeException exception) {
+            AttachmentAccess.saveAndSync(player, data);
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Vanilla journey data saved without client sync.", exception);
+            NATIVE_SESSION_DATA.put(player.getUUID(), data);
         }
     }
 
@@ -101,8 +123,28 @@ public class VanillaJourneyData implements EchoValueIOSerializable {
     }
 
     private static boolean nativeLoaderClientActive() {
-        return Boolean.getBoolean("echo.native.loader")
-                && "windowed-native-client".equals(System.getProperty("echo.native.runtime.mode", ""));
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
+    }
+
+    private static VanillaJourneyData nativeSessionData(Player player) {
+        if (player == null) {
+            return new VanillaJourneyData();
+        }
+        return NATIVE_SESSION_DATA.computeIfAbsent(player.getUUID(), ignored -> new VanillaJourneyData());
+    }
+
+    private static final class AttachmentAccess {
+        private AttachmentAccess() {
+        }
+
+        private static VanillaJourneyData get(Player player) {
+            return player.getData(ModAttachments.VANILLA_JOURNEY_DATA.get());
+        }
+
+        private static void saveAndSync(ServerPlayer player, VanillaJourneyData data) {
+            player.setData(ModAttachments.VANILLA_JOURNEY_DATA.get(), data);
+            player.syncData(ModAttachments.VANILLA_JOURNEY_DATA.get());
+        }
     }
 
     @Override

@@ -10,9 +10,12 @@ import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.echoplatform.echocore.api.mission.MissionRewardClaimMode;
 import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
 import com.echoplatform.echocore.api.mission.RewardDefinition;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echolens.EchoLens;
 import java.util.Map;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -25,6 +28,9 @@ public final class LensMissionCoreIntegration {
     public static void register() {
         EchoCoreServices.registerMissionContent(EchoLens.MODID, LensMissionCoreIntegration::registerContent);
         LensMissionHooks.registerCoverage();
+        if (EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()) {
+            EchoLens.LOGGER.info("ECHO: Lens MissionCore rows registered with Native-safe stack fallbacks.");
+        }
     }
 
     public static void registerContent(IMissionRegistry registry) {
@@ -37,15 +43,18 @@ public final class LensMissionCoreIntegration {
         registerMission(registry, "verified_deep_scan", "scan", MissionObjectiveType.SCAN_BLOCK,
                 "Verified Deep Scan", "Complete a server-assisted Deep Scan.",
                 "The Lens target was verified server-side.",
-                new ItemStack(Items.SPYGLASS), 0, "Complete a verified Deep Scan", new ItemStack(Items.AMETHYST_SHARD, 2));
+                Items.SPYGLASS, 0, "Complete a verified Deep Scan",
+                Items.AMETHYST_SHARD, 2, "Amethyst Shard x2");
         registerMission(registry, "machine_diagnostic", "diagnostic", MissionObjectiveType.SCAN_BLOCK,
                 "Machine Diagnostic", "Deep-scan a block target for machine or container diagnostics.",
                 "Machine diagnostic context was accepted.",
-                new ItemStack(Items.REDSTONE_TORCH), 1, "Deep-scan a machine", new ItemStack(Items.REDSTONE, 4));
+                Items.REDSTONE_TORCH, 1, "Deep-scan a machine",
+                Items.REDSTONE, 4, "Redstone Dust x4");
         registerMission(registry, "index_shortcut", "shortcut", MissionObjectiveType.UNLOCK_RESEARCH,
                 "Index Shortcut", "Use a Lens-to-Index recipe, use, or track shortcut.",
                 "Lens shortcut telemetry reached the Index.",
-                new ItemStack(Items.BOOK), 2, "Use an Index shortcut", new ItemStack(Items.EXPERIENCE_BOTTLE, 1));
+                Items.BOOK, 2, "Use an Index shortcut",
+                Items.EXPERIENCE_BOTTLE, 1, "Bottle o' Enchanting");
     }
 
     private static void registerMission(
@@ -56,29 +65,65 @@ public final class LensMissionCoreIntegration {
             String title,
             String briefing,
             String fieldGuide,
-            ItemStack icon,
+            Item icon,
             int order,
             String objectiveLabel,
-            ItemStack reward) {
+            Item reward,
+            int rewardCount,
+            String rewardLabel) {
         Identifier mission = id(missionPath);
         Identifier target = MissionHookTargets.objectiveTarget(EchoLens.MODID, mission, objectiveKey);
+        ItemStack iconStack = stack(icon, 1);
         registry.registerMission(EchoLens.MODID, MissionDefinition.builder(mission, CHAPTER)
                 .phase("lens_side_ops", "Lens Side Ops", 0, order)
                 .text(title, briefing, fieldGuide)
                 .category("Lens", "Side Op")
-                .icon(icon)
+                .icon(iconStack)
                 .kind(MissionKind.SIDE_OP)
                 .objective(new ObjectiveDefinition(
                         id(missionPath + "/" + objectiveKey),
                         type,
                         objectiveLabel,
                         "",
-                        icon,
+                        iconStack,
                         1,
                         false,
                         Map.of("target", target.toString())))
-                .reward(RewardDefinition.item(id(missionPath + "/reward"), MissionRewardClaimMode.CLAIMABLE, reward))
+                .reward(reward(id(missionPath + "/reward"), reward, rewardCount, rewardLabel))
                 .build());
+    }
+
+    private static RewardDefinition reward(Identifier id, Item item, int count, String label) {
+        int safeCount = Math.max(1, count);
+        ItemStack stack = stack(item, safeCount);
+        return new RewardDefinition(
+                id,
+                MissionRewardClaimMode.CLAIMABLE,
+                stack,
+                label,
+                "",
+                Map.of("item", itemId(item), "count", Integer.toString(safeCount)));
+    }
+
+    private static ItemStack stack(Item item, int count) {
+        if (item == null || item == Items.AIR) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            return new ItemStack(item, Math.max(1, count));
+        } catch (RuntimeException | LinkageError exception) {
+            EchoLens.LOGGER.debug("Lens MissionCore stack {} deferred because item components are not bound yet.",
+                    itemId(item));
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private static String itemId(Item item) {
+        if (item == null || item == Items.AIR) {
+            return "";
+        }
+        Identifier id = BuiltInRegistries.ITEM.getKey(item);
+        return id == null ? "" : id.toString();
     }
 
     private static Identifier id(String path) {

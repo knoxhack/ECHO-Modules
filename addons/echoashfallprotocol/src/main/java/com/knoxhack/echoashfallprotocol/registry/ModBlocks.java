@@ -300,7 +300,7 @@ public class ModBlocks {
     public static final EchoBackendRegistryEntry<BlockItem> MUTATED_LEAVES_GRAY_ITEM = registerSimpleBlockItem("mutated_leaves_gray", MUTATED_LEAVES_GRAY);
 
     public static final EchoBackendRegistryEntry<Block> ASH_LAYER = registerCustomBlock("ash_layer",
-            net.minecraft.world.level.block.SnowLayerBlock::new, BlockBehaviour.Properties.of()
+            AshLayerBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GRAY)
                     .strength(0.1f)
                     .sound(SoundType.SNOW)

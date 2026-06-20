@@ -43,11 +43,11 @@ public final class EchoMobModelFactory {
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
         CubeDeformation inflate = new CubeDeformation(deformation);
-        root.addOrReplaceChild("head",
+        PartDefinition head = root.addOrReplaceChild("head",
                 CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, inflate),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
-        root.addOrReplaceChild("hat",
+        head.addOrReplaceChild("hat",
                 CubeListBuilder.create().texOffs(32, 0)
                         .addBox(-4.5F, -8.5F, -4.5F, 9.0F, 9.0F, 9.0F, new CubeDeformation(0.1F + deformation)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));

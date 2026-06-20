@@ -1,20 +1,47 @@
 package com.knoxhack.echo.hudcore;
 
+import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echo.hudcore.client.EchoHudCoreOverlay;
+import com.mojang.logging.LogUtils;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry.NativeClientRouteActionContext;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.resources.Identifier;
+import org.slf4j.Logger;
 
 public final class EchoHudCoreClient {
+    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final String REGISTER_GUI_LAYERS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterGuiLayersEvent";
+    private static final Identifier HUD_LAYER =
+            Identifier.fromNamespaceAndPath(EchoHudCore.MODID, "hud");
     private static final AtomicBoolean NATIVE_ROUTE_REGISTERED = new AtomicBoolean(false);
     private static final ThreadLocal<NativeHudRenderContext> NATIVE_HUD_RENDER = new ThreadLocal<>();
 
     public EchoHudCoreClient() {
+        this(null);
+    }
+
+    public EchoHudCoreClient(Object modEventBus) {
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_GUI_LAYERS_EVENT,
+                EchoHudCoreClient::registerGuiLayers);
         registerNativeClientRoutes();
+    }
+
+    private static void registerGuiLayers(Object event) {
+        if (EchoBackendClientBridge.registerGuiLayerAboveAir(event, HUD_LAYER, EchoHudCoreClient::renderHudLayer)) {
+            LOGGER.info("ECHO: HUDCore client overlay layer registered.");
+        }
+    }
+
+    private static void renderHudLayer(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
+        renderHud(graphics, deltaTracker.getGameTimeDeltaPartialTick(true));
     }
 
     public static void renderHud(GuiGraphicsExtractor graphics, float partialTick) {

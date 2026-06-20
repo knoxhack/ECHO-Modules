@@ -16,6 +16,7 @@ import com.knoxhack.echoarmory.registry.ModItems;
 import com.knoxhack.echoarmory.registry.ModMenus;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ public class EchoArmory {
       "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Pre";
    private static final String ITEM_CRAFTED_EVENT =
       "net.neoforged.neoforge.event.entity.player.PlayerEvent$ItemCraftedEvent";
+   private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
    EchoArmory() {
       this(null);
@@ -61,18 +63,28 @@ public class EchoArmory {
 }
 
    private void commonSetup(Object event) {
-      LOGGER.info("ECHO Armory online. Modular survival is now mission-ready.");
-      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-         ArmoryCoreIntegration.registerAddonChapter();
-         ArmoryIndexProvider.register();
-         ArmoryOptionalIntegrations.register();
-         if (EchoRuntimeModules.isLoaded("echomissioncore")) {
-            ArmoryMissionCoreIntegration.register();
-         }
-         if (EchoRuntimeModules.isLoaded("echoterminal")) {
-            registerTerminalIntegration();
-         }
-      });
+      EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+   }
+
+   public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+      return registerCommonServices("native_loader_module_ready");
+   }
+
+   private static boolean registerCommonServices(String source) {
+      if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+         return false;
+      }
+      LOGGER.info("ECHO Armory online [{}]. Modular survival is now mission-ready.", source);
+      ArmoryCoreIntegration.registerAddonChapter();
+      ArmoryIndexProvider.register();
+      ArmoryOptionalIntegrations.register();
+      if (EchoRuntimeModules.isLoaded("echomissioncore")) {
+         ArmoryMissionCoreIntegration.register();
+      }
+      if (EchoRuntimeModules.isLoaded("echoterminal")) {
+         registerTerminalIntegration();
+      }
+      return true;
    }
 
    private static void registerTerminalIntegration() {

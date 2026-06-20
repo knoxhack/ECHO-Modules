@@ -62,8 +62,12 @@ public final class MultiblockTerminalBridge {
         }
         try {
             TerminalReflection types = terminal.get();
-            types.registerRecipeProvider(recipeProvider(types));
-            types.registerAddonInfoProvider(addonInfoProvider(types));
+            if (!types.recipeProviderRegistered(EchoMultiblockCore.id("automation_recipes"))) {
+                types.registerRecipeProvider(recipeProvider(types));
+            }
+            if (!types.addonInfoProviderRegistered(EchoMultiblockCore.CHAPTER_ID.toString())) {
+                types.registerAddonInfoProvider(addonInfoProvider(types));
+            }
             registerAction(types, START_TASK, MultiblockTerminalBridge::startTask);
             registerAction(types, CLEAR_QUEUE, (player, payload) -> withController(player, payload,
                     controller -> controller.clearQueue(player)));
@@ -408,6 +412,26 @@ public final class MultiblockTerminalBridge {
 
         private void registerAddonInfoProvider(Object provider) throws ReflectiveOperationException {
             addonInfoRegistry.getMethod("register", addonInfoProvider).invoke(null, provider);
+        }
+
+        private boolean recipeProviderRegistered(Identifier id) throws ReflectiveOperationException {
+            Object providers = recipeRegistry.getMethod("providers").invoke(null);
+            if (!(providers instanceof Iterable<?> iterable)) {
+                return false;
+            }
+            Method idMethod = recipeProvider.getMethod("id");
+            for (Object provider : iterable) {
+                Object providerId = idMethod.invoke(provider);
+                if (id.equals(providerId)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private boolean addonInfoProviderRegistered(String chapterId) throws ReflectiveOperationException {
+            Object existing = addonInfoRegistry.getMethod("provider", String.class).invoke(null, chapterId);
+            return existing instanceof Optional<?> optional && optional.isPresent();
         }
 
         private void registerAction(Identifier tabId, Identifier actionId, Object handler) throws ReflectiveOperationException {

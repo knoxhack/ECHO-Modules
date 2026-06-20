@@ -19,6 +19,26 @@ app-sidebar, app-content, inspector-panel, app-footer {
   border-radius: radius(sm);
 }
 
+app-sidebar, app-content, inspector-panel {
+  padding: 6px 8px;
+  gap: 6px;
+}
+
+app-footer {
+  min-height: 22px;
+  padding: 4px 8px;
+}
+
+nav-item {
+  height: 24px;
+  min-height: 24px;
+  padding: 2px 5px;
+}
+
+nav-list {
+  gap: 2px;
+}
+
 hero-card {
   background: theme(overlay);
   border-color: theme(accent);

@@ -309,14 +309,15 @@ public final class HoloMapFullScreenMapScreen extends Screen {
     public boolean handleNativeRouteKey(int key) {
         if (key == GLFW.GLFW_KEY_ESCAPE || key == GLFW.GLFW_KEY_J) {
             HoloMapSoundHooks.play(Minecraft.getInstance().player, HoloMapSoundHooks.CLOSE);
-            EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
-                    "close",
-                    "holomap.fullscreen.close",
-                    getClass().getName(),
-                    Map.of("transitionSource", "fullscreen_key"));
-            if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+            if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
+                            "close",
+                            "holomap.fullscreen.close",
+                            getClass().getName(),
+                            Map.of("transitionSource", "fullscreen_key"));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(null);
             return true;
@@ -594,14 +595,15 @@ public final class HoloMapFullScreenMapScreen extends Screen {
             case TOGGLE_FIELDS -> fieldMode = fieldMode.next();
             case CLOSE -> {
                 HoloMapSoundHooks.play(Minecraft.getInstance().player, HoloMapSoundHooks.CLOSE);
-                EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
-                        "close",
-                        "holomap.fullscreen.close",
-                        getClass().getName(),
-                        Map.of("transitionSource", "fullscreen_header_button"));
-                if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()
-                        && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                    return;
+                if (EchoHoloMapClient.nativeLoaderClientActiveForScreens()) {
+                    EchoNativeLoadStatus lifecycleStatus = EchoHoloMapClient.publishNativeScreenLifecycle(
+                                "close",
+                                "holomap.fullscreen.close",
+                                getClass().getName(),
+                                Map.of("transitionSource", "fullscreen_header_button"));
+                    if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                        return;
+                    }
                 }
                 Minecraft.getInstance().setScreen(null);
             }

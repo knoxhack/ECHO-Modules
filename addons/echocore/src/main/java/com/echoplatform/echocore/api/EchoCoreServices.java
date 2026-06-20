@@ -38,6 +38,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -217,7 +218,7 @@ public final class EchoCoreServices {
         try {
             EchoHazardTelemetry telemetry = hazardTelemetryProvider.apply(player);
             return telemetry == null ? EchoHazardTelemetry.nominal() : telemetry;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return EchoHazardTelemetry.nominal();
         }
     }
@@ -230,7 +231,7 @@ public final class EchoCoreServices {
         try {
             List<EchoDiagnosticBlocker> blockers = diagnosticProvider.apply(player);
             return blockers == null ? List.of() : List.copyOf(blockers);
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return List.of();
         }
     }
@@ -243,7 +244,7 @@ public final class EchoCoreServices {
         try {
             List<EchoRouteRecord> records = routeRecordProvider.apply(player);
             return records == null ? List.of() : List.copyOf(records);
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return List.of();
         }
     }
@@ -578,7 +579,8 @@ public final class EchoCoreServices {
 
     public static boolean itemStackComponentsBound() {
         try {
-            return net.minecraft.core.registries.BuiltInRegistries.ITEM != null;
+            return net.minecraft.core.registries.BuiltInRegistries.ITEM != null
+                    && !new ItemStack(Items.STONE).isEmpty();
         } catch (RuntimeException | LinkageError ignored) {
             return false;
         }

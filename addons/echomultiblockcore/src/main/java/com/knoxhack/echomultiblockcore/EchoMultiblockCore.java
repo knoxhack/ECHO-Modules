@@ -20,6 +20,7 @@ import com.knoxhack.echomultiblockcore.registry.ModItems;
 import com.knoxhack.echomultiblockcore.registry.ModMenus;
 import com.knoxhack.echomultiblockcore.runtime.MultiblockRuntimeEvents;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
@@ -34,6 +35,7 @@ public final class EchoMultiblockCore {
     private static final String ADD_SERVER_RELOAD_LISTENERS_EVENT =
             "net.neoforged.neoforge.event.AddServerReloadListenersEvent";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
     EchoMultiblockCore() {
         this(null);
@@ -69,22 +71,32 @@ public final class EchoMultiblockCore {
     }
 
     private void commonSetup(Object event) {
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            registerAddonChapter();
-            MultiblockIntegrationServices.registerDefaultProviders();
-            EchoCoreServices.registerMapDataProvider(MultiblockMapDataProvider.INSTANCE);
-            EchoCoreServices.registerIndexContentProvider(MultiblockIndexProvider.INSTANCE);
-            if (EchoRuntimeModules.isLoaded("echomissioncore")) {
-                MultiblockMissionCoreIntegration.register();
-            }
-            if (EchoRuntimeModules.isLoaded("echoterminal")) {
-                registerTerminalBridge();
-            }
-            if (EchoRuntimeModules.isLoaded("echomachinecore")) {
-                registerMachineCoreBridge();
-            }
-        });
-        LOGGER.info("ECHO MultiblockCore online. Facility runtime awaiting controllers.");
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return registerCommonServices("native_loader_module_ready");
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        registerAddonChapter();
+        MultiblockIntegrationServices.registerDefaultProviders();
+        EchoCoreServices.registerMapDataProvider(MultiblockMapDataProvider.INSTANCE);
+        EchoCoreServices.registerIndexContentProvider(MultiblockIndexProvider.INSTANCE);
+        if (EchoRuntimeModules.isLoaded("echomissioncore")) {
+            MultiblockMissionCoreIntegration.register();
+        }
+        if (EchoRuntimeModules.isLoaded("echoterminal")) {
+            registerTerminalBridge();
+        }
+        if (EchoRuntimeModules.isLoaded("echomachinecore")) {
+            registerMachineCoreBridge();
+        }
+        LOGGER.info("ECHO MultiblockCore online [{}]. Facility runtime awaiting controllers.", source);
+        return true;
     }
 
     private static void registerTerminalBridge() {

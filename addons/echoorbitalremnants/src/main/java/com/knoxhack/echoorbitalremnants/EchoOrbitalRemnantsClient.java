@@ -31,6 +31,8 @@ import net.minecraft.world.entity.Mob;
 
 public class EchoOrbitalRemnantsClient {
     private static final Identifier ORBITAL_HUD = Identifier.fromNamespaceAndPath(EchoOrbitalRemnants.MODID, "orbital_hud");
+    private static final String REGISTER_CLIENT_PAYLOAD_HANDLERS_EVENT =
+            "net.neoforged.neoforge.client.network.event.RegisterClientPayloadHandlersEvent";
     private static final String BASE_VISUAL_CONTROLLER = "com.knoxhack.echoashfallprotocol.client.EnvironmentalVisualController";
     private static final String BASE_VISUAL_PULSE_METHOD = "triggerOrbitalPulse";
     private static final String BASE_CONFIG_CLASS = "com.knoxhack.echoashfallprotocol.Config";
@@ -52,7 +54,8 @@ public class EchoOrbitalRemnantsClient {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, EchoOrbitalRemnantsClient::registerGuiLayers);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, EchoOrbitalRemnantsClient::registerMenuScreens);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, EchoOrbitalRemnantsClient::registerLayerDefinitions);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, EchoOrbitalRemnantsClient::registerClientPayloadHandlers);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_CLIENT_PAYLOAD_HANDLERS_EVENT,
+                EchoOrbitalRemnantsClient::registerClientPayloadHandlers);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, EchoOrbitalRemnantsClient::registerEntityRenderers);
         EchoBackendLifecycleBridge.registerGameEventHandler(EchoOrbitalRemnantsClient::onClientTick);
     }

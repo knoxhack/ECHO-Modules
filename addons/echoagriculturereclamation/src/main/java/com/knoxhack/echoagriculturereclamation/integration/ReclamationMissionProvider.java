@@ -25,7 +25,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class ReclamationMissionProvider implements TerminalMissionProvider {
    public static final ReclamationMissionProvider INSTANCE = new ReclamationMissionProvider();
@@ -34,12 +37,12 @@ public final class ReclamationMissionProvider implements TerminalMissionProvider
    public static final String ACTION_CLAIM = "claim_cache";
    private static final int ACCENT = 0xFF92F7A6;
    private static final List<Mission> MISSIONS = List.of(
-      mission("recover_seed", "Recover Seed", "Recover or open a seed capsule from ruined ecology sources.", "Seed Recovery", 0, "Seed", "Craft one from wheat seeds, bone meal, glass bottle, and copper, or search Seed Vaults, Bio Labs, caches, toxic salvage, and cryogenic ruins.", 1, () -> new ItemStack(ModItems.RECOVERED_SEED_CAPSULE.get())),
-      mission("analyze_soil", "Analyze Soil", "Scan contaminated ground and run the first purification pass.", "Soil Recovery", 1, "Soil", "Use Ecology Scanner or Soil Purifier near dead ecology blocks.", 1, () -> new ItemStack(ModBlocks.SOIL_PURIFIER.get())),
-      mission("first_growth", "First Growth", "Grow and harvest a recovered crop in soil or hydroponics.", "Cultivation", 2, "Growth", "Plant a profiled seed on supported soil or insert it into a reusable Hydroponic Tray culture.", 1, () -> new ItemStack(ModBlocks.HYDROPONIC_TRAY.get())),
-      mission("gene_stabilization", "Gene Stabilization", "Stabilize one contaminated seed route.", "Cultivation", 3, "Genes", "Craft a Bio-Reactor with Soil Nutrient Mix, make Bio-Gel from crop matter, then use a contaminated seed cutting in the Gene Stabilizer.", 1, () -> new ItemStack(ModBlocks.GENE_STABILIZER.get())),
-      mission("greenhouse_online", "Greenhouse Online", "Build a greenhouse zone that reaches safe growth envelope.", "Greenhouse", 4, "Safety", "Use Greenhouse Glass, Spore Filter, Pollinator Dock, trays, and a controller scan to establish the zone; deploy the dock drone for active crop service.", 70, () -> new ItemStack(ModBlocks.GREENHOUSE_CONTROLLER.get())),
-      mission("restore_chunk", "Restore a Chunk", "Raise local restoration score to 100 through crops, restored soil, and safe greenhouse support.", "Restoration", 5, "Restoration", "Mature restoration crops and keep scanning ecology while soil improves.", 100, () -> new ItemStack(ModBlocks.RESTORED_SOIL.get()))
+      mission("recover_seed", "Recover Seed", "Recover or open a seed capsule from ruined ecology sources.", "Seed Recovery", 0, "Seed", "Craft one from wheat seeds, bone meal, glass bottle, and copper, or search Seed Vaults, Bio Labs, caches, toxic salvage, and cryogenic ruins.", 1, () -> stack(() -> (ItemLike) ModItems.RECOVERED_SEED_CAPSULE.get(), Items.WHEAT_SEEDS, 1)),
+      mission("analyze_soil", "Analyze Soil", "Scan contaminated ground and run the first purification pass.", "Soil Recovery", 1, "Soil", "Use Ecology Scanner or Soil Purifier near dead ecology blocks.", 1, () -> stack(() -> (ItemLike) ModBlocks.SOIL_PURIFIER.get(), Items.COMPOSTER, 1)),
+      mission("first_growth", "First Growth", "Grow and harvest a recovered crop in soil or hydroponics.", "Cultivation", 2, "Growth", "Plant a profiled seed on supported soil or insert it into a reusable Hydroponic Tray culture.", 1, () -> stack(() -> (ItemLike) ModBlocks.HYDROPONIC_TRAY.get(), Items.FLOWER_POT, 1)),
+      mission("gene_stabilization", "Gene Stabilization", "Stabilize one contaminated seed route.", "Cultivation", 3, "Genes", "Craft a Bio-Reactor with Soil Nutrient Mix, make Bio-Gel from crop matter, then use a contaminated seed cutting in the Gene Stabilizer.", 1, () -> stack(() -> (ItemLike) ModBlocks.GENE_STABILIZER.get(), Items.BREWING_STAND, 1)),
+      mission("greenhouse_online", "Greenhouse Online", "Build a greenhouse zone that reaches safe growth envelope.", "Greenhouse", 4, "Safety", "Use Greenhouse Glass, Spore Filter, Pollinator Dock, trays, and a controller scan to establish the zone; deploy the dock drone for active crop service.", 70, () -> stack(() -> (ItemLike) ModBlocks.GREENHOUSE_CONTROLLER.get(), Items.GLASS, 1)),
+      mission("restore_chunk", "Restore a Chunk", "Raise local restoration score to 100 through crops, restored soil, and safe greenhouse support.", "Restoration", 5, "Restoration", "Mature restoration crops and keep scanning ecology while soil improves.", 100, () -> stack(() -> (ItemLike) ModBlocks.RESTORED_SOIL.get(), Items.DIRT, 1))
    );
 
    private ReclamationMissionProvider() {
@@ -212,7 +215,7 @@ public final class ReclamationMissionProvider implements TerminalMissionProvider
          case "analyze_soil" -> "Local soil: " + metrics.soilLabel() + ". Purified blocks: " + ReclamationProgress.value(player, "soil_purified") + ".";
          case "first_growth" -> "Crops harvested: " + ReclamationProgress.value(player, "crops_grown") + ". Food security " + metrics.foodSecurity() + "%.";
          case "gene_stabilization" -> "Stabilized seeds: " + ReclamationProgress.value(player, "stabilized_seeds")
-            + ". Bio-Gel carried " + ReclamationProgress.count(player, ModItems.BIO_GEL.get())
+            + ". Bio-Gel carried " + count(player, () -> ModItems.BIO_GEL.get())
             + ". Seed cutting " + (ReclamationProgress.flag(player, "stabilization_seed_recovered") ? "available" : "pending") + ".";
          case "greenhouse_online" -> "Greenhouse safety: " + metrics.greenhouseSafety() + "/" + ReclamationContent.progression().greenhouseSafeThreshold()
             + " (" + greenhouse.summaryLabel() + ", " + countLabel(greenhouse.scan().deployedDrones(), "drone") + ", "
@@ -244,10 +247,10 @@ public final class ReclamationMissionProvider implements TerminalMissionProvider
       if (ReclamationProgress.value(player, "crops_grown") > 0) {
          progress = 0.35F;
       }
-      if (ReclamationProgress.flag(player, "stabilization_seed_recovered") || ReclamationProgress.count(player, ModItems.CONTAMINATED_SEED.get()) > 0) {
+      if (ReclamationProgress.flag(player, "stabilization_seed_recovered") || count(player, () -> ModItems.CONTAMINATED_SEED.get()) > 0) {
          progress = Math.max(progress, 0.55F);
       }
-      if (ReclamationProgress.count(player, ModItems.BIO_GEL.get()) > 0 || ReclamationProgress.count(player, ModItems.GENE_SAMPLE.get()) > 0
+      if (count(player, () -> ModItems.BIO_GEL.get()) > 0 || count(player, () -> ModItems.GENE_SAMPLE.get()) > 0
          || ReclamationProgress.value(player, "bio_gel_created") > 0) {
          progress = Math.max(progress, 0.75F);
       }
@@ -295,14 +298,45 @@ public final class ReclamationMissionProvider implements TerminalMissionProvider
 
    private static List<ItemStack> rewards(Mission mission) {
       return switch (mission.key()) {
-         case "recover_seed" -> List.of(new ItemStack(ModItems.SOIL_NUTRIENT_MIX.get(), 2), new ItemStack(ModItems.PURIFICATION_ENZYME.get()));
-         case "analyze_soil" -> List.of(new ItemStack(ModItems.RECOVERED_SEED_CAPSULE.get(), 2), new ItemStack(ModItems.SOIL_NUTRIENT_MIX.get(), 2));
-         case "first_growth" -> List.of(new ItemStack(ModItems.GENE_SAMPLE.get(), 2), new ItemStack(ModItems.BIO_GEL.get()));
-         case "gene_stabilization" -> List.of(new ItemStack(ModItems.RECOVERED_SEED_CAPSULE.get()), new ItemStack(ModBlocks.GREENHOUSE_GLASS.get(), 8));
-         case "greenhouse_online" -> List.of(new ItemStack(ModItems.PURIFICATION_ENZYME.get(), 2), new ItemStack(ModItems.BIO_GEL.get(), 2));
-         case "restore_chunk" -> List.of(new ItemStack(ModItems.RECOVERED_SEED_CAPSULE.get(), 4), new ItemStack(ModItems.GENE_SAMPLE.get(), 3));
+         case "recover_seed" -> List.of(stack(() -> (ItemLike) ModItems.SOIL_NUTRIENT_MIX.get(), Items.BONE_MEAL, 2), stack(() -> (ItemLike) ModItems.PURIFICATION_ENZYME.get(), Items.HONEY_BOTTLE, 1));
+         case "analyze_soil" -> List.of(stack(() -> (ItemLike) ModItems.RECOVERED_SEED_CAPSULE.get(), Items.WHEAT_SEEDS, 2), stack(() -> (ItemLike) ModItems.SOIL_NUTRIENT_MIX.get(), Items.BONE_MEAL, 2));
+         case "first_growth" -> List.of(stack(() -> (ItemLike) ModItems.GENE_SAMPLE.get(), Items.WHEAT_SEEDS, 2), stack(() -> (ItemLike) ModItems.BIO_GEL.get(), Items.SLIME_BALL, 1));
+         case "gene_stabilization" -> List.of(stack(() -> (ItemLike) ModItems.RECOVERED_SEED_CAPSULE.get(), Items.WHEAT_SEEDS, 1), stack(() -> (ItemLike) ModBlocks.GREENHOUSE_GLASS.get(), Items.GLASS, 8));
+         case "greenhouse_online" -> List.of(stack(() -> (ItemLike) ModItems.PURIFICATION_ENZYME.get(), Items.HONEY_BOTTLE, 2), stack(() -> (ItemLike) ModItems.BIO_GEL.get(), Items.SLIME_BALL, 2));
+         case "restore_chunk" -> List.of(stack(() -> (ItemLike) ModItems.RECOVERED_SEED_CAPSULE.get(), Items.WHEAT_SEEDS, 4), stack(() -> (ItemLike) ModItems.GENE_SAMPLE.get(), Items.WHEAT_SEEDS, 3));
          default -> List.of();
       };
+   }
+
+   private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+      if (!EchoCoreServices.itemStackComponentsBound()) {
+         return ItemStack.EMPTY;
+      }
+      try {
+         ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+         return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+      } catch (RuntimeException | LinkageError ignored) {
+         return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+      }
+   }
+
+   private static boolean nativeLoaderActive() {
+      return Boolean.getBoolean("echo.native.loader")
+         || !System.getProperty("echo.native.moduleIds", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+         || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
+   }
+
+   private static int count(Player player, Supplier<? extends Item> item) {
+      if (nativeLoaderActive() || item == null) {
+         return 0;
+      }
+      try {
+         Item value = item.get();
+         return value == null ? 0 : ReclamationProgress.count(player, value);
+      } catch (RuntimeException | LinkageError ignored) {
+         return 0;
+      }
    }
 
    private record Mission(Identifier id, String key, String title, String briefing, String phase, int order, String category, String guide, int need, Supplier<ItemStack> iconSupplier) {

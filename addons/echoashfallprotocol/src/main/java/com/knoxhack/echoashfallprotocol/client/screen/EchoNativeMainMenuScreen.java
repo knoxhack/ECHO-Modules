@@ -28,17 +28,17 @@ import net.minecraft.network.chat.Component;
  * client APIs so the vanilla Native Loader handoff can instantiate it directly.
  */
 public final class EchoNativeMainMenuScreen extends Screen {
-    private static final int BG = 0xFF050910;
-    private static final int PANEL = 0xD00B1824;
-    private static final int PANEL_SOFT = 0xB0102430;
-    private static final int LINE = 0xFF38DFF4;
-    private static final int LINE_DIM = 0x8838DFF4;
-    private static final int CYAN = 0xFF66E8FF;
-    private static final int CYAN_DIM = 0xFF7AAFC0;
-    private static final int GREEN = 0xFF7CFFB2;
-    private static final int AMBER = 0xFFFFC857;
-    private static final int TEXT = 0xFFE8F8FF;
-    private static final int MUTED = 0xFF8CA2AE;
+    private static final int BG = EchoTerminalStyle.BG;
+    private static final int PANEL = EchoTerminalStyle.PANEL;
+    private static final int PANEL_SOFT = EchoTerminalStyle.PANEL_SOFT;
+    private static final int LINE = EchoTerminalStyle.LINE;
+    private static final int LINE_DIM = EchoTerminalStyle.LINE_DIM;
+    private static final int CYAN = EchoTerminalStyle.CYAN;
+    private static final int CYAN_DIM = EchoTerminalStyle.CYAN_DIM;
+    private static final int GREEN = EchoTerminalStyle.GREEN;
+    private static final int AMBER = EchoTerminalStyle.AMBER;
+    private static final int TEXT = EchoTerminalStyle.TEXT;
+    private static final int MUTED = EchoTerminalStyle.MUTED;
     private static final int BUTTON_HEIGHT = 20;
     private static final int BUTTON_COUNT = 5;
     private int ticks;
@@ -79,7 +79,7 @@ public final class EchoNativeMainMenuScreen extends Screen {
 
     @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-        renderBackgroundPlate(graphics);
+        renderBackgroundPlate(graphics, partialTick);
         renderArchivePanel(graphics);
         renderCommandPanel(graphics);
     }
@@ -100,15 +100,9 @@ public final class EchoNativeMainMenuScreen extends Screen {
         return false;
     }
 
-    private void renderBackgroundPlate(GuiGraphicsExtractor graphics) {
-        graphics.fill(0, 0, this.width, this.height, BG);
-        graphics.fill(0, 0, this.width, Math.max(1, this.height / 5), 0x660B1530);
-        graphics.fill(0, Math.max(0, this.height - this.height / 3), this.width, this.height, 0x80000008);
-        int sweep = this.width <= 0 ? 0 : (this.ticks * 3) % Math.max(1, this.width);
-        graphics.fill(Math.max(0, sweep - 80), 0, Math.min(this.width, sweep), this.height, 0x101AB8D0);
-        for (int y = 12 + (this.ticks % 18); y < this.height; y += 18) {
-            graphics.fill(0, y, this.width, y + 1, 0x1828D7F4);
-        }
+    private void renderBackgroundPlate(GuiGraphicsExtractor graphics, float partialTick) {
+        EchoTerminalBackgrounds.render(
+                graphics, EchoTerminalBackgrounds.Plate.MAIN_MENU, this.width, this.height, this.ticks, partialTick);
     }
 
     private void renderArchivePanel(GuiGraphicsExtractor graphics) {

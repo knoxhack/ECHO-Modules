@@ -202,8 +202,12 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
         return MAX_ROUTE_RECORDS;
     }
 
-    public void clearCacheForTests() {
+    public void invalidateRouteCache() {
         routeCache.clear();
+    }
+
+    public void clearCacheForTests() {
+        invalidateRouteCache();
     }
 
     private static TerminalMissionDefinition definition(SourceRecord record) {
@@ -253,10 +257,23 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
                 builder.append(provider.getClass().getName())
                         .append('@')
                         .append(System.identityHashCode(provider))
+                        .append('#')
+                        .append(safeMissionCount(provider))
                         .append(';');
             }
         }
         return builder.toString();
+    }
+
+    private static int safeMissionCount(TerminalMissionProvider provider) {
+        try {
+            List<TerminalMissionDefinition> missions = provider.missions(null);
+            return missions == null ? 0 : missions.size();
+        } catch (RuntimeException | LinkageError exception) {
+            EchoTerminal.LOGGER.debug("Survival route could not count a provider while building its cache key.",
+                    exception);
+            return -1;
+        }
     }
 
     private static RouteSnapshot buildRouteSnapshot(Player player) {
@@ -539,18 +556,32 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
     private static TerminalMissionChapter safeChapter(TerminalMissionProvider provider) {
         try {
             return provider.chapter();
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route skipped a provider with failing chapter metadata.", exception);
             return null;
         }
     }
 
     private static List<TerminalMissionDefinition> safeMissions(TerminalMissionProvider provider, Player player) {
+        List<TerminalMissionDefinition> liveMissions = safeMissions(provider, player, true);
+        if (!liveMissions.isEmpty() || player == null) {
+            return liveMissions;
+        }
+        List<TerminalMissionDefinition> definitionOnlyMissions = safeMissions(provider, null, false);
+        return definitionOnlyMissions.isEmpty() ? liveMissions : definitionOnlyMissions;
+    }
+
+    private static List<TerminalMissionDefinition> safeMissions(
+            TerminalMissionProvider provider,
+            Player player,
+            boolean logFailures) {
         try {
             List<TerminalMissionDefinition> missions = provider.missions(player);
             return missions == null ? List.of() : missions;
-        } catch (RuntimeException exception) {
-            EchoTerminal.LOGGER.debug("Survival route skipped a provider with failing mission records.", exception);
+        } catch (RuntimeException | LinkageError exception) {
+            if (logFailures) {
+                EchoTerminal.LOGGER.debug("Survival route skipped a provider with failing mission records.", exception);
+            }
             return List.of();
         }
     }
@@ -565,7 +596,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
                     ? new TerminalMissionSnapshot(definition.id(), TerminalMissionStatus.LOCKED, 0.0F,
                             "LOCKED", "Mission provider returned no snapshot.", "Open the owning chapter.", List.of())
                     : snapshot;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route locked a mission with failing snapshot metadata.", exception);
             return new TerminalMissionSnapshot(definition.id(), TerminalMissionStatus.LOCKED, 0.0F,
                     "LOCKED", "Mission provider snapshot failed.", "Open the owning chapter after the chapter reloads.",
@@ -581,7 +612,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
         try {
             TerminalMissionPresentation presentation = provider.presentation(player, definition, snapshot);
             return presentation == null ? TerminalMissionPresentation.fallback(definition, snapshot) : presentation;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback presentation for a mission.", exception);
             return TerminalMissionPresentation.fallback(definition, snapshot);
         }
@@ -595,7 +626,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
         try {
             TerminalMissionRole role = provider.role(player, definition, snapshot);
             return role == null ? TerminalMissionRole.fallback(definition, snapshot) : role;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback role for a mission.", exception);
             return TerminalMissionRole.fallback(definition, snapshot);
         }
@@ -611,7 +642,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
             Optional<TerminalMissionRoutePlacement> placement =
                     provider.routePlacement(player, definition, snapshot, role);
             return placement == null ? Optional.empty() : placement;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback route placement for a mission.", exception);
             return Optional.empty();
         }
@@ -629,7 +660,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
                     .filter(java.util.Objects::nonNull)
                     .distinct()
                     .toList();
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback route prerequisites for a mission.", exception);
             return List.of();
         }
@@ -644,7 +675,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
         try {
             Optional<Identifier> anchor = provider.routeAnchor(player, definition, snapshot, role);
             return anchor == null ? Optional.empty() : anchor.filter(java.util.Objects::nonNull);
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback route anchor for a mission.", exception);
             return Optional.empty();
         }
@@ -662,7 +693,7 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
                     .filter(java.util.Objects::nonNull)
                     .distinct()
                     .toList();
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             EchoTerminal.LOGGER.debug("Survival route used fallback intel unlocks for a mission.", exception);
             return List.of();
         }

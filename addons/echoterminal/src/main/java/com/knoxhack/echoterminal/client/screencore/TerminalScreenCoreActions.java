@@ -132,10 +132,11 @@ public final class TerminalScreenCoreActions {
             throw new IllegalArgumentException("Terminal ScreenCore action is missing from catalog: " + id);
         }
         EchoScreenRegistry.registerAction(id, context -> {
+            boolean handled = action.run(context);
             if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
-                return EchoTerminalClient.dispatchNativeScreenCoreAction(id, context, action);
+                EchoTerminalClient.publishNativeScreenCoreActionResult(id, context, handled);
             }
-            return action.run(context);
+            return handled;
         });
     }
 

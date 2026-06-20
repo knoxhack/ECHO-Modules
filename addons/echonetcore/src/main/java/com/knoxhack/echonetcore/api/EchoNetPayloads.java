@@ -12,8 +12,34 @@ import net.minecraft.world.entity.player.Player;
 
 public final class EchoNetPayloads {
     public static final String VERSION = "1";
+    private static final ThreadLocal<Object> REGISTRATION_EVENT = new ThreadLocal<>();
 
     private EchoNetPayloads() {
+    }
+
+    public static void withRegistrationEvent(Object event, Runnable work) {
+        if (work == null) {
+            return;
+        }
+        Object previous = REGISTRATION_EVENT.get();
+        if (event == null) {
+            REGISTRATION_EVENT.remove();
+        } else {
+            REGISTRATION_EVENT.set(event);
+        }
+        try {
+            work.run();
+        } finally {
+            if (previous == null) {
+                REGISTRATION_EVENT.remove();
+            } else {
+                REGISTRATION_EVENT.set(previous);
+            }
+        }
+    }
+
+    static Object currentRegistrationEvent() {
+        return REGISTRATION_EVENT.get();
     }
 
     public static EchoPayloadRegistrar optional() {

@@ -619,8 +619,8 @@ public final class EchoNativeLoaderAttachedRuntimeHost extends EchoUnsupportedRu
         snapshot.put("runtimeHostId", runtimeHostId());
         return switch (status) {
             case "MUTATED" -> adapterCoreMutationProofSatisfied(methodName, snapshot)
-                    ? NativeResult.mutated("Native Loader backend mutated live state.", snapshot,
-                    nativeLoaderReceipt(methodName, snapshot))
+                    ? NativeResult.mutated("Native Loader backend mutated live state.", snapshot)
+                    .withReceipt(nativeLoaderReceipt(methodName, snapshot))
                     : NativeResult.failed("Native Loader backend mutation did not include release-grade live runtime proof.",
                             proofFailureSnapshot(methodName, snapshot));
             case "FAILED" -> NativeResult.failed("Native Loader backend attempted mutation and failed.", snapshot);

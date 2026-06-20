@@ -22,6 +22,7 @@ public final class EchoTextureForgeMod {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         TextureForgeConfig.registerEchoConfig();
         EchoCommandRegistry.register(TextureForgeCommands.echoSubcommand());
+        EchoBackendLifecycleBridge.registerGameEventHandler(EchoCommandRegistry::onRegisterCommands);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::registerAlias);
         EchoBackendLifecycleBridge.registerGameEventHandler(TextureForgeService.INSTANCE::onServerStarted);
     }

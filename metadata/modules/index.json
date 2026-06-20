@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedFrom": "addons/*/src/main/resources/META-INF/echo.mod.json",
-  "generatedAt": "2026-06-14T23:09:30.635Z",
+  "generatedAt": "2026-06-18T23:01:14.905Z",
   "moduleCount": 133,
   "modules": [
     {
@@ -3995,9 +3995,13 @@
         "screen.bindings",
         "screen.components",
         "screen.contracts",
+        "screen.data_provider",
         "screen.layouts",
         "screen.markup",
-        "screen.theme_bridge"
+        "screen.style",
+        "screen.surface",
+        "screen.theme_bridge",
+        "echoscreencore:screen/field_ops_composition"
       ],
       "consumes": [
         "echo.core"

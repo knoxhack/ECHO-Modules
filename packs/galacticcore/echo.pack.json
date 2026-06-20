@@ -1,0 +1,72 @@
+{
+  "schema": "echo.pack.profile.v1",
+  "id": "galacticcore",
+  "name": "ECHO: GalacticCore",
+  "publisher": "KnoxHack / ECHO Labs",
+  "version": "0.1.0-native-alpha",
+  "status": "alpha",
+  "type": "community_pack",
+  "rootModule": "echogalacticcore",
+  "gameMode": "space_survival",
+  "worldProfile": "galacticcore:space_survival",
+  "startProfile": "galacticcore:earth_orbit",
+  "theme": "galacticcore",
+  "releaseChannel": "alpha",
+  "minecraftVersion": "1.21.1",
+  "strictOfficialOnly": false,
+  "loader": {
+    "kind": "echo_native",
+    "version": ""
+  },
+  "variants": [
+    "native",
+    "neoforge",
+    "standalone"
+  ],
+  "channels": [
+    "alpha",
+    "beta"
+  ],
+  "requiredModules": [
+    "echogalacticcore"
+  ],
+  "recommendedModules": [
+    "echoadaptercore",
+    "echopackcore",
+    "echoindex",
+    "echolens",
+    "echoholomap",
+    "echoscreencore"
+  ],
+  "optionalModules": [
+    "echoashfallprotocol",
+    "echoterminal",
+    "echosoundcore",
+    "echorendercore",
+    "echoatmospherecore",
+    "echopowercore",
+    "echomachinecore",
+    "echovehiclecore"
+  ],
+  "requiredFeatures": [
+    "galacticcore.content",
+    "galacticcore.celestial_routes",
+    "galacticcore.life_support",
+    "galacticcore.rockets"
+  ],
+  "optionalFeatures": [
+    "ashfall.protocol",
+    "terminal.missions",
+    "holomap.routes",
+    "lens.scan_overlay",
+    "screen.host"
+  ],
+  "legal": {
+    "label": "Unofficial ECHO Platform port/fork of Galacticraft Legacy",
+    "license": "MIT",
+    "attribution": [
+      "Derived from Galacticraft Legacy by TeamGalacticraft",
+      "ECHO Platform port, modernization, integration, and additional systems by KnoxHack / ECHO Labs"
+    ]
+  }
+}

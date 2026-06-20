@@ -1,14 +1,13 @@
 <app-shell class="index-shell">
   <app-header title="{param.title|INDEX DATABASE}" subtitle="{param.subtitle|Items, recipes, usages, machines, and discoveries.}"/>
-  <grid class="index-shell-grid" columns="{param.columns|220px 1fr 300px}" gap="12">
+  <grid class="index-shell-grid" columns="{param.columns|144px 1fr 144px}" gap="10" stack-below="sm">
     <app-sidebar title="Index">
       <nav-list>
-        <repeat source="index.nav.sections" item="nav">
-          <nav-item action="index.open_page" action-page="{nav.page}" selected="{nav.selected}">
-            <title value="{nav.title}"/>
-            <text value="{nav.subtitle}"/>
-          </nav-item>
-        </repeat>
+        <nav-item action="index.open_page" action-page="echoindex:index_dashboard"><title value="Dashboard"/></nav-item>
+        <nav-item action="index.open_page" action-page="echoindex:index_items"><title value="Item Browser"/></nav-item>
+        <nav-item action="index.open_page" action-page="echoindex:index_recipes"><title value="Recipe Browser"/></nav-item>
+        <nav-item action="index.open_page" action-page="echoindex:index_usages"><title value="Usage Browser"/></nav-item>
+        <nav-item action="index.open_page" action-page="echoindex:index_machines"><title value="Machine Browser"/></nav-item>
       </nav-list>
     </app-sidebar>
     <app-content title="{param.contentTitle|Workspace}">
@@ -18,12 +17,4 @@
       <slot-outlet name="inspector"/>
     </inspector-panel>
   </grid>
-  <app-footer>
-    <row gap="12">
-      <text value="{index.dashboard.visibleItemCount} item(s) visible"/>
-      <text value="{index.dashboard.recipeCount} recipe(s)"/>
-      <text value="{index.dashboard.machineCount} machine(s)"/>
-      <text value="query: {index.search.query|none}"/>
-    </row>
-  </app-footer>
 </app-shell>

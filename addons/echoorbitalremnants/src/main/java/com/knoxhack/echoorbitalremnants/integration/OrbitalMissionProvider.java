@@ -20,11 +20,13 @@ import com.knoxhack.echoterminal.api.mission.TerminalMissionStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 public final class OrbitalMissionProvider implements TerminalMissionProvider {
@@ -207,70 +209,70 @@ public final class OrbitalMissionProvider implements TerminalMissionProvider {
                     progress.launchSiteTracked()
                             ? "Orbital contact calibrated from ruined Earth."
                             : earthCalibrationInstruction(player),
-                    ModItems.ECHO_TERMINAL.get(), progress.launchSiteTracked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.ECHO_TERMINAL.get(), Items.COMPASS, progress.launchSiteTracked() ? 1 : 0, 1));
             case LAUNCH_CHAIN -> List.of(
                     requirement("Launch systems", missingOrReady(launch, "Launch systems ready."),
-                            ModBlocks.LAUNCH_PLATFORM.get(), launch.ready() ? 1 : 0, 1),
+                            () -> (ItemLike) ModBlocks.LAUNCH_PLATFORM.get(), Items.IRON_BLOCK, launch.ready() ? 1 : 0, 1),
                     requirement("Rocket assembly",
                             assembly.ready() || rocket.staged() || progress.launchPrepared()
                                     ? rocket.detail(progress.lowOrbitReached(), launch, assembly)
                                     : missingOrReady(assembly, "Rocket assembly ready."),
-                            ModItems.EMERGENCY_ROCKET.get(), assembly.ready() || rocket.staged() || progress.launchPrepared() ? 1 : 0, 1));
+                            () -> (ItemLike) ModItems.EMERGENCY_ROCKET.get(), Items.FIREWORK_ROCKET, assembly.ready() || rocket.staged() || progress.launchPrepared() ? 1 : 0, 1));
             case LOW_ORBIT -> List.of(requirement(
                     "Low Earth Orbit",
                     progress.lowOrbitReached() ? "Emergency Rocket vector confirmed." : rocket.detail(false, launch, assembly),
-                    ModItems.EMERGENCY_ROCKET.get(), progress.lowOrbitReached() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.EMERGENCY_ROCKET.get(), Items.FIREWORK_ROCKET, progress.lowOrbitReached() ? 1 : 0, 1));
             case STATION_NETWORK -> List.of(requirement(
                     "Station relay network",
                     progress.stationNetworkGateOpen() ? "Station ECHO relay gate open." : "Repair unique Station Relay Nodes.",
-                    ModItems.STATION_RELAY_FUSE.get(), progress.stationNetworkGateOpen() ? 3 : progress.stationRelayRepairs(), 3));
+                    () -> (ItemLike) ModItems.STATION_RELAY_FUSE.get(), Items.REDSTONE, progress.stationNetworkGateOpen() ? 3 : progress.stationRelayRepairs(), 3));
             case LUNAR_SIGNAL -> List.of(requirement(
                     "Lunar signal",
                     progress.lunarSignalInvestigated() ? "Lunar scar telemetry logged." : "Use the Orbital Shuttle from staging.",
-                    ModItems.ORBITAL_SHUTTLE.get(), progress.lunarSignalInvestigated() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.ORBITAL_SHUTTLE.get(), Items.MINECART, progress.lunarSignalInvestigated() ? 1 : 0, 1));
             case MARS_ROUTE -> List.of(requirement(
                     "Mars transfer",
                     progress.marsRouteUnlocked() ? "Mars transfer route unlocked." : "Resolve Helium-3 telemetry from the Moon.",
-                    ModItems.MARS_TRANSFER_WINDOW.get(), progress.marsRouteUnlocked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.MARS_TRANSFER_WINDOW.get(), Items.MAP, progress.marsRouteUnlocked() ? 1 : 0, 1));
             case EUROPA_ROUTE -> List.of(requirement(
                     "Europa transfer",
                     progress.europaRouteUnlocked() ? "Europa cryo route unlocked." : "Resolve Martian Silica pressure telemetry.",
-                    ModItems.EUROPA_TRANSFER_WINDOW.get(), progress.europaRouteUnlocked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.EUROPA_TRANSFER_WINDOW.get(), Items.MAP, progress.europaRouteUnlocked() ? 1 : 0, 1));
             case SATURN_ROUTE -> List.of(requirement(
                     "Saturn transfer",
                     progress.saturnRouteUnlocked() ? "Saturn ring route unlocked." : "Resolve Europa thermal telemetry.",
-                    ModItems.SATURN_TRANSFER_WINDOW.get(), progress.saturnRouteUnlocked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.SATURN_TRANSFER_WINDOW.get(), Items.MAP, progress.saturnRouteUnlocked() ? 1 : 0, 1));
             case TITAN_ROUTE -> List.of(requirement(
                     "Titan transfer",
                     progress.titanRouteUnlocked() ? "Titan methane route unlocked." : "Restore Saturn Ring Relays and recover ring fragments.",
-                    ModItems.TITAN_TRANSFER_WINDOW.get(), progress.titanRouteUnlocked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.TITAN_TRANSFER_WINDOW.get(), Items.MAP, progress.titanRouteUnlocked() ? 1 : 0, 1));
             case DEEP_SPACE_PROTOCOL -> List.of(requirement(
                     "Deep Space Protocol",
                     progress.deepSpaceProtocolUnlocked() ? "Deep Space Protocol unlocked." : "Resolve Titan methane telemetry or Nexus drive evidence.",
-                    ModItems.NEXUS_DRIVE_CORE.get(), progress.deepSpaceProtocolUnlocked() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.NEXUS_DRIVE_CORE.get(), Items.NETHER_STAR, progress.deepSpaceProtocolUnlocked() ? 1 : 0, 1));
             case ECHO_ZERO -> List.of(requirement(
                     "ECHO-0",
                     progress.echoZeroEncountered() ? "ECHO-0 quarantine authority resolved." : "Confront ECHO-0 in the Nexus Anomaly Belt.",
-                    ModItems.NEXUS_DRIVE_VESSEL.get(), progress.echoZeroEncountered() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.NEXUS_DRIVE_VESSEL.get(), Items.ENDER_EYE, progress.echoZeroEncountered() ? 1 : 0, 1));
             case SURVEY_NETWORK -> List.of(requirement(
                     "Route survey network",
                     progress.allSurveysComplete() ? "Every route survey is mapped and stable." : progress.surveyStatus(),
-                    ModItems.ORBIT_SURVEY_DATA.get(), progress.totalSurveyCount(), 21));
+                    () -> (ItemLike) ModItems.ORBIT_SURVEY_DATA.get(), Items.MAP, progress.totalSurveyCount(), 21));
             case FACTION_CONTRACT -> List.of(requirement(
                     "Faction outpost charters",
                     progress.allOutpostChartersComplete() ? "Crashbreak, Radwarden, and Sporebound Tier I outpost support secured." : progress.factionContractRequirement(),
-                    ModItems.ORBITAL_REMNANT_BADGE.get(), progress.completedOutpostCharterCount(), 3));
+                    () -> (ItemLike) ModItems.ORBITAL_REMNANT_BADGE.get(), Items.PAPER, progress.completedOutpostCharterCount(), 3));
             case FINAL_SEAL -> List.of(requirement(
                     "Final network seal",
                     progress.finalNetworkSealed() ? "Orbital Remnants arc complete. Earth no longer answers to quarantine." : progress.scanRequirement(),
-                    ModItems.STABILIZED_ECHO_CORE.get(), progress.finalNetworkSealed() ? 1 : 0, 1));
+                    () -> (ItemLike) ModItems.STABILIZED_ECHO_CORE.get(), Items.NETHER_STAR, progress.finalNetworkSealed() ? 1 : 0, 1));
         };
     }
 
-    private static TerminalMissionRequirement requirement(String label, String detail, ItemLike icon, int have, int need) {
+    private static TerminalMissionRequirement requirement(String label, String detail, Supplier<? extends ItemLike> icon, ItemLike fallback, int have, int need) {
         int safeNeed = Math.max(1, need);
         int safeHave = Math.max(0, Math.min(safeNeed, have));
-        return TerminalMissionRequirement.custom(label, detail, new ItemStack(icon), safeHave, safeNeed, safeHave >= safeNeed);
+        return TerminalMissionRequirement.custom(label, detail, stack(icon, fallback, 1), safeHave, safeNeed, safeHave >= safeNeed);
     }
 
     private static String briefing(Player player, OrbitalMission mission) {
@@ -423,51 +425,51 @@ public final class OrbitalMissionProvider implements TerminalMissionProvider {
     private static List<ItemStack> rewards(OrbitalMission mission) {
         return switch (mission) {
             case EARTH_CALIBRATION -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 2),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 1),
-                    stack(ModItems.VACUUM_CIRCUIT.get(), 1));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 2),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 1),
+                    stack(() -> (ItemLike) ModItems.VACUUM_CIRCUIT.get(), Items.REDSTONE, 1));
             case LAUNCH_CHAIN -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 3),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 2),
-                    stack(ModItems.HEAT_SHIELD_PLATE.get(), 1));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 3),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 2),
+                    stack(() -> (ItemLike) ModItems.HEAT_SHIELD_PLATE.get(), Items.IRON_INGOT, 1));
             case LOW_ORBIT -> stacks(
-                    stack(ModItems.OXYGEN_CANISTER.get(), 1),
-                    stack(ModItems.VACUUM_CIRCUIT.get(), 2));
+                    stack(() -> (ItemLike) ModItems.OXYGEN_CANISTER.get(), Items.GLASS_BOTTLE, 1),
+                    stack(() -> (ItemLike) ModItems.VACUUM_CIRCUIT.get(), Items.REDSTONE, 2));
             case STATION_NETWORK -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 4),
-                    stack(ModItems.ORBITAL_ALLOY.get(), 1));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 4),
+                    stack(() -> (ItemLike) ModItems.ORBITAL_ALLOY.get(), Items.IRON_INGOT, 1));
             case LUNAR_SIGNAL -> stacks(
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 3),
-                    stack(ModItems.HEAT_SHIELD_PLATE.get(), 2));
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 3),
+                    stack(() -> (ItemLike) ModItems.HEAT_SHIELD_PLATE.get(), Items.IRON_INGOT, 2));
             case MARS_ROUTE -> stacks(
-                    stack(ModItems.OXYGEN_CANISTER.get(), 2),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 2));
+                    stack(() -> (ItemLike) ModItems.OXYGEN_CANISTER.get(), Items.GLASS_BOTTLE, 2),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 2));
             case EUROPA_ROUTE -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 4),
-                    stack(ModItems.FROZEN_WIRING.get(), 2));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 4),
+                    stack(() -> (ItemLike) ModItems.FROZEN_WIRING.get(), Items.STRING, 2));
             case SATURN_ROUTE -> stacks(
-                    stack(ModItems.SATURN_RELAY_LENS.get(), 1),
-                    stack(ModItems.OXYGEN_CANISTER.get(), 2));
+                    stack(() -> (ItemLike) ModItems.SATURN_RELAY_LENS.get(), Items.SPYGLASS, 1),
+                    stack(() -> (ItemLike) ModItems.OXYGEN_CANISTER.get(), Items.GLASS_BOTTLE, 2));
             case TITAN_ROUTE -> stacks(
-                    stack(ModItems.TITAN_METHANE_CELL.get(), 1),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 3));
+                    stack(() -> (ItemLike) ModItems.TITAN_METHANE_CELL.get(), Items.GLASS_BOTTLE, 1),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 3));
             case DEEP_SPACE_PROTOCOL -> stacks(
-                    stack(ModItems.OXYGEN_CANISTER.get(), 2),
-                    stack(ModItems.ORBITAL_ALLOY.get(), 2));
+                    stack(() -> (ItemLike) ModItems.OXYGEN_CANISTER.get(), Items.GLASS_BOTTLE, 2),
+                    stack(() -> (ItemLike) ModItems.ORBITAL_ALLOY.get(), Items.IRON_INGOT, 2));
             case ECHO_ZERO -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 6),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 4),
-                    stack(ModItems.HEAT_SHIELD_PLATE.get(), 2));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 6),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 4),
+                    stack(() -> (ItemLike) ModItems.HEAT_SHIELD_PLATE.get(), Items.IRON_INGOT, 2));
             case SURVEY_NETWORK -> stacks(
-                    stack(ModItems.OXYGEN_CANISTER.get(), 3),
-                    stack(ModItems.VACUUM_CIRCUIT.get(), 3));
+                    stack(() -> (ItemLike) ModItems.OXYGEN_CANISTER.get(), Items.GLASS_BOTTLE, 3),
+                    stack(() -> (ItemLike) ModItems.VACUUM_CIRCUIT.get(), Items.REDSTONE, 3));
             case FACTION_CONTRACT -> stacks(
-                    stack(ModItems.ORBITAL_ALLOY.get(), 2),
-                    stack(ModItems.HEAT_SHIELD_PLATE.get(), 2));
+                    stack(() -> (ItemLike) ModItems.ORBITAL_ALLOY.get(), Items.IRON_INGOT, 2),
+                    stack(() -> (ItemLike) ModItems.HEAT_SHIELD_PLATE.get(), Items.IRON_INGOT, 2));
             case FINAL_SEAL -> stacks(
-                    stack(ModItems.EMERGENCY_OXYGEN_CELL.get(), 8),
-                    stack(ModItems.SUIT_SEALANT_PATCH.get(), 6),
-                    stack(ModItems.ORBITAL_ALLOY.get(), 2));
+                    stack(() -> (ItemLike) ModItems.EMERGENCY_OXYGEN_CELL.get(), Items.GLASS_BOTTLE, 8),
+                    stack(() -> (ItemLike) ModItems.SUIT_SEALANT_PATCH.get(), Items.LEATHER, 6),
+                    stack(() -> (ItemLike) ModItems.ORBITAL_ALLOY.get(), Items.IRON_INGOT, 2));
         };
     }
 
@@ -481,8 +483,23 @@ public final class OrbitalMissionProvider implements TerminalMissionProvider {
         return List.copyOf(result);
     }
 
-    private static ItemStack stack(ItemLike item, int count) {
-        return new ItemStack(item, count);
+    private static ItemStack stack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 
     private static void awardDirectly(ServerPlayer player, List<ItemStack> rewards) {
@@ -496,20 +513,20 @@ public final class OrbitalMissionProvider implements TerminalMissionProvider {
 
     private static ItemStack icon(OrbitalMission mission) {
         return switch (mission) {
-            case EARTH_CALIBRATION -> stack(ModItems.ECHO_TERMINAL.get(), 1);
-            case LAUNCH_CHAIN -> stack(ModItems.EMERGENCY_ROCKET.get(), 1);
-            case LOW_ORBIT -> stack(ModBlocks.STATION_LIFE_SUPPORT_CORE.get(), 1);
-            case STATION_NETWORK -> stack(ModItems.STATION_RELAY_FUSE.get(), 1);
-            case LUNAR_SIGNAL -> stack(ModItems.ORBITAL_SHUTTLE.get(), 1);
-            case MARS_ROUTE -> stack(ModItems.MARS_TRANSFER_WINDOW.get(), 1);
-            case EUROPA_ROUTE -> stack(ModItems.EUROPA_TRANSFER_WINDOW.get(), 1);
-            case SATURN_ROUTE -> stack(ModItems.SATURN_TRANSFER_WINDOW.get(), 1);
-            case TITAN_ROUTE -> stack(ModItems.TITAN_TRANSFER_WINDOW.get(), 1);
-            case DEEP_SPACE_PROTOCOL -> stack(ModItems.NEXUS_DRIVE_CORE.get(), 1);
-            case ECHO_ZERO -> stack(ModItems.NEXUS_DRIVE_VESSEL.get(), 1);
-            case SURVEY_NETWORK -> stack(ModItems.ORBIT_SURVEY_DATA.get(), 1);
-            case FACTION_CONTRACT -> stack(ModItems.ORBITAL_REMNANT_BADGE.get(), 1);
-            case FINAL_SEAL -> stack(ModItems.STABILIZED_ECHO_CORE.get(), 1);
+            case EARTH_CALIBRATION -> stack(() -> (ItemLike) ModItems.ECHO_TERMINAL.get(), Items.COMPASS, 1);
+            case LAUNCH_CHAIN -> stack(() -> (ItemLike) ModItems.EMERGENCY_ROCKET.get(), Items.FIREWORK_ROCKET, 1);
+            case LOW_ORBIT -> stack(() -> (ItemLike) ModBlocks.STATION_LIFE_SUPPORT_CORE.get(), Items.BEACON, 1);
+            case STATION_NETWORK -> stack(() -> (ItemLike) ModItems.STATION_RELAY_FUSE.get(), Items.REDSTONE, 1);
+            case LUNAR_SIGNAL -> stack(() -> (ItemLike) ModItems.ORBITAL_SHUTTLE.get(), Items.MINECART, 1);
+            case MARS_ROUTE -> stack(() -> (ItemLike) ModItems.MARS_TRANSFER_WINDOW.get(), Items.MAP, 1);
+            case EUROPA_ROUTE -> stack(() -> (ItemLike) ModItems.EUROPA_TRANSFER_WINDOW.get(), Items.MAP, 1);
+            case SATURN_ROUTE -> stack(() -> (ItemLike) ModItems.SATURN_TRANSFER_WINDOW.get(), Items.MAP, 1);
+            case TITAN_ROUTE -> stack(() -> (ItemLike) ModItems.TITAN_TRANSFER_WINDOW.get(), Items.MAP, 1);
+            case DEEP_SPACE_PROTOCOL -> stack(() -> (ItemLike) ModItems.NEXUS_DRIVE_CORE.get(), Items.NETHER_STAR, 1);
+            case ECHO_ZERO -> stack(() -> (ItemLike) ModItems.NEXUS_DRIVE_VESSEL.get(), Items.ENDER_EYE, 1);
+            case SURVEY_NETWORK -> stack(() -> (ItemLike) ModItems.ORBIT_SURVEY_DATA.get(), Items.MAP, 1);
+            case FACTION_CONTRACT -> stack(() -> (ItemLike) ModItems.ORBITAL_REMNANT_BADGE.get(), Items.PAPER, 1);
+            case FINAL_SEAL -> stack(() -> (ItemLike) ModItems.STABILIZED_ECHO_CORE.get(), Items.NETHER_STAR, 1);
         };
     }
 

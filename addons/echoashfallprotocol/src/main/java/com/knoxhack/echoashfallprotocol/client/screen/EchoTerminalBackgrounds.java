@@ -12,9 +12,6 @@ import net.minecraft.resources.Identifier;
 public final class EchoTerminalBackgrounds {
     private static final int SOURCE_WIDTH = 1920;
     private static final int SOURCE_HEIGHT = 1080;
-    private static final String WORLD_SELECTION_PACKAGE = "net.minecraft.client.gui.screens.worldselection.";
-    private static final String MULTIPLAYER_PACKAGE = "net.minecraft.client.gui.screens.multiplayer.";
-    private static final String DIALOG_PACKAGE = "net.minecraft.client.gui.screens.dialog.";
 
     private EchoTerminalBackgrounds() {
     }
@@ -36,47 +33,8 @@ public final class EchoTerminalBackgrounds {
     }
 
     public static Plate forScreen(Screen screen) {
-        if (screen == null) {
-            return Plate.WORLD_ARCHIVE;
-        }
-
-        String name = screen.getClass().getName();
-        if (name.equals("net.minecraft.client.gui.screens.LevelLoadingScreen")) {
-            return Plate.TERRAIN_LOADING;
-        }
-        if (name.equals("net.minecraft.client.gui.screens.ProgressScreen")
-                || name.endsWith(".FileFixerProgressScreen")
-                || name.endsWith(".OptimizeWorldScreen")) {
-            return Plate.LOADING_BOOT;
-        }
-        if (name.startsWith(MULTIPLAYER_PACKAGE)
-                || name.equals("net.minecraft.client.gui.screens.DirectJoinServerScreen")
-                || name.equals("net.minecraft.client.gui.screens.ManageServerScreen")
-                || name.equals("net.minecraft.client.gui.screens.ConnectScreen")
-                || name.equals("net.minecraft.client.gui.screens.DisconnectedScreen")) {
-            return Plate.MULTIPLAYER_UPLINK;
-        }
-        if (name.endsWith(".CreateWorldScreen")
-                || name.equals("net.minecraft.client.gui.screens.CreateFlatWorldScreen")
-                || name.equals("net.minecraft.client.gui.screens.CreateBuffetWorldScreen")
-                || name.equals("net.minecraft.client.gui.screens.PresetFlatWorldScreen")
-                || name.equals("net.minecraft.client.gui.screens.options.WorldOptionsScreen")
-                || name.equals("net.minecraft.client.gui.screens.options.InWorldGameRulesScreen")
-                || name.endsWith(".WorldCreationGameRulesScreen")
-                || name.endsWith(".ExperimentsScreen")
-                || name.equals("net.minecraft.client.gui.screens.packs.PackSelectionScreen")) {
-            return Plate.CREATE_SIMULATION;
-        }
-        if (name.startsWith(DIALOG_PACKAGE)
-                || name.equals("net.minecraft.client.gui.screens.ConfirmScreen")
-                || name.equals("net.minecraft.client.gui.screens.AlertScreen")
-                || name.equals("net.minecraft.client.gui.screens.BackupConfirmScreen")) {
-            return Plate.WORLD_ARCHIVE;
-        }
-        if (name.startsWith(WORLD_SELECTION_PACKAGE)) {
-            return Plate.WORLD_ARCHIVE;
-        }
-        return Plate.WORLD_ARCHIVE;
+        EchoAshfallScreenSurface surface = EchoAshfallScreenSurface.classify(screen);
+        return surface.owned() ? surface.plate() : Plate.WORLD_ARCHIVE;
     }
 
     public static void render(GuiGraphicsExtractor graphics, Plate plate, int width, int height, int ticks, float partialTick) {

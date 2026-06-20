@@ -1,6 +1,7 @@
 package com.knoxhack.echoscreencore.client;
 
 import com.knoxhack.echo.adaptercore.EchoBackendCommandEventBridge;
+import com.knoxhack.echo.adaptercore.EchoBackendClientBridge;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.knoxhack.echoscreencore.EchoScreenCoreMod;
 import com.knoxhack.echoscreencore.api.EchoDataContext;
@@ -17,8 +18,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
 
 public final class EchoScreenCoreClient {
+    private static final String REGISTER_CLIENT_COMMANDS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterClientCommandsEvent";
+    private static final String ADD_CLIENT_RELOAD_LISTENERS_EVENT =
+            "net.neoforged.neoforge.client.event.AddClientReloadListenersEvent";
+    private static final boolean DEBUG_SHADER_RESOURCES =
+            Boolean.getBoolean("echoscreencore.debugShaderResources");
     private static final AtomicBoolean REGISTERED = new AtomicBoolean(false);
     private static EchoAccessibilitySettings accessibility = EchoAccessibilitySettings.DEFAULT;
     private static boolean debugEnabled;
@@ -35,13 +46,24 @@ public final class EchoScreenCoreClient {
         registerBuiltinDataProviders();
         ScreenCoreReferenceData.register();
         registerDemoActions();
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoScreenCoreClient::onClientCommands);
+        EchoBackendLifecycleBridge.registerGameEventHandler(REGISTER_CLIENT_COMMANDS_EVENT,
+                EchoScreenCoreClient::onClientCommands);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ADD_CLIENT_RELOAD_LISTENERS_EVENT,
+                EchoScreenCoreClient::onAddClientReloadListeners);
         EchoScreens.registerClientOpener((pageId, context) -> {
             Minecraft.getInstance().setScreen(new EchoScreen(pageId, context, accessibility, debugEnabled));
             return true;
         });
         EchoScreens.registerInvalidationHandler(EchoScreenCoreClient::invalidateOpenScreen);
         EchoScreenCoreMod.LOGGER.info("ECHO: ScreenCore client ready.");
+    }
+
+    public static boolean ensureRegisteredForNativeLoader() {
+        if (REGISTERED.get()) {
+            return false;
+        }
+        new EchoScreenCoreClient((Object) null);
+        return REGISTERED.get();
     }
 
     public void registerClientCommands(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -53,6 +75,10 @@ public final class EchoScreenCoreClient {
         if (dispatcher != null) {
             EchoScreenCoreClientCommands.register(dispatcher);
         }
+    }
+
+    private static void onAddClientReloadListeners(Object event) {
+        EchoBackendClientBridge.addClientReloadListener(event, EchoScreenCoreMod.id("eui"), new ScreenCoreReloadListener());
     }
 
     public static EchoAccessibilitySettings accessibility() {
@@ -208,10 +234,59 @@ public final class EchoScreenCoreClient {
         EchoScreenEngine.clearCaches();
     }
 
+    private static void logShaderResourceProbe(ResourceManager manager) {
+        if (!DEBUG_SHADER_RESOURCES) {
+            return;
+        }
+        Identifier textVertex = Identifier.fromNamespaceAndPath("minecraft", "shaders/core/rendertype_text.vsh");
+        Identifier textFragment = Identifier.fromNamespaceAndPath("minecraft", "shaders/core/rendertype_text.fsh");
+        Map<Identifier, ?> shaderResources = manager.listResources("shaders", id ->
+                id.getPath().endsWith(".vsh") || id.getPath().endsWith(".fsh") || id.getPath().endsWith(".glsl"));
+        boolean listedVertex = shaderResources.containsKey(textVertex);
+        boolean listedFragment = shaderResources.containsKey(textFragment);
+        EchoScreenCoreMod.LOGGER.info(
+                "ECHO: ScreenCore shader resource probe vertexDirect={} fragmentDirect={} vertexListed={} fragmentListed={} shaderResourceCount={}",
+                manager.getResource(textVertex).isPresent(),
+                manager.getResource(textFragment).isPresent(),
+                listedVertex,
+                listedFragment,
+                shaderResources.size());
+    }
+
     private static void invalidateOpenScreen(net.minecraft.resources.Identifier pageId) {
-        if (Minecraft.getInstance().screen instanceof EchoScreen screen
-            && (pageId == null || pageId.equals(screen.pageId()))) {
-            screen.markDataDirty();
+        runOnClientThread(() -> {
+            if (Minecraft.getInstance().screen instanceof EchoScreen screen
+                && (pageId == null || pageId.equals(screen.pageId()))) {
+                screen.markDataDirty();
+            }
+        });
+    }
+
+    private static void runOnClientThread(Runnable task) {
+        try {
+            Minecraft minecraft = Minecraft.getInstance();
+            if (minecraft != null) {
+                minecraft.execute(task);
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoScreenCoreMod.LOGGER.debug("Unable to schedule ScreenCore data invalidation on the client thread.",
+                    exception);
+        }
+    }
+
+    private static final class ScreenCoreReloadListener extends SimplePreparableReloadListener<Boolean> {
+        @Override
+        protected Boolean prepare(ResourceManager manager, ProfilerFiller profiler) {
+            logShaderResourceProbe(manager);
+            return Boolean.TRUE;
+        }
+
+        @Override
+        protected void apply(Boolean prepared, ResourceManager manager, ProfilerFiller profiler) {
+            onClientResourcesReloaded();
+            if (Minecraft.getInstance().screen instanceof EchoScreen screen) {
+                screen.reloadPage();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 # ECHO: ScreenCore
 
-Provides `screen.actions`, `screen.bindings`, `screen.components`, `screen.contracts`, `screen.layouts`, `screen.markup`, `screen.theme_bridge` for the ECHO module graph.
+Provides `screen.actions`, `screen.bindings`, `screen.components`, `screen.contracts`, `screen.data_provider`, `screen.layouts`, `screen.markup`, `screen.style`, `screen.surface`, `screen.theme_bridge`, and `echoscreencore:screen/field_ops_composition` for the ECHO module graph.
 
 ## Module Identity
 
@@ -30,7 +30,7 @@ Required modules: `echoadaptercore`, `echocore`
 
 Optional modules: `echonetcore`, `echorendercore`, `echothemecore`
 
-Provides: `screen.actions`, `screen.bindings`, `screen.components`, `screen.contracts`, `screen.layouts`, `screen.markup`, `screen.theme_bridge`
+Provides: `screen.actions`, `screen.bindings`, `screen.components`, `screen.contracts`, `screen.data_provider`, `screen.layouts`, `screen.markup`, `screen.style`, `screen.surface`, `screen.theme_bridge`, `echoscreencore:screen/field_ops_composition`
 
 Consumes: `echo.core`
 

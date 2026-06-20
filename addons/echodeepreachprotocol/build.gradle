@@ -65,6 +65,7 @@ configurations {
 dependencies {
     implementation project(":echocore")
     implementation project(":echonetcore")
+    implementation project(":echohazardcore")
     compileOnly project(":echo-native-contracts")
 
     def compileOnlyIfIncluded = { projectPath ->

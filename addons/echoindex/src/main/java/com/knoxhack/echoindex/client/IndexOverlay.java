@@ -15,6 +15,8 @@ import com.knoxhack.echoindex.service.IndexService;
 import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -232,7 +234,7 @@ public final class IndexOverlay {
         syncScreenState(screen);
         graphics.pose().pushMatrix();
         try {
-            graphics.pose().translate(-screen.getLeftPos(), -screen.getTopPos());
+            graphics.pose().translate(-containerLeft(screen), -containerTop(screen));
             render(screen, graphics, (int) Math.round(doubleCall(event, "getMouseX")),
                     (int) Math.round(doubleCall(event, "getMouseY")));
         } finally {
@@ -316,7 +318,7 @@ public final class IndexOverlay {
                     booleanMetadata(eventMetadata, "bookmarkKey"));
             case "character_typed" -> handleNativeRouteCharTyped(
                     screen,
-                    text(eventMetadata.get("character")),
+                    stringValue(eventMetadata.get("character")),
                     booleanMetadata(eventMetadata, "allowedChatCharacter"));
             default -> false;
         };
@@ -457,6 +459,11 @@ public final class IndexOverlay {
         if (screenHasFocusedInput(screen)) {
             return false;
         }
+        if (key == GLFW.GLFW_KEY_MINUS || key == GLFW.GLFW_KEY_KP_SUBTRACT) {
+            collapsed = !collapsed;
+            saveScreenState();
+            return true;
+        }
         if (recipeKey) {
             ItemStack hoveredInventoryStack = hoveredInventoryStack(screen);
             if (!hoveredInventoryStack.isEmpty()) {
@@ -547,7 +554,7 @@ public final class IndexOverlay {
         return false;
     }
 
-    private static String text(Object value) {
+    private static String stringValue(Object value) {
         return value == null ? "" : String.valueOf(value);
     }
 
@@ -641,7 +648,8 @@ public final class IndexOverlay {
         drawPanelChrome(graphics);
         graphics.fill(panelX + 1, panelY + 1, panelX + panelW - 1, panelY + HEADER_HEIGHT, 0x22163843);
         IndexThemeStyle.icon(graphics, panelX + 8, panelY + 6, 16);
-        graphics.text(font, text("screen.echoindex.overlay.title"), panelX + 28, panelY + 9, CYAN, false);
+        graphics.text(font, trim(font, text("screen.echoindex.overlay.title"), Math.max(40, panelW - 108)),
+                panelX + 28, panelY + 9, CYAN, false);
         int densityX = panelX + panelW - 68;
         button(graphics, font, densityX, panelY + 5, 18, 16, densityLabel(), true);
         tooltipIfHovered(graphics, font, mouseX, mouseY, densityX, panelY + 5, 18, 16,
@@ -748,10 +756,17 @@ public final class IndexOverlay {
                 (button, modifiers) -> setFilter("$combat"));
         cx += 28;
 
-        int sortW = Math.min(78, Math.max(58, font.width(text("screen.echoindex.overlay.sort.mod")) + 18));
-        int viewW = Math.min(92, Math.max(70, font.width(viewLabel()) + 18));
-        int sortX = Math.max(cx, x + w - sortW - viewW - 8);
-        compactButton(graphics, font, sortX, y, sortW, 20, sortLabel(), true, mouseX, mouseY);
+        int available = Math.max(0, x + w - cx);
+        if (available < 108) {
+            return;
+        }
+        int gap = available >= 134 ? 8 : 4;
+        int sortW = clamp((available - gap) / 2, 48, 70);
+        int viewW = clamp(available - gap - sortW, 54, 78);
+        int sortX = Math.max(cx, x + w - sortW - viewW - gap);
+        String sortText = available < 150 ? sortShortLabel() : sortLabel();
+        String viewText = available < 156 ? viewShortLabel() : viewLabel();
+        compactButton(graphics, font, sortX, y, sortW, 20, sortText, true, mouseX, mouseY);
         tooltipIfHovered(graphics, font, mouseX, mouseY, sortX, y, sortW, 20,
                 tr("screen.echoindex.overlay.tooltip.group_mode"));
         HITBOXES.add(new Hitbox(sortX, y, sortW, 20, (button, modifiers) -> {
@@ -760,8 +775,8 @@ public final class IndexOverlay {
             resetGridScroll();
             closePopup();
         }));
-        int viewX = sortX + sortW + 8;
-        compactButton(graphics, font, viewX, y, viewW, 20, viewLabel(), true, mouseX, mouseY);
+        int viewX = sortX + sortW + gap;
+        compactButton(graphics, font, viewX, y, viewW, 20, viewText, true, mouseX, mouseY);
         tooltipIfHovered(graphics, font, mouseX, mouseY, viewX, y, viewW, 20,
                 tr("screen.echoindex.overlay.tooltip.view_mode"));
         HITBOXES.add(new Hitbox(viewX, y, viewW, 20, (button, modifiers) -> {
@@ -787,11 +802,13 @@ public final class IndexOverlay {
     private static void drawQuickJump(GuiGraphicsExtractor graphics, Font font, int x, int y, int w,
             List<IndexModGroup> groups, int mouseX, int mouseY) {
         graphics.fill(x, y, x + w, y + QUICK_JUMP_HEIGHT, 0x99071117);
-        graphics.outline(x, y, w, QUICK_JUMP_HEIGHT, 0xAA38DFF4);
-        graphics.text(font, text("screen.echoindex.overlay.quick_jump"), x + 6, y + 4, CYAN, false);
+        graphics.outline(x, y, w, QUICK_JUMP_HEIGHT, 0x7738DFF4);
+        graphics.text(font, trim(font, text("screen.echoindex.overlay.quick_jump"), Math.max(40, w - 36)),
+                x + 6, y + 4, CYAN, false);
         int iconY = y + 14;
         int iconX = x + 8;
-        int maxIcons = Math.max(1, (w - 34) / 24);
+        int pageControlW = groups.size() > Math.max(1, (w - 34) / 24) ? 28 : 0;
+        int maxIcons = Math.max(1, (w - 16 - pageControlW) / 24);
         int start = clamp(quickJumpPage * maxIcons, 0, Math.max(0, groups.size() - 1));
         int end = Math.min(groups.size(), start + maxIcons);
         for (int index = start; index < end; index++) {
@@ -991,10 +1008,10 @@ public final class IndexOverlay {
         int h = layout.height();
         boolean headerHover = inside(mouseX, mouseY, x, y, gridW, GROUP_HEADER_HEIGHT);
         int accent = group.accentColor() == null ? CYAN : group.accentColor();
-        int outline = group.isCollapsed() ? 0x5538DFF4 : headerHover ? 0xCC66E8FF : IndexThemeStyle.alpha(accent, 150);
-        graphics.fill(x, y, x + gridW, y + h, group.isHidden() ? 0x52050A0F : 0x7A071117);
+        int outline = group.isCollapsed() ? 0x4438DFF4 : headerHover ? 0xAA66E8FF : IndexThemeStyle.alpha(accent, 112);
+        graphics.fill(x, y, x + gridW, y + h, group.isHidden() ? 0x42050A0F : 0x68071117);
         graphics.outline(x, y, gridW, h, outline);
-        graphics.fill(x + 1, y + 1, x + gridW - 1, y + GROUP_HEADER_HEIGHT, headerHover ? 0x88123241 : 0x66102630);
+        graphics.fill(x + 1, y + 1, x + gridW - 1, y + GROUP_HEADER_HEIGHT, headerHover ? 0x78123241 : 0x5A102630);
         if (headerHover) {
             graphics.fill(x + 1, y + GROUP_HEADER_HEIGHT - 1, x + gridW - 1, y + GROUP_HEADER_HEIGHT, 0xAA38DFF4);
         }
@@ -1014,8 +1031,7 @@ public final class IndexOverlay {
         int countW = Math.min(countMax, Math.max(24, font.width(count)));
         int countX = chevronX - countW - 6;
         int allX = countX - 40;
-        graphics.text(font, trim(font, group.displayName().toUpperCase(Locale.ROOT),
-                Math.max(24, countX - nameX - 6)), nameX, y + 7,
+        graphics.text(font, trim(font, group.displayName(), Math.max(24, countX - nameX - 8)), nameX, y + 7,
                 group.isHidden() ? MUTED : CYAN, false);
         graphics.text(font, trim(font, count, countW), countX, y + 7, group.isHidden() ? MUTED : TEXT, false);
         if (layout.fullExpanded() && indexViewMode == IndexViewMode.COMPACT && allX > nameX + 42) {
@@ -1373,14 +1389,14 @@ public final class IndexOverlay {
         graphics.fill(panelX + 1, footerY - 3, panelX + panelW - 1, panelY + panelH - 1, 0x88071117);
         List<IndexModGroup> groups = visibleGroups();
         int visibleItems = groups.stream().mapToInt(group -> group.visibleItems().size()).sum();
-        String left = groups.size() + " mods \u2022 " + visibleItems + " items";
-        int optionsW = 82;
+        String left = groups.size() + " mods / " + visibleItems + " items";
+        int optionsW = Math.min(82, Math.max(64, font.width(text("screen.echoindex.overlay.options")) + 18));
         int optionsX = panelX + panelW - optionsW - 10;
         int diagnosticsX = optionsX - 50;
         int leftMax = Math.max(36, diagnosticsX - x - 6);
         graphics.text(font, trim(font, left, leftMax), x, footerY, CYAN, false);
         compactButton(graphics, font, optionsX, footerY - 4, optionsW, 17,
-                text("screen.echoindex.overlay.options") + " v", true, mouseX, mouseY);
+                trim(font, text("screen.echoindex.overlay.options") + " v", optionsW - 8), true, mouseX, mouseY);
         HITBOXES.add(new Hitbox(optionsX, footerY - 4, optionsW, 17, (button, modifiers) ->
                 toggleOptionsPopup(optionsX, footerY - 126)));
         int warnings = snapshot.warnings().size();
@@ -1406,37 +1422,39 @@ public final class IndexOverlay {
 
     private static void openRecipeScreen(ItemStack stack, IndexRecipeScreen.Mode mode, String transitionSource) {
         IndexRecipeScreen.Mode resolvedMode = mode == null ? IndexRecipeScreen.Mode.RECIPES : mode;
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "open",
-                "index.inventory_overlay.open_recipe",
-                IndexRecipeScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", IndexRecipeScreen.class.getName(),
-                        "transitionSource", transitionSource == null ? "" : transitionSource,
-                        "recipeMode", resolvedMode.name(),
-                        "itemId", stack == null || stack.isEmpty()
-                                ? ""
-                                : IndexService.itemId(stack.getItem()).toString()
-                ));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "open",
+                        "index.inventory_overlay.open_recipe",
+                        IndexRecipeScreen.class.getName(),
+                        Map.of(
+                                "targetScreenClass", IndexRecipeScreen.class.getName(),
+                                "transitionSource", transitionSource == null ? "" : transitionSource,
+                                "recipeMode", resolvedMode.name(),
+                                "itemId", stack == null || stack.isEmpty()
+                                        ? ""
+                                        : IndexService.itemId(stack.getItem()).toString()
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return;
+            }
         }
         Minecraft.getInstance().setScreen(new IndexRecipeScreen(stack, resolvedMode));
     }
 
     private static void openDiagnosticsScreen(String transitionSource) {
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "open",
-                "index.inventory_overlay.open_diagnostics",
-                IndexDiagnosticsScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
-                        "transitionSource", transitionSource == null ? "" : transitionSource
-                ));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "open",
+                        "index.inventory_overlay.open_diagnostics",
+                        IndexDiagnosticsScreen.class.getName(),
+                        Map.of(
+                                "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
+                                "transitionSource", transitionSource == null ? "" : transitionSource
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return;
+            }
         }
         Minecraft.getInstance().setScreen(new IndexDiagnosticsScreen());
     }
@@ -1527,7 +1545,7 @@ public final class IndexOverlay {
         return IndexService.INSTANCE.overlayEnabled(Minecraft.getInstance().player)
                 && !IndexService.INSTANCE.excludedScreen(name)
                 && !name.contains("IndexDiagnosticsScreen")
-                && container.getImageWidth() > 0;
+                && containerImageWidth(container) > 0;
     }
 
     private static boolean screenHasFocusedInput(Screen screen) {
@@ -1539,8 +1557,8 @@ public final class IndexOverlay {
         if (!(screen instanceof AbstractContainerScreen<?> container)) {
             return ItemStack.EMPTY;
         }
-        int left = container.getLeftPos();
-        int top = container.getTopPos();
+        int left = containerLeft(container);
+        int top = containerTop(container);
         for (Slot slot : container.getMenu().slots) {
             if (slot == null || !slot.isActive() || !slot.hasItem()) {
                 continue;
@@ -1567,7 +1585,11 @@ public final class IndexOverlay {
         int maxDrawerW = Math.min(maxScreenW, detailStack.isEmpty() ? 460 : 560);
         int desiredW = clamp(requestedW, minW, maxDrawerW);
         int availableH = Math.max(180, screen.height - margin * 2);
-        int compactH = clamp(Math.max(container.getImageHeight(), 220), 160, availableH);
+        int containerW = containerImageWidth(container);
+        int containerH = containerImageHeight(container);
+        int containerLeft = containerLeft(container);
+        int containerTop = containerTop(container);
+        int compactH = clamp(Math.max(containerH, 220), 160, availableH);
         int tallH = Math.min(Math.max(340, availableH * 4 / 5), availableH);
         panelH = switch (overlayLayout) {
             case COMPACT -> compactH;
@@ -1575,15 +1597,15 @@ public final class IndexOverlay {
             case JEI -> availableH;
         };
         int desiredY = switch (overlayLayout) {
-            case COMPACT -> container.getTopPos();
-            case TALL -> container.getTopPos() + container.getImageHeight() / 2 - panelH / 2;
+            case COMPACT -> containerTop;
+            case TALL -> containerTop + containerH / 2 - panelH / 2;
             case JEI -> margin;
         };
         panelY = clamp(desiredY, margin, Math.max(margin, screen.height - panelH - margin));
 
-        int rightStart = container.getLeftPos() + container.getImageWidth() + gap;
+        int rightStart = containerLeft + containerW + gap;
         int rightSpace = screen.width - margin - rightStart;
-        int leftSpace = container.getLeftPos() - gap - margin;
+        int leftSpace = containerLeft - gap - margin;
         boolean preferLeft = Config.OVERLAY_SIDE.get() == Config.OverlaySide.LEFT;
         boolean useLeft;
         if (preferLeft && leftSpace >= minW) {
@@ -1604,7 +1626,7 @@ public final class IndexOverlay {
             targetW = Math.max(targetW, Math.min(520, availableMax));
         }
         panelW = clamp(Math.min(targetW, availableMax), minW, maxDrawerW);
-        panelX = useLeft ? container.getLeftPos() - gap - panelW : rightStart;
+        panelX = useLeft ? containerLeft - gap - panelW : rightStart;
         panelX = clamp(panelX, margin, Math.max(margin, screen.width - panelW - margin));
         PanelBounds saved = PANEL_BOUNDS.get(activeScreenKey);
         if (saved != null) {
@@ -1613,6 +1635,69 @@ public final class IndexOverlay {
             panelX = clamp(saved.x(), margin, Math.max(margin, screen.width - panelW - margin));
             panelY = clamp(saved.y(), margin, Math.max(margin, screen.height - panelH - margin));
         }
+    }
+
+    private static int containerLeft(AbstractContainerScreen<?> container) {
+        return containerGeometryInt(container, "getLeftPos", "leftPos",
+                Math.max(0, (container.width - containerImageWidth(container)) / 2));
+    }
+
+    private static int containerTop(AbstractContainerScreen<?> container) {
+        return containerGeometryInt(container, "getTopPos", "topPos",
+                Math.max(0, (container.height - containerImageHeight(container)) / 2));
+    }
+
+    private static int containerImageWidth(AbstractContainerScreen<?> container) {
+        return containerGeometryInt(container, "getImageWidth", "imageWidth", 176);
+    }
+
+    private static int containerImageHeight(AbstractContainerScreen<?> container) {
+        return containerGeometryInt(container, "getImageHeight", "imageHeight", 166);
+    }
+
+    private static int containerGeometryInt(
+            AbstractContainerScreen<?> container,
+            String methodName,
+            String fieldName,
+            int fallback) {
+        Integer methodValue = invokeInt(container, methodName);
+        if (methodValue != null) {
+            return methodValue;
+        }
+        Integer fieldValue = fieldInt(container, fieldName);
+        return fieldValue == null ? fallback : fieldValue;
+    }
+
+    private static Integer invokeInt(Object target, String methodName) {
+        for (Class<?> type = target.getClass(); type != null; type = type.getSuperclass()) {
+            try {
+                Method method = type.getDeclaredMethod(methodName);
+                method.setAccessible(true);
+                Object value = method.invoke(target);
+                if (value instanceof Number number) {
+                    return number.intValue();
+                }
+            } catch (ReflectiveOperationException | LinkageError | RuntimeException ignored) {
+                // Try fields or centered fallbacks below for Native loader mappings.
+            }
+        }
+        return null;
+    }
+
+    private static Integer fieldInt(Object target, String fieldName) {
+        for (Class<?> type = target.getClass(); type != null; type = type.getSuperclass()) {
+            try {
+                Field field = type.getDeclaredField(fieldName);
+                field.setAccessible(true);
+                Object value = field.get(target);
+                if (value instanceof Number number) {
+                    return number.intValue();
+                }
+            } catch (ReflectiveOperationException | LinkageError | RuntimeException ignored) {
+                // Continue up the class tree.
+            }
+        }
+        return null;
     }
 
     private static boolean beginPanelDrag(double mouseX, double mouseY) {
@@ -1831,6 +1916,12 @@ public final class IndexOverlay {
         if (pinned != 0) {
             return pinned;
         }
+        if (groupMode == GroupMode.MOD && echoPriority && EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            int echo = Boolean.compare(isEchoGroup(right.modId()), isEchoGroup(left.modId()));
+            if (echo != 0) {
+                return echo;
+            }
+        }
         if (groupMode == GroupMode.MOD && minecraftFirst) {
             int minecraft = Boolean.compare("minecraft".equals(right.modId()), "minecraft".equals(left.modId()));
             if (minecraft != 0) {
@@ -1977,10 +2068,18 @@ public final class IndexOverlay {
                 : text("screen.echoindex.overlay.sort.category");
     }
 
+    private static String sortShortLabel() {
+        return groupMode == GroupMode.MOD ? "Mod" : "Cat";
+    }
+
     private static String viewLabel() {
         return indexViewMode == IndexViewMode.COMPACT
                 ? text("screen.echoindex.overlay.view.compact")
                 : text("screen.echoindex.overlay.view.detailed");
+    }
+
+    private static String viewShortLabel() {
+        return indexViewMode == IndexViewMode.COMPACT ? "Compact" : "Detail";
     }
 
     private static void cycleGroupExpansion(String groupId, int width) {

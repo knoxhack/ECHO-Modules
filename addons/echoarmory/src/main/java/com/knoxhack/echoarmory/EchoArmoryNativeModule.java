@@ -2,6 +2,8 @@ package com.knoxhack.echoarmory;
 
 import com.knoxhack.echo.adaptercore.EchoAdapterRuntime;
 import dev.echo.nativeplatform.contracts.EchoNativeSurfaceModuleEntrypoint;
+import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
+import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 
 import com.knoxhack.echoarmory.api.ArmoryAdapterCoreReference;
 
@@ -19,6 +21,33 @@ public final class EchoArmoryNativeModule implements EchoNativeSurfaceModuleEntr
       STATION_PREVIEW_CONTRACT_ID,
       ROUTE_READINESS_CONTRACT_ID
    );
+
+   @Override
+   public void ready(EchoNativeModuleLoadContext context) {
+      boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+      context.attribute("nativeCommonServicesRegistered", commonRegistered);
+      context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
+      context.recordMutation(
+         "platform_services",
+         commonRegistered ? "register" : "already_registered",
+         "echoarmory:common_services",
+         commonRegistered ? EchoNativeLoadStatus.MUTATED : EchoNativeLoadStatus.REGISTERED);
+      EchoNativeSurfaceModuleEntrypoint.super.ready(context);
+   }
+
+   private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+      String moduleClassName = EchoArmoryNativeModule.class.getPackageName() + ".EchoArmory";
+      try {
+         Object result = Class.forName(moduleClassName)
+            .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+            .invoke(null);
+         return Boolean.TRUE.equals(result);
+      } catch (ReflectiveOperationException | LinkageError exception) {
+         context.attribute("nativeCommonServicesDeferred", true);
+         context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+         return false;
+      }
+   }
 
    public Map<String, Object> describeNativeSurfaces(Map<String, String> context) {
       ArmoryAdapterCoreReference.ItemStateProbe itemProbe = ArmoryAdapterCoreReference.itemStateProbe();

@@ -32,6 +32,19 @@ public final class TerminalMissionRegistry {
         ensureSorted();
     }
 
+    public static boolean registerIfAbsent(TerminalMissionProvider provider) {
+        Optional<TerminalMissionChapter> chapter = safeChapter(provider, "registerIfAbsent");
+        if (chapter.isEmpty()) {
+            EchoTerminal.LOGGER.warn("Terminal mission provider {} did not expose a valid chapter; ignoring provider.",
+                    providerName(provider));
+            return false;
+        }
+        Identifier id = TerminalApiIds.requireLowercase(chapter.get().id(), "Terminal mission provider");
+        TerminalMissionProvider previous = PROVIDERS.putIfAbsent(id, provider);
+        ensureSorted();
+        return previous == null || previous == provider;
+    }
+
     public static Optional<TerminalMissionProvider> provider(Identifier chapterId) {
         if (chapterId == null) {
             return Optional.empty();

@@ -26,7 +26,15 @@ import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public final class EchoHoloMapClient {
+    private static final String INPUT_KEY_EVENT = "net.neoforged.neoforge.client.event.InputEvent$Key";
+    private static final String REGISTER_KEY_MAPPINGS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
+    private static final String REGISTER_GUI_LAYERS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterGuiLayersEvent";
+    private static final String NATIVE_LOAD_STATUS_CLASS =
+            "dev.echo.nativeplatform.contracts.EchoNativeLoadStatus";
     private static final AtomicBoolean NATIVE_ROUTE_REGISTERED = new AtomicBoolean(false);
+    private static volatile Boolean nativeContractsPresent;
     private static final ThreadLocal<HoloMapFullScreenMapScreen> NATIVE_FULLSCREEN_SCREEN = new ThreadLocal<>();
     private static final ThreadLocal<NativeScreenCoreFullscreenTarget> NATIVE_SCREENCORE_FULLSCREEN =
             new ThreadLocal<>();
@@ -97,9 +105,11 @@ public final class EchoHoloMapClient {
 
     public EchoHoloMapClient(Object modEventBus) {
         HoloMapClientChunkActions.register(BuiltinHoloMapClientChunkActionProvider.INSTANCE);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoHoloMapClient::onKeyInput);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::registerGuiLayers);
+        EchoBackendLifecycleBridge.registerGameEventHandler(INPUT_KEY_EVENT, EchoHoloMapClient::onKeyInput);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_KEY_MAPPINGS_EVENT,
+                ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_GUI_LAYERS_EVENT,
+                ClientModEvents::registerGuiLayers);
         if (HoloMapModuleAccess.isLoaded("echoterminal")) {
             registerTerminalClientIntegration();
         }
@@ -125,19 +135,19 @@ public final class EchoHoloMapClient {
         }
         int keyCode = EchoBackendClientBridge.keyCode(event);
         if (EchoBackendClientBridge.keyMappingMatches(TOGGLE_MINIMAP_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_K)) {
+                || keyCode == GLFW.GLFW_KEY_K) {
             toggleMiniMap();
         } else if (EchoBackendClientBridge.keyMappingMatches(OPEN_MAP_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_J)) {
+                || keyCode == GLFW.GLFW_KEY_J) {
             openHoloMapScreen();
         } else if (EchoBackendClientBridge.keyMappingMatches(MINIMAP_ZOOM_IN_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_RIGHT_BRACKET)) {
+                || keyCode == GLFW.GLFW_KEY_RIGHT_BRACKET) {
             zoomMiniMapIn();
         } else if (EchoBackendClientBridge.keyMappingMatches(MINIMAP_ZOOM_OUT_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_LEFT_BRACKET)) {
+                || keyCode == GLFW.GLFW_KEY_LEFT_BRACKET) {
             zoomMiniMapOut();
         } else if (EchoBackendClientBridge.keyMappingMatches(MINIMAP_CYCLE_CORNER_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_BACKSLASH)) {
+                || keyCode == GLFW.GLFW_KEY_BACKSLASH) {
             cycleMiniMapCorner();
         }
     }
@@ -838,6 +848,27 @@ public final class EchoHoloMapClient {
         return nativeLoaderActive();
     }
 
+    public static boolean publishNativeScreenLifecycleMutated(
+            String phase,
+            String actionId,
+            String screenClass,
+            Map<String, Object> metadata
+    ) {
+        return nativeLoaderActive()
+                && publishNativeScreenLifecycle(phase, actionId, screenClass, metadata) == EchoNativeLoadStatus.MUTATED;
+    }
+
+    public static void publishNativeScreenLifecycleIfActive(
+            String phase,
+            String actionId,
+            String screenClass,
+            Map<String, Object> metadata
+    ) {
+        if (nativeLoaderActive()) {
+            publishNativeScreenLifecycle(phase, actionId, screenClass, metadata);
+        }
+    }
+
     public static EchoNativeLoadStatus publishNativeScreenLifecycle(
             String phase,
             String actionId,
@@ -886,7 +917,7 @@ public final class EchoHoloMapClient {
             return false;
         }
         if (openScreenCoreMap()) {
-            publishNativeScreenLifecycle(
+            publishNativeScreenLifecycleIfActive(
                     "open",
                     "holomap.open",
                     "com.knoxhack.echoholomap.integration.HoloMapScreenCoreIntegration",
@@ -896,16 +927,18 @@ public final class EchoHoloMapClient {
                             "screenBridge", "echoscreencore"));
             return true;
         }
-        EchoNativeLoadStatus lifecycleStatus = publishNativeScreenLifecycle(
-                "open",
-                "holomap.open",
-                HoloMapFullScreenMapScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", HoloMapFullScreenMapScreen.class.getName(),
-                        "transitionSource", "holomap_route_open",
-                        "screenBridge", "classic_fullscreen"));
-        if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return false;
+        if (nativeLoaderActive()) {
+            EchoNativeLoadStatus lifecycleStatus = publishNativeScreenLifecycle(
+                    "open",
+                    "holomap.open",
+                    HoloMapFullScreenMapScreen.class.getName(),
+                    Map.of(
+                            "targetScreenClass", HoloMapFullScreenMapScreen.class.getName(),
+                            "transitionSource", "holomap_route_open",
+                            "screenBridge", "classic_fullscreen"));
+            if (nativeLoaderActive() && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return false;
+            }
         }
         minecraft.setScreen(new HoloMapFullScreenMapScreen());
         return true;
@@ -1008,7 +1041,23 @@ public final class EchoHoloMapClient {
     }
 
     private static boolean nativeLoaderActive() {
-        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive();
+        return EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive() && nativeContractsPresent();
+    }
+
+    private static boolean nativeContractsPresent() {
+        Boolean cached = nativeContractsPresent;
+        if (cached != null) {
+            return cached;
+        }
+        boolean present;
+        try {
+            Class.forName(NATIVE_LOAD_STATUS_CLASS, false, EchoHoloMapClient.class.getClassLoader());
+            present = true;
+        } catch (ClassNotFoundException | LinkageError ignored) {
+            present = false;
+        }
+        nativeContractsPresent = present;
+        return present;
     }
 
     private static String text(Object value) {

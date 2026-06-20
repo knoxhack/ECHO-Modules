@@ -1102,11 +1102,15 @@ public final class AshfallNativeProductBridgeProvider implements NativeLoaderPro
         return EchoNativeRuntimeEnvironmentBridge.isWindowedNativeClient();
     }
 
+    public static Map<String, String> surfaceImplementationClassesForTests() {
+        return surfaceImplementationClasses();
+    }
+
     private static Map<String, String> surfaceImplementationClasses() {
         return Map.ofEntries(
                 Map.entry("main_menu", "com.knoxhack.echoashfallprotocol.client.screen.EchoNativeMainMenuScreen"),
                 Map.entry("loading_screen", "com.knoxhack.echoashfallprotocol.client.screen.EchoNativeAshfallLoadingOverlay"),
-                Map.entry("hud", "com.knoxhack.echoashfallprotocol.client.hud.SurvivalHudOverlay"),
+                Map.entry("hud", "com.knoxhack.echoashfallprotocol.client.hud.EchoNativeAshfallHudOverlay"),
                 Map.entry("client_overlay", "com.knoxhack.echoashfallprotocol.client.hud.MutationOverlayEffect"),
                 Map.entry("terminal", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreen"),
                 Map.entry("index", "com.knoxhack.echoindex.client.IndexCatalogScreen"),

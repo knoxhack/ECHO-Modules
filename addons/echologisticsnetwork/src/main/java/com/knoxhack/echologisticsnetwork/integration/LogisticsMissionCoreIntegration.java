@@ -41,33 +41,33 @@ public final class LogisticsMissionCoreIntegration {
         registerMission(registry, "network_online", "route", MissionObjectiveType.ESTABLISH_ROUTE,
                 "Network Online", "Scan a ready logistics network or active courier route.",
                 "The network route is now visible to MissionCore.",
-                safeStack(ModBlocks.LOGISTICS_TERMINAL, 1), 0,
-                "Bring a Logistics route online", safeStack(() -> Items.CHEST, 1), "network_online/route");
+                safeStack(() -> (ItemLike) ModBlocks.LOGISTICS_TERMINAL.get(), Items.CHEST, 1), 0,
+                "Bring a Logistics route online", safeStack(() -> Items.CHEST, Items.CHEST, 1), "network_online/route");
         registerMission(registry, "label_supplies", "label", MissionObjectiveType.CUSTOM,
                 "Label Supplies", "Apply a Supply Tag to a Logistics storage node.",
                 "Supply rows are now labelled for route planning.",
-                safeStack(ModItems.SUPPLY_TAG, 1), 1,
-                "Apply a supply label", safeStack(ModItems.LOGISTICS_CHIP, 1), null);
+                safeStack(() -> (ItemLike) ModItems.SUPPLY_TAG.get(), Items.NAME_TAG, 1), 1,
+                "Apply a supply label", safeStack(() -> (ItemLike) ModItems.LOGISTICS_CHIP.get(), Items.REDSTONE, 1), null);
         registerMission(registry, "request_loadout", "request", MissionObjectiveType.ESTABLISH_ROUTE,
                 "Request Loadout", "Dispatch a loadout from a dashboard, card, or remote request tablet.",
                 "Loadout demand is now routable.",
-                safeStack(ModItems.LOADOUT_CARD, 1), 2,
-                "Request a Logistics loadout", safeStack(ModItems.ROUTE_MANIFEST, 2), null);
+                safeStack(() -> (ItemLike) ModItems.LOADOUT_CARD.get(), Items.MAP, 1), 2,
+                "Request a Logistics loadout", safeStack(() -> (ItemLike) ModItems.ROUTE_MANIFEST.get(), Items.PAPER, 2), null);
         registerMission(registry, "courier_delivery", "deliver", MissionObjectiveType.DELIVER_ITEM,
                 "Courier Delivery", "Let a courier drone complete a sealed payload delivery.",
                 "The courier delivery loop is verified.",
-                safeStack(ModBlocks.DRONE_DELIVERY_DOCK, 1), 3,
-                "Complete a courier delivery", safeStack(ModItems.COURIER_DRONE_MODULE, 1), null);
+                safeStack(() -> (ItemLike) ModBlocks.DRONE_DELIVERY_DOCK.get(), Items.HOPPER, 1), 3,
+                "Complete a courier delivery", safeStack(() -> (ItemLike) ModItems.COURIER_DRONE_MODULE.get(), Items.FEATHER, 1), null);
         registerMission(registry, "depot_exchange", "exchange", MissionObjectiveType.DELIVER_ITEM,
                 "Faction Depot Exchange", "Complete any available faction depot exchange.",
                 "Depot exchange traffic has been reconciled.",
-                safeStack(ModBlocks.FACTION_TRADE_DEPOT, 1), 4,
-                "Complete a depot exchange", safeStack(() -> Items.EMERALD, 2), null);
+                safeStack(() -> (ItemLike) ModBlocks.FACTION_TRADE_DEPOT.get(), Items.EMERALD_BLOCK, 1), 4,
+                "Complete a depot exchange", safeStack(() -> Items.EMERALD, Items.EMERALD, 2), null);
         registerMission(registry, "industrial_auto_restock", "restock", MissionObjectiveType.ESTABLISH_ROUTE,
                 "Industrial Auto-Restock", "Dispatch a configured factory auto-restock courier to an Industrial input depot.",
                 "Factory restock traffic is now MissionCore-visible.",
-                safeStack(ModBlocks.AUTO_RESTOCK_STATION, 1), 5,
-                "Dispatch factory auto-restock", safeStack(ModItems.REMOTE_REQUEST_TABLET, 1), null);
+                safeStack(() -> (ItemLike) ModBlocks.AUTO_RESTOCK_STATION.get(), Items.DISPENSER, 1), 5,
+                "Dispatch factory auto-restock", safeStack(() -> (ItemLike) ModItems.REMOTE_REQUEST_TABLET.get(), Items.COMPASS, 1), null);
     }
 
     private static void registerMission(
@@ -109,12 +109,22 @@ public final class LogisticsMissionCoreIntegration {
         return Identifier.fromNamespaceAndPath(EchoLogisticsNetwork.MODID, path);
     }
 
-    private static ItemStack safeStack(Supplier<? extends ItemLike> item, int count) {
-        try {
-            ItemLike value = item == null ? null : item.get();
-            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
-        } catch (RuntimeException | LinkageError ignored) {
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
             return ItemStack.EMPTY;
         }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 }

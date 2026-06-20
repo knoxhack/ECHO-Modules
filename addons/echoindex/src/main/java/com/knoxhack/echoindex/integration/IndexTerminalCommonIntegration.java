@@ -1,6 +1,7 @@
 package com.knoxhack.echoindex.integration;
 
 import com.echoplatform.echocore.api.EchoCoreServices;
+import com.knoxhack.echoindex.IndexIds;
 import com.knoxhack.echoindex.service.IndexService;
 import com.knoxhack.echoterminal.api.recipe.TerminalRecipeRegistry;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,7 +18,10 @@ public final class IndexTerminalCommonIntegration {
         }
         TerminalRecipeRegistry.addChangeListener(IndexTerminalCommonIntegration::invalidateRecipes);
         EchoCoreServices.registerIndexContentProvider(IndexTerminalImportRecipeProvider.INSTANCE);
-        TerminalRecipeRegistry.register(IndexTerminalRecipeProvider.INSTANCE);
+        if (TerminalRecipeRegistry.providers().stream()
+                .noneMatch(provider -> IndexIds.PROVIDER_TERMINAL.equals(provider.id()))) {
+            TerminalRecipeRegistry.register(IndexTerminalRecipeProvider.INSTANCE);
+        }
     }
 
     private static void invalidateRecipes() {

@@ -13,6 +13,7 @@ import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.saveddata.SavedDataType;
 
@@ -76,7 +77,8 @@ public class NexusWorldData extends SavedData {
     public static final SavedDataType<NexusWorldData> TYPE = new SavedDataType<NexusWorldData>(
         Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "nexus"),
         NexusWorldData::new,
-        CODEC
+        CODEC,
+        DataFixTypes.SAVED_DATA_MAP_DATA
     );
 
     private WorldState state = WorldState.NORMAL;

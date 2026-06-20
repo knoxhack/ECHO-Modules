@@ -14,14 +14,14 @@ public record TerminalMissionRequirement(
         kind = kind == null ? Kind.CUSTOM : kind;
         label = label == null ? "" : label;
         detail = detail == null ? "" : detail;
-        icon = icon == null ? ItemStack.EMPTY : icon.copy();
+        icon = safeCopy(icon);
         need = Math.max(0, need);
         have = Math.max(0, have);
     }
 
     public static TerminalMissionRequirement item(ItemStack stack, int have, int need, boolean satisfied) {
-        ItemStack icon = stack == null ? ItemStack.EMPTY : stack.copy();
-        String name = icon.isEmpty() ? "Item" : icon.getHoverName().getString();
+        ItemStack icon = safeCopy(stack);
+        String name = safeIsEmpty(icon) ? "Item" : safeHoverName(icon, "Item");
         return new TerminalMissionRequirement(Kind.ITEM, name, have + "/" + need + " carried", icon, have, need, satisfied);
     }
 
@@ -52,5 +52,35 @@ public record TerminalMissionRequirement(
         ENTITY_KILL,
         LOCATION,
         CUSTOM
+    }
+
+    private static ItemStack safeCopy(ItemStack stack) {
+        if (stack == null) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            return stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
+        } catch (RuntimeException | LinkageError exception) {
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private static boolean safeIsEmpty(ItemStack stack) {
+        if (stack == null) {
+            return true;
+        }
+        try {
+            return stack.isEmpty();
+        } catch (RuntimeException | LinkageError exception) {
+            return true;
+        }
+    }
+
+    private static String safeHoverName(ItemStack stack, String fallback) {
+        try {
+            return stack.getHoverName().getString();
+        } catch (RuntimeException | LinkageError exception) {
+            return fallback;
+        }
     }
 }

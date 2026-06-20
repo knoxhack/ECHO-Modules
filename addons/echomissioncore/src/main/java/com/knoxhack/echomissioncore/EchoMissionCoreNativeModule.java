@@ -6,12 +6,34 @@ import com.knoxhack.echo.adaptercore.EchoNativeModuleAdapter;
 import com.knoxhack.echo.adaptercore.EchoNativeRegistryBridge;
 import com.knoxhack.echo.adaptercore.EchoNativeServiceBridge;
 import dev.echo.nativeplatform.contracts.EchoNativeModuleEntrypoint;
+import dev.echo.nativeplatform.contracts.EchoNativeModuleLoadContext;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class EchoMissionCoreNativeModule implements EchoNativeModuleAdapter, EchoNativeModuleEntrypoint {
+    @Override
+    public void ready(EchoNativeModuleLoadContext context) {
+        boolean commonRegistered = ensureCommonServicesRegisteredForNativeLoader(context);
+        context.attribute("nativeCommonServicesRegistered", commonRegistered);
+        context.attribute("nativeCommonServicesAlreadyRegistered", !commonRegistered);
+    }
+
+    private static boolean ensureCommonServicesRegisteredForNativeLoader(EchoNativeModuleLoadContext context) {
+        String moduleClassName = EchoMissionCoreNativeModule.class.getPackageName() + ".EchoMissionCore";
+        try {
+            Object result = Class.forName(moduleClassName)
+                    .getMethod("ensureCommonServicesRegisteredForNativeLoader")
+                    .invoke(null);
+            return Boolean.TRUE.equals(result);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            context.attribute("nativeCommonServicesDeferred", true);
+            context.attribute("nativeCommonServicesDeferredReason", exception.getClass().getSimpleName());
+            return false;
+        }
+    }
+
     @Override
     public Map<String, Object> describeNativeSurfaces(Map<String, String> context) {
         Map<String, Object> missionProgression = EchoMissionCoreObjectiveProgressContract.executeReferenceProgression(

@@ -1,7 +1,5 @@
 package com.knoxhack.echo.atmospherecore;
 
-import com.knoxhack.echo.adaptercore.EchoNativeAgent7LiveHookEvidenceBridge;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -42,11 +40,13 @@ public final class EchoAtmosphereCoreEvents {
     }
 
     private static void recordAgent7LiveHook(long gameTick, String sourceReason) {
-        EchoNativeAgent7LiveHookEvidenceBridge.recordExactCallback(
-                "echoatmospherecore",
-                "level_tick.post",
-                gameTick,
-                sourceReason);
+        try {
+            Class.forName("com.knoxhack.echo.adaptercore.EchoNativeAgent7LiveHookEvidenceBridge")
+                    .getMethod("recordExactCallback", String.class, String.class, long.class, String.class)
+                    .invoke(null, "echoatmospherecore", "level_tick.post", gameTick, sourceReason);
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            // AtmosphereCore can run as a native/standalone module before Agent7 evidence is present.
+        }
     }
 
     private record LevelTickSnapshot(long gameTick, boolean clientSide) {

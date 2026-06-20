@@ -4,6 +4,7 @@ import com.echoplatform.echocore.api.EchoAddonChapter;
 import com.echoplatform.echocore.api.EchoAddonRegistry;
 import com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
@@ -15,12 +16,13 @@ public final class EchoScreenCoreMod {
     public static final String MOD_ID = "echoscreencore";
     public static final Logger LOGGER = LogUtils.getLogger();
     private static final String CHAPTER_ID = "screencore";
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
 
     public EchoScreenCoreMod(IEventBus modEventBus) {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.bootstrapClientEntrypoint(
                 modEventBus,
-                "com.knoxhack.echoscreencore.client.EchoScreenCoreClient");
+                EchoScreenCoreMod.class.getPackageName() + ".client.EchoScreenCoreClient");
         LOGGER.info("ECHO: ScreenCore core loaded.");
     }
 
@@ -29,7 +31,20 @@ public final class EchoScreenCoreMod {
     }
 
     public void commonSetup(Object event) {
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, EchoScreenCoreMod::registerAddonChapter);
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return registerCommonServices("native_loader_module_ready");
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        registerAddonChapter();
+        LOGGER.info("ECHO: ScreenCore common services registered [{}].", source);
+        return true;
     }
 
     private static void registerAddonChapter() {

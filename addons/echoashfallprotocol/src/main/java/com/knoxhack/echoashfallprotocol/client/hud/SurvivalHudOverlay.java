@@ -25,6 +25,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
@@ -53,6 +54,9 @@ public class SurvivalHudOverlay {
     private static final int NOTICE_ROW_HEIGHT = 36;
     private static final int NOTICE_ROW_GAP = 4;
     private static final int NOTICE_MAX_ROWS = 2;
+    private static final List<String> NORMAL_STATUS_ROW_LABELS = List.of(
+            "VITAL", "FOOD", "H2O", "AIR/MASK", "RAD", "TEMP");
+    private static final int NORMAL_STATUS_BLOCK_HEIGHT = 94;
 
     // ECHO tactical vitals palette
     private static final int VITAL_AIR_SAFE = 0xFF46D6A8;
@@ -114,7 +118,7 @@ public class SurvivalHudOverlay {
 
         switch (HudState.getMode()) {
             case COMPACT  -> renderCompact(graphics, player, survival, mutations, quest);
-            case NORMAL   -> renderNormal(graphics, survival, mutations, quest);
+            case NORMAL   -> renderNormal(graphics, player, survival, mutations, quest);
             case EXTENDED -> renderExtended(graphics, player, survival, mutations, quest);
         }
         BossHudOverlay.renderCompass(graphics, partialTick);
@@ -125,6 +129,14 @@ public class SurvivalHudOverlay {
 
     public static NoticeShelfLayout noticeShelfLayoutForTests(int statusPanelBottom) {
         return noticeShelfLayout(statusPanelBottom);
+    }
+
+    public static List<String> normalStatusRowLabelsForTests() {
+        return NORMAL_STATUS_ROW_LABELS;
+    }
+
+    public static int normalStatusPanelBottomForTests(int alertCount, boolean showMutations, boolean graceActive) {
+        return PY + normalPanelHeight(alertCount, showMutations, graceActive);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -293,14 +305,14 @@ public class SurvivalHudOverlay {
     // ─────────────────────────────────────────────────────────────────────────
     // NORMAL MODE — full panel with vitals, mutations, mission tracker
     // ─────────────────────────────────────────────────────────────────────────
-    private static void renderNormal(GuiGraphicsExtractor graphics,
+    private static void renderNormal(GuiGraphicsExtractor graphics, Player player,
                                      SurvivalData survival, MutationData mutations, QuestData quest) {
         Minecraft mc  = Minecraft.getInstance();
         List<HazardAlert> alerts = buildHazardAlerts(survival, mutations);
         List<HazardAlert> secondaryAlerts = secondaryAlerts(alerts);
         boolean showMutations = shouldShowMutationPanel(mutations);
-        int chipBlockH = alerts.isEmpty() ? 18 : 24 + secondaryAlerts.size() * 14 + 4;
-        int panelH = 88 + chipBlockH + (showMutations ? 40 : 0) + (HudState.isGraceActive() ? 26 : 0);
+        int chipBlockH = normalAlertBlockHeight(alerts.size());
+        int panelH = normalPanelHeight(alerts.size(), showMutations, HudState.isGraceActive());
         int y = PY;
 
         // Drop shadow
@@ -328,6 +340,8 @@ public class SurvivalHudOverlay {
         y += 20;
 
         y += renderGraceCountdown(graphics, PX + 6, y - 2, PW - 12);
+
+        y = renderNormalStatusStack(graphics, player, survival, ColdData.get(player), PX + 4, y);
 
         graphics.fill(PX + 4, y - 4, PX + PW - 4, y + chipBlockH, 0x4A121C29);
         graphics.fill(PX + 4, y - 4, PX + PW - 4, y - 3, 0x884DBAF4);
@@ -358,6 +372,115 @@ public class SurvivalHudOverlay {
         renderTerminalNoticeShelf(graphics, PY + panelH);
     }
 
+    private static int normalPanelHeight(int alertCount, boolean showMutations, boolean graceActive) {
+        return 88 + NORMAL_STATUS_BLOCK_HEIGHT + normalAlertBlockHeight(alertCount)
+                + (showMutations ? 40 : 0)
+                + (graceActive ? 26 : 0);
+    }
+
+    private static int normalAlertBlockHeight(int alertCount) {
+        if (alertCount <= 0) {
+            return 18;
+        }
+        int secondaryCount = Math.min(Math.max(0, alertCount - 1), 4);
+        return 24 + secondaryCount * 14 + 4;
+    }
+
+    private static int renderNormalStatusStack(GuiGraphicsExtractor graphics, Player player,
+                                               SurvivalData survival, ColdData coldData,
+                                               int x, int y) {
+        Minecraft mc = Minecraft.getInstance();
+        FoodData food = player.getFoodData();
+        float healthPct = player.getHealth() / Math.max(1.0f, player.getMaxHealth());
+        float foodPct = food.getFoodLevel() / 20.0f;
+        float hydrationPct = survival.getHydrationPercent();
+        boolean toxicAir = survival.isToxicAirActive();
+        boolean hasMask = survival.hasMask();
+        float filterPct = survival.getFilterPercent();
+        float airPct = hasMask ? filterPct : (toxicAir ? 0.0f : 1.0f);
+        float radPct = survival.getRadiationLevel() / SurvivalData.MAX_RADIATION;
+        float tempPct = coldData.getTemperature() / 100.0f;
+
+        graphics.fill(x, y - 4, x + PW - 8, y + NORMAL_STATUS_BLOCK_HEIGHT - 2, 0x4F101B29);
+        graphics.fill(x, y - 4, x + PW - 8, y - 3, 0xAA61C7FF);
+
+        int rowY = y;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "VITAL", healthPct,
+                Math.round(player.getHealth()) + "/" + Math.round(player.getMaxHealth()),
+                healthColor(healthPct), healthPct <= 0.30f, healthPct <= 0.60f);
+        rowY += 13;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "FOOD", foodPct,
+                food.getFoodLevel() + "/20", foodColor(foodPct), foodPct <= 0.30f, foodPct <= 0.60f);
+        rowY += 13;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "H2O", hydrationPct,
+                survival.getHydration() + "%", hydrationColor(hydrationPct),
+                hydrationPct <= 0.20f, hydrationPct <= 0.45f);
+        rowY += 13;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "AIR/MASK", airPct,
+                airStatusText(survival, toxicAir, hasMask, filterPct), filterColor(airPct),
+                toxicAir && (!hasMask || survival.isFilterDepleted()), toxicAir && airPct <= 0.45f);
+        rowY += 13;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "RAD", radPct,
+                (int) survival.getRadiationLevel() + "%", radiationColor(radPct),
+                radPct >= 0.75f, radPct >= 0.35f);
+        rowY += 13;
+        renderTacticalVitalRow(graphics, x + 4, rowY, "TEMP", tempPct,
+                coldData.getStatus().getDisplayName(), temperatureColor(coldData),
+                temperatureCritical(coldData), temperatureWarning(coldData));
+
+        BlockPos pos = player.blockPosition();
+        String fieldLine = "ARM " + player.getArmorValue()
+                + "  POS " + pos.getX() + " " + pos.getY() + " " + pos.getZ();
+        graphics.text(mc.font, fitText(mc, fieldLine, PW - 18), x + 8, y + 80, VITAL_TEXT_DIM, false);
+        return y + NORMAL_STATUS_BLOCK_HEIGHT;
+    }
+
+    private static String airStatusText(SurvivalData survival, boolean toxicAir, boolean hasMask, float filterPct) {
+        if (toxicAir) {
+            return hasMask ? "MASK " + (int) (filterPct * 100.0f) + "%" : "NO MASK";
+        }
+        if (hasMask && filterPct < 1.0f) {
+            return "MASK " + (int) (filterPct * 100.0f) + "%";
+        }
+        return survival.hasMask() ? "MASK READY" : "CLEAR";
+    }
+
+    private static int healthColor(float pct) {
+        if (pct <= 0.30f) return VITAL_DANGER;
+        if (pct <= 0.60f) return VITAL_WARNING;
+        return VITAL_AIR_SAFE;
+    }
+
+    private static int foodColor(float pct) {
+        if (pct <= 0.30f) return VITAL_DANGER;
+        if (pct <= 0.60f) return VITAL_WARNING;
+        return VITAL_AIR_SAFE;
+    }
+
+    private static int temperatureColor(ColdData coldData) {
+        return switch (coldData.getStatus()) {
+            case FREEZING -> 0xFF2D7DFF;
+            case COLD -> 0xFF44AAFF;
+            case COOL -> 0xFF88CCFF;
+            case NORMAL -> VITAL_AIR_SAFE;
+            case WARM -> VITAL_WARNING;
+        };
+    }
+
+    private static boolean temperatureCritical(ColdData coldData) {
+        return switch (coldData.getStatus()) {
+            case FREEZING -> true;
+            default -> false;
+        };
+    }
+
+    private static boolean temperatureWarning(ColdData coldData) {
+        return switch (coldData.getStatus()) {
+            case FREEZING, COLD, WARM -> true;
+            default -> false;
+        };
+    }
+
     private static void renderTacticalVitalRow(GuiGraphicsExtractor graphics, int x, int y,
                                                String label, float rawPct, String rightText,
                                                int color, boolean critical, boolean warningPulse) {
@@ -368,10 +491,11 @@ public class SurvivalHudOverlay {
 
         int rowW = PW - 16;
         int rowH = 12;
-        int barX = x + 42;
-        int barW = BW;
+        int barX = x + 52;
+        int barW = BW - 12;
         int fillW = (int)((barW - 2) * pct);
         int rowBg = critical && flash ? 0x552A1114 : 0x33151E29;
+        String fittedRightText = fitText(mc, rightText, rowW - (barX - x) - barW - 8);
 
         graphics.fill(x, y - 1, x + rowW, y + rowH, rowBg);
         graphics.fill(x, y - 1, x + 1, y + rowH, color);
@@ -394,7 +518,8 @@ public class SurvivalHudOverlay {
             graphics.fill(barX + 1, y + 3, barX + Math.max(2, fillW), y + BH + 1, (alpha << 24) | 0x00FFC95C);
         }
 
-        graphics.text(mc.font, rightText, x + 145, y + 2, critical && flash ? VITAL_DANGER : VITAL_TEXT_DIM, false);
+        graphics.text(mc.font, fittedRightText, x + rowW - mc.font.width(fittedRightText) - 4, y + 2,
+                critical && flash ? VITAL_DANGER : VITAL_TEXT_DIM, false);
     }
 
     private static void renderPriorityAlert(GuiGraphicsExtractor graphics, int x, int y, HazardAlert alert) {

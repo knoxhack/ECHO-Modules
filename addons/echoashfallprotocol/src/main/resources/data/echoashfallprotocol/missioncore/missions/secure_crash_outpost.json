@@ -49,6 +49,19 @@
   },
   "objectives": [
     {
+      "id": "echoashfallprotocol:secure_crash_outpost/read_field_manual",
+      "type": "custom",
+      "label": "Read the Field Manual",
+      "detail": "Open the ECHO-7 first-steps checklist before anchoring the crash outpost.",
+      "icon": "echoashfallprotocol:field_manual",
+      "target": "echoashfallprotocol:field_manual",
+      "required": 1,
+      "criteria": {
+        "event": "player.item_used",
+        "contract": "echoashfallprotocol:ashfall_first_playable_loop"
+      }
+    },
+    {
       "id": "echoashfallprotocol:secure_crash_outpost/place_ash_campfire",
       "type": "place_block",
       "label": "Place an Ash Campfire near the crash site",

@@ -18,7 +18,7 @@ public final class EchoRuntimeModules {
     }
 
     public static boolean isLoaded(String moduleId) {
-        return MODULES.containsKey(moduleId) || isNeoForgeModLoaded(moduleId);
+        return MODULES.containsKey(moduleId) || isNativeModuleLoaded(moduleId) || isNeoForgeModLoaded(moduleId);
     }
 
     public static void markLoaded(String moduleId, String displayName, String version) {
@@ -34,7 +34,7 @@ public final class EchoRuntimeModules {
             return module;
         }
         String id = moduleId == null || moduleId.isBlank() ? fallbackName : moduleId;
-        boolean loaded = isNeoForgeModLoaded(id);
+        boolean loaded = isLoaded(id);
         return new EchoRuntimeModule(id == null ? "" : id, "dev", "runtime", loaded);
     }
 
@@ -60,5 +60,21 @@ public final class EchoRuntimeModules {
         } catch (ReflectiveOperationException | LinkageError exception) {
             return false;
         }
+    }
+
+    private static boolean isNativeModuleLoaded(String moduleId) {
+        if (moduleId == null || moduleId.isBlank()) {
+            return false;
+        }
+        String nativeModuleIds = System.getProperty("echo.native.moduleIds", "");
+        if (nativeModuleIds.isBlank()) {
+            return false;
+        }
+        for (String token : nativeModuleIds.split("[,;\\s]+")) {
+            if (moduleId.equals(token.trim())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

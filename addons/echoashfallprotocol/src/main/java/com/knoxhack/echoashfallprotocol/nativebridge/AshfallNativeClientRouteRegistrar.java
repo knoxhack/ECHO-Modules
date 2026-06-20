@@ -1,6 +1,5 @@
 package com.knoxhack.echoashfallprotocol.nativebridge;
 
-import com.knoxhack.echoashfallprotocol.EchoAshfallProtocol;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistries;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry;
 import dev.echo.nativeplatform.contracts.EchoNativeClientRouteRegistry.NativeClientSurfaceLifecycle;
@@ -13,10 +12,14 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class AshfallNativeClientRouteRegistrar {
+    private static final String MODID = "echoashfallprotocol";
+    private static final String HANDLER_ID = "echoashfallprotocol:native_client_route_dispatcher";
+    private static final System.Logger LOGGER =
+            System.getLogger(AshfallNativeClientRouteRegistrar.class.getName());
     private static final AtomicBoolean REGISTERED = new AtomicBoolean(false);
     private static final List<RouteSurface> SURFACES = List.of(
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:echo_native_main_menu",
                     "main_menu",
                     "com.knoxhack.echoashfallprotocol.client.screen.EchoNativeMainMenuScreen",
@@ -24,7 +27,7 @@ public final class AshfallNativeClientRouteRegistrar {
                     Map.of(),
                     false),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:echo_native_loading",
                     "loading_screen",
                     "com.knoxhack.echoashfallprotocol.client.screen.EchoNativeAshfallLoadingOverlay",
@@ -32,7 +35,7 @@ public final class AshfallNativeClientRouteRegistrar {
                     Map.of(),
                     false),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:ashfall_survival_hud",
                     "hud",
                     "com.knoxhack.echoashfallprotocol.client.hud.EchoNativeAshfallHudOverlay",
@@ -40,7 +43,7 @@ public final class AshfallNativeClientRouteRegistrar {
                     Map.of(),
                     false),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:ashfall_status_overlay",
                     "client_overlay",
                     "com.knoxhack.echoashfallprotocol.client.hud.MutationOverlayEffect",
@@ -48,17 +51,17 @@ public final class AshfallNativeClientRouteRegistrar {
                     Map.of(),
                     false),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:terminal_eui_handoff",
                     "terminal",
                     "com.knoxhack.echoterminal.client.screen.EchoTerminalScreen",
                     "com.knoxhack.echoterminal.client.screen.EchoTerminalScreens",
                     actions(
                             "terminal.open", action("kind", "terminal_screen"),
-                            "signalos.terminal", action("kind", "terminal_screen", "aliasSurface", "signalos")),
+                    "signalos.terminal", action("kind", "terminal_screen", "aliasSurface", "signalos")),
                     true),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:index_handoff",
                     "index",
                     "com.knoxhack.echoindex.client.IndexCatalogScreen",
@@ -70,7 +73,7 @@ public final class AshfallNativeClientRouteRegistrar {
                             "index.bookmark", action("kind", "screen_core_mode", "mode", "favorites")),
                     true),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:lens_handoff",
                     "lens",
                     "com.knoxhack.echolens.client.LensHudOverlay",
@@ -78,7 +81,7 @@ public final class AshfallNativeClientRouteRegistrar {
                     actions("lens.deep_scan", action("kind", "hud_scan", "mode", "deep")),
                     true),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:holomap_minimap_handoff",
                     "holomap",
                     "com.knoxhack.echoholomap.client.HoloMapMiniMapOverlay",
@@ -90,7 +93,7 @@ public final class AshfallNativeClientRouteRegistrar {
                             "holomap.cycle_corner", action("kind", "overlay_command", "bridgeMethod", "cycleCorner")),
                     true),
             new RouteSurface(
-                    EchoAshfallProtocol.MODID,
+                    MODID,
                     "echoashfallprotocol:holomap_fullscreen_handoff",
                     "holomap",
                     "com.knoxhack.echoholomap.client.HoloMapFullScreenMapScreen",
@@ -103,18 +106,27 @@ public final class AshfallNativeClientRouteRegistrar {
     private AshfallNativeClientRouteRegistrar() {
     }
 
+    public static boolean ensureNativeClientRoutesRegisteredForNativeLoader() {
+        register(true, (surfaceType, action, metadata) -> true);
+        return EchoNativeClientRouteRegistries.get() != EchoNativeClientRouteRegistry.NOOP;
+    }
+
     public static void register(boolean nativeLoaderActive, SurfaceDispatcher dispatcher) {
         EchoNativeClientRouteRegistry registry = EchoNativeClientRouteRegistries.get();
         if (!nativeLoaderActive
                 || dispatcher == null
-                || registry == EchoNativeClientRouteRegistry.NOOP
-                || !REGISTERED.compareAndSet(false, true)) {
+                || registry == EchoNativeClientRouteRegistry.NOOP) {
             return;
         }
+        boolean firstRegistration = REGISTERED.compareAndSet(false, true);
+        if (firstRegistration) {
+            for (RouteSurface surface : SURFACES) {
+                registerRoute(registry, surface);
+                registerLifecycle(registry, surface);
+                registerActions(registry, surface);
+            }
+        }
         for (RouteSurface surface : SURFACES) {
-            registerRoute(registry, surface);
-            registerLifecycle(registry, surface);
-            registerActions(registry, surface);
             if (surface.dispatchable()) {
                 registerHandler(registry, surface.surfaceType(), dispatcher);
             }
@@ -123,6 +135,28 @@ public final class AshfallNativeClientRouteRegistrar {
 
     public static boolean dispatch(String surfaceType, String action) {
         return EchoNativeClientRouteRegistries.get().dispatch(surfaceType, action);
+    }
+
+    public static List<Map<String, Object>> surfaceCatalogForTests() {
+        List<Map<String, Object>> catalog = new java.util.ArrayList<>();
+        for (RouteSurface surface : SURFACES) {
+            Map<String, Object> metadata = productSurfaceMetadata(surface);
+            Map<String, Object> snapshot = new LinkedHashMap<>();
+            snapshot.put("moduleId", surface.moduleId());
+            snapshot.put("surfaceId", surface.surfaceId());
+            snapshot.put("surfaceType", surface.surfaceType());
+            snapshot.put("implementationClass", surface.implementationClass());
+            snapshot.put("bridgeClass", surface.bridgeClass());
+            snapshot.put("actions", List.copyOf(surface.actions().keySet()));
+            snapshot.put("actionMetadata", surface.actions());
+            snapshot.put("dispatchable", surface.dispatchable());
+            snapshot.put("role", metadata.get("role"));
+            snapshot.put("visibleRuntimePath", metadata.get("visibleRuntimePath"));
+            snapshot.put("defaultMountedProductSurface", metadata.get("mountedByDefault"));
+            snapshot.put("metadata", metadata);
+            catalog.add(Map.copyOf(snapshot));
+        }
+        return List.copyOf(catalog);
     }
 
     public static void registerInputBinding(
@@ -136,8 +170,7 @@ public final class AshfallNativeClientRouteRegistrar {
         }
         EchoNativeLoadStatus status = registry.registerInputBinding(surfaceType, action, binding);
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client input binding {}:{} rejected with {}.",
-                    surfaceType, action, status);
+            debug("Native Loader client input binding " + surfaceType + ":" + action + " rejected with " + status + ".");
         }
     }
 
@@ -154,8 +187,7 @@ public final class AshfallNativeClientRouteRegistrar {
         EchoNativeLoadStatus status = registry.publishLifecycleEvent(
                 new NativeClientSurfaceLifecycleEvent(surfaceType, phase, action, metadata));
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client lifecycle event {}:{} rejected with {}.",
-                    surfaceType, phase, status);
+            debug("Native Loader client lifecycle event " + surfaceType + ":" + phase + " rejected with " + status + ".");
         }
     }
 
@@ -179,8 +211,7 @@ public final class AshfallNativeClientRouteRegistrar {
                         "productSurface", productSurfaceMetadata(surface)),
                 true);
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client route registry rejected {} with {}.",
-                    surface.surfaceId(), status);
+            debug("Native Loader client route registry rejected " + surface.surfaceId() + " with " + status + ".");
         }
     }
 
@@ -189,8 +220,7 @@ public final class AshfallNativeClientRouteRegistrar {
                 surface.surfaceType(),
                 lifecycle(surface));
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client route lifecycle rejected {} with {}.",
-                    surface.surfaceType(), status);
+            debug("Native Loader client route lifecycle rejected " + surface.surfaceType() + " with " + status + ".");
         }
     }
 
@@ -200,8 +230,7 @@ public final class AshfallNativeClientRouteRegistrar {
         }
         EchoNativeLoadStatus status = registry.registerActions(surface.surfaceType(), surface.actions());
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client route actions rejected {} with {}.",
-                    surface.surfaceType(), status);
+            debug("Native Loader client route actions rejected " + surface.surfaceType() + " with " + status + ".");
         }
     }
 
@@ -212,11 +241,15 @@ public final class AshfallNativeClientRouteRegistrar {
     ) {
         EchoNativeLoadStatus status = registry.registerActionHandler(
                 surfaceType,
+                HANDLER_ID,
                 context -> dispatcher.dispatch(context.surfaceType(), context.actionId(), context.action()));
         if (status == EchoNativeLoadStatus.FAILED || status == EchoNativeLoadStatus.UNSUPPORTED) {
-            EchoAshfallProtocol.LOGGER.debug("Native Loader client route handler rejected {} with {}.",
-                    surfaceType, status);
+            debug("Native Loader client route handler rejected " + surfaceType + " with " + status + ".");
         }
+    }
+
+    private static void debug(String message) {
+        LOGGER.log(System.Logger.Level.DEBUG, message);
     }
 
     private static NativeClientSurfaceLifecycle lifecycle(RouteSurface surface) {

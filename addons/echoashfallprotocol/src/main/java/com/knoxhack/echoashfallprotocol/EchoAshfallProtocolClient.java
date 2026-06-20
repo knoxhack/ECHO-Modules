@@ -3,7 +3,6 @@ package com.knoxhack.echoashfallprotocol;
 import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echocore.client.model.EchoMobFamily;
 import com.knoxhack.echocore.client.model.EchoMobFamilyRenderer;
-import com.knoxhack.echonetcore.client.EchoNetClientActions;
 import com.knoxhack.echoashfallprotocol.client.drone.DroneClientState;
 import com.knoxhack.echoashfallprotocol.client.hud.HudState;
 import com.knoxhack.echoashfallprotocol.client.EnvironmentalVisualController;
@@ -14,7 +13,6 @@ import com.knoxhack.echoashfallprotocol.client.hud.SurvivalHudOverlay;
 import com.knoxhack.echoashfallprotocol.client.screen.CrystallineSynthesizerScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.DeepCoreMinerScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoNativeAshfallSurfaceScreen;
-import com.knoxhack.echoashfallprotocol.client.screen.EchoTerminalStyle;
 import com.knoxhack.echoashfallprotocol.client.screen.EchoNativeMainMenuScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.FilterWorkbenchScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.HandRecyclerScreen;
@@ -29,39 +27,28 @@ import com.knoxhack.echoashfallprotocol.client.screen.ThermalArrayScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.ThermalBurnerScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.WaterPurifierScreen;
 import com.knoxhack.echoashfallprotocol.client.screen.WelcomeScreen;
-import com.knoxhack.echoashfallprotocol.echo.MissionUxSummary;
-import com.knoxhack.echoashfallprotocol.echo.QuestData;
 import com.knoxhack.echoashfallprotocol.entity.ModEntities;
 import com.knoxhack.echoashfallprotocol.integration.AshfallTerminalIntegration;
 import com.knoxhack.echoashfallprotocol.integration.AshfallPresenceIntegration;
 import com.knoxhack.echoashfallprotocol.nativebridge.AshfallNativeClientRouteBridge;
-import com.knoxhack.echoashfallprotocol.network.DroneCommandPacket;
 import com.knoxhack.echoashfallprotocol.registry.ModMenuTypes;
 import com.echoplatform.echocore.api.EchoRuntimeModules;
-import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
-import com.knoxhack.echoterminal.client.screen.EchoTerminalNativeSessionBridge;
-import com.knoxhack.echoterminal.client.screen.EchoTerminalScreenProvider;
-import com.knoxhack.echoterminal.client.screen.EchoTerminalScreens;
-import com.knoxhack.echoterminal.client.hud.TerminalHudNoticeSurface;
-import com.knoxhack.echoterminal.client.screen.TerminalScreenTheme;
-import com.knoxhack.echoterminal.menu.EchoTerminalMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import com.mojang.blaze3d.platform.InputConstants;
 import java.lang.reflect.Proxy;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -79,6 +66,10 @@ public class EchoAshfallProtocolClient {
             "net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers";
     private static final String CLIENT_SETUP_EVENT =
             "net.neoforged.fml.event.lifecycle.FMLClientSetupEvent";
+    private static final String INPUT_KEY_EVENT =
+            "net.neoforged.neoforge.client.event.InputEvent$Key";
+    private static final String CLIENT_TICK_POST_EVENT =
+            "net.neoforged.neoforge.client.event.ClientTickEvent$Post";
     private static final String REGISTER_KEY_MAPPINGS_EVENT =
             "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
     private static final String REGISTER_MENU_SCREENS_EVENT =
@@ -98,9 +89,16 @@ public class EchoAshfallProtocolClient {
     private static final int KEY_RIGHT_BRACKET = GLFW.GLFW_KEY_RIGHT_BRACKET;
     private static final int KEY_LEFT_BRACKET = GLFW.GLFW_KEY_LEFT_BRACKET;
     private static final int KEY_BACKSLASH = GLFW.GLFW_KEY_BACKSLASH;
-    private static final AtomicBoolean LOGGED_TERMINAL_FALLBACK_OPEN = new AtomicBoolean(false);
     private static final AtomicBoolean NATIVE_MAIN_MENU_PROJECTED = new AtomicBoolean(false);
+    private static final AtomicBoolean DEV_DIRECT_QUICKPLAY_DISPATCHED = new AtomicBoolean(false);
+    private static final AtomicBoolean DEV_DIRECT_QUICKPLAY_COMPLETED = new AtomicBoolean(false);
     private static final Set<String> REPORTED_NATIVE_HOTKEY_CONFLICTS = ConcurrentHashMap.newKeySet();
+    private static final String DEV_DIRECT_AUTO_CONFIRM_EXPERIMENTAL_WORLD_PROPERTY =
+            "echo.native.devDirectAutoConfirmExperimentalWorld";
+    private static final String DEV_DIRECT_QUICKPLAY_SINGLEPLAYER_PROPERTY =
+            "echo.native.devDirectQuickPlaySingleplayer";
+    private static final long DEV_DIRECT_QUICKPLAY_FALLBACK_GRACE_MILLIS = 12_000L;
+    private static long devDirectQuickPlayFallbackAtMillis;
     private static final String NATIVE_UI_KEY_CATEGORY_ID = EchoAshfallProtocol.MODID + ":native_ui";
     private static final String DRONE_KEY_CATEGORY_ID = EchoAshfallProtocol.MODID + ":drone";
     private static final KeyMapping.Category NATIVE_UI_KEY_CATEGORY =
@@ -218,6 +216,10 @@ public class EchoAshfallProtocolClient {
                 modEventBus, REGISTER_LAYER_DEFINITIONS_EVENT, ClientModEvents::onRegisterLayerDefinitions);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
                 modEventBus, REGISTER_ENTITY_RENDERERS_EVENT, ClientModEvents::onRegisterEntityRenderers);
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerGameEventHandler(
+                INPUT_KEY_EVENT, ClientModEvents::onKeyInput);
+        com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerGameEventHandler(
+                CLIENT_TICK_POST_EVENT, ClientModEvents::onClientTick);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
                 modEventBus, REGISTER_KEY_MAPPINGS_EVENT, ClientModEvents::onRegisterKeyMappings);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.registerModListener(
@@ -236,11 +238,7 @@ public class EchoAshfallProtocolClient {
     }
 
     public static void bootstrapClient() {
-        if (EchoRuntimeModules.isLoaded("echoterminal")) {
-            AshfallTerminalIntegration.registerClient();
-            registerTerminalNoticeSurface();
-            registerAshfallTerminalScreen();
-        }
+        registerTerminalIntegrationIfPresent();
         if (EchoRuntimeModules.isLoaded("echopresencelink")) {
             try {
                 AshfallPresenceIntegration.registerClient();
@@ -252,6 +250,15 @@ public class EchoAshfallProtocolClient {
             registerRenderCoreStaticSurfaces();
         }
         registerNativeClientRoutes();
+    }
+
+    private static void registerTerminalIntegrationIfPresent() {
+        try {
+            AshfallTerminalIntegration.registerClient();
+            registerTerminalClientBridge();
+        } catch (RuntimeException | LinkageError exception) {
+            EchoAshfallProtocol.LOGGER.debug("ECHO Terminal Ashfall provider unavailable.", exception);
+        }
     }
 
     public static List<KeyMapping> keyMappings() {
@@ -285,56 +292,19 @@ public class EchoAshfallProtocolClient {
         }
     }
 
-    private static void registerTerminalNoticeSurface() {
+    private static void registerTerminalClientBridge() {
         try {
-            TerminalHudNoticeSurface.claimExternalSurface(EchoAshfallProtocol.MODID);
-        } catch (LinkageError exception) {
-            EchoAshfallProtocol.LOGGER.debug("Terminal HUD notice surface is not available.", exception);
+            Class.forName("com.knoxhack.echoashfallprotocol.integration.AshfallTerminalClientBridge")
+                    .getMethod("register", String.class)
+                    .invoke(null, EchoAshfallProtocol.MODID);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            EchoAshfallProtocol.LOGGER.debug("ECHO Terminal Ashfall client bridge unavailable.", exception);
         }
-    }
-
-    private static void registerAshfallTerminalScreen() {
-        EchoTerminalScreens.registerFallback(new EchoTerminalScreenProvider() {
-            @Override
-            public AbstractContainerScreen<EchoTerminalMenu> create(EchoTerminalMenu menu, Inventory playerInventory, Component title) {
-                if (LOGGED_TERMINAL_FALLBACK_OPEN.compareAndSet(false, true)) {
-                    EchoAshfallProtocol.LOGGER.info("Opening ECHO Terminal Ashfall legacy fallback renderer.");
-                }
-                return new EchoTerminalScreen(menu, playerInventory, title, ashfallTerminalTheme());
-            }
-
-            @Override
-            public boolean isTerminalScreen(Screen screen) {
-                return screen instanceof EchoTerminalScreen;
-            }
-        });
-    }
-
-    private static TerminalScreenTheme ashfallTerminalTheme() {
-        return new TerminalScreenTheme(
-                "ECHO-7 ASHFALL TERMINAL",
-                minecraft -> {
-                    if (minecraft.player == null) {
-                        return "LINK OFFLINE";
-                    }
-                    QuestData quest = QuestData.get(minecraft.player);
-                    MissionUxSummary summary = MissionUxSummary.current(minecraft.player, quest);
-                    return summary.missionId().isBlank() ? "PROTOCOL SYNC PENDING" : summary.shortTitle();
-                },
-                "M / ESC closes | arrows cycle tabs | up/down groups | wheel/page scrolls",
-                0xEE050B10,
-                0xE8050B10,
-                0xD8061016,
-                EchoTerminalStyle.CYAN,
-                0xFF244352,
-                EchoTerminalStyle.TEXT,
-                EchoTerminalStyle.MUTED,
-                1500,
-                820);
     }
 
     public static void onClientTick() {
         installNativeMainMenuIfReady();
+        openDevDirectQuickPlayIfStalled();
         WelcomeScreen.openPendingIfReady();
         EnvironmentalVisualController.tick();
         DroneClientState.tick();
@@ -351,6 +321,92 @@ public class EchoAshfallProtocolClient {
         if (minecraft.screen instanceof TitleScreen && NATIVE_MAIN_MENU_PROJECTED.compareAndSet(false, true)) {
             minecraft.setScreen(new EchoNativeMainMenuScreen());
         }
+    }
+
+    private static void openDevDirectQuickPlayIfStalled() {
+        if (DEV_DIRECT_QUICKPLAY_COMPLETED.get()
+                || !Boolean.getBoolean(DEV_DIRECT_AUTO_CONFIRM_EXPERIMENTAL_WORLD_PROPERTY)) {
+            return;
+        }
+        String saveName = System.getProperty(DEV_DIRECT_QUICKPLAY_SINGLEPLAYER_PROPERTY, "").trim();
+        if (!safeDevDirectSingleplayerName(saveName)) {
+            return;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null) {
+            return;
+        }
+        if (minecraft.player != null || minecraft.level != null) {
+            DEV_DIRECT_QUICKPLAY_COMPLETED.set(true);
+            return;
+        }
+        Screen screen = minecraft.screen;
+        if (!devDirectQuickPlayFallbackCandidate(screen)) {
+            devDirectQuickPlayFallbackAtMillis = 0L;
+            return;
+        }
+        long now = System.currentTimeMillis();
+        if (devDirectQuickPlayFallbackAtMillis <= 0L) {
+            devDirectQuickPlayFallbackAtMillis = now + DEV_DIRECT_QUICKPLAY_FALLBACK_GRACE_MILLIS;
+            EchoAshfallProtocol.LOGGER.info(
+                    "Armed NeoForge dev-direct quickplay fallback for existing world '{}' while on {}.",
+                    saveName,
+                    screen.getClass().getName());
+            return;
+        }
+        if (now < devDirectQuickPlayFallbackAtMillis
+                || !DEV_DIRECT_QUICKPLAY_DISPATCHED.compareAndSet(false, true)) {
+            return;
+        }
+        minecraft.execute(() -> dispatchDevDirectQuickPlayFallback(minecraft, screen, saveName));
+    }
+
+    private static void dispatchDevDirectQuickPlayFallback(Minecraft minecraft, Screen observedScreen, String saveName) {
+        if (DEV_DIRECT_QUICKPLAY_COMPLETED.get()) {
+            return;
+        }
+        if (minecraft.player != null || minecraft.level != null) {
+            DEV_DIRECT_QUICKPLAY_COMPLETED.set(true);
+            return;
+        }
+        Screen currentScreen = minecraft.screen;
+        if (currentScreen != observedScreen && !devDirectQuickPlayFallbackCandidate(currentScreen)) {
+            return;
+        }
+        try {
+            EchoAshfallProtocol.LOGGER.info(
+                    "Opening NeoForge dev-direct existing world '{}' through Minecraft world-open flows.",
+                    saveName);
+            minecraft.createWorldOpenFlows().openWorld(saveName, () -> minecraft.setScreen(null));
+        } catch (RuntimeException | LinkageError exception) {
+            EchoAshfallProtocol.LOGGER.error(
+                    "NeoForge dev-direct existing world fallback failed for '{}'.",
+                    saveName,
+                    exception);
+            DEV_DIRECT_QUICKPLAY_DISPATCHED.set(false);
+        }
+    }
+
+    private static boolean devDirectQuickPlayFallbackCandidate(Screen screen) {
+        if (screen == null) {
+            return false;
+        }
+        if (screen instanceof TitleScreen || screen instanceof EchoNativeMainMenuScreen) {
+            return true;
+        }
+        String className = screen.getClass().getName().toLowerCase(Locale.ROOT);
+        return className.endsWith("titleScreen".toLowerCase(Locale.ROOT))
+                || className.endsWith("mainmenuscreen")
+                || className.endsWith("backupscreen")
+                || className.endsWith("backupconfirmscreen");
+    }
+
+    private static boolean safeDevDirectSingleplayerName(String saveName) {
+        return !saveName.isBlank()
+                && !saveName.contains("..")
+                && !saveName.contains("/")
+                && !saveName.contains("\\")
+                && saveName.indexOf('\0') < 0;
     }
 
     public static void onRenderGui(GuiGraphicsExtractor graphics, Object partialTick) {
@@ -440,13 +496,20 @@ public class EchoAshfallProtocolClient {
         registerNativeClientRoutes();
         String surfaceType = nativeSurfaceType(route.surface());
         publishNativeSurfaceLifecycle(surfaceType, "key", route.action(), "keybind", hotkeyMetadata);
+        if (isTerminalOpenRoute(surfaceType, route.action())
+                && dispatchAshfallNativeSurface(surfaceType, route.action(), hotkeyMetadata)) {
+            Map<String, Object> bridgeMetadata = withOutcome(hotkeyMetadata, "ashfall_direct_bridge");
+            publishNativeSurfaceLifecycle(surfaceType, "open", route.action(), "ashfall_direct_bridge", bridgeMetadata);
+            publishNativeSurfaceLifecycle(surfaceType, "focus", route.action(), "ashfall_direct_bridge", bridgeMetadata);
+            return true;
+        }
         if (AshfallNativeClientRouteBridge.dispatch(surfaceType, route.action())) {
             Map<String, Object> routeMetadata = withOutcome(hotkeyMetadata, "route_dispatch");
             publishNativeSurfaceLifecycle(surfaceType, "open", route.action(), "route_dispatch", routeMetadata);
             publishNativeSurfaceLifecycle(surfaceType, "focus", route.action(), "route_dispatch", routeMetadata);
             return true;
         }
-        if (dispatchAshfallNativeSurface(surfaceType, route.action(), Map.of())) {
+        if (dispatchAshfallNativeSurface(surfaceType, route.action(), hotkeyMetadata)) {
             Map<String, Object> bridgeMetadata = withOutcome(hotkeyMetadata, "ashfall_direct_bridge");
             publishNativeSurfaceLifecycle(surfaceType, "open", route.action(), "ashfall_direct_bridge", bridgeMetadata);
             publishNativeSurfaceLifecycle(surfaceType, "focus", route.action(), "ashfall_direct_bridge", bridgeMetadata);
@@ -501,6 +564,11 @@ public class EchoAshfallProtocolClient {
         }
         updated.put("outcome", outcome);
         return Map.copyOf(updated);
+    }
+
+    private static boolean isTerminalOpenRoute(String surfaceType, String action) {
+        return "terminal".equals(surfaceType)
+                && ("terminal.open".equals(action) || "signalos.terminal".equals(action));
     }
 
     private static void notifyNativeSurfaceUnavailable(Minecraft minecraft, NativeSurfaceKeyRoute route) {
@@ -702,18 +770,11 @@ public class EchoAshfallProtocolClient {
             return false;
         }
         try {
-            boolean screenAlreadyOpen = EchoTerminalScreens.isManagedTerminalScreen(minecraft.screen);
-            minecraft.setScreen(EchoTerminalScreens.create(
-                    new EchoTerminalMenu(0, minecraft.player.getInventory()),
-                    minecraft.player.getInventory(),
-                    Component.translatable("container.echoterminal.echo_terminal")));
-            EchoTerminalNativeSessionBridge.recordNativeOpen(
-                    action,
-                    actionMetadata,
-                    true,
-                    screenAlreadyOpen);
-            return true;
-        } catch (RuntimeException | LinkageError exception) {
+            Object opened = Class.forName("com.knoxhack.echoashfallprotocol.integration.AshfallTerminalClientBridge")
+                    .getMethod("openTerminalSurface", Minecraft.class, String.class, Map.class)
+                    .invoke(null, minecraft, action, actionMetadata == null ? Map.of() : actionMetadata);
+            return Boolean.TRUE.equals(opened);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
             return false;
         }
     }
@@ -941,6 +1002,25 @@ public class EchoAshfallProtocolClient {
         return false;
     }
 
+    private static void onNativeKeyInput(Object event) {
+        if (!nativeLoaderActive()
+                || !com.knoxhack.echo.adaptercore.EchoBackendClientBridge.keyActionEquals(event, GLFW.GLFW_PRESS)) {
+            return;
+        }
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null || mc.screen != null) {
+            return;
+        }
+        int keyCode = com.knoxhack.echo.adaptercore.EchoBackendClientBridge.keyCode(event);
+        for (NativeSurfaceKeyBinding binding : NATIVE_SURFACE_KEY_BINDINGS) {
+            if (com.knoxhack.echo.adaptercore.EchoBackendClientBridge.keyMappingMatches(binding.keyMapping(), event)
+                    || keyCode == binding.defaultKeyCode()) {
+                openNativeSurface(mc, binding.route(), binding.metadata("key_event"));
+                return;
+            }
+        }
+    }
+
     private static void handleDroneKeybinds() {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null || mc.screen != null) {
@@ -964,7 +1044,18 @@ public class EchoAshfallProtocolClient {
     }
 
     private static void sendDroneCommand(String command) {
-        EchoNetClientActions.sendServerboundAction(new DroneCommandPacket(command));
+        try {
+            Object packet = Class.forName("com.knoxhack.echoashfallprotocol.network.DroneCommandPacket")
+                    .getConstructor(String.class)
+                    .newInstance(command);
+            Class<?> payloadType = Class.forName(
+                    "net.minecraft.network.protocol.common.custom.CustomPacketPayload");
+            Class.forName("com.knoxhack.echonetcore.client.EchoNetClientActions")
+                    .getMethod("sendServerboundAction", payloadType)
+                    .invoke(null, packet);
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            EchoAshfallProtocol.LOGGER.warn("ECHO Ashfall drone command {} could not be sent.", command, exception);
+        }
     }
 
     private static void auditNativeHotkeyConflicts() {
@@ -1013,6 +1104,15 @@ public class EchoAshfallProtocolClient {
             return;
         }
         String surfaceType = nativeSurfaceType(binding.route().surface());
+        if (isTerminalOpenRoute(surfaceType, binding.route().action())) {
+            publishNativeSurfaceLifecycle(
+                    surfaceType,
+                    "bind",
+                    binding.route().action(),
+                    "direct_key_event",
+                    withOutcome(binding.metadata("registered"), "direct_screen_bridge"));
+            return;
+        }
         Map<String, Object> metadata = new LinkedHashMap<>(binding.metadata("registered"));
         metadata.put("nativeInputBindingRegistry", "echo-native-client-route-registry");
         metadata.put("visibleKeybindCategory", NATIVE_UI_KEY_CATEGORY_ID);
@@ -1071,6 +1171,14 @@ public class EchoAshfallProtocolClient {
         static void onClientSetup(Object event) {
             EchoAshfallProtocol.LOGGER.info("ECHO: ASHFALL PROTOCOL - Client systems online");
             safeBootstrapClient();
+        }
+
+        static void onKeyInput(Object event) {
+            EchoAshfallProtocolClient.onNativeKeyInput(event);
+        }
+
+        static void onClientTick(Object event) {
+            EchoAshfallProtocolClient.onClientTick();
         }
 
         static void onRegisterLayerDefinitions(Object event) {

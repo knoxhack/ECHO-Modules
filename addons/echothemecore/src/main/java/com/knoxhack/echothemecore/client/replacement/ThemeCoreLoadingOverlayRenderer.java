@@ -4,6 +4,7 @@ import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeColors;
 import com.knoxhack.echothemecore.client.ClientThemeState;
 import com.knoxhack.echothemecore.client.NativeLoaderTextIdentity;
+import com.knoxhack.echothemecore.client.vanilla.VanillaUiProductOwnership;
 import com.knoxhack.echothemecore.config.ThemeCoreConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -15,7 +16,8 @@ public final class ThemeCoreLoadingOverlayRenderer {
     }
 
     public static boolean enabled() {
-        return ThemeCoreConfig.loadingReplacementEnabled();
+        return ThemeCoreConfig.loadingReplacementEnabled()
+                && !VanillaUiProductOwnership.productOwnsLoadingOverlay();
     }
 
     public static void render(GuiGraphicsExtractor graphics, Minecraft minecraft, float partialTick, float progress, float alpha) {

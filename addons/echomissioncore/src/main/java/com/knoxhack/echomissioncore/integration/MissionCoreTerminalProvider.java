@@ -9,6 +9,8 @@ import com.echoplatform.echocore.api.mission.MissionDefinition;
 import com.echoplatform.echocore.api.mission.MissionKind;
 import com.echoplatform.echocore.api.mission.MissionObjectiveType;
 import com.echoplatform.echocore.api.mission.MissionStatus;
+import com.echoplatform.echocore.api.mission.ObjectiveDefinition;
+import com.echoplatform.echocore.api.mission.RewardDefinition;
 import com.knoxhack.echomissioncore.EchoMissionCore;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionAction;
 import com.knoxhack.echoterminal.api.mission.TerminalMissionChapter;
@@ -54,23 +56,46 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
 
     @Override
     public List<TerminalMissionDefinition> missions(Player player) {
-        return EchoCoreServices.missionService().missions(player).stream()
-                .map(MissionCoreTerminalProvider::definition)
-                .toList();
+        List<TerminalMissionDefinition> missions = new ArrayList<>();
+        try {
+            for (IMissionProgressView view : EchoCoreServices.missionService().missions(player)) {
+                TerminalMissionDefinition definition = safeDefinition(view);
+                if (definition != null) {
+                    missions.add(definition);
+                }
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider is using definition-only mission rows while live progress views are unavailable.",
+                    exception);
+            return fallbackDefinitions();
+        }
+        if (missions.isEmpty()) {
+            List<TerminalMissionDefinition> fallbackRows = fallbackDefinitions();
+            if (!fallbackRows.isEmpty()) {
+                EchoMissionCore.LOGGER.debug(
+                        "MissionCore Terminal provider is using {} definition-only mission rows while live progress rows are empty.",
+                        fallbackRows.size());
+                return fallbackRows;
+            }
+        }
+        return List.copyOf(missions);
     }
 
     @Override
     public TerminalMissionSnapshot snapshot(Player player, Identifier missionId) {
-        return EchoCoreServices.missionService().mission(player, missionId)
-                .map(MissionCoreTerminalProvider::snapshot)
-                .orElseGet(() -> new TerminalMissionSnapshot(
-                        missionId,
-                        TerminalMissionStatus.LOCKED,
-                        0.0F,
-                        "Missing",
-                        "Mission record not found.",
-                        "Reload the terminal after content registration finishes.",
-                        List.of()));
+        try {
+            Optional<IMissionProgressView> view = EchoCoreServices.missionService().mission(player, missionId);
+            if (view != null && view.isPresent()) {
+                return snapshot(view.get());
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider is using a definition-only snapshot for {} while live progress is unavailable.",
+                    missionId,
+                    exception);
+        }
+        return fallbackSnapshot(missionId);
     }
 
     @Override
@@ -105,11 +130,21 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
         if (definition == null) {
             return TerminalMissionRole.fallback(null, snapshot);
         }
-        return EchoCoreServices.missionService().mission(player, definition.id())
-                .map(view -> view.status() == MissionStatus.VIEW_ONLY
+        try {
+            Optional<IMissionProgressView> view = EchoCoreServices.missionService().mission(player, definition.id());
+            if (view != null && view.isPresent()) {
+                IMissionProgressView progress = view.get();
+                return progress.status() == MissionStatus.VIEW_ONLY
                         ? TerminalMissionRole.REFERENCE
-                        : resolvedRouteRole(definition, snapshot, null, view.definition()))
-                .orElseGet(() -> TerminalMissionRole.fallback(definition, snapshot));
+                        : resolvedRouteRole(definition, snapshot, null, progress.definition());
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider is using a definition-only role for {} while live progress is unavailable.",
+                    definition.id(),
+                    exception);
+        }
+        return resolvedRouteRole(definition, snapshot, null, missionDefinition(definition.id()).orElse(null));
     }
 
     @Override
@@ -174,7 +209,190 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
 
     @Override
     public boolean handleAction(ServerPlayer player, Identifier missionId, String actionId) {
-        return EchoCoreServices.handleMissionAction(player, missionId, actionId);
+        boolean ashfallBootstrap = maybeBootstrapAshfallNativeRoute(player, missionId, actionId);
+        boolean handled = EchoCoreServices.handleMissionAction(player, missionId, actionId);
+        return handled || ashfallBootstrap;
+    }
+
+    private static TerminalMissionDefinition safeDefinition(IMissionProgressView view) {
+        try {
+            return definition(view);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider downgraded mission {} to a text-safe row while item components are unavailable.",
+                    safeMissionId(view),
+                    exception);
+            return fallbackDefinition(view);
+        }
+    }
+
+    private static TerminalMissionDefinition fallbackDefinition(IMissionProgressView view) {
+        MissionDefinition definition = null;
+        try {
+            if (view == null) {
+                return null;
+            }
+            definition = view.definition();
+            return fallbackDefinition(definition);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider could not publish fallback row for {}.",
+                    definition == null ? "<unknown>" : definition.id(),
+                    exception);
+            return null;
+        }
+    }
+
+    private static List<TerminalMissionDefinition> fallbackDefinitions() {
+        List<TerminalMissionDefinition> rows = new ArrayList<>();
+        try {
+            for (MissionDefinition definition : EchoCoreServices.missionService().missionDefinitions()) {
+                TerminalMissionDefinition row = fallbackDefinition(definition);
+                if (row != null) {
+                    rows.add(row);
+                }
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider could not read definition-only mission rows.",
+                    exception);
+        }
+        return List.copyOf(rows);
+    }
+
+    private static TerminalMissionSnapshot fallbackSnapshot(Identifier missionId) {
+        return missionDefinition(missionId)
+                .map(definition -> new TerminalMissionSnapshot(
+                        definition.id(),
+                        TerminalMissionStatus.UNLOCKED,
+                        0.0F,
+                        "Ready",
+                        fallbackSnapshotUnlockReason(definition),
+                        "Mission content is loaded; player progress will synchronize when the service publishes state.",
+                        List.of(TerminalMissionAction.enabled("track", "Track"))))
+                .orElseGet(() -> new TerminalMissionSnapshot(
+                        missionId,
+                        TerminalMissionStatus.LOCKED,
+                        0.0F,
+                        "Missing",
+                        "Mission record not found.",
+                        "Reload the terminal after content registration finishes.",
+                        List.of()));
+    }
+
+    private static String fallbackSnapshotUnlockReason(MissionDefinition definition) {
+        if (definition.fieldGuide() != null && !definition.fieldGuide().isBlank()) {
+            return definition.fieldGuide();
+        }
+        if (definition.briefing() != null && !definition.briefing().isBlank()) {
+            return definition.briefing();
+        }
+        return "Mission definition loaded before live player progress synchronized.";
+    }
+
+    private static TerminalMissionDefinition fallbackDefinition(MissionDefinition definition) {
+        try {
+            if (definition == null) {
+                return null;
+            }
+            return new TerminalMissionDefinition(
+                    definition.id(),
+                    CHAPTER_ID,
+                    definition.phaseId(),
+                    phaseTitle(definition),
+                    intMetadata(definition, "terminal_route_phase", definition.phaseOrder()),
+                    intMetadata(definition, "terminal_route_order", definition.missionOrder()),
+                    definition.title(),
+                    definition.briefing(),
+                    definition.fieldGuide(),
+                    definition.category(),
+                    definition.difficulty(),
+                    ItemStack.EMPTY,
+                    definition.prerequisites().stream().map(Identifier::toString).toList(),
+                    definition.objectives().stream().map(MissionCoreTerminalProvider::fallbackRequirement).toList(),
+                    definition.rewards().stream().map(MissionCoreTerminalProvider::fallbackReward).toList());
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider could not publish definition-only fallback row for {}.",
+                    definition == null ? "<unknown>" : definition.id(),
+                    exception);
+            return null;
+        }
+    }
+
+    private static Object safeMissionId(IMissionProgressView view) {
+        if (view == null) {
+            return "<unknown>";
+        }
+        try {
+            MissionDefinition definition = view.definition();
+            return definition == null ? "<unknown>" : definition.id();
+        } catch (RuntimeException | LinkageError exception) {
+            return "<unknown>";
+        }
+    }
+
+    private static TerminalMissionRequirement fallbackRequirement(IObjectiveView objective) {
+        return new TerminalMissionRequirement(
+                requirementKind(objective.type()),
+                objective.label(),
+                objective.detail(),
+                ItemStack.EMPTY,
+                objective.progress(),
+                objective.required(),
+                objective.complete());
+    }
+
+    private static TerminalMissionReward fallbackReward(IRewardView reward) {
+        return TerminalMissionReward.text(reward.label(), reward.detail());
+    }
+
+    private static TerminalMissionRequirement fallbackRequirement(ObjectiveDefinition objective) {
+        return new TerminalMissionRequirement(
+                requirementKind(objective.type()),
+                objective.label(),
+                objective.detail(),
+                ItemStack.EMPTY,
+                0,
+                objective.required(),
+                false);
+    }
+
+    private static TerminalMissionReward fallbackReward(RewardDefinition reward) {
+        return TerminalMissionReward.text(reward.label(), reward.detail());
+    }
+
+    private static boolean maybeBootstrapAshfallNativeRoute(ServerPlayer player, Identifier missionId, String actionId) {
+        if (player == null || missionId == null || actionId == null) {
+            return false;
+        }
+        String normalized = actionId.toLowerCase(java.util.Locale.ROOT);
+        if (!"echoashfallprotocol".equals(missionId.getNamespace())
+                || (!"start".equals(normalized) && !"track".equals(normalized))) {
+            return false;
+        }
+        try {
+            Object result = Class.forName(
+                            "com.knoxhack.echoashfallprotocol.event.AshfallAdapterCoreMissionTriggerRuntime")
+                    .getMethod("playerSpawned", ServerPlayer.class)
+                    .invoke(null, player);
+            boolean mutated = Boolean.TRUE.equals(result);
+            if (mutated) {
+                EchoMissionCore.LOGGER.info(
+                        "ECHO: MissionCore invoked Ashfall Native first-route bootstrap for {} before terminal action {}.",
+                        missionId,
+                        actionId);
+            }
+            return mutated;
+        } catch (ClassNotFoundException ignored) {
+            return false;
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.warn(
+                    "ECHO: MissionCore could not invoke Ashfall Native first-route bootstrap for {}.",
+                    missionId,
+                    exception);
+            return false;
+        }
     }
 
     private static TerminalMissionDefinition definition(IMissionProgressView view) {
@@ -193,7 +411,7 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
                 definition.fieldGuide(),
                 definition.category(),
                 definition.difficulty(),
-                definition.icon(),
+                safeItemStack(definition.icon()),
                 definition.prerequisites().stream().map(Identifier::toString).toList(),
                 view.objectives().stream().map(MissionCoreTerminalProvider::requirement).toList(),
                 view.rewards().stream().map(MissionCoreTerminalProvider::reward).toList());
@@ -216,7 +434,7 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
                 kind,
                 objective.label(),
                 objective.detail(),
-                requirementIcon(objective, kind),
+                safeItemStack(requirementIcon(objective, kind)),
                 objective.progress(),
                 objective.required(),
                 objective.complete());
@@ -267,27 +485,49 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
     }
 
     private static ItemStack itemIcon(String target, String fallbackNamespace) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
         for (Identifier id : targetIds(target, fallbackNamespace)) {
-            ItemStack stack = BuiltInRegistries.ITEM.getOptional(id)
-                    .filter(item -> item != Items.AIR)
-                    .map(ItemStack::new)
-                    .orElse(ItemStack.EMPTY);
-            if (!stack.isEmpty()) {
-                return stack;
+            try {
+                ItemStack stack = BuiltInRegistries.ITEM.getOptional(id)
+                        .filter(item -> item != Items.AIR)
+                        .map(ItemStack::new)
+                        .orElse(ItemStack.EMPTY);
+                if (!stack.isEmpty()) {
+                    return stack;
+                }
+            } catch (RuntimeException | LinkageError exception) {
+                EchoMissionCore.LOGGER.debug(
+                        "MissionCore Terminal item icon {} deferred because item components are unavailable.",
+                        id,
+                        exception);
+                return ItemStack.EMPTY;
             }
         }
         return ItemStack.EMPTY;
     }
 
     private static ItemStack blockIcon(String target, String fallbackNamespace) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
         for (Identifier id : targetIds(target, fallbackNamespace)) {
-            ItemStack stack = BuiltInRegistries.BLOCK.getOptional(id)
-                    .map(block -> block.asItem())
-                    .filter(item -> item != Items.AIR)
-                    .map(ItemStack::new)
-                    .orElse(ItemStack.EMPTY);
-            if (!stack.isEmpty()) {
-                return stack;
+            try {
+                ItemStack stack = BuiltInRegistries.BLOCK.getOptional(id)
+                        .map(block -> block.asItem())
+                        .filter(item -> item != Items.AIR)
+                        .map(ItemStack::new)
+                        .orElse(ItemStack.EMPTY);
+                if (!stack.isEmpty()) {
+                    return stack;
+                }
+            } catch (RuntimeException | LinkageError exception) {
+                EchoMissionCore.LOGGER.debug(
+                        "MissionCore Terminal block icon {} deferred because item components are unavailable.",
+                        id,
+                        exception);
+                return ItemStack.EMPTY;
             }
         }
         return ItemStack.EMPTY;
@@ -319,8 +559,8 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
     }
 
     private static TerminalMissionReward reward(IRewardView reward) {
-        ItemStack stack = reward.stack();
-        if (!stack.isEmpty()) {
+        ItemStack stack = safeItemStack(reward.stack());
+        if (!safeIsEmpty(stack)) {
             return new TerminalMissionReward(stack, reward.label(), reward.detail());
         }
         return TerminalMissionReward.text(reward.label(), reward.detail());
@@ -333,6 +573,9 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
     }
 
     private static TerminalMissionStatus status(MissionStatus status) {
+        if (status == null) {
+            return TerminalMissionStatus.VIEW_ONLY;
+        }
         return switch (status) {
             case LOCKED -> TerminalMissionStatus.LOCKED;
             case UNLOCKED, AVAILABLE, ACTIVE -> TerminalMissionStatus.UNLOCKED;
@@ -371,9 +614,40 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
     }
 
     private static Optional<MissionDefinition> importedMission(Identifier missionId) {
-        return EchoCoreServices.missionService()
-                .mission(null, missionId)
-                .map(IMissionProgressView::definition);
+        if (missionId == null) {
+            return Optional.empty();
+        }
+        try {
+            Optional<IMissionProgressView> view = EchoCoreServices.missionService().mission(null, missionId);
+            if (view != null && view.isPresent()) {
+                MissionDefinition definition = view.get().definition();
+                if (definition != null) {
+                    return Optional.of(definition);
+                }
+            }
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider could not read live route metadata for {}.",
+                    missionId,
+                    exception);
+        }
+        return missionDefinition(missionId);
+    }
+
+    private static Optional<MissionDefinition> missionDefinition(Identifier missionId) {
+        if (missionId == null) {
+            return Optional.empty();
+        }
+        try {
+            Optional<MissionDefinition> definition = EchoCoreServices.missionService().missionDefinition(missionId);
+            return definition == null ? Optional.empty() : definition;
+        } catch (RuntimeException | LinkageError exception) {
+            EchoMissionCore.LOGGER.debug(
+                    "MissionCore Terminal provider could not read mission definition {}.",
+                    missionId,
+                    exception);
+            return Optional.empty();
+        }
     }
 
     private static int routePhase(
@@ -638,6 +912,28 @@ public final class MissionCoreTerminalProvider implements TerminalMissionProvide
             return Integer.parseInt(value);
         } catch (NumberFormatException exception) {
             return fallback;
+        }
+    }
+
+    private static ItemStack safeItemStack(ItemStack stack) {
+        if (stack == null) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            return stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
+        } catch (RuntimeException | LinkageError exception) {
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private static boolean safeIsEmpty(ItemStack stack) {
+        if (stack == null) {
+            return true;
+        }
+        try {
+            return stack.isEmpty();
+        } catch (RuntimeException | LinkageError exception) {
+            return true;
         }
     }
 }

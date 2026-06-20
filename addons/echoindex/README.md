@@ -7,7 +7,7 @@ Provides `index.recipes`, `index.inventory_overlay`, `echoindex:inventory_overla
 | Field | Value |
 | --- | --- |
 | Module ID | `echoindex` |
-| Version | `1.0.0` |
+| Version | `1.0.1` |
 | Type | `addon` |
 | Kind | `ui_pack` |
 | Role | `index` |
@@ -44,10 +44,10 @@ Consumes: `echo.core`, `echo.net`
 
 | File | Requirement |
 | --- | --- |
-| `echoindex-1.0.0-neoforge.jar` | Required for Ashfall NeoForge Edition. |
-| `echoindex-1.0.0.echo-addon` | Required for Ashfall Native Edition. |
-| `echoindex-1.0.0-standalone.jar` | Required for Ashfall Standalone Edition. |
-| `echoindex-1.0.0-sources.jar` | Always required for traceability and developer debugging. |
+| `echoindex-1.0.1-neoforge.jar` | Required for Ashfall NeoForge Edition. |
+| `echoindex-1.0.1.echo-addon` | Required for Ashfall Native Edition. |
+| `echoindex-1.0.1-standalone.jar` | Required for Ashfall Standalone Edition. |
+| `echoindex-1.0.1-sources.jar` | Always required for traceability and developer debugging. |
 | `META-INF/echo.mod.json` | Always required and embedded in runtime artifacts where applicable. |
 | `META-INF/neoforge.mods.toml` | Required in NeoForge artifacts. |
 | `echo-addon-package.json` | Required in `.echo-addon` packages. |

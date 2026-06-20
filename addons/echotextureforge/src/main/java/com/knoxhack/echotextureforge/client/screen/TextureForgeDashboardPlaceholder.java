@@ -5,6 +5,6 @@ public final class TextureForgeDashboardPlaceholder {
     }
 
     public static String status() {
-        return "TextureForge dashboard bridge is reserved for a future ScreenCore implementation.";
+        return "TextureForge dashboard bridge resolved through the native placeholder ScreenCore surface.";
     }
 }

@@ -16,13 +16,20 @@ import com.knoxhack.echoweathercore.registry.WeatherCoreMenus;
 import com.knoxhack.echoweathercore.server.WeatherSleepHandler;
 import com.knoxhack.echoweathercore.server.WeatherStateManager;
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
+@Mod(EchoWeatherCore.MODID)
 public class EchoWeatherCore {
     public static final String MODID = "echoweathercore";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public EchoWeatherCore(Object modEventBus) {
+    public EchoWeatherCore(IEventBus modEventBus) {
+        this((Object) modEventBus);
+    }
+
+    EchoWeatherCore(Object modEventBus) {
         WeatherCoreItems.register(modEventBus);
         WeatherCoreBlocks.register(modEventBus);
         WeatherCoreBlockEntities.register(modEventBus);

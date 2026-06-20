@@ -1178,12 +1178,6 @@ stat-card,
   gap: 6px;
 }
 
-.terminal-mission-detail-scroll {
-  height: 272px;
-  min-height: 272px;
-  overflow: scroll;
-}
-
 .terminal-mission-detail-content {
   height: 500px;
   min-height: 500px;
@@ -1391,12 +1385,6 @@ stat-card,
   height: 340px;
   min-height: 320px;
   max-height: 372px;
-}
-
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 238px;
-  min-height: 214px;
-  max-height: 272px;
 }
 
 .terminal-route-layout .terminal-mission-detail-content {
@@ -1851,11 +1839,6 @@ list-row:focused {
   padding-bottom: 10px;
 }
 
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 214px;
-  min-height: 184px;
-}
-
 .terminal-route-layout .terminal-mission-detail-content {
   min-height: 430px;
   padding-bottom: 12px;
@@ -2063,13 +2046,6 @@ list-row:focused {
   max-height: 380px;
   padding: 7px;
   gap: 6px;
-}
-
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 252px;
-  min-height: 220px;
-  max-height: 292px;
-  overflow: scroll;
 }
 
 .terminal-route-layout .terminal-mission-detail-content {
@@ -2972,14 +2948,6 @@ list-row[disabled] {
   max-height: 5px;
 }
 
-.terminal-mission-detail-scroll,
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 168px;
-  min-height: 154px;
-  max-height: 176px;
-  overflow: scroll;
-}
-
 .terminal-mission-detail-content,
 .terminal-route-layout .terminal-mission-detail-content {
   gap: 5px;
@@ -3012,15 +2980,6 @@ list-row[disabled] {
   gap: 6px;
   background: #03131ff0;
   border-color: #22d6efaa;
-}
-
-/* Survival Route briefing polish: keep mission guidance visible above checklist rows. */
-.terminal-route-layout .terminal-mission-detail-scroll,
-.terminal-mission-detail-scroll {
-  height: 300px;
-  min-height: 286px;
-  max-height: 312px;
-  overflow: scroll;
 }
 
 .terminal-route-layout .terminal-mission-detail-content,
@@ -3406,14 +3365,6 @@ list-row[disabled] {
   padding: 8px;
 }
 
-.terminal-mission-detail-scroll,
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 286px;
-  min-height: 268px;
-  max-height: 296px;
-  overflow: scroll;
-}
-
 .terminal-route-detail-card,
 .terminal-route-layout .terminal-route-detail-card {
   height: 86px;
@@ -3575,13 +3526,6 @@ list-row[disabled] {
   height: 370px;
   min-height: 350px;
   max-height: 390px;
-}
-
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 262px;
-  min-height: 230px;
-  max-height: 300px;
-  overflow: scroll;
 }
 
 .terminal-route-layout .terminal-mission-detail-content {
@@ -3915,14 +3859,6 @@ list-row[disabled] {
   overflow: scroll;
 }
 
-.terminal-mission-detail-scroll,
-.terminal-route-layout .terminal-mission-detail-scroll {
-  height: 286px;
-  min-height: 268px;
-  max-height: 296px;
-  overflow: scroll;
-}
-
 .terminal-route-detail-card,
 .terminal-route-layout .terminal-route-detail-card {
   height: 86px;
@@ -3974,8 +3910,8 @@ list-row[disabled] {
   title-color: #dffbffff;
 }
 
-/* Canonical Survival Route split-panel layout. Keep this block last so older route
-   experiments above cannot reintroduce clipped briefing rows or hidden buttons. */
+/* Canonical Survival Route split-panel baseline. Later Ashfall polish blocks tighten
+   this shared layout for the current 1280x720 ScreenCore viewport. */
 .terminal-route-layout {
   height: 456px;
   min-height: 456px;
@@ -4102,22 +4038,6 @@ list-row[disabled] {
   height: 5px;
   min-height: 5px;
   max-height: 5px;
-}
-
-.terminal-route-layout .terminal-mission-detail-scroll,
-.terminal-mission-detail-scroll {
-  height: 92px;
-  min-height: 92px;
-  max-height: 92px;
-  overflow: scroll;
-}
-
-.terminal-route-layout .terminal-route-sideops-scroll,
-.terminal-route-sideops-scroll {
-  height: 108px;
-  min-height: 108px;
-  max-height: 108px;
-  overflow: scroll;
 }
 
 .terminal-route-layout .terminal-mission-detail-content,
@@ -4394,4 +4314,399 @@ screen-shell,
   border-color: #29eaff58;
   texture-alpha: 5;
   texture-alpha-2: 2;
+}
+
+/* Ashfall Survival Route final all-edition polish v2. Keep this block last: the
+   same echoterminal resources ship through NeoForge, Native, and Standalone. */
+.terminal-route-layout {
+  height: 376px;
+  min-height: 376px;
+  max-height: 376px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-panel,
+.terminal-route-layout .terminal-route-phases-panel,
+.terminal-route-layout .terminal-route-missions-panel,
+.terminal-route-layout .terminal-route-briefing-panel,
+.terminal-route-phases-panel,
+.terminal-route-missions-panel,
+.terminal-route-briefing-panel {
+  height: auto;
+  min-height: 0px;
+  max-height: auto;
+  padding: 7px;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-briefing-panel,
+.terminal-route-briefing-panel {
+  padding: 0px;
+  background: #010d16f0;
+  border-color: #30dff266;
+  texture-alpha: 2;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-route-summary-row,
+.terminal-route-summary-row {
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-chip-row,
+.terminal-route-layout .terminal-chip-row {
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+}
+
+.terminal-route-layout .terminal-route-chip-row status-chip,
+.terminal-route-chip-row status-chip,
+.terminal-route-summary-row status-chip {
+  width: 70px;
+  min-width: 58px;
+}
+
+.terminal-route-layout .terminal-route-focus-button,
+.terminal-route-focus-button {
+  width: 66px;
+  min-width: 62px;
+  height: 28px;
+  min-height: 28px;
+  padding: 3px 6px;
+}
+
+.terminal-route-layout .terminal-phase-lane,
+.terminal-phase-lane {
+  height: 204px;
+  min-height: 204px;
+  max-height: 204px;
+  padding: 7px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-roadmap-scroll,
+.terminal-roadmap-scroll {
+  height: 170px;
+  min-height: 170px;
+  max-height: 170px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-selected-phase-card,
+.terminal-selected-phase-card {
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  padding: 6px 7px;
+  gap: 3px;
+}
+
+.terminal-route-layout .terminal-route-legend,
+.terminal-route-legend {
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 4px 5px;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-legend status-chip,
+.terminal-route-legend status-chip {
+  width: 54px;
+  min-width: 48px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-route-layout .terminal-mission-list,
+.terminal-mission-list {
+  height: 334px;
+  min-height: 334px;
+  max-height: 334px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-scroll,
+.terminal-route-briefing-scroll {
+  height: 376px;
+  min-height: 376px;
+  max-height: 376px;
+  padding: 0px 0px 56px 0px;
+  overflow: scroll;
+}
+
+.terminal-route-layout .terminal-route-briefing-stack,
+.terminal-route-briefing-stack {
+  height: auto;
+  min-height: 0px;
+  max-height: auto;
+  padding: 0px 0px 64px 0px;
+  gap: 7px;
+  overflow: visible;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card,
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card,
+.terminal-route-layout .terminal-route-detail-card,
+.terminal-route-detail-card,
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  height: auto;
+  min-height: 0px;
+  max-height: auto;
+  overflow: visible;
+}
+
+.terminal-route-layout .terminal-route-briefing-card,
+.terminal-route-briefing-card {
+  padding: 7px 8px 10px 8px;
+  gap: 6px;
+  background: #03131ff0;
+  border-color: #29eaff66;
+  texture-alpha: 3;
+  texture-alpha-2: 1;
+}
+
+.terminal-route-layout .terminal-route-info-card,
+.terminal-route-info-card {
+  min-height: 106px;
+  padding: 6px 8px;
+  gap: 5px;
+}
+
+.terminal-route-layout .terminal-route-info-copy,
+.terminal-route-info-copy {
+  min-height: 48px;
+  line-height: 10px;
+  max-lines: 2;
+  wrap: true;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-guidance-copy,
+.terminal-route-guidance-copy {
+  min-height: 24px;
+  line-height: 9px;
+  max-lines: 1;
+  wrap: false;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-mission-detail-content,
+.terminal-mission-detail-content {
+  gap: 6px;
+  padding: 0px;
+}
+
+.terminal-route-layout .terminal-mission-check-panel,
+.terminal-route-layout .terminal-mission-reward-panel,
+.terminal-mission-check-panel,
+.terminal-mission-reward-panel {
+  min-height: 70px;
+  padding: 5px 7px 7px 7px;
+  gap: 5px;
+  background: #031521e8;
+  border-color: #35eaff42;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-route-sideops-card,
+.terminal-route-sideops-card {
+  min-height: 72px;
+  padding: 6px 8px 10px 8px;
+  gap: 5px;
+  background: #03131fe8;
+  border-color: #29eaff58;
+}
+
+.terminal-route-phase-row,
+.terminal-route-mission-row,
+.terminal-route-layout .terminal-route-phase-row,
+.terminal-route-layout .terminal-route-mission-row {
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  padding: 5px 7px;
+  gap: 6px;
+  background: #041722f2;
+  border-color: #2fdff070;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+  glow-strength: 2;
+}
+
+.terminal-route-layout .terminal-route-detail-row,
+.terminal-route-detail-row {
+  height: 36px;
+  min-height: 36px;
+  max-height: 38px;
+  padding: 4px 6px;
+  gap: 6px;
+  background: #061c27e6;
+  border-color: #35eaff38;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-index-chip,
+.terminal-route-index-chip {
+  width: 44px;
+  min-width: 44px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-route-layout .terminal-route-state-chip,
+.terminal-route-state-chip {
+  width: 62px;
+  min-width: 58px;
+  height: 18px;
+  min-height: 18px;
+}
+
+.terminal-route-layout .terminal-route-item-icon,
+.terminal-route-item-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+}
+
+.terminal-route-layout .terminal-route-copy-block,
+.terminal-route-copy-block,
+.terminal-route-layout .terminal-route-row-copy,
+.terminal-route-row-copy {
+  min-width: 0px;
+  gap: 2px;
+  line-height: 9px;
+  max-lines: 1;
+  wrap: false;
+  overflow: hidden;
+}
+
+.terminal-route-layout .terminal-route-row-progress,
+.terminal-route-row-progress,
+.terminal-route-layout .terminal-route-detail-progress,
+.terminal-route-detail-progress {
+  height: 4px;
+  min-height: 4px;
+  max-height: 4px;
+  track-color: #03111bdd;
+  fill-color: #58ff9aff;
+  border-color: #31eaff66;
+}
+
+.terminal-route-phase-row[selected="true"],
+.terminal-route-phase-row[active="true"],
+.terminal-route-mission-row[selected="true"],
+.terminal-route-mission-row[active="true"],
+.terminal-route-layout .terminal-route-phase-row[selected="true"],
+.terminal-route-layout .terminal-route-phase-row[active="true"],
+.terminal-route-layout .terminal-route-mission-row[selected="true"],
+.terminal-route-layout .terminal-route-mission-row[active="true"] {
+  background: #06291ff2;
+  border-color: #6dffabff;
+  accent-color: #58ff9aff;
+  background-texture-2: "";
+  texture-alpha-2: 0;
+  glow-strength: 5;
+}
+
+.terminal-route-phase-row:hover,
+.terminal-route-mission-row:hover,
+.terminal-route-layout .terminal-route-phase-row:hover,
+.terminal-route-layout .terminal-route-mission-row:hover {
+  background: #062436f0;
+  border-color: #44eaffaa;
+  glow-strength: 4;
+}
+
+.terminal-route-layout .terminal-mission-action-strip,
+.terminal-mission-action-strip {
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 5px 5px 7px 5px;
+  columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  background: #03131ff2;
+  border-color: #22d6efaa;
+  overflow: hidden;
+  texture-alpha: 0;
+  texture-alpha-2: 0;
+}
+
+.terminal-route-layout .terminal-route-action-button,
+.terminal-route-action-button {
+  height: 28px;
+  min-height: 28px;
+  max-height: 28px;
+  min-width: 0px;
+  padding: 3px 3px;
+  text-align: center;
+  wrap: false;
+  max-lines: 1;
+  overflow: hidden;
+  background: #062033ef;
+  border-color: #45eaff77;
+}
+
+.terminal-route-layout .terminal-route-claim-button,
+.terminal-route-claim-button {
+  min-width: 0px;
+  text-align: center;
+}
+
+.terminal-route-action-button[variant="primary"],
+.terminal-route-layout .terminal-route-action-button[variant="primary"] {
+  background: #11dbe8e8;
+  border-color: #76fbffff;
+  color: #001419ff;
+  glow-strength: 8;
+}
+
+.terminal-route-action-button:hover,
+.terminal-route-action-button:focused,
+.terminal-route-layout .terminal-route-action-button:hover,
+.terminal-route-layout .terminal-route-action-button:focused {
+  height: 28px;
+  min-height: 28px;
+  max-height: 28px;
+  min-width: 0px;
+  padding: 3px 3px;
+  text-align: center;
+  wrap: false;
+  max-lines: 1;
+  overflow: hidden;
+  background: #0a2a3cf0;
+  border-color: #66f5ffff;
+  glow-strength: 6;
+}
+
+.terminal-route-action-button[variant="primary"]:hover,
+.terminal-route-action-button[variant="primary"]:focused,
+.terminal-route-layout .terminal-route-action-button[variant="primary"]:hover,
+.terminal-route-layout .terminal-route-action-button[variant="primary"]:focused {
+  background: #17e6edf0;
+  border-color: #9dffffff;
+  color: #001419ff;
+  glow-strength: 8;
+}
+
+.terminal-route-action-button[disabled],
+.terminal-route-action-button:disabled,
+.terminal-route-layout .terminal-route-action-button[disabled],
+.terminal-route-layout .terminal-route-action-button:disabled {
+  background: #07141eaa;
+  border-color: #526c7a66;
+  color: #8aa4b0d8;
+  glow-strength: 0;
 }

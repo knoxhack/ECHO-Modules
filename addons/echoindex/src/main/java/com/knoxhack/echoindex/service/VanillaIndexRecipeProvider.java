@@ -7,6 +7,8 @@ import com.echoplatform.echocore.api.index.IndexRecipeView;
 import com.echoplatform.echocore.api.index.IndexSlotRole;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.IndexIds;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -58,6 +60,7 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
             "echoblackboxprotocol:blackbox_processing",
             "echoconvoyprotocol:convoy_station_processing",
             "echoorbitalremnants:orbital_processing");
+    private static volatile ContextMap emptyContextMap;
     private volatile int skippedRecipeCount;
     private final Map<Identifier, IndexRecipeDisplayMetadata> displayMetadata = new ConcurrentHashMap<>();
 
@@ -270,11 +273,11 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
 
     private static IndexRecipeView adaptDisplayEntry(RecipeDisplayEntry entry) {
         RecipeDisplay display = entry.display();
-        ItemStack output = display.result().resolveForFirstStack(ContextMap.EMPTY);
+        ItemStack output = resolveFirstStack(display.result());
         if (output.isEmpty()) {
             return null;
         }
-        ItemStack machine = display.craftingStation().resolveForFirstStack(ContextMap.EMPTY);
+        ItemStack machine = resolveFirstStack(display.craftingStation());
         Identifier categoryId = categoryId(display, machine);
         List<IndexRecipeSlot> slots = new ArrayList<>();
         Optional<List<Ingredient>> requirements = entry.craftingRequirements();
@@ -285,22 +288,14 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
         }
         if (slots.isEmpty()) {
             for (SlotDisplay input : inputDisplays(display)) {
-                List<ItemStack> stacks = input.resolveForStacks(ContextMap.EMPTY).stream()
-                        .filter(stack -> stack != null && !stack.isEmpty())
-                        .map(ItemStack::copy)
-                        .limit(24)
-                        .toList();
+                List<ItemStack> stacks = choices(input, 24);
                 if (!stacks.isEmpty()) {
                     slots.add(IndexRecipeSlot.inputs(stacks));
                 }
             }
         }
         if (display instanceof FurnaceRecipeDisplay furnace) {
-            List<ItemStack> fuel = furnace.fuel().resolveForStacks(ContextMap.EMPTY).stream()
-                    .filter(stack -> stack != null && !stack.isEmpty())
-                    .map(ItemStack::copy)
-                    .limit(24)
-                    .toList();
+            List<ItemStack> fuel = choices(furnace.fuel(), 24);
             if (!fuel.isEmpty()) {
                 slots.add(new IndexRecipeSlot(IndexSlotRole.CATALYST, fuel, "Fuel"));
             }
@@ -481,7 +476,7 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
 
     private static ItemStack output(Recipe<?> recipe) {
         for (RecipeDisplay display : recipe.display()) {
-            ItemStack stack = display.result().resolveForFirstStack(ContextMap.EMPTY);
+            ItemStack stack = resolveFirstStack(display.result());
             if (!stack.isEmpty()) {
                 return stack.copy();
             }
@@ -499,7 +494,7 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
 
     private static ItemStack machine(Recipe<?> recipe, Identifier categoryId) {
         for (RecipeDisplay display : recipe.display()) {
-            ItemStack stack = display.craftingStation().resolveForFirstStack(ContextMap.EMPTY);
+            ItemStack stack = resolveFirstStack(display.craftingStation());
             if (!stack.isEmpty()) {
                 return stack.copy();
             }
@@ -569,10 +564,10 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
     private static IndexRecipeDisplayMetadata displayMetadata(Identifier recipeId, RecipeDisplay display,
             Identifier categoryId, ItemStack output, ItemStack machine) {
         ItemStack resolvedOutput = output == null || output.isEmpty()
-                ? display.result().resolveForFirstStack(ContextMap.EMPTY)
+                ? resolveFirstStack(display.result())
                 : output.copy();
         ItemStack resolvedMachine = machine == null || machine.isEmpty()
-                ? display.craftingStation().resolveForFirstStack(ContextMap.EMPTY)
+                ? resolveFirstStack(display.craftingStation())
                 : machine.copy();
         if (display instanceof ShapedCraftingRecipeDisplay shaped) {
             return new IndexRecipeDisplayMetadata(recipeId, IndexRecipeLayoutType.CRAFTING_SHAPED,
@@ -698,11 +693,74 @@ public enum VanillaIndexRecipeProvider implements IIndexRecipeProvider {
         if (display == null) {
             return List.of();
         }
-        return display.resolveForStacks(ContextMap.EMPTY).stream()
-                .filter(stack -> stack != null && !stack.isEmpty())
-                .map(ItemStack::copy)
-                .limit(limit)
-                .toList();
+        ContextMap context = emptyContextMap();
+        if (context == null) {
+            return List.of();
+        }
+        try {
+            return display.resolveForStacks(context).stream()
+                    .filter(stack -> stack != null && !stack.isEmpty())
+                    .map(ItemStack::copy)
+                    .limit(limit)
+                    .toList();
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("Index could not resolve recipe display stacks.", exception);
+            return List.of();
+        }
+    }
+
+    private static ItemStack resolveFirstStack(SlotDisplay display) {
+        if (display == null) {
+            return ItemStack.EMPTY;
+        }
+        ContextMap context = emptyContextMap();
+        if (context == null) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemStack stack = display.resolveForFirstStack(context);
+            return stack == null || stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("Index could not resolve recipe display stack.", exception);
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private static ContextMap emptyContextMap() {
+        ContextMap context = emptyContextMap;
+        if (context != null) {
+            return context;
+        }
+        synchronized (VanillaIndexRecipeProvider.class) {
+            context = emptyContextMap;
+            if (context != null) {
+                return context;
+            }
+            context = resolveEmptyContextMap();
+            emptyContextMap = context;
+            return context;
+        }
+    }
+
+    private static ContextMap resolveEmptyContextMap() {
+        try {
+            Field field = ContextMap.class.getDeclaredField("EMPTY");
+            field.setAccessible(true);
+            Object value = field.get(null);
+            if (value instanceof ContextMap context) {
+                return context;
+            }
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException exception) {
+            EchoIndex.LOGGER.debug("Index ContextMap.EMPTY is not available in this runtime.", exception);
+        }
+        try {
+            Constructor<ContextMap> constructor = ContextMap.class.getDeclaredConstructor(Map.class);
+            constructor.setAccessible(true);
+            return constructor.newInstance(Map.of());
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException exception) {
+            EchoIndex.LOGGER.debug("Index could not create an empty recipe display context.", exception);
+            return null;
+        }
     }
 
     private static List<ItemStack> choices(Ingredient ingredient, int limit) {

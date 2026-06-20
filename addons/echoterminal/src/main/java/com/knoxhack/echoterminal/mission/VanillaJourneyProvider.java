@@ -18,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public final class VanillaJourneyProvider implements TerminalMissionProvider {
@@ -165,7 +166,7 @@ public final class VanillaJourneyProvider implements TerminalMissionProvider {
                 ? List.of(TerminalMissionRequirement.custom(
                         "Vanilla advancement",
                         completed ? "Complete" : "Complete advancement: " + mission.title(),
-                        new ItemStack(mission.icon()),
+                        safeItemStack(mission.icon()),
                         completed ? 1 : 0,
                         1,
                         completed))
@@ -182,10 +183,32 @@ public final class VanillaJourneyProvider implements TerminalMissionProvider {
                 mission.guide(),
                 mission.phaseTitle(),
                 mission.tier().label(),
-                new ItemStack(mission.icon()),
+                safeItemStack(mission.icon()),
                 List.of(),
                 requirements,
-                mission.rewardStacks().stream().map(TerminalMissionReward::of).toList());
+                safeRewardStacks(mission).stream().map(TerminalMissionReward::of).toList());
+    }
+
+    private static List<ItemStack> safeRewardStacks(VanillaJourneyDefinitions.VanillaMission mission) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return List.of();
+        }
+        try {
+            return mission.rewardStacks();
+        } catch (RuntimeException | LinkageError ignored) {
+            return List.of();
+        }
+    }
+
+    private static ItemStack safeItemStack(Item item) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            return new ItemStack(item);
+        } catch (RuntimeException | LinkageError ignored) {
+            return ItemStack.EMPTY;
+        }
     }
 
     private static List<TerminalMissionAction> actions(boolean completed, boolean claimed) {

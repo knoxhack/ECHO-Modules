@@ -267,6 +267,11 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("terminal_screencore_click_action_dispatch", () -> ModGameTests::terminalScreenCoreClickActionDispatch);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE =
             TEST_FUNCTIONS.register("terminal_screencore_overview_route_cache", () -> ModGameTests::terminalScreenCoreOverviewRouteCache);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_NATIVE_MISSION_FALLBACK =
+            TEST_FUNCTIONS.register("terminal_screencore_native_mission_fallback", () -> ModGameTests::terminalScreenCoreNativeMissionFallback);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_NATIVE_LINKAGE_PROVIDER_FALLBACK =
+            TEST_FUNCTIONS.register("terminal_screencore_native_linkage_provider_fallback",
+                    () -> ModGameTests::terminalScreenCoreNativeLinkageProviderFallback);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_CONFIG_WORKFLOW =
             TEST_FUNCTIONS.register("terminal_config_workflow", () -> ModGameTests::terminalConfigWorkflow);
 
@@ -302,6 +307,7 @@ public final class ModGameTests {
         register(event, environment, "terminal_scrollbar_metrics", TERMINAL_SCROLLBAR_METRICS.getId());
         register(event, environment, "terminal_screen_provider_precedence", TERMINAL_SCREEN_PROVIDER_PRECEDENCE.getId());
         register(event, environment, "terminal_visual_polish_layout", TERMINAL_VISUAL_POLISH_LAYOUT.getId());
+        register(event, environment, "terminal_screencore_text_layout", TERMINAL_SCREENCORE_TEXT_LAYOUT.getId());
         register(event, environment, "terminal_resource_name_contracts", TERMINAL_RESOURCE_NAME_CONTRACTS.getId());
         register(event, environment, "terminal_command_deck_priority", TERMINAL_COMMAND_DECK_PRIORITY.getId());
         register(event, environment, "terminal_mission_action_routing", TERMINAL_MISSION_ACTION_ROUTING.getId());
@@ -329,6 +335,7 @@ public final class ModGameTests {
         register(event, environment, "terminal_screencore_action_catalog", TERMINAL_SCREENCORE_ACTION_CATALOG.getId());
         register(event, environment, "terminal_screencore_parity_state", TERMINAL_SCREENCORE_PARITY_STATE.getId());
         register(event, environment, "terminal_screencore_overview_route_cache", TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE.getId());
+        register(event, environment, "terminal_screencore_native_mission_fallback", TERMINAL_SCREENCORE_NATIVE_MISSION_FALLBACK.getId());
         register(event, environment, "terminal_screencore_click_action_dispatch", TERMINAL_SCREENCORE_CLICK_ACTION_DISPATCH.getId());
         register(event, environment, "terminal_config_workflow", TERMINAL_CONFIG_WORKFLOW.getId());
     }
@@ -486,6 +493,13 @@ public final class ModGameTests {
                 duplicateRejected = true;
             }
             helper.assertTrue(duplicateRejected, "Duplicate mission provider ids must fail fast");
+
+            boolean duplicateSkipped = TerminalMissionRegistry.registerIfAbsent(
+                    new DummyMissionProvider(id("alpha_chapter"), 99, new AtomicBoolean(false)));
+            helper.assertFalse(duplicateSkipped,
+                    "Idempotent mission provider registration should skip an existing provider id.");
+            helper.assertTrue(TerminalMissionRegistry.providers().size() == 2,
+                    "Idempotent duplicate registration should not add a second provider.");
 
             boolean uppercaseRejected = false;
             try {
@@ -1627,6 +1641,265 @@ public final class ModGameTests {
         helper.succeed();
     }
 
+    private static void terminalScreenCoreNativeMissionFallback(GameTestHelper helper) {
+        if (!screenCoreLoaded()) {
+            helper.succeed();
+            return;
+        }
+        try {
+            screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            Identifier mainMissionId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "secure_crash_outpost");
+            Identifier sideMissionId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "native_route_side_cache");
+            ConfigurableMissionProvider directProvider = new ConfigurableMissionProvider(
+                    MainSurvivalQuestProvider.CHAPTER_ID,
+                    "Native MissionCore Direct",
+                    5,
+                    List.of(new ConfiguredMission(
+                            mainMissionId,
+                            "Native Starter Route",
+                            "Podfall",
+                            "Survival",
+                            "Low",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("start", "Track")),
+                            List.of(TerminalMissionReward.of(new ItemStack(Items.TORCH, 8)))),
+                            new ConfiguredMission(
+                                    sideMissionId,
+                                    "Native Cache Check",
+                                    "Podfall",
+                                    "Optional",
+                                    "Low",
+                                    TerminalMissionRole.OPTIONAL,
+                                    TerminalMissionStatus.CLAIMABLE,
+                                    List.of(TerminalMissionAction.enabled("claim_reward", "Claim")),
+                                    Optional.of(mainMissionId),
+                                    List.of())));
+
+            TerminalMissionRegistry.withClearedForTests(() -> {
+                MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                TerminalMissionRegistry.register(directProvider);
+                try {
+                    Object context = putScreenCoreData(newScreenCoreDataContext(),
+                            "terminal.activeTabId", MainSurvivalQuestProvider.TAB_ID.toString());
+
+                    helper.assertTrue("Anchor Pod Outpost".equals(resolveScreenCoreData(
+                                    context, "overview.bestNextAction.title")),
+                            "Command Deck should use direct MissionCore rows when the aggregate Survival Route is empty");
+                    helper.assertTrue(mainMissionId.toString().equals(resolveScreenCoreData(
+                                    context, "overview.bestNextAction.missionId")),
+                            "Command Deck fallback should preserve the loaded MissionCore mission id");
+
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> visibleMissions = (List<Map<String, Object>>)
+                            resolveScreenCoreData(context, "missionBrowser.visibleMissions");
+                    helper.assertTrue(visibleMissions.stream()
+                                    .anyMatch(row -> mainMissionId.toString().equals(String.valueOf(row.get("id")))),
+                            "Survival Route browser should show direct MissionCore missions when aggregate rows are empty");
+
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> sideOps = (List<Map<String, Object>>)
+                            resolveScreenCoreData(context, "overview.sideOps");
+                    helper.assertTrue(sideOps.stream()
+                                    .anyMatch(row -> sideMissionId.toString().equals(String.valueOf(row.get("missionId")))),
+                            "Command Deck side ops should retain route-linked direct MissionCore missions");
+                } catch (ReflectiveOperationException | LinkageError exception) {
+                    throw new AssertionError("Failed to exercise ScreenCore Native mission fallback", exception);
+                }
+            });
+
+            Identifier lateProgressId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "native_late_progress");
+            NativeLateProgressMissionProvider lateProgressProvider = new NativeLateProgressMissionProvider(
+                    Identifier.fromNamespaceAndPath("echoashfallprotocol", "ashfall_protocol"),
+                    "Native Late Progress",
+                    7,
+                    List.of(new ConfiguredMission(
+                            lateProgressId,
+                            "Native Definition Route",
+                            "Podfall",
+                            "Survival",
+                            "Low",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("start", "Track")))));
+            TerminalMissionRegistry.withClearedForTests(() -> {
+                MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                TerminalMissionRegistry.register(lateProgressProvider);
+                List<TerminalMissionDefinition> routeRows =
+                        MainSurvivalQuestProvider.INSTANCE.missions(helper.makeMockPlayer(GameType.SURVIVAL));
+                helper.assertTrue(routeRows.stream()
+                                .anyMatch(row -> lateProgressId.equals(row.id())),
+                        "Survival Route should retry definition-only mission rows when live player progress is late.");
+            });
+
+            Identifier staleProviderId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "stale_native_provider");
+            Identifier staleMissionId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "stale_native_mission");
+            Identifier loadedProviderId = Identifier.fromNamespaceAndPath("echomissioncore", "missions");
+            Identifier loadedMissionId = Identifier.fromNamespaceAndPath("echoashfallprotocol", "native_loaded_after_filter");
+            ConfigurableMissionProvider staleProvider = new ConfigurableMissionProvider(
+                    staleProviderId,
+                    "Stale Native Provider",
+                    9,
+                    List.of(new ConfiguredMission(
+                            staleMissionId,
+                            "Stale Native Route",
+                            "Podfall",
+                            "Survival",
+                            "Low",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("start", "Track")))));
+            ConfigurableMissionProvider loadedProvider = new ConfigurableMissionProvider(
+                    loadedProviderId,
+                    "MissionCore",
+                    10,
+                    List.of(new ConfiguredMission(
+                            loadedMissionId,
+                            "Loaded Native Route",
+                            "Podfall",
+                            "Survival",
+                            "Low",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("start", "Track")))));
+            TerminalMissionRegistry.withClearedForTests(() -> {
+                MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                TerminalMissionRegistry.register(staleProvider);
+                try {
+                    screenCoreActionsClass().getMethod("register").invoke(null);
+                    screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+                    Object context = putScreenCoreData(newScreenCoreDataContext(),
+                            "terminal.activeTabId", MainSurvivalQuestProvider.TAB_ID.toString());
+                    Identifier[] openedPage = new Identifier[1];
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("OPEN_PROVIDER_ROUTE"),
+                                    staleProviderId.toString(), Map.of(), context, screenCoreControls(openedPage)),
+                            "Native provider route action should be able to set a provider-scoped mission filter.");
+                    helper.assertTrue(staleProviderId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.providerFilter")),
+                            "Native provider route action should expose the provider-scoped filter before content changes.");
+
+                    TerminalMissionRegistry.clearForTests();
+                    MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                    TerminalMissionRegistry.register(loadedProvider);
+                    screenCoreDataProvidersClass().getMethod("invalidateMissionData").invoke(null);
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> visibleMissions = (List<Map<String, Object>>)
+                            resolveScreenCoreData(context, "missionBrowser.visibleMissions");
+                    helper.assertTrue(visibleMissions.stream()
+                                    .anyMatch(row -> loadedMissionId.toString().equals(String.valueOf(row.get("id")))),
+                            "ScreenCore should recover from a stale provider filter and show newly loaded MissionCore rows.");
+                    helper.assertTrue("all".equals(resolveScreenCoreData(context, "missionBrowser.providerFilter")),
+                            "ScreenCore should reset stale Native provider filters once MissionCore owns the mission feed.");
+                } catch (ReflectiveOperationException | LinkageError exception) {
+                    throw new AssertionError("Failed to exercise stale Native provider filter recovery", exception);
+                }
+            });
+
+            Identifier ashfallAliasProviderId =
+                    Identifier.fromNamespaceAndPath("echoashfallprotocol", "ashfall_protocol");
+            Identifier ashfallMissionCoreId =
+                    Identifier.fromNamespaceAndPath("echoashfallprotocol", "ashfall_loaded_via_missioncore");
+            ConfigurableMissionProvider ashfallAliasProvider = new ConfigurableMissionProvider(
+                    ashfallAliasProviderId,
+                    "Ashfall Protocol",
+                    11,
+                    List.of());
+            ConfigurableMissionProvider ashfallMissionCoreProvider = new ConfigurableMissionProvider(
+                    loadedProviderId,
+                    "MissionCore",
+                    12,
+                    List.of(new ConfiguredMission(
+                            ashfallMissionCoreId,
+                            "Ashfall MissionCore Route",
+                            "Podfall",
+                            "Survival",
+                            "Low",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("start", "Track")))));
+            TerminalMissionRegistry.withClearedForTests(() -> {
+                MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                TerminalMissionRegistry.register(ashfallAliasProvider);
+                TerminalMissionRegistry.register(ashfallMissionCoreProvider);
+                try {
+                    screenCoreActionsClass().getMethod("register").invoke(null);
+                    screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+                    Object context = putScreenCoreData(newScreenCoreDataContext(),
+                            "terminal.activeTabId", MainSurvivalQuestProvider.TAB_ID.toString());
+                    Identifier[] openedPage = new Identifier[1];
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("OPEN_PROVIDER_ROUTE"),
+                                    ashfallAliasProviderId.toString(), Map.of(), context, screenCoreControls(openedPage)),
+                            "Native Ashfall route action should allow addon-scoped mission filters.");
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> visibleMissions = (List<Map<String, Object>>)
+                            resolveScreenCoreData(context, "missionBrowser.visibleMissions");
+                    helper.assertTrue(visibleMissions.stream()
+                                    .anyMatch(row -> ashfallMissionCoreId.toString().equals(String.valueOf(row.get("id")))),
+                            "ScreenCore should show MissionCore rows whose mission namespace matches the Ashfall route filter.");
+                    helper.assertTrue(ashfallAliasProviderId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.providerFilter")),
+                            "ScreenCore should keep valid Ashfall namespace filters instead of treating them as stale.");
+                } catch (ReflectiveOperationException | LinkageError exception) {
+                    throw new AssertionError("Failed to exercise Ashfall MissionCore namespace filter recovery", exception);
+                }
+            });
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            throw new AssertionError("Failed to prepare ScreenCore Native mission fallback test", exception);
+        } finally {
+            try {
+                screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            } catch (ReflectiveOperationException | LinkageError ignored) {
+            }
+            MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+        }
+        helper.succeed();
+    }
+
+    private static void terminalScreenCoreNativeLinkageProviderFallback(GameTestHelper helper) {
+        if (!screenCoreLoaded()) {
+            helper.succeed();
+            return;
+        }
+        try {
+            EchoCoreServices.clearPlatformServicesForTests();
+            screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            EchoCoreServices.registerHazardTelemetryService(ignored -> {
+                throw nativeAttachmentLinkageError();
+            });
+            EchoCoreServices.registerDiagnosticService(ignored -> {
+                throw nativeAttachmentLinkageError();
+            });
+            EchoCoreServices.registerRouteRecordService(ignored -> {
+                throw nativeAttachmentLinkageError();
+            });
+
+            Object context = putScreenCoreData(newScreenCoreDataContext(),
+                    "terminal.activeTabId", MainSurvivalQuestProvider.TAB_ID.toString());
+            helper.assertTrue("Field systems nominal.".equals(resolveScreenCoreData(context, "shell.status.primary")),
+                    "ScreenCore shell should fall back to nominal telemetry when an optional Native provider links late.");
+            helper.assertTrue("0 checks".equals(resolveScreenCoreData(context, "shell.status.diagnosticsLabel")),
+                    "ScreenCore shell should hide diagnostics from a provider with missing Native backend classes.");
+            helper.assertTrue("0 routes".equals(resolveScreenCoreData(context, "shell.status.routesLabel")),
+                    "ScreenCore shell should hide route records from a provider with missing Native backend classes.");
+            Object routeRecords = resolveScreenCoreData(context, "routeRecords.visible");
+            helper.assertTrue(routeRecords instanceof List<?> && ((List<?>) routeRecords).isEmpty(),
+                    "Route record data provider should degrade to an empty list after a Native linkage failure.");
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            throw new AssertionError("Failed to exercise Native linkage provider fallback", exception);
+        } finally {
+            EchoCoreServices.clearPlatformServicesForTests();
+            try {
+                screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            } catch (ReflectiveOperationException | LinkageError ignored) {
+            }
+        }
+        helper.succeed();
+    }
+
+    private static NoClassDefFoundError nativeAttachmentLinkageError() {
+        return new NoClassDefFoundError("net/neoforged/neoforge/attachment/IAttachmentSerializer");
+    }
+
     private static void terminalAddonInfoRegistry(GameTestHelper helper) {
         TerminalAddonInfoRegistry.withClearedForTests(() -> {
             TerminalAddonInfo alpha = new TerminalAddonInfo(
@@ -2412,6 +2685,9 @@ public final class ModGameTests {
                             && shell.contains("columns=\"182px 1fr\""),
                     "ScreenCore shell should keep one section rail, one page state chip, and one fixed body column");
             String css = Files.readString(euiRoot.resolve("styles").resolve("terminal_cyberglass_v2.eui.css"));
+            String routePolishMarker = "Ashfall Survival Route final all-edition polish v2";
+            int routePolishIndex = css.lastIndexOf(routePolishMarker);
+            String finalRoutePolish = routePolishIndex < 0 ? "" : css.substring(routePolishIndex);
             helper.assertTrue(css.contains("Final compact ScreenCore terminal pass"),
                     "ScreenCore shell should include the compact GUI-scaled polish override");
             helper.assertTrue(css.contains("Terminal audit polish pass"),
@@ -2421,6 +2697,26 @@ public final class ModGameTests {
                             && css.contains(".terminal-danger-panel .terminal-hazard-list")
                             && css.contains("button[disabled]"),
                     "Terminal Cyberglass CSS should finish with the shared completion polish pass for rows, hazards, recipe chips, and disabled controls");
+            helper.assertTrue(routePolishIndex >= 0,
+                    "Survival Route CSS should finish with the all-edition Ashfall route polish override");
+            for (String unsupportedRouteCopyProperty : List.of(
+                    "title-line-height:",
+                    "detail-line-height:",
+                    "text-gap:",
+                    "content-height:",
+                    "title-max-lines:",
+                    "detail-max-lines:",
+                    "title-wrap:",
+                    "detail-wrap:",
+                    "padding-bottom:",
+                    "margin-bottom:")) {
+                helper.assertFalse(finalRoutePolish.contains(unsupportedRouteCopyProperty),
+                        "Survival Route final polish should avoid unsupported ScreenCore copy-style property "
+                                + unsupportedRouteCopyProperty);
+            }
+            helper.assertFalse(finalRoutePolish.contains("terminal-mission-detail-scroll")
+                            || finalRoutePolish.contains("terminal-route-sideops-scroll"),
+                    "Survival Route final polish should not style removed nested right-panel scroll classes");
             helper.assertFalse(css.contains("Final mission-hub polish"),
                     "ScreenCore CSS should not keep a later mission-hub override that re-expands compact layouts");
             helper.assertTrue(css.contains("theme-texture(screencore.surface.raised)")
@@ -2469,13 +2765,20 @@ public final class ModGameTests {
             helper.assertTrue(css.contains(".terminal-route-action-button")
                             && css.contains("columns: 1fr 1fr 1fr 1fr 1fr"),
                     "Survival Route action footer should use class-based equal grid button widths");
-            helper.assertTrue(css.contains("Canonical Survival Route split-panel layout")
+            helper.assertTrue(routePolishIndex > css.lastIndexOf("Canonical Survival Route split-panel")
+                            && routePolishIndex > css.lastIndexOf("flexible mission page pass"),
+                    "Survival Route all-edition polish should be the final route sizing cascade");
+            helper.assertTrue(css.contains("Canonical Survival Route split-panel")
                             && css.contains(".terminal-route-layout")
                             && css.contains("height: 376px")
                             && css.contains(".terminal-route-briefing-panel")
                             && css.contains(".terminal-route-briefing-card")
                             && css.contains(".terminal-route-sideops-card"),
                     "Survival Route should use one bounded three-column layout with a single scrollable briefing stack");
+            helper.assertTrue(css.contains("padding: 0px 0px 56px 0px")
+                            && css.contains("padding: 0px 0px 64px 0px")
+                            && css.contains(".terminal-route-claim-button"),
+                    "Survival Route final polish should reserve bottom clearance and compact the claim action");
             helper.assertFalse(css.contains("height: 452px")
                             || css.contains("height: 404px")
                             || css.contains("420px workspace - 34px summary")
@@ -2550,6 +2853,7 @@ public final class ModGameTests {
                     List.of("terminal-route-layout", "terminal-route-summary-row", "terminal-route-chip-row",
                             "terminal-route-legend", "terminal-phase-lane", "terminal-selected-phase-card",
                             "terminal-phase-row", "columns=\"1fr 1fr 1fr 1fr 1fr\"",
+                            "stack-below=\"300\"",
                             "terminal-route-briefing-scroll",
                             "terminal-mission-detail-content", "terminal-mission-check-panel",
                             "terminal-mission-reward-panel", "rewardRows", "rewardCompactLabel",
@@ -2563,7 +2867,7 @@ public final class ModGameTests {
                             "briefingTitle", "briefingBody", "guidanceBody",
                             "terminal-route-detail-row", "terminal-route-item-icon",
                             "<item-icon", "requirement.iconItemId", "reward.iconItemId",
-                            "Complete", "Claim Rewards", "completeActionId", "claimActionId",
+                            "Complete", "Claim", "completeActionId", "claimActionId",
                             "completeCommandDisabled", "claimCommandDisabled",
                             "primaryCommandDisabled", "disabled-reason", "terminal.perform_mission_action",
                             "terminal.activate_selected_mission", "statusCompactLabel", "primaryCommandLabel"));
@@ -2668,6 +2972,9 @@ public final class ModGameTests {
                     int requirements = page.indexOf("title=\"REQUIREMENTS\"");
                     int rewards = page.indexOf("title=\"REWARDS\"");
                     int sideOps = page.indexOf("title=\"SIDE OPERATIONS\"");
+                    int briefingScrollCount = page.split("terminal-route-briefing-scroll", -1).length - 1;
+                    helper.assertTrue(briefingScrollCount == 1,
+                            "Survival Route should declare exactly one right-column briefing scroll owner");
                     helper.assertTrue(briefingScroll >= 0 && briefingScrollEnd > briefingScroll,
                             "Survival Route right panel should expose one bounded full-column briefing scroll");
                     helper.assertTrue(detailContent > briefingScroll && detailContent < briefingScrollEnd,
@@ -2685,7 +2992,22 @@ public final class ModGameTests {
                             "Survival Route side operations should not create a second right-panel scroll owner");
                     int routeActionButtonCount = page.split("class=\"terminal-route-action-button", -1).length - 1;
                     helper.assertTrue(routeActionButtonCount == 5,
-                            "Survival Route action footer should expose Track, Complete, Claim Rewards, Next/Unlock, and Map");
+                            "Survival Route action footer should expose Track, Complete, Claim, Next/Unlock, and Map");
+                    helper.assertTrue(page.contains("<grid class=\"terminal-mission-action-strip\" columns=\"1fr 1fr 1fr 1fr 1fr\" gap=\"5\" stack-below=\"300\">"),
+                            "Survival Route action footer should be a five-column ScreenCore grid with stack-below");
+                    int trackAction = page.indexOf("terminal.track_mission", actionStrip);
+                    int completeAction = page.indexOf(">Complete</button>", actionStrip);
+                    int claimAction = page.indexOf(">Claim</button>", actionStrip);
+                    int primaryAction = page.indexOf("terminal.activate_selected_mission", actionStrip);
+                    int mapAction = page.indexOf(">Map</button>", actionStrip);
+                    helper.assertTrue(trackAction > actionStrip
+                                    && completeAction > trackAction
+                                    && claimAction > completeAction
+                                    && primaryAction > claimAction
+                                    && mapAction > primaryAction,
+                            "Survival Route actions should stay ordered Track, Complete, Claim, primary command, Map");
+                    helper.assertFalse(page.contains("Claim Rewards</button>"),
+                            "Survival Route tight action strip should use the compact Claim label");
                     helper.assertFalse(page.contains("primaryActionDisabled"),
                             "Survival Route primary command should not render as a disabled No command button");
                     helper.assertFalse(page.contains("width=\"68px\"") || page.contains("width=\"82px\""),
@@ -3339,14 +3661,38 @@ public final class ModGameTests {
             Object overviewContext = screenCoreTerminalContext(id("overview"));
             Object routeContext = screenCoreTerminalContext(MainSurvivalQuestProvider.TAB_ID);
             List<String> overviewText = inspectScreenCoreTextNodes(id("terminal_overview"), overviewContext, 1024, 550);
-            List<String> routeText = inspectScreenCoreTextNodes(id("terminal_mission_browser"), routeContext, 1024, 550);
             assertNonblankTextNodesHaveBounds(helper, overviewText, "overview");
-            assertNonblankTextNodesHaveBounds(helper, routeText, "survival route");
             helper.assertTrue(hasDrawnText(overviewText, "Open Survival Route"),
                     "Command Deck real ScreenCore page should visibly draw row-copy text values.");
-            helper.assertTrue(hasDrawnText(routeText, "Anchor Pod Outpost")
-                            || hasDrawnText(routeText, "Podfall"),
-                    "Survival Route real ScreenCore page should visibly draw phase and mission text values.");
+            int[][] routeViewports = {
+                    {360, 240},
+                    {854, 480},
+                    {1280, 720}
+            };
+            for (int[] viewport : routeViewports) {
+                String viewportLabel = "survival route " + viewport[0] + "x" + viewport[1];
+                List<String> routeText = inspectScreenCoreTextNodes(
+                        id("terminal_mission_browser"),
+                        routeContext,
+                        viewport[0],
+                        viewport[1]);
+                String routeTextSample = routeText.stream()
+                        .filter(line -> line.contains("|drawCalled=true"))
+                        .limit(12)
+                        .toList()
+                        .toString();
+                assertNonblankTextNodesHaveBounds(helper, routeText, viewportLabel);
+                helper.assertTrue(hasDrawnTextContaining(routeText, "Anchor Pod Outpost")
+                                || hasDrawnTextContaining(routeText, "Podfall"),
+                        "Survival Route real ScreenCore page should visibly draw phase and mission text values at "
+                                + viewportLabel + ". Sample: " + routeTextSample);
+                helper.assertFalse(routeText.stream().anyMatch(line -> line.contains("unbounded")
+                                || line.contains("root_overflow")
+                                || line.contains("row_overflow")
+                                || line.contains("large_fixed_height")),
+                        "Survival Route ScreenCore text inspection should not expose diagnostic evidence at "
+                                + viewportLabel + ".");
+            }
         } catch (ReflectiveOperationException exception) {
             helper.assertTrue(false, "Failed to inspect real ScreenCore terminal text layout: " + exception.getMessage());
         }
@@ -3455,7 +3801,8 @@ public final class ModGameTests {
                                     && entry.getValue() >= 1L),
                     "NetCore counters should record the accepted serverbound Terminal action click.");
         } catch (ReflectiveOperationException | LinkageError exception) {
-            helper.assertTrue(false, "Failed to prove Terminal ScreenCore click dispatch: " + exception.getMessage());
+            helper.assertTrue(false, "Failed to prove Terminal ScreenCore click dispatch: "
+                    + nestedFailureMessage(exception));
         } finally {
             EchoNetCoreConfig.DEBUG_PACKET_LOGGING.set(previousDebugLogging);
             EchoNetCoreConfig.LOG_DROPPED_PACKETS.set(previousDroppedLogging);
@@ -5238,6 +5585,77 @@ public final class ModGameTests {
         }
     }
 
+    private static final class NativeLateProgressMissionProvider implements TerminalMissionProvider {
+        private final ConfigurableMissionProvider delegate;
+
+        private NativeLateProgressMissionProvider(
+                Identifier chapterId, String title, int order, List<ConfiguredMission> configuredMissions) {
+            this.delegate = new ConfigurableMissionProvider(chapterId, title, order, configuredMissions);
+        }
+
+        @Override
+        public TerminalMissionChapter chapter() {
+            return delegate.chapter();
+        }
+
+        @Override
+        public List<TerminalMissionDefinition> missions(Player player) {
+            return player == null ? delegate.missions(null) : List.of();
+        }
+
+        @Override
+        public TerminalMissionSnapshot snapshot(Player player, Identifier missionId) {
+            return delegate.snapshot(player, missionId);
+        }
+
+        @Override
+        public TerminalMissionRole role(
+                Player player, TerminalMissionDefinition definition, TerminalMissionSnapshot snapshot) {
+            return delegate.role(player, definition, snapshot);
+        }
+
+        @Override
+        public Optional<TerminalMissionRoutePlacement> routePlacement(
+                Player player,
+                TerminalMissionDefinition definition,
+                TerminalMissionSnapshot snapshot,
+                TerminalMissionRole role) {
+            return delegate.routePlacement(player, definition, snapshot, role);
+        }
+
+        @Override
+        public Optional<Identifier> routeAnchor(
+                Player player,
+                TerminalMissionDefinition definition,
+                TerminalMissionSnapshot snapshot,
+                TerminalMissionRole role) {
+            return delegate.routeAnchor(player, definition, snapshot, role);
+        }
+
+        @Override
+        public List<Identifier> routePrerequisites(
+                Player player,
+                TerminalMissionDefinition definition,
+                TerminalMissionSnapshot snapshot,
+                TerminalMissionRole role) {
+            return delegate.routePrerequisites(player, definition, snapshot, role);
+        }
+
+        @Override
+        public List<TerminalMissionIntelUnlock> intelUnlocks(
+                Player player,
+                TerminalMissionDefinition definition,
+                TerminalMissionSnapshot snapshot,
+                TerminalMissionRole role) {
+            return delegate.intelUnlocks(player, definition, snapshot, role);
+        }
+
+        @Override
+        public boolean handleAction(ServerPlayer player, Identifier missionId, String actionId) {
+            return delegate.handleAction(player, missionId, actionId);
+        }
+    }
+
     private record ThrowingMissionsProvider(Identifier chapterId, int order) implements TerminalMissionProvider {
         @Override
         public TerminalMissionChapter chapter() {
@@ -5597,6 +6015,24 @@ public final class ModGameTests {
         return lines.stream().anyMatch(line -> line.contains("value=" + expected)
                 && line.contains("|drawCalled=true")
                 && line.contains("|status=draw_called"));
+    }
+
+    private static boolean hasDrawnTextContaining(List<String> lines, String expected) {
+        return lines.stream().anyMatch(line -> line.contains("value=")
+                && line.contains(expected)
+                && line.contains("|drawCalled=true")
+                && line.contains("|status=draw_called"));
+    }
+
+    private static String nestedFailureMessage(Throwable exception) {
+        Throwable cause = exception instanceof java.lang.reflect.InvocationTargetException
+                ? ((java.lang.reflect.InvocationTargetException) exception).getCause()
+                : exception;
+        if (cause == null) {
+            cause = exception;
+        }
+        String message = cause.getMessage();
+        return cause.getClass().getSimpleName() + (message == null || message.isBlank() ? "" : ": " + message);
     }
 
     private static Identifier id(String path) {

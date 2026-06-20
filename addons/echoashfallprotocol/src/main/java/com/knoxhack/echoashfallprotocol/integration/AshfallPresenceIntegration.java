@@ -9,10 +9,10 @@ import com.knoxhack.echoashfallprotocol.event.EnvironmentalEventStatus;
 import com.knoxhack.echoashfallprotocol.event.EnvironmentalEventType;
 import com.knoxhack.echoashfallprotocol.registry.ModAttachments;
 import com.knoxhack.echoashfallprotocol.survival.SurvivalData;
-import com.knoxhack.echopresencelink.api.EchoPresenceContext;
-import com.knoxhack.echopresencelink.api.EchoPresenceProvider;
-import com.knoxhack.echopresencelink.api.EchoPresenceRegistry;
-import com.knoxhack.echopresencelink.api.EchoPresenceSnapshot;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -29,32 +29,49 @@ public final class AshfallPresenceIntegration {
         if (!REGISTERED.compareAndSet(false, true)) {
             return;
         }
-        EchoPresenceRegistry.register(new AshfallProvider());
-        EchoAshfallProtocol.LOGGER.info("ECHO Ashfall registered Presence Link provider.");
+        try {
+            PresenceApi.registerProvider(new AshfallProvider());
+            EchoAshfallProtocol.LOGGER.info("ECHO Ashfall registered Presence Link provider.");
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+            REGISTERED.set(false);
+            EchoAshfallProtocol.LOGGER.debug("ECHO Presence Link API unavailable for Ashfall provider.", exception);
+        }
     }
 
-    private static final class AshfallProvider implements EchoPresenceProvider {
+    private static final class AshfallProvider implements InvocationHandler {
         private static final Identifier ID = Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "ashfall");
 
         @Override
-        public Identifier id() {
-            return ID;
+        public Object invoke(Object proxy, Method method, Object[] args) {
+            if (method.getDeclaringClass() == Object.class) {
+                return switch (method.getName()) {
+                    case "toString" -> "AshfallPresenceProvider[" + ID + "]";
+                    case "hashCode" -> ID.hashCode();
+                    case "equals" -> proxy == (args == null ? null : args[0]);
+                    default -> null;
+                };
+            }
+            return switch (method.getName()) {
+                case "id" -> ID;
+                case "snapshot" -> snapshot(args == null || args.length == 0 ? null : args[0]);
+                case "order" -> 50;
+                default -> null;
+            };
         }
 
-        @Override
-        public EchoPresenceSnapshot snapshot(EchoPresenceContext context) {
-            if (context == null || context.player() == null) {
+        private Object snapshot(Object context) {
+            Player player = PresenceApi.player(context);
+            if (player == null) {
                 return null;
             }
-            Player player = context.player();
-            long start = context.sessionStartEpochSeconds();
+            long start = PresenceApi.sessionStartEpochSeconds(context);
 
             HudState.BossTarget boss = HudState.getBossTarget();
             if (boss != null && boss.active() && boss.isLiveBoss()) {
                 String title = clean(boss.title(), "Ashfall Warfront");
                 String state = clean(boss.subtitle(), "Boss signal active")
                         + " | " + Math.round(Math.max(0.0F, boss.healthPercent()) * 100.0F) + "%";
-                return new EchoPresenceSnapshot(ID, 110, title, state, bossAsset(boss), title,
+                return PresenceApi.snapshot(ID, 110, title, state, bossAsset(boss), title,
                         "echo_ashfall", "Ashfall Protocol", start, List.of(), false);
             }
 
@@ -64,7 +81,7 @@ public final class AshfallPresenceIntegration {
                 String instability = HudState.getNexusInstability() > 0
                         ? "Instability " + HudState.getNexusInstability() + "%"
                         : "Route unstable";
-                return new EchoPresenceSnapshot(ID, 100, "Nexus Campaign",
+                return PresenceApi.snapshot(ID, 100, "Nexus Campaign",
                         "Guardian Nodes " + resolved + "/" + total + " | " + instability,
                         "nexus_core", "Nexus Campaign", "echo_ashfall", "Ashfall Protocol",
                         start, List.of(), false);
@@ -72,13 +89,13 @@ public final class AshfallPresenceIntegration {
 
             EnvironmentalEventStatus event = HudState.getEnvironmentalEventStatus(player.level().getGameTime());
             if (event.active()) {
-                return new EchoPresenceSnapshot(ID, 90, "Ashfall Protocol | " + event.label(),
+                return PresenceApi.snapshot(ID, 90, "Ashfall Protocol | " + event.label(),
                         event.shortStatusText(), eventAsset(event.type()), event.label(),
                         "echo_ashfall", "Ashfall Protocol", start, List.of(), false);
             }
 
             SurvivalData survival = player.getData(ModAttachments.SURVIVAL_DATA.get());
-            EchoPresenceSnapshot hazard = survivalSnapshot(survival, start);
+            Object hazard = survivalSnapshot(survival, start);
             if (hazard != null) {
                 return hazard;
             }
@@ -89,7 +106,7 @@ public final class AshfallPresenceIntegration {
                 String route = summary.routeHint().isBlank()
                         ? "P" + (quest.getCurrentPhase() + 1) + " " + phaseTitle(quest.getCurrentPhase())
                         : summary.routeHint().split("/", 2)[0].trim();
-                return new EchoPresenceSnapshot(ID, 70, "Ashfall Protocol | " + route,
+                return PresenceApi.snapshot(ID, 70, "Ashfall Protocol | " + route,
                         clean(summary.nextStep(), summary.shortTitle()), "echo_ashfall", "Ashfall Protocol",
                         "echo_terminal", summary.shortTitle(), start, List.of(), false);
             }
@@ -97,7 +114,7 @@ public final class AshfallPresenceIntegration {
             if (!quest.isTerminalOnline() || quest.getTerminalHealth() <= 25 || quest.getDroneHealth() <= 25) {
                 String terminal = quest.isTerminalOnline() ? "Terminal " + quest.getTerminalHealth() + "%" : "Terminal offline";
                 String drone = quest.isDroneUnlocked() ? "Drone " + quest.getDroneHealth() + "%" : "Drone locked";
-                return new EchoPresenceSnapshot(ID, 45, "Ashfall Protocol",
+                return PresenceApi.snapshot(ID, 45, "Ashfall Protocol",
                         terminal + " | " + drone, "echo_terminal", "ECHO Terminal",
                         "echo_ashfall", "Ashfall Protocol", start, List.of(), false);
             }
@@ -105,35 +122,30 @@ public final class AshfallPresenceIntegration {
             return null;
         }
 
-        @Override
-        public int order() {
-            return 50;
-        }
-
-        private static EchoPresenceSnapshot survivalSnapshot(SurvivalData survival, long start) {
+        private static Object survivalSnapshot(SurvivalData survival, long start) {
             if (survival == null || survival.isSafeZone()) {
                 return null;
             }
             if (survival.isRadiationStorm() || survival.isRadiationZone() || survival.getRadiationLevel() >= 40.0F) {
-                return new EchoPresenceSnapshot(ID, 78, "Ashfall Protocol | Radiation Hazard",
+                return PresenceApi.snapshot(ID, 78, "Ashfall Protocol | Radiation Hazard",
                         "Radiation " + Math.round(survival.getRadiationLevel()) + "% | Filter "
                                 + Math.round(survival.getFilterPercent() * 100.0F) + "%",
                         "hazard_radiation", "Radiation Hazard", "echo_ashfall", "Ashfall Protocol",
                         start, List.of(), false);
             }
             if (survival.isToxicAirActive() || "TOXIC".equalsIgnoreCase(survival.getPrimaryHazard())) {
-                return new EchoPresenceSnapshot(ID, 76, "Ashfall Protocol | Toxic Air",
+                return PresenceApi.snapshot(ID, 76, "Ashfall Protocol | Toxic Air",
                         "Filters active | Hydration " + survival.getHydration() + "%",
                         "hazard_toxic", "Toxic Hazard", "echo_ashfall", "Ashfall Protocol",
                         start, List.of(), false);
             }
             if (survival.isCryoZone()) {
-                return new EchoPresenceSnapshot(ID, 76, "Ashfall Protocol | Cryo Front",
+                return PresenceApi.snapshot(ID, 76, "Ashfall Protocol | Cryo Front",
                         "Thermal exposure rising", "hazard_cold", "Cold Hazard",
                         "echo_ashfall", "Ashfall Protocol", start, List.of(), false);
             }
             if (survival.isNexusAnomaly() || survival.isAcidContact()) {
-                return new EchoPresenceSnapshot(ID, 75, "Ashfall Protocol | Field Mutation",
+                return PresenceApi.snapshot(ID, 75, "Ashfall Protocol | Field Mutation",
                         clean(survival.getHazardReason(), "Anomaly pressure rising"),
                         "hazard_mutation", "Mutation Hazard", "echo_ashfall", "Ashfall Protocol",
                         start, List.of(), false);
@@ -179,6 +191,91 @@ public final class AshfallPresenceIntegration {
 
         private static String clean(String value, String fallback) {
             return value == null || value.isBlank() ? fallback : value.strip();
+        }
+    }
+
+    private static final class PresenceApi {
+        private static final String PROVIDER = "com.knoxhack.echopresencelink.api.EchoPresenceProvider";
+        private static final String REGISTRY = "com.knoxhack.echopresencelink.api.EchoPresenceRegistry";
+        private static final String SNAPSHOT = "com.knoxhack.echopresencelink.api.EchoPresenceSnapshot";
+
+        private PresenceApi() {
+        }
+
+        private static void registerProvider(InvocationHandler handler) throws ReflectiveOperationException {
+            Class<?> providerType = Class.forName(PROVIDER);
+            Object provider = Proxy.newProxyInstance(
+                    providerType.getClassLoader(),
+                    new Class<?>[] { providerType },
+                    handler);
+            Class.forName(REGISTRY).getMethod("register", providerType).invoke(null, provider);
+        }
+
+        private static Player player(Object context) {
+            if (context == null) {
+                return null;
+            }
+            try {
+                Object value = context.getClass().getMethod("player").invoke(context);
+                return value instanceof Player player ? player : null;
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+                return null;
+            }
+        }
+
+        private static long sessionStartEpochSeconds(Object context) {
+            if (context == null) {
+                return 0L;
+            }
+            try {
+                Object value = context.getClass().getMethod("sessionStartEpochSeconds").invoke(context);
+                return value instanceof Number number ? number.longValue() : 0L;
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+                return 0L;
+            }
+        }
+
+        private static Object snapshot(
+                Identifier id,
+                int priority,
+                String details,
+                String state,
+                String largeImageKey,
+                String largeImageText,
+                String smallImageKey,
+                String smallImageText,
+                long startTimestamp,
+                List<?> buttons,
+                boolean clear
+        ) {
+            try {
+                Constructor<?> constructor = Class.forName(SNAPSHOT).getConstructor(
+                        Identifier.class,
+                        int.class,
+                        String.class,
+                        String.class,
+                        String.class,
+                        String.class,
+                        String.class,
+                        String.class,
+                        long.class,
+                        List.class,
+                        boolean.class);
+                return constructor.newInstance(
+                        id,
+                        priority,
+                        details,
+                        state,
+                        largeImageKey,
+                        largeImageText,
+                        smallImageKey,
+                        smallImageText,
+                        startTimestamp,
+                        buttons,
+                        clear);
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+                return null;
+            }
         }
     }
 }

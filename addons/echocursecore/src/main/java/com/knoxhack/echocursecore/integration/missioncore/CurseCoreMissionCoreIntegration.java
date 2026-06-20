@@ -14,8 +14,11 @@ import com.knoxhack.echocursecore.api.CurseCoreApi;
 import com.knoxhack.echocursecore.api.CurseCoreEvents;
 import com.knoxhack.echocursecore.registry.ModItems;
 import java.util.Map;
+import java.util.function.Supplier;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public final class CurseCoreMissionCoreIntegration {
     private static final Identifier CHAPTER_ID = id("arcana_cursecore");
@@ -40,11 +43,11 @@ public final class CurseCoreMissionCoreIntegration {
         registerMission(registry, "gain_echo_rot", "Gain Echo Rot",
                 "Use Echo Rot Sample or trigger signal backlash to create a live curse target.",
                 "Echo Rot signature recorded.", MissionObjectiveType.CUSTOM, CurseCoreApi.ECHO_ROT,
-                new ItemStack(ModItems.ECHO_ROT_SAMPLE.get()));
+                safeStack(() -> (ItemLike) ModItems.ECHO_ROT_SAMPLE.get(), Items.ROTTEN_FLESH, 1));
         registerMission(registry, "cleanse_minor_curse", "Cleanse Minor Curse",
                 "Reduce an active curse stage with RitualCore Curse Cleansing I.",
                 "Curse stage reduced.", MissionObjectiveType.CUSTOM, CurseCoreApi.CURSE_CLEANSED,
-                new ItemStack(ModItems.PURIFIED_CURSE_ASH.get()));
+                safeStack(() -> (ItemLike) ModItems.PURIFIED_CURSE_ASH.get(), Items.BONE_MEAL, 1));
     }
 
     private static void registerMission(IMissionRegistry registry, String path, String title, String briefing,
@@ -123,13 +126,32 @@ public final class CurseCoreMissionCoreIntegration {
 
     private static ItemStack rewardStack(String path) {
         return switch (path) {
-            case "gain_echo_rot" -> new ItemStack(ModItems.CURSE_DIAGNOSTIC_SLIP.get(), 1);
-            case "cleanse_minor_curse" -> new ItemStack(ModItems.PURIFIED_CURSE_ASH.get(), 1);
-            default -> new ItemStack(ModItems.CURSE_DIAGNOSTIC_SLIP.get(), 1);
+            case "gain_echo_rot" -> safeStack(() -> (ItemLike) ModItems.CURSE_DIAGNOSTIC_SLIP.get(), Items.PAPER, 1);
+            case "cleanse_minor_curse" -> safeStack(() -> (ItemLike) ModItems.PURIFIED_CURSE_ASH.get(), Items.BONE_MEAL, 1);
+            default -> safeStack(() -> (ItemLike) ModItems.CURSE_DIAGNOSTIC_SLIP.get(), Items.PAPER, 1);
         };
     }
 
     private static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(EchoCurseCore.MODID, path);
+    }
+
+    private static ItemStack safeStack(Supplier<? extends ItemLike> item, ItemLike fallback, int count) {
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemLike value = nativeLoaderActive() || item == null ? fallback : item.get();
+            return value == null ? ItemStack.EMPTY : new ItemStack(value, Math.max(1, count));
+        } catch (RuntimeException | LinkageError ignored) {
+            return fallback == null ? ItemStack.EMPTY : new ItemStack(fallback, Math.max(1, count));
+        }
+    }
+
+    private static boolean nativeLoaderActive() {
+        return Boolean.getBoolean("echo.native.loader")
+                || !System.getProperty("echo.native.moduleIds", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspath", "").isBlank()
+                || !System.getProperty("echo.native.moduleClasspathFile", "").isBlank();
     }
 }

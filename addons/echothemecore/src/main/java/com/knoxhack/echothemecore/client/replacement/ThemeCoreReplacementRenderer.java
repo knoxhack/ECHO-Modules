@@ -3,6 +3,7 @@ package com.knoxhack.echothemecore.client.replacement;
 import com.knoxhack.echothemecore.api.EchoTheme;
 import com.knoxhack.echothemecore.api.EchoThemeColors;
 import com.knoxhack.echothemecore.client.ClientThemeState;
+import com.knoxhack.echothemecore.client.vanilla.VanillaUiProductOwnership;
 import com.knoxhack.echothemecore.config.ThemeCoreConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -15,6 +16,9 @@ public final class ThemeCoreReplacementRenderer {
 
     public static boolean renderButton(Button button, GuiGraphicsExtractor graphics) {
         if (!ThemeCoreConfig.buttonReplacementEnabled() || button == null || graphics == null) {
+            return false;
+        }
+        if (VanillaUiProductOwnership.productOwnsScreen(Minecraft.getInstance().screen)) {
             return false;
         }
         EchoTheme theme = ClientThemeState.currentTheme();

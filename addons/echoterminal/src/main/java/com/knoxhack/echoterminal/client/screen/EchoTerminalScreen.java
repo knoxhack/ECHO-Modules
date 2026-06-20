@@ -1,5 +1,7 @@
 package com.knoxhack.echoterminal.client.screen;
 
+import com.knoxhack.echoterminal.BuiltinTerminalCommonIntegration;
+import com.knoxhack.echoterminal.EchoTerminal;
 import com.knoxhack.echoterminal.EchoTerminalClient;
 import com.knoxhack.echoterminal.api.ClientTerminalTab;
 import com.knoxhack.echoterminal.api.TerminalDesignTokens;
@@ -15,12 +17,14 @@ import com.knoxhack.echoterminal.api.TerminalTabRegistry;
 import com.knoxhack.echoterminal.api.TerminalUi;
 import com.knoxhack.echoterminal.api.theme.TerminalIconKey;
 import com.knoxhack.echoterminal.api.theme.TerminalThemeContext;
+import com.knoxhack.echoterminal.client.BuiltinTerminalTabs;
 import com.knoxhack.echoterminal.menu.EchoTerminalMenu;
 import dev.echo.nativeplatform.contracts.EchoNativeLoadStatus;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.input.CharacterEvent;
@@ -37,7 +41,9 @@ public class EchoTerminalScreen extends AbstractContainerScreen<EchoTerminalMenu
     private static final Identifier OVERVIEW_TAB =
             Identifier.fromNamespaceAndPath("echoterminal", "overview");
     private static final String CHAPTER_PROGRESS_LABEL = "Chapter Progress";
+    private static final AtomicBoolean BOOTSTRAPPED = new AtomicBoolean(false);
     private static Identifier rememberedTabId;
+    private static volatile String bootstrapWarning = "";
 
     private enum ScrollbarDragTarget {
         NONE,
@@ -122,7 +128,31 @@ public class EchoTerminalScreen extends AbstractContainerScreen<EchoTerminalMenu
 
     public EchoTerminalScreen(EchoTerminalMenu menu, Inventory playerInventory, Component title, TerminalScreenTheme theme) {
         super(menu, playerInventory, title);
+        ensureTerminalTabsReady();
         this.theme = theme == null ? TerminalScreenTheme.modular() : theme;
+    }
+
+    private static void ensureTerminalTabsReady() {
+        if (BOOTSTRAPPED.get() && !TerminalTabRegistry.tabs().isEmpty()) {
+            return;
+        }
+        synchronized (EchoTerminalScreen.class) {
+            if (BOOTSTRAPPED.get() && !TerminalTabRegistry.tabs().isEmpty()) {
+                return;
+            }
+            BOOTSTRAPPED.set(true);
+            try {
+                TerminalClientOptions.load();
+                BuiltinTerminalCommonIntegration.register();
+                BuiltinTerminalTabs.register();
+                TerminalTabRegistry.ensureSorted();
+                bootstrapWarning = "";
+            } catch (RuntimeException | LinkageError exception) {
+                bootstrapWarning = "Terminal tab bootstrap failed: " + exception.getClass().getSimpleName();
+                BOOTSTRAPPED.set(false);
+                EchoTerminal.LOGGER.warn("ECHO Terminal screen could not bootstrap built-in tabs.", exception);
+            }
+        }
     }
 
     public static LayoutMetrics layoutMetricsForTests(
@@ -213,18 +243,23 @@ public class EchoTerminalScreen extends AbstractContainerScreen<EchoTerminalMenu
         }
 
         int key = event.key();
-        if (key == GLFW.GLFW_KEY_ESCAPE || EchoTerminalClient.OPEN_TERMINAL_KEY.matches(event)) {
-            EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
-                    "close",
-                    "terminal.screen.close",
-                    getClass().getName(),
-                    Map.of(
-                            "transitionSource", "terminal_key",
-                            "closeKey", key
-                    ));
-            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return false;
+        boolean openTerminalKey = EchoTerminalClient.OPEN_TERMINAL_KEY.matches(event);
+        if (openTerminalKey && EchoTerminalClient.nativeLoaderClientActiveForScreens() && ticks < 4) {
+            return true;
+        }
+        if (key == GLFW.GLFW_KEY_ESCAPE || openTerminalKey) {
+            if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoTerminalClient.publishNativeScreenLifecycle(
+                            "close",
+                            "terminal.screen.close",
+                            getClass().getName(),
+                            Map.of(
+                                    "transitionSource", "terminal_key",
+                                    "closeKey", key
+                            ));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return false;
+                }
             }
             Minecraft.getInstance().setScreen(null);
             return true;
@@ -368,6 +403,9 @@ public class EchoTerminalScreen extends AbstractContainerScreen<EchoTerminalMenu
     }
 
     private List<TerminalTab> tabs() {
+        if (TerminalTabRegistry.tabs().isEmpty()) {
+            ensureTerminalTabsReady();
+        }
         List<TerminalTab> current = TerminalTabRegistry.tabs();
         if (current != cachedTabs) {
             cachedTabs = current;

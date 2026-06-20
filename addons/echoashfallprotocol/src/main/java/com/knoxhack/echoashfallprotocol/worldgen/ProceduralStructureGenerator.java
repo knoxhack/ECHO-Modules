@@ -466,16 +466,23 @@ public class ProceduralStructureGenerator {
      * origin - used by the first-login handler to drop the pod on top of the
      * player's world spawn. Returns the interior tile a player should stand on
      * (block the player's feet occupy), or {@code null} if placement failed.
+     *
+     * Player starts require the curated NBT pod. Procedural fallback remains
+     * available for non-player drop pod generation only.
      */
     public static BlockPos placeStartingDropPod(ServerLevel level, BlockPos origin, RandomSource random) {
-        StructureTemplateManager templateManager = level.getStructureManager();
         Identifier templateId = Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, "drop_pod");
+        return placeStartingDropPod(level, origin, random, templateId);
+    }
+
+    public static BlockPos placeStartingDropPod(ServerLevel level, BlockPos origin, RandomSource random, Identifier templateId) {
+        StructureTemplateManager templateManager = level.getStructureManager();
         Optional<StructureTemplate> templateOpt = templateManager.get(templateId);
         if (templateOpt.isEmpty()) {
-            EchoAshfallProtocol.LOGGER.warn(
-                    "Drop pod NBT template not found at {} - using procedural starting pod fallback at {}.",
+            EchoAshfallProtocol.LOGGER.error(
+                    "Starting drop pod NBT template not found at {}. Refusing procedural placeholder fallback for player start at {}.",
                     templateId, origin);
-            return placeProceduralStartingDropPod(level, origin, random);
+            return null;
         }
         StructureTemplate template = templateOpt.get();
         BlockPos placePos = getDropPodPlacePos(origin, template.getSize());

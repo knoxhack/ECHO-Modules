@@ -37,6 +37,35 @@ import net.minecraft.world.item.Items;
 import org.lwjgl.glfw.GLFW;
 
 public class EchoIndexClient {
+    private static final String INPUT_KEY_EVENT = "net.neoforged.neoforge.client.event.InputEvent$Key";
+    private static final String SCREEN_RENDER_POST_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$Render$Post";
+    private static final String SCREEN_KEY_PRESSED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$KeyPressed$Pre";
+    private static final String CONTAINER_SCREEN_RENDER_FOREGROUND_EVENT =
+            "net.neoforged.neoforge.client.event.ContainerScreenEvent$Render$Foreground";
+    private static final String SCREEN_MOUSE_BUTTON_PRESSED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonPressed$Pre";
+    private static final String SCREEN_MOUSE_DRAGGED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$MouseDragged$Pre";
+    private static final String SCREEN_MOUSE_BUTTON_RELEASED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonReleased$Pre";
+    private static final String SCREEN_MOUSE_SCROLLED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$MouseScrolled$Pre";
+    private static final String SCREEN_CHAR_TYPED_PRE_EVENT =
+            "net.neoforged.neoforge.client.event.ScreenEvent$CharacterTyped$Pre";
+    private static final String CLIENT_LOGGING_IN_EVENT =
+            "net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent$LoggingIn";
+    private static final String CLIENT_LOGGING_OUT_EVENT =
+            "net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent$LoggingOut";
+    private static final String CLIENT_RESOURCE_LOAD_FINISHED_EVENT =
+            "net.neoforged.neoforge.client.event.ClientResourceLoadFinishedEvent";
+    private static final String REGISTER_KEY_MAPPINGS_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent";
+    private static final String REGISTER_CLIENT_TOOLTIP_COMPONENT_FACTORIES_EVENT =
+            "net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent";
+    private static final String ADD_CLIENT_RELOAD_LISTENERS_EVENT =
+            "net.neoforged.neoforge.client.event.AddClientReloadListenersEvent";
     private static final AtomicBoolean NATIVE_ROUTE_REGISTERED = new AtomicBoolean(false);
     private static final ThreadLocal<IndexCatalogScreen> NATIVE_CATALOG_SCREEN = new ThreadLocal<>();
     private static final ThreadLocal<IndexRecipeScreen> NATIVE_RECIPE_SCREEN = new ThreadLocal<>();
@@ -77,22 +106,35 @@ public class EchoIndexClient {
     }
 
     public EchoIndexClient(Object modEventBus) {
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onKeyInput);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexHotkeyScreenRendered);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexHotkeyKeyPressed);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayRender);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayMouseClicked);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayMouseDragged);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayMouseReleased);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayMouseScrolled);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayKeyPressed);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onIndexOverlayCharTyped);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onClientLoggingIn);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onClientLoggingOut);
-        EchoBackendLifecycleBridge.registerGameEventHandler(EchoIndexClient::onClientResourceLoadFinished);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterKeyMappings);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onRegisterClientTooltipComponents);
-        EchoBackendLifecycleBridge.registerModListener(modEventBus, ClientModEvents::onAddClientReloadListeners);
+        EchoBackendLifecycleBridge.registerGameEventHandler(INPUT_KEY_EVENT, EchoIndexClient::onKeyInput);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_RENDER_POST_EVENT,
+                EchoIndexClient::onIndexHotkeyScreenRendered);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_KEY_PRESSED_PRE_EVENT,
+                EchoIndexClient::onIndexHotkeyKeyPressed);
+        EchoBackendLifecycleBridge.registerGameEventHandler(CONTAINER_SCREEN_RENDER_FOREGROUND_EVENT,
+                EchoIndexClient::onIndexOverlayRender);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_MOUSE_BUTTON_PRESSED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayMouseClicked);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_MOUSE_DRAGGED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayMouseDragged);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_MOUSE_BUTTON_RELEASED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayMouseReleased);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_MOUSE_SCROLLED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayMouseScrolled);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_KEY_PRESSED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayKeyPressed);
+        EchoBackendLifecycleBridge.registerGameEventHandler(SCREEN_CHAR_TYPED_PRE_EVENT,
+                EchoIndexClient::onIndexOverlayCharTyped);
+        EchoBackendLifecycleBridge.registerGameEventHandler(CLIENT_LOGGING_IN_EVENT, EchoIndexClient::onClientLoggingIn);
+        EchoBackendLifecycleBridge.registerGameEventHandler(CLIENT_LOGGING_OUT_EVENT, EchoIndexClient::onClientLoggingOut);
+        EchoBackendLifecycleBridge.registerGameEventHandler(CLIENT_RESOURCE_LOAD_FINISHED_EVENT,
+                EchoIndexClient::onClientResourceLoadFinished);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_KEY_MAPPINGS_EVENT,
+                ClientModEvents::onRegisterKeyMappings);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, REGISTER_CLIENT_TOOLTIP_COMPONENT_FACTORIES_EVENT,
+                ClientModEvents::onRegisterClientTooltipComponents);
+        EchoBackendLifecycleBridge.registerModListener(modEventBus, ADD_CLIENT_RELOAD_LISTENERS_EVENT,
+                ClientModEvents::onAddClientReloadListeners);
         if (EchoRuntimeModules.isLoaded("echoterminal")) {
             registerTerminalClientIntegration();
         }
@@ -266,31 +308,36 @@ public class EchoIndexClient {
         if (!EchoBackendClientBridge.keyActionEquals(event, GLFW.GLFW_PRESS)) {
             return;
         }
+        Minecraft minecraft = Minecraft.getInstance();
         if (nativeLoaderActive()) {
             EchoNativeLoadStatus status = dispatchNativeInput(event);
             if (status == EchoNativeLoadStatus.MUTATED) {
                 return;
             }
         }
-        Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null || minecraft.screen != null) {
             return;
         }
         int keyCode = EchoBackendClientBridge.keyCode(event);
         if (EchoBackendClientBridge.keyMappingMatches(SHOW_RECIPE_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_R)) {
+                || keyCode == GLFW.GLFW_KEY_R) {
             openHeldItemIndexRecipe(true);
         } else if (EchoBackendClientBridge.keyMappingMatches(SHOW_USAGE_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_U)) {
+                || keyCode == GLFW.GLFW_KEY_U) {
             openHeldItemIndexRecipe(false);
         } else if (EchoBackendClientBridge.keyMappingMatches(OPEN_INDEX_KEY, event)
-                || (nativeLoaderActive() && keyCode == GLFW.GLFW_KEY_G)) {
+                || keyCode == GLFW.GLFW_KEY_G) {
             openIndexCatalog();
         }
     }
 
     private static void onClientLoggingIn(Object event) {
+        ensureCommonServicesReady("native_loader_client_login");
         if (nativeLoaderActive()) {
+            recordNativeIndexReadiness("client_login", Map.of(
+                    "eventType", "client_login",
+                    "eventClass", event.getClass().getName()
+            ));
             dispatchNativeClientLifecycle("index.client.login", "client login", Map.of(
                     "eventType", "client_login",
                     "eventClass", event.getClass().getName()
@@ -312,7 +359,13 @@ public class EchoIndexClient {
     }
 
     private static void onClientResourceLoadFinished(Object event) {
+        ensureCommonServicesReady("native_loader_client_resources_reloaded");
         if (nativeLoaderActive()) {
+            recordNativeIndexReadiness("client_resources_reloaded", Map.of(
+                    "eventType", "client_resources_reloaded",
+                    "eventClass", event.getClass().getName(),
+                    "invalidateScreenCoreIndex", true
+            ));
             dispatchNativeClientLifecycle("index.client.resources_reloaded", "client resources reloaded", Map.of(
                     "eventType", "client_resources_reloaded",
                     "eventClass", event.getClass().getName(),
@@ -322,6 +375,32 @@ public class EchoIndexClient {
         }
         IndexService.INSTANCE.invalidateRecipes("client resources reloaded");
         invalidateScreenCoreIndex();
+    }
+
+    private static void ensureCommonServicesReady(String reason) {
+        try {
+            EchoIndex.ensureCommonServicesRegisteredForNativeLoader(reason);
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("ECHO: Index common services retry skipped for {}.", reason, exception);
+        }
+    }
+
+    private static void recordNativeIndexReadiness(String reason, Map<String, Object> eventMetadata) {
+        if (!nativeLoaderActive()) {
+            return;
+        }
+        try {
+            Map<String, Object> metadata = new LinkedHashMap<>();
+            metadata.put("source", "native_loader_index_readiness");
+            metadata.put("forwardedFrom", "native_client_bridge");
+            metadata.put("reason", reason == null ? "" : reason);
+            if (eventMetadata != null) {
+                metadata.putAll(eventMetadata);
+            }
+            IndexNativeSessionBridge.recordNativeReadinessSnapshot(reason, Map.copyOf(metadata));
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("ECHO: Index Native readiness snapshot skipped for {}.", reason, exception);
+        }
     }
 
     private static void registerTerminalClientIntegration() {
@@ -1131,6 +1210,16 @@ public class EchoIndexClient {
 
     public static boolean nativeLoaderClientActiveForScreens() {
         return nativeLoaderActive();
+    }
+
+    public static boolean publishNativeScreenLifecycleMutated(
+            String phase,
+            String actionId,
+            String screenClass,
+            Map<String, Object> metadata
+    ) {
+        return nativeLoaderActive()
+                && publishNativeScreenLifecycle(phase, actionId, screenClass, metadata) == EchoNativeLoadStatus.MUTATED;
     }
 
     public static EchoNativeLoadStatus publishNativeScreenLifecycle(

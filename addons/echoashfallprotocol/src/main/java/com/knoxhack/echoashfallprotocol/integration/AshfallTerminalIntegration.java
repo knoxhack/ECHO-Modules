@@ -154,7 +154,7 @@ public final class AshfallTerminalIntegration {
             TerminalTabRegistry.register(new NexusTab());
             TerminalNavigationProfiles.register(NEXUS, ashfallProfile(220));
         }
-        TerminalRecipeRegistry.register(AshfallTerminalRecipeProvider.INSTANCE);
+        AshfallTerminalCommonIntegration.registerRecipeProviderIfAbsent();
     }
 
     private static void registerTab(TerminalTab tab, TerminalNavigationProfile profile) {

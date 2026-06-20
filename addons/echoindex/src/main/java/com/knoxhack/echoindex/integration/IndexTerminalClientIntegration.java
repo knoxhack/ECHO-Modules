@@ -178,16 +178,17 @@ public final class IndexTerminalClientIntegration {
                     return true;
                 }
                 if (hit.kind() == HitKind.DIAGNOSTICS) {
-                    EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                            "open",
-                            "index.terminal_archive.open_diagnostics",
-                            getClass().getName(),
-                            Map.of(
-                                    "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
-                                    "transitionSource", "index_terminal_archive"));
-                    if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                            && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                        return false;
+                    if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                                    "open",
+                                    "index.terminal_archive.open_diagnostics",
+                                    getClass().getName(),
+                                    Map.of(
+                                            "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
+                                            "transitionSource", "index_terminal_archive"));
+                        if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                            return false;
+                        }
                     }
                     Minecraft.getInstance().setScreen(new IndexDiagnosticsScreen());
                     context.playCommandSound();

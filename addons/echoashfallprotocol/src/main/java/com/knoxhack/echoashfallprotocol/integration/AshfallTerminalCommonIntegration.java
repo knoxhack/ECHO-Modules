@@ -90,7 +90,7 @@ public final class AshfallTerminalCommonIntegration {
         }
 
         TerminalMissionRegistryFacade.registerProviders();
-        TerminalAddonInfoRegistry.register(new AshfallAddonInfoProvider());
+        registerAddonInfoProviderIfAbsent();
         TerminalMissionActions.registerForTab(MISSIONS);
         TerminalMissionActions.registerForTab(SIDE_OPS);
         TerminalActionRegistry.register(MISSIONS, TURN_IN, AshfallTerminalCommonIntegration::turnInCurrentMission);
@@ -104,7 +104,7 @@ public final class AshfallTerminalCommonIntegration {
             TerminalActionRegistry.register(NEXUS, NEXUS_CHOICE, AshfallTerminalCommonIntegration::chooseNexusPath);
             TerminalActionRegistry.register(NEXUS, NEXUS_WARFRONT, AshfallTerminalCommonIntegration::handleNexusWarfront);
         }
-        TerminalRecipeRegistry.register(AshfallTerminalRecipeProvider.INSTANCE);
+        registerRecipeProviderIfAbsent();
 
         registerFieldManualEntries();
     }
@@ -152,6 +152,42 @@ public final class AshfallTerminalCommonIntegration {
         return Identifier.fromNamespaceAndPath(EchoAshfallProtocol.MODID, path);
     }
 
+    private static void registerAddonInfoProviderIfAbsent() {
+        if (TerminalAddonInfoRegistry.provider(ASHFALL_CHAPTER_ID).isPresent()) {
+            return;
+        }
+        try {
+            TerminalAddonInfoRegistry.register(new AshfallAddonInfoProvider());
+        } catch (IllegalArgumentException exception) {
+            if (String.valueOf(exception.getMessage()).contains("Duplicate terminal addon info provider id: "
+                    + ASHFALL_CHAPTER_ID)) {
+                EchoAshfallProtocol.LOGGER.info("Ashfall Terminal addon info provider already registered; keeping existing provider.");
+                return;
+            }
+            throw exception;
+        }
+    }
+
+    static void registerRecipeProviderIfAbsent() {
+        Identifier providerId = AshfallTerminalRecipeProvider.INSTANCE.id();
+        boolean registered = TerminalRecipeRegistry.providers().stream()
+                .anyMatch(provider -> providerId.equals(provider.id()));
+        if (registered) {
+            return;
+        }
+        try {
+            TerminalRecipeRegistry.register(AshfallTerminalRecipeProvider.INSTANCE);
+        } catch (IllegalArgumentException exception) {
+            if (String.valueOf(exception.getMessage()).contains("Duplicate terminal recipe provider id: "
+                    + providerId)) {
+                EchoAshfallProtocol.LOGGER.info(
+                        "Ashfall Terminal recipe provider already registered; keeping existing provider.");
+                return;
+            }
+            throw exception;
+        }
+    }
+
     private static final class TerminalMissionRegistryFacade {
         private static final TerminalMissionProvider ASHFALL_MISSIONS = new AshfallMissionProvider();
         private static final TerminalMissionProvider ASHFALL_SIDE_OPS = new AshfallSideOpsProvider();
@@ -163,11 +199,11 @@ public final class AshfallTerminalCommonIntegration {
             if (EchoRuntimeModules.isLoaded("echomissioncore")) {
                 EchoAshfallProtocol.LOGGER.info(
                         "Ashfall Terminal main mission provider skipped; MissionCore owns main mission display.");
-                com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.register(ASHFALL_SIDE_OPS);
+                com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.registerIfAbsent(ASHFALL_SIDE_OPS);
                 return;
             }
-            com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.register(ASHFALL_MISSIONS);
-            com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.register(ASHFALL_SIDE_OPS);
+            com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.registerIfAbsent(ASHFALL_MISSIONS);
+            com.knoxhack.echoterminal.api.mission.TerminalMissionRegistry.registerIfAbsent(ASHFALL_SIDE_OPS);
         }
     }
 
@@ -543,7 +579,7 @@ public final class AshfallTerminalCommonIntegration {
 
         @Override
         public List<TerminalMissionDefinition> missions(Player player) {
-            QuestData quest = QuestData.get(player);
+            QuestData quest = player == null ? new QuestData() : QuestData.get(player);
             boolean nexusChoice = player != null && PostNexusData.get(player).hasMadeChoice();
             return List.of(
                     sideOp("crash_blackbox_signal", "Crash Blackbox Signal", "PERIMETER SIGNALS", 0, 1,
@@ -642,7 +678,7 @@ public final class AshfallTerminalCommonIntegration {
                 return new TerminalMissionSnapshot(missionId, TerminalMissionStatus.LOCKED, 0.0F,
                         "LOCKED", "Signal lead not found.", "No optional record is available for this signal.", List.of());
             }
-            QuestData quest = QuestData.get(player);
+            QuestData quest = player == null ? new QuestData() : QuestData.get(player);
             boolean unlocked = sideOpUnlocked(quest, missionId);
             boolean complete = unlocked && sideOpComplete(player, quest, missionId);
             boolean archived = complete && intelArchived(player, missionId);
@@ -735,12 +771,23 @@ public final class AshfallTerminalCommonIntegration {
                     briefing,
                     "Field Recon",
                     "Recon",
-                    new ItemStack(icon),
+                    safeItemStack(icon),
                     List.of(),
                     List.of(TerminalMissionRequirement.custom(title, complete ? "Archived" : "Pending",
-                            new ItemStack(icon), complete ? 1 : 0, 1, complete)),
+                            safeItemStack(icon), complete ? 1 : 0, 1, complete)),
                     List.of(TerminalMissionReward.text("Archive Context",
                             "Adds tactical field context only; required route progress and caches stay unchanged.")));
+        }
+
+        private static ItemStack safeItemStack(Item item) {
+            if (!EchoCoreServices.itemStackComponentsBound()) {
+                return ItemStack.EMPTY;
+            }
+            try {
+                return new ItemStack(item);
+            } catch (RuntimeException | LinkageError ignored) {
+                return ItemStack.EMPTY;
+            }
         }
 
         private static boolean anyCompleted(QuestData quest, String... missionIds) {

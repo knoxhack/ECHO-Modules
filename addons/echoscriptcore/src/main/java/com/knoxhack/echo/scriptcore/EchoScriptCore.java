@@ -26,6 +26,7 @@ public final class EchoScriptCore {
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         registerNetworkBridgeIfAvailable(modEventBus);
         EchoCommandRegistry.register(EchoScriptCommands.root());
+        EchoBackendLifecycleBridge.registerGameEventHandler(EchoCommandRegistry::onRegisterCommands);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onAddReloadListeners);
         EchoBackendLifecycleBridge.registerGameEventHandler(this::onServerStarted);
         com.knoxhack.echo.adaptercore.EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,

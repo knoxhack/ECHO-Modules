@@ -127,8 +127,8 @@ public final class EchoHudCoreOverlay {
     }
 
     private static boolean shouldRender(Minecraft minecraft, Player player) {
-        return nativeLoaderActive()
-                && (routeEnabled || Boolean.getBoolean("echo.native.hudcore.force"))
+        boolean nativeRuntime = nativeLoaderActive();
+        return (!nativeRuntime || routeEnabled || Boolean.getBoolean("echo.native.hudcore.force"))
                 && player != null
                 && !minecraft.options.hideGui
                 && minecraft.screen == null;

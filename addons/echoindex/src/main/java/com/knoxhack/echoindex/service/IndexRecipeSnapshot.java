@@ -119,7 +119,8 @@ public record IndexRecipeSnapshot(
     }
 
     public boolean recipesStillLoading() {
-        return recipes.isEmpty() && rawRecipeCount() == 0 && sourceFactCount() == 0 && !providerErrored();
+        return recipes.isEmpty() && rawRecipeCount() == 0 && sourceFactCount() == 0
+                && providerCount() == 0 && !providerErrored();
     }
 
     public long ageSeconds() {

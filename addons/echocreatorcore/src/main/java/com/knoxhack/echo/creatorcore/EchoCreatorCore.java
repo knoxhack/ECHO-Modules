@@ -21,6 +21,7 @@ public final class EchoCreatorCore {
         CreatorCoreApi.get().bootstrap();
         EchoCommandRegistry.register(CreatorCoreCommands.creatorCoreRoot());
         EchoCommandRegistry.register(CreatorCoreCommands.creatorAliasRoot());
+        EchoBackendLifecycleBridge.registerGameEventHandler(EchoCommandRegistry::onRegisterCommands);
         EchoBackendLifecycleBridge.registerGameEventHandler(CreatorCoreApi.get().pilot()::onServerTick);
         EchoBackendLifecycleBridge.registerModListener(modEventBus, this::commonSetup);
         EchoBackendLifecycleBridge.bootstrapClientEntrypoint(modEventBus,

@@ -16,13 +16,16 @@ import com.knoxhack.echoterminal.api.TerminalArchiveEntry;
 import com.knoxhack.echoterminal.api.TerminalArchiveRegistry;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public final class ArmoryTerminalCommonIntegration {
    private static boolean registered;
@@ -317,15 +320,27 @@ public final class ArmoryTerminalCommonIntegration {
          ArmoryData.recharge(target);
          return true;
       }
-      for (ItemStack fuel : List.of(new ItemStack(ModItems.VEIL_CRYSTAL.get()), new ItemStack(ModItems.RESONANCE_SHARD.get()))) {
+      for (Item fuel : List.of(
+         fuelItem(() -> ModItems.VEIL_CRYSTAL.get(), Items.AMETHYST_SHARD),
+         fuelItem(() -> ModItems.RESONANCE_SHARD.get(), Items.PRISMARINE_SHARD)
+      )) {
          for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack candidate = player.getInventory().getItem(i);
-            if (candidate.is(fuel.getItem()) && ArmoryData.rechargeWithFuel(target, candidate)) {
+            if (candidate.is(fuel) && ArmoryData.rechargeWithFuel(target, candidate)) {
                return true;
             }
          }
       }
       return false;
+   }
+
+   private static Item fuelItem(Supplier<Item> supplier, Item fallback) {
+      try {
+         Item item = supplier.get();
+         return item == null ? fallback : item;
+      } catch (RuntimeException | LinkageError exception) {
+         return fallback;
+      }
    }
 
    private static void requestLogisticsBridge(ServerPlayer player, String logisticsPreset) {

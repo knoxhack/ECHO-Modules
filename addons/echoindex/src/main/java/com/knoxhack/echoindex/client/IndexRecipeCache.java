@@ -4,6 +4,7 @@ import com.echoplatform.echocore.api.index.IndexRecipeCategory;
 import com.echoplatform.echocore.api.index.IndexRecipeSlot;
 import com.echoplatform.echocore.api.index.IndexRecipeView;
 import com.echoplatform.echocore.api.index.IndexSlotRole;
+import com.knoxhack.echo.adaptercore.EchoNativeRuntimeEnvironmentBridge;
 import com.knoxhack.echoindex.Config;
 import com.knoxhack.echoindex.EchoIndex;
 import com.knoxhack.echoindex.service.ClientIndexState;
@@ -57,6 +58,7 @@ public final class IndexRecipeCache {
         providerRefreshCount++;
         long elapsedMs = Math.max(0L, (System.nanoTime() - start) / 1_000_000L);
         cached = built.withStats(elapsedMs, providerRefreshCount);
+        recordNativeCacheReadiness(cached);
         if (Config.DEBUG_PROVIDERS.get()) {
             EchoIndex.LOGGER.info("ECHO: ScreenCore Index cache rebuilt in {} ms: {} item(s), {} recipe(s), {} machine(s).",
                     elapsedMs, cached.items().size(), cached.recipes().size(), cached.machines().size());
@@ -66,6 +68,23 @@ public final class IndexRecipeCache {
 
     public static void invalidate() {
         cached = CacheSnapshot.blank();
+    }
+
+    private static void recordNativeCacheReadiness(CacheSnapshot snapshot) {
+        if (snapshot == null || snapshot.empty() || !EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()) {
+            return;
+        }
+        try {
+            IndexNativeSessionBridge.recordNativeReadinessSnapshot("index_recipe_cache_rebuilt", Map.of(
+                    "source", "index_recipe_cache",
+                    "eventType", "index_recipe_cache_rebuilt",
+                    "itemCount", snapshot.items().size(),
+                    "recipeCount", snapshot.recipes().size(),
+                    "machineCount", snapshot.machines().size(),
+                    "providerRefreshCount", snapshot.providerRefreshCount()));
+        } catch (RuntimeException | LinkageError exception) {
+            EchoIndex.LOGGER.debug("ECHO: Index native readiness snapshot skipped after cache rebuild.", exception);
+        }
     }
 
     private static Player clientPlayer() {
@@ -99,11 +118,12 @@ public final class IndexRecipeCache {
             int usageCount = recipesByUsage.getOrDefault(id, List.of()).size();
             String category = categoryKey(stack, id);
             boolean favorite = IndexFavoriteStore.contains("item", id.toString()) || ClientIndexState.isBookmarked(id);
+            String name = safeStackName(stack, id);
             items.add(new IndexItemData(
                     id.toString(),
                     id.toString(),
-                    stack.getHoverName().getString(),
-                    stack.getHoverName().getString(),
+                    name,
+                    name,
                     id.getNamespace(),
                     IndexAddonPresentation.displayName(id.getNamespace()),
                     categoryLabel(category),
@@ -207,7 +227,7 @@ public final class IndexRecipeCache {
         }
         if (stack != null && !stack.isEmpty()) {
             Identifier id = IndexService.itemId(stack.getItem());
-            return new MachineDescriptor(id.toString(), stack.getHoverName().getString(),
+            return new MachineDescriptor(id.toString(), safeStackName(stack, id),
                     id.getNamespace(), IndexAddonPresentation.displayName(id.getNamespace()), id.toString());
         }
         String categoryId = recipe.categoryId().toString();
@@ -231,8 +251,11 @@ public final class IndexRecipeCache {
             }
             List<Map<String, Object>> alternatives = slot.stacks().stream()
                     .filter(stack -> stack != null && !stack.isEmpty())
-                    .map(stack -> slotMap(IndexService.itemId(stack.getItem()).toString(),
-                            stack.getHoverName().getString(), Math.max(1, stack.getCount()), List.of()))
+                    .map(stack -> {
+                        Identifier id = IndexService.itemId(stack.getItem());
+                        return slotMap(id.toString(), safeStackName(stack, id),
+                                Math.max(1, stack.getCount()), List.of());
+                    })
                     .toList();
             if (!alternatives.isEmpty()) {
                 Map<String, Object> first = new LinkedHashMap<>(alternatives.getFirst());
@@ -288,6 +311,46 @@ public final class IndexRecipeCache {
         return fallback == null || fallback.isBlank() ? "minecraft:crafting_table" : fallback;
     }
 
+    private static String safeStackName(ItemStack stack, Identifier id) {
+        if (stack == null || stack.isEmpty()) {
+            return fallbackStackName(id);
+        }
+        if (EchoNativeRuntimeEnvironmentBridge.isNativeLoaderActive()) {
+            return fallbackStackName(id);
+        }
+        try {
+            String name = stack.getHoverName().getString();
+            return name == null || name.isBlank() ? fallbackStackName(id) : name;
+        } catch (RuntimeException | LinkageError exception) {
+            return fallbackStackName(id);
+        }
+    }
+
+    private static String fallbackStackName(Identifier id) {
+        if (id == null) {
+            return "Unknown Item";
+        }
+        String path = id.getPath();
+        if (path == null || path.isBlank()) {
+            return id.toString();
+        }
+        String[] parts = path.replace('-', '_').split("_");
+        StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            if (part.isBlank()) {
+                continue;
+            }
+            if (!builder.isEmpty()) {
+                builder.append(' ');
+            }
+            builder.append(Character.toUpperCase(part.charAt(0)));
+            if (part.length() > 1) {
+                builder.append(part.substring(1));
+            }
+        }
+        return builder.isEmpty() ? id.toString() : builder.toString();
+    }
+
     private static List<String> itemTags(ItemStack stack) {
         return stack.getItem().builtInRegistryHolder().tags()
                 .map(TagKey::location)
@@ -299,7 +362,7 @@ public final class IndexRecipeCache {
     private static String categoryKey(ItemStack stack, Identifier id) {
         Item item = stack.getItem();
         String path = id.getPath().toLowerCase(Locale.ROOT);
-        String name = stack.getHoverName().getString().toLowerCase(Locale.ROOT);
+        String name = safeStackName(stack, id).toLowerCase(Locale.ROOT);
         String haystack = path + " " + name;
         if (item instanceof BlockItem && hasAny(haystack, "machine", "station", "bench", "fabricator", "generator",
                 "press", "grinder", "refinery", "smelter", "terminal", "console", "purifier", "charger")) {

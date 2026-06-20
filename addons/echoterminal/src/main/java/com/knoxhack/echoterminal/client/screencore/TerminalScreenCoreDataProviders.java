@@ -78,6 +78,8 @@ public final class TerminalScreenCoreDataProviders {
     private static TerminalRecipeUiSnapshot recipeUiSnapshot;
     private static long recipeUiBuildCount;
     private static long lastOverviewRouteWarnTick = Long.MIN_VALUE;
+    private static final AtomicBoolean MISSION_PROVIDER_FAILURE_LOGGED = new AtomicBoolean(false);
+    private static final AtomicBoolean MISSION_ROW_FAILURE_LOGGED = new AtomicBoolean(false);
 
     private TerminalScreenCoreDataProviders() {
     }
@@ -106,6 +108,17 @@ public final class TerminalScreenCoreDataProviders {
         recipeUiSnapshot = null;
         recipeUiBuildCount = 0L;
         lastOverviewRouteWarnTick = Long.MIN_VALUE;
+        MISSION_PROVIDER_FAILURE_LOGGED.set(false);
+        MISSION_ROW_FAILURE_LOGGED.set(false);
+    }
+
+    public static void invalidateMissionData() {
+        MainSurvivalQuestProvider.INSTANCE.invalidateRouteCache();
+        TerminalMissionRegistry.ensureSorted();
+        statusSnapshot = null;
+        overviewRouteSnapshot = null;
+        MISSION_PROVIDER_FAILURE_LOGGED.set(false);
+        MISSION_ROW_FAILURE_LOGGED.set(false);
     }
 
     public static long recipeUiBuildCountForTests() {
@@ -565,50 +578,77 @@ public final class TerminalScreenCoreDataProviders {
         int tick = player == null ? -1 : player.tickCount;
         int bucket = tick < 0 ? -1 : tick / OVERVIEW_ROUTE_CACHE_TICKS;
         String selectedId = state().selectedMissionId() == null ? "" : state().selectedMissionId().toString();
+        String routeFingerprint = overviewRouteFingerprint();
         TerminalOverviewRouteSnapshot cached = overviewRouteSnapshot;
-        if (cached != null && cached.matches(playerKey, bucket, selectedId)) {
+        if (cached != null && cached.matches(playerKey, bucket, selectedId, routeFingerprint)) {
             return cached;
         }
 
         long start = System.nanoTime();
         try {
             List<Map<String, Object>> routeRows = survivalRouteRows();
-            TerminalOverviewRouteSnapshot next = routeSnapshotFromRows(playerKey, bucket, selectedId, routeRows, false);
+            TerminalOverviewRouteSnapshot next = routeSnapshotFromRows(
+                    playerKey, bucket, selectedId, routeFingerprint, routeRows, false);
             long elapsed = System.nanoTime() - start;
             if (elapsed > OVERVIEW_ROUTE_WARN_NANOS) {
                 logSlowOverviewRouteSnapshot(tick, elapsed);
-                if (cached != null && cached.playerKey() == playerKey && cached.selectedMissionId().equals(selectedId)) {
+                if (cached != null && cached.playerKey() == playerKey
+                        && cached.selectedMissionId().equals(selectedId)
+                        && cached.routeFingerprint().equals(routeFingerprint)) {
                     return cached.withScope(bucket, true);
                 }
-                next = routeSnapshotFromRows(playerKey, bucket, selectedId, routeRows, true);
+                next = routeSnapshotFromRows(playerKey, bucket, selectedId, routeFingerprint, routeRows, true);
             }
             overviewRouteSnapshot = next;
             return next;
         } catch (RuntimeException exception) {
             EchoTerminal.LOGGER.warn("Command Deck route snapshot failed; using cached or fallback route data.", exception);
-            if (cached != null && cached.playerKey() == playerKey && cached.selectedMissionId().equals(selectedId)) {
+            if (cached != null && cached.playerKey() == playerKey
+                    && cached.selectedMissionId().equals(selectedId)
+                    && cached.routeFingerprint().equals(routeFingerprint)) {
                 TerminalOverviewRouteSnapshot fallback = cached.withScope(bucket, true);
                 overviewRouteSnapshot = fallback;
                 return fallback;
             }
             TerminalOverviewRouteSnapshot fallback =
-                    routeSnapshotFromRows(playerKey, bucket, selectedId, List.of(), true);
+                    routeSnapshotFromRows(playerKey, bucket, selectedId, routeFingerprint, List.of(), true);
             overviewRouteSnapshot = fallback;
             return fallback;
         }
+    }
+
+    private static String overviewRouteFingerprint() {
+        int aggregateCount = safeMissions(MainSurvivalQuestProvider.INSTANCE).size();
+        if (aggregateCount > 0) {
+            return "aggregate:" + aggregateCount;
+        }
+        StringBuilder builder = new StringBuilder("providers:");
+        for (TerminalMissionProvider provider : TerminalMissionRegistry.providers()) {
+            if (!fallbackAggregateProvider(provider)) {
+                continue;
+            }
+            TerminalMissionChapter chapter = safeChapter(provider);
+            builder.append(chapter.id())
+                    .append('=')
+                    .append(safeMissions(provider).size())
+                    .append(';');
+        }
+        return builder.toString();
     }
 
     private static TerminalOverviewRouteSnapshot routeSnapshotFromRows(
             int playerKey,
             int bucket,
             String selectedId,
+            String routeFingerprint,
             List<Map<String, Object>> routeRows,
             boolean degraded) {
         List<Map<String, Object>> rows = List.copyOf(routeRows == null ? List.of() : routeRows);
         List<Map<String, Object>> visibleRows = rows.stream()
                 .filter(row -> !Boolean.TRUE.equals(row.get("sideCard")))
                 .toList();
-        return new TerminalOverviewRouteSnapshot(playerKey, bucket, selectedId, rows, visibleRows,
+        return new TerminalOverviewRouteSnapshot(playerKey, bucket, selectedId,
+                routeFingerprint == null ? "" : routeFingerprint, rows, visibleRows,
                 overviewActiveMission(rows, visibleRows), degraded);
     }
 
@@ -625,9 +665,7 @@ public final class TerminalScreenCoreDataProviders {
 
     private static List<Map<String, Object>> survivalRouteRows() {
         TerminalMissionProvider provider = MainSurvivalQuestProvider.INSTANCE;
-        return safeMissions(provider).stream()
-                .map(mission -> missionRow(provider, mission, MainSurvivalQuestProvider.TAB_ID))
-                .toList();
+        return safeMissionRows(provider, MainSurvivalQuestProvider.TAB_ID);
     }
 
     private static Map<String, Object> overviewActiveMission(
@@ -1116,23 +1154,15 @@ public final class TerminalScreenCoreDataProviders {
     private static Object missionBrowser(EchoDataContext context, List<String> path) {
         Identifier activeTabId = activeTabId(context);
         TerminalMissionProvider provider = missionProviderFor(activeTabId);
-        List<Map<String, Object>> allMissions = safeMissions(provider).stream()
-                .map(mission -> missionRow(provider, mission, activeTabId))
-                .toList();
+        List<Map<String, Object>> allMissions = safeMissionRows(provider, activeTabId);
         String query = normalize(state().missionSearch());
         String providerFilter = state().missionProviderFilter();
-        List<Map<String, Object>> baseMissions = allMissions.stream()
-                .filter(row -> !Boolean.TRUE.equals(row.get("sideCard")))
-                .filter(row -> "all".equals(providerFilter)
-                        || providerFilter.equals(String.valueOf(row.get("providerId")))
-                        || providerFilter.equals(String.valueOf(row.get("sourceChapterId"))))
-                .filter(row -> query.isBlank()
-                        || normalize(String.valueOf(row.get("id"))).contains(query)
-                        || normalize(String.valueOf(row.get("title"))).contains(query)
-                        || normalize(String.valueOf(row.get("providerTitle"))).contains(query)
-                        || normalize(String.valueOf(row.get("phase"))).contains(query)
-                        || normalize(String.valueOf(row.get("statusLabel"))).contains(query))
-                .toList();
+        List<Map<String, Object>> baseMissions = filterMissionRows(allMissions, providerFilter, query);
+        if (providerFilterStale(allMissions, providerFilter)) {
+            state().missionProviderFilter("all");
+            providerFilter = "all";
+            baseMissions = filterMissionRows(allMissions, providerFilter, query);
+        }
         String selectedPhase = selectedPhase(baseMissions, allMissions);
         List<Map<String, Object>> visibleMissions = withDisplayOrderLabels(baseMissions.stream()
                 .filter(row -> selectedPhase.isBlank() || selectedPhase.equals(phaseKey(row)))
@@ -1180,6 +1210,57 @@ public final class TerminalScreenCoreDataProviders {
                 "query", state().missionSearch(),
                 "providerFilter", state().missionProviderFilter(),
                 "legacyAvailable", true), path, 1);
+    }
+
+    private static List<Map<String, Object>> filterMissionRows(
+            List<Map<String, Object>> allMissions,
+            String providerFilter,
+            String query) {
+        return allMissions.stream()
+                .filter(row -> !Boolean.TRUE.equals(row.get("sideCard")))
+                .filter(row -> providerMatches(row, providerFilter))
+                .filter(row -> query.isBlank()
+                        || normalize(String.valueOf(row.get("id"))).contains(query)
+                        || normalize(String.valueOf(row.get("title"))).contains(query)
+                        || normalize(String.valueOf(row.get("providerTitle"))).contains(query)
+                        || normalize(String.valueOf(row.get("phase"))).contains(query)
+                        || normalize(String.valueOf(row.get("statusLabel"))).contains(query))
+                .toList();
+    }
+
+    private static boolean providerFilterStale(List<Map<String, Object>> allMissions, String providerFilter) {
+        return providerFilter != null
+                && !"all".equals(providerFilter)
+                && allMissions.stream()
+                .filter(row -> !Boolean.TRUE.equals(row.get("sideCard")))
+                .noneMatch(row -> providerMatches(row, providerFilter));
+    }
+
+    private static boolean providerMatches(Map<String, Object> row, String providerFilter) {
+        if (providerFilter == null || providerFilter.isBlank() || "all".equals(providerFilter)) {
+            return true;
+        }
+        return providerFilter.equals(String.valueOf(row.get("missionNamespace")))
+                || providerFilter.equals(String.valueOf(row.get("providerId")))
+                || providerFilter.equals(String.valueOf(row.get("sourceChapterId")))
+                || providerFilterNamespaceMatches(row, providerFilter);
+    }
+
+    private static boolean providerFilterNamespaceMatches(Map<String, Object> row, String providerFilter) {
+        Identifier filterId = Identifier.tryParse(providerFilter);
+        if (filterId == null || filterId.getNamespace().isBlank()) {
+            return false;
+        }
+        String namespace = filterId.getNamespace();
+        return namespace.equals(String.valueOf(row.get("missionNamespace")))
+                || namespace.equals(namespaceOf(String.valueOf(row.get("id"))))
+                || namespace.equals(namespaceOf(String.valueOf(row.get("sourceChapterId"))))
+                || namespace.equals(namespaceOf(String.valueOf(row.get("providerId"))));
+    }
+
+    private static String namespaceOf(String value) {
+        Identifier id = Identifier.tryParse(value);
+        return id == null ? "" : id.getNamespace();
     }
 
     private static Map<String, Object> selectedMissionRow(
@@ -1446,6 +1527,7 @@ public final class TerminalScreenCoreDataProviders {
         String rewardSummary = missionRewardSummary(mission.rewards(), snapshot);
         int progressPercent = Math.round(snapshot.progress() * 100.0F);
         return row("id", mission.id().toString(),
+                "missionNamespace", mission.id().getNamespace(),
                 "indexLabel", mission.missionOrder() <= 0 ? ">" : String.format(Locale.ROOT, "%02d", mission.missionOrder()),
                 "title", displayTitle,
                 "subtitle", displayBriefing,
@@ -1516,6 +1598,148 @@ public final class TerminalScreenCoreDataProviders {
                 "rewardStateLabel", rewardStateLabel(mission.rewards(), snapshot),
                 "rewardSummary", rewardSummary,
                 "requirementSummary", requirementSummary);
+    }
+
+    private static List<Map<String, Object>> safeMissionRows(TerminalMissionProvider provider, Identifier activeTabId) {
+        List<TerminalMissionDefinition> missions = safeMissions(provider);
+        if (missions.isEmpty()) {
+            if (provider == MainSurvivalQuestProvider.INSTANCE) {
+                return fallbackAggregateMissionRows(activeTabId);
+            }
+            return List.of();
+        }
+        List<Map<String, Object>> rows = new ArrayList<>(missions.size());
+        for (TerminalMissionDefinition mission : missions) {
+            try {
+                rows.add(missionRow(provider, mission, activeTabId));
+            } catch (RuntimeException | LinkageError exception) {
+                logMissionRowFailure(mission, exception);
+                rows.add(fallbackMissionRow(provider, mission));
+            }
+        }
+        return List.copyOf(rows);
+    }
+
+    private static List<Map<String, Object>> fallbackAggregateMissionRows(Identifier activeTabId) {
+        ArrayList<Map<String, Object>> rows = new ArrayList<>();
+        for (TerminalMissionProvider provider : TerminalMissionRegistry.providers()) {
+            if (!fallbackAggregateProvider(provider)) {
+                continue;
+            }
+            for (TerminalMissionDefinition mission : safeMissions(provider)) {
+                try {
+                    rows.add(missionRow(provider, mission, activeTabId));
+                } catch (RuntimeException | LinkageError exception) {
+                    logMissionRowFailure(mission, exception);
+                    rows.add(fallbackMissionRow(provider, mission));
+                }
+            }
+        }
+        return List.copyOf(rows);
+    }
+
+    private static boolean fallbackAggregateProvider(TerminalMissionProvider provider) {
+        return provider != null
+                && provider != MainSurvivalQuestProvider.INSTANCE
+                && provider != VanillaJourneyProvider.INSTANCE;
+    }
+
+    private static Map<String, Object> fallbackMissionRow(
+            TerminalMissionProvider provider,
+            TerminalMissionDefinition mission) {
+        TerminalMissionChapter providerChapter = safeChapter(provider);
+        Identifier missionId = mission == null ? null : mission.id();
+        String id = missionId == null ? "" : missionId.toString();
+        String title = mission == null ? "Mission" : firstNonBlank(mission.title(), "Mission");
+        String briefing = mission == null
+                ? "Mission data is available, but the ScreenCore row could not fully resolve."
+                : firstNonBlank(mission.briefing(), mission.fieldGuide(),
+                        "Mission data is available, but the ScreenCore row could not fully resolve.");
+        String phase = mission == null ? "Route" : firstNonBlank(mission.phaseTitle(), "Route");
+        int order = mission == null ? 0 : mission.missionOrder();
+        String chapterId = mission == null || mission.chapterId() == null
+                ? providerChapter.id().toString()
+                : mission.chapterId().toString();
+        return row("id", id,
+                "missionNamespace", missionId == null ? "" : missionId.getNamespace(),
+                "indexLabel", order <= 0 ? ">" : String.format(Locale.ROOT, "%02d", order),
+                "title", title,
+                "subtitle", briefing,
+                "sourceLine", providerChapter.title(),
+                "providerId", providerChapter.id().toString(),
+                "providerTitle", providerChapter.title(),
+                "sourceChapterId", providerChapter.id().toString(),
+                "sourceTitle", providerChapter.title(),
+                "chapter", chapterId,
+                "phase", phase,
+                "routeChip", phase.toUpperCase(Locale.ROOT),
+                "heroTexture", defaultMissionHeroTexture(),
+                "typeLabel", "MISSION",
+                "role", TerminalMissionRole.MAIN.name().toLowerCase(Locale.ROOT),
+                "routeAnchor", "",
+                "sideCard", false,
+                "sideCardStatus", "",
+                "statusCompactLabel", "READY",
+                "sideCardProgress", "",
+                "sideCardActionLabel", "VIEW",
+                "sideCardActionEnabled", false,
+                "primaryActionId", "",
+                "primaryActionLabel", "View",
+                "primaryActionEnabled", false,
+                "primaryActionDisabled", true,
+                "primaryCommandLabel", "Map",
+                "primaryCommandMode", "map",
+                "primaryCommandEnabled", true,
+                "primaryCommandDisabled", false,
+                "primaryCommandDisabledReason", "Mission action unavailable in this Native-safe row.",
+                "completeActionId", "",
+                "completeCommandDisabled", true,
+                "completeCommandDisabledReason", "Mission completion action unavailable in this Native-safe row.",
+                "claimActionId", "",
+                "claimCommandDisabled", true,
+                "claimCommandDisabledReason", "Mission reward claim unavailable in this Native-safe row.",
+                "actionReason", "Mission data loaded; detailed ScreenCore row fell back to a safe layout.",
+                "intelUnlockCount", 0,
+                "intelUnlocks", List.of(),
+                "status", "active",
+                "statusLabel", "READY",
+                "progressPercent", 0,
+                "tracked", false,
+                "trackLabel", "Track",
+                "trackClear", false,
+                "trackDisabled", true,
+                "trackDisabledReason", "Mission tracking unavailable in this Native-safe row.",
+                "active", true,
+                "ready", false,
+                "locked", false,
+                "completed", false,
+                "unlockHint", "",
+                "nextStep", briefing,
+                "briefingTitle", title,
+                "briefingBody", briefing,
+                "guidanceTitle", "Next step",
+                "guidanceBody", briefing,
+                "contextBody", phase + " - Mission - " + providerChapter.title() + ".",
+                "requirements", List.of(),
+                "rewardRows", List.of(),
+                "rewardCount", 0,
+                "rewardCountLabel", "No rewards",
+                "rewardCompactLabel", "RWD 0",
+                "rewardState", "info",
+                "rewardStateLabel", "NONE",
+                "rewardSummary", "No listed rewards",
+                "requirementSummary", "No explicit checklist");
+    }
+
+    private static void logMissionRowFailure(TerminalMissionDefinition mission, Throwable exception) {
+        if (!MISSION_ROW_FAILURE_LOGGED.compareAndSet(false, true)) {
+            return;
+        }
+        String missionId = mission == null || mission.id() == null ? "<unknown>" : mission.id().toString();
+        EchoTerminal.LOGGER.warn(
+                "ECHO Terminal ScreenCore mission row failed for {}; showing Native-safe fallback rows until the next mission refresh.",
+                missionId,
+                exception);
     }
 
     private static String missionBriefingBody(String briefing) {
@@ -2924,23 +3148,43 @@ public final class TerminalScreenCoreDataProviders {
         if (provider != MainSurvivalQuestProvider.INSTANCE || mission == null) {
             return Optional.empty();
         }
-        return MainSurvivalQuestProvider.INSTANCE.sourceChapter(player(), mission.id());
+        try {
+            return MainSurvivalQuestProvider.INSTANCE.sourceChapter(player(), mission.id());
+        } catch (RuntimeException | LinkageError exception) {
+            return Optional.empty();
+        }
     }
 
     private static TerminalMissionChapter safeChapter(TerminalMissionProvider provider) {
         try {
             TerminalMissionChapter chapter = provider.chapter();
             return chapter == null ? MainSurvivalQuestProvider.INSTANCE.chapter() : chapter;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return MainSurvivalQuestProvider.INSTANCE.chapter();
         }
     }
 
     private static List<TerminalMissionDefinition> safeMissions(TerminalMissionProvider provider) {
+        Player currentPlayer = player();
+        List<TerminalMissionDefinition> liveMissions = safeMissions(provider, currentPlayer, true);
+        if (!liveMissions.isEmpty() || currentPlayer == null) {
+            return liveMissions;
+        }
+        List<TerminalMissionDefinition> definitionOnlyMissions = safeMissions(provider, null, false);
+        return definitionOnlyMissions.isEmpty() ? liveMissions : definitionOnlyMissions;
+    }
+
+    private static List<TerminalMissionDefinition> safeMissions(
+            TerminalMissionProvider provider,
+            Player player,
+            boolean logFailures) {
         try {
-            List<TerminalMissionDefinition> missions = provider.missions(player());
+            List<TerminalMissionDefinition> missions = provider.missions(player);
             return missions == null ? List.of() : missions.stream().filter(Objects::nonNull).toList();
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
+            if (logFailures) {
+                logMissionProviderFailure(provider, exception);
+            }
             return List.of();
         }
     }
@@ -2952,7 +3196,7 @@ public final class TerminalScreenCoreDataProviders {
                     ? new TerminalMissionSnapshot(missionId, TerminalMissionStatus.LOCKED, 0.0F,
                             "LOCKED", "Mission state unavailable.", "Use the fallback Terminal renderer.", List.of())
                     : snapshot;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return new TerminalMissionSnapshot(missionId, TerminalMissionStatus.LOCKED, 0.0F,
                     "LOCKED", "Mission state failed to resolve.", "Use the fallback Terminal renderer.", List.of());
         }
@@ -2965,7 +3209,7 @@ public final class TerminalScreenCoreDataProviders {
         try {
             TerminalMissionRole role = provider.role(player(), mission, snapshot);
             return role == null ? TerminalMissionRole.fallback(mission, snapshot) : role;
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return TerminalMissionRole.fallback(mission, snapshot);
         }
     }
@@ -2977,7 +3221,7 @@ public final class TerminalScreenCoreDataProviders {
             TerminalMissionRole role) {
         try {
             return provider.routeAnchor(player(), mission, snapshot, role).orElse(null);
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return null;
         }
     }
@@ -2990,9 +3234,20 @@ public final class TerminalScreenCoreDataProviders {
         try {
             List<TerminalMissionIntelUnlock> unlocks = provider.intelUnlocks(player(), mission, snapshot, role);
             return unlocks == null ? List.of() : unlocks.stream().filter(Objects::nonNull).distinct().toList();
-        } catch (RuntimeException exception) {
+        } catch (RuntimeException | LinkageError exception) {
             return List.of();
         }
+    }
+
+    private static void logMissionProviderFailure(TerminalMissionProvider provider, Throwable exception) {
+        if (!MISSION_PROVIDER_FAILURE_LOGGED.compareAndSet(false, true)) {
+            return;
+        }
+        TerminalMissionChapter chapter = safeChapter(provider);
+        EchoTerminal.LOGGER.warn(
+                "ECHO Terminal ScreenCore mission provider {} failed to publish rows; mission list will retry on refresh.",
+                chapter.id(),
+                exception);
     }
 
     private static Player player() {
@@ -3304,18 +3559,20 @@ public final class TerminalScreenCoreDataProviders {
             int playerKey,
             int bucket,
             String selectedMissionId,
+            String routeFingerprint,
             List<Map<String, Object>> routeRows,
             List<Map<String, Object>> visibleRouteRows,
             Map<String, Object> activeMission,
             boolean degraded) {
-        private boolean matches(int playerKey, int bucket, String selectedMissionId) {
+        private boolean matches(int playerKey, int bucket, String selectedMissionId, String routeFingerprint) {
             return this.playerKey == playerKey
                     && this.bucket == bucket
-                    && this.selectedMissionId.equals(selectedMissionId == null ? "" : selectedMissionId);
+                    && this.selectedMissionId.equals(selectedMissionId == null ? "" : selectedMissionId)
+                    && this.routeFingerprint.equals(routeFingerprint == null ? "" : routeFingerprint);
         }
 
         private TerminalOverviewRouteSnapshot withScope(int bucket, boolean degraded) {
-            return new TerminalOverviewRouteSnapshot(playerKey, bucket, selectedMissionId,
+            return new TerminalOverviewRouteSnapshot(playerKey, bucket, selectedMissionId, routeFingerprint,
                     routeRows, visibleRouteRows, activeMission, degraded);
         }
     }

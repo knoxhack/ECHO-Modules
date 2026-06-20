@@ -113,16 +113,17 @@ public final class IndexCatalogScreen extends Screen {
         }));
         button(graphics, font, panelX + panelW - 48, panelY + 5, 18, 16, "?", true);
         hitboxes.add(new Hitbox(panelX + panelW - 48, panelY + 5, 18, 16, (b, m) -> {
-            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                    "open",
-                    "index.catalog_screen.open_diagnostics",
-                    getClass().getName(),
-                    Map.of(
-                            "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
-                            "transitionSource", "catalog_header_button"));
-            if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                    && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-                return;
+            if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+                EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                            "open",
+                            "index.catalog_screen.open_diagnostics",
+                            getClass().getName(),
+                            Map.of(
+                                    "targetScreenClass", IndexDiagnosticsScreen.class.getName(),
+                                    "transitionSource", "catalog_header_button"));
+                if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                    return;
+                }
             }
             Minecraft.getInstance().setScreen(new IndexDiagnosticsScreen());
         }));
@@ -135,9 +136,9 @@ public final class IndexCatalogScreen extends Screen {
         int searchY = panelY + HEADER_HEIGHT + 6;
         int searchW = panelW - INNER_PAD * 2;
         drawSearch(graphics, font, searchX, searchY, searchW, mouseX, mouseY);
-        categoryFilter = "";
-        bookmarkedOnly = false;
-        int bodyY = searchY + 25;
+        int filterBottom = drawFilterButtons(graphics, font, searchX, searchY + 25, searchW, mouseX, mouseY);
+        int activeTokenHeight = drawActiveTokens(graphics, font, searchX, filterBottom + 4, searchW);
+        int bodyY = filterBottom + 7 + activeTokenHeight;
         int bodyH = Math.max(48, panelH - (bodyY - panelY) - FOOTER_HEIGHT - 4);
 
         if (selectedItem.isEmpty()) {
@@ -822,7 +823,23 @@ public final class IndexCatalogScreen extends Screen {
     }
 
     private String effectiveSearch() {
-        return search.isBlank() ? "" : search.trim();
+        StringBuilder builder = new StringBuilder();
+        if (!search.isBlank()) {
+            builder.append(search.trim());
+        }
+        if (!categoryFilter.isBlank()) {
+            if (!builder.isEmpty()) {
+                builder.append(' ');
+            }
+            builder.append(categoryFilter);
+        }
+        if (bookmarkedOnly) {
+            if (!builder.isEmpty()) {
+                builder.append(' ');
+            }
+            builder.append("bookmarked");
+        }
+        return builder.toString();
     }
 
     private void requestServerSync(boolean force) {
@@ -863,31 +880,33 @@ public final class IndexCatalogScreen extends Screen {
         if (selectedItem.isEmpty()) {
             return;
         }
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "open",
-                "index.catalog_screen.open_recipe",
-                getClass().getName(),
-                Map.of(
-                        "targetScreenClass", IndexRecipeScreen.class.getName(),
-                        "transitionSource", "catalog_detail_action",
-                        "itemId", IndexService.itemId(selectedItem.getItem()).toString(),
-                        "recipeMode", screenMode(detailMode).name()));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "open",
+                        "index.catalog_screen.open_recipe",
+                        getClass().getName(),
+                        Map.of(
+                                "targetScreenClass", IndexRecipeScreen.class.getName(),
+                                "transitionSource", "catalog_detail_action",
+                                "itemId", IndexService.itemId(selectedItem.getItem()).toString(),
+                                "recipeMode", screenMode(detailMode).name()));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return;
+            }
         }
         Minecraft.getInstance().setScreen(new IndexRecipeScreen(selectedItem, screenMode(detailMode)));
     }
 
     private void closeNativeIndexScreen(String actionId, String transitionSource) {
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "close",
-                actionId,
-                getClass().getName(),
-                Map.of("transitionSource", transitionSource));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "close",
+                        actionId,
+                        getClass().getName(),
+                        Map.of("transitionSource", transitionSource));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return;
+            }
         }
         Minecraft.getInstance().setScreen(null);
     }

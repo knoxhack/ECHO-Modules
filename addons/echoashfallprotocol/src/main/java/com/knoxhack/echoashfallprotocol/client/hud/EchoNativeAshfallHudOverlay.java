@@ -1,5 +1,13 @@
 package com.knoxhack.echoashfallprotocol.client.hud;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -24,6 +32,15 @@ public final class EchoNativeAshfallHudOverlay {
     private static final int GREEN = 0xFF7CFFB2;
     private static final int AMBER = 0xFFFFC857;
     private static final int RED = 0xFFFF5C5C;
+    private static final String NOTIFICATION_ANCHOR = "below_ashfall_status_panel";
+    private static final int NOTICE_GAP = 6;
+    private static final int NOTICE_ROW_HEIGHT = 34;
+    private static final int NOTICE_ROW_GAP = 4;
+    private static final int NOTICE_MAX_ROWS = 2;
+    private static final String STARTER_MISSION_RESOURCE =
+            "data/echoashfallprotocol/missioncore/missions/secure_crash_outpost.json";
+    private static final List<String> STATUS_METER_LABELS = List.of(
+            "VITAL", "FOOD", "H2O", "AIR/MASK", "RAD", "TEMP");
 
     private EchoNativeAshfallHudOverlay() {
     }
@@ -40,7 +57,7 @@ public final class EchoNativeAshfallHudOverlay {
         }
 
         Font font = minecraft.font;
-        Map<String, Object> hud = dataSource("hud");
+        Map<String, Object> hud = nativeHudPayload(dataSource("hud"), dataSource("missionLog"));
         List<Map<String, Object>> notifications = objects(hud.get("notifications"));
         NativeHudState nativeHud = NativeHudState.from(player, hud);
         int x = 8;
@@ -59,29 +76,35 @@ public final class EchoNativeAshfallHudOverlay {
         int armor = player.getArmorValue();
         int air = player.getAirSupply();
         BlockPos pos = player.blockPosition();
+        List<Map<String, Object>> statusMeters = statusMeters(nativeHud, health, maxHealth, food, air);
+        List<Map<String, Object>> notificationRows = notificationRows(notifications);
+        String missionLine = missionLine(nativeHud);
+        String hazardLine = hazardLine(nativeHud);
+        String weatherLine = eventLine(nativeHud);
 
         int barX = x + 8;
         int barY = y + 28;
         int barW = width - 16;
         bar(graphics, barX, barY, barW, "VITAL", health / maxHealth, healthColor(health / maxHealth));
-        bar(graphics, barX, barY + 13, barW, "H2O", nativeHud.hydrationPercent,
-                hydrationColor(nativeHud.hydrationPercent));
-        bar(graphics, barX, barY + 26, barW, "RAD", nativeHud.radiationPercent,
-                radiationColor(nativeHud.radiationPercent));
-        bar(graphics, barX, barY + 39, barW, "TEMP", nativeHud.temperaturePercent / 100.0F,
-                temperatureColor(nativeHud.temperature));
-        bar(graphics, barX, barY + 52, barW, "MASK", nativeHud.airFilterPercent / 100.0F,
-                filterColor(nativeHud.airFilterPercent / 100.0F));
-        bar(graphics, barX, barY + 65, barW, "FOOD", food.getFoodLevel() / 20.0F,
+        bar(graphics, barX, barY + 13, barW, "FOOD", food.getFoodLevel() / 20.0F,
                 food.getFoodLevel() <= 6 ? RED : food.getFoodLevel() <= 12 ? AMBER : GREEN);
+        bar(graphics, barX, barY + 26, barW, "H2O", nativeHud.hydrationPercent,
+                hydrationColor(nativeHud.hydrationPercent));
+        bar(graphics, barX, barY + 39, barW, "AIR/MASK", nativeHud.airFilterPercent / 100.0F,
+                filterColor(nativeHud.airFilterPercent / 100.0F));
+        bar(graphics, barX, barY + 52, barW, "RAD", nativeHud.radiationPercent,
+                radiationColor(nativeHud.radiationPercent));
+        bar(graphics, barX, barY + 65, barW, "TEMP", nativeHud.temperaturePercent / 100.0F,
+                temperatureColor(nativeHud.temperature));
 
         String status = "ARM " + armor + "  POS " + pos.getX() + " " + pos.getY() + " " + pos.getZ();
         text(graphics, font, clip(font, status, width - 16), x + 8, y + 107, MUTED);
-        text(graphics, font, clip(font, missionLine(nativeHud), width - 16), x + 8, y + 121, GREEN);
-        text(graphics, font, clip(font, hazardLine(nativeHud), width - 16), x + 8, y + 134,
+        text(graphics, font, clip(font, missionLine, width - 16), x + 8, y + 121, GREEN);
+        text(graphics, font, clip(font, hazardLine, width - 16), x + 8, y + 134,
                 hazardColor(nativeHud));
-        text(graphics, font, clip(font, eventLine(nativeHud), width - 16), x + 8, y + 147,
+        text(graphics, font, clip(font, weatherLine, width - 16), x + 8, y + 147,
                 nativeHud.environmentActive ? nativeHud.environmentColor : notifications.isEmpty() ? MUTED : CYAN);
+        renderNotificationRows(graphics, font, x, y + height + NOTICE_GAP, width, notificationRows);
 
         state.put("rendered", true);
         state.put("health", Math.round(health));
@@ -109,6 +132,12 @@ public final class EchoNativeAshfallHudOverlay {
         state.put("environmentActive", nativeHud.environmentActive);
         state.put("environmentRemainingSeconds", nativeHud.environmentRemainingSeconds);
         state.put("notificationCount", notifications.size());
+        state.put("statusMeters", statusMeters);
+        state.put("missionLine", missionLine);
+        state.put("hazardLine", hazardLine);
+        state.put("weatherLine", weatherLine);
+        state.put("notificationRows", notificationRows);
+        state.put("notificationAnchor", NOTIFICATION_ANCHOR);
         state.put("nativeHudDataPlumbing", true);
         state.put("nativeHudDataSource", "live_ashfall_runtime_state");
         state.put("nativeHudDataSnapshot", nativeHudDataSnapshot(
@@ -120,9 +149,22 @@ public final class EchoNativeAshfallHudOverlay {
                 food,
                 armor,
                 air,
-                pos
+                pos,
+                statusMeters,
+                notificationRows,
+                missionLine,
+                hazardLine,
+                weatherLine
         ));
         return Map.copyOf(state);
+    }
+
+    public static List<String> statusMeterLabelsForTests() {
+        return STATUS_METER_LABELS;
+    }
+
+    public static String notificationAnchorForTests() {
+        return NOTIFICATION_ANCHOR;
     }
 
     private static Map<String, Object> nativeHudDataSnapshot(
@@ -134,7 +176,12 @@ public final class EchoNativeAshfallHudOverlay {
             FoodData food,
             int armor,
             int air,
-            BlockPos pos
+            BlockPos pos,
+            List<Map<String, Object>> statusMeters,
+            List<Map<String, Object>> notificationRows,
+            String missionLine,
+            String hazardLine,
+            String weatherLine
     ) {
         Map<String, Object> snapshot = new LinkedHashMap<>();
         snapshot.put("source", "live_ashfall_runtime_state");
@@ -142,9 +189,15 @@ public final class EchoNativeAshfallHudOverlay {
         snapshot.put("hazardMeters", hazardMeters(nativeHud));
         snapshot.put("missionTracker", missionTracker(nativeHud));
         snapshot.put("statusWidgets", statusWidgets(health, maxHealth, food, armor, air));
+        snapshot.put("statusMeters", statusMeters);
+        snapshot.put("missionLine", missionLine);
+        snapshot.put("hazardLine", hazardLine);
+        snapshot.put("weatherLine", weatherLine);
         snapshot.put("weatherReadout", weatherReadout(nativeHud));
         snapshot.put("fieldReadouts", fieldReadouts(player, nativeHud, pos));
         snapshot.put("notificationCount", notifications.size());
+        snapshot.put("notificationRows", notificationRows);
+        snapshot.put("notificationAnchor", NOTIFICATION_ANCHOR);
         snapshot.put("liveRuntimeState", true);
         snapshot.put("placeholderHudData", false);
         snapshot.put("summary", "Ashfall native HUD data is rendered from Native Loader player state and native HUD defaults without legacy runtime event dependencies.");
@@ -215,8 +268,103 @@ public final class EchoNativeAshfallHudOverlay {
         return Map.copyOf(readouts);
     }
 
+    private static List<Map<String, Object>> statusMeters(
+            NativeHudState nativeHud,
+            float health,
+            float maxHealth,
+            FoodData food,
+            int air
+    ) {
+        return List.of(
+                statusMeter("VITAL", Math.round(health) + "/" + Math.round(maxHealth), health / Math.max(1.0F, maxHealth)),
+                statusMeter("FOOD", food.getFoodLevel() + "/20", food.getFoodLevel() / 20.0F),
+                statusMeter("H2O", nativeHud.hydration + "%", nativeHud.hydrationPercent),
+                statusMeter("AIR/MASK", "FILTER " + nativeHud.airFilterPercent + "% AIR " + air,
+                        nativeHud.airFilterPercent / 100.0F),
+                statusMeter("RAD", Math.round(nativeHud.radiationLevel) + "%", nativeHud.radiationPercent),
+                statusMeter("TEMP", nativeHud.temperature + "% " + nativeHud.temperatureLabel,
+                        nativeHud.temperaturePercent / 100.0F)
+        );
+    }
+
+    private static Map<String, Object> statusMeter(String label, String value, float percent) {
+        Map<String, Object> meter = new LinkedHashMap<>();
+        meter.put("label", label);
+        meter.put("value", value);
+        meter.put("percent", Math.round(clamp01(percent) * 100.0F));
+        return Map.copyOf(meter);
+    }
+
+    private static List<Map<String, Object>> notificationRows(List<Map<String, Object>> notifications) {
+        if (notifications.isEmpty()) {
+            return List.of();
+        }
+        List<Map<String, Object>> rows = new ArrayList<>();
+        for (Map<String, Object> notification : notifications) {
+            if (rows.size() >= NOTICE_MAX_ROWS) {
+                break;
+            }
+            Map<String, Object> row = new LinkedHashMap<>();
+            String message = textValue(notification, "message", "");
+            String title = textValue(notification, "title", message);
+            String detail = textValue(notification, "detail", textValue(notification, "footer", ""));
+            row.put("source", textValue(notification, "sourceLabel",
+                    textValue(notification, "source", textValue(notification, "id", "ASHFALL"))));
+            row.put("status", textValue(notification, "statusLabel",
+                    textValue(notification, "severity", "INFO")));
+            row.put("title", title.isBlank() ? textValue(notification, "id", "Ashfall notice") : title);
+            row.put("detail", detail);
+            row.put("accentColor", intValue(notification.get("accentColor"), CYAN));
+            row.put("anchor", NOTIFICATION_ANCHOR);
+            rows.add(Map.copyOf(row));
+        }
+        return List.copyOf(rows);
+    }
+
+    private static void renderNotificationRows(
+            GuiGraphicsExtractor graphics,
+            Font font,
+            int x,
+            int y,
+            int width,
+            List<Map<String, Object>> rows
+    ) {
+        for (int i = 0; i < rows.size(); i++) {
+            int rowY = y + i * (NOTICE_ROW_HEIGHT + NOTICE_ROW_GAP);
+            renderNotificationRow(graphics, font, x, rowY, width, NOTICE_ROW_HEIGHT, rows.get(i));
+        }
+    }
+
+    private static void renderNotificationRow(
+            GuiGraphicsExtractor graphics,
+            Font font,
+            int x,
+            int y,
+            int width,
+            int height,
+            Map<String, Object> row
+    ) {
+        int accent = intValue(row.get("accentColor"), CYAN);
+        graphics.fill(x + 2, y + 2, x + width + 2, y + height + 2, 0x40000000);
+        graphics.fill(x, y, x + width, y + height, PANEL);
+        graphics.fill(x, y, x + width, y + 1, withAlpha(accent, 0xCC));
+        graphics.fill(x, y, x + 2, y + height, withAlpha(accent, 0xDD));
+
+        String source = clip(font, String.valueOf(row.getOrDefault("source", "ASHFALL")), 118);
+        String status = clip(font, String.valueOf(row.getOrDefault("status", "INFO")), 82);
+        text(graphics, font, source, x + 7, y + 4, withAlpha(accent, 0xFF));
+        text(graphics, font, status, x + width - 7 - font.width(status), y + 4, MUTED);
+
+        String title = clip(font, String.valueOf(row.getOrDefault("title", "")), width - 16);
+        text(graphics, font, title, x + 7, y + 15, TEXT);
+        String detail = clip(font, String.valueOf(row.getOrDefault("detail", "")), width - 16);
+        if (!detail.isBlank()) {
+            text(graphics, font, detail, x + 7, y + 24, MUTED);
+        }
+    }
+
     private static void bar(GuiGraphicsExtractor graphics, int x, int y, int width, String label, float value, int color) {
-        int labelW = 35;
+        int labelW = 54;
         int barX = x + labelW;
         int barW = Math.max(1, width - labelW);
         graphics.fill(barX, y + 1, barX + barW, y + 8, 0x66000000);
@@ -393,6 +541,10 @@ public final class EchoNativeAshfallHudOverlay {
         graphics.text(font, value, x, y, color, false);
     }
 
+    private static int withAlpha(int color, int alpha) {
+        return (Math.max(0, Math.min(255, alpha)) << 24) | (color & 0x00FFFFFF);
+    }
+
     private static String clip(Font font, String value, int width) {
         if (font.width(value) <= width) {
             return value;
@@ -406,13 +558,120 @@ public final class EchoNativeAshfallHudOverlay {
     }
 
     private static Map<String, Object> dataSource(String key) {
-        try {
-            Class<?> registry = Class.forName("dev.echo.nativeplatform.bootstrap.EchoNativeAgent5UiHandlerRegistry");
-            Method method = registry.getMethod("dataSources");
-            return map(map(method.invoke(null)).get(key));
-        } catch (ReflectiveOperationException | RuntimeException exception) {
+        for (ClassLoader loader : registryClassLoaders()) {
+            try {
+                Class<?> registry = Class.forName(
+                        "dev.echo.nativeplatform.bootstrap.EchoNativeAgent5UiHandlerRegistry",
+                        true,
+                        loader
+                );
+                Method method = registry.getMethod("dataSources");
+                return map(map(method.invoke(null)).get(key));
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
+                continue;
+            }
+        }
+        return Map.of();
+    }
+
+    private static List<ClassLoader> registryClassLoaders() {
+        List<ClassLoader> loaders = new ArrayList<>();
+        addClassLoader(loaders, Thread.currentThread().getContextClassLoader());
+        addClassLoader(loaders, ClassLoader.getSystemClassLoader());
+        ClassLoader moduleLoader = EchoNativeAshfallHudOverlay.class.getClassLoader();
+        while (moduleLoader != null) {
+            addClassLoader(loaders, moduleLoader);
+            moduleLoader = moduleLoader.getParent();
+        }
+        return List.copyOf(loaders);
+    }
+
+    private static void addClassLoader(List<ClassLoader> loaders, ClassLoader loader) {
+        if (loader != null && !loaders.contains(loader)) {
+            loaders.add(loader);
+        }
+    }
+
+    private static Map<String, Object> nativeHudPayload(Map<String, Object> hud, Map<String, Object> missionLog) {
+        Map<String, Object> merged = new LinkedHashMap<>(hud == null ? Map.of() : hud);
+        Map<String, Object> mission = missionLog == null || missionLog.isEmpty()
+                ? starterMissionFallback()
+                : missionLog;
+        putIfBlank(merged, "missionId", firstText(
+                textValue(mission, "missionId", ""),
+                textValue(mission, "id", "")
+        ));
+        putIfBlank(merged, "missionStatus", textValue(mission, "status", ""));
+        putIfBlank(merged, "mission", firstText(
+                textValue(mission, "objective", ""),
+                textValue(mission, "title", "")
+        ));
+        putIfBlank(merged, "missionTitle", textValue(mission, "title", ""));
+        putIfBlank(merged, "missionObjective", textValue(mission, "objective", ""));
+        return Map.copyOf(merged);
+    }
+
+    private static Map<String, Object> starterMissionFallback() {
+        ClassLoader loader = EchoNativeAshfallHudOverlay.class.getClassLoader();
+        try (InputStream stream = loader == null
+                ? ClassLoader.getSystemResourceAsStream(STARTER_MISSION_RESOURCE)
+                : loader.getResourceAsStream(STARTER_MISSION_RESOURCE)) {
+            if (stream == null) {
+                return Map.of();
+            }
+            String json = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+            JsonObject mission = JsonParser.parseString(json).getAsJsonObject();
+            String objective = firstObjectiveLabel(mission);
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("missionId", jsonString(mission, "id", "echoashfallprotocol:secure_crash_outpost"));
+            payload.put("status", "TRACKED");
+            payload.put("title", jsonString(mission, "title", "Anchor Pod Outpost"));
+            payload.put("objective", objective.isBlank() ? jsonString(mission, "title", "Anchor Pod Outpost") : objective);
+            payload.put("source", STARTER_MISSION_RESOURCE);
+            return Map.copyOf(payload);
+        } catch (IOException | RuntimeException exception) {
             return Map.of();
         }
+    }
+
+    private static String firstObjectiveLabel(JsonObject mission) {
+        JsonElement objectivesElement = mission.get("objectives");
+        if (!(objectivesElement instanceof JsonArray objectives) || objectives.isEmpty()) {
+            return "";
+        }
+        JsonElement first = objectives.get(0);
+        if (!first.isJsonObject()) {
+            return "";
+        }
+        return jsonString(first.getAsJsonObject(), "label", "");
+    }
+
+    private static String jsonString(JsonObject object, String key, String fallback) {
+        JsonElement element = object.get(key);
+        if (element == null || element.isJsonNull()) {
+            return fallback;
+        }
+        String value = element.getAsString();
+        return value == null || value.isBlank() ? fallback : value;
+    }
+
+    private static void putIfBlank(Map<String, Object> target, String key, String value) {
+        if (!hasText(target.get(key)) && value != null && !value.isBlank()) {
+            target.put(key, value);
+        }
+    }
+
+    private static boolean hasText(Object value) {
+        return value != null && !String.valueOf(value).isBlank();
+    }
+
+    private static String firstText(String... values) {
+        for (String value : values) {
+            if (value != null && !value.isBlank()) {
+                return value;
+            }
+        }
+        return "";
     }
 
     private static Map<String, Object> map(Object value) {

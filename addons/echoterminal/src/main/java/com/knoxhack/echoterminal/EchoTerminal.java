@@ -17,6 +17,7 @@ import com.knoxhack.echoterminal.registry.ModItems;
 import com.knoxhack.echoterminal.registry.ModMenus;
 import com.knoxhack.echoterminal.service.EchoTerminalCoreServices;
 import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
@@ -28,6 +29,7 @@ public class EchoTerminal {
     private static final String COMMON_SETUP_EVENT = "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent";
     private static final String REGISTER_PAYLOAD_HANDLERS_EVENT =
             "net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent";
+    private static final AtomicBoolean COMMON_SERVICES_REGISTERED = new AtomicBoolean(false);
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public EchoTerminal(IEventBus modEventBus) {
@@ -49,20 +51,31 @@ public class EchoTerminal {
     }
 
     private void commonSetup(Object event) {
-        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> {
-            EchoTerminalCoreServices.register();
-            BuiltinTerminalCommonIntegration.register();
-            if (EchoRuntimeModules.isLoaded("echomachinecore")) {
-                registerMachineCoreIntegration();
-            }
-            TerminalMissionRegistry.register(MainSurvivalQuestProvider.INSTANCE);
-            TerminalMissionRegistry.register(VanillaJourneyProvider.INSTANCE);
-            TerminalMissionActions.registerForTab(MainSurvivalQuestProvider.TAB_ID);
-            TerminalMissionActions.registerForTab(VanillaJourneyProvider.TAB_ID);
-            LOGGER.info("ECHO platform providers after Terminal setup: {}",
-                    EchoCoreServices.platformProviderSummary());
-        });
+        EchoBackendLifecycleBridge.runCommonSetupWork(event, () -> registerCommonServices("neoforge_common_setup"));
         LOGGER.info("ECHO: Terminal modular shell online.");
+    }
+
+    public static boolean ensureCommonServicesRegisteredForNativeLoader() {
+        return registerCommonServices("native_loader_module_ready");
+    }
+
+    private static boolean registerCommonServices(String source) {
+        if (!COMMON_SERVICES_REGISTERED.compareAndSet(false, true)) {
+            return false;
+        }
+        EchoTerminalCoreServices.register();
+        BuiltinTerminalCommonIntegration.register();
+        if (EchoRuntimeModules.isLoaded("echomachinecore")) {
+            registerMachineCoreIntegration();
+        }
+        TerminalMissionRegistry.registerIfAbsent(MainSurvivalQuestProvider.INSTANCE);
+        TerminalMissionRegistry.registerIfAbsent(VanillaJourneyProvider.INSTANCE);
+        TerminalMissionActions.registerForTab(MainSurvivalQuestProvider.TAB_ID);
+        TerminalMissionActions.registerForTab(VanillaJourneyProvider.TAB_ID);
+        registerMissionCoreIntegration();
+        LOGGER.info("ECHO platform providers after Terminal setup [{}]: {}",
+                source, EchoCoreServices.platformProviderSummary());
+        return true;
     }
 
     private static void registerMachineCoreIntegration() {
@@ -72,6 +85,18 @@ public class EchoTerminal {
                     .invoke(null);
         } catch (ReflectiveOperationException | LinkageError exception) {
             LOGGER.warn("ECHO: Terminal MachineCore integration could not be registered.", exception);
+        }
+    }
+
+    private static void registerMissionCoreIntegration() {
+        try {
+            Class.forName("com.knoxhack.echomissioncore.integration.MissionCoreTerminalIntegration")
+                    .getMethod("register")
+                    .invoke(null);
+        } catch (ClassNotFoundException ignored) {
+            // MissionCore is optional for non-ECHO packs.
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            LOGGER.warn("ECHO: Terminal MissionCore integration could not be registered.", exception);
         }
     }
 

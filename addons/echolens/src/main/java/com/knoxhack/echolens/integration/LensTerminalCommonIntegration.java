@@ -39,6 +39,10 @@ public final class LensTerminalCommonIntegration {
     private static void registerAddonInfo() throws ReflectiveOperationException {
         Class<?> providerClass = Class.forName("com.knoxhack.echoterminal.api.TerminalAddonInfoProvider");
         Class<?> registryClass = Class.forName("com.knoxhack.echoterminal.api.TerminalAddonInfoRegistry");
+        Object existing = registryClass.getMethod("provider", String.class).invoke(null, "lens");
+        if (existing instanceof java.util.Optional<?> optional && optional.isPresent()) {
+            return;
+        }
         Object provider = Proxy.newProxyInstance(providerClass.getClassLoader(), new Class<?>[]{providerClass},
                 new AddonInfoHandler());
         registryClass.getMethod("register", providerClass).invoke(null, provider);

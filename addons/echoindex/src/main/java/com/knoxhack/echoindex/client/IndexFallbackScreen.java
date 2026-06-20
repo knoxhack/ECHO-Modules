@@ -10,17 +10,18 @@ public final class IndexFallbackScreen {
     }
 
     public static void open() {
-        EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
-                "open",
-                "index.fallback_screen.open_catalog",
-                IndexCatalogScreen.class.getName(),
-                Map.of(
-                        "targetScreenClass", IndexCatalogScreen.class.getName(),
-                        "transitionSource", "index_fallback_screen"
-                ));
-        if (EchoIndexClient.nativeLoaderClientActiveForScreens()
-                && lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
-            return;
+        if (EchoIndexClient.nativeLoaderClientActiveForScreens()) {
+            EchoNativeLoadStatus lifecycleStatus = EchoIndexClient.publishNativeScreenLifecycle(
+                        "open",
+                        "index.fallback_screen.open_catalog",
+                        IndexCatalogScreen.class.getName(),
+                        Map.of(
+                                "targetScreenClass", IndexCatalogScreen.class.getName(),
+                                "transitionSource", "index_fallback_screen"
+                        ));
+            if (lifecycleStatus != EchoNativeLoadStatus.MUTATED) {
+                return;
+            }
         }
         Minecraft.getInstance().setScreen(new IndexCatalogScreen());
     }
