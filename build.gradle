@@ -206,27 +206,54 @@ subprojects {
         }
         def nativeContractsProject = rootProject.findProject(':echo-native-contracts')
         if (project.path != ':echo-native-contracts' && nativeContractsProject != null) {
-            def nativeContractsJar = nativeContractsProject.tasks.named('jar')
             dependencies.add('compileOnly', nativeContractsProject)
-            dependencies.add('compileOnly', files(nativeContractsJar.flatMap { it.archiveFile }))
+            def nativeContractsJar = nativeContractsProject.tasks.named('jar')
+            def nativeContractsJarFiles = files(nativeContractsJar.flatMap { it.archiveFile })
+            dependencies.add('compileOnly', nativeContractsJarFiles)
+            sourceSets.named('main') {
+                compileClasspath += nativeContractsJarFiles
+            }
             tasks.withType(JavaCompile).configureEach {
+                dependsOn nativeContractsProject.tasks.named('classes')
                 dependsOn nativeContractsJar
             }
         }
         afterEvaluate {
-            configurations.compileClasspath.allDependencies
-                    .withType(org.gradle.api.artifacts.ProjectDependency)
-                    .each { projectDependency ->
-                        def dependencyProject = rootProject.findProject(projectDependency.path)
-                        if (dependencyProject.path == project.path || !dependencyProject.plugins.hasPlugin(JavaPlugin)) {
-                            return
-                        }
-                        def dependencyJar = dependencyProject.tasks.named('jar')
-                        dependencies.add('compileOnly', files(dependencyJar.flatMap { it.archiveFile }))
-                        tasks.withType(JavaCompile).configureEach {
-                            dependsOn dependencyJar
-                        }
-                    }
+            def moduleRootPath = rootProject.projectDir.toPath().toAbsolutePath().normalize()
+            def projectDependencyPaths = new LinkedHashSet<String>()
+            ['compileClasspath', 'compileOnly', 'implementation', 'api'].each { configurationName ->
+                def configuration = configurations.findByName(configurationName)
+                if (configuration != null) {
+                    configuration.allDependencies
+                            .withType(org.gradle.api.artifacts.ProjectDependency)
+                            .each { projectDependency -> projectDependencyPaths.add(projectDependency.path) }
+                }
+            }
+            projectDependencyPaths.each { dependencyPath ->
+                def dependencyProject = rootProject.findProject(dependencyPath)
+                if (dependencyProject == null
+                        || dependencyProject.path == project.path
+                        || !dependencyProject.plugins.hasPlugin(JavaPlugin)) {
+                    return
+                }
+                def dependencyClasses = dependencyProject.tasks.named('classes')
+                tasks.withType(JavaCompile).configureEach {
+                    dependsOn dependencyClasses
+                }
+                def dependencyProjectPath = dependencyProject.projectDir.toPath().toAbsolutePath().normalize()
+                if (!dependencyProjectPath.startsWith(moduleRootPath)) {
+                    return
+                }
+                def dependencyJar = dependencyProject.tasks.named('jar')
+                def dependencyJarFiles = files(dependencyJar.flatMap { it.archiveFile })
+                dependencies.add('compileOnly', dependencyJarFiles)
+                sourceSets.named('main') {
+                    compileClasspath += dependencyJarFiles
+                }
+                tasks.withType(JavaCompile).configureEach {
+                    dependsOn dependencyJar
+                }
+            }
         }
         sourceSets.named('test') {
             compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
