@@ -204,6 +204,30 @@ subprojects {
         tasks.withType(Test).configureEach {
             failOnNoDiscoveredTests = false
         }
+        def nativeContractsProject = rootProject.findProject(':echo-native-contracts')
+        if (project.path != ':echo-native-contracts' && nativeContractsProject != null) {
+            def nativeContractsJar = nativeContractsProject.tasks.named('jar')
+            dependencies.add('compileOnly', nativeContractsProject)
+            dependencies.add('compileOnly', files(nativeContractsJar.flatMap { it.archiveFile }))
+            tasks.withType(JavaCompile).configureEach {
+                dependsOn nativeContractsJar
+            }
+        }
+        afterEvaluate {
+            configurations.compileClasspath.allDependencies
+                    .withType(org.gradle.api.artifacts.ProjectDependency)
+                    .each { projectDependency ->
+                        def dependencyProject = rootProject.findProject(projectDependency.path)
+                        if (dependencyProject.path == project.path || !dependencyProject.plugins.hasPlugin(JavaPlugin)) {
+                            return
+                        }
+                        def dependencyJar = dependencyProject.tasks.named('jar')
+                        dependencies.add('compileOnly', files(dependencyJar.flatMap { it.archiveFile }))
+                        tasks.withType(JavaCompile).configureEach {
+                            dependsOn dependencyJar
+                        }
+                    }
+        }
         sourceSets.named('test') {
             compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
             runtimeClasspath += output + compileClasspath + sourceSets.main.runtimeClasspath
