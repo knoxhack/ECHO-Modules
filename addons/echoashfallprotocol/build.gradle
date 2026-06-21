@@ -197,6 +197,8 @@ tasks.named('jar', Jar).configure {
         dependsOn nativeProject.tasks.named('classes')
         from(nativeProject.sourceSets.main.output) {
             exclude 'META-INF/MANIFEST.MF'
+            exclude 'com/mojang/logging/**'
+            exclude 'org/slf4j/**'
         }
     }
 }
