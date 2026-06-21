@@ -619,17 +619,17 @@ public final class EchoScreenEngine {
             if (layoutDirty || viewportChanged || focusDirty) {
                 inputRouter.invalidateHover();
             }
-            inputRouter.updateHover(root, mouseX, mouseY);
             if (layoutDirty || viewportChanged) {
                 layoutEngine.layout(root, context, width, height);
-                if (focusDirty || viewportChanged) {
-                    focusManager.rebuild(root);
-                    focusDirty = false;
-                }
                 lastWidth = width;
                 lastHeight = height;
                 layoutDirty = false;
             }
+            if (focusDirty || viewportChanged) {
+                focusManager.rebuild(root);
+                focusDirty = false;
+            }
+            inputRouter.updateHover(root, mouseX, mouseY);
             if (debug || validationDirty || viewportChanged) {
                 validateLayout(root, 0);
                 validationDirty = false;
@@ -652,7 +652,7 @@ public final class EchoScreenEngine {
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        ensureTree();
+        ensureLayoutForInput(mouseX, mouseY);
         if (root == null) {
             return false;
         }
@@ -666,17 +666,18 @@ public final class EchoScreenEngine {
     }
 
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        ensureLayoutForInput(mouseX, mouseY);
         return root != null && inputRouter.mouseReleased(mouseX, mouseY, button, this::runAction)
                 || root != null && root.bounds().contains(mouseX, mouseY);
     }
 
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
-        ensureTree();
+        ensureLayoutForInput(mouseX, mouseY);
         return root != null && inputRouter.mouseDragged(mouseX, mouseY, button, dragX, dragY, this::runAction);
     }
 
     public boolean mouseScrolled(double mouseX, double mouseY, double deltaY) {
-        ensureTree();
+        ensureLayoutForInput(mouseX, mouseY);
         boolean handled = root != null && inputRouter.mouseScrolled(root, mouseX, mouseY, deltaY);
         if (handled) {
             layoutDirty = true;
@@ -880,6 +881,28 @@ public final class EchoScreenEngine {
         layoutDirty = true;
         focusDirty = true;
         validationDirty = true;
+        inputRouter.invalidateHover();
+    }
+
+    private void ensureLayoutForInput(double mouseX, double mouseY) {
+        ensureTree();
+        if (root == null || (!layoutDirty && !focusDirty) || lastWidth <= 0 || lastHeight <= 0) {
+            return;
+        }
+        Font font;
+        try {
+            font = Minecraft.getInstance().font;
+        } catch (RuntimeException exception) {
+            return;
+        }
+        EchoRenderContext context = context(null, font, lastWidth, lastHeight,
+                (int) Math.round(mouseX), (int) Math.round(mouseY), 0.0F);
+        layoutEngine.layout(root, context, lastWidth, lastHeight);
+        if (focusDirty) {
+            focusManager.rebuild(root);
+            focusDirty = false;
+        }
+        layoutDirty = false;
         inputRouter.invalidateHover();
     }
 

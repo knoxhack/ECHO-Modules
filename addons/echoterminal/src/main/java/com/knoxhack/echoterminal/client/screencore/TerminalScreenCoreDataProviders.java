@@ -393,7 +393,7 @@ public final class TerminalScreenCoreDataProviders {
         int chapterCount = snapshot.chapterCount();
         Identifier active = activeTabId(context);
         boolean debug = TerminalClientOptions.screenCoreDebug();
-        Map<String, Object> routeMission = overviewRouteSnapshot().activeMission();
+        Map<String, Object> routeMission = overviewRouteSnapshotForOverview().activeMission();
         String buildFingerprint = "SC " + modVersion("echoscreencore") + " / T " + modVersion(EchoTerminal.MODID);
         return row(
                 "primary", telemetry.warning() ? telemetry.statusLine() : "Field systems nominal.",
@@ -429,7 +429,7 @@ public final class TerminalScreenCoreDataProviders {
         int diagnosticCount = snapshot.diagnosticCount();
         int routeCount = snapshot.routeCount();
         int chapterCount = snapshot.chapterCount();
-        TerminalOverviewRouteSnapshot routeSnapshot = overviewRouteSnapshot();
+        TerminalOverviewRouteSnapshot routeSnapshot = overviewRouteSnapshotForOverview();
         if (path.size() > 1 && "quickLinks".equals(path.get(1))) {
             return List.of(
                     quickLink("Survival Route", "Open active route guidance.", MainSurvivalQuestProvider.TAB_ID),
@@ -570,6 +570,41 @@ public final class TerminalScreenCoreDataProviders {
                 "vitalsLine", telemetry.statusLine(),
                 "routeSyncStatus", "SYNCED",
                 "routeSyncStatusKey", "ready");
+    }
+
+    private static TerminalOverviewRouteSnapshot overviewRouteSnapshotForOverview() {
+        if (player() == null) {
+            return overviewRouteSnapshot();
+        }
+        return overviewRouteSnapshotCachedOrFallback();
+    }
+
+    private static TerminalOverviewRouteSnapshot overviewRouteSnapshotCachedOrFallback() {
+        Player player = player();
+        int playerKey = player == null ? 0 : System.identityHashCode(player);
+        int tick = player == null ? -1 : player.tickCount;
+        int bucket = tick < 0 ? -1 : tick / OVERVIEW_ROUTE_CACHE_TICKS;
+        String selectedId = state().selectedMissionId() == null ? "" : state().selectedMissionId().toString();
+        TerminalOverviewRouteSnapshot cached = overviewRouteSnapshot;
+        if (cached != null
+                && cached.playerKey() == playerKey
+                && cached.bucket() == bucket
+                && cached.selectedMissionId().equals(selectedId)) {
+            return cached;
+        }
+        TerminalOverviewRouteSnapshot fallback = routeSnapshotFromRows(
+                playerKey,
+                bucket,
+                selectedId,
+                overviewRouteFingerprintFast(),
+                List.of(),
+                true);
+        overviewRouteSnapshot = fallback;
+        return fallback;
+    }
+
+    private static String overviewRouteFingerprintFast() {
+        return "deferred:" + TerminalMissionRegistry.providers().size();
     }
 
     private static TerminalOverviewRouteSnapshot overviewRouteSnapshot() {
