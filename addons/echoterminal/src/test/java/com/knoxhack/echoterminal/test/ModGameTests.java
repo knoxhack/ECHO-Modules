@@ -263,6 +263,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("terminal_screencore_parity_state", () -> ModGameTests::terminalScreenCoreParityState);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_RECIPE_INDEX_CACHE =
             TEST_FUNCTIONS.register("terminal_screencore_recipe_index_cache", () -> ModGameTests::terminalScreenCoreRecipeIndexCache);
+    private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_MISSION_BROWSER_CACHE =
+            TEST_FUNCTIONS.register("terminal_screencore_mission_browser_cache", () -> ModGameTests::terminalScreenCoreMissionBrowserCache);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_CLICK_ACTION_DISPATCH =
             TEST_FUNCTIONS.register("terminal_screencore_click_action_dispatch", () -> ModGameTests::terminalScreenCoreClickActionDispatch);
     private static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE =
@@ -334,6 +336,7 @@ public final class ModGameTests {
         register(event, environment, "terminal_recipe_lookups", TERMINAL_RECIPE_LOOKUPS.getId());
         register(event, environment, "terminal_screencore_action_catalog", TERMINAL_SCREENCORE_ACTION_CATALOG.getId());
         register(event, environment, "terminal_screencore_parity_state", TERMINAL_SCREENCORE_PARITY_STATE.getId());
+        register(event, environment, "terminal_screencore_mission_browser_cache", TERMINAL_SCREENCORE_MISSION_BROWSER_CACHE.getId());
         register(event, environment, "terminal_screencore_overview_route_cache", TERMINAL_SCREENCORE_OVERVIEW_ROUTE_CACHE.getId());
         register(event, environment, "terminal_screencore_native_mission_fallback", TERMINAL_SCREENCORE_NATIVE_MISSION_FALLBACK.getId());
         register(event, environment, "terminal_screencore_click_action_dispatch", TERMINAL_SCREENCORE_CLICK_ACTION_DISPATCH.getId());
@@ -1566,6 +1569,107 @@ public final class ModGameTests {
             });
         } catch (ReflectiveOperationException | LinkageError exception) {
             throw new AssertionError("Failed to prepare Terminal ScreenCore recipe index cache test", exception);
+        }
+        helper.succeed();
+    }
+
+    private static void terminalScreenCoreMissionBrowserCache(GameTestHelper helper) {
+        if (!screenCoreLoaded()) {
+            helper.succeed();
+            return;
+        }
+        try {
+            screenCoreActionsClass().getMethod("register").invoke(null);
+            screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            Identifier providerId = id("screen_mission_browser_cache_provider");
+            Identifier missionId = id("screen_mission_browser_cache_main");
+            Identifier sideId = id("screen_mission_browser_cache_side");
+            CountingRouteMissionProvider provider = new CountingRouteMissionProvider(
+                    providerId,
+                    "Mission Browser Cache",
+                    List.of(new ConfiguredMission(
+                            missionId,
+                            "Cache Main",
+                            "Cache",
+                            "Route",
+                            "Main",
+                            TerminalMissionRole.MAIN,
+                            TerminalMissionStatus.UNLOCKED,
+                            List.of(TerminalMissionAction.enabled("scan_cache", "SCAN CACHE"))),
+                            new ConfiguredMission(
+                                    sideId,
+                                    "Cache Side",
+                                    "Cache",
+                                    "Optional",
+                                    "Side",
+                                    TerminalMissionRole.OPTIONAL,
+                                    TerminalMissionStatus.CLAIMABLE,
+                                    List.of(TerminalMissionAction.enabled("claim_cache", "CLAIM CACHE")),
+                                    Optional.of(missionId),
+                                    List.of())));
+
+            TerminalMissionRegistry.withClearedForTests(() -> {
+                MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+                TerminalMissionRegistry.register(provider);
+                try {
+                    Object context = putScreenCoreData(newScreenCoreDataContext(),
+                            "terminal.activeTabId", MainSurvivalQuestProvider.TAB_ID.toString());
+                    long initialBuilds = missionBrowserUiBuildCountForTests();
+
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> visibleMissions = (List<Map<String, Object>>)
+                            resolveScreenCoreData(context, "missionBrowser.visibleMissions");
+                    helper.assertTrue(visibleMissions.stream()
+                                    .anyMatch(row -> missionId.toString().equals(String.valueOf(row.get("id")))),
+                            "ScreenCore mission browser cache fixture should expose the main route mission");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 1,
+                            "First mission browser binding should build one cached ScreenCore view");
+
+                    resolveScreenCoreData(context, "missionBrowser.roadmapRows");
+                    resolveScreenCoreData(context, "missionBrowser.selectedMission.title");
+                    resolveScreenCoreData(context, "missionBrowser.selectedMission.sideCards");
+                    resolveScreenCoreData(context, "missionBrowser.selectedPhase.title");
+                    resolveScreenCoreData(context, "missionBrowser.currentProvider.title");
+                    resolveScreenCoreData(context, "missionBrowser.activeCompactLabel");
+                    resolveScreenCoreData(context, "missionBrowser.readyLabel");
+                    resolveScreenCoreData(context, "missionBrowser.routeProgressLabel");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 1,
+                            "Repeated mission browser bindings should reuse the cached ScreenCore view");
+
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION"),
+                                    missionId.toString(), Map.of(), context, null),
+                            "Mission browser cache test should select a visible mission");
+                    helper.assertTrue("Cache Main".equals(resolveScreenCoreData(
+                                    context, "missionBrowser.selectedMission.title")),
+                            "Selected mission should resolve after mission selection invalidates the cache");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 2,
+                            "Selecting a mission should invalidate and rebuild the mission browser cache once");
+
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION_PROVIDER"),
+                                    providerId.toString(), Map.of(), context, null),
+                            "Mission browser cache test should select a provider filter source");
+                    resolveScreenCoreData(context, "missionBrowser.activeCompactLabel");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 3,
+                            "Selecting a mission provider should invalidate and rebuild the cache once");
+
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("PERFORM_MISSION_ACTION"),
+                                    missionId.toString(), Map.of("action_id", "scan_cache"), context, null),
+                            "Mission browser cache test should dispatch a mission action");
+                    resolveScreenCoreData(context, "missionBrowser.selectedMission.primaryActionId");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 4,
+                            "Mission action dispatch should invalidate and rebuild the cache once");
+                } catch (ReflectiveOperationException | LinkageError exception) {
+                    throw new AssertionError("Failed to exercise ScreenCore mission browser cache", exception);
+                }
+            });
+        } catch (ReflectiveOperationException | LinkageError exception) {
+            throw new AssertionError("Failed to prepare ScreenCore mission browser cache test", exception);
+        } finally {
+            try {
+                screenCoreDataProvidersClass().getMethod("resetStateForTests").invoke(null);
+            } catch (ReflectiveOperationException | LinkageError ignored) {
+            }
+            MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
         }
         helper.succeed();
     }
@@ -5871,6 +5975,12 @@ public final class ModGameTests {
     private static long recipeUiBuildCountForTests() throws ReflectiveOperationException {
         return ((Number) screenCoreDataProvidersClass()
                 .getMethod("recipeUiBuildCountForTests")
+                .invoke(null)).longValue();
+    }
+
+    private static long missionBrowserUiBuildCountForTests() throws ReflectiveOperationException {
+        return ((Number) screenCoreDataProvidersClass()
+                .getMethod("missionBrowserUiBuildCountForTests")
                 .invoke(null)).longValue();
     }
 

@@ -254,26 +254,16 @@ public final class MainSurvivalQuestProvider implements TerminalMissionProvider 
         StringBuilder builder = new StringBuilder();
         for (TerminalMissionProvider provider : TerminalMissionRegistry.providers()) {
             if (provider != null && provider != INSTANCE) {
+                TerminalMissionChapter chapter = safeChapter(provider);
                 builder.append(provider.getClass().getName())
                         .append('@')
                         .append(System.identityHashCode(provider))
                         .append('#')
-                        .append(safeMissionCount(provider))
+                        .append(chapter == null ? "" : chapter.id())
                         .append(';');
             }
         }
         return builder.toString();
-    }
-
-    private static int safeMissionCount(TerminalMissionProvider provider) {
-        try {
-            List<TerminalMissionDefinition> missions = provider.missions(null);
-            return missions == null ? 0 : missions.size();
-        } catch (RuntimeException | LinkageError exception) {
-            EchoTerminal.LOGGER.debug("Survival route could not count a provider while building its cache key.",
-                    exception);
-            return -1;
-        }
     }
 
     private static RouteSnapshot buildRouteSnapshot(Player player) {

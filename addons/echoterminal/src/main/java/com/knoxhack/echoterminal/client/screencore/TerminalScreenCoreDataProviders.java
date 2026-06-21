@@ -64,6 +64,7 @@ public final class TerminalScreenCoreDataProviders {
     private static final String ASHFALL_STARTER_MISSION_ID = "echoashfallprotocol:secure_crash_outpost";
     private static final int SCREENCORE_RECIPE_ROW_LIMIT = 100;
     private static final int RECIPE_SNAPSHOT_CACHE_TICKS = 20;
+    private static final int MISSION_BROWSER_CACHE_TICKS = 10;
     private static final long OVERVIEW_ROUTE_WARN_NANOS = 35_000_000L;
     private static final long OVERVIEW_ROUTE_WARN_COOLDOWN_TICKS = 200L;
     private static final int OVERVIEW_ROUTE_CACHE_TICKS = 40;
@@ -76,7 +77,9 @@ public final class TerminalScreenCoreDataProviders {
     private static TerminalStatusSnapshot statusSnapshot;
     private static TerminalOverviewRouteSnapshot overviewRouteSnapshot;
     private static TerminalRecipeUiSnapshot recipeUiSnapshot;
+    private static TerminalMissionBrowserUiSnapshot missionBrowserUiSnapshot;
     private static long recipeUiBuildCount;
+    private static long missionBrowserUiBuildCount;
     private static long lastOverviewRouteWarnTick = Long.MIN_VALUE;
     private static final AtomicBoolean MISSION_PROVIDER_FAILURE_LOGGED = new AtomicBoolean(false);
     private static final AtomicBoolean MISSION_ROW_FAILURE_LOGGED = new AtomicBoolean(false);
@@ -106,7 +109,9 @@ public final class TerminalScreenCoreDataProviders {
         statusSnapshot = null;
         overviewRouteSnapshot = null;
         recipeUiSnapshot = null;
+        missionBrowserUiSnapshot = null;
         recipeUiBuildCount = 0L;
+        missionBrowserUiBuildCount = 0L;
         lastOverviewRouteWarnTick = Long.MIN_VALUE;
         MISSION_PROVIDER_FAILURE_LOGGED.set(false);
         MISSION_ROW_FAILURE_LOGGED.set(false);
@@ -117,12 +122,21 @@ public final class TerminalScreenCoreDataProviders {
         TerminalMissionRegistry.ensureSorted();
         statusSnapshot = null;
         overviewRouteSnapshot = null;
+        missionBrowserUiSnapshot = null;
         MISSION_PROVIDER_FAILURE_LOGGED.set(false);
         MISSION_ROW_FAILURE_LOGGED.set(false);
     }
 
+    static void invalidateMissionBrowserSnapshot() {
+        missionBrowserUiSnapshot = null;
+    }
+
     public static long recipeUiBuildCountForTests() {
         return recipeUiBuildCount;
+    }
+
+    public static long missionBrowserUiBuildCountForTests() {
+        return missionBrowserUiBuildCount;
     }
 
     public static String preferredMissionActionIdForTests(List<TerminalMissionAction> actions) {
@@ -1187,11 +1201,48 @@ public final class TerminalScreenCoreDataProviders {
     }
 
     private static Object missionBrowser(EchoDataContext context, List<String> path) {
+        TerminalMissionBrowserUiSnapshot view = missionBrowserUiSnapshot(context);
+        if (path.size() > 1 && ("visibleMissions".equals(path.get(1)) || "missionTree".equals(path.get(1)))) {
+            return view.visibleMissions();
+        }
+        if (path.size() > 1 && "roadmapRows".equals(path.get(1))) {
+            return view.roadmapRows();
+        }
+        if (path.size() > 1 && "currentProvider".equals(path.get(1))) {
+            return resolveNested(view.currentProvider(), path, 2);
+        }
+        if (path.size() > 1 && "selectedPhase".equals(path.get(1))) {
+            return resolveNested(view.selectedPhase(), path, 2);
+        }
+        if (path.size() > 1 && "selectedMission".equals(path.get(1))) {
+            return resolveNested(view.selectedMission(), path, 2);
+        }
+        if (path.size() > 1 && "selectedMissionId".equals(path.get(1))) {
+            return view.selectedMissionId();
+        }
+        return resolveNested(view.summary(), path, 1);
+    }
+
+    private static TerminalMissionBrowserUiSnapshot missionBrowserUiSnapshot(EchoDataContext context) {
         Identifier activeTabId = activeTabId(context);
+        String activeTabKey = activeTabId.toString();
+        Player player = player();
+        int playerKey = player == null ? 0 : System.identityHashCode(player);
+        int tickBucket = player == null ? -1 : player.tickCount / MISSION_BROWSER_CACHE_TICKS;
+        List<TerminalMissionProvider> providerList = TerminalMissionRegistry.providers();
+        int providerListKey = System.identityHashCode(providerList);
+        int providerCount = providerList.size();
+        String selectedMissionId = state().selectedMissionId() == null ? "" : state().selectedMissionId().toString();
+        String queryText = state().missionSearch();
+        String query = normalize(queryText);
+        String providerFilter = state().missionProviderFilter();
+        TerminalMissionBrowserUiSnapshot cached = missionBrowserUiSnapshot;
+        if (cached != null && cached.matches(activeTabKey, playerKey, providerListKey, providerCount,
+                selectedMissionId, query, providerFilter, tickBucket)) {
+            return cached;
+        }
         TerminalMissionProvider provider = missionProviderFor(activeTabId);
         List<Map<String, Object>> allMissions = safeMissionRows(provider, activeTabId);
-        String query = normalize(state().missionSearch());
-        String providerFilter = state().missionProviderFilter();
         List<Map<String, Object>> baseMissions = filterMissionRows(allMissions, providerFilter, query);
         if (providerFilterStale(allMissions, providerFilter)) {
             state().missionProviderFilter("all");
@@ -1206,26 +1257,8 @@ public final class TerminalScreenCoreDataProviders {
         String selectedId = String.valueOf(selected.getOrDefault("id", ""));
         Map<String, Object> stats = missionStats(visibleMissions);
         List<Map<String, Object>> roadmapRows = roadmapRows(baseMissions, selected);
-        if (path.size() > 1 && ("visibleMissions".equals(path.get(1)) || "missionTree".equals(path.get(1)))) {
-            return visibleMissions;
-        }
-        if (path.size() > 1 && "roadmapRows".equals(path.get(1))) {
-            return roadmapRows;
-        }
-        if (path.size() > 1 && "currentProvider".equals(path.get(1))) {
-            return resolveNested(providerRow(provider), path, 2);
-        }
-        if (path.size() > 1 && "selectedPhase".equals(path.get(1))) {
-            return resolveNested(selectedPhaseRow(roadmapRows), path, 2);
-        }
-        if (path.size() > 1 && "selectedMission".equals(path.get(1))) {
-            return resolveNested(selected, path, 2);
-        }
-        if (path.size() > 1 && "selectedMissionId".equals(path.get(1))) {
-            return selectedId;
-        }
         long sideCardCount = allMissions.stream().filter(row -> Boolean.TRUE.equals(row.get("sideCard"))).count();
-        return resolveNested(row("count", visibleMissions.size(),
+        Map<String, Object> summary = row("count", visibleMissions.size(),
                 "sideCardCount", sideCardCount,
                 "activeCount", stats.get("active"),
                 "activeLabel", countLabel(stats.get("active"), "ACTIVE"),
@@ -1244,7 +1277,25 @@ public final class TerminalScreenCoreDataProviders {
                 "phaseCount", roadmapRows.size(),
                 "query", state().missionSearch(),
                 "providerFilter", state().missionProviderFilter(),
-                "legacyAvailable", true), path, 1);
+                "legacyAvailable", true);
+        TerminalMissionBrowserUiSnapshot next = new TerminalMissionBrowserUiSnapshot(
+                activeTabKey,
+                playerKey,
+                providerListKey,
+                providerCount,
+                selectedMissionId,
+                query,
+                providerFilter,
+                tickBucket,
+                List.copyOf(visibleMissions),
+                List.copyOf(roadmapRows),
+                new LinkedHashMap<>(selected),
+                new LinkedHashMap<>(selectedPhaseRow(roadmapRows)),
+                new LinkedHashMap<>(providerRow(provider)),
+                new LinkedHashMap<>(summary));
+        missionBrowserUiSnapshot = next;
+        missionBrowserUiBuildCount++;
+        return next;
     }
 
     private static List<Map<String, Object>> filterMissionRows(
@@ -1264,11 +1315,22 @@ public final class TerminalScreenCoreDataProviders {
     }
 
     private static boolean providerFilterStale(List<Map<String, Object>> allMissions, String providerFilter) {
-        return providerFilter != null
-                && !"all".equals(providerFilter)
-                && allMissions.stream()
+        if (providerFilter == null || "all".equals(providerFilter)) {
+            return false;
+        }
+        List<Map<String, Object>> routeRows = allMissions.stream()
                 .filter(row -> !Boolean.TRUE.equals(row.get("sideCard")))
-                .noneMatch(row -> providerMatches(row, providerFilter));
+                .toList();
+        Identifier filterId = Identifier.tryParse(providerFilter);
+        if (filterId != null && TerminalMissionRegistry.provider(filterId).isEmpty()) {
+            boolean exactProviderMatch = routeRows.stream()
+                    .anyMatch(row -> providerFilter.equals(String.valueOf(row.get("providerId")))
+                            || providerFilter.equals(String.valueOf(row.get("sourceChapterId"))));
+            if (!exactProviderMatch) {
+                return true;
+            }
+        }
+        return routeRows.stream().noneMatch(row -> providerMatches(row, providerFilter));
     }
 
     private static boolean providerMatches(Map<String, Object> row, String providerFilter) {
@@ -3609,6 +3671,48 @@ public final class TerminalScreenCoreDataProviders {
         private TerminalOverviewRouteSnapshot withScope(int bucket, boolean degraded) {
             return new TerminalOverviewRouteSnapshot(playerKey, bucket, selectedMissionId, routeFingerprint,
                     routeRows, visibleRouteRows, activeMission, degraded);
+        }
+    }
+
+    private record TerminalMissionBrowserUiSnapshot(
+            String activeTabId,
+            int playerKey,
+            int providerListKey,
+            int providerCount,
+            String selectedMissionId,
+            String query,
+            String providerFilter,
+            int tickBucket,
+            List<Map<String, Object>> visibleMissions,
+            List<Map<String, Object>> roadmapRows,
+            Map<String, Object> selectedMission,
+            Map<String, Object> selectedPhase,
+            Map<String, Object> currentProvider,
+            Map<String, Object> summary) {
+        private TerminalMissionBrowserUiSnapshot {
+            activeTabId = activeTabId == null ? "" : activeTabId;
+            selectedMissionId = selectedMissionId == null ? "" : selectedMissionId;
+            query = query == null ? "" : query;
+            providerFilter = providerFilter == null ? "" : providerFilter;
+        }
+
+        private boolean matches(
+                String activeTabId,
+                int playerKey,
+                int providerListKey,
+                int providerCount,
+                String selectedMissionId,
+                String query,
+                String providerFilter,
+                int tickBucket) {
+            return this.activeTabId.equals(activeTabId == null ? "" : activeTabId)
+                    && this.playerKey == playerKey
+                    && this.providerListKey == providerListKey
+                    && this.providerCount == providerCount
+                    && this.selectedMissionId.equals(selectedMissionId == null ? "" : selectedMissionId)
+                    && this.query.equals(query == null ? "" : query)
+                    && this.providerFilter.equals(providerFilter == null ? "" : providerFilter)
+                    && this.tickBucket == tickBucket;
         }
     }
 

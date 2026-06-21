@@ -185,6 +185,7 @@ public final class TerminalScreenCoreActions {
             state().selectMissionProvider(providerId);
             state().missionProviderFilter(providerFilterFor(providerId));
         }
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         Identifier targetTab = parseIdentifier(firstNonBlank(context.param("tab"), context.param("tab_id")));
         if (targetTab == null) {
@@ -214,6 +215,7 @@ public final class TerminalScreenCoreActions {
     private static boolean deployProbe(EchoActionContext context) {
         state().selectMissionProvider("all");
         state().missionProviderFilter("all");
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return openKnown(context, "mission_graph");
     }
@@ -274,8 +276,13 @@ public final class TerminalScreenCoreActions {
     }
 
     private static boolean refresh(EchoActionContext context) {
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
+    }
+
+    private static void invalidateMissionBrowserData() {
+        TerminalScreenCoreDataProviders.invalidateMissionBrowserSnapshot();
     }
 
     private static boolean selectMission(EchoActionContext context) {
@@ -285,6 +292,7 @@ public final class TerminalScreenCoreActions {
         }
         state().selectMission(id);
         resetMissionDetailScroll(context);
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
     }
@@ -308,6 +316,7 @@ public final class TerminalScreenCoreActions {
                                 || snapshot.status() == TerminalMissionStatus.CLAIMABLE)) {
                     state().selectMission(mission.id());
                     resetMissionRouteScroll(context, tabId);
+                    invalidateMissionBrowserData();
                     EchoScreens.invalidateData();
                     return true;
                 }
@@ -339,6 +348,7 @@ public final class TerminalScreenCoreActions {
                 dispatchTabId,
                 TerminalMissionActions.TRACK_MISSION,
                 TerminalMissionActions.trackingPayload(dispatchTabId, safeChapterId(provider), missionId, clearRequested)));
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
     }
@@ -386,6 +396,7 @@ public final class TerminalScreenCoreActions {
         if (snapshot != null && snapshot.status() == TerminalMissionStatus.LOCKED) {
             resetMissionRouteScroll(context, tabId);
             resetMissionDetailScroll(context);
+            invalidateMissionBrowserData();
             EchoScreens.invalidateData();
             return true;
         }
@@ -402,12 +413,14 @@ public final class TerminalScreenCoreActions {
                 dispatchTabId,
                 TerminalMissionActions.MISSION_ACTION,
                 TerminalMissionActions.payload(safeChapterId(provider), missionId, action.id())));
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
     }
 
     private static boolean filterMissions(EchoActionContext context) {
         state().missionSearch(value(context));
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
     }
@@ -418,6 +431,7 @@ public final class TerminalScreenCoreActions {
             return false;
         }
         state().selectMissionProvider(providerId);
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return true;
     }
@@ -430,6 +444,7 @@ public final class TerminalScreenCoreActions {
         state().selectMissionProvider(providerId);
         state().missionProviderFilter(providerFilterFor(providerId));
         resetMissionRouteScroll(context, providerRouteTarget(providerId));
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return openTab(context, providerRouteTarget(providerId));
     }
@@ -441,6 +456,7 @@ public final class TerminalScreenCoreActions {
         }
         state().selectMissionProvider(providerId);
         state().diagnosticsChapterFilter(providerFilterFor(providerId));
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return openKnown(context, "data_core");
     }
@@ -604,6 +620,7 @@ public final class TerminalScreenCoreActions {
         }
         Identifier targetTab = addonRouteTarget(addonId);
         resetMissionRouteScroll(context, targetTab);
+        invalidateMissionBrowserData();
         EchoScreens.invalidateData();
         return openTab(context, targetTab);
     }
