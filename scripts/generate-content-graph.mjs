@@ -396,9 +396,10 @@ function generateModuleNodes(entry) {
   }
 
   for (const ui of descriptorUiRegistrations(descriptor)) {
+    const uiId = nodeId(moduleId, ui.localId)
     nodes.push(makeNode({
       kind: NODE_KINDS.UI_INTENT,
-      id: nodeId(moduleId, ui.localId),
+      id: uiId,
       moduleId,
       displayName: ui.displayName,
       source: {
@@ -408,13 +409,18 @@ function generateModuleNodes(entry) {
       },
       data: {
         surface: ui.surface,
+        route: uiId,
+        capabilities: ui.capabilities,
         descriptorRole: descriptor.role,
         providedCapabilities: descriptor.provides ?? [],
       },
       extra: {
         intent: ui.intent,
         capabilities: ui.capabilities,
-        runtimeHints: runtimeHintsFromDescriptor(descriptor),
+        runtimeHints: {
+          ...runtimeHintsFromDescriptor(descriptor),
+          echo_runtime_standalone: { id: uiId },
+        },
       },
     }))
   }
@@ -475,6 +481,386 @@ function sourceForResource(filePath) {
     path: normalizedPath(path.relative(process.cwd(), filePath)),
     format: ext === '.json' ? 'json' : ext === '.java' ? 'java' : ext === '.xml' ? 'xml' : 'generated',
   }
+}
+
+async function collectTagMappings(dataDir) {
+  const mappings = {
+    biomeTags: new Map(),
+    structureTags: new Map(),
+    placedFeatureTags: new Map(),
+  }
+  if (!dataDir) return mappings
+  for await (const filePath of walkFiles(dataDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    if (!normalizedFilePath.includes('/tags/')) continue
+    const ns = namespaceFromPath(filePath, dataDir)
+    const relative = localPathAfterNamespace(filePath, dataDir)
+    const withoutExt = stripJsonExtension(relative)
+    const match = /^tags\/(.+)\/([^/]+)$/.exec(withoutExt)
+    if (!match) continue
+    const tagType = match[1]
+    const tagPath = match[2]
+    const tagId = nodeId(ns, tagPath)
+    let payload = null
+    try {
+      payload = await parseContentJson(filePath)
+    } catch {
+      continue
+    }
+    const values = Array.isArray(payload?.values) ? payload.values : []
+    for (const value of values) {
+      let rawId = typeof value === 'string' ? value : value?.id
+      if (!rawId) continue
+      rawId = rawId.startsWith('#') ? rawId.slice(1) : rawId
+      const contentId = rawId.includes(':') ? rawId : nodeId(ns, rawId)
+      if (tagType === 'worldgen/biome') {
+        if (!mappings.biomeTags.has(contentId)) mappings.biomeTags.set(contentId, [])
+        if (!mappings.biomeTags.get(contentId).includes(tagId)) mappings.biomeTags.get(contentId).push(tagId)
+      } else if (tagType === 'worldgen/structure') {
+        if (!mappings.structureTags.has(contentId)) mappings.structureTags.set(contentId, [])
+        if (!mappings.structureTags.get(contentId).includes(tagId)) mappings.structureTags.get(contentId).push(tagId)
+      } else if (tagType === 'worldgen/placed_feature') {
+        if (!mappings.placedFeatureTags.has(contentId)) mappings.placedFeatureTags.set(contentId, [])
+        if (!mappings.placedFeatureTags.get(contentId).includes(tagId)) mappings.placedFeatureTags.get(contentId).push(tagId)
+      }
+    }
+  }
+  return mappings
+}
+
+async function findEntityAssetPaths(assetsDir, ns, localId) {
+  const result = {}
+  if (!assetsDir) return result
+  const namespaceDir = path.join(assetsDir, ns)
+  const textureCandidates = [
+    path.join(namespaceDir, 'textures', 'entity', `${localId}.png`),
+    path.join(namespaceDir, 'textures', 'entity', `${localId}.png.png`),
+  ]
+  const modelCandidates = [
+    path.join(namespaceDir, 'models', 'entity', `${localId}.json`),
+    path.join(namespaceDir, 'geo', 'entity', `${localId}.json`),
+    path.join(namespaceDir, 'models', `${localId}.json`),
+  ]
+  const animationCandidates = [
+    path.join(namespaceDir, 'animations', 'entity', `${localId}.json`),
+    path.join(namespaceDir, 'animations', `${localId}.json`),
+  ]
+
+  const entityTexturesDir = path.join(namespaceDir, 'textures', 'entity', localId)
+  try {
+    const entries = await fs.readdir(entityTexturesDir, { withFileTypes: true })
+    for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+      if (entry.isFile() && entry.name.endsWith('.png')) {
+        textureCandidates.push(path.join(entityTexturesDir, entry.name))
+      }
+    }
+  } catch {
+    // ignore missing directory
+  }
+
+  const entityBaseDir = path.join(namespaceDir, 'textures', 'entity')
+  try {
+    const entries = await fs.readdir(entityBaseDir, { withFileTypes: true })
+    for (const entry of entries) {
+      if (entry.isDirectory() && entry.name !== localId) {
+        const candidate = path.join(entityBaseDir, entry.name, `${localId}.png`)
+        textureCandidates.push(candidate)
+      }
+    }
+  } catch {
+    // ignore missing directory
+  }
+
+  for (const candidate of textureCandidates) {
+    if (await fileExists(candidate)) {
+      result.texturePath = normalizedPath(path.relative(process.cwd(), candidate))
+      break
+    }
+  }
+  for (const candidate of modelCandidates) {
+    if (await fileExists(candidate)) {
+      result.modelPath = normalizedPath(path.relative(process.cwd(), candidate))
+      break
+    }
+  }
+  for (const candidate of animationCandidates) {
+    if (await fileExists(candidate)) {
+      result.animationPath = normalizedPath(path.relative(process.cwd(), candidate))
+      break
+    }
+  }
+  return result
+}
+
+function inferThreatFromCategory(category, builderBody = '', entityData = {}) {
+  const threat = {}
+  const explicitFields = ['threat', 'threatClass', 'threatProfile', 'threatLevel', 'dangerLevel', 'hostility', 'hostilityLevel']
+  for (const field of explicitFields) {
+    if (entityData[field] !== undefined) threat[field] = entityData[field]
+  }
+  const threatCall = /\.(?:threat|threatClass|threatProfile|threatLevel|dangerLevel|hostility|hostilityLevel)\s*\(\s*"([^"]+)"\s*\)/.exec(builderBody)
+  if (threatCall && !threat.hostility) {
+    threat.hostility = threatCall[1]
+  }
+  if (Object.keys(threat).length > 0) return threat
+
+  const cat = String(category).toLowerCase()
+  if (cat === 'monster') threat.hostility = 'hostile'
+  else if (cat === 'creature') threat.hostility = 'neutral'
+  else if (cat === 'ambient') threat.hostility = 'passive'
+  else if (cat === 'water_creature') threat.hostility = 'neutral'
+  else threat.hostility = 'neutral'
+  return threat
+}
+
+function categoryToRuleType(category) {
+  const map = {
+    monster: 'monster',
+    creature: 'ground_mob',
+    ambient: 'no_restrictions',
+    misc: 'no_restrictions',
+    water_creature: 'ground_mob',
+    underground_water_creature: 'ground_mob',
+    water_ambient: 'no_restrictions',
+    axolotls: 'ground_mob',
+  }
+  return map[String(category).toLowerCase()] || 'no_restrictions'
+}
+
+function normalizeBiomesValue(value, defaultNs) {
+  if (!value) return []
+  if (typeof value === 'string') {
+    const id = value.startsWith('#') ? value.slice(1) : value
+    return [id.includes(':') ? id : nodeId(defaultNs, id)]
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => normalizeBiomesValue(item, defaultNs))
+  }
+  if (value.tag) {
+    const tagId = value.tag.includes(':') ? value.tag : nodeId(defaultNs, value.tag)
+    return [`#${tagId}`]
+  }
+  return []
+}
+
+async function collectSpawnMetadata(dataDir, ns) {
+  const map = new Map()
+  if (!dataDir) return map
+
+  for await (const filePath of walkFiles(dataDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    if (!normalizedFilePath.includes('/neoforge/biome_modifier/')) continue
+    const payload = await parseContentJson(filePath)
+    if (!payload || payload.type !== 'neoforge:add_spawns') continue
+    const biomeValues = normalizeBiomesValue(payload.biomes, ns)
+    const biomeTags = biomeValues.filter((b) => b.startsWith('#'))
+    const biomeIds = biomeValues.filter((b) => !b.startsWith('#'))
+    for (const spawner of payload.spawners || []) {
+      const entityId = normalizeContentId(spawner.type, ns)
+      if (!entityId) continue
+      const entry = {
+        ruleType: 'monster',
+        weight: spawner.weight,
+        minGroupSize: spawner.minCount,
+        maxGroupSize: spawner.maxCount,
+        spawnBiomeTags: biomeTags,
+        biomeIds,
+      }
+      if (!map.has(entityId)) map.set(entityId, [])
+      map.get(entityId).push(entry)
+    }
+  }
+
+  for await (const filePath of walkFiles(dataDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    if (!normalizedFilePath.includes('/worldgen/biome/')) continue
+    const payload = await parseContentJson(filePath)
+    if (!payload || !payload.spawners) continue
+    const localId = stripJsonExtension(localPathAfterNamespace(filePath, dataDir).replace(/^worldgen\/biome\//, ''))
+    const biomeId = nodeId(ns, localId)
+    for (const [category, spawnerList] of Object.entries(payload.spawners)) {
+      if (!Array.isArray(spawnerList)) continue
+      for (const spawner of spawnerList) {
+        const entityId = normalizeContentId(spawner.type, ns)
+        if (!entityId) continue
+        const entry = {
+          ruleType: categoryToRuleType(category),
+          weight: spawner.weight,
+          minGroupSize: spawner.minCount,
+          maxGroupSize: spawner.maxCount,
+          spawnBiomeTags: [],
+          biomeIds: [biomeId],
+        }
+        if (!map.has(entityId)) map.set(entityId, [])
+        map.get(entityId).push(entry)
+      }
+    }
+  }
+
+  return map
+}
+
+async function collectFeatureBiomes(dataDir, ns) {
+  const map = new Map()
+  if (!dataDir) return map
+  for await (const filePath of walkFiles(dataDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    if (!normalizedFilePath.includes('/worldgen/biome/')) continue
+    const payload = await parseContentJson(filePath)
+    if (!payload || !Array.isArray(payload.features)) continue
+    const localId = stripJsonExtension(localPathAfterNamespace(filePath, dataDir).replace(/^worldgen\/biome\//, ''))
+    const biomeId = nodeId(ns, localId)
+    for (const stage of payload.features) {
+      if (!Array.isArray(stage)) continue
+      for (const feature of stage) {
+        const featureId = typeof feature === 'string' ? normalizeContentId(feature, ns) : null
+        if (!featureId) continue
+        const graphFeatureId = nodeId(ns, `feature/placed/${featureId.split(':')[1]}`)
+        if (!map.has(graphFeatureId)) map.set(graphFeatureId, new Set())
+        map.get(graphFeatureId).add(biomeId)
+      }
+    }
+  }
+  const result = new Map()
+  for (const [featureId, biomeIds] of map) {
+    result.set(featureId, [...biomeIds])
+  }
+  return result
+}
+
+async function collectTemplatePoolBiomes(dataDir, ns, tagMappings) {
+  const map = new Map()
+  if (!dataDir) return map
+  for await (const filePath of walkFiles(dataDir)) {
+    const normalizedFilePath = normalizedPath(filePath)
+    if (!normalizedFilePath.includes('/worldgen/structure/')) continue
+    const payload = await parseContentJson(filePath)
+    if (!payload || !payload.start_pool) continue
+    const localId = stripJsonExtension(localPathAfterNamespace(filePath, dataDir).replace(/^worldgen\/structure\//, ''))
+    const structureContentId = nodeId(ns, localId)
+    const poolId = normalizeContentId(payload.start_pool, ns)
+    if (!poolId) continue
+    const graphPoolId = nodeId(ns, `feature/template_pool/${poolId.split(':')[1]}`)
+    const biomeValues = payload.biomes ? normalizeBiomesValue(payload.biomes, ns) : []
+    const biomeTags = biomeValues.filter((b) => b.startsWith('#'))
+    const structureTags = tagMappings?.structureTags?.get(structureContentId) ?? []
+    const allTags = [...new Set([...biomeTags, ...structureTags])]
+    if (allTags.length === 0) continue
+    if (!map.has(graphPoolId)) map.set(graphPoolId, new Set())
+    for (const tag of allTags) map.get(graphPoolId).add(tag)
+  }
+  const result = new Map()
+  for (const [poolId, tags] of map) {
+    result.set(poolId, [...tags])
+  }
+  return result
+}
+
+function extractPlacementBlockFromFeaturePayload(payload) {
+  if (!payload || typeof payload !== 'object') return null
+  const toPlace = payload.config?.to_place
+  if (toPlace) {
+    if (toPlace.state?.Name) return toPlace.state.Name
+    if (Array.isArray(toPlace.entries)) {
+      for (const entry of toPlace.entries) {
+        if (entry?.data?.Name) return entry.data.Name
+      }
+    }
+  }
+  const stateProvider = payload.config?.state_provider
+  if (stateProvider) {
+    if (stateProvider.state?.Name) return stateProvider.state.Name
+    if (Array.isArray(stateProvider.entries)) {
+      for (const entry of stateProvider.entries) {
+        if (entry?.data?.Name) return entry.data.Name
+      }
+    }
+  }
+  if (payload.config?.fluid?.state?.Name) return payload.config.fluid.state.Name
+  if (payload.config?.barrier?.state?.Name) return payload.config.barrier.state.Name
+  if (payload.config?.state?.Name) return payload.config.state.Name
+  if (payload.config?.target_state?.Name) return payload.config.target_state.Name
+  if (payload.config?.contents?.Name) return payload.config.contents.Name
+  if (Array.isArray(payload.config?.targets)) {
+    for (const target of payload.config.targets) {
+      if (target?.state?.Name) return target.state.Name
+    }
+  }
+  if (payload.config?.trunk_provider?.state?.Name) return payload.config.trunk_provider.state.Name
+  if (payload.config?.foliage_provider?.state?.Name) return payload.config.foliage_provider.state.Name
+  if (payload.config?.default_block?.Name) return payload.config.default_block.Name
+  return null
+}
+
+async function resolveConfiguredFeatureBlock(dataDir, ns, configuredFeatureId) {
+  if (!dataDir || !configuredFeatureId) return null
+  const [featureNs, localId] = configuredFeatureId.split(':')
+  if (!featureNs || !localId) return null
+  const filePath = path.join(dataDir, featureNs, 'worldgen', 'configured_feature', `${localId}.json`)
+  const payload = await parseContentJson(filePath)
+  if (!payload) return null
+  return extractPlacementBlockFromFeaturePayload(payload)
+}
+
+async function extractWorldgenHints(kind, payload, tagMappings, featureBiomes, templatePoolBiomes, dataDir, contentId, graphNodeId, ns) {
+  const hints = {}
+  if (kind === NODE_KINDS.BIOME) {
+    if (payload.effects) hints.effects = payload.effects
+  } else if (kind === NODE_KINDS.STRUCTURE) {
+    if (payload.step) hints.step = payload.step
+    if (payload.terrain_adaptation !== undefined) hints.terrainAdaptation = payload.terrain_adaptation
+    if (payload.start_pool) hints.templatePoolId = payload.start_pool
+    if (payload.biomes) {
+      const biomeValues = normalizeBiomesValue(payload.biomes, ns)
+      hints.spawnBiomeTags = biomeValues.filter((b) => b.startsWith('#'))
+      hints.biomeTags = hints.spawnBiomeTags
+    }
+  } else if (kind === NODE_KINDS.FEATURE) {
+    if (payload.type) hints.featureType = payload.type
+    const directBlock = extractPlacementBlockFromFeaturePayload(payload)
+    if (directBlock) hints.placementBlockId = directBlock
+    if (payload.feature) {
+      if (typeof payload.feature === 'string') {
+        hints.configuredFeatureId = payload.feature
+      } else if (payload.feature.feature) {
+        hints.configuredFeatureId = payload.feature.feature
+      } else if (payload.feature.config) {
+        const inlineBlock = extractPlacementBlockFromFeaturePayload(payload.feature)
+        if (inlineBlock && !hints.placementBlockId) hints.placementBlockId = inlineBlock
+      }
+    }
+    if (!hints.placementBlockId && hints.configuredFeatureId) {
+      const resolved = await resolveConfiguredFeatureBlock(dataDir, ns, hints.configuredFeatureId)
+      if (resolved) hints.placementBlockId = resolved
+    }
+    if (hints.configuredFeatureId && !hints.placedFeatureId && graphNodeId.startsWith(`${ns}:feature/placed/`)) {
+      hints.placedFeatureId = graphNodeId
+    }
+    const biomeIds = featureBiomes?.get(graphNodeId)
+    if (biomeIds && biomeIds.length > 0) {
+      hints.spawnBiomeTags = biomeIds
+      hints.biomeTags = biomeIds
+    }
+    if (graphNodeId.startsWith(`${ns}:feature/template_pool/`)) {
+      const templatePoolTags = templatePoolBiomes?.get(graphNodeId)
+      if (templatePoolTags && templatePoolTags.length > 0) {
+        hints.templatePoolId = graphNodeId
+        hints.spawnBiomeTags = hints.spawnBiomeTags ? [...new Set([...hints.spawnBiomeTags, ...templatePoolTags])] : templatePoolTags
+        hints.biomeTags = hints.biomeTags ? [...new Set([...hints.biomeTags, ...templatePoolTags])] : templatePoolTags
+      }
+    }
+  }
+  if (kind === NODE_KINDS.BIOME && tagMappings?.biomeTags) {
+    const tags = tagMappings.biomeTags.get(contentId)
+    if (tags && tags.length > 0) hints.biomeTags = tags
+  } else if (kind === NODE_KINDS.STRUCTURE && tagMappings?.structureTags) {
+    const tags = tagMappings.structureTags.get(contentId)
+    if (tags && tags.length > 0) hints.biomeTags = hints.biomeTags ? [...new Set([...hints.biomeTags, ...tags])] : tags
+  } else if (kind === NODE_KINDS.FEATURE && tagMappings?.placedFeatureTags) {
+    const tags = tagMappings.placedFeatureTags.get(contentId)
+    if (tags && tags.length > 0) hints.biomeTags = hints.biomeTags ? [...new Set([...hints.biomeTags, ...tags])] : tags
+  }
+  return hints
 }
 
 function normalizeContentId(raw, defaultNs) {
@@ -742,37 +1128,44 @@ function extractMinecraftLootTable(filePath, payload, ns, moduleId, dataDir, nod
   }
 }
 
-function extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, nodes) {
+async function extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, tagMappings, featureBiomes, templatePoolBiomes, nodes) {
   const relativePath = localPathAfterNamespace(filePath, dataDir)
   const localPath = stripJsonExtension(relativePath)
   let kind = null
   let localId = null
   let data = {}
+  let contentId = null
 
   if (localPath.startsWith('worldgen/biome/')) {
     kind = NODE_KINDS.BIOME
     localId = localPath.replace(/^worldgen\/biome\//, '')
-    data = { biomeId: nodeId(ns, localId), worldgenType: 'biome', definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { biomeId: contentId, worldgenType: 'biome', definition: payload }
   } else if (localPath.startsWith('worldgen/structure/')) {
     kind = NODE_KINDS.STRUCTURE
     localId = localPath.replace(/^worldgen\/structure\//, '')
-    data = { structureId: nodeId(ns, localId), worldgenType: 'structure', definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { structureId: contentId, worldgenType: 'structure', definition: payload }
   } else if (localPath.startsWith('worldgen/configured_feature/')) {
     kind = NODE_KINDS.FEATURE
     localId = `configured/${localPath.replace(/^worldgen\/configured_feature\//, '')}`
-    data = { featureId: nodeId(ns, localId), worldgenType: 'configured_feature', definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { featureId: contentId, worldgenType: 'configured_feature', definition: payload }
   } else if (localPath.startsWith('worldgen/placed_feature/')) {
     kind = NODE_KINDS.FEATURE
     localId = `placed/${localPath.replace(/^worldgen\/placed_feature\//, '')}`
-    data = { featureId: nodeId(ns, localId), worldgenType: 'placed_feature', definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { featureId: contentId, worldgenType: 'placed_feature', definition: payload }
   } else if (localPath.startsWith('worldgen/template_pool/')) {
     kind = NODE_KINDS.FEATURE
     localId = `template_pool/${localPath.replace(/^worldgen\/template_pool\//, '')}`
-    data = { featureId: nodeId(ns, localId), worldgenType: 'template_pool', definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { featureId: contentId, worldgenType: 'template_pool', definition: payload }
   } else if (localPath.startsWith('worldgen/world_preset/')) {
     kind = NODE_KINDS.REGION
     localId = `world_preset/${localPath.replace(/^worldgen\/world_preset\//, '')}`
-    data = { regionType: 'world_preset', presetId: nodeId(ns, localId), definition: payload }
+    contentId = nodeId(ns, localId)
+    data = { regionType: 'world_preset', presetId: contentId, definition: payload }
   }
 
   if (!kind || !localId) return
@@ -783,6 +1176,9 @@ function extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, nodes) {
       : kind === NODE_KINDS.FEATURE
         ? `feature/${localId}`
         : `region/${localId}`
+  const graphNodeId = nodeId(ns, nodeLocalId)
+  const hints = await extractWorldgenHints(kind, payload, tagMappings, featureBiomes, templatePoolBiomes, dataDir, contentId, graphNodeId, ns)
+  Object.assign(data, hints)
   nodes.push(makeNode({
     kind,
     id: nodeId(ns, nodeLocalId),
@@ -835,6 +1231,18 @@ function extractMissionObject(filePath, mission, ns, moduleId, nodes, edges) {
   const rawId = mission.id || mission.advancement || mission.title || path.basename(filePath, '.json')
   if (!rawId) return
   const missionId = rawId.includes(':') ? rawId : nodeId(ns, `mission/${rawId}`)
+  const prerequisiteObjectiveIds = []
+  for (const prereq of mission.prerequisites ?? []) {
+    const prereqId = typeof prereq === 'string' ? prereq : prereq?.id
+    if (!prereqId) continue
+    if (String(prereqId).includes('/')) {
+      const normalized = prereqId.includes(':') ? prereqId : nodeId(ns, `objective/${prereqId}`)
+      prerequisiteObjectiveIds.push(normalized)
+    }
+  }
+  const rewardItemIds = (mission.rewards ?? [])
+    .map((reward) => (typeof reward === 'string' ? reward : reward?.item))
+    .filter(Boolean)
   nodes.push(makeNode({
     kind: NODE_KINDS.MISSION,
     id: missionId,
@@ -855,6 +1263,8 @@ function extractMissionObject(filePath, mission, ns, moduleId, nodes, edges) {
       nativeHooks: mission.nativeHooks ?? {},
       requirements: mission.requirements ?? [],
       rewards: mission.rewards ?? [],
+      rewardItemIds,
+      triggerId: mission.triggerId || mission.trigger,
     },
   }))
   const objectives = Array.isArray(mission.objectives) ? mission.objectives : []
@@ -866,7 +1276,11 @@ function extractMissionObject(filePath, mission, ns, moduleId, nodes, edges) {
       moduleId,
       displayName: `Complete ${mission.title || rawId}`,
       source: sourceFor(filePath),
-      data: { objectiveType: 'complete_trigger' },
+      data: {
+        objectiveType: 'complete_trigger',
+        prerequisiteObjectiveIds,
+        triggerId: mission.triggerId || mission.trigger,
+      },
     }))
     edges.push(makeEdge({
       kind: EDGE_KINDS.MISSION_HAS_OBJECTIVE,
@@ -890,8 +1304,12 @@ function extractMissionObject(filePath, mission, ns, moduleId, nodes, edges) {
         detail: objective.detail,
         icon: objective.icon,
         target: objective.target,
+        interactionTarget: objective.target,
         required: objective.required,
         criteria: objective.criteria ?? {},
+        prerequisiteObjectiveIds,
+        rewardItemIds,
+        triggerId: objective.triggerId || objective.trigger || mission.triggerId || mission.trigger,
       },
     }))
     edges.push(makeEdge({
@@ -1027,7 +1445,7 @@ function extractNativeCreativeTabs(source) {
   return tabs
 }
 
-function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEggItemIds, nodes, edges) {
+async function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEggItemIds, assetsDir, spawnMetadata, nodes, edges) {
   const constantToEntity = new Map()
   const registerPattern = /public\s+static\s+final\s+EchoBackendRegistryEntry\s*<\s*EntityType\s*<\s*([^>]+?)\s*>\s*>\s+([A-Z0-9_]+)\s*=\s*registerEntityType\s*\(\s*"([^"]+)"\s*,\s*([A-Za-z0-9_:.]+)::new\s*,\s*MobCategory\.([A-Z_]+)\s*,\s*builder\s*->\s*builder([\s\S]*?)\);/g
   for (const match of source.matchAll(registerPattern)) {
@@ -1039,6 +1457,10 @@ function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEgg
     const spawnEggItemId = spawnEggItemIds.has(nodeId(ns, `${localId}_spawn_egg`))
       ? nodeId(ns, `${localId}_spawn_egg`)
       : null
+    const assetPaths = await findEntityAssetPaths(assetsDir, ns, localId)
+    const threat = inferThreatFromCategory(category, builderBody)
+    const meta = spawnMetadata?.get(entityId) ?? []
+    const spawnBiomeTags = [...new Set(meta.flatMap((entry) => entry.spawnBiomeTags ?? []))]
     nodes.push(makeNode({
       kind: NODE_KINDS.ENTITY,
       id: entityId,
@@ -1056,10 +1478,14 @@ function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEgg
         clientTrackingRange: tracking ? Number(tracking[1]) : null,
         fireImmune: builderBody.includes('.fireImmune()'),
         spawnEggItemId,
+        spawnRules: [],
+        spawnBiomeTags,
         visualProfile: spawnEggItemId ? {
           itemModel: `${ns}:item/${localId}_spawn_egg`,
           itemTexture: `${ns}:textures/item/${localId}_spawn_egg.png`,
         } : null,
+        ...assetPaths,
+        ...threat,
       },
       extra: {
         capabilities: ['entity_registry', category.toLowerCase()],
@@ -1084,6 +1510,21 @@ function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEgg
       const entity = constantToEntity.get(match[1])
       if (!entity) continue
       const ruleId = nodeId(ns, `spawn_rule/${entity.localId}`)
+      const meta = spawnMetadata?.get(entity.entityId) ?? []
+      const matching = meta.find((entry) => entry.ruleType === ruleType) || meta[0]
+      const allBiomeTags = [...new Set(meta.flatMap((entry) => entry.spawnBiomeTags ?? []))]
+      const allBiomeIds = [...new Set(meta.flatMap((entry) => entry.biomeIds ?? []))]
+      const entityNode = nodes.find((node) => node.kind === NODE_KINDS.ENTITY && node.id === entity.entityId)
+      if (entityNode) {
+        if (!Array.isArray(entityNode.data.spawnRules)) entityNode.data.spawnRules = []
+        entityNode.data.spawnRules.push(ruleId)
+        if (allBiomeTags.length > 0 || allBiomeIds.length > 0) {
+          const existing = new Set(entityNode.data.spawnBiomeTags ?? [])
+          for (const tag of allBiomeTags) existing.add(tag)
+          for (const biomeId of allBiomeIds) existing.add(biomeId)
+          entityNode.data.spawnBiomeTags = [...existing]
+        }
+      }
       nodes.push(makeNode({
         kind: NODE_KINDS.SPAWN_RULE,
         id: ruleId,
@@ -1096,6 +1537,12 @@ function extractJavaEntityRegistrations(source, ns, moduleId, filePath, spawnEgg
           placement,
           heightmap,
           predicate,
+          spawnBiomeTags: allBiomeTags.length > 0 ? allBiomeTags : (allBiomeIds.length > 0 ? allBiomeIds : undefined),
+          weight: matching?.weight,
+          minGroupSize: matching?.minGroupSize,
+          maxGroupSize: matching?.maxGroupSize,
+          safeZoneDistance: 0,
+          cooldownSeconds: undefined,
         },
       }))
       edges.push(makeEdge({
@@ -1118,6 +1565,20 @@ function inferUiIntent(rawId, requestedIntent = '') {
   return 'detail_panel'
 }
 
+function inferSurfaceFromIntent(intent) {
+  switch (intent) {
+    case 'terminal_page': return 'terminal'
+    case 'scanner_result': return 'lens_overlay'
+    case 'progress_tracker': return 'hud_overlay'
+    case 'selection_menu': return 'index'
+    case 'notification': return 'hud_overlay'
+    case 'inventory_action': return 'screen'
+    case 'confirmation_prompt': return 'screen'
+    case 'settings_panel': return 'screen'
+    default: return 'screen'
+  }
+}
+
 function inferContentNamespace(descriptor, dataDir) {
   // Prefer descriptor namespace hints; fall back to module id.
   return descriptor.id
@@ -1134,6 +1595,18 @@ async function generateContentNodes(entry, allModuleIds) {
   const javaDir = path.join(path.dirname(path.dirname(path.dirname(entry.descriptorPath))), 'java')
 
   const contentNs = inferContentNamespace(descriptor, dataDir)
+  const tagMappings = dataDir
+    ? await collectTagMappings(dataDir)
+    : { biomeTags: new Map(), structureTags: new Map(), placedFeatureTags: new Map() }
+  const spawnMetadata = dataDir
+    ? await collectSpawnMetadata(dataDir, contentNs)
+    : new Map()
+  const featureBiomes = dataDir
+    ? await collectFeatureBiomes(dataDir, contentNs)
+    : new Map()
+  const templatePoolBiomes = dataDir
+    ? await collectTemplatePoolBiomes(dataDir, contentNs, tagMappings)
+    : new Map()
 
   if (dataDir) {
 
@@ -1301,7 +1774,7 @@ async function generateContentNodes(entry, allModuleIds) {
     const ns = namespaceFromPath(filePath, dataDir)
 
     if (normalizedFilePath.includes('/worldgen/')) {
-      extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, nodes)
+      await extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, tagMappings, featureBiomes, templatePoolBiomes, nodes)
       continue
     }
 
@@ -1356,13 +1829,24 @@ async function generateContentNodes(entry, allModuleIds) {
           const localId = entity.id || entity.name
           if (!localId) continue
           const entityId = localId.includes(':') ? localId : nodeId(ns, localId)
+          const assetPaths = await findEntityAssetPaths(assetsDir, ns, localId.includes(':') ? localId.split(':')[1] : localId)
+          const threat = inferThreatFromCategory(entity.category || entity.mobCategory, '', entity)
+          const meta = spawnMetadata?.get(entityId) ?? []
+          const spawnBiomeTags = [...new Set(meta.flatMap((entry) => entry.spawnBiomeTags ?? []))]
+          const spawnBiomeIds = [...new Set(meta.flatMap((entry) => entry.biomeIds ?? []))]
           nodes.push(makeNode({
             kind: NODE_KINDS.ENTITY,
             id: entityId,
             moduleId,
             displayName: entity.displayName || localId,
             source: { repo: 'ECHO-Modules', path: path.relative(process.cwd(), filePath).replace(/\\/g, '/'), format: 'json' },
-            data: entity,
+            data: {
+              ...entity,
+              ...assetPaths,
+              ...threat,
+              spawnRules: [],
+              spawnBiomeTags: spawnBiomeTags.length > 0 ? spawnBiomeTags : (spawnBiomeIds.length > 0 ? spawnBiomeIds : undefined),
+            },
           }))
         }
       }
@@ -1531,20 +2015,27 @@ async function generateContentNodes(entry, allModuleIds) {
       const intent = surfaceType.includes('hud_overlay')
         ? inferUiIntent(`${ns}:${localId}`)
         : inferUiIntent(`${ns}:${localId}`, payload.intent)
+      const uiId = nodeId(ns, `ui/${localId}`)
+      const capabilities = [surfaceType || 'screen', ...(payload.surface?.tags ?? [])].filter(Boolean)
       nodes.push(makeNode({
         kind: NODE_KINDS.UI_INTENT,
-        id: nodeId(ns, `ui/${localId}`),
+        id: uiId,
         moduleId,
         displayName: payload.surface?.display_name || displayNameFromLocalId(localId),
         source: sourceFor(filePath),
         data: {
           surface: surfaceType || 'screen',
+          route: uiId,
+          capabilities,
           visualProfile: profileId,
           ownerAddon: payload.surface?.owner_addon,
         },
         extra: {
           intent,
-          capabilities: [surfaceType || 'screen', ...(payload.surface?.tags ?? [])].filter(Boolean),
+          capabilities,
+          runtimeHints: {
+            echo_runtime_standalone: { id: uiId },
+          },
         },
       }))
       continue
@@ -1556,21 +2047,31 @@ async function generateContentNodes(entry, allModuleIds) {
         const localId = page.id || page.name
         if (!localId) continue
         const uiId = localId.includes(':') ? localId : nodeId(ns, `ui/${localId}`)
+        const intent = inferUiIntent(localId, page.intent)
+        const surface = page.surface || inferSurfaceFromIntent(intent)
+        const capabilities = page.capabilities || [surface]
         nodes.push(makeNode({
           kind: NODE_KINDS.UI_INTENT,
           id: uiId,
           moduleId,
           displayName: page.title || localId,
           source: { repo: 'ECHO-Modules', path: path.relative(process.cwd(), filePath).replace(/\\/g, '/'), format: 'json' },
-          data: {},
+          data: {
+            surface,
+            route: uiId,
+            capabilities,
+          },
           extra: {
-            intent: inferUiIntent(localId, page.intent),
+            intent,
             actions: (page.actions || []).map((a) => ({ id: a.id, label: a.label || a.id, requires: a.requires })),
             fallbacks: {
               neoforge: page.fallbacks?.neoforge || 'custom_screen',
               echo_native: page.fallbacks?.echo_native || 'native_panel',
               echo_runtime_standalone: page.fallbacks?.echo_runtime_standalone || 'native_panel',
               hytale: page.fallbacks?.hytale || 'notification_and_basic_menu',
+            },
+            runtimeHints: {
+              echo_runtime_standalone: { id: uiId },
             },
           },
         }))
@@ -1597,19 +2098,26 @@ async function generateContentNodes(entry, allModuleIds) {
         assetPath: normalizedPath(path.relative(process.cwd(), filePath)),
       },
     }))
+    const uiId = nodeId(ns, `ui/hud/${localId}`)
+    const capabilities = ['hud', 'hud_overlay']
     nodes.push(makeNode({
       kind: NODE_KINDS.UI_INTENT,
-      id: nodeId(ns, `ui/hud/${localId}`),
+      id: uiId,
       moduleId,
       displayName: `${displayNameFromLocalId(localId)} HUD`,
       source: sourceForResource(filePath),
       data: {
         surface: 'hud_overlay',
+        route: uiId,
+        capabilities,
         asset: assetId,
       },
       extra: {
         intent: 'progress_tracker',
-        capabilities: ['hud', 'hud_overlay'],
+        capabilities,
+        runtimeHints: {
+          echo_runtime_standalone: { id: uiId },
+        },
       },
     }))
   }
@@ -1617,7 +2125,7 @@ async function generateContentNodes(entry, allModuleIds) {
   for await (const filePath of walkJavaFiles(javaDir)) {
     const source = await readText(filePath)
     if (source.includes('registerEntityType(')) {
-      extractJavaEntityRegistrations(source, contentNs, moduleId, filePath, spawnEggItemIds, nodes, edges)
+      await extractJavaEntityRegistrations(source, contentNs, moduleId, filePath, spawnEggItemIds, assetsDir, spawnMetadata, nodes, edges)
     }
     if (!source.includes('"creative_tab"')) continue
     for (const tab of extractNativeCreativeTabs(source)) {
@@ -1675,7 +2183,24 @@ async function generateContentNodes(entry, allModuleIds) {
 function deduplicateNodes(nodes) {
   const seen = new Map()
   for (const node of nodes) {
-    if (!seen.has(node.id)) seen.set(node.id, node)
+    if (!seen.has(node.id)) {
+      seen.set(node.id, node)
+      continue
+    }
+    const existing = seen.get(node.id)
+    if (node.data && typeof node.data === 'object') {
+      existing.data = { ...existing.data, ...node.data }
+    }
+    const capabilities = new Set([...(existing.capabilities || []), ...(node.capabilities || [])])
+    existing.capabilities = [...capabilities]
+    const aliases = new Set([...(existing.aliases || []), ...(node.aliases || [])])
+    existing.aliases = [...aliases]
+    if (node.displayName && node.displayName !== node.id && (!existing.displayName || existing.displayName === existing.id)) {
+      existing.displayName = node.displayName
+    }
+    if (node.source && node.source.format !== 'generated' && existing.source?.format === 'generated') {
+      existing.source = node.source
+    }
   }
   return Array.from(seen.values())
 }
