@@ -32,6 +32,7 @@
           <list-row class="terminal-compact-row" action="terminal.discoveryGrid.filter_category" action-value="{category.id}" value="{category.id}">
             <copy-block class="terminal-row-copy" title="{category.label}"/>
           </list-row>
+          <empty-state title="No categories" body="Discovery categories are not available."/>
         </list>
       </section>
       <section title="State">
@@ -39,6 +40,7 @@
           <list-row class="terminal-compact-row" action="terminal.discoveryGrid.filter_state" action-value="{state.id}" value="{state.id}">
             <copy-block class="terminal-row-copy" title="{state.label}"/>
           </list-row>
+          <empty-state title="No states" body="Discovery state filters are not available."/>
         </list>
       </section>
     </slot>

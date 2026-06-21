@@ -638,6 +638,8 @@ public final class ModGameTests {
                 "Removed no-op mission group actions must not remain in the ScreenCore catalog");
         helper.assertFalse(catalog.contains("terminal.jump_to_tracked"),
                 "Removed no-op tracked-mission actions must not remain in the ScreenCore catalog");
+        helper.assertFalse(catalog.contains("terminal.open_legacy_renderer"),
+                "Legacy renderer fallback actions must not remain in the normal ScreenCore action catalog");
 
         Pattern literalActionTag = Pattern.compile("<[^>]+\\b(?:action|on-change)=\"([^\"]+)\"[^>]*>");
         Path root = euiSourceRoot();
@@ -680,7 +682,29 @@ public final class ModGameTests {
         } catch (IOException exception) {
             throw new AssertionError("Failed to scan Terminal EUI actions", exception);
         }
+        assertTerminalListsHaveEmptyStates(helper, root);
         helper.succeed();
+    }
+
+    private static void assertTerminalListsHaveEmptyStates(GameTestHelper helper, Path root) {
+        Pattern listBlock = Pattern.compile("<list\\b[\\s\\S]*?</list>");
+        try (var files = Files.walk(root)) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".eui.xml")).toList()) {
+                String page = Files.readString(file);
+                Matcher matcher = listBlock.matcher(page);
+                while (matcher.find()) {
+                    String block = matcher.group(0);
+                    long line = 1L + page.substring(0, matcher.start()).chars()
+                            .filter(character -> character == '\n')
+                            .count();
+                    helper.assertTrue(block.contains("<empty-state"),
+                            "Terminal EUI list " + root.relativize(file) + ":" + line
+                                    + " should include an empty-state to avoid blank ScreenCore panels");
+                }
+            }
+        } catch (IOException exception) {
+            throw new AssertionError("Failed to scan Terminal EUI list empty states", exception);
+        }
     }
 
     private static boolean terminalActionRequiresValue(String action) {
@@ -1622,6 +1646,12 @@ public final class ModGameTests {
                     helper.assertTrue(visibleMissions.stream()
                                     .anyMatch(row -> missionId.toString().equals(String.valueOf(row.get("id")))),
                             "ScreenCore mission browser cache fixture should expose the main route mission");
+                    helper.assertTrue(missionId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.selectedMissionId")),
+                            "Fresh mission browser state should expose the selected route mission id.");
+                    helper.assertTrue(missionId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.highlightedMissionId")),
+                            "Fresh mission browser state should highlight the selected route mission id.");
                     helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 1,
                             "First mission browser binding should build one cached ScreenCore view");
 
@@ -1633,6 +1663,7 @@ public final class ModGameTests {
                     resolveScreenCoreData(context, "missionBrowser.activeCompactLabel");
                     resolveScreenCoreData(context, "missionBrowser.readyLabel");
                     resolveScreenCoreData(context, "missionBrowser.routeProgressLabel");
+                    resolveScreenCoreData(context, "missionBrowser.highlightedMissionId");
                     helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 1,
                             "Repeated mission browser bindings should reuse the cached ScreenCore view");
 
@@ -1645,18 +1676,33 @@ public final class ModGameTests {
                     helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 2,
                             "Selecting a mission should invalidate and rebuild the mission browser cache once");
 
+                    helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION"),
+                                    sideId.toString(), Map.of(), context, null),
+                            "Mission browser cache test should allow side operation selection");
+                    helper.assertTrue("Cache Side".equals(resolveScreenCoreData(
+                                    context, "missionBrowser.selectedMission.title")),
+                            "Selected side operation should still resolve its own detail card");
+                    helper.assertTrue(sideId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.selectedMissionId")),
+                            "Selected side operation should stay the selected mission id for actions and detail state");
+                    helper.assertTrue(missionId.toString().equals(resolveScreenCoreData(
+                                    context, "missionBrowser.highlightedMissionId")),
+                            "Selected side operation should keep its route anchor highlighted in mission lists");
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 3,
+                            "Selecting a side operation should invalidate and rebuild the mission browser cache once");
+
                     helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION_PROVIDER"),
                                     providerId.toString(), Map.of(), context, null),
                             "Mission browser cache test should select a provider filter source");
                     resolveScreenCoreData(context, "missionBrowser.activeCompactLabel");
-                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 3,
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 4,
                             "Selecting a mission provider should invalidate and rebuild the cache once");
 
                     helper.assertTrue(runScreenCoreAction(screenCoreActionId("PERFORM_MISSION_ACTION"),
                                     missionId.toString(), Map.of("action_id", "scan_cache"), context, null),
                             "Mission browser cache test should dispatch a mission action");
                     resolveScreenCoreData(context, "missionBrowser.selectedMission.primaryActionId");
-                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 4,
+                    helper.assertTrue(missionBrowserUiBuildCountForTests() == initialBuilds + 5,
                             "Mission action dispatch should invalidate and rebuild the cache once");
                 } catch (ReflectiveOperationException | LinkageError exception) {
                     throw new AssertionError("Failed to exercise ScreenCore mission browser cache", exception);
@@ -2964,6 +3010,8 @@ public final class ModGameTests {
                             "terminal-route-briefing-card", "terminal-route-sideops-card",
                             "terminal-mission-action-strip", "terminal-route-action-button",
                             "terminal-route-phase-row", "terminal-route-mission-row",
+                            "terminal.missionBrowser.highlightedMissionId",
+                            "No phases",
                             "terminal-route-copy-block", "terminal-route-row-copy",
                             "terminal-route-row-progress", "terminal-route-index-chip",
                             "terminal-route-state-chip", "terminal-route-detail-card",
@@ -3069,6 +3117,14 @@ public final class ModGameTests {
                 if ("terminal_mission_browser.eui.xml".equals(entry.getKey())) {
                     helper.assertFalse(page.contains("terminal-side-scroll"),
                             "Survival Route briefing should use one primary detail scroller instead of nested side scrolls");
+                    int phaseLaneList = page.indexOf("<list bind=\"terminal.missionBrowser.roadmapRows\"");
+                    int phaseLaneListEnd = phaseLaneList < 0 ? -1 : page.indexOf("</list>", phaseLaneList);
+                    int phaseLaneEmptyState = phaseLaneList < 0 ? -1 : page.indexOf("<empty-state title=\"No phases\"", phaseLaneList);
+                    helper.assertTrue(phaseLaneList >= 0
+                                    && phaseLaneListEnd > phaseLaneList
+                                    && phaseLaneEmptyState > phaseLaneList
+                                    && phaseLaneEmptyState < phaseLaneListEnd,
+                            "Survival Route phase lane list should include an empty-state so temporary route gaps never render as an invisible panel");
                     int briefingScroll = page.indexOf("<scroll class=\"terminal-route-panel terminal-route-briefing-panel terminal-route-briefing-scroll\"");
                     int briefingScrollEnd = briefingScroll < 0 ? -1 : page.indexOf("</scroll>", briefingScroll);
                     int detailContent = page.indexOf("<column class=\"terminal-mission-detail-content\"");
@@ -3810,6 +3866,10 @@ public final class ModGameTests {
         }
         TerminalMissionRegistry.withClearedForTests(() -> {
             MainSurvivalQuestProvider.INSTANCE.clearCacheForTests();
+            Identifier completeMissionId = Identifier.fromNamespaceAndPath(
+                    "echoashfallprotocol", "mission/screen_click_complete");
+            Identifier claimMissionId = Identifier.fromNamespaceAndPath(
+                    "echoashfallprotocol", "mission/screen_click_claim");
             TerminalMissionRegistry.register(MainSurvivalQuestProvider.INSTANCE);
             TerminalMissionRegistry.register(new ConfigurableMissionProvider(
                     Identifier.fromNamespaceAndPath("echoashfallprotocol", "screen_click_route"),
@@ -3823,7 +3883,25 @@ public final class ModGameTests {
                             "Starter",
                             TerminalMissionRole.MAIN,
                             TerminalMissionStatus.UNLOCKED,
-                            List.of()))));
+                            List.of()),
+                            new ConfiguredMission(
+                                    completeMissionId,
+                                    "Complete Click Route",
+                                    "Podfall",
+                                    "Route",
+                                    "Starter",
+                                    TerminalMissionRole.MAIN,
+                                    TerminalMissionStatus.UNLOCKED,
+                                    List.of(TerminalMissionAction.enabled("complete", "Complete"))),
+                            new ConfiguredMission(
+                                    claimMissionId,
+                                    "Claim Click Route",
+                                    "Podfall",
+                                    "Route",
+                                    "Starter",
+                                    TerminalMissionRole.MAIN,
+                                    TerminalMissionStatus.CLAIMABLE,
+                                    List.of(TerminalMissionAction.enabled("claim_reward", "Claim"))))));
             terminalScreenCoreClickActionDispatchWithProvider(helper);
         });
         helper.succeed();
@@ -3904,6 +3982,90 @@ public final class ModGameTests {
                                     && entry.getKey().accepted()
                                     && entry.getValue() >= 1L),
                     "NetCore counters should record the accepted serverbound Terminal action click.");
+
+            String performAction = screenCoreActionId("PERFORM_MISSION_ACTION");
+            String completeMissionId = Identifier.fromNamespaceAndPath(
+                    "echoashfallprotocol", "mission/screen_click_complete").toString();
+            helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION"),
+                            completeMissionId, Map.of(), routeContext, null),
+                    "Terminal ScreenCore complete mission should be selectable before Complete click dispatch proof.");
+            helper.assertFalse(Boolean.TRUE.equals(resolveScreenCoreData(
+                            routeContext, "missionBrowser.selectedMission.completeCommandDisabled")),
+                    "Terminal ScreenCore Complete button should be enabled for a mission with a complete action.");
+            sentPayloads.clear();
+            try (EchoNetClientActions.TestActionOverrideHandle ignored =
+                         EchoNetClientActions.installActionOverrideForTests(payload -> {
+                             sentPayloads.add(payload);
+                             return Optional.of(true);
+                         })) {
+                Object completeProbe = clickScreenCoreActionForTests(
+                        id("terminal_mission_browser"),
+                        routeContext,
+                        performAction,
+                        1024,
+                        550);
+                String completeDiagnostics = screenCoreClickProbeDiagnostics(completeProbe);
+                helper.assertTrue(screenCoreClickProbeBoolean(completeProbe, "found"),
+                        "Real Terminal ScreenCore route page should expose a clickable Complete mission button. "
+                                + completeDiagnostics);
+                helper.assertTrue(screenCoreClickProbeBoolean(completeProbe, "handled"),
+                        "ScreenCore Complete button click should be handled by the input router. "
+                                + completeDiagnostics);
+                helper.assertTrue(performAction.equals(screenCoreClickProbeString(completeProbe, "action")),
+                        "Clicked ScreenCore component should resolve the mission action command. "
+                                + completeDiagnostics);
+                helper.assertTrue(completeMissionId.equals(screenCoreClickProbeString(completeProbe, "actionValue")),
+                        "Clicked ScreenCore Complete button should preserve the selected mission id. "
+                                + completeDiagnostics);
+            }
+            helper.assertTrue(!sentPayloads.isEmpty()
+                            && sentPayloads.get(0) instanceof TerminalActionPacket completePacket
+                            && TerminalMissionActions.MISSION_ACTION.equals(completePacket.actionId())
+                            && completePacket.payload().contains("|" + completeMissionId + "|complete"),
+                    "Terminal ScreenCore Complete click should send the selected mission complete action payload.");
+
+            String claimMissionId = Identifier.fromNamespaceAndPath(
+                    "echoashfallprotocol", "mission/screen_click_claim").toString();
+            helper.assertTrue(runScreenCoreAction(screenCoreActionId("SELECT_MISSION"),
+                            claimMissionId, Map.of(), routeContext, null),
+                    "Terminal ScreenCore claim mission should be selectable before Claim click dispatch proof.");
+            helper.assertTrue(Boolean.TRUE.equals(resolveScreenCoreData(
+                            routeContext, "missionBrowser.selectedMission.completeCommandDisabled")),
+                    "Terminal ScreenCore Complete button should stay disabled for claim-only missions.");
+            helper.assertFalse(Boolean.TRUE.equals(resolveScreenCoreData(
+                            routeContext, "missionBrowser.selectedMission.claimCommandDisabled")),
+                    "Terminal ScreenCore Claim button should be enabled for a claimable mission.");
+            sentPayloads.clear();
+            try (EchoNetClientActions.TestActionOverrideHandle ignored =
+                         EchoNetClientActions.installActionOverrideForTests(payload -> {
+                             sentPayloads.add(payload);
+                             return Optional.of(true);
+                         })) {
+                Object claimProbe = clickScreenCoreActionForTests(
+                        id("terminal_mission_browser"),
+                        routeContext,
+                        performAction,
+                        1024,
+                        550);
+                String claimDiagnostics = screenCoreClickProbeDiagnostics(claimProbe);
+                helper.assertTrue(screenCoreClickProbeBoolean(claimProbe, "found"),
+                        "Real Terminal ScreenCore route page should expose a clickable Claim mission button. "
+                                + claimDiagnostics);
+                helper.assertTrue(screenCoreClickProbeBoolean(claimProbe, "handled"),
+                        "ScreenCore Claim button click should be handled by the input router. "
+                                + claimDiagnostics);
+                helper.assertTrue(performAction.equals(screenCoreClickProbeString(claimProbe, "action")),
+                        "Clicked ScreenCore component should resolve the mission action command. "
+                                + claimDiagnostics);
+                helper.assertTrue(claimMissionId.equals(screenCoreClickProbeString(claimProbe, "actionValue")),
+                        "Clicked ScreenCore Claim button should preserve the selected mission id. "
+                                + claimDiagnostics);
+            }
+            helper.assertTrue(!sentPayloads.isEmpty()
+                            && sentPayloads.get(0) instanceof TerminalActionPacket claimPacket
+                            && TerminalMissionActions.MISSION_ACTION.equals(claimPacket.actionId())
+                            && claimPacket.payload().contains("|" + claimMissionId + "|claim_reward"),
+                    "Terminal ScreenCore Claim click should send the selected mission claim action payload.");
         } catch (ReflectiveOperationException | LinkageError exception) {
             helper.assertTrue(false, "Failed to prove Terminal ScreenCore click dispatch: "
                     + nestedFailureMessage(exception));

@@ -19,7 +19,6 @@ public final class TerminalScreenCoreActionIds {
     public static final String PING_SCAN = "terminal.ping_scan";
     public static final String DEPLOY_PROBE = "terminal.deploy_probe";
     public static final String CLOSE = "terminal.close";
-    public static final String OPEN_LEGACY_RENDERER = "terminal.open_legacy_renderer";
     public static final String THEME_CHANGED = "terminal.theme_changed";
     public static final String REWARD_CLAIM_ALL = "terminal.rewardInbox.claim_all";
     public static final String REWARD_CLAIM_REWARD = "terminal.rewardInbox.claim_reward";
@@ -95,7 +94,6 @@ public final class TerminalScreenCoreActionIds {
             PING_SCAN,
             DEPLOY_PROBE,
             CLOSE,
-            OPEN_LEGACY_RENDERER,
             THEME_CHANGED,
             REWARD_CLAIM_ALL,
             REWARD_CLAIM_REWARD,

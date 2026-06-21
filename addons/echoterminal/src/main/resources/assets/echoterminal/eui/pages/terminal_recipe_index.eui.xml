@@ -11,6 +11,7 @@
           <list-row class="terminal-page-tab" action="terminal.recipeIndex.toggle_category" action-value="{category.id}" value="{category.id}" selected="{category.selected|false}">
             <copy-block class="terminal-row-copy terminal-recipe-category-copy" title="{category.compactTitle}"/>
           </list-row>
+          <empty-state title="No categories" body="Recipe categories are not available."/>
         </list>
       </row>
       <grid class="terminal-dashboard-grid terminal-recipe-layout" columns="0.72fr 1.25fr 0.7fr" gap="10" stack-below="940">

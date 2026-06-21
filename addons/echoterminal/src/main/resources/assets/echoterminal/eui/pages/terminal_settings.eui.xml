@@ -16,6 +16,7 @@
           <list-row class="terminal-compact-row">
             <copy-block class="terminal-row-copy" title="{setting.label}" subtitle="{setting.value}"/>
           </list-row>
+          <empty-state title="No settings" body="No local terminal settings are available."/>
         </list>
       </section>
       <section title="ScreenCore Shell">

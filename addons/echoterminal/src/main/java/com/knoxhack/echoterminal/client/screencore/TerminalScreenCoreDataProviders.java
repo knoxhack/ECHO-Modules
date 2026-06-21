@@ -1220,6 +1220,9 @@ public final class TerminalScreenCoreDataProviders {
         if (path.size() > 1 && "selectedMissionId".equals(path.get(1))) {
             return view.selectedMissionId();
         }
+        if (path.size() > 1 && "highlightedMissionId".equals(path.get(1))) {
+            return view.highlightedMissionId();
+        }
         return resolveNested(view.summary(), path, 1);
     }
 
@@ -1232,13 +1235,13 @@ public final class TerminalScreenCoreDataProviders {
         List<TerminalMissionProvider> providerList = TerminalMissionRegistry.providers();
         int providerListKey = System.identityHashCode(providerList);
         int providerCount = providerList.size();
-        String selectedMissionId = state().selectedMissionId() == null ? "" : state().selectedMissionId().toString();
+        String stateSelectedMissionId = state().selectedMissionId() == null ? "" : state().selectedMissionId().toString();
         String queryText = state().missionSearch();
         String query = normalize(queryText);
         String providerFilter = state().missionProviderFilter();
         TerminalMissionBrowserUiSnapshot cached = missionBrowserUiSnapshot;
         if (cached != null && cached.matches(activeTabKey, playerKey, providerListKey, providerCount,
-                selectedMissionId, query, providerFilter, tickBucket)) {
+                stateSelectedMissionId, query, providerFilter, tickBucket)) {
             return cached;
         }
         TerminalMissionProvider provider = missionProviderFor(activeTabId);
@@ -1254,7 +1257,8 @@ public final class TerminalScreenCoreDataProviders {
                 .filter(row -> selectedPhase.isBlank() || selectedPhase.equals(phaseKey(row)))
                 .toList());
         Map<String, Object> selected = selectedMissionRow(visibleMissions, allMissions);
-        String selectedId = String.valueOf(selected.getOrDefault("id", ""));
+        String selectedMissionId = selectedMissionId(selected);
+        String highlightedMissionId = selectedRouteMissionId(selected);
         Map<String, Object> stats = missionStats(visibleMissions);
         List<Map<String, Object>> roadmapRows = roadmapRows(baseMissions, selected);
         long sideCardCount = allMissions.stream().filter(row -> Boolean.TRUE.equals(row.get("sideCard"))).count();
@@ -1275,6 +1279,8 @@ public final class TerminalScreenCoreDataProviders {
                 "routeProgress", stats.get("progress"),
                 "routeProgressLabel", progressCompactLabel(stats.get("progress")),
                 "phaseCount", roadmapRows.size(),
+                "selectedMissionId", selectedMissionId,
+                "highlightedMissionId", highlightedMissionId,
                 "query", state().missionSearch(),
                 "providerFilter", state().missionProviderFilter(),
                 "legacyAvailable", true);
@@ -1283,10 +1289,12 @@ public final class TerminalScreenCoreDataProviders {
                 playerKey,
                 providerListKey,
                 providerCount,
-                selectedMissionId,
+                stateSelectedMissionId,
                 query,
                 providerFilter,
                 tickBucket,
+                selectedMissionId,
+                highlightedMissionId,
                 List.copyOf(visibleMissions),
                 List.copyOf(roadmapRows),
                 new LinkedHashMap<>(selected),
@@ -1296,6 +1304,13 @@ public final class TerminalScreenCoreDataProviders {
         missionBrowserUiSnapshot = next;
         missionBrowserUiBuildCount++;
         return next;
+    }
+
+    private static String selectedMissionId(Map<String, Object> selected) {
+        if (selected == null || selected.isEmpty()) {
+            return "";
+        }
+        return String.valueOf(selected.getOrDefault("id", ""));
     }
 
     private static List<Map<String, Object>> filterMissionRows(
@@ -3679,10 +3694,12 @@ public final class TerminalScreenCoreDataProviders {
             int playerKey,
             int providerListKey,
             int providerCount,
-            String selectedMissionId,
+            String stateSelectedMissionId,
             String query,
             String providerFilter,
             int tickBucket,
+            String selectedMissionId,
+            String highlightedMissionId,
             List<Map<String, Object>> visibleMissions,
             List<Map<String, Object>> roadmapRows,
             Map<String, Object> selectedMission,
@@ -3691,9 +3708,11 @@ public final class TerminalScreenCoreDataProviders {
             Map<String, Object> summary) {
         private TerminalMissionBrowserUiSnapshot {
             activeTabId = activeTabId == null ? "" : activeTabId;
-            selectedMissionId = selectedMissionId == null ? "" : selectedMissionId;
+            stateSelectedMissionId = stateSelectedMissionId == null ? "" : stateSelectedMissionId;
             query = query == null ? "" : query;
             providerFilter = providerFilter == null ? "" : providerFilter;
+            selectedMissionId = selectedMissionId == null ? "" : selectedMissionId;
+            highlightedMissionId = highlightedMissionId == null ? "" : highlightedMissionId;
         }
 
         private boolean matches(
@@ -3701,7 +3720,7 @@ public final class TerminalScreenCoreDataProviders {
                 int playerKey,
                 int providerListKey,
                 int providerCount,
-                String selectedMissionId,
+                String stateSelectedMissionId,
                 String query,
                 String providerFilter,
                 int tickBucket) {
@@ -3709,7 +3728,8 @@ public final class TerminalScreenCoreDataProviders {
                     && this.playerKey == playerKey
                     && this.providerListKey == providerListKey
                     && this.providerCount == providerCount
-                    && this.selectedMissionId.equals(selectedMissionId == null ? "" : selectedMissionId)
+                    && this.stateSelectedMissionId.equals(
+                            stateSelectedMissionId == null ? "" : stateSelectedMissionId)
                     && this.query.equals(query == null ? "" : query)
                     && this.providerFilter.equals(providerFilter == null ? "" : providerFilter)
                     && this.tickBucket == tickBucket;

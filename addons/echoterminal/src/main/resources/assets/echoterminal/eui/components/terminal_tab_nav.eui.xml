@@ -2,4 +2,5 @@
   <list-row id="{tab.id}" value="{tab.id}" action="terminal.open_tab" action-value="{tab.id}">
     <copy-block class="terminal-row-copy" title="{tab.shortTitle}" subtitle="{tab.groupLabel} / {tab.summary}"/>
   </list-row>
+  <empty-state title="No tabs" body="No terminal tabs are available."/>
 </list>

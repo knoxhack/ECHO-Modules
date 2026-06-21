@@ -37,6 +37,7 @@
                 <copy-block class="terminal-row-copy" title="{tab.shortTitle}" subtitle="{tab.navSubtitle}"/>
                 <status-chip class="terminal-system-state-chip" status="{tab.rendererStatus|ready}" value="{tab.rendererLabel|READY}"/>
               </list-row>
+              <empty-state title="No modules" body="No active terminal modules are visible."/>
             </list>
           </scroll>
         </section>
@@ -47,6 +48,7 @@
                 <copy-block class="terminal-row-copy" title="{warning.title}" subtitle="{warning.summary}"/>
                 <status-chip class="terminal-system-warning-chip" status="{warning.statusKey}" value="{warning.badge}"/>
               </list-row>
+              <empty-state title="No warnings" body="No route, reward, or diagnostic warnings are pending."/>
             </list>
           </scroll>
         </section>

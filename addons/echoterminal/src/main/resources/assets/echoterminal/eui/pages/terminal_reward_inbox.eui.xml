@@ -15,6 +15,7 @@
                 <copy-block class="terminal-row-copy" title="{reward.title}" subtitle="{reward.summary}"/>
                 <status-chip class="terminal-reward-state-chip" status="{reward.statusKey}" value="{reward.statusLabel}"/>
               </list-row>
+              <empty-state title="No incoming rewards" body="No pending reward packets are waiting."/>
             </list>
           </scroll>
         </section>
@@ -25,6 +26,7 @@
                 <copy-block class="terminal-row-copy" title="{crate.title}" subtitle="{crate.summary}"/>
                 <status-chip class="terminal-reward-state-chip terminal-reward-state-chip-wide" status="{crate.statusKey}" value="{crate.statusLabel}"/>
               </list-row>
+              <empty-state title="No caches" body="No reward caches are currently claimable."/>
             </list>
           </scroll>
           <section class="terminal-side-panel" title="CLAIMABLE SUMMARY">
@@ -34,6 +36,7 @@
                   <copy-block class="terminal-row-copy" title="{claim.title}"/>
                   <status-chip class="terminal-reward-count-chip" status="ready" value="{claim.value}"/>
                 </list-row>
+                <empty-state title="No claimables" body="Claimable reward contents will appear here."/>
               </list>
             </scroll>
           </section>
@@ -46,6 +49,7 @@
                 <list-row class="terminal-compact-row terminal-reward-content-row">
                   <copy-block class="terminal-row-copy" title="{claim.title}" subtitle="{claim.value}"/>
                 </list-row>
+                <empty-state title="No contents" body="Select a reward cache to inspect its contents."/>
               </list>
             </scroll>
           </section>

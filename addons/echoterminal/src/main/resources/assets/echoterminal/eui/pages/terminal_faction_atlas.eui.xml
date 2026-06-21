@@ -29,6 +29,7 @@
           <list-row class="terminal-compact-row" action="terminal.factions.filter_namespace" action-value="{namespace.id}" value="{namespace.id}">
             <copy-block class="terminal-row-copy" title="{namespace.label}"/>
           </list-row>
+          <empty-state title="No namespaces" body="Faction namespace filters are not available."/>
         </list>
       </section>
     </slot>

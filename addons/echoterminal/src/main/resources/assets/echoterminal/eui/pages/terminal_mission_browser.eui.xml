@@ -18,7 +18,7 @@
           </row>
           <section class="terminal-map-surface terminal-phase-lane" title="PHASE LANE">
             <scroll class="terminal-roadmap-scroll terminal-phase-lane-list" scroll-state="true" state-key="terminal.missions.roadmap">
-              <list bind="terminal.missionBrowser.roadmapRows" item="row" selected="{terminal.missionBrowser.selectedMissionId}">
+              <list bind="terminal.missionBrowser.roadmapRows" item="row" selected="{terminal.missionBrowser.highlightedMissionId}">
                 <list-row class="{row.class} terminal-phase-row terminal-route-phase-row" action="terminal.select_mission" action-value="{row.targetMissionId}" value="{row.targetMissionId}" selected="{row.selected}">
                   <status-chip class="terminal-route-index-chip" status="{row.status}" value="{row.indexLabel}"/>
                   <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{row.title}" subtitle="{row.subtitle}">
@@ -26,6 +26,7 @@
                   </copy-block>
                   <status-chip class="terminal-route-state-chip" status="{row.nextStatus}" value="{row.nextStatusLabel}"/>
                 </list-row>
+                <empty-state title="No phases" body="No route phases are available yet."/>
               </list>
             </scroll>
           </section>
@@ -46,7 +47,7 @@
 
         <section class="terminal-panel terminal-route-panel terminal-route-missions-panel" title="MISSIONS">
           <scroll class="terminal-mission-list" scroll-state="true" state-key="terminal.missions">
-            <list bind="terminal.missionBrowser.visibleMissions" item="mission" selected="{terminal.missionBrowser.selectedMissionId}">
+            <list bind="terminal.missionBrowser.visibleMissions" item="mission" selected="{terminal.missionBrowser.highlightedMissionId}">
               <list-row class="terminal-mission-row terminal-route-mission-row" action="terminal.select_mission" action-value="{mission.id}" value="{mission.id}" selected="{mission.selected}">
                 <status-chip class="terminal-route-index-chip" status="{mission.status}" value="{mission.displayOrderLabel|01}"/>
                 <copy-block class="terminal-route-row-copy terminal-route-copy-block" title="{mission.title}" subtitle="{mission.sourceLine}">

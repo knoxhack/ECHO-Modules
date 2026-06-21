@@ -26,6 +26,7 @@
               <status-chip class="terminal-dossier-badge-chip" status="{action.statusKey}" value="{action.badge}"/>
               <copy-block class="terminal-row-copy" title="{action.title}" subtitle="{action.summary}"/>
             </list-row>
+            <empty-state title="No tactical links" body="No related Terminal links are available."/>
           </list>
         </scroll>
       </section>

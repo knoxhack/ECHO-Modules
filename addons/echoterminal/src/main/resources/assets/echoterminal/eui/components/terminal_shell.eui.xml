@@ -37,6 +37,7 @@
             <copy-block class="terminal-row-copy terminal-section-copy" title="{section.compactLabel|Command}" subtitle="{section.navSubtitle|Terminal section}"/>
             <status-chip class="terminal-section-count" status="info" value="{section.count|0}"/>
           </list-row>
+          <empty-state title="No sections" body="No terminal navigation sections are available."/>
         </list>
       </scroll>
 

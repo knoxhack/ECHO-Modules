@@ -38,6 +38,7 @@
                     <status-chip class="terminal-command-badge-chip" status="{signal.statusKey}" value="{signal.compactStatusLabel}"/>
                     <copy-block class="terminal-row-copy" title="{signal.title}" subtitle="{signal.summary}"/>
                   </list-row>
+                  <empty-state title="No intel" body="No recent intel signals are available."/>
                 </list>
               </scroll>
               <button action="terminal.open_tab" action-value="echoterminal:archives" variant="ghost">View All Intel</button>
@@ -75,6 +76,7 @@
                     <copy-block class="terminal-row-copy" title="{signal.title}" subtitle="{signal.summary|Hazard warning.}"/>
                     <status-chip class="terminal-command-state-chip" status="{signal.statusKey}" value="{signal.badge}"/>
                   </list-row>
+                  <empty-state title="No hazards" body="No active hazard warnings are published."/>
                 </list>
               </section>
             </column>
