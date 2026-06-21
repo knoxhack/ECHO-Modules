@@ -3,7 +3,7 @@ import { generateContentGraph } from './generate-content-graph.mjs'
 import { validateContentGraph } from './validate-content-graph.mjs'
 
 async function main() {
-  const sampleModules = ['echocore', 'echoopenlandsprotocol', 'echoterminal']
+  const sampleModules = ['echocore', 'echoopenlandsprotocol', 'echoterminal', 'echoashfallprotocol']
   const results = await generateContentGraph({ moduleIds: sampleModules })
   console.log(`Smoke test generated ${results.length} module graph(s).`)
   for (const r of results) {
@@ -12,6 +12,7 @@ async function main() {
   const byModule = new Map(results.map((result) => [result.moduleId, result]))
   const openlands = byModule.get('echoopenlandsprotocol')
   const terminal = byModule.get('echoterminal')
+  const ashfall = byModule.get('echoashfallprotocol')
   if (!openlands) throw new Error('Missing echoopenlandsprotocol content graph result.')
   if (!terminal) throw new Error('Missing echoterminal content graph result.')
 
@@ -77,6 +78,35 @@ async function main() {
     if (!node.recommendedFix?.includes(contract)) {
       throw new Error(`${node.nodeId} missing actionable Hytale actor recommendedFix.`)
     }
+  }
+
+  // Standalone runtime metadata assertions
+  const terminalUi = terminal.graph.nodes.find((n) => n.kind === 'echo:ui_intent')
+  if (!terminalUi?.data?.surface || !terminalUi?.data?.route) {
+    throw new Error('Terminal UI_INTENT node is missing data.surface or data.route.')
+  }
+  if (!terminalUi.runtimeHints?.echo_runtime_standalone?.id) {
+    throw new Error('Terminal UI_INTENT node is missing runtimeHints.echo_runtime_standalone.id.')
+  }
+
+  const ashfallEntity = ashfall?.graph.nodes.find(
+    (n) => n.kind === 'echo:entity' && (n.data?.texturePath || n.data?.texture)
+  )
+  if (!ashfallEntity) {
+    throw new Error('No Ashfall entity has texturePath/texture metadata.')
+  }
+  if (!ashfallEntity.data?.threat && !ashfallEntity.data?.hostility) {
+    throw new Error(`Ashfall entity ${ashfallEntity.id} is missing threat/hostility metadata.`)
+  }
+
+  const openlandsBiome = openlands.graph.nodes.find((n) => n.kind === 'echo:biome')
+  if (openlandsBiome && !openlandsBiome.data?.biomeTags && !openlandsBiome.data?.surfaceBlockId) {
+    throw new Error(`Openlands biome ${openlandsBiome.id} is missing biomeTags or surfaceBlockId.`)
+  }
+
+  const openlandsFeature = openlands.graph.nodes.find((n) => n.kind === 'echo:feature')
+  if (openlandsFeature && !openlandsFeature.data?.featureType) {
+    throw new Error(`Openlands feature ${openlandsFeature.id} is missing featureType.`)
   }
 
   const validation = await validateContentGraph({ moduleIds: sampleModules })
