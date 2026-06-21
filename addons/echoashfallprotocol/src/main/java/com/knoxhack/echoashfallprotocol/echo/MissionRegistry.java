@@ -39,8 +39,20 @@ public class MissionRegistry {
     private static final Map<BlockProbeKey, BlockProbeResult> BLOCK_PROBE_CACHE = new HashMap<>();
     private static final int BLOCK_PROBE_CACHE_TICKS = 120;
     private static final int BLOCK_PROBE_CACHE_MAX = 1024;
+    private static boolean initialized = false;
+    private static boolean initializing = false;
 
-    static {
+    private static synchronized void ensureInitialized() {
+        if (initialized || initializing) {
+            return;
+        }
+        if (!EchoCoreServices.itemStackComponentsBound()) {
+            return;
+        }
+
+        initializing = true;
+        PHASES.clear();
+        try {
         // === PHASE 0: CRASH LANDING ===
         List<Mission> phase0 = new ArrayList<>();
         phase0.add(new Mission(
@@ -2271,6 +2283,10 @@ public class MissionRegistry {
         
         PHASES.put(8, phase8); // Phase 8: Post-Nexus Endgame
         canonicalizeAshfallRoute();
+        initialized = true;
+        } finally {
+            initializing = false;
+        }
     }
 
     private static void canonicalizeAshfallRoute() {
@@ -2308,6 +2324,7 @@ public class MissionRegistry {
     }
 
     public static List<Mission> getMissionsForPhase(int phase) {
+        ensureInitialized();
         return PHASES.getOrDefault(phase, Collections.emptyList());
     }
 
@@ -2320,6 +2337,7 @@ public class MissionRegistry {
     }
 
     public static int getPhaseCount() {
+        ensureInitialized();
         return PHASES.size();
     }
 
@@ -2335,6 +2353,7 @@ public class MissionRegistry {
      * Look up a mission by its unique ID across all phases
      */
     public static Mission getMissionById(String missionId) {
+        ensureInitialized();
         if (missionId == null || missionId.isEmpty()) return null;
         for (int phase = 0; phase < PHASES.size(); phase++) {
             for (Mission mission : getMissionsForPhase(phase)) {
@@ -2350,6 +2369,7 @@ public class MissionRegistry {
      * Get all missions as a flat list
      */
     public static List<Mission> getAllMissions() {
+        ensureInitialized();
         List<Mission> all = new ArrayList<>();
         for (int phase = 0; phase < PHASES.size(); phase++) {
             all.addAll(getMissionsForPhase(phase));
