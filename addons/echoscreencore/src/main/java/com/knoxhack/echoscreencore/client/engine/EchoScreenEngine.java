@@ -122,11 +122,15 @@ public final class EchoScreenEngine {
     private EchoComponent root;
     private int lastWidth = -1;
     private int lastHeight = -1;
+    private int lastMouseX = Integer.MIN_VALUE;
+    private int lastMouseY = Integer.MIN_VALUE;
     private boolean treeDirty = true;
+    private boolean dataDirty = true;
     private boolean layoutDirty = true;
     private boolean focusDirty = true;
     private boolean debug;
     private boolean validationDirty = true;
+    private boolean hoverDirty = true;
     private int validationPasses;
     private String lastOverlayStack = "";
 
@@ -588,10 +592,12 @@ public final class EchoScreenEngine {
 
     public void markDataDirty() {
         dataContext = EchoPageStateStore.attach(baseDataContext, pageId);
+        dataDirty = true;
         treeDirty = true;
         layoutDirty = true;
         focusDirty = true;
         validationDirty = true;
+        hoverDirty = true;
         inputRouter.invalidateHover();
     }
 
@@ -611,12 +617,11 @@ public final class EchoScreenEngine {
             }
             overlayManager.beginFrame(root);
             boolean viewportChanged = width != lastWidth || height != lastHeight;
+            boolean mouseMoved = mouseX != lastMouseX || mouseY != lastMouseY;
             String overlayStack = overlayManager.describeStack();
-            if (!overlayStack.equals(lastOverlayStack)) {
+            boolean overlayStackChanged = !overlayStack.equals(lastOverlayStack);
+            if (overlayStackChanged) {
                 lastOverlayStack = overlayStack;
-                inputRouter.invalidateHover();
-            }
-            if (layoutDirty || viewportChanged || focusDirty) {
                 inputRouter.invalidateHover();
             }
             if (layoutDirty || viewportChanged) {
@@ -624,20 +629,28 @@ public final class EchoScreenEngine {
                 lastWidth = width;
                 lastHeight = height;
                 layoutDirty = false;
+                inputRouter.invalidateHover();
             }
             if (focusDirty || viewportChanged) {
                 focusManager.rebuild(root);
                 focusDirty = false;
+                inputRouter.invalidateHover();
+            }
+            if (mouseMoved) {
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+            }
+            if (hoverDirty) {
+                inputRouter.invalidateHover();
+                hoverDirty = false;
             }
             inputRouter.updateHover(root, mouseX, mouseY);
-            if (debug || validationDirty || viewportChanged) {
+            if (debug || validationDirty) {
                 validateLayout(root, 0);
                 validationDirty = false;
                 validationPasses++;
             }
             root.render(context);
-            nextRenderStratum(graphics);
-            textLayer.flush(context);
             nextRenderStratum(graphics);
             overlayManager.render(context);
             nextRenderStratum(graphics);
@@ -645,6 +658,9 @@ public final class EchoScreenEngine {
             if (debug) {
                 nextRenderStratum(graphics);
                 debugOverlay.render(context, root, inputRouter.hoverTarget(), focusManager);
+            }
+            if (dataDirty) {
+                dataDirty = false;
             }
         } finally {
             renderBridge.endFrame(graphics);

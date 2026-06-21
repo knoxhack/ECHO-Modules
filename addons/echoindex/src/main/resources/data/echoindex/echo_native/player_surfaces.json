@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoindex",
+  "requiredHostServices": [
+    "echo.native.screens",
+    "echo.inventory.surface",
+    "echo.adaptercore.gameplay"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoindex:surface/index_pages",
+      "title": "Index Pages",
+      "intent": "index_page",
+      "surface": "index",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.content_graph.validation"],
+      "capabilities": ["item_reference", "block_reference", "recipe_reference", "search"],
+      "inputBindings": ["echoinputcore:binding/open_index"],
+      "documentedNodes": ["echoindex:module"]
+    },
+    {
+      "id": "echoindex:surface/inventory",
+      "title": "Inventory Surface",
+      "intent": "inventory_surface",
+      "surface": "inventory",
+      "contract": "echo.inventory.surface.v1",
+      "requiredHostServices": ["echo.inventory.surface", "echo.adaptercore.gameplay"],
+      "capabilities": ["hotbar", "backpack", "equipment", "tooltip_provider"],
+      "inputBindings": ["echoinputcore:binding/open_inventory"],
+      "gameplayActions": [
+        "echoadaptercore:action/inventory_move_stack",
+        "echoadaptercore:action/inventory_use_item"
+      ],
+      "actions": [
+        {"id": "quick_move", "label": "Quick Move", "action": "echoadaptercore:action/inventory_move_stack"}
+      ],
+      "controlledNodes": ["echoindex:module"]
+    },
+    {
+      "id": "echoindex:surface/crafting",
+      "title": "Crafting Surface",
+      "intent": "crafting_surface",
+      "surface": "crafting",
+      "contract": "echo.inventory.surface.v1",
+      "requiredHostServices": ["echo.inventory.surface", "echo.adaptercore.gameplay"],
+      "capabilities": ["crafting_grid", "recipe_links", "index_route"],
+      "gameplayActions": ["echoadaptercore:action/craft_recipe"],
+      "actions": [
+        {"id": "craft", "label": "Craft", "action": "echoadaptercore:action/craft_recipe"}
+      ],
+      "controlledNodes": ["echoindex:module"]
+    }
+  ]
+}

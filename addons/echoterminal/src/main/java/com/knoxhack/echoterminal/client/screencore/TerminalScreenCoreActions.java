@@ -52,7 +52,6 @@ public final class TerminalScreenCoreActions {
         register("terminal.ping_scan", TerminalScreenCoreActions::pingScan);
         register("terminal.deploy_probe", TerminalScreenCoreActions::deployProbe);
         register("terminal.close", EchoActionContext::close);
-        register("terminal.open_legacy_renderer", context -> TerminalScreenCoreBridge.openLegacyRenderer());
         register("terminal.theme_changed", TerminalScreenCoreActions::themeChanged);
         register("terminal.rewardInbox.claim_all", TerminalScreenCoreActions::claimAllRewards);
         register("terminal.rewardInbox.claim_reward", TerminalScreenCoreActions::claimReward);

@@ -11,7 +11,6 @@ import com.knoxhack.echoterminal.api.TerminalScreenCorePageMetadata;
 import com.knoxhack.echoterminal.api.TerminalTab;
 import com.knoxhack.echoterminal.api.TerminalTabRegistry;
 import com.knoxhack.echoterminal.client.BuiltinTerminalTabs;
-import com.knoxhack.echoterminal.client.screen.EchoTerminalScreen;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreenProvider;
 import com.knoxhack.echoterminal.client.screen.EchoTerminalScreens;
 import com.knoxhack.echoterminal.client.screen.TerminalClientOptions;
@@ -42,7 +41,6 @@ public final class TerminalScreenCoreBridge {
     private static final AtomicBoolean BOOTSTRAPPED_TABS = new AtomicBoolean(false);
     private static final AtomicBoolean WARNED_SCREENCORE_FALLBACK = new AtomicBoolean(false);
     private static final AtomicBoolean LOGGED_SCREENCORE_OPEN = new AtomicBoolean(false);
-    private static final AtomicBoolean LOGGED_LEGACY_OPEN = new AtomicBoolean(false);
 
     private TerminalScreenCoreBridge() {
     }
@@ -60,33 +58,16 @@ public final class TerminalScreenCoreBridge {
             public AbstractContainerScreen<EchoTerminalMenu> create(
                     EchoTerminalMenu menu, Inventory playerInventory, Component title) {
                 if (!safeShouldUseScreenCoreTerminal()) {
-                    if (LOGGED_LEGACY_OPEN.compareAndSet(false, true)) {
-                        EchoTerminal.LOGGER.info(
-                                "Opening ECHO Terminal legacy renderer. ScreenCore present={}, useScreenCore={}, matchExistingLayout={}, experimentalTabs={}, cyberglassTheme={}.",
-                                screenCorePresent(),
-                                TerminalClientOptions.useScreenCore(),
-                                TerminalClientOptions.screenCoreMatchExistingLayout(),
-                                TerminalClientOptions.screenCoreExperimentalTabs(),
-                                TerminalClientOptions.useCyberglassScreenCoreTheme());
-                    }
                     return null;
                 }
-                try {
-                    if (LOGGED_SCREENCORE_OPEN.compareAndSet(false, true)) {
-                        EchoTerminal.LOGGER.info(
-                                "Opening ECHO Terminal ScreenCore shell. activeTab={}, matchExistingLayout={}, experimentalTabs={}.",
-                                DEFAULT_TAB,
-                                TerminalClientOptions.screenCoreMatchExistingLayout(),
-                                TerminalClientOptions.screenCoreExperimentalTabs());
-                    }
-                    return new TerminalScreenCoreScreen(menu, playerInventory, title, DEFAULT_TAB);
-                } catch (RuntimeException | LinkageError exception) {
-                    if (WARNED_SCREENCORE_FALLBACK.compareAndSet(false, true)) {
-                        EchoTerminal.LOGGER.warn("ECHO Terminal ScreenCore cyberglass shell failed; opening legacy renderer.",
-                                exception);
-                    }
-                    return new EchoTerminalScreen(menu, playerInventory, title);
+                if (LOGGED_SCREENCORE_OPEN.compareAndSet(false, true)) {
+                    EchoTerminal.LOGGER.info(
+                            "Opening ECHO Terminal ScreenCore shell. activeTab={}, matchExistingLayout={}, experimentalTabs={}.",
+                            DEFAULT_TAB,
+                            TerminalClientOptions.screenCoreMatchExistingLayout(),
+                            TerminalClientOptions.screenCoreExperimentalTabs());
                 }
+                return new TerminalScreenCoreScreen(menu, playerInventory, title, DEFAULT_TAB);
             }
 
             @Override
@@ -130,18 +111,7 @@ public final class TerminalScreenCoreBridge {
     }
 
     public static boolean shouldUseScreenCoreTerminal() {
-        if (!screenCorePresent() || !TerminalClientOptions.useScreenCore()) {
-            return false;
-        }
-        if (EchoTerminalClient.nativeLoaderClientActiveForScreens()) {
-            return true;
-        }
-        if (TerminalClientOptions.cyberglassActive()
-                && TerminalClientOptions.useCyberglassScreenCoreTheme()) {
-            return true;
-        }
-        return TerminalClientOptions.screenCoreMatchExistingLayout()
-                && TerminalClientOptions.screenCoreExperimentalTabs();
+        return screenCorePresent() && TerminalClientOptions.useScreenCore();
     }
 
     private static boolean safeShouldUseScreenCoreTerminal() {
@@ -223,11 +193,6 @@ public final class TerminalScreenCoreBridge {
                     : "external-fallback-default";
         }
         return "external-fallback";
-    }
-
-    public static boolean openLegacyRenderer() {
-        TerminalScreenCoreScreen screen = activeScreen.get();
-        return screen != null && screen.openLegacyRenderer();
     }
 
     public static boolean openTab(Identifier tabId) {

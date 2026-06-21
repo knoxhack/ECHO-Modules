@@ -162,6 +162,7 @@ function assertRuntimeArchiveContentGraph(zip, moduleRecord, label) {
   const requiredEntries = [
     '.echo/content-graph/content-graph.json',
     '.echo/content-graph/features.json',
+    '.echo/content-graph/export-plans/standalone_engine.json',
     '.echo/content-graph/export-plans/hytale.json',
   ]
   for (const entry of requiredEntries) {
@@ -180,6 +181,12 @@ function assertRuntimeArchiveContentGraph(zip, moduleRecord, label) {
   assert.equal(hytale.target, 'hytale', `${label} Hytale export plan target mismatch`)
   assert.ok(Array.isArray(hytale.nodes), `${label} Hytale export plan nodes must be an array`)
   assert.ok(hytale.summary && typeof hytale.summary === 'object', `${label} Hytale export plan must include summary`)
+  const standaloneEngine = zip.json('.echo/content-graph/export-plans/standalone_engine.json')
+  assert.ok(standaloneEngine && typeof standaloneEngine === 'object', `${label} Standalone Engine export plan must be a JSON object`)
+  assert.equal(standaloneEngine.schemaVersion, 'echo.content_graph.export_plan.v1', `${label} Standalone Engine export plan schema mismatch`)
+  assert.equal(standaloneEngine.target, 'standalone_engine', `${label} Standalone Engine export plan target mismatch`)
+  assert.ok(Array.isArray(standaloneEngine.nodes), `${label} Standalone Engine export plan nodes must be an array`)
+  assert.ok(standaloneEngine.summary && typeof standaloneEngine.summary === 'object', `${label} Standalone Engine export plan must include summary`)
 }
 
 function assertContentGraphEvidenceDocument(document, release) {
@@ -204,6 +211,18 @@ function assertContentGraphEvidenceDocument(document, release) {
   assert.ok(Array.isArray(document.diagnostics), 'content graph evidence diagnostics must be an array')
 }
 
+function assertRuntimeConformanceEvidenceDocument(document, artifact) {
+  assert.ok(document && typeof document === 'object' && !Array.isArray(document), `${artifact.filename} must be a JSON object`)
+  assert.equal(document.schemaVersion, 'echo.runtime.conformance.v1', `${artifact.filename} schema mismatch`)
+  assert.equal(document.hostId, artifact.hostId, `${artifact.filename} host id mismatch`)
+  assert.ok(typeof document.moduleGraphFingerprint === 'string' && document.moduleGraphFingerprint.length > 0, `${artifact.filename} must include module graph fingerprint`)
+  assert.ok(Array.isArray(document.surfaceResults) && document.surfaceResults.length > 0, `${artifact.filename} must include surface results`)
+  assert.ok(Array.isArray(document.actionResults) && document.actionResults.length > 0, `${artifact.filename} must include action results`)
+  assert.deepEqual(document.summary, artifact.summary, `${artifact.filename} summary must match release manifest`)
+  assert.notEqual(document.summary.status, 'fail', `${artifact.filename} cannot be failed in a generated module release`)
+  assert.equal(document.summary.blocked, 0, `${artifact.filename} cannot have blocked rows in a generated module release`)
+}
+
 async function verifyReleaseDir(releaseDir) {
   const release = await readJson(path.join(releaseDir, 'echo-release.json'))
   assert.equal(release.schemaVersion, 'echo.module.release.v1')
@@ -214,6 +233,8 @@ async function verifyReleaseDir(releaseDir) {
   assert.equal(release.contentGraphEvidence?.kind, 'content-graph-evidence', 'release manifest must record content graph evidence artifact')
   assert.equal(release.contentGraphEvidence?.filename, 'content-graph-evidence.json', 'release manifest content graph evidence filename mismatch')
   assert.equal(release.contentGraphEvidence?.schemaVersion, 'echo.content_graph.evidence.v1', 'release manifest content graph evidence schema mismatch')
+  assert.ok(Array.isArray(release.runtimeConformanceEvidence), 'release manifest must record runtime conformance evidence artifacts')
+  assert.ok(release.runtimeConformanceEvidence.length > 0, 'release manifest must include at least one runtime conformance evidence artifact')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.sha256')), 'checksums.sha256 must exist')
   assert.ok(await fileExists(path.join(releaseDir, 'checksums.txt')), 'checksums.txt compatibility copy must exist')
   assert.ok(await fileExists(path.join(releaseDir, 'content-graph-evidence.json')), 'content-graph-evidence.json must exist')
@@ -231,6 +252,16 @@ async function verifyReleaseDir(releaseDir) {
     'release manifest content graph evidence sha256 mismatch',
   )
   assertContentGraphEvidenceDocument(await readJson(path.join(releaseDir, 'content-graph-evidence.json')), release)
+  for (const artifact of release.runtimeConformanceEvidence) {
+    const artifactPath = path.join(releaseDir, artifact.filename)
+    assert.equal(artifact.kind, 'runtime-conformance', 'runtime conformance artifact kind mismatch')
+    assert.equal(artifact.schemaVersion, 'echo.runtime.conformance.v1', `${artifact.filename} schema version mismatch`)
+    assert.equal(artifact.runtimeTarget, artifact.hostId, `${artifact.filename} runtime target must match host id`)
+    assert.ok(await fileExists(artifactPath), `${artifact.filename} must exist`)
+    assert.equal(checksums.get(artifact.filename), await sha256File(artifactPath), `${artifact.filename} checksum row missing`)
+    assert.equal(artifact.sha256, await sha256File(artifactPath), `${artifact.filename} release manifest sha256 mismatch`)
+    assertRuntimeConformanceEvidenceDocument(await readJson(artifactPath), artifact)
+  }
   for (const moduleRecord of release.modules) {
     const moduleDir = path.join(releaseDir, moduleRecord.moduleId)
     assert.deepEqual(moduleRecord.artifacts.map((artifact) => artifact.filename).sort(), expectedArtifactNames(moduleRecord.moduleId, moduleRecord.version))

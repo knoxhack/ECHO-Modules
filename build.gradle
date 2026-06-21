@@ -355,6 +355,41 @@ tasks.register('testGenerateNeoForgeRuntimeEvidence', Exec) {
     commandLine 'node', 'scripts/test-generate-neoforge-runtime-evidence.mjs'
 }
 
+tasks.register('generateNeoForgeRuntimeConformance', Exec) {
+    group = 'verification'
+    description = 'Aggregates NeoForge player-facing evidence into echo.runtime.conformance.v1.'
+    commandLine 'node', 'scripts/generate-neoforge-runtime-conformance.mjs'
+}
+
+tasks.register('testGenerateNeoForgeRuntimeConformance', Exec) {
+    group = 'verification'
+    description = 'Tests NeoForge runtime conformance aggregation and fallback gating.'
+    commandLine 'node', 'scripts/test-generate-neoforge-runtime-conformance.mjs'
+}
+
+tasks.register('verifyNeoForgeRuntimeConformance') {
+    group = 'verification'
+    description = 'Verifies the NeoForge ECHO Native conformance report is generated and has no blocked rows.'
+    dependsOn tasks.named('testGenerateNeoForgeRuntimeConformance')
+    dependsOn tasks.named('generateNeoForgeRuntimeConformance')
+    doLast {
+        def reportFile = file('reports/runtime-parity/neoforge-runtime-conformance.json')
+        if (!reportFile.isFile()) {
+            throw new GradleException("NeoForge runtime conformance report was not generated: ${reportFile}")
+        }
+        def report = new groovy.json.JsonSlurper().parse(reportFile)
+        if (report.schemaVersion != 'echo.runtime.conformance.v1') {
+            throw new GradleException("NeoForge runtime conformance schema mismatch: ${report.schemaVersion}")
+        }
+        if (report.hostId != 'neoforge') {
+            throw new GradleException("NeoForge runtime conformance host mismatch: ${report.hostId}")
+        }
+        if ((report.summary?.blocked ?: 0) > 0) {
+            throw new GradleException("NeoForge runtime conformance has blocked rows: ${report.summary.blocked}")
+        }
+    }
+}
+
 tasks.register('runNeoForgeStrictPlayGameTests', Exec) {
     group = 'verification'
     description = 'Runs selected NeoForge GameTest server tasks and writes strict-play GameTest evidence JSON.'

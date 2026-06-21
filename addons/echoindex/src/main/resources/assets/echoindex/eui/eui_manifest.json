@@ -1,6 +1,9 @@
 {
+  "defaultIntent": "index_page",
+  "defaultSurface": "index",
+  "capabilities": ["index", "reference", "recipe_lookup"],
   "pages": [
-    {"id": "echoindex:index_dashboard", "title": "Index Dashboard", "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
+    {"id": "echoindex:index_dashboard", "title": "Index Dashboard", "documentedNodes": ["echoindex:module"], "styles": ["echoindex:index_cyberglass", "echoindex:index_components"]},
     {"id": "echoindex:index_items", "title": "Item Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_items"]},
     {"id": "echoindex:index_recipes", "title": "Recipe Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_recipes"]},
     {"id": "echoindex:index_usages", "title": "Usage Browser", "styles": ["echoindex:index_cyberglass", "echoindex:index_components", "echoindex:index_recipes"]},

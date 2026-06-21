@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoterminal",
+  "requiredHostServices": [
+    "echo.native.screens",
+    "echo.input.bindings",
+    "echo.runtime.diagnostics"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoterminal:surface/terminal_shell",
+      "title": "Terminal Shell",
+      "intent": "terminal_page",
+      "surface": "terminal",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.input.bindings"],
+      "capabilities": ["terminal_shell", "tabs", "command_deck", "route_planning"],
+      "inputBindings": ["echoinputcore:binding/open_terminal"],
+      "actions": [
+        {"id": "safe_action", "label": "Safe Action", "action": "echoterminal:action/safe_action"}
+      ],
+      "controlledNodes": ["echoterminal:module"]
+    },
+    {
+      "id": "echoterminal:surface/diagnostics_page",
+      "title": "Terminal Diagnostics Page",
+      "intent": "module_diagnostics",
+      "surface": "terminal",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.runtime.diagnostics", "echo.runtime.conformance"],
+      "capabilities": ["host_services", "blocked_surfaces", "mutation_ledger_summary"],
+      "documentedNodes": ["echoterminal:module"]
+    }
+  ]
+}

@@ -67,16 +67,23 @@ public final class TabsComponent extends ContainerComponent {
 
     @Override
     public void render(EchoRenderContext context) {
+        if (!isSubtreeDirty()) {
+            return;
+        }
         if ("hidden".equalsIgnoreCase(style().value("visibility", "visible"))
                 || bounds().width() <= 0
                 || bounds().height() <= 0) {
+            clearRenderDirty();
             return;
         }
-        renderSelf(context);
+        if (isDirty()) {
+            renderSelf(context);
+        }
         EchoComponent selected = selectedChild();
         if (selected != null) {
             selected.render(context);
         }
+        clearRenderDirty();
     }
 
     @Override

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoplaytestcore",
+  "requiredHostServices": [
+    "echo.runtime.conformance",
+    "echo.playtest.evidence",
+    "echo.runtime.diagnostics"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoplaytestcore:surface/conformance_scenarios",
+      "title": "Conformance Scenarios",
+      "intent": "module_diagnostics",
+      "surface": "diagnostics",
+      "contract": "echo.playtest.scenario.v1",
+      "requiredHostServices": ["echo.runtime.conformance", "echo.playtest.evidence"],
+      "capabilities": ["scenario_definitions", "release_evidence", "negative_tests"],
+      "actions": [
+        {"id": "run_smoke", "label": "Run Smoke", "action": "echoplaytestcore:action/run_smoke"}
+      ],
+      "documentedNodes": ["echoplaytestcore:module"]
+    }
+  ]
+}

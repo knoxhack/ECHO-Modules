@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echothemecore",
+  "requiredHostServices": [
+    "echo.native.theme",
+    "echo.native.screens"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echothemecore:surface/theme_tokens",
+      "title": "Theme Tokens",
+      "intent": "settings_panel",
+      "surface": "theme",
+      "contract": "echo.theme.tokens.v1",
+      "requiredHostServices": ["echo.native.theme", "echo.native.screens"],
+      "capabilities": ["theme_tokens", "density", "contrast", "readable_mode"],
+      "themeTokens": ["echothemecore:theme/default"],
+      "actions": [
+        {"id": "apply_theme", "label": "Apply Theme", "action": "echothemecore:action/apply_theme"}
+      ],
+      "documentedNodes": ["echothemecore:module"]
+    }
+  ]
+}

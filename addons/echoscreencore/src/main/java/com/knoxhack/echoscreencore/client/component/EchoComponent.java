@@ -22,6 +22,27 @@ public interface EchoComponent {
     default void setDataContext(EchoDataContext dataContext) {
     }
 
+    default EchoComponent parent() {
+        return null;
+    }
+
+    default void setParent(EchoComponent parent) {
+    }
+
+    default boolean renderDirty() {
+        return true;
+    }
+
+    default void setRenderDirty(boolean dirty) {
+    }
+
+    default boolean subtreeRenderDirty() {
+        return true;
+    }
+
+    default void setSubtreeRenderDirty(boolean dirty) {
+    }
+
     List<EchoComponent> children();
 
     EchoRect bounds();

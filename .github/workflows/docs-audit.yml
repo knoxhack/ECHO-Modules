@@ -24,6 +24,8 @@ jobs:
         working-directory: ECHO-Modules
       - run: node scripts/validate-content-graph.mjs --strict --sdk-root ../ECHO-SDK
         working-directory: ECHO-Modules
+      - run: node scripts/test-generate-content-graph.mjs
+        working-directory: ECHO-Modules
       - run: node scripts/release-workflow-audit.mjs
         working-directory: ECHO-Modules
       - run: node scripts/validate-module-graph.mjs

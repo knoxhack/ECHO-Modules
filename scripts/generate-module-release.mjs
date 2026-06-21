@@ -4,6 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { constants as zlibConstants, deflateRawSync, inflateRawSync } from 'node:zlib'
 import { generateContentGraph, summarizeContentGraphEvidence } from './generate-content-graph.mjs'
+import { generateNeoForgeRuntimeConformance } from './generate-neoforge-runtime-conformance.mjs'
 
 const DEFAULT_OUT_DIR = 'dist/echo-module-release'
 const MODULE_RELEASE_SCHEMA_VERSION = 'echo.module.release.v1'
@@ -842,6 +843,25 @@ export async function generateModuleRelease(options = {}) {
     buildMode: 'generated',
     schemaVersion: contentGraphEvidence.schemaVersion,
   }
+  const runtimeConformanceEvidence = []
+  const neoForgeConformancePath = path.join(outputRoot, 'neoforge-runtime-conformance.json')
+  const { report: neoForgeConformance } = await generateNeoForgeRuntimeConformance({
+    repoRoot,
+    outPath: neoForgeConformancePath,
+  })
+  const neoForgeConformanceStat = await fs.stat(neoForgeConformancePath)
+  runtimeConformanceEvidence.push({
+    kind: 'runtime-conformance',
+    filename: 'neoforge-runtime-conformance.json',
+    sha256: await sha256File(neoForgeConformancePath),
+    size: neoForgeConformanceStat.size,
+    downloadUrl: options.downloadBaseUrl ? `${normalizeDownloadBaseUrl(options.downloadBaseUrl)}/neoforge-runtime-conformance.json` : '',
+    runtimeTarget: 'neoforge',
+    hostId: neoForgeConformance.hostId,
+    buildMode: 'generated',
+    schemaVersion: neoForgeConformance.schemaVersion,
+    summary: neoForgeConformance.summary,
+  })
   const release = {
     schemaVersion: MODULE_RELEASE_SCHEMA_VERSION,
     releaseId: options.releaseId ?? `modules-${new Date().toISOString().replace(/[:.]/g, '-')}`,
@@ -850,6 +870,7 @@ export async function generateModuleRelease(options = {}) {
     commitSha: provenance.commitSha,
     provenance,
     contentGraphEvidence: contentGraphEvidenceArtifact,
+    runtimeConformanceEvidence,
     modules,
   }
   await writeJson(path.join(outputRoot, 'echo-release.json'), release)

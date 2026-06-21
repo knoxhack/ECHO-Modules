@@ -63,6 +63,7 @@ public final class EchoOverlayManager {
         }
         activeModalId = modalId.strip();
         modalOpener = opener;
+        modal.setRenderDirty(true);
         closeSelect();
         if (focusManager != null) {
             focusManager.clearFocus();

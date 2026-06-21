@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoinputcore",
+  "requiredHostServices": [
+    "echo.input.bindings",
+    "echo.native.screens"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoinputcore:surface/keybind_registry",
+      "title": "Keybind Registry",
+      "intent": "keybind_action",
+      "surface": "input",
+      "contract": "echo.input.binding.v1",
+      "requiredHostServices": ["echo.input.bindings", "echo.runtime.diagnostics"],
+      "capabilities": ["input_contexts", "remap", "conflict_diagnostics", "controller_prompts"],
+      "inputBindings": [
+        "echoinputcore:binding/pause",
+        "echoinputcore:binding/open_inventory",
+        "echoinputcore:binding/open_terminal",
+        "echoinputcore:binding/open_index"
+      ],
+      "actions": [
+        {"id": "remap", "label": "Remap", "action": "echoinputcore:action/remap_binding"}
+      ],
+      "documentedNodes": ["echoinputcore:module"]
+    }
+  ]
+}

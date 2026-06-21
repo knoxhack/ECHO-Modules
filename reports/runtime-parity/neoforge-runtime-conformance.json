@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "echo.runtime.conformance.v1",
+  "id": "echo-neoforge:runtime/echo-modules",
+  "hostId": "neoforge",
+  "generatedAt": "2026-06-21T08:38:28.145Z",
+  "moduleGraphFingerprint": "sha256:4709132b37c0af33f426f6fc5207652744b99b2b59bae8d9dfb28aa78fbfe070",
+  "surfaceResults": [
+    {
+      "id": "echoscreencore:surface/title_menu",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoscreencore:surface/pause_menu",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoscreencore:surface/world_create",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoscreencore:surface/world_load",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoscreencore:surface/settings_panel",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoscreencore:surface/module_diagnostics",
+      "ownerModule": "echoscreencore",
+      "status": "adapted",
+      "hostEvidence": "NeoForge lifecycle status=PASS modules=133 compiled-source-resource-gametest-contract; loadedModules=133; visibleRoutes=8. Content graph modules=133 nodes=7822 exportPlans=665."
+    },
+    {
+      "id": "echoscreencore:surface/runtime_blocker",
+      "ownerModule": "echoscreencore",
+      "status": "adapted",
+      "hostEvidence": "NeoForge lifecycle status=PASS modules=133 compiled-source-resource-gametest-contract; loadedModules=133; visibleRoutes=8. Content graph modules=133 nodes=7822 exportPlans=665."
+    },
+    {
+      "id": "echoscreencore:surface/death_respawn",
+      "ownerModule": "echoscreencore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echohudcore:surface/status_hud",
+      "ownerModule": "echohudcore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echohudcore:surface/hotbar_surface",
+      "ownerModule": "echohudcore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echohudcore:surface/objective_tracker",
+      "ownerModule": "echohudcore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echohudcore:surface/warning_overlay",
+      "ownerModule": "echohudcore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoinputcore:surface/keybind_registry",
+      "ownerModule": "echoinputcore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoindex:surface/index_pages",
+      "ownerModule": "echoindex",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoindex:surface/inventory",
+      "ownerModule": "echoindex",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoindex:surface/crafting",
+      "ownerModule": "echoindex",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoterminal:surface/terminal_shell",
+      "ownerModule": "echoterminal",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoterminal:surface/diagnostics_page",
+      "ownerModule": "echoterminal",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echomissioncore:surface/mission_tracker",
+      "ownerModule": "echomissioncore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echomissioncore:surface/reward_route",
+      "ownerModule": "echomissioncore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echosessioncore:surface/save_warning",
+      "ownerModule": "echosessioncore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echosessioncore:surface/session_state",
+      "ownerModule": "echosessioncore",
+      "status": "adapted",
+      "hostEvidence": "NeoForge lifecycle status=PASS modules=133 compiled-source-resource-gametest-contract; loadedModules=133; visibleRoutes=8. Content graph modules=133 nodes=7822 exportPlans=665."
+    },
+    {
+      "id": "echoadaptercore:surface/gameplay_actions",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "hostEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:surface/mutation_ledger",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "hostEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echothemecore:surface/theme_tokens",
+      "ownerModule": "echothemecore",
+      "status": "fallback",
+      "hostEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    }
+  ],
+  "actionResults": [
+    {
+      "id": "echoadaptercore:action/module_runtime_load",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge lifecycle status=PASS modules=133 compiled-source-resource-gametest-contract; loadedModules=133; visibleRoutes=8."
+    },
+    {
+      "id": "echoadaptercore:action/registry_content_load",
+      "ownerModule": "echoadaptercore",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge registry/content status=PARTIAL modules=94 registry-source-contract-not-runtime-registry-dump",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-registry-content-results.json"
+    },
+    {
+      "id": "echoadaptercore:action/inventory_move_stack",
+      "ownerModule": "echoadaptercore",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
+    },
+    {
+      "id": "echoadaptercore:action/inventory_use_item",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/craft_recipe",
+      "ownerModule": "echoadaptercore",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge registry/content status=PARTIAL modules=94 registry-source-contract-not-runtime-registry-dump",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-registry-content-results.json"
+    },
+    {
+      "id": "echoadaptercore:action/player_state_update",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/player_respawn",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/world_break_block",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/world_place_block",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/structure_place",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/block_entity_write",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/capability_update",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/event_emit",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoadaptercore:action/hud_event",
+      "ownerModule": "echoadaptercore",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoadaptercore:action/packet_event",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; networkEvidence=15."
+    },
+    {
+      "id": "echoadaptercore:action/save_session_write",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; saveEvidence=24."
+    },
+    {
+      "id": "echoadaptercore:action/mutation_receipt_proof",
+      "ownerModule": "echoadaptercore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echoinputcore:action/remap_binding",
+      "ownerModule": "echoinputcore",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge client UI status=PARTIAL modules=87 ui-source-contract-not-live-client-route; NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play.",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-client-ui-results.json"
+    },
+    {
+      "id": "echoterminal:action/safe_action",
+      "ownerModule": "echoterminal",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
+    },
+    {
+      "id": "echoindex:action/open_recipe_route",
+      "ownerModule": "echoindex",
+      "status": "fallback",
+      "receiptEvidence": "NeoForge strict play status=PARTIAL modules=133 source-contract-not-live-play",
+      "reason": "missing executed NeoForge strict-play input: reports/neoforge-strict-play/neoforge-live-play-evidence.json"
+    },
+    {
+      "id": "echomissioncore:action/progress_objective",
+      "ownerModule": "echomissioncore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; trustedMutations=45."
+    },
+    {
+      "id": "echosessioncore:action/repair_session",
+      "ownerModule": "echosessioncore",
+      "status": "adapted",
+      "receiptEvidence": "NeoForge GameTests status=PASS modules=45 executed-neoforge-gametest-results; saveEvidence=24."
+    }
+  ],
+  "summary": {
+    "status": "warning",
+    "supported": 0,
+    "adapted": 20,
+    "fallback": 27,
+    "blocked": 0
+  }
+}

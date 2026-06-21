@@ -1,12 +1,14 @@
 package com.knoxhack.echoterminal.client.screen;
 
 import com.knoxhack.echoterminal.EchoTerminal;
+import com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen;
 import com.knoxhack.echoterminal.menu.EchoTerminalMenu;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 public final class EchoTerminalScreens {
@@ -39,7 +41,7 @@ public final class EchoTerminalScreens {
         if (LOGGED_DEFAULT_FALLBACK.compareAndSet(false, true)) {
             EchoTerminal.LOGGER.info("Opening ECHO Terminal default fallback renderer; no registered provider supplied a screen.");
         }
-        return new EchoTerminalScreen(menu, playerInventory, title);
+        return new TerminalScreenCoreScreen(menu, playerInventory, title, (Identifier) null);
     }
 
     public static boolean isManagedTerminalScreen(Screen screen) {

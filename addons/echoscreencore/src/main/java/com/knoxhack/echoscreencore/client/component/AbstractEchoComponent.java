@@ -18,6 +18,7 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     private final EchoNode node;
     private final List<EchoComponent> children;
+    private EchoComponent parent;
     private EchoStyle style = EchoStyle.EMPTY;
     private List<EchoStyleSheet> styleSheets = List.of();
     private List<EchoNode> styleAncestors = List.of();
@@ -25,12 +26,17 @@ public abstract class AbstractEchoComponent implements EchoComponent {
     private EchoRect bounds = EchoRect.ZERO;
     private boolean hovered;
     private boolean focused;
+    private boolean dirty = true;
+    private boolean subtreeDirty = true;
     private int maxScroll;
     private int scrollOffset;
 
     protected AbstractEchoComponent(EchoNode node, List<EchoComponent> children) {
         this.node = node;
         this.children = children == null ? List.of() : List.copyOf(children);
+        for (EchoComponent child : this.children) {
+            child.setParent(this);
+        }
     }
 
     @Override
@@ -45,7 +51,11 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setStyle(EchoStyle style) {
-        this.style = style == null ? EchoStyle.EMPTY : style;
+        EchoStyle next = style == null ? EchoStyle.EMPTY : style;
+        if (!next.equals(this.style)) {
+            this.style = next;
+            setRenderDirty(true);
+        }
     }
 
     public void setStyleContext(List<EchoStyleSheet> styleSheets, List<EchoNode> ancestors) {
@@ -60,12 +70,69 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setDataContext(EchoDataContext dataContext) {
-        this.dataContext = dataContext;
+        if (this.dataContext != dataContext) {
+            this.dataContext = dataContext;
+            setRenderDirty(true);
+        }
     }
 
     @Override
     public List<EchoComponent> children() {
         return children;
+    }
+
+    @Override
+    public EchoComponent parent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(EchoComponent parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public boolean renderDirty() {
+        return dirty;
+    }
+
+    @Override
+    public void setRenderDirty(boolean dirty) {
+        boolean becameDirty = dirty && !this.dirty;
+        this.dirty = dirty;
+        if (becameDirty) {
+            subtreeDirty = true;
+            if (parent instanceof AbstractEchoComponent abstractParent) {
+                abstractParent.setRenderDirty(true);
+            }
+        }
+    }
+
+    @Override
+    public boolean subtreeRenderDirty() {
+        return subtreeDirty;
+    }
+
+    @Override
+    public void setSubtreeRenderDirty(boolean dirty) {
+        this.subtreeDirty = dirty;
+    }
+
+    protected boolean isDirty() {
+        return dirty;
+    }
+
+    protected boolean isSubtreeDirty() {
+        return subtreeDirty;
+    }
+
+    protected void markRenderDirty() {
+        setRenderDirty(true);
+    }
+
+    protected void clearRenderDirty() {
+        this.dirty = false;
+        this.subtreeDirty = false;
     }
 
     @Override
@@ -75,7 +142,11 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setBounds(EchoRect bounds) {
-        this.bounds = bounds == null ? EchoRect.ZERO : bounds;
+        EchoRect next = bounds == null ? EchoRect.ZERO : bounds;
+        if (!next.equals(this.bounds)) {
+            this.bounds = next;
+            setRenderDirty(true);
+        }
     }
 
     @Override
@@ -87,16 +158,25 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void render(EchoRenderContext context) {
+        if (!subtreeDirty) {
+            return;
+        }
         if ("hidden".equalsIgnoreCase(style.value("visibility", "visible"))
                 || bounds.width() <= 0
                 || bounds.height() <= 0) {
+            subtreeDirty = false;
+            dirty = false;
             return;
         }
-        renderSelf(context);
+        if (dirty) {
+            renderSelf(context);
+            dirty = false;
+        }
         for (EchoComponent child : children) {
             child.render(context);
         }
         renderInteractionTooltip(context);
+        subtreeDirty = false;
     }
 
     @Override
@@ -106,7 +186,10 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setHovered(boolean hovered) {
-        this.hovered = hovered;
+        if (this.hovered != hovered) {
+            this.hovered = hovered;
+            setRenderDirty(true);
+        }
     }
 
     @Override
@@ -116,7 +199,10 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setFocused(boolean focused) {
-        this.focused = focused;
+        if (this.focused != focused) {
+            this.focused = focused;
+            setRenderDirty(true);
+        }
     }
 
     @Override
@@ -126,7 +212,11 @@ public abstract class AbstractEchoComponent implements EchoComponent {
 
     @Override
     public void setScrollOffset(int scrollOffset) {
-        this.scrollOffset = Math.max(0, Math.min(Math.max(0, maxScroll), scrollOffset));
+        int next = Math.max(0, Math.min(Math.max(0, maxScroll), scrollOffset));
+        if (this.scrollOffset != next) {
+            this.scrollOffset = next;
+            setRenderDirty(true);
+        }
     }
 
     @Override

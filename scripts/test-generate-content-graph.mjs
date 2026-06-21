@@ -88,6 +88,18 @@ async function main() {
   if (!terminalUi.runtimeHints?.echo_runtime_standalone?.id) {
     throw new Error('Terminal UI_INTENT node is missing runtimeHints.echo_runtime_standalone.id.')
   }
+  if (!terminalUi.runtimeHints?.standalone_engine?.id) {
+    throw new Error('Terminal UI_INTENT node is missing runtimeHints.standalone_engine.id.')
+  }
+  const terminalEnginePlan = terminal.plans.standalone_engine?.nodes.find((node) => node.nodeId === terminalUi.id)
+  if (!terminalEnginePlan || terminalEnginePlan.mappedTo !== 'standalone_engine_surface_resolver') {
+    throw new Error('Terminal UI_INTENT node is missing Standalone Engine surface resolver export evidence.')
+  }
+  const terminalHostEdges = terminal.graph.edges.filter((edge) =>
+    edge.kind === 'runtime_host_adapts_surface' && edge.to === terminalUi.id)
+  if (terminalHostEdges.length < 4) {
+    throw new Error(`Terminal UI_INTENT node expected four runtime_host_adapts_surface edges, found ${terminalHostEdges.length}.`)
+  }
 
   const ashfallEntity = ashfall?.graph.nodes.find(
     (n) => n.kind === 'echo:entity' && (n.data?.texturePath || n.data?.texture)

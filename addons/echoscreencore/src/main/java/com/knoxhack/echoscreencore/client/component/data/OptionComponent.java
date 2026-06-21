@@ -18,5 +18,6 @@ public final class OptionComponent extends AbstractEchoComponent {
 
     @Override
     public void render(EchoRenderContext context) {
+        clearRenderDirty();
     }
 }

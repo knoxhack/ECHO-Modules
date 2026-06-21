@@ -1,6 +1,9 @@
 {
+  "defaultIntent": "terminal_page",
+  "defaultSurface": "terminal",
+  "capabilities": ["terminal", "screen", "diagnostics"],
   "pages": [
-    {"id": "echoterminal:terminal_overview", "title": "Command Deck", "styles": ["echothemecore:cyberglass_kit", "echoterminal:terminal_base", "echoterminal:terminal_shell", "echoterminal:terminal_components", "echoterminal:terminal_cyberglass_v2"]},
+    {"id": "echoterminal:terminal_overview", "title": "Command Deck", "controlledNodes": ["echoterminal:module"], "styles": ["echothemecore:cyberglass_kit", "echoterminal:terminal_base", "echoterminal:terminal_shell", "echoterminal:terminal_components", "echoterminal:terminal_cyberglass_v2"]},
     {"id": "echoterminal:terminal_mission_graph", "title": "Route Sources", "styles": ["echothemecore:cyberglass_kit", "echoterminal:terminal_base", "echoterminal:terminal_shell", "echoterminal:terminal_missions", "echoterminal:terminal_cyberglass_v2"]},
     {"id": "echoterminal:terminal_mission_browser", "title": "Mission Browser", "styles": ["echothemecore:cyberglass_kit", "echoterminal:terminal_base", "echoterminal:terminal_shell", "echoterminal:terminal_missions", "echoterminal:terminal_cyberglass_v2"]},
     {"id": "echoterminal:terminal_addons", "title": "Mods", "styles": ["echothemecore:cyberglass_kit", "echoterminal:terminal_base", "echoterminal:terminal_shell", "echoterminal:terminal_components", "echoterminal:terminal_cyberglass_v2"]},

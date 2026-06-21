@@ -13,6 +13,7 @@ const GRAPH_SCHEMA = 'echo.content_graph.v1'
 const FEATURE_LIST_SCHEMA = 'echo.content_feature_list.v1'
 const EXPORT_PLAN_SCHEMA = 'echo.content_graph.export_plan.v1'
 const EVIDENCE_SCHEMA = 'echo.content_graph.evidence.v1'
+const PLAYER_SURFACE_MANIFEST_SCHEMA = 'echo.native.player_surface_manifest.v1'
 
 const NODE_KINDS = {
   MODULE: 'echo:module',
@@ -58,20 +59,52 @@ const EDGE_KINDS = {
   MISSION_HAS_OBJECTIVE: 'mission_has_objective',
   OBJECTIVE_TARGETS_NODE: 'objective_targets_node',
   UI_INTENT_CONTROLS_NODE: 'ui_intent_controls_node',
+  UI_SURFACE_USES_THEME: 'ui_surface_uses_theme',
+  UI_SURFACE_REQUIRES_INPUT: 'ui_surface_requires_input',
+  UI_SURFACE_DISPATCHES_ACTION: 'ui_surface_dispatches_action',
+  HUD_WIDGET_READS_SESSION_STATE: 'hud_widget_reads_session_state',
+  INVENTORY_ACTION_INVOKES_GAMEPLAY_ACTION: 'inventory_action_invokes_gameplay_action',
+  TERMINAL_PAGE_CONTROLS_NODE: 'terminal_page_controls_node',
+  INDEX_PAGE_DOCUMENTS_NODE: 'index_page_documents_node',
+  RUNTIME_HOST_ADAPTS_SURFACE: 'runtime_host_adapts_surface',
   TRIGGER_INVOKES_EFFECT: 'trigger_invokes_effect',
   REGION_CONTAINS_TRIGGER: 'region_contains_trigger',
   SETTING_AFFECTS_SYSTEM: 'setting_affects_system',
   SYSTEM_DECLARES_CAPABILITY: 'system_declares_capability',
 }
 
-const RUNTIME_TARGETS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'hytale']
+const RUNTIME_TARGETS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'standalone_engine', 'hytale']
+const PLAYER_HOST_TARGETS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'standalone_engine']
 const EXPORT_PLAN_STATUSES = ['direct', 'adapter_required', 'fallback', 'blocked', 'not_applicable']
+const UI_FEATURE_EDGE_KINDS = [
+  EDGE_KINDS.UI_INTENT_CONTROLS_NODE,
+  EDGE_KINDS.TERMINAL_PAGE_CONTROLS_NODE,
+  EDGE_KINDS.INDEX_PAGE_DOCUMENTS_NODE,
+  EDGE_KINDS.UI_SURFACE_DISPATCHES_ACTION,
+  EDGE_KINDS.INVENTORY_ACTION_INVOKES_GAMEPLAY_ACTION,
+]
 
 const UI_INTENTS = [
   'selection_menu',
   'detail_panel',
   'notification',
   'terminal_page',
+  'index_page',
+  'title_menu',
+  'pause_menu',
+  'world_create',
+  'world_load',
+  'module_diagnostics',
+  'inventory_surface',
+  'crafting_surface',
+  'hotbar_surface',
+  'hud_widget',
+  'overlay',
+  'keybind_action',
+  'mission_tracker',
+  'death_respawn',
+  'save_warning',
+  'runtime_blocker',
   'map_overlay',
   'scanner_result',
   'inventory_action',
@@ -203,6 +236,181 @@ function runtimeHintsFromDescriptor(descriptor) {
     else if (target === 'neoforge') hints.neoforge.declared = true
   }
   return hints
+}
+
+function uiRuntimeHints(uiId, baseHints = {}) {
+  const hints = Object.fromEntries(RUNTIME_TARGETS.map((target) => [target, { ...(baseHints[target] ?? {}) }]))
+  for (const target of PLAYER_HOST_TARGETS) {
+    hints[target] = { ...(hints[target] ?? {}), id: uiId }
+  }
+  return hints
+}
+
+function pushUiHostAdaptationEdges(edges, uiId, moduleId) {
+  for (const target of PLAYER_HOST_TARGETS) {
+    edges.push(makeEdge({
+      kind: EDGE_KINDS.RUNTIME_HOST_ADAPTS_SURFACE,
+      from: `echo:runtime/${target}`,
+      to: uiId,
+      moduleId,
+      data: { hostId: target, contract: 'echo.ui.surface.v1' },
+    }))
+  }
+}
+
+function asArray(value) {
+  if (value === undefined || value === null) return []
+  return Array.isArray(value) ? value : [value]
+}
+
+function pushExplicitUiControlEdges(edges, uiId, moduleId, intent, source) {
+  const controlledNodes = [
+    ...asArray(source.controlledNode),
+    ...asArray(source.controlledNodes),
+    ...asArray(source.controlsNode),
+    ...asArray(source.controlsNodes),
+  ].filter(Boolean)
+  const documentedNodes = [
+    ...asArray(source.documentedNode),
+    ...asArray(source.documentedNodes),
+    ...asArray(source.documentsNode),
+    ...asArray(source.documentsNodes),
+  ].filter(Boolean)
+  for (const targetId of controlledNodes) {
+    edges.push(makeEdge({
+      kind: intent === 'terminal_page' ? EDGE_KINDS.TERMINAL_PAGE_CONTROLS_NODE : EDGE_KINDS.UI_INTENT_CONTROLS_NODE,
+      from: uiId,
+      to: String(targetId),
+      moduleId,
+    }))
+  }
+  for (const targetId of documentedNodes) {
+    edges.push(makeEdge({
+      kind: intent === 'index_page' ? EDGE_KINDS.INDEX_PAGE_DOCUMENTS_NODE : EDGE_KINDS.UI_INTENT_CONTROLS_NODE,
+      from: uiId,
+      to: String(targetId),
+      moduleId,
+    }))
+  }
+}
+
+function pushPlayerSurfaceManifest({ filePath, payload, moduleId, nodes, edges }) {
+  if (payload?.schemaVersion !== PLAYER_SURFACE_MANIFEST_SCHEMA) return false
+  const ownerModule = payload.ownerModule || moduleId
+  const hostTargets = Array.isArray(payload.hostTargets) && payload.hostTargets.length > 0
+    ? payload.hostTargets.filter((target) => PLAYER_HOST_TARGETS.includes(target))
+    : PLAYER_HOST_TARGETS
+  const source = sourceFor(filePath)
+
+  for (const surface of payload.surfaces ?? []) {
+    if (!surface?.id) continue
+    const uiId = surface.id
+    const intent = inferUiIntent(uiId, surface.intent)
+    const capabilities = surface.capabilities || [surface.surface || inferSurfaceFromIntent(intent)]
+    const requiredHostServices = [
+      ...new Set([...(payload.requiredHostServices ?? []), ...(surface.requiredHostServices ?? [])]),
+    ]
+
+    nodes.push(makeNode({
+      kind: NODE_KINDS.UI_INTENT,
+      id: uiId,
+      moduleId,
+      displayName: surface.title || displayNameFromLocalId(uiId.split(':')[1] || uiId),
+      source,
+      data: {
+        surface: surface.surface || inferSurfaceFromIntent(intent),
+        route: uiId,
+        capabilities,
+        contract: surface.contract,
+        ownerModule,
+        requiredHostServices,
+        dataProviders: surface.dataProviders ?? [],
+      },
+      extra: {
+        intent,
+        capabilities,
+        actions: (surface.actions || []).map((a) => ({ id: a.id, label: a.label || a.id, requires: a.requires })),
+        fallbacks: {
+          neoforge: surface.fallbacks?.neoforge || 'custom_screen',
+          echo_native: surface.fallbacks?.echo_native || 'native_panel',
+          echo_runtime_standalone: surface.fallbacks?.echo_runtime_standalone || 'native_panel',
+          standalone_engine: surface.fallbacks?.standalone_engine || 'engine_panel',
+        },
+        runtimeHints: uiRuntimeHints(uiId),
+      },
+    }))
+
+    for (const target of hostTargets) {
+      edges.push(makeEdge({
+        kind: EDGE_KINDS.RUNTIME_HOST_ADAPTS_SURFACE,
+        from: `echo:runtime/${target}`,
+        to: uiId,
+        moduleId,
+        data: { hostId: target, contract: surface.contract || 'echo.ui.surface.v1', ownerModule },
+      }))
+    }
+
+    for (const tokenId of surface.themeTokens ?? []) {
+      nodes.push(makeNode({
+        kind: NODE_KINDS.ASSET,
+        id: tokenId,
+        moduleId,
+        displayName: displayNameFromLocalId(tokenId.split(':')[1] || tokenId),
+        source,
+        data: { assetKind: 'theme_token', contract: 'echo.theme.tokens.v1', ownerModule },
+      }))
+      edges.push(makeEdge({ kind: EDGE_KINDS.UI_SURFACE_USES_THEME, from: uiId, to: tokenId, moduleId }))
+    }
+
+    for (const bindingId of surface.inputBindings ?? []) {
+      nodes.push(makeNode({
+        kind: NODE_KINDS.SYSTEM,
+        id: bindingId,
+        moduleId,
+        displayName: displayNameFromLocalId(bindingId.split(':')[1] || bindingId),
+        source,
+        data: { systemType: 'input_binding', contract: 'echo.input.binding.v1', ownerModule },
+      }))
+      edges.push(makeEdge({ kind: EDGE_KINDS.UI_SURFACE_REQUIRES_INPUT, from: uiId, to: bindingId, moduleId }))
+    }
+
+    const actionIds = [
+      ...(surface.gameplayActions ?? []),
+      ...(surface.actions ?? []).map((action) => action.action).filter(Boolean),
+    ]
+    for (const actionId of [...new Set(actionIds)]) {
+      nodes.push(makeNode({
+        kind: NODE_KINDS.SYSTEM,
+        id: actionId,
+        moduleId,
+        displayName: displayNameFromLocalId(actionId.split(':')[1] || actionId),
+        source,
+        data: { systemType: 'player_action', contract: surface.contract || 'echo.gameplay.action.v1', ownerModule },
+      }))
+      edges.push(makeEdge({ kind: EDGE_KINDS.UI_SURFACE_DISPATCHES_ACTION, from: uiId, to: actionId, moduleId }))
+      if (['inventory_surface', 'crafting_surface', 'hotbar_surface', 'inventory_action'].includes(intent)) {
+        edges.push(makeEdge({ kind: EDGE_KINDS.INVENTORY_ACTION_INVOKES_GAMEPLAY_ACTION, from: uiId, to: actionId, moduleId }))
+      }
+    }
+
+    for (const stateId of surface.sessionState ?? []) {
+      nodes.push(makeNode({
+        kind: NODE_KINDS.SYSTEM,
+        id: stateId,
+        moduleId,
+        displayName: displayNameFromLocalId(stateId.split(':')[1] || stateId),
+        source,
+        data: { systemType: 'session_state', contract: 'echo.save.session.v1', ownerModule },
+      }))
+      edges.push(makeEdge({ kind: EDGE_KINDS.HUD_WIDGET_READS_SESSION_STATE, from: uiId, to: stateId, moduleId }))
+    }
+
+    pushExplicitUiControlEdges(edges, uiId, moduleId, intent, {
+      controlledNodes: surface.controlledNodes,
+      documentedNodes: surface.documentedNodes,
+    })
+  }
+  return true
 }
 
 function descriptorUiRegistrations(descriptor) {
@@ -417,12 +625,10 @@ function generateModuleNodes(entry) {
       extra: {
         intent: ui.intent,
         capabilities: ui.capabilities,
-        runtimeHints: {
-          ...runtimeHintsFromDescriptor(descriptor),
-          echo_runtime_standalone: { id: uiId },
-        },
+        runtimeHints: uiRuntimeHints(uiId, runtimeHintsFromDescriptor(descriptor)),
       },
     }))
+    pushUiHostAdaptationEdges(edges, uiId, moduleId)
   }
 
   return { nodes, edges }
@@ -1493,6 +1699,7 @@ async function extractJavaEntityRegistrations(source, ns, moduleId, filePath, sp
           neoforge: { declared: true, registryBridge: 'EchoBackendEntityBridge' },
           echo_native: { declared: true },
           echo_runtime_standalone: { declared: true },
+          standalone_engine: { declared: true },
           hytale: { actorAdapter: true },
         },
       },
@@ -1558,16 +1765,48 @@ async function extractJavaEntityRegistrations(source, ns, moduleId, filePath, sp
 function inferUiIntent(rawId, requestedIntent = '') {
   if (UI_INTENTS.includes(requestedIntent)) return requestedIntent
   const id = String(rawId ?? '').toLowerCase()
+  if (id.includes('title')) return 'title_menu'
+  if (id.includes('pause')) return 'pause_menu'
+  if (id.includes('world_create') || id.includes('new_world') || id.includes('create_world')) return 'world_create'
+  if (id.includes('world_load') || id.includes('load_world') || id.includes('save_list')) return 'world_load'
+  if (id.includes('diagnostic') || id.includes('module_status')) return 'module_diagnostics'
+  if (id.includes('runtime_blocker') || id.includes('blocker')) return 'runtime_blocker'
+  if (id.includes('death') || id.includes('respawn')) return 'death_respawn'
+  if (id.includes('save_warning') || id.includes('migration_warning')) return 'save_warning'
   if (id.includes('terminal')) return 'terminal_page'
+  if (id.includes('index') || id.includes('recipe') || id.includes('reference')) return 'index_page'
+  if (id.includes('craft')) return 'crafting_surface'
+  if (id.includes('hotbar')) return 'hotbar_surface'
+  if (id.includes('inventory')) return 'inventory_surface'
+  if (id.includes('keybind') || id.includes('input_binding')) return 'keybind_action'
   if (id.includes('lens') || id.includes('scan')) return 'scanner_result'
-  if (id.includes('hud') || id.includes('vital') || id.includes('mission')) return 'progress_tracker'
-  if (id.includes('index') || id.includes('recipe') || id.includes('search')) return 'selection_menu'
+  if (id.includes('mission') || id.includes('objective')) return 'mission_tracker'
+  if (id.includes('hud') || id.includes('vital') || id.includes('meter')) return 'hud_widget'
+  if (id.includes('overlay')) return 'overlay'
+  if (id.includes('settings')) return 'settings_panel'
+  if (id.includes('search')) return 'selection_menu'
   return 'detail_panel'
 }
 
 function inferSurfaceFromIntent(intent) {
   switch (intent) {
     case 'terminal_page': return 'terminal'
+    case 'index_page': return 'index'
+    case 'title_menu': return 'screen'
+    case 'pause_menu': return 'screen'
+    case 'world_create': return 'screen'
+    case 'world_load': return 'screen'
+    case 'module_diagnostics': return 'screen'
+    case 'runtime_blocker': return 'screen'
+    case 'death_respawn': return 'screen'
+    case 'save_warning': return 'modal'
+    case 'inventory_surface': return 'inventory'
+    case 'crafting_surface': return 'crafting'
+    case 'hotbar_surface': return 'hotbar'
+    case 'hud_widget': return 'hud_overlay'
+    case 'overlay': return 'hud_overlay'
+    case 'keybind_action': return 'input'
+    case 'mission_tracker': return 'hud_overlay'
     case 'scanner_result': return 'lens_overlay'
     case 'progress_tracker': return 'hud_overlay'
     case 'selection_menu': return 'index'
@@ -1772,6 +2011,10 @@ async function generateContentNodes(entry, allModuleIds) {
     const normalizedFilePath = normalizedPath(filePath)
     if (normalizedFilePath.includes('/tags/')) continue
     const ns = namespaceFromPath(filePath, dataDir)
+
+    if (pushPlayerSurfaceManifest({ filePath, payload, moduleId, nodes, edges })) {
+      continue
+    }
 
     if (normalizedFilePath.includes('/worldgen/')) {
       await extractWorldgenNode(filePath, payload, ns, moduleId, dataDir, tagMappings, featureBiomes, templatePoolBiomes, nodes)
@@ -2033,11 +2276,10 @@ async function generateContentNodes(entry, allModuleIds) {
         extra: {
           intent,
           capabilities,
-          runtimeHints: {
-            echo_runtime_standalone: { id: uiId },
-          },
+          runtimeHints: uiRuntimeHints(uiId),
         },
       }))
+      pushUiHostAdaptationEdges(edges, uiId, moduleId)
       continue
     }
 
@@ -2047,9 +2289,9 @@ async function generateContentNodes(entry, allModuleIds) {
         const localId = page.id || page.name
         if (!localId) continue
         const uiId = localId.includes(':') ? localId : nodeId(ns, `ui/${localId}`)
-        const intent = inferUiIntent(localId, page.intent)
-        const surface = page.surface || inferSurfaceFromIntent(intent)
-        const capabilities = page.capabilities || [surface]
+        const intent = inferUiIntent(localId, page.intent ?? payload.defaultIntent ?? payload.intent)
+        const surface = page.surface || payload.defaultSurface || inferSurfaceFromIntent(intent)
+        const capabilities = page.capabilities || payload.capabilities || [surface]
         nodes.push(makeNode({
           kind: NODE_KINDS.UI_INTENT,
           id: uiId,
@@ -2068,13 +2310,14 @@ async function generateContentNodes(entry, allModuleIds) {
               neoforge: page.fallbacks?.neoforge || 'custom_screen',
               echo_native: page.fallbacks?.echo_native || 'native_panel',
               echo_runtime_standalone: page.fallbacks?.echo_runtime_standalone || 'native_panel',
+              standalone_engine: page.fallbacks?.standalone_engine || 'engine_panel',
               hytale: page.fallbacks?.hytale || 'notification_and_basic_menu',
             },
-            runtimeHints: {
-              echo_runtime_standalone: { id: uiId },
-            },
+            runtimeHints: uiRuntimeHints(uiId),
           },
         }))
+        pushUiHostAdaptationEdges(edges, uiId, moduleId)
+        pushExplicitUiControlEdges(edges, uiId, moduleId, intent, page)
       }
     }
   }
@@ -2113,13 +2356,12 @@ async function generateContentNodes(entry, allModuleIds) {
         asset: assetId,
       },
       extra: {
-        intent: 'progress_tracker',
+        intent: 'hud_widget',
         capabilities,
-        runtimeHints: {
-          echo_runtime_standalone: { id: uiId },
-        },
+        runtimeHints: uiRuntimeHints(uiId),
       },
     }))
+    pushUiHostAdaptationEdges(edges, uiId, moduleId)
   }
 
   for await (const filePath of walkJavaFiles(javaDir)) {
@@ -2149,6 +2391,7 @@ async function generateContentNodes(entry, allModuleIds) {
             neoforge: { declared: true },
             echo_native: { declared: true, nativeRegistryCreativeTab: true },
             echo_runtime_standalone: { declared: true },
+            standalone_engine: { declared: true },
             hytale: { plannedAsInventoryCategory: true },
           },
         },
@@ -2222,7 +2465,7 @@ function generateFeatures(moduleId, nodes, edges) {
   // Group connected UI intents + blocks/items into features
   const uiIntents = nodes.filter((n) => n.kind === NODE_KINDS.UI_INTENT)
   for (const ui of uiIntents) {
-    const connectedEdges = edges.filter((e) => e.kind === EDGE_KINDS.UI_INTENT_CONTROLS_NODE && e.from === ui.id)
+    const connectedEdges = edges.filter((e) => UI_FEATURE_EDGE_KINDS.includes(e.kind) && e.from === ui.id)
     const featureNodes = [ui.id, ...connectedEdges.map((e) => e.to)]
     const title = ui.displayName || ui.id
     features.push({
@@ -2332,6 +2575,9 @@ function runtimeTargetPlan(target, node, fallbackPlan) {
   }
   if (target === 'echo_runtime_standalone') {
     return standaloneRuntimePlan(node, fallbackPlan)
+  }
+  if (target === 'standalone_engine') {
+    return standaloneEngineRuntimePlan(node, fallbackPlan)
   }
   if (target === 'echo_native') {
     return nativeRuntimePlan(node, fallbackPlan)
@@ -2467,6 +2713,27 @@ function standaloneRuntimePlan(node, fallbackPlan) {
           }
         : fallbackPlan
   }
+}
+
+function standaloneEngineRuntimePlan(node, fallbackPlan) {
+  const plan = standaloneRuntimePlan(node, fallbackPlan)
+  if (plan.status === 'not_applicable') return plan
+  if (node.kind === NODE_KINDS.UI_INTENT) {
+    return {
+      status: 'adapter_required',
+      mappedTo: 'standalone_engine_surface_resolver',
+      requiredAdapter: 'echo.native.surface_host.v1',
+      rationale: 'Standalone Engine must render this module-owned ECHO surface through the unified surface resolver.',
+    }
+  }
+  if (plan.mappedTo?.startsWith('adaptercore_')) {
+    return {
+      ...plan,
+      mappedTo: `standalone_engine_${plan.mappedTo}`,
+      rationale: plan.rationale || 'Standalone Engine consumes this graph node through the unified ECHO Native AdapterCore contract.',
+    }
+  }
+  return plan
 }
 
 function generateExportPlan(target, graph) {

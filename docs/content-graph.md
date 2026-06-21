@@ -16,6 +16,7 @@ dist/echo-module-release/<module-id>/<version>/.echo/content-graph/
   export-plans/neoforge.json
   export-plans/echo_native.json
   export-plans/echo_runtime_standalone.json
+  export-plans/standalone_engine.json
   export-plans/hytale.json
 ```
 
@@ -33,6 +34,7 @@ This artifact uses `schemaVersion: "echo.content_graph.evidence.v1"` and is the 
 node scripts/generate-content-graph.mjs --all --write
 node scripts/validate-content-graph.mjs --strict --sdk-root ../ECHO-SDK
 node scripts/generate-content-feature-list.mjs --all --write
+node scripts/generate-runtime-export-plan.mjs --target standalone_engine --strict
 node scripts/generate-runtime-export-plan.mjs --target hytale --strict
 node scripts/test-generate-content-graph.mjs
 ```
@@ -48,11 +50,15 @@ The generator scans module descriptors and data files to produce nodes for:
 - Generic schema-backed catalogs (creatures, weather, missions, etc.)
 - Minecraft datapack recipes and loot tables
 
-Edges capture relationships such as `recipe_consumes_item`, `recipe_outputs_item`, `mission_has_objective`, `ui_intent_controls_node`, and `module_requires_module`.
+Edges capture relationships such as `recipe_consumes_item`, `recipe_outputs_item`, `mission_has_objective`, `ui_intent_controls_node`, `runtime_host_adapts_surface`, `terminal_page_controls_node`, `index_page_documents_node`, and `module_requires_module`.
+
+Player-facing EUI manifests and RenderCore screen profiles are module-owned player surface declarations. Pages may set explicit `intent`, `surface`, `capabilities`, `actions`, `controlledNodes`, or `documentedNodes`; the generator turns them into `echo:ui_intent` nodes and runtime adaptation edges for NeoForge, Native Loader, Standalone Runtime, and Standalone Engine.
+
+Modules can also declare canonical player surfaces in `data/<module>/echo_native/player_surfaces.json` with `schemaVersion: "echo.native.player_surface_manifest.v1"`. These manifests are validated against the SDK schema and generate UI intent nodes, theme/input/action/session reference nodes, and edges such as `runtime_host_adapts_surface`, `ui_surface_requires_input`, `ui_surface_dispatches_action`, and `inventory_action_invokes_gameplay_action`.
 
 ## Validation
 
-`validate-content-graph.mjs` checks that every edge points to a real node, flags portable-field pollution, and ensures each Hytale export plan covers all nodes.
+`validate-content-graph.mjs` checks that every edge points to a real node, flags portable-field pollution, and ensures every export plan covers all nodes.
 
 ```bash
 node scripts/validate-content-graph.mjs --strict
@@ -84,7 +90,9 @@ It also emits a top-level `<module>-<version>-content-graph.json` sidecar artifa
 
 At the release root, it emits `content-graph-evidence.json` for aggregate release evidence. `echo-release.json` records this file under `contentGraphEvidence`, `checksums.sha256` covers it, and the release workflow uploads it beside the module artifacts.
 
-`verify-module-release.mjs` confirms that embedded graph files are present and that checksums match.
+The release root also emits `neoforge-runtime-conformance.json` for the NeoForge host. `echo-release.json` records this file under `runtimeConformanceEvidence`, `checksums.sha256` covers it, and `verify-module-release.mjs` confirms the conformance document is schema-versioned, host-matched, and has no blocked rows before release publication.
+
+`verify-module-release.mjs` confirms that embedded graph files are present, host conformance evidence is present, and checksums match.
 
 ## Consuming a Generated Graph
 

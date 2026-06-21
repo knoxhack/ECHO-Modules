@@ -32,25 +32,28 @@ Run commands from the repository root.
 
 ## Artifact Ownership
 
-Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, a `-content-graph.json` sidecar, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, `echo-addon-package.json` where applicable, and a per-module `.echo/content-graph/` tree embedded in every runtime archive. The release root also owns `content-graph-evidence.json`, the aggregate `echo.content_graph.evidence.v1` artifact consumed by release tooling and UI surfaces.
+Each module release owns `.echo-addon`, `-neoforge.jar`, `-standalone.jar`, `-sources.jar`, a `-content-graph.json` sidecar, embedded `META-INF/echo.mod.json`, NeoForge TOML where applicable, `echo-addon-package.json` where applicable, and a per-module `.echo/content-graph/` tree embedded in every runtime archive. The release root also owns `content-graph-evidence.json`, the aggregate `echo.content_graph.evidence.v1` artifact consumed by release tooling and UI surfaces, and `neoforge-runtime-conformance.json`, the `echo.runtime.conformance.v1` host evidence for NeoForge player-facing parity.
 
 Strict player-facing releases are generated from compiled runtime jars. During release generation, compiled NeoForge and standalone jars are rewritten with the required descriptor sidecars before checksum calculation. `scripts/verify-module-release.mjs` opens every produced archive and rejects missing descriptors, missing NeoForge TOML, source-packaged runtime outputs, or checksum drift before the artifacts can be imported by the Release Index.
 
-Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `content-graph-evidence.json` and `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
+Generated module releases publish `echo-release.json` with `schemaVersion: "echo.module.release.v1"` plus `content-graph-evidence.json`, `neoforge-runtime-conformance.json`, and `checksums.sha256`; the release workflow attests that checksum file with `actions/attest@v4`.
 
 ## Content Graph
 
-Every module release produces a canonical `.ECHO Content Graph` sidecar and embeds the same graph tree into each runtime archive. The release root additionally produces `content-graph-evidence.json`, a canonical summary of the same graphs. This gives launchers, runtimes, and review tools a runtime-neutral map of blocks, items, recipes, missions, UI intents, and their relationships without forcing every consumer to parse every sidecar.
+Every module release produces a canonical `.ECHO Content Graph` sidecar and embeds the same graph tree into each runtime archive. The release root additionally produces `content-graph-evidence.json`, a canonical summary of the same graphs, and `neoforge-runtime-conformance.json`, a host conformance summary for player-facing NeoForge adaptation. This gives launchers, runtimes, and review tools a runtime-neutral map of blocks, items, recipes, missions, UI intents, host adaptation status, and their relationships without forcing every consumer to parse every sidecar.
+
+Player-facing menus, HUDs, overlays, inventory, keybinds, terminal pages, index pages, diagnostics, save/session warnings, and gameplay action contracts are owned by modules and adapted by runtimes through the Unified ECHO Native Player Runtime charter.
 
 - Generate: `node scripts/generate-content-graph.mjs --all --write`
 - Validate: `node scripts/validate-content-graph.mjs --strict`
-- Docs: [docs/content-graph.md](docs/content-graph.md) and [ECHO-SDK/docs/schemas/content-graph.md](../ECHO-SDK/docs/schemas/content-graph.md)
+- Docs: [docs/content-graph.md](docs/content-graph.md), [docs/UNIFIED_ECHO_NATIVE_PLAYER_RUNTIME.md](docs/UNIFIED_ECHO_NATIVE_PLAYER_RUNTIME.md), and [ECHO-SDK/docs/schemas/content-graph.md](../ECHO-SDK/docs/schemas/content-graph.md)
 
 ## Docs Index
 
 - [docs/module-artifact-contract.md](docs/module-artifact-contract.md)
 - [docs/module-docs-index.md](docs/module-docs-index.md)
 - [docs/content-graph.md](docs/content-graph.md)
+- [docs/UNIFIED_ECHO_NATIVE_PLAYER_RUNTIME.md](docs/UNIFIED_ECHO_NATIVE_PLAYER_RUNTIME.md)
 - [schemas/module-release-manifest.schema.json](schemas/module-release-manifest.schema.json)
 - [docs/ADDON_MATRIX.md](docs/ADDON_MATRIX.md)
 - [docs/COMPATIBILITY_MATRIX.md](docs/COMPATIBILITY_MATRIX.md)

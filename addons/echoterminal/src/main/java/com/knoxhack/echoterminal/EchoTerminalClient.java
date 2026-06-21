@@ -225,8 +225,8 @@ public class EchoTerminalClient {
                 Map.of(
                         "nativeSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen",
                         "nativeScreenBridgeClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreBridge",
-                        "fallbackSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreen",
-                        "fallbackScreenBridgeClass", "com.knoxhack.echoterminal.client.screen.EchoTerminalScreens",
+                        "fallbackSurfaceImplementationClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreScreen",
+                        "fallbackScreenBridgeClass", "com.knoxhack.echoterminal.client.screencore.TerminalScreenCoreBridge",
                         "screenBridge", "echoscreencore",
                         "source", "echoterminal_native_module_route_registrar"),
                 Map.of(

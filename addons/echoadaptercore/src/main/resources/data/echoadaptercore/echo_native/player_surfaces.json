@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoadaptercore",
+  "requiredHostServices": [
+    "echo.adaptercore.gameplay",
+    "echo.native.receipts",
+    "echo.runtime.diagnostics"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoadaptercore:surface/gameplay_actions",
+      "title": "Gameplay Actions",
+      "intent": "inventory_action",
+      "surface": "action_contract",
+      "contract": "echo.gameplay.action.v1",
+      "requiredHostServices": ["echo.adaptercore.gameplay", "echo.native.receipts"],
+      "capabilities": ["mutation_receipts", "mutation_ledger", "host_state", "save_write"],
+      "gameplayActions": [
+        "echoadaptercore:action/inventory_move_stack",
+        "echoadaptercore:action/inventory_use_item",
+        "echoadaptercore:action/craft_recipe",
+        "echoadaptercore:action/player_respawn",
+        "echoadaptercore:action/world_break_block",
+        "echoadaptercore:action/world_place_block"
+      ],
+      "actions": [
+        {"id": "show_ledger", "label": "Show Ledger", "action": "echoadaptercore:action/show_mutation_ledger"}
+      ],
+      "controlledNodes": ["echoadaptercore:module"]
+    },
+    {
+      "id": "echoadaptercore:surface/mutation_ledger",
+      "title": "Mutation Ledger",
+      "intent": "module_diagnostics",
+      "surface": "diagnostics",
+      "contract": "echo.runtime.conformance.v1",
+      "requiredHostServices": ["echo.runtime.diagnostics", "echo.native.receipts"],
+      "capabilities": ["receipt_proof", "blocked_mutation", "metadata_only_rejection"],
+      "documentedNodes": ["echoadaptercore:module"]
+    }
+  ]
+}

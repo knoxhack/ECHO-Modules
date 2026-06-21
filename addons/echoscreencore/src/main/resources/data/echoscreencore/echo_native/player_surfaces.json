@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echoscreencore",
+  "requiredHostServices": [
+    "echo.native.screens",
+    "echo.input.bindings",
+    "echo.runtime.diagnostics"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echoscreencore:surface/title_menu",
+      "title": "Title Menu",
+      "intent": "title_menu",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.input.bindings"],
+      "capabilities": ["screen_stack", "main_menu", "action_dispatch"],
+      "themeTokens": ["echothemecore:theme/default"],
+      "inputBindings": ["echoinputcore:binding/menu_confirm"],
+      "actions": [
+        {"id": "continue", "label": "Continue", "action": "echoscreencore:action/continue"},
+        {"id": "new_world", "label": "New World", "action": "echoscreencore:action/new_world"},
+        {"id": "diagnostics", "label": "Diagnostics", "action": "echoscreencore:action/open_diagnostics"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/pause_menu",
+      "title": "Pause Menu",
+      "intent": "pause_menu",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.save.session"],
+      "capabilities": ["screen_stack", "modal_stack", "session_actions"],
+      "inputBindings": ["echoinputcore:binding/pause"],
+      "actions": [
+        {"id": "resume", "label": "Resume", "action": "echoscreencore:action/resume"},
+        {"id": "save", "label": "Save", "action": "echoscreencore:action/save_session"},
+        {"id": "return_to_title", "label": "Return To Title", "action": "echoscreencore:action/return_to_title"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/world_create",
+      "title": "World Creation",
+      "intent": "world_create",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.content_graph.validation", "echo.save.session"],
+      "capabilities": ["module_validation", "content_graph_fingerprint", "world_profile"],
+      "actions": [
+        {"id": "create_world", "label": "Create World", "action": "echoscreencore:action/create_world"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/world_load",
+      "title": "World Load",
+      "intent": "world_load",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.content_graph.validation", "echo.save.session"],
+      "capabilities": ["save_list", "module_mismatch_warning", "migration_warning", "repair_suggestion"],
+      "actions": [
+        {"id": "load_world", "label": "Load World", "action": "echoscreencore:action/load_world"},
+        {"id": "repair_save", "label": "Repair Save", "action": "echosessioncore:action/repair_session"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/settings_panel",
+      "title": "Settings Panel",
+      "intent": "settings_panel",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.input.bindings", "echo.native.theme", "echo.runtime.diagnostics"],
+      "capabilities": ["display_settings", "input_remap", "accessibility", "audio", "runtime_diagnostics"],
+      "themeTokens": ["echothemecore:theme/default"],
+      "actions": [
+        {"id": "open_input", "label": "Input", "action": "echoinputcore:action/open_remap"},
+        {"id": "apply_theme", "label": "Apply Theme", "action": "echothemecore:action/apply_theme"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/module_diagnostics",
+      "title": "Module Diagnostics",
+      "intent": "module_diagnostics",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.runtime.diagnostics", "echo.content_graph.validation"],
+      "capabilities": ["module_graph", "blocked_surfaces", "host_services"],
+      "actions": [
+        {"id": "open_blocker", "label": "Open Blocker", "action": "echoscreencore:action/open_blocker"}
+      ],
+      "documentedNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/runtime_blocker",
+      "title": "Runtime Blocker",
+      "intent": "runtime_blocker",
+      "surface": "screen",
+      "contract": "echo.runtime.conformance.v1",
+      "requiredHostServices": ["echo.runtime.diagnostics", "echo.runtime.conformance"],
+      "capabilities": ["blocked_surfaces", "blocked_actions", "fallback_policy", "repair_suggestion"],
+      "actions": [
+        {"id": "open_diagnostics", "label": "Open Diagnostics", "action": "echoscreencore:action/open_diagnostics"},
+        {"id": "return_to_title", "label": "Return To Title", "action": "echoscreencore:action/return_to_title"}
+      ],
+      "documentedNodes": ["echoscreencore:module"]
+    },
+    {
+      "id": "echoscreencore:surface/death_respawn",
+      "title": "Death And Respawn",
+      "intent": "death_respawn",
+      "surface": "screen",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.save.session", "echo.adaptercore.gameplay"],
+      "capabilities": ["respawn", "checkpoint", "session_consequence"],
+      "gameplayActions": ["echoadaptercore:action/player_respawn"],
+      "actions": [
+        {"id": "respawn", "label": "Respawn", "action": "echoadaptercore:action/player_respawn"}
+      ],
+      "controlledNodes": ["echoscreencore:module"]
+    }
+  ]
+}

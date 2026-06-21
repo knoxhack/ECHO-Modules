@@ -25,16 +25,23 @@ public class ContainerComponent extends AbstractEchoComponent {
 
     @Override
     public void render(EchoRenderContext context) {
+        if (!isSubtreeDirty()) {
+            return;
+        }
         if ("hidden".equalsIgnoreCase(style().value("visibility", "visible"))
                 || bounds().width() <= 0
                 || bounds().height() <= 0) {
+            clearRenderDirty();
             return;
         }
-        renderSelf(context);
+        if (isDirty()) {
+            renderSelf(context);
+        }
         for (EchoComponent child : children()) {
             child.render(context);
         }
         renderInteractionTooltip(context);
+        clearRenderDirty();
     }
 
     @Override

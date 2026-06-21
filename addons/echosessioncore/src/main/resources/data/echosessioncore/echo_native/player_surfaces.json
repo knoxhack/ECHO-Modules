@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echosessioncore",
+  "requiredHostServices": [
+    "echo.save.session",
+    "echo.native.screens",
+    "echo.runtime.diagnostics"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echosessioncore:surface/save_warning",
+      "title": "Save Warning",
+      "intent": "save_warning",
+      "surface": "modal",
+      "contract": "echo.save.session.v1",
+      "requiredHostServices": ["echo.save.session", "echo.native.screens"],
+      "capabilities": ["content_graph_fingerprint", "module_mismatch", "migration_warning"],
+      "sessionState": ["echosessioncore:state/save_session"],
+      "actions": [
+        {"id": "repair", "label": "Repair", "action": "echosessioncore:action/repair_session"}
+      ],
+      "controlledNodes": ["echosessioncore:module"]
+    },
+    {
+      "id": "echosessioncore:surface/session_state",
+      "title": "Session State",
+      "intent": "detail_panel",
+      "surface": "diagnostics",
+      "contract": "echo.save.session.v1",
+      "requiredHostServices": ["echo.save.session", "echo.runtime.diagnostics"],
+      "capabilities": ["onboarding_state", "active_objective", "route_history", "hazard_state", "pack_phase"],
+      "sessionState": [
+        "echosessioncore:state/player_status",
+        "echosessioncore:state/active_objective",
+        "echosessioncore:state/hazard_state"
+      ],
+      "documentedNodes": ["echosessioncore:module"]
+    }
+  ]
+}

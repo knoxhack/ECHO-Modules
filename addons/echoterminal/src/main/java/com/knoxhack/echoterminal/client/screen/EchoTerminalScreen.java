@@ -37,6 +37,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import org.lwjgl.glfw.GLFW;
 
+@Deprecated
 public class EchoTerminalScreen extends AbstractContainerScreen<EchoTerminalMenu> {
     private static final Identifier OVERVIEW_TAB =
             Identifier.fromNamespaceAndPath("echoterminal", "overview");

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echomissioncore",
+  "requiredHostServices": [
+    "echo.native.hud",
+    "echo.adaptercore.gameplay",
+    "echo.save.session"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echomissioncore:surface/mission_tracker",
+      "title": "Mission Tracker",
+      "intent": "mission_tracker",
+      "surface": "hud_overlay",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.hud", "echo.save.session"],
+      "capabilities": ["objective_state", "mission_routes", "rewards", "active_tracker"],
+      "sessionState": ["echosessioncore:state/active_objective"],
+      "controlledNodes": ["echomissioncore:module"]
+    },
+    {
+      "id": "echomissioncore:surface/reward_route",
+      "title": "Mission Reward Route",
+      "intent": "terminal_page",
+      "surface": "terminal",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.screens", "echo.adaptercore.gameplay"],
+      "capabilities": ["reward_claim", "route_history"],
+      "gameplayActions": ["echoadaptercore:action/mission_claim_reward"],
+      "actions": [
+        {"id": "claim_reward", "label": "Claim Reward", "action": "echoadaptercore:action/mission_claim_reward"}
+      ],
+      "controlledNodes": ["echomissioncore:module"]
+    }
+  ]
+}

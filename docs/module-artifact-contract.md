@@ -20,7 +20,7 @@ echo-addon-package.json
 checksums.sha256
 ```
 
-The release root also includes `content-graph-evidence.json`, a single aggregate `echo.content_graph.evidence.v1` document for the whole module release.
+The release root also includes `content-graph-evidence.json`, a single aggregate `echo.content_graph.evidence.v1` document for the whole module release, and `neoforge-runtime-conformance.json`, the `echo.runtime.conformance.v1` evidence file for the NeoForge compatibility host against this module release.
 
 Applicability:
 
@@ -32,6 +32,7 @@ Applicability:
 | `<module>-<version>-sources.jar` | Always, for traceability and developer debugging. |
 | `<module>-<version>-content-graph.json` | Always, a Release-Index-catalogable sidecar containing the canonical `.ECHO Content Graph`. |
 | `content-graph-evidence.json` | Always at the release root, aggregate release evidence for graph/module/node/edge/feature/export-plan/Hytale-blocker counts. |
+| `neoforge-runtime-conformance.json` | Always at the release root, aggregate player-facing runtime conformance evidence for the NeoForge host. |
 | `META-INF/echo.mod.json` | Always, embedded in each runtime artifact where applicable. |
 | `META-INF/neoforge.mods.toml` | NeoForge artifacts only. |
 | `echo-addon-package.json` | `.echo-addon` packages only. |
@@ -45,7 +46,7 @@ Use the repository release generator from `knoxhack/ECHO-Modules`:
 node scripts/generate-module-release.mjs
 ```
 
-The generator writes `dist/echo-module-release/` with per-module folders, `content-graph-evidence.json`, `echo-release.json`, canonical `checksums.sha256`, and a `checksums.txt` compatibility copy. `echo-release.json` uses `schemaVersion: "echo.module.release.v1"` and records the evidence artifact under `contentGraphEvidence` so Release Index imports can validate it without reshaping.
+The generator writes `dist/echo-module-release/` with per-module folders, `content-graph-evidence.json`, `neoforge-runtime-conformance.json`, `echo-release.json`, canonical `checksums.sha256`, and a `checksums.txt` compatibility copy. `echo-release.json` uses `schemaVersion: "echo.module.release.v1"` and records graph evidence under `contentGraphEvidence` plus host conformance evidence under `runtimeConformanceEvidence` so Release Index imports can validate player-facing parity without reshaping.
 
 By default it is strict: runtime artifacts are only emitted from existing built jars under `addons/<module>/build/libs`, and the command fails if a required runtime jar is missing. This prevents publishing placeholder runnable jars.
 
@@ -58,7 +59,7 @@ Compiled runtime jars are not copied blindly. The generator opens each compiled 
 | `<module>-<version>.echo-addon` | `META-INF/echo.mod.json`, `echo-addon-package.json`, `checksums.sha256`, `.echo/content-graph/*`, optional `lib/<module>-<version>-runtime.jar` |
 
 Run `node scripts/verify-module-release.mjs --release-dir dist/echo-module-release` after generation. The verifier opens every archive, checks sidecars, validates package dependencies, confirms manifest and checksum agreement, and rejects metadata-only claims.
-It also validates `content-graph-evidence.json` as the canonical release summary.
+It also validates `content-graph-evidence.json` as the canonical release summary and `neoforge-runtime-conformance.json` as the NeoForge host conformance summary.
 
 Useful options:
 

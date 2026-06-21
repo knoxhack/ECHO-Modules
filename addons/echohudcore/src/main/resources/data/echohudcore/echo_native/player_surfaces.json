@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "echo.native.player_surface_manifest.v1",
+  "ownerModule": "echohudcore",
+  "requiredHostServices": [
+    "echo.native.hud",
+    "echo.save.session",
+    "echo.input.bindings"
+  ],
+  "hostTargets": [
+    "neoforge",
+    "echo_native",
+    "echo_runtime_standalone",
+    "standalone_engine"
+  ],
+  "surfaces": [
+    {
+      "id": "echohudcore:surface/status_hud",
+      "title": "Status HUD",
+      "intent": "hud_widget",
+      "surface": "hud_overlay",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.hud", "echo.save.session"],
+      "capabilities": ["health", "survival_meters", "safe_area"],
+      "sessionState": ["echosessioncore:state/player_status"],
+      "themeTokens": ["echothemecore:theme/default"],
+      "documentedNodes": ["echohudcore:module"]
+    },
+    {
+      "id": "echohudcore:surface/hotbar_surface",
+      "title": "Hotbar Surface",
+      "intent": "hotbar_surface",
+      "surface": "hud_overlay",
+      "contract": "echo.inventory.surface.v1",
+      "requiredHostServices": ["echo.native.hud", "echo.inventory.surface", "echo.input.bindings"],
+      "capabilities": ["hotbar", "selected_slot", "number_key_swap", "item_action_prompt"],
+      "inputBindings": [
+        "echoinputcore:binding/hotbar_1",
+        "echoinputcore:binding/hotbar_2",
+        "echoinputcore:binding/hotbar_3"
+      ],
+      "gameplayActions": ["echoadaptercore:action/inventory_use_item"],
+      "controlledNodes": ["echohudcore:module"]
+    },
+    {
+      "id": "echohudcore:surface/objective_tracker",
+      "title": "Objective Tracker",
+      "intent": "mission_tracker",
+      "surface": "hud_overlay",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.hud", "echo.save.session"],
+      "capabilities": ["objective_tracker", "route_prompt", "notification_queue"],
+      "sessionState": ["echosessioncore:state/active_objective"],
+      "controlledNodes": ["echohudcore:module"]
+    },
+    {
+      "id": "echohudcore:surface/warning_overlay",
+      "title": "Warning Overlay",
+      "intent": "overlay",
+      "surface": "hud_overlay",
+      "contract": "echo.ui.surface.v1",
+      "requiredHostServices": ["echo.native.hud", "echo.adaptercore.gameplay"],
+      "capabilities": ["hazard_warning", "interaction_prompt", "notification_queue"],
+      "sessionState": ["echosessioncore:state/hazard_state"],
+      "controlledNodes": ["echohudcore:module"]
+    }
+  ]
+}

@@ -124,6 +124,27 @@ async function validateAgainstSdkSchema(document, sdkRoot, schemaName) {
   return { missing: null, errors: validateSchemaValue(schema, document) }
 }
 
+async function findPlayerSurfaceManifestPaths(repoRoot, moduleIds) {
+  const addonsRoot = path.resolve(repoRoot, 'addons')
+  const selected = new Set(moduleIds)
+  const paths = []
+  if (!(await fileExists(addonsRoot))) return paths
+  const entries = await fs.readdir(addonsRoot, { withFileTypes: true, recursive: true })
+  for (const entry of entries) {
+    if (!entry.isFile() || entry.name !== 'player_surfaces.json') continue
+    const parentPath = entry.parentPath ?? addonsRoot
+    const manifestPath = path.join(parentPath, entry.name)
+    const normalized = manifestPath.replace(/\\/g, '/')
+    if (!normalized.includes('/echo_native/player_surfaces.json')) continue
+    if (selected.size > 0) {
+      const payload = JSON.parse(await fs.readFile(manifestPath, 'utf8'))
+      if (!selected.has(String(payload.ownerModule ?? ''))) continue
+    }
+    paths.push(manifestPath)
+  }
+  return paths.sort((left, right) => left.localeCompare(right))
+}
+
 export async function validateContentGraph({
   repoRoot = process.cwd(),
   strict = false,
@@ -135,7 +156,7 @@ export async function validateContentGraph({
   const allModuleResults = await generateContentGraph({ repoRoot, moduleIds: [] })
   const globalNodeIds = new Set(allModuleResults.flatMap((r) => r.graph.nodes.map((n) => n.id)))
   // Always allow references to synthetic runtime nodes.
-  const RUNTIME_IDS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'hytale'].map((t) => `echo:runtime/${t}`)
+  const RUNTIME_IDS = ['neoforge', 'echo_native', 'echo_runtime_standalone', 'standalone_engine', 'hytale'].map((t) => `echo:runtime/${t}`)
   for (const id of RUNTIME_IDS) globalNodeIds.add(id)
 
   const errors = []
@@ -150,6 +171,21 @@ export async function validateContentGraph({
     const message = `SDK content graph export plan schema not found at ${exportPlanSchemaPath}`
     if (strict) errors.push(message)
     else warnings.push(message)
+  }
+  const playerSurfaceManifestSchemaPath = path.resolve(sdkRoot, 'schemas', 'echo-player-surface-manifest.schema.json')
+  const playerSurfaceManifestSchema = await fileExists(playerSurfaceManifestSchemaPath)
+    ? JSON.parse(await fs.readFile(playerSurfaceManifestSchemaPath, 'utf8'))
+    : null
+  if (!playerSurfaceManifestSchema) {
+    const message = `SDK player surface manifest schema not found at ${playerSurfaceManifestSchemaPath}`
+    if (strict) errors.push(message)
+    else warnings.push(message)
+  } else {
+    for (const manifestPath of await findPlayerSurfaceManifestPaths(repoRoot, moduleIds)) {
+      const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'))
+      const manifestErrors = validateSchemaValue(playerSurfaceManifestSchema, manifest)
+      errors.push(...manifestErrors.map((error) => `${path.relative(repoRoot, manifestPath).replace(/\\/g, '/')}: ${error}`))
+    }
   }
 
   for (const result of results) {
@@ -189,11 +225,12 @@ export async function validateContentGraph({
       }
     }
 
-    const plan = result.plans.hytale
-    const plannedIds = new Set(plan.nodes.map((n) => n.nodeId))
-    for (const node of graph.nodes) {
-      if (!plannedIds.has(node.id)) {
-        errors.push(`${result.moduleId}: Hytale plan missing node ${node.id}`)
+    for (const [target, plan] of Object.entries(result.plans ?? {})) {
+      const plannedIds = new Set(plan.nodes.map((n) => n.nodeId))
+      for (const node of graph.nodes) {
+        if (!plannedIds.has(node.id)) {
+          errors.push(`${result.moduleId}: ${target} plan missing node ${node.id}`)
+        }
       }
     }
 

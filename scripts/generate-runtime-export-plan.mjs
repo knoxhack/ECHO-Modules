@@ -15,11 +15,11 @@ function parseArgs(argv) {
 
 const options = parseArgs(process.argv.slice(2))
 if (options.help) {
-  console.log('Usage: node scripts/generate-runtime-export-plan.mjs --target <neoforge|echo_native|echo_runtime_standalone|hytale> [--all] [--write] [--module id1,id2]')
+  console.log('Usage: node scripts/generate-runtime-export-plan.mjs --target <neoforge|echo_native|echo_runtime_standalone|standalone_engine|hytale> [--all] [--write] [--module id1,id2]')
   process.exit(0)
 }
 
-if (!['neoforge', 'echo_native', 'echo_runtime_standalone', 'hytale'].includes(options.target)) {
+if (!['neoforge', 'echo_native', 'echo_runtime_standalone', 'standalone_engine', 'hytale'].includes(options.target)) {
   console.error(`Unknown target: ${options.target}`)
   process.exit(1)
 }
